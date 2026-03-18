@@ -144,10 +144,10 @@ export default function CreatePostForm() {
         onChange={(e) => setCategory(e.target.value as "Understanding Children" | "Teaching Practice" | "Family Education" | "Teacher Reflection")}
         className="border rounded px-3 py-2"
       >
-        <option value="Understanding Children">Understanding Children</option>
-        <option value="Teaching Practice">Teaching Practice</option>
-        <option value="Family Education">Family Education</option>
-        <option value="Teacher Reflection">Teacher Reflection</option>
+        <option value="PTE">PTE</option>
+        <option value="雅思">雅思</option>
+        <option value="词汇">词汇</option>
+        <option value="语法">语法</option>
       </select>
 
       <select

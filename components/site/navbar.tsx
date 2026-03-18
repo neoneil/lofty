@@ -26,9 +26,9 @@ export default async function Navbar() {
   const canManagePosts = role === "admin" || role === "editor";
 
 
-// 显示google 用户信息 
+  // 显示google 用户信息 
 
- const name =
+  const name =
     user?.user_metadata?.full_name ||
     user?.user_metadata?.name ||
     "User";
@@ -48,7 +48,7 @@ export default async function Navbar() {
       <Container>
         <div className="flex min-h-16 flex-wrap items-center justify-between gap-3 py-3">
           <Link href="/" className="text-lg font-bold tracking-tight sm:text-xl">
-            Cosmic Childhood
+            高远教育-LOFTY
           </Link>
 
           <nav className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
@@ -56,38 +56,31 @@ export default async function Navbar() {
               href="/"
               className="nav-link"
             >
-              Home
-            </Link>
-            <Link
-              href="/"
-              className="nav-link"
-            >
-              Main categories
-            </Link>
-            <Link
-              href="/"
-              className="nav-link"
-            >
-              Resources
-            </Link>
-            <Link
-              href="/"
-              className="nav-link"
-            >
-              About-us
-            </Link>
-            {/* <Link 
-              href="/tarot" 
-              className="nav-link">
-              Tarot
+              首页
             </Link>
             <Link
               href="/posts"
               className="nav-link"
             >
-              Posts
-            </Link> */}
-
+              文章
+            </Link>
+            <Link
+              href="/"
+              className="nav-link"
+            >
+              资源
+            </Link>
+            <Link
+              href="/tarot"
+              className="nav-link">
+              AI辅助
+            </Link>
+            <Link
+              href="/"
+              className="nav-link"
+            >
+              关于高远
+            </Link>
             {user ? (
               <>
                 {canManagePosts && (
@@ -95,7 +88,7 @@ export default async function Navbar() {
                     href="/admin/posts"
                     className="nav-link"
                   >
-                    Admin
+                    管理员
                   </Link>
                 )}
 
@@ -103,7 +96,7 @@ export default async function Navbar() {
                   {user.email}
                 </span> */}
 
-                 <div className="flex items-center gap-2 rounded-full px-2 py-1">
+                <div className="flex items-center gap-2 rounded-full px-2 py-1">
                   <Image
                     src={avatar}
                     alt={name}

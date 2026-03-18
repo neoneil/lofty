@@ -49,9 +49,9 @@ export default function SignupForm() {
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
 
-        // queryParams: {
-        //   prompt: "select_account",
-        // },
+        queryParams: {
+          prompt: "select_account",
+        },
 
       },
     });

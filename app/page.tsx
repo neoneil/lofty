@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import Container from "@/components/site/container";
-
+import { getRandomSlogan } from "@/lib/slogan/slogan"
 export default async function HomePage() {
   const supabase = await createClient();
-
+  const heroSlogan = getRandomSlogan();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -36,16 +36,15 @@ export default async function HomePage() {
         <section className="mb-14 sm:mb-16">
           <div className="max-w-3xl">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 sm:text-sm">
-              Personal Blog
+              高远教育品牌博客
             </p>
 
-            <h1 className="mb-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              Thoughts on code, learning, and building things.
+            <h1 className="mb-5 text-base font-medium leading-snug tracking-normal sm:text-xl lg:text-2xl">
+              {heroSlogan}
             </h1>
 
             <p className="max-w-2xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
-              I write about web development, education, tools, and practical
-              ideas worth sharing.
+              致力于PTE, 雅思, 英语培训, 帮助您扫清留学移民的英语障碍
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
