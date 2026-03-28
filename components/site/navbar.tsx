@@ -71,12 +71,12 @@ export default async function Navbar() {
               资源
             </Link>
             <Link
-              href="/tarot"
+              href="/ielts-writing"
               className="nav-link">
               AI辅助
             </Link>
             <Link
-              href="/"
+              href="/contact"
               className="nav-link"
             >
               关于高远

@@ -8,7 +8,7 @@ export default function Footer() {
     }}>
       <Container>
         <div className="flex flex-col gap-3 py-8 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Z's Blog</p>
+          <p>© 2026 Chi's website</p>
           <p>Built by Chi</p>
         </div>
       </Container>

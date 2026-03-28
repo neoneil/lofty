@@ -15,9 +15,12 @@
 
   /* 次级文字 */
   --muted: #6b7280;
+  /* 卡片样式 */
+  --card: #ffffff;
+  --card-soft: #f8fafc;
 
   /* navbar */
-  --navbar-bg: #FDEBD2; 
+  --navbar-bg: #c2c7e2;    
   --navbar-bg-hover: #f8deba; 
  
   /* footer */
@@ -47,11 +50,13 @@
 
   .btn-secondary {
     @apply rounded-full border px-5 py-3 text-sm font-medium transition;
-    border: 1px solid var(--border);
+    background-color: var(--primary);
+    color:white;
+    /* border: 1px solid var(--border); */ 
   }
 
   .btn-secondary:hover {
-    background-color: #f3f4f6;
+    background-color: #244d9f; 
   }
 
   /* 卡片 */
