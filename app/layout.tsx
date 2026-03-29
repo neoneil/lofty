@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/site/navbar";
 import Footer from "@/components/site/footer";
 import { Analytics } from "@vercel/analytics/next";
+import ChatWidget from '@/components/chat/ChatWidget';
 export const metadata: Metadata = {
   title: {
     default: "My Blog",
@@ -24,7 +25,10 @@ export default function RootLayout({
       }}>
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <div className="flex-1">{children}</div>
+          <div className="flex-1">
+            {children}
+            <ChatWidget />
+          </div>
           <Footer />
         </div>
         <Analytics />

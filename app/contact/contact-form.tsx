@@ -54,7 +54,7 @@ export default function ContactForm() {
             <h2 className="mt-4 text-2xl font-bold text-slate-950">联系高远教育</h2>
 
             <div className="mt-8 space-y-4">
-              <div className="rounded-2xl border border-slate-200 p-4">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4">
                 <div className="text-sm font-medium text-slate-500">Email</div>
                 <a
                   href="mailto:hello@loftyeducation.com"
