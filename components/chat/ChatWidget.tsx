@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +11,17 @@ type ViewerProfile = {
   full_name: string | null;
   email?: string | null;
 };
+
+type MessagesResponse = {
+  messages: ChatMessage[];
+  nextCursor: {
+    createdAt: string;
+    id: string;
+  } | null;
+  hasMore: boolean;
+};
+
+const PAGE_SIZE = 20;
 
 export default function ChatWidget() {
   const supabase = createClient();
@@ -24,10 +36,134 @@ export default function ChatWidget() {
   const [aiReplying, setAiReplying] = useState(false);
   const [viewerProfile, setViewerProfile] = useState<ViewerProfile | null>(null);
 
-  const bottomRef = useRef<HTMLDivElement | null>(null);
+  const [loadingOlder, setLoadingOlder] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [nextCursor, setNextCursor] = useState<{
+    createdAt: string;
+    id: string;
+  } | null>(null);
 
-  const userDisplayName =
-    viewerProfile?.full_name?.trim() || 'You';
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const didInitScrollRef = useRef(false);
+  const shouldStickToBottomRef = useRef(false);
+  const loadingOlderRef = useRef(false);
+
+  const userDisplayName = viewerProfile?.full_name?.trim() || 'You';
+
+  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+    bottomRef.current?.scrollIntoView({ behavior });
+  };
+
+  const isNearBottom = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return true;
+
+    const threshold = 120;
+    return (
+      container.scrollHeight - container.scrollTop - container.clientHeight <
+      threshold
+    );
+  };
+
+  const mergeUniqueMessages = (
+    current: ChatMessage[],
+    incoming: ChatMessage[],
+    mode: 'replace' | 'prepend' | 'append'
+  ) => {
+    const map = new Map<string, ChatMessage>();
+
+    if (mode === 'replace') {
+      for (const msg of incoming) {
+        map.set(msg.id, msg);
+      }
+    }
+
+    if (mode === 'prepend') {
+      for (const msg of incoming) {
+        map.set(msg.id, msg);
+      }
+      for (const msg of current) {
+        map.set(msg.id, msg);
+      }
+    }
+
+    if (mode === 'append') {
+      for (const msg of current) {
+        map.set(msg.id, msg);
+      }
+      for (const msg of incoming) {
+        map.set(msg.id, msg);
+      }
+    }
+
+    return Array.from(map.values()).sort(
+      (a, b) =>
+        new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+    );
+  };
+
+  const fetchMessagesPage = async (
+    sessionId: string,
+    cursor?: { createdAt: string; id: string } | null
+  ) => {
+    const params = new URLSearchParams({
+      sessionId,
+      limit: String(PAGE_SIZE),
+    });
+
+    if (cursor?.createdAt && cursor?.id) {
+      params.set('cursorCreatedAt', cursor.createdAt);
+      params.set('cursorId', cursor.id);
+    }
+
+    const res = await fetch(`/api/chat/message?${params.toString()}`, {
+      method: 'GET',
+      cache: 'no-store',
+    });
+
+    const data = (await res.json()) as MessagesResponse | { error?: string };
+
+    if (!res.ok) {
+      throw new Error(
+        'error' in data && data.error ? data.error : 'Failed to load messages.'
+      );
+    }
+
+    return data as MessagesResponse;
+  };
+
+  const loadOlderMessages = async () => {
+    if (!session || !hasMore || !nextCursor || loadingOlderRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const prevScrollHeight = container?.scrollHeight ?? 0;
+    const prevScrollTop = container?.scrollTop ?? 0;
+
+    loadingOlderRef.current = true;
+    setLoadingOlder(true);
+
+    try {
+      const data = await fetchMessagesPage(session.id, nextCursor);
+
+      setMessages((prev) => mergeUniqueMessages(prev, data.messages, 'prepend'));
+      setHasMore(data.hasMore);
+      setNextCursor(data.nextCursor);
+
+      requestAnimationFrame(() => {
+        const el = scrollContainerRef.current;
+        if (!el) return;
+
+        const newScrollHeight = el.scrollHeight;
+        el.scrollTop = newScrollHeight - prevScrollHeight + prevScrollTop;
+      });
+    } catch (error) {
+      console.error('Load older messages failed:', error);
+    } finally {
+      loadingOlderRef.current = false;
+      setLoadingOlder(false);
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -80,6 +216,10 @@ export default function ChatWidget() {
         setInitialLoading(true);
         setInitError(null);
         setAiReplying(false);
+        setMessages([]);
+        setHasMore(false);
+        setNextCursor(null);
+        didInitScrollRef.current = false;
 
         const sessionRes = await fetch('/api/chat/session', {
           method: 'POST',
@@ -100,24 +240,21 @@ export default function ChatWidget() {
 
         setSession(currentSession);
 
-        const { data: msgData, error: msgError } = await supabase
-          .from('chat_messages')
-          .select('*')
-          .eq('session_id', currentSession.id)
-          .order('created_at', { ascending: true });
+        const page = await fetchMessagesPage(currentSession.id);
 
-        if (msgError) {
-          if (!cancelled) {
-            setInitError(msgError.message || 'Failed to load messages.');
-          }
-          return;
-        }
+        if (cancelled) return;
 
+        setMessages(page.messages);
+        setHasMore(page.hasMore);
+        setNextCursor(page.nextCursor);
+
+        requestAnimationFrame(() => {
+          scrollToBottom('auto');
+          didInitScrollRef.current = true;
+        });
+      } catch (error) {
         if (!cancelled) {
-          setMessages((msgData ?? []) as ChatMessage[]);
-        }
-      } catch {
-        if (!cancelled) {
+          console.error(error);
           setInitError('Something went wrong while loading the chat.');
         }
       } finally {
@@ -132,7 +269,7 @@ export default function ChatWidget() {
     return () => {
       cancelled = true;
     };
-  }, [open, supabase]);
+  }, [open]);
 
   useEffect(() => {
     if (!session) return;
@@ -153,11 +290,19 @@ export default function ChatWidget() {
           setMessages((prev) => {
             const exists = prev.some((m) => m.id === newMessage.id);
             if (exists) return prev;
-            return [...prev, newMessage];
+            return mergeUniqueMessages(prev, [newMessage], 'append');
           });
 
           if (newMessage.sender === 'ai') {
             setAiReplying(false);
+          }
+
+          if (newMessage.sender === 'user' || newMessage.sender === 'ai') {
+            requestAnimationFrame(() => {
+              if (didInitScrollRef.current) {
+                scrollToBottom('smooth');
+              }
+            });
           }
         }
       )
@@ -169,9 +314,18 @@ export default function ChatWidget() {
   }, [session, supabase]);
 
   useEffect(() => {
-    if (!open) return;
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, open, aiReplying]);
+    const container = scrollContainerRef.current;
+    if (!container || !open) return;
+
+    const handleScroll = () => {
+      if (container.scrollTop <= 80 && hasMore && !loadingOlder) {
+        void loadOlderMessages();
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [open, hasMore, loadingOlder, nextCursor, session]);
 
   const triggerAiReply = async (sessionId: string, content: string) => {
     try {
@@ -197,7 +351,9 @@ export default function ChatWidget() {
           created_at: new Date().toISOString(),
         };
 
-        setMessages((prev) => [...prev, fallbackMessage]);
+        setMessages((prev) => mergeUniqueMessages(prev, [fallbackMessage], 'append'));
+        requestAnimationFrame(() => scrollToBottom('smooth'));
+
         console.error('AI reply failed:', data);
         return;
       }
@@ -208,8 +364,10 @@ export default function ChatWidget() {
         setMessages((prev) => {
           const exists = prev.some((m) => m.id === insertedAiMessage.id);
           if (exists) return prev;
-          return [...prev, insertedAiMessage];
+          return mergeUniqueMessages(prev, [insertedAiMessage], 'append');
         });
+
+        requestAnimationFrame(() => scrollToBottom('smooth'));
       }
 
       setAiReplying(false);
@@ -225,7 +383,9 @@ export default function ChatWidget() {
         created_at: new Date().toISOString(),
       };
 
-      setMessages((prev) => [...prev, fallbackMessage]);
+      setMessages((prev) => mergeUniqueMessages(prev, [fallbackMessage], 'append'));
+      requestAnimationFrame(() => scrollToBottom('smooth'));
+
       console.error('AI reply failed:', error);
     }
   };
@@ -236,6 +396,8 @@ export default function ChatWidget() {
     }
 
     const content = input.trim();
+
+    shouldStickToBottomRef.current = isNearBottom();
 
     setLoading(true);
     setInput('');
@@ -260,8 +422,10 @@ export default function ChatWidget() {
         setMessages((prev) => {
           const exists = prev.some((m) => m.id === insertedMessage.id);
           if (exists) return prev;
-          return [...prev, insertedMessage];
+          return mergeUniqueMessages(prev, [insertedMessage], 'append');
         });
+
+        requestAnimationFrame(() => scrollToBottom('smooth'));
       }
 
       await triggerAiReply(session.id, content);
@@ -270,6 +434,7 @@ export default function ChatWidget() {
       console.error('Send message failed:', error);
     } finally {
       setLoading(false);
+      shouldStickToBottomRef.current = false;
     }
   };
 
@@ -352,11 +517,15 @@ export default function ChatWidget() {
           </div>
 
           <div
+            ref={scrollContainerRef}
             className="flex-1 overflow-y-auto px-4 py-4"
             style={{ backgroundColor: 'var(--bg)' }}
           >
             {initialLoading ? (
-              <div className="mt-14 text-center text-sm" style={{ color: 'var(--muted)' }}>
+              <div
+                className="mt-14 text-center text-sm"
+                style={{ color: 'var(--muted)' }}
+              >
                 Loading chat...
               </div>
             ) : initError ? (
@@ -364,17 +533,36 @@ export default function ChatWidget() {
                 {initError}
               </div>
             ) : messages.length === 0 ? (
-              <div className="mt-14 rounded-2xl border px-4 py-5 text-center text-sm shadow-sm"
+              <div
+                className="mt-14 rounded-2xl border px-4 py-5 text-center text-sm shadow-sm"
                 style={{
                   backgroundColor: 'var(--card)',
                   borderColor: 'var(--border)',
                   color: 'var(--muted)',
                 }}
               >
-                Hi! Ask me anything about IELTS, PTE, writing, speaking, or vocabulary.
+                Hi! Ask me anything about IELTS, PTE, writing, speaking, or
+                vocabulary.
               </div>
             ) : (
               <div className="space-y-4">
+                {hasMore && (
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => void loadOlderMessages()}
+                      disabled={loadingOlder}
+                      className="rounded-full border px-3 py-1.5 text-xs transition disabled:opacity-60"
+                      style={{
+                        borderColor: 'var(--border)',
+                        backgroundColor: 'var(--card)',
+                        color: 'var(--muted)',
+                      }}
+                    >
+                      {loadingOlder ? 'Loading...' : 'Load earlier messages'}
+                    </button>
+                  </div>
+                )}
+
                 {messages.map((msg) => {
                   const isUser = msg.sender === 'user';
                   const isAi = msg.sender === 'ai';
@@ -406,7 +594,7 @@ export default function ChatWidget() {
                             border: isUser ? 'none' : `1px solid var(--border)`,
                           }}
                         >
-                          <div className="whitespace-pre-wrap wrap-break-word">
+                          <div className="whitespace-pre-wrap break-words">
                             {msg.content}
                           </div>
 
@@ -534,11 +722,20 @@ export default function ChatWidget() {
   );
 }
 
+
+
+
 // 'use client';
 
 // import { useEffect, useRef, useState } from 'react';
 // import { createClient } from '@/lib/supabase/client';
 // import type { ChatMessage, ChatSession } from '@/types/chat';
+
+// type ViewerProfile = {
+//   id: string;
+//   full_name: string | null;
+//   email?: string | null;
+// };
 
 // export default function ChatWidget() {
 //   const supabase = createClient();
@@ -551,8 +748,53 @@ export default function ChatWidget() {
 //   const [initialLoading, setInitialLoading] = useState(false);
 //   const [initError, setInitError] = useState<string | null>(null);
 //   const [aiReplying, setAiReplying] = useState(false);
+//   const [viewerProfile, setViewerProfile] = useState<ViewerProfile | null>(null);
 
 //   const bottomRef = useRef<HTMLDivElement | null>(null);
+
+//   const userDisplayName =
+//     viewerProfile?.full_name?.trim() || 'You';
+
+//   useEffect(() => {
+//     let cancelled = false;
+
+//     const loadViewerProfile = async () => {
+//       const {
+//         data: { user },
+//       } = await supabase.auth.getUser();
+
+//       if (!user) {
+//         if (!cancelled) {
+//           setViewerProfile(null);
+//         }
+//         return;
+//       }
+
+//       const { data: profile } = await supabase
+//         .from('profiles')
+//         .select('id, full_name, email')
+//         .eq('id', user.id)
+//         .maybeSingle();
+
+//       if (!cancelled) {
+//         if (profile) {
+//           setViewerProfile(profile);
+//         } else {
+//           setViewerProfile({
+//             id: user.id,
+//             full_name: null,
+//             email: user.email ?? null,
+//           });
+//         }
+//       }
+//     };
+
+//     void loadViewerProfile();
+
+//     return () => {
+//       cancelled = true;
+//     };
+//   }, [supabase]);
 
 //   useEffect(() => {
 //     if (!open) return;
@@ -762,44 +1004,103 @@ export default function ChatWidget() {
 //       {!open ? (
 //         <button
 //           onClick={() => setOpen(true)}
-//           className="rounded-full border bg-white px-4 py-3 shadow-lg transition hover:shadow-xl"
+//           className="group rounded-full border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+//           style={{
+//             backgroundColor: 'var(--card)',
+//             borderColor: 'var(--border)',
+//             color: 'var(--text)',
+//           }}
 //         >
-//           Chat
+//           <span className="flex items-center gap-2">
+//             <span
+//               className="inline-block h-2.5 w-2.5 rounded-full"
+//               style={{ backgroundColor: '#22c55e' }}
+//             />
+//             Chat with Ibot
+//           </span>
 //         </button>
 //       ) : (
-//         <div className="flex h-140 w-95 flex-col overflow-hidden rounded-2xl border bg-white shadow-2xl">
-//           <div className="flex items-center justify-between border-b px-4 py-3">
-//             <div>
-//               <div className="font-medium">Ask a question</div>
-//               <div className="text-xs text-gray-500">我是Ibot, 马老师的人工智能助手</div>
-//             </div>
+//         <div
+//           className="flex h-155 w-97.5 flex-col overflow-hidden rounded-[28px] border shadow-2xl"
+//           style={{
+//             backgroundColor: 'var(--card)',
+//             borderColor: 'var(--border)',
+//             color: 'var(--text)',
+//           }}
+//         >
+//           <div
+//             className="relative border-b px-5 py-4"
+//             style={{
+//               borderColor: 'var(--border)',
+//               background:
+//                 'linear-gradient(135deg, var(--navbar-bg) 0%, var(--footer-bg) 100%)',
+//             }}
+//           >
+//             <div className="flex items-start justify-between gap-4">
+//               <div className="min-w-0">
+//                 <div className="flex items-center gap-2">
+//                   <div
+//                     className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
+//                     style={{
+//                       backgroundColor: 'rgba(255,255,255,0.7)',
+//                       color: 'var(--primary)',
+//                     }}
+//                   >
+//                     IB
+//                   </div>
 
-//             <button
-//               onClick={() => {
-//                 setOpen(false);
-//                 setAiReplying(false);
-//               }}
-//               className="text-sm text-gray-500 hover:text-black"
-//             >
-//               关闭 X
-//             </button>
+//                   <div>
+//                     <div className="font-semibold">Ibot</div>
+//                     <div
+//                       className="text-xs"
+//                       style={{ color: 'rgba(17,17,17,0.72)' }}
+//                     >
+//                       马老师的人工智能助手
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <button
+//                 onClick={() => {
+//                   setOpen(false);
+//                   setAiReplying(false);
+//                 }}
+//                 className="rounded-full px-3 py-1.5 text-xs font-medium transition"
+//                 style={{
+//                   backgroundColor: 'rgba(255,255,255,0.65)',
+//                   color: 'var(--text)',
+//                 }}
+//               >
+//                 关闭
+//               </button>
+//             </div>
 //           </div>
 
-//           <div className="flex-1 overflow-y-auto p-3">
+//           <div
+//             className="flex-1 overflow-y-auto px-4 py-4"
+//             style={{ backgroundColor: 'var(--bg)' }}
+//           >
 //             {initialLoading ? (
-//               <div className="mt-10 text-center text-sm text-gray-500">
+//               <div className="mt-14 text-center text-sm" style={{ color: 'var(--muted)' }}>
 //                 Loading chat...
 //               </div>
 //             ) : initError ? (
-//               <div className="mt-10 text-center text-sm text-red-500">
+//               <div className="mt-14 text-center text-sm text-red-500">
 //                 {initError}
 //               </div>
 //             ) : messages.length === 0 ? (
-//               <div className="mt-10 text-center text-sm text-gray-500">
-//                 Hi! Ask me anything about IELTS.
+//               <div className="mt-14 rounded-2xl border px-4 py-5 text-center text-sm shadow-sm"
+//                 style={{
+//                   backgroundColor: 'var(--card)',
+//                   borderColor: 'var(--border)',
+//                   color: 'var(--muted)',
+//                 }}
+//               >
+//                 Hi! Ask me anything about IELTS, PTE, writing, speaking, or vocabulary.
 //               </div>
 //             ) : (
-//               <div className="space-y-3">
+//               <div className="space-y-4">
 //                 {messages.map((msg) => {
 //                   const isUser = msg.sender === 'user';
 //                   const isAi = msg.sender === 'ai';
@@ -809,25 +1110,42 @@ export default function ChatWidget() {
 //                       key={msg.id}
 //                       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
 //                     >
-//                       <div
-//                         className={`max-w-[82%] rounded-2xl px-3 py-2 text-sm ${
-//                           isUser
-//                             ? 'bg-black text-white'
-//                             : isAi
-//                             ? 'bg-blue-50 text-black'
-//                             : 'bg-gray-100 text-black'
-//                         }`}
-//                       >
-//                         <div className="mb-1 text-[11px] opacity-70">
-//                           {isUser ? 'You' : isAi ? 'Ibot' : '马老师'}
+//                       <div className="max-w-[84%]">
+//                         <div
+//                           className={`mb-1 px-1 text-[11px] font-medium ${
+//                             isUser ? 'text-right' : 'text-left'
+//                           }`}
+//                           style={{ color: 'var(--muted)' }}
+//                         >
+//                           {isUser ? userDisplayName : isAi ? 'Ibot' : '马老师'}
 //                         </div>
 
-//                         <div className="whitespace-pre-wrap wrap-break-word">
-//                           {msg.content}
-//                         </div>
+//                         <div
+//                           className="rounded-[22px] px-4 py-3 text-sm leading-6 shadow-sm"
+//                           style={{
+//                             backgroundColor: isUser
+//                               ? 'var(--primary)'
+//                               : isAi
+//                               ? 'var(--card)'
+//                               : 'var(--card-soft)',
+//                             color: isUser ? '#ffffff' : 'var(--text)',
+//                             border: isUser ? 'none' : `1px solid var(--border)`,
+//                           }}
+//                         >
+//                           <div className="whitespace-pre-wrap wrap-break-word">
+//                             {msg.content}
+//                           </div>
 
-//                         <div className="mt-1 text-[10px] opacity-70">
-//                           {new Date(msg.created_at).toLocaleTimeString()}
+//                           <div
+//                             className="mt-2 text-[10px]"
+//                             style={{
+//                               color: isUser
+//                                 ? 'rgba(255,255,255,0.72)'
+//                                 : 'var(--muted)',
+//                             }}
+//                           >
+//                             {new Date(msg.created_at).toLocaleTimeString()}
+//                           </div>
 //                         </div>
 //                       </div>
 //                     </div>
@@ -836,9 +1154,46 @@ export default function ChatWidget() {
 
 //                 {aiReplying && (
 //                   <div className="flex justify-start">
-//                     <div className="max-w-[82%] rounded-2xl bg-blue-50 px-3 py-2 text-sm text-black">
-//                       <div className="mb-1 text-[11px] opacity-70">Ibot:</div>
-//                       <div>Ibot 思考中...</div>
+//                     <div className="max-w-[84%]">
+//                       <div
+//                         className="mb-1 px-1 text-[11px] font-medium"
+//                         style={{ color: 'var(--muted)' }}
+//                       >
+//                         Ibot
+//                       </div>
+
+//                       <div
+//                         className="rounded-[22px] border px-4 py-3 text-sm shadow-sm"
+//                         style={{
+//                           backgroundColor: 'var(--card)',
+//                           borderColor: 'var(--border)',
+//                           color: 'var(--text)',
+//                         }}
+//                       >
+//                         <div className="flex items-center gap-2">
+//                           <span>Ibot 思考中</span>
+//                           <span className="inline-flex gap-1">
+//                             <span
+//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               style={{ backgroundColor: 'var(--muted)' }}
+//                             />
+//                             <span
+//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               style={{
+//                                 backgroundColor: 'var(--muted)',
+//                                 animationDelay: '0.15s',
+//                               }}
+//                             />
+//                             <span
+//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               style={{
+//                                 backgroundColor: 'var(--muted)',
+//                                 animationDelay: '0.3s',
+//                               }}
+//                             />
+//                           </span>
+//                         </div>
+//                       </div>
 //                     </div>
 //                   </div>
 //                 )}
@@ -848,36 +1203,55 @@ export default function ChatWidget() {
 //             <div ref={bottomRef} />
 //           </div>
 
-//           <div className="border-t p-3">
-//             <div className="flex gap-2">
-//               <textarea
-//                 value={input}
-//                 onChange={(e) => setInput(e.target.value)}
-//                 placeholder="Type your question..."
-//                 rows={2}
-//                 className="min-h-11 flex-1 resize-none rounded-xl border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-black/10"
-//                 onKeyDown={(e) => {
-//                   if (e.key === 'Enter' && !e.shiftKey) {
-//                     e.preventDefault();
-//                     void sendMessage();
-//                   }
+//           <div
+//             className="border-t px-4 py-4"
+//             style={{
+//               borderColor: 'var(--border)',
+//               backgroundColor: 'var(--card)',
+//             }}
+//           >
+//             <div className="flex gap-3">
+//               <div
+//                 className="flex flex-1 items-end rounded-3xl border px-3 py-2 shadow-sm"
+//                 style={{
+//                   borderColor: 'var(--border)',
+//                   backgroundColor: 'var(--bg)',
 //                 }}
-//                 disabled={initialLoading || !!initError || loading}
-//               />
-
-//               <button
-//                 onClick={() => void sendMessage()}
-//                 disabled={
-//                   loading || initialLoading || !input.trim() || !!initError
-//                 }
-//                 className="rounded-xl border px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
 //               >
-//                 {loading ? 'Sending...' : 'Send'}
-//               </button>
+//                 <textarea
+//                   value={input}
+//                   onChange={(e) => setInput(e.target.value)}
+//                   placeholder="请输入你的问题..."
+//                   rows={2}
+//                   className="min-h-11 flex-1 resize-none bg-transparent px-1 py-1 text-sm outline-none"
+//                   style={{ color: 'var(--text)' }}
+//                   onKeyDown={(e) => {
+//                     if (e.key === 'Enter' && !e.shiftKey) {
+//                       e.preventDefault();
+//                       void sendMessage();
+//                     }
+//                   }}
+//                   disabled={initialLoading || !!initError || loading}
+//                 />
+
+//                 <button
+//                   onClick={() => void sendMessage()}
+//                   disabled={
+//                     loading || initialLoading || !input.trim() || !!initError
+//                   }
+//                   className="ml-2 rounded-full px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+//                   style={{ backgroundColor: 'var(--primary)' }}
+//                 >
+//                   {loading ? 'Sending...' : '发送'}
+//                 </button>
+//               </div>
 //             </div>
 
-//             <div className="mt-2 text-[11px] text-gray-400">
-//               Press Enter to send, Shift+Enter for a new line.
+//             <div
+//               className="mt-2 px-1 text-[11px]"
+//               style={{ color: 'var(--muted)' }}
+//             >
+//               Enter 发送，Shift+Enter 换行
 //             </div>
 //           </div>
 //         </div>
@@ -885,3 +1259,4 @@ export default function ChatWidget() {
 //     </div>
 //   );
 // }
+

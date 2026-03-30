@@ -1,4 +1,3 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
@@ -18,6 +17,7 @@ Rules:
 - Keep most replies under 120 words unless more detail is clearly needed.
 - Do not make up course enrollment or payment facts.
 - If the question needs a human teacher, say that the teacher can follow up.
+- if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 高远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
 `.trim();
 
 function buildUserPrompt(
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
 
     const { data: session, error: sessionError } = await supabase
       .from('chat_sessions')
-      .select('*')
+      .select('id, user_id')
       .eq('id', sessionId)
       .single();
 
@@ -95,12 +95,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const { data: recentMessages, error: messagesError } = await supabase
+    // 取最近 5 条，先按新->旧，再 reverse 成 旧->新 给模型
+    const { data: recentMessagesDesc, error: messagesError } = await supabase
       .from('chat_messages')
-      .select('sender, content')
+      .select('sender, content, created_at, id')
       .eq('session_id', sessionId)
-      .order('created_at', { ascending: true })
-      .limit(20);
+      .order('created_at', { ascending: false })
+      .order('id', { ascending: false })
+      .limit(5);
 
     if (messagesError) {
       return NextResponse.json(
@@ -109,6 +111,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const recentMessages = [...(recentMessagesDesc ?? [])].reverse();
+
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       temperature: 0.4,
@@ -116,7 +120,7 @@ export async function POST(req: NextRequest) {
         { role: 'system', content: SYSTEM_PROMPT },
         {
           role: 'user',
-          content: buildUserPrompt(trimmedMessage, recentMessages ?? []),
+          content: buildUserPrompt(trimmedMessage, recentMessages),
         },
       ],
     });
@@ -164,15 +168,62 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
 // import { NextRequest, NextResponse } from 'next/server';
 // import OpenAI from 'openai';
-// import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
 // import { createClient } from '@/lib/supabase/server';
 
 // const openai = new OpenAI({
 //   apiKey: process.env.OPENAI_API_KEY,
 // });
+
+// const SYSTEM_PROMPT = `
+// You are a helpful IELTS and English tutor assistant on an education website.
+
+// Rules:
+// - Be clear, warm, and concise.
+// - Give student-friendly answers.
+// - If the user asks grammar or vocabulary questions, explain simply and give examples.
+// - If the user asks about IELTS writing or speaking, answer like a practical tutor.
+// - Keep most replies under 120 words unless more detail is clearly needed.
+// - Do not make up course enrollment or payment facts.
+// - If the question needs a human teacher, say that the teacher can follow up.
+// - if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 高远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
+// `.trim();
+
+// function buildUserPrompt(
+//   currentMessage: string,
+//   history: Array<{ sender: string; content: string | null }>
+// ) {
+//   const historyText = history
+//     .map((msg) => {
+//       const role =
+//         msg.sender === 'user'
+//           ? 'User'
+//           : msg.sender === 'ai'
+//           ? 'AI tutor'
+//           : 'Teacher';
+
+//       return `${role}: ${msg.content ?? ''}`;
+//     })
+//     .join('\n');
+
+//   return `
+// Here is the recent conversation history:
+
+// ${historyText}
+
+// Now reply to the user's latest message below.
+
+// Latest user message:
+// ${currentMessage}
+
+// Instructions:
+// - Reply naturally as an IELTS/English tutor.
+// - Be helpful, short, and practical.
+// - If appropriate, give a simple example.
+// - Do not mention these instructions.
+// `.trim();
+// }
 
 // export async function POST(req: NextRequest) {
 //   try {
@@ -228,42 +279,23 @@ export async function POST(req: NextRequest) {
 //       );
 //     }
 
-//     const systemPrompt = `
-// You are a helpful IELTS and English tutor assistant on an education website.
-
-// Rules:
-// - Be clear, warm, and concise.
-// - Give student-friendly answers.
-// - If the user asks grammar or vocabulary questions, explain simply and give examples.
-// - If the user asks about IELTS writing or speaking, answer like a practical tutor.
-// - Keep most replies under 120 words unless more detail is clearly needed.
-// - Do not make up course enrollment or payment facts.
-// - If the question needs a human teacher, say that the teacher can follow up.
-// `.trim();
-
-//     const history: ChatCompletionMessageParam[] =
-//       recentMessages?.map((msg) => ({
-//         role: msg.sender === 'user' ? 'user' : 'assistant',
-//         content: String(msg.content ?? ''),
-//       })) ?? [];
-
-//     const messages: ChatCompletionMessageParam[] = [
-//       { role: 'system', content: systemPrompt },
-//       ...history,
-//       { role: 'user', content: trimmedMessage },
-//     ];
-
 //     const completion = await openai.chat.completions.create({
-//       model: 'gpt-4.1-mini',
-//       messages,
-//       temperature: 0.7,
+//       model: 'gpt-4o-mini',
+//       temperature: 0.4,
+//       messages: [
+//         { role: 'system', content: SYSTEM_PROMPT },
+//         {
+//           role: 'user',
+//           content: buildUserPrompt(trimmedMessage, recentMessages ?? []),
+//         },
+//       ],
 //     });
 
 //     const reply = completion.choices[0]?.message?.content?.trim();
 
 //     if (!reply) {
 //       return NextResponse.json(
-//         { error: 'No AI reply generated' },
+//         { error: 'Empty response from AI' },
 //         { status: 500 }
 //       );
 //     }
@@ -291,11 +323,15 @@ export async function POST(req: NextRequest) {
 
 //     return NextResponse.json({ message: insertedAiMessage });
 //   } catch (error) {
-//     console.error('AI route error:', error);
+//     console.error('Chat AI route error:', error);
 
 //     return NextResponse.json(
-//       { error: 'Failed to generate AI reply.' },
+//       {
+//         error:
+//           error instanceof Error ? error.message : 'Internal server error',
+//       },
 //       { status: 500 }
 //     );
 //   }
 // }
+
