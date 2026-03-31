@@ -494,7 +494,7 @@ export default function ChatWidget() {
                       className="text-xs"
                       style={{ color: 'rgba(17,17,17,0.72)' }}
                     >
-                      马老师的人工智能助手
+                      Lofty - AI 
                     </div>
                   </div>
                 </div>

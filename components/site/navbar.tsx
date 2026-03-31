@@ -71,6 +71,12 @@ export default async function Navbar() {
               资源
             </Link>
             <Link
+              href="/ielts"
+              className="nav-link"
+            >
+              雅思考试
+            </Link>
+            <Link
               href="/ielts-writing"
               className="nav-link">
               AI辅助

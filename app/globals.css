@@ -82,6 +82,33 @@
     color: var(--text);
   }
 
+   /* 通用可点击按钮 */
+  .btn-interactive {
+    @apply cursor-pointer transition-all duration-300;
+  }
+
+  .btn-interactive:hover {
+    transform: translateY(-1px);
+  }
+
+  /* 通用可点击卡片 */
+  .card-interactive {
+    @apply cursor-pointer transition-all duration-300;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
+  }
+
+  /* 通用 pill 按钮（筛选按钮） */
+  .pill-button {
+    @apply cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300;
+  }
+
+  .pill-button:hover {
+    transform: translateY(-1px);
+  }
+
 }
 
 body {
