@@ -102,11 +102,127 @@ export default function SpeakingBrowser({
         );
     }, [activePart2Category, part2Topics]);
 
+    // 导出 pdf
+    const [isExportingPart1, setIsExportingPart1] = useState(false);
+    const [isExportingPart2, setIsExportingPart2] = useState(false);
+
+    async function downloadPdf(blob: Blob, filename: string) {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+    }
+
+    async function handleExportPart1() {
+        try {
+            setIsExportingPart1(true);
+
+            const res = await fetch("/api/ielts/speaking/export", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    part: "part1",
+                    topic: activePart1Topic,
+                }),
+            });
+
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(text || "Part 1 PDF 导出失败");
+            }
+
+            const blob = await res.blob();
+            const filename =
+                activePart1Topic === "All"
+                    ? "speaking-part1-all.pdf"
+                    : `speaking-part1-${activePart1Topic}.pdf`;
+
+            await downloadPdf(blob, filename);
+        } catch (error) {
+            console.error(error);
+            alert("Part 1 PDF 导出失败");
+        } finally {
+            setIsExportingPart1(false);
+        }
+    }
+
+    async function handleExportPart2() {
+        try {
+            setIsExportingPart2(true);
+
+            const res = await fetch("/api/ielts/speaking/export", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    part: "part2",
+                    category: activePart2Category,
+                }),
+            });
+
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(text || "Part 2/3 PDF 导出失败");
+            }
+
+            const blob = await res.blob();
+            const filename =
+                activePart2Category === "All"
+                    ? "speaking-part2-3-all.pdf"
+                    : `speaking-part2-3-${activePart2Category}.pdf`;
+
+            await downloadPdf(blob, filename);
+        } catch (error) {
+            console.error(error);
+            alert("Part 2/3 PDF 导出失败");
+        } finally {
+            setIsExportingPart2(false);
+        }
+    }
+
+
+
     return (
         <div className="space-y-14">
             {/* Part 1 */}
             <section>
                 <div className="mb-6 flex items-end justify-between gap-4">
+                    <div>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                            Speaking Section
+                        </p>
+                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
+                            Part 1
+                        </h2>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                        <div
+                            className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                            style={{ borderColor: "var(--border)" }}
+                        >
+                            {visiblePart1Groups.reduce((sum, group) => sum + group.items.length, 0)} questions
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={handleExportPart1}
+                            disabled={isExportingPart1}
+                            className="rounded-full border bg-black px-4 py-2 text-sm text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                            style={{ borderColor: "var(--border)" }}
+                        >
+                            {isExportingPart1 ? "Exporting..." : "下载 Part 1 PDF"}
+                        </button>
+                    </div>
+                </div>
+                {/* <div className="mb-6 flex items-end justify-between gap-4">
                     <div>
                         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                             Speaking Section
@@ -122,7 +238,7 @@ export default function SpeakingBrowser({
                     >
                         {part1Questions.length} questions
                     </div>
-                </div>
+                </div> */}
 
                 <div className="mb-6 flex flex-wrap gap-3">
                     {part1Filters.map((filter) => {
@@ -198,13 +314,44 @@ export default function SpeakingBrowser({
                         </h2>
                     </div>
 
+                    <div className="flex flex-wrap items-center gap-3">
+                        <div
+                            className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                            style={{ borderColor: "var(--border)" }}
+                        >
+                            {visiblePart2Topics.length} cards
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={handleExportPart2}
+                            disabled={isExportingPart2}
+                            className="rounded-full border bg-black px-4 py-2 text-sm text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                            style={{ borderColor: "var(--border)" }}
+                        >
+                            {isExportingPart2 ? "Exporting..." : "下载 Part 2/3 PDF"}
+                        </button>
+                    </div>
+                </div>
+
+
+                {/* <div className="mb-6 flex items-end justify-between gap-4">
+                    <div>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                            Speaking Section
+                        </p>
+                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
+                            Part 2
+                        </h2>
+                    </div>
+
                     <div
                         className="rounded-full border px-4 py-2 text-sm text-gray-600"
                         style={{ borderColor: "var(--border)" }}
                     >
                         {part2Topics.length} cards
                     </div>
-                </div>
+                </div> */}
 
                 <div className="mb-6 flex flex-wrap gap-3">
                     {part2Filters.map((filter) => {
