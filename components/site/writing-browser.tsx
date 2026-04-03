@@ -160,17 +160,17 @@ export default function WritingBrowser({ topics }: Props) {
       <section>
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--theme)]">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
               Writing Section
             </p>
-            <h2 className="text-2xl font-semibold text-[var(--theme)] sm:text-3xl">
+            <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
               Task 2 Topics
             </h2>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <div
-              className="rounded-full border px-4 py-2 text-sm text-[var(--theme)]"
+              className="rounded-full border px-4 py-2 text-sm text-(--theme)"
               style={{ borderColor: "var(--border)" }}
             >
               {visibleTopics.length} topics
@@ -189,7 +189,7 @@ export default function WritingBrowser({ topics }: Props) {
         </div>
 
         <div className="mb-6">
-          <p className="mb-3 text-sm font-semibold text-[var(--theme)]">
+          <p className="mb-3 text-sm font-semibold text-(--theme)">
             Topic Category
           </p>
           <div className="flex flex-wrap gap-3">
@@ -205,8 +205,8 @@ export default function WritingBrowser({ topics }: Props) {
                     pill-button
                     ${
                       active
-                        ? "bg-[var(--theme)] text-white shadow-md"
-                        : "bg-[var(--bg)] text-[var(--theme)] hover:shadow-md"
+                        ? "bg-(--theme) text-white shadow-md"
+                        : "bg-(--bg) text-(--theme) hover:shadow-md"
                     }
                   `}
                   style={{ borderColor: "var(--border)" }}
@@ -219,7 +219,7 @@ export default function WritingBrowser({ topics }: Props) {
         </div>
 
         <div className="mb-8">
-          <p className="mb-3 text-sm font-semibold text-[var(--theme)]">
+          <p className="mb-3 text-sm font-semibold text-(--theme)">
             Question Type
           </p>
           <div className="flex flex-wrap gap-3">
@@ -235,8 +235,8 @@ export default function WritingBrowser({ topics }: Props) {
                     pill-button
                     ${
                       active
-                        ? "bg-[var(--theme)] text-white shadow-md"
-                        : "bg-[var(--bg)] text-[var(--theme)] hover:shadow-md"
+                        ? "bg-(--theme) text-white shadow-md"
+                        : "bg-(--bg) text-(--theme) hover:shadow-md"
                     }
                   `}
                   style={{ borderColor: "var(--border)" }}
@@ -259,7 +259,7 @@ export default function WritingBrowser({ topics }: Props) {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-3">
                   <div
-                    className="rounded-full border bg-[var(--card-soft)] px-4 py-2 text-sm text-gray-700"
+                    className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                     style={{ borderColor: "var(--border)" }}
                   >
                     Date: {formatDate(item.year, item.month, item.day)}
@@ -267,7 +267,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                   {item.topic_category && (
                     <div
-                      className="rounded-full border bg-[var(--card-soft)] px-4 py-2 text-sm text-gray-700"
+                      className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                       style={{ borderColor: "var(--border)" }}
                     >
                       Topic: {item.topic_category}
@@ -276,7 +276,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                   {item.question_type && (
                     <div
-                      className="rounded-full border bg-[var(--card-soft)] px-4 py-2 text-sm text-gray-700"
+                      className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                       style={{ borderColor: "var(--border)" }}
                     >
                       Type: {formatQuestionType(item.question_type)}
@@ -285,14 +285,14 @@ export default function WritingBrowser({ topics }: Props) {
                 </div>
 
                 <div
-                  className="rounded-2xl border bg-[var(--card-soft)] px-5 py-5"
+                  className="rounded-2xl border bg-(--card-soft) px-5 py-5"
                   style={{ borderColor: "var(--border)" }}
                 >
-                  <p className="mb-3 text-sm font-semibold text-[var(--theme)]">
+                  <p className="mb-3 text-sm font-semibold text-(--theme)">
                     Essay Question
                   </p>
 
-                  <p className="text-sm leading-8 text-[var(--theme)] sm:text-base">
+                  <p className="text-sm leading-8 text-(--theme) sm:text-base">
                     {item.question_en}
                   </p>
                 </div>
