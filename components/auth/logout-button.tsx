@@ -13,9 +13,9 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="nav-link"
+      className="nav-link btn-secondary"
     >
-      Logout
+      登出
     </button>
   );
 }

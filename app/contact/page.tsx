@@ -34,13 +34,13 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             <div>
               <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 shadow-sm">
-                Lofty · 高远教育 · Melbourne, Australia
+                Gallop · 高远教育 · Melbourne, Australia
               </div>
 
               <h1 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
                 高远教育
                 <span className="mt-2 block text-xl font-medium text-slate-600 sm:text-2xl lg:text-3xl">
-                  Lofty Education
+                  Gallop Education
                 </span>
               </h1>
 

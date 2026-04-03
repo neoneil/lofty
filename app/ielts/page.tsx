@@ -45,7 +45,7 @@ export default async function IELTSPage() {
             IELTS EXAM
           </p>
 
-          <h1 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl text-(--theme)">
             雅思考试
           </h1>
 
@@ -62,7 +62,7 @@ export default async function IELTSPage() {
                 href={item.href}
                 className="card block"
               >
-                <h2 className="mb-3 text-xl font-semibold sm:text-2xl">
+                <h2 className="mb-3 text-xl font-semibold sm:text-2xl  text-(--theme)">
                   {item.title}
                 </h2>
                 <p className="text-sm leading-7 text-gray-600 sm:text-base">

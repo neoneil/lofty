@@ -195,17 +195,17 @@ export default function SpeakingBrowser({
             <section>
                 <div className="mb-6 flex items-end justify-between gap-4">
                     <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
                             Speaking Section
                         </p>
-                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
+                        <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
                             Part 1
                         </h2>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3">
                         <div
-                            className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                            className="rounded-full border px-4 py-2 text-sm text-(--theme)"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {visiblePart1Groups.reduce((sum, group) => sum + group.items.length, 0)} questions
@@ -215,7 +215,7 @@ export default function SpeakingBrowser({
                             type="button"
                             onClick={handleExportPart1}
                             disabled={isExportingPart1}
-                            className="rounded-full border bg-black px-4 py-2 text-sm text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="btn-secondary rounded-3xl"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {isExportingPart1 ? "Exporting..." : "下载 Part 1 PDF"}
@@ -250,10 +250,10 @@ export default function SpeakingBrowser({
                                 type="button"
                                 onClick={() => setActivePart1Topic(filter.label)}
                                 className={`
-  pill-button
-  ${active
-                                        ? "bg-black text-white shadow-md"
-                                        : "bg-white text-gray-700 hover:shadow-md"
+                                        pill-button
+                                        ${active
+                                        ? "bg-(--theme) text-white shadow-md"
+                                        : "bg-(--bg) text-(--theme) hover:shadow-md"
                                     }
 `}
                                 style={{ borderColor: "var(--border)" }}
@@ -287,7 +287,7 @@ export default function SpeakingBrowser({
                                             Question {item.question_number}
                                         </p>
 
-                                        <h3 className="mb-3 text-base font-semibold leading-7 text-black sm:text-lg">
+                                        <h3 className="mb-3 text-base font-semibold leading-7 text-(--theme) sm:text-lg">
                                             {item.question_text}
                                         </h3>
 
@@ -309,7 +309,7 @@ export default function SpeakingBrowser({
                         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                             Speaking Section
                         </p>
-                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
+                        <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
                             Part 2
                         </h2>
                     </div>
@@ -319,14 +319,14 @@ export default function SpeakingBrowser({
                             className="rounded-full border px-4 py-2 text-sm text-gray-600"
                             style={{ borderColor: "var(--border)" }}
                         >
-                            {visiblePart2Topics.length} cards
+                            {visiblePart2Topics.length} Questions
                         </div>
 
                         <button
                             type="button"
                             onClick={handleExportPart2}
                             disabled={isExportingPart2}
-                            className="rounded-full border bg-black px-4 py-2 text-sm text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="btn-secondary rounded-3xl"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {isExportingPart2 ? "Exporting..." : "下载 Part 2/3 PDF"}
@@ -365,8 +365,8 @@ export default function SpeakingBrowser({
                                 className={`
                                             pill-button
                                             ${active
-                                        ? "bg-black text-white shadow-md"
-                                        : "bg-white text-gray-700 hover:shadow-md"
+                                        ? "bg-(--theme) text-white shadow-md"
+                                        : "bg-(--bg) text-(--theme) hover:shadow-md"
                                     }
                                 `}
                                 style={{ borderColor: "var(--border)" }}
@@ -408,7 +408,7 @@ export default function SpeakingBrowser({
                             >
                                 <div className="space-y-6">
                                     {item.chinese_title && (
-                                        <p className="text-base font-medium leading-7 text-gray-700 sm:text-lg">
+                                        <p className="text-base font-medium leading-7 text-(--theme) sm:text-lg">
                                             {item.chinese_title}
                                         </p>
                                     )}
@@ -418,7 +418,7 @@ export default function SpeakingBrowser({
                                             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                                                 Part 2 Question
                                             </p>
-                                            <p className="text-base leading-7 text-black sm:text-lg">
+                                            <p className="text-base leading-7 text-(--theme)  sm:text-lg">
                                                 {item.part2_question}
                                             </p>
                                         </div>
@@ -429,15 +429,15 @@ export default function SpeakingBrowser({
                                             className="rounded-2xl border bg-(--card-soft) px-5 py-5"
                                             style={{ borderColor: "var(--border)" }}
                                         >
-                                            <p className="mb-4 text-sm font-semibold text-black">
+                                            <p className="mb-4 text-sm font-semibold text-(--theme) ">
                                                 You should say:
                                             </p>
 
                                             <div className="space-y-3">
                                                 {cueCards.map((cue, index) => (
                                                     <div key={index} className="flex items-start gap-3">
-                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black" />
-                                                        <p className="text-sm leading-7 text-black sm:text-base">
+                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-(--theme)" />
+                                                        <p className="text-sm leading-7 text-(--theme)  sm:text-base">
                                                             {cue}
                                                         </p>
                                                     </div>
@@ -463,7 +463,7 @@ export default function SpeakingBrowser({
                             "
                                                         style={{ borderColor: "var(--border)" }}
                                                     >
-                                                        <p className="text-sm leading-7 text-black sm:text-base">
+                                                        <p className="text-sm leading-7 text-(--theme)  sm:text-base">
                                                             <span className="mr-2 font-semibold text-gray-500">
                                                                 Q{index + 1}.
                                                             </span>

@@ -38,7 +38,7 @@ export default async function IeltsWritingPage() {
             IELTS WRITING
           </p>
 
-          <h1 className="mb-5 text-3xl font-bold tracking-tight text-black sm:text-4xl">
+          <h1 className="mb-5 text-3xl font-bold tracking-tight text-(--theme) sm:text-4xl">
             雅思写作
           </h1>
 

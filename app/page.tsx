@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import Container from "@/components/site/container";
 import { getRandomSlogan } from "@/lib/slogan/slogan"
+import ExamCardsSection from "@/components/site/exam-cards-section";
 export default async function HomePage() {
   const supabase = await createClient();
   const heroSlogan = getRandomSlogan();
@@ -33,10 +34,11 @@ export default async function HomePage() {
   return (
     <main className="py-12 sm:py-16 lg:py-20">
       <Container>
+
         <section className="mb-14 sm:mb-16">
           <div className="max-w-3xl">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 sm:text-sm">
-              高远教育品牌
+              澳洲高远教育品牌
             </p>
 
             <h1 className="mb-5 text-base font-medium leading-snug tracking-normal sm:text-xl lg:text-2xl">
@@ -66,7 +68,10 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-
+       
+      
+                <ExamCardsSection />
+   
         <section>
           <div className="mb-6 flex items-center justify-between sm:mb-8">
             <h2 className="text-xl font-semibold sm:text-2xl">Latest Posts</h2>
