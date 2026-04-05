@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/logout-button";
@@ -9,6 +8,7 @@ import NavbarMobileClient from "./navbar-mobile-client";
 type NavItem = {
   href: string;
   label: string;
+  tooltip: string;
 };
 
 export default async function Navbar() {
@@ -21,16 +21,25 @@ export default async function Navbar() {
   let role: string | null = null;
 
   if (user) {
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("role")
       .eq("id", user.id)
       .single();
 
+    if (profileError) {
+      console.error("Navbar profile query failed:", profileError);
+    }
+
     role = profile?.role ?? null;
   }
 
-  const canManagePosts = role === "admin" || role === "editor";
+  const fallbackAdminEmails = ["adelaideneocs@gmail.com"];
+
+  const ChiMa =
+    role === "admin" ||
+    role === "editor" ||
+    (user?.email ? fallbackAdminEmails.includes(user.email) : false);
 
   const name =
     user?.user_metadata?.full_name ||
@@ -45,20 +54,36 @@ export default async function Navbar() {
     "/default-avatar.png";
 
   const navItems: NavItem[] = [
-    { href: "/", label: "首页" },
-    { href: "/posts", label: "文章" },
-    { href: "/", label: "资源" },
-    { href: "/ielts", label: "雅思考试" },
-    { href: "/ielts-writing", label: "AI辅助" },
-    { href: "/contact", label: "关于高远" },
+    {
+      href: "/",
+      label: "山门",
+      tooltip: "Home",
+    },
+    {
+      href: "/posts",
+      label: "藏经阁",
+      tooltip: "Articles & Resources",
+    },
+    {
+      href: "/ielts",
+      label: "论剑场",
+      tooltip: "IELTS",
+    },
+    {
+      href: "/contact",
+      label: "我是谁",
+      tooltip: "About Lofty",
+    },
   ];
 
-  if (user && canManagePosts) {
-    navItems.push({ href: "/admin/posts", label: "管理员" });
-  }
-
-  // const navLinkClass =
-  //   "rounded-full px-2 py-1 text-xs font-medium text-white/90 transition hover:bg-white/10 hover:text-[#F4D03F] sm:px-2.5 sm:py-1.5 sm:text-sm";
+  const mobileAdminItems: NavItem[] =
+    user && ChiMa
+      ? [
+        { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
+        { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts", },
+        { href: "/admin/posts", label: "掌院", tooltip: "Manage posts", },
+      ]
+      : [];
 
   return (
     <header
@@ -73,14 +98,14 @@ export default async function Navbar() {
           {/* 手机端 */}
           <div className="lg:hidden">
             <NavbarMobileClient
-              navItems={navItems}
+              navItems={[...navItems, ...mobileAdminItems]}
               user={
                 user
                   ? {
-                      name,
-                      email,
-                      avatar,
-                    }
+                    name,
+                    email,
+                    avatar,
+                  }
                   : null
               }
             />
@@ -92,16 +117,6 @@ export default async function Navbar() {
               href="/"
               className="group -ml-4 flex shrink-0 items-center gap-2 transition"
             >
-              {/* <div className="relative h-12 w-12 shrink-0 overflow-hidden">
-                <Image
-                  src="/logo.png"
-                  alt="高远教育 Logo"
-                  fill
-                  className="object-cover scale-150"
-                  priority
-                />
-              </div> */}
-
               <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
                 <span
                   className="text-2xl font-extrabold tracking-tight"
@@ -127,9 +142,46 @@ export default async function Navbar() {
 
             <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-5 px-6">
               {navItems.map((item) => (
-                <Link key={item.href + item.label} href={item.href} className="nav-link btn-secondary">
-                  {item.label}
-                </Link>
+                <div key={item.href + item.label} className="group relative">
+                  <Link
+                    href={item.href}
+                    className="nav-link btn-secondary"
+                    aria-label={item.tooltip}
+                  >
+                    {item.label}
+                  </Link>
+
+                  <div
+                    className="
+        pointer-events-none
+        absolute
+        left-1/2
+        top-full
+        z-50
+        mt-2
+        -translate-x-1/2
+        rounded-xl
+        px-3
+        py-1.5
+        text-xs
+        font-medium
+        whitespace-nowrap
+        opacity-0
+        shadow-lg
+        transition-all
+        duration-200
+        group-hover:opacity-100
+        group-hover:translate-y-0
+      "
+                    style={{
+                      background: "var(--brand-accent)",
+                      color: "#fff",
+                      transform: "translateX(-50%) translateY(-4px)",
+                    }}
+                  >
+                    {item.tooltip}
+                  </div>
+                </div>
               ))}
             </nav>
 
@@ -158,22 +210,112 @@ export default async function Navbar() {
                   <div className="origin-right scale-90">
                     <LogoutButton />
                   </div>
+
+                  {ChiMa && (
+                    <>
+                      <Link
+                        href="/ielts-writing"
+                        className="nav-link btn-secondary"
+                      >
+                        扫地僧
+                      </Link>
+
+                      <Link
+                        href="/admin/posts/new"
+                        className="nav-link btn-secondary"
+                      >
+                        执笔
+                      </Link>
+                      <Link
+                        href="/admin/posts"
+                        className="nav-link btn-secondary"
+                      >
+                        掌院
+                      </Link>
+                    </>
+                  )}
                 </>
               ) : (
                 <>
-                  <Link
-                    href="/login"
-                    className="btn-primary min-w-25"
-                  >
-                    登录
-                  </Link>
+                  <div className="group relative">
+                    <Link
+                      href="/login"
+                      className="btn-primary min-w-25"
+                      aria-label="Log in"
+                    >
+                      入门
+                    </Link>
 
-                  <Link
-                    href="/sign-up"
-                    className="btn-primary min-w-25"
-                  >
-                    注册
-                  </Link>
+                    <div
+                      className="
+      pointer-events-none
+      absolute
+      left-1/2
+      top-full
+      z-50
+      mt-2
+      -translate-x-1/2
+      rounded-xl
+      px-3
+      py-1.5
+      text-xs
+      font-medium
+      whitespace-nowrap
+      opacity-0
+      shadow-lg
+      transition-all
+      duration-200
+      group-hover:opacity-100
+    "
+                      style={{
+                        background: "var(--brand-accent)",
+                        color: "#fff",
+                        transform: "translateX(-50%) translateY(-4px)",
+                      }}
+                    >
+                      Log in
+                    </div>
+                  </div>
+
+                  <div className="group relative">
+                    <Link
+                      href="/sign-up"
+                      className="btn-primary min-w-25"
+                      aria-label="Sign up"
+                    >
+                      拜师
+                    </Link>
+
+                    <div
+                      className="
+      pointer-events-none
+      absolute
+      left-1/2
+      top-full
+      z-50
+      mt-2
+      -translate-x-1/2
+      rounded-xl
+      px-3
+      py-1.5
+      text-xs
+      font-medium
+      whitespace-nowrap
+      opacity-0
+      shadow-lg
+      transition-all
+      duration-200
+      group-hover:opacity-100
+    "
+                      style={{
+                        background: "var(--brand-accent)",
+                        color: "#fff",
+                        transform: "translateX(-50%) translateY(-4px)",
+                      }}
+                    >
+                      Sign up
+                    </div>
+                  </div>
                 </>
               )}
             </div>

@@ -455,7 +455,7 @@ export default function ChatWidget() {
               className="inline-block h-2.5 w-2.5 rounded-full"
               style={{ backgroundColor: '#22c55e' }}
             />
-            Chat with Ibot
+            天机阁
           </span>
         </button>
       ) : (
@@ -594,7 +594,7 @@ export default function ChatWidget() {
                             border: isUser ? 'none' : `1px solid var(--border)`,
                           }}
                         >
-                          <div className="whitespace-pre-wrap break-words">
+                          <div className="whitespace-pre-wrap wrap-break-word">
                             {msg.content}
                           </div>
 
