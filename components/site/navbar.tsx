@@ -82,6 +82,7 @@ export default async function Navbar() {
         { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
         { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts", },
         { href: "/admin/posts", label: "掌院", tooltip: "Manage posts", },
+        { href: "/admin/dashboard", label: "刑部", tooltip: "Manage dashboard", },
       ]
       : [];
 
@@ -231,6 +232,12 @@ export default async function Navbar() {
                         className="nav-link btn-secondary"
                       >
                         掌院
+                      </Link>
+                      <Link
+                        href="/admin/dashboard"
+                        className="nav-link btn-secondary"
+                      >
+                        刑部
                       </Link>
                     </>
                   )}

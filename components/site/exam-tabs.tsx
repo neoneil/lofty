@@ -35,7 +35,7 @@ const ieltsSections: SectionItem[] = [
 const pteSections: SectionItem[] = [
   {
     title: "听力 Listening",
-    href: "/pte/listening",
+    href: "/pte/listening/wfd",// wfd作为pte听力入口
     description: "查看 WFD、SST、FIB-L 等题型。",
   },
   {

@@ -83,7 +83,16 @@
   cursor: pointer !important;
 }
   /* 卡片 */
+  /* WFD / 题目卡片 */
+  .question-card {
+    @apply cursor-pointer rounded-2xl transition-all duration-200;
+  }
 
+  .question-card:hover {
+    @apply shadow-sm;
+    transform: translateY(-2px) scale(1.003);
+    background: rgba(255, 255, 255, 0.92);
+  }
   .card {
     @apply rounded-2xl border p-6 transition;
     border-color: var(--border);
