@@ -35,13 +35,13 @@ export default function Footer() {
               Quick Links
             </h4>
             <div className="space-y-2 text-sm text-gray-600">
-              <Link href="/ielts" className="block hover:text-black">
+              <Link href="/" className="block hover:text-black">
                 IELTS Courses
               </Link>
-              <Link href="/pte" className="block hover:text-black">
+              <Link href="/" className="block hover:text-black">
                 PTE Practice
               </Link>
-              <Link href="/blog" className="block hover:text-black">
+              <Link href="/" className="block hover:text-black">
                 Blog
               </Link>
               <Link href="/contact" className="block hover:text-black">

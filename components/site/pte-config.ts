@@ -28,7 +28,7 @@ export type ListeningSubTab =
   | "sst"
   | "mcsa"
   | "mcma"
-  | "fib-l"
+  | "fib_l"
   | "smw"
   | "hiw"
   | "hcs"
@@ -44,22 +44,22 @@ export const pteMainTabs = [
   {
     key: "speaking",
     label: "Speaking",
-    href: "/pte/speaking",
+    href: "/pte/speaking/ra",
   },
   {
     key: "writing",
     label: "Writing",
-    href: "/pte/writing",
+    href: "/pte/writing/swt",
   },
   {
     key: "reading",
     label: "Reading",
-    href: "/pte/reading",
+    href: "/pte/reading/ro",
   },
   {
     key: "listening",
     label: "Listening",
-    href: "/pte/listening",
+    href: "/pte/listening/wfd",
   },
 ] as const;
 
@@ -98,7 +98,7 @@ export const pteSubTabMap: Record<
     { key: "sst", label: "SST", href: "/pte/listening/sst" },
     { key: "mcsa", label: "MCSA", href: "/pte/listening/mcsa" },
     { key: "mcma", label: "MCMA", href: "/pte/listening/mcma" },
-    { key: "fib-l", label: "FIB_L", href: "/pte/listening/fib_l" },
+    { key: "fib_l", label: "FIB-L", href: "/pte/listening/fib_l" },
     { key: "smw", label: "SMW", href: "/pte/listening/smw" },
     { key: "hiw", label: "HIW", href: "/pte/listening/hiw" },
     { key: "hcs", label: "HCS", href: "/pte/listening/hcs" },

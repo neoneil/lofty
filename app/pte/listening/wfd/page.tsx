@@ -31,7 +31,7 @@ type WfdQuestionWithStatus = {
 };
 
 export default async function PteListeningPage() {
-  const { supabase } = await requireUser("/pte/listening");
+  const { supabase } = await requireUser("/pte/listening/wfd");
 
   const { data: questionsData, error: questionsError } = await supabase
     .from("v_pte_wfd_with_user_status")
@@ -75,7 +75,7 @@ export default async function PteListeningPage() {
                   WFD - Write From Dictation
                 </h1>
                 <p className="mt-4 max-w-2xl text-sm leading-8 text-gray-600 sm:text-base">
-                  本题型评分规则：AI 算法按照最长公共子序列 - Longest Common
+                  本题型评分规则：AI 算法近似按照最长公共子序列 - Longest Common
                   Subsequence (LCS) 进行答案比对。
                 </p>
               </section>

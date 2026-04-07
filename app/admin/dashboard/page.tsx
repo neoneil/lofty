@@ -252,8 +252,87 @@ export default async function AdminDashboardPage() {
           </div>
         </section>
       </div>
+<section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+  <div className="mb-4">
+    <h2 className="text-lg font-semibold text-gray-900">
+      Top Active Students
+    </h2>
+    <p className="mt-1 text-sm text-gray-500">
+      Click a student card to view 7-day detailed practice records
+    </p>
+  </div>
 
-      <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+  {activeStudents.length === 0 ? (
+    <div className="rounded-xl bg-gray-50 px-4 py-6 text-center text-sm text-gray-500">
+      No data yet.
+    </div>
+  ) : (
+    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {activeStudents.map((student) => {
+        const displayName = student.display_name?.trim() || student.user_id;
+        const subtitle = student.email?.trim() || student.user_id;
+        const avatarLetter = displayName.slice(0, 1).toUpperCase();
+
+        return (
+          <Link
+            key={student.user_id}
+            href={`/admin/students/${student.user_id}`}
+            className="group cursor-pointer rounded-2xl border border-gray-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"
+          >
+            <div className="flex items-start gap-3">
+              {student.avatar_url ? (
+                <img
+                  src={student.avatar_url}
+                  alt={displayName}
+                  referrerPolicy="no-referrer"
+                  className="h-12 w-12 min-h-12 min-w-12 rounded-full border object-cover"
+                />
+              ) : (
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border bg-gray-100 text-sm font-semibold text-gray-600">
+                  {avatarLetter}
+                </div>
+              )}
+
+              <div className="min-w-0 flex-1">
+                <div className="truncate font-semibold text-gray-900 group-hover:text-black">
+                  {displayName}
+                </div>
+                <div className="truncate text-xs text-gray-500">{subtitle}</div>
+              </div>
+            </div>
+
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <div className="rounded-xl bg-gray-50 px-3 py-3">
+                <div className="text-xs text-gray-500">Attempts</div>
+                <div className="mt-1 text-lg font-bold text-gray-900">
+                  {student.attempts}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-gray-50 px-3 py-3">
+                <div className="text-xs text-gray-500">Recent Type</div>
+                <div className="mt-1 text-sm font-semibold uppercase text-gray-900">
+                  {student.latest_question_source
+                    ? TYPE_LABEL_MAP[student.latest_question_source] ??
+                      student.latest_question_source
+                    : "—"}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-xl bg-gray-50 px-3 py-3">
+              <div className="text-xs text-gray-500">Last Submitted</div>
+              <div className="mt-1 text-sm text-gray-800">
+                {new Date(student.last_submitted_at).toLocaleString()}
+              </div>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  )}
+</section>
+      {/* <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
         <h2 className="text-lg font-semibold text-gray-900">
           Top Active Students
         </h2>
@@ -338,7 +417,7 @@ export default async function AdminDashboardPage() {
             </tbody>
           </table>
         </div>
-      </section>
+      </section> */}
     </Container>
   );
 }

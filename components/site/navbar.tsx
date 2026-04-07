@@ -56,7 +56,7 @@ export default async function Navbar() {
   const navItems: NavItem[] = [
     {
       href: "/",
-      label: "山门",
+      label: "主页",
       tooltip: "Home",
     },
     {
@@ -66,12 +66,12 @@ export default async function Navbar() {
     },
     {
       href: "/ielts",
-      label: "论剑场",
+      label: "PTE/IELTS",
       tooltip: "IELTS",
     },
     {
       href: "/contact",
-      label: "我是谁",
+      label: "关于高远雅思PTE",
       tooltip: "About Lofty",
     },
   ];
@@ -82,7 +82,7 @@ export default async function Navbar() {
         { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
         { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts", },
         { href: "/admin/posts", label: "掌院", tooltip: "Manage posts", },
-        { href: "/admin/dashboard", label: "刑部", tooltip: "Manage dashboard", },
+        { href: "/admin/dashboard", label: "练习明细", tooltip: "Manage dashboard", },
       ]
       : [];
 
@@ -237,7 +237,7 @@ export default async function Navbar() {
                         href="/admin/dashboard"
                         className="nav-link btn-secondary"
                       >
-                        刑部
+                        练习明细
                       </Link>
                     </>
                   )}
@@ -250,7 +250,7 @@ export default async function Navbar() {
                       className="btn-primary min-w-25"
                       aria-label="Log in"
                     >
-                      入门
+                      登录
                     </Link>
 
                     <div
@@ -280,7 +280,7 @@ export default async function Navbar() {
                         transform: "translateX(-50%) translateY(-4px)",
                       }}
                     >
-                      Log in
+                     登录
                     </div>
                   </div>
 
@@ -290,7 +290,7 @@ export default async function Navbar() {
                       className="btn-primary min-w-25"
                       aria-label="Sign up"
                     >
-                      拜师
+                      注册
                     </Link>
 
                     <div
@@ -320,7 +320,7 @@ export default async function Navbar() {
                         transform: "translateX(-50%) translateY(-4px)",
                       }}
                     >
-                      Sign up
+                      注册
                     </div>
                   </div>
                 </>

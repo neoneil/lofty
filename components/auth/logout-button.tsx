@@ -17,7 +17,7 @@ export default function LogoutButton() {
         className="nav-link btn-secondary"
         aria-label="Log out"
       >
-        归隐
+        退出
       </button>
 
       <div
@@ -47,7 +47,7 @@ export default function LogoutButton() {
           transform: "translateX(-50%) translateY(-4px)",
         }}
       >
-        sign out
+        退出
       </div>
     </div>
   );
