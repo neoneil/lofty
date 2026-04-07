@@ -1,5 +1,5 @@
 import Container from "@/components/site/container";
-import { requireUser } from "@/lib/auth/require-user";
+import { requireAdmin } from "@/lib/auth/require-admin";
 import { notFound } from "next/navigation";
 import { pteQuestionTypes } from "@/lib/pte/pte-question-config";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -69,7 +69,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
         notFound();
     }
 
-    await requireUser(`/admin/pte/${normalizedType}`);
+    await requireAdmin(`/admin/pte/${normalizedType}`);
     const supabase = createAdminClient();
 
     const [

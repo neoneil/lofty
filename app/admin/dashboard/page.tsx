@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/site/container";
-import { requireUser } from "@/lib/auth/require-user";
+import { requireAdmin } from "@/lib/auth/require-admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { pteQuestionTypes } from "@/lib/pte/pte-question-config";
 
@@ -82,7 +82,7 @@ const TYPE_GROUPS = [
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  await requireUser("/admin");
+  await requireAdmin("/admin");
   const supabase = createAdminClient();
 
   const { data: overviewData, error: overviewError } = await supabase.rpc(

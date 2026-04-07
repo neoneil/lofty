@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 const EXAM_TYPE = "PTE";
 const MODULE_TYPE = "WFD";
 const QUESTION_SOURCE = "wfd";
-const QUESTION_TABLE = "pte_wfd_questions";
+const QUESTION_TABLE = "wfd";
 
 function normalizeWords(text: string) {
   return text
