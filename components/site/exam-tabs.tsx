@@ -66,26 +66,26 @@ export default function ExamTabs() {
       <div className="mb-8 flex gap-3">
         <button
           onClick={() => setActiveTab("ielts")}
-          className={`rounded-full px-5 py-2 text-sm font-semibold transition
+          className={`cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition
             ${
               activeTab === "ielts"
                 ? "bg-(--theme) text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
         >
-          IELTS
+          IELTS A类/G类 全题型练习
         </button>
 
         <button
           onClick={() => setActiveTab("pte")}
-          className={`rounded-full px-5 py-2 text-sm font-semibold transition
+          className={`cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition
             ${
               activeTab === "pte"
                 ? "bg-(--theme) text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
         >
-          PTE
+          PTE 学术考试 全题型练习
         </button>
       </div>
 

@@ -40,6 +40,7 @@ export default async function PteListeningSstPage() {
     .from("v_pte_sst_with_user_status")
     .select("*")
     .eq("question_type", "SST")
+    .eq("is_prediction", "true")
     .order("created_at", { ascending: false })
     .limit(500);
 

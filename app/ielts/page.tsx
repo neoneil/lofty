@@ -25,12 +25,12 @@ export default async function ExamPage() {
           </p>
 
           <h1 className="mb-5 text-3xl font-bold tracking-tight text-(--theme) sm:text-4xl">
-            考试练习
+            PTE / IELTS 考试全题型练习
           </h1>
 
           <p className="max-w-2xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
             登录后可查看 IELTS 和 PTE 的听、说、读、写内容。后续可继续扩展做题记录、
-            收藏、AI 批改和学习追踪功能。
+            收藏、AI/老师真人批改和学习追踪功能。
           </p>
         </section>
 

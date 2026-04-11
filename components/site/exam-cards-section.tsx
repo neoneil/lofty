@@ -17,19 +17,19 @@ const cards: CardItem[] = [
   },
   {
     title: "PTE考试",
-    href: "/pte",
+    href: "/ielts",
     image: "/images/pte.png",
     description: "高效掌握PTE题型与提分技巧",
   },
   {
     title: "语法总纲",
-    href: "/grammar",
+    href: "/",
     image: "/images/grammar.png",
     description: "建立完整语法框架体系",
   },
   {
     title: "单词奥秘",
-    href: "/vocabulary",
+    href: "/",
     image: "/images/vocabulary.png",
     description: "词根词缀与高频词系统学习",
   },

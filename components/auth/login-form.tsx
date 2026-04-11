@@ -42,7 +42,12 @@ export default function CommercialLoginForm() {
     setLoading(true);
     setMessage("");
 
-    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+    // const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;传的 redirectTo 一旦带上 ?next=...，Supabase 这边这次没有按你预期接受它，结果就 fallback 到了 Site URL。
+
+    const redirectTo = `${window.location.origin}/auth/callback`;
+
+    alert(`redirectTo = ${redirectTo}`);
+
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
