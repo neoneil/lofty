@@ -47,7 +47,7 @@ export default function HomePage() {
         <PageCard
           title="Reading and Verbal Reasoning"
           description="Reading Comprehension and Verbal Reasoning."
-          href="/selective/reading"
+          href="/selective/readingAndVerbal"
         />
         <PageCard
           title="Writing"
@@ -57,7 +57,7 @@ export default function HomePage() {
         <PageCard
           title="supporting practices"
           description="Logic, patterns, reasoning, and critical thinking questions (not included in the exam)."
-          href="/selective/thinking-skills"
+          href="/selective/supportingPractice"
         />
       </section>
 
