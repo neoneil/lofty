@@ -464,7 +464,7 @@ export default function SelectiveMathPage() {
                 {showHints ? "Hide Hints" : "Show Hints"}
               </button>
 
-              <button
+              {/* <button
                 type="button"
                 onClick={() => setShowAnswer((prev) => !prev)}
                 className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
@@ -478,7 +478,7 @@ export default function SelectiveMathPage() {
                 className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 {showSolution ? "Hide Solution" : "Show Solution"}
-              </button>
+              </button> */}
             </div>
 
             {submitMessage && (
@@ -513,7 +513,7 @@ export default function SelectiveMathPage() {
               </div>
             )}
 
-            {showAnswer && (
+            {/* {showAnswer && (
               <div className="mt-6">
                 <p className="text-sm text-(--text-secondary)">Final Answer</p>
                 <div className="mt-2 rounded-2xl bg-emerald-50 px-4 py-4 font-semibold text-emerald-800">
@@ -545,7 +545,7 @@ export default function SelectiveMathPage() {
                   )}
                 </ol>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       )}

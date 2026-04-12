@@ -93,6 +93,7 @@ export default async function Navbar() {
           { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts" },
           { href: "/admin/posts", label: "掌院", tooltip: "Manage posts" },
           { href: "/admin/dashboard", label: "练习明细", tooltip: "Manage dashboard" },
+          { href: "/admin/selective/history", label: "selective明细", tooltip: "Manage selective" },
         ]
       : [];
 
@@ -258,6 +259,12 @@ export default async function Navbar() {
                         className="nav-link btn-secondary"
                       >
                         练习明细
+                      </Link>
+                      <Link
+                        href="/admin/selective/history"
+                        className="nav-link btn-secondary"
+                      >
+                        selective明細
                       </Link>
                     </>
                   )}
