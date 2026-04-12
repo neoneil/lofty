@@ -19,11 +19,12 @@ export default async function Navbar() {
   } = await supabase.auth.getUser();
 
   let role: string | null = null;
+  let selectiveAccess = false;
 
   if (user) {
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role")
+      .select("role, selective_access")
       .eq("id", user.id)
       .single();
 
@@ -32,17 +33,18 @@ export default async function Navbar() {
     }
 
     role = profile?.role ?? null;
+    selectiveAccess = profile?.selective_access ?? false;
   }
 
   const fallbackAdminEmails = ["adelaideneocs@gmail.com"];
-  const lillyEmails = ["neilmaaustralia@gmail.com"];
+  // const lillyEmails = ["neilmaaustralia@gmail.com"];
 
   const ChiMa =
     role === "admin" ||
     role === "editor" ||
     (user?.email ? fallbackAdminEmails.includes(user.email) : false);
 
-  const isLilly = user?.email ? lillyEmails.includes(user.email) : false;
+  // const isLilly = user?.email ? lillyEmails.includes(user.email) : false;
 
   const name =
     user?.user_metadata?.full_name ||
@@ -94,6 +96,14 @@ export default async function Navbar() {
         ]
       : [];
 
+  const mobileSelectiveItems: NavItem[] =
+    user && selectiveAccess
+      ? [
+          { href: "/selective", label: "Selective Questions", tooltip: "Selective Questions" },
+          { href: "/selective/history", label: "History", tooltip: "Selective History" },
+        ]
+      : [];
+
   return (
     <header
       className="sticky top-0 z-50 border-b shadow-sm backdrop-blur-md"
@@ -107,7 +117,7 @@ export default async function Navbar() {
           {/* 手机端 */}
           <div className="lg:hidden">
             <NavbarMobileClient
-              navItems={[...navItems, ...mobileAdminItems]}
+              navItems={[...navItems, ...mobileAdminItems, ...mobileSelectiveItems]}
               user={
                 user
                   ? {
@@ -252,13 +262,22 @@ export default async function Navbar() {
                     </>
                   )}
 
-                  {isLilly && (
-                    <Link
-                      href="/selective"
-                      className="nav-link btn-secondary"
-                    >
-                      Selective Questions
-                    </Link>
+                  {selectiveAccess && (
+                    <>
+                      <Link
+                        href="/selective"
+                        className="nav-link btn-secondary"
+                      >
+                        Selective Questions
+                      </Link>
+
+                      <Link
+                        href="/selective/history"
+                        className="nav-link btn-secondary"
+                      >
+                        History
+                      </Link>
+                    </>
                   )}
                 </>
               ) : (

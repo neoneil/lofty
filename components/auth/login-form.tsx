@@ -46,7 +46,7 @@ export default function CommercialLoginForm() {
 
     const redirectTo = `${window.location.origin}/auth/callback`;
 
-    alert(`redirectTo = ${redirectTo}`);
+    // alert(`redirectTo = ${redirectTo}`);
 
 
     const { error } = await supabase.auth.signInWithOAuth({

@@ -1,420 +1,554 @@
 "use client";
 
-import { useState } from "react";
-import MathPracticeClient from "./MathPracticeClient";
+import { useEffect, useMemo, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import { mathematicsBlueprint } from "@/lib/selective/blueprints";
 
-type EquationType =
-  | "mixed"
-  | "ax+b=c"
-  | "a(x+b)=c"
-  | "ax+b=cx+d"
-  | "(ax+b)/d=c"
-  | "(ax+b)/d=(cx+e)/f";
+type Difficulty = "easy" | "medium" | "hard";
 
-type Question = {
-  id: number;
-  display: React.ReactNode;
-  answer: string;
-  showAnswer: boolean;
+type AuthUser = {
+  id: string;
+  email?: string;
+  fullName: string;
+  selectiveAccess: boolean;
 };
 
-function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+type MathQuestion = {
+  id: string;
+  createdAt: string;
+  questionType: string;
+  topicCategory: string;
+  subtopic: string;
+  difficulty: string;
+  title: string;
+  instruction: string;
+  questionText: string;
+  finalAnswer: string;
+  solutionSteps: string[];
+  hints: string[];
+};
+
+const supabase = createClient();
+
+function normalizeAnswer(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function nonZeroRandom(min: number, max: number) {
-  let n = 0;
-  while (n === 0) {
-    n = randomInt(min, max);
-  }
-  return n;
-}
+export default function SelectiveMathPage() {
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [loadingUser, setLoadingUser] = useState(true);
 
-function Fraction({
-  numerator,
-  denominator,
-}: {
-  numerator: React.ReactNode;
-  denominator: React.ReactNode;
-}) {
-  return (
-    <span className="inline-flex flex-col items-center align-middle text-(--text-main)">
-      <span className="px-2 pb-1">{numerator}</span>
-      <span className="w-full border-t border-(--text-main)" />
-      <span className="px-2 pt-1">{denominator}</span>
-    </span>
+  const [topicCategory, setTopicCategory] = useState<string>(
+    mathematicsBlueprint[0]?.key ?? ""
   );
-}
-
-function LinearExpr({ a, b }: { a: number; b: number }) {
-  const aPart = a === 1 ? "x" : a === -1 ? "-x" : `${a}x`;
-
-  if (b === 0) return <>{aPart}</>;
-
-  return (
-    <>
-      {aPart} {b > 0 ? "+" : "-"} {Math.abs(b)}
-    </>
+  const [subtopic, setSubtopic] = useState<string>(
+    mathematicsBlueprint[0]?.subtopics[0]?.key ?? ""
   );
-}
+  const [difficulty, setDifficulty] = useState<Difficulty>("medium");
 
-function ExpandedExpr({ a, b }: { a: number; b: number }) {
-  return (
-    <>
-      {a}(x {b >= 0 ? "+" : "-"} {Math.abs(b)})
-    </>
-  );
-}
+  const [question, setQuestion] = useState<MathQuestion | null>(null);
+  const [answer, setAnswer] = useState("");
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [submittedResult, setSubmittedResult] = useState<{
+    isCorrect: boolean;
+    score: number;
+  } | null>(null);
 
-function pickEquationType(type: EquationType): Exclude<EquationType, "mixed"> {
-  if (type !== "mixed") return type;
+  const [error, setError] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [showSolution, setShowSolution] = useState(true);
+  const [showHints, setShowHints] = useState(true);
 
-  const types: Exclude<EquationType, "mixed">[] = [
-    "ax+b=c",
-    "a(x+b)=c",
-    "ax+b=cx+d",
-    "(ax+b)/d=c",
-    "(ax+b)/d=(cx+e)/f",
-  ];
+  useEffect(() => {
+    let mounted = true;
 
-  return types[randomInt(0, types.length - 1)];
-}
+    async function loadUser() {
+      setLoadingUser(true);
 
-function generateEquation(
-  type: EquationType,
-  min: number,
-  max: number,
-  allowNegative: boolean
-): Omit<Question, "id" | "showAnswer"> {
-  const actualType = pickEquationType(type);
-  const low = allowNegative ? min : Math.max(1, min);
-  const high = max;
+      const {
+        data: { user },
+        error: authError,
+      } = await supabase.auth.getUser();
 
-  if (actualType === "ax+b=c") {
-    const x = randomInt(low, high);
-    const a = nonZeroRandom(low, high);
-    const b = randomInt(low, high);
-    const c = a * x + b;
+      if (authError) {
+        console.error("Failed to get current user:", authError);
+        if (mounted) {
+          setUser(null);
+          setLoadingUser(false);
+        }
+        return;
+      }
 
-    return {
-      display: (
-        <>
-          <LinearExpr a={a} b={b} /> = {c}
-        </>
-      ),
-      answer: `x = ${x}`,
+      if (!user) {
+        if (mounted) {
+          setUser(null);
+          setLoadingUser(false);
+        }
+        return;
+      }
+
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("full_name, selective_access")
+        .eq("id", user.id)
+        .single();
+
+      if (profileError) {
+        console.error("Failed to load profile:", profileError);
+      }
+
+      if (!mounted) return;
+
+      setUser({
+        id: user.id,
+        email: user.email,
+        fullName: profile?.full_name || "Student",
+        selectiveAccess: profile?.selective_access ?? false,
+      });
+      setLoadingUser(false);
+    }
+
+    loadUser();
+
+    return () => {
+      mounted = false;
     };
-  }
+  }, []);
 
-  if (actualType === "a(x+b)=c") {
-    const x = randomInt(low, high);
-    const a = nonZeroRandom(low, high);
-    const b = randomInt(low, high);
-    const c = a * (x + b);
+  const selectedTopic = useMemo(() => {
+    return (
+      mathematicsBlueprint.find((item) => item.key === topicCategory) ??
+      mathematicsBlueprint[0]
+    );
+  }, [topicCategory]);
 
-    return {
-      display: (
-        <>
-          <ExpandedExpr a={a} b={b} /> = {c}
-        </>
-      ),
-      answer: `x = ${x}`,
-    };
-  }
+  const availableSubtopics = selectedTopic?.subtopics ?? [];
 
-  if (actualType === "ax+b=cx+d") {
-    while (true) {
-      const x = randomInt(low, high);
-      const a = nonZeroRandom(low, high);
-      const c = nonZeroRandom(low, high);
-
-      if (a === c) continue;
-
-      const b = randomInt(low, high);
-      const d = a * x + b - c * x;
-
-      return {
-        display: (
-          <>
-            <LinearExpr a={a} b={b} /> = <LinearExpr a={c} b={d} />
-          </>
-        ),
-        answer: `x = ${x}`,
-      };
-    }
-  }
-
-  if (actualType === "(ax+b)/d=c") {
-    while (true) {
-      const x = randomInt(low, high);
-      const a = nonZeroRandom(low, high);
-      const b = randomInt(low, high);
-
-      const denominatorMax = Math.max(3, Math.min(Math.abs(high), 12));
-      const d = nonZeroRandom(2, denominatorMax);
-
-      const numeratorValue = a * x + b;
-      if (numeratorValue % d !== 0) continue;
-
-      const c = numeratorValue / d;
-
-      return {
-        display: (
-          <>
-            <Fraction numerator={<LinearExpr a={a} b={b} />} denominator={d} /> ={" "}
-            {c}
-          </>
-        ),
-        answer: `x = ${x}`,
-      };
-    }
-  }
-
-  if (actualType === "(ax+b)/d=(cx+e)/f") {
-    while (true) {
-      const x = randomInt(low, high);
-      const a = nonZeroRandom(low, high);
-      const c = nonZeroRandom(low, high);
-
-      const denominatorMax = Math.max(3, Math.min(Math.abs(high), 12));
-      const d = nonZeroRandom(2, denominatorMax);
-      const f = nonZeroRandom(2, denominatorMax);
-
-      // 先定一个共同结果值，确保代入 x 后左右相等
-      const result = randomInt(low, high);
-
-      // 反推常数项
-      const b = result * d - a * x;
-      const e = result * f - c * x;
-
-      // 控制常数范围，避免题目数字太夸张
-      if (b < min || b > max || e < min || e > max) continue;
-
-      return {
-        display: (
-          <>
-            <Fraction numerator={<LinearExpr a={a} b={b} />} denominator={d} /> ={" "}
-            <Fraction numerator={<LinearExpr a={c} b={e} />} denominator={f} />
-          </>
-        ),
-        answer: `x = ${x}`,
-      };
-    }
-  }
-
-  // 理论上走不到这里，只是为了类型安全
-  return {
-    display: <>Invalid equation</>,
-    answer: "x = ?",
-  };
-}
-
-export default function MathsPage() {
-  const [min, setMin] = useState(-10);
-  const [max, setMax] = useState(10);
-  const [allowNegative, setAllowNegative] = useState(true);
-  const [type, setType] = useState<EquationType>("mixed");
-  const [count, setCount] = useState(50);
-  const [questions, setQuestions] = useState<Question[]>([]);
-
-  function handleGenerate() {
-    if (min >= max) {
-      alert("Min must be smaller than Max.");
+  useEffect(() => {
+    if (!availableSubtopics.length) {
+      setSubtopic("");
       return;
     }
 
-    if (count < 1 || count > 50) {
-      alert("Question count must be between 1 and 50.");
+    const stillValid = availableSubtopics.some((item) => item.key === subtopic);
+    if (!stillValid) {
+      setSubtopic(availableSubtopics[0].key);
+    }
+  }, [availableSubtopics, subtopic]);
+
+  async function handleGenerateQuestion() {
+    if (!user) {
+      setError("Please log in first.");
       return;
     }
 
-    const generated = Array.from({ length: count }, (_, index) => {
-      const q = generateEquation(type, min, max, allowNegative);
-      return {
-        id: index + 1,
-        ...q,
-        showAnswer: false,
-      };
-    });
+    if (!user.selectiveAccess) {
+      setError("You do not have access to Selective School features.");
+      return;
+    }
 
-    setQuestions(generated);
+    if (!topicCategory || !subtopic) {
+      setError("Please choose a topic and subtopic.");
+      return;
+    }
+
+    setIsGenerating(true);
+    setError("");
+    setQuestion(null);
+    setAnswer("");
+    setSubmitMessage("");
+    setSubmittedResult(null);
+    setShowAnswer(false);
+    setShowSolution(true);
+    setShowHints(true);
+
+    try {
+      const res = await fetch("/api/generate-math-question", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          topicCategory,
+          subtopic,
+          difficulty,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to generate math question.");
+      }
+
+      setQuestion(data);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Something went wrong.";
+      setError(message);
+    } finally {
+      setIsGenerating(false);
+    }
   }
 
-  function toggleAnswer(id: number) {
-    setQuestions((prev) =>
-      prev.map((q) =>
-        q.id === id ? { ...q, showAnswer: !q.showAnswer } : q
-      )
+  async function handleSubmitAnswer() {
+    if (!user) {
+      setError("Please log in first.");
+      return;
+    }
+
+    if (!question) {
+      setError("Please generate a question first.");
+      return;
+    }
+
+    if (!answer.trim()) {
+      setError("Please enter your answer before submitting.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+    setSubmitMessage("");
+
+    try {
+      const isCorrect =
+        normalizeAnswer(answer) === normalizeAnswer(question.finalAnswer);
+
+      const score = isCorrect ? 1 : 0;
+      const maxScore = 1;
+
+      const { error: insertError } = await supabase
+        .schema("selective")
+        .from("student_attempts")
+        .insert({
+          user_id: user.id,
+          student_name: user.fullName,
+          question_table: "math_questions",
+          question_id: question.id,
+          question_type: question.questionType,
+          submitted_answer_text: answer,
+          submitted_answer_json: {
+            topicCategory: question.topicCategory,
+            subtopic: question.subtopic,
+            finalAnswer: question.finalAnswer,
+          },
+          score,
+          max_score: maxScore,
+          is_correct: isCorrect,
+        });
+
+      if (insertError) {
+        console.error("Failed to save math attempt:", insertError);
+        throw new Error("Failed to save your answer.");
+      }
+
+      setSubmittedResult({
+        isCorrect,
+        score,
+      });
+
+      setSubmitMessage(
+        isCorrect
+          ? "Answer submitted. Correct."
+          : "Answer submitted. Not correct."
+      );
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Something went wrong.";
+      setError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  if (loadingUser) {
+    return (
+      <main className="mx-auto max-w-6xl px-6 py-10">
+        <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
+        <p className="mt-4 text-(--text-secondary)">Loading...</p>
+      </main>
     );
   }
 
-  function showAllAnswers() {
-    setQuestions((prev) => prev.map((q) => ({ ...q, showAnswer: true })));
+  if (!user) {
+    return (
+      <main className="mx-auto max-w-6xl px-6 py-10">
+        <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
+        <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          Please log in to use Selective School features.
+        </div>
+      </main>
+    );
   }
 
-  function hideAllAnswers() {
-    setQuestions((prev) => prev.map((q) => ({ ...q, showAnswer: false })));
+  if (!user.selectiveAccess) {
+    return (
+      <main className="mx-auto max-w-6xl px-6 py-10">
+        <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
+        <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          You do not have access to Selective School features.
+        </div>
+      </main>
+    );
   }
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-10">
-      <MathPracticeClient />
-      <h1 className="text-3xl font-bold text-(--text-main)">Maths</h1>
+      <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
       <p className="mt-3 text-(--text-secondary)">
-        Practice one-variable linear equations, including fractional forms.
+        Generate selective-school mathematics questions by topic, subtopic, and difficulty.
       </p>
 
       <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-(--text-main)">
-          Generator Settings
+          AI Question Generator
         </h2>
 
-        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <div>
             <label className="mb-1 block text-sm font-medium text-(--text-main)">
-              Equation Type
+              Topic
             </label>
             <select
-              value={type}
-              onChange={(e) => setType(e.target.value as EquationType)}
+              value={topicCategory}
+              onChange={(e) => setTopicCategory(e.target.value)}
               className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             >
-              <option value="mixed">Mixed</option>
-              <option value="ax+b=c">ax + b = c</option>
-              <option value="a(x+b)=c">a(x + b) = c</option>
-              <option value="ax+b=cx+d">ax + b = cx + d</option>
-              <option value="(ax+b)/d=c">(ax + b) / d = c</option>
-              <option value="(ax+b)/d=(cx+e)/f">
-                (ax + b) / d = (cx + e) / f
-              </option>
+              {mathematicsBlueprint.map((topic) => (
+                <option key={topic.key} value={topic.key}>
+                  {topic.label}
+                </option>
+              ))}
             </select>
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-medium text-(--text-main)">
-              Minimum value
+              Subtopic
             </label>
-            <input
-              type="number"
-              value={min}
-              onChange={(e) => setMin(Number(e.target.value))}
+            <select
+              value={subtopic}
+              onChange={(e) => setSubtopic(e.target.value)}
               className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
-            />
+            >
+              {availableSubtopics.map((item) => (
+                <option key={item.key} value={item.key}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-medium text-(--text-main)">
-              Maximum value
+              Difficulty
             </label>
-            <input
-              type="number"
-              value={max}
-              onChange={(e) => setMax(Number(e.target.value))}
+            <select
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value as Difficulty)}
               className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="mb-1 block text-sm font-medium text-(--text-main)">
-              Number of questions
-            </label>
-            <input
-              type="number"
-              min={1}
-              max={50}
-              value={count}
-              onChange={(e) => setCount(Number(e.target.value))}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
-            />
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
           </div>
 
           <div className="flex items-end">
-            <label className="flex items-center gap-2 text-sm text-(--text-main)">
-              <input
-                type="checkbox"
-                checked={allowNegative}
-                onChange={(e) => setAllowNegative(e.target.checked)}
-              />
-              Allow negative numbers
-            </label>
+            <button
+              onClick={handleGenerateQuestion}
+              disabled={isGenerating}
+              className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isGenerating ? "Generating..." : "Generate Math Question"}
+            </button>
           </div>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-3">
-          <button
-            onClick={handleGenerate}
-            className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827]"
-          >
-            Generate Questions
-          </button>
-
-          {questions.length > 0 && (
-            <>
-              <button
-                onClick={showAllAnswers}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
-              >
-                Show All Answers
-              </button>
-              <button
-                onClick={hideAllAnswers}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
-              >
-                Hide All Answers
-              </button>
-            </>
-          )}
         </div>
       </div>
 
-      <div className="mt-8 space-y-4">
-        {questions.length === 0 ? (
+      {error && (
+        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      {question && (
+        <div className="mt-8 space-y-6">
           <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
-            <p className="text-(--text-secondary)">
-              Click “Generate Questions” to create a practice set.
-            </p>
-          </div>
-        ) : (
-          questions.map((question) => (
-            <div
-              key={question.id}
-              className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-5 shadow-sm"
-            >
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-(--text-secondary)">
-                    Question {question.id}
-                  </p>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-sm text-(--text-secondary)">Title</p>
+                <h2 className="mt-1 text-2xl font-bold text-(--text-main)">
+                  {question.title}
+                </h2>
+              </div>
 
-                  <div className="mt-3 overflow-x-auto text-2xl font-bold text-(--text-main)">
-                    <div className="inline-flex min-w-max items-center gap-3 whitespace-nowrap">
-                      {question.display}
-                    </div>
-                  </div>
-
-                  {question.showAnswer && (
-                    <div className="mt-4 rounded-xl bg-gray-50 px-4 py-3">
-                      <p className="text-sm text-(--text-secondary)">Answer</p>
-                      <p className="mt-1 text-lg font-semibold text-(--text-main)">
-                        {question.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <div className="lg:ml-6">
-                  <button
-                    onClick={() => toggleAnswer(question.id)}
-                    className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
-                  >
-                    {question.showAnswer ? "Hide Answer" : "Show Answer"}
-                  </button>
-                </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                  {question.topicCategory}
+                </span>
+                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                  {question.subtopic.replace(/_/g, " ")}
+                </span>
+                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                  {question.difficulty}
+                </span>
+                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                  {question.questionType.replace(/_/g, " ")}
+                </span>
               </div>
             </div>
-          ))
-        )}
-      </div>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                <p className="text-sm text-(--text-secondary)">Generated At</p>
+                <p className="mt-1 font-medium text-(--text-main)">
+                  {new Date(question.createdAt).toLocaleString()}
+                </p>
+              </div>
+
+              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                <p className="text-sm text-(--text-secondary)">Question ID</p>
+                <p className="mt-1 break-all font-medium text-(--text-main)">
+                  {question.id}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <p className="text-sm text-(--text-secondary)">Instruction</p>
+              <p className="mt-2 leading-7 text-(--text-main)">
+                {question.instruction}
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <p className="text-sm text-(--text-secondary)">Question</p>
+              <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+                {question.questionText}
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+            <h3 className="text-xl font-semibold text-(--text-main)">Your Answer</h3>
+
+            <div className="mt-4">
+              <input
+                type="text"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                placeholder="Type your answer here..."
+                className="w-full rounded-xl border border-(--border-color) bg-white px-4 py-3 text-(--text-main) outline-none"
+              />
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={handleSubmitAnswer}
+                disabled={isSubmitting}
+                className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Answer"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowHints((prev) => !prev)}
+                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+              >
+                {showHints ? "Hide Hints" : "Show Hints"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowAnswer((prev) => !prev)}
+                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+              >
+                {showAnswer ? "Hide Answer" : "Show Answer"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowSolution((prev) => !prev)}
+                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+              >
+                {showSolution ? "Hide Solution" : "Show Solution"}
+              </button>
+            </div>
+
+            {submitMessage && (
+              <div
+                className={`mt-4 rounded-2xl px-4 py-3 text-sm ${
+                  submittedResult?.isCorrect
+                    ? "border border-emerald-200 bg-emerald-50 text-emerald-800"
+                    : "border border-amber-200 bg-amber-50 text-amber-800"
+                }`}
+              >
+                {submitMessage}
+              </div>
+            )}
+
+            {showHints && (
+              <div className="mt-6">
+                <p className="text-sm text-(--text-secondary)">Hints</p>
+                <ul className="mt-3 space-y-2">
+                  {question.hints.length > 0 ? (
+                    question.hints.map((hint, index) => (
+                      <li
+                        key={index}
+                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                      >
+                        {hint}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-(--text-secondary)">No hints available.</li>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            {showAnswer && (
+              <div className="mt-6">
+                <p className="text-sm text-(--text-secondary)">Final Answer</p>
+                <div className="mt-2 rounded-2xl bg-emerald-50 px-4 py-4 font-semibold text-emerald-800">
+                  {question.finalAnswer}
+                </div>
+              </div>
+            )}
+
+            {showSolution && (
+              <div className="mt-6">
+                <p className="text-sm text-(--text-secondary)">Solution Steps</p>
+                <ol className="mt-3 space-y-2">
+                  {question.solutionSteps.length > 0 ? (
+                    question.solutionSteps.map((step, index) => (
+                      <li
+                        key={index}
+                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                      >
+                        <span className="mr-2 font-semibold text-(--text-secondary)">
+                          {index + 1}.
+                        </span>
+                        {step}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-(--text-secondary)">
+                      No solution steps available.
+                    </li>
+                  )}
+                </ol>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

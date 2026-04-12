@@ -1,17 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
-
-type WritingType =
-  | "mixed"
-  | "narrative"
-  | "persuasive"
-  | "descriptive"
-  | "situation";
-
+import { useEffect, useMemo, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+type WritingType = "mixed" | "creative" | "persuasive";
 type Difficulty = "easy" | "medium" | "hard";
 
 type WritingPrompt = {
+  id: string;
+  questionType: string;
+  createdAt: string;
   title: string;
   instruction: string;
   wordCount: string;
@@ -28,6 +25,11 @@ type ReviewError = {
 };
 
 type ReviewResult = {
+  submissionId: string;
+  reviewId: string;
+  submittedAt: string;
+  reviewedAt: string;
+
   overallScore: number;
   taskResponse: number;
   structure: number;
@@ -49,6 +51,14 @@ type ReviewResult = {
   errors: ReviewError[];
 };
 
+type AuthUser = {
+  id: string;
+  email?: string;
+  fullName: string;
+};
+
+const supabase = createClient();
+
 export default function WritingPage() {
   const [type, setType] = useState<WritingType>("mixed");
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
@@ -59,16 +69,69 @@ export default function WritingPage() {
   const [review, setReview] = useState<ReviewResult | null>(null);
   const [error, setError] = useState("");
 
+  const [user, setUser] = useState<AuthUser | null>(null);
+
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
   const [isReviewing, setIsReviewing] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadUser() {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
+
+      if (error) {
+        console.error("Failed to get current user:", error);
+        if (mounted) setUser(null);
+        return;
+      }
+
+      if (!user) {
+        if (mounted) setUser(null);
+        return;
+      }
+
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("full_name")
+        .eq("id", user.id)
+        .single();
+
+      if (profileError) {
+        console.error("Failed to load profile:", profileError);
+      }
+
+      if (!mounted) return;
+
+      setUser({
+        id: user.id,
+        email: user.email,
+        fullName: profile?.full_name || "Student",
+      });
+    }
+
+    loadUser();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const wordCount = useMemo(() => {
     const trimmed = writing.trim();
     if (!trimmed) return 0;
-    return trimmed.split(/\s+/).length;
+    return trimmed.split(/\s+/).filter(Boolean).length;
   }, [writing]);
 
   async function handleGeneratePrompt() {
+    if (!user) {
+      setError("Please log in first.");
+      return;
+    }
+
     setIsGeneratingPrompt(true);
     setError("");
     setPrompt(null);
@@ -110,6 +173,16 @@ export default function WritingPage() {
   }
 
   async function handleReviewWithAI() {
+    if (!user) {
+      setError("Please log in first.");
+      return;
+    }
+
+    if (!prompt?.id) {
+      setError("Please generate a prompt first.");
+      return;
+    }
+
     if (!writing.trim()) {
       setError("Please write something before asking AI to review it.");
       return;
@@ -130,10 +203,13 @@ export default function WritingPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          writingQuestionId: prompt.id,
           prompt: fullPrompt,
           essay: writing,
-          writingType: type,
+          writingType: prompt.questionType || type,
           difficulty,
+          studentName: user.fullName,
+          userId: user.id,
         }),
       });
 
@@ -159,6 +235,19 @@ export default function WritingPage() {
       <p className="mt-3 text-(--text-secondary)">
         Let AI generate selective-style writing prompts and review the response.
       </p>
+
+      <div className="mt-4">
+        {!user ? (
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            Please log in to generate prompts and save your writing history.
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+            Logged in as {user.fullName}
+            {user.email ? ` (${user.email})` : ""}.
+          </div>
+        )}
+      </div>
 
       <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-(--text-main)">
@@ -199,7 +288,7 @@ export default function WritingPage() {
           <div className="flex items-end">
             <button
               onClick={handleGeneratePrompt}
-              disabled={isGeneratingPrompt}
+              disabled={isGeneratingPrompt || !user}
               className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isGeneratingPrompt ? "Generating..." : "Generate Prompt with AI"}
@@ -229,6 +318,21 @@ export default function WritingPage() {
                 <p className="mt-1 text-2xl font-bold text-(--text-main)">
                   {prompt.title}
                 </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div>
+                  <p className="text-sm text-(--text-secondary)">Question Type</p>
+                  <p className="mt-1 font-medium capitalize text-(--text-main)">
+                    {prompt.questionType}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm text-(--text-secondary)">Created At</p>
+                  <p className="mt-1 font-medium text-(--text-main)">
+                    {new Date(prompt.createdAt).toLocaleString()}
+                  </p>
+                </div>
               </div>
 
               <div>
@@ -309,7 +413,7 @@ export default function WritingPage() {
           <div className="mt-5 flex flex-wrap gap-3">
             <button
               onClick={handleReviewWithAI}
-              disabled={isReviewing}
+              disabled={isReviewing || !user || !prompt}
               className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isReviewing ? "Reviewing..." : "Review with AI"}
@@ -320,8 +424,27 @@ export default function WritingPage() {
 
       {review && (
         <div className="mt-8 space-y-6">
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+            Saved to history. Submission ID: {review.submissionId}
+          </div>
+
           <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
             <h2 className="text-2xl font-bold text-(--text-main)">AI Review</h2>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="text-sm text-(--text-secondary)">Submitted At</p>
+                <p className="mt-1 font-medium text-(--text-main)">
+                  {new Date(review.submittedAt).toLocaleString()}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-(--text-secondary)">Reviewed At</p>
+                <p className="mt-1 font-medium text-(--text-main)">
+                  {new Date(review.reviewedAt).toLocaleString()}
+                </p>
+              </div>
+            </div>
 
             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               {[

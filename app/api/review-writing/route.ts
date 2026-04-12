@@ -1,17 +1,55 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+type RequestBody = {
+  writingQuestionId?: string;
+  prompt?: string;
+  essay?: string;
+  writingType?: string;
+  difficulty?: string;
+  studentName?: string;
+  userId?: string;
+};
+
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = (await req.json()) as RequestBody;
+
+    const writingQuestionId = String(body.writingQuestionId ?? "");
     const prompt = String(body.prompt ?? "");
     const essay = String(body.essay ?? "");
     const writingType = String(body.writingType ?? "mixed");
     const difficulty = String(body.difficulty ?? "medium");
+
+    // 不再默认 Lily
+    const studentName = String(body.studentName ?? "");
+    const userId = String(body.userId ?? "");
+
+    if (!writingQuestionId.trim()) {
+      return NextResponse.json(
+        { error: "Missing writingQuestionId." },
+        { status: 400 }
+      );
+    }
+
+    if (!studentName.trim()) {
+      return NextResponse.json(
+        { error: "Missing studentName." },
+        { status: 400 }
+      );
+    }
+
+    if (!userId.trim()) {
+      return NextResponse.json(
+        { error: "Missing userId." },
+        { status: 400 }
+      );
+    }
 
     if (!essay.trim()) {
       return NextResponse.json(
@@ -19,6 +57,8 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
+    const wordCount = essay.trim().split(/\s+/).filter(Boolean).length;
 
     const schema = {
       name: "writing_review",
@@ -178,8 +218,109 @@ The Chinese should match the English closely.
       },
     });
 
-    const parsed = JSON.parse(response.output_text);
-    return NextResponse.json(parsed);
+    const parsed = JSON.parse(response.output_text) as {
+      overallScore: number;
+      taskResponse: number;
+      structure: number;
+      vocabulary: number;
+      grammar: number;
+      summaryEn: string;
+      summaryZh: string;
+      strengthsEn: string[];
+      strengthsZh: string[];
+      improvementsEn: string[];
+      improvementsZh: string[];
+      correctedSampleEn: string;
+      correctedSampleZh: string;
+      errors: Array<{
+        type: "word_choice" | "grammar" | "punctuation" | "other";
+        original: string;
+        correction: string;
+        explanationEn: string;
+        explanationZh: string;
+      }>;
+    };
+
+    const supabase = createAdminClient();
+
+    const { data: submissionRow, error: submissionError } = await supabase
+      .schema("selective")
+      .from("writing_submissions")
+      .insert({
+        user_id: userId,
+        student_name: studentName,
+        writing_question_id: writingQuestionId,
+        essay_text: essay,
+        word_count: wordCount,
+      })
+      .select("id, submitted_at")
+      .single();
+
+    if (submissionError) {
+      console.error("Supabase writing_submissions insert error:", submissionError);
+      return NextResponse.json(
+        { error: "Review generated, but failed to save writing submission." },
+        { status: 500 }
+      );
+    }
+
+    const { data: reviewRow, error: reviewInsertError } = await supabase
+      .schema("selective")
+      .from("writing_reviews")
+      .insert({
+        writing_submission_id: submissionRow.id,
+        overall_score: parsed.overallScore,
+        task_response: parsed.taskResponse,
+        structure_score: parsed.structure,
+        vocabulary_score: parsed.vocabulary,
+        grammar_score: parsed.grammar,
+        summary_en: parsed.summaryEn,
+        summary_zh: parsed.summaryZh,
+        strengths_en: parsed.strengthsEn,
+        strengths_zh: parsed.strengthsZh,
+        improvements_en: parsed.improvementsEn,
+        improvements_zh: parsed.improvementsZh,
+        corrected_sample_en: parsed.correctedSampleEn,
+        corrected_sample_zh: parsed.correctedSampleZh,
+        errors_json: parsed.errors,
+      })
+      .select("id, reviewed_at")
+      .single();
+
+    if (reviewInsertError) {
+      console.error("Supabase writing_reviews insert error:", reviewInsertError);
+      return NextResponse.json(
+        { error: "Review generated, but failed to save review result." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      submissionId: submissionRow.id,
+      reviewId: reviewRow.id,
+      submittedAt: submissionRow.submitted_at,
+      reviewedAt: reviewRow.reviewed_at,
+
+      overallScore: parsed.overallScore,
+      taskResponse: parsed.taskResponse,
+      structure: parsed.structure,
+      vocabulary: parsed.vocabulary,
+      grammar: parsed.grammar,
+
+      summaryEn: parsed.summaryEn,
+      summaryZh: parsed.summaryZh,
+
+      strengthsEn: parsed.strengthsEn,
+      strengthsZh: parsed.strengthsZh,
+
+      improvementsEn: parsed.improvementsEn,
+      improvementsZh: parsed.improvementsZh,
+
+      correctedSampleEn: parsed.correctedSampleEn,
+      correctedSampleZh: parsed.correctedSampleZh,
+
+      errors: parsed.errors,
+    });
   } catch (error) {
     console.error("review-writing error:", error);
     return NextResponse.json(
