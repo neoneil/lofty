@@ -64,6 +64,7 @@ export default async function Navbar() {
       label: "主页",
       tooltip: "Home",
     },
+
     {
       href: "/ielts",
       label: "PTE/IELTS",
@@ -81,7 +82,7 @@ export default async function Navbar() {
     },
     {
       href: "/contact",
-      label: "关于高远雅思PTE",
+      label: "关于致远",
       tooltip: "About Lofty",
     },
   ];
@@ -89,31 +90,26 @@ export default async function Navbar() {
   const mobileAdminItems: NavItem[] =
     user && ChiMa
       ? [
-          { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
-          { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts" },
-          { href: "/admin/posts", label: "掌院", tooltip: "Manage posts" },
-          { href: "/admin/dashboard", label: "练习明细", tooltip: "Manage dashboard" },
-          { href: "/admin/selective/history", label: "selective明细", tooltip: "Manage selective" },
+          // { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
+          // { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts" },
+          // { href: "/admin/posts", label: "掌院", tooltip: "Manage posts" },
+          // { href: "/admin/dashboard", label: "练习明细", tooltip: "Manage dashboard" },
+          // { href: "/admin/selective/history", label: "selective明细", tooltip: "Manage selective" },
         ]
       : [];
 
   const mobileSelectiveItems: NavItem[] =
     user && selectiveAccess
       ? [
-          { href: "/selective", label: "Selective Questions", tooltip: "Selective Questions" },
-          { href: "/selective/history", label: "History", tooltip: "Selective History" },
+          // { href: "/selective", label: "Selective Questions", tooltip: "Selective Questions" },
+          // { href: "/selective/history", label: "History", tooltip: "Selective History" },
         ]
       : [];
 
   return (
-    <header
-      className="sticky top-0 z-50 border-b shadow-sm backdrop-blur-md"
-      style={{
-        background: "var(--bg)",
-        borderColor: "var(--border)",
-      }}
-    >
-      <Container>
+    <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
+  <div className="mx-auto max-w-7xl rounded-[28px] border border-gray-200 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
+    <Container>
         <div className="py-2">
           {/* 手机端 */}
           <div className="lg:hidden">
@@ -132,33 +128,35 @@ export default async function Navbar() {
           </div>
 
           {/* 桌面端 */}
-          <div className="hidden h-16 items-center justify-between gap-4 lg:flex">
-            <Link
-              href="/"
-              className="group -ml-4 flex shrink-0 items-center gap-2 transition"
-            >
-              <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
-                <span
-                  className="text-2xl font-extrabold tracking-tight"
-                  style={{
-                    color: "#2F4A3F",
-                    textShadow: "0 1px 0 rgba(255,255,255,0.18)",
-                  }}
-                >
-                  高远教育
-                </span>
+          <div className="hidden h-12 items-center justify-between gap-4 lg:flex">
+<Link
+  href="/"
+  className="group ml-2 flex shrink-0 items-center gap-2 rounded-xl px-2 py-1 transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.02] hover:bg-white/60 hover:shadow-sm"
+>
+  <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
+    
+    <span
+      className="text-xl font-bold tracking-tight transition-all duration-200 group-hover:opacity-80"
+      style={{
+        color: "#2F4A3F",
+        textShadow: "0 1px 0 rgba(255,255,255,0.18)",
+      }}
+    >
+      致远教育
+    </span>
 
-                <span
-                  className="text-sm font-semibold"
-                  style={{
-                    color: "#2F4A3F",
-                    textShadow: "0 1px 0 rgba(255,255,255,0.12)",
-                  }}
-                >
-                  Lofty Education
-                </span>
-              </div>
-            </Link>
+    <span
+      className="text-xs font-medium tracking-wide opacity-70 transition-all duration-200 group-hover:opacity-100"
+      style={{
+        color: "#2F4A3F",
+        textShadow: "0 1px 0 rgba(255,255,255,0.12)",
+      }}
+    >
+      Lofty Education
+    </span>
+
+  </div>
+</Link>
 
             <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-5 px-6">
               {navItems.map((item) => (
@@ -171,7 +169,7 @@ export default async function Navbar() {
                     {item.label}
                   </Link>
 
-                  <div
+                  {/* <div
                     className="
                       pointer-events-none
                       absolute
@@ -200,7 +198,7 @@ export default async function Navbar() {
                     }}
                   >
                     {item.tooltip}
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </nav>
@@ -231,7 +229,7 @@ export default async function Navbar() {
                     <LogoutButton />
                   </div>
 
-                  {ChiMa && (
+                  {/* {ChiMa && (
                     <>
                       <Link
                         href="/ielts-writing"
@@ -267,9 +265,9 @@ export default async function Navbar() {
                         selective明細
                       </Link>
                     </>
-                  )}
+                  )} */}
 
-                  {selectiveAccess && (
+                  {/* {selectiveAccess && (
                     <>
                       <Link
                         href="/selective"
@@ -285,7 +283,7 @@ export default async function Navbar() {
                         History
                       </Link>
                     </>
-                  )}
+                  )} */}
                 </>
               ) : (
                 <>
@@ -374,6 +372,7 @@ export default async function Navbar() {
           </div>
         </div>
       </Container>
+        </div>
     </header>
   );
 }
@@ -460,7 +459,7 @@ export default async function Navbar() {
 //     },
 //     {
 //       href: "/contact",
-//       label: "关于高远雅思PTE",
+//       label: "关于致远雅思PTE",
 //       tooltip: "About Lofty",
 //     },
 //   ];
@@ -515,7 +514,7 @@ export default async function Navbar() {
 //                     textShadow: "0 1px 0 rgba(255,255,255,0.18)",
 //                   }}
 //                 >
-//                   高远教育
+//                   致远教育
 //                 </span>
 
 //                 <span

@@ -51,7 +51,7 @@ export default function ContactForm() {
             <div className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
               Contact
             </div>
-            <h2 className="mt-4 text-2xl font-bold text-slate-950">联系高远教育</h2>
+            <h2 className="mt-4 text-2xl font-bold text-slate-950">联系致远教育</h2>
 
             <div className="mt-8 space-y-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-4">

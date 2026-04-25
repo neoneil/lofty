@@ -7,14 +7,14 @@ import ChatWidget from '@/components/chat/ChatWidget';
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gaoyuanenglish.com"),
   title: {
-    default: "高远英语|雅思 PTE 英语提分平台",
-    template: "%s|高远英语",
+    default: "致远英语|雅思 PTE 英语提分平台",
+    template: "%s|致远英语",
   },
 
-  description: "高远英语专注雅思 IELTS、PTE 考试培训与英语能力提升，提供写作批改、口语练习、阅读听力题库、AI 智能评分和在线精品课程。",
+  description: "致远英语专注雅思 IELTS、PTE 考试培训与英语能力提升，提供写作批改、口语练习、阅读听力题库、AI 智能评分和在线精品课程。",
 
   keywords: [
-    "高远英语",
+    "致远英语",
     "雅思",
     "IELTS",
     "PTE",
@@ -28,16 +28,16 @@ export const metadata: Metadata = {
     "在线英语课程",
   ],
 
-  authors: [{ name: "高远英语" }],
-  creator: "高远英语",
-  publisher: "高远英语",
+  authors: [{ name: "致远英语" }],
+  creator: "致远英语",
+  publisher: "致远英语",
 
   openGraph: {
-    title: "高远英语｜雅思 PTE 英语提分平台",
+    title: "致远英语｜雅思 PTE 英语提分平台",
     description:
       "专注雅思与 PTE 提分，AI 智能评分 + 专业课程，帮助学生高效提分。",
     url: "https://www.gaoyuanenglish.com",
-    siteName: "高远英语",
+    siteName: "致远英语",
     locale: "zh_CN",
     type: "website",
   },
@@ -48,9 +48,12 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+  ],
+    shortcut: "/favicon-32x32.png",
+    apple: "/favicon-32x32.png", 
   },
 };
 
@@ -61,17 +64,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className="min-h-screen text-gray-900 antialiased" style={{
-        background: "var(--bg)",
-        color: "var(--text)"
-      }}>
+      <body className="min-h-screen antialiased bg-[var(--bg)] text-[var(--text)]" >
 
         <div className="fixed-bg" />
 
         <div className="relative z-10 flex min-h-screen flex-col">
 
           <Navbar />
-          <div className="flex-1">
+          <div className="pointer-events-none fixed left-0 top-0 z-40 h-40 w-full bg-gradient-to-b from-white via-white/100 to-transparent" />
+          <div className="flex-1 pt-14 lg:pt-16">
             {children}
             <ChatWidget />
           </div>

@@ -2,13 +2,18 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --bg: #FFF8F2;
-  --text: #111827;
-  --theme:#2F4A3F;
+  --bg: #f4f9fb;
+
+  --bg-top: #F4F8FD;
+  --bg-main: #E9F2FB;
+  --bg-bottom: #DCEAF8;
+
+  --text: #2b3039;
+  --theme:rgb(61, 55, 55);
   --primary: #1E3A8A;
   --primary-hover: #2B4FB8;
 
-  --brand-accent: #2F4A3F;
+  --brand-accent: #227956;
   --brand-accent-hover: #546f65;
 
   --border: #E5E7EB;
@@ -23,10 +28,7 @@
     #2B4FB8 45%,
     #D4AF37 100%
   ); */
- --navbar-bg: white;
 
-
-  --navbar-bg-hover: #546f65;
 
   --footer-bg: #1E3A8A;
 }
@@ -55,19 +57,27 @@
     box-shadow: 0 6px 16px rgba(47, 74, 63, 0.18);
   }
 
-  .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center px-5 py-3 text-sm font-semibold transition-all duration-200;
-    background: #fff8f2;
-    color: var(--brand-accent);
-    border: 1px solid rgba(47, 74, 63, 0.15);
-  }
+.btn-secondary {
+  @apply relative inline-flex items-center justify-center px-2 py-1 text-[15px] font-medium transition-all duration-200 cursor-pointer;
+  background: transparent;
+  border: none;
+  color: var(--brand-accent);
+}
 
-  .btn-secondary:hover {
-    background: #f7f1eb;
-    color: var(--brand-accent-hover);
-    border-color: rgba(84, 111, 101, 0.25);
-  }
-
+  .btn-secondary:hover::after {
+  width: 100%;
+}
+.btn-secondary::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+}
   .btn-soft {
     @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-200;
     background: rgba(47, 74, 63, 0.08);
@@ -104,16 +114,16 @@
 
   /* navbar链接 */
 
-.nav-link {
+/* .nav-link {
   @apply cursor-pointer rounded-xl px-4 py-2 text-base font-medium transition-all duration-300;
   color: var(--brand-accent);
-}
+} */
 
-.nav-link:hover {
+/* .nav-link:hover {
   background-color: var(--brand-accent-hover);
   color: white;
   transform: translateY(-1px);
-}
+} */
 
   /* 通用可点击按钮 */
   .btn-interactive {
@@ -143,7 +153,7 @@
   }
 
 }
-.fixed-bg {
+/* .fixed-bg {
   position: fixed;
   top: 72px;
   right: 0;
@@ -157,7 +167,7 @@
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100% auto;
-}
+} */
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

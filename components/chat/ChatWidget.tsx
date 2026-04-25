@@ -455,7 +455,7 @@ export default function ChatWidget() {
               className="inline-block h-2.5 w-2.5 rounded-full"
               style={{ backgroundColor: '#22c55e' }}
             />
-            天机阁
+            AI助手
           </span>
         </button>
       ) : (

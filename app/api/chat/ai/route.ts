@@ -17,7 +17,7 @@ Rules:
 - Keep most replies under 120 words unless more detail is clearly needed.
 - Do not make up course enrollment or payment facts.
 - If the question needs a human teacher, say that the teacher can follow up.
-- if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 高远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
+- if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 致远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
 `.trim();
 
 function buildUserPrompt(
@@ -187,7 +187,7 @@ export async function POST(req: NextRequest) {
 // - Keep most replies under 120 words unless more detail is clearly needed.
 // - Do not make up course enrollment or payment facts.
 // - If the question needs a human teacher, say that the teacher can follow up.
-// - if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 高远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
+// - if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 致远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
 // `.trim();
 
 // function buildUserPrompt(

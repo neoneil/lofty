@@ -36,7 +36,7 @@ export default function NavbarMobileClient({
           {/* <div className="relative h-9 w-9 shrink-0 overflow-hidden">
             <Image
               src="logo.png"
-              alt="高远教育 Logo"
+              alt="致远教育 Logo"
               fill
               className="object-cover scale-150"
               priority
@@ -51,7 +51,7 @@ export default function NavbarMobileClient({
                 textShadow: "0 1px 0 rgba(255,255,255,0.18)",
               }}
             >
-              高远教育
+              致远教育
             </span>
 
             <span

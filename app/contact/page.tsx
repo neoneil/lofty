@@ -4,7 +4,7 @@ import ContactForm from "./contact-form";
 export const metadata: Metadata = {
   title: "Contact | Lofty Education",
   description:
-    "Contact Lofty Education / 高远教育 — bilingual English and Chinese test preparation based in Melbourne, Australia.",
+    "Contact Lofty Education / 致远教育 — bilingual English and Chinese test preparation based in Melbourne, Australia.",
 };
 
 const highlights = [
@@ -34,11 +34,11 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             <div>
               <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 shadow-sm">
-                Gallop · 高远教育 · Melbourne, Australia
+                Gallop · 致远教育 · Melbourne, Australia
               </div>
 
               <h1 className="mt-5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-                高远教育
+                致远教育
                 <span className="mt-2 block text-xl font-medium text-slate-600 sm:text-2xl lg:text-3xl">
                   Gallop Education
                 </span>
@@ -46,7 +46,7 @@ export default function ContactPage() {
 
               <div className="mt-6 space-y-4 text-[15px] leading-8 text-slate-700 sm:text-base">
                 <p>
-                  <span className="font-semibold text-slate-950">高远教育</span>
+                  <span className="font-semibold text-slate-950">致远教育</span>
                   （英文品牌名：
                   <span className="font-semibold text-slate-950">Lofty</span>
                   ）总部位于澳大利亚墨尔本，专注于英语考试培训与语言能力提升。
