@@ -129,7 +129,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <Container className="py-8">
-      <div className="mb-8">
+      <div className="mb-8 pt-8">
         <h1 className="text-2xl font-bold text-gray-900">Practice Dashboard</h1>
         <p className="mt-2 text-sm text-gray-600">
           Overall practice activity across all PTE question types

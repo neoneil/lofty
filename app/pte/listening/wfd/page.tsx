@@ -61,7 +61,7 @@ export default async function PteListeningPage() {
             WFD 加载失败：{questionsError.message}
           </section>
         ) : (
-          <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)]">
+          <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)] mt-5">
             <div className="xl:sticky xl:top-24 xl:self-start">
               <PTESidebar currentMain="listening" currentSub="wfd" />
             </div>

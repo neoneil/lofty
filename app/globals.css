@@ -4,17 +4,13 @@
 :root {
   --bg: #f4f9fb;
 
-  --bg-top: #F4F8FD;
-  --bg-main: #E9F2FB;
-  --bg-bottom: #DCEAF8;
-
   --text: #2b3039;
   --theme:rgb(61, 55, 55);
   --primary: #1E3A8A;
   --primary-hover: #2B4FB8;
 
-  --brand-accent: #227956;
-  --brand-accent-hover: #546f65;
+  --brand-accent: #1E3A8A;
+  --brand-accent-hover: #2B4FB8;
 
   --border: #E5E7EB;
   --muted: #6B7280;
@@ -44,19 +40,18 @@
 
   /* 主按钮 */
 
-  .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-200;
-    background: var(--brand-accent);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(47, 74, 63, 0.12);
-  }
+.btn-primary {
+  @apply inline-flex cursor-pointer items-center justify-center rounded-xl px-3 py-2 text-xs transition-all duration-200;
+  background: var(--brand-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(47, 74, 63, 0.1);
+}
 
-  .btn-primary:hover {
-    background: var(--brand-accent-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(47, 74, 63, 0.18);
-  }
-
+.btn-primary:hover {
+  background: var(--brand-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(47, 74, 63, 0.18);
+}
 .btn-secondary {
   @apply relative inline-flex items-center justify-center px-2 py-1 text-[15px] font-medium transition-all duration-200 cursor-pointer;
   background: transparent;
@@ -92,6 +87,20 @@
 .btn-secondary {
   cursor: pointer !important;
 }
+
+
+.btn-card {
+  @apply inline-flex cursor-pointer items-center justify-center rounded-xl px-8 py-3 text-base transition-all duration-200;
+  background: var(--brand-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(47, 74, 63, 0.1);
+}
+
+.btn-card:hover {
+  background: var(--brand-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(47, 74, 63, 0.18);
+}
   /* 卡片 */
   /* WFD / 题目卡片 */
   .question-card {
@@ -111,19 +120,6 @@
   .card:hover {
     @apply shadow-sm -translate-y-0.5;
   }
-
-  /* navbar链接 */
-
-/* .nav-link {
-  @apply cursor-pointer rounded-xl px-4 py-2 text-base font-medium transition-all duration-300;
-  color: var(--brand-accent);
-} */
-
-/* .nav-link:hover {
-  background-color: var(--brand-accent-hover);
-  color: white;
-  transform: translateY(-1px);
-} */
 
   /* 通用可点击按钮 */
   .btn-interactive {

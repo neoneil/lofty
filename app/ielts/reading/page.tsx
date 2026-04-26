@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import IELTSSubnav from "@/components/site/ielts-subnav";
 import ReadingWorkspace from "@/components/reading/pdf-workspace";
 
 export default function ReadingPage() {
@@ -13,7 +14,8 @@ export default function ReadingPage() {
   const books = Array.from({ length: 11 }, (_, i) => i + 10); // 10 - 20
 
   return (
-    <main className="h-[calc(100vh-72px)] w-full bg-(--bg)">
+    <main className="h-[calc(100vh-72px)] w-full bg-(--bg) mt-20">
+      <IELTSSubnav current="reading" />
       <div className="flex items-center gap-3 px-4 py-3">
         <label htmlFor="cambridge-book" className="text-sm font-medium">
           Choose Cambridge:

@@ -66,18 +66,23 @@ export default async function Navbar() {
     },
 
     {
-      href: "/ielts",
-      label: "PTE/IELTS",
-      tooltip: "IELTS",
+      href: "/courses",
+      label: "课程",
+      tooltip: "",
+    },
+    {
+      href: "/pte/listening/sst",
+      label: "PTE在线练习",
+      tooltip: "",
+    },
+    {
+      href: "/ielts/speaking",
+      label: "雅思在线练习",
+      tooltip: "",
     },
     {
       href: "/posts",
-      label: "文章",
-      tooltip: "Articles & Resources",
-    },
-    {
-      href: "/downloads",
-      label: "藏经阁",
+      label: "致远博客",
       tooltip: "Articles & Resources",
     },
     {
@@ -90,6 +95,7 @@ export default async function Navbar() {
   const mobileAdminItems: NavItem[] =
     user && ChiMa
       ? [
+        { href: "/admin", label: "管理", tooltip: "" }
           // { href: "/ielts-writing", label: "扫地僧", tooltip: "AI writing feedback" },
           // { href: "/admin/posts/new", label: "执笔", tooltip: "writing posts" },
           // { href: "/admin/posts", label: "掌院", tooltip: "Manage posts" },
@@ -225,47 +231,20 @@ export default async function Navbar() {
                     </div>
                   </div>
 
+                  {ChiMa && (
+                    <>
+                      <Link
+                        href="/admin"
+                        className="nav-link btn-secondary"
+                      >
+                        管理员
+                      </Link>
+                    </>
+                  )}
+
                   <div className="origin-right scale-90">
                     <LogoutButton />
                   </div>
-
-                  {/* {ChiMa && (
-                    <>
-                      <Link
-                        href="/ielts-writing"
-                        className="nav-link btn-secondary"
-                      >
-                        扫地僧
-                      </Link>
-
-                      <Link
-                        href="/admin/posts/new"
-                        className="nav-link btn-secondary"
-                      >
-                        执笔
-                      </Link>
-
-                      <Link
-                        href="/admin/posts"
-                        className="nav-link btn-secondary"
-                      >
-                        掌院
-                      </Link>
-
-                      <Link
-                        href="/admin/dashboard"
-                        className="nav-link btn-secondary"
-                      >
-                        练习明细
-                      </Link>
-                      <Link
-                        href="/admin/selective/history"
-                        className="nav-link btn-secondary"
-                      >
-                        selective明細
-                      </Link>
-                    </>
-                  )} */}
 
                   {/* {selectiveAccess && (
                     <>

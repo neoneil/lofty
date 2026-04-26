@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
+type Category = "PTE" | "雅思" | "词汇" | "语法";
+
 function slugify(text: string) {
   return text
     .toLowerCase()
@@ -22,7 +24,8 @@ export default function CreatePostForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [cover, setCover] = useState<File | null>(null);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState<Category | "">("");
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
@@ -35,6 +38,12 @@ export default function CreatePostForm() {
 
     if (userError || !user) {
       setMessage("请先登录");
+      setLoading(false);
+      return;
+    }
+
+    if (!category) {
+      setMessage("请选择分类");
       setLoading(false);
       return;
     }
@@ -68,8 +77,6 @@ export default function CreatePostForm() {
       }
     }
 
-
-
     const { error } = await supabase.from("posts").insert({
       title,
       slug,
@@ -79,7 +86,7 @@ export default function CreatePostForm() {
       author_id: user.id,
       cover_image: coverUrl,
       published_at: status === "published" ? new Date().toISOString() : null,
-      category
+      category: category, // ✅ 已保证合法
     });
 
     if (error) {
@@ -116,18 +123,17 @@ export default function CreatePostForm() {
 
       <textarea
         className="w-full rounded border px-3 py-2"
-        // placeholder="Content"
         placeholder={`# Title
 
-        ## Subtitle
+## Subtitle
 
-        Write your markdown here...
+Write your markdown here...
 
-        - item 1
-        - item 2
+- item 1
+- item 2
 
-        **bold**
-        `}
+**bold**
+`}
         value={content}
         onChange={(e) => setContent(e.target.value)}
         rows={12}
@@ -138,18 +144,22 @@ export default function CreatePostForm() {
         accept="image/*"
         onChange={(e) => setCover(e.target.files?.[0] ?? null)}
       />
+
+      {/* ✅ 分类 */}
       <select
         name="category"
         value={category}
-        onChange={(e) => setCategory(e.target.value as "Understanding Children" | "Teaching Practice" | "Family Education" | "Teacher Reflection")}
+        onChange={(e) => setCategory(e.target.value as Category)}
         className="border rounded px-3 py-2"
       >
+        <option value="">请选择分类</option>
         <option value="PTE">PTE</option>
         <option value="雅思">雅思</option>
         <option value="词汇">词汇</option>
         <option value="语法">语法</option>
       </select>
 
+      {/* 状态 */}
       <select
         className="rounded border px-3 py-2"
         value={status}
