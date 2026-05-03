@@ -133,7 +133,7 @@ export default async function HomePage() {
             <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
               PTE · 雅思 
               <br />
-              你要系统刷题，我会全程跟踪
+              学生系统刷题，督学全程跟踪
             </h1>
 
             <p className="mt-5 text-sm font-medium tracking-wide text-gray-500 drop-shadow-md md:text-lg">
