@@ -108,7 +108,7 @@ export default function AudioPlayer({ url }: { url: string }) {
               <div
                 key={i}
                 style={{
-                  height: `${v * 60 + 4}px`,
+                  height: `${v * 140 + 8}px`,
                   width: "3px",
                   background: played ? "#4f46e5" : "#d1d5db",
                 }}

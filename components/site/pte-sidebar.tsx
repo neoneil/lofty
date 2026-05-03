@@ -23,11 +23,10 @@ function MainNavItem({
   return (
     <Link
       href={href}
-      className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition ${
-        active
+      className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition ${active
           ? "bg-[var(--theme)] text-white shadow-sm"
           : "text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
-      }`}
+        }`}
     >
       <span>{label}</span>
 
@@ -56,11 +55,10 @@ function SubNavItem({
   return (
     <Link
       href={href}
-      className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
-        active
+      className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${active
           ? "bg-[var(--theme)] text-white shadow-sm"
           : "text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
-      }`}
+        }`}
     >
       {label}
     </Link>
@@ -139,7 +137,12 @@ export default function PTESidebar({
           <SidebarDecoration />
 
           <button className="mt-4 inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]">
-            帮助中心
+            <Link
+              href="/pte/info"
+              className="nav-link btn-secondary"
+            >
+              PTE题型一览
+            </Link>
           </button>
         </div>
       </div>

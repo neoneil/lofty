@@ -37,7 +37,7 @@ type HiwQuestionWithStatus = {
   latest_score: number | null;
   best_score: number | null;
   is_wrong_question: boolean;
-  is_favorite?: boolean;
+  // is_favorite?: boolean;
 };
 
 export default async function PteListeningHiwPage() {
@@ -62,7 +62,7 @@ export default async function PteListeningHiwPage() {
     latest_score: q.latest_score ?? null,
     best_score: q.best_score ?? null,
     is_wrong_question: q.is_wrong_question ?? false,
-    is_favorite: q.is_favorite ?? false,
+    // is_favorite: q.is_favorite ?? false,
   })) as HiwQuestionWithStatus[];
 
   return (

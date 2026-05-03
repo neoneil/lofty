@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import AudioPlayer from "@/components/site/AudioPlayer";
 type Props = {
   questionId: string;
-  type: "RA" | "RS" | "DI" | "RL";
+  type: "RA" | "RS" | "DI" | "RL" | "ASQ" | "SGD" | "RTS";
   maxDuration: number;
   uploadUrl: string;
   initialRecordings?: string[];

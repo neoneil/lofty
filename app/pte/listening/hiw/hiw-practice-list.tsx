@@ -34,7 +34,7 @@ type Question = {
   latest_score: number | null;
   best_score: number | null;
   is_wrong_question: boolean;
-  is_favorite?: boolean;
+  // is_favorite?: boolean;
 };
 
 type SubmitResult = {

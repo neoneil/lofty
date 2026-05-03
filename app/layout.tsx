@@ -5,7 +5,7 @@ import Footer from "@/components/site/footer";
 import { Analytics } from "@vercel/analytics/next";
 import ChatWidget from '@/components/chat/ChatWidget';
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.gaoyuanenglish.com"),
+  metadataBase: new URL("https://www.loftypte.com.au"),
   title: {
     default: "致远英语|雅思 PTE 英语提分平台",
     template: "%s|致远英语",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "致远英语｜雅思 PTE 英语提分平台",
     description:
       "专注雅思与 PTE 提分，AI 智能评分 + 专业课程，帮助学生高效提分。",
-    url: "https://www.gaoyuanenglish.com",
+    url: "https://www.loftypte.com.au",
     siteName: "致远英语",
     locale: "zh_CN",
     type: "website",

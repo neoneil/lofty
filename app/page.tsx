@@ -130,10 +130,10 @@ export default async function HomePage() {
             <div className="mb-6 inline-flex items-center rounded-full border border-black/5 bg-white/70 px-4 py-2 text-xs font-medium text-gray-500 shadow-sm backdrop-blur-md">
                {heroSlogan}
             </div>
-            <h1 className="text-2xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-3xl md:text-4xl lg:text-5xl">
-              雅思 · PTE
+            <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
+              PTE · 雅思 
               <br />
-              更好的未来，从现在开始
+              你要系统刷题，我会全程跟踪
             </h1>
 
             <p className="mt-5 text-sm font-medium tracking-wide text-gray-500 drop-shadow-md md:text-lg">
@@ -146,7 +146,7 @@ export default async function HomePage() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-800">AI 智能评测</p>
-                  <p className="mt-1 text-xs text-gray-500">精准定位薄弱项</p>
+                  <p className="mt-1 text-xs text-gray-500">PTE 雅思提分引擎</p>
                 </div>
               </div>
 
@@ -182,14 +182,14 @@ export default async function HomePage() {
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:justify-center md:justify-start">
               <Link
-                href="/ielts"
+                href="/courses"
                 className="rounded-xl bg-white/90 px-6 py-3 text-center text-sm font-semibold text-(--brand-accent) shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
               >
                 雅思课程
               </Link>
 
               <Link
-                href="/pte"
+                href="/courses"
                 className="rounded-xl bg-[#4040A8] px-6 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5"
               >
                 PTE课程
