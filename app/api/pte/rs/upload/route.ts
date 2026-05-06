@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "no file" }, { status: 400 });
     }
 
-    const filePath = `students-audio/ra/${user.id}/${Date.now()}.webm`;
+    const filePath = `students-audio/rs/${user.id}/${Date.now()}.webm`;
 
     // ===== 上传 =====
     const { error: uploadError } = await supabase.storage
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       .from("student_recordings")
       .insert({
         user_id: user.id,
-        question_source: "ra",
+        question_source: "rs",
         question_id: questionId,
         audio_url: audioUrl,
       });

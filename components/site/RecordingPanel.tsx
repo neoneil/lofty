@@ -9,13 +9,23 @@ type Props = {
   maxDuration: number;
   uploadUrl: string;
   initialRecordings?: string[];
+  onUploadSuccess?: (recording: {
+    id: string;
+    question_source: string;
+    question_id: string;
+    audio_url: string;
+    duration_seconds: number | null;
+    created_at: string | null;
+  }) => void;
 };
 
 export default function RecordingPanel({
   questionId,
+  type,
   maxDuration,
   uploadUrl,
   initialRecordings = [],
+  onUploadSuccess,
 }: Props) {
   const [recording, setRecording] = useState(false);
   const [timeLeft, setTimeLeft] = useState(maxDuration);
@@ -89,7 +99,16 @@ export default function RecordingPanel({
     });
 
     const data = await res.json();
-
+    if (onUploadSuccess) {
+      onUploadSuccess({
+        id: crypto.randomUUID(),
+        question_source: type.toLowerCase(),
+        question_id: questionId,
+        audio_url: data.audioUrl,
+        duration_seconds: null,
+        created_at: new Date().toISOString(),
+      });
+    }
     setRecordings((prev) => [...prev, data.audioUrl]);
 
     setIsUploading(false);
@@ -160,133 +179,3 @@ export default function RecordingPanel({
 
 
 
-// "use client";
-
-// import { useRef, useState } from "react";
-
-// type Props = {
-//   questionId: string;
-//   type: "RA" | "RS" | "DI" | "RL";
-//   maxDuration: number;
-//   uploadUrl: string;
-//   initialRecordings?: string[];
-// };
-
-// export default function RecordingPanel({
-//   questionId,
-//   maxDuration,
-//   uploadUrl,
-//   initialRecordings = [],
-// }: Props) {
-//   const [recording, setRecording] = useState(false);
-//   const [timeLeft, setTimeLeft] = useState(maxDuration);
-//   const [confirmUpload, setConfirmUpload] = useState(false);
-//   const [isUploading, setIsUploading] = useState(false);
-//   const [recordings, setRecordings] = useState<string[]>(initialRecordings);
-
-//   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-//   const chunksRef = useRef<Blob[]>([]);
-//   const tempBlobRef = useRef<Blob | null>(null);
-//   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-//   // ===== 开始录音 =====
-//   const startRecording = async () => {
-//     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-//     const recorder = new MediaRecorder(stream);
-//     mediaRecorderRef.current = recorder;
-
-//     chunksRef.current = [];
-
-//     recorder.ondataavailable = (e) => {
-//       chunksRef.current.push(e.data);
-//     };
-
-//     recorder.onstop = () => {
-//       tempBlobRef.current = new Blob(chunksRef.current, {
-//         type: "audio/webm",
-//       });
-//       setConfirmUpload(true);
-//     };
-
-//     recorder.start();
-//     setRecording(true);
-//     setTimeLeft(maxDuration);
-
-//     timerRef.current = setInterval(() => {
-//       setTimeLeft((prev) => {
-//         if (prev <= 1) {
-//           stopRecording();
-//           return 0;
-//         }
-//         return prev - 1;
-//       });
-//     }, 1000);
-//   };
-
-//   // ===== 停止录音 =====
-//   const stopRecording = () => {
-//     mediaRecorderRef.current?.stop();
-//     setRecording(false);
-//     if (timerRef.current) clearInterval(timerRef.current);
-//   };
-
-//   // ===== 上传 =====
-//   const uploadRecording = async () => {
-//     if (!tempBlobRef.current) return;
-
-//     setIsUploading(true);
-
-//     const formData = new FormData();
-//     formData.append("file", tempBlobRef.current);
-//     formData.append("questionId", questionId);
-
-//     const res = await fetch(uploadUrl, {
-//       method: "POST",
-//       body: formData,
-//     });
-
-//     const data = await res.json();
-
-//     setRecordings((prev) => [...prev, data.audioUrl]);
-
-//     setIsUploading(false);
-//     setConfirmUpload(false);
-//     tempBlobRef.current = null;
-//   };
-
-//   return (
-//     <div className="space-y-4">
-//       {/* ===== 录音按钮 ===== */}
-//       {!recording ? (
-//         <button onClick={startRecording} className="btn-card">
-//           开始录音
-//         </button>
-//       ) : (
-//         <div className="flex flex-col items-center gap-2">
-//           <div>{timeLeft}s</div>
-//           <button onClick={stopRecording} className="btn-primary">
-//             结束
-//           </button>
-//         </div>
-//       )}
-
-//       {/* ===== 上传确认 ===== */}
-//       {confirmUpload && (
-//         <div className="flex gap-3">
-//           <button onClick={uploadRecording} className="btn-primary">
-//             {isUploading ? "上传中..." : "上传"}
-//           </button>
-//           <button onClick={() => setConfirmUpload(false)} className="btn-secondary">
-//             取消
-//           </button>
-//         </div>
-//       )}
-
-//       {/* ===== 播放列表 ===== */}
-//       {recordings.map((url, i) => (
-//         <audio key={i} controls src={url} />
-//       ))}
-//     </div>
-//   );
-// }

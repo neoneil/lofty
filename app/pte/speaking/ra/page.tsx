@@ -35,6 +35,7 @@ export default async function PteSpeakingPage() {
   const { supabase } = await requireUser("/pte/speaking/ra");
 
   const { data: questionsData, error: questionsError } = await supabase
+    .schema("views")   
     .from("v_pte_ra_with_user_status")
     .select("*")
     .eq("question_type", "RA")
@@ -89,32 +90,3 @@ export default async function PteSpeakingPage() {
   );
 }
 
-// import Container from "@/components/site/container";
-// import PTESidebar from "@/components/site/pte-sidebar";
-// import { requireUser } from "@/lib/auth/require-user";
-// import RaPracticeList from "./ra-practice-list";
-
-// export default async function PteSpeakingRaPage() {
-//   const { supabase } = await requireUser("/pte/speaking/ra");
-
-//   const { data: questionsData, error } = await supabase
-//     .schema("pte")
-//     .from("ra")
-//     .select("*")
-//     .order("created_at", { ascending: false });
-
-//   return (
-//     <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
-//       <Container>
-//         {error ? (
-//           <div className="text-red-500">RA 加载失败</div>
-//         ) : (
-//           <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] mt-5">
-//             <PTESidebar currentMain="speaking" currentSub="ra" />
-//             <RaPracticeList initialQuestions={questionsData ?? []} />
-//           </div>
-//         )}
-//       </Container>
-//     </main>
-//   );
-// }

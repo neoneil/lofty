@@ -37,6 +37,7 @@ export default async function PteListeningSstPage() {
   const { supabase } = await requireUser("/pte/listening/sst");
 
   const { data: questionsData, error: questionsError } = await supabase
+    .schema("views")
     .from("v_pte_sst_with_user_status")
     .select("*")
     .eq("question_type", "SST")

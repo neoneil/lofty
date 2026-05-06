@@ -34,12 +34,13 @@ export default async function PteListeningPage() {
   const { supabase } = await requireUser("/pte/listening/wfd");
 
   const { data: questionsData, error: questionsError } = await supabase
+    .schema("views")
     .from("v_pte_wfd_with_user_status")
     .select("*")
     .eq("question_type", "WFD")
     .eq("is_prediction", true)
     .order("created_at", { ascending: false })
-    .limit(500);
+    .limit(1500);
 
   const questions = (questionsData ?? []).map((q) => ({
     ...q,

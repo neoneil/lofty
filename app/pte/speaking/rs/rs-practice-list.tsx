@@ -6,19 +6,15 @@ type Question = {
     id: string;
     question_text: string;
     question_type: string;
-    source_platform: string | null;
     source_question_id: string | null;
     difficulty_level: string | null;
-    tags: string[] | null;
     is_prediction: boolean | null;
     audio_url: string | null;
     audio_duration_seconds: number | null;
-    ai_voice: string | null;
-    usage_count: number | null;
     created_at: string;
     updated_at: string;
     is_real_exam: boolean | null;
-
+    
     is_practiced: boolean;
     attempt_count: number;
     correct_count: number;
@@ -560,16 +556,6 @@ export default function WfdPracticeList({
                                         ) : null}
                                     </div>
 
-                                    {item.tags?.length ? (
-                                        <div className="mt-3 flex flex-wrap gap-2">
-                                            {item.tags.map((tag) => (
-                                                <Tag key={tag} tone="neutral">
-                                                    {tag}
-                                                </Tag>
-                                            ))}
-                                        </div>
-                                    ) : null}
-
                                     <div
                                         className={`overflow-hidden transition-all duration-400 ease-in-out ${open ? "max-h-[1200px] opacity-100 mt-5" : "max-h-0 opacity-0"
                                             }`}
@@ -578,7 +564,8 @@ export default function WfdPracticeList({
                                             <div className="mb-4 flex flex-wrap items-center gap-3">
                                                 {item.audio_url ? (
                                                     <AudioPlayer
-                                                        src={getPublicAudioUrl(item.audio_url)}
+                                                        //src={getPublicAudioUrl(item.audio_url)}
+                                                        src={item.audio_url}
                                                         title={item.question_text}
                                                         practiceMode={practiceMode}
                                                     />
