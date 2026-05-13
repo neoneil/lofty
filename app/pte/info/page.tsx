@@ -1,6 +1,6 @@
 
 "use client";
-
+import { Fragment } from "react";
 type Row = {
     id: number;
     type: string;
@@ -82,7 +82,7 @@ export default function PteTable() {
                                 if (rows.length === 0) return null;
 
                                 return (
-                                    <>
+                                    <Fragment key={section.key}>
                                         {/* SECTION TITLE */}
                                         <tr key={section.key}>
                                             <td
@@ -136,7 +136,7 @@ export default function PteTable() {
                                                 </td>
                                             </tr>
                                         ))}
-                                    </>
+                                    </Fragment>
                                 );
                             })}
                         </tbody>

@@ -76,6 +76,11 @@ export default async function Navbar() {
       tooltip: "",
     },
     {
+      href: "/pteTest/listening/wfd",
+      label: "PTETest",
+      tooltip: "",
+    },
+    {
       href: "/ielts/speaking",
       label: "雅思在线练习",
       tooltip: "",
