@@ -167,3 +167,19 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+mark {
+
+  background:
+    rgba(47, 74, 63, 0.15);
+
+  color:
+    var(--theme);
+
+  padding: 1px 4px;
+
+  border-radius: 6px;
+
+  font-weight: 700;
+}

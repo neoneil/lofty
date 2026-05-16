@@ -4,6 +4,9 @@ import Navbar from "@/components/site/navbar";
 import Footer from "@/components/site/footer";
 import { Analytics } from "@vercel/analytics/next";
 import ChatWidget from '@/components/chat/ChatWidget';
+import { DictionaryProvider } from "@/components/dictionary/dictionary-context";
+import DictionaryPopup from "@/components/dictionary/dictionary-popup";
+import SearchProvider from "@/components/search/search-provider";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.loftypte.com.au"),
   title: {
@@ -49,11 +52,11 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
-  ],
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+    ],
     shortcut: "/favicon-32x32.png",
-    apple: "/favicon-32x32.png", 
+    apple: "/favicon-32x32.png",
   },
 };
 
@@ -73,7 +76,13 @@ export default function RootLayout({
           <Navbar />
           <div className="pointer-events-none fixed left-0 top-0 z-40 h-40 w-full bg-gradient-to-b from-white via-white/100 to-transparent" />
           <div className="flex-1 pt-14 lg:pt-16">
-            {children}
+            <DictionaryProvider>
+              <SearchProvider />
+              {children}
+
+              <DictionaryPopup />
+
+            </DictionaryProvider>
             <ChatWidget />
           </div>
           <Footer />

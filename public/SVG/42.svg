@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<rect x="56.8" y="328.3" fill="#84DBFF" width="402.2" height="43.2"/>
+		</g>
+		<g>
+			<rect x="56.8" y="328.3" fill="#54C0EB" width="402.2" height="21.6"/>
+		</g>
+		<polygon fill="#FFD15C" points="56.8,328.3 56.8,371.5 33.2,360.6 29.5,359 9.7,349.9 29.5,340.9 33.2,339.2 		"/>
+		<polygon fill="#334A5E" points="29.5,340.9 29.5,359 9.7,349.9 		"/>
+		<rect x="458.9" y="328.3" fill="#40596B" width="15.6" height="43.2"/>
+		<path fill="#FF7058" d="M486.6,328.3h-12.1v43.2h12.1c8.7,0,15.7-7,15.7-15.7v-11.8C502.4,335.4,495.3,328.3,486.6,328.3z"/>
+	</g>
+	<g>
+		<rect x="2" y="211.5" fill="#FFD15C" width="508" height="95.7"/>
+		<path fill="#FFD15C" d="M256,95.7c63.8,0,115.7,51.9,115.8,115.8H454c0-109.3-88.6-198-198-198c-109.3,0-198,88.6-198,198h82.2
+			C140.3,147.6,192.2,95.7,256,95.7z"/>
+		<rect x="473.4" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="436.7" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="400" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="363.2" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="326.5" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="289.8" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="253.1" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="216.3" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="179.6" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="142.9" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="106.2" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+		<rect x="69.5" y="270" fill="#FF7058" width="5.9" height="37.1"/>
+		<rect x="32.7" y="283.9" fill="#FF7058" width="5.9" height="23.3"/>
+	</g>
+	<g>
+		<rect x="2" y="402.7" fill="#CDD6E0" width="508" height="95.8"/>
+		<rect x="2" y="402.7" fill="#F2F2F2" width="508" height="36.3"/>
+		<rect x="473.4" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="436.6" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="399.9" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="363.2" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="326.5" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="289.8" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="253" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="216.3" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="179.6" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="142.9" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="106.1" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+		<rect x="69.4" y="472" fill="#ACB3BA" width="5.9" height="26.6"/>
+		<rect x="32.7" y="485.8" fill="#ACB3BA" width="5.9" height="12.7"/>
+	</g>
+</g>
+</svg>

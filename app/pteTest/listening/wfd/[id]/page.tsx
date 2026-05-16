@@ -1,10 +1,10 @@
 import Link from "next/link";
-import AudioPlayer from "@/components/site/AudioPlayer";
+import AudioPlayer from "@/components/site/AudioPlayer3";
 import Container from "@/components/site/container";
 import PTESidebar from "@/components/site/pte-sidebar";
 import { requireUser } from "@/lib/auth/require-user";
 import WfdDetailClient from "./wfd-detail-client";
-
+import DictionaryText from "@/components/dictionary/dictionary-text"; // dictionary 查词
 type PageProps = {
     params: Promise<{
         id: string;
@@ -130,7 +130,9 @@ export default async function WfdQuestionDetailPage({
 
                             {/* Question Text */}
                             <div className="rounded-2xl bg-gray-50 px-5 py-5 text-[18px] leading-9 text-gray-800">
-                                {question.question_text}
+                                <DictionaryText
+                                                text={question.question_text}
+                                            />
                             </div>
 
                             {/* Stats */}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g>
+	<path fill="#40596B" d="M508,397.7H4c-1.1,0-2-0.9-2-2V45.2c0-1.1,0.9-2,2-2h504c1.1,0,2,0.9,2,2v350.6
+		C510,396.8,509.1,397.7,508,397.7z"/>
+	<path fill="#F2F2F2" d="M256,380.1H21c-1.1,0-2-0.9-2-2V4.9c0-1.1,0.9-2,2-2h231c2.2,0,4,1.8,4,4V380.1z"/>
+	<path fill="#CDD6E0" d="M491,380.1H256V6.9c0-2.2,1.8-4,4-4h231c1.1,0,2,0.9,2,2v373.2C493,379.2,492.1,380.1,491,380.1z"/>
+	<rect x="47.9" y="196.7" fill="#CDD6E0" width="179.2" height="23"/>
+	<rect x="47.9" y="250.2" fill="#CDD6E0" width="179.2" height="23"/>
+	<rect x="47.9" y="303.8" fill="#CDD6E0" width="179.2" height="23"/>
+	<g>
+		<rect x="284.9" y="43.2" fill="#F2F2F2" width="179.2" height="23"/>
+		<rect x="284.9" y="96.7" fill="#F2F2F2" width="179.2" height="23"/>
+		<rect x="284.9" y="150.3" fill="#F2F2F2" width="179.2" height="23"/>
+		<rect x="284.9" y="203.8" fill="#F2F2F2" width="179.2" height="23"/>
+	</g>
+	<rect x="47.9" y="43.2" fill="#84DBFF" width="106.2" height="106.2"/>
+	<g>
+		<path fill="#FFD15C" d="M342.4,290.5c-5.4-7.2-17.5-17.9-27.2-17.9c-16.3,0-29.6,13.2-29.6,29.6c0-8.2-3.3-15.6-8.7-20.9
+			c-5.3-5.3-12.8-8.6-20.9-8.6c-16.4,0-29.6,13.2-29.6,29.6c0-16.4-13.3-29.6-29.6-29.6c-9.7,0-21.3,9.7-26.7,16.8l55.5-101.3
+			l30.4-55.9l30.4,55.9L342.4,290.5z"/>
+		<polygon fill="#334A5E" points="286.4,188.2 225.6,188.2 256,132.3 		"/>
+		<path fill="#FF7058" d="M226.4,509.1V302.3c0-16.4-13.3-29.6-29.6-29.6h0c-16.4,0-29.6,13.3-29.6,29.6v206.8H226.4z"/>
+		<path fill="#F1543F" d="M285.6,509.1V302.3c0-16.4-13.3-29.6-29.6-29.6h0c-16.4,0-29.6,13.3-29.6,29.6v206.8H285.6z"/>
+		<path fill="#FF7058" d="M344.8,509.1V302.3c0-16.4-13.3-29.6-29.6-29.6l0,0c-16.4,0-29.6,13.3-29.6,29.6v206.8l0,0L344.8,509.1
+			L344.8,509.1z"/>
+	</g>
+</g>
+</svg>

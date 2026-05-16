@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 type Question = {
@@ -234,8 +234,8 @@ function AudioPlayer({
                 <div className="min-w-0">
                     <div
                         className={`text-sm font-semibold transition ${practiceMode === "test"
-                                ? "select-none text-gray-400 blur-[5px]"
-                                : "text-gray-900"
+                            ? "select-none text-gray-400 blur-[5px]"
+                            : "text-gray-900"
                             }`}
                     >
                         {title}
@@ -461,187 +461,192 @@ export default function WfdPracticeList({
                     const open = openId === item.id;
 
                     return (
-                        <article
+                        <Link
                             key={item.id}
-                            className="question-card border-b border-gray-100 px-5 py-5 last:border-b-0 sm:px-6"
+                            href={`/pte/listening/wfd/${item.id}`}
+                            className="block"
                         >
-                            <div className="flex items-start justify-between gap-4">
-                                <div className="min-w-0 flex-1">
-                                    <div className="mb-3 flex flex-wrap items-center gap-2">
-                                        <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[var(--theme)] text-xs font-bold text-white px-2">
-                                            {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
-                                        </span>
-                                        <Tag tone="theme">WFD</Tag>
+                            <article
+                                className="question-card border-b border-gray-100 px-5 py-5 last:border-b-0 sm:px-6"
+                            >
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="min-w-0 flex-1">
+                                        <div className="mb-3 flex flex-wrap items-center gap-2">
+                                            <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[var(--theme)] text-xs font-bold text-white px-2">
+                                                {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
+                                            </span>
+                                            <Tag tone="theme">WFD</Tag>
 
-                                        {item.is_prediction ? <Tag tone="purple">Prediction</Tag> : null}
-                                        {item.is_real_exam ? <Tag tone="yellow">Real Exam</Tag> : null}
+                                            {item.is_prediction ? <Tag tone="purple">Prediction</Tag> : null}
+                                            {item.is_real_exam ? <Tag tone="yellow">Real Exam</Tag> : null}
 
-                                        {item.is_practiced ? (
-                                            <Tag tone="green">已练</Tag>
-                                        ) : (
-                                            <Tag tone="neutral">未练</Tag>
-                                        )}
+                                            {item.is_practiced ? (
+                                                <Tag tone="green">已练</Tag>
+                                            ) : (
+                                                <Tag tone="neutral">未练</Tag>
+                                            )}
 
-                                        {item.is_wrong_question ? <Tag tone="pink">错题</Tag> : null}
+                                            {item.is_wrong_question ? <Tag tone="pink">错题</Tag> : null}
 
-                                        {item.source_question_id ? (
-                                            <Tag tone="neutral">#{item.source_question_id}</Tag>
-                                        ) : null}
-                                    </div>
-
-                                    <p
-                                        className={`text-[17px] leading-8 sm:text-[19px] transition ${practiceMode === "test"
-                                            ? "select-none text-gray-400 blur-[5px]"
-                                            : "text-gray-800"
-                                            }`}
-                                        aria-label={
-                                            practiceMode === "test" ? "题目已模糊显示" : item.question_text
-                                        }
-                                    >
-                                        {item.question_text}
-                                    </p>
-
-                                    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
-                                        <span>词数：{getWordCount(item.question_text)}</span>
-
-                                        {item.audio_duration_seconds ? (
-                                            <span>时长：{item.audio_duration_seconds}s</span>
-                                        ) : null}
-
-                                        <span>我的练习：{item.attempt_count ?? 0} 次</span>
-                                        <span>答对：{item.correct_count ?? 0}</span>
-                                        <span>答错：{item.wrong_count ?? 0}</span>
-                                        <span>最近练习：{formatDateTime(item.last_attempt_at)}</span>
-
-                                        {typeof item.best_score === "number" ? (
-                                            <span>最佳分：{item.best_score}</span>
-                                        ) : null}
-
-                                        {typeof item.latest_score === "number" ? (
-                                            <span>最近分：{item.latest_score}</span>
-                                        ) : null}
-                                    </div>
-
-                                    {item.tags?.length ? (
-                                        <div className="mt-3 flex flex-wrap gap-2">
-                                            {item.tags.map((tag) => (
-                                                <Tag key={tag} tone="neutral">
-                                                    {tag}
-                                                </Tag>
-                                            ))}
+                                            {item.source_question_id ? (
+                                                <Tag tone="neutral">#{item.source_question_id}</Tag>
+                                            ) : null}
                                         </div>
-                                    ) : null}
 
-                                    <div
-                                        className={`overflow-hidden transition-all duration-400 ease-in-out ${open ? "max-h-[1200px] opacity-100 mt-5" : "max-h-0 opacity-0"
-                                            }`}
-                                    >
-                                        <div className="rounded-2xl border border-gray-200 bg-[#faf8f4] p-4">
-                                            <div className="mb-4 flex flex-wrap items-center gap-3">
-                                                {item.audio_url ? (
-                                                    <AudioPlayer
-                                                        src={getPublicAudioUrl(item.audio_url)}
-                                                        title={item.question_text}
-                                                        practiceMode={practiceMode}
-                                                    />
-                                                ) : (
-                                                    <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
-                                                        当前题目音频暂未生成。
-                                                    </div>
-                                                )}
+                                        <p
+                                            className={`text-[17px] leading-8 sm:text-[19px] transition ${practiceMode === "test"
+                                                ? "select-none text-gray-400 blur-[5px]"
+                                                : "text-gray-800"
+                                                }`}
+                                            aria-label={
+                                                practiceMode === "test" ? "题目已模糊显示" : item.question_text
+                                            }
+                                        >
+                                            {item.question_text}
+                                        </p>
+
+                                        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
+                                            <span>词数：{getWordCount(item.question_text)}</span>
+
+                                            {item.audio_duration_seconds ? (
+                                                <span>时长：{item.audio_duration_seconds}s</span>
+                                            ) : null}
+
+                                            <span>我的练习：{item.attempt_count ?? 0} 次</span>
+                                            <span>答对：{item.correct_count ?? 0}</span>
+                                            <span>答错：{item.wrong_count ?? 0}</span>
+                                            <span>最近练习：{formatDateTime(item.last_attempt_at)}</span>
+
+                                            {typeof item.best_score === "number" ? (
+                                                <span>最佳分：{item.best_score}</span>
+                                            ) : null}
+
+                                            {typeof item.latest_score === "number" ? (
+                                                <span>最近分：{item.latest_score}</span>
+                                            ) : null}
+                                        </div>
+
+                                        {item.tags?.length ? (
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {item.tags.map((tag) => (
+                                                    <Tag key={tag} tone="neutral">
+                                                        {tag}
+                                                    </Tag>
+                                                ))}
                                             </div>
+                                        ) : null}
 
-                                            <textarea
-                                                value={answers[item.id] ?? ""}
-                                                onChange={(e) =>
-                                                    setAnswers((prev) => ({
-                                                        ...prev,
-                                                        [item.id]: e.target.value,
-                                                    }))
-                                                }
-                                                placeholder="请输入你听到的句子"
-                                                className="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none focus:border-[var(--theme)]"
-                                            />
+                                        <div
+                                            className={`overflow-hidden transition-all duration-400 ease-in-out ${open ? "max-h-[1200px] opacity-100 mt-5" : "max-h-0 opacity-0"
+                                                }`}
+                                        >
+                                            <div className="rounded-2xl border border-gray-200 bg-[#faf8f4] p-4">
+                                                <div className="mb-4 flex flex-wrap items-center gap-3">
+                                                    {item.audio_url ? (
+                                                        <AudioPlayer
+                                                            src={getPublicAudioUrl(item.audio_url)}
+                                                            title={item.question_text}
+                                                            practiceMode={practiceMode}
+                                                        />
+                                                    ) : (
+                                                        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                                                            当前题目音频暂未生成。
+                                                        </div>
+                                                    )}
+                                                </div>
 
-                                            <div className="mt-4 flex gap-3">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => handleSubmit(item)}
-                                                    disabled={loadingId === item.id}
-                                                    className="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
-                                                >
-                                                    {loadingId === item.id ? "提交中..." : "确认答案"}
-                                                </button>
-                                            </div>
+                                                <textarea
+                                                    value={answers[item.id] ?? ""}
+                                                    onChange={(e) =>
+                                                        setAnswers((prev) => ({
+                                                            ...prev,
+                                                            [item.id]: e.target.value,
+                                                        }))
+                                                    }
+                                                    placeholder="请输入你听到的句子"
+                                                    className="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none focus:border-[var(--theme)]"
+                                                />
 
-                                            {result ? (
-                                                <div className="mt-5 space-y-3">
-                                                    <div className="text-sm text-gray-600">
-                                                        <span className="font-semibold text-[var(--theme)]">
-                                                            本次得分：
-                                                        </span>{" "}
-                                                        {result.scoreDisplay}
-                                                    </div>
+                                                <div className="mt-4 flex gap-3">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleSubmit(item)}
+                                                        disabled={loadingId === item.id}
+                                                        className="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
+                                                    >
+                                                        {loadingId === item.id ? "提交中..." : "确认答案"}
+                                                    </button>
+                                                </div>
 
-                                                    <div className="text-sm text-gray-600">
-                                                        <span className="font-semibold text-[var(--theme)]">
-                                                            标准答案：
-                                                        </span>{" "}
-                                                        {result.correctAnswer}
-                                                    </div>
+                                                {result ? (
+                                                    <div className="mt-5 space-y-3">
+                                                        <div className="text-sm text-gray-600">
+                                                            <span className="font-semibold text-[var(--theme)]">
+                                                                本次得分：
+                                                            </span>{" "}
+                                                            {result.scoreDisplay}
+                                                        </div>
 
-                                                    <div className="rounded-2xl border border-gray-200 bg-white p-4 text-[15px] leading-8">
-                                                        {result.tokens.map((token, index) => {
-                                                            if (token.type === "correct") {
-                                                                return (
-                                                                    <span key={index} className="mr-2 text-gray-800">
-                                                                        {token.text}
-                                                                    </span>
-                                                                );
-                                                            }
+                                                        <div className="text-sm text-gray-600">
+                                                            <span className="font-semibold text-[var(--theme)]">
+                                                                标准答案：
+                                                            </span>{" "}
+                                                            {result.correctAnswer}
+                                                        </div>
 
-                                                            if (token.type === "missing") {
+                                                        <div className="rounded-2xl border border-gray-200 bg-white p-4 text-[15px] leading-8">
+                                                            {result.tokens.map((token, index) => {
+                                                                if (token.type === "correct") {
+                                                                    return (
+                                                                        <span key={index} className="mr-2 text-gray-800">
+                                                                            {token.text}
+                                                                        </span>
+                                                                    );
+                                                                }
+
+                                                                if (token.type === "missing") {
+                                                                    return (
+                                                                        <span
+                                                                            key={index}
+                                                                            className="mr-2 font-semibold text-red-600"
+                                                                        >
+                                                                            {token.text}
+                                                                        </span>
+                                                                    );
+                                                                }
+
                                                                 return (
                                                                     <span
                                                                         key={index}
-                                                                        className="mr-2 font-semibold text-red-600"
+                                                                        className="mr-2 text-gray-500 line-through"
                                                                     >
                                                                         {token.text}
                                                                     </span>
                                                                 );
-                                                            }
+                                                            })}
+                                                        </div>
 
-                                                            return (
-                                                                <span
-                                                                    key={index}
-                                                                    className="mr-2 text-gray-500 line-through"
-                                                                >
-                                                                    {token.text}
-                                                                </span>
-                                                            );
-                                                        })}
+                                                        <div className="text-xs text-gray-500">
+                                                            红色 = 你漏掉的词；删除线 = 你多写的词
+                                                        </div>
                                                     </div>
-
-                                                    <div className="text-xs text-gray-500">
-                                                        红色 = 你漏掉的词；删除线 = 你多写的词
-                                                    </div>
-                                                </div>
-                                            ) : null}
+                                                ) : null}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="shrink-0">
-                                    <button
-                                        type="button"
-                                        onClick={() => handleStart(item.id)}
-                                        className="cursor-pointer rounded-2xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
-                                    >
-                                        {open ? "收起练习" : "开始练习"}
-                                    </button>
+                                    <div className="shrink-0">
+                                        <button
+                                            type="button"
+                                            onClick={() => handleStart(item.id)}
+                                            className="cursor-pointer rounded-2xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                                        >
+                                            {open ? "收起练习" : "开始练习"}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </Link>
                     );
                 })}
             </div>
