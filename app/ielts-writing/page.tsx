@@ -68,7 +68,7 @@ export default function IELTSWritingPage() {
               value={promptQuestion}
               onChange={(e) => setPromptQuestion(e.target.value)}
               placeholder="Paste the IELTS Task 2 prompt here..."
-              className="min-h-30 w-full rounded-xl border border-gray-300 p-3 outline-none focus:border-black"
+              className="min-h-30 w-full rounded border border-gray-300 p-3 outline-none focus:border-black"
               required
             />
           </div>
@@ -81,7 +81,7 @@ export default function IELTSWritingPage() {
               value={essayText}
               onChange={(e) => setEssayText(e.target.value)}
               placeholder="Paste the student's essay here..."
-              className="min-h-65 w-full rounded-xl border border-gray-300 p-3 outline-none focus:border-black"
+              className="min-h-65 w-full rounded border border-gray-300 p-3 outline-none focus:border-black"
               required
             />
           </div>
@@ -98,20 +98,20 @@ export default function IELTSWritingPage() {
               value={targetBand}
               onChange={(e) => setTargetBand(e.target.value)}
               placeholder="e.g. 6.5"
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none focus:border-black"
+              className="w-full rounded border border-gray-300 p-3 outline-none focus:border-black"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Checking..." : "Check Essay"}
           </button>
 
           {error ? (
-            <p className="rounded-xl bg-red-50 p-3 text-sm text-red-600">
+            <p className="rounded bg-red-50 p-3 text-sm text-red-600">
               {error}
             </p>
           ) : null}
@@ -122,14 +122,14 @@ export default function IELTSWritingPage() {
             <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Overall Result</h2>
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <p className="text-sm text-gray-500">Estimated Overall Band</p>
                   <p className="mt-2 text-3xl font-bold">
                     {result.estimated_overall_band}
                   </p>
                 </div>
 
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <p className="text-sm text-gray-500">Word Count</p>
                   <p className="mt-2 text-3xl font-bold">{result.word_count}</p>
                 </div>
@@ -193,7 +193,7 @@ export default function IELTSWritingPage() {
                       (item, index) => (
                         <li
                           key={index}
-                          className="rounded-xl bg-gray-50 p-3"
+                          className="rounded bg-gray-50 p-3"
                         >
                           {item}
                         </li>
@@ -209,7 +209,7 @@ export default function IELTSWritingPage() {
                       (item, index) => (
                         <li
                           key={index}
-                          className="rounded-xl bg-gray-50 p-3"
+                          className="rounded bg-gray-50 p-3"
                         >
                           {item}
                         </li>
@@ -229,10 +229,10 @@ export default function IELTSWritingPage() {
                     className="rounded-2xl border border-gray-200 p-4"
                   >
                     <div className="mb-3 flex flex-wrap items-center gap-2">
-                      <span className="rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
+                      <span className="rounded bg-black px-3 py-1 text-xs font-semibold text-white">
                         Paragraph {para.paragraph_number}
                       </span>
-                      <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
+                      <span className="rounded bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
                         {para.paragraph_role}
                       </span>
                     </div>
@@ -260,7 +260,7 @@ export default function IELTSWritingPage() {
                     className="rounded-2xl border border-gray-200 p-4"
                   >
                     <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
+                      <span className="rounded bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
                         {issue.issue_type}
                       </span>
                     </div>
@@ -317,19 +317,19 @@ export default function IELTSWritingPage() {
             <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Revision Plan</h2>
               <div className="space-y-3 text-sm text-gray-700">
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <span className="font-semibold">Priority 1:</span>{" "}
                   {result.revision_plan.priority_1}
                 </div>
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <span className="font-semibold">Priority 2:</span>{" "}
                   {result.revision_plan.priority_2}
                 </div>
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <span className="font-semibold">Priority 3:</span>{" "}
                   {result.revision_plan.priority_3}
                 </div>
-                <div className="rounded-xl bg-gray-50 p-4">
+                <div className="rounded bg-gray-50 p-4">
                   <span className="font-semibold">Next Step Advice:</span>{" "}
                   {result.revision_plan.next_step_advice}
                 </div>
@@ -378,12 +378,12 @@ function ListBlock({ title, items }: { title: string; items: string[] }) {
       <ul className="space-y-2">
         {items.length > 0 ? (
           items.map((item, index) => (
-            <li key={index} className="rounded-xl bg-gray-50 p-3 text-sm">
+            <li key={index} className="rounded bg-gray-50 p-3 text-sm">
               {item}
             </li>
           ))
         ) : (
-          <li className="rounded-xl bg-gray-50 p-3 text-sm text-gray-500">
+          <li className="rounded bg-gray-50 p-3 text-sm text-gray-500">
             None
           </li>
         )}

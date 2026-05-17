@@ -136,7 +136,7 @@ function PaginationButton({
 }) {
     if (disabled) {
         return (
-            <span className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 px-4 text-sm font-medium text-gray-400">
+            <span className="inline-flex h-11 min-w-11 items-center justify-center rounded border border-gray-200 bg-gray-100 px-4 text-sm font-medium text-gray-400">
                 {children}
             </span>
         );
@@ -146,7 +146,7 @@ function PaginationButton({
         <button
             type="button"
             onClick={onClick}
-            className={`inline-flex h-11 min-w-11 items-center justify-center rounded-xl border px-4 text-sm font-semibold transition ${active
+            className={`inline-flex h-11 min-w-11 items-center justify-center rounded border px-4 text-sm font-semibold transition ${active
                 ? "border-[var(--theme)] bg-[var(--theme)] text-white"
                 : "border-gray-200 bg-white text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                 }`}
@@ -251,7 +251,7 @@ function AudioPlayer({
                             key={rate}
                             type="button"
                             onClick={() => changeRate(rate)}
-                            className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${playbackRate === rate
+                            className={`rounded px-3 py-1.5 text-xs font-semibold transition ${playbackRate === rate
                                 ? "bg-[var(--theme)] text-white"
                                 : "border border-gray-200 bg-white text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                                 }`}
@@ -284,7 +284,7 @@ function AudioPlayer({
                     step={0.1}
                     value={currentTime}
                     onChange={(e) => handleSeek(Number(e.target.value))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-[var(--theme)]"
+                    className="h-2 w-full cursor-pointer appearance-none rounded bg-gray-200 accent-[var(--theme)]"
                     aria-label="音频进度条"
                 />
             </div>
@@ -468,7 +468,7 @@ export default function WfdPracticeList({
                             <div className="flex items-start justify-between gap-4">
                                 <div className="min-w-0 flex-1">
                                     <div className="mb-3 flex flex-wrap items-center gap-2">
-                                        <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[var(--theme)] text-xs font-bold text-white px-2">
+                                        <span className="inline-flex h-7 min-w-7 items-center justify-center rounded bg-[var(--theme)] text-xs font-bold text-white px-2">
                                             {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                                         </span>
                                         <Tag tone="theme">WFD</Tag>

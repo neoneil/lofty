@@ -29,7 +29,7 @@ export default function LogoutButton() {
       z-50
       mt-2
       -translate-x-1/2
-      rounded-xl
+      rounded
       px-3
       py-1.5
       text-xs

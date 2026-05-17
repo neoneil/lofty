@@ -473,19 +473,19 @@ export default function SelectiveHistoryPage() {
                     <span className="text-lg font-semibold text-(--text-main)">
                       {user.fullName}
                     </span>
-                    <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                    <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                       Writing {writingCount}
                     </span>
-                    <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                    <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                       Math {mathCount}
                     </span>
-                    <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                    <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                       QR {qrCount}
                     </span>
-                    <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                    <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                       Reading {readingCount}
                     </span>
-                    <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                    <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                       Verbal {verbalCount}
                     </span>
                   </div>
@@ -502,7 +502,7 @@ export default function SelectiveHistoryPage() {
                     <section className="space-y-4">
                       <div className="flex items-center justify-between gap-4">
                         <h3 className="text-xl font-bold text-(--text-main)">Writing</h3>
-                        <span className="rounded-xl bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
+                        <span className="rounded bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
                           {group.writingItems.length} submission
                           {group.writingItems.length > 1 ? "s" : ""}
                         </span>
@@ -524,18 +524,18 @@ export default function SelectiveHistoryPage() {
 
                               <div className="flex flex-wrap gap-2">
                                 {item.question_type && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.question_type}
                                   </span>
                                 )}
                                 {item.difficulty_level && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.difficulty_level}
                                   </span>
                                 )}
                                 {item.overall_score !== null &&
                                   item.overall_score !== undefined && (
-                                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+                                    <span className="rounded bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
                                       Overall {item.overall_score}/10
                                     </span>
                                   )}
@@ -543,28 +543,28 @@ export default function SelectiveHistoryPage() {
                             </div>
 
                             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Submitted</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {formatDateTime(item.submitted_at)}
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Reviewed</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {formatDateTime(item.reviewed_at)}
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Word Count</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {item.word_count ?? "-"}
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Submission ID</p>
                                 <p className="mt-1 break-all font-medium text-(--text-main)">
                                   {item.submission_id}
@@ -612,7 +612,7 @@ export default function SelectiveHistoryPage() {
                                   ].map(([label, value]) => (
                                     <div
                                       key={label}
-                                      className="rounded-xl bg-gray-50 px-4 py-3"
+                                      className="rounded bg-gray-50 px-4 py-3"
                                     >
                                       <p className="text-sm text-(--text-secondary)">
                                         {label}
@@ -635,7 +635,7 @@ export default function SelectiveHistoryPage() {
                                     (item.strengths_en ?? []).map((text, index) => (
                                       <li
                                         key={index}
-                                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                       >
                                         {text}
                                       </li>
@@ -651,7 +651,7 @@ export default function SelectiveHistoryPage() {
                                     (item.strengths_zh ?? []).map((text, index) => (
                                       <li
                                         key={index}
-                                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                       >
                                         {text}
                                       </li>
@@ -671,7 +671,7 @@ export default function SelectiveHistoryPage() {
                                     (item.improvements_en ?? []).map((text, index) => (
                                       <li
                                         key={index}
-                                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                       >
                                         {text}
                                       </li>
@@ -687,7 +687,7 @@ export default function SelectiveHistoryPage() {
                                     (item.improvements_zh ?? []).map((text, index) => (
                                       <li
                                         key={index}
-                                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                       >
                                         {text}
                                       </li>
@@ -726,7 +726,7 @@ export default function SelectiveHistoryPage() {
                     <section className="space-y-4">
                       <div className="flex items-center justify-between gap-4">
                         <h3 className="text-xl font-bold text-(--text-main)">Mathematics</h3>
-                        <span className="rounded-xl bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
+                        <span className="rounded bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
                           {group.mathItems.length} attempt
                           {group.mathItems.length > 1 ? "s" : ""}
                         </span>
@@ -748,28 +748,28 @@ export default function SelectiveHistoryPage() {
 
                               <div className="flex flex-wrap gap-2">
                                 {item.question_type && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.question_type.replace(/_/g, " ")}
                                   </span>
                                 )}
                                 {item.topic_category && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.topic_category.replace(/_/g, " ")}
                                   </span>
                                 )}
                                 {item.subtopic && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.subtopic.replace(/_/g, " ")}
                                   </span>
                                 )}
                                 {item.difficulty_level && (
-                                  <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                  <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                     {item.difficulty_level}
                                   </span>
                                 )}
                                 {item.is_correct !== null && item.is_correct !== undefined && (
                                   <span
-                                    className={`rounded-full px-3 py-1 text-sm font-medium ${
+                                    className={`rounded px-3 py-1 text-sm font-medium ${
                                       item.is_correct
                                         ? "bg-emerald-50 text-emerald-700"
                                         : "bg-amber-50 text-amber-700"
@@ -782,14 +782,14 @@ export default function SelectiveHistoryPage() {
                             </div>
 
                             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Submitted</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {formatDateTime(item.submitted_at)}
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Score</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {item.score ?? "-"}
@@ -799,14 +799,14 @@ export default function SelectiveHistoryPage() {
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Your Answer</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {item.submitted_answer_text || "-"}
                                 </p>
                               </div>
 
-                              <div className="rounded-xl bg-gray-50 px-4 py-3">
+                              <div className="rounded bg-gray-50 px-4 py-3">
                                 <p className="text-sm text-(--text-secondary)">Correct Answer</p>
                                 <p className="mt-1 font-medium text-(--text-main)">
                                   {item.final_answer || "-"}
@@ -835,7 +835,7 @@ export default function SelectiveHistoryPage() {
                                   {item.hints.map((hint, index) => (
                                     <li
                                       key={index}
-                                      className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                      className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                     >
                                       {hint}
                                     </li>
@@ -851,7 +851,7 @@ export default function SelectiveHistoryPage() {
                                   {item.solution_steps.map((step, index) => (
                                     <li
                                       key={index}
-                                      className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                      className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                     >
                                       <span className="mr-2 font-semibold text-(--text-secondary)">
                                         {index + 1}.
@@ -1155,19 +1155,19 @@ export default function SelectiveHistoryPage() {
 //                     <span className="text-lg font-semibold text-(--text-main)">
 //                       {user.fullName}
 //                     </span>
-//                     <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+//                     <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
 //                       Writing {writingCount}
 //                     </span>
-//                     <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+//                     <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
 //                       Math {mathCount}
 //                     </span>
-//                     <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+//                     <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
 //                       QR {qrCount}
 //                     </span>
-//                     <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+//                     <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
 //                       Reading {readingCount}
 //                     </span>
-//                     <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+//                     <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
 //                       Verbal {verbalCount}
 //                     </span>
 //                   </div>
@@ -1195,18 +1195,18 @@ export default function SelectiveHistoryPage() {
 
 //                         <div className="flex flex-wrap gap-2">
 //                           {item.question_type && (
-//                             <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+//                             <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
 //                               {item.question_type}
 //                             </span>
 //                           )}
 //                           {item.difficulty_level && (
-//                             <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+//                             <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
 //                               {item.difficulty_level}
 //                             </span>
 //                           )}
 //                           {item.overall_score !== null &&
 //                             item.overall_score !== undefined && (
-//                               <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+//                               <span className="rounded bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
 //                                 Overall {item.overall_score}/10
 //                               </span>
 //                             )}
@@ -1214,28 +1214,28 @@ export default function SelectiveHistoryPage() {
 //                       </div>
 
 //                       <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-//                         <div className="rounded-xl bg-gray-50 px-4 py-3">
+//                         <div className="rounded bg-gray-50 px-4 py-3">
 //                           <p className="text-sm text-(--text-secondary)">Submitted</p>
 //                           <p className="mt-1 font-medium text-(--text-main)">
 //                             {formatDateTime(item.submitted_at)}
 //                           </p>
 //                         </div>
 
-//                         <div className="rounded-xl bg-gray-50 px-4 py-3">
+//                         <div className="rounded bg-gray-50 px-4 py-3">
 //                           <p className="text-sm text-(--text-secondary)">Reviewed</p>
 //                           <p className="mt-1 font-medium text-(--text-main)">
 //                             {formatDateTime(item.reviewed_at)}
 //                           </p>
 //                         </div>
 
-//                         <div className="rounded-xl bg-gray-50 px-4 py-3">
+//                         <div className="rounded bg-gray-50 px-4 py-3">
 //                           <p className="text-sm text-(--text-secondary)">Word Count</p>
 //                           <p className="mt-1 font-medium text-(--text-main)">
 //                             {item.word_count ?? "-"}
 //                           </p>
 //                         </div>
 
-//                         <div className="rounded-xl bg-gray-50 px-4 py-3">
+//                         <div className="rounded bg-gray-50 px-4 py-3">
 //                           <p className="text-sm text-(--text-secondary)">Submission ID</p>
 //                           <p className="mt-1 break-all font-medium text-(--text-main)">
 //                             {item.submission_id}
@@ -1281,7 +1281,7 @@ export default function SelectiveHistoryPage() {
 //                               ["Vocabulary", item.vocabulary_score],
 //                               ["Grammar", item.grammar_score],
 //                             ].map(([label, value]) => (
-//                               <div key={label} className="rounded-xl bg-gray-50 px-4 py-3">
+//                               <div key={label} className="rounded bg-gray-50 px-4 py-3">
 //                                 <p className="text-sm text-(--text-secondary)">{label}</p>
 //                                 <p className="mt-1 text-lg font-semibold text-(--text-main)">
 //                                   {value ?? "-"}
@@ -1301,7 +1301,7 @@ export default function SelectiveHistoryPage() {
 //                               (item.strengths_en ?? []).map((text, index) => (
 //                                 <li
 //                                   key={index}
-//                                   className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+//                                   className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
 //                                 >
 //                                   {text}
 //                                 </li>
@@ -1317,7 +1317,7 @@ export default function SelectiveHistoryPage() {
 //                               (item.strengths_zh ?? []).map((text, index) => (
 //                                 <li
 //                                   key={index}
-//                                   className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+//                                   className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
 //                                 >
 //                                   {text}
 //                                 </li>
@@ -1337,7 +1337,7 @@ export default function SelectiveHistoryPage() {
 //                               (item.improvements_en ?? []).map((text, index) => (
 //                                 <li
 //                                   key={index}
-//                                   className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+//                                   className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
 //                                 >
 //                                   {text}
 //                                 </li>
@@ -1353,7 +1353,7 @@ export default function SelectiveHistoryPage() {
 //                               (item.improvements_zh ?? []).map((text, index) => (
 //                                 <li
 //                                   key={index}
-//                                   className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+//                                   className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
 //                                 >
 //                                   {text}
 //                                 </li>

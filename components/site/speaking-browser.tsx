@@ -205,7 +205,7 @@ export default function SpeakingBrowser({
 
                     <div className="flex flex-wrap items-center gap-3">
                         <div
-                            className="rounded-full border px-4 py-2 text-sm text-(--theme)"
+                            className="rounded border px-4 py-2 text-sm text-(--theme)"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {visiblePart1Groups.reduce((sum, group) => sum + group.items.length, 0)} questions
@@ -233,7 +233,7 @@ export default function SpeakingBrowser({
                     </div>
 
                     <div
-                        className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                        className="rounded border px-4 py-2 text-sm text-gray-600"
                         style={{ borderColor: "var(--border)" }}
                     >
                         {part1Questions.length} questions
@@ -316,7 +316,7 @@ export default function SpeakingBrowser({
 
                     <div className="flex flex-wrap items-center gap-3">
                         <div
-                            className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                            className="rounded border px-4 py-2 text-sm text-gray-600"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {visiblePart2Topics.length} Questions
@@ -346,7 +346,7 @@ export default function SpeakingBrowser({
                     </div>
 
                     <div
-                        className="rounded-full border px-4 py-2 text-sm text-gray-600"
+                        className="rounded border px-4 py-2 text-sm text-gray-600"
                         style={{ borderColor: "var(--border)" }}
                     >
                         {part2Topics.length} cards
@@ -436,7 +436,7 @@ export default function SpeakingBrowser({
                                             <div className="space-y-3">
                                                 {cueCards.map((cue, index) => (
                                                     <div key={index} className="flex items-start gap-3">
-                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-(--theme)" />
+                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded bg-(--theme)" />
                                                         <p className="text-sm leading-7 text-(--theme)  sm:text-base">
                                                             {cue}
                                                         </p>

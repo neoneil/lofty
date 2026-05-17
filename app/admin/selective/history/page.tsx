@@ -564,19 +564,19 @@ export default function AdminSelectiveHistoryPage() {
                           <span className="text-lg font-semibold text-(--text-main)">
                             {student.studentName}
                           </span>
-                          <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                          <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                             Writing {writingCount}
                           </span>
-                          <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                          <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                             Math {mathCount}
                           </span>
-                          <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                          <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                             QR {qrCount}
                           </span>
-                          <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                          <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                             Reading {readingCount}
                           </span>
-                          <span className="rounded-full bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
+                          <span className="rounded bg-gray-50 px-3 py-1 text-sm text-(--text-main)">
                             Verbal {verbalCount}
                           </span>
                         </div>
@@ -593,7 +593,7 @@ export default function AdminSelectiveHistoryPage() {
                           <section className="space-y-4">
                             <div className="flex items-center justify-between gap-4">
                               <h3 className="text-xl font-bold text-(--text-main)">Writing</h3>
-                              <span className="rounded-xl bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
+                              <span className="rounded bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
                                 {student.writingItems.length} submission
                                 {student.writingItems.length > 1 ? "s" : ""}
                               </span>
@@ -615,18 +615,18 @@ export default function AdminSelectiveHistoryPage() {
 
                                     <div className="flex flex-wrap gap-2">
                                       {item.question_type && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.question_type}
                                         </span>
                                       )}
                                       {item.difficulty_level && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.difficulty_level}
                                         </span>
                                       )}
                                       {item.overall_score !== null &&
                                         item.overall_score !== undefined && (
-                                          <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+                                          <span className="rounded bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
                                             Overall {item.overall_score}/10
                                           </span>
                                         )}
@@ -634,28 +634,28 @@ export default function AdminSelectiveHistoryPage() {
                                   </div>
 
                                   <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Submitted</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {formatDateTime(item.submitted_at)}
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Reviewed</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {formatDateTime(item.reviewed_at)}
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Word Count</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {item.word_count ?? "-"}
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Submission ID</p>
                                       <p className="mt-1 break-all font-medium text-(--text-main)">
                                         {item.submission_id}
@@ -703,7 +703,7 @@ export default function AdminSelectiveHistoryPage() {
                                         ].map(([label, value]) => (
                                           <div
                                             key={label}
-                                            className="rounded-xl bg-gray-50 px-4 py-3"
+                                            className="rounded bg-gray-50 px-4 py-3"
                                           >
                                             <p className="text-sm text-(--text-secondary)">
                                               {label}
@@ -729,7 +729,7 @@ export default function AdminSelectiveHistoryPage() {
                           <section className="space-y-4">
                             <div className="flex items-center justify-between gap-4">
                               <h3 className="text-xl font-bold text-(--text-main)">Mathematics</h3>
-                              <span className="rounded-xl bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
+                              <span className="rounded bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
                                 {student.mathItems.length} attempt
                                 {student.mathItems.length > 1 ? "s" : ""}
                               </span>
@@ -751,29 +751,29 @@ export default function AdminSelectiveHistoryPage() {
 
                                     <div className="flex flex-wrap gap-2">
                                       {item.question_type && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.question_type.replace(/_/g, " ")}
                                         </span>
                                       )}
                                       {item.topic_category && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.topic_category.replace(/_/g, " ")}
                                         </span>
                                       )}
                                       {item.subtopic && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.subtopic.replace(/_/g, " ")}
                                         </span>
                                       )}
                                       {item.difficulty_level && (
-                                        <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                                        <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                                           {item.difficulty_level}
                                         </span>
                                       )}
                                       {item.is_correct !== null &&
                                         item.is_correct !== undefined && (
                                           <span
-                                            className={`rounded-full px-3 py-1 text-sm font-medium ${
+                                            className={`rounded px-3 py-1 text-sm font-medium ${
                                               item.is_correct
                                                 ? "bg-emerald-50 text-emerald-700"
                                                 : "bg-amber-50 text-amber-700"
@@ -786,14 +786,14 @@ export default function AdminSelectiveHistoryPage() {
                                   </div>
 
                                   <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Submitted</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {formatDateTime(item.submitted_at)}
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Score</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {item.score ?? "-"}
@@ -803,14 +803,14 @@ export default function AdminSelectiveHistoryPage() {
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Student Answer</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {item.submitted_answer_text || "-"}
                                       </p>
                                     </div>
 
-                                    <div className="rounded-xl bg-gray-50 px-4 py-3">
+                                    <div className="rounded bg-gray-50 px-4 py-3">
                                       <p className="text-sm text-(--text-secondary)">Correct Answer</p>
                                       <p className="mt-1 font-medium text-(--text-main)">
                                         {item.final_answer || "-"}
@@ -839,7 +839,7 @@ export default function AdminSelectiveHistoryPage() {
                                         {item.hints.map((hint, index) => (
                                           <li
                                             key={index}
-                                            className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                            className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                           >
                                             {hint}
                                           </li>
@@ -855,7 +855,7 @@ export default function AdminSelectiveHistoryPage() {
                                         {item.solution_steps.map((step, index) => (
                                           <li
                                             key={index}
-                                            className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                                            className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                                           >
                                             <span className="mr-2 font-semibold text-(--text-secondary)">
                                               {index + 1}.

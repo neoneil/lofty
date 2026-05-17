@@ -103,7 +103,7 @@ export default function SignupForm() {
                     value={fullName}
                     autoComplete="name"
                     onChange={(e) => setFullName(e.target.value)}
-                    className="h-12 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-12 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
@@ -115,7 +115,7 @@ export default function SignupForm() {
                     value={email}
                     autoComplete="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-12 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
@@ -127,12 +127,12 @@ export default function SignupForm() {
                     value={password}
                     autoComplete="new-password"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-12 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-12 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
                 {message && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                  <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
                     {message}
                   </div>
                 )}
@@ -140,7 +140,7 @@ export default function SignupForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-primary w-full rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading ? "Loading..." : "Sign up"}
                 </button>
@@ -149,7 +149,7 @@ export default function SignupForm() {
                   type="button"
                   disabled={loading}
                   onClick={handleGoogleSignup}
-                  className="btn-secondary flex h-12 w-full items-center justify-center gap-3 rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-secondary flex h-12 w-full items-center justify-center gap-3 rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
                     <path
@@ -217,7 +217,7 @@ export default function SignupForm() {
                   value={fullName}
                   autoComplete="name"
                   onChange={(e) => setFullName(e.target.value)}
-                  className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                  className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                 />
 
                 <input
@@ -227,7 +227,7 @@ export default function SignupForm() {
                   value={email}
                   autoComplete="email"
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                  className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                 />
 
                 <input
@@ -237,11 +237,11 @@ export default function SignupForm() {
                   value={password}
                   autoComplete="new-password"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                  className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                 />
 
                 {message && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                  <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
                     {message}
                   </div>
                 )}
@@ -249,7 +249,7 @@ export default function SignupForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-primary w-full rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading ? "Loading..." : "Sign up"}
                 </button>
@@ -258,7 +258,7 @@ export default function SignupForm() {
                   type="button"
                   disabled={loading}
                   onClick={handleGoogleSignup}
-                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   Continue with Google
                 </button>

@@ -87,7 +87,7 @@ export default function AudioPlayer({ url }: { url: string }) {
       <div className="flex items-center gap-4">
         <button
           onClick={togglePlay}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-white"
+          className="flex h-10 w-10 items-center justify-center rounded bg-indigo-500 text-white"
         >
           {playing ? "❚❚" : "▶"}
         </button>

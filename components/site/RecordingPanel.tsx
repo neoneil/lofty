@@ -129,7 +129,7 @@ export default function RecordingPanel({
           <div className="flex items-center gap-2 text-xs text-gray-500">
             <span>0s</span>
 
-            <div className="relative h-2 flex-1 rounded-full bg-gray-200 overflow-hidden">
+            <div className="relative h-2 flex-1 rounded bg-gray-200 overflow-hidden">
               <div
                 className="h-full bg-indigo-500 transition-all"
                 style={{ width: `${progress}%` }}

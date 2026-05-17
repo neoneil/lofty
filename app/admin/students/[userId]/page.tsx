@@ -105,7 +105,7 @@ export default async function AdminStudentDetailPage({
       <div className="mb-6">
         <Link
           href="/admin/dashboard"
-          className="inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+          className="inline-flex items-center rounded border px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
         >
           ← Back to Dashboard
         </Link>
@@ -118,10 +118,10 @@ export default async function AdminStudentDetailPage({
               src={profile.avatar_url}
               alt={displayName}
               referrerPolicy="no-referrer"
-              className="h-16 w-16 rounded-full border object-cover"
+              className="h-16 w-16 rounded border object-cover"
             />
           ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border bg-gray-100 text-lg font-semibold text-gray-600">
+            <div className="flex h-16 w-16 items-center justify-center rounded border bg-gray-100 text-lg font-semibold text-gray-600">
               {avatarLetter}
             </div>
           )}
@@ -147,7 +147,7 @@ export default async function AdminStudentDetailPage({
         </div>
 
         {overall.length === 0 ? (
-          <div className="rounded-xl bg-gray-50 px-4 py-6 text-sm text-gray-500">
+          <div className="rounded bg-gray-50 px-4 py-6 text-sm text-gray-500">
             No data in the last 7 days.
           </div>
         ) : (
@@ -162,21 +162,21 @@ export default async function AdminStudentDetailPage({
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
-                  <div className="rounded-xl bg-white px-3 py-3">
+                  <div className="rounded bg-white px-3 py-3">
                     <div className="text-xs text-gray-500">Attempts</div>
                     <div className="mt-1 text-lg font-bold text-gray-900">
                       {item.attempts}
                     </div>
                   </div>
 
-                  <div className="rounded-xl bg-white px-3 py-3">
+                  <div className="rounded bg-white px-3 py-3">
                     <div className="text-xs text-gray-500">Correct</div>
                     <div className="mt-1 text-lg font-bold text-green-700">
                       {item.correct_count}
                     </div>
                   </div>
 
-                  <div className="rounded-xl bg-white px-3 py-3">
+                  <div className="rounded bg-white px-3 py-3">
                     <div className="text-xs text-gray-500">Wrong</div>
                     <div className="mt-1 text-lg font-bold text-red-700">
                       {item.incorrect_count}
@@ -200,7 +200,7 @@ export default async function AdminStudentDetailPage({
         </div>
 
         {orderedDays.length === 0 ? (
-          <div className="rounded-xl bg-gray-50 px-4 py-6 text-sm text-gray-500">
+          <div className="rounded bg-gray-50 px-4 py-6 text-sm text-gray-500">
             No data in the last 7 days.
           </div>
         ) : (

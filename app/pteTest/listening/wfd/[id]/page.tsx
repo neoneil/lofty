@@ -99,30 +99,30 @@ export default async function WfdQuestionDetailPage({
                             {/* Tags */}
                             <div className="mb-5 flex flex-wrap items-center gap-2">
 
-                                <span className="rounded-full bg-[var(--theme)]/10 px-3 py-1 text-xs font-semibold text-[var(--theme)]">
+                                <span className="rounded bg-[var(--theme)]/10 px-3 py-1 text-xs font-semibold text-[var(--theme)]">
                                     WFD
                                 </span>
 
                                 {question.is_prediction ? (
-                                    <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+                                    <span className="rounded bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
                                         Prediction
                                     </span>
                                 ) : null}
 
                                 {question.is_real_exam ? (
-                                    <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
+                                    <span className="rounded bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
                                         Real Exam
                                     </span>
                                 ) : null}
 
                                 {question.is_wrong_question ? (
-                                    <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
+                                    <span className="rounded bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
                                         Wrong Question
                                     </span>
                                 ) : null}
 
                                 {question.source_question_id ? (
-                                    <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
+                                    <span className="rounded bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
                                         #{question.source_question_id}
                                     </span>
                                 ) : null}

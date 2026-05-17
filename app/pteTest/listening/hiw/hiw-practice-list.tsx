@@ -204,7 +204,7 @@ function PaginationButton({
 }) {
   if (disabled) {
     return (
-      <span className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 px-4 text-sm font-medium text-gray-400">
+      <span className="inline-flex h-11 min-w-11 items-center justify-center rounded border border-gray-200 bg-gray-100 px-4 text-sm font-medium text-gray-400">
         {children}
       </span>
     );
@@ -214,7 +214,7 @@ function PaginationButton({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex h-11 min-w-11 items-center justify-center rounded-xl border px-4 text-sm font-semibold transition ${
+      className={`inline-flex h-11 min-w-11 items-center justify-center rounded border px-4 text-sm font-semibold transition ${
         active
           ? "border-[var(--theme)] bg-[var(--theme)] text-white"
           : "border-gray-200 bg-white text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
@@ -314,7 +314,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
               key={rate}
               type="button"
               onClick={() => changeRate(rate)}
-              className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
+              className={`rounded px-3 py-1.5 text-xs font-semibold transition ${
                 playbackRate === rate
                   ? "bg-[var(--theme)] text-white"
                   : "border border-gray-200 bg-white text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
@@ -364,7 +364,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
           step={0.1}
           value={currentTime}
           onChange={(e) => handleSeek(Number(e.target.value))}
-          className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-[var(--theme)]"
+          className="h-2 w-full cursor-pointer appearance-none rounded bg-gray-200 accent-[var(--theme)]"
           aria-label="音频进度条"
         />
       </div>
@@ -691,7 +691,7 @@ export default function HiwPracticeList({
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   <div className="mb-3 flex flex-wrap items-center gap-2">
-                    <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[var(--theme)] px-2 text-xs font-bold text-white">
+                    <span className="inline-flex h-7 min-w-7 items-center justify-center rounded bg-[var(--theme)] px-2 text-xs font-bold text-white">
                       {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                     </span>
 
@@ -842,7 +842,7 @@ export default function HiwPracticeList({
                             {incorrectWords.map((word) => (
                               <div
                                 key={`${word.index}-${word.shown_word}`}
-                                className="flex flex-wrap items-center gap-2 rounded-xl bg-gray-50 px-3 py-2 text-sm"
+                                className="flex flex-wrap items-center gap-2 rounded bg-gray-50 px-3 py-2 text-sm"
                               >
                                 <span className="text-red-600 line-through">
                                   {word.shown_word}

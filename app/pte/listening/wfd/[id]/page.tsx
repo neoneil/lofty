@@ -4,6 +4,7 @@ import Container from "@/components/site/container";
 import PTESidebar from "@/components/site/pte-sidebar";
 import { requireUser } from "@/lib/auth/require-user";
 import WfdDetailClient from "./wfd-detail-client";
+import Tag from "@/components/ui/tag";
 import DictionaryText from "@/components/dictionary/dictionary-text"; // dictionary 查词
 type PageProps = {
     params: Promise<{
@@ -11,7 +12,7 @@ type PageProps = {
     }>;
 };
 function getPublicAudioUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
 }
 export default async function WfdQuestionDetailPage({
     params,
@@ -46,7 +47,7 @@ export default async function WfdQuestionDetailPage({
         .from("v_pte_wfd_with_user_status")
         .select("id")
         .eq("question_type", "WFD")
-        .eq("is_prediction", true)
+        // .eq("is_prediction", true)
         .order("created_at", { ascending: false });
 
     const ids = allQuestions?.map((q) => q.id) ?? [];
@@ -88,8 +89,7 @@ export default async function WfdQuestionDetailPage({
                             </h1>
 
                             <p className="mt-4 max-w-2xl text-sm leading-8 text-gray-600 sm:text-base">
-                                单题练习页面。后续这里会迁移 AudioPlayer、
-                                Answer Box、提交结果等完整练习功能。
+                                单题练习页面。
                             </p>
                         </section>
 
@@ -97,44 +97,53 @@ export default async function WfdQuestionDetailPage({
                         <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
 
                             {/* Tags */}
-                            <div className="mb-5 flex flex-wrap items-center gap-2">
+                            <div className="mb-1 flex flex-wrap items-center gap-2">
 
-                                <span className="rounded-full bg-[var(--theme)]/10 px-3 py-1 text-xs font-semibold text-[var(--theme)]">
+                                <Link
+                                    href="/pte/listening/wfd"
+                                    className="
+                                    inline-flex items-center
+                                    rounded-xl
+
+                                    bg-white
+                                    px-3 py-2
+
+                                    text-sm font-medium
+                                    text-gray-600
+
+                                    transition
+                                    hover:bg-gray-100
+                                "
+                                >
+                                    ← 返回列表
+                                </Link>
+
+                                <Tag tone="theme">
                                     WFD
-                                </span>
-
-                                {question.is_prediction ? (
-                                    <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
-                                        Prediction
-                                    </span>
-                                ) : null}
-
-                                {question.is_real_exam ? (
-                                    <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
-                                        Real Exam
-                                    </span>
-                                ) : null}
-
-                                {question.is_wrong_question ? (
-                                    <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
-                                        Wrong Question
-                                    </span>
-                                ) : null}
+                                </Tag>
 
                                 {question.source_question_id ? (
-                                    <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
-                                        #{question.source_question_id}
-                                    </span>
+                                    <Tag tone="neutral">
+                                        {question.source_question_id}
+                                    </Tag>
+                                ) : null}
+
+                                <Tag tone="yellow">考试原题</Tag>
+
+                                {question.is_prediction ? (
+                                    <Tag tone="purple">活跃</Tag>
+                                ) : null}
+
+                                {question.is_practiced ? (
+                                    <Tag tone="green">已练习</Tag>
+                                ) : (
+                                    <Tag tone="neutral">未练习</Tag>
+                                )}
+
+                                {question.is_wrong_question ? (
+                                    <Tag tone="pink">错题</Tag>
                                 ) : null}
                             </div>
-
-                            {/* Question Text */}
-                            <div className="rounded-2xl bg-gray-50 px-5 py-5 text-[18px] leading-9 text-gray-800">
-                                <DictionaryText
-                                                text={question.question_text}
-                                            />
-                            </div>
-
                             {/* Stats */}
                             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-gray-500">
 
@@ -175,7 +184,10 @@ export default async function WfdQuestionDetailPage({
                                 </div>
                             )}
 
-                            <WfdDetailClient question={question} />
+                            <WfdDetailClient question={question}
+                                prevQuestionId={prevId}
+                                nextQuestionId={nextId}
+                                questionNumber={currentIndex + 1} />
 
                             {/* Navigation */}
                             <div className="mt-8 flex items-center justify-between">

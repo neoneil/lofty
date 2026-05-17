@@ -127,7 +127,7 @@ export default async function HomePage() {
 
         <div className="relative z-10 mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-14 sm:px-6 md:min-h-[540px] md:px-10">
           <div className="mx-auto max-w-3xl text-center md:mx-0 md:text-left">
-            <div className="mb-6 inline-flex items-center rounded-full border border-black/5 bg-white/70 px-4 py-2 text-xs font-medium text-gray-500 shadow-sm backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center rounded border border-black/5 bg-white/70 px-4 py-2 text-xs font-medium text-gray-500 shadow-sm backdrop-blur-md">
                {heroSlogan}
             </div>
             <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
@@ -141,7 +141,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-14 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
                   <Bot className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export default async function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
                   <Target className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
@@ -161,7 +161,7 @@ export default async function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
                   <BookOpen className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
@@ -171,7 +171,7 @@ export default async function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
                   <TrendingUp className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
@@ -183,14 +183,14 @@ export default async function HomePage() {
             <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:justify-center md:justify-start">
               <Link
                 href="/courses"
-                className="rounded-xl bg-white/90 px-6 py-3 text-center text-sm font-semibold text-(--brand-accent) shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
+                className="rounded bg-white/90 px-6 py-3 text-center text-sm font-semibold text-(--brand-accent) shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
               >
                 雅思课程
               </Link>
 
               <Link
                 href="/courses"
-                className="rounded-xl bg-[#4040A8] px-6 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5"
+                className="rounded bg-[#4040A8] px-6 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5"
               >
                 PTE课程
               </Link>
@@ -288,8 +288,8 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6 md:pb-20">
         <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-r from-[#4C55C9] via-[#6A6FF0] to-[#C38BFF] px-5 py-10 text-center text-white shadow-xl md:rounded-[32px] md:px-8 md:py-12">
           <div className="absolute inset-0 opacity-30">
-            <div className="absolute left-6 top-6 h-20 w-20 rounded-full bg-white blur-2xl" />
-            <div className="absolute bottom-4 right-8 h-24 w-24 rounded-full bg-pink-200 blur-2xl" />
+            <div className="absolute left-6 top-6 h-20 w-20 rounded bg-white blur-2xl" />
+            <div className="absolute bottom-4 right-8 h-24 w-24 rounded bg-pink-200 blur-2xl" />
           </div>
 
           <div className="relative z-10">
@@ -302,7 +302,7 @@ export default async function HomePage() {
 
             <Link
               href="/sign-up"
-              className="mt-7 inline-block rounded-xl bg-white px-8 py-3 text-sm font-bold text-[#4C55C9] shadow-lg"
+              className="mt-7 inline-block rounded bg-white px-8 py-3 text-sm font-bold text-[#4C55C9] shadow-lg"
             >
               立即注册
             </Link>
@@ -388,7 +388,7 @@ function ExamCard({
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
 
         <div className="relative z-10 flex h-full max-w-[72%] flex-col justify-center px-7 py-8 md:px-8">
-          <span className="mb-4 inline-flex w-fit rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
+          <span className="mb-4 inline-flex w-fit rounded border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
             {badge}
           </span>
 
@@ -414,7 +414,7 @@ function ExamCard({
               key={item}
               className="flex items-center gap-3 text-sm text-[#5E638B]"
             >
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#EEEAFE] text-xs text-[#746BFF]">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#EEEAFE] text-xs text-[#746BFF]">
                 ✓
               </span>
               {item}
@@ -424,7 +424,7 @@ function ExamCard({
 
         <Link
           href={href}
-          className="mt-6 inline-flex rounded-xl border border-[#B9B5FF] px-5 py-2 text-sm font-semibold text-[#5A55D6] transition hover:bg-[#EEEAFE]"
+          className="mt-6 inline-flex rounded border border-[#B9B5FF] px-5 py-2 text-sm font-semibold text-[#5A55D6] transition hover:bg-[#EEEAFE]"
         >
           了解更多 →
         </Link>

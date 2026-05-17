@@ -40,7 +40,7 @@ export default function ContactPage() {
         style={{ borderColor: "var(--border)" }}
       >
         <div
-          className="pointer-events-none absolute left-1/2 top-[-160px] h-[420px] w-[420px] -translate-x-1/2 rounded-full blur-3xl"
+          className="pointer-events-none absolute left-1/2 top-[-160px] h-[420px] w-[420px] -translate-x-1/2 rounded blur-3xl"
           style={{
             background:
               "radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 22%, transparent), transparent 70%)",
@@ -51,7 +51,7 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-3xl">
               <div
-                className="inline-flex items-center rounded-full border px-4 py-2 text-sm shadow-sm backdrop-blur-xl"
+                className="inline-flex items-center rounded border px-4 py-2 text-sm shadow-sm backdrop-blur-xl"
                 style={{
                   borderColor: "var(--border)",
                   background: "color-mix(in srgb, var(--card) 78%, transparent)",
@@ -82,7 +82,7 @@ export default function ContactPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#contact-form"
-                  className="rounded-full px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                  className="rounded px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                   style={{
                     background:
                       "linear-gradient(135deg, var(--brand-accent), var(--brand-accent-hover))",
@@ -94,7 +94,7 @@ export default function ContactPage() {
 
                 <a
                   href="#contact-form"
-                  className="rounded-full border px-6 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                  className="rounded border px-6 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
                   style={{
                     borderColor: "var(--border)",
                     background: "var(--card)",

@@ -443,7 +443,7 @@ export default function ChatWidget() {
       {!open ? (
         <button
           onClick={() => setOpen(true)}
-          className="group rounded-full border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+          className="group rounded border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
           style={{
             backgroundColor: 'var(--card)',
             borderColor: 'var(--border)',
@@ -452,7 +452,7 @@ export default function ChatWidget() {
         >
           <span className="flex items-center gap-2">
             <span
-              className="inline-block h-2.5 w-2.5 rounded-full"
+              className="inline-block h-2.5 w-2.5 rounded"
               style={{ backgroundColor: '#22c55e' }}
             />
             AI助手
@@ -479,7 +479,7 @@ export default function ChatWidget() {
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <div
-                    className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
+                    className="flex h-10 w-10 items-center justify-center rounded text-sm font-semibold"
                     style={{
                       backgroundColor: 'rgba(255,255,255,0.7)',
                       color: 'var(--primary)',
@@ -505,7 +505,7 @@ export default function ChatWidget() {
                   setOpen(false);
                   setAiReplying(false);
                 }}
-                className="rounded-full px-3 py-1.5 text-xs font-medium transition"
+                className="rounded px-3 py-1.5 text-xs font-medium transition"
                 style={{
                   backgroundColor: 'rgba(255,255,255,0.65)',
                   color: 'var(--text)',
@@ -551,7 +551,7 @@ export default function ChatWidget() {
                     <button
                       onClick={() => void loadOlderMessages()}
                       disabled={loadingOlder}
-                      className="rounded-full border px-3 py-1.5 text-xs transition disabled:opacity-60"
+                      className="rounded border px-3 py-1.5 text-xs transition disabled:opacity-60"
                       style={{
                         borderColor: 'var(--border)',
                         backgroundColor: 'var(--card)',
@@ -636,18 +636,18 @@ export default function ChatWidget() {
                           <span>Ibot 思考中</span>
                           <span className="inline-flex gap-1">
                             <span
-                              className="h-1.5 w-1.5 animate-bounce rounded-full"
+                              className="h-1.5 w-1.5 animate-bounce rounded"
                               style={{ backgroundColor: 'var(--muted)' }}
                             />
                             <span
-                              className="h-1.5 w-1.5 animate-bounce rounded-full"
+                              className="h-1.5 w-1.5 animate-bounce rounded"
                               style={{
                                 backgroundColor: 'var(--muted)',
                                 animationDelay: '0.15s',
                               }}
                             />
                             <span
-                              className="h-1.5 w-1.5 animate-bounce rounded-full"
+                              className="h-1.5 w-1.5 animate-bounce rounded"
                               style={{
                                 backgroundColor: 'var(--muted)',
                                 animationDelay: '0.3s',
@@ -701,7 +701,7 @@ export default function ChatWidget() {
                   disabled={
                     loading || initialLoading || !input.trim() || !!initError
                   }
-                  className="ml-2 rounded-full px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+                  className="ml-2 rounded px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
                   style={{ backgroundColor: 'var(--primary)' }}
                 >
                   {loading ? 'Sending...' : '发送'}
@@ -1004,7 +1004,7 @@ export default function ChatWidget() {
 //       {!open ? (
 //         <button
 //           onClick={() => setOpen(true)}
-//           className="group rounded-full border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+//           className="group rounded border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
 //           style={{
 //             backgroundColor: 'var(--card)',
 //             borderColor: 'var(--border)',
@@ -1013,7 +1013,7 @@ export default function ChatWidget() {
 //         >
 //           <span className="flex items-center gap-2">
 //             <span
-//               className="inline-block h-2.5 w-2.5 rounded-full"
+//               className="inline-block h-2.5 w-2.5 rounded"
 //               style={{ backgroundColor: '#22c55e' }}
 //             />
 //             Chat with Ibot
@@ -1040,7 +1040,7 @@ export default function ChatWidget() {
 //               <div className="min-w-0">
 //                 <div className="flex items-center gap-2">
 //                   <div
-//                     className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
+//                     className="flex h-10 w-10 items-center justify-center rounded text-sm font-semibold"
 //                     style={{
 //                       backgroundColor: 'rgba(255,255,255,0.7)',
 //                       color: 'var(--primary)',
@@ -1066,7 +1066,7 @@ export default function ChatWidget() {
 //                   setOpen(false);
 //                   setAiReplying(false);
 //                 }}
-//                 className="rounded-full px-3 py-1.5 text-xs font-medium transition"
+//                 className="rounded px-3 py-1.5 text-xs font-medium transition"
 //                 style={{
 //                   backgroundColor: 'rgba(255,255,255,0.65)',
 //                   color: 'var(--text)',
@@ -1174,18 +1174,18 @@ export default function ChatWidget() {
 //                           <span>Ibot 思考中</span>
 //                           <span className="inline-flex gap-1">
 //                             <span
-//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               className="h-1.5 w-1.5 animate-bounce rounded"
 //                               style={{ backgroundColor: 'var(--muted)' }}
 //                             />
 //                             <span
-//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               className="h-1.5 w-1.5 animate-bounce rounded"
 //                               style={{
 //                                 backgroundColor: 'var(--muted)',
 //                                 animationDelay: '0.15s',
 //                               }}
 //                             />
 //                             <span
-//                               className="h-1.5 w-1.5 animate-bounce rounded-full"
+//                               className="h-1.5 w-1.5 animate-bounce rounded"
 //                               style={{
 //                                 backgroundColor: 'var(--muted)',
 //                                 animationDelay: '0.3s',
@@ -1239,7 +1239,7 @@ export default function ChatWidget() {
 //                   disabled={
 //                     loading || initialLoading || !input.trim() || !!initError
 //                   }
-//                   className="ml-2 rounded-full px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+//                   className="ml-2 rounded px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
 //                   style={{ backgroundColor: 'var(--primary)' }}
 //                 >
 //                   {loading ? 'Sending...' : '发送'}

@@ -41,7 +41,7 @@
   /* 主按钮 */
 
 .btn-primary {
-  @apply inline-flex cursor-pointer items-center justify-center rounded-xl px-3 py-2 text-xs transition-all duration-200;
+  @apply inline-flex cursor-pointer items-center justify-center rounded px-3 py-2 text-xs transition-all duration-200;
   background: var(--brand-accent);
   color: #fff;
   box-shadow: 0 2px 8px rgba(47, 74, 63, 0.1);
@@ -74,7 +74,7 @@
   transform: translateX(-50%);
 }
   .btn-soft {
-    @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-200;
+    @apply inline-flex items-center justify-center rounded px-4 py-2 text-sm font-medium transition-all duration-200;
     background: rgba(47, 74, 63, 0.08);
     color: var(--brand-accent);
   }
@@ -90,7 +90,7 @@
 
 
 .btn-card {
-  @apply inline-flex cursor-pointer items-center justify-center rounded-xl px-8 py-3 text-base transition-all duration-200;
+  @apply inline-flex cursor-pointer items-center justify-center rounded px-8 py-3 text-base transition-all duration-200;
   background: var(--brand-accent);
   color: #fff;
   box-shadow: 0 2px 8px rgba(47, 74, 63, 0.1);
@@ -104,13 +104,14 @@
   /* 卡片 */
   /* WFD / 题目卡片 */
   .question-card {
-    @apply cursor-pointer rounded-2xl transition-all duration-200;
+    @apply cursor-pointer rounded-s-md transition-all duration-200 border border-gray-200 px-2 py-2 sm:px-6;
   }
 
   .question-card:hover {
     @apply shadow-sm;
-    transform: translateY(-2px) scale(1.003);
+    /* transform: translateY(-2px) scale(1.003); */
     background: rgba(255, 255, 255, 0.92);
+    color: var(--brand-accent-hover);
   }
   .card {
     @apply rounded-2xl border p-6 transition;
@@ -141,7 +142,7 @@
 
   /* 通用 pill 按钮（筛选按钮） */
   .pill-button {
-    @apply cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300;
+    @apply cursor-pointer rounded border px-4 py-2 text-sm font-medium transition-all duration-300;
   }
 
   .pill-button:hover {

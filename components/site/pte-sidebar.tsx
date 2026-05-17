@@ -23,7 +23,7 @@ function MainNavItem({
   return (
     <Link
       href={href}
-      className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition ${active
+      className={`flex items-center justify-between rounded px-4 py-3 text-sm font-medium transition ${active
           ? "bg-[var(--theme)] text-white shadow-sm"
           : "text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
         }`}
@@ -55,7 +55,7 @@ function SubNavItem({
   return (
     <Link
       href={href}
-      className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${active
+      className={`block rounded px-4 py-3 text-sm font-semibold transition ${active
           ? "bg-[var(--theme)] text-white shadow-sm"
           : "text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
         }`}
@@ -67,17 +67,17 @@ function SubNavItem({
 
 function SidebarDecoration() {
   return (
-    <div className="overflow-hidden rounded-3xl bg-[linear-gradient(180deg,#faf7f1_0%,#f4efe5_100%)] p-4">
+    <div className="overflow-hidden rounded-b-sm  bg-[linear-gradient(180deg,#faf7f1_0%,#f4efe5_100%)] p-4">
       <div className="mb-4 text-sm font-medium text-gray-500">
         学习中心
       </div>
 
       <div className="relative h-44">
-        <div className="absolute bottom-0 left-0 right-0 h-14 rounded-[18px] bg-white/70 backdrop-blur-sm" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 rounded-[8px] bg-white/70 backdrop-blur-sm" />
 
-        <div className="absolute bottom-6 left-4 h-12 w-24 rounded-lg border border-[#cfc7b4] bg-[#d8d1be] shadow-sm" />
-        <div className="absolute bottom-10 left-8 h-12 w-24 rounded-lg border border-[#cfc7b4] bg-[#c9c3b2] shadow-sm" />
-        <div className="absolute bottom-14 left-12 h-12 w-24 rounded-lg border border-[#cfc7b4] bg-[#bbb7a8] shadow-sm" />
+        <div className="absolute bottom-6 left-4 h-12 w-24 rounded-b-sm border border-[#cfc7b4] bg-[#d8d1be] shadow-sm" />
+        <div className="absolute bottom-10 left-8 h-12 w-24 rounded-b-sm  border border-[#cfc7b4] bg-[#c9c3b2] shadow-sm" />
+        <div className="absolute bottom-14 left-12 h-12 w-24 rounded-b-sm  border border-[#cfc7b4] bg-[#bbb7a8] shadow-sm" />
 
         <div className="absolute bottom-8 left-16 text-xs font-semibold tracking-wide text-white">
           IELTS
@@ -89,11 +89,11 @@ function SidebarDecoration() {
           ENGLISH
         </div>
 
-        <div className="absolute bottom-24 left-3 h-16 w-16 rounded-full border border-[#d8d0c2] bg-[#efeadf]" />
-        <div className="absolute bottom-32 left-8 h-8 w-1 rounded-full bg-[#d9d2c6]" />
-        <div className="absolute bottom-38 left-10 h-6 w-10 rotate-[-25deg] rounded-full bg-[#e7e0d3]" />
-        <div className="absolute bottom-28 left-12 h-7 w-1 rounded-full bg-[#d9d2c6]" />
-        <div className="absolute bottom-34 left-14 h-5 w-9 rotate-[20deg] rounded-full bg-[#e7e0d3]" />
+        <div className="absolute bottom-24 left-3 h-16 w-16 rounded border border-[#d8d0c2] bg-[#efeadf]" />
+        <div className="absolute bottom-32 left-8 h-8 w-1 rounded bg-[#d9d2c6]" />
+        <div className="absolute bottom-38 left-10 h-6 w-10 rotate-[-25deg] rounded bg-[#e7e0d3]" />
+        <div className="absolute bottom-28 left-12 h-7 w-1 rounded bg-[#d9d2c6]" />
+        <div className="absolute bottom-34 left-14 h-5 w-9 rotate-[20deg] rounded bg-[#e7e0d3]" />
       </div>
     </div>
   );
@@ -107,7 +107,7 @@ export default function PTESidebar({
 
   return (
     <aside className="w-full">
-      <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-[8px] border border-gray-200 bg-white shadow-sm">
         {/* 主导航 */}
         <div className="space-y-1 border-b border-gray-100 p-4">
           {pteMainTabs.map((tab) => (

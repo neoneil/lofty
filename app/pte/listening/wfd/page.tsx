@@ -1,8 +1,12 @@
 import Container from "@/components/site/container";
-import PTESidebar from "@/components/site/pte-sidebar";
+import Sidebar from "@/components/site/sidebar";
+//import PTESidebar from "@/components/site/pte-sidebar";
+import PTETopNav from "@/components/site/pte-top-nav";
 import { requireUser } from "@/lib/auth/require-user";
 import WfdPracticeList from "./wfd-practice-list";
-
+import WfdList from "./wfd-list";
+import QuestionInfoCard from "@/components/site/QuestionInfoCard";
+import WfdPageClient from "./wfd-page-client";
 type WfdQuestionWithStatus = {
   id: string;
   question_text: string;
@@ -24,6 +28,7 @@ type WfdQuestionWithStatus = {
   attempt_count: number;
   correct_count: number;
   wrong_count: number;
+  completed_count: number;
   last_attempt_at: string | null;
   latest_score: number | null;
   best_score: number | null;
@@ -38,7 +43,7 @@ export default async function PteListeningPage() {
     .from("v_pte_wfd_with_user_status")
     .select("*")
     .eq("question_type", "WFD")
-    .eq("is_prediction", true)
+    // .eq("is_prediction", true)
     .order("created_at", { ascending: false })
     .limit(1500);
 
@@ -54,38 +59,52 @@ export default async function PteListeningPage() {
     is_wrong_question: q.is_wrong_question ?? false,
   })) as WfdQuestionWithStatus[];
 
+  const { data: questionInfo } = await supabase
+    .from("all_question_info")
+    .select("*")
+    .eq("questions", "WFD")
+    .single();
+
   return (
-    <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
-      <Container>
+    <main className="relative pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
+      {/* background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <img
+          src="/images/listeningPage.png"
+          alt=""
+          className="absolute -right-32 -top-8 h-full w-full object-scale-down object-right-top opacity-95" />
+        <div className="absolute inset-0" />
+      </div>
+
+      <Container className="relative z-10">
+
         {questionsError ? (
           <section className="rounded-[28px] border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
             WFD 加载失败：{questionsError.message}
           </section>
         ) : (
-          <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)] mt-5">
+          <div className="mt-5 grid gap-8 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)]">
+            {/* sidebar */}
             <div className="xl:sticky xl:top-24 xl:self-start">
-              <PTESidebar currentMain="listening" currentSub="wfd" />
+              <Sidebar />
             </div>
 
-            <section className="space-y-6">
-              <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--theme)]/80">
-                  PTE Listening
-                </p>
-                <h1 className="text-2xl font-bold leading-tight tracking-tight text-[var(--theme)] lg:text-3xl">
-                  WFD - Write From Dictation
-                </h1>
-                <p className="mt-4 max-w-2xl text-sm leading-8 text-gray-600 sm:text-base">
-                  本题型评分规则：AI 算法近似按照最长公共子序列 - Longest Common
-                  Subsequence (LCS) 进行答案比对。
-                </p>
-              </section>
-
-              <WfdPracticeList initialQuestions={questions} />
-            </section>
+            {/* right content */}
+            <WfdPageClient
+              questions={questions}
+              questionInfo={questionInfo}
+            />
+            {/* <section
+              className="mx-auto w-fit max-w-[1320px] space-y-5">
+              <PTETopNav currentMain="listening" currentSub="wfd" />
+              <QuestionInfoCard questionInfo={questionInfo} />
+              <WfdList initialQuestions={questions} />
+            </section> */}
           </div>
         )}
       </Container>
     </main>
   );
 }
+
+{/* <WfdPracticeList initialQuestions={questions} /> */ }

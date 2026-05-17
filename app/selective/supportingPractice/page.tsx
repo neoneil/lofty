@@ -343,7 +343,7 @@ export default function MathsPage() {
         <div className="mt-5 flex flex-wrap gap-3">
           <button
             onClick={handleGenerate}
-            className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827]"
+            className="rounded bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827]"
           >
             Generate Questions
           </button>
@@ -352,13 +352,13 @@ export default function MathsPage() {
             <>
               <button
                 onClick={showAllAnswers}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 Show All Answers
               </button>
               <button
                 onClick={hideAllAnswers}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 Hide All Answers
               </button>
@@ -393,7 +393,7 @@ export default function MathsPage() {
                   </div>
 
                   {question.showAnswer && (
-                    <div className="mt-4 rounded-xl bg-gray-50 px-4 py-3">
+                    <div className="mt-4 rounded bg-gray-50 px-4 py-3">
                       <p className="text-sm text-(--text-secondary)">Answer</p>
                       <p className="mt-1 text-lg font-semibold text-(--text-main)">
                         {question.answer}
@@ -405,7 +405,7 @@ export default function MathsPage() {
                 <div className="lg:ml-6">
                   <button
                     onClick={() => toggleAnswer(question.id)}
-                    className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                    className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
                   >
                     {question.showAnswer ? "Hide Answer" : "Show Answer"}
                   </button>

@@ -156,7 +156,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                             trend.map((item) => (
                                 <div
                                     key={item.day}
-                                    className="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3"
+                                    className="flex items-center justify-between rounded bg-gray-50 px-4 py-3"
                                 >
                                     <span className="text-sm text-gray-700">{item.day}</span>
                                     <span className="text-sm font-semibold text-gray-900">
@@ -178,7 +178,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                             topQuestions.map((item) => (
                                 <div
                                     key={item.question_id}
-                                    className="rounded-xl bg-gray-50 px-4 py-3"
+                                    className="rounded bg-gray-50 px-4 py-3"
                                 >
                                     <div className="break-all text-sm text-gray-800">
                                         Question ID: {item.question_id}
@@ -230,10 +230,10 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                                                             src={student.avatar_url}
                                                             alt={displayName}
                                                             referrerPolicy="no-referrer"
-                                                            className="h-10 w-10 min-h-10 min-w-10 rounded-full border object-cover"
+                                                            className="h-10 w-10 min-h-10 min-w-10 rounded border object-cover"
                                                         />
                                                     ) : (
-                                                        <div className="flex h-10 w-10 items-center justify-center rounded-full border bg-gray-100 text-sm font-semibold text-gray-600">
+                                                        <div className="flex h-10 w-10 items-center justify-center rounded border bg-gray-100 text-sm font-semibold text-gray-600">
                                                             {avatarLetter}
                                                         </div>
                                                     )}

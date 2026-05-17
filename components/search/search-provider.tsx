@@ -61,7 +61,7 @@ export default function SearchProvider() {
     flex
     items-center
     gap-2
-    rounded-full
+    rounded
     bg-(--theme)
     px-5
     py-3

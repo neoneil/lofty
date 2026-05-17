@@ -42,7 +42,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 
             <form
               action="/posts"
-              className="mt-6 flex max-w-xl items-center rounded-full bg-white px-4 py-2 shadow-sm"
+              className="mt-6 flex max-w-xl items-center rounded bg-white px-4 py-2 shadow-sm"
             >
               <input
                 type="text"
@@ -51,7 +51,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                 placeholder="Search articles..."
                 className="w-full bg-transparent px-3 py-3 text-sm outline-none"
               />
-              <button className="rounded-full bg-black px-5 py-2 text-sm text-white">
+              <button className="rounded bg-black px-5 py-2 text-sm text-white">
                 Search
               </button>
             </form>
@@ -131,7 +131,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 
                 <Link
                   href="/pte"
-                  className="mt-5 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black"
+                  className="mt-5 block rounded bg-white px-4 py-3 text-center text-sm font-semibold text-black"
                 >
                   立即测评 →
                 </Link>
@@ -146,14 +146,14 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                 <div className="mt-4 space-y-3">
                   <Link
                     href="/pte"
-                    className="block rounded-xl bg-[#f5f5f7] p-4 hover:bg-neutral-100"
+                    className="block rounded bg-[#f5f5f7] p-4 hover:bg-neutral-100"
                   >
                     PTE 一对一 / 小班
                   </Link>
 
                   <Link
                     href="/ielts"
-                    className="block rounded-xl bg-[#f5f5f7] p-4 hover:bg-neutral-100"
+                    className="block rounded bg-[#f5f5f7] p-4 hover:bg-neutral-100"
                   >
                     IELTS 提分课程
                   </Link>
@@ -185,7 +185,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 
                 <Link
                   href="/contact"
-                  className="mt-5 block rounded-xl bg-black px-4 py-3 text-center text-sm font-semibold text-white"
+                  className="mt-5 block rounded bg-black px-4 py-3 text-center text-sm font-semibold text-white"
                 >
                   预约咨询 →
                 </Link>

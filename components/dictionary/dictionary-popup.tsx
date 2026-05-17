@@ -202,7 +202,7 @@ export default function DictionaryPopup() {
             absolute
             right-4
             top-4
-            rounded-full
+            rounded
             bg-gray-100
             p-2
             text-gray-500
@@ -404,7 +404,7 @@ export default function DictionaryPopup() {
 
                           <div
                             className="
-                              rounded-full
+                              rounded
                               bg-(--theme)
                               px-2 py-1
                               text-xs

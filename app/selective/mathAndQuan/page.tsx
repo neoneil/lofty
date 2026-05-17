@@ -361,7 +361,7 @@ export default function SelectiveMathPage() {
             <button
               onClick={handleGenerateQuestion}
               disabled={isGenerating}
-              className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isGenerating ? "Generating..." : "Generate Math Question"}
             </button>
@@ -387,30 +387,30 @@ export default function SelectiveMathPage() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                   {question.topicCategory}
                 </span>
-                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                   {question.subtopic.replace(/_/g, " ")}
                 </span>
-                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                   {question.difficulty}
                 </span>
-                <span className="rounded-full bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
+                <span className="rounded bg-gray-50 px-3 py-1 text-sm capitalize text-(--text-main)">
                   {question.questionType.replace(/_/g, " ")}
                 </span>
               </div>
             </div>
 
             <div className="mt-5 grid gap-4 md:grid-cols-2">
-              <div className="rounded-xl bg-gray-50 px-4 py-3">
+              <div className="rounded bg-gray-50 px-4 py-3">
                 <p className="text-sm text-(--text-secondary)">Generated At</p>
                 <p className="mt-1 font-medium text-(--text-main)">
                   {new Date(question.createdAt).toLocaleString()}
                 </p>
               </div>
 
-              <div className="rounded-xl bg-gray-50 px-4 py-3">
+              <div className="rounded bg-gray-50 px-4 py-3">
                 <p className="text-sm text-(--text-secondary)">Question ID</p>
                 <p className="mt-1 break-all font-medium text-(--text-main)">
                   {question.id}
@@ -442,7 +442,7 @@ export default function SelectiveMathPage() {
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Type your answer here..."
-                className="w-full rounded-xl border border-(--border-color) bg-white px-4 py-3 text-(--text-main) outline-none"
+                className="w-full rounded border border-(--border-color) bg-white px-4 py-3 text-(--text-main) outline-none"
               />
             </div>
 
@@ -451,7 +451,7 @@ export default function SelectiveMathPage() {
                 type="button"
                 onClick={handleSubmitAnswer}
                 disabled={isSubmitting}
-                className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Submitting..." : "Submit Answer"}
               </button>
@@ -459,7 +459,7 @@ export default function SelectiveMathPage() {
               <button
                 type="button"
                 onClick={() => setShowHints((prev) => !prev)}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 {showHints ? "Hide Hints" : "Show Hints"}
               </button>
@@ -467,7 +467,7 @@ export default function SelectiveMathPage() {
               {/* <button
                 type="button"
                 onClick={() => setShowAnswer((prev) => !prev)}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 {showAnswer ? "Hide Answer" : "Show Answer"}
               </button>
@@ -475,7 +475,7 @@ export default function SelectiveMathPage() {
               <button
                 type="button"
                 onClick={() => setShowSolution((prev) => !prev)}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 {showSolution ? "Hide Solution" : "Show Solution"}
               </button> */}
@@ -501,7 +501,7 @@ export default function SelectiveMathPage() {
                     question.hints.map((hint, index) => (
                       <li
                         key={index}
-                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                       >
                         {hint}
                       </li>
@@ -530,7 +530,7 @@ export default function SelectiveMathPage() {
                     question.solutionSteps.map((step, index) => (
                       <li
                         key={index}
-                        className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                        className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                       >
                         <span className="mr-2 font-semibold text-(--text-secondary)">
                           {index + 1}.

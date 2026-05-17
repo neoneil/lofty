@@ -216,7 +216,7 @@ export async function POST(req: Request) {
           last_correct_at: isCorrect ? nowIso : existingStat.last_correct_at,
           last_wrong_at: !isCorrect ? nowIso : existingStat.last_wrong_at,
           is_practiced: true,
-          is_in_wrong_book: !isCorrect,
+          // is_in_wrong_book: !isCorrect,
           best_score:
             existingStat.best_score == null
               ? score

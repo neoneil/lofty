@@ -458,7 +458,7 @@ export default function MathPracticeClient() {
                         )
                       ) : (
                         <div
-                          className={`h-2.5 w-2.5 rounded-full ${
+                          className={`h-2.5 w-2.5 rounded ${
                             selected ? "bg-white" : "bg-slate-300"
                           }`}
                         />
@@ -491,13 +491,13 @@ export default function MathPracticeClient() {
               <div>
                 <CardTitle className="text-2xl">Question {currentIndex + 1}</CardTitle>
                 <CardDescription className="mt-2 flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="rounded-full px-3 py-1">
+                  <Badge variant="secondary" className="rounded px-3 py-1">
                     {topicLabels[currentProblem.topic]}
                   </Badge>
-                  <Badge variant="outline" className="rounded-full px-3 py-1">
+                  <Badge variant="outline" className="rounded px-3 py-1">
                     {currentProblem.difficulty}
                   </Badge>
-                  <Badge variant="outline" className="rounded-full px-3 py-1">
+                  <Badge variant="outline" className="rounded px-3 py-1">
                     {currentProblem.scenario}
                   </Badge>
                 </CardDescription>

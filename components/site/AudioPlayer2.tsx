@@ -137,7 +137,7 @@ export default function AudioPlayer({ url }: { url: string }) {
           onClick={togglePlay}
           className="
             flex h-12 w-12 shrink-0 items-center justify-center
-            rounded-full
+            rounded
             bg-indigo-600
             text-white
             shadow-md
@@ -159,7 +159,7 @@ export default function AudioPlayer({ url }: { url: string }) {
           <div
             className="
               flex h-16 flex-1 cursor-pointer items-end gap-[2px]
-              overflow-hidden rounded-xl
+              overflow-hidden rounded
               bg-gray-50 px-2 py-2
             "
             onClick={(e) => {
@@ -179,7 +179,7 @@ export default function AudioPlayer({ url }: { url: string }) {
                 <div
                   key={i}
                   className="
-                    rounded-full
+                    rounded
                     transition-all
                   "
                   style={{

@@ -125,7 +125,7 @@ export default function WfdDetailClient({
                     <div className="mb-5 flex flex-wrap items-center gap-3">
 
                         <span
-                            className={`rounded-full px-4 py-1.5 text-sm font-semibold ${
+                            className={`rounded px-4 py-1.5 text-sm font-semibold ${
                                 result.isCorrect
                                     ? "bg-green-100 text-green-700"
                                     : "bg-red-100 text-red-700"
@@ -136,7 +136,7 @@ export default function WfdDetailClient({
                                 : "Wrong"}
                         </span>
 
-                        <span className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-gray-700 border border-gray-200">
+                        <span className="rounded bg-white px-4 py-1.5 text-sm font-semibold text-gray-700 border border-gray-200">
                             Score: {result.score}
                         </span>
                     </div>
@@ -189,17 +189,17 @@ export default function WfdDetailClient({
                     <div className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-gray-500">
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-green-400" />
+                            <span className="h-3 w-3 rounded bg-green-400" />
                             Correct
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-red-400" />
+                            <span className="h-3 w-3 rounded bg-red-400" />
                             Missing
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                            <span className="h-3 w-3 rounded bg-yellow-400" />
                             Extra
                         </div>
                     </div>
@@ -384,7 +384,7 @@ export default function WfdDetailClient({
 //                     <div className="mb-4 flex flex-wrap items-center gap-3">
 
 //                         <span
-//                             className={`rounded-full px-4 py-1 text-sm font-semibold ${result.isCorrect
+//                             className={`rounded px-4 py-1 text-sm font-semibold ${result.isCorrect
 //                                     ? "bg-green-100 text-green-700"
 //                                     : "bg-red-100 text-red-700"
 //                                 }`}
@@ -408,7 +408,7 @@ export default function WfdDetailClient({
 //                                 {result.missingWords.map((word) => (
 //                                     <span
 //                                         key={word}
-//                                         className="rounded-full bg-red-100 px-3 py-1 text-sm text-red-700"
+//                                         className="rounded bg-red-100 px-3 py-1 text-sm text-red-700"
 //                                     >
 //                                         {word}
 //                                     </span>
@@ -428,7 +428,7 @@ export default function WfdDetailClient({
 //                                 {result.extraWords.map((word) => (
 //                                     <span
 //                                         key={word}
-//                                         className="rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-700"
+//                                         className="rounded bg-yellow-100 px-3 py-1 text-sm text-yellow-700"
 //                                     >
 //                                         {word}
 //                                     </span>

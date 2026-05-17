@@ -88,7 +88,7 @@ function SelectItem({
   return (
     <SelectPrimitive.Item
       className={cn(
-        "relative flex min-h-10 w-full cursor-pointer items-center rounded-xl px-3 pr-8 text-sm leading-none text-slate-900 outline-none select-none",
+        "relative flex min-h-10 w-full cursor-pointer items-center rounded px-3 pr-8 text-sm leading-none text-slate-900 outline-none select-none",
         "focus:bg-slate-100 data-[highlighted]:bg-slate-100",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className

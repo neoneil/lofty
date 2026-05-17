@@ -176,7 +176,7 @@ export default function AudioPlayer({
           onClick={togglePlay}
           className={`
             flex h-14 w-14 shrink-0 items-center justify-center cursor-pointer
-            rounded-full
+            rounded
             bg-gradient-to-br
             from-indigo-400
             via-violet-500
@@ -243,7 +243,7 @@ export default function AudioPlayer({
                 <div
                   key={i}
                   className={`
-                    relative rounded-full
+                    relative rounded
                     transition-all duration-150
                     ${played
                       ? "bg-gradient-to-t from-cyan-400 to-indigo-500"
@@ -307,13 +307,13 @@ export default function AudioPlayer({
               }}
               className="
                 h-[3px] w-full cursor-pointer
-                appearance-none rounded-full
+                appearance-none rounded
                 bg-white/15
 
                 [&::-webkit-slider-thumb]:appearance-none
                 [&::-webkit-slider-thumb]:h-3
                 [&::-webkit-slider-thumb]:w-3
-                [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:rounded
                 [&::-webkit-slider-thumb]:bg-cyan-400
                 [&::-webkit-slider-thumb]:shadow-[0_0_12px_rgba(34,211,238,0.9)]
               "

@@ -289,7 +289,7 @@ export default function WritingPage() {
             <button
               onClick={handleGeneratePrompt}
               disabled={isGeneratingPrompt || !user}
-              className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isGeneratingPrompt ? "Generating..." : "Generate Prompt with AI"}
             </button>
@@ -353,7 +353,7 @@ export default function WritingPage() {
                 <p className="text-sm text-(--text-secondary)">Tips</p>
                 <ul className="mt-2 space-y-2 text-(--text-main)">
                   {prompt.tips.map((tip, index) => (
-                    <li key={index} className="rounded-xl bg-gray-50 px-3 py-2">
+                    <li key={index} className="rounded bg-gray-50 px-3 py-2">
                       {tip}
                     </li>
                   ))}
@@ -363,7 +363,7 @@ export default function WritingPage() {
               <div>
                 <button
                   onClick={() => setShowIdeas((prev) => !prev)}
-                  className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                  className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
                 >
                   {showIdeas ? "Hide Sample Ideas" : "Show Sample Ideas"}
                 </button>
@@ -371,7 +371,7 @@ export default function WritingPage() {
                 {showIdeas && (
                   <ul className="mt-3 space-y-2 text-(--text-main)">
                     {prompt.ideas.map((idea, index) => (
-                      <li key={index} className="rounded-xl bg-gray-50 px-3 py-2">
+                      <li key={index} className="rounded bg-gray-50 px-3 py-2">
                         {idea}
                       </li>
                     ))}
@@ -389,12 +389,12 @@ export default function WritingPage() {
             </h2>
 
             <div className="flex items-center gap-3">
-              <span className="rounded-xl bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
+              <span className="rounded bg-gray-50 px-3 py-2 text-sm text-(--text-main)">
                 Word Count: {wordCount}
               </span>
               <button
                 onClick={handleClearWriting}
-                className="rounded-xl border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
+                className="rounded border border-(--border-color) bg-white px-4 py-2 text-(--text-main) transition hover:bg-gray-50"
               >
                 Clear Writing
               </button>
@@ -414,7 +414,7 @@ export default function WritingPage() {
             <button
               onClick={handleReviewWithAI}
               disabled={isReviewing || !user || !prompt}
-              className="rounded-xl bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded bg-[#1f2937] px-4 py-2 text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isReviewing ? "Reviewing..." : "Review with AI"}
             </button>
@@ -504,7 +504,7 @@ export default function WritingPage() {
                 {review.strengthsEn.map((item, index) => (
                   <li
                     key={index}
-                    className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                    className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                   >
                     {item}
                   </li>
@@ -516,7 +516,7 @@ export default function WritingPage() {
                 {review.strengthsZh.map((item, index) => (
                   <li
                     key={index}
-                    className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                    className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                   >
                     {item}
                   </li>
@@ -532,7 +532,7 @@ export default function WritingPage() {
                 {review.improvementsEn.map((item, index) => (
                   <li
                     key={index}
-                    className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                    className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                   >
                     {item}
                   </li>
@@ -544,7 +544,7 @@ export default function WritingPage() {
                 {review.improvementsZh.map((item, index) => (
                   <li
                     key={index}
-                    className="rounded-xl bg-gray-50 px-4 py-3 text-(--text-main)"
+                    className="rounded bg-gray-50 px-4 py-3 text-(--text-main)"
                   >
                     {item}
                   </li>

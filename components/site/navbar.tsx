@@ -75,11 +75,6 @@ export default async function Navbar() {
       label: "PTE在线练习",
       tooltip: "",
     },
-    // {
-    //   href: "/pteTest/listening/wfd",
-    //   label: "PTETest",
-    //   tooltip: "",
-    // },
     {
       href: "/ielts/speaking",
       label: "雅思在线练习",
@@ -87,12 +82,12 @@ export default async function Navbar() {
     },
     {
       href: "/posts",
-      label: "致远博客",
+      label: "文章",
       tooltip: "Articles & Resources",
     },
     {
       href: "/contact",
-      label: "关于致远",
+      label: "联系老师",
       tooltip: "About Lofty",
     },
   ];
@@ -140,14 +135,39 @@ export default async function Navbar() {
 
           {/* 桌面端 */}
           <div className="hidden h-12 items-center justify-between gap-4 lg:flex">
-<Link
+{/* <Link
   href="/"
-  className="group ml-2 flex shrink-0 items-center gap-2 rounded-xl px-2 py-1 transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.02] hover:bg-white/60 hover:shadow-sm"
+  className="group ml-2 flex shrink-0 items-center gap-2 rounded px-2 py-1 transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.02] hover:bg-white/60 hover:shadow-sm"
 >
+  <div className="flex flex-col justify-center whitespace-nowrap leading-tight"> */}
+    <Link
+  href="/"
+  className="
+    group ml-2 flex shrink-0 items-center gap-3
+    rounded-2xl px-3 py-2
+  "
+>
+
+  <div
+    className="
+      flex h-11 w-11 items-center justify-center
+      rounded-2xl
+      bg-[#f7f4ef]
+      ring-1 ring-black/5
+    "
+  >
+    <Image
+      src="/SVG/121.svg"
+      alt="Lofty Education"
+      width={24}
+      height={24}
+      className="h-6 w-6 object-contain opacity-80"
+    />
+  </div>
+
   <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
-    
     <span
-      className="text-xl font-bold tracking-tight transition-all duration-200 group-hover:opacity-80"
+      className="text-base font-bold tracking-tight transition-all duration-200 group-hover:opacity-80"
       style={{
         color: "#2F4A3F",
         textShadow: "0 1px 0 rgba(255,255,255,0.18)",
@@ -189,7 +209,7 @@ export default async function Navbar() {
                       z-50
                       mt-2
                       -translate-x-1/2
-                      rounded-xl
+                      rounded
                       px-3
                       py-1.5
                       text-xs
@@ -217,13 +237,13 @@ export default async function Navbar() {
             <div className="flex shrink-0 items-center gap-1.5">
               {user ? (
                 <>
-                  <div className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2 py-1 shadow-sm transition hover:bg-white/15">
+                  <div className="flex items-center gap-1.5 rounded border border-white/15 bg-white/10 px-2 py-1 shadow-sm transition hover:bg-white/15">
                     <Image
                       src={avatar}
                       alt={name}
                       width={30}
                       height={30}
-                      className="h-8 w-8 rounded-full object-cover"
+                      className="h-8 w-8 rounded object-cover"
                     />
 
                     <div className="hidden min-w-0 flex-col leading-tight xl:flex">
@@ -289,7 +309,7 @@ export default async function Navbar() {
                         z-50
                         mt-2
                         -translate-x-1/2
-                        rounded-xl
+                        rounded
                         px-3
                         py-1.5
                         text-xs
@@ -329,7 +349,7 @@ export default async function Navbar() {
                         z-50
                         mt-2
                         -translate-x-1/2
-                        rounded-xl
+                        rounded
                         px-3
                         py-1.5
                         text-xs
@@ -533,7 +553,7 @@ export default async function Navbar() {
 //         z-50
 //         mt-2
 //         -translate-x-1/2
-//         rounded-xl
+//         rounded
 //         px-3
 //         py-1.5
 //         text-xs
@@ -561,13 +581,13 @@ export default async function Navbar() {
 //             <div className="flex shrink-0 items-center gap-1.5">
 //               {user ? (
 //                 <>
-//                   <div className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2 py-1 shadow-sm transition hover:bg-white/15">
+//                   <div className="flex items-center gap-1.5 rounded border border-white/15 bg-white/10 px-2 py-1 shadow-sm transition hover:bg-white/15">
 //                     <Image
 //                       src={avatar}
 //                       alt={name}
 //                       width={30}
 //                       height={30}
-//                       className="h-8 w-8 rounded-full object-cover"
+//                       className="h-8 w-8 rounded object-cover"
 //                     />
 
 //                     <div className="hidden min-w-0 flex-col leading-tight xl:flex">
@@ -634,7 +654,7 @@ export default async function Navbar() {
 //       z-50
 //       mt-2
 //       -translate-x-1/2
-//       rounded-xl
+//       rounded
 //       px-3
 //       py-1.5
 //       text-xs
@@ -674,7 +694,7 @@ export default async function Navbar() {
 //       z-50
 //       mt-2
 //       -translate-x-1/2
-//       rounded-xl
+//       rounded
 //       px-3
 //       py-1.5
 //       text-xs

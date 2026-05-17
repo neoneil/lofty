@@ -152,7 +152,7 @@ export default function CoursesPage() {
                   </ul>
 
                   <div className="mt-auto pt-6">
-                    <div className="cursor-pointer w-full rounded-xl bg-[var(--brand-accent)] px-4 py-3 text-center text-sm font-semibold text-white">
+                    <div className="cursor-pointer w-full rounded bg-[var(--brand-accent)] px-4 py-3 text-center text-sm font-semibold text-white">
                       {course.button}
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export default function CoursesPage() {
           <div className="relative max-h-[88vh] w-full max-w-4xl animate-[modalIn_0.28s_ease-out] overflow-y-auto rounded-[32px] bg-white p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] md:p-10">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 text-xl leading-none text-neutral-600 transition hover:bg-neutral-200"
+              className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded bg-neutral-100 text-xl leading-none text-neutral-600 transition hover:bg-neutral-200"
             >
               ×
             </button>
@@ -235,14 +235,14 @@ export default function CoursesPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-xl bg-[var(--brand-accent)] px-6 py-3 text-center text-sm font-semibold text-white"
+                className="rounded bg-[var(--brand-accent)] px-6 py-3 text-center text-sm font-semibold text-white"
               >
                 预约试听 / 咨询详情
               </Link>
 
               <button
                 onClick={() => setModalOpen(false)}
-                className="cursor-pointer rounded-xl border border-neutral-300 px-6 py-3 text-sm font-semibold"
+                className="cursor-pointer rounded border border-neutral-300 px-6 py-3 text-sm font-semibold"
               >
                 继续查看课程
               </button>
@@ -287,14 +287,14 @@ export default function CoursesPage() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
-              className="rounded-xl bg-[var(--brand-accent)] px-6 py-3 text-sm font-semibold text-white"
+              className="rounded bg-[var(--brand-accent)] px-6 py-3 text-sm font-semibold text-white"
             >
               预约试听
             </Link>
 
             <Link
               href="/contact"
-              className="rounded-xl border border-neutral-300 px-6 py-3 text-sm font-semibold"
+              className="rounded border border-neutral-300 px-6 py-3 text-sm font-semibold"
             >
               课程咨询
             </Link>

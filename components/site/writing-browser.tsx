@@ -170,7 +170,7 @@ export default function WritingBrowser({ topics }: Props) {
 
           <div className="flex flex-wrap items-center gap-3">
             <div
-              className="rounded-full border px-4 py-2 text-sm text-(--theme)"
+              className="rounded border px-4 py-2 text-sm text-(--theme)"
               style={{ borderColor: "var(--border)" }}
             >
               {visibleTopics.length} topics
@@ -259,7 +259,7 @@ export default function WritingBrowser({ topics }: Props) {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-3">
                   <div
-                    className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+                    className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                     style={{ borderColor: "var(--border)" }}
                   >
                     Date: {formatDate(item.year, item.month, item.day)}
@@ -267,7 +267,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                   {item.topic_category && (
                     <div
-                      className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+                      className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                       style={{ borderColor: "var(--border)" }}
                     >
                       Topic: {item.topic_category}
@@ -276,7 +276,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                   {item.question_type && (
                     <div
-                      className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+                      className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
                       style={{ borderColor: "var(--border)" }}
                     >
                       Type: {formatQuestionType(item.question_type)}
@@ -440,7 +440,7 @@ export default function WritingBrowser({ topics }: Props) {
 //                     </div>
 
 //                     <div
-//                         className="rounded-full border px-4 py-2 text-sm text-gray-600"
+//                         className="rounded border px-4 py-2 text-sm text-gray-600"
 //                         style={{ borderColor: "var(--border)" }}
 //                     >
 //                         {visibleTopics.length} topics
@@ -512,7 +512,7 @@ export default function WritingBrowser({ topics }: Props) {
 //                             <div className="space-y-6">
 //                                 <div className="flex flex-wrap gap-3">
 //                                     <div
-//                                         className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+//                                         className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
 //                                         style={{ borderColor: "var(--border)" }}
 //                                     >
 //                                         Date: {formatDate(item.year, item.month, item.day)}
@@ -520,7 +520,7 @@ export default function WritingBrowser({ topics }: Props) {
 
 //                                     {item.topic_category && (
 //                                         <div
-//                                             className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+//                                             className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
 //                                             style={{ borderColor: "var(--border)" }}
 //                                         >
 //                                             Topic: {item.topic_category}
@@ -529,7 +529,7 @@ export default function WritingBrowser({ topics }: Props) {
 
 //                                     {item.question_type && (
 //                                         <div
-//                                             className="rounded-full border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
+//                                             className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
 //                                             style={{ borderColor: "var(--border)" }}
 //                                         >
 //                                             Type: {formatQuestionType(item.question_type)}

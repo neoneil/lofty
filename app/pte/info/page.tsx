@@ -149,7 +149,7 @@ export default function PteTable() {
                 {data.map((row) => (
                     <div
                         key={row.id}
-                        className="bg-white rounded-xl shadow-md border border-gray-200 p-4"
+                        className="bg-white rounded shadow-md border border-gray-200 p-4"
                     >
                         <div className="flex justify-between mb-2">
                             <span className="font-semibold text-gray-800">{row.type}</span>

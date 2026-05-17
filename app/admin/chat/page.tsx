@@ -293,7 +293,7 @@ export default function AdminChatPage() {
 
                         {session.unread_count > 0 && (
                           <div
-                            className="min-w-5.5 rounded-full px-2 py-1 text-center text-xs text-white"
+                            className="min-w-5.5 rounded px-2 py-1 text-center text-xs text-white"
                             style={{ backgroundColor: 'var(--primary)' }}
                           >
                             {session.unread_count}

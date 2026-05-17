@@ -41,7 +41,7 @@ export default function AccordionCard({
         <div className="min-w-0">
           <div className="mb-2 flex flex-wrap items-center gap-2">
             {badge && (
-              <span className="rounded-full bg-(--theme) px-2.5 py-1 text-xs font-medium text-white">
+              <span className="rounded bg-(--theme) px-2.5 py-1 text-xs font-medium text-white">
                 {badge}
               </span>
             )}
@@ -60,7 +60,7 @@ export default function AccordionCard({
 
         <span
           className={`
-            mt-1 shrink-0 rounded-full border px-3 py-1 text-sm font-medium text-(--theme)
+            mt-1 shrink-0 rounded border px-3 py-1 text-sm font-medium text-(--theme)
             transition-all duration-300
             group-hover:bg-(--theme) group-hover:text-white
             ${open ? "rotate-180" : ""}

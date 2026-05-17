@@ -188,7 +188,7 @@ export default async function AdminDashboardPage() {
                   <Link
                     key={type}
                     href={`/admin/pte/${type}`}
-                    className="rounded-full border bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-900 hover:text-white"
+                    className="rounded border bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-900 hover:text-white"
                   >
                     {TYPE_LABEL_MAP[type] ?? type.toUpperCase()}
                   </Link>
@@ -212,7 +212,7 @@ export default async function AdminDashboardPage() {
               dailyTrend.map((item) => (
                 <div
                   key={item.day}
-                  className="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3"
+                  className="flex items-center justify-between rounded bg-gray-50 px-4 py-3"
                 >
                   <span className="text-sm text-gray-700">{item.day}</span>
                   <span className="text-sm font-semibold text-gray-900">
@@ -237,7 +237,7 @@ export default async function AdminDashboardPage() {
                 <Link
                   key={item.question_source}
                   href={`/admin/pte/${item.question_source}`}
-                  className="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3 transition hover:bg-gray-100"
+                  className="flex items-center justify-between rounded bg-gray-50 px-4 py-3 transition hover:bg-gray-100"
                 >
                   <span className="text-sm uppercase text-gray-700">
                     {TYPE_LABEL_MAP[item.question_source] ??
@@ -263,7 +263,7 @@ export default async function AdminDashboardPage() {
   </div>
 
   {activeStudents.length === 0 ? (
-    <div className="rounded-xl bg-gray-50 px-4 py-6 text-center text-sm text-gray-500">
+    <div className="rounded bg-gray-50 px-4 py-6 text-center text-sm text-gray-500">
       No data yet.
     </div>
   ) : (
@@ -285,10 +285,10 @@ export default async function AdminDashboardPage() {
                   src={student.avatar_url}
                   alt={displayName}
                   referrerPolicy="no-referrer"
-                  className="h-12 w-12 min-h-12 min-w-12 rounded-full border object-cover"
+                  className="h-12 w-12 min-h-12 min-w-12 rounded border object-cover"
                 />
               ) : (
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border bg-gray-100 text-sm font-semibold text-gray-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded border bg-gray-100 text-sm font-semibold text-gray-600">
                   {avatarLetter}
                 </div>
               )}
@@ -302,14 +302,14 @@ export default async function AdminDashboardPage() {
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-3">
-              <div className="rounded-xl bg-gray-50 px-3 py-3">
+              <div className="rounded bg-gray-50 px-3 py-3">
                 <div className="text-xs text-gray-500">Attempts</div>
                 <div className="mt-1 text-lg font-bold text-gray-900">
                   {student.attempts}
                 </div>
               </div>
 
-              <div className="rounded-xl bg-gray-50 px-3 py-3">
+              <div className="rounded bg-gray-50 px-3 py-3">
                 <div className="text-xs text-gray-500">Recent Type</div>
                 <div className="mt-1 text-sm font-semibold uppercase text-gray-900">
                   {student.latest_question_source
@@ -320,7 +320,7 @@ export default async function AdminDashboardPage() {
               </div>
             </div>
 
-            <div className="mt-4 rounded-xl bg-gray-50 px-3 py-3">
+            <div className="mt-4 rounded bg-gray-50 px-3 py-3">
               <div className="text-xs text-gray-500">Last Submitted</div>
               <div className="mt-1 text-sm text-gray-800">
                 {new Date(student.last_submitted_at).toLocaleString()}
@@ -370,10 +370,10 @@ export default async function AdminDashboardPage() {
                               src={student.avatar_url}
                               alt={displayName}
                               referrerPolicy="no-referrer"
-                              className="h-10 w-10 min-h-10 min-w-10 rounded-full border object-cover"
+                              className="h-10 w-10 min-h-10 min-w-10 rounded border object-cover"
                             />
                           ) : (
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full border bg-gray-100 text-sm font-semibold text-gray-600">
+                            <div className="flex h-10 w-10 items-center justify-center rounded border bg-gray-100 text-sm font-semibold text-gray-600">
                               {avatarLetter}
                             </div>
                           )}
@@ -393,7 +393,7 @@ export default async function AdminDashboardPage() {
                         {student.latest_question_source ? (
                           <Link
                             href={`/admin/pte/${student.latest_question_source}`}
-                            className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium uppercase text-gray-700 transition hover:bg-gray-200"
+                            className="rounded bg-gray-100 px-3 py-1 text-xs font-medium uppercase text-gray-700 transition hover:bg-gray-200"
                           >
                             {TYPE_LABEL_MAP[student.latest_question_source] ??
                               student.latest_question_source}

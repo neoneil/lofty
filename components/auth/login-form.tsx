@@ -90,7 +90,7 @@ export default function CommercialLoginForm() {
                     value={email}
                     autoComplete="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
@@ -105,12 +105,12 @@ export default function CommercialLoginForm() {
                     value={password}
                     autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
                 {message && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                  <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
                     {message}
                   </div>
                 )}
@@ -118,7 +118,7 @@ export default function CommercialLoginForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-primary w-full rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading ? "Signing in..." : "Login"}
                 </button>
@@ -127,7 +127,7 @@ export default function CommercialLoginForm() {
                   type="button"
                   disabled={loading}
                   onClick={handleGoogleLogin}
-                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
                     <path
@@ -196,7 +196,7 @@ export default function CommercialLoginForm() {
                     value={email}
                     autoComplete="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
@@ -208,12 +208,12 @@ export default function CommercialLoginForm() {
                     value={password}
                     autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-14 w-full rounded-xl border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
+                    className="h-14 w-full rounded border border-(--border) bg-white px-4 text-base text-(--text) outline-none transition focus:border-slate-500"
                   />
                 </div>
 
                 {message && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                  <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
                     {message}
                   </div>
                 )}
@@ -221,7 +221,7 @@ export default function CommercialLoginForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-primary w-full rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading ? "Signing in..." : "Login"}
                 </button>
@@ -230,7 +230,7 @@ export default function CommercialLoginForm() {
                   type="button"
                   disabled={loading}
                   onClick={handleGoogleLogin}
-                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded-xl disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-secondary flex w-full items-center justify-center gap-3 rounded disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   Continue with Google
                 </button>
@@ -326,7 +326,7 @@ export default function CommercialLoginForm() {
 //               Email
 //             </label>
 //             <input
-//               className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
+//               className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 //               type="email"
 //               placeholder="Enter your email"
 //               value={email}
@@ -339,7 +339,7 @@ export default function CommercialLoginForm() {
 //               Password
 //             </label>
 //             <input
-//               className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
+//               className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 //               type="password"
 //               placeholder="Enter your password"
 //               value={password}
@@ -350,7 +350,7 @@ export default function CommercialLoginForm() {
 //           <button
 //             type="submit"
 //             disabled={loading}
-//             className="w-full rounded-xl bg-black px-4 py-3 text-white font-medium transition hover:opacity-90 disabled:opacity-50"
+//             className="w-full rounded bg-black px-4 py-3 text-white font-medium transition hover:opacity-90 disabled:opacity-50"
 //           >
 //             {loading ? "Signing in..." : "Login"}
 //           </button>
@@ -359,13 +359,13 @@ export default function CommercialLoginForm() {
 //             type="button"
 //             disabled={loading}
 //             onClick={handleGoogleLogin}
-//             className="w-full rounded-xl border border-gray-300 px-4 py-3 font-medium transition hover:bg-gray-50 disabled:opacity-50"
+//             className="w-full rounded border border-gray-300 px-4 py-3 font-medium transition hover:bg-gray-50 disabled:opacity-50"
 //           >
 //             Continue with Google
 //           </button>
 
 //           {message && (
-//             <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
+//             <p className="rounded bg-red-50 px-4 py-3 text-sm text-red-600">
 //               {message}
 //             </p>
 //           )}

@@ -9,6 +9,9 @@ type Props = {
         id: string;
         question_text: string;
     };
+     prevQuestionId: string | null;
+    nextQuestionId: string | null;
+    questionNumber: number;
 };
 
 type Token = {
@@ -17,21 +20,28 @@ type Token = {
 };
 
 type SubmitResult = {
-    score: number;
+    // score: number;
+    correctWords: number;
+    totalWords: number;
     isCorrect: boolean;
     tokens: Token[];
 };
 
 export default function WfdDetailClient({
-    question,
+    question,   
+    prevQuestionId,
+    nextQuestionId,
+    questionNumber,
 }: Props) {
+    const [startedAt] = useState(Date.now());
     const [answer, setAnswer] = useState("");
 
     const [loading, setLoading] = useState(false);
 
     const [result, setResult] =
         useState<SubmitResult | null>(null);
-
+    const [showAnswer, setShowAnswer] =
+        useState(false);
     const router = useRouter();
 
     const handleSubmit = async () => {
@@ -48,7 +58,7 @@ export default function WfdDetailClient({
                     body: JSON.stringify({
                         questionId: question.id,
                         userAnswer: answer,
-                        startedAt: Date.now(),
+                        startedAt,
                     }),
                 }
             );
@@ -62,16 +72,15 @@ export default function WfdDetailClient({
             }
 
             setResult({
-                score:
-                    Math.round(
-                        (data.score / data.totalWords) * 100
-                    ) || 0,
-
+                correctWords: data.score || 0,
+                totalWords: data.totalWords || 0,
                 isCorrect: data.isCorrect,
-
                 tokens: data.tokens || [],
             });
-
+            // AUTO SHOW ANSWER
+            if (!showAnswer) {
+                setShowAnswer(true);
+            }
             router.refresh();
 
         } catch (error) {
@@ -90,33 +99,53 @@ export default function WfdDetailClient({
 
     return (
         <div className="mt-8 space-y-6">
-
-            {/* INPUT */}
-            <div>
-                <label className="mb-2 block text-sm font-semibold text-gray-700">
-                    输入你的答案
-                </label>
-
-                <textarea
-                    value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                    placeholder="请输入你听到的句子..."
-                    className="min-h-[180px] w-full rounded-[24px] border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
-                />
-            </div>
-
-            {/* SUBMIT */}
-            <div className="flex justify-end">
-                <button
-                    type="button"
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    className="rounded-2xl bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            {/* QUESTION TEXT */}
+            <div
+                className="
+        rounded-[24px]
+        bg-gray-50
+        px-5 py-5
+    "
+            >
+                <div
+                    className="
+            mb-4
+            flex items-center justify-between
+        "
                 >
-                    {loading ? "提交中..." : "提交答案"}
-                </button>
-            </div>
+                    <button
+                        type="button"
+                        onClick={() =>
+                            setShowAnswer(
+                                !showAnswer
+                            )
+                        }
+                        className="btn-primary"
+                    >
+                        {showAnswer
+                            ? "隐藏答案"
+                            : "答案"}
+                    </button>
+                </div>
 
+                <div
+                    className={`
+            text-[18px]
+            leading-9
+            text-gray-800
+
+            transition-all
+            duration-300
+
+            ${showAnswer
+                            ? "blur-0"
+                            : "select-none blur-[10px]"
+                        }
+        `}
+                >
+                    {question.question_text}
+                </div>
+            </div>
             {/* RESULT */}
             {result ? (
                 <section className="rounded-[30px] border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
@@ -125,19 +154,18 @@ export default function WfdDetailClient({
                     <div className="mb-5 flex flex-wrap items-center gap-3">
 
                         <span
-                            className={`rounded-full px-4 py-1.5 text-sm font-semibold ${
-                                result.isCorrect
-                                    ? "bg-green-100 text-green-700"
-                                    : "bg-red-100 text-red-700"
-                            }`}
+                            className={`rounded px-4 py-1.5 text-sm font-semibold ${result.isCorrect
+                                ? "bg-green-100 text-green-700"
+                                : "bg-red-100 text-red-700"
+                                }`}
                         >
                             {result.isCorrect
                                 ? "Correct"
                                 : "Wrong"}
                         </span>
 
-                        <span className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-gray-700 border border-gray-200">
-                            Score: {result.score}
+                        <span className="rounded bg-white px-4 py-1.5 text-sm font-semibold text-gray-700 border border-gray-200">
+                            Score: {result.correctWords} / {result.totalWords}
                         </span>
                     </div>
 
@@ -189,22 +217,47 @@ export default function WfdDetailClient({
                     <div className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-gray-500">
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-green-400" />
+                            <span className="h-3 w-3 rounded bg-green-400" />
                             Correct
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-red-400" />
+                            <span className="h-3 w-3 rounded bg-red-400" />
                             Missing
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                            <span className="h-3 w-3 rounded bg-yellow-400" />
                             Extra
                         </div>
                     </div>
                 </section>
             ) : null}
+            {/* INPUT */}
+            <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    输入你的答案
+                </label>
+
+                <textarea
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    placeholder="请输入你听到的句子..."
+                    className="min-h-[180px] w-full rounded-[24px] border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
+                />
+            </div>
+
+            {/* SUBMIT */}
+            <div className="flex justify-end">
+                <button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className="rounded-2xl bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                    {loading ? "提交中..." : "提交答案"}
+                </button>
+            </div>
         </div>
     );
 }
@@ -384,7 +437,7 @@ export default function WfdDetailClient({
 //                     <div className="mb-4 flex flex-wrap items-center gap-3">
 
 //                         <span
-//                             className={`rounded-full px-4 py-1 text-sm font-semibold ${result.isCorrect
+//                             className={`rounded px-4 py-1 text-sm font-semibold ${result.isCorrect
 //                                     ? "bg-green-100 text-green-700"
 //                                     : "bg-red-100 text-red-700"
 //                                 }`}
@@ -408,7 +461,7 @@ export default function WfdDetailClient({
 //                                 {result.missingWords.map((word) => (
 //                                     <span
 //                                         key={word}
-//                                         className="rounded-full bg-red-100 px-3 py-1 text-sm text-red-700"
+//                                         className="rounded bg-red-100 px-3 py-1 text-sm text-red-700"
 //                                     >
 //                                         {word}
 //                                     </span>
@@ -428,7 +481,7 @@ export default function WfdDetailClient({
 //                                 {result.extraWords.map((word) => (
 //                                     <span
 //                                         key={word}
-//                                         className="rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-700"
+//                                         className="rounded bg-yellow-100 px-3 py-1 text-sm text-yellow-700"
 //                                     >
 //                                         {word}
 //                                     </span>
