@@ -127,7 +127,7 @@ export default function AudioPlayer({ url }: { url: string }) {
   return (
     <div
       className="
-        w-full rounded-3xl border border-gray-200
+        w-full rounded border border-gray-200
         bg-white/90 p-4 shadow-sm backdrop-blur
       "
     >

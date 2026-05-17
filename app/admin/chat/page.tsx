@@ -231,7 +231,7 @@ export default function AdminChatPage() {
       <div className="container-main py-6">
         <div className="grid h-[calc(100vh-120px)] grid-cols-[320px_1fr] gap-4">
           <aside
-            className="flex flex-col rounded-2xl border shadow-sm"
+            className="flex flex-col rounded border shadow-sm"
             style={{
               backgroundColor: 'var(--card)',
               borderColor: 'var(--border)',
@@ -308,7 +308,7 @@ export default function AdminChatPage() {
           </aside>
 
           <main
-            className="flex flex-col rounded-2xl border shadow-sm"
+            className="flex flex-col rounded border shadow-sm"
             style={{
               backgroundColor: 'var(--card)',
               borderColor: 'var(--border)',
@@ -361,7 +361,7 @@ export default function AdminChatPage() {
                         className={`flex ${isAdmin ? 'justify-end' : 'justify-start'}`}
                       >
                         <div
-                          className="max-w-[78%] rounded-2xl px-4 py-3 text-sm shadow-sm"
+                          className="max-w-[78%] rounded px-4 py-3 text-sm shadow-sm"
                           style={{
                             backgroundColor: isAdmin
                               ? 'var(--primary)'
@@ -416,7 +416,7 @@ export default function AdminChatPage() {
                   placeholder="Type your reply..."
                   rows={3}
                   disabled={!selectedSessionId || replyLoading}
-                  className="min-h-13 flex-1 resize-none rounded-2xl border bg-transparent px-4 py-3 text-sm outline-none"
+                  className="min-h-13 flex-1 resize-none rounded border bg-transparent px-4 py-3 text-sm outline-none"
                   style={{
                     borderColor: 'var(--border)',
                     color: 'var(--text)',
@@ -432,7 +432,7 @@ export default function AdminChatPage() {
                 <button
                   onClick={() => void sendReply()}
                   disabled={!selectedSessionId || replyLoading || !input.trim()}
-                  className="rounded-2xl px-5 py-3 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded px-5 py-3 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
                   style={{ backgroundColor: 'var(--primary)' }}
                 >
                   {replyLoading ? 'Sending...' : 'Send'}

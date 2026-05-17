@@ -411,7 +411,7 @@ export default function SelectiveHistoryPage() {
     return (
       <main className="mx-auto max-w-6xl px-6 py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">History</h1>
-        <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           Please log in to view your history.
         </div>
       </main>
@@ -431,19 +431,19 @@ export default function SelectiveHistoryPage() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) px-4 py-3 text-sm text-(--text-main) shadow-sm">
+        <div className="rounded border border-(--border-color) bg-(--bg-card) px-4 py-3 text-sm text-(--text-main) shadow-sm">
           Total submissions: <span className="font-semibold">{totalCount}</span>
         </div>
       </div>
 
       {error && (
-        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mt-6 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </div>
       )}
 
       {!error && totalCount === 0 && (
-        <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
+        <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
           You do not have any history yet.
         </div>
       )}
@@ -466,7 +466,7 @@ export default function SelectiveHistoryPage() {
               <button
                 type="button"
                 onClick={() => toggleDay(group.day)}
-                className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-(--border-color) bg-(--bg-card) px-5 py-4 text-left shadow-sm transition hover:shadow-md"
+                className="flex w-full cursor-pointer items-center justify-between gap-4 rounded border border-(--border-color) bg-(--bg-card) px-5 py-4 text-left shadow-sm transition hover:shadow-md"
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-3">
@@ -512,7 +512,7 @@ export default function SelectiveHistoryPage() {
                         {group.writingItems.map((item) => (
                           <article
                             key={item.submission_id}
-                            className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
+                            className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
                           >
                             <div className="flex flex-wrap items-start justify-between gap-4">
                               <div>
@@ -583,13 +583,13 @@ export default function SelectiveHistoryPage() {
 
                             <div className="mt-6">
                               <p className="text-sm text-(--text-secondary)">Your Writing</p>
-                              <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4">
+                              <div className="mt-2 rounded bg-gray-50 px-4 py-4">
                                 <EssayPreview text={item.essay_text} />
                               </div>
                             </div>
 
                             <div className="mt-6 grid gap-6 xl:grid-cols-2">
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">Summary (English)</p>
                                 <p className="mt-2 leading-7 text-(--text-main)">
                                   {item.summary_en || "-"}
@@ -601,7 +601,7 @@ export default function SelectiveHistoryPage() {
                                 </p>
                               </div>
 
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">Score Breakdown</p>
                                 <div className="mt-3 grid grid-cols-2 gap-3">
                                   {[
@@ -628,7 +628,7 @@ export default function SelectiveHistoryPage() {
                             </div>
 
                             <div className="mt-6 grid gap-6 xl:grid-cols-2">
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">Strengths (English)</p>
                                 <ul className="mt-3 space-y-2">
                                   {(item.strengths_en ?? []).length > 0 ? (
@@ -662,7 +662,7 @@ export default function SelectiveHistoryPage() {
                                 </ul>
                               </div>
 
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">
                                   How to Improve (English)
                                 </p>
@@ -700,18 +700,18 @@ export default function SelectiveHistoryPage() {
                             </div>
 
                             <div className="mt-6 grid gap-6 xl:grid-cols-2">
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">
                                   Improved Sample (English)
                                 </p>
-                                <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+                                <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
                                   {item.corrected_sample_en || "-"}
                                 </div>
                               </div>
 
-                              <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+                              <div className="rounded border border-(--border-color) bg-white p-5">
                                 <p className="text-sm text-(--text-secondary)">优化示例（中文）</p>
-                                <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+                                <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
                                   {item.corrected_sample_zh || "-"}
                                 </div>
                               </div>
@@ -736,7 +736,7 @@ export default function SelectiveHistoryPage() {
                         {group.mathItems.map((item) => (
                           <article
                             key={item.attempt_id}
-                            className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
+                            className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
                           >
                             <div className="flex flex-wrap items-start justify-between gap-4">
                               <div>
@@ -817,7 +817,7 @@ export default function SelectiveHistoryPage() {
                             {(item.instruction_text || item.question_body_text) && (
                               <div className="mt-6">
                                 <p className="text-sm text-(--text-secondary)">Question</p>
-                                <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4">
+                                <div className="mt-2 rounded bg-gray-50 px-4 py-4">
                                   {item.instruction_text && (
                                     <p className="mb-3 leading-7 text-(--text-main)">
                                       {item.instruction_text}
@@ -1095,7 +1095,7 @@ export default function SelectiveHistoryPage() {
 //     return (
 //       <main className="mx-auto max-w-6xl px-6 py-10">
 //         <h1 className="text-3xl font-bold text-(--text-main)">History</h1>
-//         <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+//         <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
 //           Please log in to view your history.
 //         </div>
 //       </main>
@@ -1113,19 +1113,19 @@ export default function SelectiveHistoryPage() {
 //           </p>
 //         </div>
 
-//         <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) px-4 py-3 text-sm text-(--text-main) shadow-sm">
+//         <div className="rounded border border-(--border-color) bg-(--bg-card) px-4 py-3 text-sm text-(--text-main) shadow-sm">
 //           Total writing submissions: <span className="font-semibold">{rows.length}</span>
 //         </div>
 //       </div>
 
 //       {error && (
-//         <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+//         <div className="mt-6 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
 //           {error}
 //         </div>
 //       )}
 
 //       {!error && rows.length === 0 && (
-//         <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
+//         <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
 //           You do not have any writing history yet.
 //         </div>
 //       )}
@@ -1148,7 +1148,7 @@ export default function SelectiveHistoryPage() {
 //               <button
 //                 type="button"
 //                 onClick={() => toggleDay(group.day)}
-//                 className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-(--border-color) bg-(--bg-card) px-5 py-4 text-left shadow-sm transition hover:shadow-md"
+//                 className="flex w-full cursor-pointer items-center justify-between gap-4 rounded border border-(--border-color) bg-(--bg-card) px-5 py-4 text-left shadow-sm transition hover:shadow-md"
 //               >
 //                 <div className="min-w-0 flex-1">
 //                   <div className="flex flex-wrap items-center gap-3">
@@ -1183,7 +1183,7 @@ export default function SelectiveHistoryPage() {
 //                   {group.items.map((item) => (
 //                     <article
 //                       key={item.submission_id}
-//                       className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
+//                       className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm"
 //                     >
 //                       <div className="flex flex-wrap items-start justify-between gap-4">
 //                         <div>
@@ -1254,13 +1254,13 @@ export default function SelectiveHistoryPage() {
 
 //                       <div className="mt-6">
 //                         <p className="text-sm text-(--text-secondary)">Your Writing</p>
-//                         <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4">
+//                         <div className="mt-2 rounded bg-gray-50 px-4 py-4">
 //                           <EssayPreview text={item.essay_text} />
 //                         </div>
 //                       </div>
 
 //                       <div className="mt-6 grid gap-6 xl:grid-cols-2">
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">Summary (English)</p>
 //                           <p className="mt-2 leading-7 text-(--text-main)">
 //                             {item.summary_en || "-"}
@@ -1272,7 +1272,7 @@ export default function SelectiveHistoryPage() {
 //                           </p>
 //                         </div>
 
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">Score Breakdown</p>
 //                           <div className="mt-3 grid grid-cols-2 gap-3">
 //                             {[
@@ -1294,7 +1294,7 @@ export default function SelectiveHistoryPage() {
 //                       </div>
 
 //                       <div className="mt-6 grid gap-6 xl:grid-cols-2">
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">Strengths (English)</p>
 //                           <ul className="mt-3 space-y-2">
 //                             {(item.strengths_en ?? []).length > 0 ? (
@@ -1328,7 +1328,7 @@ export default function SelectiveHistoryPage() {
 //                           </ul>
 //                         </div>
 
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">
 //                             How to Improve (English)
 //                           </p>
@@ -1366,18 +1366,18 @@ export default function SelectiveHistoryPage() {
 //                       </div>
 
 //                       <div className="mt-6 grid gap-6 xl:grid-cols-2">
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">
 //                             Improved Sample (English)
 //                           </p>
-//                           <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+//                           <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
 //                             {item.corrected_sample_en || "-"}
 //                           </div>
 //                         </div>
 
-//                         <div className="rounded-2xl border border-(--border-color) bg-white p-5">
+//                         <div className="rounded border border-(--border-color) bg-white p-5">
 //                           <p className="text-sm text-(--text-secondary)">优化示例（中文）</p>
-//                           <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+//                           <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
 //                             {item.corrected_sample_zh || "-"}
 //                           </div>
 //                         </div>

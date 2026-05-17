@@ -184,7 +184,7 @@ function Tag({
 
   return (
     <span
-      className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
+      className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
     >
       {children}
     </span>
@@ -295,7 +295,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
   };
 
   return (
-    <div className="rounded-[24px] border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="round border border-gray-200 bg-white p-4 shadow-sm">
       <audio ref={audioRef} preload="metadata">
         <source src={src} />
       </audio>
@@ -330,7 +330,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
         <button
           type="button"
           onClick={() => jump(-5)}
-          className="inline-flex h-11 items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+          className="inline-flex h-11 items-center justify-center rounded border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
         >
           -5s
         </button>
@@ -338,7 +338,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
         <button
           type="button"
           onClick={togglePlay}
-          className="inline-flex h-11 items-center justify-center rounded-2xl bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+          className="inline-flex h-11 items-center justify-center rounded bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
         >
           {isPlaying ? "暂停" : "播放"}
         </button>
@@ -346,7 +346,7 @@ function AudioPlayer({ src, title }: { src: string; title: string }) {
         <button
           type="button"
           onClick={() => jump(5)}
-          className="inline-flex h-11 items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+          className="inline-flex h-11 items-center justify-center rounded border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
         >
           +5s
         </button>
@@ -392,7 +392,7 @@ function HiwTextSelector({
   const tokens = tokenizeText(text);
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 text-[17px] leading-9 text-gray-800">
+    <div className="rounded border border-gray-200 bg-white p-5 text-[17px] leading-9 text-gray-800">
       {tokens.map((token, index) => {
         const selected = selectedIndexes.includes(index);
         const isCorrect = correctIndexes.includes(index);
@@ -647,7 +647,7 @@ export default function HiwPracticeList({
   };
 
   return (
-    <section className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-sm">
+    <section className="overflow-hidden round border border-gray-200 bg-white shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 px-5 py-4 sm:px-6">
         <div>
           <div className="text-sm font-semibold text-gray-900">
@@ -736,16 +736,16 @@ export default function HiwPracticeList({
                       open ? "mt-5 max-h-[5000px] opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="space-y-4 rounded-2xl border border-gray-200 bg-[#faf8f4] p-4">
+                    <div className="space-y-4 rounded border border-gray-200 bg-[#faf8f4] p-4">
                       {audioSrc ? (
                         <AudioPlayer src={audioSrc} title={item.question_text} />
                       ) : (
-                        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                        <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
                           当前题目没有可播放的音频地址。
                         </div>
                       )}
 
-                      <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                      <div className="rounded border border-gray-200 bg-white p-4">
                         <div className="mb-2 text-sm font-semibold text-gray-900">
                           题目说明
                         </div>
@@ -776,7 +776,7 @@ export default function HiwPracticeList({
                             onToggle={(wordIndex) => handleToggleWord(item.id, wordIndex)}
                           />
                         ) : (
-                          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                          <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
                             当前题目没有 question_body_text。
                           </div>
                         )}
@@ -787,7 +787,7 @@ export default function HiwPracticeList({
                           type="button"
                           onClick={() => handleSubmit(item)}
                           disabled={loadingId === item.id || Boolean(result)}
-                          className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+                          className="inline-flex cursor-pointer items-center justify-center rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
                         >
                           {loadingId === item.id
                             ? "提交中..."
@@ -799,7 +799,7 @@ export default function HiwPracticeList({
                         <button
                           type="button"
                           onClick={() => handleReset(item.id)}
-                          className="inline-flex cursor-pointer items-center justify-center rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                          className="inline-flex cursor-pointer items-center justify-center rounded border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                         >
                           重新选择
                         </button>
@@ -807,7 +807,7 @@ export default function HiwPracticeList({
 
                       {result ? (
                         <div
-                          className={`rounded-2xl border p-4 text-sm ${
+                          className={`rounded border p-4 text-sm ${
                             result.isPerfect
                               ? "border-emerald-200 bg-emerald-50 text-emerald-700"
                               : "border-amber-200 bg-amber-50 text-amber-800"
@@ -833,7 +833,7 @@ export default function HiwPracticeList({
                       ) : null}
 
                       {result ? (
-                        <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                        <div className="rounded border border-gray-200 bg-white p-4">
                           <div className="mb-3 text-sm font-semibold text-gray-900">
                             答案解析
                           </div>
@@ -856,13 +856,13 @@ export default function HiwPracticeList({
                           </div>
 
                           <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                            <span className="rounded-lg bg-emerald-50 px-2.5 py-1 font-medium text-emerald-700">
+                            <span className="round bg-emerald-50 px-2.5 py-1 font-medium text-emerald-700">
                               绿色：选对
                             </span>
-                            <span className="rounded-lg bg-red-50 px-2.5 py-1 font-medium text-red-700">
+                            <span className="round bg-red-50 px-2.5 py-1 font-medium text-red-700">
                               红色：错选
                             </span>
-                            <span className="rounded-lg bg-amber-50 px-2.5 py-1 font-medium text-amber-700">
+                            <span className="round bg-amber-50 px-2.5 py-1 font-medium text-amber-700">
                               黄色：漏选
                             </span>
                           </div>
@@ -876,7 +876,7 @@ export default function HiwPracticeList({
                   <button
                     type="button"
                     onClick={() => handleStart(item.id)}
-                    className="cursor-pointer rounded-2xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                    className="cursor-pointer rounded border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                   >
                     {open ? "收起练习" : "开始练习"}
                   </button>

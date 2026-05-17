@@ -58,7 +58,7 @@ function SidebarButton({
       href="#"
       className="
         group flex items-center gap-3
-        rounded-2xl
+        rounded
         border border-gray-100
         bg-white
         px-3 py-2.5
@@ -122,7 +122,7 @@ export default function PTEFeatureSidebar() {
       <div
         className="
           overflow-hidden
-          rounded-[28px]
+          round
           border border-gray-200
           bg-white
           shadow-sm
@@ -155,7 +155,7 @@ export default function PTEFeatureSidebar() {
         <div className="border-t border-gray-100 p-3">
           <div
             className="
-              rounded-2xl
+              rounded
               bg-[linear-gradient(135deg,var(--theme),#4f6b5f)]
               p-4
               text-white

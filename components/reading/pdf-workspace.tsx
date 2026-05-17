@@ -15,7 +15,7 @@ export default function ReadingWorkspace({
   return (
     <div className="flex h-full w-full flex-col bg-(--bg)">
       <div className="flex-1 overflow-hidden px-4 pb-4 pt-4">
-        <div className="h-full w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+        <div className="h-full w-full overflow-hidden rounded border border-gray-200 bg-white shadow-sm">
           <Group orientation="horizontal" className="h-full">
             <Panel defaultSize={50} minSize={30}>
               <div className="h-full">

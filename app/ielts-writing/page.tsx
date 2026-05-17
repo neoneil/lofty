@@ -58,7 +58,7 @@ export default function IELTSWritingPage() {
 
         <form
           onSubmit={handleSubmit}
-          className="mb-10 space-y-6 rounded-2xl border border-gray-200 p-6 shadow-sm"
+          className="mb-10 space-y-6 rounded border border-gray-200 p-6 shadow-sm"
         >
           <div>
             <label className="mb-2 block text-sm font-semibold">
@@ -119,7 +119,7 @@ export default function IELTSWritingPage() {
 
         {result ? (
           <div className="space-y-8">
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Overall Result</h2>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded bg-gray-50 p-4">
@@ -136,7 +136,7 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Band Scores</h2>
               <div className="grid gap-4 md:grid-cols-2">
                 <ScoreCard
@@ -164,7 +164,7 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Overall Assessment</h2>
               <div className="mb-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <InfoPill
@@ -220,13 +220,13 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Paragraph Feedback</h2>
               <div className="space-y-4">
                 {result.paragraph_feedback.map((para) => (
                   <div
                     key={para.paragraph_number}
-                    className="rounded-2xl border border-gray-200 p-4"
+                    className="rounded border border-gray-200 p-4"
                   >
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       <span className="rounded bg-black px-3 py-1 text-xs font-semibold text-white">
@@ -249,7 +249,7 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">
                 Language Issues ({result.language_issues.length})
               </h2>
@@ -257,7 +257,7 @@ export default function IELTSWritingPage() {
                 {result.language_issues.map((issue, index) => (
                   <div
                     key={index}
-                    className="rounded-2xl border border-gray-200 p-4"
+                    className="rounded border border-gray-200 p-4"
                   >
                     <div className="mb-2 flex flex-wrap items-center gap-2">
                       <span className="rounded bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
@@ -281,7 +281,7 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Argument Feedback</h2>
               <div className="mb-4 grid gap-4 md:grid-cols-2">
                 <InfoPill
@@ -314,7 +314,7 @@ export default function IELTSWritingPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <section className="rounded border border-gray-200 p-6 shadow-sm">
               <h2 className="mb-4 text-2xl font-bold">Revision Plan</h2>
               <div className="space-y-3 text-sm text-gray-700">
                 <div className="rounded bg-gray-50 p-4">
@@ -352,7 +352,7 @@ function ScoreCard({
   comment: string;
 }) {
   return (
-    <div className="rounded-2xl border border-gray-200 p-4">
+    <div className="rounded border border-gray-200 p-4">
       <p className="text-sm text-gray-500">{title}</p>
       <p className="mt-2 text-2xl font-bold">{score}</p>
       <p className="mt-2 text-sm text-gray-700">{comment}</p>
@@ -362,7 +362,7 @@ function ScoreCard({
 
 function InfoPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-gray-50 p-4">
+    <div className="rounded bg-gray-50 p-4">
       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
         {label}
       </p>

@@ -46,7 +46,7 @@ function MainTabItem({
       href={href}
       className={`
         flex flex-shrink-0 items-center gap-2
-        whitespace-nowrap rounded-2xl
+        whitespace-nowrap rounded
         px-4 py-2.5
         text-sm font-semibold
         transition
@@ -116,7 +116,7 @@ export default function PTETopNav({
     <div
       className="
     mb-5
-    rounded-[8px]
+    round
     bg-gradient-to-r
     from-white/88
     via-white/10

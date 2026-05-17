@@ -121,7 +121,7 @@ function Tag({
 
     return (
         <span
-            className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
+            className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
         >
             {children}
         </span>
@@ -230,7 +230,7 @@ function AudioPlayer({
     };
 
     return (
-        <div className="rounded-[24px] border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="round border border-gray-200 bg-white p-4 shadow-sm">
             <audio ref={audioRef} preload="metadata">
                 <source src={src} type="audio/mpeg" />
             </audio>
@@ -271,7 +271,7 @@ function AudioPlayer({
                 <button
                     type="button"
                     onClick={togglePlay}
-                    className="inline-flex h-11 items-center justify-center rounded-2xl bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+                    className="inline-flex h-11 items-center justify-center rounded bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
                 >
                     {isPlaying ? "暂停" : "播放"}
                 </button>
@@ -456,13 +456,13 @@ export default function WfdPracticeList({
     };
 
     return (
-        <section className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-sm">
+        <section className="overflow-hidden round border border-gray-200 bg-white shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 px-5 py-4 sm:px-6">
                 <div className="flex flex-wrap items-center gap-2">
                     <button
                         type="button"
                         onClick={() => setPracticeMode("study")}
-                        className={` cursor-pointer rounded-2xl px-4 py-2.5 text-sm transition ${practiceMode === "study"
+                        className={` cursor-pointer rounded px-4 py-2.5 text-sm transition ${practiceMode === "study"
                             ? "bg-[var(--theme)] font-semibold text-white shadow-sm"
                             : "border border-gray-200 bg-white font-medium text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                             }`}
@@ -473,7 +473,7 @@ export default function WfdPracticeList({
                     <button
                         type="button"
                         onClick={() => setPracticeMode("test")}
-                        className={`cursor-pointer rounded-2xl px-4 py-2.5 text-sm transition ${practiceMode === "test"
+                        className={`cursor-pointer rounded px-4 py-2.5 text-sm transition ${practiceMode === "test"
                             ? "bg-[var(--theme)] font-semibold text-white shadow-sm"
                             : "border border-gray-200 bg-white font-medium text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                             }`}
@@ -560,7 +560,7 @@ export default function WfdPracticeList({
                                         className={`overflow-hidden transition-all duration-400 ease-in-out ${open ? "max-h-[1200px] opacity-100 mt-5" : "max-h-0 opacity-0"
                                             }`}
                                     >
-                                        <div className="rounded-2xl border border-gray-200 bg-[#faf8f4] p-4">
+                                        <div className="rounded border border-gray-200 bg-[#faf8f4] p-4">
                                             <div className="mb-4 flex flex-wrap items-center gap-3">
                                                 {item.audio_url ? (
                                                     <AudioPlayer
@@ -570,7 +570,7 @@ export default function WfdPracticeList({
                                                         practiceMode={practiceMode}
                                                     />
                                                 ) : (
-                                                    <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                                                    <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
                                                         当前题目音频暂未生成。
                                                     </div>
 
@@ -597,7 +597,7 @@ export default function WfdPracticeList({
 
 
                                             {/* ===== 历史录音（加在这里）===== */}
-                                            <div className="mt-5 rounded-2xl border border-gray-200 bg-white p-4">
+                                            <div className="mt-5 rounded border border-gray-200 bg-white p-4">
                                                 <div className="mb-3 flex items-center justify-between">
                                                     <h3 className="text-sm font-semibold text-gray-900">我的历史录音</h3>
                                                     <span className="text-xs text-gray-500">
@@ -644,7 +644,7 @@ export default function WfdPracticeList({
                                                     type="button"
                                                     onClick={() => handleSubmit(item)}
                                                     disabled={loadingId === item.id}
-                                                    className="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
+                                                    className="cursor-pointer inline-flex items-center justify-center rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
                                                 >
                                                     {loadingId === item.id ? "提交中..." : "上传音频"}
                                                 </button>
@@ -666,7 +666,7 @@ export default function WfdPracticeList({
                                                         {result.correctAnswer}
                                                     </div>
 
-                                                    <div className="rounded-2xl border border-gray-200 bg-white p-4 text-[15px] leading-8">
+                                                    <div className="rounded border border-gray-200 bg-white p-4 text-[15px] leading-8">
                                                         {result.tokens.map((token, index) => {
                                                             if (token.type === "correct") {
                                                                 return (
@@ -711,7 +711,7 @@ export default function WfdPracticeList({
                                     <button
                                         type="button"
                                         onClick={() => handleStart(item.id)}
-                                        className="cursor-pointer rounded-2xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                                        className="cursor-pointer rounded border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                                     >
                                         {open ? "收起练习" : "开始练习"}
                                     </button>
@@ -804,7 +804,7 @@ export default function WfdPracticeList({
 
 //     return (
 //         <span
-//             className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
+//             className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
 //         >
 //             {children}
 //         </span>
@@ -1002,7 +1002,7 @@ export default function WfdPracticeList({
 //                 const globalIndex = (currentPage - 1) * PAGE_SIZE + index;
 
 //                 return (
-//                     <div key={q.id} className="bg-[var(--card)] border p-6 rounded-2xl">
+//                     <div key={q.id} className="bg-[var(--card)] border p-6 rounded">
 //                         <div className="">
 
 //                             {/* 上面一行 */}
@@ -1399,7 +1399,7 @@ export default function WfdPracticeList({
 //   };
 
 //   return (
-//     <section className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-sm">
+//     <section className="overflow-hidden round border border-gray-200 bg-white shadow-sm">
 //       {/* ===== 列表 ===== */}
 //       <div>
 //         {paginatedQuestions.map((item, index) => {

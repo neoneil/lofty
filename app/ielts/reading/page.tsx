@@ -25,7 +25,7 @@ export default function ReadingPage() {
           id="cambridge-book"
           value={selectedBook}
           onChange={(e) => setSelectedBook(Number(e.target.value))}
-          className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm"
+          className="round border border-gray-300 bg-white px-3 py-2 text-sm"
         >
           {books.map((book) => (
             <option key={book} value={book}>

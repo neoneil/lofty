@@ -309,7 +309,7 @@ export default function MathPracticeClient() {
     return (
       <div className="min-h-screen bg-slate-50 p-6">
         <div className="mx-auto max-w-4xl">
-          <Card className="rounded-3xl">
+          <Card className="rounded">
             <CardContent className="p-8 text-center text-slate-600">
               No questions available.
             </CardContent>
@@ -322,7 +322,7 @@ export default function MathPracticeClient() {
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-8">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[320px_1fr]">
-        <Card className="rounded-3xl border-0 shadow-sm lg:sticky lg:top-8 lg:h-fit">
+        <Card className="rounded border-0 shadow-sm lg:sticky lg:top-8 lg:h-fit">
           <CardHeader>
             <CardTitle className="text-2xl">Selective Math Practice</CardTitle>
             <CardDescription>
@@ -338,7 +338,7 @@ export default function MathPracticeClient() {
                   value={topic}
                   onValueChange={(value) => setTopic(value as MathWordProblemType)}
                 >
-                  <SelectTrigger className="rounded-2xl">
+                  <SelectTrigger className="rounded">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -357,7 +357,7 @@ export default function MathPracticeClient() {
                   value={difficulty}
                   onValueChange={(value) => setDifficulty(value as Difficulty)}
                 >
-                  <SelectTrigger className="rounded-2xl">
+                  <SelectTrigger className="rounded">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -376,18 +376,18 @@ export default function MathPracticeClient() {
                   value={count}
                   onChange={(e) => setCount(e.target.value)}
                   inputMode="numeric"
-                  className="rounded-2xl"
+                  className="rounded"
                 />
               </div>
 
-              <Button onClick={handleGenerate} disabled={generating} className="rounded-2xl">
+              <Button onClick={handleGenerate} disabled={generating} className="rounded">
                 <WandSparkles className="mr-2 h-4 w-4" />
                 {generating ? "Generating..." : "Generate New Set"}
               </Button>
             </div>
 
             {pageError && (
-              <div className="rounded-2xl bg-amber-50 p-3 text-sm text-amber-800">
+              <div className="rounded bg-amber-50 p-3 text-sm text-amber-800">
                 {pageError}
               </div>
             )}
@@ -403,14 +403,14 @@ export default function MathPracticeClient() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <Card className="rounded-2xl shadow-none">
+              <Card className="rounded shadow-none">
                 <CardContent className="p-4">
                   <div className="text-xs text-slate-500">Correct</div>
                   <div className="mt-1 text-2xl font-semibold">{stats.correct}</div>
                 </CardContent>
               </Card>
 
-              <Card className="rounded-2xl shadow-none">
+              <Card className="rounded shadow-none">
                 <CardContent className="p-4">
                   <div className="text-xs text-slate-500">Accuracy</div>
                   <div className="mt-1 text-2xl font-semibold">
@@ -436,7 +436,7 @@ export default function MathPracticeClient() {
                     key={key}
                     type="button"
                     onClick={() => setCurrentIndex(index)}
-                    className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition ${
+                    className={`flex w-full items-center justify-between rounded border px-4 py-3 text-left transition ${
                       selected
                         ? "border-slate-900 bg-slate-900 text-white"
                         : "bg-white hover:bg-slate-100"
@@ -471,7 +471,7 @@ export default function MathPracticeClient() {
 
             <Button
               variant="outline"
-              className="w-full rounded-2xl"
+              className="w-full rounded"
               onClick={() => {
                 setProblems(demoProblems);
                 setStates(createInitialStates(demoProblems));
@@ -486,7 +486,7 @@ export default function MathPracticeClient() {
         </Card>
 
         <div className="space-y-6">
-          <Card className="rounded-3xl border-0 shadow-sm">
+          <Card className="rounded border-0 shadow-sm">
             <CardHeader className="gap-4 md:flex-row md:items-start md:justify-between">
               <div>
                 <CardTitle className="text-2xl">Question {currentIndex + 1}</CardTitle>
@@ -507,7 +507,7 @@ export default function MathPracticeClient() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-2xl"
+                  className="rounded"
                   onClick={() => setCurrentIndex((prev) => Math.max(prev - 1, 0))}
                   disabled={currentIndex === 0}
                 >
@@ -517,7 +517,7 @@ export default function MathPracticeClient() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-2xl"
+                  className="rounded"
                   onClick={() =>
                     setCurrentIndex((prev) => Math.min(prev + 1, problems.length - 1))
                   }
@@ -529,7 +529,7 @@ export default function MathPracticeClient() {
             </CardHeader>
 
             <CardContent className="space-y-6">
-              <div className="rounded-3xl bg-slate-100 p-5 text-lg leading-8 text-slate-800">
+              <div className="rounded bg-slate-100 p-5 text-lg leading-8 text-slate-800">
                 {currentProblem.question}
               </div>
 
@@ -544,14 +544,14 @@ export default function MathPracticeClient() {
                         ? `Enter a number in ${currentProblem.unit}`
                         : "Enter a number"
                     }
-                    className="h-12 rounded-2xl"
+                    className="h-12 rounded"
                   />
                 </div>
 
                 <Button
                   onClick={handleSubmit}
                   disabled={currentState.loading}
-                  className="h-12 rounded-2xl px-6"
+                  className="h-12 rounded px-6"
                 >
                   {currentState.loading ? "Checking..." : "Submit"}
                 </Button>
@@ -559,7 +559,7 @@ export default function MathPracticeClient() {
                 <Button
                   variant="outline"
                   onClick={handleResetCurrent}
-                  className="h-12 rounded-2xl px-6"
+                  className="h-12 rounded px-6"
                 >
                   Reset
                 </Button>
@@ -568,7 +568,7 @@ export default function MathPracticeClient() {
           </Card>
 
           {currentState.submitted && currentState.grade && (
-            <Card className="rounded-3xl border-0 shadow-sm">
+            <Card className="rounded border-0 shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
                   {currentState.grade.isCorrect ? (
@@ -582,7 +582,7 @@ export default function MathPracticeClient() {
 
               <CardContent className="space-y-5">
                 <div
-                  className={`rounded-2xl p-4 ${
+                  className={`rounded p-4 ${
                     currentState.grade.isCorrect
                       ? "bg-emerald-50 text-emerald-800"
                       : "bg-rose-50 text-rose-800"
@@ -592,7 +592,7 @@ export default function MathPracticeClient() {
                 </div>
 
                 {!currentState.grade.isCorrect && (
-                  <div className="rounded-2xl border bg-white p-4">
+                  <div className="rounded border bg-white p-4">
                     <div className="text-sm text-slate-500">Correct answer</div>
                     <div className="mt-1 text-xl font-semibold">
                       {currentState.grade.correctAnswer}
@@ -605,7 +605,7 @@ export default function MathPracticeClient() {
           )}
 
           {currentState.submitted && currentState.aiFeedback && (
-            <Card className="rounded-3xl border-0 shadow-sm">
+            <Card className="rounded border-0 shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Brain className="h-5 w-5" />
@@ -617,7 +617,7 @@ export default function MathPracticeClient() {
               </CardHeader>
 
               <CardContent className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="rounded bg-slate-50 p-4">
                   <div className="mb-2 text-sm font-medium text-slate-700">English</div>
                   <div className="space-y-3 text-sm leading-7 text-slate-700">
                     <p>{currentState.aiFeedback.feedbackEnglish}</p>
@@ -625,7 +625,7 @@ export default function MathPracticeClient() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="rounded bg-slate-50 p-4">
                   <div className="mb-2 text-sm font-medium text-slate-700">中文</div>
                   <div className="space-y-3 text-sm leading-7 text-slate-700">
                     <p>{currentState.aiFeedback.feedbackChinese}</p>

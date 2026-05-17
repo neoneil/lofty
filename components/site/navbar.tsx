@@ -114,7 +114,7 @@ export default async function Navbar() {
 
   return (
     <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
-  <div className="mx-auto max-w-7xl rounded-[28px] border border-gray-200 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
+  <div className="mx-auto max-w-7xl round border border-gray-200 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
     <Container>
         <div className="py-2">
           {/* 手机端 */}
@@ -144,14 +144,14 @@ export default async function Navbar() {
   href="/"
   className="
     group ml-2 flex shrink-0 items-center gap-3
-    rounded-2xl px-3 py-2
+    rounded px-3 py-2
   "
 >
 
   <div
     className="
       flex h-11 w-11 items-center justify-center
-      rounded-2xl
+      rounded
       bg-[#f7f4ef]
       ring-1 ring-black/5
     "

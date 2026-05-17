@@ -114,7 +114,7 @@
     color: var(--brand-accent-hover);
   }
   .card {
-    @apply rounded-2xl border p-6 transition;
+    @apply rounded border p-6 transition;
     border-color: var(--border);
   }
 

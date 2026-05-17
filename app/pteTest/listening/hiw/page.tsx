@@ -69,7 +69,7 @@ export default async function PteListeningHiwPage() {
     <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
       <Container>
         {questionsError ? (
-          <section className="rounded-[28px] border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+          <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
             HIW 加载失败：{questionsError.message}
           </section>
         ) : (
@@ -79,7 +79,7 @@ export default async function PteListeningHiwPage() {
             </div>
 
             <section className="space-y-6">
-              <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+              <section className="round border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--theme)]/80">
                   PTE Listening
                 </p>

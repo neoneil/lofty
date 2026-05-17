@@ -102,7 +102,7 @@ export default function WfdDetailClient({
             {/* QUESTION TEXT */}
             <div
                 className="
-        rounded-[24px]
+        round
         bg-gray-50
         px-5 py-5
     "
@@ -148,7 +148,7 @@ export default function WfdDetailClient({
             </div>
             {/* RESULT */}
             {result ? (
-                <section className="rounded-[30px] border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
+                <section className="round border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
 
                     {/* TOP */}
                     <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -175,7 +175,7 @@ export default function WfdDetailClient({
                             Feedback
                         </div>
 
-                        <div className="flex flex-wrap gap-2 rounded-2xl border border-gray-200 bg-white p-5 leading-8">
+                        <div className="flex flex-wrap gap-2 rounded border border-gray-200 bg-white p-5 leading-8">
 
                             {result.tokens.map((token, index) => {
 
@@ -183,7 +183,7 @@ export default function WfdDetailClient({
                                     return (
                                         <span
                                             key={`${token.text}-${index}`}
-                                            className="rounded-lg bg-green-100 px-2 py-1 text-[15px] font-medium text-green-700"
+                                            className="round bg-green-100 px-2 py-1 text-[15px] font-medium text-green-700"
                                         >
                                             {token.text}
                                         </span>
@@ -194,7 +194,7 @@ export default function WfdDetailClient({
                                     return (
                                         <span
                                             key={`${token.text}-${index}`}
-                                            className="rounded-lg bg-red-100 px-2 py-1 text-[15px] font-medium text-red-700 line-through"
+                                            className="round bg-red-100 px-2 py-1 text-[15px] font-medium text-red-700 line-through"
                                         >
                                             {token.text}
                                         </span>
@@ -204,7 +204,7 @@ export default function WfdDetailClient({
                                 return (
                                     <span
                                         key={`${token.text}-${index}`}
-                                        className="rounded-lg bg-yellow-100 px-2 py-1 text-[15px] font-medium text-yellow-700"
+                                        className="round bg-yellow-100 px-2 py-1 text-[15px] font-medium text-yellow-700"
                                     >
                                         {token.text}
                                     </span>
@@ -243,7 +243,7 @@ export default function WfdDetailClient({
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
                     placeholder="请输入你听到的句子..."
-                    className="min-h-[180px] w-full rounded-[24px] border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
+                    className="min-h-[180px] w-full round border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
                 />
             </div>
 
@@ -253,7 +253,7 @@ export default function WfdDetailClient({
                     type="button"
                     onClick={handleSubmit}
                     disabled={loading}
-                    className="rounded-2xl bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {loading ? "提交中..." : "提交答案"}
                 </button>
@@ -414,7 +414,7 @@ export default function WfdDetailClient({
 //                     value={answer}
 //                     onChange={(e) => setAnswer(e.target.value)}
 //                     placeholder="请输入你听到的句子..."
-//                     className="min-h-[160px] w-full rounded-[24px] border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
+//                     className="min-h-[160px] w-full round border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
 //                 />
 //             </div>
 
@@ -424,7 +424,7 @@ export default function WfdDetailClient({
 //                     type="button"
 //                     onClick={handleSubmit}
 //                     disabled={loading}
-//                     className="rounded-2xl bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+//                     className="rounded bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
 //                 >
 //                     {loading ? "提交中..." : "提交答案"}
 //                 </button>
@@ -432,7 +432,7 @@ export default function WfdDetailClient({
 
 //             {/* Result */}
 //             {result ? (
-//                 <section className="rounded-[28px] border border-gray-200 bg-gray-50 p-5">
+//                 <section className="round border border-gray-200 bg-gray-50 p-5">
 
 //                     <div className="mb-4 flex flex-wrap items-center gap-3">
 

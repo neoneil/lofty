@@ -105,7 +105,7 @@ function Tag({
 
   return (
     <span
-      className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
+      className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
     >
       {children}
     </span>
@@ -222,7 +222,7 @@ function AudioPlayer({
   };
 
   return (
-    <div className="rounded-[24px] border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="round border border-gray-200 bg-white p-4 shadow-sm">
       <audio ref={audioRef} preload="metadata">
         <source src={src} />
       </audio>
@@ -257,7 +257,7 @@ function AudioPlayer({
         <button
           type="button"
           onClick={() => jump(-5)}
-          className="inline-flex h-11 items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+          className="inline-flex h-11 items-center justify-center rounded border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
         >
           -5s
         </button>
@@ -265,7 +265,7 @@ function AudioPlayer({
         <button
           type="button"
           onClick={togglePlay}
-          className="inline-flex h-11 items-center justify-center rounded-2xl bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+          className="inline-flex h-11 items-center justify-center rounded bg-[var(--theme)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
         >
           {isPlaying ? "暂停" : "播放"}
         </button>
@@ -273,7 +273,7 @@ function AudioPlayer({
         <button
           type="button"
           onClick={() => jump(5)}
-          className="inline-flex h-11 items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+          className="inline-flex h-11 items-center justify-center rounded border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
         >
           +5s
         </button>
@@ -423,13 +423,13 @@ export default function SstPracticeList({
   };
 
   return (
-    <section className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-sm">
+    <section className="overflow-hidden round border border-gray-200 bg-white shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 px-5 py-4 sm:px-6">
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => setPracticeMode("study")}
-            className={`cursor-pointer rounded-2xl px-4 py-2.5 text-sm transition ${
+            className={`cursor-pointer rounded px-4 py-2.5 text-sm transition ${
               practiceMode === "study"
                 ? "bg-[var(--theme)] font-semibold text-white shadow-sm"
                 : "border border-gray-200 bg-white font-medium text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
@@ -441,7 +441,7 @@ export default function SstPracticeList({
           <button
             type="button"
             onClick={() => setPracticeMode("test")}
-            className={`cursor-pointer rounded-2xl px-4 py-2.5 text-sm transition ${
+            className={`cursor-pointer rounded px-4 py-2.5 text-sm transition ${
               practiceMode === "test"
                 ? "bg-[var(--theme)] font-semibold text-white shadow-sm"
                 : "border border-gray-200 bg-white font-medium text-gray-600 hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
@@ -525,16 +525,16 @@ export default function SstPracticeList({
                       open ? "mt-5 max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="space-y-4 rounded-2xl border border-gray-200 bg-[#faf8f4] p-4">
+                    <div className="space-y-4 rounded border border-gray-200 bg-[#faf8f4] p-4">
                       {audioSrc ? (
                         <AudioPlayer src={audioSrc} title={item.question_text} />
                       ) : (
-                        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                        <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
                           当前题目没有可播放的音频地址。
                         </div>
                       )}
 
-                      <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                      <div className="rounded border border-gray-200 bg-white p-4">
                         <div className="mb-2 text-sm font-semibold text-gray-900">
                           你的总结
                         </div>
@@ -547,7 +547,7 @@ export default function SstPracticeList({
                             }))
                           }
                           placeholder="请输入你的 SST summary..."
-                          className="min-h-[160px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none focus:border-[var(--theme)]"
+                          className="min-h-[160px] w-full rounded border border-gray-200 bg-white px-4 py-3 text-sm outline-none focus:border-[var(--theme)]"
                         />
                         <div className="mt-2 text-xs text-gray-500">
                           当前版本先保存提交记录，自动评分后续再接入。
@@ -559,13 +559,13 @@ export default function SstPracticeList({
                           type="button"
                           onClick={() => handleSubmit(item)}
                           disabled={loadingId === item.id}
-                          className="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
+                          className="cursor-pointer inline-flex items-center justify-center rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 disabled:opacity-60"
                         >
                           {loadingId === item.id ? "提交中..." : "提交总结"}
                         </button>
                       </div>
 
-                      <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                      <div className="rounded border border-gray-200 bg-white p-4">
                         <div className="mb-2 text-sm font-semibold text-gray-900">
                           参考原文
                         </div>
@@ -581,7 +581,7 @@ export default function SstPracticeList({
                       </div>
 
                       {result ? (
-                        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
+                        <div className="rounded border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
                           <div className="font-semibold">提交成功</div>
                           <div className="mt-1">{result.message}</div>
                           <div className="mt-2 text-xs text-emerald-600">
@@ -597,7 +597,7 @@ export default function SstPracticeList({
                   <button
                     type="button"
                     onClick={() => handleStart(item.id)}
-                    className="cursor-pointer rounded-2xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                    className="cursor-pointer rounded border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                   >
                     {open ? "收起练习" : "开始练习"}
                   </button>

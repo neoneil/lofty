@@ -152,7 +152,7 @@ export default function AudioPlayer({
     <div
       className={`
         w-full lg:w-[80%]
-        relative overflow-hidden rounded-[28px]
+        relative overflow-hidden round
         border border-white/10
         bg-[var(--theme)]
         p-5
@@ -207,7 +207,7 @@ export default function AudioPlayer({
             className="
               relative flex h-16 flex-1
               cursor-pointer items-end gap-[2px]
-              overflow-hidden rounded-2xl
+              overflow-hidden rounded
               border border-white/5
               bg-white/[0.03]
               px-3 py-2

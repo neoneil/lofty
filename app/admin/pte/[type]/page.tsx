@@ -92,7 +92,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
     ) {
         return (
             <Container className="py-10">
-                <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                <div className="rounded border border-red-200 bg-red-50 p-4 text-sm text-red-700">
                     Failed to load {normalizedType.toUpperCase()} analytics.
                 </div>
             </Container>
@@ -123,21 +123,21 @@ export default async function AdminPteTypePage({ params }: PageProps) {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                <div className="rounded-2xl border bg-white p-5 shadow-sm">
+                <div className="rounded border bg-white p-5 shadow-sm">
                     <p className="text-sm text-gray-500">Total Attempts</p>
                     <p className="mt-2 text-3xl font-bold text-gray-900">
                         {overview.total_attempts}
                     </p>
                 </div>
 
-                <div className="rounded-2xl border bg-white p-5 shadow-sm">
+                <div className="rounded border bg-white p-5 shadow-sm">
                     <p className="text-sm text-gray-500">Students</p>
                     <p className="mt-2 text-3xl font-bold text-gray-900">
                         {overview.total_students}
                     </p>
                 </div>
 
-                <div className="rounded-2xl border bg-white p-5 shadow-sm">
+                <div className="rounded border bg-white p-5 shadow-sm">
                     <p className="text-sm text-gray-500">Last 7 Days</p>
                     <p className="mt-2 text-3xl font-bold text-gray-900">
                         {overview.last_7_days_attempts}
@@ -146,7 +146,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
             </div>
 
             <div className="mt-8 grid gap-6 xl:grid-cols-2">
-                <section className="rounded-2xl border bg-white p-5 shadow-sm">
+                <section className="rounded border bg-white p-5 shadow-sm">
                     <h2 className="text-lg font-semibold text-gray-900">Daily Trend</h2>
 
                     <div className="mt-4 space-y-3">
@@ -168,7 +168,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                     </div>
                 </section>
 
-                <section className="rounded-2xl border bg-white p-5 shadow-sm">
+                <section className="rounded border bg-white p-5 shadow-sm">
                     <h2 className="text-lg font-semibold text-gray-900">Top Questions</h2>
 
                     <div className="mt-4 space-y-3">
@@ -193,7 +193,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                 </section>
             </div>
 
-            <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+            <section className="mt-8 rounded border bg-white p-5 shadow-sm">
                 <h2 className="text-lg font-semibold text-gray-900">
                     Top Active Students
                 </h2>

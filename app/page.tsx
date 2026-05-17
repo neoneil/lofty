@@ -201,13 +201,13 @@ export default async function HomePage() {
 
       {/* Features */}
       <section className="relative z-20 mx-auto -mt-8 max-w-6xl px-4 sm:px-6 md:-mt-12">
-        <div className="grid grid-cols-2 rounded-[24px] bg-white p-4 shadow-xl md:grid-cols-4 md:rounded-[28px] md:p-6">
+        <div className="grid grid-cols-2 round bg-white p-4 shadow-xl md:grid-cols-4 md:round md:p-6">
           {features.map(([title, desc], index) => (
             <div
               key={title}
               className="px-3 py-5 text-center md:border-r md:border-[#E8E6FF] md:px-6 md:last:border-r-0"
             >
-              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEEAFE] text-lg md:h-14 md:w-14 md:text-xl">
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded bg-[#EEEAFE] text-lg md:h-14 md:w-14 md:text-xl">
                 {icons[index]}
               </div>
               <h3 className="text-sm font-bold text-[#4040A8] md:text-base">
@@ -268,13 +268,13 @@ export default async function HomePage() {
           </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 rounded-[24px] bg-white p-4 shadow-lg md:mt-10 md:grid-cols-5 md:rounded-[28px] md:p-6">
+        <div className="mt-8 grid grid-cols-2 round bg-white p-4 shadow-lg md:mt-10 md:grid-cols-5 md:round md:p-6">
           {resources.map(([title, desc]) => (
             <div
               key={title}
               className="px-3 py-5 text-center md:border-r md:border-[#E8E6FF] md:px-4 md:last:border-r-0"
             >
-              <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#EEEAFE] text-lg md:h-12 md:w-12 md:text-xl">
+              <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded bg-[#EEEAFE] text-lg md:h-12 md:w-12 md:text-xl">
                 📄
               </div>
               <h3 className="text-sm font-bold text-[#4040A8]">{title}</h3>
@@ -286,7 +286,7 @@ export default async function HomePage() {
 
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6 md:pb-20">
-        <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-r from-[#4C55C9] via-[#6A6FF0] to-[#C38BFF] px-5 py-10 text-center text-white shadow-xl md:rounded-[32px] md:px-8 md:py-12">
+        <div className="relative overflow-hidden round bg-gradient-to-r from-[#4C55C9] via-[#6A6FF0] to-[#C38BFF] px-5 py-10 text-center text-white shadow-xl md:round md:px-8 md:py-12">
           <div className="absolute inset-0 opacity-30">
             <div className="absolute left-6 top-6 h-20 w-20 rounded bg-white blur-2xl" />
             <div className="absolute bottom-4 right-8 h-24 w-24 rounded bg-pink-200 blur-2xl" />
@@ -378,7 +378,7 @@ function ExamCard({
   imageDesc: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[24px] bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl md:rounded-[28px]">
+    <div className="overflow-hidden round bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl md:round">
       <div
         className="relative h-[260px] w-full overflow-hidden bg-cover bg-center bg-no-repeat md:h-[280px]"
         style={{ backgroundImage: `url(${image})` }}

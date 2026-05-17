@@ -33,7 +33,7 @@ export default async function WfdQuestionDetailPage({
         return (
             <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
                 <Container>
-                    <section className="rounded-[28px] border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+                    <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
                         WFD 题目加载失败
                     </section>
                 </Container>
@@ -79,7 +79,7 @@ export default async function WfdQuestionDetailPage({
                     <section className="space-y-6">
 
                         {/* Header */}
-                        <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+                        <section className="rounded border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
                             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--theme)]/80">
                                 PTE Listening
                             </p>
@@ -94,7 +94,7 @@ export default async function WfdQuestionDetailPage({
                         </section>
 
                         {/* Question */}
-                        <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+                        <section className="rounded border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
 
                             {/* Tags */}
                             <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -179,7 +179,7 @@ export default async function WfdQuestionDetailPage({
                                     />
                                 </div>
                             ) : (
-                                <div className="mt-8 rounded-[24px] border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-sm text-gray-500">
+                                <div className="mt-8 round border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-sm text-gray-500">
                                     当前题目暂无音频
                                 </div>
                             )}
@@ -195,7 +195,7 @@ export default async function WfdQuestionDetailPage({
                                 {prevId ? (
                                     <Link
                                         href={`/pte/listening/wfd/${prevId}`}
-                                        className="rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+                                        className="rounded border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
                                     >
                                         ← 上一题
                                     </Link>
@@ -206,7 +206,7 @@ export default async function WfdQuestionDetailPage({
                                 {nextId ? (
                                     <Link
                                         href={`/pte/listening/wfd/${nextId}`}
-                                        className="rounded-2xl bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                                        className="rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
                                     >
                                         下一题 →
                                     </Link>

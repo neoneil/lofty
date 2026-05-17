@@ -15,7 +15,7 @@ const initialState: FormState = {
 };
 
 const inputClass =
-  "w-full rounded-2xl border px-4 py-3 text-sm outline-none transition duration-300 focus:-translate-y-0.5 focus:shadow-[0_0_0_4px_rgba(47,74,63,0.12)]";
+  "w-full rounded border px-4 py-3 text-sm outline-none transition duration-300 focus:-translate-y-0.5 focus:shadow-[0_0_0_4px_rgba(47,74,63,0.12)]";
 
 const inputStyle = {
   borderColor: "var(--border)",
@@ -30,7 +30,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="text-(--brand-accent) cursor-pointer inline-flex min-w-42 items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(47,74,63,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
+      className="text-(--brand-accent) cursor-pointer inline-flex min-w-42 items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(47,74,63,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
     >
       {pending ? "发送中... / Sending..." : "提交咨询 / Send Message"}
     </button>
@@ -52,7 +52,7 @@ export default function ContactForm() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {state.message ? (
           <div
-            className="mb-6 rounded-2xl border px-4 py-3 text-sm shadow-sm"
+            className="mb-6 rounded border px-4 py-3 text-sm shadow-sm"
             style={{
               borderColor: state.ok
                 ? "rgba(16,185,129,0.3)"
@@ -70,7 +70,7 @@ export default function ContactForm() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           {/* 左侧 */}
           <div
-            className="rounded-[32px] border p-6 shadow-sm sm:p-8"
+            className="round border p-6 shadow-sm sm:p-8"
             style={{
               background: "var(--bg)",
               borderColor: "var(--border)",
@@ -95,7 +95,7 @@ export default function ContactForm() {
 
               {/* 微信 */}
               <div
-                className="rounded-3xl border p-3"
+                className="rounded border p-3"
                 style={{
                   borderColor: "var(--bg)",
                   background: "var(--bg)",
@@ -118,7 +118,7 @@ export default function ContactForm() {
                 {/* ⭐ 居中 + 放大 QR */}
                 <div className="mt-6 flex flex-col items-center justify-center">
                   <div
-                    className="overflow-hidden rounded-3xl border p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:scale-[1.04] hover:shadow-xl"
+                    className="overflow-hidden rounded border p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:scale-[1.04] hover:shadow-xl"
                     style={{
                       borderColor: "var(--bg)",
                       background: "var(--bg)",
@@ -127,7 +127,7 @@ export default function ContactForm() {
                     <img
                       src="/qr.jpg"
                       alt="WeChat QR code"
-                      className="w-56 h-auto rounded-2xl object-contain"
+                      className="w-56 h-auto rounded object-contain"
                     />
                   </div>
 
@@ -144,7 +144,7 @@ export default function ContactForm() {
 
           {/* 右侧表单 */}
           <div
-            className="rounded-[32px] border p-6 shadow-sm sm:p-8"
+            className="round border p-6 shadow-sm sm:p-8"
             style={{
               borderColor: "var(--border)",
               background: "var(--card)",

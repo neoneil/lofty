@@ -264,7 +264,7 @@ export default function MathsPage() {
         Practice one-variable linear equations, including fractional forms.
       </p>
 
-      <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+      <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-(--text-main)">
           Generator Settings
         </h2>
@@ -277,7 +277,7 @@ export default function MathsPage() {
             <select
               value={type}
               onChange={(e) => setType(e.target.value as EquationType)}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             >
               <option value="mixed">Mixed</option>
               <option value="ax+b=c">ax + b = c</option>
@@ -298,7 +298,7 @@ export default function MathsPage() {
               type="number"
               value={min}
               onChange={(e) => setMin(Number(e.target.value))}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             />
           </div>
 
@@ -310,7 +310,7 @@ export default function MathsPage() {
               type="number"
               value={max}
               onChange={(e) => setMax(Number(e.target.value))}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             />
           </div>
 
@@ -324,7 +324,7 @@ export default function MathsPage() {
               max={50}
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             />
           </div>
 
@@ -369,7 +369,7 @@ export default function MathsPage() {
 
       <div className="mt-8 space-y-4">
         {questions.length === 0 ? (
-          <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+          <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
             <p className="text-(--text-secondary)">
               Click “Generate Questions” to create a practice set.
             </p>
@@ -378,7 +378,7 @@ export default function MathsPage() {
           questions.map((question) => (
             <div
               key={question.id}
-              className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-5 shadow-sm"
+              className="rounded border border-(--border-color) bg-(--bg-card) p-5 shadow-sm"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="min-w-0 flex-1">

@@ -56,7 +56,7 @@ export default function PteTable() {
         <div className="w-full max-w-6xl mx-auto px-4 py-10 mt-20">
 
             {/* 🟦 Desktop */}
-            <div className="hidden md:block bg-white rounded-2xl shadow-xl border border-gray-400 overflow-hidden">
+            <div className="hidden md:block bg-white rounded shadow-xl border border-gray-400 overflow-hidden">
                 <div className="max-h-[600px] overflow-auto">
                     <table className="w-full text-sm text-center border-collapse">
 

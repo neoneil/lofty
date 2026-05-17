@@ -79,7 +79,7 @@ export default function NavbarMobileClient({
 
       {/* 展开菜单 */}
       {open && (
-        <div className="rounded-2xl border border-white/10 bg-white/10 p-3 shadow-sm backdrop-blur-md">
+        <div className="rounded border border-white/10 bg-white/10 p-3 shadow-sm backdrop-blur-md">
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
               <Link

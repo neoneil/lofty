@@ -108,7 +108,7 @@ export default async function AdminDashboardPage() {
   ) {
     return (
       <Container className="py-10">
-        <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded border border-red-200 bg-red-50 p-4 text-sm text-red-700">
           Failed to load dashboard data.
         </div>
       </Container>
@@ -137,28 +137,28 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
+        <div className="rounded border bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Total Attempts</p>
           <p className="mt-2 text-3xl font-bold text-gray-900">
             {overview.total_attempts}
           </p>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
+        <div className="rounded border bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Today</p>
           <p className="mt-2 text-3xl font-bold text-gray-900">
             {overview.today_attempts}
           </p>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
+        <div className="rounded border bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Last 7 Days</p>
           <p className="mt-2 text-3xl font-bold text-gray-900">
             {overview.last_7_days_attempts}
           </p>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
+        <div className="rounded border bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Students</p>
           <p className="mt-2 text-3xl font-bold text-gray-900">
             {overview.total_students}
@@ -166,7 +166,7 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="mt-8 rounded border bg-white p-5 shadow-sm">
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-gray-900">
             Question Type Quick Access
@@ -200,7 +200,7 @@ export default async function AdminDashboardPage() {
       </section>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+        <section className="rounded border bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900">
             Attempts in Last 7 Days
           </h2>
@@ -224,7 +224,7 @@ export default async function AdminDashboardPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+        <section className="rounded border bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900">
             Attempts by Question Type
           </h2>
@@ -252,7 +252,7 @@ export default async function AdminDashboardPage() {
           </div>
         </section>
       </div>
-<section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+<section className="mt-8 rounded border bg-white p-5 shadow-sm">
   <div className="mb-4">
     <h2 className="text-lg font-semibold text-gray-900">
       Top Active Students
@@ -277,7 +277,7 @@ export default async function AdminDashboardPage() {
           <Link
             key={student.user_id}
             href={`/admin/students/${student.user_id}`}
-            className="group cursor-pointer rounded-2xl border border-gray-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"
+            className="group cursor-pointer rounded border border-gray-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"
           >
             <div className="flex items-start gap-3">
               {student.avatar_url ? (
@@ -332,7 +332,7 @@ export default async function AdminDashboardPage() {
     </div>
   )}
 </section>
-      {/* <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+      {/* <section className="mt-8 rounded border bg-white p-5 shadow-sm">
         <h2 className="text-lg font-semibold text-gray-900">
           Top Active Students
         </h2>

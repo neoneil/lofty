@@ -25,7 +25,7 @@ export default function ReadingToolbar({
         <button
           type="button"
           onClick={onPrevPage}
-          className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm"
+          className="round border border-gray-300 px-3 py-1.5 text-sm"
         >
           Prev
         </button>
@@ -37,7 +37,7 @@ export default function ReadingToolbar({
         <button
           type="button"
           onClick={onNextPage}
-          className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm"
+          className="round border border-gray-300 px-3 py-1.5 text-sm"
         >
           Next
         </button>
@@ -47,7 +47,7 @@ export default function ReadingToolbar({
         <button
           type="button"
           onClick={onZoomOut}
-          className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm"
+          className="round border border-gray-300 px-3 py-1.5 text-sm"
         >
           -
         </button>
@@ -59,7 +59,7 @@ export default function ReadingToolbar({
         <button
           type="button"
           onClick={onZoomIn}
-          className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm"
+          className="round border border-gray-300 px-3 py-1.5 text-sm"
         >
           +
         </button>

@@ -49,7 +49,7 @@ export default function Tag({
 
     return (
         <span
-            className={`inline-flex items-center justify-center rounded-lg px-2.5 py-1 text-xs font-medium leading-none ${styles[tone]}`}>
+            className={`inline-flex items-center justify-center round px-2.5 py-1 text-xs font-medium leading-none ${styles[tone]}`}>
             {children}
         </span>
     );

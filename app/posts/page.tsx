@@ -74,7 +74,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                   {posts.map((post) => (
                     <article
                       key={post.id}
-                      className="group overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md"
+                      className="group overflow-hidden rounded bg-white p-4 shadow-sm transition hover:shadow-md"
                     >
                       <Link
                         href={`/posts/${post.slug}`}
@@ -84,7 +84,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                         {post.cover_image && (
                           <img
                             src={post.cover_image}
-                            className="h-[130px] w-[200px] object-cover rounded-lg transition duration-500 group-hover:scale-105"
+                            className="h-[130px] w-[200px] object-cover round transition duration-500 group-hover:scale-105"
                           />
                         )}
 
@@ -121,7 +121,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
             <aside className="space-y-6 lg:sticky lg:top-24">
 
               {/* 1️⃣ 免费测评 */}
-              <div className="rounded-3xl bg-black p-6 text-white shadow-lg">
+              <div className="rounded bg-black p-6 text-white shadow-lg">
                 <h3 className="text-xl font-semibold">
                   免费测评你的分数
                 </h3>
@@ -138,7 +138,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
               </div>
 
               {/* 2️⃣ 课程入口 */}
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
+              <div className="rounded bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-semibold">
                   提分课程
                 </h3>
@@ -161,7 +161,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
               </div>
 
               {/* 3️⃣ 信任感（很关键） */}
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
+              <div className="rounded bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-semibold">
                   学员成绩提升
                 </h3>
@@ -174,7 +174,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
               </div>
 
               {/* 4️⃣ 最终 CTA */}
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
+              <div className="rounded bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-semibold">
                   需要专属学习方案？
                 </h3>

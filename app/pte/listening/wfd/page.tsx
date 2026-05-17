@@ -79,7 +79,7 @@ export default async function PteListeningPage() {
       <Container className="relative z-10">
 
         {questionsError ? (
-          <section className="rounded-[28px] border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+          <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
             WFD 加载失败：{questionsError.message}
           </section>
         ) : (

@@ -69,7 +69,7 @@ export default function CommercialLoginForm() {
           {/* 整个组合块整体居中 */}
           <div className="relative mx-auto hidden w-215 lg:block ">
             {/* 登录框：往右挪一点，让组合视觉居中 */}
-            <div className="relative z-10 ml-30 w-full max-w-105 rounded-3xl border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
+            <div className="relative z-10 ml-30 w-full max-w-105 rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
               <h1 className="mb-2 text-3xl font-bold text-(--text)">
                 Welcome Back
               </h1>
@@ -178,7 +178,7 @@ export default function CommercialLoginForm() {
 
           {/* 手机端 */}
           <div className="mx-auto w-full max-w-105 lg:hidden">
-            <div className="rounded-3xl border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
+            <div className="rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
               <h1 className="mb-2 text-3xl font-bold text-(--text)">
                 Welcome Back
               </h1>
@@ -305,7 +305,7 @@ export default function CommercialLoginForm() {
 
 //   return (
 //     <div className="min-h-[80vh] flex items-center justify-center px-4">
-//       <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white shadow-sm p-8 sm:p-10">
+//       <div className="w-full max-w-md rounded border border-gray-200 bg-white shadow-sm p-8 sm:p-10">
 //         <div className="mb-8 text-center">
 //           <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase">
 //             Lofty Education

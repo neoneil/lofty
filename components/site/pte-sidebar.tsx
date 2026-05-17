@@ -73,7 +73,7 @@ function SidebarDecoration() {
       </div>
 
       <div className="relative h-44">
-        <div className="absolute bottom-0 left-0 right-0 h-14 rounded-[8px] bg-white/70 backdrop-blur-sm" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 round bg-white/70 backdrop-blur-sm" />
 
         <div className="absolute bottom-6 left-4 h-12 w-24 rounded-b-sm border border-[#cfc7b4] bg-[#d8d1be] shadow-sm" />
         <div className="absolute bottom-10 left-8 h-12 w-24 rounded-b-sm  border border-[#cfc7b4] bg-[#c9c3b2] shadow-sm" />
@@ -107,7 +107,7 @@ export default function PTESidebar({
 
   return (
     <aside className="w-full">
-      <div className="overflow-hidden rounded-[8px] border border-gray-200 bg-white shadow-sm">
+      <div className="overflow-hidden round border border-gray-200 bg-white shadow-sm">
         {/* 主导航 */}
         <div className="space-y-1 border-b border-gray-100 p-4">
           {pteMainTabs.map((tab) => (
@@ -136,7 +136,7 @@ export default function PTESidebar({
         <div className="px-4 pb-4 pt-2">
           <SidebarDecoration />
 
-          <button className="mt-4 inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]">
+          <button className="mt-4 inline-flex w-full items-center justify-center rounded border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]">
             <Link
               href="/pte/info"
               className="nav-link btn-secondary"

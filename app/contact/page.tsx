@@ -107,14 +107,14 @@ export default function ContactPage() {
             </div>
 
             <div
-              className="rounded-[36px] border p-5 shadow-sm backdrop-blur-xl sm:p-6"
+              className="round border p-5 shadow-sm backdrop-blur-xl sm:p-6"
               style={{
                 borderColor: "var(--border)",
                 background: "color-mix(in srgb, var(--card) 82%, transparent)",
               }}
             >
               <div
-                className="rounded-[28px] border p-6 sm:p-8"
+                className="round border p-6 sm:p-8"
                 style={{
                   borderColor: "var(--border)",
                   background:
@@ -132,7 +132,7 @@ export default function ContactPage() {
                   {highlights.map((item) => (
                     <div
                       key={item.en}
-                      className="rounded-3xl border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                      className="rounded border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                       style={{
                         borderColor: "var(--border)",
                         background: "var(--card)",
@@ -158,13 +158,13 @@ export default function ContactPage() {
           </div>
 
           <div
-            className="mt-12 grid gap-4 rounded-[32px] border p-5 shadow-sm sm:grid-cols-3 sm:p-6"
+            className="mt-12 grid gap-4 round border p-5 shadow-sm sm:grid-cols-3 sm:p-6"
             style={{
               borderColor: "var(--bg)",
               background: "var(--bg)",
             }}
           >
-            <div className="rounded-3xl p-4">
+            <div className="rounded p-4">
               <div
                 className="text-3xl font-semibold"
                 style={{ color: "var(--brand-accent)" }}
@@ -176,7 +176,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl p-4">
+            <div className="rounded p-4">
               <div
                 className="text-3xl font-semibold"
                 style={{ color: "var(--brand-accent)" }}
@@ -188,7 +188,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl p-4">
+            <div className="rounded p-4">
               <div
                 className="text-3xl font-semibold"
                 style={{ color: "var(--brand-accent)" }}

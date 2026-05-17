@@ -111,7 +111,7 @@ export default async function AdminStudentDetailPage({
         </Link>
       </div>
 
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="rounded border bg-white p-5 shadow-sm">
         <div className="flex items-start gap-4">
           {profile?.avatar_url ? (
             <img
@@ -136,7 +136,7 @@ export default async function AdminStudentDetailPage({
         </div>
       </section>
 
-      <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="mt-8 rounded border bg-white p-5 shadow-sm">
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-gray-900">
             Practice by Question Type
@@ -155,7 +155,7 @@ export default async function AdminStudentDetailPage({
             {overall.map((item) => (
               <div
                 key={item.question_source}
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                className="rounded border border-gray-200 bg-gray-50 p-4"
               >
                 <div className="text-sm font-semibold uppercase text-gray-900">
                   {TYPE_LABEL_MAP[item.question_source] ?? item.question_source}
@@ -189,7 +189,7 @@ export default async function AdminStudentDetailPage({
         )}
       </section>
 
-      <section className="mt-8 rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="mt-8 rounded border bg-white p-5 shadow-sm">
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-gray-900">
             Daily Detail (Last 7 Days)
@@ -206,7 +206,7 @@ export default async function AdminStudentDetailPage({
         ) : (
           <div className="space-y-6">
             {orderedDays.map((day) => (
-              <div key={day} className="rounded-2xl border border-gray-200">
+              <div key={day} className="rounded border border-gray-200">
                 <div className="border-b bg-gray-50 px-4 py-3">
                   <h3 className="text-sm font-semibold text-gray-900">{day}</h3>
                 </div>

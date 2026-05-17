@@ -85,7 +85,7 @@ export default function SignupForm() {
           {/* 桌面端 */}
           <div className="relative mx-auto hidden w-215 lg:block">
             {/* signup form：放右边 */}
-            <div className="relative z-10 ml-85 w-full max-w-105 rounded-3xl border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
+            <div className="relative z-10 ml-85 w-full max-w-105 rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
               <h1 className="mb-2 text-2xl font-bold text-(--text)">
                 Create Account
               </h1>
@@ -200,7 +200,7 @@ export default function SignupForm() {
 
           {/* 手机端 */}
           <div className="mx-auto w-full max-w-105 lg:hidden">
-            <div className="rounded-3xl border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
+            <div className="rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
               <h1 className="mb-2 text-3xl font-bold text-(--text)">
                 Create Account
               </h1>

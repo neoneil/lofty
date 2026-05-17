@@ -129,7 +129,7 @@ export default function CoursesPage() {
                 <button
                   key={course.title}
                   onClick={() => openCourse(course)}
-                  className={`flex min-h-[360px] flex-col rounded-[28px] border p-6 text-left shadow-[0_10px_40px_rgba(0,0,0,0.06)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 md:p-7 ${
+                  className={`flex min-h-[360px] flex-col round border p-6 text-left shadow-[0_10px_40px_rgba(0,0,0,0.06)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 md:p-7 ${
                     active
                       ? "border-[var(--brand-accent)] bg-white shadow-[0_18px_50px_rgba(0,0,0,0.12)]"
                       : "border-white/60 bg-white/80"
@@ -164,7 +164,7 @@ export default function CoursesPage() {
           {/* 页面里的详情定位区 */}
           <div
             ref={detailRef}
-            className="mx-auto mt-12 max-w-5xl rounded-[36px] border border-white/70 bg-white/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.12)] backdrop-blur-xl md:p-10"
+            className="mx-auto mt-12 max-w-5xl round border border-white/70 bg-white/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.12)] backdrop-blur-xl md:p-10"
           >
             <div className="text-center">
               <p className="text-sm tracking-wide text-neutral-500">
@@ -192,7 +192,7 @@ export default function CoursesPage() {
             className="absolute inset-0 bg-black/45 backdrop-blur-md"
           />
 
-          <div className="relative max-h-[88vh] w-full max-w-4xl animate-[modalIn_0.28s_ease-out] overflow-y-auto rounded-[32px] bg-white p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] md:p-10">
+          <div className="relative max-h-[88vh] w-full max-w-4xl animate-[modalIn_0.28s_ease-out] overflow-y-auto round bg-white p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] md:p-10">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded bg-neutral-100 text-xl leading-none text-neutral-600 transition hover:bg-neutral-200"
@@ -213,7 +213,7 @@ export default function CoursesPage() {
             </p>
 
             <div className="mt-8 grid gap-5 md:grid-cols-2">
-              <div className="rounded-3xl bg-[var(--primary)]/5 p-5">
+              <div className="rounded bg-[var(--primary)]/5 p-5">
                 <h3 className="font-semibold">适用人群</h3>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-600">
                   {selectedCourse.suitable.map((item) => (
@@ -222,7 +222,7 @@ export default function CoursesPage() {
                 </ul>
               </div>
 
-              <div className="rounded-3xl bg-[var(--primary)]/5 p-5">
+              <div className="rounded bg-[var(--primary)]/5 p-5">
                 <h3 className="font-semibold">课后服务</h3>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-600">
                   {selectedCourse.service.map((item) => (
@@ -264,7 +264,7 @@ export default function CoursesPage() {
               ["技巧突破", "拆解核心题型技巧，提升答题效率与准确率。"],
               ["强化训练", "每日刷题 + 实战模拟，稳定输出能力。"],
             ].map(([title, desc]) => (
-              <div key={title} className="rounded-2xl bg-white/70 p-5 shadow-sm">
+              <div key={title} className="rounded bg-white/70 p-5 shadow-sm">
                 <h3 className="text-lg font-semibold">{title}</h3>
                 <p className="mt-2 text-sm text-neutral-500">{desc}</p>
               </div>

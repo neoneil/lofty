@@ -187,7 +187,7 @@ export default function DictionaryPopup() {
           relative
           w-[92%]
           max-w-2xl
-          rounded-3xl
+          rounded
           border
           border-white/30
           bg-white/90
@@ -295,7 +295,7 @@ export default function DictionaryPopup() {
         max-h-[160px]
         overflow-y-auto
         pr-2
-        rounded-2xl
+        rounded
         bg-gray-50
         p-5
         text-[16px]
@@ -335,7 +335,7 @@ export default function DictionaryPopup() {
         max-h-[160px]
         overflow-y-auto
         pr-2
-        rounded-2xl
+        rounded
         bg-gray-50
         p-5
         text-[15px]
@@ -384,7 +384,7 @@ export default function DictionaryPopup() {
 
                         className="
                           block
-                          rounded-2xl
+                          rounded
                           border
                           border-gray-200
                           bg-white

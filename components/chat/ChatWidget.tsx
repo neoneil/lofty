@@ -460,7 +460,7 @@ export default function ChatWidget() {
         </button>
       ) : (
         <div
-          className="flex h-155 w-97.5 flex-col overflow-hidden rounded-[28px] border shadow-2xl"
+          className="flex h-155 w-97.5 flex-col overflow-hidden round border shadow-2xl"
           style={{
             backgroundColor: 'var(--card)',
             borderColor: 'var(--border)',
@@ -534,7 +534,7 @@ export default function ChatWidget() {
               </div>
             ) : messages.length === 0 ? (
               <div
-                className="mt-14 rounded-2xl border px-4 py-5 text-center text-sm shadow-sm"
+                className="mt-14 rounded border px-4 py-5 text-center text-sm shadow-sm"
                 style={{
                   backgroundColor: 'var(--card)',
                   borderColor: 'var(--border)',
@@ -583,7 +583,7 @@ export default function ChatWidget() {
                         </div>
 
                         <div
-                          className="rounded-[22px] px-4 py-3 text-sm leading-6 shadow-sm"
+                          className="round px-4 py-3 text-sm leading-6 shadow-sm"
                           style={{
                             backgroundColor: isUser
                               ? 'var(--primary)'
@@ -625,7 +625,7 @@ export default function ChatWidget() {
                       </div>
 
                       <div
-                        className="rounded-[22px] border px-4 py-3 text-sm shadow-sm"
+                        className="round border px-4 py-3 text-sm shadow-sm"
                         style={{
                           backgroundColor: 'var(--card)',
                           borderColor: 'var(--border)',
@@ -674,7 +674,7 @@ export default function ChatWidget() {
           >
             <div className="flex gap-3">
               <div
-                className="flex flex-1 items-end rounded-3xl border px-3 py-2 shadow-sm"
+                className="flex flex-1 items-end rounded border px-3 py-2 shadow-sm"
                 style={{
                   borderColor: 'var(--border)',
                   backgroundColor: 'var(--bg)',
@@ -1021,7 +1021,7 @@ export default function ChatWidget() {
 //         </button>
 //       ) : (
 //         <div
-//           className="flex h-155 w-97.5 flex-col overflow-hidden rounded-[28px] border shadow-2xl"
+//           className="flex h-155 w-97.5 flex-col overflow-hidden round border shadow-2xl"
 //           style={{
 //             backgroundColor: 'var(--card)',
 //             borderColor: 'var(--border)',
@@ -1090,7 +1090,7 @@ export default function ChatWidget() {
 //                 {initError}
 //               </div>
 //             ) : messages.length === 0 ? (
-//               <div className="mt-14 rounded-2xl border px-4 py-5 text-center text-sm shadow-sm"
+//               <div className="mt-14 rounded border px-4 py-5 text-center text-sm shadow-sm"
 //                 style={{
 //                   backgroundColor: 'var(--card)',
 //                   borderColor: 'var(--border)',
@@ -1121,7 +1121,7 @@ export default function ChatWidget() {
 //                         </div>
 
 //                         <div
-//                           className="rounded-[22px] px-4 py-3 text-sm leading-6 shadow-sm"
+//                           className="round px-4 py-3 text-sm leading-6 shadow-sm"
 //                           style={{
 //                             backgroundColor: isUser
 //                               ? 'var(--primary)'
@@ -1163,7 +1163,7 @@ export default function ChatWidget() {
 //                       </div>
 
 //                       <div
-//                         className="rounded-[22px] border px-4 py-3 text-sm shadow-sm"
+//                         className="round border px-4 py-3 text-sm shadow-sm"
 //                         style={{
 //                           backgroundColor: 'var(--card)',
 //                           borderColor: 'var(--border)',
@@ -1212,7 +1212,7 @@ export default function ChatWidget() {
 //           >
 //             <div className="flex gap-3">
 //               <div
-//                 className="flex flex-1 items-end rounded-3xl border px-3 py-2 shadow-sm"
+//                 className="flex flex-1 items-end rounded border px-3 py-2 shadow-sm"
 //                 style={{
 //                   borderColor: 'var(--border)',
 //                   backgroundColor: 'var(--bg)',

@@ -119,7 +119,7 @@ export default function QuestionPdfDownloadCenter() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[30px] border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      <section className="round border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
         <div className="mb-6">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
             PTE DOWNLOAD CENTER
@@ -141,7 +141,7 @@ export default function QuestionPdfDownloadCenter() {
               type="button"
               onClick={() => handleDownload(item)}
               disabled={loadingKey === item.key}
-              className="cursor-pointer rounded-3xl border border-gray-200 bg-(--bg) p-5 text-left transition hover:shadow-md hover:border-(--theme) disabled:opacity-60"
+              className="cursor-pointer rounded border border-gray-200 bg-(--bg) p-5 text-left transition hover:shadow-md hover:border-(--theme) disabled:opacity-60"
             >
               <div className="mb-2 text-lg font-semibold text-(--theme)">
                 {item.label}

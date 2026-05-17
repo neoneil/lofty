@@ -126,7 +126,7 @@ export default function HomePage() {
             维州 SEHS（Year 9）考试：旧版 vs 现在官方版
           </h2>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-x-auto rounded border border-slate-200 bg-white shadow-sm">
             <table className="w-full border-collapse text-left">
               <thead>
                 <tr className="bg-slate-50">
@@ -179,7 +179,7 @@ export default function HomePage() {
 
           <div className="grid gap-8 xl:grid-cols-2">
             {/* Mathematics table */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded border border-slate-200 bg-white shadow-sm">
               <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
                 <h3 className="text-xl font-semibold text-slate-800">
                   Mathematics
@@ -261,7 +261,7 @@ export default function HomePage() {
             </div>
 
             {/* Quantitative Reasoning table */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded border border-slate-200 bg-white shadow-sm">
               <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
                 <h3 className="text-xl font-semibold text-slate-800">
                   Quantitative Reasoning
@@ -350,7 +350,7 @@ export default function HomePage() {
 
           <div className="grid gap-8 xl:grid-cols-2">
             {/* Reading table */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded border border-slate-200 bg-white shadow-sm">
               <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
                 <h3 className="text-xl font-semibold text-slate-800">
                   Reading
@@ -423,7 +423,7 @@ export default function HomePage() {
             </div>
 
             {/* Verbal Reasoning table */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded border border-slate-200 bg-white shadow-sm">
               <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
                 <h3 className="text-xl font-semibold text-slate-800">
                   Verbal Reasoning
@@ -510,7 +510,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-hidden rounded border border-slate-200 bg-white shadow-sm">
             <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
               <h3 className="text-xl font-semibold text-slate-800">
                 Writing

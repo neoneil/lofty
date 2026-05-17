@@ -78,7 +78,7 @@ export default async function AdminPage() {
   return (
     <main className="min-h-screen bg-[--bg] px-4 py-10 text-[--text] sm:px-6 lg:px-8">
       <section className="mx-auto max-w-6xl">
-        <div className="mb-8 rounded-[32px] border border-white/70 bg-[--bg] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
+        <div className="mb-8 round border border-white/70 bg-[--bg] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="mb-3 text-sm font-medium text-neutral-500">
@@ -90,7 +90,7 @@ export default async function AdminPage() {
               </h1>
             </div>
 
-            <div className="rounded-2xl bg-[#f5f5f7] px-5 py-4 text-sm text-neutral-600">
+            <div className="rounded bg-[#f5f5f7] px-5 py-4 text-sm text-neutral-600">
               <p className="font-medium text-neutral-900">{profile.email}</p>
               <p className="mt-1">
                 Role:{" "}
@@ -118,7 +118,7 @@ export default async function AdminPage() {
             <Link
               key={item.title}
               href={item.href}
-              className="group rounded-[28px] border border-white/80 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.09)]"
+              className="group round border border-white/80 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.09)]"
             >
               <div className="mb-6 flex items-center justify-between">
                 <span className="rounded bg-[#f5f5f7] px-3 py-1 text-xs font-medium text-neutral-500">

@@ -238,18 +238,18 @@ export default function WritingPage() {
 
       <div className="mt-4">
         {!user ? (
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <div className="rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
             Please log in to generate prompts and save your writing history.
           </div>
         ) : (
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+          <div className="rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
             Logged in as {user.fullName}
             {user.email ? ` (${user.email})` : ""}.
           </div>
         )}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+      <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-(--text-main)">
           AI Prompt Generator
         </h2>
@@ -262,7 +262,7 @@ export default function WritingPage() {
             <select
               value={type}
               onChange={(e) => setType(e.target.value as WritingType)}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             >
               <option value="mixed">Mixed</option>
               <option value="creative">Creative</option>
@@ -277,7 +277,7 @@ export default function WritingPage() {
             <select
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value as Difficulty)}
-              className="w-full rounded-lg border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
+              className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             >
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
@@ -298,13 +298,13 @@ export default function WritingPage() {
       </div>
 
       {error && (
-        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mt-6 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </div>
       )}
 
       <div className="mt-8 grid gap-6 xl:grid-cols-[1.1fr_1.4fr]">
-        <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+        <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-(--text-main)">Prompt</h2>
 
           {!prompt ? (
@@ -382,7 +382,7 @@ export default function WritingPage() {
           )}
         </div>
 
-        <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+        <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-semibold text-(--text-main)">
               Writing Area
@@ -406,7 +406,7 @@ export default function WritingPage() {
               value={writing}
               onChange={(e) => setWriting(e.target.value)}
               placeholder="Write your response here..."
-              className="min-h-105 w-full rounded-2xl border border-(--border-color) bg-white px-4 py-4 text-(--text-main) outline-none"
+              className="min-h-105 w-full rounded border border-(--border-color) bg-white px-4 py-4 text-(--text-main) outline-none"
             />
           </div>
 
@@ -424,11 +424,11 @@ export default function WritingPage() {
 
       {review && (
         <div className="mt-8 space-y-6">
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+          <div className="rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
             Saved to history. Submission ID: {review.submissionId}
           </div>
 
-          <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+          <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
             <h2 className="text-2xl font-bold text-(--text-main)">AI Review</h2>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -456,7 +456,7 @@ export default function WritingPage() {
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className="rounded-2xl border border-(--border-color) bg-gray-50 px-4 py-4"
+                  className="rounded border border-(--border-color) bg-gray-50 px-4 py-4"
                 >
                   <p className="text-sm text-(--text-secondary)">{label}</p>
                   <p className="mt-2 text-3xl font-bold text-(--text-main)">
@@ -468,7 +468,7 @@ export default function WritingPage() {
           </div>
 
           <div className="grid gap-6 xl:grid-cols-2">
-            <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+            <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
               <p className="text-sm text-(--text-secondary)">Summary (English)</p>
               <p className="mt-2 leading-7 text-(--text-main)">
                 {review.summaryEn}
@@ -480,25 +480,25 @@ export default function WritingPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+            <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
               <p className="text-sm text-(--text-secondary)">
                 Improved Sample (English)
               </p>
-              <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+              <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
                 {review.correctedSampleEn}
               </div>
 
               <p className="mt-6 text-sm text-(--text-secondary)">
                 优化示例（中文）
               </p>
-              <div className="mt-2 rounded-2xl bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
+              <div className="mt-2 rounded bg-gray-50 px-4 py-4 leading-7 text-(--text-main)">
                 {review.correctedSampleZh}
               </div>
             </div>
           </div>
 
           <div className="grid gap-6 xl:grid-cols-2">
-            <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+            <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
               <p className="text-sm text-(--text-secondary)">Strengths (English)</p>
               <ul className="mt-2 space-y-2">
                 {review.strengthsEn.map((item, index) => (
@@ -524,7 +524,7 @@ export default function WritingPage() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+            <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
               <p className="text-sm text-(--text-secondary)">
                 How to Improve (English)
               </p>
@@ -553,7 +553,7 @@ export default function WritingPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+          <div className="rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
             <p className="text-sm text-(--text-secondary)">Detailed Errors</p>
 
             {review.errors.length === 0 ? (
@@ -565,7 +565,7 @@ export default function WritingPage() {
                 {review.errors.map((item, index) => (
                   <div
                     key={index}
-                    className="rounded-2xl border border-(--border-color) bg-gray-50 px-4 py-4"
+                    className="rounded border border-(--border-color) bg-gray-50 px-4 py-4"
                   >
                     <p className="text-sm capitalize text-(--text-secondary)">
                       {item.type.replace("_", " ")}

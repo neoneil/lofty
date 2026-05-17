@@ -127,7 +127,7 @@ export default function SearchModal({
           absolute left-1/2 top-24
           w-full max-w-2xl
           -translate-x-1/2
-          rounded-2xl
+          rounded
           border border-white/10
           bg-zinc-900
           shadow-2xl

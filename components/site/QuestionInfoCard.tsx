@@ -67,7 +67,7 @@ function InfoItem({
     return (
         <div
             className="
-                rounded-2xl
+                rounded
                 bg-white/92
                 p-4
 
@@ -110,7 +110,7 @@ export default function QuestionInfoCard({
     return (
         <section
             className="
-                rounded-[30px]
+                round
                 bg-transparent
                 p-0
                 shadow-none
@@ -153,7 +153,7 @@ export default function QuestionInfoCard({
                 {/* COLUMN 2 */}
                 <div
                     className="
-                        rounded-2xl
+                        rounded
                         bg-white/92
                         p-5
 
@@ -172,7 +172,7 @@ export default function QuestionInfoCard({
                 {/* COLUMN 3 */}
                 <div
                     className="
-                        rounded-2xl
+                        rounded
                         bg-white/92
                         p-5
 

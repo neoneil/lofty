@@ -82,7 +82,7 @@ export default function AudioPlayer({ url }: { url: string }) {
   };
 
   return (
-    <div className="w-full rounded-2xl border bg-white p-4 shadow-sm space-y-3">
+    <div className="w-full rounded border bg-white p-4 shadow-sm space-y-3">
       {/* ===== 控制区 ===== */}
       <div className="flex items-center gap-4">
         <button

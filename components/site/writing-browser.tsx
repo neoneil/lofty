@@ -180,7 +180,7 @@ export default function WritingBrowser({ topics }: Props) {
               type="button"
               onClick={handleExportWriting}
               disabled={isExporting}
-              className="btn-secondary rounded-3xl"
+              className="btn-secondary rounded"
               style={{ borderColor: "var(--border)" }}
             >
               {isExporting ? "Exporting..." : "下载 Writing PDF"}
@@ -285,7 +285,7 @@ export default function WritingBrowser({ topics }: Props) {
                 </div>
 
                 <div
-                  className="rounded-2xl border bg-(--card-soft) px-5 py-5"
+                  className="rounded border bg-(--card-soft) px-5 py-5"
                   style={{ borderColor: "var(--border)" }}
                 >
                   <p className="mb-3 text-sm font-semibold text-(--theme)">
@@ -299,7 +299,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                 {item.question_zh && item.question_zh.trim() !== "" && (
                   <div
-                    className="rounded-2xl border px-5 py-5"
+                    className="rounded border px-5 py-5"
                     style={{ borderColor: "var(--border)" }}
                   >
                     <p className="text-sm leading-8 text-gray-700 sm:text-base">
@@ -538,7 +538,7 @@ export default function WritingBrowser({ topics }: Props) {
 //                                 </div>
 
 //                                 <div
-//                                     className="rounded-2xl border bg-(--card-soft) px-5 py-5"
+//                                     className="rounded border bg-(--card-soft) px-5 py-5"
 //                                     style={{ borderColor: "var(--border)" }}
 //                                 >
 //                                     <p className="mb-3 text-sm font-semibold text-black">
@@ -552,7 +552,7 @@ export default function WritingBrowser({ topics }: Props) {
 
 //                                 {item.question_zh && item.question_zh.trim() !== "" && (
 //                                     <div
-//                                         className="rounded-2xl border px-5 py-5"
+//                                         className="rounded border px-5 py-5"
 //                                         style={{ borderColor: "var(--border)" }}
 //                                     >
 //                                         <p className="text-sm leading-8 text-gray-700 sm:text-base">

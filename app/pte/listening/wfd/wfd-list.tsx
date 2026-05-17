@@ -95,7 +95,7 @@ function getPaginationNumbers(currentPage: number, totalPages: number) {
 
 //     return (
 //         <span
-//             className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
+//             className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
 //         >
 //             {children}
 //         </span>
@@ -175,7 +175,7 @@ export default function WfdList({
     };
 
     return (
-        <section className="overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-sm mx-auto block w-full max-w-[80%]">
+        <section className="overflow-hidden round border border-gray-200 bg-white shadow-sm mx-auto block w-full max-w-[80%]">
             <div>
                 {paginatedQuestions.map((item, index) => {
                     return (

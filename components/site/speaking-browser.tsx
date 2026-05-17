@@ -215,7 +215,7 @@ export default function SpeakingBrowser({
                             type="button"
                             onClick={handleExportPart1}
                             disabled={isExportingPart1}
-                            className="btn-secondary rounded-3xl"
+                            className="btn-secondary rounded"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {isExportingPart1 ? "Exporting..." : "下载 Part 1 PDF"}
@@ -277,7 +277,7 @@ export default function SpeakingBrowser({
                                     <div
                                         key={item.id}
                                         className="
-                      rounded-2xl border bg-(--card-soft) px-4 py-4
+                      rounded border bg-(--card-soft) px-4 py-4
                       transition-all duration-300
                       hover:-translate-y-0.5 hover:shadow-md
                     "
@@ -326,7 +326,7 @@ export default function SpeakingBrowser({
                             type="button"
                             onClick={handleExportPart2}
                             disabled={isExportingPart2}
-                            className="btn-secondary rounded-3xl"
+                            className="btn-secondary rounded"
                             style={{ borderColor: "var(--border)" }}
                         >
                             {isExportingPart2 ? "Exporting..." : "下载 Part 2/3 PDF"}
@@ -426,7 +426,7 @@ export default function SpeakingBrowser({
 
                                     {cueCards.length > 0 && (
                                         <div
-                                            className="rounded-2xl border bg-(--card-soft) px-5 py-5"
+                                            className="rounded border bg-(--card-soft) px-5 py-5"
                                             style={{ borderColor: "var(--border)" }}
                                         >
                                             <p className="mb-4 text-sm font-semibold text-(--theme) ">
@@ -457,7 +457,7 @@ export default function SpeakingBrowser({
                                                     <div
                                                         key={index}
                                                         className="
-                              rounded-2xl border px-4 py-4
+                              rounded border px-4 py-4
                               transition-all duration-300
                               hover:-translate-y-0.5 hover:shadow-md
                             "

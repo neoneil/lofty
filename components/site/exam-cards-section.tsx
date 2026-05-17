@@ -43,7 +43,7 @@ export default function ExamCardsSection() {
           <Link
             key={card.title}
             href={card.href}
-            className="group overflow-hidden rounded-2xl border border-(--border) bg-(--bg) shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            className="group overflow-hidden rounded border border-(--border) bg-(--bg) shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             <div className="relative aspect-16/10 w-full overflow-hidden bg-(--card-soft)">
               {card.image ? (

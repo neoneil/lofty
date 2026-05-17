@@ -50,7 +50,7 @@ export default async function AdminPostsPage() {
                     {posts.map((post) => (
                         <article
                             key={post.id}
-                            className="rounded-lg border p-5"
+                            className="round border p-5"
                         >
                             <div className="flex items-start justify-between gap-4">
                                 <div>

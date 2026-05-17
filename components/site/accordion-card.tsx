@@ -22,7 +22,7 @@ export default function AccordionCard({
   return (
     <div
       className={`
-        card-interactive group overflow-hidden rounded-3xl border bg-(--bg) shadow-sm
+        card-interactive group overflow-hidden rounded border bg-(--bg) shadow-sm
         hover:shadow-xl
       `}
       style={{
