@@ -14,8 +14,8 @@ export type SpeakingSubTab =
   | "sgd";
 
 export type WritingSubTab =
-  | "swt"
-  | "essay";
+  | "essay"
+  | "swt";
 
 export type ReadingSubTab =
   | "rfib"
@@ -49,7 +49,7 @@ export const pteMainTabs = [
   {
     key: "writing",
     label: "Writing",
-    href: "/pte/writing/swt",
+    href: "/pte/writing/essay",
   },
   {
     key: "reading",

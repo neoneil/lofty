@@ -2,33 +2,19 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --bg: #f4f9fb;
-
+  --bg: #f4f9fb; 
   --text: #2b3039;
-  --theme:rgb(61, 55, 55);
-  --primary: #1E3A8A;
+  --theme: #334155; /*Teal 500 #14b8a6  Red 500 #ef4444 Blue 500 #3b82f6 Amber 500 #f59e0b*/  
+  --primary: #1E3A8A;/*Neutral 700 #404040 Slate 700 #334155*/
   --primary-hover: #2B4FB8;
-
   --brand-accent: #1E3A8A;
-  --brand-accent-hover: #2B4FB8;
-
-  --border: #E5E7EB;
-  --muted: #6B7280;
-
+  --brand-accent-hover: #2B4FB8;  
+  --border: #E5E7EB; 
+  --muted: #6B7280; 
   --card: #FFFFFF;
   --card-soft: #FFFDF9;
-
-  /* --navbar-bg: linear-gradient(
-    90deg,
-    #1E3A8A 0%,
-    #2B4FB8 45%,
-    #D4AF37 100%
-  ); */
-
-
   --footer-bg: #1E3A8A;
 }
-
 
 @layer components {
 
@@ -104,14 +90,14 @@
   /* 卡片 */
   /* WFD / 题目卡片 */
   .question-card {
-    @apply cursor-pointer rounded-s-md transition-all duration-200 border border-gray-200 px-2 py-2 sm:px-6;
+    @apply cursor-pointer rounded transition-all duration-200 border border-gray-200 px-2 py-2 sm:px-6;
   }
 
   .question-card:hover {
     @apply shadow-sm;
     /* transform: translateY(-2px) scale(1.003); */
     background: rgba(255, 255, 255, 0.92);
-    color: var(--brand-accent-hover);
+    color: var(--primary);
   }
   .card {
     @apply rounded border p-6 transition;
@@ -150,37 +136,20 @@
   }
 
 }
-/* .fixed-bg {
-  position: fixed;
-  top: 72px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  pointer-events: none;
 
-  background-color: #f8f2ea;
-  background-image: url("/background.png");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 100% auto;
-} */
 body {
   font-family: Arial, Helvetica, sans-serif;
+  
 }
-
+html {
+  scrollbar-gutter: stable;
+}
 
 mark {
-
-  background:
-    rgba(47, 74, 63, 0.15);
-
-  color:
-    var(--theme);
-
+  background:rgba(47, 74, 63, 0.15);
+  color:var(--theme);
   padding: 1px 4px;
-
   border-radius: 6px;
-
   font-weight: 700;
 }
+

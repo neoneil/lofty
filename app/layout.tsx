@@ -74,7 +74,7 @@ export default function RootLayout({
         <div className="relative z-10 flex min-h-screen flex-col">
 
           <Navbar />
-          <div className="pointer-events-none fixed left-0 top-0 z-40 h-40 w-full bg-gradient-to-b from-white via-white/100 to-transparent" />
+          <div className="pointer-events-none fixed left-0 top-0 z-40 h-25 w-full bg-gradient-to-b from-white via-white/100 to-transparent" />
           <div className="flex-1 pt-14 lg:pt-16">
             <DictionaryProvider>
               <SearchProvider />

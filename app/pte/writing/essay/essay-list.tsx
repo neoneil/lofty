@@ -2,33 +2,25 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
-import QuestionToolbar from "@/components/site/question-toolbar";
 import Tag from "@/components/ui/tag";
 type Question = {
     id: string;
-    question_text: string;
-    question_type: string;
-    source_platform: string | null;
-    source_question_id: string | null;
-    difficulty_level: string | null;
-    tags: string[] | null;
-    is_prediction: boolean | null;
-    audio_url: string | null;
-    audio_duration_seconds: number | null;
-    ai_voice: string | null;
-    usage_count: number | null;
-    created_at: string;
-    updated_at: string;
-    is_real_exam: boolean | null;
+  question_text: string;
+  question_type: string;
+  response_type: string | null;
+  is_prediction: boolean | null;
+  created_at: string;
+  updated_at: string;
 
-    is_practiced: boolean;
-    attempt_count: number;
-    correct_count: number;
-    wrong_count: number;
-    last_attempt_at: string | null;
-    latest_score: number | null;
-    best_score: number | null;
-    is_wrong_question: boolean;
+  is_practiced: boolean;
+  attempt_count: number;
+  correct_count: number;
+  wrong_count: number;
+  completed_count: number;
+  last_attempt_at: string | null;
+  latest_score: number | null;
+  best_score: number | null;
+  is_wrong_question: boolean;
 };
 
 const PAGE_SIZE = 10;
@@ -66,42 +58,6 @@ function getPaginationNumbers(currentPage: number, totalPages: number) {
 }
 
 
-
-// function Tag({
-//     children,
-//     tone = "neutral",
-// }: {
-//     children: React.ReactNode;
-//     tone?:
-//     | "theme"
-//     | "green"
-//     | "purple"
-//     | "yellow"
-//     | "pink"
-//     | "blue"
-//     | "warm"
-//     | "neutral";
-// }) {
-//     const styles = {
-//         theme: "bg-[var(--theme)]/10 text-[var(--theme)]",
-//         green: "bg-emerald-50 text-emerald-700",
-//         purple: "bg-violet-50 text-violet-700",
-//         yellow: "bg-amber-50 text-amber-700",
-//         pink: "bg-red-50 text-red-700",
-//         blue: "bg-sky-50 text-sky-700",
-//         warm: "bg-orange-50 text-orange-700",
-//         neutral: "bg-gray-100 text-gray-600",
-//     };
-
-//     return (
-//         <span
-//             className={`inline-flex items-center round px-2.5 py-1 text-xs font-medium ${styles[tone]}`}
-//         >
-//             {children}
-//         </span>
-//     );
-// }
-
 function PaginationButton({
     active = false,
     disabled = false,
@@ -136,7 +92,7 @@ function PaginationButton({
 }
 
 
-export default function WfdList({
+export default function WeList({
     initialQuestions,
 }: {
     initialQuestions: Question[];
@@ -189,7 +145,7 @@ export default function WfdList({
                     return (
                         <Link
                             key={item.id}
-                            href={`/pte/listening/wfd/${item.id}`}
+                            href={`/pte/writing/essay/${item.id}`}
                             className="block"
                         >
                             <article className="question-card">
@@ -200,13 +156,7 @@ export default function WfdList({
                                                 {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                                             </span>
 
-                                            <Tag tone="theme">WFD</Tag>
-
-                                            {item.source_question_id ? (
-                                                <Tag tone="neutral">
-                                                    #{item.source_question_id}
-                                                </Tag>
-                                            ) : null}
+                                            <Tag tone="theme">Essay</Tag>
 
                                             <Tag tone="yellow">
                                                 词数：{getWordCount(item.question_text)}
@@ -232,16 +182,6 @@ export default function WfdList({
                                         <p className="text-[17px] leading-8 transition sm:text-[19px]">
                                             {item.question_text}
                                         </p>
-
-                                        {item.tags?.length ? (
-                                            <div className="mt-3 flex flex-wrap gap-2">
-                                                {item.tags.map((tag) => (
-                                                    <Tag key={tag} tone="neutral">
-                                                        {tag}
-                                                    </Tag>
-                                                ))}
-                                            </div>
-                                        ) : null}
                                     </div>
 
                                     <div className="hidden w-[110px] flex-shrink-0 items-center justify-end md:flex">

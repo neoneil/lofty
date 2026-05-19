@@ -7,7 +7,11 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root {...props} />
+  return (
+    <SelectPrimitive.Root
+      {...props}
+    />
+  )
 }
 
 function SelectGroup(props: React.ComponentProps<typeof SelectPrimitive.Group>) {
@@ -50,7 +54,8 @@ function SelectContent({
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
-        position={position}
+        position="popper"
+        avoidCollisions={false}
         className={cn(
           "relative z-[9999] max-h-80 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded border border-slate-300 bg-white text-slate-900 shadow-xl",
           position === "popper" && "translate-y-1",

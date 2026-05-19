@@ -1,6 +1,7 @@
 "use client";
 
 import { Search, SlidersHorizontal } from "lucide-react";
+import FilterSelect from "@/components/ui/FilterSelect";
 
 type Props = {
     questionType: string;
@@ -13,7 +14,7 @@ type Props = {
 
     practiceStatus: string;
     onPracticeStatusChange: (value: string) => void;
-   
+
     activityStatus: string;
     onActivityStatusChange: (value: string) => void;
 };
@@ -29,7 +30,7 @@ export default function QuestionToolbar({
 
     practiceStatus,
     onPracticeStatusChange,
-    
+
     activityStatus,
     onActivityStatusChange,
 }: Props) {
@@ -87,132 +88,88 @@ export default function QuestionToolbar({
                 </div>
 
                 {/* QUESTION STATUS */}
-                <select
+                <FilterSelect
                     value={questionStatus}
-                    onChange={(e) =>
-                        onQuestionStatusChange(
-                            e.target.value
-                        )
-                    }
-                    className="
-                        rounded-sm
-                        bg-white
-
-                        px-4 py-3
-
-                        text-sm
-                        text-gray-700
-
-                        outline-none
-
-                        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
-                    "
-                >
-                    <option value="all">
-                        全部题目
-                    </option>
-
-                    <option value="is_prediction">
-                        活跃题目
-                    </option>
-
-                    <option value="new">
-                        新增题目
-                    </option>
-
-                    <option value="newest">
-                        最新题目
-                    </option>
-
-                    <option value="re_is_prediction">
-                        重新活跃
-                    </option>
-                </select>
+                    onChange={onQuestionStatusChange}
+                    options={[
+                        {
+                            label: "全部题目",
+                            value: "all",
+                        },
+                        {
+                            label: "活跃题目",
+                            value: "is_prediction",
+                        },
+                        {
+                            label: "新增题目",
+                            value: "new",
+                        },
+                        {
+                            label: "最新题目",
+                            value: "newest",
+                        },
+                        {
+                            label: "重新活跃",
+                            value: "re_is_prediction",
+                        },
+                    ]}
+                />
 
                 {/* PRACTICE STATUS */}
-                <select
+                <FilterSelect
                     value={practiceStatus}
-                    onChange={(e) =>
-                        onPracticeStatusChange(
-                            e.target.value
-                        )
-                    }
-                    className="
-                        rounded-sm
-                        bg-white
+                    onChange={onPracticeStatusChange}
+                    options={[
+                        {
+                            label: "全部练习状态",
+                            value: "all",
+                        },
+                        {
+                            label: "已练习",
+                            value: "practiced",
+                        },
+                        {
+                            label: "未练习",
+                            value: "unpracticed",
+                        },
+                        {
+                            label: "错题",
+                            value: "wrong",
+                        },
+                        {
+                            label: "已掌握",
+                            value: "mastered",
+                        },
+                        {
+                            label: "薄弱题目",
+                            value: "weak",
+                        },
+                    ]}
+                />
 
-                        px-4 py-3
-
-                        text-sm
-                        text-gray-700
-
-                        outline-none
-
-                        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
-                    "
-                >
-                    <option value="all">
-                        全部练习状态
-                    </option>
-
-                    <option value="practiced">
-                        已练习
-                    </option>
-
-                    <option value="unpracticed">
-                        未练习
-                    </option>
-
-                    <option value="wrong">
-                        错题
-                    </option>
-
-                    <option value="mastered">
-                        已掌握
-                    </option>
-
-                    <option value="weak">
-                        薄弱题目
-                    </option>
-                </select>
                 {/* ACTIVITY */}
-                <select
+                <FilterSelect
                     value={activityStatus}
-                    onChange={(e) =>
-                        onActivityStatusChange(
-                            e.target.value
-                        )
-                    }
-                    className="
-        rounded-sm
-        bg-white
-
-        px-4 py-3
-
-        text-sm
-        text-gray-700
-
-        outline-none
-
-        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
-    "
-                >
-                    <option value="all">
-                        全部活跃度
-                    </option>
-
-                    <option value="most_practiced">
-                        练习次数最多
-                    </option>
-
-                    <option value="recently_practiced">
-                        最近练习
-                    </option>
-
-                    <option value="highest_score">
-                        分数最高
-                    </option>
-                </select>
+                    onChange={onActivityStatusChange}
+                    options={[
+                        {
+                            label: "全部活跃度",
+                            value: "all",
+                        },
+                        {
+                            label: "练习次数最多",
+                            value: "most_practiced",
+                        },
+                        {
+                            label: "最近练习",
+                            value: "recently_practiced",
+                        },
+                        {
+                            label: "分数最高",
+                            value: "highest_score",
+                        },
+                    ]}
+                />
             </div>
         </div>
     );

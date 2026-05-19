@@ -184,22 +184,21 @@ export default function QuestionInfoCard({
                     </div>
 
                     <div className="space-y-6">
+                         <ProgressBar
+                            label="题型重要性"
+                            value={questionInfo.importance ?? 0}
+                            color="#f87171"
+                        />
                         <ProgressBar
-                            label="Hitting Rate"
+                            label="考试命中率"
                             value={questionInfo.hitting_rate ?? 0}
-                            color="#ef4444"
+                            color="#10b981"
                         />
 
                         <ProgressBar
-                            label="Stability"
+                            label="14天内更新率"
                             value={questionInfo.stability ?? 0}
                             color="#3b82f6"
-                        />
-
-                        <ProgressBar
-                            label="Importance"
-                            value={questionInfo.importance ?? 0}
-                            color="#22c55e"
                         />
                     </div>
                 </div>

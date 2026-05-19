@@ -72,7 +72,7 @@ export default async function PteListeningPage() {
         <img
           src="/images/listeningPage.png"
           alt=""
-          className="absolute -right-32 -top-8 h-full w-full object-scale-down object-right-top opacity-95" />
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-95" />
         <div className="absolute inset-0" />
       </div>
 
