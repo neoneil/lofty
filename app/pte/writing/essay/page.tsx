@@ -2,7 +2,7 @@ import Container from "@/components/site/container";
 import Sidebar from "@/components/site/sidebar";
 import { requireUser } from "@/lib/auth/require-user";
 import EssayPageClient from "./essay-page-client";
-type WeQuestionWithStatus = {
+type EssayQuestionWithStatus = {
   id: string;
   question_text: string;
   question_type: string;
@@ -22,15 +22,14 @@ type WeQuestionWithStatus = {
   is_wrong_question: boolean;
 };
 
-export default async function WeListeningPage() {
-  const { supabase } = await requireUser("/pte/listening/we");
+export default async function PteWritingPage() {
+  const { supabase } = await requireUser("/pte/writing/essay");
 
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_we_with_user_status")
     .select("*")
     .eq("question_type", "WE")
-    // .eq("is_prediction", true)
     .order("created_at", { ascending: false })
     .limit(1500);
 
@@ -44,7 +43,7 @@ export default async function WeListeningPage() {
     latest_score: q.latest_score ?? null,
     best_score: q.best_score ?? null,
     is_wrong_question: q.is_wrong_question ?? false,
-  })) as WeQuestionWithStatus[];
+  })) as EssayQuestionWithStatus[];
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")

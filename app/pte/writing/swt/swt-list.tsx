@@ -6,20 +6,17 @@ import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
 type Question = {
     id: string;
+    question_title: string;
     question_text: string;
     question_type: string;
-    source_platform: string | null;
-    source_question_id: string | null;
     difficulty_level: string | null;
-    tags: string[] | null;
     is_prediction: boolean | null;
-    audio_url: string | null;
-    audio_duration_seconds: number | null;
-    ai_voice: string | null;
     usage_count: number | null;
     created_at: string;
     updated_at: string;
     is_real_exam: boolean | null;
+    source_question_id: string | null;
+    answer: string | null;
 
     is_practiced: boolean;
     attempt_count: number;
@@ -87,7 +84,7 @@ function PaginationButton({
 }
 
 
-export default function SstList({
+export default function SwtList({
     initialQuestions,
 
 }: {
@@ -136,10 +133,10 @@ export default function SstList({
                     return (
                         <Link
                             key={item.id}
-                            href={`/pte/listening/sst/${item.id}`}
+                            href={`/pte/writing/swt/${item.id}`}
                             onClick={() => {
                                 saveQuestionOrder(
-                                    "sst", questionIds
+                                    "swt", questionIds
                                 );
                             }}
                             className="block"
@@ -152,7 +149,7 @@ export default function SstList({
                                                 {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                                             </span>
 
-                                            <Tag tone="theme">SST</Tag>
+                                            <Tag tone="theme">SWT</Tag>
 
                                             {item.source_question_id ? (
                                                 <Tag tone="neutral">
@@ -181,19 +178,10 @@ export default function SstList({
                                             ) : null}
                                         </div>
 
-                                        <p className="text-[15px] leading-8 text-gray-700 tracking-[0.01em] transition sm:text-[17px] sm:leading-9">
-                                            {item.question_text}
+                                        <p className="text-[15px] text-gray-700 tracking-[0.01em] transition sm:text-[17px] sm:leading-7">
+                                            {item.question_title}
                                         </p>
 
-                                        {item.tags?.length ? (
-                                            <div className="mt-3 flex flex-wrap gap-2">
-                                                {item.tags.map((tag) => (
-                                                    <Tag key={tag} tone="neutral">
-                                                        {tag}
-                                                    </Tag>
-                                                ))}
-                                            </div>
-                                        ) : null}
                                     </div>
 
                                     <div className="hidden w-[110px] flex-shrink-0 items-center justify-end md:flex">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "@/components/site/container";
 import Sidebar from "@/components/site/sidebar";
 import { requireUser } from "@/lib/auth/require-user";
-import EssayDetailClient from "./essay-detail-client";
+import SwtDetailClient from "./swt-detail-client";
 import Tag from "@/components/ui/tag";
 import Image from "next/image";
 type PageProps = {
@@ -13,16 +13,16 @@ type PageProps = {
 
 };
 
-export default async function EssayQuestionDetailPage({
+export default async function SwtQuestionDetailPage({
     params,
 }: PageProps) {
     const { id } = await params;
-    const { supabase } = await requireUser(`/pte/writing/essay/${id}`);
+    const { supabase } = await requireUser(`/pte/writing/swt/${id}`);
 
     // 当前题目
     const { data: question, error } = await supabase
         .schema("views")
-        .from("v_pte_we_with_user_status")
+        .from("v_pte_swt_with_user_status")
         .select("*")
         .eq("id", id)
         .single();
@@ -32,7 +32,7 @@ export default async function EssayQuestionDetailPage({
             <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
                 <Container>
                     <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
-                        Essay 题目加载失败
+                        SWT 题目加载失败
                     </section>
                 </Container>
             </main>
@@ -46,7 +46,7 @@ export default async function EssayQuestionDetailPage({
             .from("student_attempts")
             .select(`id,score,user_answer,ai_feedback,submitted_at`)
             .eq("user_id", user!.id)
-            .eq("question_source", "we")
+            .eq("question_source", "swt")
             .eq("question_id", question.id)
             .order("submitted_at", {
                 ascending: false,
@@ -74,7 +74,7 @@ export default async function EssayQuestionDetailPage({
                             <div className="mb-1 flex items-center justify-between gap-4">
                                 {/* left */}
                                 <Link
-                                    href="/pte/writing/essay"
+                                    href="/pte/writing/swt"
                                     className="btn-primary">
                                     <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded">
                                         <Image
@@ -95,7 +95,7 @@ export default async function EssayQuestionDetailPage({
                                 <div className="flex flex-wrap items-center justify-end gap-2">
 
                                     <Tag tone="theme">
-                                        Essay
+                                        SWT
                                     </Tag>
 
                                     {question.source_question_id ? (
@@ -147,7 +147,7 @@ export default async function EssayQuestionDetailPage({
                                 ) : null}
                             </div>
 
-                            <EssayDetailClient
+                            <SwtDetailClient
                                 question={question}
                                 attempts={attempts ?? []}
                             />

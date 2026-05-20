@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";
+import { saveQuestionOrder } from "@/lib/question-order";
 type Question = {
-    id: string;
+  id: string;
   question_text: string;
   question_type: string;
   response_type: string | null;
@@ -29,18 +30,6 @@ function getWordCount(text: string) {
     return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
-function formatDateTime(value: string | null) {
-    if (!value) return "未练习";
-
-    return new Date(value).toLocaleString("zh-CN", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-}
-
 function getPaginationNumbers(currentPage: number, totalPages: number) {
     if (totalPages <= 7) {
         return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -56,7 +45,6 @@ function getPaginationNumbers(currentPage: number, totalPages: number) {
 
     return [1, -1, currentPage - 1, currentPage, currentPage + 1, -1, totalPages];
 }
-
 
 function PaginationButton({
     active = false,
@@ -92,27 +80,23 @@ function PaginationButton({
 }
 
 
-export default function WeList({
+export default function EssayList({
     initialQuestions,
+
 }: {
     initialQuestions: Question[];
+
 }) {
-    const questions = initialQuestions;
+    const questionIds = initialQuestions.map((q) => q.id);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const sortedQuestions = useMemo(() => {
-        return [...questions].sort(
-            (a, b) => getWordCount(a.question_text) - getWordCount(b.question_text)
-        );
-    }, [questions]);
-
-    const totalPages = Math.max(1, Math.ceil(sortedQuestions.length / PAGE_SIZE));
+    const totalPages = Math.max(1, Math.ceil(initialQuestions.length / PAGE_SIZE));
     const safeCurrentPage = Math.min(currentPage, totalPages);
 
     const paginatedQuestions = useMemo(() => {
         const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
-        return sortedQuestions.slice(startIndex, startIndex + PAGE_SIZE);
-    }, [safeCurrentPage, sortedQuestions]);
+        return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
+    }, [safeCurrentPage, initialQuestions]);
 
     const paginationNumbers = useMemo(
         () => getPaginationNumbers(safeCurrentPage, totalPages),
@@ -136,7 +120,7 @@ export default function WeList({
                 <div className="text-sm font-medium text-(--theme)">
                     当前题目数量：
                     <span className="ml-1 text-(--theme)">
-                        {questions.length}
+                        {initialQuestions.length}
                     </span>
                 </div>
             </div>
@@ -146,6 +130,11 @@ export default function WeList({
                         <Link
                             key={item.id}
                             href={`/pte/writing/essay/${item.id}`}
+                            onClick={() => {
+                                saveQuestionOrder(
+                                    "we", questionIds
+                                );
+                            }}
                             className="block"
                         >
                             <article className="question-card">
@@ -156,7 +145,7 @@ export default function WeList({
                                                 {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                                             </span>
 
-                                            <Tag tone="theme">Essay</Tag>
+                                            <Tag tone="theme">Essay/WE</Tag>
 
                                             <Tag tone="yellow">
                                                 词数：{getWordCount(item.question_text)}
@@ -179,9 +168,10 @@ export default function WeList({
                                             ) : null}
                                         </div>
 
-                                        <p className="text-[17px] leading-8 transition sm:text-[19px]">
+                                        <p className="text-[15px] text-gray-700 tracking-[0.01em] transition sm:text-[17px] sm:leading-7">
                                             {item.question_text}
                                         </p>
+
                                     </div>
 
                                     <div className="hidden w-[110px] flex-shrink-0 items-center justify-end md:flex">

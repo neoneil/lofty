@@ -4,26 +4,31 @@ import { useMemo, useState } from "react";
 import PTETopNav from "@/components/site/pte-top-nav";
 import QuestionInfoCard from "@/components/site/QuestionInfoCard";
 import QuestionToolbar from "@/components/site/question-toolbar";
-import EssayList from "./essay-list";
+import SwtList from "./swt-list";
 
 type Question = {
     id: string;
-  question_text: string;
-  question_type: string;
-  response_type: string | null;
-  is_prediction: boolean | null;
-  created_at: string;
-  updated_at: string;
+    question_title: string;
+    question_text: string;
+    question_type: string;
+    difficulty_level: string | null;
+    is_prediction: boolean | null;
+    usage_count: number | null;
+    created_at: string;
+    updated_at: string;
+    is_real_exam: boolean | null;
+    source_question_id: string | null;
+    answer: string | null;
 
-  is_practiced: boolean;
-  attempt_count: number;
-  correct_count: number;
-  wrong_count: number;
-  completed_count: number;
-  last_attempt_at: string | null;
-  latest_score: number | null;
-  best_score: number | null;
-  is_wrong_question: boolean;
+    is_practiced: boolean;
+    attempt_count: number;
+    correct_count: number;
+    wrong_count: number;
+    completed_count: number;
+    last_attempt_at: string | null;
+    latest_score: number | null;
+    best_score: number | null;
+    is_wrong_question: boolean;
 };
 
 type Props = {
@@ -35,7 +40,7 @@ function getWordCount(text: string) {
     return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
-export default function EssayPageClient({
+export default function SwtPageClient({
     questions,
     questionInfo,
 }: Props) {
@@ -92,7 +97,9 @@ export default function EssayPageClient({
 
         if (questionStatus === "re_is_prediction") {
             result = result.filter(
-                (q) => q.is_practiced
+                (q) =>
+                    q.is_prediction &&
+                    (q.usage_count ?? 0) > 30
             );
         }
 
@@ -185,7 +192,7 @@ export default function EssayPageClient({
                 space-y-5 ">
             <PTETopNav
                 currentMain="writing"
-                currentSub="essay"
+                currentSub="swt"
             />
 
             <QuestionInfoCard
@@ -193,7 +200,7 @@ export default function EssayPageClient({
             />
 
             <QuestionToolbar
-                questionType="WE"
+                questionType="SWT"
 
                 searchTerm={searchTerm}
                 onSearchTermChange={
@@ -216,7 +223,7 @@ export default function EssayPageClient({
                 }
             />
 
-            <EssayList
+            <SwtList
                 initialQuestions={filteredQuestions}
             />
         </section>
