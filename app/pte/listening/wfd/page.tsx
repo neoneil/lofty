@@ -1,11 +1,6 @@
 import Container from "@/components/site/container";
 import Sidebar from "@/components/site/sidebar";
-//import PTESidebar from "@/components/site/pte-sidebar";
-import PTETopNav from "@/components/site/pte-top-nav";
 import { requireUser } from "@/lib/auth/require-user";
-import WfdPracticeList from "./wfd-practice-list";
-import WfdList from "./wfd-list";
-import QuestionInfoCard from "@/components/site/QuestionInfoCard";
 import WfdPageClient from "./wfd-page-client";
 type WfdQuestionWithStatus = {
   id: string;
@@ -94,17 +89,9 @@ export default async function PteListeningPage() {
               questions={questions}
               questionInfo={questionInfo}
             />
-            {/* <section
-              className="mx-auto w-fit max-w-[1320px] space-y-5">
-              <PTETopNav currentMain="listening" currentSub="wfd" />
-              <QuestionInfoCard questionInfo={questionInfo} />
-              <WfdList initialQuestions={questions} />
-            </section> */}
           </div>
         )}
       </Container>
     </main>
   );
 }
-
-{/* <WfdPracticeList initialQuestions={questions} /> */ }

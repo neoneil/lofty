@@ -87,7 +87,7 @@ function PaginationButton({
 }
 
 
-export default function WfdList({
+export default function SstList({
     initialQuestions,
 
 }: {
@@ -136,10 +136,10 @@ export default function WfdList({
                     return (
                         <Link
                             key={item.id}
-                            href={`/pte/listening/wfd/${item.id}`}
+                            href={`/pte/listening/sst/${item.id}`}
                             onClick={() => {
                                 saveQuestionOrder(
-                                    "wfd", questionIds
+                                    "sst", questionIds
                                 );
                             }}
                             className="block"
@@ -152,7 +152,7 @@ export default function WfdList({
                                                 {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
                                             </span>
 
-                                            <Tag tone="theme">WFD</Tag>
+                                            <Tag tone="theme">SST</Tag>
 
                                             {item.source_question_id ? (
                                                 <Tag tone="neutral">

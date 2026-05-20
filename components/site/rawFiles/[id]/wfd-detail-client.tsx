@@ -1,17 +1,17 @@
 
 "use client";
-import Link from "next/link";
-import { useEffect } from "react";
-import { getQuestionOrder } from "@/lib/question-order";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import DictionaryText from "@/components/dictionary/dictionary-text"; // dictionary 查词
-import Tag from "@/components/ui/tag";
 type Props = {
     question: {
         id: string;
         question_text: string;
     };
+    prevQuestionId: string | null;
+    nextQuestionId: string | null;
+    questionNumber: number;
 };
 
 type Token = {
@@ -29,52 +29,20 @@ type SubmitResult = {
 
 export default function WfdDetailClient({
     question,
+    prevQuestionId,
+    nextQuestionId,
+    questionNumber,
 }: Props) {
     const [startedAt] = useState(Date.now());
-
     const [answer, setAnswer] = useState("");
 
     const [loading, setLoading] = useState(false);
 
-    const [result, setResult] = useState<SubmitResult | null>(null);
-
-    const [showAnswer, setShowAnswer] = useState(false);
-
+    const [result, setResult] =
+        useState<SubmitResult | null>(null);
+    const [showAnswer, setShowAnswer] =
+        useState(false);
     const router = useRouter();
-
-    const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
-
-    const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
-
-    const [questionNumber, setQuestionNumber] = useState<number>(0);
-
-    useEffect(() => {
-
-        const ids = getQuestionOrder("wfd");
-
-        const currentIndex =
-            ids.findIndex(
-                (qId) => qId === question.id
-            );
-
-        if (currentIndex === -1) {
-            return;
-        }
-
-        setQuestionNumber(currentIndex + 1);
-
-        setPrevQuestionId(
-            currentIndex > 0
-                ? ids[currentIndex - 1]
-                : null
-        );
-
-        setNextQuestionId(
-            currentIndex < ids.length - 1
-                ? ids[currentIndex + 1]
-                : null
-        );
-    }, [question.id]);
 
     const handleSubmit = async () => {
         setLoading(true);
@@ -136,21 +104,15 @@ export default function WfdDetailClient({
                 className="
         round
         bg-gray-50
-        px-5 py-5">
-                <div className="mb-4 flex items-center gap-2">
-
-                    <div className="flex items-center gap-2">
-
-                        <Tag tone="theme">
-                            WFD
-                        </Tag>
-
-                        <Tag tone="green">
-                            第 {questionNumber} 题
-                        </Tag>
-
-                    </div>
-
+        px-5 py-5
+    "
+            >
+                <div
+                    className="
+            mb-4
+            flex items-center justify-between
+        "
+                >
                     <button
                         type="button"
                         onClick={() =>
@@ -164,7 +126,6 @@ export default function WfdDetailClient({
                             ? "隐藏答案"
                             : "答案"}
                     </button>
-
                 </div>
 
                 <div
@@ -177,9 +138,9 @@ export default function WfdDetailClient({
             duration-300
 
             ${showAnswer
-                            ? "blur-0"
-                            : "select-none blur-[10px]"
-                        }`}>
+                    ? "blur-0"
+                    : "select-none blur-[10px]"
+             }`}>
                     <DictionaryText
                         text={question.question_text}
                     />
@@ -274,100 +235,28 @@ export default function WfdDetailClient({
             ) : null}
             {/* INPUT */}
             <div>
-                <label className="mb-2 ml-1 block text-sm font-semibold text-(--muted)">
-                    输入答案
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    输入你的答案
                 </label>
 
                 <textarea
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
-                    placeholder="写出你所听到的句子..."
+                    placeholder="请输入你听到的句子..."
                     className="min-h-[180px] w-full round border border-gray-200 bg-white px-5 py-4 text-[17px] leading-8 text-gray-800 shadow-sm outline-none transition focus:border-[var(--theme)]"
                 />
             </div>
-            {/* SUBMIT */}
+
             {/* SUBMIT */}
             <div className="flex justify-end">
                 <button
                     type="button"
                     onClick={handleSubmit}
                     disabled={loading}
-                    className=" cursor-pointer
-            inline-flex items-center justify-center
-            gap-2
-            rounded
-            bg-[var(--theme)]
-            px-5 py-3
-            text-sm font-semibold text-white
-            transition
-            hover:opacity-90
-            disabled:cursor-not-allowed
-            disabled:opacity-50
-        "
+                    className="rounded bg-[var(--theme)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {loading ? "提交中..." : "提交答案"}
                 </button>
-            </div>
-            {/* Navigation */}
-            <div className="mt-8 flex items-center justify-between">
-
-                {prevQuestionId ? (
-                    <Link
-                        href={`/pte/listening/wfd/${prevQuestionId}`}
-                        className="
-        inline-flex items-center gap-2
-        rounded border border-gray-200
-        bg-white px-3 py-3
-        text-sm font-semibold text-gray-700
-        transition
-        hover:border-[var(--theme)]/30
-        hover:text-[var(--theme)]">
-                        <div className="h-5 w-5 text-[var(--primary)]">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H20a1 1 0 1 1 0 2h-9.59l4.3 4.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"
-                                />
-                            </svg>
-                        </div>
-
-                        <span>上一题</span>
-                    </Link>
-                ) : (
-                    <div />
-                )}
-
-                {nextQuestionId ? (
-                    <Link
-                        href={`/pte/listening/wfd/${nextQuestionId}`}
-                        className="
-        inline-flex items-center gap-2
-        rounded
-        bg-[var(--theme)]
-        px-3 py-3
-        text-sm font-semibold text-white
-        transition
-        hover:opacity-90
-    "
-                    >
-                        <span>下一题</span>
-
-                        <div className="h-5 w-5 text-white">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M9.3 18.7a1 1 0 0 1 0-1.4L13.59 13H4a1 1 0 1 1 0-2h9.59L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0z"
-                                />
-                            </svg>
-                        </div>
-                    </Link>
-                ) : null}
             </div>
         </div>
     );

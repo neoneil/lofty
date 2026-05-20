@@ -3,28 +3,27 @@ import AudioPlayer from "@/components/site/AudioPlayer";
 import Container from "@/components/site/container";
 import Sidebar from "@/components/site/sidebar";
 import { requireUser } from "@/lib/auth/require-user";
-import WfdDetailClient from "./wfd-detail-client";
+import SstDetailClient from "./sst-detail-client";
 import Tag from "@/components/ui/tag";
 import Image from "next/image";
 type PageProps = {
+    
     params: Promise<{
         id: string;
     }>;
 
 };
-function getPublicAudioUrl(path: string) {
-    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
-}
-export default async function WfdQuestionDetailPage({
+
+export default async function SstQuestionDetailPage({
     params,
 }: PageProps) {
     const { id } = await params;
-    const { supabase } = await requireUser(`/pte/listening/wfd/${id}`);
+    const { supabase } = await requireUser(`/pte/listening/sst/${id}`);
 
     // 当前题目
     const { data: question, error } = await supabase
         .schema("views")
-        .from("v_pte_wfd_with_user_status")
+        .from("v_pte_sst_with_user_status")
         .select("*")
         .eq("id", id)
         .single();
@@ -34,12 +33,27 @@ export default async function WfdQuestionDetailPage({
             <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
                 <Container>
                     <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
-                        WFD 题目加载失败
+                        SST 题目加载失败
                     </section>
                 </Container>
             </main>
         );
     }
+
+    const { data: { user },} = await supabase.auth.getUser();
+   
+    const { data: attempts } =
+        await supabase
+            .from("student_attempts")
+            .select(`id,score,user_answer,ai_feedback,submitted_at`)
+            .eq("user_id", user!.id)
+            .eq("question_source", "sst")
+            .eq("question_id", question.id)
+            .order("submitted_at", {
+                ascending: false,
+            });
+
+
 
     return (
         <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
@@ -61,7 +75,7 @@ export default async function WfdQuestionDetailPage({
                             <div className="mb-1 flex items-center justify-between gap-4">
                                 {/* left */}
                                 <Link
-                                    href="/pte/listening/wfd"
+                                    href="/pte/listening/sst"
                                     className="btn-primary">
                                     <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded">
                                         <Image
@@ -80,9 +94,9 @@ export default async function WfdQuestionDetailPage({
 
                                 {/* right */}
                                 <div className="flex flex-wrap items-center justify-end gap-2">
-                                    
+
                                     <Tag tone="theme">
-                                        WFD
+                                        SST
                                     </Tag>
 
                                     {question.source_question_id ? (
@@ -127,20 +141,6 @@ export default async function WfdQuestionDetailPage({
                                     曾经练习：{question.attempt_count ?? 0} 次
                                 </span>
 
-                                <span>
-                                    全对：{question.correct_count ?? 0}
-                                </span>
-
-                                <span>
-                                    有错误：{question.wrong_count ?? 0}
-                                </span>
-
-                                {typeof question.best_score === "number" ? (
-                                    <span>
-                                        最佳对词：{question.best_score}
-                                    </span>
-                                ) : null}
-
                                 {typeof question.latest_score === "number" ? (
                                     <span>
                                         最近分数：{question.latest_score}
@@ -151,7 +151,7 @@ export default async function WfdQuestionDetailPage({
                             {question.audio_url ? (
                                 <div className="mt-8">
                                     <AudioPlayer
-                                        url={getPublicAudioUrl(question.audio_url)}
+                                        url={question.audio_url}
                                         autoPlay
                                         countdown={10}
                                     />
@@ -162,8 +162,9 @@ export default async function WfdQuestionDetailPage({
                                 </div>
                             )}
 
-                            <WfdDetailClient
+                            <SstDetailClient
                                 question={question}
+                                attempts={attempts ?? []}
                             />
                         </section>
                     </section>

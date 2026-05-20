@@ -107,7 +107,7 @@ export async function POST(req: Request) {
 
     if (!questionId || !userAnswer) {
       return NextResponse.json(
-        { ok: false, message: "参数不完整" },
+        { ok: false, message: "请输入答案" },
         { status: 400 }
       );
     }

@@ -8,6 +8,8 @@ type QuestionInfo = {
     contributing: string | null;
     examiner: string | null;
     suggestion: string | null;
+    screen_instruction: string | null;
+    official_requirements: string | null;
 
     hitting_rate: number | null;
     stability: number | null;
@@ -160,6 +162,22 @@ export default function QuestionInfoCard({
                         shadow-[0_2px_12px_rgba(0,0,0,0.03)]
                     "
                 >
+                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                        instruction
+                    </div>
+
+                    <div className="text-[15px] leading-8 text-gray-700">
+                        {questionInfo.screen_instruction}
+                    </div>
+
+                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                        requirements
+                    </div>
+
+                    <div className="text-[15px] leading-8 text-gray-700">
+                        {questionInfo.official_requirements}
+                    </div>
+
                     <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
                         Suggestion
                     </div>

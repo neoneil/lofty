@@ -1,39 +1,36 @@
 import Container from "@/components/site/container";
-import PTESidebar from "@/components/site/pte-sidebar";
+import Sidebar from "@/components/site/sidebar";
 import { requireUser } from "@/lib/auth/require-user";
-import SstPracticeList from "./sst-practice-list";
-
+import SstPageClient from "./sst-page-client";
 type SstQuestionWithStatus = {
-  id: number;
+  id: string;
   question_text: string;
-  source_question_id: string | null;
   question_type: string;
-  is_prediction: boolean | null;
+  source_platform: string | null;
+  source_question_id: string | null;
   difficulty_level: string | null;
-  is_real_exam: boolean | null;
-  has_original_audio: boolean | null;
-  has_similar_audio: boolean | null;
-  answer_text: string | null;
-  transcript_text: string | null;
+  tags: string[] | null;
+  is_prediction: boolean | null;
+  audio_url: string | null;
+  audio_duration_seconds: number | null;
+  ai_voice: string | null;
+  usage_count: number | null;
   created_at: string;
   updated_at: string;
-  audio_url: string | null;
-  teacher_video_url: string | null;
-  source_audio_url: string | null;
-  storage_path: string | null;
+  is_real_exam: boolean | null;
 
   is_practiced: boolean;
   attempt_count: number;
   correct_count: number;
   wrong_count: number;
+  completed_count: number;
   last_attempt_at: string | null;
   latest_score: number | null;
   best_score: number | null;
   is_wrong_question: boolean;
-  // is_favorite?: boolean;
 };
 
-export default async function PteListeningSstPage() {
+export default async function PteListeningPage() {
   const { supabase } = await requireUser("/pte/listening/sst");
 
   const { data: questionsData, error: questionsError } = await supabase
@@ -41,9 +38,8 @@ export default async function PteListeningSstPage() {
     .from("v_pte_sst_with_user_status")
     .select("*")
     .eq("question_type", "SST")
-    .eq("is_prediction", "true")
     .order("created_at", { ascending: false })
-    .limit(500);
+    .limit(1500);
 
   const questions = (questionsData ?? []).map((q) => ({
     ...q,
@@ -55,38 +51,43 @@ export default async function PteListeningSstPage() {
     latest_score: q.latest_score ?? null,
     best_score: q.best_score ?? null,
     is_wrong_question: q.is_wrong_question ?? false,
-    // is_favorite: q.is_favorite ?? false,
   })) as SstQuestionWithStatus[];
 
+  const { data: questionInfo } = await supabase
+    .from("all_question_info")
+    .select("*")
+    .eq("questions", "SST")
+    .single();
+
   return (
-    <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
-      <Container>
+    <main className="relative pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
+      {/* background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <img
+          src="/images/listeningPage.png"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-95" />
+        <div className="absolute inset-0" />
+      </div>
+
+      <Container className="relative z-10">
+
         {questionsError ? (
           <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
             SST 加载失败：{questionsError.message}
           </section>
         ) : (
-          <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)] mt-5">
+          <div className="mt-5 grid gap-8 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)]">
+            {/* sidebar */}
             <div className="xl:sticky xl:top-24 xl:self-start">
-              <PTESidebar currentMain="listening" currentSub="sst" />
+              <Sidebar />
             </div>
 
-            <section className="space-y-6">
-              <section className="round border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--theme)]/80">
-                  PTE Listening
-                </p>
-                <h1 className="text-2xl font-bold leading-tight tracking-tight text-[var(--theme)] lg:text-3xl">
-                  SST - Summarize Spoken Text
-                </h1>
-                <p className="mt-4 max-w-3xl text-sm leading-8 text-gray-600 sm:text-base">
-                  当前版本先支持音频播放、总结提交、练习统计与最近练习记录。
-                  自动评分后续再接入。
-                </p>
-              </section>
-
-              <SstPracticeList initialQuestions={questions} />
-            </section>
+            {/* right content */}
+            <SstPageClient
+              questions={questions}
+              questionInfo={questionInfo}
+            />
           </div>
         )}
       </Container>

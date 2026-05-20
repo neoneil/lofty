@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import PTETopNav from "@/components/site/pte-top-nav";
 import QuestionInfoCard from "@/components/site/QuestionInfoCard";
 import QuestionToolbar from "@/components/site/question-toolbar";
-import WfdList from "./wfd-list";
+import SstList from "./sst-list";
 
 type Question = {
     id: string;
@@ -43,7 +43,7 @@ function getWordCount(text: string) {
     return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
-export default function WfdPageClient({
+export default function SstPageClient({
     questions,
     questionInfo,
 }: Props) {
@@ -195,7 +195,7 @@ export default function WfdPageClient({
                 space-y-5 ">
             <PTETopNav
                 currentMain="listening"
-                currentSub="wfd"
+                currentSub="sst"
             />
 
             <QuestionInfoCard
@@ -203,7 +203,7 @@ export default function WfdPageClient({
             />
 
             <QuestionToolbar
-                questionType="WFD"
+                questionType="SST"
 
                 searchTerm={searchTerm}
                 onSearchTermChange={
@@ -226,7 +226,7 @@ export default function WfdPageClient({
                 }
             />
 
-            <WfdList
+            <SstList
                 initialQuestions={filteredQuestions}
             />
         </section>
