@@ -23,6 +23,38 @@ export async function proxy(request: NextRequest) {
 
   await supabase.auth.getUser();
 
+  ///////////////////////////////////////// maintenance mode
+
+  const maintenanceMode =
+    process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
+
+  const pathname = request.nextUrl.pathname;
+
+  // 放行 maintenance 页面
+  if (pathname.startsWith("/maintenance")) {
+    return response;
+  }
+
+  // 放行静态资源
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon") ||
+    pathname.startsWith("/lottie")
+  ) {
+    return response;
+  }
+
+  // 开启维护模式
+  if (maintenanceMode) {
+    return NextResponse.redirect(
+      new URL("/maintenance", request.url)
+    );
+  }
+  //////////////////////////////////////////////////// maintenance mode ends here
+
+
+
+
   return response;
 }
 
