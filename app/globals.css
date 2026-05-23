@@ -3,41 +3,84 @@
 
 :root {
 
-  --bg: #f4f9fb;
-  --text: #2b3039;
+  /* =========================================
+     COLORS
+  ========================================= */
 
-  /* 主主题色 */
-  --theme: #334155;
-  --theme-hover: #475569;
-  /*Teal 500 #14b8a6  Red 500 #ef4444 Blue 500 #3b82f6 Amber 500 #f59e0b*/
+  --bg: #f6f7fb;
+  --bg-soft: #fafafe;
 
-  /* 功能色 */
-  --teal: #14b8a6;
-  --red: #ef4444;
-  --blue: #3b82f6;
-  --amber: #f59e0b;
+  --card: #ffffff;
+  --card-hover: #fcfcff;
 
-  /* 主按钮 / CTA */
-  --primary: #1E3A8A;
-  /*Neutral 700 #404040 Slate 700 #334155*/
-  --primary-hover: #2B4FB8;
+  --sidebar: #ffffff;
 
-  /* 品牌强调色 */
-  --brand-accent: #1E3A8A;
-  --brand-accent-hover: #2B4FB8;
+  --border: #ececf3;
+  --border-soft: #f1f2f6;
+  --border-strong: #dcdceb;
 
-  /* 边框 */
-  --border: #E5E7EB;
+  --text: #161618;
+  --text-soft: #6f7281;
+  --text-faint: #9ea3b5;
 
-  /* 次级文字 */
-  --muted: #6B7280;
+  --primary: #6d5dfc;
+  --primary-hover: #5b4df1;
+  --primary-soft: #ede9fe;
 
-  /* 卡片 */
-  --card: #FFFFFF;
-  --card-soft: #FFFDF9;
+  --success: #22c55e;
+  --success-soft: #dcfce7;
 
-  /* Footer */
-  --footer-bg: #1E3A8A;
+  --warning: #f59e0b;
+  --warning-soft: #fef3c7;
+
+  --danger: #ef4444;
+  --danger-soft: #fee2e2;
+
+  /* =========================================
+     SHADOW
+  ========================================= */
+
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.04);
+
+  --shadow-md: 0 4px 12px rgba(15,23,42,.04), 0 2px 4px rgba(15,23,42,.03);
+
+  --shadow-lg: 0 20px 40px rgba(15,23,42,.06);
+
+  /* =========================================
+     RADIUS
+  ========================================= */ 
+
+  --radius-sm: 10px; 
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* =========================================
+     LAYOUT
+  ========================================= */
+
+  --sidebar-width: 260px;
+  --topbar-height: 72px;
+
+  /* =========================================
+     TYPOGRAPHY
+  ========================================= */
+
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 22px;
+  --font-2xl: 30px; 
+
+  /* =========================================
+     TRANSITION
+  ========================================= */
+
+  --transition-fast: 160ms ease;
+
+  --transition-normal: 240ms ease;
+
 }
 
 @layer components {
@@ -167,13 +210,53 @@
 
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-
+html {
+  scroll-behavior: smooth;
 }
 
-html {
-  scrollbar-gutter: stable;
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+  /* 统一 scrollbar */
+::selection {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d7d9e4;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c4c7d6;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+/* Hide Scrollbar */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 mark {

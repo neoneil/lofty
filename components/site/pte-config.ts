@@ -44,22 +44,22 @@ export const pteMainTabs = [
   {
     key: "speaking",
     label: "Speaking",
-    href: "/pte/speaking/ra",
+    href: "/pte/speaking",
   },
   {
     key: "writing",
     label: "Writing",
-    href: "/pte/writing/essay",
+    href: "/pte/writing",
   },
   {
     key: "reading",
     label: "Reading",
-    href: "/pte/reading/ro",
+    href: "/pte/reading",
   },
   {
     key: "listening",
     label: "Listening",
-    href: "/pte/listening/wfd",
+    href: "/pte/listening",
   },
 ] as const;
 

@@ -76,8 +76,8 @@ export default async function Navbar() {
       tooltip: "",
     },
     {
-      href: "/ielts/speaking",
-      label: "雅思在线练习",
+      href: "/dashboard-v2",
+      label: "新版dashboard",
       tooltip: "",
     },
     {

@@ -151,7 +151,7 @@ export default function SearchModal({
               setQuery(e.target.value)
             }
             placeholder="
-              Search all PTE questions...
+              Search in ALL PTE question types...
             "
             className="
               w-full

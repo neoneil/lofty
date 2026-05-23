@@ -1,81 +1,23 @@
-import Image from "next/image";
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import {
-  MainTab,
   PTESubTab,
-  pteMainTabs,
   pteSubTabMap,
+  MainTab,
 } from "./pte-config";
+
+import {
+  Card,
+  CardContent,
+} from "@/components/ui-v2/card";
 
 type Props = {
   currentMain: MainTab;
   currentSub?: PTESubTab;
 };
-
-function getMainTabIcon(label: string) {
-  switch (label.toLowerCase()) {
-    case "listening":
-      return "/SVG/listening.svg";
-
-    case "reading":
-      return "/SVG/reading.svg";
-
-    case "speaking":
-      return "/SVG/speaking.svg";
-
-    case "writing":
-      return "/SVG/writing.svg";
-
-    default:
-      return "/SVG/listening.svg";
-  }
-}
-
-function MainTabItem({
-  label,
-  href,
-  active,
-}: {
-  label: string;
-  href: string;
-  active: boolean;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`
-        flex flex-shrink-0 items-center gap-2
-        whitespace-nowrap rounded
-        px-4 py-2.5
-        text-sm font-semibold
-        transition
-
-        ${active
-          ? "bg-[var(--theme)] text-white shadow-sm"
-          : " text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
-        }
-      `}
-    >
-      <Image
-        src={getMainTabIcon(label)}
-        alt={label}
-        width={18}
-        height={18}
-        className={`
-          h-[18px] w-[18px] object-contain transition
-
-          ${active
-            ? "brightness-0 invert"
-            : "opacity-70"
-          }
-        `}
-      />
-
-      <span>{label}</span>
-    </Link>
-  );
-}
 
 function SubTabItem({
   label,
@@ -86,83 +28,72 @@ function SubTabItem({
   href: string;
   active: boolean;
 }) {
+
   return (
+
     <Link
       href={href}
-      className={`
-        flex-shrink-0 whitespace-nowrap rounded
-        px-3 py-2
-        text-[13px] font-medium
-        transition
-
-        ${active
-          ? "bg-[var(--theme)] text-white shadow-sm"
-          : "text-gray-600 hover:bg-[var(--theme)]/6 hover:text-[var(--theme)]"
-        }
-      `}
+      className="block w-fit flex-shrink-0"
     >
-      {label}
+
+      <Card
+        className={`overflow-hidden border transition-all duration-200 ${active ? "border-[var(--primary)] bg-[var(--primary)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)]"}`}
+      >
+
+        <CardContent
+          className={`flex min-h-[42px] items-center justify-center px-4 py-2 text-[12px] font-semibold whitespace-nowrap sm:min-h-[46px] sm:px-5 sm:py-2.5 sm:text-[13px] ${active ? "text-white" : "text-[var(--text-soft)]"}`}
+        >
+
+          {label}
+
+        </CardContent>
+
+      </Card>
+
     </Link>
+
   );
+
 }
 
 export default function PTETopNav({
   currentMain,
   currentSub,
 }: Props) {
-  const subTabs = pteSubTabMap[currentMain];
+
+  const pathname =
+    usePathname();
+
+  const pathnameSub =
+    pathname.split("/")[3] as PTESubTab | undefined;
+
+  const activeSub =
+    currentSub ?? pathnameSub;
+
+  const subTabs =
+    pteSubTabMap[currentMain];
 
   return (
-    <div
-      className="
-    mb-5
-    round
-    bg-gradient-to-r
-    from-white/88
-    via-white/10
-    via-[32%]
-    to-transparent
-  "
-    >
 
-      {/* Main Tabs */}
-      <div
-        className="
-          flex gap-2 overflow-x-auto
-          p-3
-          sm:flex-wrap
-          sm:overflow-visible
-        "
-      >
-        {pteMainTabs.map((tab) => (
-          <MainTabItem
-            key={tab.href}
-            label={tab.label}
-            href={tab.href}
-            active={currentMain === tab.key}
-          />
-        ))}
-      </div>
+    <div className="mb-4 sm:mb-6">
 
-      {/* Sub Tabs */}
-      <div
-        className="
-          flex gap-2 overflow-x-auto
-          p-3
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide sm:gap-3">
 
-          sm:flex-wrap
-          sm:overflow-visible
-        "
-      >
         {subTabs.map((tab) => (
+
           <SubTabItem
             key={tab.href}
             label={tab.label}
             href={tab.href}
-            active={currentSub === tab.key}
+            active={activeSub === tab.key}
           />
+
         ))}
+
       </div>
+
     </div>
+
   );
+
 }

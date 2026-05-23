@@ -1,6 +1,17 @@
+"use client";
+
 // components/site/QuestionInfoCard.tsx
 
 import Image from "next/image";
+
+import {
+    Card,
+    CardContent,
+} from "@/components/ui-v2/card";
+
+import {
+    Badge,
+} from "@/components/ui-v2/badge";
 
 type QuestionInfo = {
     info: string | null;
@@ -29,35 +40,49 @@ function ProgressBar({
     value: number;
     color: string;
 }) {
+
     return (
-        <div className="space-y-2">
+
+        <div className="space-y-1.5">
+
             <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-400">
+
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--text-soft)]">
+
                     {label}
+
                 </span>
 
                 <span
-                    className="text-sm font-semibold"
+                    className="text-xs font-semibold"
                     style={{ color }}
                 >
+
                     {value}%
+
                 </span>
+
             </div>
 
-            <div className="h-1.5 overflow-hidden rounded bg-gray-100">
+            <div className="h-1.5 overflow-hidden rounded-full bg-[var(--bg-soft)]">
+
                 <div
-                    className="h-full rounded transition-all duration-500"
+                    className="h-full rounded-full transition-all duration-500"
                     style={{
                         width: `${Math.min(value, 100)}%`,
                         backgroundColor: color,
                     }}
                 />
+
             </div>
+
         </div>
+
     );
+
 }
 
-function InfoItem({
+function SectionItem({
     title,
     value,
     svg,
@@ -66,162 +91,218 @@ function InfoItem({
     value?: string | null;
     svg: string;
 }) {
+
     return (
-        <div
-            className="
-                rounded
-                bg-white/92
-                p-4
 
-                shadow-[0_2px_12px_rgba(0,0,0,0.03)]
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2.5">
 
-                transition
-                hover:bg-white
-            "
-        >
-            <div className="flex items-start gap-3">
-                <div className="mt-1 flex-shrink-0">
+            <div className="mb-1.5 flex items-center gap-1.5">
+
+                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-[var(--primary-soft)]">
+
                     <Image
                         src={svg}
                         alt={title}
-                        width={16}
-                        height={16}
-                        className="opacity-80"
+                        width={13}
+                        height={13}
+                        className="opacity-90"
                     />
+
                 </div>
 
-                <div className="min-w-0">
-                    <div className="mb-1 text-base font-semibold uppercase tracking-[0.22em] text-[var(--theme)]">
-                        {title}
-                    </div>
+                <Badge
+                    variant="secondary"
+                    className="px-2.5 py-0 text-[9px] font-semibold tracking-[0.04em]"
+                >
 
-                    <div className="text-[16px] leading-7 text-[var(--theme)]">
-                        {value || "-"}
-                    </div>
-                </div>
+                    {title}
+
+                </Badge>
+
             </div>
+
+            <div className="pl-0.5 text-[12.5px] font-medium leading-5 tracking-tight text-[var(--text)]">
+
+                {value || "-"}
+
+            </div>
+
         </div>
+
     );
+
 }
 
-export default function QuestionInfoCard({
+export function QuestionInfoCard({
     questionInfo,
 }: Props) {
+
     if (!questionInfo) return null;
 
     return (
-        <section
-            className="
-                round
-                bg-transparent
-                p-0
-                shadow-none
-            "
-        >
-            <div
-                className="
-                    grid
-                    gap-8
-                    xl:grid-cols-[1.2fr_0.8fr_1fr]
-                "
-            >
-                {/* COLUMN 1 */}
-                <div className="grid grid-cols-2 gap-4 bg-transparent">
-                    <InfoItem
-                        title="题型"
-                        value={questionInfo.info}
-                        svg="/SVG/100.svg"
-                    />
 
-                    <InfoItem
-                        title="缩写"
-                        value={questionInfo.questions}
-                        svg="/SVG/101.svg"
-                    />
+        <section className="bg-transparent">
 
-                    <InfoItem
-                        title="分数贡献"
-                        value={questionInfo.contributing}
-                        svg="/SVG/102.svg"
-                    />
+            <div className="grid gap-3 xl:grid-cols-[1.5fr_0.65fr]">
 
-                    <InfoItem
-                        title="阅卷方式"
-                        value={questionInfo.examiner}
-                        svg="/SVG/103.svg"
-                    />
-                </div>
+                {/* LEFT BIG CARD */}
 
-                {/* COLUMN 2 */}
-                <div
-                    className="
-                        rounded
-                        bg-white/92
-                        p-5
+                <Card className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
 
-                        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
-                    "
-                >
-                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
-                        instruction
-                    </div>
+                    <CardContent className="p-5 sm:p-6">
 
-                    <div className="text-[15px] leading-8 text-gray-700">
-                        {questionInfo.screen_instruction}
-                    </div>
+                        <div className="mb-5 flex items-center justify-between">
 
-                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
-                        requirements
-                    </div>
+                            <div>
 
-                    <div className="text-[15px] leading-8 text-gray-700">
-                        {questionInfo.official_requirements}
-                    </div>
+                                <div className="mb-1 text-lg font-semibold tracking-tight text-[var(--text)]">
 
-                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
-                        Suggestion
-                    </div>
+                                    题型详细信息
 
-                    <div className="text-[15px] leading-8 text-gray-700">
-                        {questionInfo.suggestion}
-                    </div>
-                </div>
+                                </div>
 
-                {/* COLUMN 3 */}
-                <div
-                    className="
-                        rounded
-                        bg-white/92
-                        p-5
+                                <div className="text-xs font-medium tracking-tight text-[var(--text-soft)]">
 
-                        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
-                    "
-                >
-                    <div className="mb-5 text-[14px] font-semibold uppercase tracking-[0.22em] text-[var(--theme)]">
-                        Analysis
-                    </div>
+                                    题型介绍、评分规则与作答要求
 
-                    <div className="space-y-6">
-                         <ProgressBar
-                            label="题型重要性"
-                            value={questionInfo.importance ?? 0}
-                            color="#f87171"
-                        />
-                        <ProgressBar
-                            label="考试命中率"
-                            value={questionInfo.hitting_rate ?? 0}
-                            color="#10b981"
-                        />
+                                </div>
 
-                        <ProgressBar
-                            label="14天内更新率"
-                            value={questionInfo.stability ?? 0}
-                            color="#3b82f6"
-                        />
-                    </div>
-                </div>
+                            </div>
+
+                            <Badge className="px-2.5 text-[10px] tracking-[0.08em]">
+
+                                Detail
+
+                            </Badge>
+
+                        </div>
+
+                        {/* 第一行 */}
+
+                        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+
+                            <SectionItem
+                                title="题型"
+                                value={questionInfo.info}
+                                svg="/SVG/100.svg"
+                            />
+
+                            <SectionItem
+                                title="缩写"
+                                value={questionInfo.questions}
+                                svg="/SVG/101.svg"
+                            />
+
+                            <SectionItem
+                                title="分数贡献"
+                                value={questionInfo.contributing}
+                                svg="/SVG/102.svg"
+                            />
+
+                            <SectionItem
+                                title="阅卷方式"
+                                value={questionInfo.examiner}
+                                svg="/SVG/103.svg"
+                            />
+
+                        </div>
+
+                        {/* 第二行 */}
+
+                        <div className="mt-3 grid gap-3 xl:grid-cols-2">
+
+                            <SectionItem
+                                title="作答说明"
+                                value={questionInfo.screen_instruction}
+                                svg="/SVG/104.svg"
+                            />
+
+                            <SectionItem
+                                title="官方要求"
+                                value={questionInfo.official_requirements}
+                                svg="/SVG/105.svg"
+                            />
+
+                        </div>
+
+                        {/* 学习建议 */}
+
+                        <div className="mt-3">
+
+                            <SectionItem
+                                title="学习建议"
+                                value={questionInfo.suggestion}
+                                svg="/SVG/106.svg"
+                            />
+
+                        </div>
+
+                    </CardContent>
+
+                </Card>
+
+                {/* RIGHT AI */}
+
+                <Card className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+
+                    <CardContent className="flex h-full flex-col p-5 sm:p-6">
+
+                        <div className="mb-5 flex items-center justify-between">
+
+                            <div>
+
+                                <div className="mb-1 text-lg font-semibold tracking-tight text-[var(--text)]">
+
+                                    题库数据分析
+
+                                </div>
+
+                                <div className="text-xs font-medium tracking-tight text-[var(--text-soft)]">
+
+                                    题型趋势预测
+
+                                </div>
+
+                            </div>
+
+                            <Badge className="px-2.5 text-[10px] tracking-[0.08em]">
+
+                                百分比
+
+                            </Badge>
+
+                        </div>
+
+                        <div className="flex-1 space-y-5">
+
+                            <ProgressBar
+                                label="题型重要性"
+                                value={questionInfo.importance ?? 0}
+                                color="#f87171"
+                            />
+
+                            <ProgressBar
+                                label="考试命中率"
+                                value={questionInfo.hitting_rate ?? 0}
+                                color="#10b981"
+                            />
+
+                            <ProgressBar
+                                label="更新率"
+                                value={questionInfo.stability ?? 0}
+                                color="#3b82f6"
+                            />
+
+                        </div>
+
+                    </CardContent>
+
+                </Card>
 
             </div>
+
         </section>
+
     );
+
 }

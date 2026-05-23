@@ -1,10 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import SearchModal from "./search-modal";
 
-export default function SearchProvider() {
+type SearchContextType = {
+  openSearch: () => void;
+  closeSearch: () => void;
+};
+
+const SearchContext =
+  createContext<SearchContextType | null>(null);
+
+export function useSearch() {
+
+  const context =
+    useContext(SearchContext);
+
+  if (!context) {
+
+    throw new Error(
+      "useSearch must be used within SearchProvider"
+    );
+
+  }
+
+  return context;
+
+}
+
+export default function SearchProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
 
   const [open, setOpen] =
     useState(false);
@@ -30,7 +59,15 @@ export default function SearchProvider() {
         e.preventDefault();
 
         setOpen(true);
+
       }
+
+      if (e.key === "Escape") {
+
+        setOpen(false);
+
+      }
+
     };
 
     window.addEventListener(
@@ -44,65 +81,29 @@ export default function SearchProvider() {
         "keydown",
         handleKeyDown
       );
+
     };
 
   }, []);
 
   return (
 
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="
-    fixed
-    bottom-18
-    right-2
-    z-40
-    flex
-    items-center
-    gap-2
-    rounded
-    bg-(--theme)
-    px-5
-    py-3
-    text-sm
-    font-medium
-    text-white
-    shadow-xl
-    transition
-    hover:scale-105
-  "
-      >
+    <SearchContext.Provider
+      value={{
+        openSearch: () => setOpen(true),
+        closeSearch: () => setOpen(false),
+      }}
+    >
 
-        <div className="flex items-center gap-2">
-          <img
-            src="/SVG/138.svg"
-            alt="search"
-            className="w-4 h-4 opacity-60"
-          />
+      {children}
 
-          Search
-        </div>
-
-        <span
-          className="
-      rounded
-      bg-white/20
-      px-2
-      py-0.5
-      text-xs
-    "
-        >
-          Ctrl K
-        </span>
-
-      </button>
       <SearchModal
         open={open}
         onClose={() => setOpen(false)}
       />
 
-    </>
+    </SearchContext.Provider>
 
   );
+
 }

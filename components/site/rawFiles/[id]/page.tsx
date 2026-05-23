@@ -1,7 +1,6 @@
 import Link from "next/link";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import Container from "@/components/site/container";
-import PTESidebar from "@/components/site/pte-sidebar";
 import { requireUser } from "@/lib/auth/require-user";
 import WfdDetailClient from "./wfd-detail-client";
 import Tag from "@/components/ui/tag";
@@ -75,15 +74,8 @@ const sortedQuestions =
     return (
         <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
             <Container>
-                <div className="grid gap-6 xl:grid-cols-[240px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)] mt-5">
+                <div className="mt-1">
 
-                    {/* Sidebar */}
-                    <div className="xl:sticky xl:top-24 xl:self-start">
-                        <PTESidebar
-                            currentMain="listening"
-                            currentSub="wfd"
-                        />
-                    </div>
 
                     {/* Content */}
                     <section className="space-y-6">

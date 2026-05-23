@@ -6,8 +6,8 @@ import Lottie from "lottie-react";
 import animationData from "@/public/lottie/underConstruction.json";
 
 export default function MaintenancePage() {
-  // 4小时倒计时
-  const [timeLeft, setTimeLeft] = useState(4 * 60 * 60);
+  // 100小时倒计时
+  const [timeLeft, setTimeLeft] = useState(100 * 60 * 60);
 
   useEffect(() => {
     const timer = setInterval(() => {
