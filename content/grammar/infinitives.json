@@ -1,0 +1,365 @@
+{
+  "slug": "infinitives",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "不定式",
+    "en": "Infinitives"
+  },
+  "difficulty": "Intermediate",
+  "summary": {
+    "zh": "不定式通常指“to + 动词原形”，也包括不带 to 的 bare infinitive。它不受主语人称和时态限制，不能单独作句子的谓语，但可以在句中作主语、宾语、表语、定语、状语或宾语补足语。在 PTE Academic 和 IELTS 中，不定式常用于表达目的、计划、倾向、结果、评价和学术立场，是提升句子复杂度和语法准确性的核心结构。中国学习者需要特别注意不定式与动名词 gerund 的区别、bare infinitive 的使用条件，以及不定式的逻辑主语和被动形式。"
+  },
+  "structure": {
+    "formula": "to + base verb；bare infinitive = base verb；negative infinitive = not to + base verb；passive infinitive = to be + past participle；perfect infinitive = to have + past participle",
+    "explanation": "不定式的基本形式是“to + 动词原形”，例如 to study, to improve, to analyze。它可以表示尚未发生、计划发生、目的性或抽象性的动作。bare infinitive 是不带 to 的动词原形，常出现在情态动词之后，或某些使役动词和感官动词之后。否定形式是在 to 前加 not，即 not to do。被动不定式表示“被做”，形式为 to be done。完成式不定式 to have done 常表示动作发生在谓语动作之前，在高分写作和阅读中较常见。",
+    "examples": [
+      {
+        "en": "Many students aim to improve their academic writing before the exam.",
+        "zh": "许多学生目标是在考试前提高学术写作能力。"
+      },
+      {
+        "en": "The policy is designed to reduce carbon emissions.",
+        "zh": "该政策旨在减少碳排放。"
+      },
+      {
+        "en": "Candidates should not to memorize full essays.",
+        "zh": "错误示例：考生不应该去背诵整篇作文。"
+      },
+      {
+        "en": "Candidates should not memorize full essays.",
+        "zh": "正确表达：考生不应该背诵整篇作文。情态动词 should 后使用 bare infinitive。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "作宾语：跟在特定动词后",
+      "description": "许多动词后常接不定式作宾语，表示计划、决定、希望、尝试或拒绝等含义。常见动词包括 decide, plan, hope, intend, agree, refuse, manage, fail, learn, offer。PTE 写作和口语中，这类结构可用于清晰表达目标和行动。",
+      "examples": [
+        {
+          "en": "The researchers decided to conduct a larger survey.",
+          "zh": "研究人员决定开展一项更大规模的调查。"
+        },
+        {
+          "en": "The government plans to invest more in public transport.",
+          "zh": "政府计划在公共交通方面投入更多资金。"
+        }
+      ]
+    },
+    {
+      "title": "作目的状语：表示“为了……”",
+      "description": "不定式常用于说明动作目的，相当于 in order to 或 so as to。学术写作中，为了增强正式性，可以使用 in order to；但在简洁表达中，直接使用 to do 也很自然。",
+      "examples": [
+        {
+          "en": "Many cities introduce bike-sharing schemes to reduce traffic congestion.",
+          "zh": "许多城市推出共享单车项目，以减少交通拥堵。"
+        },
+        {
+          "en": "Students need to read widely in order to develop critical thinking skills.",
+          "zh": "学生需要广泛阅读，以培养批判性思维能力。"
+        }
+      ]
+    },
+    {
+      "title": "作主语：表达抽象行为",
+      "description": "不定式可以作主语，但在现代英语中，更常使用形式主语 it，将真正主语不定式放在后面。该结构在 IELTS Task 2 和 PTE Essay 中非常常见。",
+      "examples": [
+        {
+          "en": "To solve this problem requires cooperation from different sectors.",
+          "zh": "解决这个问题需要不同部门的合作。"
+        },
+        {
+          "en": "It is essential to protect personal data in the digital age.",
+          "zh": "在数字时代，保护个人数据至关重要。"
+        }
+      ]
+    },
+    {
+      "title": "作表语：说明主语的目的或内容",
+      "description": "不定式可放在 be 动词后作表语，用来说明计划、目标、任务或建议的内容。这种结构常用于定义目标和政策意图。",
+      "examples": [
+        {
+          "en": "The main objective is to increase access to higher education.",
+          "zh": "主要目标是增加接受高等教育的机会。"
+        },
+        {
+          "en": "The best solution may be to combine regulation with public education.",
+          "zh": "最佳解决方案可能是将监管与公众教育结合起来。"
+        }
+      ]
+    },
+    {
+      "title": "作定语：修饰名词",
+      "description": "不定式可放在名词后作后置定语，表示将要做的事、可做的事或需要完成的任务。常见搭配包括 a way to do, an opportunity to do, the ability to do, a decision to do, efforts to do。",
+      "examples": [
+        {
+          "en": "Online courses provide students with opportunities to learn independently.",
+          "zh": "在线课程为学生提供了自主学习的机会。"
+        },
+        {
+          "en": "There is an urgent need to address income inequality.",
+          "zh": "现在迫切需要解决收入不平等问题。"
+        }
+      ]
+    },
+    {
+      "title": "作宾语补足语：verb + object + to do",
+      "description": "一些动词后可接“宾语 + 不定式”，表示让某人做某事、鼓励某人做某事或要求某人做某事。常见动词包括 encourage, allow, require, enable, persuade, advise, expect, force。该结构在学术英语中常用于说明政策、技术或教育如何影响人的行为。",
+      "examples": [
+        {
+          "en": "Digital tools enable learners to access information more efficiently.",
+          "zh": "数字工具使学习者能够更高效地获取信息。"
+        },
+        {
+          "en": "Teachers often encourage students to evaluate sources critically.",
+          "zh": "教师经常鼓励学生批判性地评估信息来源。"
+        }
+      ]
+    },
+    {
+      "title": "使用 bare infinitive：不带 to 的不定式",
+      "description": "bare infinitive 主要用于情态动词之后，如 can, may, must, should, could, would；也用于 make, let, help 以及感官动词 see, hear, watch, notice 后的某些结构中。注意：被动语态中 make 后要恢复 to，例如 be made to do。",
+      "examples": [
+        {
+          "en": "Students should develop the ability to compare different viewpoints.",
+          "zh": "学生应该培养比较不同观点的能力。"
+        },
+        {
+          "en": "The new policy may help reduce unemployment.",
+          "zh": "新政策可能有助于减少失业。"
+        },
+        {
+          "en": "Employees were made to work overtime during the peak season.",
+          "zh": "员工在旺季被要求加班。"
+        }
+      ]
+    },
+    {
+      "title": "不定式的被动形式：to be done",
+      "description": "当不定式的逻辑宾语承受动作时，使用被动不定式 to be done。该结构在学术写作中常用于客观表达，尤其适合描述政策、研究、措施和问题。",
+      "examples": [
+        {
+          "en": "More resources need to be allocated to rural schools.",
+          "zh": "需要将更多资源分配给农村学校。"
+        },
+        {
+          "en": "The issue has to be addressed through long-term planning.",
+          "zh": "这个问题必须通过长期规划来解决。"
+        }
+      ]
+    },
+    {
+      "title": "不定式的完成式：to have done",
+      "description": "完成式不定式表示不定式动作发生在谓语动作之前，常见于 appear, seem, claim, be likely 等结构中。它能体现更高层次的时间关系，在阅读理解和高分写作中较常出现。",
+      "examples": [
+        {
+          "en": "The company appears to have underestimated the environmental risks.",
+          "zh": "该公司似乎低估了环境风险。"
+        },
+        {
+          "en": "The policy is believed to have improved access to healthcare.",
+          "zh": "人们认为该政策已经改善了医疗服务的可及性。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Many students want improve their speaking skills.",
+      "correct": "Many students want to improve their speaking skills.",
+      "explanation": "want 后需要接不定式作宾语，不能直接接动词原形。中文“想提高”没有明显的 to 标记，因此中国学习者容易漏掉 to。"
+    },
+    {
+      "wrong": "The government should to reduce pollution.",
+      "correct": "The government should reduce pollution.",
+      "explanation": "情态动词 should, can, must, may 后必须接 bare infinitive，即动词原形，不加 to。"
+    },
+    {
+      "wrong": "It is important protect the environment.",
+      "correct": "It is important to protect the environment.",
+      "explanation": "在“It is + adjective + to do”结构中，真正主语是不定式，to 不能省略。"
+    },
+    {
+      "wrong": "The teacher made students to rewrite the essay.",
+      "correct": "The teacher made students rewrite the essay.",
+      "explanation": "主动语态中 make + object + bare infinitive，不使用 to。但被动语态要说 students were made to rewrite the essay。"
+    },
+    {
+      "wrong": "I look forward to hear from you.",
+      "correct": "I look forward to hearing from you.",
+      "explanation": "look forward to 中的 to 是介词，不是不定式标志，因此后面接动名词 hearing，而不是动词原形 hear。"
+    },
+    {
+      "wrong": "The problem is difficult to be solved.",
+      "correct": "The problem is difficult to solve.",
+      "explanation": "在“主语 + be + adjective + to do”结构中，如果主语是 to do 的逻辑宾语，通常使用主动形式表达被动含义，如 difficult to solve, easy to understand。"
+    },
+    {
+      "wrong": "There are many measures to reducing crime.",
+      "correct": "There are many measures to reduce crime.",
+      "explanation": "这里 to reduce crime 是不定式作定语，修饰 measures，表示“减少犯罪的措施”。不能误用 to + doing，除非 to 是介词。"
+    },
+    {
+      "wrong": "The data is used to analyzing consumer behavior.",
+      "correct": "The data is used to analyze consumer behavior.",
+      "explanation": "be used to do 表示“被用来做某事”；be used to doing 表示“习惯于做某事”。这里表示用途，应使用不定式。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "不定式在 PTE Academic 中出现频率很高，尤其在 Summarize Written Text, Write Essay, Re-tell Lecture, Summarize Spoken Text 和 Reading & Writing: Fill in the Blanks 中非常常见。考生需要准确识别动词搭配、目的表达、被动不定式和形式主语结构。在写作中，不定式能帮助考生构建更清晰的因果、目的和评价句；在口语中，它可以使表达更流畅、更符合学术语域。",
+    "sections": [
+      "Writing: Write Essay",
+      "Writing: Summarize Written Text",
+      "Speaking: Re-tell Lecture",
+      "Listening: Summarize Spoken Text",
+      "Reading & Writing: Fill in the Blanks",
+      "Reading: Multiple-choice, Multiple Answers",
+      "Listening: Highlight Incorrect Words"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is essential to + base verb",
+      "translation": "做某事是至关重要的"
+    },
+    {
+      "pattern": "It is necessary to + base verb",
+      "translation": "做某事是必要的"
+    },
+    {
+      "pattern": "It is difficult to + base verb",
+      "translation": "做某事是困难的"
+    },
+    {
+      "pattern": "There is a need to + base verb",
+      "translation": "有必要做某事"
+    },
+    {
+      "pattern": "There is an opportunity to + base verb",
+      "translation": "有机会做某事"
+    },
+    {
+      "pattern": "The purpose of this study is to + base verb",
+      "translation": "本研究的目的是做某事"
+    },
+    {
+      "pattern": "The policy aims to + base verb",
+      "translation": "该政策旨在做某事"
+    },
+    {
+      "pattern": "This approach enables someone to + base verb",
+      "translation": "这种方法使某人能够做某事"
+    },
+    {
+      "pattern": "Efforts should be made to + base verb",
+      "translation": "应努力做某事"
+    },
+    {
+      "pattern": "More resources need to be + past participle",
+      "translation": "需要将更多资源用于或分配到某事"
+    },
+    {
+      "pattern": "The issue is likely to + base verb",
+      "translation": "该问题很可能会做某事或产生某种结果"
+    },
+    {
+      "pattern": "The evidence appears to have + past participle",
+      "translation": "证据似乎已经表明或产生了某种结果"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "aim to improve",
+      "translation": "旨在改善"
+    },
+    {
+      "phrase": "seek to explain",
+      "translation": "试图解释"
+    },
+    {
+      "phrase": "attempt to address",
+      "translation": "尝试解决"
+    },
+    {
+      "phrase": "fail to consider",
+      "translation": "未能考虑"
+    },
+    {
+      "phrase": "tend to increase",
+      "translation": "往往会增加"
+    },
+    {
+      "phrase": "be likely to occur",
+      "translation": "很可能发生"
+    },
+    {
+      "phrase": "be expected to rise",
+      "translation": "预计会上升"
+    },
+    {
+      "phrase": "need to be improved",
+      "translation": "需要被改善"
+    },
+    {
+      "phrase": "be designed to reduce",
+      "translation": "被设计用于减少"
+    },
+    {
+      "phrase": "have the ability to adapt",
+      "translation": "有能力适应"
+    },
+    {
+      "phrase": "provide an opportunity to learn",
+      "translation": "提供学习机会"
+    },
+    {
+      "phrase": "make efforts to promote",
+      "translation": "努力促进"
+    }
+  ],
+  "ai_tips": [
+    "判断 to 后面是否接动词原形时，先确认 to 是不定式标志还是介词。want to do 中的 to 是不定式标志；look forward to doing 中的 to 是介词。",
+    "在 PTE 写作中，可以用“It is + adjective + to do”快速构建学术评价句，例如 It is crucial to reduce educational inequality.",
+    "遇到情态动词 can, should, must, may, might, could 后，不要加 to，直接使用动词原形。",
+    "如果句子强调目的，优先考虑使用 to do 或 in order to do，但不要过度重复 in order to，以免表达显得机械。",
+    "写学术句时，动词 enable, allow, require, encourage 后常接“object + to do”，适合描述政策、技术或教育措施的作用。"
+  ],
+  "practice_questions": [
+    {
+      "question": "Choose the correct form: The university plans ___ more online courses next year. A. offer B. to offer C. offering",
+      "answer": "B. to offer。plan 后通常接不定式，表示计划做某事。正确句子是：The university plans to offer more online courses next year."
+    },
+    {
+      "question": "Correct the sentence: Students should to review their notes regularly.",
+      "answer": "Students should review their notes regularly. should 是情态动词，后面接 bare infinitive，不加 to。"
+    },
+    {
+      "question": "Translate into English: 保护个人隐私是必要的。",
+      "answer": "It is necessary to protect personal privacy."
+    },
+    {
+      "question": "Choose the correct form: The new system enables users ___ data more efficiently. A. analyze B. to analyze C. analyzing",
+      "answer": "B. to analyze。enable + object + to do 表示“使某人能够做某事”。"
+    },
+    {
+      "question": "Correct the sentence: The policy is designed to reducing waste.",
+      "answer": "The policy is designed to reduce waste. be designed to do 表示“旨在做某事”，to 后接动词原形。"
+    },
+    {
+      "question": "Choose the best academic sentence: A. There is a need improve public health services. B. There is a need to improve public health services. C. There is a need improving public health services.",
+      "answer": "B. There is a need to improve public health services. a need 后常接不定式作后置定语。"
+    },
+    {
+      "question": "Rewrite using passive infinitive: The government needs to allocate more funding to rural hospitals.",
+      "answer": "More funding needs to be allocated to rural hospitals. 被动不定式形式为 to be + past participle。"
+    },
+    {
+      "question": "Identify the infinitive phrase: It is difficult to measure the long-term effects of social media.",
+      "answer": "to measure the long-term effects of social media 是不定式短语，在句中作真正主语；it 是形式主语。"
+    }
+  ]
+}

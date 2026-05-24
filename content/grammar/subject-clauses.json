@@ -1,0 +1,276 @@
+{
+  "slug": "subject-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "主语从句",
+    "en": "Subject Clauses"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "主语从句是名词性从句的一种，在句中充当主语，通常由 that, whether, who, what, which, when, where, why, how 等连接词引导。它常用于学术写作和口语表达中，用来陈述事实、提出观点、表达不确定性或概括研究发现。在 PTE Academic 和 IELTS 中，主语从句能帮助考生写出更复杂、更正式的句子，尤其适用于 Essay、Summarize Written Text、Retell Lecture 和 Speaking 中的观点表达。中国学习者需要特别注意：主语从句使用陈述语序，that 引导主语从句时通常不省略，谓语动词应与整个从句作主语时的单数概念保持一致。"
+  },
+  "structure": {
+    "formula": "连接词 + 主语 + 谓语 + 其他成分 + 谓语动词 + 补语 / 宾语",
+    "explanation": "主语从句位于句首时，整个从句相当于一个名词性主语。例如 What students need most 表示“学生最需要的东西”，整个从句作主语，后面的 is, remains, matters 等动词通常用单数形式。常见连接词包括：that 表示事实或观点；whether 表示“是否”；what 表示“所……的事物”；who 表示“谁”；why, how, when, where 分别表示原因、方式、时间和地点。由于句首主语从句较长，学术英语中也常使用形式主语 it，把真正的主语从句放到句末，例如 It is evident that online learning has changed education.",
+    "examples": [
+      {
+        "en": "What governments should prioritize is the long-term sustainability of public services.",
+        "zh": "政府应该优先考虑的是公共服务的长期可持续性。"
+      },
+      {
+        "en": "That excessive screen time affects children’s concentration has been widely discussed.",
+        "zh": "过度使用电子屏幕会影响儿童注意力这一点已经被广泛讨论。"
+      },
+      {
+        "en": "Whether remote work improves productivity depends on the nature of the job.",
+        "zh": "远程办公是否能提高生产力取决于工作的性质。"
+      },
+      {
+        "en": "It is widely acknowledged that education plays a crucial role in social mobility.",
+        "zh": "人们普遍认为，教育在社会流动中起着至关重要的作用。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达事实或研究结论",
+      "description": "在学术写作中，主语从句常用于引出客观事实、研究发现或普遍认可的观点，使句子更正式、更具逻辑性。that 引导的主语从句常用于说明一个完整事实。",
+      "examples": [
+        {
+          "en": "That climate change poses a serious threat to coastal cities is supported by recent data.",
+          "zh": "气候变化对沿海城市构成严重威胁这一点得到了近期数据的支持。"
+        },
+        {
+          "en": "It is clear that regular feedback can improve students’ academic performance.",
+          "zh": "很明显，定期反馈能够提高学生的学术表现。"
+        }
+      ]
+    },
+    {
+      "title": "提出讨论焦点或核心问题",
+      "description": "what, whether, why, how 等引导的主语从句可以把句子的重点放在“什么问题需要解决”“是否可行”“为什么发生”或“如何实现”上，适合 IELTS Task 2 和 PTE Essay 中的论点展开。",
+      "examples": [
+        {
+          "en": "What policymakers need to address is the unequal distribution of educational resources.",
+          "zh": "政策制定者需要解决的是教育资源分配不均的问题。"
+        },
+        {
+          "en": "Whether stricter regulations are necessary remains a controversial issue.",
+          "zh": "是否有必要实施更严格的监管仍然是一个有争议的问题。"
+        }
+      ]
+    },
+    {
+      "title": "使用形式主语 it 提升句子流畅度",
+      "description": "当主语从句较长时，英语中常用 it 作形式主语，将真正的主语从句放在句末。这种结构在 PTE 写作和 IELTS 写作中非常常见，能避免句首过重，使表达更自然。",
+      "examples": [
+        {
+          "en": "It is essential that universities equip students with practical skills.",
+          "zh": "大学为学生提供实用技能是非常必要的。"
+        },
+        {
+          "en": "It remains uncertain whether artificial intelligence will replace a large number of jobs.",
+          "zh": "人工智能是否会取代大量工作岗位仍不确定。"
+        }
+      ]
+    },
+    {
+      "title": "用于口语中组织复杂观点",
+      "description": "在 PTE Describe Image, Retell Lecture 和 IELTS Speaking Part 3 中，主语从句可以帮助考生更清楚地组织原因、影响和评价，避免只使用简单句。",
+      "examples": [
+        {
+          "en": "What the speaker emphasizes is the importance of early intervention in public health.",
+          "zh": "演讲者强调的是公共卫生中早期干预的重要性。"
+        },
+        {
+          "en": "Why this trend has become more common is closely related to technological development.",
+          "zh": "为什么这一趋势变得更加普遍，与技术发展密切相关。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "What should governments do is reduce pollution.",
+      "correct": "What governments should do is reduce pollution.",
+      "explanation": "主语从句中必须使用陈述语序，而不是疑问语序。错误句把 should 放在主语 governments 前，形成了疑问句语序。正确表达应为 What governments should do。"
+    },
+    {
+      "wrong": "That education is important are undeniable.",
+      "correct": "That education is important is undeniable.",
+      "explanation": "整个 that 引导的主语从句作一个整体主语，通常视为单数概念，所以谓语动词应使用 is，而不是 are。"
+    },
+    {
+      "wrong": "Whether students should use AI tools are still debated.",
+      "correct": "Whether students should use AI tools is still debated.",
+      "explanation": "whether 引导的主语从句整体作主语，谓语动词应使用单数形式 is。中国学习者容易被从句内部的复数名词 students 或 tools 干扰。"
+    },
+    {
+      "wrong": "It is important students develop critical thinking.",
+      "correct": "It is important that students develop critical thinking.",
+      "explanation": "在 It is important that... 结构中，that 不应随意省略，尤其在正式写作中应保留，以保证句子结构清晰。"
+    },
+    {
+      "wrong": "What he said it was convincing.",
+      "correct": "What he said was convincing.",
+      "explanation": "What he said 已经是句子的主语，后面不能再加 it 作重复主语。中文常说“他说的话，它很有说服力”，但英文中不能出现双主语。"
+    },
+    {
+      "wrong": "That whether online education is effective is questionable.",
+      "correct": "Whether online education is effective is questionable.",
+      "explanation": "that 和 whether 通常不能同时引导同一个主语从句。若表达“是否有效”，应直接使用 whether。"
+    },
+    {
+      "wrong": "What is the main problem is the lack of funding.",
+      "correct": "What the main problem is is the lack of funding.",
+      "explanation": "主语从句内部要使用陈述语序：the main problem is。句中连续两个 is 是可以接受的，第一个属于从句，第二个是主句谓语，但写作中也可改为 The main problem is the lack of funding 以避免笨重。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "主语从句在 PTE Academic 中非常实用，尤其适合构建复杂句、提高语法多样性和学术表达质量。在 Write Essay 中，考生可以用 It is widely believed that..., What needs to be considered is..., Whether this policy is effective depends on... 来表达观点和论证。在 Summarize Written Text 中，主语从句有助于压缩信息并突出核心主题。在 Retell Lecture 和 Summarize Spoken Text 中，使用 What the speaker highlights is... 可以准确概括讲座重点。需要注意的是，PTE 评分重视语法准确性，因此主语从句的语序、谓语一致和连接词选择必须正确。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Retell Lecture",
+      "Answer Short Question",
+      "Reading & Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is widely acknowledged that + 从句",
+      "translation": "人们普遍认为……"
+    },
+    {
+      "pattern": "It is evident that + 从句",
+      "translation": "很明显……"
+    },
+    {
+      "pattern": "It remains unclear whether + 从句",
+      "translation": "……是否……仍不清楚"
+    },
+    {
+      "pattern": "What needs to be emphasized is that + 从句",
+      "translation": "需要强调的是……"
+    },
+    {
+      "pattern": "What distinguishes A from B is + 名词 / 名词短语",
+      "translation": "区分 A 和 B 的是……"
+    },
+    {
+      "pattern": "Whether + 从句 + depends largely on + 名词",
+      "translation": "……是否……在很大程度上取决于……"
+    },
+    {
+      "pattern": "Why this issue matters is that + 从句",
+      "translation": "这个问题重要的原因在于……"
+    },
+    {
+      "pattern": "How this problem can be solved remains a major challenge.",
+      "translation": "如何解决这个问题仍然是一个重大挑战。"
+    },
+    {
+      "pattern": "That + 从句 + suggests that + 从句",
+      "translation": "……这一点表明……"
+    },
+    {
+      "pattern": "It is reasonable to argue that + 从句",
+      "translation": "有理由认为……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "It is widely believed that",
+      "translation": "人们普遍认为"
+    },
+    {
+      "phrase": "It is generally accepted that",
+      "translation": "人们普遍接受的是"
+    },
+    {
+      "phrase": "It is worth noting that",
+      "translation": "值得注意的是"
+    },
+    {
+      "phrase": "It is essential that",
+      "translation": "……是至关重要的"
+    },
+    {
+      "phrase": "It remains uncertain whether",
+      "translation": "……是否……仍不确定"
+    },
+    {
+      "phrase": "What matters most is",
+      "translation": "最重要的是"
+    },
+    {
+      "phrase": "What needs to be considered is",
+      "translation": "需要考虑的是"
+    },
+    {
+      "phrase": "Whether this approach is effective",
+      "translation": "这种方法是否有效"
+    },
+    {
+      "phrase": "Why this phenomenon occurs",
+      "translation": "为什么这种现象会发生"
+    },
+    {
+      "phrase": "How individuals respond to change",
+      "translation": "个人如何应对变化"
+    }
+  ],
+  "ai_tips": [
+    "写作中如果主语从句超过 8 到 10 个单词，优先考虑使用形式主语 it，例如把 That many young people struggle to find affordable housing is concerning 改为 It is concerning that many young people struggle to find affordable housing。",
+    "检查主语从句时，先找连接词，再判断从句内部是否为陈述语序；如果出现 What should people do, Why does it happen 这类疑问语序，通常需要改成 What people should do, Why it happens。",
+    "在 PTE Essay 中不要机械重复 It is important that，可以根据语义替换为 It is evident that, It is arguable that, It is crucial that, It remains uncertain whether，以提升语言多样性。",
+    "使用 what 引导主语从句时，what 本身通常表示“所……的事物”，后面不能再加 the thing。例如 What society needs is better healthcare，而不是 What the thing society needs is better healthcare。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改为主语从句：Governments should invest more in public transport. This is obvious.",
+      "answer": "It is obvious that governments should invest more in public transport."
+    },
+    {
+      "question": "选择正确句子：A. Whether online learning is effective depends on students’ discipline. B. Whether is online learning effective depends on students’ discipline.",
+      "answer": "A 正确。whether 引导的主语从句应使用陈述语序：online learning is effective。"
+    },
+    {
+      "question": "改正错误：What should universities teach is practical knowledge.",
+      "answer": "What universities should teach is practical knowledge."
+    },
+    {
+      "question": "用 What matters most is... 造一个关于环境保护的学术句子。",
+      "answer": "What matters most is whether individuals and governments can take consistent action to reduce carbon emissions."
+    },
+    {
+      "question": "将中文翻译成英文：人工智能是否会提高工作效率仍然存在争议。",
+      "answer": "Whether artificial intelligence will improve work efficiency remains controversial."
+    },
+    {
+      "question": "改正错误：That students need emotional support are often ignored.",
+      "answer": "That students need emotional support is often ignored."
+    },
+    {
+      "question": "用形式主语 it 改写：That children are exposed to violent content online is worrying.",
+      "answer": "It is worrying that children are exposed to violent content online."
+    },
+    {
+      "question": "完成句子：It remains unclear whether __________.",
+      "answer": "It remains unclear whether stricter laws can effectively reduce traffic accidents."
+    },
+    {
+      "question": "判断并解释：What the speaker mentioned was the decline in traditional media.",
+      "answer": "句子正确。What the speaker mentioned 是主语从句，was 是主句谓语，the decline in traditional media 是表语。"
+    },
+    {
+      "question": "将中文翻译成英文：为什么这个问题重要，是因为它影响社会公平。",
+      "answer": "Why this issue matters is that it affects social equality."
+    }
+  ]
+}

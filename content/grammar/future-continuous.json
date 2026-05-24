@@ -1,0 +1,274 @@
+{
+  "slug": "future-continuous",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "将来进行时",
+    "en": "Future Continuous Tense"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "将来进行时（Future Continuous Tense）用于描述将来某一具体时间点或时间段正在进行的动作，也可用于表达已经安排好的未来活动、礼貌询问他人的未来计划，或预测某个未来场景中的持续状态。在PTE Academic和IELTS写作、口语中，该时态常用于描述未来趋势、计划中的研究活动、社会变化、个人安排以及数据预测。其核心意义不是单纯表示“将来会发生”，而是强调“将来某个时间正在发生”。"
+  },
+  "structure": {
+    "formula": "Subject + will be + V-ing",
+    "explanation": "将来进行时由“will be + 现在分词（V-ing）”构成。主语之后使用情态助动词 will，再加 be，最后接动词的 -ing 形式。否定形式为“will not be + V-ing”或缩写“won't be + V-ing”；疑问形式为“Will + subject + be + V-ing?”。该时态通常与表示将来具体时间的表达连用，例如 at this time tomorrow、at 8 p.m. tonight、next week、in the coming years、during the conference 等。与一般将来时（Future Simple）相比，将来进行时更强调动作在未来某一时刻的进行状态，而不是动作是否会发生。",
+    "examples": [
+      {
+        "en": "At this time tomorrow, I will be taking the PTE speaking test.",
+        "zh": "明天这个时候，我将正在参加PTE口语考试。"
+      },
+      {
+        "en": "Researchers will be analysing the data throughout the next semester.",
+        "zh": "研究人员将在下个学期持续分析这些数据。"
+      },
+      {
+        "en": "She will not be attending the lecture because she has another appointment.",
+        "zh": "她将不会参加这场讲座，因为她另有安排。"
+      },
+      {
+        "en": "Will you be using the library resources this afternoon?",
+        "zh": "你今天下午会使用图书馆资源吗？"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示将来某一具体时间正在进行的动作",
+      "description": "当说话者想强调某个动作在未来某一时间点正处于进行状态时，使用将来进行时。这类句子常与具体时间状语搭配，如 at 9 a.m. tomorrow、this time next week、at the end of the month 等。在考试写作中，这种用法可以让时间表达更加精确。",
+      "examples": [
+        {
+          "en": "At 10 a.m. tomorrow, the candidates will be completing the listening section.",
+          "zh": "明天上午10点，考生们将正在完成听力部分。"
+        },
+        {
+          "en": "This time next year, many students will be applying for postgraduate programmes.",
+          "zh": "明年这个时候，许多学生将正在申请研究生课程。"
+        }
+      ]
+    },
+    {
+      "title": "表示未来某一时间段内持续进行的活动",
+      "description": "将来进行时可以描述一个动作在未来某段时间内持续发生，强调过程和持续性，而不是单一结果。在IELTS Task 1动态图或预测类话题中，可以用来描述某种趋势在未来阶段的发展。",
+      "examples": [
+        {
+          "en": "Over the next decade, more people will be working remotely due to advances in technology.",
+          "zh": "在未来十年，由于技术进步，更多人将会持续远程工作。"
+        },
+        {
+          "en": "During the research period, participants will be recording their daily eating habits.",
+          "zh": "在研究期间，参与者将持续记录他们的日常饮食习惯。"
+        }
+      ]
+    },
+    {
+      "title": "表达已经安排好的未来计划",
+      "description": "当未来活动已被安排或预计自然发生时，将来进行时可用于说明计划中的行动。它比“will do”更自然，因为它强调该事件在未来时间表中的进行状态。",
+      "examples": [
+        {
+          "en": "The professor will be giving a guest lecture on climate policy next Friday.",
+          "zh": "这位教授下周五将进行一场关于气候政策的客座讲座。"
+        },
+        {
+          "en": "The team will be meeting with the project supervisor after the presentation.",
+          "zh": "团队将在展示结束后与项目导师会面。"
+        }
+      ]
+    },
+    {
+      "title": "礼貌地询问他人的未来安排",
+      "description": "将来进行时常用于礼貌询问，因为它听起来像是在询问对方已有安排，而不是直接要求对方做某事。这在PTE口语中的情景表达和日常学术交流中很实用。",
+      "examples": [
+        {
+          "en": "Will you be attending the seminar tomorrow morning?",
+          "zh": "你明天上午会参加研讨会吗？"
+        },
+        {
+          "en": "Will you be using this computer later?",
+          "zh": "你稍后会用这台电脑吗？"
+        }
+      ]
+    },
+    {
+      "title": "描述未来预测中的背景场景",
+      "description": "在学术写作中，将来进行时可用于描绘未来某阶段的社会、经济或教育背景，使论述更具场景感。它适合用于描述持续变化，而不是一次性事件。",
+      "examples": [
+        {
+          "en": "In the coming years, universities will be placing greater emphasis on digital literacy.",
+          "zh": "在未来几年，大学将会更加重视数字素养。"
+        },
+        {
+          "en": "By 2030, many cities will be investing heavily in sustainable transport systems.",
+          "zh": "到2030年，许多城市将会大力投资可持续交通系统。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "At this time tomorrow, I will take the exam.",
+      "correct": "At this time tomorrow, I will be taking the exam.",
+      "explanation": "如果强调“明天这个时候正在考试”，应使用将来进行时。一般将来时 will take 只表示将来会参加考试，不突出该时间点的进行状态。"
+    },
+    {
+      "wrong": "She will be study in Australia next year.",
+      "correct": "She will be studying in Australia next year.",
+      "explanation": "will be 后面必须接动词的 -ing 形式。中文学习者常受“be + 动词原形”的错误类推影响，但将来进行时的结构固定为 will be + V-ing。"
+    },
+    {
+      "wrong": "They will be discuss the results tomorrow.",
+      "correct": "They will be discussing the results tomorrow.",
+      "explanation": "discuss 应改为 discussing。将来进行时中的主要动词不能用原形，也不能使用过去式。"
+    },
+    {
+      "wrong": "Will be you attending the workshop?",
+      "correct": "Will you be attending the workshop?",
+      "explanation": "疑问句语序应为 Will + subject + be + V-ing。很多中文学习者容易把 be 放在主语前，但将来进行时的一般疑问句中，will 才是提前的助动词。"
+    },
+    {
+      "wrong": "I will be knowing the result tomorrow.",
+      "correct": "I will know the result tomorrow.",
+      "explanation": "know 是状态动词（stative verb），通常不用于进行时。表示“明天会知道结果”时，用一般将来时更自然。类似动词还包括 believe、understand、prefer、own、need 等。"
+    },
+    {
+      "wrong": "By 2028, the population will be increased significantly.",
+      "correct": "By 2028, the population will have increased significantly.",
+      "explanation": "如果强调到未来某一时间已经完成的变化，应使用将来完成时（Future Perfect），而不是将来进行时。will be increased 也可能被理解为被动结构，不适合表达人口自然增长。"
+    },
+    {
+      "wrong": "Tomorrow evening I am will be preparing for IELTS.",
+      "correct": "Tomorrow evening I will be preparing for IELTS.",
+      "explanation": "will 前不需要加 am/is/are。将来进行时只需要 will be，不要把现在进行时结构和将来进行时结构混合。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "中等偏高",
+    "description": "在PTE Academic中，将来进行时常出现在口语的 Describe Image、Retell Lecture、Answer Short Question 的扩展回答，以及写作的 Summarize Written Text 和 Write Essay 中。它适合用于描述未来趋势、计划中的学术活动、预测性报告和时间安排。例如在描述图表时，考生可以用“will be increasing”表达未来持续上升趋势；在复述讲座时，可以用“researchers will be examining...”说明未来研究方向。使用该时态能够展示更高层次的时态控制能力，但应避免过度使用。若句子强调结果完成，应改用 Future Perfect；若只是表达简单事实预测，可用 Future Simple。",
+    "sections": [
+      "Speaking: Describe Image 中描述未来趋势或预测场景",
+      "Speaking: Retell Lecture 中转述研究计划和未来发展",
+      "Writing: Write Essay 中讨论未来社会、教育、科技变化",
+      "Writing: Summarize Written Text 中概括未来持续发生的研究或政策变化",
+      "Listening: Summarize Spoken Text 中记录讲者对未来过程的描述"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "In the coming years, + subject + will be + V-ing + object/complement.",
+      "translation": "在未来几年，某主体将会持续进行某动作。"
+    },
+    {
+      "pattern": "By this time next year, + subject + will be + V-ing + time/place expression.",
+      "translation": "到明年这个时候，某主体将正在某时间或地点进行某动作。"
+    },
+    {
+      "pattern": "During the next phase of the study, + researchers/participants + will be + V-ing.",
+      "translation": "在研究的下一阶段，研究人员或参与者将持续进行某项活动。"
+    },
+    {
+      "pattern": "As technology continues to advance, + institutions/individuals + will be + V-ing.",
+      "translation": "随着技术不断进步，机构或个人将会持续做某事。"
+    },
+    {
+      "pattern": "Over the next decade, + there will be + noun phrase + V-ing.",
+      "translation": "在未来十年，将会有某类人或事物持续进行某动作。"
+    },
+    {
+      "pattern": "At the scheduled time, + subject + will be + V-ing + as part of + noun phrase.",
+      "translation": "在预定时间，某主体将作为某计划或活动的一部分正在做某事。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "will be working on",
+      "translation": "将正在从事；将持续处理"
+    },
+    {
+      "phrase": "will be focusing on",
+      "translation": "将重点关注"
+    },
+    {
+      "phrase": "will be attending a seminar",
+      "translation": "将正在参加研讨会"
+    },
+    {
+      "phrase": "will be conducting research",
+      "translation": "将正在开展研究"
+    },
+    {
+      "phrase": "will be analysing data",
+      "translation": "将正在分析数据"
+    },
+    {
+      "phrase": "will be implementing policies",
+      "translation": "将正在实施政策"
+    },
+    {
+      "phrase": "will be experiencing growth",
+      "translation": "将会经历增长"
+    },
+    {
+      "phrase": "will be facing challenges",
+      "translation": "将会面临挑战"
+    },
+    {
+      "phrase": "will be investing in infrastructure",
+      "translation": "将持续投资基础设施"
+    },
+    {
+      "phrase": "will be preparing for the exam",
+      "translation": "将正在备考"
+    }
+  ],
+  "ai_tips": [
+    "判断是否使用将来进行时时，先问自己：句子是否强调未来某一时间点或时间段“正在发生”的动作。如果只是表达将来会发生，通常用一般将来时即可。",
+    "在PTE和IELTS写作中，将来进行时适合搭配趋势类话题，如 technology、education、urbanisation、employment、climate policy，但不要把所有未来预测都写成 will be doing。",
+    "遇到状态动词时要谨慎，例如 know、believe、understand、own、prefer 通常不用于将来进行时。应根据语义改用 will do 或其他合适结构。",
+    "如果句子含有 by 2030、by the end of the century，并强调“到那时已经完成”，优先考虑 Future Perfect，而不是 Future Continuous。",
+    "口语中使用 Will you be + V-ing...? 可以让询问更礼貌，尤其适合询问对方的安排，如是否参加会议、是否使用设备或是否前往某地。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用将来进行时完成句子：At 9 p.m. tonight, I ________ (review) my PTE notes.",
+      "answer": "At 9 p.m. tonight, I will be reviewing my PTE notes."
+    },
+    {
+      "question": "改正错误：She will be attend the online lecture tomorrow.",
+      "answer": "She will be attending the online lecture tomorrow."
+    },
+    {
+      "question": "将句子翻译成英文：明天这个时候，他们将正在讨论研究结果。",
+      "answer": "At this time tomorrow, they will be discussing the research findings."
+    },
+    {
+      "question": "选择更合适的时态：By 2035, the city ________ (expand) its public transport network significantly. 如果强调“到2035年已经完成扩建”，应如何表达？",
+      "answer": "By 2035, the city will have expanded its public transport network significantly."
+    },
+    {
+      "question": "用礼貌疑问句表达：你今天下午会使用这个会议室吗？",
+      "answer": "Will you be using this meeting room this afternoon?"
+    },
+    {
+      "question": "判断句子是否自然，并改正：I will be knowing the answer after the lecture.",
+      "answer": "不自然。应改为：I will know the answer after the lecture."
+    },
+    {
+      "question": "用学术英语完成句子：In the coming years, universities ________ (place) greater emphasis on artificial intelligence literacy.",
+      "answer": "In the coming years, universities will be placing greater emphasis on artificial intelligence literacy."
+    },
+    {
+      "question": "将句子改为否定句：The participants will be recording their daily routines during the study.",
+      "answer": "The participants will not be recording their daily routines during the study."
+    },
+    {
+      "question": "将句子改为一般疑问句：The research team will be analysing the survey results next week.",
+      "answer": "Will the research team be analysing the survey results next week?"
+    },
+    {
+      "question": "翻译成英文：在未来十年，更多公司将会持续投资绿色技术。",
+      "answer": "Over the next decade, more companies will be investing in green technology."
+    }
+  ]
+}

@@ -1,63 +1,132 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
+import {
+  NextResponse,
+  type NextRequest,
+} from "next/server";
 
-export async function proxy(request: NextRequest) {
-  let response = NextResponse.next();
+import {
+  createServerClient,
+} from "@supabase/ssr";
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options)
-          );
-        },
-      },
-    }
-  );
+export async function proxy(
+  request: NextRequest,
+) {
 
-  await supabase.auth.getUser();
+  let response =
+    NextResponse.next();
 
-  ///////////////////////////////////////// maintenance mode
+  /////////////////////////////////////////
+  // maintenance mode
 
   const maintenanceMode =
-    process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
+    process.env
+      .NEXT_PUBLIC_MAINTENANCE_MODE ===
+    "true";
 
-  const pathname = request.nextUrl.pathname;
+  const pathname =
+    request.nextUrl.pathname;
 
   // 放行 maintenance 页面
-  if (pathname.startsWith("/maintenance")) {
+
+  if (
+    pathname.startsWith(
+      "/maintenance",
+    )
+  ) {
     return response;
   }
 
   // 放行静态资源
+
   if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/favicon") ||
-    pathname.startsWith("/lottie")
+    pathname.startsWith(
+      "/_next",
+    ) ||
+    pathname.startsWith(
+      "/favicon",
+    ) ||
+    pathname.startsWith(
+      "/lottie",
+    )
   ) {
     return response;
   }
 
   // 开启维护模式
+
   if (maintenanceMode) {
     return NextResponse.redirect(
-      new URL("/maintenance", request.url)
+      new URL(
+        "/maintenance",
+        request.url,
+      ),
     );
   }
-  //////////////////////////////////////////////////// maintenance mode ends here
 
+  /////////////////////////////////////////
+  // protected routes only
 
+  const protectedRoutes = [
+    "/workspace",
+    "/admin",
+    "/dashboard",
+    "/account",
+  ];
 
+  const isProtectedRoute =
+    protectedRoutes.some(
+      (route) =>
+        pathname.startsWith(route),
+    ); 
+
+  // 非保护页面直接放行
+
+  if (!isProtectedRoute) {
+    return response;
+  }
+
+  /////////////////////////////////////////
+  // auth only for protected routes
+
+  const supabase =
+    createServerClient(
+      process.env
+        .NEXT_PUBLIC_SUPABASE_URL!,
+      process.env
+        .NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll();
+          },
+
+          setAll(
+            cookiesToSet,
+          ) {
+            cookiesToSet.forEach(
+              ({
+                name,
+                value,
+                options,
+              }) =>
+                response.cookies.set(
+                  name,
+                  value,
+                  options,
+                ),
+            );
+          },
+        },
+      },
+    );
+
+  await supabase.auth.getUser();
 
   return response;
+
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };

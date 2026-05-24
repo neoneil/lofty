@@ -1,0 +1,312 @@
+{
+  "slug": "academic-sentence-patterns",
+  "category": {
+    "zh": "学术写作",
+    "en": "Academic Writing"
+  },
+  "title": {
+    "zh": "学术句型",
+    "en": "Academic Sentence Patterns"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "本课聚焦 Academic Writing 中常用的 Academic Sentence Patterns，帮助中国 ESL 学习者在 PTE Academic 与 IELTS 写作中构建更清晰、更客观、更有逻辑的句子。学术句型的核心不是堆砌复杂词汇，而是通过准确的句法结构表达观点、原因、结果、对比、让步、证据和评价。掌握这些句型可以提升 Essay、Summarize Written Text、Write Essay 和 IELTS Task 2 中的语法多样性、逻辑连贯性与学术表达质量。"
+  },
+  "structure": {
+    "formula": "Academic sentence = clear subject + precise verb + logical connector + academic content",
+    "explanation": "学术句型通常由明确的主语、准确的动词、逻辑连接成分和具体内容构成。与日常英语相比，学术英语更强调客观性、逻辑性和概括能力。常见结构包括名词化表达 nominalisation、被动语态 passive voice、让步结构 concessive clauses、原因结果结构 cause-and-effect patterns、对比结构 contrastive patterns 以及评价性结构 evaluative patterns。在 PTE 和 IELTS 写作中，考生应避免只使用简单句，而应适当结合 complex sentences 和 compound-complex sentences，以展示语法范围和表达成熟度。",
+    "examples": [
+      {
+        "en": "It is widely acknowledged that education plays a crucial role in reducing social inequality.",
+        "zh": "人们普遍认为，教育在减少社会不平等方面起着至关重要的作用。"
+      },
+      {
+        "en": "Although technology has improved workplace efficiency, it may also increase employees' levels of stress.",
+        "zh": "尽管科技提高了工作效率，但它也可能增加员工的压力水平。"
+      },
+      {
+        "en": "The increasing use of renewable energy has contributed to a reduction in carbon emissions.",
+        "zh": "可再生能源使用的增加有助于减少碳排放。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达普遍观点",
+      "description": "在学术写作中，表达观点时应避免过度主观的 I think 或 I believe。更推荐使用客观句型，如 It is widely argued that、It is generally accepted that 或 There is growing evidence that。这类结构适合用于引言段或主体段开头。",
+      "examples": [
+        {
+          "en": "It is generally accepted that access to quality education can enhance social mobility.",
+          "zh": "人们普遍认为，获得高质量教育可以促进社会流动。"
+        },
+        {
+          "en": "There is growing evidence that regular physical activity improves mental health.",
+          "zh": "越来越多的证据表明，规律的体育活动有助于改善心理健康。"
+        }
+      ]
+    },
+    {
+      "title": "解释原因与结果",
+      "description": "PTE 和 IELTS 写作经常要求考生解释问题产生的原因及其影响。常用结构包括 lead to、result in、contribute to、be associated with 和 have a significant impact on。使用这些结构时要注意主谓搭配和介词准确性。",
+      "examples": [
+        {
+          "en": "Rapid urbanisation has led to increased pressure on public transport systems.",
+          "zh": "快速城市化给公共交通系统带来了更大的压力。"
+        },
+        {
+          "en": "A lack of financial support may result in lower completion rates among university students.",
+          "zh": "缺乏经济支持可能导致大学生完成学业的比例下降。"
+        }
+      ]
+    },
+    {
+      "title": "进行对比与让步",
+      "description": "学术写作需要展示平衡分析能力。对比结构如 whereas、while、in contrast 和 on the other hand 可用于比较不同观点；让步结构如 although、despite 和 even though 可用于承认反方观点后提出自己的分析。",
+      "examples": [
+        {
+          "en": "While online learning offers greater flexibility, face-to-face instruction provides more direct interaction.",
+          "zh": "虽然在线学习提供了更大的灵活性，但面对面教学能提供更直接的互动。"
+        },
+        {
+          "en": "Despite its high initial cost, renewable energy can be economically beneficial in the long term.",
+          "zh": "尽管初始成本较高，可再生能源从长远来看可能具有经济效益。"
+        }
+      ]
+    },
+    {
+      "title": "引入证据或研究发现",
+      "description": "在 IELTS Task 2 和 PTE Write Essay 中，考生不一定需要引用真实数据，但可以使用学术化表达引入一般性证据。常见句型包括 Research suggests that、Studies indicate that 和 Evidence shows that。",
+      "examples": [
+        {
+          "en": "Research suggests that early childhood education has long-term benefits for cognitive development.",
+          "zh": "研究表明，幼儿教育对认知发展具有长期益处。"
+        },
+        {
+          "en": "Evidence shows that excessive screen time can negatively affect children's attention spans.",
+          "zh": "证据显示，过度使用电子屏幕可能对儿童的注意力持续时间产生负面影响。"
+        }
+      ]
+    },
+    {
+      "title": "提出评价与结论",
+      "description": "结论段和主体段分析句需要清晰评价某种现象的重要性、可行性或影响。常用表达包括 it is essential to、it is necessary for、is likely to 和 plays a vital role in。",
+      "examples": [
+        {
+          "en": "It is essential to implement policies that encourage sustainable consumption.",
+          "zh": "实施鼓励可持续消费的政策是非常必要的。"
+        },
+        {
+          "en": "Government intervention is likely to play a vital role in addressing housing affordability.",
+          "zh": "政府干预可能在解决住房可负担性问题方面发挥重要作用。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "People are agree that education is important.",
+      "correct": "People agree that education is important. / It is widely agreed that education is important.",
+      "explanation": "agree 是动词，不能写成 are agree。中国学习者常受中文“是同意的”影响而误加 be 动词。若要使用更学术的表达，可改为被动结构 It is widely agreed that。"
+    },
+    {
+      "wrong": "Although technology is useful, but it has some disadvantages.",
+      "correct": "Although technology is useful, it has some disadvantages.",
+      "explanation": "although 和 but 不能在同一个从句结构中同时使用。中文可以说“虽然……但是……”，但英文中 although 已经表达让步关系，因此主句前不再加 but。"
+    },
+    {
+      "wrong": "The government should take actions to solve this problem.",
+      "correct": "The government should take action to address this problem.",
+      "explanation": "take action 是固定搭配，action 在此通常作不可数名词。solve this problem 可以使用，但在学术写作中 address this problem 更正式，表示“处理、应对问题”。"
+    },
+    {
+      "wrong": "This phenomenon brings many negative influences.",
+      "correct": "This phenomenon has many negative effects. / This phenomenon may have a negative impact on society.",
+      "explanation": "中文“带来负面影响”不能直接翻译为 bring negative influences。英语中更自然的搭配是 have negative effects 或 have a negative impact on。"
+    },
+    {
+      "wrong": "With the development of society, people pay more attention to health.",
+      "correct": "As society develops, people are paying greater attention to health.",
+      "explanation": "With the development of society 虽然语法上可行，但在中国考生作文中过度使用，显得模板化。更自然的学术表达可以使用 As society develops 或 In recent decades。"
+    },
+    {
+      "wrong": "It is no doubt that climate change is serious.",
+      "correct": "There is no doubt that climate change is a serious issue.",
+      "explanation": "正确结构是 There is no doubt that，而不是 It is no doubt that。另外，serious 后接名词 issue 可使表达更完整、更学术。"
+    },
+    {
+      "wrong": "The reason is because many people lack awareness.",
+      "correct": "The reason is that many people lack awareness. / This is because many people lack awareness.",
+      "explanation": "The reason is because 属于常见冗余错误。reason 后通常接 that 从句；如果使用 because，则可写 This is because。"
+    },
+    {
+      "wrong": "More and more people use private cars, which causes air pollution becomes worse.",
+      "correct": "The increasing use of private cars has worsened air pollution. / More people are using private cars, which has worsened air pollution.",
+      "explanation": "which causes 后不能直接接完整句 air pollution becomes worse。可以使用 cause + noun + to do，或改为 which has worsened air pollution。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "Academic Sentence Patterns 在 PTE Academic 中使用频率很高，尤其影响 Written Discourse、Grammar、Vocabulary 和 Content 的表现。在 Write Essay 中，考生需要用清晰的主题句、原因句、例证句和总结句组织观点；在 Summarize Written Text 中，需要将多个信息点压缩为一个语法正确、逻辑清晰的长句；在 Summarize Spoken Text 中，学术句型有助于准确概括讲座内容并表达因果关系。高分答案通常不是使用过度复杂的句子，而是使用结构稳定、连接自然、表达客观的学术句型。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Reading and Writing: Fill in the Blanks",
+      "Listening: Write from Dictation"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is widely acknowledged that + clause.",
+      "translation": "人们普遍认为……"
+    },
+    {
+      "pattern": "There is growing evidence that + clause.",
+      "translation": "越来越多的证据表明……"
+    },
+    {
+      "pattern": "X plays a crucial role in + noun / gerund.",
+      "translation": "X 在……方面起着关键作用。"
+    },
+    {
+      "pattern": "X has a significant impact on + noun.",
+      "translation": "X 对……有重大影响。"
+    },
+    {
+      "pattern": "The increasing use of X has contributed to + noun.",
+      "translation": "X 使用的增加促成了……"
+    },
+    {
+      "pattern": "Although + clause, + main clause.",
+      "translation": "尽管……，但是……"
+    },
+    {
+      "pattern": "While X may be beneficial, it can also + verb.",
+      "translation": "虽然 X 可能有益，但它也可能……"
+    },
+    {
+      "pattern": "Compared with X, Y is more likely to + verb.",
+      "translation": "与 X 相比，Y 更有可能……"
+    },
+    {
+      "pattern": "This can be attributed to + noun / the fact that + clause.",
+      "translation": "这可以归因于……"
+    },
+    {
+      "pattern": "One possible explanation is that + clause.",
+      "translation": "一个可能的解释是……"
+    },
+    {
+      "pattern": "It is essential for + noun + to + verb.",
+      "translation": "对……来说，做……是必要的。"
+    },
+    {
+      "pattern": "Measures should be taken to + verb.",
+      "translation": "应该采取措施来……"
+    },
+    {
+      "pattern": "X is likely to result in + noun.",
+      "translation": "X 可能导致……"
+    },
+    {
+      "pattern": "Not only does X + verb, but it also + verb.",
+      "translation": "X 不仅……，而且还……"
+    },
+    {
+      "pattern": "The extent to which + clause + remains controversial.",
+      "translation": "……的程度仍然存在争议。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "address a problem",
+      "translation": "处理一个问题"
+    },
+    {
+      "phrase": "pose a challenge",
+      "translation": "构成挑战"
+    },
+    {
+      "phrase": "raise public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "implement effective policies",
+      "translation": "实施有效政策"
+    },
+    {
+      "phrase": "achieve sustainable development",
+      "translation": "实现可持续发展"
+    },
+    {
+      "phrase": "reduce social inequality",
+      "translation": "减少社会不平等"
+    },
+    {
+      "phrase": "promote economic growth",
+      "translation": "促进经济增长"
+    },
+    {
+      "phrase": "improve living standards",
+      "translation": "提高生活水平"
+    },
+    {
+      "phrase": "have long-term consequences",
+      "translation": "产生长期后果"
+    },
+    {
+      "phrase": "make informed decisions",
+      "translation": "做出明智决定"
+    },
+    {
+      "phrase": "provide equal opportunities",
+      "translation": "提供平等机会"
+    },
+    {
+      "phrase": "generate substantial benefits",
+      "translation": "产生显著益处"
+    }
+  ],
+  "ai_tips": [
+    "在 PTE Write Essay 中，每个主体段建议至少包含一个清晰的 topic sentence，例如 This issue can be explained from both economic and social perspectives.",
+    "避免将中文句子逐词翻译成英文。学术英语更重视动词搭配，例如“产生影响”应写成 have an impact on，而不是 bring influence.",
+    "如果句子过长，优先检查主谓是否完整，再检查连接词是否正确。PTE 的 Grammar 评分非常关注句子边界和从句结构。",
+    "不要为了追求复杂而滥用被动语态。被动语态适合强调行为或结果，如 Measures should be implemented，但表达观点时主动语态通常更清晰。",
+    "写 IELTS Task 2 时，可以用让步句展示平衡分析，例如 Although this approach has limitations, it remains practical in many contexts.",
+    "Summarize Written Text 中应使用一个主句承载核心意思，并用 which、while、because 或 although 连接次要信息，避免写成多个独立句。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写得更学术：I think the government should help poor people.",
+      "answer": "It is essential for the government to provide support for low-income groups. 解析：用 It is essential for...to... 替代 I think，使表达更客观；用 low-income groups 替代 poor people，更正式。"
+    },
+    {
+      "question": "改正错误：Although online education is convenient, but it may reduce face-to-face interaction.",
+      "answer": "Although online education is convenient, it may reduce face-to-face interaction. 解析：although 和 but 不能同时连接同一组让步关系。"
+    },
+    {
+      "question": "用 result in 写一个关于 air pollution 的学术句。",
+      "answer": "The excessive use of private vehicles may result in severe air pollution. 中文：私家车的过度使用可能导致严重的空气污染。"
+    },
+    {
+      "question": "将中文翻译成英文：越来越多的证据表明，运动可以改善心理健康。",
+      "answer": "There is growing evidence that physical exercise can improve mental health."
+    },
+    {
+      "question": "选择更适合学术写作的表达：A. bring bad influence B. have a negative impact on",
+      "answer": "B. have a negative impact on。解析：这是更自然、更正式的 academic collocation。"
+    },
+    {
+      "question": "用 While 开头完成句子：__________, it may also create new environmental problems.",
+      "answer": "While industrial development can promote economic growth, it may also create new environmental problems. 中文：虽然工业发展可以促进经济增长，但它也可能产生新的环境问题。"
+    },
+    {
+      "question": "改写句子，使其更适合 PTE Summarize Written Text：Many people move to cities. This creates pressure on housing. It also increases demand for public transport.",
+      "answer": "The movement of people to cities creates pressure on housing and increases demand for public transport. 解析：使用名词化 The movement of people to cities，并合并并列结果，使句子更简洁。"
+    },
+    {
+      "question": "用 be attributed to 写一句关于 obesity 的学术句。",
+      "answer": "The rise in obesity can be attributed to sedentary lifestyles and unhealthy eating habits. 中文：肥胖率上升可以归因于久坐的生活方式和不健康的饮食习惯。"
+    }
+  ]
+}

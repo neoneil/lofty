@@ -1,0 +1,245 @@
+{
+  "slug": "parallel-structures",
+  "category": {
+    "zh": "句子结构",
+    "en": "Sentence Structures"
+  },
+  "title": {
+    "zh": "平行结构",
+    "en": "Parallel Structures"
+  },
+  "difficulty": "Intermediate",
+  "summary": {
+    "zh": "平行结构（Parallel Structures）是指在同一句话中，将语法功能相同、逻辑地位相同的词、短语或从句使用相同或相近的语法形式表达。它常用于并列信息、比较关系、列举观点、学术写作和口语回答中。对于准备 PTE Academic 和 IELTS 的中国学习者来说，掌握平行结构可以显著提升句子的清晰度、逻辑性和语言自然度，尤其有助于提高 Writing 中的 grammatical range and accuracy，以及 Speaking 中的 fluency 和 coherence。"
+  },
+  "structure": {
+    "formula": "A and B / A, B, and C；not only A but also B；either A or B；both A and B；rather than A, B；the more A, the more B",
+    "explanation": "平行结构的核心原则是：并列成分在语法形式上要保持一致。如果第一个成分是名词，后面的并列成分通常也应是名词；如果第一个成分是动名词（gerund），后面也应使用动名词；如果第一个成分是不定式（to-infinitive），后面也应使用不定式；如果第一个成分是从句，后面也应保持从句结构。平行结构不仅适用于简单的 and、or、but，也常见于 not only...but also、either...or、both...and、rather than、as well as 等连接结构中。在学术英语中，平行结构能帮助考生更准确地表达原因、结果、对比、趋势和解决方案。",
+    "examples": [
+      {
+        "en": "The policy aims to reduce pollution, improve public health, and promote sustainable development.",
+        "zh": "该政策旨在减少污染、改善公共健康并促进可持续发展。"
+      },
+      {
+        "en": "Students need not only academic knowledge but also practical skills.",
+        "zh": "学生不仅需要学术知识，也需要实践技能。"
+      },
+      {
+        "en": "Online learning is flexible, accessible, and cost-effective.",
+        "zh": "在线学习灵活、易获得且具有成本效益。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "用于列举多个观点或原因",
+      "description": "在 IELTS Writing Task 2 和 PTE Essay 中，考生经常需要列举多个原因、影响或解决方案。使用平行结构可以让观点更整齐、更有逻辑，避免句子显得松散。",
+      "examples": [
+        {
+          "en": "Urbanization can create job opportunities, stimulate economic growth, and improve access to public services.",
+          "zh": "城市化可以创造就业机会、刺激经济增长并改善公共服务的可及性。"
+        },
+        {
+          "en": "Governments should invest in education, strengthen healthcare systems, and protect vulnerable groups.",
+          "zh": "政府应投资教育、加强医疗体系并保护弱势群体。"
+        }
+      ]
+    },
+    {
+      "title": "用于比较与对比",
+      "description": "当句子需要比较两个对象时，平行结构可以确保比较对象一致，避免出现逻辑错误。学术写作中特别强调 comparable items，即被比较的内容必须属于同一语法和逻辑层级。",
+      "examples": [
+        {
+          "en": "The study compares the effectiveness of online instruction with that of face-to-face teaching.",
+          "zh": "该研究比较了在线教学与面对面教学的有效性。"
+        },
+        {
+          "en": "Public transport is often cheaper than driving a private car.",
+          "zh": "公共交通通常比驾驶私家车更便宜。"
+        }
+      ]
+    },
+    {
+      "title": "用于强调双重关系",
+      "description": "not only...but also、both...and、either...or、neither...nor 等结构要求前后成分保持平行。这些表达在 PTE Writing 和 IELTS Writing 中可以增强句子的层次感和正式度。",
+      "examples": [
+        {
+          "en": "This approach is not only efficient but also environmentally friendly.",
+          "zh": "这种方法不仅高效，而且环保。"
+        },
+        {
+          "en": "The programme benefits both local residents and international students.",
+          "zh": "该项目既惠及当地居民，也惠及国际学生。"
+        }
+      ]
+    },
+    {
+      "title": "用于提升口语回答的流利度",
+      "description": "在 PTE Describe Image、Retell Lecture 和 IELTS Speaking Part 2 中，平行结构可以帮助考生快速组织连续信息，使回答更自然、更连贯。",
+      "examples": [
+        {
+          "en": "The chart shows a rise in production, a decline in costs, and a steady increase in profits.",
+          "zh": "该图表显示产量上升、成本下降以及利润稳步增加。"
+        },
+        {
+          "en": "The speaker mentioned the causes of climate change, the impact on coastal cities, and the need for international cooperation.",
+          "zh": "讲话者提到了气候变化的原因、其对沿海城市的影响以及国际合作的必要性。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The course helps students to improve grammar, writing essays, and speaking fluently.",
+      "correct": "The course helps students improve grammar, write essays, and speak fluently.",
+      "explanation": "错误句中并列成分分别是名词 grammar、动名词 writing 和动名词短语 speaking fluently，形式不统一。正确句使用三个动词原形 improve、write 和 speak，与 helps students 后的结构保持一致。"
+    },
+    {
+      "wrong": "The government should reduce taxes and investment in education.",
+      "correct": "The government should reduce taxes and invest in education.",
+      "explanation": "错误句把动词 reduce 和名词 investment 并列，导致结构不平行。正确句使用两个动词 reduce 和 invest，使两个政策行为保持同一语法层级。"
+    },
+    {
+      "wrong": "Learning a language requires patience, practice, and to communicate with others.",
+      "correct": "Learning a language requires patience, practice, and communication with others.",
+      "explanation": "错误句将名词 patience、practice 与不定式 to communicate 并列，形式不一致。正确句将第三项改为名词 communication，使三个并列成分都为名词。"
+    },
+    {
+      "wrong": "This solution is not only practical but also reduces costs.",
+      "correct": "This solution is not only practical but also cost-effective.",
+      "explanation": "not only...but also 连接的内容应保持平行。错误句中 practical 是形容词，而 reduces costs 是动词短语。正确句使用两个形容词 practical 和 cost-effective，使结构更自然。"
+    },
+    {
+      "wrong": "The data indicate that unemployment rose, inflation increased, and the economy was unstable.",
+      "correct": "The data indicate that unemployment rose, inflation increased, and economic instability intensified.",
+      "explanation": "错误句中前两个成分是主语加动词结构，而第三个成分是完整从句，虽然语义可理解，但学术表达不够整齐。正确句使用三个名词性主语加动词的结构，使数据描述更统一。"
+    },
+    {
+      "wrong": "Compared with 2010, the population in 2020 was higher.",
+      "correct": "Compared with the population in 2010, the population in 2020 was higher.",
+      "explanation": "错误句表面上是在比较年份和人口，属于比较对象不平行。正确句明确比较的是 2010 年的人口和 2020 年的人口。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "平行结构在 PTE Academic 中出现频率较高，尤其影响 Writing 和 Speaking 的语法准确性、流利度和内容组织。在 Summarize Written Text 中，考生需要把多个信息点压缩到一个复杂句中，平行结构可以帮助连接原因、结果和例证。在 Write Essay 中，平行结构能让论点更清晰，减少语法错误。在 Retell Lecture 和 Describe Image 中，考生可用平行结构快速表达多个趋势、特征或观点。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Retell Lecture",
+      "Describe Image",
+      "Summarize Spoken Text",
+      "Reading and Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "This policy aims to + verb, + verb, and + verb.",
+      "translation": "该政策旨在……、……并……。"
+    },
+    {
+      "pattern": "The study examines not only + noun phrase but also + noun phrase.",
+      "translation": "该研究不仅考察……，也考察……。"
+    },
+    {
+      "pattern": "A is associated with + noun, + noun, and + noun.",
+      "translation": "A 与……、……和……有关。"
+    },
+    {
+      "pattern": "There is a need to + verb and to + verb.",
+      "translation": "有必要……并……。"
+    },
+    {
+      "pattern": "The findings suggest that + clause, that + clause, and that + clause.",
+      "translation": "研究结果表明……、……并且……。"
+    },
+    {
+      "pattern": "Compared with + noun phrase, + noun phrase is more likely to + verb.",
+      "translation": "与……相比，……更有可能……。"
+    },
+    {
+      "pattern": "The more + clause, the more + clause.",
+      "translation": "越……，就越……。"
+    },
+    {
+      "pattern": "This approach is both + adjective and + adjective.",
+      "translation": "这种方法既……又……。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "reduce costs, improve efficiency, and enhance quality",
+      "translation": "降低成本、提高效率并提升质量"
+    },
+    {
+      "phrase": "economic growth, social stability, and environmental protection",
+      "translation": "经济增长、社会稳定和环境保护"
+    },
+    {
+      "phrase": "collect data, analyse results, and draw conclusions",
+      "translation": "收集数据、分析结果并得出结论"
+    },
+    {
+      "phrase": "a clear, logical, and persuasive argument",
+      "translation": "清晰、合乎逻辑且有说服力的论点"
+    },
+    {
+      "phrase": "access to education, healthcare, and employment",
+      "translation": "获得教育、医疗和就业机会"
+    },
+    {
+      "phrase": "not only feasible but also sustainable",
+      "translation": "不仅可行，而且可持续"
+    },
+    {
+      "phrase": "both short-term benefits and long-term consequences",
+      "translation": "短期利益和长期后果"
+    },
+    {
+      "phrase": "either government intervention or market-based solutions",
+      "translation": "政府干预或市场化解决方案"
+    }
+  ],
+  "ai_tips": [
+    "检查并列连词 and、or、but 前后的词性是否一致：名词对名词，动词对动词，形容词对形容词，从句对从句。",
+    "使用 not only...but also 时，先确定 not only 后面的语法形式，再让 but also 后面的内容与之匹配。",
+    "写 PTE Essay 时，可以有意识地使用三项并列结构，例如 reduce, improve, and promote，以增强论证的节奏感。",
+    "做 Summarize Written Text 时，如果原文包含多个并列信息，可以用平行结构压缩成一个清晰的复合句。",
+    "避免把动作和名词混合并列，例如 improve education and healthcare reform；应改为 improve education and reform healthcare，或 improvements in education and reforms in healthcare。",
+    "进行比较时要确认比较对象属于同一类别，例如不能直接比较 a city 和 population，应比较 the population of one city 和 that of another city。"
+  ],
+  "practice_questions": [
+    {
+      "question": "改正句子：The programme encourages students to think critically, communication effectively, and solving problems independently.",
+      "answer": "The programme encourages students to think critically, communicate effectively, and solve problems independently. 解析：encourages students to 后面应并列三个动词原形 think、communicate 和 solve。"
+    },
+    {
+      "question": "改正句子：The new policy is not only beneficial to businesses but also protects consumers.",
+      "answer": "The new policy not only benefits businesses but also protects consumers. 或 The new policy is not only beneficial to businesses but also protective of consumers. 解析：not only...but also 两边应保持平行，可以都用动词短语，也可以都用形容词短语。"
+    },
+    {
+      "question": "用平行结构完成句子：Technology can help schools __________, __________, and __________.",
+      "answer": "Technology can help schools improve teaching quality, reduce administrative costs, and expand access to learning resources. 解析：三个并列成分均为动词短语。"
+    },
+    {
+      "question": "判断并改正：Compared with 2005, the number of international students in 2020 was significantly higher.",
+      "answer": "Compared with the number of international students in 2005, the number in 2020 was significantly higher. 解析：原句把年份和人数进行比较，比较对象不平行。"
+    },
+    {
+      "question": "将句子改写得更学术：The city needs better buses, build more train lines, and the roads should be safer.",
+      "answer": "The city needs to improve bus services, expand railway networks, and enhance road safety. 解析：改写后使用三个动词短语 improve、expand 和 enhance，结构更平行、更正式。"
+    },
+    {
+      "question": "用 both...and 翻译：这种方法既节省时间，又降低成本。",
+      "answer": "This method both saves time and reduces costs. 或 This method is both time-saving and cost-effective. 解析：第一句使用两个动词短语并列，第二句使用两个形容词并列。"
+    },
+    {
+      "question": "选择更好的句子：A. The research focuses on climate change, energy consumption, and how people use transport. B. The research focuses on climate change, energy consumption, and transport use.",
+      "answer": "B 更好。解析：B 中三个并列成分都是名词或名词短语，结构更平行，更符合学术写作风格。"
+    },
+    {
+      "question": "用 the more..., the more... 造句，表达：人们受教育程度越高，就越可能找到稳定工作。",
+      "answer": "The more educated people are, the more likely they are to find stable employment. 解析：the more..., the more... 用于表达两个变量之间的递进关系。"
+    }
+  ]
+}

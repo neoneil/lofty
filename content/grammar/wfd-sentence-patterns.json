@@ -1,0 +1,359 @@
+{
+  "slug": "wfd-sentence-patterns",
+  "category": {
+    "zh": "PTE 高频语法",
+    "en": "PTE Grammar Patterns"
+  },
+  "title": {
+    "zh": "WFD 高频结构",
+    "en": "WFD Sentence Patterns"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "本课聚焦 PTE Academic Write From Dictation（WFD）中高频出现的句型结构，帮助中国考生识别并准确拼写听到的完整句子。WFD 句子通常不复杂，但常包含 academic noun phrases、passive voice、prepositional phrases、relative clauses、there be 结构、modal verbs、并列结构以及抽象名词搭配。掌握这些结构可以提升听辨速度、语法预测能力和书写准确率，同时也能迁移到 IELTS Listening、Writing 和 Speaking 中。"
+  },
+  "structure": {
+    "formula": "Subject + Verb + Object/Complement + Modifier；There be + Noun Phrase + Prepositional Phrase；Subject + Passive Verb + by/for/in + Noun Phrase；Noun Phrase + Relative Clause + Main Verb；Modal Verb + Base Verb + Object",
+    "explanation": "WFD 的核心不是创造句子，而是在短时间内准确还原听到的句子。考生需要通过语法框架预测句子走向。例如，听到 The lecture was 时，应立即判断后面可能接 passive participle、adjective complement 或 prepositional phrase；听到 There are several 时，应预判复数名词；听到 Students should 时，应使用动词原形。中国考生常因忽略冠词、复数、介词和被动语态而失分，因此必须把语法结构、词汇搭配和声音信号结合起来记忆。",
+    "examples": [
+      {
+        "en": "The results of the experiment were published in a scientific journal.",
+        "zh": "实验结果发表在一本科学期刊上。"
+      },
+      {
+        "en": "There are several important factors affecting climate change.",
+        "zh": "有几个重要因素正在影响气候变化。"
+      },
+      {
+        "en": "Students should submit their assignments before the deadline.",
+        "zh": "学生应该在截止日期前提交作业。"
+      },
+      {
+        "en": "The policy that was introduced last year has been widely discussed.",
+        "zh": "去年推出的政策已经被广泛讨论。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "名词短语作主语",
+      "description": "WFD 中经常以较长的 noun phrase 开头，例如 The impact of technology、The development of new policies、A significant number of students。听到开头后，要快速判断中心名词的单复数，并决定后面的动词形式。",
+      "examples": [
+        {
+          "en": "The impact of social media on communication is widely debated.",
+          "zh": "社交媒体对交流的影响被广泛讨论。"
+        },
+        {
+          "en": "A significant number of students have difficulty managing their time.",
+          "zh": "相当多的学生在时间管理方面有困难。"
+        }
+      ]
+    },
+    {
+      "title": "被动语态结构",
+      "description": "PTE WFD 高频使用 passive voice，因为学术英语强调研究、结果、政策和过程，而不是动作执行者。听到 was、were、is、are、has been、have been 时，要预判过去分词。",
+      "examples": [
+        {
+          "en": "The final report was submitted to the department yesterday.",
+          "zh": "最终报告昨天已提交给该部门。"
+        },
+        {
+          "en": "New regulations have been introduced to improve public safety.",
+          "zh": "新的规定已经被引入，以提升公共安全。"
+        }
+      ]
+    },
+    {
+      "title": "There be 句型",
+      "description": "There be 结构常用于引出某种现象、数量、问题或证据。考生要注意 be 动词与后面真正主语的一致关系，例如 There is evidence 和 There are several reasons。",
+      "examples": [
+        {
+          "en": "There is strong evidence to support this argument.",
+          "zh": "有强有力的证据支持这一论点。"
+        },
+        {
+          "en": "There are many opportunities for students to develop practical skills.",
+          "zh": "学生有很多机会发展实践技能。"
+        }
+      ]
+    },
+    {
+      "title": "介词短语作修饰语",
+      "description": "WFD 句子常在句末加入 prepositional phrases，例如 in the library、for further research、on campus、during the semester。介词通常弱读，容易被中国考生漏写。",
+      "examples": [
+        {
+          "en": "The books are available in the main library.",
+          "zh": "这些书可以在主图书馆找到。"
+        },
+        {
+          "en": "The data will be used for further research.",
+          "zh": "这些数据将被用于进一步研究。"
+        }
+      ]
+    },
+    {
+      "title": "情态动词加动词原形",
+      "description": "WFD 中常见 should、must、can、could、may、might、will、would。情态动词后必须接 base verb，不加 to，不加第三人称单数。",
+      "examples": [
+        {
+          "en": "Researchers should consider the limitations of the study.",
+          "zh": "研究人员应该考虑该研究的局限性。"
+        },
+        {
+          "en": "Students can access the online materials through the university website.",
+          "zh": "学生可以通过大学网站访问在线资料。"
+        }
+      ]
+    },
+    {
+      "title": "定语从句",
+      "description": "定语从句在 WFD 中用于补充说明名词，常见关系词包括 which、that、who、where。听到名词后若出现短暂停顿或关系词，应判断后面是 relative clause，而不是新的完整句。",
+      "examples": [
+        {
+          "en": "The students who attended the workshop received certificates.",
+          "zh": "参加研讨会的学生获得了证书。"
+        },
+        {
+          "en": "The theory that explains this phenomenon is still controversial.",
+          "zh": "解释这一现象的理论仍然存在争议。"
+        }
+      ]
+    },
+    {
+      "title": "并列结构",
+      "description": "WFD 经常使用 and、but、or 连接并列名词、动词、形容词或句子。考生需要保持平行结构，例如 reading and writing、clear and concise、collect and analyze data。",
+      "examples": [
+        {
+          "en": "Students are expected to read widely and write critically.",
+          "zh": "学生被期望广泛阅读并进行批判性写作。"
+        },
+        {
+          "en": "The course is challenging but highly rewarding.",
+          "zh": "这门课程具有挑战性，但回报很高。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The result of the experiments were published.",
+      "correct": "The results of the experiments were published.",
+      "explanation": "were 表明主语应为复数。中国考生常只听到 result 的音而忽略复数 -s，导致 subject-verb agreement 错误。"
+    },
+    {
+      "wrong": "Students should to submit their assignments.",
+      "correct": "Students should submit their assignments.",
+      "explanation": "情态动词 should 后接动词原形，不能加 to。WFD 中听到 should 后要立即锁定 base verb。"
+    },
+    {
+      "wrong": "There are strong evidence to support the claim.",
+      "correct": "There is strong evidence to support the claim.",
+      "explanation": "evidence 是不可数名词，there be 中 be 动词要与 evidence 保持一致，因此使用 is。"
+    },
+    {
+      "wrong": "The lecture was discuss in the seminar.",
+      "correct": "The lecture was discussed in the seminar.",
+      "explanation": "was 后若表示被动，应接过去分词 discussed。中国考生容易把过去式和过去分词听成原形。"
+    },
+    {
+      "wrong": "The information are available online.",
+      "correct": "The information is available online.",
+      "explanation": "information 是不可数名词，不能用 are。PTE 中不可数名词常作为主语出现，必须使用单数动词。"
+    },
+    {
+      "wrong": "The university provide many resources for students.",
+      "correct": "The university provides many resources for students.",
+      "explanation": "The university 是第三人称单数主语，一般现在时动词需要加 -s。WFD 评分会识别单词形式错误。"
+    },
+    {
+      "wrong": "Researchers need collect more reliable data.",
+      "correct": "Researchers need to collect more reliable data.",
+      "explanation": "need 作实义动词时后接 to-infinitive。不要把 need 与 must、should 等情态动词混淆。"
+    },
+    {
+      "wrong": "The policy introduced last year have changed.",
+      "correct": "The policy introduced last year has changed.",
+      "explanation": "introduced last year 是过去分词短语修饰 policy，真正主语是单数 policy，因此谓语应为 has changed。"
+    },
+    {
+      "wrong": "The students who attends the lecture will receive credit.",
+      "correct": "The students who attend the lecture will receive credit.",
+      "explanation": "who 指代复数 students，因此定语从句中的动词应使用 attend，而不是 attends。"
+    },
+    {
+      "wrong": "The research focuses in environmental issues.",
+      "correct": "The research focuses on environmental issues.",
+      "explanation": "focus on 是固定搭配，不能用 focus in。WFD 中介词弱读，但仍必须准确书写。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "WFD 是 PTE Listening 中对总分影响非常大的题型，句子通常来自校园、学术研究、课程安排、政策规定、图书馆资源和社会科学话题。高分考生不只依赖听力记忆，还会利用语法预测来补全弱读词、功能词和词尾变化。常考语法包括 noun phrases、subject-verb agreement、articles、plural nouns、passive voice、prepositions、relative clauses、modal verbs、perfect tense 和 parallel structure。",
+    "sections": [
+      "Write From Dictation",
+      "Listening",
+      "Writing",
+      "Reading aloud 句子理解",
+      "IELTS Listening sentence completion",
+      "IELTS Writing Task 2 academic sentence building"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The results of the study suggest that + clause.",
+      "translation": "研究结果表明……"
+    },
+    {
+      "pattern": "There is increasing evidence that + clause.",
+      "translation": "越来越多的证据表明……"
+    },
+    {
+      "pattern": "Students are required to + base verb.",
+      "translation": "学生被要求做……"
+    },
+    {
+      "pattern": "The lecture will focus on + noun phrase.",
+      "translation": "讲座将聚焦于……"
+    },
+    {
+      "pattern": "It is important to consider + noun phrase.",
+      "translation": "考虑……是重要的。"
+    },
+    {
+      "pattern": "The data have been collected from + source.",
+      "translation": "数据已经从……收集而来。"
+    },
+    {
+      "pattern": "This approach can be used to + base verb.",
+      "translation": "这种方法可以被用来……"
+    },
+    {
+      "pattern": "A number of factors contribute to + noun phrase.",
+      "translation": "许多因素导致或促成……"
+    },
+    {
+      "pattern": "The issue has been widely discussed in + field.",
+      "translation": "该问题已在……领域被广泛讨论。"
+    },
+    {
+      "pattern": "Further research is needed to + base verb.",
+      "translation": "需要进一步研究来……"
+    },
+    {
+      "pattern": "The relationship between A and B is complex.",
+      "translation": "A 与 B 之间的关系很复杂。"
+    },
+    {
+      "pattern": "Participants were asked to + base verb.",
+      "translation": "参与者被要求做……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "submit an assignment",
+      "translation": "提交作业"
+    },
+    {
+      "phrase": "attend a lecture",
+      "translation": "参加讲座"
+    },
+    {
+      "phrase": "conduct research",
+      "translation": "开展研究"
+    },
+    {
+      "phrase": "collect data",
+      "translation": "收集数据"
+    },
+    {
+      "phrase": "analyze the results",
+      "translation": "分析结果"
+    },
+    {
+      "phrase": "support an argument",
+      "translation": "支持论点"
+    },
+    {
+      "phrase": "meet the deadline",
+      "translation": "赶上截止日期"
+    },
+    {
+      "phrase": "provide evidence",
+      "translation": "提供证据"
+    },
+    {
+      "phrase": "improve academic performance",
+      "translation": "提升学术表现"
+    },
+    {
+      "phrase": "develop practical skills",
+      "translation": "发展实践技能"
+    },
+    {
+      "phrase": "access online resources",
+      "translation": "访问在线资源"
+    },
+    {
+      "phrase": "focus on key issues",
+      "translation": "聚焦关键问题"
+    },
+    {
+      "phrase": "raise public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "introduce new regulations",
+      "translation": "引入新规定"
+    }
+  ],
+  "ai_tips": [
+    "听到句子开头后，先判断主语是单数、复数还是不可数名词，再决定动词形式。",
+    "记录 WFD 时优先写实义词，如 nouns、main verbs、adjectives，再根据语法补全 articles、prepositions 和 auxiliaries。",
+    "遇到 was、were、has been、have been 时，要检查后面是否需要过去分词，避免把被动语态写成主动结构。",
+    "对常见学术搭配进行整块记忆，例如 conduct research、submit assignments、provide evidence，这比逐词记忆更稳定。",
+    "句末介词短语容易被弱读，要特别留意 in、on、at、for、to、with、from 等短小功能词。",
+    "写完后用语法反查句子：主谓是否一致、名词是否需要复数、情态动词后是否为原形、介词搭配是否自然。"
+  ],
+  "practice_questions": [
+    {
+      "question": "根据 WFD 高频结构补全句子：The results of the experiment ___ published in a scientific journal.",
+      "answer": "The results of the experiment were published in a scientific journal."
+    },
+    {
+      "question": "纠正句子错误：Students should to complete the online form before Friday.",
+      "answer": "Students should complete the online form before Friday."
+    },
+    {
+      "question": "选择正确 be 动词：There ___ strong evidence to support this theory.",
+      "answer": "There is strong evidence to support this theory."
+    },
+    {
+      "question": "根据中文写出英文句子：学生必须在截止日期前提交最终报告。",
+      "answer": "Students must submit the final report before the deadline."
+    },
+    {
+      "question": "纠正句子错误：The information are available on the university website.",
+      "answer": "The information is available on the university website."
+    },
+    {
+      "question": "补全被动语态句子：New policies have been ___ to improve public health.",
+      "answer": "New policies have been introduced to improve public health."
+    },
+    {
+      "question": "根据提示组成完整句子：The lecture / focus on / environmental issues.",
+      "answer": "The lecture will focus on environmental issues."
+    },
+    {
+      "question": "纠正主谓一致错误：A number of students has applied for the scholarship.",
+      "answer": "A number of students have applied for the scholarship."
+    },
+    {
+      "question": "补全学术句型：Further research is needed ___ the long-term effects.",
+      "answer": "Further research is needed to examine the long-term effects."
+    },
+    {
+      "question": "根据 WFD 逻辑补全句子：The students who attended the workshop ___ certificates.",
+      "answer": "The students who attended the workshop received certificates."
+    }
+  ]
+}

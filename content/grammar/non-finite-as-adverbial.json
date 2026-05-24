@@ -1,0 +1,307 @@
+{
+  "slug": "non-finite-as-adverbial",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "非谓语作状语",
+    "en": "Non-finite as Adverbial"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "非谓语作状语是指用 infinitive、present participle、past participle 等非谓语结构来表达目的、原因、时间、条件、结果、让步或伴随状态。它常用于学术写作和 PTE Academic / IELTS Writing 中，使句子更紧凑、更正式。例如，To reduce emissions, governments should invest in renewable energy. 中的 To reduce emissions 表示目的；Having analyzed the data, the researchers revised their hypothesis. 中的 Having analyzed the data 表示先发生的动作。学习重点包括：明确逻辑主语、区分主动与被动、判断动作先后顺序，并避免 dangling modifier 悬垂修饰语。"
+  },
+  "structure": {
+    "formula": "1. To do ..., 主句. / 2. Doing ..., 主句. / 3. Done ..., 主句. / 4. Having done ..., 主句. / 5. Having been done ..., 主句. / 6. 主句, doing ...",
+    "explanation": "非谓语作状语时，本身不作谓语，而是修饰整个主句或主句中的动词。to do 通常表示目的、结果或评价；doing 表示主动、同时发生、原因、条件或伴随；done 表示被动、完成或状态；having done 表示该动作发生在主句动作之前；having been done 表示被动且先于主句发生。最重要的语法原则是：非谓语结构的逻辑主语通常必须与主句主语一致。如果不一致，就容易形成 dangling modifier，导致句意不清或语法错误。",
+    "examples": [
+      {
+        "en": "To improve public health, the government has introduced stricter regulations on food safety.",
+        "zh": "为了改善公共健康，政府已经出台了更严格的食品安全规定。"
+      },
+      {
+        "en": "Facing increasing competition, many universities are investing more in online education.",
+        "zh": "面对日益激烈的竞争，许多大学正在加大对在线教育的投入。"
+      },
+      {
+        "en": "Given the limited evidence, the conclusion should be interpreted with caution.",
+        "zh": "鉴于证据有限，该结论应被谨慎解读。"
+      },
+      {
+        "en": "Having completed the survey, the researchers compared the results across different age groups.",
+        "zh": "完成调查后，研究人员比较了不同年龄组之间的结果。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示目的 Purpose",
+      "description": "用 to do 或 in order to do 表示主句动作的目的。在 IELTS Writing Task 2 和 PTE Essay 中，这种结构常用于提出政策目标、研究目的或个人行为动机。",
+      "examples": [
+        {
+          "en": "To address urban congestion, cities should expand public transport networks.",
+          "zh": "为了应对城市拥堵，城市应扩展公共交通网络。"
+        },
+        {
+          "en": "In order to enhance productivity, companies are adopting flexible working arrangements.",
+          "zh": "为了提高生产力，公司正在采用灵活的工作安排。"
+        }
+      ]
+    },
+    {
+      "title": "表示原因 Reason",
+      "description": "用 doing、having done 或过去分词短语表达原因。与 because 从句相比，非谓语原因状语更正式、更简洁，适合学术写作。",
+      "examples": [
+        {
+          "en": "Recognizing the importance of early education, many governments have increased funding for preschool programs.",
+          "zh": "认识到早期教育的重要性，许多政府增加了对学前教育项目的资金投入。"
+        },
+        {
+          "en": "Having experienced rapid population growth, the city now faces severe pressure on housing.",
+          "zh": "由于经历了快速人口增长，这座城市现在面临严重的住房压力。"
+        }
+      ]
+    },
+    {
+      "title": "表示时间 Time",
+      "description": "非谓语结构可以替代 when、after、while 等时间状语从句。doing 通常表示同时发生，having done 表示先后顺序中的先发生动作。",
+      "examples": [
+        {
+          "en": "Walking through the laboratory, the inspector noticed several safety violations.",
+          "zh": "在穿过实验室时，检查员发现了几处安全违规行为。"
+        },
+        {
+          "en": "Having reviewed the report, the manager approved the proposal.",
+          "zh": "审阅完报告后，经理批准了该提案。"
+        }
+      ]
+    },
+    {
+      "title": "表示条件 Condition",
+      "description": "非谓语条件状语常出现在学术论证和政策建议中，含义接近 if 引导的条件从句。常见结构包括 given、provided、considering、used properly 等。",
+      "examples": [
+        {
+          "en": "Used appropriately, artificial intelligence can improve diagnostic accuracy in healthcare.",
+          "zh": "如果使用得当，人工智能可以提高医疗诊断的准确性。"
+        },
+        {
+          "en": "Given sufficient investment, rural areas can develop more sustainable infrastructure.",
+          "zh": "如果有足够投资，农村地区可以发展更可持续的基础设施。"
+        }
+      ]
+    },
+    {
+      "title": "表示结果 Result",
+      "description": "现在分词短语可放在主句之后表示自然结果，常用于描述趋势、数据变化或社会影响。注意这种结果通常是主句动作直接导致的结果。",
+      "examples": [
+        {
+          "en": "The cost of living has risen sharply, placing additional pressure on low-income families.",
+          "zh": "生活成本急剧上升，给低收入家庭带来了额外压力。"
+        },
+        {
+          "en": "The policy reduced administrative costs, allowing more resources to be allocated to public services.",
+          "zh": "该政策降低了行政成本，使更多资源能够被分配到公共服务中。"
+        }
+      ]
+    },
+    {
+      "title": "表示让步 Concession",
+      "description": "非谓语让步状语常与 although、though、while 等连用，形成 although doing、though limited、while acknowledging 等结构。它适合在写作中表达平衡观点。",
+      "examples": [
+        {
+          "en": "Although facing financial constraints, the university continued to support scientific research.",
+          "zh": "尽管面临财政限制，该大学仍继续支持科学研究。"
+        },
+        {
+          "en": "While acknowledging the benefits of technology, critics emphasize its potential risks.",
+          "zh": "在承认技术益处的同时，批评者强调其潜在风险。"
+        }
+      ]
+    },
+    {
+      "title": "表示伴随或方式 Manner and Accompanying Circumstance",
+      "description": "doing 短语可表示主句动作发生时的伴随状态或方式，常用于描述实验过程、社会行为和图表变化。",
+      "examples": [
+        {
+          "en": "Participants completed the questionnaire, providing detailed information about their daily routines.",
+          "zh": "参与者完成了问卷，并提供了关于其日常习惯的详细信息。"
+        },
+        {
+          "en": "The proportion of online shoppers increased steadily, reaching 68% in 2023.",
+          "zh": "网购者比例稳步上升，并在2023年达到68%。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "To improve students' performance, more funding should be provided by schools.",
+      "correct": "To improve students' performance, schools should provide more funding.",
+      "explanation": "原句语法上不一定错误，但目的状语 To improve students' performance 的逻辑执行者不够直接。学术写作中，如果要强调行动主体，最好让主句主语 schools 与目的动作 improve 形成清晰逻辑关系。"
+    },
+    {
+      "wrong": "Walking to the library, the rain started heavily.",
+      "correct": "Walking to the library, I was caught in heavy rain.",
+      "explanation": "这是典型的 dangling modifier。Walking 的逻辑主语应该是人，而不是 the rain。非谓语作状语时，逻辑主语通常要与主句主语一致。"
+    },
+    {
+      "wrong": "Given the government invests more money, public transport will improve.",
+      "correct": "Given more government investment, public transport will improve.",
+      "explanation": "given 作非谓语结构时，后面通常接名词短语，而不是完整从句。如果要接从句，可以改为 If the government invests more money, public transport will improve."
+    },
+    {
+      "wrong": "Having finished the experiment, the results were analyzed.",
+      "correct": "Having finished the experiment, the researchers analyzed the results.",
+      "explanation": "Having finished 的逻辑主语应是能够完成实验的人，而不是 results。中文学习者常受中文省略主语影响，写出逻辑主语不一致的句子。"
+    },
+    {
+      "wrong": "To reducing pollution, people should use public transport.",
+      "correct": "To reduce pollution, people should use public transport.",
+      "explanation": "to 表示目的时后接动词原形，即 to do，而不是 to doing。不要把介词 to 与 infinitive marker to 混淆。"
+    },
+    {
+      "wrong": "Compared with traditional classes, students prefer online courses.",
+      "correct": "Compared with traditional classes, online courses are preferred by some students.",
+      "explanation": "Compared with traditional classes 修饰的对象应是 online courses，而不是 students。比较结构中的被比较对象必须一致。"
+    },
+    {
+      "wrong": "Being lacked enough evidence, the argument is weak.",
+      "correct": "Lacking enough evidence, the argument is weak.",
+      "explanation": "lack 是及物动词，表示“缺乏”时通常不用被动形式。应使用 lacking 作原因状语。"
+    },
+    {
+      "wrong": "The number of tourists increased, caused serious environmental problems.",
+      "correct": "The number of tourists increased, causing serious environmental problems.",
+      "explanation": "表示主句导致的自然结果时，应使用现在分词 causing，而不是过去式 caused。caused 会造成两个谓语并列错误。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "非谓语作状语在 PTE Academic 中非常常见，尤其出现在 Reading & Writing: Fill in the Blanks、Re-order Paragraphs、Summarize Written Text、Write Essay 和 Listening: Summarize Spoken Text 中。它可以帮助考生识别句子结构、判断逻辑关系并提升写作复杂度。在 PTE 写作中，合理使用 To address this issue、Given the evidence、Having considered both views、resulting in 等结构，可以提高 grammatical range and accuracy，但必须避免逻辑主语错误和过度堆砌。",
+    "sections": [
+      "Reading & Writing: Fill in the Blanks",
+      "Re-order Paragraphs",
+      "Summarize Written Text",
+      "Write Essay",
+      "Listening: Summarize Spoken Text",
+      "Reading: Multiple-choice, Choose Multiple Answers"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "To address this issue, policymakers should adopt a more evidence-based approach.",
+      "translation": "为了解决这一问题，政策制定者应采用更加基于证据的方法。"
+    },
+    {
+      "pattern": "Given the complexity of the problem, a single solution is unlikely to be effective.",
+      "translation": "鉴于该问题的复杂性，单一解决方案不太可能有效。"
+    },
+    {
+      "pattern": "Having examined the available data, researchers concluded that the trend was statistically significant.",
+      "translation": "在分析现有数据后，研究人员得出结论认为该趋势具有统计显著性。"
+    },
+    {
+      "pattern": "Used in moderation, digital technology can enhance learning outcomes.",
+      "translation": "如果适度使用，数字技术可以提升学习成果。"
+    },
+    {
+      "pattern": "The reform reduced unnecessary procedures, enabling institutions to operate more efficiently.",
+      "translation": "该改革减少了不必要的流程，使机构能够更高效地运作。"
+    },
+    {
+      "pattern": "While recognizing the advantages of globalization, it is necessary to consider its social costs.",
+      "translation": "在承认全球化优势的同时，也有必要考虑其社会成本。"
+    },
+    {
+      "pattern": "Compared with previous generations, young people today have greater access to information.",
+      "translation": "与前几代人相比，今天的年轻人能够更容易地获取信息。"
+    },
+    {
+      "pattern": "Failing to address income inequality may undermine long-term social stability.",
+      "translation": "未能解决收入不平等问题可能会削弱长期社会稳定。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "to address a problem",
+      "translation": "解决问题"
+    },
+    {
+      "phrase": "to achieve sustainable development",
+      "translation": "实现可持续发展"
+    },
+    {
+      "phrase": "given the circumstances",
+      "translation": "鉴于这些情况"
+    },
+    {
+      "phrase": "considering the evidence",
+      "translation": "考虑到证据"
+    },
+    {
+      "phrase": "leading to significant changes",
+      "translation": "导致重大变化"
+    },
+    {
+      "phrase": "resulting in increased pressure",
+      "translation": "导致压力增加"
+    },
+    {
+      "phrase": "compared with previous studies",
+      "translation": "与以往研究相比"
+    },
+    {
+      "phrase": "based on empirical data",
+      "translation": "基于实证数据"
+    },
+    {
+      "phrase": "aiming to improve efficiency",
+      "translation": "旨在提高效率"
+    },
+    {
+      "phrase": "designed to reduce costs",
+      "translation": "旨在降低成本"
+    }
+  ],
+  "ai_tips": [
+    "写 PTE Essay 或 IELTS Task 2 时，每篇文章使用两到四个非谓语状语结构即可，重点是准确和自然，而不是追求复杂。",
+    "检查非谓语作状语时，先问自己：这个动作是谁做的？如果答案不是主句主语，就需要改写。",
+    "表达目的优先使用 To do；表达主句带来的结果可使用 comma + doing；表达被动条件可使用 Done 结构，如 Used properly、Given sufficient support。",
+    "如果不确定逻辑主语是否一致，可以先写成完整状语从句，再压缩为非谓语结构。例如：After researchers analyzed the data → Having analyzed the data, researchers ..."
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为非谓语目的状语：Governments should invest in renewable energy because they want to reduce carbon emissions.",
+      "answer": "To reduce carbon emissions, governments should invest in renewable energy. 解析：To reduce carbon emissions 表示目的，逻辑主语是 governments。"
+    },
+    {
+      "question": "判断并改错：Having completed the assignment, the computer was turned off.",
+      "answer": "错误。正确表达：Having completed the assignment, the student turned off the computer. 解析：完成作业的是 student，不是 computer，原句存在 dangling modifier。"
+    },
+    {
+      "question": "选择正确形式：_____ the limited sample size, the findings should be interpreted carefully. A. Giving B. Given C. To give",
+      "answer": "B. Given the limited sample size, the findings should be interpreted carefully. 解析：Given 表示“鉴于”，后接名词短语，常用于学术写作。"
+    },
+    {
+      "question": "用现在分词表示结果改写：The new policy reduced traffic congestion. It improved air quality in the city.",
+      "answer": "The new policy reduced traffic congestion, improving air quality in the city. 解析：improving air quality 表示前一动作带来的自然结果。"
+    },
+    {
+      "question": "将时间从句压缩为 having done 结构：After the scientists collected enough data, they tested the hypothesis.",
+      "answer": "Having collected enough data, the scientists tested the hypothesis. 解析：collect data 发生在 test the hypothesis 之前，因此使用 Having collected。"
+    },
+    {
+      "question": "判断句子是否自然：Compared with urban residents, rural areas have fewer job opportunities.",
+      "answer": "不自然。可改为：Compared with urban areas, rural areas have fewer job opportunities. 解析：比较对象应一致，urban residents 不能与 rural areas 直接比较。"
+    },
+    {
+      "question": "翻译成英文：如果使用得当，在线学习可以提高教育资源的可及性。",
+      "answer": "Used appropriately, online learning can improve access to educational resources. 解析：Used appropriately 是过去分词短语，表示被动条件。"
+    },
+    {
+      "question": "用非谓语原因状语翻译：由于缺乏足够资金，许多小企业难以扩大规模。",
+      "answer": "Lacking sufficient funding, many small businesses struggle to expand. 解析：Lacking sufficient funding 表示原因，逻辑主语是 many small businesses。"
+    }
+  ]
+}

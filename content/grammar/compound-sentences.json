@@ -1,0 +1,270 @@
+{
+  "slug": "compound-sentences",
+  "category": {
+    "zh": "句子结构",
+    "en": "Sentence Structures"
+  },
+  "title": {
+    "zh": "并列句",
+    "en": "Compound Sentences"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "并列句是由两个或两个以上语法地位相同、意义相互关联的独立分句组成的句子。每个独立分句都有自己的主语和谓语，能够单独成句，但通过并列连词、分号或连接副词组合后，可以表达递进、转折、选择、因果或对比关系。在 PTE Academic 和 IELTS 写作、口语中，熟练使用并列句可以提升句子多样性、逻辑清晰度和表达流畅度，尤其适合描述图表趋势、解释原因、比较观点和组织论证。"
+  },
+  "structure": {
+    "formula": "Independent Clause + Coordinating Conjunction + Independent Clause",
+    "explanation": "并列句的核心结构是“独立分句 + 并列连接方式 + 独立分句”。常见的 coordinating conjunctions 包括 for, and, nor, but, or, yet, so，可用 FANBOYS 记忆。两个独立分句之间通常需要逗号加并列连词，例如“..., but ...”。也可以用分号连接两个关系密切的独立分句，或使用分号加连接副词，如 however, therefore, moreover, nevertheless。需要注意的是，并列句连接的是两个完整句子，而不是单个词组或从属分句。",
+    "examples": [
+      {
+        "en": "The survey was conducted online, and the results were analysed by independent researchers.",
+        "zh": "该调查是在线进行的，并且结果由独立研究人员进行了分析。"
+      },
+      {
+        "en": "Many students prefer online courses, but face-to-face instruction remains important.",
+        "zh": "许多学生更喜欢在线课程，但面对面教学仍然很重要。"
+      },
+      {
+        "en": "The policy reduced traffic congestion; however, it increased public dissatisfaction.",
+        "zh": "该政策减少了交通拥堵；然而，它增加了公众的不满。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达并列或补充信息",
+      "description": "当两个独立分句的信息方向一致，且第二个分句对第一个分句进行补充、扩展或延续时，可以使用 and, moreover, furthermore 等连接方式。此类结构在 IELTS Task 2 和 PTE Write Essay 中常用于扩展论点。",
+      "examples": [
+        {
+          "en": "Public transport is affordable, and it helps reduce carbon emissions.",
+          "zh": "公共交通价格实惠，并且有助于减少碳排放。"
+        },
+        {
+          "en": "The programme improves students' digital literacy; moreover, it prepares them for modern workplaces.",
+          "zh": "该项目提高学生的数字素养；此外，它还能帮助他们适应现代职场。"
+        }
+      ]
+    },
+    {
+      "title": "表达转折或让步关系",
+      "description": "当两个独立分句在意义上形成对比时，可以使用 but, yet, however, nevertheless 等。学术写作中，however 和 nevertheless 通常比 but 更正式，但标点要求更严格。",
+      "examples": [
+        {
+          "en": "The method is cost-effective, but it may not be suitable for all participants.",
+          "zh": "这种方法具有成本效益，但它可能并不适合所有参与者。"
+        },
+        {
+          "en": "The data appear reliable; however, the sample size is relatively small.",
+          "zh": "这些数据看起来可靠；然而，样本量相对较小。"
+        }
+      ]
+    },
+    {
+      "title": "表达结果或因果关系",
+      "description": "当第二个独立分句表示第一个分句导致的结果时，可以使用 so, therefore, consequently, thus 等。PTE 写作中，这类结构有助于清楚呈现逻辑链。",
+      "examples": [
+        {
+          "en": "The company invested heavily in automation, so productivity increased significantly.",
+          "zh": "该公司大量投资自动化，因此生产率显著提高。"
+        },
+        {
+          "en": "Urban populations are growing rapidly; therefore, governments must expand public services.",
+          "zh": "城市人口正在快速增长；因此，政府必须扩大公共服务。"
+        }
+      ]
+    },
+    {
+      "title": "表达选择关系",
+      "description": "当两个独立分句表示不同选择或可能性时，可以使用 or。该结构适用于讨论解决方案、政策选择或个人决策。",
+      "examples": [
+        {
+          "en": "Governments can increase funding for public schools, or they can encourage private investment in education.",
+          "zh": "政府可以增加对公立学校的资金投入，或者鼓励私人投资教育。"
+        },
+        {
+          "en": "Students should revise their essays carefully, or they may lose marks for grammatical errors.",
+          "zh": "学生应仔细修改作文，否则可能因语法错误而失分。"
+        }
+      ]
+    },
+    {
+      "title": "描述图表中的对比趋势",
+      "description": "在 IELTS Academic Writing Task 1 和 PTE Describe Image 中，并列句可以用来同时呈现两个数据趋势，尤其适合对比上升与下降、增长与稳定。",
+      "examples": [
+        {
+          "en": "The number of international students rose steadily, whereas domestic enrolments remained stable.",
+          "zh": "国际学生人数稳步上升，而本地学生入学人数保持稳定。"
+        },
+        {
+          "en": "Sales increased in the first quarter, but they declined sharply in the second quarter.",
+          "zh": "销售额在第一季度上升，但在第二季度急剧下降。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Many people support online learning, it is convenient and flexible.",
+      "correct": "Many people support online learning because it is convenient and flexible. / Many people support online learning, for it is convenient and flexible.",
+      "explanation": "这是中国学习者常见的 comma splice（逗号拼接）错误。两个完整句子不能只用逗号连接。应使用从属连词 because，或使用并列连词 for，也可以改为分号。"
+    },
+    {
+      "wrong": "The city is crowded but the public transport system is efficient.",
+      "correct": "The city is crowded, but the public transport system is efficient.",
+      "explanation": "当 but 连接两个独立分句时，but 前通常需要加逗号。若 but 只连接两个短语，则不一定需要逗号。"
+    },
+    {
+      "wrong": "The research is limited, however it provides useful insights.",
+      "correct": "The research is limited; however, it provides useful insights.",
+      "explanation": "however 是连接副词，不是 coordinating conjunction。它不能像 but 一样直接用逗号连接两个独立分句。正式写作中常用“分号 + however + 逗号”。"
+    },
+    {
+      "wrong": "The government should reduce taxes, and increase public spending.",
+      "correct": "The government should reduce taxes and increase public spending.",
+      "explanation": "这里 and 连接的是两个动词短语 reduce taxes 和 increase public spending，而不是两个独立分句，因此通常不需要逗号。很多中国学生会过度使用逗号，影响句子自然度。"
+    },
+    {
+      "wrong": "Some people prefer living in cities, but others living in rural areas.",
+      "correct": "Some people prefer living in cities, but others prefer living in rural areas.",
+      "explanation": "but 后面的分句缺少谓语动词 prefer，导致结构不完整。并列句要求连接的两个部分在语法上平衡，尤其在对比句中要保持 parallel structure。"
+    },
+    {
+      "wrong": "Technology improves efficiency, so that many companies adopt digital tools.",
+      "correct": "Technology improves efficiency, so many companies adopt digital tools.",
+      "explanation": "so 和 so that 含义不同。so 连接结果，表示“所以”；so that 引导目的状语从句，表示“以便”。此句表达结果，应使用 so。"
+    },
+    {
+      "wrong": "The lecture was difficult, and many students still understood the main argument.",
+      "correct": "The lecture was difficult, yet many students still understood the main argument.",
+      "explanation": "and 表示顺承或补充，但这里前后存在转折关系。使用 yet 或 but 更符合逻辑。PTE 写作评分重视 meaning 和 coherence，连接词选择不当会削弱逻辑。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "并列句在 PTE Academic 中非常实用，尤其适用于 Write Essay、Summarize Written Text、Summarize Spoken Text、Describe Image 和 Retell Lecture。它可以帮助考生在有限时间内构建清晰、准确且具有一定复杂度的句子。与过长的复杂句相比，并列句更容易控制语法准确性；与简单句相比，并列句又能体现更好的句法多样性。考生应避免大量使用 and 机械连接信息，而要根据逻辑关系选择 but, so, yet, therefore, however 等连接方式。",
+    "sections": [
+      "PTE Write Essay：用于连接两个论点、原因或结果，使段落逻辑更连贯。",
+      "PTE Summarize Written Text：可用一个并列句整合文章中的两个核心信息，但必须避免逗号拼接。",
+      "PTE Summarize Spoken Text：适合概括讲座中的对比观点、因果关系和补充信息。",
+      "PTE Describe Image：可用于同时描述两个趋势，例如一个数据上升而另一个数据下降。",
+      "PTE Retell Lecture：帮助考生用清晰结构复述多个相关信息点，提高 fluency 和 grammatical range。"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "X is widely accepted, but Y remains controversial.",
+      "translation": "X 被广泛接受，但 Y 仍然存在争议。"
+    },
+    {
+      "pattern": "X has increased significantly, whereas Y has remained relatively stable.",
+      "translation": "X 显著增加，而 Y 保持相对稳定。"
+    },
+    {
+      "pattern": "X contributes to economic growth, and it also improves social welfare.",
+      "translation": "X 有助于经济增长，并且也改善社会福利。"
+    },
+    {
+      "pattern": "X may reduce costs; however, it can create long-term risks.",
+      "translation": "X 可能降低成本；然而，它可能造成长期风险。"
+    },
+    {
+      "pattern": "X is becoming more common; therefore, policymakers need to respond effectively.",
+      "translation": "X 正变得越来越普遍；因此，政策制定者需要有效应对。"
+    },
+    {
+      "pattern": "The evidence is limited, yet it suggests a clear trend.",
+      "translation": "证据有限，但它显示出一个明确趋势。"
+    },
+    {
+      "pattern": "Some people support X, while others argue that Y is more important.",
+      "translation": "一些人支持 X，而另一些人认为 Y 更重要。"
+    },
+    {
+      "pattern": "The problem is complex, so a single solution is unlikely to be sufficient.",
+      "translation": "这个问题很复杂，因此单一解决方案不太可能足够。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "coordinate two independent clauses",
+      "translation": "连接两个独立分句"
+    },
+    {
+      "phrase": "use a coordinating conjunction",
+      "translation": "使用并列连词"
+    },
+    {
+      "phrase": "avoid comma splice errors",
+      "translation": "避免逗号拼接错误"
+    },
+    {
+      "phrase": "show contrast between two ideas",
+      "translation": "展示两个观点之间的对比"
+    },
+    {
+      "phrase": "express cause and effect",
+      "translation": "表达原因和结果"
+    },
+    {
+      "phrase": "maintain parallel structure",
+      "translation": "保持平行结构"
+    },
+    {
+      "phrase": "link related arguments",
+      "translation": "连接相关论点"
+    },
+    {
+      "phrase": "improve sentence variety",
+      "translation": "提高句式多样性"
+    },
+    {
+      "phrase": "strengthen logical coherence",
+      "translation": "增强逻辑连贯性"
+    },
+    {
+      "phrase": "combine short sentences effectively",
+      "translation": "有效合并短句"
+    }
+  ],
+  "ai_tips": [
+    "写作检查时，先判断连接词左右两边是否都是完整句子；如果都是完整句子，就要特别注意逗号、分号和连接词的搭配。",
+    "在 PTE Summarize Written Text 中，不要为了压缩信息而用逗号硬接多个句子；可以使用 and, but, so 或分号来形成语法正确的并列句。",
+    "如果想表达正式转折，优先考虑“; however,”或“; nevertheless,”，而不是连续使用 but。",
+    "图表描述中可以用 but 或 whereas 对比两个趋势，但要保证两个分句的时态一致。",
+    "不要把所有信息都用 and 串联。根据逻辑选择连接词，才能体现更高的 grammatical range 和 coherence。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将两个简单句合并为一个并列句：The population increased rapidly. Public services became insufficient.",
+      "answer": "The population increased rapidly, so public services became insufficient. 解析：第二句是第一句导致的结果，因此使用 so。"
+    },
+    {
+      "question": "改正错误：The policy is effective, however it is expensive to implement.",
+      "answer": "The policy is effective; however, it is expensive to implement. 解析：however 是连接副词，连接两个独立分句时通常使用“分号 + however + 逗号”。"
+    },
+    {
+      "question": "选择最合适的连接词：The results were promising, ___ the experiment needs to be repeated. A. and B. but C. so",
+      "answer": "B. but。句意为“结果很有希望，但实验需要重复进行”，前后是转折关系。"
+    },
+    {
+      "question": "判断句子是否正确：Many students study abroad, and gain international experience.",
+      "answer": "这个句子语法可以接受，但逗号通常不需要。更自然的表达是：Many students study abroad and gain international experience. 因为 and 连接的是两个动词短语，而不是两个独立分句。"
+    },
+    {
+      "question": "用 therefore 合并句子：The demand for housing has risen. Property prices have increased.",
+      "answer": "The demand for housing has risen; therefore, property prices have increased. 解析：therefore 表示结果，正式写作中常用分号连接前后两个独立分句。"
+    },
+    {
+      "question": "将句子改写得更学术：People use cars a lot, so the air gets worse.",
+      "answer": "Private car use has increased significantly, so air quality has deteriorated. 解析：使用 private car use, increased significantly, air quality, deteriorated 等更学术的表达。"
+    },
+    {
+      "question": "找出错误并改正：Some argue that technology improves education, but others believe traditional methods.",
+      "answer": "Some argue that technology improves education, but others believe that traditional methods are more effective. 解析：but 后面的独立分句不完整，需要补足谓语或宾语从句内容。"
+    },
+    {
+      "question": "根据中文写英文并列句：这项研究样本量较小，但其结论仍然具有参考价值。",
+      "answer": "The study has a small sample size, but its findings are still valuable. 或 The study has a small sample size; nevertheless, its findings are still valuable."
+    }
+  ]
+}

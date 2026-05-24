@@ -8,7 +8,7 @@ import { useState } from "react";
 import AiThinking from "@/components/ai/ai-thinking";
 import AiSubmitButton from "@/components/ai/ai-submit-button";
 import DictionaryText from "@/components/dictionary/dictionary-text";
-
+import { Textarea } from "@/components/ui-v2/textarea";
 import Tag from "@/components/ui/tag";
 
 type Props = {
@@ -483,37 +483,15 @@ export default function EssayDetailClient({ question, attempts }: Props) {
       {/* INPUT */}
 
       <div>
-        <label
-          className="
-                        mb-2 ml-1
-                        block
-                        text-sm
-                        font-semibold
-                        text-(--muted)
-                    "
-        >
+        <label className="mb-2 ml-1 block text-sm font-semibold text-[var(--muted)]">
           输入答案
         </label>
 
-        <textarea
+        <Textarea
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="在 20 分钟内 写一篇200词 - 300词的文章"
-          className="
-                        min-h-[180px]
-                        w-full
-                        round
-                        border border-gray-200
-                        bg-white
-                        px-5 py-4
-                        text-[17px]
-                        leading-8
-                        text-gray-800
-                        shadow-sm
-                        outline-none
-                        transition
-                        focus:border-[var(--theme)]
-                    "
+          className="min-h-[180px] px-5 py-4 text-[17px] leading-8 shadow-sm"
         />
       </div>
 

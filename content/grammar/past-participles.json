@@ -1,0 +1,284 @@
+{
+  "slug": "past-participles",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "过去分词",
+    "en": "Past Participles"
+  },
+  "difficulty": "中级到高级",
+  "summary": {
+    "zh": "过去分词（Past Participles）是非谓语动词的重要形式，通常表示“被动”或“完成”的含义。它可以用于完成时、被动语态、形容词化修饰名词、分词短语作后置定语、原因状语、条件状语等结构。在 PTE Academic 和 IELTS 写作、阅读与听力中，过去分词常用于压缩句子信息、提高表达的学术性，例如 the data collected、policies implemented、issues discussed。中国学习者常见问题包括把过去分词和过去式混淆、遗漏 be 动词、误用主动含义，以及不会使用过去分词短语来改写定语从句。"
+  },
+  "structure": {
+    "formula": "regular verbs: verb + -ed；irregular verbs: past participle form，例如 written, taken, built, seen, found；常见结构包括 have/has/had + past participle, be + past participle, noun + past participle phrase, past participle phrase + main clause。",
+    "explanation": "过去分词本身不是完整谓语，不能单独表示时态。它必须与助动词构成完成时，或与 be 动词构成被动语态，也可以像形容词一样修饰名词。其核心语义通常有两个：第一，表示动作已经完成，例如 the completed report；第二，表示名词承受某个动作，即被动关系，例如 the report written by the researcher。在学术英语中，过去分词常用于简化定语从句，如 the results that were obtained 可简化为 the results obtained，使句子更紧凑、更正式。",
+    "examples": [
+      {
+        "en": "The survey conducted in 2023 revealed a significant change in consumer behavior.",
+        "zh": "2023年进行的调查显示，消费者行为发生了显著变化。"
+      },
+      {
+        "en": "The policy has been revised to address public concerns.",
+        "zh": "该政策已经被修订，以回应公众关切。"
+      },
+      {
+        "en": "Written in clear academic language, the report is suitable for publication.",
+        "zh": "由于用清晰的学术语言写成，这份报告适合发表。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "用于完成时：have/has/had + past participle",
+      "description": "过去分词与 have、has 或 had 连用，构成现在完成时、过去完成时等，强调动作与某个时间点之间的联系，常用于 IELTS Task 1 描述趋势变化，也常见于 PTE Summarize Written Text 中。",
+      "examples": [
+        {
+          "en": "The number of international students has increased steadily over the past decade.",
+          "zh": "在过去十年里，国际学生人数稳步增长。"
+        },
+        {
+          "en": "By the time the policy was introduced, the problem had already worsened.",
+          "zh": "到该政策推出时，问题已经恶化。"
+        }
+      ]
+    },
+    {
+      "title": "用于被动语态：be + past participle",
+      "description": "当句子重点是动作的承受者，而不是动作执行者时，使用被动语态。学术写作中被动语态常用于强调研究、数据、政策和结果，而非个人行为。",
+      "examples": [
+        {
+          "en": "The experiment was designed to test the reliability of the new method.",
+          "zh": "该实验被设计用来测试新方法的可靠性。"
+        },
+        {
+          "en": "Several recommendations were made based on the findings.",
+          "zh": "根据研究结果提出了若干建议。"
+        }
+      ]
+    },
+    {
+      "title": "作前置定语：past participle + noun",
+      "description": "过去分词可以放在名词前，像形容词一样修饰名词，通常表达“已经被……的”或“处于某种状态的”含义。这类结构在阅读文章标题、图表描述和学术摘要中非常常见。",
+      "examples": [
+        {
+          "en": "Developed countries often have more advanced healthcare systems.",
+          "zh": "发达国家通常拥有更先进的医疗体系。"
+        },
+        {
+          "en": "A balanced diet is essential for long-term health.",
+          "zh": "均衡饮食对长期健康至关重要。"
+        }
+      ]
+    },
+    {
+      "title": "作后置定语：noun + past participle phrase",
+      "description": "当过去分词带有宾语、状语或介词短语时，通常放在名词之后，相当于一个省略了 which/that + be 的定语从句。这是学术英语中提升句子密度的重要方式。",
+      "examples": [
+        {
+          "en": "The data collected from rural areas were analyzed separately.",
+          "zh": "从农村地区收集的数据被单独分析。"
+        },
+        {
+          "en": "The measures adopted by the government helped reduce unemployment.",
+          "zh": "政府采取的措施有助于降低失业率。"
+        }
+      ]
+    },
+    {
+      "title": "作状语：表示原因、条件或让步",
+      "description": "过去分词短语可放在句首或句中，表示原因、条件、时间或让步。其逻辑主语通常与主句主语一致，并且主句主语是过去分词动作的承受者。",
+      "examples": [
+        {
+          "en": "Given sufficient funding, the project could be completed within two years.",
+          "zh": "如果获得充足资金，该项目可以在两年内完成。"
+        },
+        {
+          "en": "Compared with traditional methods, this approach is more cost-effective.",
+          "zh": "与传统方法相比，这种方法更具成本效益。"
+        }
+      ]
+    },
+    {
+      "title": "用于形容词化表达",
+      "description": "许多过去分词已经形容词化，用来描述人的感受、事物状态或客观特征。需要注意，-ed 形式常描述人的感受，-ing 形式常描述事物令人产生某种感受。",
+      "examples": [
+        {
+          "en": "Many students felt confused by the complex instructions.",
+          "zh": "许多学生对复杂的说明感到困惑。"
+        },
+        {
+          "en": "The participants were satisfied with the training programme.",
+          "zh": "参与者对培训项目感到满意。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The report was write by the committee.",
+      "correct": "The report was written by the committee.",
+      "explanation": "被动语态必须使用 be + past participle。write 的过去分词是不规则形式 written，不能用原形 write，也不能只用过去式 wrote。"
+    },
+    {
+      "wrong": "The data collected from the survey is reliable.",
+      "correct": "The data collected from the survey are reliable.",
+      "explanation": "在正式学术英语中，data 通常被视为复数，因此谓语动词应使用 are。过去分词短语 collected from the survey 只是后置定语，不决定主谓一致。"
+    },
+    {
+      "wrong": "The problem discussed it in the meeting was serious.",
+      "correct": "The problem discussed in the meeting was serious.",
+      "explanation": "过去分词短语作后置定语时，名词 the problem 已经是 discussed 的逻辑宾语，不能再加 it。中文学习者常受“讨论它”的表达影响而重复宾语。"
+    },
+    {
+      "wrong": "Because affected by pollution, many species disappeared.",
+      "correct": "Affected by pollution, many species disappeared.",
+      "explanation": "过去分词短语作原因状语时，通常不直接与 because 连用。若要使用 because，应写成 because they were affected by pollution。"
+    },
+    {
+      "wrong": "The government has took several actions.",
+      "correct": "The government has taken several actions.",
+      "explanation": "完成时结构是 have/has + past participle。take 的过去分词是 taken，不是过去式 took。"
+    },
+    {
+      "wrong": "Compared to last year, the company increased its profit.",
+      "correct": "Compared with last year, the company's profit increased.",
+      "explanation": "Compared with/to 引导的分词短语，其逻辑主语应与主句主语一致。被比较的是 profit，而不是 company 本身，因此应调整主句主语，避免 dangling participle。"
+    },
+    {
+      "wrong": "The students were boring during the lecture.",
+      "correct": "The students were bored during the lecture.",
+      "explanation": "bored 表示“感到无聊的”，描述人的感受；boring 表示“令人无聊的”，描述事物特征。这里主语是 students，应使用 bored。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "过去分词在 PTE Academic 中非常常见，尤其出现在 Read Aloud、Repeat Sentence、Summarize Written Text、Write Essay、Reading Fill in the Blanks 和 Listening Fill in the Blanks 中。考生需要识别过去分词与谓语动词的区别，判断被动语态、完成时和后置定语结构。在写作中，恰当使用过去分词短语可以减少冗余从句，提高语法多样性和信息密度，例如将 the policies that were implemented by the government 改为 the policies implemented by the government。",
+    "sections": [
+      "Read Aloud：准确朗读过去分词结尾 -ed，包括 /t/、/d/、/ɪd/ 的发音差异",
+      "Repeat Sentence：听辨完成时和被动语态，如 has been developed, was introduced",
+      "Summarize Written Text：用过去分词短语压缩原文信息，形成一句完整复杂句",
+      "Write Essay：使用被动语态和后置分词短语表达客观观点",
+      "Reading Fill in the Blanks：根据语法位置判断应填过去分词、过去式还是形容词",
+      "Listening Fill in the Blanks：注意不规则过去分词的拼写，如 written, chosen, driven, found"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The data collected from X indicate that ...",
+      "translation": "从X收集的数据表明……"
+    },
+    {
+      "pattern": "The results obtained from the study suggest that ...",
+      "translation": "该研究获得的结果表明……"
+    },
+    {
+      "pattern": "The measures implemented by the government have led to ...",
+      "translation": "政府实施的措施已经导致……"
+    },
+    {
+      "pattern": "Compared with previous studies, this research provides ...",
+      "translation": "与以往研究相比，本研究提供了……"
+    },
+    {
+      "pattern": "Given the limited evidence, it is difficult to conclude that ...",
+      "translation": "鉴于证据有限，很难得出……的结论。"
+    },
+    {
+      "pattern": "The issue discussed above is closely related to ...",
+      "translation": "上述讨论的问题与……密切相关。"
+    },
+    {
+      "pattern": "The approach adopted in this paper aims to ...",
+      "translation": "本文采用的方法旨在……"
+    },
+    {
+      "pattern": "Resources allocated to education can improve ...",
+      "translation": "分配给教育的资源能够改善……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "collected data",
+      "translation": "收集到的数据"
+    },
+    {
+      "phrase": "published research",
+      "translation": "已发表的研究"
+    },
+    {
+      "phrase": "implemented policy",
+      "translation": "已实施的政策"
+    },
+    {
+      "phrase": "developed countries",
+      "translation": "发达国家"
+    },
+    {
+      "phrase": "limited resources",
+      "translation": "有限资源"
+    },
+    {
+      "phrase": "written instructions",
+      "translation": "书面说明"
+    },
+    {
+      "phrase": "required skills",
+      "translation": "所需技能"
+    },
+    {
+      "phrase": "established theory",
+      "translation": "已确立的理论"
+    },
+    {
+      "phrase": "reduced costs",
+      "translation": "降低的成本"
+    },
+    {
+      "phrase": "improved performance",
+      "translation": "提升后的表现"
+    }
+  ],
+  "ai_tips": [
+    "判断过去分词时，先看它是否与名词构成被动关系。例如 the book written by the author 中，book 是“被写”的对象，因此 written 是过去分词。",
+    "写作中可以把 which/that + be 定语从句压缩成过去分词短语，例如 the method that was used in the study 可改为 the method used in the study。",
+    "不要把过去式和过去分词混为一谈。过去式可单独作谓语，如 The policy changed；过去分词通常需要助动词或用于修饰，如 has changed, the changed policy。",
+    "遇到句首过去分词短语时，检查主句主语是否是该动作的承受者。若逻辑主语不一致，句子会出现 dangling participle。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为使用过去分词后置定语：The report that was written by the research team highlights several risks.",
+      "answer": "The report written by the research team highlights several risks."
+    },
+    {
+      "question": "选择正确形式：The policy has been (introduce / introduced / introducing) to reduce traffic congestion.",
+      "answer": "introduced。句子是现在完成被动结构 has been + past participle。"
+    },
+    {
+      "question": "判断并改错：The information provided it by the university is useful.",
+      "answer": "错误。应改为：The information provided by the university is useful. 过去分词 provided 已经修饰 information，不能再加 it。"
+    },
+    {
+      "question": "用过去分词短语翻译：与传统教学方法相比，在线学习更加灵活。",
+      "answer": "Compared with traditional teaching methods, online learning is more flexible."
+    },
+    {
+      "question": "选择正确表达：The students were (confusing / confused) by the new assessment criteria.",
+      "answer": "confused。学生是感到困惑的人，应使用 -ed 形式。"
+    },
+    {
+      "question": "改写为更学术的表达：The government used several strategies, and these strategies improved public health.",
+      "answer": "The strategies adopted by the government improved public health."
+    },
+    {
+      "question": "填空：The results ______ from the experiment support the original hypothesis. 使用 obtain 的正确形式。",
+      "answer": "obtained。The results obtained from the experiment support the original hypothesis."
+    },
+    {
+      "question": "判断逻辑是否正确并改写：Compared with last month, the company sold more products.",
+      "answer": "逻辑不够准确。可改为：Compared with last month, product sales increased. 被比较的是销量，而不是公司本身。"
+    }
+  ]
+}

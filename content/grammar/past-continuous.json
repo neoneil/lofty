@@ -1,0 +1,278 @@
+{
+  "slug": "past-continuous",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "过去进行时",
+    "en": "Past Continuous Tense"
+  },
+  "difficulty": "中级（Intermediate）",
+  "summary": {
+    "zh": "过去进行时表示过去某一具体时间点或时间段内正在发生的动作，结构通常为“was/were + V-ing”。它常用于描述背景动作、被另一过去动作打断的进行中动作、过去临时性活动，以及两个过去动作同时进行的情况。在 PTE Academic 和 IELTS 写作与口语中，过去进行时常用于叙述经历、描述图表背景变化、解释研究过程或说明事件发生时的环境。中国学习者需要特别注意 be 动词的过去式选择、动词 -ing 形式、与一般过去时的区别，以及 when 和 while 引导时间状语从句时的时态搭配。"
+  },
+  "structure": {
+    "formula": "肯定句：Subject + was/were + V-ing；否定句：Subject + was/were + not + V-ing；疑问句：Was/Were + subject + V-ing?",
+    "explanation": "过去进行时的核心是“过去某个时间正在进行”。was 用于 I、he、she、it 和单数名词；were 用于 you、we、they 和复数名词。V-ing 表示动作在过去某一时间点尚未完成。它不强调动作是否完成，而强调动作当时正在发生。因此，过去进行时常与 at 8 p.m. yesterday、at that moment、when、while、during that period 等时间表达连用。在学术英语中，过去进行时可以用来描述研究进行中的背景状态，例如某项调查正在收集数据，或某种趋势在某一时期内持续发展。",
+    "examples": [
+      {
+        "en": "At 9 p.m. last night, I was reviewing my notes for the PTE speaking test.",
+        "zh": "昨晚九点，我正在复习 PTE 口语考试笔记。"
+      },
+      {
+        "en": "The researchers were collecting data when the new policy was introduced.",
+        "zh": "新政策出台时，研究人员正在收集数据。"
+      },
+      {
+        "en": "While the students were completing the questionnaire, the instructor was explaining the next task.",
+        "zh": "学生们正在填写问卷时，老师正在解释下一项任务。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示过去某一具体时间正在发生的动作",
+      "description": "当句子明确指出过去的某个时间点，并强调该时刻动作正在进行时，使用过去进行时。此用法常见于叙事类口语、写作 Task 1 图表描述中的背景说明，以及听力复述中对事件过程的描述。",
+      "examples": [
+        {
+          "en": "At this time yesterday, the candidates were waiting outside the examination room.",
+          "zh": "昨天这个时候，考生们正在考场外等待。"
+        },
+        {
+          "en": "At the beginning of the experiment, the participants were sitting in a quiet room.",
+          "zh": "实验开始时，参与者正坐在一个安静的房间里。"
+        }
+      ]
+    },
+    {
+      "title": "表示一个过去进行中的动作被另一个动作打断",
+      "description": "过去进行时常表示较长、正在发生的背景动作；一般过去时表示较短、突然发生并打断背景动作的事件。通常 when 引导打断性动作，while 引导正在进行的背景动作。",
+      "examples": [
+        {
+          "en": "I was taking notes when the lecturer changed the slide.",
+          "zh": "讲师换幻灯片时，我正在记笔记。"
+        },
+        {
+          "en": "The company was expanding its online services when the economic downturn occurred.",
+          "zh": "经济衰退发生时，该公司正在扩展其线上服务。"
+        }
+      ]
+    },
+    {
+      "title": "表示过去某一段时间内持续进行的临时活动",
+      "description": "过去进行时可以描述某个过去阶段内持续但并非永久的活动。它通常强调该活动在当时是暂时性的，而不是长期事实。此用法在 IELTS Speaking Part 2 描述经历时很实用。",
+      "examples": [
+        {
+          "en": "During my final year at university, I was working on a research project about renewable energy.",
+          "zh": "大学最后一年，我正在做一个关于可再生能源的研究项目。"
+        },
+        {
+          "en": "At that time, many people were using public transport because fuel prices were rising.",
+          "zh": "当时，由于燃油价格正在上涨，许多人正在使用公共交通。"
+        }
+      ]
+    },
+    {
+      "title": "表示两个过去动作同时进行",
+      "description": "当两个动作在过去同一时间段内同时发生，并且都具有持续性时，两个分句通常都使用过去进行时。while 常用于连接这类句子。",
+      "examples": [
+        {
+          "en": "While the teacher was explaining the graph, the students were identifying key trends.",
+          "zh": "老师正在讲解图表时，学生们正在识别主要趋势。"
+        },
+        {
+          "en": "The population was increasing while the supply of affordable housing was declining.",
+          "zh": "人口正在增长的同时，可负担住房的供应正在下降。"
+        }
+      ]
+    },
+    {
+      "title": "用于描写故事或经历中的背景环境",
+      "description": "在叙述过去经历时，过去进行时常用于铺垫背景，例如天气、人物活动、环境状态等；随后用一般过去时推动主要事件发展。这种组合能让 IELTS 口语叙述更自然。",
+      "examples": [
+        {
+          "en": "It was raining heavily, and people were rushing to the station when I arrived.",
+          "zh": "我到达时，雨下得很大，人们正匆忙赶往车站。"
+        },
+        {
+          "en": "The audience was listening carefully when the speaker presented the main argument.",
+          "zh": "演讲者提出主要论点时，观众正在认真聆听。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I was study English at 8 p.m. yesterday.",
+      "correct": "I was studying English at 8 p.m. yesterday.",
+      "explanation": "过去进行时必须使用“was/were + V-ing”。中国学习者常遗漏动词的 -ing 形式，误把原形动词直接放在 was/were 后面。"
+    },
+    {
+      "wrong": "They was preparing for the IELTS test.",
+      "correct": "They were preparing for the IELTS test.",
+      "explanation": "主语 they 是复数，be 动词过去式应使用 were。was 只能用于 I、he、she、it 或单数名词。"
+    },
+    {
+      "wrong": "When I was arriving, the lecture started.",
+      "correct": "When I arrived, the lecture was starting.",
+      "explanation": "arrive 通常是短暂动作，表示“到达”这一瞬间，一般用一般过去时。过去进行时更适合较长、持续的动作。"
+    },
+    {
+      "wrong": "I was knowing the answer.",
+      "correct": "I knew the answer.",
+      "explanation": "know 是 stative verb（状态动词），通常不用进行时。表示过去知道某事时，应使用一般过去时 knew。类似动词还包括 believe、understand、prefer、own、seem 等。"
+    },
+    {
+      "wrong": "While I watched the lecture, I was taking notes.",
+      "correct": "While I was watching the lecture, I was taking notes.",
+      "explanation": "while 通常强调动作持续进行，因此与过去进行时搭配更自然。如果两个动作同时持续发生，两个分句都可以使用过去进行时。"
+    },
+    {
+      "wrong": "At 10 o'clock yesterday, she prepared her presentation.",
+      "correct": "At 10 o'clock yesterday, she was preparing her presentation.",
+      "explanation": "如果强调昨天十点这个具体时间点她正在做某事，应使用过去进行时。一般过去时 prepared 更强调动作已完成，语义重点不同。"
+    },
+    {
+      "wrong": "The number of users was increase during this period.",
+      "correct": "The number of users was increasing during this period.",
+      "explanation": "在图表描述中，若强调某一过去阶段内数据持续上升，应使用 was increasing，而不是 was + 动词原形。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "中高频",
+    "description": "过去进行时在 PTE Academic 中主要用于口语叙述、听力复述、作文举例和图表描述。它帮助考生准确表达过去某一时间点的背景动作或正在发展的趋势。在 Retell Lecture 中，若讲座内容涉及研究过程、实验背景或历史事件，过去进行时可以使复述更连贯。在 Describe Image 中，如果图表呈现过去某段时间内持续变化的趋势，可以使用 was/were increasing、was/were declining、was/were fluctuating 等结构。在 Summarize Written Text 和 Essay 中，过去进行时可用于说明某项政策、调查或社会现象在过去某一阶段内正在发生，但应避免过度使用，以免造成时态混乱。",
+    "sections": [
+      "Read Aloud：识别含有 was/were + V-ing 的句子结构，正确处理连读和弱读。",
+      "Repeat Sentence：听到过去进行时结构时，需要准确复述 be 动词和 -ing 形式。",
+      "Describe Image：描述过去某一阶段图表趋势时，可使用 was increasing、were declining、was fluctuating 等表达。",
+      "Retell Lecture：复述讲座中的背景动作、实验过程或历史场景时常用过去进行时。",
+      "Summarize Spoken Text：概括讲座内容时，可用于描述讲者提到的过去持续活动。",
+      "Write Essay：在举例说明历史背景、社会变化或研究过程时，可使用过去进行时提高语法多样性。"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The data were indicating a gradual decline during the observed period.",
+      "translation": "在观察期间，数据正在显示出逐渐下降的趋势。"
+    },
+    {
+      "pattern": "The researchers were examining the relationship between income and educational outcomes.",
+      "translation": "研究人员当时正在考察收入与教育结果之间的关系。"
+    },
+    {
+      "pattern": "The government was implementing a series of measures to reduce unemployment.",
+      "translation": "政府当时正在实施一系列措施以降低失业率。"
+    },
+    {
+      "pattern": "While the urban population was growing, public infrastructure was becoming increasingly strained.",
+      "translation": "城市人口正在增长的同时，公共基础设施正承受越来越大的压力。"
+    },
+    {
+      "pattern": "The survey was being conducted when the policy changes were announced.",
+      "translation": "政策变化被宣布时，该调查正在进行中。"
+    },
+    {
+      "pattern": "Many participants were reporting similar concerns during the interview process.",
+      "translation": "在访谈过程中，许多参与者正在报告类似的担忧。"
+    },
+    {
+      "pattern": "The economy was recovering slowly after a prolonged period of instability.",
+      "translation": "在经历长期不稳定之后，经济当时正在缓慢复苏。"
+    },
+    {
+      "pattern": "The proportion of elderly residents was rising steadily throughout the decade.",
+      "translation": "在整个十年中，老年居民的比例正在稳步上升。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "was/were increasing steadily",
+      "translation": "正在稳步增加"
+    },
+    {
+      "phrase": "was/were declining gradually",
+      "translation": "正在逐渐下降"
+    },
+    {
+      "phrase": "was/were fluctuating significantly",
+      "translation": "正在显著波动"
+    },
+    {
+      "phrase": "was/were conducting research",
+      "translation": "正在进行研究"
+    },
+    {
+      "phrase": "was/were collecting data",
+      "translation": "正在收集数据"
+    },
+    {
+      "phrase": "was/were preparing for an examination",
+      "translation": "正在备考"
+    },
+    {
+      "phrase": "was/were discussing a proposal",
+      "translation": "正在讨论一项提案"
+    },
+    {
+      "phrase": "was/were experiencing rapid growth",
+      "translation": "正在经历快速增长"
+    },
+    {
+      "phrase": "was/were facing serious challenges",
+      "translation": "正面临严重挑战"
+    },
+    {
+      "phrase": "was/were working on a project",
+      "translation": "正在做一个项目"
+    }
+  ],
+  "ai_tips": [
+    "判断是否使用过去进行时，可以先问自己：句子是否强调“过去某一刻正在发生”？如果答案是肯定的，通常可以使用 was/were + V-ing。",
+    "在 PTE 口语中，过去进行时不要说得过快而吞掉 was 或 were；机器评分会关注语法完整性和发音清晰度。",
+    "写作中不要把所有过去事件都写成过去进行时。主要事件通常用一般过去时，背景动作才常用过去进行时。",
+    "描述图表时，如果数据在过去某段时间内持续变化，可以使用“The figure was rising/falling/fluctuating”来体现动态趋势。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用过去进行时完成句子：At 7 a.m. yesterday, she ________ (prepare) for her IELTS speaking test.",
+      "answer": "At 7 a.m. yesterday, she was preparing for her IELTS speaking test."
+    },
+    {
+      "question": "选择正确答案：When the teacher entered the classroom, the students ________ notes. A. took B. were taking C. are taking",
+      "answer": "B. were taking。句子表示老师进入教室时，学生正在记笔记，因此使用过去进行时。"
+    },
+    {
+      "question": "改错：They was discussing the results when the manager arrived.",
+      "answer": "They were discussing the results when the manager arrived. 主语 They 是复数，应使用 were。"
+    },
+    {
+      "question": "翻译句子：当讲师解释这个理论时，学生们正在认真听。",
+      "answer": "While the lecturer was explaining the theory, the students were listening carefully."
+    },
+    {
+      "question": "用 when 连接两个动作：I was writing my essay. The Internet connection failed.",
+      "answer": "I was writing my essay when the Internet connection failed."
+    },
+    {
+      "question": "用 while 连接两个同时发生的动作：The population was increasing. Housing prices were rising.",
+      "answer": "While the population was increasing, housing prices were rising."
+    },
+    {
+      "question": "判断正误并改正：I was believing that online learning was more convenient.",
+      "answer": "错误。应改为：I believed that online learning was more convenient. believe 是状态动词，通常不用进行时。"
+    },
+    {
+      "question": "根据中文写英文：在调查期间，研究人员正在收集来自不同年龄组的数据。",
+      "answer": "During the survey, the researchers were collecting data from different age groups."
+    },
+    {
+      "question": "选择合适时态：At that moment, the number of international students ________ rapidly. A. increased B. was increasing C. has increased",
+      "answer": "B. was increasing。At that moment 表示过去某一时刻，强调数据正在变化。"
+    },
+    {
+      "question": "将句子改为否定句：The company was expanding its services in rural areas.",
+      "answer": "The company was not expanding its services in rural areas."
+    }
+  ]
+}

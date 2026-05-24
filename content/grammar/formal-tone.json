@@ -1,0 +1,271 @@
+{
+  "slug": "formal-tone",
+  "category": {
+    "zh": "学术写作",
+    "en": "Academic Writing"
+  },
+  "title": {
+    "zh": "正式语气",
+    "en": "Formal Tone"
+  },
+  "difficulty": "中级至高级",
+  "summary": {
+    "zh": "正式语气指在学术写作和考试写作中使用客观、准确、克制且专业的语言表达观点。对于准备 PTE Academic 和 IELTS 的中国英语学习者来说，Formal Tone 能帮助文章显得更学术、更有逻辑，也能减少口语化、情绪化和绝对化表达。正式语气通常避免 contractions、slang、personal language、emotional adjectives 和 vague words，并倾向使用名词化结构、被动语态、hedging language、学术动词和清晰的逻辑连接。"
+  },
+  "structure": {
+    "formula": "Formal Tone = 客观表达 + 精准词汇 + 学术句式 + 适度谨慎 + 避免口语化",
+    "explanation": "正式语气并不是把句子写得复杂，而是让表达更符合学术场景。写作时应减少 I, you, we 等个人化表达，避免 a lot of, kids, stuff, really, very bad 等口语或模糊词汇；同时使用 more precise vocabulary，例如 significant, considerable, individuals, factors, consequences。正式写作还常使用 passive voice、nominalisation、impersonal structures 和 hedging expressions，使论述更客观、更符合 PTE Write Essay 与 IELTS Writing Task 2 的评分要求。",
+    "examples": [
+      {
+        "en": "Informal: I think online learning is really good for students.",
+        "zh": "非正式：我认为在线学习对学生真的很好。"
+      },
+      {
+        "en": "Formal: Online learning can provide students with flexible access to educational resources.",
+        "zh": "正式：在线学习能够为学生提供灵活获取教育资源的机会。"
+      },
+      {
+        "en": "Informal: People get a lot of problems because of pollution.",
+        "zh": "非正式：人们因为污染遇到很多问题。"
+      },
+      {
+        "en": "Formal: Pollution may lead to a range of public health and environmental challenges.",
+        "zh": "正式：污染可能导致一系列公共健康和环境方面的挑战。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达观点时保持客观",
+      "description": "在 IELTS Writing Task 2 和 PTE Write Essay 中，考生需要提出立场，但不应过度依赖 I think 或 I believe。更正式的方式是使用 impersonal structures 或 objective verbs，让观点看起来更有学术依据。",
+      "examples": [
+        {
+          "en": "It can be argued that governments should invest more in renewable energy.",
+          "zh": "可以认为，政府应在可再生能源方面投入更多资金。"
+        },
+        {
+          "en": "This essay will discuss the reasons why urbanisation has increased housing pressure.",
+          "zh": "本文将讨论城市化为何加剧住房压力。"
+        }
+      ]
+    },
+    {
+      "title": "描述原因、结果和影响",
+      "description": "正式写作中，原因和结果需要用准确的逻辑动词或短语表达，例如 contribute to, result in, lead to, be associated with。避免简单重复 because 或 so。",
+      "examples": [
+        {
+          "en": "Excessive screen time may contribute to reduced concentration among adolescents.",
+          "zh": "过度使用电子屏幕可能导致青少年注意力下降。"
+        },
+        {
+          "en": "The decline in public transport usage has resulted in heavier traffic congestion.",
+          "zh": "公共交通使用率下降已经导致更严重的交通拥堵。"
+        }
+      ]
+    },
+    {
+      "title": "比较不同观点",
+      "description": "学术写作经常要求比较观点。正式语气应使用 balanced language，避免说某一方 completely wrong。可使用 while, whereas, although, from another perspective 等结构。",
+      "examples": [
+        {
+          "en": "While technology improves workplace efficiency, it may also reduce certain employment opportunities.",
+          "zh": "尽管科技提高了工作效率，它也可能减少某些就业机会。"
+        },
+        {
+          "en": "Whereas some individuals prioritise economic growth, others emphasise environmental protection.",
+          "zh": "有些人优先考虑经济增长，而另一些人则强调环境保护。"
+        }
+      ]
+    },
+    {
+      "title": "提出解决方案",
+      "description": "在解决问题类作文中，应避免口语化命令，如 people must do this。更正式的表达可以使用 should be encouraged to, measures should be implemented, it is essential to。",
+      "examples": [
+        {
+          "en": "Effective measures should be implemented to reduce food waste in urban communities.",
+          "zh": "应采取有效措施来减少城市社区中的食物浪费。"
+        },
+        {
+          "en": "Individuals should be encouraged to adopt more sustainable consumption habits.",
+          "zh": "应鼓励个人采取更可持续的消费习惯。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I think the government should give people a lot of money because life is very hard.",
+      "correct": "It can be argued that the government should provide greater financial support, as many citizens face considerable living pressures.",
+      "explanation": "错误句中过度使用 I think, a lot of, very hard，语气口语化且不够精确。正式表达应减少个人化开头，使用 financial support, considerable living pressures 等更学术的词汇。"
+    },
+    {
+      "wrong": "Kids nowadays are addicted to phones, and this is super bad.",
+      "correct": "Many children today are heavily dependent on mobile devices, which may have negative effects on their cognitive and social development.",
+      "explanation": "kids 和 super bad 属于口语表达，不适合学术写作。children, mobile devices, negative effects, cognitive and social development 更正式、更具体。"
+    },
+    {
+      "wrong": "You can see that pollution is everywhere.",
+      "correct": "It is evident that pollution has become a widespread environmental issue.",
+      "explanation": "You can see that 是直接对读者说话，学术写作中应避免第二人称 you。It is evident that 是更客观的 academic expression。"
+    },
+    {
+      "wrong": "The internet is good and bad, so we should use it carefully.",
+      "correct": "The internet offers substantial benefits, although its potential risks require careful management.",
+      "explanation": "good and bad 过于简单，so 连接逻辑较弱。正式写作应使用 benefits, potential risks, require careful management 等更准确的表达。"
+    },
+    {
+      "wrong": "Students don't have enough time to finish homework.",
+      "correct": "Students do not have sufficient time to complete their assignments.",
+      "explanation": "正式写作中应避免 contractions，如 don't 应写成 do not。homework 可根据语境替换为 assignments，使表达更学术。"
+    },
+    {
+      "wrong": "This problem is getting bigger and bigger.",
+      "correct": "This problem has become increasingly serious.",
+      "explanation": "bigger and bigger 口语化且不精确。increasingly serious 更符合正式语气，也常用于 PTE 和 IELTS 写作。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "Formal Tone 在 PTE Academic 的写作评分中非常重要，尤其影响 Written Discourse、Grammar 和 Vocabulary。Write Essay 需要考生用正式、连贯、客观的语言展开论证；Summarize Written Text 也要求压缩原文信息时保持学术语气，避免主观评价和口语化表达。PTE 写作通常不需要文学化语言，而需要准确、清晰、逻辑性强的 academic English。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Reading and Writing: Fill in the Blanks",
+      "Summarize Spoken Text",
+      "Listening: Write from Dictation"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It can be argued that + clause",
+      "translation": "可以认为……"
+    },
+    {
+      "pattern": "There is growing evidence that + clause",
+      "translation": "越来越多的证据表明……"
+    },
+    {
+      "pattern": "This issue is closely associated with + noun phrase",
+      "translation": "这一问题与……密切相关"
+    },
+    {
+      "pattern": "A key factor contributing to + noun phrase + is + noun phrase",
+      "translation": "导致……的一个关键因素是……"
+    },
+    {
+      "pattern": "The extent to which + clause + remains a matter of debate",
+      "translation": "……的程度仍然是一个有争议的问题"
+    },
+    {
+      "pattern": "Measures should be taken to + verb phrase",
+      "translation": "应采取措施来……"
+    },
+    {
+      "pattern": "This may have significant implications for + noun phrase",
+      "translation": "这可能对……产生重要影响"
+    },
+    {
+      "pattern": "Although + clause, it is important to recognise that + clause",
+      "translation": "尽管……，但重要的是要认识到……"
+    },
+    {
+      "pattern": "The primary concern is not + noun phrase, but rather + noun phrase",
+      "translation": "主要问题并不是……，而是……"
+    },
+    {
+      "pattern": "From a long-term perspective, + clause",
+      "translation": "从长期来看，……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "formal academic tone",
+      "translation": "正式的学术语气"
+    },
+    {
+      "phrase": "objective analysis",
+      "translation": "客观分析"
+    },
+    {
+      "phrase": "precise vocabulary",
+      "translation": "精准词汇"
+    },
+    {
+      "phrase": "balanced argument",
+      "translation": "平衡的论证"
+    },
+    {
+      "phrase": "considerable impact",
+      "translation": "显著影响"
+    },
+    {
+      "phrase": "potential consequences",
+      "translation": "潜在后果"
+    },
+    {
+      "phrase": "effective measures",
+      "translation": "有效措施"
+    },
+    {
+      "phrase": "public concern",
+      "translation": "公众关注的问题"
+    },
+    {
+      "phrase": "economic development",
+      "translation": "经济发展"
+    },
+    {
+      "phrase": "environmental sustainability",
+      "translation": "环境可持续性"
+    },
+    {
+      "phrase": "social inequality",
+      "translation": "社会不平等"
+    },
+    {
+      "phrase": "educational opportunities",
+      "translation": "教育机会"
+    }
+  ],
+  "ai_tips": [
+    "检查作文时，优先替换口语词汇，例如把 a lot of 改为 numerous, considerable 或 a significant amount of。",
+    "避免频繁使用 I think。议论文中可使用 It can be argued that, It is evident that 或 This suggests that。",
+    "不要为了正式而写过长的句子。PTE 写作更重视清晰度、语法准确性和逻辑连贯。",
+    "使用 hedging language，如 may, can, tend to, is likely to，避免过度绝对化表达。",
+    "正式语气不等于堆砌高级词汇。只有在语义准确的情况下，academic vocabulary 才能提高表达质量。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为正式语气：I think social media is really bad for young people.",
+      "answer": "It can be argued that social media may have negative effects on young people."
+    },
+    {
+      "question": "将句子改写为正式语气：A lot of people don't like living in big cities because it is too noisy.",
+      "answer": "Many individuals are reluctant to live in large cities because of excessive noise pollution."
+    },
+    {
+      "question": "选择更正式的表达：A. kids B. children",
+      "answer": "B. children。children 比 kids 更适合学术写作。"
+    },
+    {
+      "question": "将句子改写为正式语气：You can see that climate change is a big problem.",
+      "answer": "It is evident that climate change is a major global challenge."
+    },
+    {
+      "question": "将句子改写为正式语气：The government must fix this problem fast.",
+      "answer": "The government should implement effective measures to address this issue promptly."
+    },
+    {
+      "question": "指出下列句子的问题：Students can't get good jobs because the economy is bad.",
+      "answer": "问题包括 contraction can't、表达 good jobs 和 bad 过于简单。可改为：Students may find it difficult to obtain stable employment due to unfavourable economic conditions."
+    },
+    {
+      "question": "用正式语气完成句子：From a long-term perspective, online education...",
+      "answer": "From a long-term perspective, online education may expand access to learning opportunities and reduce geographical barriers."
+    },
+    {
+      "question": "将口语表达 stuff 替换为一个更正式的词，并造句。",
+      "answer": "可替换为 materials, resources 或 factors。例句：Students should have access to sufficient learning resources."
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "slug": "sst-academic-structures",
+  "category": {
+    "zh": "PTE 高频语法",
+    "en": "PTE Grammar Patterns"
+  },
+  "title": {
+    "zh": "SST 学术句型",
+    "en": "SST Academic Structures"
+  },
+  "difficulty": "Intermediate to Advanced",
+  "summary": {
+    "zh": "本课聚焦 PTE Academic 中 Summarize Spoken Text（SST）常用的学术句型，帮助中国考生把听到的口语讲座内容转化为逻辑清晰、语法准确、表达正式的书面摘要。SST 不要求逐字复述，而要求用 academic reporting structures 概括核心观点、原因、结果、对比和例证。掌握这些句型可以提升内容组织、语法多样性和学术表达准确度，同时也适用于 IELTS Listening summary、Writing Task 2 以及学术类口语表达。"
+  },
+  "structure": {
+    "formula": "The speaker discusses / argues / explains + noun phrase / that-clause, emphasizing + key idea, while also mentioning + supporting detail.",
+    "explanation": "SST 摘要通常使用第三人称客观转述结构，即 reporting verb 加名词短语或 that-clause。核心语法包括：主句用于交代讲者的主要观点，非谓语结构如 emphasizing、highlighting、suggesting 用于补充重点，while / whereas / although 用于连接对比信息，because / due to / as a result 用于表达因果关系。中国考生需要注意，SST 应避免使用口语化表达和第一人称评论，例如 I think 或 in my opinion，而应使用正式、简洁、客观的 academic structures。",
+    "examples": [
+      {
+        "en": "The speaker explains that urbanization has significantly changed social interaction, emphasizing the growing importance of public infrastructure.",
+        "zh": "讲者解释说，城市化已经显著改变了社会互动，并强调公共基础设施日益增长的重要性。"
+      },
+      {
+        "en": "The lecture focuses on the relationship between economic growth and environmental pressure, while also mentioning the need for sustainable policies.",
+        "zh": "该讲座重点讨论经济增长与环境压力之间的关系，同时也提到了可持续政策的必要性。"
+      },
+      {
+        "en": "The speaker argues that technological innovation can improve productivity, but it may also create new challenges for employment.",
+        "zh": "讲者认为，技术创新可以提高生产力，但也可能给就业带来新的挑战。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "概括讲座主题",
+      "description": "当音频开头介绍主题或中心问题时，可使用 discuss、focus on、deal with、be concerned with 等 academic reporting verbs。该结构适合 SST 第一陈述句，用来快速建立摘要的主题范围。",
+      "examples": [
+        {
+          "en": "The speaker discusses the impact of climate change on agricultural production.",
+          "zh": "讲者讨论了气候变化对农业生产的影响。"
+        },
+        {
+          "en": "The lecture focuses on how education systems respond to technological change.",
+          "zh": "该讲座重点说明教育体系如何应对技术变化。"
+        }
+      ]
+    },
+    {
+      "title": "转述核心观点",
+      "description": "当讲者表达判断、解释原因或提出论点时，应使用 argue that、claim that、suggest that、point out that 等结构。此类 that-clause 可以帮助考生准确表达完整观点，避免句子碎片化。",
+      "examples": [
+        {
+          "en": "The speaker argues that renewable energy is essential for reducing long-term environmental risks.",
+          "zh": "讲者认为，可再生能源对于降低长期环境风险至关重要。"
+        },
+        {
+          "en": "The lecturer points out that population growth places increasing pressure on public services.",
+          "zh": "讲者指出，人口增长给公共服务带来了越来越大的压力。"
+        }
+      ]
+    },
+    {
+      "title": "表达原因与结果",
+      "description": "SST 中经常出现 because、therefore、as a result、lead to、contribute to 等因果信息。正式摘要中可使用 due to、as a consequence、result in、be associated with 等结构，使表达更学术化。",
+      "examples": [
+        {
+          "en": "The speaker explains that rising temperatures may result in lower crop yields in vulnerable regions.",
+          "zh": "讲者解释说，气温上升可能导致脆弱地区的农作物产量下降。"
+        },
+        {
+          "en": "Economic inequality can contribute to social instability and reduced access to education.",
+          "zh": "经济不平等可能导致社会不稳定，并减少受教育机会。"
+        }
+      ]
+    },
+    {
+      "title": "连接对比信息",
+      "description": "如果音频中出现不同观点、利弊分析或过去与现在的比较，可使用 while、whereas、although、however、in contrast 等结构。SST 摘要中对比句应保持简洁，避免堆砌过多细节。",
+      "examples": [
+        {
+          "en": "While digital communication improves efficiency, it may reduce face-to-face interaction.",
+          "zh": "虽然数字交流提高了效率，但它可能减少面对面互动。"
+        },
+        {
+          "en": "Traditional industries rely on manual labor, whereas modern industries increasingly depend on automation.",
+          "zh": "传统产业依赖人工劳动，而现代产业越来越依赖自动化。"
+        }
+      ]
+    },
+    {
+      "title": "整合例子与细节",
+      "description": "SST 不需要列出所有例子，但可以用 including、such as、particularly、for example 等结构选择性加入关键例证。例子必须服务于主题，不能取代中心观点。",
+      "examples": [
+        {
+          "en": "The speaker mentions several environmental challenges, including air pollution, water scarcity, and habitat loss.",
+          "zh": "讲者提到了几项环境挑战，包括空气污染、水资源短缺和栖息地丧失。"
+        },
+        {
+          "en": "The lecture refers to public health measures such as vaccination programs and disease monitoring.",
+          "zh": "该讲座提到了公共卫生措施，例如疫苗接种项目和疾病监测。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The speaker said about climate change affects agriculture.",
+      "correct": "The speaker talked about how climate change affects agriculture.",
+      "explanation": "say 后面不能直接接 about 加完整观点。可以使用 talk about + noun phrase，或 say that + clause。中国考生常把“说到关于”直译为 said about，导致结构错误。"
+    },
+    {
+      "wrong": "The lecture is mainly talk about education.",
+      "correct": "The lecture mainly talks about education.",
+      "explanation": "一般现在时中，主语 the lecture 是第三人称单数，动词应使用 talks。若使用 be 动词，则应改为 The lecture is mainly about education。不要把 be 动词和实义动词原形直接连用。"
+    },
+    {
+      "wrong": "The speaker mentioned that the technology improve productivity.",
+      "correct": "The speaker mentioned that technology improves productivity.",
+      "explanation": "technology 作为不可数或抽象名词时通常不加 the，且在一般现在时中作第三人称单数主语，动词应为 improves。SST 中常用一般现在时总结普遍观点。"
+    },
+    {
+      "wrong": "Because the population is increasing, so the government needs more resources.",
+      "correct": "Because the population is increasing, the government needs more resources.",
+      "explanation": "英文中 because 和 so 通常不能在同一个主从复合句中重复表达因果。中文习惯说“因为……所以……”，但英文只需保留 because 或 so 其中一个。"
+    },
+    {
+      "wrong": "The speaker explains the climate change is serious.",
+      "correct": "The speaker explains that climate change is serious.",
+      "explanation": "explain 后接完整句子时需要 that-clause。缺少 that 虽然在某些口语中可省略，但考试写作中保留 that 更清晰、更正式。"
+    },
+    {
+      "wrong": "There has many reasons for this problem.",
+      "correct": "There are many reasons for this problem.",
+      "explanation": "there be 结构中不能用 there has 表示“有”。many reasons 是复数，所以应使用 there are。该错误常受中文“有很多原因”影响。"
+    },
+    {
+      "wrong": "The speaker gave many informations about health.",
+      "correct": "The speaker gave a lot of information about health.",
+      "explanation": "information 是不可数名词，不能加 s，也不能直接与 many 搭配。应使用 much information、a lot of information 或 several pieces of information。"
+    },
+    {
+      "wrong": "Although technology is useful, but it also causes problems.",
+      "correct": "Although technology is useful, it also causes problems.",
+      "explanation": "although 和 but 不能在同一个让步复合句中同时使用。中文“虽然……但是……”不能逐字翻译成 although...but。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "Very High",
+    "description": "SST 是 PTE 中最依赖学术转述能力的题型之一。考生需要在 50 到 70 词左右的摘要中呈现主题、主要观点和关键细节，因此高频使用 reporting structures、cause-and-effect structures、contrast structures 和 noun phrases。准确使用这些句型有助于提高 grammar、form、content 和 vocabulary 评分。句子不宜过长，建议使用 2 到 3 个结构稳定的复合句，而不是多个短句或一个过度复杂的长句。",
+    "sections": [
+      "Summarize Spoken Text",
+      "Write From Dictation",
+      "Listening Fill in the Blanks",
+      "Reading and Writing Fill in the Blanks",
+      "Summarize Written Text",
+      "Essay Writing"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The speaker discusses the relationship between A and B.",
+      "translation": "讲者讨论了 A 与 B 之间的关系。"
+    },
+    {
+      "pattern": "The lecture focuses on the impact of A on B.",
+      "translation": "该讲座重点讨论 A 对 B 的影响。"
+    },
+    {
+      "pattern": "The speaker argues that A plays a crucial role in B.",
+      "translation": "讲者认为 A 在 B 中起着关键作用。"
+    },
+    {
+      "pattern": "The lecturer points out that A is closely associated with B.",
+      "translation": "讲者指出 A 与 B 密切相关。"
+    },
+    {
+      "pattern": "A has led to significant changes in B.",
+      "translation": "A 已经导致 B 发生显著变化。"
+    },
+    {
+      "pattern": "A can contribute to B by improving C.",
+      "translation": "A 可以通过改善 C 来促进 B。"
+    },
+    {
+      "pattern": "While A offers several benefits, it also raises concerns about B.",
+      "translation": "虽然 A 带来若干好处，但它也引发了关于 B 的担忧。"
+    },
+    {
+      "pattern": "The speaker highlights the importance of A in addressing B.",
+      "translation": "讲者强调了 A 在解决 B 方面的重要性。"
+    },
+    {
+      "pattern": "This issue is particularly relevant to A because of B.",
+      "translation": "由于 B，这一问题与 A 尤其相关。"
+    },
+    {
+      "pattern": "The lecture concludes by emphasizing the need for A.",
+      "translation": "该讲座最后强调了对 A 的需求。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "social interaction",
+      "translation": "社会互动"
+    },
+    {
+      "phrase": "economic growth",
+      "translation": "经济增长"
+    },
+    {
+      "phrase": "environmental pressure",
+      "translation": "环境压力"
+    },
+    {
+      "phrase": "sustainable development",
+      "translation": "可持续发展"
+    },
+    {
+      "phrase": "public infrastructure",
+      "translation": "公共基础设施"
+    },
+    {
+      "phrase": "technological innovation",
+      "translation": "技术创新"
+    },
+    {
+      "phrase": "educational outcomes",
+      "translation": "教育成果"
+    },
+    {
+      "phrase": "healthcare services",
+      "translation": "医疗服务"
+    },
+    {
+      "phrase": "policy implementation",
+      "translation": "政策实施"
+    },
+    {
+      "phrase": "long-term consequences",
+      "translation": "长期后果"
+    },
+    {
+      "phrase": "academic performance",
+      "translation": "学业表现"
+    },
+    {
+      "phrase": "cultural diversity",
+      "translation": "文化多样性"
+    }
+  ],
+  "ai_tips": [
+    "写 SST 时先确定讲座主题，再选择一个 reporting verb，例如 discusses、explains、argues 或 highlights。不要每次都使用 says，因为它不够学术。",
+    "优先使用名词短语压缩信息，例如 the impact of climate change on agriculture，比 climate change affects agriculture and this is important 更正式。",
+    "如果听到多个细节，只保留与主旨直接相关的 2 到 3 个关键词，避免把摘要写成信息清单。",
+    "句子结构建议采用：主题句 + 因果或对比句 + 总结句。这样既能覆盖内容，又能保持语法稳定。",
+    "避免在 SST 中加入个人判断，例如 I believe、I agree 或 from my perspective。SST 是客观摘要，不是议论文。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为更适合 SST 的学术表达：The man talks about cities and people have many problems because cities are growing.",
+      "answer": "The speaker discusses the challenges caused by urban growth, particularly its impact on residents and public services."
+    },
+    {
+      "question": "用 while 连接两个观点：Online learning is convenient. It may reduce classroom interaction.",
+      "answer": "While online learning is convenient, it may reduce classroom interaction."
+    },
+    {
+      "question": "选择合适的 reporting verb 完成句子：The speaker ______ that renewable energy can reduce environmental damage.",
+      "answer": "The speaker argues that renewable energy can reduce environmental damage. 也可以使用 explains、suggests 或 points out，具体取决于音频语气。"
+    },
+    {
+      "question": "纠正语法错误：Because technology is developing rapidly, so many jobs are changing.",
+      "answer": "Because technology is developing rapidly, many jobs are changing."
+    },
+    {
+      "question": "把中文翻译成英文：讲者强调教育在减少社会不平等方面的重要性。",
+      "answer": "The speaker emphasizes the importance of education in reducing social inequality."
+    },
+    {
+      "question": "用 result in 改写：Climate change causes extreme weather events.",
+      "answer": "Climate change can result in extreme weather events."
+    },
+    {
+      "question": "将口语化表达改为学术摘要句：The lecture says a lot of things about health and food.",
+      "answer": "The lecture focuses on the relationship between diet and public health."
+    },
+    {
+      "question": "完成 SST 句型：The speaker discusses the impact of artificial intelligence on employment, while also mentioning ______.",
+      "answer": "The speaker discusses the impact of artificial intelligence on employment, while also mentioning the need for workers to develop new skills."
+    }
+  ]
+}

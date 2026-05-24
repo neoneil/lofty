@@ -3,7 +3,8 @@ import AudioPlayer from "@/components/site/AudioPlayer";
 import { requireUser } from "@/lib/auth/require-user";
 import SstDetailClient from "./sst-detail-client";
 import Tag from "@/components/ui/tag";
-import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui-v2/button";
 type PageProps = {
     
     params: Promise<{
@@ -63,23 +64,12 @@ export default async function SstQuestionDetailPage({
                             {/* Tags */}
                             <div className="mb-1 flex items-center justify-between gap-4">
                                 {/* left */}
-                                <Link
-                                    href="/pte/listening/sst"
-                                    className="btn-primary">
-                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded">
-                                        <Image
-                                            src="/SVG/12.svg"
-                                            alt="返回列表"
-                                            width={20}
-                                            height={20}
-                                            className="
-                                            h-5 w-5 object-contain
-                                            opacity-90
-                                            transition
-                                            group-hover:scale-110"/>
-                                    </div>
-                                    <span>返回列表</span>
-                                </Link>
+              <Link href="/pte/listening/sst">
+                <Button variant="primary" size="sm" className="gap-2">
+                  <ArrowLeft size={16} />
+                  <span>返回列表</span>
+                </Button>
+              </Link>
 
                                 {/* right */}
                                 <div className="flex flex-wrap items-center justify-end gap-2">

@@ -1,0 +1,263 @@
+{
+  "slug": "paragraph-structure",
+  "category": {
+    "zh": "学术写作",
+    "en": "Academic Writing"
+  },
+  "title": {
+    "zh": "段落结构",
+    "en": "Paragraph Structure"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "段落结构是学术写作的核心组织方式，尤其适用于 PTE Academic 的 Summarize Written Text、Write Essay，以及 IELTS Writing Task 1 和 Task 2。一个有效的学术段落通常包含 topic sentence、supporting sentences、evidence or explanation 和 concluding or linking sentence。对中国英语学习者来说，段落结构的重点不是堆砌复杂词汇，而是让每个段落围绕一个明确中心展开，并通过逻辑连接展示观点、原因、例证和结果。"
+  },
+  "structure": {
+    "formula": "Topic Sentence + Explanation + Evidence/Example + Analysis + Concluding or Linking Sentence",
+    "explanation": "学术段落应遵循清晰的逻辑推进。Topic Sentence 用来提出本段中心观点；Explanation 对中心观点进行解释或限定；Evidence/Example 提供事实、数据、研究、社会现象或具体例子；Analysis 说明证据如何支持观点；Concluding or Linking Sentence 总结本段意义，或自然过渡到下一段。在 PTE 和 IELTS 写作中，考官更重视段落是否有统一中心、论证是否连贯、句子之间是否有逻辑关系，而不仅仅是语法复杂度。",
+    "examples": [
+      {
+        "en": "Online learning has become an essential component of modern education. It allows students to access academic resources regardless of location, which is particularly beneficial for those living in remote areas. For example, many universities now provide recorded lectures and digital libraries to support flexible learning. This shows that technology can reduce educational inequality when it is used effectively.",
+        "zh": "在线学习已经成为现代教育的重要组成部分。它使学生无论身处何地都能获取学术资源，这对居住在偏远地区的学生尤其有益。例如，许多大学现在提供录播课程和数字图书馆，以支持灵活学习。这表明，如果技术得到有效使用，它可以减少教育不平等。"
+      },
+      {
+        "en": "Governments should invest more in public transport to reduce urban congestion. When reliable buses and trains are available, fewer people are likely to depend on private cars for daily commuting. This can lead to lower traffic density, reduced air pollution, and improved quality of life in cities. Therefore, public transport investment is not only an environmental measure but also a practical urban planning strategy.",
+        "zh": "政府应该加大对公共交通的投资，以减少城市拥堵。当可靠的公交车和火车可供使用时，较少的人会依赖私家车进行日常通勤。这可以降低交通密度、减少空气污染，并改善城市生活质量。因此，公共交通投资不仅是一项环境措施，也是一种实用的城市规划策略。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "议论文主体段",
+      "description": "在 IELTS Writing Task 2 和 PTE Write Essay 中，主体段应围绕一个论点展开，避免一个段落同时讨论多个方向。每段最好只解决一个核心问题，例如原因、影响、优势、劣势或解决方案。",
+      "examples": [
+        {
+          "en": "One major advantage of renewable energy is its long-term environmental sustainability.",
+          "zh": "可再生能源的一个主要优势是其长期环境可持续性。"
+        },
+        {
+          "en": "This argument is supported by the fact that solar and wind power generate electricity without producing large amounts of carbon emissions.",
+          "zh": "这一论点可以通过以下事实得到支持：太阳能和风能在发电时不会产生大量碳排放。"
+        }
+      ]
+    },
+    {
+      "title": "解释原因的段落",
+      "description": "当题目要求分析原因时，段落结构应从原因本身开始，再解释其发生机制，最后说明它带来的结果。中国考生常见问题是只列出原因，却没有解释原因与结果之间的逻辑关系。",
+      "examples": [
+        {
+          "en": "A key reason for the decline in reading habits is the widespread use of digital entertainment.",
+          "zh": "阅读习惯下降的一个关键原因是数字娱乐的广泛使用。"
+        },
+        {
+          "en": "Because short videos and mobile games provide immediate stimulation, many young people find traditional reading less attractive.",
+          "zh": "由于短视频和手机游戏能提供即时刺激，许多年轻人觉得传统阅读不那么有吸引力。"
+        }
+      ]
+    },
+    {
+      "title": "讨论影响的段落",
+      "description": "影响类段落需要说明某一现象对个人、社会、经济或环境产生的具体后果。写作时应避免只使用 vague words，例如 bad、good、important，而应使用更学术的表达，如 negative consequences、economic benefits、social implications。",
+      "examples": [
+        {
+          "en": "The increasing cost of housing has significant social implications for young adults.",
+          "zh": "住房成本不断上升对年轻成年人具有重要的社会影响。"
+        },
+        {
+          "en": "It may delay marriage, reduce consumer spending, and increase financial pressure on families.",
+          "zh": "它可能推迟婚姻、减少消费支出，并增加家庭的经济压力。"
+        }
+      ]
+    },
+    {
+      "title": "图表作文中的数据描述段",
+      "description": "在 IELTS Writing Task 1 和 PTE Describe Image 相关写作训练中，段落应先概括主要趋势，再选择关键数据进行说明。不要机械罗列所有数字，而要突出变化、对比和总体特征。",
+      "examples": [
+        {
+          "en": "The most noticeable trend is a steady increase in the proportion of people using public transport between 2010 and 2020.",
+          "zh": "最明显的趋势是，2010 年至 2020 年期间使用公共交通的人口比例稳步上升。"
+        },
+        {
+          "en": "By contrast, car usage declined slightly over the same period, suggesting a gradual shift in commuting preferences.",
+          "zh": "相比之下，同一时期汽车使用率略有下降，这表明通勤偏好正在逐渐转变。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Many people use cars. Cars are convenient. Pollution is serious. Government should do something.",
+      "correct": "The widespread use of private cars contributes significantly to urban air pollution. Although cars are convenient for individual commuters, their emissions increase the concentration of harmful pollutants in densely populated areas. Therefore, governments should encourage public transport and impose stricter emission standards.",
+      "explanation": "错误句子只是把几个相关想法放在一起，没有明确的 topic sentence，也缺少因果关系和论证展开。正确版本先提出中心观点，再解释原因，最后给出合理结论。"
+    },
+    {
+      "wrong": "Firstly, technology is useful. Secondly, technology is dangerous. Thirdly, students use technology.",
+      "correct": "Technology can improve students' academic performance when it is used as a learning tool rather than a source of distraction. For instance, online platforms allow learners to review lectures, complete interactive exercises, and receive immediate feedback. These functions can make learning more efficient and personalised.",
+      "explanation": "错误段落使用了 firstly、secondly、thirdly，但这些内容没有围绕同一个中心展开。连接词不能替代逻辑。正确段落集中讨论 technology 对学习效率的积极作用。"
+    },
+    {
+      "wrong": "There are many reasons for unemployment. For example, the economy, education, companies and young people.",
+      "correct": "One important cause of youth unemployment is the mismatch between education and labour market demand. Many graduates possess theoretical knowledge but lack the practical skills required by employers. As a result, they may struggle to secure stable employment even after completing higher education.",
+      "explanation": "错误表达只是列名词，没有完整句子和解释。学术段落需要说明某个原因如何导致某个结果，而不是简单罗列关键词。"
+    },
+    {
+      "wrong": "This problem is very serious and very important and we must solve it quickly.",
+      "correct": "This issue requires immediate attention because it may undermine both economic stability and public well-being.",
+      "explanation": "错误句子过度使用 very，表达口语化且缺乏学术精确性。正确句子使用 requires immediate attention、undermine、economic stability 和 public well-being，使表达更符合 PTE 和 IELTS 写作要求。"
+    },
+    {
+      "wrong": "In my opinion, I think that the government should invest in education.",
+      "correct": "The government should invest more in education because it can improve social mobility and long-term economic growth.",
+      "explanation": "In my opinion 和 I think 重复表达个人观点。在学术写作中，尤其是考试议论文中，可以直接提出立场，并用原因支撑观点。"
+    },
+    {
+      "wrong": "Some people think online education is good. Some people think it is bad. I will discuss it.",
+      "correct": "Online education has both benefits and limitations, but its effectiveness largely depends on course design and learner discipline.",
+      "explanation": "错误段落开头过于空泛，没有清晰立场或分析角度。正确句子直接提出可讨论的中心观点，为后文展开提供方向。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "段落结构在 PTE Academic 中非常重要，尤其影响 Written Discourse、Grammar、Coherence 和 Content 评分。PTE 写作不是单纯考查长难句，而是考查考生能否在有限时间内组织清晰、逻辑完整的答案。段落应避免过短、过散或缺乏中心句。对于 Write Essay，建议使用引言段、两个主体段和结论段；对于 Summarize Written Text，虽然通常只写一句话，但仍要体现段落原文的主次关系和逻辑结构。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Reading and Writing: Fill in the Blanks",
+      "Retell Lecture"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "One significant factor is that ...",
+      "translation": "一个重要因素是……"
+    },
+    {
+      "pattern": "This can be explained by the fact that ...",
+      "translation": "这可以通过以下事实来解释：……"
+    },
+    {
+      "pattern": "A possible consequence of this trend is ...",
+      "translation": "这一趋势可能带来的一个后果是……"
+    },
+    {
+      "pattern": "This example illustrates how ...",
+      "translation": "这个例子说明了……是如何发生的。"
+    },
+    {
+      "pattern": "The evidence suggests that ...",
+      "translation": "证据表明……"
+    },
+    {
+      "pattern": "This issue is closely associated with ...",
+      "translation": "这一问题与……密切相关。"
+    },
+    {
+      "pattern": "From a long-term perspective, ...",
+      "translation": "从长期角度来看，……"
+    },
+    {
+      "pattern": "It is therefore reasonable to argue that ...",
+      "translation": "因此，可以合理地认为……"
+    },
+    {
+      "pattern": "While this view may seem persuasive, ...",
+      "translation": "尽管这一观点看似有说服力，……"
+    },
+    {
+      "pattern": "This does not necessarily mean that ...",
+      "translation": "这并不一定意味着……"
+    },
+    {
+      "pattern": "The main implication is that ...",
+      "translation": "其主要含义是……"
+    },
+    {
+      "pattern": "Such a development may lead to ...",
+      "translation": "这样的发展可能导致……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "a clear topic sentence",
+      "translation": "清晰的主题句"
+    },
+    {
+      "phrase": "supporting evidence",
+      "translation": "支持性证据"
+    },
+    {
+      "phrase": "logical progression",
+      "translation": "逻辑推进"
+    },
+    {
+      "phrase": "coherent argument",
+      "translation": "连贯的论证"
+    },
+    {
+      "phrase": "relevant example",
+      "translation": "相关例子"
+    },
+    {
+      "phrase": "cause-and-effect relationship",
+      "translation": "因果关系"
+    },
+    {
+      "phrase": "academic paragraph",
+      "translation": "学术段落"
+    },
+    {
+      "phrase": "central idea",
+      "translation": "中心思想"
+    },
+    {
+      "phrase": "develop an argument",
+      "translation": "展开论点"
+    },
+    {
+      "phrase": "provide justification",
+      "translation": "提供理由"
+    },
+    {
+      "phrase": "draw a conclusion",
+      "translation": "得出结论"
+    },
+    {
+      "phrase": "transition between paragraphs",
+      "translation": "段落之间的过渡"
+    }
+  ],
+  "ai_tips": [
+    "写每个主体段之前，先用一句中文确认本段只讲一个中心观点，再转换成英文 topic sentence。",
+    "如果段落中出现两个以上不相关的观点，应拆分为两个段落，避免影响 coherence。",
+    "PTE Write Essay 中不要为了展示词汇量而写过长段落；每段 3 到 5 句通常更容易保持语法准确和逻辑清晰。",
+    "检查段落时，可以问自己：本段第一句是否能概括后面所有句子？如果不能，说明 topic sentence 需要修改。",
+    "例子之后必须加入 analysis，说明例子为什么能证明观点；否则段落会像材料堆积，而不是论证。"
+  ],
+  "practice_questions": [
+    {
+      "question": "请判断下面句子是否适合作为学术段落的 topic sentence：There are many things about education.",
+      "answer": "不适合。这个句子过于模糊，没有明确说明教育的哪个方面。可以改为：Access to quality education plays a crucial role in reducing social inequality. 这个句子有明确中心，适合展开论证。"
+    },
+    {
+      "question": "请将下面中文中心思想改写成英文 topic sentence：政府应该改善公共交通，因为这能减少城市污染。",
+      "answer": "Governments should improve public transport because it can help reduce urban pollution."
+    },
+    {
+      "question": "请指出下面段落的问题：Social media is popular. Many people use it every day. It is interesting. Some people are addicted. Companies also use it.",
+      "answer": "问题是段落缺少明确中心观点，句子之间只是并列罗列，没有说明 social media 的具体影响。可以围绕一个方向重写，例如：Social media can negatively affect young people's concentration because it encourages frequent and fragmented forms of communication."
+    },
+    {
+      "question": "请补全段落中的分析句：Online learning offers flexibility for university students. For example, students can watch recorded lectures at any time. ________",
+      "answer": "This allows them to manage their study schedule more effectively, especially when they have part-time jobs or family responsibilities."
+    },
+    {
+      "question": "请根据段落结构公式排列以下句子：A. For example, many cities have introduced bike-sharing systems. B. Environmentally friendly transport can reduce pressure on urban infrastructure. C. This suggests that sustainable transport policies can benefit both the environment and city management. D. When more people cycle or use public transport, roads become less crowded and maintenance costs may decrease.",
+      "answer": "正确顺序是 B-D-A-C。B 是 topic sentence，D 是解释，A 是例子，C 是总结或结论句。"
+    },
+    {
+      "question": "请为以下 topic sentence 写一个 supporting sentence：Artificial intelligence may transform the future workplace.",
+      "answer": "It can automate repetitive tasks, assist decision-making, and allow employees to focus on more complex and creative responsibilities."
+    }
+  ]
+}

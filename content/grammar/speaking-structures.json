@@ -1,0 +1,335 @@
+{
+  "slug": "speaking-structures",
+  "category": {
+    "zh": "PTE 高频语法",
+    "en": "PTE Grammar Patterns"
+  },
+  "title": {
+    "zh": "Speaking 常用表达",
+    "en": "Speaking Structures"
+  },
+  "difficulty": "Intermediate",
+  "summary": {
+    "zh": "本课聚焦 PTE Academic 和 IELTS Speaking 中高频使用的口语句型结构，帮助中国考生用更自然、更连贯、更学术的方式组织答案。核心目标不是背诵复杂长句，而是掌握可快速套用的 speaking structures，例如表达观点、解释原因、举例说明、对比、让步、总结和预测。这些结构能提升 fluency、grammatical range、coherence，并减少中式英语中常见的断句混乱、主谓不一致、时态随意切换和过度使用简单句的问题。"
+  },
+  "structure": {
+    "formula": "Opening opinion + Reason/Explanation + Example/Detail + Result/Conclusion",
+    "explanation": "在 PTE 和 IELTS 口语中，一个高质量答案通常需要有清晰的逻辑层次。最实用的结构是先直接表达观点，再解释原因，然后给出例子或细节，最后用一句结果或总结收尾。该结构适用于 PTE Answer Short Question 以外的大多数口语扩展题，尤其适合 Describe Image、Retell Lecture、Respond to a Situation 以及 IELTS Part 2 和 Part 3。中国考生常见问题是只说观点而不展开，或者把多个中文想法直接翻译成英文，导致句子之间缺少连接。使用固定结构可以让回答更流畅，也能展示 complex sentences、linking devices 和 academic vocabulary。",
+    "examples": [
+      {
+        "en": "In my view, online education has become increasingly important because it provides students with greater flexibility and access to diverse learning resources.",
+        "zh": "在我看来，在线教育变得越来越重要，因为它为学生提供了更大的灵活性以及接触多样化学习资源的机会。"
+      },
+      {
+        "en": "One possible reason is that many people now prefer convenient services, especially when they have busy work schedules.",
+        "zh": "一个可能的原因是，现在许多人更喜欢便利的服务，尤其是在他们工作安排很忙的时候。"
+      },
+      {
+        "en": "For example, a student who lives in a rural area can attend high-quality online lectures without travelling to a large city.",
+        "zh": "例如，住在农村地区的学生可以参加高质量的在线课程，而不需要前往大城市。"
+      },
+      {
+        "en": "As a result, this trend is likely to make education more accessible and cost-effective in the long term.",
+        "zh": "因此，从长远来看，这一趋势可能会使教育更加容易获得，并且更具成本效益。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达个人观点",
+      "description": "在 PTE Respond to a Situation、IELTS Speaking Part 3 或一般讨论题中，考生需要迅速表达清晰立场。建议避免只说 I think，因为重复使用会显得语言单一。可以使用 In my view、From my perspective、I would argue that 等更自然和学术的表达。",
+      "examples": [
+        {
+          "en": "From my perspective, public transport should be improved because it can reduce traffic congestion and air pollution.",
+          "zh": "从我的角度来看，公共交通应该得到改善，因为它可以减少交通拥堵和空气污染。"
+        },
+        {
+          "en": "I would argue that working from home is beneficial for many employees, as it allows them to manage their time more efficiently.",
+          "zh": "我认为居家办公对许多员工有益，因为它使他们能够更高效地管理时间。"
+        }
+      ]
+    },
+    {
+      "title": "解释原因",
+      "description": "当题目要求说明 why 或 explain 时，需要用 because、since、as、This is mainly because 等结构连接原因。PTE 口语评分重视流利度和语法准确性，因此原因句应简洁、连贯，避免在一个句子中堆砌过多信息。",
+      "examples": [
+        {
+          "en": "This is mainly because digital payment is faster and more convenient than using cash.",
+          "zh": "这主要是因为电子支付比使用现金更快捷、更方便。"
+        },
+        {
+          "en": "People may choose to live in smaller cities since the cost of living is usually lower.",
+          "zh": "人们可能会选择住在较小的城市，因为生活成本通常更低。"
+        }
+      ]
+    },
+    {
+      "title": "举例说明",
+      "description": "在 speaking 中，例子可以让答案更具体，也能延长回答时间。常用结构包括 For example、For instance、A good example of this is、This can be seen in。注意例子不需要很复杂，但必须与观点直接相关。",
+      "examples": [
+        {
+          "en": "For instance, many young professionals use language-learning apps to improve their English during their commute.",
+          "zh": "例如，许多年轻职场人士在通勤时使用语言学习应用来提高英语水平。"
+        },
+        {
+          "en": "A good example of this is online banking, which enables users to transfer money within seconds.",
+          "zh": "一个很好的例子是网上银行，它使用户能够在几秒钟内转账。"
+        }
+      ]
+    },
+    {
+      "title": "描述趋势和变化",
+      "description": "PTE Describe Image 和 IELTS 图表类口语中经常需要描述上升、下降、波动和稳定。考生应掌握 there be 结构、动词趋势表达以及比较结构，例如 increased significantly、remained stable、was higher than。",
+      "examples": [
+        {
+          "en": "The number of international students increased significantly between 2015 and 2020.",
+          "zh": "2015年至2020年间，国际学生人数显著增加。"
+        },
+        {
+          "en": "By contrast, the proportion of people using traditional newspapers remained relatively stable.",
+          "zh": "相比之下，使用传统报纸的人群比例保持相对稳定。"
+        }
+      ]
+    },
+    {
+      "title": "进行对比",
+      "description": "当题目涉及两个选择、两个群体或两个时期时，可以使用 while、whereas、compared with、in contrast 等结构。对比句能展示 grammatical range，尤其适合 IELTS Part 3 和 PTE 图表描述。",
+      "examples": [
+        {
+          "en": "While older people may prefer face-to-face communication, younger generations are more likely to use social media.",
+          "zh": "虽然老年人可能更喜欢面对面交流，但年轻一代更有可能使用社交媒体。"
+        },
+        {
+          "en": "Compared with private cars, public transport is generally more affordable and environmentally friendly.",
+          "zh": "与私家车相比，公共交通通常更实惠，也更环保。"
+        }
+      ]
+    },
+    {
+      "title": "让步与平衡观点",
+      "description": "在高分口语中，考生不应只给出单一观点，而应适当展示平衡思维。常用结构包括 Although、Even though、It is true that、Despite this。让步结构可以帮助答案更成熟，但要注意主句和从句的语法完整。",
+      "examples": [
+        {
+          "en": "Although technology has made communication easier, it may also reduce the quality of face-to-face interaction.",
+          "zh": "虽然科技让交流变得更容易，但它也可能降低面对面互动的质量。"
+        },
+        {
+          "en": "It is true that studying abroad can be expensive, but it often provides students with valuable cultural experience.",
+          "zh": "出国留学确实可能很昂贵，但它通常能为学生提供宝贵的文化体验。"
+        }
+      ]
+    },
+    {
+      "title": "总结和收尾",
+      "description": "口语答案结尾不宜突然停止。可以使用 Overall、In conclusion、Therefore、For these reasons 等结构进行总结。PTE 中尤其要注意收尾句短而清晰，避免为了追求复杂而产生语法错误。",
+      "examples": [
+        {
+          "en": "Overall, I believe that renewable energy will play a crucial role in future economic development.",
+          "zh": "总体而言，我认为可再生能源将在未来经济发展中发挥关键作用。"
+        },
+        {
+          "en": "For these reasons, governments should invest more in public health and preventive care.",
+          "zh": "由于这些原因，政府应该在公共健康和预防性医疗方面投入更多。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I very agree with this idea.",
+      "correct": "I strongly agree with this idea.",
+      "explanation": "agree 是动词，不能直接用 very 修饰。very 通常修饰形容词或副词，而 strongly、completely、partly 可以修饰 agree。中国考生常受中文“非常同意”的影响，误说 very agree。"
+    },
+    {
+      "wrong": "Because technology is convenient. Many people use it every day.",
+      "correct": "Because technology is convenient, many people use it every day.",
+      "explanation": "because 引导从句时，不能单独作为完整句使用，除非是在非常口语化的简短回答中。考试口语中建议把原因从句和主句连接起来，以保持语法完整。"
+    },
+    {
+      "wrong": "People is more interested in online shopping.",
+      "correct": "People are more interested in online shopping.",
+      "explanation": "people 表示“人们”时是复数概念，谓语动词应使用 are，而不是 is。主谓一致是 PTE 和 IELTS 口语中非常常见的扣分点。"
+    },
+    {
+      "wrong": "There has many benefits of online learning.",
+      "correct": "There are many benefits of online learning.",
+      "explanation": "there be 结构表示“有”，不能直接说 there has。若主语是 many benefits，be 动词应使用 are。中文“有很多好处”容易导致考生误用 have。"
+    },
+    {
+      "wrong": "In my opinion, I think public transport is important.",
+      "correct": "In my opinion, public transport is important.",
+      "explanation": "In my opinion 和 I think 功能重复，同时使用会显得冗余。口语中应避免重复表达同一语法功能，以提高语言简洁度。"
+    },
+    {
+      "wrong": "The number of students were increased last year.",
+      "correct": "The number of students increased last year.",
+      "explanation": "increase 在这里是不及物动词，不需要被动结构。The number of students 是单数概念，若使用 be 动词也应为 was，但本句最自然表达是 increased。"
+    },
+    {
+      "wrong": "Although it is expensive, but many people still buy it.",
+      "correct": "Although it is expensive, many people still buy it.",
+      "explanation": "although 和 but 不能在同一个复合句中同时连接同一逻辑关系。中文“虽然……但是……”会导致考生直接翻译成 although...but，这是典型中式英语错误。"
+    },
+    {
+      "wrong": "This problem will be more and more serious in the future.",
+      "correct": "This problem is likely to become increasingly serious in the future.",
+      "explanation": "more and more serious 语法上可以接受，但在学术口语中 increasingly serious 更自然。is likely to become 也能表达预测，使句子更符合 IELTS 和 PTE 的高分表达。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "Speaking structures 在 PTE Academic 中使用频率很高，尤其影响 fluency、oral fluency、pronunciation 以外的内容组织和语法表现。PTE 口语不要求考生说出特别复杂的长句，但要求答案连贯、句法清晰、停顿自然。Describe Image 中常用趋势描述、比较结构和总结句；Retell Lecture 中常用报告动词和信息转述结构；Respond to a Situation 中常用礼貌请求、建议、解释原因和表达立场的句式。掌握这些结构可以减少临场组织语言的压力，提高回答的稳定性。",
+    "sections": [
+      "Read Aloud",
+      "Repeat Sentence",
+      "Describe Image",
+      "Retell Lecture",
+      "Answer Short Question",
+      "Respond to a Situation",
+      "Summarize Group Discussion"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is widely believed that + clause",
+      "translation": "人们普遍认为……"
+    },
+    {
+      "pattern": "There is growing evidence that + clause",
+      "translation": "越来越多的证据表明……"
+    },
+    {
+      "pattern": "One possible explanation is that + clause",
+      "translation": "一个可能的解释是……"
+    },
+    {
+      "pattern": "This can be attributed to + noun phrase",
+      "translation": "这可以归因于……"
+    },
+    {
+      "pattern": "Compared with + noun phrase, + clause",
+      "translation": "与……相比，……"
+    },
+    {
+      "pattern": "Although + clause, + main clause",
+      "translation": "虽然……，但是……"
+    },
+    {
+      "pattern": "This is particularly important when + clause",
+      "translation": "当……时，这一点尤其重要。"
+    },
+    {
+      "pattern": "As a result, + clause",
+      "translation": "因此，……"
+    },
+    {
+      "pattern": "From a practical perspective, + clause",
+      "translation": "从实际角度来看，……"
+    },
+    {
+      "pattern": "It is likely that + clause",
+      "translation": "很可能……"
+    },
+    {
+      "pattern": "The main advantage of + noun/gerund + is that + clause",
+      "translation": "……的主要优点是……"
+    },
+    {
+      "pattern": "This trend is expected to + verb",
+      "translation": "这一趋势预计会……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "express an opinion",
+      "translation": "表达观点"
+    },
+    {
+      "phrase": "provide a clear explanation",
+      "translation": "提供清晰解释"
+    },
+    {
+      "phrase": "give a relevant example",
+      "translation": "给出相关例子"
+    },
+    {
+      "phrase": "make a comparison",
+      "translation": "进行比较"
+    },
+    {
+      "phrase": "show a significant increase",
+      "translation": "显示显著增长"
+    },
+    {
+      "phrase": "remain relatively stable",
+      "translation": "保持相对稳定"
+    },
+    {
+      "phrase": "have a positive impact on",
+      "translation": "对……产生积极影响"
+    },
+    {
+      "phrase": "lead to serious consequences",
+      "translation": "导致严重后果"
+    },
+    {
+      "phrase": "play a crucial role in",
+      "translation": "在……中发挥关键作用"
+    },
+    {
+      "phrase": "improve overall efficiency",
+      "translation": "提高整体效率"
+    },
+    {
+      "phrase": "reduce environmental pressure",
+      "translation": "减少环境压力"
+    },
+    {
+      "phrase": "meet the needs of modern society",
+      "translation": "满足现代社会的需求"
+    }
+  ],
+  "ai_tips": [
+    "准备 PTE Speaking 时，优先练习“观点—原因—例子—总结”的四步结构，而不是背诵整篇答案。这样可以适应不同题目，并减少机械背诵带来的停顿。",
+    "回答时每句话控制在适中长度，建议使用一到两个从句即可。过长的句子容易导致语法错误、重音混乱和语速失控。",
+    "练习 Describe Image 时，固定使用三类句子：总体描述句、关键数据句、总结趋势句。例如：The chart shows... The highest figure was... Overall, the data suggests...",
+    "在 Retell Lecture 中，可以使用 The speaker mentioned that、The lecture focused on、Another key point was that 等转述结构，避免逐字复述导致信息混乱。",
+    "如果一时想不到高级词汇，应优先保证句子完整和发音清晰。PTE 口语中，稳定的语法结构通常比临时使用不熟悉的复杂词更可靠。",
+    "避免连续重复使用 I think。可以轮换使用 In my view、I believe、It seems to me that、From my perspective，以展示表达多样性。",
+    "练习时录音检查三点：是否有完整主谓结构、连接词是否自然、结尾是否突然停止。流利度不等于语速快，而是表达连续且停顿合理。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用 In my view 和 because 造一个关于 online learning 的口语句子。",
+      "answer": "In my view, online learning is useful because it allows students to study at their own pace. 中文：在我看来，在线学习很有用，因为它允许学生按照自己的节奏学习。"
+    },
+    {
+      "question": "改正句子：I very agree that public transport is important.",
+      "answer": "I strongly agree that public transport is important. 解释：agree 是动词，应使用 strongly 修饰，而不是 very。"
+    },
+    {
+      "question": "使用 Although 结构表达“虽然智能手机很方便，但它们也可能让人分心”。",
+      "answer": "Although smartphones are convenient, they may also distract people. 中文：虽然智能手机很方便，但它们也可能让人分心。"
+    },
+    {
+      "question": "用 For example 补充这个观点：Exercise is important for students.",
+      "answer": "Exercise is important for students. For example, regular physical activity can help them reduce stress and improve concentration. 中文：锻炼对学生很重要。例如，规律的体育活动可以帮助他们减轻压力并提高注意力。"
+    },
+    {
+      "question": "把中文翻译成英文：与私家车相比，公共交通更环保。",
+      "answer": "Compared with private cars, public transport is more environmentally friendly."
+    },
+    {
+      "question": "使用 It is likely that 预测未来：越来越多的人会使用 renewable energy。",
+      "answer": "It is likely that more people will use renewable energy in the future. 中文：未来很可能会有更多人使用可再生能源。"
+    },
+    {
+      "question": "改正句子：There has many reasons for this trend.",
+      "answer": "There are many reasons for this trend. 解释：there be 结构表示“有”，many reasons 是复数，所以使用 are。"
+    },
+    {
+      "question": "为 PTE Describe Image 写一个总结句，主题是 sales increased from 2010 to 2020。",
+      "answer": "Overall, the data suggests that sales increased steadily from 2010 to 2020. 中文：总体而言，数据显示销售额从2010年到2020年稳步增长。"
+    }
+  ]
+}

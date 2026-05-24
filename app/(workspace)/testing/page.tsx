@@ -376,6 +376,56 @@ export default function AnalyticsPreviewPage() {
 
         </div>
 
+        {/* FULL WIDTH */}
+
+        <Card>
+
+          <CardHeader>
+
+            <div className="flex items-center justify-between gap-4">
+
+              <div>
+
+                <Badge variant="secondary" className="mb-3">
+                  Premium Analytics
+                </Badge>
+
+                <CardTitle>
+                  AI Performance Intelligence
+                </CardTitle>
+
+                <CardDescription>
+                  Enterprise-style analytics section designed for LoftyPTE.
+                </CardDescription>
+
+              </div>
+
+              <div className="hidden h-14 w-14 items-center justify-center rounded-[var(--radius-lg)] bg-[var(--primary-soft)] text-[var(--primary)] lg:flex">
+
+                <ChartColumn size={26} />
+
+              </div>
+
+            </div>
+
+          </CardHeader>
+
+          <CardContent>
+
+            <AnalyticsChart
+              variant="area"
+              data={data3}
+              xKey="week"
+              yKey="score"
+              tone="primary"
+              goal={79}
+              height={420}
+            />
+
+          </CardContent>
+
+        </Card>
+
       </div>
 
     </div>

@@ -1,26 +1,16 @@
-// app/grammar/page.tsx
+// app/grammar/layout.tsx
 
-"use client";
+import { ReactNode } from "react";
 
 import Link from "next/link";
 
 import {
-  AlertTriangle,
   BookOpen,
-  CheckCircle2,
-  FileText,
-  GraduationCap,
   Layers3,
-  Search,
-  Sparkles,
 } from "lucide-react";
 
-import { usePathname } from "next/navigation";
-
 import { Badge } from "@/components/ui-v2/badge";
-import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
-import { Input } from "@/components/ui-v2/input";
 
 const grammarSections = [
   {
@@ -276,148 +266,107 @@ const grammarSections = [
   },
 ];
 
-export default function GrammarPage() {
-
-  const pathname =
-    usePathname();
+export default function GrammarLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
 
       <div className="mx-auto flex w-full max-w-[1850px] gap-6 px-4 py-6 lg:px-6">
 
-        {/* Main */}
+        {/* Sidebar */}
 
-        <main className="min-w-0 flex-1">
+        <aside className="hidden w-[260px] shrink-0 2xl:block">
 
-          <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <Card className="sticky top-6 h-[calc(100vh-48px)] overflow-hidden border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
 
-            <div>
+            <CardContent className="h-full overflow-y-auto p-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
-              <div className="mb-1 text-3xl font-bold tracking-tight text-[var(--text)]">
-                Grammar Knowledge Base
-              </div>
+              <div className="mb-8 flex items-center gap-4">
 
-              <div className="text-sm text-[var(--text-soft)]">
-                Master English grammar for PTE & IELTS with AI explanations
-              </div>
-
-            </div>
-
-            <div className="flex w-full gap-3 lg:w-auto">
-
-              <div className="relative flex-1 lg:w-[360px]">
-
-                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-soft)]" />
-
-                <Input
-                  placeholder="Search grammar topic..."
-                  className="h-11 rounded-2xl border-[var(--border)] bg-[var(--card)] pl-11"
-                />
-
-              </div>
-
-              <Button className="h-11 rounded-2xl px-5">
-                Search
-              </Button>
-
-            </div>
-
-          </div>
-
-          <Card className="overflow-hidden border-[var(--border)] bg-gradient-to-br from-[var(--primary-soft)] via-[var(--card)] to-[var(--card)] shadow-[var(--shadow-sm)]">
-
-            <CardContent className="p-6">
-
-              <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[var(--primary-soft)] text-[var(--primary)]">
+                  <BookOpen size={26} />
+                </div>
 
                 <div>
 
-                  <Badge className="mb-4 rounded-full">
-                    AI Grammar Assistant
-                  </Badge>
-
-                  <div className="mb-3 text-4xl font-bold tracking-tight text-[var(--text)]">
-                    Grammar Learning Platform
+                  <div className="text-lg font-semibold tracking-tight text-[var(--text)]">
+                    Grammar Hub
                   </div>
 
-                  <div className="mb-2 text-lg font-medium text-[var(--primary)]">
-                    AI 驱动英语语法学习系统
-                  </div>
-
-                  <div className="mb-6 max-w-[720px] text-sm leading-7 text-[var(--text-soft)]">
-                    Learn grammar structures, academic writing, sentence patterns, and PTE-focused English through AI-generated explanations and intelligent practice systems.
-                  </div>
-
-                  <div className="flex flex-wrap gap-3">
-
-                    <Button className="rounded-2xl px-5">
-                      开始学习
-                    </Button>
-
-                    <Button variant="secondary" className="rounded-2xl px-5">
-                      AI 练习模式
-                    </Button>
-
+                  <div className="text-sm text-[var(--text-soft)]">
+                    AI 英语语法知识库
                   </div>
 
                 </div>
 
-                <div className="rounded-[28px] border border-[var(--border)] bg-[var(--card)]/80 p-6 backdrop-blur">
+              </div>
 
-                  <div className="mb-5">
+              <div className="space-y-7">
 
-                    <div className="mb-1 text-sm font-medium text-[var(--text)]">
-                      Grammar Statistics
+                {grammarSections.map((section) => (
+
+                  <div key={section.titleEn}>
+
+                    <div className="mb-4 flex items-center justify-between">
+
+                      <div>
+
+                        <div className="text-base font-semibold text-[var(--text)]">
+                          {section.titleZh}
+                        </div>
+
+                        <div className="text-sm text-[var(--text-soft)]">
+                          {section.titleEn}
+                        </div>
+
+                      </div>
+
+                      <Badge variant="secondary">
+                        {section.topics.length}
+                      </Badge>
+
                     </div>
 
-                    <div className="text-xs text-[var(--text-soft)]">
-                      AI Knowledge Overview
+                    <div className="space-y-1.5">
+
+                      {section.topics.map((topic) => (
+
+                        <Link
+                          key={topic.slug}
+                          href={`/grammar/${topic.slug}`}
+                          className="flex w-full items-center justify-between rounded-2xl px-4 py-3.5 text-left transition-all hover:bg-[var(--bg-soft)]"
+                        >
+
+                          <div>
+
+                            <div className="text-sm font-semibold text-[var(--text)]">
+                              {topic.zh}
+                            </div>
+
+                            <div className="mt-0.5 text-xs tracking-wide text-[var(--text-soft)]">
+                              {topic.en}
+                            </div>
+
+                          </div>
+
+                          <Layers3
+                            size={15}
+                            className="text-[var(--text-soft)]"
+                          />
+
+                        </Link>
+
+                      ))}
+
                     </div>
 
                   </div>
 
-                  <div className="space-y-3">
-
-                    <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
-                      <span className="text-sm text-[var(--text)]">
-                        Grammar Topics
-                      </span>
-
-                      <Badge>
-                        120+
-                      </Badge>
-
-                    </div>
-
-                    <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
-                      <span className="text-sm text-[var(--text)]">
-                        Academic Structures
-                      </span>
-
-                      <Badge variant="secondary">
-                        500+
-                      </Badge>
-
-                    </div>
-
-                    <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
-                      <span className="text-sm text-[var(--text)]">
-                        PTE Grammar Coverage
-                      </span>
-
-                      <Badge variant="secondary">
-                        Full
-                      </Badge>
-
-                    </div>
-
-                  </div>
-
-                </div>
+                ))}
 
               </div>
 
@@ -425,6 +374,12 @@ export default function GrammarPage() {
 
           </Card>
 
+        </aside>
+
+        {/* Main */}
+
+        <main className="min-w-0 flex-1">
+          {children}
         </main>
 
       </div>
