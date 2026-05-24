@@ -1,4 +1,4 @@
-// app/grammar/layout.tsx
+"use client";
 
 import { ReactNode } from "react";
 
@@ -8,6 +8,8 @@ import {
   BookOpen,
   Layers3,
 } from "lucide-react";
+
+import { usePathname } from "next/navigation";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
@@ -25,11 +27,16 @@ const grammarSections = [
       },
 
       {
+        slug: "future-tense",
+        zh: "一般将来时",
+        en: "Simple Future Tense",
+      },
+
+      {
         slug: "simple-past",
         zh: "一般过去时",
         en: "Simple Past Tense",
       },
-
       {
         slug: "present-perfect",
         zh: "现在完成时",
@@ -37,15 +44,15 @@ const grammarSections = [
       },
 
       {
-        slug: "past-perfect",
-        zh: "过去完成时",
-        en: "Past Perfect Tense",
+        slug: "bpresent-perfect-continuous",
+        zh: "现在完成进行时",
+        en: "Present Perfect Continuous Tense",
       },
 
       {
-        slug: "future-tense",
-        zh: "一般将来时",
-        en: "Simple Future Tense",
+        slug: "past-perfect",
+        zh: "过去完成时",
+        en: "Past Perfect Tense",
       },
 
       {
@@ -64,12 +71,6 @@ const grammarSections = [
         slug: "future-continuous",
         zh: "将来进行时",
         en: "Future Continuous Tense",
-      },
-
-      {
-        slug: "present-perfect-continuous",
-        zh: "现在完成进行时",
-        en: "Present Perfect Continuous Tense",
       },
     ],
   },
@@ -272,16 +273,19 @@ export default function GrammarLayout({
   children: ReactNode;
 }) {
 
+  const pathname =
+    usePathname();
+
   return (
     <div className="min-h-screen bg-[var(--bg)]">
 
-      <div className="mx-auto flex w-full max-w-[1850px] gap-6 px-4 py-6 lg:px-6">
+      <div className="flex w-full">
 
         {/* Sidebar */}
 
         <aside className="hidden w-[260px] shrink-0 2xl:block">
 
-          <Card className="sticky top-6 h-[calc(100vh-48px)] overflow-hidden border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+          <Card className="sticky top-0 h-screen overflow-hidden border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
 
             <CardContent className="h-full overflow-y-auto p-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
@@ -333,34 +337,41 @@ export default function GrammarLayout({
 
                     <div className="space-y-1.5">
 
-                      {section.topics.map((topic) => (
+                      {section.topics.map((topic) => {
 
-                        <Link
-                          key={topic.slug}
-                          href={`/grammar/${topic.slug}`}
-                          className="flex w-full items-center justify-between rounded-2xl px-4 py-3.5 text-left transition-all hover:bg-[var(--bg-soft)]"
-                        >
+                        const isActive =
+                          pathname.startsWith(`/grammar/${topic.slug}`);
 
-                          <div>
+                        return (
 
-                            <div className="text-sm font-semibold text-[var(--text)]">
-                              {topic.zh}
+                          <Link
+                            key={topic.slug}
+                            href={`/grammar/${topic.slug}`}
+                            className={`flex w-full items-center justify-between rounded-2xl px-4 py-3.5 text-left transition-all ${isActive ? "bg-[var(--primary-soft)]" : "hover:bg-[var(--bg-soft)]"}`}
+                          >
+
+                            <div>
+
+                              <div className={`text-sm font-semibold ${isActive ? "text-[var(--primary)]" : "text-[var(--text)]"}`}>
+                                {topic.zh}
+                              </div>
+
+                              <div className={`mt-0.5 text-xs tracking-wide ${isActive ? "text-[var(--primary)] opacity-80" : "text-[var(--text-soft)]"}`}>
+                                {topic.en}
+                              </div>
+
                             </div>
 
-                            <div className="mt-0.5 text-xs tracking-wide text-[var(--text-soft)]">
-                              {topic.en}
-                            </div>
+                            <Layers3
+                              size={15}
+                              className={isActive ? "text-[var(--primary)]" : "text-[var(--text-soft)]"}
+                            />
 
-                          </div>
+                          </Link>
 
-                          <Layers3
-                            size={15}
-                            className="text-[var(--text-soft)]"
-                          />
+                        );
 
-                        </Link>
-
-                      ))}
+                      })}
 
                     </div>
 

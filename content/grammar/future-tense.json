@@ -1,0 +1,267 @@
+{
+  "slug": "future-tense",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "一般将来时",
+    "en": "Simple Future Tense"
+  },
+  "difficulty": "初级到中级",
+  "summary": {
+    "zh": "一般将来时用于表达未来会发生的动作、状态、预测、决定、承诺、计划或安排。英语中最常见的形式是“will + 动词原形”和“be going to + 动词原形”。在PTE Academic和IELTS中，一般将来时常用于描述趋势预测、学习计划、研究影响、个人观点、解决方案和未来结果。中国学习者需要特别注意：will后面必须接动词原形，不能加to；be going to中的be动词要根据主语变化；时间状语从句中通常不用will，而用一般现在时表示将来。"
+  },
+  "structure": {
+    "formula": "Subject + will + base verb / Subject + am/is/are going to + base verb",
+    "explanation": "一般将来时主要有两种核心结构。第一种是“will + 动词原形”，常用于临时决定、预测、承诺、意愿或正式表达。第二种是“be going to + 动词原形”，常用于已有计划、明显迹象导致的预测或较确定的安排。否定形式分别是“will not / won’t + 动词原形”和“am/is/are not going to + 动词原形”。疑问句中，will或be动词提前。需要注意，will后面不能使用动词不定式to，也不能使用过去式或第三人称单数形式。",
+    "examples": [
+      {
+        "en": "The government will introduce new policies to reduce air pollution.",
+        "zh": "政府将推出新政策来减少空气污染。"
+      },
+      {
+        "en": "I am going to review my notes before the PTE speaking test.",
+        "zh": "我打算在PTE口语考试前复习笔记。"
+      },
+      {
+        "en": "This trend will have a significant impact on young consumers.",
+        "zh": "这一趋势将对年轻消费者产生重大影响。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达未来预测",
+      "description": "当说话者根据个人判断、数据、趋势或常识预测未来时，可以使用“will + 动词原形”。在学术写作和PTE口语中，这种用法常用于讨论社会、科技、教育、环境等话题的未来影响。",
+      "examples": [
+        {
+          "en": "Online education will become more common in the next decade.",
+          "zh": "在线教育将在未来十年变得更加普遍。"
+        },
+        {
+          "en": "The demand for renewable energy will continue to rise.",
+          "zh": "可再生能源的需求将继续上升。"
+        }
+      ]
+    },
+    {
+      "title": "表达已经计划好的事情",
+      "description": "当未来行为已经经过计划、安排或决定时，常使用“be going to + 动词原形”。这种结构比will更强调事先准备或明确意图。",
+      "examples": [
+        {
+          "en": "She is going to take the IELTS test next month.",
+          "zh": "她打算下个月参加IELTS考试。"
+        },
+        {
+          "en": "We are going to conduct a survey on student satisfaction.",
+          "zh": "我们打算开展一项关于学生满意度的调查。"
+        }
+      ]
+    },
+    {
+      "title": "表达临时决定",
+      "description": "当说话者在说话当下才做出决定时，通常使用will，而不是be going to。这一点在口语交流、PTE Repeat Sentence和Answer Short Question中尤其重要。",
+      "examples": [
+        {
+          "en": "I forgot to send the email. I will do it now.",
+          "zh": "我忘记发邮件了。我现在就发。"
+        },
+        {
+          "en": "The printer is not working. I will ask the technician for help.",
+          "zh": "打印机坏了。我会请技术人员帮忙。"
+        }
+      ]
+    },
+    {
+      "title": "表达承诺、主动帮助或意愿",
+      "description": "will可以表示说话者愿意做某事、承诺完成某事，或主动提出帮助。在正式和半正式场景中，will比中文的“会”更具有承诺意味。",
+      "examples": [
+        {
+          "en": "I will submit the report before the deadline.",
+          "zh": "我会在截止日期前提交报告。"
+        },
+        {
+          "en": "We will provide further evidence to support this argument.",
+          "zh": "我们将提供进一步证据来支持这一论点。"
+        }
+      ]
+    },
+    {
+      "title": "表示有明显迹象的未来结果",
+      "description": "当现在的证据清楚显示某事即将发生时，通常使用be going to。它强调未来结果与当前迹象之间的联系。",
+      "examples": [
+        {
+          "en": "Look at the dark clouds. It is going to rain.",
+          "zh": "看那些乌云。天要下雨了。"
+        },
+        {
+          "en": "The company has lost many customers, so it is going to face serious financial problems.",
+          "zh": "这家公司已经失去了许多客户，因此它将面临严重的财务问题。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "He will goes to university next year.",
+      "correct": "He will go to university next year.",
+      "explanation": "will后面必须接动词原形，不能使用第三人称单数形式goes。这是中国学习者常见错误，因为容易把一般现在时的主谓一致规则错误地套用到一般将来时中。"
+    },
+    {
+      "wrong": "I will to study abroad after graduation.",
+      "correct": "I will study abroad after graduation.",
+      "explanation": "will是情态助动词，后面直接接动词原形，不需要to。“will to do”不是一般将来时的正确结构。"
+    },
+    {
+      "wrong": "She going to apply for a scholarship.",
+      "correct": "She is going to apply for a scholarship.",
+      "explanation": "be going to结构中不能省略be动词。主语是she时，be动词应使用is。"
+    },
+    {
+      "wrong": "If it will rain tomorrow, the event will be cancelled.",
+      "correct": "If it rains tomorrow, the event will be cancelled.",
+      "explanation": "在if引导的条件状语从句中，通常用一般现在时表示将来，而主句使用will。这类句型在IELTS写作和PTE Writing中非常常见。"
+    },
+    {
+      "wrong": "I am going to will finish the essay tonight.",
+      "correct": "I am going to finish the essay tonight.",
+      "explanation": "be going to和will不能同时放在同一个谓语动词前表达一个将来动作。应根据语义选择其中一种结构。"
+    },
+    {
+      "wrong": "The number of international students will increases.",
+      "correct": "The number of international students will increase.",
+      "explanation": "will后面使用动词原形increase，不能加-s。学术写作中描述图表趋势时尤其需要避免该错误。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "一般将来时在PTE Academic中使用频率较高，尤其出现在Describe Image、Retell Lecture、Summarize Written Text、Write Essay和口语回答中。考生常需要预测趋势、说明未来影响、提出解决方案或描述计划。正确使用will和be going to可以提高语法准确性和表达自然度。在PTE评分中，时态错误会影响grammar和oral fluency，尤其当考生在描述未来趋势时误用一般现在时或错误使用will后面的动词形式。",
+    "sections": [
+      "Speaking: Describe Image",
+      "Speaking: Retell Lecture",
+      "Speaking: Answer Short Question",
+      "Writing: Summarize Written Text",
+      "Writing: Write Essay",
+      "Reading & Writing: Fill in the Blanks",
+      "Listening: Summarize Spoken Text"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is likely that + subject + will + base verb",
+      "translation": "很可能……将会……"
+    },
+    {
+      "pattern": "This trend will lead to + noun phrase",
+      "translation": "这一趋势将导致……"
+    },
+    {
+      "pattern": "The data suggest that + subject + will + base verb",
+      "translation": "数据显示……将会……"
+    },
+    {
+      "pattern": "In the coming years, + subject + will + base verb",
+      "translation": "在未来几年，……将会……"
+    },
+    {
+      "pattern": "If this problem continues, + subject + will + base verb",
+      "translation": "如果这个问题持续下去，……将会……"
+    },
+    {
+      "pattern": "This policy is going to have a long-term impact on + noun",
+      "translation": "这项政策将对……产生长期影响"
+    },
+    {
+      "pattern": "The findings will contribute to a better understanding of + noun",
+      "translation": "这些发现将有助于更好地理解……"
+    },
+    {
+      "pattern": "Future research will focus on + noun / gerund",
+      "translation": "未来研究将集中于……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "will increase significantly",
+      "translation": "将显著增加"
+    },
+    {
+      "phrase": "will decline gradually",
+      "translation": "将逐渐下降"
+    },
+    {
+      "phrase": "will have a major impact on",
+      "translation": "将对……产生重大影响"
+    },
+    {
+      "phrase": "will play an important role in",
+      "translation": "将在……中发挥重要作用"
+    },
+    {
+      "phrase": "will become increasingly important",
+      "translation": "将变得越来越重要"
+    },
+    {
+      "phrase": "is going to cause serious problems",
+      "translation": "将会造成严重问题"
+    },
+    {
+      "phrase": "are going to implement new measures",
+      "translation": "将要实施新措施"
+    },
+    {
+      "phrase": "will provide an opportunity for",
+      "translation": "将为……提供机会"
+    },
+    {
+      "phrase": "will remain stable",
+      "translation": "将保持稳定"
+    },
+    {
+      "phrase": "will be affected by",
+      "translation": "将受到……的影响"
+    }
+  ],
+  "ai_tips": [
+    "在PTE Describe Image中，如果图表包含未来年份，如2030或2050，优先考虑使用will来描述预测趋势，例如“The population will increase steadily.”",
+    "写IELTS Task 2结论时，可以用will表达未来结果，但不要过度重复“I think it will”。可替换为“This approach will help...”或“These measures will reduce...”。",
+    "看到if、when、after、before、unless引导的时间或条件状语从句时，通常从句用一般现在时，主句用will，例如“When technology improves, education will become more accessible.”",
+    "如果是已经安排好的个人计划，be going to通常比will更自然，例如“I am going to take the PTE test next Friday.”",
+    "检查句子时重点看will后面的动词：必须是动词原形，不能加-s、-ed、to或-ing。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用正确形式完成句子：The demand for electric cars ______ (increase) in the next few years.",
+      "answer": "will increase"
+    },
+    {
+      "question": "改正错误：She will to attend the academic conference next week.",
+      "answer": "She will attend the academic conference next week."
+    },
+    {
+      "question": "选择正确答案：Look at the sky. It ______ rain soon. A. will B. is going to",
+      "answer": "B. is going to"
+    },
+    {
+      "question": "用英文翻译：如果政府采取有效措施，空气质量将会改善。",
+      "answer": "If the government takes effective measures, air quality will improve."
+    },
+    {
+      "question": "改正错误：If the population will grow rapidly, cities will face more pressure.",
+      "answer": "If the population grows rapidly, cities will face more pressure."
+    },
+    {
+      "question": "用一般将来时完成句子：Future research ______ (focus) on the relationship between sleep and memory.",
+      "answer": "Future research will focus on the relationship between sleep and memory."
+    },
+    {
+      "question": "选择更合适的表达：我已经决定今晚复习PTE词汇。A. I will review PTE vocabulary tonight. B. I am going to review PTE vocabulary tonight.",
+      "answer": "B. I am going to review PTE vocabulary tonight."
+    },
+    {
+      "question": "改写为否定句：The policy will solve the problem immediately.",
+      "answer": "The policy will not solve the problem immediately. / The policy won’t solve the problem immediately."
+    }
+  ]
+}

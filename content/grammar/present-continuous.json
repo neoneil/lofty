@@ -1,0 +1,299 @@
+{
+  "slug": "present-continuous",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "现在进行时",
+    "en": "Present Continuous Tense"
+  },
+  "difficulty": "基础到中级",
+  "summary": {
+    "zh": "现在进行时（Present Continuous Tense）主要表示说话此刻正在发生的动作、当前阶段正在进行但不一定在说话瞬间发生的事情、临时性安排、正在变化的发展趋势，以及已经确定的近期未来安排。其核心结构是“am/is/are + verb-ing”。在 PTE Academic 和 IELTS 中，现在进行时常用于描述图表中的变化趋势、口语中说明当前活动、写作中表达正在发生的社会现象，以及听力和阅读中识别临时状态或正在发展的情况。中国学习者需要特别注意 be 动词不可省略、动词 -ing 拼写规则、状态动词通常不用进行时，以及不要把现在进行时与一般现在时混淆。"
+  },
+  "structure": {
+    "formula": "Subject + am/is/are + verb-ing",
+    "explanation": "现在进行时由主语、be 动词（am/is/are）和现在分词（verb-ing）构成。主语是 I 时用 am，第三人称单数或单数名词用 is，you/we/they 或复数名词用 are。否定句在 be 动词后加 not；疑问句把 be 动词提前。该时态强调动作在现在这一时间点或当前阶段具有“正在进行、暂时存在、持续变化或已安排”的意义。",
+    "examples": [
+      {
+        "en": "The students are preparing for the PTE speaking test.",
+        "zh": "学生们正在准备 PTE 口语考试。"
+      },
+      {
+        "en": "I am reviewing academic vocabulary this week.",
+        "zh": "我这周正在复习学术词汇。"
+      },
+      {
+        "en": "The number of international students is increasing steadily.",
+        "zh": "国际学生的数量正在稳步增加。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示说话时正在发生的动作",
+      "description": "当动作在说话的此刻正在进行时，使用现在进行时。常见时间标志包括 now、right now、at the moment、currently 等。在口语考试中，这类表达可用于描述自己正在做的事情或解释当前状态。",
+      "examples": [
+        {
+          "en": "She is answering a PTE Read Aloud question right now.",
+          "zh": "她现在正在回答一道 PTE 朗读题。"
+        },
+        {
+          "en": "The lecturer is explaining the main concept at the moment.",
+          "zh": "讲师此刻正在解释主要概念。"
+        }
+      ]
+    },
+    {
+      "title": "表示当前阶段正在进行的事情",
+      "description": "动作不一定发生在说话的瞬间，但在最近一段时间内持续进行，通常带有暂时性或阶段性。IELTS Speaking 中谈论学习、工作、生活变化时很常见。",
+      "examples": [
+        {
+          "en": "I am taking an online course to improve my academic writing.",
+          "zh": "我正在参加一门线上课程来提高学术写作能力。"
+        },
+        {
+          "en": "Many universities are developing more flexible learning models.",
+          "zh": "许多大学正在发展更加灵活的学习模式。"
+        }
+      ]
+    },
+    {
+      "title": "表示正在变化的发展趋势",
+      "description": "现在进行时可用于描述数据、社会现象或趋势的变化，常与 increase、decrease、rise、fall、grow、decline、expand、improve 等动态动词搭配。在 IELTS Writing Task 1 和 PTE Describe Image 中非常实用。",
+      "examples": [
+        {
+          "en": "The unemployment rate is falling gradually.",
+          "zh": "失业率正在逐渐下降。"
+        },
+        {
+          "en": "Public awareness of environmental protection is growing rapidly.",
+          "zh": "公众对环境保护的意识正在迅速增强。"
+        }
+      ]
+    },
+    {
+      "title": "表示近期已安排的未来计划",
+      "description": "当未来事件已经有明确安排，尤其涉及个人日程、会议、旅行、考试或课程时，可以使用现在进行时表达未来含义。它通常比 be going to 更强调已经安排好。",
+      "examples": [
+        {
+          "en": "I am taking the IELTS test next Saturday.",
+          "zh": "我下周六要参加 IELTS 考试。"
+        },
+        {
+          "en": "The research team is meeting the supervisor tomorrow morning.",
+          "zh": "研究团队明天早上要和导师开会。"
+        }
+      ]
+    },
+    {
+      "title": "表示临时性状态或短期行为",
+      "description": "现在进行时可以强调某种情况不是长期习惯，而是短期、临时或异常的行为。与一般现在时相比，它更突出“暂时性”。",
+      "examples": [
+        {
+          "en": "He usually works in finance, but he is teaching business English this month.",
+          "zh": "他通常在金融行业工作，但这个月正在教商务英语。"
+        },
+        {
+          "en": "The library is closing earlier this week because of maintenance.",
+          "zh": "由于维护，图书馆本周提前闭馆。"
+        }
+      ]
+    },
+    {
+      "title": "与 always 等副词连用表示抱怨或强调",
+      "description": "现在进行时可与 always、constantly、forever 等副词连用，表示说话人对反复发生的行为带有不满、惊讶或强烈评价。这种用法常见于口语和非正式写作。",
+      "examples": [
+        {
+          "en": "He is always interrupting others during group discussions.",
+          "zh": "他在小组讨论时总是打断别人。"
+        },
+        {
+          "en": "Some candidates are constantly ignoring the word limit in writing tasks.",
+          "zh": "有些考生总是忽视写作任务中的字数限制。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "She preparing for the IELTS exam.",
+      "correct": "She is preparing for the IELTS exam.",
+      "explanation": "现在进行时必须包含 be 动词。中国学习者常受中文“她正在准备考试”影响，只翻译实义动词而遗漏 is。正确结构是 Subject + am/is/are + verb-ing。"
+    },
+    {
+      "wrong": "I am study English now.",
+      "correct": "I am studying English now.",
+      "explanation": "be 动词后不能直接接动词原形，必须使用现在分词 verb-ing。study 的 -ing 形式是 studying。"
+    },
+    {
+      "wrong": "The data is show a significant increase.",
+      "correct": "The data is showing a significant increase.",
+      "explanation": "如果使用现在进行时，show 应改为 showing。但在学术写作中，也可以写成 The data shows a significant increase，表示客观呈现。考生需要根据语境判断是强调“正在显示变化”还是“图表显示事实”。"
+    },
+    {
+      "wrong": "I am knowing the answer.",
+      "correct": "I know the answer.",
+      "explanation": "know 属于 stative verb（状态动词），通常不用进行时。类似动词还包括 believe、understand、like、want、need、prefer、remember 等。"
+    },
+    {
+      "wrong": "People are use more public transport nowadays.",
+      "correct": "People are using more public transport nowadays.",
+      "explanation": "are 后面的动词必须使用 -ing 形式。描述当前社会趋势时，nowadays 可以和现在进行时连用，强调变化正在发生。"
+    },
+    {
+      "wrong": "The population increasing rapidly.",
+      "correct": "The population is increasing rapidly.",
+      "explanation": "英语句子需要完整谓语结构。increasing 单独不能作谓语，必须与 is 构成现在进行时。"
+    },
+    {
+      "wrong": "I am having a car.",
+      "correct": "I have a car.",
+      "explanation": "have 表示“拥有”时是状态动词，通常不用进行时。但 have 表示“吃、喝、参加、经历”时可用进行时，例如 I am having lunch。"
+    },
+    {
+      "wrong": "They are go to the conference tomorrow.",
+      "correct": "They are going to the conference tomorrow.",
+      "explanation": "现在进行时可表示近期已安排的未来事件，但动词必须变为 going。不要把 are going to do 与 are going 混淆：They are going to attend the conference 表示“他们打算参加会议”；They are going to the conference 表示“他们要去会议现场”。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "现在进行时在 PTE Academic 中非常常见，尤其用于口语描述正在发生的动作、图表趋势和当前研究活动。在 Describe Image 中，考生可以用 The figure is showing... 或 The trend is increasing... 来描述动态信息；在 Retell Lecture 中，可用于转述讲者正在解释、比较或讨论的内容；在 Writing 中，可用于表达当前社会、教育、科技或环境领域正在发生的变化。需要注意的是，PTE 评分重视语法准确性和表达流利度，错误省略 be 动词或误用状态动词会影响 Grammar 和 Oral Fluency 的表现。",
+    "sections": [
+      "Speaking: Describe Image",
+      "Speaking: Retell Lecture",
+      "Speaking: Answer Short Question",
+      "Writing: Summarize Written Text",
+      "Writing: Essay",
+      "Listening: Summarize Spoken Text",
+      "Reading: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The number of + plural noun + is increasing/decreasing steadily.",
+      "translation": "……的数量正在稳步增加/减少。"
+    },
+    {
+      "pattern": "The data is showing a clear upward/downward trend.",
+      "translation": "数据显示出明显的上升/下降趋势。"
+    },
+    {
+      "pattern": "Researchers are examining the relationship between A and B.",
+      "translation": "研究人员正在考察 A 与 B 之间的关系。"
+    },
+    {
+      "pattern": "Many institutions are adopting more flexible approaches to education.",
+      "translation": "许多机构正在采用更加灵活的教育方式。"
+    },
+    {
+      "pattern": "The government is implementing policies to address this issue.",
+      "translation": "政府正在实施政策来解决这一问题。"
+    },
+    {
+      "pattern": "Public attitudes are changing as a result of technological development.",
+      "translation": "由于技术发展，公众态度正在发生变化。"
+    },
+    {
+      "pattern": "This phenomenon is becoming increasingly common in urban areas.",
+      "translation": "这种现象在城市地区正变得越来越普遍。"
+    },
+    {
+      "pattern": "The speaker is highlighting the importance of sustainable development.",
+      "translation": "演讲者正在强调可持续发展的重要性。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "is increasing rapidly",
+      "translation": "正在迅速增加"
+    },
+    {
+      "phrase": "is declining gradually",
+      "translation": "正在逐渐下降"
+    },
+    {
+      "phrase": "are becoming more aware of",
+      "translation": "正变得更加意识到"
+    },
+    {
+      "phrase": "is changing significantly",
+      "translation": "正在显著变化"
+    },
+    {
+      "phrase": "are developing new strategies",
+      "translation": "正在制定新的策略"
+    },
+    {
+      "phrase": "is receiving growing attention",
+      "translation": "正受到越来越多的关注"
+    },
+    {
+      "phrase": "are facing increasing pressure",
+      "translation": "正面临越来越大的压力"
+    },
+    {
+      "phrase": "is playing an increasingly important role",
+      "translation": "正发挥越来越重要的作用"
+    },
+    {
+      "phrase": "are working on a research project",
+      "translation": "正在进行一个研究项目"
+    },
+    {
+      "phrase": "is being discussed widely",
+      "translation": "正在被广泛讨论"
+    }
+  ],
+  "ai_tips": [
+    "判断是否使用现在进行时时，先问自己：这个动作是否正在发生、当前阶段正在进行，或趋势是否正在变化。如果答案是肯定的，通常可以使用 am/is/are + verb-ing。",
+    "在 PTE Describe Image 中，描述趋势时优先使用清晰的动态动词，例如 increasing、decreasing、rising、falling、fluctuating，而不是反复使用 going up 或 going down。",
+    "不要把中文的“正在”机械翻译成 is doing。英语中有些表达状态的动词不常用进行时，例如 know、believe、understand、prefer、own。",
+    "如果句子中出现 now、currently、at present、at the moment，通常提示现在进行时；但在学术写作中，currently 也可以和一般现在时搭配表达当前事实。",
+    "描述已安排的未来计划时，现在进行时需要有明确未来时间，例如 tomorrow、next week、this Friday，否则读者可能理解为此刻正在发生。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用现在进行时改写句子：The students prepare for the speaking test now.",
+      "answer": "The students are preparing for the speaking test now."
+    },
+    {
+      "question": "选择正确句子：A. She is knowing the result. B. She knows the result.",
+      "answer": "B. She knows the result. know 是状态动词，通常不用现在进行时。"
+    },
+    {
+      "question": "填空：The percentage of online learners ______ ______ rapidly.（increase）",
+      "answer": "is increasing"
+    },
+    {
+      "question": "翻译：政府正在实施新的环境政策。",
+      "answer": "The government is implementing new environmental policies."
+    },
+    {
+      "question": "改错：Many people are use mobile apps for language learning.",
+      "answer": "Many people are using mobile apps for language learning."
+    },
+    {
+      "question": "用现在进行时表达未来安排：I / take / the PTE exam / next Monday.",
+      "answer": "I am taking the PTE exam next Monday."
+    },
+    {
+      "question": "填空：At the moment, the lecturer ______ ______ the causes of climate change.（explain）",
+      "answer": "is explaining"
+    },
+    {
+      "question": "判断正误并修改：The chart is shows a gradual decline.",
+      "answer": "错误。应改为：The chart is showing a gradual decline. 或 The chart shows a gradual decline."
+    },
+    {
+      "question": "翻译：越来越多的学生正在选择在线课程。",
+      "answer": "More and more students are choosing online courses."
+    },
+    {
+      "question": "用学术表达完成句子：Public awareness of health issues ______ ______ significantly.",
+      "answer": "is increasing 或 is growing"
+    }
+  ]
+}

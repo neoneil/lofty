@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 
 import { StatsCard } from "@/components/dashboard-v2/stats-card";
-import { StudyChart } from "@/components/dashboard-v2/study-chart";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/components/ui-v2/card";
 
 import { Badge } from "@/components/ui-v2/badge";
@@ -230,9 +229,7 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
 
-            <CardContent>
-              <StudyChart />
-            </CardContent>
+
           </Card>
         </section>
         <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">

@@ -22,8 +22,10 @@
   --text: #161618;
   --text-soft: #6f7281;
   --text-faint: #9ea3b5;
-
+  
+  --theme: #6d5dfc;
   --primary: #6d5dfc;
+  --theme-hover: #5b4df1;
   --primary-hover: #5b4df1;
   --primary-soft: #ede9fe;
 
@@ -82,7 +84,16 @@
   --transition-normal: 240ms ease;
 
 }
-
+.navbar-shell {
+  clip-path: polygon(
+    16px 0,
+    calc(100% - 16px) 0,
+    100% 50%,
+    calc(100% - 16px) 100%,
+    16px 100%,
+    0 50%
+  );
+}
 @layer components {
 
   /* 主容器 */

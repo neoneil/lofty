@@ -43,7 +43,7 @@ export default function NavbarMobileClient({
             />
           </div> */}
 
-          <div className="flex min-w-0 flex-col justify-center whitespace-nowrap leading-tight">
+          <div className="flex min-w-0 flex-col justify-center whitespace-nowrap leading-tight pl-6">
             <span
               className="text-base font-extrabold tracking-tight"
               style={{
@@ -116,11 +116,11 @@ export default function NavbarMobileClient({
                 </div>
 
                 <div className="origin-right scale-90">
-                                    <LogoutButton />
-                                  </div>
+                  <LogoutButton />
+                </div>
               </div>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Link
                   href="/login"
                   onClick={() => setOpen(false)}

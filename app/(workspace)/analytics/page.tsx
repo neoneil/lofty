@@ -241,7 +241,7 @@ export default function AnalyticsPreviewPage() {
 
             </CardHeader>
 
-            <CardContent>
+            <CardContent className="h-[360px]">
 
               <AnalyticsChart
                 variant="area"
@@ -280,7 +280,7 @@ export default function AnalyticsPreviewPage() {
 
             </CardHeader>
 
-            <CardContent>
+            <CardContent className="h-[360px]">
 
               <AnalyticsChart
                 variant="line"
@@ -320,7 +320,7 @@ export default function AnalyticsPreviewPage() {
 
             </CardHeader>
 
-            <CardContent>
+            <CardContent className="h-[360px]">
 
               <AnalyticsChart
                 variant="bar"
@@ -359,7 +359,7 @@ export default function AnalyticsPreviewPage() {
 
             </CardHeader>
 
-            <CardContent>
+            <CardContent className="h-[360px]">
 
               <AnalyticsChart
                 variant="pie"

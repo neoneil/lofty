@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import Container from "@/components/site/container";
@@ -11,8 +10,7 @@ const features = [
   ["名师在线授课", "18年经验，方法实用"],
   ["学习数据分析", "老师监督，解决拖延"],
   ["AI智能练习", "个性化推荐，高效提分"],
-  ["培生剑桥全真模考", "模拟考试环境，查漏补缺"]
-
+  ["培生剑桥全真模考", "模拟考试环境，查漏补缺"],
 ];
 
 const resources = [
@@ -114,9 +112,94 @@ export default async function HomePage() {
       "AI Assisted Learning",
     ],
   };
+  function ExamCard({
+    title,
+    desc,
+    points,
+    href,
+    image,
+    badge,
+    imageTitle,
+    imageDesc,
+  }: {
+    title: string;
+    desc: string;
+    points: string[];
+    href: string;
+    image: string;
+    badge: string;
+    imageTitle: string;
+    imageDesc: string;
+  }) {
+    return (
+      <div className="group overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,.08)]">
+        {/* Image */}
+        <div
+          className="relative h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat md:h-[280px]"
+          style={{ backgroundImage: `url(${image})` }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/35" />
 
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+
+          {/* Content */}
+          <div className="relative z-10 flex h-full max-w-[76%] flex-col justify-center px-7 py-8">
+            {/* Badge */}
+            <div className="mb-4 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+              {badge}
+            </div>
+
+            {/* Title */}
+            <h3 className="text-2xl font-black leading-tight text-white">
+              {imageTitle}
+            </h3>
+
+            {/* Desc */}
+            <p className="mt-3 text-sm leading-7 text-white/85">{imageDesc}</p>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="flex items-end justify-between gap-4 p-5 md:p-10">
+          {/* Left */}
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xl font-black tracking-tight text-[var(--text)]">
+              {title}
+            </h3>
+
+            <p className="mt-1.5 text-sm leading-6 text-[var(--text-soft)]">
+              {desc}
+            </p>
+
+            {/* Points */}
+            <ul className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {points.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-center gap-2 text-xs font-medium text-[var(--text)]"
+                >
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
+
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right Button */}
+          <Link
+            href={href}
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-5 text-sm font-semibold whitespace-nowrap text-white shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]"
+          >
+            开始学习
+          </Link>
+        </div>
+      </div>
+    );
+  }
   return (
-        <main className="min-h-screen ">
+    <main className="min-h-screen ">
       {/* Hero */}
       <section
         className="relative min-h-[560px] overflow-hidden rounded-b-[32px] bg-cover bg-center bg-no-repeat md:min-h-[640px] md:rounded-b-[48px]"
@@ -128,10 +211,10 @@ export default async function HomePage() {
         <div className="relative z-10 mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-14 sm:px-6 md:min-h-[540px] md:px-10">
           <div className="mx-auto max-w-3xl text-center md:mx-0 md:text-left">
             <div className="mb-6 inline-flex items-center rounded border border-black/5 bg-white/70 px-4 py-2 text-xs font-medium text-gray-500 shadow-sm backdrop-blur-md">
-               {heroSlogan}
+              {heroSlogan}
             </div>
             <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
-              PTE · 雅思 
+              PTE · 雅思
               <br />
               学生系统刷题，督学全程跟踪
             </h1>
@@ -145,7 +228,9 @@ export default async function HomePage() {
                   <Bot className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">AI 智能评测</p>
+                  <p className="text-sm font-semibold text-gray-800">
+                    AI 智能评测
+                  </p>
                   <p className="mt-1 text-xs text-gray-500">PTE 雅思提分引擎</p>
                 </div>
               </div>
@@ -155,7 +240,9 @@ export default async function HomePage() {
                   <Target className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">个性化学习</p>
+                  <p className="text-sm font-semibold text-gray-800">
+                    个性化学习
+                  </p>
                   <p className="mt-1 text-xs text-gray-500">定制专属学习计划</p>
                 </div>
               </div>
@@ -165,7 +252,9 @@ export default async function HomePage() {
                   <BookOpen className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">名师资源</p>
+                  <p className="text-sm font-semibold text-gray-800">
+                    名师资源
+                  </p>
                   <p className="mt-1 text-xs text-gray-500">经验丰富名师团队</p>
                 </div>
               </div>
@@ -175,7 +264,9 @@ export default async function HomePage() {
                   <TrendingUp className="h-4 w-4 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">高效提分</p>
+                  <p className="text-sm font-semibold text-gray-800">
+                    高效提分
+                  </p>
                   <p className="mt-1 text-xs text-gray-500">科学方法快速提升</p>
                 </div>
               </div>
@@ -201,37 +292,76 @@ export default async function HomePage() {
 
       {/* Features */}
       <section className="relative z-20 mx-auto -mt-8 max-w-6xl px-4 sm:px-6 md:-mt-12">
-        <div className="grid grid-cols-2 round bg-white p-4 shadow-xl md:grid-cols-4 md:round md:p-6">
-          {features.map(([title, desc], index) => (
-            <div
-              key={title}
-              className="px-3 py-5 text-center md:border-r md:border-[#E8E6FF] md:px-6 md:last:border-r-0"
-            >
-              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded bg-[#EEEAFE] text-lg md:h-14 md:w-14 md:text-xl">
-                {icons[index]}
+        <div className="relative overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--card)]/92 shadow-[var(--shadow-lg)] backdrop-blur-2xl">
+          {/* 背景光晕 */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(109,93,252,0.10),transparent_24%),radial-gradient(circle_at_left,rgba(124,58,237,0.06),transparent_18%)]" />
+
+          <div className="relative grid grid-cols-2 md:grid-cols-4">
+            {features.map(([title, desc], index) => (
+              <div
+                key={title}
+                className="group relative px-4 py-6 text-center transition-all duration-300 hover:bg-[var(--card-hover)] md:px-6 md:py-8"
+              >
+                {/* 分割线 */}
+                {index !== features.length - 1 && (
+                  <div className="absolute right-0 top-1/2 hidden h-[58%] w-px -translate-y-1/2 bg-[var(--border)] md:block" />
+                )}
+
+                {/* Icon */}
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-xl shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-md)]">
+                  <span className="transition-all duration-300 group-hover:scale-110">
+                    {icons[index]}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-sm font-bold tracking-tight text-[var(--text)] md:text-base">
+                  {title}
+                </h3>
+
+                {/* Desc */}
+                <p className="mt-2 text-xs leading-6 text-[var(--text-soft)] md:text-sm">
+                  {desc}
+                </p>
+
+                {/* Hover Glow */}
+                <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-0 transition-all duration-300 group-hover:scale-x-100 group-hover:opacity-100" />
               </div>
-              <h3 className="text-sm font-bold text-[#4040A8] md:text-base">
-                {title}
-              </h3>
-              <p className="mt-2 text-xs text-[#7A7DA0] md:text-sm">{desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* IELTS / PTE Choice */}
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-20">
-        <div className="text-center">
-          <p className="text-xl text-[#FF8CCB]">✧</p>
-          <h2 className="text-2xl font-bold md:text-3xl">
-            雅思 / PTE 备考选择
-          </h2>
-          <p className="mt-3 text-sm text-[#7A7DA0]">
-            选择适合你的考试，开启备考之旅
+
+      <section className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-24">
+        <div className="relative text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
+            <span className="text-sm">✦</span>
+            English Test Preparation
+          </div>
+
+          {/* Title */}
+          <div className="mt-5">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
+              IELTS · PTE Academic
+            </div>
+
+            <h2 className="text-2xl font-black tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
+              选择适合你的英语考试
+            </h2>
+          </div>
+
+          {/* Description */}
+          <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+            根据你的目标、学习习惯与考试需求，
+            选择最适合自己的英语考试与备考路径。
           </p>
         </div>
 
-        <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
+        {/* Cards */}
+        <div className="relative mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
           <ExamCard
             title="雅思 IELTS"
             desc="全球认可的英语能力测试"
@@ -244,8 +374,8 @@ export default async function HomePage() {
           />
 
           <ExamCard
-            title="PTE"
-            desc="机考英语考试，快速出分"
+            title="PTE Academic"
+            desc="AI 驱动的智能机考训练"
             points={["机考模拟训练", "快速出分", "AI评分分析"]}
             href="/pte"
             image="/pte-bg.png"
@@ -255,107 +385,178 @@ export default async function HomePage() {
           />
         </div>
       </section>
+{/* Resources */}
+<section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6 md:pb-20">
+  
+  {/* Header */}
+  <div className="text-center">
+    
+    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
+      <span className="text-sm">✦</span>
+      Learning Resources
+    </div>
 
-      {/* Resources */}
-      <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 md:pb-16">
-        <div className="text-center">
-          <p className="text-xl text-[#FF8CCB]">✧</p>
-          <h2 className="text-2xl font-bold md:text-3xl">
-            网站内部备考资料与学习资源
-          </h2>
-          <p className="mt-3 text-sm text-[#7A7DA0]">
-            精选资料，助你高效备考
+    <div className="mt-5">
+      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
+        IELTS · PTE Academic
+      </div>
+
+      <h2 className="text-2xl font-black tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
+        网站内部备考资料与学习资源
+      </h2>
+    </div>
+
+    <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+      精选题库、学习资料与模考资源，
+      帮助你更高效地建立英语能力体系。
+    </p>
+  </div>
+
+  {/* Resource Grid */}
+  <div className="mt-10 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)]">
+    <div className="grid grid-cols-2 md:grid-cols-5">
+      {resources.map(([title, desc], index) => (
+        <div
+          key={title}
+          className="group relative px-4 py-6 text-center transition-all duration-300 hover:bg-[var(--card-hover)] md:px-5 md:py-7"
+        >
+          {/* Divider */}
+          {index !== resources.length - 1 && (
+            <div className="absolute right-0 top-1/2 hidden h-[55%] w-px -translate-y-1/2 bg-[var(--border)] md:block" />
+          )}
+
+          {/* Icon */}
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-lg shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-md)]">
+            📄
+          </div>
+
+          {/* Title */}
+          <h3 className="text-sm font-bold tracking-tight text-[var(--text)]">
+            {title}
+          </h3>
+
+          {/* Desc */}
+          <p className="mt-2 text-xs leading-6 text-[var(--text-soft)]">
+            {desc}
           </p>
-        </div>
 
-        <div className="mt-8 grid grid-cols-2 round bg-white p-4 shadow-lg md:mt-10 md:grid-cols-5 md:round md:p-6">
-          {resources.map(([title, desc]) => (
-            <div
-              key={title}
-              className="px-3 py-5 text-center md:border-r md:border-[#E8E6FF] md:px-4 md:last:border-r-0"
-            >
-              <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded bg-[#EEEAFE] text-lg md:h-12 md:w-12 md:text-xl">
-                📄
-              </div>
-              <h3 className="text-sm font-bold text-[#4040A8]">{title}</h3>
-              <p className="mt-2 text-xs text-[#7A7DA0]">{desc}</p>
-            </div>
-          ))}
+          {/* Hover Line */}
+          <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-0 transition-all duration-300 group-hover:scale-x-100 group-hover:opacity-100" />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* CTA */}
+<section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+  <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-r from-[var(--primary)] via-[#7C6BFF] to-[#A78BFA] px-6 py-12 text-center text-white shadow-[0_30px_60px_rgba(109,93,252,.20)] md:px-10 md:py-14">
+
+    {/* Light */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%)]" />
+
+    <div className="relative z-10">
+      
+      {/* Badge */}
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
+        <span>✦</span>
+        AI Learning Platform
+      </div>
+
+      {/* Title */}
+      <h2 className="mx-auto mt-6 max-w-[760px] text-3xl font-black leading-tight tracking-tight md:text-5xl">
+        加入致远教育
+        <br className="hidden md:block" />
+        和更多学员一起进步
+      </h2>
+
+      {/* Desc */}
+      <p className="mx-auto mt-5 max-w-[620px] text-sm leading-8 text-white/85 sm:text-base">
+        从 AI 智能练习、老师监督到真题训练，
+        致远教育帮助学生建立长期、高效且可持续的学习体系。
+      </p>
 
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6 md:pb-20">
-        <div className="relative overflow-hidden round bg-gradient-to-r from-[#4C55C9] via-[#6A6FF0] to-[#C38BFF] px-5 py-10 text-center text-white shadow-xl md:round md:px-8 md:py-12">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute left-6 top-6 h-20 w-20 rounded bg-white blur-2xl" />
-            <div className="absolute bottom-4 right-8 h-24 w-24 rounded bg-pink-200 blur-2xl" />
-          </div>
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/sign-up"
+          className="inline-flex h-11 items-center justify-center rounded-[var(--radius-sm)] bg-white px-7 text-sm font-bold text-[var(--primary)] shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(255,255,255,.18)]"
+        >
+          立即注册
+        </Link>
+      </div>
 
-          <div className="relative z-10">
-            <h2 className="text-xl font-bold md:text-3xl">
-              加入 致远教育，和众多学员一起进步
-            </h2>
-            <p className="mt-3 text-sm text-white/85 md:text-base">
-              已有 5000+ 学员在这里实现了自己的目标
-            </p>
+      {/* Slogan */}
+      <p className="mx-auto mt-6 max-w-[520px] text-sm leading-7 text-white/75 sm:text-base">
+        {heroSlogan}
+      </p>
+    </div>
+  </div>
+</section>
 
-            <Link
-              href="/sign-up"
-              className="mt-7 inline-block rounded bg-white px-8 py-3 text-sm font-bold text-[#4C55C9] shadow-lg"
-            >
-              立即注册
-            </Link>
-                <p className="mb-5 text-sm leading-7 text-white sm:text-base sm:leading-8 pt-5">
-                  {heroSlogan}
-                </p>
-          </div>
-        </div>
-      </section>
-      <section className="m-16 sm:mt-20">
-           <div className="mb-6">
-             <h2 className="text-xl font-semibold sm:text-2xl text-(--theme)">
-               常见问题 FAQ
-             </h2>
-           </div>
+{/* FAQ */}
+<section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
+  
+  {/* Header */}
+  <div className="text-center">
+    
+    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
+      <span className="text-sm">✦</span>
+      FAQ
+    </div>
 
-           <div className="grid gap-5 sm:gap-6">
-             <article className="card">
-               <h3 className="mb-2 text-lg font-semibold text-(--theme)">
-                 PTE 和雅思哪个更适合留学移民？
-               </h3>
-               <p className="text-sm leading-7 text-(--theme) sm:text-base">
-                 PTE 和雅思都可用于留学与移民申请，但不同院校、签证类型
-                 和个人英语基础适合的考试可能不同。致远教育不仅提供 PTE 与
-                 雅思的学习资源、题库训练和 AI 辅助练习，更会帮助学生找到更适合自己的备考路径，和鞭策驱动力。
-               </p>
-             </article>
+    <h2 className="mt-5 text-3xl font-black tracking-tight text-[var(--text)] md:text-4xl">
+      常见问题
+    </h2>
 
-             <article className="card">
-              <h3 className="mb-2 text-lg font-semibold text-(--theme)">
-                AI 可以帮助批改雅思或 PTE 写作吗？
-               </h3>
-               <p className="text-sm leading-7 text-(--theme) sm:text-base">
-                 可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，
-                 提供更高频、更即时的反馈。致远教育的 AI 辅助功能适合
-                 用于日常练习、改写提升和考试前复盘。
-              </p>
-             </article>
+    <p className="mx-auto mt-4 max-w-[560px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+      关于 PTE、雅思与 AI 学习平台的常见问题。
+    </p>
+  </div>
 
-             <article className="card">
-               <h3 className="mb-2 text-lg font-semibold text-(--theme)">
-                 初学者可以从哪里开始准备 PTE 或雅思？
-               </h3>
-               <p className="text-sm leading-7 text-(--theme) sm:text-base">
-                 建议先了解考试结构，再从基础词汇、听说读写分项训练和
-                 真题题库练习开始。首页的考试模块与文章资源可以帮助你
-                 逐步建立清晰的学习路线。
-               </p>
-             </article>
-           </div>
-         </section>
+  {/* FAQ Cards */}
+  <div className="mt-10 grid gap-5 sm:gap-6">
+    
+    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
+        PTE 和雅思哪个更适合留学移民？
+      </h3>
+
+      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
+        PTE 和雅思都可用于留学与移民申请，但不同院校、
+        签证类型和个人英语基础适合的考试可能不同。
+        致远教育不仅提供 PTE 与雅思的学习资源、题库训练和 AI 辅助练习，
+        更会帮助学生找到更适合自己的备考路径。
+      </p>
+    </article>
+
+    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
+        AI 可以帮助批改雅思或 PTE 写作吗？
+      </h3>
+
+      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
+        可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，
+        提供更高频、更即时的反馈。
+        致远教育的 AI 辅助功能适合用于日常练习、
+        改写提升和考试前复盘。
+      </p>
+    </article>
+
+    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
+        初学者可以从哪里开始准备 PTE 或雅思？
+      </h3>
+
+      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
+        建议先了解考试结构，再从基础词汇、
+        听说读写分项训练和真题题库练习开始。
+        首页的考试模块与文章资源可以帮助你逐步建立清晰的学习路线。
+      </p>
+    </article>
+  </div>
+</section>
     </main>
-
   );
 }
 function ExamCard({
@@ -432,4 +633,3 @@ function ExamCard({
     </div>
   );
 }
-

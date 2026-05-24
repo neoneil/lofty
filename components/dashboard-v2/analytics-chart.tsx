@@ -12,23 +12,14 @@ import {
   LineChart,
   Pie,
   PieChart,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 
-type Variant =
-  | "area"
-  | "line"
-  | "bar"
-  | "pie";
+type Variant = "area" | "line" | "bar" | "pie";
 
-type Tone =
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger";
+type Tone = "primary" | "success" | "warning" | "danger";
 
 type Props = {
   variant?: Variant;
@@ -59,31 +50,25 @@ type Props = {
 };
 
 const toneMap = {
-
   primary: {
     stroke: "var(--primary)",
     fill: "var(--primary)",
-    soft: "var(--primary-soft)",
   },
 
   success: {
     stroke: "var(--success)",
     fill: "var(--success)",
-    soft: "var(--success-soft)",
   },
 
   warning: {
     stroke: "var(--warning)",
     fill: "var(--warning)",
-    soft: "var(--warning-soft)",
   },
 
   danger: {
     stroke: "var(--danger)",
     fill: "var(--danger)",
-    soft: "var(--danger-soft)",
   },
-
 };
 
 const pieColors = [
@@ -110,222 +95,227 @@ export function AnalyticsChart({
   pieDataKey = "value",
   pieNameKey = "name",
 }: Props) {
+  const colors = toneMap[tone];
 
-  const colors =
-    toneMap[tone];
-
-  const chartType =
-    smooth
-      ? "monotone"
-      : "linear";
+  const chartType = smooth ? "monotone" : "linear";
 
   return (
+    <div className="w-full overflow-hidden" style={{ height }}>
+      {/* AREA */}
 
-    <div
-      className="w-full"
-      style={{ height }}
-    >
+      {variant === "area" && (
+        <AreaChart
+          width={700}
+          height={height}
+          data={data}
+          margin={{
+            top: 10,
+            right: 10,
+            left: -20,
+            bottom: 20,
+          }}
+        >
+          <defs>
+            <linearGradient id="analyticsGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={colors.fill} stopOpacity={0.35} />
 
-      <ResponsiveContainer width="100%" height="100%">
+              <stop offset="100%" stopColor={colors.fill} stopOpacity={0} />
+            </linearGradient>
+          </defs>
 
-        {/* AREA */}
+          {showGrid && (
+            <CartesianGrid stroke="var(--border)" vertical={false} />
+          )}
 
-        {variant === "area" && (
+          <XAxis
+            dataKey={xKey}
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-          <AreaChart data={data}>
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-            <defs>
+          {showTooltip && <Tooltip />}
 
-              <linearGradient id="analyticsGradient" x1="0" y1="0" x2="0" y2="1">
+          {showLegend && <Legend />}
 
-                <stop offset="0%" stopColor={colors.fill} stopOpacity={0.35} />
-
-                <stop offset="100%" stopColor={colors.fill} stopOpacity={0} />
-
-              </linearGradient>
-
-            </defs>
-
-            {showGrid && (
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-            )}
-
-            <XAxis
-              dataKey={xKey}
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
-            />
-
-            <YAxis
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
-            />
-
-            {showTooltip && <Tooltip />}
-
-            {showLegend && <Legend />}
-
-            {goal && (
-
-              <Line
-                type="linear"
-                dataKey={() => goal}
-                stroke="var(--danger)"
-                strokeDasharray="6 6"
-                dot={false}
-                strokeWidth={2}
-              />
-
-            )}
-
-            <Area
-              type={chartType}
-              dataKey={yKey}
-              stroke={colors.stroke}
-              strokeWidth={3}
-              fill="url(#analyticsGradient)"
-            />
-
-          </AreaChart>
-
-        )}
-
-        {/* LINE */}
-
-        {variant === "line" && (
-
-          <LineChart data={data}>
-
-            {showGrid && (
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-            )}
-
-            <XAxis
-              dataKey={xKey}
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
-            />
-
-            <YAxis
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
-            />
-
-            {showTooltip && <Tooltip />}
-
-            {showLegend && <Legend />}
-
-            {goal && (
-
-              <Line
-                type="linear"
-                dataKey={() => goal}
-                stroke="var(--danger)"
-                strokeDasharray="6 6"
-                dot={false}
-                strokeWidth={2}
-              />
-
-            )}
-
+          {goal && (
             <Line
-              type={chartType}
-              dataKey={yKey}
-              stroke={colors.stroke}
-              strokeWidth={3}
-              dot={{
-                r: 4,
-                fill: colors.fill,
-                strokeWidth: 0,
-              }}
-              activeDot={{
-                r: 6,
-              }}
+              type="linear"
+              dataKey={() => goal}
+              stroke="var(--danger)"
+              strokeDasharray="6 6"
+              dot={false}
+              strokeWidth={2}
             />
+          )}
 
-          </LineChart>
+          <Area
+            type={chartType}
+            dataKey={yKey}
+            stroke={colors.stroke}
+            strokeWidth={3}
+            fill="url(#analyticsGradient)"
+          />
+        </AreaChart>
+      )}
 
-        )}
+      {/* LINE */}
 
-        {/* BAR */}
+      {variant === "line" && (
+        <LineChart
+          width={700}
+          height={height}
+          data={data}
+          margin={{
+            top: 10,
+            right: 10,
+            left: -20,
+            bottom: 20,
+          }}
+        >
+          {showGrid && (
+            <CartesianGrid stroke="var(--border)" vertical={false} />
+          )}
 
-        {variant === "bar" && (
+          <XAxis
+            dataKey={xKey}
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-          <BarChart data={data}>
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-            {showGrid && (
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-            )}
+          {showTooltip && <Tooltip />}
 
-            <XAxis
-              dataKey={xKey}
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
+          {showLegend && <Legend />}
+
+          {goal && (
+            <Line
+              type="linear"
+              dataKey={() => goal}
+              stroke="var(--danger)"
+              strokeDasharray="6 6"
+              dot={false}
+              strokeWidth={2}
             />
+          )}
 
-            <YAxis
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#9ea3b5", fontSize: 12 }}
-            />
+          <Line
+            type={chartType}
+            dataKey={yKey}
+            stroke={colors.stroke}
+            strokeWidth={3}
+            dot={{
+              r: 4,
+              fill: colors.fill,
+              strokeWidth: 0,
+            }}
+            activeDot={{
+              r: 6,
+            }}
+          />
+        </LineChart>
+      )}
 
-            {showTooltip && <Tooltip />}
+      {/* BAR */}
 
-            {showLegend && <Legend />}
+      {variant === "bar" && (
+        <BarChart
+          width={700}
+          height={height}
+          data={data}
+          margin={{
+            top: 10,
+            right: 10,
+            left: -20,
+            bottom: 20,
+          }}
+        >
+          {showGrid && (
+            <CartesianGrid stroke="var(--border)" vertical={false} />
+          )}
 
-            <Bar
-              dataKey={yKey}
-              fill={colors.fill}
-              radius={[10, 10, 0, 0]}
-            />
+          <XAxis
+            dataKey={xKey}
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-          </BarChart>
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
 
-        )}
+          {showTooltip && <Tooltip />}
 
-        {/* PIE */}
+          {showLegend && <Legend />}
 
-        {variant === "pie" && (
+          <Bar dataKey={yKey} fill={colors.fill} radius={[10, 10, 0, 0]} />
+        </BarChart>
+      )}
 
-          <PieChart>
+      {/* PIE */}
 
-            {showTooltip && <Tooltip />}
+      {variant === "pie" && (
+        <PieChart
+          width={700}
+          height={height}
+          margin={{
+            top: 10,
+            right: 10,
+            left: -20,
+            bottom: 40,
+          }}
+        >
+          {showTooltip && <Tooltip />}
 
-            {showLegend && <Legend />}
+          {showLegend && <Legend />}
 
-            <Pie
-              data={data}
-              dataKey={pieDataKey}
-              nameKey={pieNameKey}
-              innerRadius={70}
-              outerRadius={110}
-              paddingAngle={4}
-            >
-
-              {data.map((_, index) => (
-
-                <Cell
-                  key={index}
-                  fill={pieColors[index % pieColors.length]}
-                />
-
-              ))}
-
-            </Pie>
-
-          </PieChart>
-
-        )}
-
-      </ResponsiveContainer>
-
+          <Pie
+            data={data}
+            dataKey={pieDataKey}
+            nameKey={pieNameKey}
+            innerRadius={70}
+            outerRadius={110}
+            paddingAngle={4}
+          >
+            {data.map((_, index) => (
+              <Cell key={index} fill={pieColors[index % pieColors.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+      )}
     </div>
-
   );
-
 }

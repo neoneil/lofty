@@ -1,0 +1,284 @@
+{
+  "slug": "simple-past",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "一般过去时",
+    "en": "Simple Past Tense"
+  },
+  "difficulty": "基础到中级",
+  "summary": {
+    "zh": "一般过去时（Simple Past Tense）用于描述过去某一明确时间发生并已经结束的动作、状态或事件。它常与 yesterday, last week, in 2019, two years ago, when I was a child 等过去时间状语连用。在 PTE Academic 和 IELTS 写作、口语中，一般过去时常用于描述个人经历、历史事实、实验过程、数据变化以及过去的研究结果。中国学习者需要特别注意动词过去式形式、助动词 did 后使用动词原形、以及过去时间语境中不要误用现在完成时。"
+  },
+  "structure": {
+    "formula": "肯定句：Subject + past verb / was / were + Object / Complement. 否定句：Subject + did not + base verb + Object. Be 动词否定句：Subject + was / were not + Complement. 一般疑问句：Did + subject + base verb + Object? Be 动词疑问句：Was / Were + subject + Complement?",
+    "explanation": "一般过去时的核心是“动作或状态发生在过去，并且已经结束”。普通实义动词在肯定句中使用过去式，例如 worked, studied, developed；不规则动词需要单独记忆，例如 went, made, found, became。否定句和疑问句中使用助动词 did，此时主要动词必须还原为原形，例如 did not go，而不是 did not went。若谓语是 be 动词，则根据主语使用 was 或 were，不再使用 did。",
+    "examples": [
+      {
+        "en": "The researcher collected data from 200 participants last year.",
+        "zh": "这位研究人员去年从200名参与者那里收集了数据。"
+      },
+      {
+        "en": "The results were significant in the first experiment.",
+        "zh": "第一次实验中的结果具有显著性。"
+      },
+      {
+        "en": "She did not attend the lecture yesterday.",
+        "zh": "她昨天没有参加讲座。"
+      },
+      {
+        "en": "Did the government introduce the policy in 2020?",
+        "zh": "政府是在2020年推出这项政策的吗？"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "描述过去某一明确时间发生的动作",
+      "description": "当句子中出现明确的过去时间，如 yesterday, last month, in 2018, three days ago 时，通常使用一般过去时。该用法在 IELTS Writing Task 1 描述过去年份的数据、PTE Summarize Written Text 概括历史事件时很常见。",
+      "examples": [
+        {
+          "en": "The company launched its online platform in 2016.",
+          "zh": "这家公司在2016年推出了其线上平台。"
+        },
+        {
+          "en": "The number of international students increased sharply between 2005 and 2010.",
+          "zh": "2005年至2010年间，国际学生人数大幅增加。"
+        }
+      ]
+    },
+    {
+      "title": "描述过去的状态或身份",
+      "description": "一般过去时不仅表示动作，也可以表示过去存在的状态、身份、位置或情况。此时常用 was 或 were，尤其适用于口语中介绍过去经历，或写作中描述过去背景。",
+      "examples": [
+        {
+          "en": "The city was a major industrial centre in the nineteenth century.",
+          "zh": "这座城市在19世纪是一个重要的工业中心。"
+        },
+        {
+          "en": "Many rural areas were underdeveloped before the new infrastructure project.",
+          "zh": "在新的基础设施项目之前，许多农村地区发展不足。"
+        }
+      ]
+    },
+    {
+      "title": "叙述过去连续发生的一系列事件",
+      "description": "在讲故事、描述个人经历或复述听力内容时，一般过去时可用于按时间顺序呈现多个已完成动作。PTE Retell Lecture 和 IELTS Speaking Part 2 中经常需要这种叙述能力。",
+      "examples": [
+        {
+          "en": "I arrived at the testing centre, checked my documents, and waited for the exam to begin.",
+          "zh": "我到达考试中心，核对了证件，然后等待考试开始。"
+        },
+        {
+          "en": "The scientists observed the samples, recorded the findings, and published the report.",
+          "zh": "科学家们观察了样本，记录了发现，并发表了报告。"
+        }
+      ]
+    },
+    {
+      "title": "描述过去的习惯或重复性行为",
+      "description": "一般过去时可以表示过去经常发生、但现在未必继续的行为。若强调“过去常常”，也可使用 used to，但普通一般过去时同样正确。",
+      "examples": [
+        {
+          "en": "People relied heavily on printed newspapers before digital media became widespread.",
+          "zh": "在数字媒体普及之前，人们高度依赖纸质报纸。"
+        },
+        {
+          "en": "When I was in high school, I reviewed vocabulary every morning.",
+          "zh": "我上高中时，每天早上复习词汇。"
+        }
+      ]
+    },
+    {
+      "title": "报告过去研究、实验或调查结果",
+      "description": "在学术英语中，如果某项研究、实验或调查已经完成，描述其方法和发现时通常使用一般过去时。这一点在 IELTS Writing Task 2 引用研究、PTE Writing 概括材料时非常重要。",
+      "examples": [
+        {
+          "en": "A recent survey found that remote workers reported higher job satisfaction.",
+          "zh": "一项近期调查发现，远程工作者报告了更高的工作满意度。"
+        },
+        {
+          "en": "The experiment demonstrated that sleep deprivation reduced cognitive performance.",
+          "zh": "该实验表明，睡眠不足降低了认知表现。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I did not went to the library yesterday.",
+      "correct": "I did not go to the library yesterday.",
+      "explanation": "助动词 did 已经体现过去时，后面的实义动词必须使用原形 go，不能再使用过去式 went。中国学习者常因“过去时要加过去式”的思维而重复标记时态。"
+    },
+    {
+      "wrong": "She go to Australia last year.",
+      "correct": "She went to Australia last year.",
+      "explanation": "last year 是明确的过去时间状语，谓语动词需要使用过去式。go 的过去式是不规则形式 went。"
+    },
+    {
+      "wrong": "They was satisfied with the results.",
+      "correct": "They were satisfied with the results.",
+      "explanation": "主语 they 是复数，过去时 be 动词应使用 were，而不是 was。was 用于 I, he, she, it 或单数名词。"
+    },
+    {
+      "wrong": "Did he finished the assignment on time?",
+      "correct": "Did he finish the assignment on time?",
+      "explanation": "一般疑问句中使用 Did 后，主要动词必须用原形 finish。不能写成 Did he finished。"
+    },
+    {
+      "wrong": "In 2019, the population has increased significantly.",
+      "correct": "In 2019, the population increased significantly.",
+      "explanation": "in 2019 表示一个已经结束的过去时间点或时间段，应使用一般过去时。现在完成时通常不与明确的过去时间连用。"
+    },
+    {
+      "wrong": "Yesterday I am very tired after the exam.",
+      "correct": "Yesterday I was very tired after the exam.",
+      "explanation": "yesterday 表明时间在过去，be 动词应从 am 改为 was。描述过去状态时也要使用过去时。"
+    },
+    {
+      "wrong": "The data was collected and analyse in 2021.",
+      "correct": "The data was collected and analysed in 2021.",
+      "explanation": "在被动结构中，两个并列动词都应使用过去分词。英式英语中常写 analysed，美式英语为 analyzed。PTE 和 IELTS 都接受两种拼写，但同一篇文章中应保持一致。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "一般过去时在 PTE Academic 中非常常见，尤其用于复述讲座中的历史背景、实验过程、调查结果和作者过去的观点。在口语部分，如果题目要求描述个人经历、过去事件或讲座中提到的研究，考生需要稳定使用一般过去时。写作部分也常需要用一般过去时概括材料中已经发生的事实。错误使用时态会影响 Grammar 和 Content 的评分，特别是在 Summarize Written Text、Write Essay、Retell Lecture 和 Describe Image 中。",
+    "sections": [
+      "Speaking: Retell Lecture",
+      "Speaking: Answer Short Question",
+      "Writing: Summarize Written Text",
+      "Writing: Write Essay",
+      "Reading: Fill in the Blanks",
+      "Listening: Summarize Spoken Text",
+      "Listening: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The study found that + clause.",
+      "translation": "该研究发现……"
+    },
+    {
+      "pattern": "The results indicated that + clause.",
+      "translation": "结果表明……"
+    },
+    {
+      "pattern": "Researchers observed that + clause.",
+      "translation": "研究人员观察到……"
+    },
+    {
+      "pattern": "The data showed a significant increase in + noun.",
+      "translation": "数据显示……出现了显著增长。"
+    },
+    {
+      "pattern": "The policy led to + noun phrase.",
+      "translation": "该政策导致了……"
+    },
+    {
+      "pattern": "The number of + plural noun + rose/fell from A to B.",
+      "translation": "……的数量从A上升/下降到B。"
+    },
+    {
+      "pattern": "This approach proved effective in + -ing form.",
+      "translation": "这种方法在……方面被证明是有效的。"
+    },
+    {
+      "pattern": "The experiment was conducted to examine + noun phrase.",
+      "translation": "该实验被开展用于研究……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "conducted a survey",
+      "translation": "开展了一项调查"
+    },
+    {
+      "phrase": "collected data",
+      "translation": "收集了数据"
+    },
+    {
+      "phrase": "analysed the results",
+      "translation": "分析了结果"
+    },
+    {
+      "phrase": "reported a decline",
+      "translation": "报告了下降"
+    },
+    {
+      "phrase": "experienced rapid growth",
+      "translation": "经历了快速增长"
+    },
+    {
+      "phrase": "introduced a policy",
+      "translation": "推出了一项政策"
+    },
+    {
+      "phrase": "played a crucial role",
+      "translation": "发挥了关键作用"
+    },
+    {
+      "phrase": "reached a peak",
+      "translation": "达到峰值"
+    },
+    {
+      "phrase": "remained stable",
+      "translation": "保持稳定"
+    },
+    {
+      "phrase": "became increasingly important",
+      "translation": "变得越来越重要"
+    }
+  ],
+  "ai_tips": [
+    "看到明确过去时间状语，如 yesterday, last year, in 2020, two decades ago，优先判断是否应使用一般过去时。",
+    "在 PTE 口语复述中，如果讲座内容讲的是已完成的研究或历史事件，使用 found, showed, argued, developed, changed 等过去式动词更自然。",
+    "写作中引用已完成研究时，不要机械使用 present perfect；若有明确过去时间或研究已结束，通常用一般过去时。",
+    "检查否定句和疑问句时，重点确认 did 后面的动词是否为原形，例如 did not increase, did the figure rise。",
+    "描述图表中已经结束的年份区间时，一般过去时比一般现在时更准确，例如 The figure rose between 1990 and 2000。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改为一般过去时：The government introduces a new education policy.",
+      "answer": "The government introduced a new education policy."
+    },
+    {
+      "question": "选择正确形式：The number of applicants (increase / increased) significantly in 2018.",
+      "answer": "increased"
+    },
+    {
+      "question": "改正错误：Did the researchers found a clear connection?",
+      "answer": "Did the researchers find a clear connection?"
+    },
+    {
+      "question": "用一般过去时翻译：这项调查显示，大多数学生更喜欢在线学习。",
+      "answer": "The survey showed that most students preferred online learning."
+    },
+    {
+      "question": "填空：The experiment _____ conducted in a controlled environment last month.",
+      "answer": "was"
+    },
+    {
+      "question": "改为否定句：She attended the seminar yesterday.",
+      "answer": "She did not attend the seminar yesterday."
+    },
+    {
+      "question": "用一般过去时翻译：1990年至2000年间，城市人口迅速增长。",
+      "answer": "The urban population grew rapidly between 1990 and 2000."
+    },
+    {
+      "question": "选择正确句子：A. He did not completed the task. B. He did not complete the task.",
+      "answer": "B. He did not complete the task."
+    },
+    {
+      "question": "根据提示造句：the data / show / a steady decline / in 2021",
+      "answer": "The data showed a steady decline in 2021."
+    },
+    {
+      "question": "改正错误：They was responsible for the project last year.",
+      "answer": "They were responsible for the project last year."
+    }
+  ]
+}

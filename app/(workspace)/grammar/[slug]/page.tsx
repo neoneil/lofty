@@ -33,7 +33,7 @@ export default async function GrammarDetailPage({
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <div className="mx-auto max-w-[1500px] px-4 py-6 lg:px-6">
+      <div className="mx-auto max-w-[1500px] px-4 lg:px-1">
         {/* Hero */}
 
         <Card className="mb-6 overflow-hidden border-[var(--border)] bg-gradient-to-br from-[var(--primary-soft)] via-[var(--card)] to-[var(--card)] shadow-[var(--shadow-sm)]">

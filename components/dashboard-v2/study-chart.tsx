@@ -20,53 +20,59 @@ const data = [
 ];
 
 export function StudyChart() {
-
   return (
-    <div className="h-[320px] w-full">
+    <ResponsiveContainer
+      width="100%"
+      height="100%"
+    >
+      <AreaChart data={data}>
+        <defs>
+          <linearGradient
+            id="scoreGradient"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+            <stop
+              offset="0%"
+              stopColor="var(--primary)"
+              stopOpacity={0.35}
+            />
 
-      <ResponsiveContainer width="100%" height="100%">
+            <stop
+              offset="100%"
+              stopColor="var(--primary)"
+              stopOpacity={0}
+            />
+          </linearGradient>
+        </defs>
 
-        <AreaChart data={data}>
+        <CartesianGrid
+          stroke="var(--border)"
+          vertical={false}
+        />
 
-          <defs>
+        <XAxis
+          dataKey="day"
+          tickLine={false}
+          axisLine={false}
+          tick={{
+            fill: "var(--text-soft)",
+            fontSize: 12,
+          }}
+        />
 
-            <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
+        <Tooltip />
 
-              <stop offset="0%" stopColor="var(--primary)" stopOpacity={0.35} />
-
-              <stop offset="100%" stopColor="var(--primary)" stopOpacity={0} />
-
-            </linearGradient>
-
-          </defs>
-
-          <CartesianGrid
-            stroke="var(--border)"
-            vertical={false}
-          />
-
-          <XAxis
-            dataKey="day"
-            tickLine={false}
-            axisLine={false}
-            tick={{ fill: "#9ea3b5", fontSize: 12 }}
-          />
-
-          <Tooltip />
-
-          <Area
-            type="monotone"
-            dataKey="score"
-            stroke="var(--primary)"
-            strokeWidth={3}
-            fill="url(#scoreGradient)"
-          />
-
-        </AreaChart>
-
-      </ResponsiveContainer>
-
-    </div>
+        <Area
+          type="monotone"
+          dataKey="score"
+          stroke="var(--primary)"
+          strokeWidth={3}
+          fill="url(#scoreGradient)"
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
-
 }

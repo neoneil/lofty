@@ -8,7 +8,7 @@ import ChatWidget from "@/components/chat/ChatWidget";
 
 import { DictionaryProvider } from "@/components/dictionary/dictionary-context";
 import DictionaryPopup from "@/components/dictionary/dictionary-popup";
-
+import AuthDebug from "@/components/debug/auth-debug";
 import SearchProvider from "@/components/search/search-provider";
 
 export const metadata: Metadata = {
@@ -75,7 +75,7 @@ export default function RootLayout({
     <html lang="zh-CN" data-scroll-behavior="smooth">
 
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
-
+        <AuthDebug />
         <div className="fixed-bg" />
 
         <DictionaryProvider>
