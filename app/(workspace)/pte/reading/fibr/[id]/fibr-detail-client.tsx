@@ -174,6 +174,9 @@ function FibrDetailClient({ question, attempts }: Props) {
 
   const [score, setScore] = useState(0);
 
+  const [loading, setLoading] = useState(false);
+  const [startedAt] = useState(Date.now());
+
   const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
 
   const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
@@ -290,18 +293,43 @@ function FibrDetailClient({ question, attempts }: Props) {
     }
   }
 
-  function handleSubmit() {
-    let correct = 0;
+  async function handleSubmit() {
+    setLoading(true);
 
-    question.blanks_json.forEach((blank) => {
-      if (answers[blank.blank_index] === blank.answer) {
-        correct++;
+    try {
+      const formattedAnswers = question.blanks_json.map((blank) => ({
+        blankId: `blank-${blank.blank_index}`,
+        answer: answers[blank.blank_index] || "",
+      }));
+
+      const res = await fetch("/api/pte/fibr/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          questionId: question.id,
+          answers: formattedAnswers,
+          startedAt,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "提交失败");
       }
-    });
 
-    setScore(correct);
+      setScore(data.score || 0);
 
-    setSubmitted(true);
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+
+      alert(error instanceof Error ? error.message : "提交失败");
+    } finally {
+      setLoading(false);
+    }
   }
 
   function handleReset() {
@@ -440,11 +468,51 @@ function FibrDetailClient({ question, attempts }: Props) {
         </DragOverlay>
       </DndContext>
 
+
+      {submitted ? (
+        <section className="rounded-3xl border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
+          <div className="mb-5 flex flex-wrap items-center gap-3">
+            <span
+              className={`rounded px-4 py-1.5 text-sm font-semibold ${
+                accuracy === 100
+                  ? "bg-green-100 text-green-700"
+                  : "bg-yellow-100 text-yellow-700"
+              }`}
+            >
+              {accuracy === 100 ? "Correct" : "Completed"}
+            </span>
+
+            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+              Score: {score} / {question.blanks_json.length}
+            </span>
+
+            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+              Accuracy: {accuracy}%
+            </span>
+          </div>
+
+          <div className="h-3 overflow-hidden rounded-full bg-gray-200">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                accuracy === 100
+                  ? "bg-green-500"
+                  : accuracy >= 60
+                    ? "bg-yellow-500"
+                    : "bg-red-500"
+              }`}
+              style={{
+                width: `${accuracy}%`,
+              }}
+            />
+          </div>
+        </section>
+      ) : null}
+
       {/* Actions */}
 
       <div className="flex items-center justify-center gap-3">
-        <Button variant="primary" onClick={handleSubmit}>
-          Check Answer
+        <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+          {loading ? "Submitting..." : "Check Answer"}
         </Button>
 
         <Button variant="secondary" onClick={handleReset} className="gap-2">
@@ -452,7 +520,6 @@ function FibrDetailClient({ question, attempts }: Props) {
           Reset
         </Button>
       </div>
-
       {/* Attempts */}
 
       {attempts.length > 0 ? (
