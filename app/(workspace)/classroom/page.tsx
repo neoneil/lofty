@@ -1,9 +1,6 @@
-
-
-
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 declare global {
 
@@ -15,166 +12,223 @@ declare global {
 
 export default function ClassroomPage() {
 
+  const clientRef =
+    useRef<any>(null);
+
+  const initializedRef =
+    useRef(false);
+
+  const joinedRef =
+    useRef(false);
+
   useEffect(() => {
 
-    async function loadZoom() {
+    if (
+      initializedRef.current
+    ) {
+      return;
+    }
+
+    initializedRef.current =
+      true;
+
+    async function loadScript(
+      src: string,
+    ) {
+
+      return new Promise(
+        (
+          resolve,
+          reject,
+        ) => {
+
+          const existingScript =
+            document.querySelector(
+              `script[src="${src}"]`,
+            );
+
+          if (
+            existingScript
+          ) {
+
+            resolve(true);
+
+            return;
+
+          }
+
+          const script =
+            document.createElement(
+              "script",
+            );
+
+          script.src =
+            src;
+
+          script.async =
+            true;
+
+          script.onload =
+            () =>
+              resolve(true);
+
+          script.onerror =
+            () =>
+              reject(
+                new Error(
+                  `Failed to load ${src}`,
+                ),
+              );
+
+          document.body.appendChild(
+            script,
+          );
+
+        },
+      );
+
+    }
+
+    async function startMeeting() {
 
       try {
 
-        const reactScript =
-          document.createElement(
-            "script",
+        if (
+          joinedRef.current
+        ) {
+
+          console.log(
+            "ZOOM ALREADY JOINED",
           );
 
-        reactScript.src =
-          "https://source.zoom.us/4.0.7/lib/vendor/react.min.js";
+          return;
 
-        document.body.appendChild(
-          reactScript,
+        }
+
+        console.log(
+          "ZOOM START",
         );
 
-        const reactDomScript =
-          document.createElement(
-            "script",
-          );
-
-        reactDomScript.src =
-          "https://source.zoom.us/4.0.7/lib/vendor/react-dom.min.js";
-
-        document.body.appendChild(
-          reactDomScript,
+        await loadScript(
+          "/zoom/react.min.js",
         );
 
-        const zoomScript =
-          document.createElement(
-            "script",
+        await loadScript(
+          "/zoom/react-dom.min.js",
+        );
+
+        await loadScript(
+          "/zoom/zoom-meeting-embedded-4.0.7.min.js",
+        );
+
+        console.log(
+          "ZOOM SDK LOADED",
+        );
+
+        const ZoomMtgEmbedded =
+          window.ZoomMtgEmbedded;
+
+        if (
+          !ZoomMtgEmbedded
+        ) {
+
+          console.error(
+            "ZoomMtgEmbedded missing",
           );
 
-        zoomScript.src =
-  "https://source.zoom.us/zoom-meeting-embedded-4.0.7.min.js";
+          return;
 
-        zoomScript.onload =
-          async () => {
+        }
 
-            console.log(
-              "ZOOM SDK LOADED",
-            );
+        const client =
+          ZoomMtgEmbedded.createClient();
 
-            const ZoomMtgEmbedded =
-              window.ZoomMtgEmbedded;
+        clientRef.current =
+          client;
 
-            if (
-              !ZoomMtgEmbedded
-            ) {
+        const meetingSDKElement =
+          document.getElementById(
+            "meetingSDKElement",
+          );
 
-              console.error(
-                "ZoomMtgEmbedded missing",
-              );
+        if (
+          !meetingSDKElement
+        ) {
 
-              return;
+          console.error(
+            "meetingSDKElement missing",
+          );
 
-            }
+          return;
 
-            const client =
-              ZoomMtgEmbedded.createClient();
+        }
 
-            const meetingSDKElement =
-              document.getElementById(
-                "meetingSDKElement",
-              );
+        const response =
+          await fetch(
+            "/api/zoom/signature",
+            {
+              method: "POST",
 
-            if (
-              !meetingSDKElement
-            ) {
-
-              console.error(
-                "meetingSDKElement missing",
-              );
-
-              return;
-
-            }
-
-            const response =
-              await fetch(
-                "/api/zoom/signature",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type":
-                      "application/json",
-                  },
-                  body: JSON.stringify({
-                    meetingNumber:
-                      "84079681327",
-                    role: 0,
-                  }),
-                },
-              );
-
-            const data =
-              await response.json();
-
-            console.log(
-              "SIGNATURE",
-              data,
-            );
-
-            await client.init({
-              zoomAppRoot:
-                meetingSDKElement,
-
-              language:
-                "en-US",
-
-              customize: {
-                video: {
-                  isResizable: true,
-                },
+              headers: {
+                "Content-Type":
+                  "application/json",
               },
-            });
 
-            console.log(
-              "INIT SUCCESS",
-            );
+              body:
+                JSON.stringify({
+                  meetingNumber:
+                    "84079681327",
 
-            await client.join({
-              sdkKey:
-                process.env
-                  .NEXT_PUBLIC_ZOOM_CLIENT_ID!,
+                  role: 0,
+                }),
+            },
+          );
 
-              signature:
-                data.signature,
+        const data =
+          await response.json();
 
-              meetingNumber:
-                "84079681327",
+        console.log(
+          "SIGNATURE",
+          data,
+        );
 
-              password: "",
+        await client.init({
+          zoomAppRoot:
+            meetingSDKElement,
 
-              userName:
-                "tester",
-            });
+          language:
+            "en-US",
 
-            console.log(
-              "JOIN SUCCESS",
-            );
+          customize: {
+            video: {
+              isResizable:
+                true,
+            },
+          },
+        });
 
-            document.body.style.background =
-              "green";
+        console.log(
+          "INIT SUCCESS",
+        );
 
-          };
+        await client.join({
+          signature:
+            data.signature,
 
-        zoomScript.onerror =
-          () => {
+          meetingNumber:
+            "84079681327",
 
-            console.error(
-              "ZOOM SDK LOAD FAILED",
-            );
+          password: "",
 
-          };
+          userName:
+            "Vivi",
+        });
 
-        document.body.appendChild(
-          zoomScript,
+        joinedRef.current =
+          true;
+
+        console.log(
+          "JOIN SUCCESS",
         );
 
       } catch (error) {
@@ -188,7 +242,42 @@ export default function ClassroomPage() {
 
     }
 
-    loadZoom();
+    startMeeting();
+
+    return () => {
+
+      try {
+
+        console.log(
+          "ZOOM CLEANUP",
+        );
+
+        if (
+          clientRef.current
+        ) {
+
+          clientRef.current.leaveMeeting();
+
+          clientRef.current.destroyClient();
+
+          clientRef.current =
+            null;
+
+        }
+
+        joinedRef.current =
+          false;
+
+      } catch (error) {
+
+        console.error(
+          "ZOOM DESTROY ERROR",
+          error,
+        );
+
+      }
+
+    };
 
   }, []);
 

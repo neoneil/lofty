@@ -30,7 +30,7 @@ const sections = [
   {
     title: "阅读",
     description:
-      "练习 RFIB、RWFIB、RO 以及多选题等核心阅读题型。",
+      "练习 RFIB、FIBRW、RO 以及多选题等核心阅读题型。",
     href: "/pte/reading",
     icon: BookOpen,
   },

@@ -29,7 +29,7 @@ const labelMap: Record<string, string> = {
   essay: "Essay",
 
   rfib: "RFIB",
-  rwfib: "RWFIB",
+  fibrw: "FIBRW",
   rmcsa: "RMCSA",
   rmcma: "RMCMA",
   ro: "RO",

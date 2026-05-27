@@ -19,7 +19,7 @@ export type WritingSubTab =
 
 export type ReadingSubTab =
   | "rfib"
-  | "rwfib"
+  | "fibrw"
   | "rmcsa"
   | "rmcma"
   | "ro";
@@ -88,7 +88,7 @@ export const pteSubTabMap: Record<
 
   reading: [
     { key: "rfib", label: "RFIB", href: "/pte/reading/fibr" },
-    { key: "rwfib", label: "RWFIB", href: "/pte/reading/rwfib" },
+    { key: "fibrw", label: "FIBRW", href: "/pte/reading/fibrw" },
     { key: "rmcsa", label: "RMCSA", href: "/pte/reading/rmcsa" },
     { key: "rmcma", label: "RMCMA", href: "/pte/reading/rmcma" },
     { key: "ro", label: "RO", href: "/pte/reading/ro" },

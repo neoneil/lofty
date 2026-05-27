@@ -175,7 +175,7 @@ export default async function Navbar() {
                       />
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">
-                        <span className="max-w-[95px] truncate text-xs font-semibold text-[var(--text)]">
+                        <span className="max-w-[95px] truncate text-xs font-semibold text-[var(--theme)]">
                           {name}
                         </span>
 

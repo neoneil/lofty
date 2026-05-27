@@ -36,7 +36,7 @@ const TYPE_LABEL_MAP: Record<string, string> = {
   swt: "SWT",
   essay: "Essay",
   rfib: "RFIB",
-  rwfib: "RWFIB",
+  fibrw: "FIBRW",
   rmcsa: "RMCSA",
   rmcma: "RMCMA",
   ro: "RO",
