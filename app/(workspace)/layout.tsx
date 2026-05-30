@@ -1,14 +1,23 @@
 import { AppLayout } from "@/components/layout-v2/app-layout";
 
-export default function WorkspaceLayout({
+import { createClient } from "@/lib/supabase/server";
+
+export default async function WorkspaceLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
 
+  const supabase =
+    await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
 
-    <AppLayout>
+    <AppLayout user={user}>
 
       {children}
 

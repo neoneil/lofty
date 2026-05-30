@@ -7,8 +7,12 @@ import { NotificationDropdown } from "./notification-dropdown";
 import { SearchCommand } from "./search-command";
 import { ThemeToggle } from "./theme-toggle";
 import { TopbarUser } from "./topbar-user";
+import type { User } from "@supabase/supabase-js";
 
-export function Topbar() {
+type Props = {
+  user: User | null;
+};
+export function Topbar({ user }: Props) {
   return (
     <header className="sticky top-0 z-40 flex h-[var(--topbar-height)] items-center justify-between border-b border-[var(--border)] bg-white/80 px-6 backdrop-blur-xl">
       <div className="flex items-center gap-6">
@@ -27,7 +31,7 @@ export function Topbar() {
 
         <ThemeToggle />
 
-        <TopbarUser />
+        <TopbarUser user={user} />
       </div>
     </header>
   );

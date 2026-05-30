@@ -41,7 +41,7 @@ export default function ZoomMeeting({
 
         const response =
           await fetch(
-            "/api/zoom/signature",
+            "/api/zoom/join-classroom/signature",
             {
               method: "POST",
               headers: {

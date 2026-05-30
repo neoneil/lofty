@@ -1,17 +1,35 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import type { User } from "@supabase/supabase-js";
 
-export function TopbarUser() {
+import {
+  ChevronDown,
+  UserCircle2,
+} from "lucide-react";
+
+type Props = {
+  user: User | null;
+};
+
+export function TopbarUser({
+  user,
+}: Props) {
+
+  const email =
+    user?.email || "Guest";
+
+  const name =
+    user?.user_metadata?.full_name ||
+    user?.user_metadata?.name ||
+    email.split("@")[0];
 
   return (
-    <button
-      className="flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--card)] px-2 py-2 transition-all duration-300 hover:bg-[var(--bg-soft)]"
-    >
 
-      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">
+    <button className="flex items-center gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 transition hover:bg-[var(--card-hover)]">
 
-        V
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary)]">
+
+        <UserCircle2 size={22} />
 
       </div>
 
@@ -19,13 +37,13 @@ export function TopbarUser() {
 
         <div className="text-sm font-medium text-[var(--text)]">
 
-          Vivi
+          {name}
 
         </div>
 
         <div className="text-xs text-[var(--text-soft)]">
 
-          Premium
+          {email}
 
         </div>
 
@@ -38,5 +56,4 @@ export function TopbarUser() {
 
     </button>
   );
-
 }

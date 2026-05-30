@@ -1,293 +1,250 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 declare global {
-
   interface Window {
     ZoomMtgEmbedded: any;
   }
-
 }
 
 export default function ClassroomPage() {
+  const clientRef = useRef<any>(null);
+  const joinedRef = useRef(false);
 
-  const clientRef =
-    useRef<any>(null);
+  const [meetingNumber, setMeetingNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("Vivi");
+  const [shouldJoin, setShouldJoin] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const initializedRef =
-    useRef(false);
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  const joinedRef =
-    useRef(false);
+    const cleanMeetingNumber = meetingNumber.replace(/\s/g, "");
 
-  useEffect(() => {
-
-    if (
-      initializedRef.current
-    ) {
+    if (!cleanMeetingNumber) {
+      setStatus("请输入 Meeting ID");
       return;
     }
 
-    initializedRef.current =
-      true;
+    setMeetingNumber(cleanMeetingNumber);
+    setShouldJoin(true);
+  }
 
-    async function loadScript(
-      src: string,
-    ) {
+  useEffect(() => {
+    if (!shouldJoin) {
+      return;
+    }
 
-      return new Promise(
-        (
-          resolve,
-          reject,
-        ) => {
+    let cancelled = false;
 
-          const existingScript =
-            document.querySelector(
-              `script[src="${src}"]`,
-            );
+    async function loadScript(src: string) {
+      return new Promise((resolve, reject) => {
+        const existingScript = document.querySelector(`script[src="${src}"]`);
 
-          if (
-            existingScript
-          ) {
+        if (existingScript) {
+          resolve(true);
+          return;
+        }
 
-            resolve(true);
+        const script = document.createElement("script");
 
-            return;
+        script.src = src;
+        script.async = true;
+        script.onload = () => resolve(true);
+        script.onerror = () => reject(new Error(`Failed to load ${src}`));
 
-          }
-
-          const script =
-            document.createElement(
-              "script",
-            );
-
-          script.src =
-            src;
-
-          script.async =
-            true;
-
-          script.onload =
-            () =>
-              resolve(true);
-
-          script.onerror =
-            () =>
-              reject(
-                new Error(
-                  `Failed to load ${src}`,
-                ),
-              );
-
-          document.body.appendChild(
-            script,
-          );
-
-        },
-      );
-
+        document.body.appendChild(script);
+      });
     }
 
     async function startMeeting() {
-
       try {
-
-        if (
-          joinedRef.current
-        ) {
-
-          console.log(
-            "ZOOM ALREADY JOINED",
-          );
-
+        if (joinedRef.current) {
           return;
-
         }
 
-        console.log(
-          "ZOOM START",
-        );
+        setStatus("正在加载 Zoom...");
 
-        await loadScript(
-          "/zoom/react.min.js",
-        );
+        await loadScript("/zoom/react.min.js");
+        await loadScript("/zoom/react-dom.min.js");
+        await loadScript("/zoom/zoom-meeting-embedded-4.0.7.min.js");
 
-        await loadScript(
-          "/zoom/react-dom.min.js",
-        );
-
-        await loadScript(
-          "/zoom/zoom-meeting-embedded-4.0.7.min.js",
-        );
-
-        console.log(
-          "ZOOM SDK LOADED",
-        );
-
-        const ZoomMtgEmbedded =
-          window.ZoomMtgEmbedded;
-
-        if (
-          !ZoomMtgEmbedded
-        ) {
-
-          console.error(
-            "ZoomMtgEmbedded missing",
-          );
-
+        if (cancelled) {
           return;
-
         }
 
-        const client =
-          ZoomMtgEmbedded.createClient();
+        const ZoomMtgEmbedded = window.ZoomMtgEmbedded;
 
-        clientRef.current =
-          client;
-
-        const meetingSDKElement =
-          document.getElementById(
-            "meetingSDKElement",
-          );
-
-        if (
-          !meetingSDKElement
-        ) {
-
-          console.error(
-            "meetingSDKElement missing",
-          );
-
+        if (!ZoomMtgEmbedded) {
+          setStatus("Zoom SDK 加载失败");
           return;
-
         }
 
-        const response =
-          await fetch(
-            "/api/zoom/signature",
-            {
-              method: "POST",
+        const meetingSDKElement = document.getElementById("meetingSDKElement");
 
-              headers: {
-                "Content-Type":
-                  "application/json",
-              },
+        if (!meetingSDKElement) {
+          setStatus("会议容器不存在");
+          return;
+        }
 
-              body:
-                JSON.stringify({
-                  meetingNumber:
-                    "84079681327",
+        const client = ZoomMtgEmbedded.createClient();
 
-                  role: 0,
-                }),
-            },
-          );
+        clientRef.current = client;
 
-        const data =
-          await response.json();
+        setStatus("正在获取会议签名...");
 
-        console.log(
-          "SIGNATURE",
-          data,
-        );
+        const response = await fetch("/api/zoom/join-classroom/signature", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            meetingNumber,
+            role: 0,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.signature) {
+          console.warn("SIGNATURE FAILED", data);
+          setStatus("获取 Zoom signature 失败");
+          return;
+        }
+
+        setStatus("正在初始化会议...");
 
         await client.init({
-          zoomAppRoot:
-            meetingSDKElement,
-
-          language:
-            "en-US",
-
+          zoomAppRoot: meetingSDKElement,
+          language: "en-US",
           customize: {
             video: {
-              isResizable:
-                true,
+              isResizable: true,
             },
           },
         });
 
-        console.log(
-          "INIT SUCCESS",
-        );
+        setStatus("正在加入会议...");
 
-        await client.join({
-          signature:
-            data.signature,
+        try {
+          await client.join({
+            signature: data.signature,
+            meetingNumber,
+            password,
+            userName: userName || "Student",
+          });
 
-          meetingNumber:
-            "84079681327",
-
-          password: "",
-
-          userName:
-            "Vivi",
-        });
-
-        joinedRef.current =
-          true;
-
-        console.log(
-          "JOIN SUCCESS",
-        );
-
+          joinedRef.current = true;
+          setStatus("");
+        } catch (joinError) {
+          console.warn("ZOOM JOIN WARNING", joinError);
+          setStatus("加入会议失败，请检查 Meeting ID 或密码");
+        }
       } catch (error) {
-
-        console.error(
-          "ZOOM ERROR",
-          error,
-        );
-
+        console.warn("ZOOM ERROR", error);
+        setStatus("Zoom 加载失败");
       }
-
     }
 
     startMeeting();
 
     return () => {
+      cancelled = true;
 
       try {
-
-        console.log(
-          "ZOOM CLEANUP",
-        );
-
-        if (
-          clientRef.current
-        ) {
-
-          clientRef.current.leaveMeeting();
-
-          clientRef.current.destroyClient();
-
-          clientRef.current =
-            null;
-
+        if (clientRef.current) {
+          clientRef.current.leaveMeeting?.();
+          clientRef.current.destroyClient?.();
+          clientRef.current = null;
         }
 
-        joinedRef.current =
-          false;
-
+        joinedRef.current = false;
       } catch (error) {
-
-        console.error(
-          "ZOOM DESTROY ERROR",
-          error,
-        );
-
+        console.warn("ZOOM DESTROY WARNING", error);
       }
-
     };
+  }, [shouldJoin, meetingNumber, password, userName]);
 
-  }, []);
+  if (shouldJoin) {
+    return (
+      <main className="h-screen w-screen overflow-hidden bg-black">
+        {status ? (
+          <div className="absolute left-1/2 top-6 z-50 -translate-x-1/2 rounded-full bg-white px-5 py-2 text-sm font-medium text-black shadow-lg">
+            {status}
+          </div>
+        ) : null}
+
+        <div id="meetingSDKElement" className="h-full w-full" />
+      </main>
+    );
+  }
 
   return (
-    <main className="h-screen w-screen overflow-hidden bg-black">
-      <div
-        id="meetingSDKElement"
-        className="h-full w-full"
-      />
+    <main className="flex min-h-screen items-center justify-center bg-[var(--bg)] px-4">
+      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-3xl border border-[var(--border)] bg-white p-8 shadow-[var(--shadow-md)]">
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold text-[var(--text)]">
+            Join Classroom
+          </h1>
+
+          <p className="mt-2 text-sm text-[var(--text-soft)]">
+            Enter your Zoom Meeting ID to join the online class.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
+              Your name
+            </label>
+
+            <input
+              value={userName}
+              onChange={(event) => setUserName(event.target.value)}
+              placeholder="Vivi"
+              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
+              Meeting ID
+            </label>
+
+            <input
+              value={meetingNumber}
+              onChange={(event) => setMeetingNumber(event.target.value)}
+              placeholder="840 7968 1327"
+              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
+              Password
+            </label>
+
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="No password? Leave it empty"
+              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
+            />
+          </div>
+        </div>
+
+        {status ? (
+          <p className="mt-4 text-center text-sm text-red-500">
+            {status}
+          </p>
+        ) : null}
+
+        <button type="submit" className="mt-6 h-12 w-full rounded-2xl bg-[var(--primary)] text-sm font-semibold text-white transition hover:bg-[var(--primary-hover)]">
+          Join Meeting
+        </button>
+      </form>
     </main>
   );
-
 }

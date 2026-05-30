@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "@/components/site/container";
 import { requireAdmin } from "@/lib/auth/require-admin";
 import { createAdminClient } from "@/lib/supabase/admin";
-
+import StartClassroomButton from "./start-classroom-button";
 type StudentProfile = {
   id: string;
   full_name: string | null;
@@ -62,11 +62,7 @@ export default async function AdminStudentDetailPage({
   const { userId } = await params;
   const supabase = createAdminClient();
 
-  const [
-    profileRes,
-    overallRes,
-    dailyRes,
-  ] = await Promise.all([
+  const [profileRes, overallRes, dailyRes] = await Promise.all([
     supabase
       .from("profiles")
       .select("id, full_name, email, avatar_url")
@@ -90,14 +86,17 @@ export default async function AdminStudentDetailPage({
   const subtitle = profile?.email || userId;
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
 
-  const groupedByDay = daily.reduce<Record<string, DailyDetail[]>>((acc, item) => {
-    if (!acc[item.day]) acc[item.day] = [];
-    acc[item.day].push(item);
-    return acc;
-  }, {});
+  const groupedByDay = daily.reduce<Record<string, DailyDetail[]>>(
+    (acc, item) => {
+      if (!acc[item.day]) acc[item.day] = [];
+      acc[item.day].push(item);
+      return acc;
+    },
+    {},
+  );
 
   const orderedDays = Object.keys(groupedByDay).sort((a, b) =>
-    a < b ? 1 : -1
+    a < b ? 1 : -1,
   );
 
   return (
@@ -128,10 +127,16 @@ export default async function AdminStudentDetailPage({
 
           <div className="min-w-0">
             <h1 className="text-2xl font-bold text-gray-900">{displayName}</h1>
+
             <p className="mt-1 text-sm text-gray-500">{subtitle}</p>
+
             <p className="mt-2 text-sm text-gray-600">
               Detailed activity in the last 7 days
             </p>
+
+            <div className="mt-4">
+              <StartClassroomButton studentId={userId} />
+            </div>
           </div>
         </div>
       </section>
@@ -223,13 +228,23 @@ export default async function AdminStudentDetailPage({
                     </thead>
                     <tbody>
                       {groupedByDay[day].map((item, index) => (
-                        <tr key={`${day}-${item.question_source}-${index}`} className="border-b last:border-0">
+                        <tr
+                          key={`${day}-${item.question_source}-${index}`}
+                          className="border-b last:border-0"
+                        >
                           <td className="px-4 py-3 font-medium uppercase text-gray-900">
-                            {TYPE_LABEL_MAP[item.question_source] ?? item.question_source}
+                            {TYPE_LABEL_MAP[item.question_source] ??
+                              item.question_source}
                           </td>
-                          <td className="px-4 py-3 text-gray-700">{item.attempts}</td>
-                          <td className="px-4 py-3 text-green-700">{item.correct_count}</td>
-                          <td className="px-4 py-3 text-red-700">{item.incorrect_count}</td>
+                          <td className="px-4 py-3 text-gray-700">
+                            {item.attempts}
+                          </td>
+                          <td className="px-4 py-3 text-green-700">
+                            {item.correct_count}
+                          </td>
+                          <td className="px-4 py-3 text-red-700">
+                            {item.incorrect_count}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
