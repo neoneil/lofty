@@ -52,6 +52,18 @@ const adminModules = [
     href: "/admin/selective/history",
     tag: "selective",
   },
+  {
+    title: "上课明细",
+    desc: "各学生上课次数。",
+    href: "/admin/start-classroom",
+    tag: "Zoom 会议",
+  },
+  {
+    title: "数据库",
+    desc: "操作数据库",
+    href: "/admin/db-playground",
+    tag: "Supabase",
+  },
 ];
 
 export default async function AdminPage() {
