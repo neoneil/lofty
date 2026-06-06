@@ -15,71 +15,72 @@ import {
   Hash,
   Headphones,
   Sparkles,
-  ChartNoAxesColumn
+  ChartNoAxesColumn,
 } from "lucide-react";
 type Question = {
-    id: string;
-    question_text: string;
-    question_type: string;
-    source_platform: string | null;
-    source_question_id: string | null;
-    difficulty_level: string | null;
-    tags: string[] | null;
-    is_prediction: boolean | null;
-    audio_url: string | null;
-    audio_duration_seconds: number | null;
-    ai_voice: string | null;
-    usage_count: number | null;
-    created_at: string;
-    updated_at: string;
-    is_real_exam: boolean | null;
+  id: string;
+  question_text: string;
+  question_type: string;
+  source_platform: string | null;
+  source_question_id: string | null;
+  difficulty_level: string | null;
+  tags: string[] | null;
+  is_prediction: boolean | null;
+  audio_url: string | null;
+  audio_duration_seconds: number | null;
+  ai_voice: string | null;
+  usage_count: number | null;
+  created_at: string;
+  updated_at: string;
+  is_real_exam: boolean | null;
 
-    is_practiced: boolean;
-    attempt_count: number;
-    correct_count: number;
-    wrong_count: number;
-    last_attempt_at: string | null;
-    latest_score: number | null;
-    best_score: number | null;
-    is_wrong_question: boolean;
+  is_practiced: boolean;
+  attempt_count: number;
+  correct_count: number;
+  wrong_count: number;
+  last_attempt_at: string | null;
+  latest_score: number | null;
+  best_score: number | null;
+  is_wrong_question: boolean;
 };
 
 const PAGE_SIZE = 10;
 
 function getWordCount(text: string) {
-    return text.trim().split(/\s+/).filter(Boolean).length;
+  return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
 export default function WfdList({
-    initialQuestions,
-
+  initialQuestions,
 }: {
-    initialQuestions: Question[];
-
+  initialQuestions: Question[];
 }) {
-    const questionIds = initialQuestions.map((q) => q.id);
-    const [currentPage, setCurrentPage] = useState(1);
+  const questionIds = initialQuestions.map((q) => q.id);
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.max(1, Math.ceil(initialQuestions.length / PAGE_SIZE));
-    const safeCurrentPage = Math.min(currentPage, totalPages);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(initialQuestions.length / PAGE_SIZE),
+  );
+  const safeCurrentPage = Math.min(currentPage, totalPages);
 
-    const paginatedQuestions = useMemo(() => {
-        const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
-        return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
-    }, [safeCurrentPage, initialQuestions]);
+  const paginatedQuestions = useMemo(() => {
+    const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
+    return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
+  }, [safeCurrentPage, initialQuestions]);
 
-    useEffect(() => {
-        if (currentPage > totalPages) {
-            setCurrentPage(totalPages);
-        }
-    }, [currentPage, totalPages]);
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
-    const goToPage = (page: number) => {
-        setCurrentPage(page);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return (
+  return (
     <section className="mx-auto block w-full max-w-[84%]">
       {/* Header */}
 
@@ -106,7 +107,15 @@ export default function WfdList({
             </div>
           </div>
 
-          <Tag tone="theme">WFD</Tag>
+          <Tag tone="theme">
+            <Link
+              href="/pte/listening/wfd/audio"
+              className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300  hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+            >
+              音频集训
+            </Link>
+            WFD
+          </Tag>
         </div>
       </div>
 
@@ -259,6 +268,3 @@ export default function WfdList({
     </section>
   );
 }
-
-
-
