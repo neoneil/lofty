@@ -8,6 +8,14 @@ declare global {
   }
 }
 
+function waitForLayout() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => resolve());
+    });
+  });
+}
+
 export default function ClassroomPage() {
   const clientRef = useRef<any>(null);
   const joinedRef = useRef(false);
@@ -70,6 +78,12 @@ export default function ClassroomPage() {
         await loadScript("/zoom/react.min.js");
         await loadScript("/zoom/react-dom.min.js");
         await loadScript("/zoom/zoom-meeting-embedded-4.0.7.min.js");
+
+        if (cancelled) {
+          return;
+        }
+
+        await waitForLayout();
 
         if (cancelled) {
           return;
@@ -169,7 +183,7 @@ export default function ClassroomPage() {
 
   if (shouldJoin) {
     return (
-      <main className="h-screen w-screen overflow-hidden bg-black">
+      <main className="relative h-[calc(100dvh-var(--topbar-height)-0.5rem)] w-full overflow-hidden bg-black">
         {status ? (
           <div className="absolute left-1/2 top-6 z-50 -translate-x-1/2 rounded-full bg-white px-5 py-2 text-sm font-medium text-black shadow-lg">
             {status}
@@ -182,7 +196,7 @@ export default function ClassroomPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[var(--bg)] px-4">
+    <main className="flex flex-1 items-center justify-center bg-[var(--bg)] px-4 py-8">
       <form onSubmit={handleSubmit} className="w-full max-w-md rounded-3xl border border-[var(--border)] bg-white p-8 shadow-[var(--shadow-md)]">
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold text-[var(--text)]">
