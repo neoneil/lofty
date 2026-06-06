@@ -26,6 +26,23 @@ const highlights = [
   },
 ];
 
+const cardStyle = {
+  borderColor: "var(--border)",
+  background: "var(--card)",
+  boxShadow: "var(--shadow-md)",
+};
+
+const softCardStyle = {
+  borderColor: "var(--border)",
+  background: "var(--bg-soft)",
+};
+
+const primaryButtonClass =
+  "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]";
+
+const secondaryButtonClass =
+  "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border px-5 text-sm font-semibold shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--bg-soft)] hover:shadow-[var(--shadow-md)]";
+
 export default function ContactPage() {
   return (
     <main
@@ -39,33 +56,25 @@ export default function ContactPage() {
         className="relative border-b"
         style={{ borderColor: "var(--border)" }}
       >
-        <div
-          className="pointer-events-none absolute left-1/2 top-[-160px] h-[420px] w-[420px] -translate-x-1/2 rounded blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 22%, transparent), transparent 70%)",
-          }}
-        />
-
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-3xl">
               <div
-                className="inline-flex items-center rounded border px-4 py-2 text-sm shadow-sm backdrop-blur-xl"
+                className="inline-flex items-center rounded-[var(--radius-sm)] border px-4 py-2 text-sm font-medium shadow-[var(--shadow-sm)]"
                 style={{
                   borderColor: "var(--border)",
-                  background: "color-mix(in srgb, var(--card) 78%, transparent)",
-                  color: "var(--muted)",
+                  background: "var(--card)",
+                  color: "var(--text-soft)",
                 }}
               >
                 Lofty · 致远教育 · Melbourne, Australia
               </div>
 
-              <h1 className="mt-7 text-2xl font-semibold tracking-tight sm:text-5xl lg:text-4xl">
+              <h1 className="mt-7 text-3xl font-semibold tracking-tight sm:text-5xl lg:text-4xl">
                 致远教育
                 <span
                   className="mt-3 block text-xl font-medium sm:text-2xl lg:text-3xl"
-                  style={{ color: "var(--muted)" }}
+                  style={{ color: "var(--text-soft)" }}
                 >
                   Lofty Education
                 </span>
@@ -73,7 +82,7 @@ export default function ContactPage() {
 
               <p
                 className="mt-7 max-w-2xl text-base leading-8 sm:text-lg"
-                style={{ color: "var(--muted)" }}
+                style={{ color: "var(--text-soft)" }}
               >
                 总部位于澳大利亚墨尔本，专注于 PTE、IELTS
                 等英语考试培训与语言能力提升。我们相信，真正有效的学习，不只是技巧，而是理解语言背后的逻辑。
@@ -82,11 +91,9 @@ export default function ContactPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#contact-form"
-                  className="rounded px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                  className={primaryButtonClass}
                   style={{
-                    background:
-                      "linear-gradient(135deg, var(--brand-accent), var(--brand-accent-hover))",
-                    color: "var(--card)",
+                    background: "var(--primary)",
                   }}
                 >
                   添加微信
@@ -94,7 +101,7 @@ export default function ContactPage() {
 
                 <a
                   href="#contact-form"
-                  className="rounded border px-6 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                  className={secondaryButtonClass}
                   style={{
                     borderColor: "var(--border)",
                     background: "var(--card)",
@@ -107,23 +114,16 @@ export default function ContactPage() {
             </div>
 
             <div
-              className="round border p-5 shadow-sm backdrop-blur-xl sm:p-6"
-              style={{
-                borderColor: "var(--border)",
-                background: "color-mix(in srgb, var(--card) 82%, transparent)",
-              }}
+              className="rounded-[var(--radius-lg)] border p-4 sm:p-5"
+              style={cardStyle}
             >
               <div
-                className="round border p-6 sm:p-8"
-                style={{
-                  borderColor: "var(--border)",
-                  background:
-                    "linear-gradient(180deg, var(--card-soft), var(--card))",
-                }}
+                className="rounded-[var(--radius-md)] border p-6 sm:p-8"
+                style={softCardStyle}
               >
                 <div
                   className="text-sm font-medium uppercase tracking-[0.18em]"
-                  style={{ color: "var(--muted)" }}
+                  style={{ color: "var(--text-soft)" }}
                 >
                   Why Lofty
                 </div>
@@ -132,11 +132,8 @@ export default function ContactPage() {
                   {highlights.map((item) => (
                     <div
                       key={item.en}
-                      className="rounded border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-                      style={{
-                        borderColor: "var(--border)",
-                        background: "var(--card)",
-                      }}
+                      className="rounded-[var(--radius-md)] border p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+                      style={cardStyle}
                     >
                       <div
                         className="text-lg font-semibold"
@@ -146,7 +143,7 @@ export default function ContactPage() {
                       </div>
                       <div
                         className="mt-2 text-sm leading-6"
-                        style={{ color: "var(--muted)" }}
+                        style={{ color: "var(--text-soft)" }}
                       >
                         {item.en}
                       </div>
@@ -158,44 +155,50 @@ export default function ContactPage() {
           </div>
 
           <div
-            className="mt-12 grid gap-4 round border p-5 shadow-sm sm:grid-cols-3 sm:p-6"
-            style={{
-              borderColor: "var(--bg)",
-              background: "var(--bg)",
-            }}
+            className="mt-12 grid gap-4 rounded-[var(--radius-lg)] border p-4 sm:grid-cols-3 sm:p-5"
+            style={cardStyle}
           >
-            <div className="rounded p-4">
+            <div
+              className="rounded-[var(--radius-md)] border p-5"
+              style={softCardStyle}
+            >
               <div
                 className="text-3xl font-semibold"
-                style={{ color: "var(--brand-accent)" }}
+                style={{ color: "var(--primary)" }}
               >
                 2008
               </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--muted)" }}>
+              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
                 起教授雅思，长期深耕英语考试教学。
               </p>
             </div>
 
-            <div className="rounded p-4">
+            <div
+              className="rounded-[var(--radius-md)] border p-5"
+              style={softCardStyle}
+            >
               <div
                 className="text-3xl font-semibold"
-                style={{ color: "var(--brand-accent)" }}
+                style={{ color: "var(--primary)" }}
               >
                 18+
               </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--muted)" }}>
+              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
                 年教学经验，覆盖不同基础和目标分数学生。
               </p>
             </div>
 
-            <div className="rounded p-4">
+            <div
+              className="rounded-[var(--radius-md)] border p-5"
+              style={softCardStyle}
+            >
               <div
                 className="text-3xl font-semibold"
-                style={{ color: "var(--brand-accent)" }}
+                style={{ color: "var(--primary)" }}
               >
-               PTE · IELTS
+                PTE · IELTS
               </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--muted)" }}>
+              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
                 技巧、知识、逻辑与训练体系结合。
               </p>
             </div>
