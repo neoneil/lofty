@@ -61,7 +61,7 @@ export default async function PteListeningPage() {
   return (
     <>
         {questionsError ? (
-          <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+          <section className="round border border-[var(--danger)]/25 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-[var(--shadow-sm)]">
             SST 加载失败：{questionsError.message}
           </section>
         ) : (

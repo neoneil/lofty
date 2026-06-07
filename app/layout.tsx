@@ -65,6 +65,23 @@ export const metadata: Metadata = {
   },
 };
 
+function ThemeScript() {
+  const script = `
+(() => {
+  try {
+    const storedTheme = window.localStorage.getItem("lofty-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = storedTheme || (prefersDark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch {}
+})();
+`;
+
+  return <script dangerouslySetInnerHTML={{ __html: script }} />;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,9 +89,10 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="zh-CN" data-scroll-behavior="smooth">
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
 
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
+        <ThemeScript />
         {/* <AuthDebug /> */}
         <div className="fixed-bg" />
 

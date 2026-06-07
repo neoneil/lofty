@@ -51,6 +51,15 @@ export default function ChatWidget() {
 
   const userDisplayName = viewerProfile?.full_name?.trim() || 'You';
 
+  useEffect(() => {
+    const handleOpenChatWidget = () => {
+      setOpen(true);
+    };
+
+    window.addEventListener('lofty:open-chat-widget', handleOpenChatWidget);
+    return () => window.removeEventListener('lofty:open-chat-widget', handleOpenChatWidget);
+  }, []);
+
   const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
     bottomRef.current?.scrollIntoView({ behavior });
   };
@@ -438,27 +447,12 @@ export default function ChatWidget() {
     }
   };
 
+  if (!open) {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-5 right-5 z-50">
-      {!open ? (
-        <button
-          onClick={() => setOpen(true)}
-          className="group rounded border px-5 py-3 text-sm font-medium shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
-          style={{
-            backgroundColor: 'var(--card)',
-            borderColor: 'var(--border)',
-            color: 'var(--text)',
-          }}
-        >
-          <span className="flex items-center gap-2">
-            <span
-              className="inline-block h-2.5 w-2.5 rounded"
-              style={{ backgroundColor: '#22c55e' }}
-            />
-            AI助手
-          </span>
-        </button>
-      ) : (
         <div
           className="flex h-155 w-97.5 flex-col overflow-hidden round border shadow-2xl"
           style={{
@@ -717,7 +711,6 @@ export default function ChatWidget() {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 }
@@ -1259,4 +1252,3 @@ export default function ChatWidget() {
 //     </div>
 //   );
 // }
-

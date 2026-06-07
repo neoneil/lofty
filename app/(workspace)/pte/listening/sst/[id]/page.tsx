@@ -26,7 +26,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
   if (error || !question) {
     return (
       <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
-        <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+        <section className="round border border-[var(--danger)]/25 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-[var(--shadow-sm)]">
           SST 题目加载失败
         </section>
       </main>
@@ -53,7 +53,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
         {/* Content */}
         <section className="space-y-6">
           {/* Question */}
-          <section className="rounded border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+          <section className="rounded border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-7">
             {/* Tags */}
             <div className="mb-1 flex items-center justify-between gap-4">
               {/* left */}
@@ -88,7 +88,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
               </div>
             </div>
             {/* Stats */}
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-gray-500">
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-[var(--text-soft)]">
               <span>曾经练习：{question.attempt_count ?? 0} 次</span>
 
               {typeof question.latest_score === "number" ? (
@@ -97,11 +97,11 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
             </div>
 
             {question.audio_url ? (
-              <div className="mt-8">
-                <AudioPlayer url={question.audio_url} autoPlay countdown={10} />
+              <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
+                <AudioPlayer url={question.audio_url} autoPlay countdown={10} size="compact" />
               </div>
             ) : (
-              <div className="mt-8 round border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-sm text-gray-500">
+              <div className="mt-8 round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">
                 当前题目暂无音频
               </div>
             )}

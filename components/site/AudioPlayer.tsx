@@ -6,10 +6,14 @@ export default function AudioPlayer({
   url,
   autoPlay = false,
   countdown = 0,
+  size = "default",
+  onEnded,
 }: {
   url: string;
   autoPlay?: boolean;
   countdown?: number;
+  size?: "default" | "compact";
+  onEnded?: () => void;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -36,14 +40,14 @@ export default function AudioPlayer({
 
   const isDraggingRef = useRef(false);
 
+  const compact = size === "compact";
+
   // ===== 初始化 =====
   useEffect(() => {
 
     const audio = new Audio(url);
 
     audioRef.current = audio;
-
-    audio.volume = volume;
 
     audio.onloadedmetadata = () => {
       setDuration(audio.duration || 0);
@@ -65,13 +69,14 @@ export default function AudioPlayer({
 
     audio.onended = () => {
       setPlaying(false);
+      onEnded?.();
     };
 
     return () => {
       audio.pause();
     };
 
-  }, [url]);
+  }, [url, onEnded]);
   // ===== 音量同步 =====
   useEffect(() => {
 
@@ -92,14 +97,16 @@ export default function AudioPlayer({
     // 无倒计时
     if (countdown <= 0) {
 
-      audio.play();
-
-      setPlaying(true);
+      void audio.play().then(() => {
+        setPlaying(true);
+      });
 
       return;
     }
 
-    setCountdownLeft(countdown);
+    const setInitialCountdown = window.setTimeout(() => {
+      setCountdownLeft(countdown);
+    }, 0);
 
     let current = countdown;
 
@@ -134,13 +141,14 @@ export default function AudioPlayer({
           return;
         }
 
-        audio.play();
-
-        setPlaying(true);
+        void audio.play().then(() => {
+          setPlaying(true);
+        });
 
       }, 1000);
 
     return () => {
+      clearTimeout(setInitialCountdown);
 
       if (
         countdownTimerRef.current
@@ -218,7 +226,7 @@ export default function AudioPlayer({
 
           setWaveform(data);
 
-        } catch (err) {
+        } catch {
 
           console.warn(
             "waveform disabled for this audio"
@@ -336,21 +344,19 @@ export default function AudioPlayer({
   return (
 
     <div
-      className="
-        w-full lg:w-[80%]
+      className={`
+        w-full
         relative overflow-hidden
-        rounded-3xl
+        ${compact ? "rounded-2xl p-3" : "rounded-3xl p-5"}
 
-        border border-[#14b8a6]/15
+        border border-[var(--border)]
 
-        bg-white/85
+        bg-[color:var(--card)]/90
 
-        p-5
-
-        shadow-[0_12px_40px_rgba(20,184,166,0.08)]
+        shadow-[var(--shadow-md)]
 
         backdrop-blur-xl
-      "
+      `}
     >
 
       {/* 背景柔光 */}
@@ -359,49 +365,49 @@ export default function AudioPlayer({
           pointer-events-none
           absolute inset-0
 
-          bg-[radial-gradient(circle_at_top_right,rgba(20,184,166,0.08),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.08),transparent_35%)]
+          bg-[radial-gradient(circle_at_top_right,var(--primary-soft),transparent_35%),radial-gradient(circle_at_bottom_left,var(--bg-soft),transparent_35%)]
         "
       />
 
       <div
-        className="
+        className={`
           relative
-          flex items-center gap-5
-        "
+          flex items-center ${compact ? "gap-3" : "gap-4"}
+        `}
       >
 
         {/* ===== 播放按钮 ===== */}
         <div
-          className="
-            flex h-16 w-16 shrink-0
+          className={`
+            flex shrink-0
             flex-col items-center justify-center
 
-            rounded-2xl
+            ${compact ? "h-10 w-10 rounded-xl" : "h-16 w-16 rounded-2xl"}
 
-            border border-[#14b8a6]/15
+            border border-[var(--primary)]/20
 
-            bg-[#14b8a6]
+            bg-[var(--primary)]
 
             text-white
 
-            shadow-[0_10px_30px_rgba(20,184,166,0.25)]
+            shadow-[var(--shadow-md)]
 
             transition-all duration-300
 
             hover:scale-[1.03]
-          "
+          `}
         >
 
           {countdownLeft !== null ? (
 
-            <>
+            <div className="flex translate-y-0.5 flex-col items-center">
 
               <div
-                className="
-                  text-xl
+                className={`
+                  ${compact ? "text-sm" : "text-xl"}
                   font-bold
                   leading-none
-                "
+                `}
               >
                 {countdownLeft}
               </div>
@@ -412,7 +418,7 @@ export default function AudioPlayer({
                 className="
                   mt-1
                   cursor-pointer
-                  text-[12px]
+                  text-[10px]
                   font-semibold
                   uppercase
                   tracking-wider
@@ -427,20 +433,20 @@ export default function AudioPlayer({
                 Skip
               </button>
 
-            </>
+            </div>
 
           ) : (
 
             <button
               type="button"
               onClick={togglePlay}
-              className="
+              className={`
                 flex h-full w-full
                 items-center justify-center
 
-                text-lg
+                ${compact ? "text-sm" : "text-lg"}
                 font-semibold
-              "
+              `}
             >
               {playing
                 ? "❚❚"
@@ -453,31 +459,28 @@ export default function AudioPlayer({
 
         {/* ===== 中间区域 ===== */}
         <div
-          className="
-            flex flex-1
-            items-center gap-5
-          "
+          className={`
+            flex min-w-0 flex-1
+            items-center ${compact ? "gap-3" : "gap-4"}
+          `}
         >
 
           {/* ===== 波形 ===== */}
           <div
-            className="
+            className={`
               relative
-              flex h-16 flex-1
+              flex min-w-[120px] flex-1
+              ${compact ? "h-10 rounded-xl px-2 py-1.5" : "h-16 rounded-2xl px-3 py-2"}
 
               cursor-pointer
               items-end gap-[2px]
 
               overflow-hidden
 
-              rounded-2xl
+              border border-[var(--border)]
 
-              border border-[#14b8a6]/10
-
-              bg-[#14b8a6]/5
-
-              px-3 py-2
-            "
+              bg-[var(--bg-soft)]
+            `}
             onClick={(e) => {
 
               const rect =
@@ -500,9 +503,9 @@ export default function AudioPlayer({
 
                 bg-gradient-to-r
 
-                from-[#14b8a6]/5
-                via-[#3b82f6]/5
-                to-[#3b82f6]/5
+                from-[var(--primary-soft)]
+                via-transparent
+                to-[var(--bg-soft)]
               "
             />
 
@@ -521,17 +524,17 @@ export default function AudioPlayer({
                     transition-all duration-150
 
                     ${played
-                      ? "bg-[#14b8a6]"
-                      : "bg-[#14b8a6]/15"
+                      ? "bg-[var(--primary)]"
+                      : "bg-[var(--primary-soft)]"
                     }
                   `}
                   style={{
-                    height: `${v * 90 + 10}px`,
-                    width: "3px",
+                    height: `${v * (compact ? 52 : 90) + (compact ? 6 : 10)}px`,
+                    width: compact ? "2px" : "3px",
                     opacity: played ? 1 : 0.45,
 
                     boxShadow: played
-                      ? "0 0 10px rgba(20,184,166,0.35)"
+                      ? "0 0 10px color-mix(in srgb, var(--primary) 35%, transparent)"
                       : "none",
                   }}
                 />
@@ -544,19 +547,18 @@ export default function AudioPlayer({
 
           {/* ===== 时间 ===== */}
           <div
-            className="
-              w-28 shrink-0
+            className={`
+              ${compact ? "w-20 text-xs" : "w-28 text-sm"} shrink-0
               whitespace-nowrap
 
-              text-sm
               font-medium
 
               tracking-wide
 
-              text-[#0f172a]/70
+              text-[var(--text-soft)]
 
               font-mono
-            "
+            `}
           >
             {formatTime(currentTime)}
             {" / "}
@@ -565,18 +567,18 @@ export default function AudioPlayer({
 
           {/* ===== 音量 ===== */}
           <div
-            className="
+            className={`
               hidden
-              w-32 shrink-0
-              items-center gap-3
+              ${compact ? "w-20 gap-2" : "w-24 gap-3"} shrink-0
+              items-center
 
               md:flex
-            "
+            `}
           >
 
             <span
               className="
-                text-[#14b8a6]
+                text-[var(--primary)]
               "
             >
               🔊
@@ -615,14 +617,14 @@ export default function AudioPlayer({
 
                 rounded-full
 
-                bg-[#14b8a6]/15
+                bg-[var(--primary-soft)]
 
                 [&::-webkit-slider-thumb]:appearance-none
                 [&::-webkit-slider-thumb]:h-3
                 [&::-webkit-slider-thumb]:w-3
                 [&::-webkit-slider-thumb]:rounded-full
-                [&::-webkit-slider-thumb]:bg-[#14b8a6]
-                [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(20,184,166,0.35)]
+                [&::-webkit-slider-thumb]:bg-[var(--primary)]
+                [&::-webkit-slider-thumb]:shadow-[0_0_10px_color-mix(in_srgb,var(--primary)_35%,transparent)]
               "
             />
 

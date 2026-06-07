@@ -11,10 +11,10 @@ export default function ReadingPage() {
     return `/cambridge_ielts/${selectedBook}.pdf`;
   }, [selectedBook]);
 
-  const books = Array.from({ length: 11 }, (_, i) => i + 10); // 10 - 20
+  const books = Array.from({ length: 11 }, (_, i) => i + 10);
 
   return (
-    <main className="h-[calc(100vh-72px)] w-full bg-(--bg) mt-20">
+    <main className="mt-20 h-[calc(100vh-72px)] w-full bg-(--bg)">
       <IELTSSubnav current="reading" />
       <div className="flex items-center gap-3 px-4 py-3">
         <label htmlFor="cambridge-book" className="text-sm font-medium">
@@ -36,10 +36,7 @@ export default function ReadingPage() {
       </div>
 
       <div className="h-[calc(100%-56px)]">
-        <ReadingWorkspace
-          leftPdfUrl={pdfUrl}
-          rightPdfUrl={pdfUrl}
-        />
+        <ReadingWorkspace leftPdfUrl={pdfUrl} rightPdfUrl={pdfUrl} />
       </div>
     </main>
   );

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "90422152-a693-43e2-b984-1e7613d94608",
+    "title": "Hamburger, Fish & Chips, and Pizza Sales",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5edcee07cc1714070a518db86e0f65a9.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows lines connecting data points over time for different categories (Hamburger, Fish&Chips, Pizza), which is characteristic of a line chart."
+  },
+  {
+    "id": "2ff9254b-1938-4335-a3e3-eec7cb8be492",
+    "title": "Birth Rates in China and the USA",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/eee4f578935e0e276727525c61b09153.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image clearly depicts two lines representing birth rates over time for China and the USA, with a time series on the x-axis and birth rates on the y-axis, which is characteristic of a line chart."
+  },
+  {
+    "id": "594523eb-3902-445c-8446-a8488acfd198",
+    "title": "Global Water Use by Sector",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a0c9006adea9916f9f79ecb6d03c688a.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows multiple lines representing different categories (Agriculture, Industrial use, Domestic use) plotted over time on an x-axis, which is characteristic of a line chart."
+  }
+]

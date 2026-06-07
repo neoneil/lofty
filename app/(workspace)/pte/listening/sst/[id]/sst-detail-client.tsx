@@ -1,14 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
-import { getQuestionOrder } from "@/lib/question-order";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { Textarea } from "@/components/ui-v2/textarea";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 
 import Tag from "@/components/ui/tag";
+
+type SstAiFeedback = {
+  overallScore?: number;
+  rubric?: {
+    content: number;
+    form: number;
+    grammar: number;
+    vocabulary: number;
+    spelling: number;
+    writtenDiscourse: number;
+  };
+  overallFeedback: string;
+  strengths: string[];
+  weaknesses: {
+    category: string;
+    issue: string;
+    example: string;
+    suggestion: string;
+  }[];
+  grammarCorrections: {
+    original: string;
+    corrected: string;
+    explanation: string;
+  }[];
+  improvedAnswer: string;
+};
 
 type Props = {
   question: {
@@ -24,7 +48,7 @@ type Props = {
 
     user_answer: string;
 
-    ai_feedback: any;
+    ai_feedback: SstAiFeedback | null;
 
     submitted_at: string;
   }[];
@@ -33,51 +57,24 @@ type Props = {
 type SubmitResult = {
   score: number;
 
-  aiFeedback: {
-    overallScore: number;
-
-    rubric: {
-      content: number;
-
-      form: number;
-
-      grammar: number;
-
-      vocabulary: number;
-
-      spelling: number;
-
-      writtenDiscourse: number;
-    };
-
-    overallFeedback: string;
-
-    strengths: string[];
-
-    weaknesses: {
-      category: string;
-
-      issue: string;
-
-      example: string;
-
-      suggestion: string;
-    }[];
-
-    grammarCorrections: {
-      original: string;
-
-      corrected: string;
-
-      explanation: string;
-    }[];
-
-    improvedAnswer: string;
-  };
+  aiFeedback: SstAiFeedback;
 };
 
+function subscribeQuestionOrder(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  return () => window.removeEventListener("storage", onStoreChange);
+}
+
+function getQuestionOrderSnapshot() {
+  return sessionStorage.getItem("sst-question-order") ?? "[]";
+}
+
+function getServerQuestionOrderSnapshot() {
+  return "[]";
+}
+
 export default function SstDetailClient({ question, attempts }: Props) {
-  const [startedAt] = useState(Date.now());
+  const startedAtRef = useRef<number | null>(null);
 
   const [answer, setAnswer] = useState("");
 
@@ -90,30 +87,41 @@ export default function SstDetailClient({ question, attempts }: Props) {
   const [expandedAttempts, setExpandedAttempts] = useState<string[]>([]);
 
   const router = useRouter();
+  const questionOrderSnapshot = useSyncExternalStore(
+    subscribeQuestionOrder,
+    getQuestionOrderSnapshot,
+    getServerQuestionOrderSnapshot,
+  );
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
+  const questionNav = useMemo(() => {
+    let ids: string[] = [];
 
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
-
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
-
-  useEffect(() => {
-    const ids = getQuestionOrder("sst");
+    try {
+      ids = JSON.parse(questionOrderSnapshot);
+    } catch {
+      ids = [];
+    }
 
     const currentIndex = ids.findIndex((qId) => qId === question.id);
 
     if (currentIndex === -1) {
-      return;
+      return {
+        questionNumber: 0,
+        prevQuestionId: null as string | null,
+        nextQuestionId: null as string | null,
+      };
     }
 
-    setQuestionNumber(currentIndex + 1);
+    return {
+      questionNumber: currentIndex + 1,
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+    };
+  }, [question.id, questionOrderSnapshot]);
 
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
-  }, [question.id]);
+  useEffect(() => {
+    startedAtRef.current = Date.now();
+  }, []);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -131,7 +139,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
 
           userAnswer: answer,
 
-          startedAt,
+          startedAt: startedAtRef.current ?? Date.now(),
         }),
       });
 
@@ -169,8 +177,8 @@ export default function SstDetailClient({ question, attempts }: Props) {
         <section
           className="
                         round
-                        border border-gray-200
-                        bg-[#faf8f4]
+                        border border-[var(--border)]
+                        bg-[var(--card)]
                         p-6
                         shadow-sm
                         space-y-6
@@ -187,8 +195,8 @@ export default function SstDetailClient({ question, attempts }: Props) {
 
                                 ${
                                   result.score >= 65
-                                    ? "bg-green-100 text-green-700"
-                                    : "bg-red-100 text-red-700"
+                                    ? "bg-[var(--success-soft)] text-[var(--success)]"
+                                    : "bg-[var(--danger-soft)] text-[var(--danger)]"
                                 }
                             `}
             >
@@ -198,11 +206,11 @@ export default function SstDetailClient({ question, attempts }: Props) {
             <span
               className="
                                 rounded
-                                border border-gray-200
-                                bg-white
+                                border border-[var(--border)]
+                                bg-[var(--bg-soft)]
                                 px-4 py-1.5
                                 text-sm font-semibold
-                                text-gray-700
+                                text-[var(--text)]
                             "
             >
               Score: {result.score} / 90
@@ -219,7 +227,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                 font-semibold
                                 uppercase
                                 tracking-[0.16em]
-                                text-gray-500
+                                text-[var(--text-soft)]
                             "
             >
               AI Feedback
@@ -228,12 +236,12 @@ export default function SstDetailClient({ question, attempts }: Props) {
             <div
               className="
                                 rounded
-                                border border-gray-200
-                                bg-white
+                                border border-[var(--border)]
+                                bg-[var(--bg-soft)]
                                 p-5
                                 text-[15px]
                                 leading-8
-                                text-gray-700
+                                text-[var(--text)]
                             "
             >
               {result.aiFeedback.overallFeedback}
@@ -250,7 +258,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                 font-semibold
                                 uppercase
                                 tracking-[0.16em]
-                                text-gray-500
+                                text-[var(--text-soft)]
                             "
             >
               Strengths
@@ -262,11 +270,11 @@ export default function SstDetailClient({ question, attempts }: Props) {
                   key={index}
                   className="
                                             rounded
-                                            bg-green-100
+                                            bg-[var(--success-soft)]
                                             px-3 py-2
                                             text-sm
                                             font-medium
-                                            text-green-700
+                                            text-[var(--success)]
                                         "
                 >
                   {item}
@@ -285,7 +293,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                 font-semibold
                                 uppercase
                                 tracking-[0.16em]
-                                text-gray-500
+                                text-[var(--text-soft)]
                             "
             >
               Weaknesses
@@ -297,8 +305,8 @@ export default function SstDetailClient({ question, attempts }: Props) {
                   key={index}
                   className="
                                             rounded
-                                            border border-red-200
-                                            bg-red-50
+                                            border border-[var(--danger)]/25
+                                            bg-[var(--danger-soft)]
                                             p-5
                                             space-y-3
                                         "
@@ -307,11 +315,11 @@ export default function SstDetailClient({ question, attempts }: Props) {
                     <span
                       className="
                                                     rounded
-                                                    bg-red-200
+                                                    bg-[var(--danger-soft)]
                                                     px-2 py-1
                                                     text-xs
                                                     font-semibold
-                                                    text-red-700
+                                                    text-[var(--danger)]
                                                 "
                     >
                       {item.category}
@@ -319,31 +327,31 @@ export default function SstDetailClient({ question, attempts }: Props) {
                   </div>
 
                   <div>
-                    <div className="mb-1 text-sm font-semibold text-gray-900">
+                    <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                       问题
                     </div>
 
-                    <div className="text-sm leading-7 text-gray-700">
+                    <div className="text-sm leading-7 text-[var(--text-soft)]">
                       {item.issue}
                     </div>
                   </div>
 
                   <div>
-                    <div className="mb-1 text-sm font-semibold text-gray-900">
+                    <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                       原文关键内容
                     </div>
 
-                    <div className="text-sm leading-7 text-gray-700">
+                    <div className="text-sm leading-7 text-[var(--text-soft)]">
                       {item.example}
                     </div>
                   </div>
 
                   <div>
-                    <div className="mb-1 text-sm font-semibold text-gray-900">
+                    <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                       改进建议
                     </div>
 
-                    <div className="text-sm leading-7 text-gray-700">
+                    <div className="text-sm leading-7 text-[var(--text-soft)]">
                       {item.suggestion}
                     </div>
                   </div>
@@ -363,7 +371,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                     font-semibold
                                     uppercase
                                     tracking-[0.16em]
-                                    text-gray-500
+                                    text-[var(--text-soft)]
                                 "
               >
                 Grammar Corrections
@@ -375,38 +383,38 @@ export default function SstDetailClient({ question, attempts }: Props) {
                     key={index}
                     className="
                                                 rounded
-                                                border border-amber-200
-                                                bg-amber-50
+                                                border border-[var(--warning)]/25
+                                                bg-[var(--warning-soft)]
                                                 p-5
                                                 space-y-3
                                             "
                   >
                     <div>
-                      <div className="mb-1 text-sm font-semibold text-gray-900">
+                      <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                         原句
                       </div>
 
-                      <div className="text-sm leading-7 text-red-700">
+                      <div className="text-sm leading-7 text-[var(--danger)]">
                         {item.original}
                       </div>
                     </div>
 
                     <div>
-                      <div className="mb-1 text-sm font-semibold text-gray-900">
+                      <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                         正确版本
                       </div>
 
-                      <div className="text-sm leading-7 text-green-700">
+                      <div className="text-sm leading-7 text-[var(--success)]">
                         {item.corrected}
                       </div>
                     </div>
 
                     <div>
-                      <div className="mb-1 text-sm font-semibold text-gray-900">
+                      <div className="mb-1 text-sm font-semibold text-[var(--text)]">
                         解释
                       </div>
 
-                      <div className="text-sm leading-7 text-gray-700">
+                      <div className="text-sm leading-7 text-[var(--text-soft)]">
                         {item.explanation}
                       </div>
                     </div>
@@ -426,7 +434,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                 font-semibold
                                 uppercase
                                 tracking-[0.16em]
-                                text-gray-500
+                                text-[var(--text-soft)]
                             "
             >
               Improved Answer
@@ -435,12 +443,12 @@ export default function SstDetailClient({ question, attempts }: Props) {
             <div
               className="
                                 rounded
-                                border border-blue-200
-                                bg-blue-50
+                                border border-[var(--primary)]/25
+                                bg-[var(--primary-soft)]
                                 p-5
                                 text-[15px]
                                 leading-8
-                                text-gray-800
+                                text-[var(--text)]
                             "
             >
               {result.aiFeedback.improvedAnswer}
@@ -500,19 +508,19 @@ export default function SstDetailClient({ question, attempts }: Props) {
                     justify-between
                 "
       >
-        {prevQuestionId ? (
+        {questionNav.prevQuestionId ? (
           <Link
-            href={`/pte/listening/sst/${prevQuestionId}`}
+            href={`/pte/listening/sst/${questionNav.prevQuestionId}`}
             className="
                             inline-flex
                             items-center
                             gap-2
                             rounded
-                            border border-gray-200
-                            bg-white
+                            border border-[var(--border)]
+                            bg-[var(--card)]
                             px-3 py-3
                             text-sm font-semibold
-                            text-gray-700
+                            text-[var(--text)]
                             transition
                             hover:border-[var(--theme)]/30
                             hover:text-[var(--theme)]
@@ -534,9 +542,9 @@ export default function SstDetailClient({ question, attempts }: Props) {
           <div />
         )}
 
-        {nextQuestionId ? (
+        {questionNav.nextQuestionId ? (
           <Link
-            href={`/pte/listening/sst/${nextQuestionId}`}
+            href={`/pte/listening/sst/${questionNav.nextQuestionId}`}
             className="
                             inline-flex
                             items-center
@@ -569,7 +577,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
       <div
         className="
                     round
-                    bg-gray-50
+                    bg-[var(--bg-soft)]
                     px-5 py-5
                 "
       >
@@ -577,7 +585,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
           <div className="flex items-center gap-2">
             <Tag tone="theme">SST</Tag>
 
-            <Tag tone="green">第 {questionNumber} 题</Tag>
+            <Tag tone="green">第 {questionNav.questionNumber} 题</Tag>
           </div>
 
           <button
@@ -593,15 +601,15 @@ export default function SstDetailClient({ question, attempts }: Props) {
           className={`
                         text-[18px]
                         leading-9
-                        text-gray-800
+                        text-[var(--text)]
                         transition-all
                         duration-300
 
                         ${showAnswer ? "blur-0" : "select-none blur-[10px]"}
                     `}
         >
-          <div className="rounded border border-gray-200 bg-white p-4">
-            <div className="mb-2 text-sm font-semibold text-gray-900">
+          <div className="rounded border border-[var(--border)] bg-[var(--card)] p-4">
+            <div className="mb-2 text-sm font-semibold text-[var(--text)]">
               参考原文
             </div>
 
@@ -624,8 +632,8 @@ export default function SstDetailClient({ question, attempts }: Props) {
       <div
         className="
         rounded
-        border border-gray-200
-        bg-white
+        border border-[var(--border)]
+        bg-[var(--card)]
         p-6
         shadow-sm
     "
@@ -635,7 +643,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
             mb-4
             text-lg
             font-semibold
-            text-gray-900
+            text-[var(--text)]
         "
         >
           历史记录
@@ -647,14 +655,14 @@ export default function SstDetailClient({ question, attempts }: Props) {
               key={attempt.id}
               className="
                     rounded
-                    border border-gray-200
-                    bg-gray-50
+                    border border-[var(--border)]
+                    bg-[var(--bg-soft)]
                     p-4
                 "
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="text-sm font-semibold text-gray-800">
+                  <div className="text-sm font-semibold text-[var(--text)]">
                     Attempt #{attempts.length - index}
                   </div>
 
@@ -691,7 +699,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                 </div>
               </div>
 
-              <div className="mt-2 text-xs text-gray-500">
+              <div className="mt-2 text-xs text-[var(--text-soft)]">
                 {new Date(attempt.submitted_at).toLocaleString()}
               </div>
 
@@ -699,12 +707,12 @@ export default function SstDetailClient({ question, attempts }: Props) {
                 className="
                         mt-4
                         rounded
-                        border border-gray-200
-                        bg-white
+                        border border-[var(--border)]
+                        bg-[var(--card)]
                         p-4
                     "
               >
-                <div className="mb-2 text-sm font-semibold text-gray-900">
+                <div className="mb-2 text-sm font-semibold text-[var(--text)]">
                   你的答案
                 </div>
 
@@ -713,7 +721,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                             whitespace-pre-wrap
                             text-sm
                             leading-7
-                            text-gray-700
+                            text-[var(--text-soft)]
                         "
                 >
                   {attempt.user_answer}
@@ -729,12 +737,12 @@ export default function SstDetailClient({ question, attempts }: Props) {
                       <div
                         className="
                 rounded
-                border border-blue-200
-                bg-blue-50
+                border border-[var(--primary)]/25
+                bg-[var(--primary-soft)]
                 p-4
             "
                       >
-                        <div className="mb-2 text-sm font-semibold text-gray-900">
+                        <div className="mb-2 text-sm font-semibold text-[var(--text)]">
                           AI 总评
                         </div>
 
@@ -742,7 +750,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                           className="
                     text-sm
                     leading-7
-                    text-gray-700
+                    text-[var(--text)]
                 "
                         >
                           {attempt.ai_feedback.overallFeedback}
@@ -754,12 +762,12 @@ export default function SstDetailClient({ question, attempts }: Props) {
                       <div
                         className="
                 rounded
-                border border-green-200
-                bg-green-50
+                border border-[var(--success)]/25
+                bg-[var(--success-soft)]
                 p-4
             "
                       >
-                        <div className="mb-2 text-sm font-semibold text-gray-900">
+                        <div className="mb-2 text-sm font-semibold text-[var(--text)]">
                           AI 改进版答案
                         </div>
 
@@ -767,7 +775,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                           className="
                     text-sm
                     leading-7
-                    text-gray-700
+                    text-[var(--text)]
                 "
                         >
                           {attempt.ai_feedback.improvedAnswer}
@@ -779,13 +787,13 @@ export default function SstDetailClient({ question, attempts }: Props) {
                       {attempt.ai_feedback.weaknesses?.length > 0 && (
                         <div className="space-y-3">
                           {attempt.ai_feedback.weaknesses.map(
-                            (weakness: any, weaknessIndex: number) => (
+                            (weakness, weaknessIndex: number) => (
                               <div
                                 key={weaknessIndex}
                                 className="
                                     rounded
-                                    border border-red-200
-                                    bg-red-50
+                                    border border-[var(--danger)]/25
+                                    bg-[var(--danger-soft)]
                                     p-4
                                 "
                               >
@@ -793,34 +801,34 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                   <span
                                     className="
                                             rounded
-                                            bg-red-200
+                                            bg-[var(--danger-soft)]
                                             px-2 py-1
                                             text-xs
                                             font-semibold
-                                            text-red-700
+                                            text-[var(--danger)]
                                         "
                                   >
                                     {weakness.category}
                                   </span>
                                 </div>
 
-                                <div className="space-y-2 text-sm leading-7 text-gray-700">
+                                <div className="space-y-2 text-sm leading-7 text-[var(--text-soft)]">
                                   <div>
-                                    <span className="font-semibold text-gray-900">
+                                    <span className="font-semibold text-[var(--text)]">
                                       问题：
                                     </span>{" "}
                                     {weakness.issue}
                                   </div>
 
                                   <div>
-                                    <span className="font-semibold text-gray-900">
+                                    <span className="font-semibold text-[var(--text)]">
                                       原文关键内容：
                                     </span>{" "}
                                     {weakness.example}
                                   </div>
 
                                   <div>
-                                    <span className="font-semibold text-gray-900">
+                                    <span className="font-semibold text-[var(--text)]">
                                       改进建议：
                                     </span>{" "}
                                     {weakness.suggestion}

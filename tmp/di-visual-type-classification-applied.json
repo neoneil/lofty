@@ -1,0 +1,994 @@
+[
+  {
+    "id": "90422152-a693-43e2-b984-1e7613d94608",
+    "title": "Hamburger, Fish & Chips, and Pizza Sales",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5edcee07cc1714070a518db86e0f65a9.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows data trends over time with lines connecting data points for three categories (Hamburger, Fish & Chips, Pizza), which is the defining characteristic of a line chart."
+  },
+  {
+    "id": "2ff9254b-1938-4335-a3e3-eec7cb8be492",
+    "title": "Birth Rates in China and the USA",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/eee4f578935e0e276727525c61b09153.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual displays two lines representing birth rates in China and the USA over time, with data points connected by lines indicating a continuous trend."
+  },
+  {
+    "id": "594523eb-3902-445c-8446-a8488acfd198",
+    "title": "Global Water Use by Sector",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a0c9006adea9916f9f79ecb6d03c688a.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows three separate lines representing different categories of global water use over time, which is a typical characteristic of a line chart."
+  },
+  {
+    "id": "a2c06322-e544-4772-ae37-3345a0049c10",
+    "title": "Level of Sports Player’s Salaries 1970-2000",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/c277a6a72152de3746f5a79595e7768c.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual shows continuous data points connected by lines representing sports players' salaries over time for three sports, typical of a line chart."
+  },
+  {
+    "id": "ad6e751f-3d81-472c-a06a-2f575fd21ac7",
+    "title": "Annual per capita Meat Consumption (kg)",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/9b05773fd9778f80c48146299ecb3507.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays multiple lines plotting data points over a timeline on the x-axis, which is characteristic of a line chart."
+  },
+  {
+    "id": "0ef79da6-f1be-430c-8979-e5b5f79e4bb2",
+    "title": "Coffee Exports",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6025d2d5bf18bc3317aab5c6b7f78629.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual shows data points connected by lines for three different countries over a period of years, which is characteristic of a line chart."
+  },
+  {
+    "id": "3a28541d-2aa9-4cc2-9033-278d451606db",
+    "title": "Food price vs oil price",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/e209fbaa348e07e86876973651604de6.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two fluctuating lines representing the Oil Price and Food Price Index over time, which is characteristic of a line chart."
+  },
+  {
+    "id": "6177d267-ee28-45cf-98f9-22e4486d99e0",
+    "title": "Temperature and CO2 for the Last 400,000 Years",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6caf5920745c3db9261c9b0b2ce7ee29.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing changes in carbon dioxide and temperature over time, which is characteristic of a line chart."
+  },
+  {
+    "id": "561d7188-fb5a-4dfd-9928-b11bfac04d10",
+    "title": "Income Distribution in 1970 and 2000",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/90588c001626f075aff6c2b40573d440.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two line charts (smoothed density curves) representing income distribution over time for different countries, with income per year on the x-axis and number of people on the y-axis."
+  },
+  {
+    "id": "e93d822d-e496-4b02-872e-ff5defe168c6",
+    "title": "Unemployment Rates: US and Japan",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/4c1a09b87d2b888419bbb1ce39987911.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays two lines representing unemployment rates for the US and Japan over time with data points connected by lines, characteristic of a line chart."
+  },
+  {
+    "id": "c6267238-bd4e-47f7-97bc-64759d945b25",
+    "title": "Population Growth and Growth in Rating Base",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/7be51ba5ae80f52a3883b5f3620a31c4.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing trends over time with data points connected by lines, typical characteristics of a line chart."
+  },
+  {
+    "id": "4f40a4d6-43b6-46e6-942b-cac59b69a0cd",
+    "title": "Fast Food vs. Sitdown Restaurant",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/79a4a8f4f93570e545287bf86f17397c.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing Fast Food Meals and Sitdown Restaurant Meals over several years, which is characteristic of a line chart."
+  },
+  {
+    "id": "15640905-a931-4665-9159-dca1267f97df",
+    "title": "Articles Published Per Year by Male and Female University Professors",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/60277c45f62b83255b3f32f7422177c8.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing the number of articles published per year by male and female university professors over a range of years, which is characteristic of a line chart."
+  },
+  {
+    "id": "f3caf9bc-fb6e-413f-a8c0-9d5954271a63",
+    "title": "Life Expectancy (Years) at Birth by Sex",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1c0c38cd13e5b0b49b9ca4913efd911e.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing life expectancy over time for males and females, with data points connected by lines along a time-based x-axis."
+  },
+  {
+    "id": "78083139-d957-4be4-b122-d8e9172b64b6",
+    "title": "US Fruit and Vegetables Consumption Trends",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/ef773e2fce2b3f0882d9ceb0997715a1.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing trends of fruit and vegetable consumption over time, typical of a line chart."
+  },
+  {
+    "id": "582f1c01-8d27-486a-8713-73df15e76de8",
+    "title": "Net Generation from coal and Share of total generation from coal",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2f3b4cdd6ced0946d3be1116ec6c9f06.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a graph with two lines representing data across a timeline from 1960 to 2010, typical characteristics of a line chart."
+  },
+  {
+    "id": "163c5c54-5078-4eb3-acfc-a3a6c550e90f",
+    "title": "S&P/ASX 200",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1e4c0070215e1d31430fb3f3efee073b.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a continuous data line plotted on a graph with time on the x-axis and numerical values on the y-axis, which is characteristic of a line chart."
+  },
+  {
+    "id": "03404a8e-08e0-4f66-b991-64b4a87aff91",
+    "title": "London Underground station passengers",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/9ea4bbdd8226fb15cf0696699e1efcb8.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays a graph with points connected by lines, showing changes in the number of London Underground station passengers over time, which is characteristic of a line chart."
+  },
+  {
+    "id": "ff87e7f2-2973-4275-b291-caf12b5241e1",
+    "title": "Probability of Depression by age",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/ffe8b57a11f8fd4c16f9380a61d22b50.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a curve (line) representing probability over age, with data points plotted along the line, which fits the definition of a line chart."
+  },
+  {
+    "id": "ba95c623-40da-4e33-90c5-bcb665bc4cb3",
+    "title": "Population growth and projected population of Sydney 1976-2031",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1738a930a6d6c43f5e22d3a0d3466249.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a graph with points connected by lines representing population data over different years, which is characteristic of a line chart."
+  },
+  {
+    "id": "3769d08e-22a9-403d-938a-ec294585c587",
+    "title": "Jill’s Secondary Math Scores",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2ee9b07017295a53e76562f831faba1b.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a graph with points connected by lines indicating changes in math scores across different grade levels, which is characteristic of a line chart."
+  },
+  {
+    "id": "0ffb2223-29c6-4088-86a7-0ba92476789e",
+    "title": "US Energy Consumption by Fuel 1980-2030",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/d4540ff9c5f0a248ff1262636d59c1f6.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays multiple lines representing different fuel types over time, which is characteristic of a line chart."
+  },
+  {
+    "id": "e3c4aa23-2886-430c-acac-487cd2a5f3bc",
+    "title": "Number of arrests per year for using illegal drugs",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/10318a8c1071094eccdc8628e9dad877.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image clearly shows a line chart with data points connected by a line, representing the number of arrests per year for illegal drug use from 1991 to 2005."
+  },
+  {
+    "id": "22d11840-055c-41c9-9bf6-5ca9cb838a5c",
+    "title": "iTunes Purchased Songs",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3b7471cf11207a727da547019f6b51a7.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a graph with a continuous line connecting data points that represent the number of songs purchased over weeks, which is characteristic of a line chart."
+  },
+  {
+    "id": "ce27970d-49eb-4e3b-b5c8-0370aa9c75fd",
+    "title": "Years to Double Population",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2a8965614c9c07b9f4f359db8b3a19e0.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a single continuous line connecting points plotted against two axes labeled 'Ending Year' and 'Years to Double', which is characteristic of a line chart."
+  },
+  {
+    "id": "496970d4-8b50-44f1-bff7-93866a86cc38",
+    "title": "Renewable Energy Share by Sector",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/c685bf91b6e40bd1fd464973c209e937.jpg",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows three vertical bars representing renewable energy share by sector with percentage values and targets, typical of a bar chart."
+  },
+  {
+    "id": "12d73c9f-14c2-4860-ae87-f32e1a73f365",
+    "title": "Population Density in Australia（purple）",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a00b18bafe9dae8e90402e0ff9be07d6.jpg",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image shows the geographical outline of Australia with labeled cities and dots representing population data, which characterizes it as a map."
+  },
+  {
+    "id": "525915be-b01a-4ff2-a206-75173240862e",
+    "title": "Australia's Population by Foreign County of Birth",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5d4c1cca0da61697a06721f871430ba9.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows horizontal bars representing population data for various countries over three different years, which is characteristic of a bar chart."
+  },
+  {
+    "id": "144aa8ae-925f-4b94-9826-c2960aaec9c0",
+    "title": "Journeys in UK by purpose",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/e50ce3cb5d6c71fd33ba4e64cc85bbf5.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image clearly shows horizontal bars representing different categories with numerical values on the x-axis, which is characteristic of a bar chart."
+  },
+  {
+    "id": "d5e90adf-e281-4edb-9d06-05064b6b09b5",
+    "title": "Radio and Television Audiences in UK",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a78a312fe8309a284e1954fb5f3e78a9.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing different data sets (television and radio audiences) over time, plotted on an X and Y axis, which is characteristic of a line chart."
+  },
+  {
+    "id": "70266baa-10a8-4f57-adb6-0f113f7e6e6e",
+    "title": "Daily temperature in Beijing China",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a2e2ea4df9d2d5a6d07d07fcac899fa0.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image depicts two distinct lines representing daily high and daily low temperatures over months, typical characteristics of a line chart."
+  },
+  {
+    "id": "959b4c94-e3f6-432b-a943-413c3cedff58",
+    "title": "Vehicle Ownership, New Zealand in 2001 and 2013",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f80a57820af8de9641d8fba3ced9af8f.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows a horizontal bar chart comparing vehicle ownership categories (No cars, One car, Two cars) for the years 2001 and 2013 with proportional bar lengths representing quantities."
+  },
+  {
+    "id": "15322023-c4c7-4184-9f1d-c94fe7f008c6",
+    "title": "Albany Precipitation & Temperature 1971-2000",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6da1df85417b2304ed60d5258dfdac53.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image contains both a bar chart representing precipitation and a line chart representing temperature, clearly showing two different chart types combined."
+  },
+  {
+    "id": "77b20c8d-9fe9-4a14-97da-1e09be0c283f",
+    "title": "Heights of Different Penguin Species",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f9a3174a03bf6ed072d4ce85d17ef9a4.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual consists of pictures of different penguins arranged side by side with labels, resembling more of an illustrative image rather than a chart or graph."
+  },
+  {
+    "id": "c808d912-0516-47cd-af92-2b91cf55f005",
+    "title": "Life Expectancy of Males and Females at birth by Years",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/cff16584a89b06d096a88a63aa63f913.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual displays two lines representing life expectancy trends over time for males and females, which is characteristic of a line chart."
+  },
+  {
+    "id": "aa329b98-c887-48ba-852c-a8e69908b3e7",
+    "title": "Electricity Generation in China by Type 1994-2004",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/747122ceb64f1f1df49067f3913ed8b0.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a line chart with two data series represented as stacked areas indicating electricity generation over time from 1994 to 2004, with years on the x-axis and billion kilowatt hours on the y-axis."
+  },
+  {
+    "id": "d0949141-4d09-4f82-a41c-020b32ad3c12",
+    "title": "Desktop Browser Market Share 2016",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/d844ab9f4f2464d94eaed74504b47a02.png",
+    "visual_type": "pie_chart",
+    "confidence": "high",
+    "reason": "The image shows a circular chart divided into segments representing different market shares, which is characteristic of a pie chart."
+  },
+  {
+    "id": "6a1b5b13-8c47-4c31-a635-7fd8600e9248",
+    "title": "World Income Distribution and Poverty Line in 1970 and 1990",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/b30519702f6b2a35dbcd5a1fd78680b1.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image contains two separate line charts showing the distribution of world income over time with the x-axis labeled as dollars per day and the y-axis representing population distribution, which is characteristic of line charts."
+  },
+  {
+    "id": "7e56f2cd-36f5-43a5-91ca-9acf9ba0ade6",
+    "title": "University and College Students who did educational activities",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6b8aab62fb0a44682aba3863f26b0050.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays continuous data over time with lines representing full-time and part-time students, characteristic of a line chart."
+  },
+  {
+    "id": "ee67ce48-a284-4755-8555-b844f6c93a9a",
+    "title": "Annual Change in Forest Area by Region 1990-2010",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/32bb0659b3605836c89c459d535fbdde.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image shows a world map with overlaid vertical bar charts representing annual changes in forest area by region, combining both map and bar chart elements."
+  },
+  {
+    "id": "944813c0-71eb-4a38-afe4-50e1b3237220",
+    "title": "Sweden Government Budget 2018",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/546815f478e74600216e9c7a913fca57.jpg",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows two vertical bars representing expenditure and revenue values, characteristic of a bar chart."
+  },
+  {
+    "id": "81982a58-fe2d-4612-985c-ddec26e8ad3b",
+    "title": "Average Monthly Temperatures for Three African Cities",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/463bff1184b220df551daee13cca690b.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays a graph with lines representing average monthly temperatures for three African cities over the months of the year, which is characteristic of a line chart."
+  },
+  {
+    "id": "6f2938e9-3637-4360-962e-18eb699c0e07",
+    "title": "Projected Population in Australia",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5ef5f739e75fc2e5105ea4055161b261.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows three distinct lines representing Series A, Series B, and Series C over time with values on the y-axis, which is characteristic of a line chart."
+  },
+  {
+    "id": "1025a16a-b281-4d92-af82-ce10db885394",
+    "title": "Overseas Visitors to Three Different Areas in a European Country 1987-2007",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/22353d4e9ef0c2d888d868a283a90da4.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual shows data represented by lines connecting various data points over a time period, which is characteristic of a line chart."
+  },
+  {
+    "id": "6d2295c1-e10c-49cc-832d-7e1938708c51",
+    "title": "Hotel Reservation",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/083da1bf989fe1d1533e744ce13763ac.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image shows a sequence of steps and directional arrows representing the process of request execution between customer, hotel website, and hotel administrator, which is typical of a flowchart."
+  },
+  {
+    "id": "369803fe-195c-4008-895e-bd028ca23634",
+    "title": "Temperature Variation, Carbon Dioxide & Dust Concentration",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2b1af8b2e5dd39302a046c2d74d3efd5.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image contains three separate plots with continuous lines representing changes over time, characteristic of line charts."
+  },
+  {
+    "id": "6325fdd1-6011-4651-9a55-0309d70095fe",
+    "title": "Indonesia and Malaysia Palm Oil Production",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2787ff6fab02c8d63f343518948c0954.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows two lines representing data trends over multiple seasons on a graph with x and y axes labeled, which is characteristic of a line chart."
+  },
+  {
+    "id": "8b08d9cc-8455-4108-9e5d-35cb1067d114",
+    "title": "Rainforest in South America",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3a043b0fc25c7d3f90b010d22b60f8c7.png",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image shows a geographic representation of South America with labeled countries and colored regions indicating different types of rainforests. It clearly fits the definition of a map."
+  },
+  {
+    "id": "2d195b3d-5361-4a0d-b3e8-dbe349699a4e",
+    "title": "Comparison of Car Theft by Country",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3171738a0bd69ae14881cd51cd9ffedf.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays multiple lines representing different countries over time with a clear x-axis for years and y-axis for thefts per 1000 vehicles, which is characteristic of a line chart."
+  },
+  {
+    "id": "0780ff67-4595-4fb3-89a5-315c35216d61",
+    "title": "China and Brazil Lead the Meat Consumption in Developing Countries",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a0ab5323d6d35633460d7073e3a5313d.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays multiple lines plotted over time (from 1961 to 2009) representing meat consumption for different countries, which is characteristic of a line chart."
+  },
+  {
+    "id": "7a6c12b9-513e-43d2-ab7d-dfb53a4b75c4",
+    "title": "Family eating at table",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/d574cec892a484e252f192142869c870.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is a photograph showing people sitting at a dining table, eating and interacting, with no charts or graphical representations present."
+  },
+  {
+    "id": "137b23cb-f36b-481e-ad1a-dce6f53d42fc",
+    "title": "Recent Global Monthly Mean CO2",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f6b46819945f62e521ffed444d050780.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image depicts a graph with two lines representing data trends over time, specifically monthly mean CO2 levels from 2013 to 2018, which clearly fits the definition of a line chart."
+  },
+  {
+    "id": "d915ce81-f3e6-4d8b-891f-3c8f3245aa83",
+    "title": "Life Cycle of an Apple Tree",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/33ab7cbfc254af44b36cf6b363b3d1ec.jpg",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image shows a sequence of stages in the life cycle of an apple tree with arrows indicating flow from one stage to the next, which is characteristic of a flowchart."
+  },
+  {
+    "id": "8e633977-0952-4e30-9277-ed666508553f",
+    "title": "Energy Produced from Coal in Four European Countries 1995-2010",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/0c31f192eada1827ce20ef3d9c1c3181.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows lines representing the proportion of energy produced from coal over time for four European countries, which is a characteristic of a line chart."
+  },
+  {
+    "id": "111ba4dc-9997-4968-94fb-911b2a1e8df6",
+    "title": "Number of Internet Users Per 100 People",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/8e7bc048b504e539275202947635c9f5.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays rectangular bars representing the number of internet users per 100 people for different countries, which is characteristic of a bar chart."
+  },
+  {
+    "id": "05dc54cd-b556-4ed4-b99f-c8a1c68bbe0f",
+    "title": "Iron Age Hut",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a6489e6bdb5ccc0177fdfd7163c9ad9a.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is a labeled diagram illustrating a structure with parts identified but contains no elements typical of charts or maps."
+  },
+  {
+    "id": "d2b07bcb-3ef7-4b6d-ade4-5c66db6c3bca",
+    "title": "Internet Population in Millions of Users",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/95e84ba865f0d60bcf3163e668535db9.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars comparing values across different countries, which is characteristic of a bar chart."
+  },
+  {
+    "id": "9b5fe0e2-e264-4b29-a382-2a4a9c1ddf36",
+    "title": "Energy Consumption in Household",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/19f013965eea325a573e760d11d3415e.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image consists of horizontal bars representing kwh/year values for various appliances, which matches the characteristics of a bar chart."
+  },
+  {
+    "id": "657aa2ef-de59-456c-bd01-79d6a870407a",
+    "title": "World population structure (非原图)",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6b2e0992582184d93ae2e00b4f792674.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image consists of rectangular nodes connected by arrows showing a progression or flow of information, which is characteristic of a flowchart."
+  },
+  {
+    "id": "084c2d82-c786-4bed-ac00-65562c1857dc",
+    "title": "Average Rainfall in Inches",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/43212bfe4382a1997757389c54cfeb97.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays rectangular bars of different heights representing quantitative data for different cities, which is characteristic of a bar chart."
+  },
+  {
+    "id": "6be20287-6231-40fc-bfaf-3a61083c3073",
+    "title": "Vancouver International Airport",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2d7b79b310f1f28440e28180ff0c2908.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image contains blue bars representing precipitation and a red line representing temperature over months, combining bar chart and line chart elements."
+  },
+  {
+    "id": "6d6043d2-d88f-43a0-9e9a-9dc6331ec116",
+    "title": "Top 10 US Cities with the Largest Population Increase",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/0528e2568035969e421319dd4fc568e1.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The visual displays horizontal bars representing population increases for different U.S. cities, which is characteristic of a bar chart."
+  },
+  {
+    "id": "66d13961-87be-4a38-90f2-872b6311e9e1",
+    "title": "The Taxation by Countries by Payroll and Superannuation",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3083a61194163724109b4109515bdacf.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image clearly shows horizontal bars representing amounts for different countries, which is characteristic of a bar chart."
+  },
+  {
+    "id": "f572623e-9712-4e39-b81e-6a8d78c22c1c",
+    "title": "Internet users who accessed via a mobile phone",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1915eb987d04c412053fe39e20d08309.jpg",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars representing data for different age groups, which is a characteristic representation of a bar chart."
+  },
+  {
+    "id": "dda7f2fb-8b59-4978-83b6-162557f82dc2",
+    "title": "Climate zones",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/0c3a6d2e18ee2c933ed6f1d4c9748a77.jpg",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image depicts a world map divided into different climate zones with latitude lines and zone labels, which is characteristic of a map."
+  },
+  {
+    "id": "876c65ce-8fb4-4bb0-9d29-ad0e7e473de6",
+    "title": "Renewable energy",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5bd06c2de714e5e3492ce8bdc6b34525.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The visual displays rectangular bars representing the proportions of renewable energy targets in different sectors (Heating and Cooling, Transport, Power) with percentages clearly labeled on each bar, which is characteristic of a bar chart."
+  },
+  {
+    "id": "526dd01f-8fe5-4236-bb56-977fef99ef69",
+    "title": "Total Wine Sales in Australia",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2d2ab8274ccbd94beb1bb57f6531547c.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars representing data for different wine types across four regions, which is characteristic of a bar chart."
+  },
+  {
+    "id": "b6fe98b9-445e-47d8-a19a-2a530b74f238",
+    "title": "Which countries are really the richest?",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/aa27abf5807359432af858fa51433783.jpg",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays horizontal bars representing average and median wealth for different countries, which is characteristic of a bar chart."
+  },
+  {
+    "id": "fbb32471-1852-4557-a906-e23fdb579a10",
+    "title": "Average working hours in Germany",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f5745d59160c8b190f5d46b7883dba15.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a continuous line connecting data points over time, which is characteristic of a line chart. It plots annual working hours from 1970 to 2017 on a graph."
+  },
+  {
+    "id": "f480e603-98cc-4089-a5f9-d128b8b13482",
+    "title": "Earnings and Unemployment Rates by Educational Attainment",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2509f40b4eabdf0114554581719e5a28.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image contains horizontal bars representing data for unemployment rates and median weekly earnings by educational attainment, which are characteristics of bar charts."
+  },
+  {
+    "id": "bed8ae87-56cd-49bc-9753-ef6f57f48cea",
+    "title": "Water Use in Gulf Countries in 2000",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/ae0957ad71ac0f50f0ebe9b2bafacc7e.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays vertical bars grouped by country and water use categories, which is characteristic of a bar chart."
+  },
+  {
+    "id": "7c5bedde-b5b8-441f-b949-57cc17a92b23",
+    "title": "Flu vaccination rates",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/b7e9bd97ae623fd544a67b246aef28b9.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays horizontal bars representing flu vaccination rates for different countries, which is characteristic of a bar chart."
+  },
+  {
+    "id": "f8dd68e5-f691-42eb-882e-9e367a299fd1",
+    "title": "Total respondents",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/701f1c10b35a5b3028812dd2fc99f94d.jpg",
+    "visual_type": "unknown",
+    "confidence": "high",
+    "reason": "The image shows a Venn diagram representing the overlap between two groups (travel by train and travel by car), which is not listed as one of the given categories."
+  },
+  {
+    "id": "c1c42218-17d8-4639-8b75-7b37990fbf0c",
+    "title": "Percentage of Population Living in Urban Areas in 2003 & 2030",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/288e5bbb380fda2efccaa8daacc739d2.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars representing data for two time points (2003 and 2030) across different categories (World, Africa, Asia, Europe, South America, North America), which is characteristic of a bar chart."
+  },
+  {
+    "id": "48c8771e-cfdc-4aad-a270-f57304441cfc",
+    "title": "The Holiday Accommodation Chosen by British in 2010",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/694253f46263a6a835361209b81d01c6.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars grouped by categories representing different types of holiday accommodation chosen by the British in 2010, which is characteristic of a bar chart."
+  },
+  {
+    "id": "d75cf7de-43ee-4829-86a5-bea2b82ad7fe",
+    "title": "Women not married in the labor force",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3d50801ef7e559d54726abdd78431dbb.jpg",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image depicts two lines representing data trends over time for percent not married and percent in labor force, which is characteristic of a line chart."
+  },
+  {
+    "id": "cebce52c-a15d-49b0-8b4c-9a22ce497961",
+    "title": "Smartphone Ownership in US",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/08bca474b3b7009339f567a82005e164.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image clearly shows two lines representing data trends over time, with axes labeled and a legend indicating different categories."
+  },
+  {
+    "id": "a3e4a5e9-255e-44bf-90fa-d0d86d016829",
+    "title": "GDP Accumulated Growth in Percentage in Constant Prices",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/125d241661b90316f94cd0cbd173268f.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays vertical bars comparing GDP accumulated growth for different countries over two time periods, which is characteristic of a bar chart."
+  },
+  {
+    "id": "a9f648c8-810c-4731-b397-66dcdfca5859",
+    "title": "Drinking Habits by Age in US",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1192e6347761887d9fb7c9e1acdbf0c4.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars grouped by age categories to represent the percentage of different drinking habits, which is characteristic of a bar chart."
+  },
+  {
+    "id": "4561e503-c1c9-4d99-93ea-a259d3a7e8f8",
+    "title": "Benefit Recipient by Health Area in Sydney, 2004",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/271180cc97c81d8409eedf429d152997.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The visual shows vertical bars representing data values for different categories with a legend for Age Pension and Disability Pension, which is characteristic of a bar chart."
+  },
+  {
+    "id": "c2a0ab41-ec94-4a15-9322-cfc372c16d42",
+    "title": "Distribution of Ladybird",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/cdeb3b47031b83ffebf9c6bac7a673dd.png",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image is a geographical representation showing the distribution of harlequin ladybirds in England using colored dots for two different years."
+  },
+  {
+    "id": "8e3004c3-b7b2-4c46-8d8e-483887457a94",
+    "title": "Plastic Recycling",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/9e0bd48411f0c80f5991814bbe71529b.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image illustrates the step-by-step process of plastic recycling with labeled stages (Shredding, Washing, Extrusion, Melting, Pelletizing) and directional arrows showing the flow of operations."
+  },
+  {
+    "id": "7fbb1f3e-11e3-419a-8c7d-4ea749932568",
+    "title": "Ground Water and Public Supply",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/151adf51f7f95cf4fd4a47eb3734e654.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image depicts horizontal bars representing quantities for different categories, with two sets of bars for each category indicating 'Ground water' and 'Public supply'. This is characteristic of a bar chart."
+  },
+  {
+    "id": "465039df-fc38-4d2b-8eaf-092ed358c0e8",
+    "title": "OPEC Forecast Increase in World Oil Production",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6207e9d82eef9088c96dfb3c4427e347.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The visual shows vertical bars representing forecast increases in world oil production across three time periods, with different segments indicating categories (Non-OPEC, Other OPEC, OPEC Middle East)."
+  },
+  {
+    "id": "5648a1ce-bf3e-4984-96b7-f0e2fe6072d5",
+    "title": "World population development",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/652daa6aac46d333de8b7476a7689acc.jpg",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual displays a graph with a continuous timeline on the x-axis and population numbers on the y-axis, showing trends over time through shaded areas representing two groups, which is characteristic of a line chart."
+  },
+  {
+    "id": "6481d15a-f4c5-442d-9590-30414c0732b9",
+    "title": "Wind Power Global Capacity",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/da11e9979875531ab165f8ca126f502c.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a plot with points connected by lines representing data over a continuous interval (years from 1996 to 2011) with a Y-axis labeled in units (Gigawatts)."
+  },
+  {
+    "id": "7b719cd0-f50e-4257-b909-3b8aaa4f25f9",
+    "title": "Food Pyramid 1970s vs 2010s",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/e2d126577d34610f72836e057f288257.jpg",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is a pictorial representation of food distribution in pyramid form, with images of food items arranged in pyramid sections for two different decades, not fitting into typical chart categories like line, bar, pie, table, or flowchart."
+  },
+  {
+    "id": "e08f5e08-2a04-4fe3-b525-68fe7fd6a877",
+    "title": "Volunteer Rate by Age",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/4f0ab9328c6b2aa4e01b3197f595b5ba.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual shows lines connecting data points across age groups for two categories, males and females, which is characteristic of a line chart."
+  },
+  {
+    "id": "b2cfc4de-4452-41ba-8795-53fd2fe43129",
+    "title": "Average Hours per Week Spent on Home Activities",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/5865f426ceb6bb6e3ed928748aa90536.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays vertical bars representing data for men and women across different activities, which is characteristic of a bar chart."
+  },
+  {
+    "id": "ec39f1af-3fd5-484c-8cf6-cfdb7e70f4f7",
+    "title": "Age Percentage by Gender in France and India",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a08bcbe02ae98cc8afa8959951e918be.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays horizontal bars representing different age groups for males and females in two countries, which is characteristic of a bar chart, specifically population pyramids."
+  },
+  {
+    "id": "1fb3a88c-10cb-42e3-812b-91bec87cfb28",
+    "title": "Students from Disadvantaged Backgrounds",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/ea16f6f69123bc98782d6569eae7c70e.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual shows data points connected by a line over a range of years, which is characteristic of a line chart."
+  },
+  {
+    "id": "dc1bbbb8-a6d0-410e-8da1-11a8db37fd36",
+    "title": "Collapse of Atlantic Cod Stocks",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a9c5f516e39b4073b074feb9e242d27e.jpg",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual displays data over time with a continuous line filling the area below it representing fish landings in tons from 1850 to 2000."
+  },
+  {
+    "id": "1df249fc-c80b-4f7e-9c52-72652538a700",
+    "title": "Changes in the Ways People Spent Their Holidays",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f21e8a60999c17521444653654acbb5d.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars grouped by categories representing different ways people spent their holidays, with percentage values on the vertical axis and categories on the horizontal axis, which is characteristic of a bar chart."
+  },
+  {
+    "id": "0fb4c6a9-52cc-40b0-b4d1-2b831232d0e1",
+    "title": "Social Activities by Gender",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/27a079cf6c825ae50f85e0d35213ec8a.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays vertical rectangular bars representing quantities, categorized by gender, which is characteristic of a bar chart."
+  },
+  {
+    "id": "de6cc885-f13e-4779-a177-e232168be37f",
+    "title": "Input-Output Process",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/c4b8afccef8c7f3ac68c16b900048228.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image shows a sequence of steps with arrows connecting labeled boxes representing 'Input', 'Process', and 'Output', which is characteristic of a flowchart."
+  },
+  {
+    "id": "8e31a6da-26e6-4538-8284-3b4949433c80",
+    "title": "Unemployment Rate by Gender 1995-2006",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/cefc216a878291b001223367ac739757.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays multiple sets of vertical bars grouped by categories (Total, Male, Female) and years, which is a characteristic format of bar charts."
+  },
+  {
+    "id": "31e4a0ee-9fdf-4743-9731-dad435c89f68",
+    "title": "Potatoes Consumed in a Week",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/4925da6c7bccd9dd570d8c121b2daeae.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image contains both bars and lines indicating it represents a combination of bar chart and line chart."
+  },
+  {
+    "id": "89c09a65-f151-4f9d-b9d9-c0e3f415dd26",
+    "title": "Restaurant Booking",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/68555d4bf2c44ce81fed74ad5bf9e931.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image shows a sequence of steps or components connected by arrows, representing a process flow. It includes icons such as tables, a smartphone, a computer, and printers branching out, which clearly indicates a flowchart."
+  },
+  {
+    "id": "71b1084f-4898-4c3c-b622-21b5ead84a44",
+    "title": "Wage Growth, Consumption, Household Debt",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/86b2d17c4d8cc588fa5adfa69da3c9e6.jpg",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image contains vertical bars representing data categories with values on the y-axis, which is characteristic of a bar chart."
+  },
+  {
+    "id": "24c3c9b5-5d76-4dd3-96cb-b4be821148b5",
+    "title": "Precipitation and Average Temperature",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/991a3aebee2172a945725e5101a04fda.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image contains both a bar chart representing precipitation and a line chart representing average temperature, clearly showing multiple chart types."
+  },
+  {
+    "id": "b5232e2d-0ec2-4228-8c4b-215db6f09bc8",
+    "title": "Sitting Postures When Typing",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/2aeec72d89083057f6d977b6b6076b14.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual consists of two illustrations showing correct and incorrect sitting posture at a desk with a laptop, without any chart or data visualization elements."
+  },
+  {
+    "id": "896f5a83-9981-485d-aeb9-6ce8501846d6",
+    "title": "World Population Density",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/bd35cf7e12c068e624037009a86736eb.png",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image shows a world map with countries shaded in different colors representing population density, which is a typical characteristic of a thematic map."
+  },
+  {
+    "id": "23244827-5904-4d79-bb2a-b3f09dcaabab",
+    "title": "Fungus Gnat Lifecycle in 28 Days",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/fcb1e9c1a932d5581e1a6317d804b225.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual represents a cycle diagram with images and labels indicating stages of the fungus gnat lifecycle, not fitting traditional chart categories like line, bar, pie, table, flowchart, or map."
+  },
+  {
+    "id": "25a14597-dc5b-4cd5-a608-2a3bd11ed832",
+    "title": "Typing Postures",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/e12f45150e2d2778aeac729b33e450ca.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual consists of illustrated diagrams showing correct and incorrect hand positions on a keyboard. It is not a chart, table, or map, but rather instructional images."
+  },
+  {
+    "id": "c6389b66-e4e2-435b-8cb5-0f348bcc0166",
+    "title": "European countries",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a505854abf052fdb5db0de7352a284ae.png",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image clearly shows a geographical representation of countries in Europe, each labeled and colored differently, which is characteristic of a map."
+  },
+  {
+    "id": "4fd43f3a-ecb7-4e70-ad9b-42d11fc98b31",
+    "title": "65% of the Market is Controlled by Company B and C",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/3c335b1ffa355cad909bc6660ebd7a3b.png",
+    "visual_type": "mixed",
+    "confidence": "high",
+    "reason": "The image contains both a pie chart and a bar chart, clearly showing multiple chart types."
+  },
+  {
+    "id": "8d270bbd-3a15-4728-b53c-4f6c0b7a641a",
+    "title": "Mean Salary of First-Degree Graduates by Gender",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/d7370563544380a48cff40bec1010133.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars representing the mean salary of first-degree graduates by gender over multiple years, which is characteristic of a bar chart."
+  },
+  {
+    "id": "81ec028f-12c6-4ef8-b6d3-1096844786e3",
+    "title": "Cups of Coffee Sold in Downtown and Mall",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/9895c74f585ab880e753ac6e994a4560.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image shows vertical bars representing data for different months with two categories, Downtown and Mall, which is typical of a bar chart."
+  },
+  {
+    "id": "e79392ca-3369-4624-8769-0b37442ad3c7",
+    "title": "Closed Forest and Extreme Desert",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/9861088b9e903f0c3e476cf9ec6ca990.png",
+    "visual_type": "map",
+    "confidence": "high",
+    "reason": "The image contains three world maps showing geographic distribution of 'Closed Forest' and 'Extreme Desert' areas at three different time periods. The visualization uses spatial representations typical of map charts."
+  },
+  {
+    "id": "d410c5ea-58a0-48d1-8cef-b8a4bc6c65ce",
+    "title": "Buying school bags at a stationery shop",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/1b37bc294a26fda2b0948fd7947d5650.jpg",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual consists of two photos showing a child and an adult shopping for school supplies, with no charts, graphs, or data visualizations present."
+  },
+  {
+    "id": "a6b47e0d-90e5-424f-b584-d9dabaa5faac",
+    "title": "Average Travel Time to Work Ontario 2016",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/10d4a4143b2b393813eaf669d09082f8.png",
+    "visual_type": "pie_chart",
+    "confidence": "high",
+    "reason": "The image shows a circular chart divided into slices representing different travel time intervals, which is characteristic of a pie chart."
+  },
+  {
+    "id": "f582ee6b-4d66-4b5b-9414-b292e28f5b11",
+    "title": "Applications to Three US Universities",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/895615c3e2c1a92a5eca336ee33ee6fb.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays vertical bars grouped by faculty area, representing the number of student applications for different years. The presence of rectangular bars and the comparison across categories confirm it as a bar chart."
+  },
+  {
+    "id": "f66b8a21-c3c4-4c19-9cb6-6e17c41c93ab",
+    "title": "Water Cycle (B&W)",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/6d575382dbe52291685d47a8dade4747.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image shows a sequence of connected processes illustrating the water cycle, with arrows indicating flow from one stage to another, which is characteristic of a flowchart."
+  },
+  {
+    "id": "66dcffea-33b6-461c-8724-8029eaf15ec2",
+    "title": "The Most Common Languages in the World",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/56a5352780217676692448b1c8f7c53a.png",
+    "visual_type": "table",
+    "confidence": "high",
+    "reason": "The image clearly shows data arranged in rows and columns with headers, typical of a table format."
+  },
+  {
+    "id": "6ec057ca-a914-49ac-adde-55cab4f68d2a",
+    "title": "Median & Average Sales Prices of new homes sold in US 1963-2011",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/66740b17edcbfb07a60ea0975e582582.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image displays two continuous lines representing median and average sales prices over time, typical of a line chart format."
+  },
+  {
+    "id": "92fb609e-57a5-4cdb-b7dd-e449bf3cb6ed",
+    "title": "Haiti & Western Dominican Republic",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/4068abfdc6f7195f1ca4fac951ae18ee.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image contains two plots showing data trends with lines over a time period, which is characteristic of line charts."
+  },
+  {
+    "id": "b2cf2c3e-ecef-4536-8e27-1d366f3d8e21",
+    "title": "Rates Revenue, User Charges, Borrowings and Grants and Subsidies",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/89e8a259fc53c7772275c9b55c007cba.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The visual displays data points connected by lines representing multiple categories over a time period, which is characteristic of a line chart."
+  },
+  {
+    "id": "db54faa2-3f28-458c-b272-d2f1131d9d96",
+    "title": "Historic gardens",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/f83add2899996e4bf464e591c1b657b3.jpg",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is a photograph of a signboard with text and pictograms, not a chart or table."
+  },
+  {
+    "id": "f0bbc5c4-1290-4e76-b201-aa53f27a68d4",
+    "title": "Body Mass Index of Obese, Overweight, Normal and Underweight People",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/96426ec387828638764aba236e6e2b0e.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows a chart with continuous colored bands separated by lines along height and weight axes, typical of a line chart representing ranges for body mass index categories."
+  },
+  {
+    "id": "027004f4-f79f-4dfc-8033-535576647be6",
+    "title": "Garbage Classification",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/679554ecc05667e8361b6a424a1a26a8.jpg",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is a photographic image showing examples of items categorized by their suitability for composting, not a chart, table, or map."
+  },
+  {
+    "id": "da8ca4c9-3535-478d-a1bd-a3db2529fcd4",
+    "title": "Renewable Energy Total Consumption & Major Sources 1949-2008",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/56723fc61841710beb417cb7e967e9b5.png",
+    "visual_type": "line_chart",
+    "confidence": "high",
+    "reason": "The image shows continuous data trends over time represented by multiple lines, each indicating different categories of renewable energy consumption from 1949 to 2008. There are axes corresponding to years and quadrillion BTU values, characteristic of a line chart."
+  },
+  {
+    "id": "0eccdb8e-c2d9-4e60-84bc-ae1f1eaedbe9",
+    "title": "Luxembourg 2016",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/4829c714ffb81993b41f14c706cc188a.png",
+    "visual_type": "bar_chart",
+    "confidence": "high",
+    "reason": "The image displays horizontal bars representing population distribution across age groups for males and females, which is characteristic of a bar chart."
+  },
+  {
+    "id": "bd941169-b2ba-4501-945b-6d90251271eb",
+    "title": "Size of Sharks and Fish",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/b537c832b872ce1b81e054b38cae6797.png",
+    "visual_type": "image",
+    "confidence": "high",
+    "reason": "The visual is composed of illustrations of a boat, sharks, fish, shells, and seaweed, which are pictorial elements rather than a chart or graph type used for data representation."
+  },
+  {
+    "id": "22e18ff8-ee96-4868-bcf4-c82145987685",
+    "title": "The Desalination Process of Ocean Water",
+    "image_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/di/a64ea7f23b0ed7b4ebf8624dcfad55c8.png",
+    "visual_type": "flowchart",
+    "confidence": "high",
+    "reason": "The image visually represents the process of desalination with arrows and labeled components indicating the flow of energy and materials, which is characteristic of a flowchart."
+  }
+]

@@ -84,11 +84,15 @@ export default async function IeltsSpeakingPage() {
         <IELTSSubnav current="speaking" />
 
         {part1Error ? (
-          <p className="mb-4 text-red-500">Part 1 加载失败：{part1Error.message}</p>
+          <p className="mb-4 text-red-500">
+            Part 1 加载失败：{part1Error.message}
+          </p>
         ) : null}
 
         {part2Error ? (
-          <p className="mb-4 text-red-500">Part 2 加载失败：{part2Error.message}</p>
+          <p className="mb-4 text-red-500">
+            Part 2 加载失败：{part2Error.message}
+          </p>
         ) : null}
 
         {!part1Error && !part2Error && (

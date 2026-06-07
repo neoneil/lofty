@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import {
   BookOpen,
@@ -24,10 +26,15 @@ import { SidebarItem } from "./sidebar-item";
 import { SidebarUser } from "./sidebar-user";
 
 export function Sidebar() {
+  const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
-  const [questionBankOpen, setQuestionBankOpen] = useState(false);
-  const [questionBankOpen2, setQuestionBankOpen2] = useState(false);
+  const [questionBankOpen, setQuestionBankOpen] = useState(() =>
+    pathname.startsWith("/pte"),
+  );
+  const [questionBankOpen2, setQuestionBankOpen2] = useState(() =>
+    pathname.startsWith("/ielts"),
+  );
 
   return (
     <aside
@@ -45,9 +52,16 @@ export function Sidebar() {
         {!collapsed && (
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-[var(--text)] transition-opacity duration-200 hover:opacity-70"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-[var(--text)] transition-opacity duration-200 hover:opacity-70"
           >
-            LoftyPTE
+            <Image
+              src="/brand3.png"
+              alt="LoftyPTE"
+              width={28}
+              height={28}
+              className="h-12 w-12"
+            />
+            <span>LoftyPTE</span>
           </Link>
         )}
 
@@ -145,7 +159,7 @@ export function Sidebar() {
             </div>
           )}
         </SidebarGroup>
-<SidebarGroup title="IELTS Question Bank" collapsed={collapsed}>
+        <SidebarGroup title="IELTS Question Bank" collapsed={collapsed}>
           <button
             onClick={() => setQuestionBankOpen2(!questionBankOpen2)}
             className={cn(
@@ -175,7 +189,7 @@ export function Sidebar() {
           {questionBankOpen2 && (
             <div className="space-y-1">
               <SidebarItem
-                href="/pte-speaking"
+                href="/ielts/speaking"
                 label="Speaking"
                 icon={<Mic size={16} />}
                 collapsed={collapsed}
@@ -183,7 +197,7 @@ export function Sidebar() {
               />
 
               <SidebarItem
-                href="/pte-writing"
+                href="/ielts/writing"
                 label="Writing"
                 icon={<PenTool size={16} />}
                 collapsed={collapsed}
@@ -191,7 +205,7 @@ export function Sidebar() {
               />
 
               <SidebarItem
-                href="/pte-reading"
+                href="/ielts/reading"
                 label="Reading"
                 icon={<BookOpen size={16} />}
                 collapsed={collapsed}
@@ -199,7 +213,7 @@ export function Sidebar() {
               />
 
               <SidebarItem
-                href="/pte-listening"
+                href="/ielts/listening"
                 label="Listening"
                 icon={<Headphones size={16} />}
                 collapsed={collapsed}

@@ -84,6 +84,56 @@
   --transition-normal: 240ms ease;
 
 }
+
+html.dark,
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1117;
+  --bg-soft: #171a23;
+  --card: #1c202b;
+  --card-hover: #232837;
+  --sidebar: #151923;
+  --border: #2b3140;
+  --border-soft: #252b38;
+  --border-strong: #3b4354;
+  --text: #f3f5f8;
+  --text-soft: #b4bac8;
+  --text-faint: #7d8494;
+  --theme: #8b7cff;
+  --primary: #8b7cff;
+  --theme-hover: #a197ff;
+  --primary-hover: #a197ff;
+  --primary-soft: rgba(139, 124, 255, 0.18);
+  --success: #4ade80;
+  --success-soft: rgba(74, 222, 128, 0.16);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, 0.16);
+  --danger: #fb7185;
+  --danger-soft: rgba(251, 113, 133, 0.16);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.24);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.18);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,.34);
+}
+
+html.dark ::selection,
+html[data-theme="dark"] ::selection {
+  background: var(--primary-soft);
+  color: var(--text);
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #3b4354;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #4b5568;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
 .navbar-shell {
   clip-path: polygon(
     16px 0,
@@ -228,9 +278,23 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
+  caret-color: transparent;
   font-feature-settings: "rlig" 1, "calt" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+input,
+textarea,
+[contenteditable="true"],
+[contenteditable="true"] * {
+  caret-color: auto;
+}
+
+button,
+a,
+[role="button"] {
+  user-select: none;
 }
 
   /* 统一 scrollbar */

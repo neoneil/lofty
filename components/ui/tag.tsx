@@ -26,30 +26,30 @@ export default function Tag({
             "bg-[var(--theme)]/10 text-[var(--theme)]",
 
         green:
-            "bg-emerald-50 text-emerald-700",
+            "bg-[var(--success-soft)] text-[var(--success)]",
 
         purple:
-            "bg-violet-50 text-violet-700",
+            "bg-[var(--primary-soft)] text-[var(--primary)]",
 
         yellow:
-            "bg-amber-50 text-amber-700",
+            "bg-[var(--warning-soft)] text-[var(--warning)]",
 
         pink:
-            "bg-red-50 text-red-700",
+            "bg-[var(--danger-soft)] text-[var(--danger)]",
 
         blue:
-            "bg-sky-50 text-sky-700",
+            "bg-[var(--primary-soft)] text-[var(--primary)]",
 
         warm:
-            "bg-orange-50 text-orange-700",
+            "bg-[var(--warning-soft)] text-[var(--warning)]",
 
         neutral:
-            "bg-gray-100 text-gray-600",
+            "bg-[var(--bg-soft)] text-[var(--text-soft)]",
     };
 
     return (
         <span
-            className={`inline-flex items-center justify-center round px-2.5 py-1 text-xs font-medium leading-none ${styles[tone]}`}>
+            className={`inline-flex items-center justify-center round border border-[var(--border)] px-2.5 py-1 text-xs font-medium leading-none ${styles[tone]} ${className}`}>
             {children}
         </span>
     );

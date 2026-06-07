@@ -1,6 +1,7 @@
 "use client";
 
-import { Search, SlidersHorizontal } from "lucide-react";
+import { ReactNode } from "react";
+import { Search } from "lucide-react";
 import FilterSelect from "@/components/ui/FilterSelect";
 
 type Props = {
@@ -17,6 +18,8 @@ type Props = {
 
     activityStatus: string;
     onActivityStatusChange: (value: string) => void;
+
+    extraFilters?: ReactNode;
 };
 
 export default function QuestionToolbar({
@@ -33,6 +36,8 @@ export default function QuestionToolbar({
 
     activityStatus,
     onActivityStatusChange,
+
+    extraFilters,
 }: Props) {
     return (
         <div
@@ -57,14 +62,14 @@ export default function QuestionToolbar({
                         flex flex-1 items-center gap-3
 
                         rounded-sm
-                        bg-white
+                        bg-[var(--card)]
 
                         px-4 py-3
 
-                        shadow-[0_2px_12px_rgba(0,0,0,0.03)]
+                        shadow-[var(--shadow-sm)]
                     "
                 >
-                    <Search className="h-4 w-4 text-gray-400" />
+                    <Search className="h-4 w-4 text-[var(--text-faint)]" />
 
                     <input
                         value={searchTerm}
@@ -78,11 +83,11 @@ export default function QuestionToolbar({
                             w-full
                             bg-transparent
 
-                            text-sm text-gray-700
+                            text-sm text-[var(--text)]
 
                             outline-none
 
-                            placeholder:text-gray-400
+                            placeholder:text-[var(--text-faint)]
                         "
                     />
                 </div>
@@ -170,6 +175,8 @@ export default function QuestionToolbar({
                         },
                     ]}
                 />
+
+                {extraFilters}
             </div>
         </div>
     );

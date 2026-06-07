@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
@@ -69,12 +69,6 @@ export default function WfdList({
     return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
   }, [safeCurrentPage, initialQuestions]);
 
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
-
   const goToPage = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -107,15 +101,22 @@ export default function WfdList({
             </div>
           </div>
 
-          <Tag tone="theme">
-            <Link
-              href="/pte/listening/wfd/audio"
-              className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300  hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
-            >
-              音频集训
-            </Link>
-            WFD
-          </Tag>
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <Tag tone="theme">
+              <Link href="/pte/listening/wfd/vocabulary" className="btn-secondary relative flex h-10 items-center gap-1.5 rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]">
+                <Hash size={14} />
+                高/低频单词
+              </Link>
+              WFD
+            </Tag>
+
+            <Tag tone="theme">
+              <Link href="/pte/listening/wfd/audio" className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]">
+                音频集训
+              </Link>
+              WFD
+            </Tag>
+          </div>
         </div>
       </div>
 
@@ -185,7 +186,7 @@ export default function WfdList({
                           </Badge> */}
 
                           {item.is_prediction ? (
-                            <Badge className="gap-1.5 bg-violet-50 px-2.5 py-1 text-violet-700">
+                            <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                               <Sparkles size={12} />
                               Prediction
                             </Badge>

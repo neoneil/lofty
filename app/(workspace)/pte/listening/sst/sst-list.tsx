@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
@@ -12,7 +12,6 @@ import {
   CircleDashed,
   FileText,
   Fingerprint,
-  Hash,
   Headphones,
   Sparkles,
   ChartNoAxesColumn
@@ -68,12 +67,6 @@ export default function SstList({
     const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
     return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
   }, [safeCurrentPage, initialQuestions]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -177,7 +170,7 @@ export default function SstList({
                           </Badge>
 
                           {item.is_prediction ? (
-                            <Badge className="gap-1.5 bg-violet-50 px-2.5 py-1 text-violet-700">
+                            <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                               <Sparkles size={12} />
                               Prediction
                             </Badge>

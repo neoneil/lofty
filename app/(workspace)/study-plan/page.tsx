@@ -738,7 +738,7 @@ export default function StudyPlanPage() {
 
               <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
                 <div className="mb-2 text-base font-semibold text-[var(--text)]">
-                  AI Suggestions
+                  Suggestions
                 </div>
 
                 <div className="space-y-2 text-sm leading-7 text-[var(--text-soft)]">

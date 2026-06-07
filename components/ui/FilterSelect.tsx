@@ -81,24 +81,25 @@ export default function FilterSelect({
                     rounded
 
                     border
-                    border-black/5
+                    border-[var(--border)]
 
-                    bg-white
+                    bg-[var(--card)]
 
                     px-4
                     py-3
 
                     text-sm
                     font-medium
-                    text-gray-700
+                    text-[var(--text)]
 
-                    shadow-[0_2px_12px_rgba(0,0,0,0.03)]
+                    shadow-[var(--shadow-sm)]
 
                     transition-all
                     duration-200
 
-                    hover:border-black/10
-                    hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)]
+                    hover:border-[var(--border-strong)]
+                    hover:bg-[var(--bg-soft)]
+                    hover:shadow-[var(--shadow-md)]
 
                     focus:outline-none
                 "
@@ -112,7 +113,7 @@ export default function FilterSelect({
                         cursor-pointer
                         h-4
                         w-4
-                        text-gray-400
+                        text-[var(--text-faint)]
                         transition-transform
                         duration-200
 
@@ -142,11 +143,11 @@ export default function FilterSelect({
                         rounded-b-lg
 
                         border
-                        border-black/5
+                        border-[var(--border)]
 
-                        bg-white
+                        bg-[var(--card)]
 
-                        shadow-[0_12px_40px_rgba(0,0,0,0.08)]
+                        shadow-[var(--shadow-lg)]
 
                         backdrop-blur-xl
                     "
@@ -193,8 +194,8 @@ export default function FilterSelect({
                                                 text-white
                                             `
                                             : `
-                                                text-gray-700
-                                                hover:bg-gray-50
+                                                text-[var(--text)]
+                                                hover:bg-[var(--bg-soft)]
                                             `
                                     }
                                 `}

@@ -1,9 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
-import { getQuestionOrder } from "@/lib/question-order";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import DictionaryText from "@/components/dictionary/dictionary-text"; // dictionary 查词
 import Tag from "@/components/ui/tag";
 import { Textarea } from "@/components/ui-v2/textarea";
@@ -27,8 +25,21 @@ type SubmitResult = {
   tokens: Token[];
 };
 
+function subscribeQuestionOrder(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  return () => window.removeEventListener("storage", onStoreChange);
+}
+
+function getQuestionOrderSnapshot() {
+  return sessionStorage.getItem("wfd-question-order") ?? "[]";
+}
+
+function getServerQuestionOrderSnapshot() {
+  return "[]";
+}
+
 export default function WfdDetailClient({ question }: Props) {
-  const [startedAt] = useState(Date.now());
+  const startedAtRef = useRef<number | null>(null);
 
   const [answer, setAnswer] = useState("");
 
@@ -39,30 +50,41 @@ export default function WfdDetailClient({ question }: Props) {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const router = useRouter();
+  const questionOrderSnapshot = useSyncExternalStore(
+    subscribeQuestionOrder,
+    getQuestionOrderSnapshot,
+    getServerQuestionOrderSnapshot,
+  );
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
+  const questionNav = useMemo(() => {
+    let ids: string[] = [];
 
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
-
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
-
-  useEffect(() => {
-    const ids = getQuestionOrder("wfd");
+    try {
+      ids = JSON.parse(questionOrderSnapshot);
+    } catch {
+      ids = [];
+    }
 
     const currentIndex = ids.findIndex((qId) => qId === question.id);
 
     if (currentIndex === -1) {
-      return;
+      return {
+        questionNumber: 0,
+        prevQuestionId: null as string | null,
+        nextQuestionId: null as string | null,
+      };
     }
 
-    setQuestionNumber(currentIndex + 1);
+    return {
+      questionNumber: currentIndex + 1,
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+    };
+  }, [question.id, questionOrderSnapshot]);
 
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
-  }, [question.id]);
+  useEffect(() => {
+    startedAtRef.current = Date.now();
+  }, []);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -76,7 +98,7 @@ export default function WfdDetailClient({ question }: Props) {
         body: JSON.stringify({
           questionId: question.id,
           userAnswer: answer,
-          startedAt,
+          startedAt: startedAtRef.current ?? Date.now(),
         }),
       });
 
@@ -109,17 +131,12 @@ export default function WfdDetailClient({ question }: Props) {
   return (
     <div className="mt-8 space-y-6">
       {/* QUESTION TEXT */}
-      <div
-        className="
-        round
-        bg-gray-50
-        px-5 py-5"
-      >
+      <div className="round bg-[var(--bg-soft)] px-5 py-5">
         <div className="mb-4 flex items-center gap-2">
           <div className="flex items-center gap-2">
             <Tag tone="theme">WFD</Tag>
 
-            <Tag tone="green">第 {questionNumber} 题</Tag>
+            <Tag tone="green">第 {questionNav.questionNumber} 题</Tag>
           </div>
 
           <button
@@ -132,52 +149,44 @@ export default function WfdDetailClient({ question }: Props) {
         </div>
 
         <div
-          className={`
-            text-[18px]
-            leading-9
-            text-gray-800
-
-            transition-all
-            duration-300
-
-            ${showAnswer ? "blur-0" : "select-none blur-[10px]"}`}
+          className={`text-[18px] leading-9 text-[var(--text)] transition-all duration-300 ${showAnswer ? "blur-0" : "select-none blur-[10px]"}`}
         >
           <DictionaryText text={question.question_text} />
         </div>
       </div>
       {/* RESULT */}
       {result ? (
-        <section className="round border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
+        <section className="round border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)]">
           {/* TOP */}
           <div className="mb-5 flex flex-wrap items-center gap-3">
             <span
               className={`rounded px-4 py-1.5 text-sm font-semibold ${
                 result.isCorrect
-                  ? "bg-green-100 text-green-700"
-                  : "bg-red-100 text-red-700"
+                  ? "bg-[var(--success-soft)] text-[var(--success)]"
+                  : "bg-[var(--danger-soft)] text-[var(--danger)]"
               }`}
             >
               {result.isCorrect ? "Correct" : "Wrong"}
             </span>
 
-            <span className="rounded bg-white px-4 py-1.5 text-sm font-semibold text-gray-700 border border-gray-200">
+            <span className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-1.5 text-sm font-semibold text-[var(--text)]">
               Score: {result.correctWords} / {result.totalWords}
             </span>
           </div>
 
           {/* ANSWER FEEDBACK */}
           <div>
-            <div className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-gray-500">
+            <div className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-soft)]">
               Feedback
             </div>
 
-            <div className="flex flex-wrap gap-2 rounded border border-gray-200 bg-white p-5 leading-8">
+            <div className="flex flex-wrap gap-2 rounded border border-[var(--border)] bg-[var(--bg-soft)] p-5 leading-8">
               {result.tokens.map((token, index) => {
                 if (token.type === "correct") {
                   return (
                     <span
                       key={`${token.text}-${index}`}
-                      className="round bg-green-100 px-2 py-1 text-[15px] font-medium text-green-700"
+                      className="round bg-[var(--success-soft)] px-2 py-1 text-[15px] font-medium text-[var(--success)]"
                     >
                       {token.text}
                     </span>
@@ -188,7 +197,7 @@ export default function WfdDetailClient({ question }: Props) {
                   return (
                     <span
                       key={`${token.text}-${index}`}
-                      className="round bg-red-100 px-2 py-1 text-[15px] font-medium text-red-700 line-through"
+                      className="round bg-[var(--danger-soft)] px-2 py-1 text-[15px] font-medium text-[var(--danger)] line-through"
                     >
                       {token.text}
                     </span>
@@ -198,7 +207,7 @@ export default function WfdDetailClient({ question }: Props) {
                 return (
                   <span
                     key={`${token.text}-${index}`}
-                    className="round bg-yellow-100 px-2 py-1 text-[15px] font-medium text-yellow-700"
+                    className="round bg-[var(--warning-soft)] px-2 py-1 text-[15px] font-medium text-[var(--warning)]"
                   >
                     {token.text}
                   </span>
@@ -208,19 +217,19 @@ export default function WfdDetailClient({ question }: Props) {
           </div>
 
           {/* LEGEND */}
-          <div className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-gray-500">
+          <div className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-[var(--text-soft)]">
             <div className="flex items-center gap-2">
-              <span className="h-3 w-3 rounded bg-green-400" />
+              <span className="h-3 w-3 rounded bg-[var(--success)]" />
               Correct
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="h-3 w-3 rounded bg-red-400" />
+              <span className="h-3 w-3 rounded bg-[var(--danger)]" />
               Missing
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="h-3 w-3 rounded bg-yellow-400" />
+              <span className="h-3 w-3 rounded bg-[var(--warning)]" />
               Extra
             </div>
           </div>
@@ -264,17 +273,10 @@ export default function WfdDetailClient({ question }: Props) {
       </div>
       {/* Navigation */}
       <div className="mt-8 flex items-center justify-between">
-        {prevQuestionId ? (
+        {questionNav.prevQuestionId ? (
           <Link
-            href={`/pte/listening/wfd/${prevQuestionId}`}
-            className="
-        inline-flex items-center gap-2
-        rounded border border-gray-200
-        bg-white px-3 py-3
-        text-sm font-semibold text-gray-700
-        transition
-        hover:border-[var(--theme)]/30
-        hover:text-[var(--theme)]"
+            href={`/pte/listening/wfd/${questionNav.prevQuestionId}`}
+            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
           >
             <div className="h-5 w-5 text-[var(--primary)]">
               <svg
@@ -292,9 +294,9 @@ export default function WfdDetailClient({ question }: Props) {
           <div />
         )}
 
-        {nextQuestionId ? (
+        {questionNav.nextQuestionId ? (
           <Link
-            href={`/pte/listening/wfd/${nextQuestionId}`}
+            href={`/pte/listening/wfd/${questionNav.nextQuestionId}`}
             className="
         inline-flex items-center gap-2
         rounded
