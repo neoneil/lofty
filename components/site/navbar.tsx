@@ -4,6 +4,7 @@ import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
 import Container from "./container";
 import NavbarMobileClient from "./navbar-mobile-client";
+import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
 
 type NavItem = {
   href: string;
@@ -103,7 +104,7 @@ export default async function Navbar() {
 
   return (
     <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
-      <div className="navbar-shell mx-auto max-w-7xl overflow-hidden border border-[var(--border)] bg-[color:var(--card)]/88 shadow-[var(--shadow-lg)] backdrop-blur-xl">
+      <div className="navbar-shell mx-auto max-w-[88rem] overflow-hidden border border-[var(--border)] bg-[color:var(--card)]/88 shadow-[var(--shadow-lg)] backdrop-blur-xl">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.10),transparent_28%),radial-gradient(circle_at_left,rgba(59,130,246,0.08),transparent_24%)]" />
 
         <Container>
@@ -160,26 +161,33 @@ export default async function Navbar() {
                     </Link>
                   </div>
                 ))}
+
+                <div className="ml-1 origin-center scale-90">
+                  <ThemeToggle />
+                </div>
               </nav>
 
               <div className="flex shrink-0 items-center gap-2">
                 {user ? (
                   <>
-                    <div className="flex items-center gap-2 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] px-2 py-1.5 shadow-[var(--shadow-xs)] transition-all duration-300 hover:shadow-[var(--shadow-sm)]">
-                      <Image
-                        src={avatar}
-                        alt={name}
-                        width={32}
-                        height={32}
-                        className="h-8 w-8 rounded-full border border-[var(--border)] object-cover"
-                      />
+                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-2.5 pr-3 shadow-[var(--shadow-sm)] transition-all duration-300 hover:border-[color:var(--primary)]/35 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)]">
+                      <div className="relative h-8 w-8 shrink-0">
+                        <Image
+                          src={avatar}
+                          alt={name}
+                          width={32}
+                          height={32}
+                          className="h-8 w-8 rounded-full border border-[var(--border)] object-cover shadow-[var(--shadow-sm)]"
+                        />
+                        <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-[var(--card)] bg-[var(--success)] shadow-[var(--shadow-sm)]" />
+                      </div>
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">
-                        <span className="max-w-[95px] truncate text-xs font-semibold text-[var(--theme)]">
-                          {name}
+                        <span className="max-w-[118px] truncate text-xs font-bold text-[var(--text)] transition group-hover:text-[var(--primary)]">
+                          您好，{name}
                         </span>
 
-                        <span className="max-w-[135px] truncate text-[10px] text-[var(--text-soft)]">
+                        <span className="mt-0.5 max-w-[150px] truncate text-[10px] font-medium text-[var(--text-soft)]">
                           {email}
                         </span>
                       </div>
@@ -188,7 +196,7 @@ export default async function Navbar() {
                     {ChiMa && (
                       <Link
                         href="/admin"
-                        className="flex h-10 items-center rounded-[var(--radius-full)] border border-[var(--border)] bg-[var(--card-soft)] px-4 text-sm font-semibold text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary-soft)]"
+                        className="btn-secondary flex h-10 items-center rounded-[var(--radius-full)] bg-[var(--card-soft)] px-4 text-sm font-semibold text-[var(--primary)] transition-all duration-300 "
                       >
                         管理员
                       </Link>

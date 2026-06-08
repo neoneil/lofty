@@ -53,14 +53,14 @@ export default async function PteSpeakingRlPage() {
 
   const questions = (questionsData ?? []).map((q) => ({
     ...q,
-    is_practiced: false,
-    attempt_count: 0,
-    correct_count: 0,
-    wrong_count: 0,
-    last_attempt_at: null,
-    latest_score: null,
-    best_score: null,
-    is_wrong_question: false,
+    is_practiced: q.is_practiced ?? false,
+    attempt_count: q.attempt_count ?? 0,
+    correct_count: q.correct_count ?? 0,
+    wrong_count: q.wrong_count ?? 0,
+    last_attempt_at: q.last_attempt_at ?? null,
+    latest_score: q.latest_score ?? null,
+    best_score: q.best_score ?? null,
+    is_wrong_question: q.is_wrong_question ?? false,
   })) as RlQuestion[];
 
   const { data: questionInfo } = await supabase
@@ -72,7 +72,7 @@ export default async function PteSpeakingRlPage() {
   return (
     <>
       {questionsError ? (
-        <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+        <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
           RL 加载失败：{questionsError.message}
         </section>
       ) : (

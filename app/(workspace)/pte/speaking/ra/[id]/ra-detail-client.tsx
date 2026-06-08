@@ -30,6 +30,16 @@ type UserRecording = {
   created_at: string | null;
 };
 
+type RAScoreResult = {
+  overallScore: number;
+  contentScore: number;
+  fluencyScore: number;
+  pronunciationScore: number;
+  transcript: string;
+  feedback: string;
+  suggestions: string[];
+};
+
 type Props = {
   question: Question;
 };
@@ -98,6 +108,7 @@ export default function RaDetailClient({ question }: Props) {
   }, [question.id, questionOrderSnapshot]);
   const [recordings, setRecordings] = useState<UserRecording[]>([]);
   const [recordingsLoading, setRecordingsLoading] = useState(true);
+  const [scoreResult, setScoreResult] = useState<RAScoreResult | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -134,7 +145,7 @@ export default function RaDetailClient({ question }: Props) {
 
   return (
     <div className="mt-8 space-y-6">
-      <div className="round bg-gray-50 px-5 py-5">
+      <div className="round bg-[var(--bg-soft)] px-5 py-5">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <Tag tone="theme">RA</Tag>
           {questionNav.questionNumber > 0 ? (
@@ -143,7 +154,7 @@ export default function RaDetailClient({ question }: Props) {
           <Tag tone="yellow">{getWordCount(question.question_text)} Words</Tag>
         </div>
 
-        <div className="text-[18px] leading-9 text-gray-800">
+        <div className="text-[18px] leading-9 text-[var(--text)]">
           <DictionaryText text={question.question_text} />
         </div>
 
@@ -165,12 +176,96 @@ export default function RaDetailClient({ question }: Props) {
           preparationDuration={40}
           maxDuration={40}
           autoStart
-          uploadUrl="/api/pte/ra/upload"
-          onUploadSuccess={(newRecording) => {
+          uploadUrl="/api/pte/ra/submit"
+          onUploadSuccess={(newRecording, response) => {
             setRecordings((prev) => [newRecording, ...prev]);
+
+            const aiFeedback = response?.aiFeedback as RAScoreResult | undefined;
+            if (aiFeedback) {
+              setScoreResult(aiFeedback);
+            }
+
             router.refresh();
           }}
         />
+
+        {scoreResult ? (
+          <Card>
+            <CardContent className="space-y-5">
+              <div className="flex flex-wrap items-center gap-3">
+                <span
+                  className={`rounded px-4 py-1.5 text-sm font-semibold ${
+                    scoreResult.overallScore >= 65
+                      ? "bg-[var(--success-soft)] text-[var(--success)]"
+                      : "bg-[var(--danger-soft)] text-[var(--danger)]"
+                  }`}
+                >
+                  {scoreResult.overallScore >= 65
+                    ? "Good"
+                    : "Needs Improvement"}
+                </span>
+
+                <span className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-1.5 text-sm font-semibold text-[var(--text)]">
+                  Score: {scoreResult.overallScore} / 90
+                </span>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  ["Content", scoreResult.contentScore],
+                  ["Fluency", scoreResult.fluencyScore],
+                  ["Pronunciation", scoreResult.pronunciationScore],
+                ].map(([label, score]) => (
+                  <div
+                    key={label}
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
+                      {label}
+                    </div>
+                    <div className="mt-2 text-2xl font-black text-[var(--primary)]">
+                      {score}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-[var(--text)]">
+                  AI 反馈
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">
+                  {scoreResult.feedback}
+                </p>
+              </div>
+
+              {scoreResult.suggestions.length ? (
+                <div>
+                  <h3 className="text-sm font-semibold text-[var(--text)]">
+                    提升建议
+                  </h3>
+                  <ul className="mt-2 space-y-2 text-sm leading-7 text-[var(--text-soft)]">
+                    {scoreResult.suggestions.map((suggestion) => (
+                      <li key={suggestion} className="flex gap-2">
+                        <span className="text-[var(--primary)]">•</span>
+                        <span>{suggestion}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              <div>
+                <h3 className="text-sm font-semibold text-[var(--text)]">
+                  录音转写
+                </h3>
+                <p className="mt-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text)]">
+                  {scoreResult.transcript}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        ) : null}
 
         <Card>
           <CardHeader>
@@ -220,7 +315,7 @@ export default function RaDetailClient({ question }: Props) {
         {questionNav.prevQuestionId ? (
           <Link
             href={`/pte/speaking/ra/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-gray-200 bg-white px-3 py-3 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
           >
             <div className="h-5 w-5 text-[var(--primary)]">
               <svg

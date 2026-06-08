@@ -92,17 +92,17 @@ export default function CoursesPage() {
   return (
     <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       {/* HERO */}
-      <section className="px-5 pt-14 pb-10 md:pt-20 md:pb-16">
+      <section className="px-5 pt-24 pb-10 md:pt-28 md:pb-16">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm tracking-wide text-neutral-500">
+          <p className="mb-4 inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold tracking-[0.18em] text-[var(--primary)] uppercase shadow-[var(--shadow-sm)]">
             IELTS · PTE Training
           </p>
 
-          <h1 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
+          <h1 className="text-2xl font-black leading-tight tracking-tight text-[var(--text)] md:text-3xl">
             高效提分 · 定制学习路径
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-neutral-500 md:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[var(--text-soft)] md:text-base">
             近20年一线教学经验，核心技巧拆解，精准定位薄弱项，
             帮助你在最短时间内实现分数突破。
           </p>
@@ -113,10 +113,10 @@ export default function CoursesPage() {
       <section className="px-5 pt-1 pb-10 md:pt-2 md:pb-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center">
-            <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+            <h2 className="text-xl font-black tracking-tight text-[var(--text)] md:text-2xl">
               选择适合你的课程
             </h2>
-            <p className="mt-3 text-sm text-neutral-500">
+            <p className="mt-3 text-sm text-[var(--text-soft)]">
               一对一精准提分，小班课高互动训练，适合不同目标和备考节奏。
             </p>
           </div>
@@ -129,30 +129,35 @@ export default function CoursesPage() {
                 <button
                   key={course.title}
                   onClick={() => openCourse(course)}
-                  className={`flex min-h-[360px] flex-col round border p-6 text-left shadow-[0_10px_40px_rgba(0,0,0,0.06)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 md:p-7 ${
+                  className={`group flex min-h-[360px] cursor-pointer flex-col rounded-[var(--radius-md)] border p-6 text-left backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)] md:p-7 ${
                     active
-                      ? "border-[var(--brand-accent)] bg-white shadow-[0_18px_50px_rgba(0,0,0,0.12)]"
-                      : "border-white/60 bg-white/80"
+                      ? "border-[var(--primary)] bg-[var(--card)] shadow-[var(--shadow-md)] ring-2 ring-[var(--primary-soft)]"
+                      : "border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]"
                   }`}
                 >
-                  <p className="text-sm text-neutral-500">{course.tag}</p>
+                  <p className="inline-flex w-fit items-center rounded-full border border-[var(--border)] bg-[var(--primary-soft)] px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+                    {course.tag}
+                  </p>
 
-                  <h3 className="mt-2 text-xl font-semibold leading-snug">
+                  <h3 className="mt-4 text-xl font-black leading-snug text-[var(--text)]">
                     {course.title}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-6 text-neutral-500">
+                  <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
                     {course.desc}
                   </p>
 
-                  <ul className="mt-6 space-y-3 text-sm text-neutral-600">
+                  <ul className="mt-6 space-y-3 text-sm text-[var(--text-soft)]">
                     {course.points.map((point) => (
-                      <li key={point}>✔ {point}</li>
+                      <li key={point} className="flex gap-2">
+                        <span className="mt-0.5 text-[var(--primary)]">✓</span>
+                        <span>{point}</span>
+                      </li>
                     ))}
                   </ul>
 
                   <div className="mt-auto pt-6">
-                    <div className="cursor-pointer w-full rounded bg-[var(--brand-accent)] px-4 py-3 text-center text-sm font-semibold text-white">
+                    <div className="w-full rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 py-3 text-center text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition group-hover:bg-[var(--primary-hover)]">
                       {course.button}
                     </div>
                   </div>
@@ -164,18 +169,18 @@ export default function CoursesPage() {
           {/* 页面里的详情定位区 */}
           <div
             ref={detailRef}
-            className="mx-auto mt-12 max-w-5xl round border border-white/70 bg-white/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.12)] backdrop-blur-xl md:p-10"
+            className="mx-auto mt-12 max-w-5xl rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-lg)] backdrop-blur-xl md:p-10"
           >
             <div className="text-center">
-              <p className="text-sm tracking-wide text-neutral-500">
+              <p className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--primary-soft)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--primary)]">
                 Selected Course
               </p>
 
-              <h2 className="mt-3 text-2xl font-semibold md:text-4xl">
+              <h2 className="mt-4 text-2xl font-black text-[var(--text)] md:text-4xl">
                 {selectedCourse.title}
               </h2>
 
-              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-neutral-600 md:text-base">
+              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-[var(--text-soft)] md:text-base">
                 {selectedCourse.details}
               </p>
             </div>
@@ -192,41 +197,48 @@ export default function CoursesPage() {
             className="absolute inset-0 bg-black/45 backdrop-blur-md"
           />
 
-          <div className="relative max-h-[88vh] w-full max-w-4xl animate-[modalIn_0.28s_ease-out] overflow-y-auto round bg-white p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] md:p-10">
+          <div className="relative max-h-[88vh] w-full max-w-4xl animate-[modalIn_0.28s_ease-out] overflow-y-auto rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.35)] md:p-10">
             <button
+              type="button"
               onClick={() => setModalOpen(false)}
-              className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded bg-neutral-100 text-xl leading-none text-neutral-600 transition hover:bg-neutral-200"
+              className="absolute right-5 top-5 flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] text-xl leading-none text-[var(--text-soft)] transition hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
             >
               ×
             </button>
 
-            <p className="text-sm tracking-wide text-neutral-500">
+            <p className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--primary-soft)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--primary)]">
               Course Detail
             </p>
 
-            <h2 className="mt-3 pr-10 text-2xl font-semibold md:text-4xl">
+            <h2 className="mt-4 pr-10 text-2xl font-black text-[var(--text)] md:text-4xl">
               {selectedCourse.title}
             </h2>
 
-            <p className="mt-5 text-sm leading-7 text-neutral-600 md:text-base">
+            <p className="mt-5 text-sm leading-7 text-[var(--text-soft)] md:text-base">
               {selectedCourse.details}
             </p>
 
             <div className="mt-8 grid gap-5 md:grid-cols-2">
-              <div className="rounded bg-[var(--primary)]/5 p-5">
-                <h3 className="font-semibold">适用人群</h3>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-600">
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
+                <h3 className="font-bold text-[var(--text)]">适用人群</h3>
+                <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--text-soft)]">
                   {selectedCourse.suitable.map((item) => (
-                    <li key={item}>• {item}</li>
+                    <li key={item} className="flex gap-2">
+                      <span className="text-[var(--primary)]">•</span>
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded bg-[var(--primary)]/5 p-5">
-                <h3 className="font-semibold">课后服务</h3>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-600">
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
+                <h3 className="font-bold text-[var(--text)]">课后服务</h3>
+                <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--text-soft)]">
                   {selectedCourse.service.map((item) => (
-                    <li key={item}>• {item}</li>
+                    <li key={item} className="flex gap-2">
+                      <span className="text-[var(--primary)]">•</span>
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -235,14 +247,15 @@ export default function CoursesPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded bg-[var(--brand-accent)] px-6 py-3 text-center text-sm font-semibold text-white"
+                className="rounded-[var(--radius-sm)] bg-[var(--primary)] px-6 py-3 text-center text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
               >
                 预约试听 / 咨询详情
               </Link>
 
               <button
+                type="button"
                 onClick={() => setModalOpen(false)}
-                className="cursor-pointer rounded border border-neutral-300 px-6 py-3 text-sm font-semibold"
+                className="cursor-pointer rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:bg-[var(--bg-soft)]"
               >
                 继续查看课程
               </button>
@@ -254,7 +267,7 @@ export default function CoursesPage() {
       {/* 课程结构 */}
       <section className="px-5 py-10 md:py-16">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+          <h2 className="text-2xl font-black tracking-tight text-[var(--text)] md:text-3xl">
             课程结构
           </h2>
 
@@ -264,9 +277,12 @@ export default function CoursesPage() {
               ["技巧突破", "拆解核心题型技巧，提升答题效率与准确率。"],
               ["强化训练", "每日刷题 + 实战模拟，稳定输出能力。"],
             ].map(([title, desc]) => (
-              <div key={title} className="rounded bg-white/70 p-5 shadow-sm">
-                <h3 className="text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-neutral-500">{desc}</p>
+              <div
+                key={title}
+                className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+              >
+                <h3 className="text-lg font-bold text-[var(--text)]">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{desc}</p>
               </div>
             ))}
           </div>
@@ -275,26 +291,26 @@ export default function CoursesPage() {
 
       {/* CTA */}
       <section className="px-5 py-14 text-center">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-semibold md:text-3xl">
+        <div className="mx-auto max-w-3xl rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow-md)] md:p-10">
+          <h2 className="text-2xl font-black text-[var(--text)] md:text-3xl">
             先试听，再决定
           </h2>
 
-          <p className="mt-4 text-sm text-neutral-500">
+          <p className="mt-4 text-sm leading-7 text-[var(--text-soft)]">
             提供试听课程与能力评估，了解最适合你的学习方案。
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
-              className="rounded bg-[var(--brand-accent)] px-6 py-3 text-sm font-semibold text-white"
+              className="rounded-[var(--radius-sm)] bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]"
             >
               预约试听
             </Link>
 
             <Link
               href="/contact"
-              className="rounded border border-neutral-300 px-6 py-3 text-sm font-semibold"
+              className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:-translate-y-0.5 hover:bg-[var(--bg-soft)]"
             >
               课程咨询
             </Link>

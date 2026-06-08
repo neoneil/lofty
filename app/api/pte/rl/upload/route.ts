@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
+import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
 
 export async function POST(req: Request) {
   try {
@@ -48,6 +49,19 @@ export async function POST(req: Request) {
 
     if (insertError) {
       return NextResponse.json({ error: insertError.message }, { status: 500 });
+    }
+
+    try {
+      await updateSpeakingRecordingStats({
+        supabase: supabase as any,
+        userId: user.id,
+        moduleType: "RL",
+        questionSource: "rl",
+        questionId,
+      });
+    } catch (statsError) {
+      console.error("RL stats update error:", statsError);
+      return NextResponse.json({ error: "stats update failed" }, { status: 500 });
     }
 
     return NextResponse.json({ audioUrl });

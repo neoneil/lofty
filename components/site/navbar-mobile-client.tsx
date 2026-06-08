@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import LogoutButton from "@/components/auth/logout-button";
+import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
 type NavItem = {
   href: string;
   label: string;
@@ -91,6 +92,10 @@ export default function NavbarMobileClient({
                 {item.label}
               </Link>
             ))}
+
+            <div className="mt-1 flex justify-center">
+              <ThemeToggle />
+            </div>
           </nav>
 
           <div className="mt-3 border-t border-white/10 pt-3">

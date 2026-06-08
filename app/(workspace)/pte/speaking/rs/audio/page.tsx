@@ -46,7 +46,7 @@ export default async function RsAudioPage() {
 
   if (error) {
     return (
-      <section className="rounded-[var(--radius-md)] border border-red-200 bg-red-50 p-5 text-sm text-red-600 shadow-[var(--shadow-sm)]">
+      <section className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-sm text-[var(--danger)] shadow-[var(--shadow-sm)]">
         RS 音频加载失败：{error.message}
       </section>
     );

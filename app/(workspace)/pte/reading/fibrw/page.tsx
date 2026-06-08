@@ -115,7 +115,7 @@ export default async function PteReadingFibrwPage() {
   return (
     <>
       {questionsError ? (
-        <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+        <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
           FIB-RW 加载失败：
           {
             questionsError.message

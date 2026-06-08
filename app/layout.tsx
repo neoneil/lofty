@@ -75,6 +75,7 @@ function ThemeScript() {
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
+    document.documentElement.style.setProperty("--hero-image", theme === "dark" ? "url('/hero_dark.png')" : "url('/hero4.png')");
   } catch {}
 })();
 `;

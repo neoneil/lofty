@@ -49,7 +49,7 @@ export default async function FibrQuestionDetailPage({
   ) {
     return (
       <main className="pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-16">
-        <section className="round border border-red-200 bg-red-50 p-5 text-red-600 shadow-sm">
+        <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
           FIB-R
           题目加载失败
         </section>
@@ -106,7 +106,7 @@ export default async function FibrQuestionDetailPage({
         <section className="space-y-6">
           {/* Question */}
 
-          <section className="rounded border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+          <section className="rounded border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-7">
             {/* Tags */}
 
             <div className="mb-1 flex items-center justify-between gap-4">
@@ -164,7 +164,7 @@ export default async function FibrQuestionDetailPage({
 
             {/* Stats */}
 
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-gray-500">
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-[var(--text-soft)]">
               <span>
                 曾经练习：
                 {
@@ -197,7 +197,7 @@ export default async function FibrQuestionDetailPage({
             {/* Title */}
 
             <div className="mt-8">
-              <h1 className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl">
+              <h1 className="text-xl font-semibold leading-8 text-[var(--text)] sm:text-2xl">
                 {
                   question.question_title
                 }

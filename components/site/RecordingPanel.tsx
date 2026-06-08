@@ -27,7 +27,7 @@ type Props = {
     audio_url: string;
     duration_seconds: number | null;
     created_at: string | null;
-  }) => void;
+  }, response?: Record<string, unknown>) => void;
 };
 
 export default function RecordingPanel({
@@ -201,8 +201,10 @@ export default function RecordingPanel({
     setIsUploading(true);
 
     const formData = new FormData();
+    const durationSeconds = Math.max(1, Math.floor(maxDuration - timeLeft));
     formData.append("file", tempBlobRef.current);
     formData.append("questionId", questionId);
+    formData.append("durationSeconds", String(durationSeconds));
 
     const res = await fetch(uploadUrl, {
       method: "POST",
@@ -210,15 +212,21 @@ export default function RecordingPanel({
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+      setIsUploading(false);
+      throw new Error(data.message ?? data.error ?? "上传失败");
+    }
+
     if (onUploadSuccess) {
       onUploadSuccess({
         id: crypto.randomUUID(),
         question_source: type.toLowerCase(),
         question_id: questionId,
         audio_url: data.audioUrl,
-        duration_seconds: null,
+        duration_seconds: durationSeconds,
         created_at: new Date().toISOString(),
-      });
+      }, data);
     }
     setRecordings((prev) => [...prev, data.audioUrl]);
 
@@ -257,27 +265,27 @@ export default function RecordingPanel({
       ) : null}
 
       {phase === "preparing" ? (
-        <div className="space-y-3 rounded border border-gray-200 bg-white p-4">
+        <div className="space-y-3 rounded border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <div className="text-sm font-semibold text-gray-900">
+              <div className="text-sm font-semibold text-[var(--text)]">
                 准备时间
               </div>
-              <div className="mt-1 text-xs text-gray-500">
+              <div className="mt-1 text-xs text-[var(--text-soft)]">
                 准备结束后自动开始录音
               </div>
             </div>
 
-            <div className="text-2xl font-bold text-[var(--theme)]">
+            <div className="text-2xl font-bold text-[var(--primary)]">
               {prepareTimeLeft}s
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-gray-500">
+          <div className="flex items-center gap-2 text-xs text-[var(--text-soft)]">
             <span>0s</span>
-            <div className="relative h-2 flex-1 overflow-hidden rounded bg-gray-200">
+            <div className="relative h-2 flex-1 overflow-hidden rounded bg-[var(--border)]">
               <div
-                className="h-full bg-indigo-500 transition-all"
+                className="h-full bg-[var(--primary)] transition-all"
                 style={{ width: `${prepareProgress}%` }}
               />
             </div>
@@ -301,12 +309,12 @@ export default function RecordingPanel({
         <Card className="mx-auto w-full">
           <CardContent className="space-y-4">
             {/* ===== 进度条（你要的核心）===== */}
-            <div className="flex items-center gap-2 text-xs text-gray-500">
+            <div className="flex items-center gap-2 text-xs text-[var(--text-soft)]">
               <span>0s</span>
 
-              <div className="relative h-2 flex-1 overflow-hidden rounded bg-gray-200">
+              <div className="relative h-2 flex-1 overflow-hidden rounded bg-[var(--border)]">
                 <div
-                  className="h-full bg-indigo-500 transition-all"
+                  className="h-full bg-[var(--primary)] transition-all"
                   style={{ width: `${progress}%` }}
                 />
               </div>

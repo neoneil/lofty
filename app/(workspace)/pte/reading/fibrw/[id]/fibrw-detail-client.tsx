@@ -99,12 +99,12 @@ function InlineBlank({
               e.target.value,
             )
           }
-          className={`h-[42px] min-w-[150px] appearance-none rounded-sm border bg-white px-4 pr-10 text-[15px] font-medium shadow-sm outline-none transition-all ${
+          className={`h-[42px] min-w-[150px] appearance-none rounded-sm border bg-[var(--card)] px-4 pr-10 text-[15px] font-medium shadow-sm outline-none transition-all ${
             isCorrect
-              ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+              ? "border-[color:var(--success)]/40 bg-[var(--success-soft)] text-[var(--success)]"
               : isWrong
-                ? "border-rose-300 bg-rose-50 text-rose-700"
-                : "border-gray-200 text-gray-700 hover:border-[var(--primary)]"
+                ? "border-[color:var(--danger)]/40 bg-[var(--danger-soft)] text-[var(--danger)]"
+                : "border-[var(--border)] text-[var(--text-soft)] hover:border-[var(--primary)]"
           }`}
         >
 
@@ -125,12 +125,12 @@ function InlineBlank({
 
         </select>
 
-        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-faint)]" />
 
       </div>
 
       {submitted ? (
-        <span className="text-[14px] font-medium text-emerald-600">
+        <span className="text-[14px] font-medium text-[var(--success)]">
           Correct:
           {" "}
           {
@@ -402,11 +402,11 @@ function FibrwDetailClient({
 
       {/* Passage */}
 
-      <section className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-sm">
 
         <div className="mx-auto max-w-[78%]">
 
-          <div className="text-[18px] leading-[2.9] tracking-[0.01em] text-gray-800">
+          <div className="text-[18px] leading-[2.9] tracking-[0.01em] text-[var(--text)]">
 
             {parts.map(
               (
@@ -489,15 +489,15 @@ function FibrwDetailClient({
       {/* Result */}
 
       {submitted ? (
-        <section className="rounded-3xl border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-6 shadow-sm">
 
           <div className="mb-5 flex flex-wrap items-center gap-3">
 
             <span
               className={`rounded px-4 py-1.5 text-sm font-semibold ${
                 accuracy === 100
-                  ? "bg-green-100 text-green-700"
-                  : "bg-yellow-100 text-yellow-700"
+                  ? "bg-[var(--success-soft)] text-[var(--success)]"
+                  : "bg-[var(--warning-soft)] text-[var(--warning)]"
               }`}
             >
               {accuracy === 100
@@ -505,7 +505,7 @@ function FibrwDetailClient({
                 : "Completed"}
             </span>
 
-            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+            <span className="rounded bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--text-soft)] shadow-sm">
               Score:
               {" "}
               {score}
@@ -517,7 +517,7 @@ function FibrwDetailClient({
               }
             </span>
 
-            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+            <span className="rounded bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--text-soft)] shadow-sm">
               Accuracy:
               {" "}
               {accuracy}%
@@ -525,15 +525,15 @@ function FibrwDetailClient({
 
           </div>
 
-          <div className="h-3 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-3 overflow-hidden rounded-full bg-[var(--border)]">
 
             <div
               className={`h-full rounded-full transition-all duration-500 ${
                 accuracy === 100
-                  ? "bg-green-500"
+                  ? "bg-[var(--success-soft)]0"
                   : accuracy >= 60
-                    ? "bg-yellow-500"
-                    : "bg-red-500"
+                    ? "bg-[var(--warning-soft)]0"
+                    : "bg-[var(--danger-soft)]0"
               }`}
               style={{
                 width: `${accuracy}%`,
@@ -577,11 +577,11 @@ function FibrwDetailClient({
       {/* Attempts */}
 
       {attempts.length > 0 ? (
-        <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
 
           <div className="mb-5 flex items-center justify-between">
 
-            <h3 className="text-base font-semibold text-gray-900">
+            <h3 className="text-base font-semibold text-[var(--text)]">
               Recent Attempts
             </h3>
 
@@ -603,12 +603,12 @@ function FibrwDetailClient({
                     key={
                       attempt.id
                     }
-                    className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                    className="rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-4"
                   >
 
                     <div className="flex flex-wrap items-center justify-between gap-2">
 
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-[var(--text-soft)]">
                         {new Date(
                           attempt.submitted_at,
                         ).toLocaleString()}

@@ -202,15 +202,14 @@ export default async function HomePage() {
     <main className="min-h-screen ">
       {/* Hero */}
       <section
-        className="relative min-h-[560px] overflow-hidden rounded-b-[32px] bg-cover bg-center bg-no-repeat md:min-h-[640px] md:rounded-b-[48px]"
-        style={{ backgroundImage: "url('/hero4.png')" }}
+        className="site-hero relative min-h-[560px] overflow-hidden rounded-b-[32px] bg-cover bg-center bg-no-repeat md:min-h-[640px] md:rounded-b-[48px]"
       >
         {/* <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/10" />
         <div className="absolute inset-0 bg-black/15" /> */}
 
         <div className="relative z-10 mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-14 sm:px-6 md:min-h-[540px] md:px-10">
           <div className="mx-auto max-w-3xl text-center md:mx-0 md:text-left">
-            <div className="mb-6 inline-flex items-center rounded border border-black/5 bg-white/70 px-4 py-2 text-xs font-medium text-gray-500 shadow-sm backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 px-4 py-2 text-xs font-semibold text-[var(--text-soft)] shadow-[var(--shadow-sm)] backdrop-blur-md dark:border-[color:var(--primary)]/45 dark:bg-[color:var(--primary-soft)]/70 dark:text-[var(--text)] dark:shadow-[0_12px_30px_rgba(0,0,0,0.28)]">
               {heroSlogan}
             </div>
             <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
@@ -219,62 +218,62 @@ export default async function HomePage() {
               学生系统刷题，督学全程跟踪
             </h1>
 
-            <p className="mt-5 text-sm font-medium tracking-wide text-gray-500 drop-shadow-md md:text-lg">
+            <p className="mt-5 text-sm font-semibold tracking-wide text-[var(--text-soft)] drop-shadow-md dark:text-[var(--text)] dark:drop-shadow-lg md:text-lg">
               成绩可用于留学申请· 澳洲工作签证 · 永居申请 · 和职业注册
             </p>
             <div className="mt-14 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
-                  <Bot className="h-4 w-4 text-gray-600" />
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
+                  <Bot className="h-4 w-4 text-[var(--text-soft)]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">
+                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
                     AI 智能评测
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">PTE 雅思提分引擎</p>
+                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">PTE 雅思提分引擎</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
-                  <Target className="h-4 w-4 text-gray-600" />
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
+                  <Target className="h-4 w-4 text-[var(--text-soft)]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">
+                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
                     个性化学习
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">定制专属学习计划</p>
+                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">定制专属学习计划</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
-                  <BookOpen className="h-4 w-4 text-gray-600" />
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
+                  <BookOpen className="h-4 w-4 text-[var(--text-soft)]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">
+                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
                     名师资源
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">经验丰富名师团队</p>
+                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">经验丰富名师团队</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-200 bg-white/70 shadow-sm backdrop-blur-md">
-                  <TrendingUp className="h-4 w-4 text-gray-600" />
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
+                  <TrendingUp className="h-4 w-4 text-[var(--text-soft)]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">
+                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
                     高效提分
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">科学方法快速提升</p>
+                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">科学方法快速提升</p>
                 </div>
               </div>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:justify-center md:justify-start">
               <Link
                 href="/courses"
-                className="rounded bg-white/90 px-6 py-3 text-center text-sm font-semibold text-(--brand-accent) shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
+                className="rounded border border-[var(--border)] bg-[color:var(--card)]/90 px-6 py-3 text-center text-sm font-semibold text-[var(--primary)] shadow-lg backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[var(--card)]"
               >
                 雅思课程
               </Link>

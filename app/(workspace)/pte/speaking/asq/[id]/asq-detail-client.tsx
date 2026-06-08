@@ -144,7 +144,7 @@ export default function AsqDetailClient({ question }: Props) {
 
   return (
     <div className="mt-8 space-y-6">
-      <div className="round bg-gray-50 px-5 py-5">
+      <div className="round bg-[var(--bg-soft)] px-5 py-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Tag tone="theme">ASQ</Tag>
@@ -165,7 +165,7 @@ export default function AsqDetailClient({ question }: Props) {
 
         <div className="space-y-5">
           <div
-            className={`text-[18px] leading-9 text-gray-800 transition-all duration-300 ${
+            className={`text-[18px] leading-9 text-[var(--text)] transition-all duration-300 ${
               showAnswer ? "blur-0" : "select-none blur-[10px]"
             }`}
           >
@@ -173,7 +173,7 @@ export default function AsqDetailClient({ question }: Props) {
           </div>
 
           <div
-            className={`rounded-[var(--radius-sm)] border border-[var(--border)] bg-white p-4 text-[16px] leading-8 text-gray-800 transition-all duration-300 ${
+            className={`rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-4 text-[16px] leading-8 text-[var(--text)] transition-all duration-300 ${
               showAnswer ? "blur-0" : "select-none blur-[10px]"
             }`}
           >
@@ -193,7 +193,7 @@ export default function AsqDetailClient({ question }: Props) {
           />
         </div>
       ) : (
-        <div className="mx-auto w-full max-w-[50%] rounded border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-sm text-gray-500 max-lg:max-w-[72%] max-sm:max-w-full">
+        <div className="mx-auto w-full max-w-[50%] rounded border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)] max-lg:max-w-[72%] max-sm:max-w-full">
           当前题目暂无音频
         </div>
       )}
@@ -263,7 +263,7 @@ export default function AsqDetailClient({ question }: Props) {
         {questionNav.prevQuestionId ? (
           <Link
             href={`/pte/speaking/asq/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-gray-200 bg-white px-3 py-3 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
           >
             <span>上一题</span>
           </Link>

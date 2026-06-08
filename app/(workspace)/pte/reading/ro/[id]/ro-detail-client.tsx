@@ -103,14 +103,14 @@ function SortableSentence({
       style={style}
       {...attributes}
       {...listeners}
-      className={`relative overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
+      className={`relative overflow-hidden rounded-2xl border bg-[var(--card)] transition-all duration-300 ${
         submitted
           ? isCorrect
-            ? "border-emerald-200 shadow-[0_0_0_1px_rgba(16,185,129,0.08),0_10px_30px_rgba(16,185,129,0.10)]"
-            : "border-rose-200 shadow-[0_0_0_1px_rgba(244,63,94,0.08),0_10px_30px_rgba(244,63,94,0.10)]"
+            ? "border-[color:var(--success)]/30 shadow-[var(--shadow-md)]"
+            : "border-[color:var(--danger)]/30 shadow-[var(--shadow-md)]"
           : isDragging
             ? "scale-[1.015] border-[var(--primary)] shadow-2xl"
-            : "border-gray-200 shadow-sm hover:border-[var(--primary)] hover:shadow-md"
+            : "border-[var(--border)] shadow-sm hover:border-[var(--primary)] hover:shadow-md"
       }`}
     >
       {/* Accent */}
@@ -118,7 +118,7 @@ function SortableSentence({
       {submitted ? (
         <div
           className={`absolute left-0 top-0 h-full w-1.5 ${
-            isCorrect ? "bg-emerald-500" : "bg-rose-500"
+            isCorrect ? "bg-[var(--success-soft)]0" : "bg-[var(--danger-soft)]0"
           }`}
         />
       ) : null}
@@ -130,8 +130,8 @@ function SortableSentence({
           className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl transition-colors ${
             submitted
               ? isCorrect
-                ? "bg-emerald-50 text-emerald-600"
-                : "bg-rose-50 text-rose-600"
+                ? "bg-[var(--success-soft)] text-[var(--success)]"
+                : "bg-[var(--danger-soft)] text-[var(--danger)]"
               : "bg-[var(--primary-soft)] text-[var(--primary)]"
           }`}
         >
@@ -153,7 +153,7 @@ function SortableSentence({
             ) : null}
           </div>
 
-          <p className="text-[15px] leading-8 text-gray-700">{sentence.text}</p>
+          <p className="text-[15px] leading-8 text-[var(--text-soft)]">{sentence.text}</p>
         </div>
       </div>
     </div>
@@ -293,16 +293,16 @@ export default function RoDetailClient({ question, attempts }: Props) {
 
       {/* Header */}
 
-      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm">
+      <div className="rounded-2xl border border-[var(--border)] bg-gradient-to-br from-[var(--card)] to-[var(--bg-soft)] p-5 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Left */}
 
           <div className="space-y-2">
-            <h2 className="text-xl font-semibold tracking-tight text-gray-900">
+            <h2 className="text-xl font-semibold tracking-tight text-[var(--text)]">
               Re-order Paragraphs
             </h2>
 
-            <p className="text-sm leading-7 text-gray-500">
+            <p className="text-sm leading-7 text-[var(--text-soft)]">
               拖动句子进行排序，使文章逻辑正确。
             </p>
           </div>
@@ -361,7 +361,7 @@ export default function RoDetailClient({ question, attempts }: Props) {
       {/* Result */}
 
       {submitted ? (
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
           <div className="mb-5 flex flex-wrap items-center gap-2">
             <Tag tone="green">Correct {correctCount}</Tag>
 
@@ -372,13 +372,13 @@ export default function RoDetailClient({ question, attempts }: Props) {
             {question.question_body_text.map((sentence, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-gray-200 bg-gray-50 p-5"
+                className="rounded-xl border border-[var(--border)] bg-[var(--bg-soft)] p-5"
               >
                 <div className="mb-3">
                   <Tag tone="theme">Correct Order {index + 1}</Tag>
                 </div>
 
-                <p className="text-[15px] leading-8 text-gray-700">
+                <p className="text-[15px] leading-8 text-[var(--text-soft)]">
                   {sentence}
                 </p>
               </div>
@@ -390,9 +390,9 @@ export default function RoDetailClient({ question, attempts }: Props) {
       {/* Attempts */}
 
       {attempts.length > 0 ? (
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
-            <h3 className="text-base font-semibold text-gray-900">
+            <h3 className="text-base font-semibold text-[var(--text)]">
               Recent Attempts
             </h3>
 
@@ -403,10 +403,10 @@ export default function RoDetailClient({ question, attempts }: Props) {
             {attempts.slice(0, 5).map((attempt) => (
               <div
                 key={attempt.id}
-                className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+                className="rounded-xl border border-[var(--border)] bg-[var(--bg-soft)] p-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-[var(--text-soft)]">
                     {new Date(attempt.submitted_at).toLocaleString()}
                   </div>
 

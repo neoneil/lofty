@@ -199,7 +199,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
 
   return (
     <div className="mt-8 space-y-6">
-      <div className="round bg-gray-50 px-5 py-5">
+      <div className="round bg-[var(--bg-soft)] px-5 py-5">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <Tag tone="theme">DI</Tag>
           {questionNav.questionNumber > 0 ? (
@@ -209,7 +209,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
         </div>
 
         {question.question_text ? (
-          <div className="text-[18px] leading-9 text-gray-800">
+          <div className="text-[18px] leading-9 text-[var(--text)]">
             {question.question_text}
           </div>
         ) : null}
@@ -235,8 +235,8 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
             >
               <div className="relative flex h-[360px] items-center justify-center overflow-hidden rounded-[var(--radius-sm)] bg-[var(--bg-soft)] max-lg:h-[320px] max-sm:h-[260px]">
                 {!imageLoaded ? (
-                  <div className="absolute inset-0 overflow-hidden bg-gray-100">
-                    <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.4s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/75 to-transparent" />
+                  <div className="absolute inset-0 overflow-hidden bg-[var(--bg-soft)]">
+                    <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.4s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-[var(--card)]/75 to-transparent" />
                   </div>
                 ) : null}
 
@@ -258,7 +258,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
               `}</style>
             </button>
           ) : (
-            <div className="rounded border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-sm text-gray-500">
+            <div className="rounded border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">
               当前题目暂无图片
             </div>
           )}
@@ -344,7 +344,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
             type="button"
             aria-label="关闭图片"
             onClick={() => setImageOpen(false)}
-            className="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-700 shadow-lg transition hover:bg-gray-100"
+            className="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--card)] text-[var(--text-soft)] shadow-lg transition hover:bg-[var(--bg-soft)]"
           >
             <X size={22} />
           </button>
@@ -359,7 +359,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
           <img
             src={imageUrl}
             alt={question.title || "DI question image"}
-            className="max-h-[88vh] max-w-[92vw] rounded-[var(--radius-sm)] bg-white object-contain shadow-2xl"
+            className="max-h-[88vh] max-w-[92vw] rounded-[var(--radius-sm)] bg-[var(--card)] object-contain shadow-2xl"
           />
         </div>
       ) : null}
@@ -426,7 +426,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
         {questionNav.prevQuestionId ? (
           <Link
             href={`/pte/speaking/di/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-gray-200 bg-white px-3 py-3 text-sm font-semibold text-gray-700 transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
+            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
           >
             <div className="h-5 w-5 text-[var(--primary)]">
               <svg

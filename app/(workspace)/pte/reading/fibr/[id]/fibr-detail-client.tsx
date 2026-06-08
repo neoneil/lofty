@@ -89,10 +89,10 @@ function DraggableWord({
         insideBlank
           ? isDragging
             ? "text-[var(--primary)]"
-            : "text-gray-800"
+            : "text-[var(--text)]"
           : isDragging
-            ? "scale-[1.03] rounded-xl border border-[var(--primary)] bg-white px-4 text-[var(--primary)] shadow-2xl"
-            : "rounded-xl border border-gray-200 bg-white px-4 py-2 text-gray-700 shadow-sm hover:-translate-y-[1px] hover:border-[var(--primary)] hover:text-[var(--primary)] hover:shadow-md"
+            ? "scale-[1.03] rounded-xl border border-[var(--primary)] bg-[var(--card)] px-4 text-[var(--primary)] shadow-2xl"
+            : "rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--text-soft)] shadow-sm hover:-translate-y-[1px] hover:border-[var(--primary)] hover:text-[var(--primary)] hover:shadow-md"
       }`}
     >
       {word}
@@ -127,12 +127,12 @@ function BlankDropZone({
         ref={setNodeRef}
         className={`inline-flex h-[42px] min-w-[120px] items-center justify-center rounded-xl border px-3 transition-all ${
           isCorrect
-            ? "border-emerald-300 bg-emerald-50"
+            ? "border-[color:var(--success)]/40 bg-[var(--success-soft)]"
             : isWrong
-              ? "border-rose-300 bg-rose-50"
+              ? "border-[color:var(--danger)]/40 bg-[var(--danger-soft)]"
               : isOver
                 ? "border-[var(--primary)] bg-[var(--primary-soft)]"
-                : "border-dashed border-gray-300 bg-gray-50"
+                : "border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)]"
         }`}
       >
         {value ? (
@@ -142,14 +142,14 @@ function BlankDropZone({
             insideBlank
           />
         ) : (
-          <span className="text-[14px] text-gray-400">Drop Here</span>
+          <span className="text-[14px] text-[var(--text-faint)]">Drop Here</span>
         )}
       </span>
 
       {/* Correct Answer */}
 
       {submitted ? (
-        <span className="text-[15px] font-medium text-emerald-600">
+        <span className="text-[15px] font-medium text-[var(--success)]">
           {correctAnswer}
         </span>
       ) : null}
@@ -383,9 +383,9 @@ function FibrDetailClient({ question, attempts }: Props) {
       >
         {/* Passage */}
 
-        <section className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-sm">
           <div className="mx-auto max-w-[78%]">
-            <div className="text-[18px] leading-[2.9] tracking-[0.01em] text-gray-800">
+            <div className="text-[18px] leading-[2.9] tracking-[0.01em] text-[var(--text)]">
               {parts.map((part, index) => {
                 const match = part.match(/\[\[blank_(\d+)\]\]/);
 
@@ -425,12 +425,12 @@ function FibrDetailClient({ question, attempts }: Props) {
 
         {/* Word Pool */}
 
-        <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Word Pool</h3>
+              <h3 className="text-lg font-semibold text-[var(--text)]">Word Pool</h3>
 
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-[var(--text-soft)]">
                 Drag the words into the blanks.
               </p>
             </div>
@@ -461,7 +461,7 @@ function FibrDetailClient({ question, attempts }: Props) {
 
         <DragOverlay dropAnimation={null}>
           {activeWord ? (
-            <div className="rounded-xl border border-[var(--primary)] bg-white px-4 py-2 text-[15px] font-medium text-[var(--primary)] shadow-2xl">
+            <div className="rounded-xl border border-[var(--primary)] bg-[var(--card)] px-4 py-2 text-[15px] font-medium text-[var(--primary)] shadow-2xl">
               {activeWord}
             </div>
           ) : null}
@@ -470,35 +470,35 @@ function FibrDetailClient({ question, attempts }: Props) {
 
 
       {submitted ? (
-        <section className="rounded-3xl border border-gray-200 bg-[#faf8f4] p-6 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-6 shadow-sm">
           <div className="mb-5 flex flex-wrap items-center gap-3">
             <span
               className={`rounded px-4 py-1.5 text-sm font-semibold ${
                 accuracy === 100
-                  ? "bg-green-100 text-green-700"
-                  : "bg-yellow-100 text-yellow-700"
+                  ? "bg-[var(--success-soft)] text-[var(--success)]"
+                  : "bg-[var(--warning-soft)] text-[var(--warning)]"
               }`}
             >
               {accuracy === 100 ? "Correct" : "Completed"}
             </span>
 
-            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+            <span className="rounded bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--text-soft)] shadow-sm">
               Score: {score} / {question.blanks_json.length}
             </span>
 
-            <span className="rounded bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm">
+            <span className="rounded bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--text-soft)] shadow-sm">
               Accuracy: {accuracy}%
             </span>
           </div>
 
-          <div className="h-3 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-3 overflow-hidden rounded-full bg-[var(--border)]">
             <div
               className={`h-full rounded-full transition-all duration-500 ${
                 accuracy === 100
-                  ? "bg-green-500"
+                  ? "bg-[var(--success-soft)]0"
                   : accuracy >= 60
-                    ? "bg-yellow-500"
-                    : "bg-red-500"
+                    ? "bg-[var(--warning-soft)]0"
+                    : "bg-[var(--danger-soft)]0"
               }`}
               style={{
                 width: `${accuracy}%`,
@@ -523,9 +523,9 @@ function FibrDetailClient({ question, attempts }: Props) {
       {/* Attempts */}
 
       {attempts.length > 0 ? (
-        <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
-            <h3 className="text-base font-semibold text-gray-900">
+            <h3 className="text-base font-semibold text-[var(--text)]">
               Recent Attempts
             </h3>
 
@@ -536,10 +536,10 @@ function FibrDetailClient({ question, attempts }: Props) {
             {attempts.slice(0, 5).map((attempt) => (
               <div
                 key={attempt.id}
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                className="rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-[var(--text-soft)]">
                     {new Date(attempt.submitted_at).toLocaleString()}
                   </div>
 

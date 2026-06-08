@@ -228,46 +228,45 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="rounded-[var(--radius-md)] border border-[#D7F5DF] bg-[#F3FFF6] p-4 shadow-[var(--shadow-sm)]">
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
                 <div className="flex items-start gap-3">
                   {/* WeChat Icon */}
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[#22C55E]/12 text-[#22C55E]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--success-soft)] text-[var(--success)]">
                     <MessageCircle size={18} />
                   </div>
 
                   {/* Content */}
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wide text-[#16A34A]">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-[var(--success)]">
                       WeChat
                     </div>
 
-                    <p className="mt-1 text-sm leading-7 text-[#4B5563]">
+                    <p className="mt-1 text-sm leading-7 text-[var(--text-soft)]">
                       auschi666
                     </p>
                   </div>
                 </div>
               </div>
 
-<div className="rounded-[var(--radius-md)] border border-[#E7E2FF] bg-[#F8F7FF] p-4 shadow-[var(--shadow-sm)]">
-  <div className="flex items-start gap-3">
-    
-    {/* Icon */}
-    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[#7C6BFF]/12 text-[#7C6BFF]">
-      <Sparkles size={18} />
-    </div>
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
+                <div className="flex items-start gap-3">
+                  {/* Icon */}
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary-soft)] text-[var(--primary)]">
+                    <Sparkles size={18} />
+                  </div>
 
-    {/* Content */}
-    <div>
-      <div className="text-xs font-semibold uppercase tracking-wide text-[#6D5DFC]">
-        AI Powered
-      </div>
+                  {/* Content */}
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-[var(--primary)]">
+                      AI Powered
+                    </div>
 
-      <p className="mt-1 text-sm leading-7 text-[#5B5675]">
-        Smart learning platform for IELTS & PTE students
-      </p>
-    </div>
-  </div>
-</div>
+                    <p className="mt-1 text-sm leading-7 text-[var(--text-soft)]">
+                      Smart learning platform for IELTS & PTE students
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

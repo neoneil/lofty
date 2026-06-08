@@ -159,7 +159,7 @@ export default function EssayList({
                           </Badge>
 
                           {item.is_prediction ? (
-                            <Badge className="gap-1.5 bg-violet-50 px-2.5 py-1 text-violet-700">
+                            <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                               <Sparkles size={12} />
                               Prediction
                             </Badge>

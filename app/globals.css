@@ -144,6 +144,10 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
     0 50%
   );
 }
+
+.site-hero {
+  background-image: var(--hero-image, url("/hero4.png"));
+}
 @layer components {
 
   /* 主容器 */
