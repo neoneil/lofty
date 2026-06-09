@@ -134,17 +134,6 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   border: 2px solid transparent;
   background-clip: content-box;
 }
-.navbar-shell {
-  clip-path: polygon(
-    16px 0,
-    calc(100% - 16px) 0,
-    100% 50%,
-    calc(100% - 16px) 100%,
-    16px 100%,
-    0 50%
-  );
-}
-
 .site-hero {
   background-image: var(--hero-image, url("/hero4.png"));
 }

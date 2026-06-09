@@ -1,32 +1,116 @@
-import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
-import Container from "@/components/site/container";
-import { getRandomSlogan } from "@/lib/slogan/slogan";
-// import ExamCardsSection from "@/components/site/exam-cards-section";
 import type { Metadata } from "next";
-import { Bot, Target, BookOpen, TrendingUp } from "lucide-react";
-const icons = ["⚡", "🎓", "📝", "📊"];
+import Link from "next/link";
+import {
+  ArrowRight,
+  BarChart3,
+  BookOpen,
+  Bot,
+  CheckCircle2,
+  ClipboardCheck,
+  FileText,
+  GraduationCap,
+  MessageCircle,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+
+import { createClient } from "@/lib/supabase/server";
+import { getRandomSlogan } from "@/lib/slogan/slogan";
+
 const features = [
-  ["名师在线授课", "18年经验，方法实用"],
-  ["学习数据分析", "老师监督，解决拖延"],
-  ["AI智能练习", "个性化推荐，高效提分"],
-  ["培生剑桥全真模考", "模拟考试环境，查漏补缺"],
+  {
+    title: "名师在线授课",
+    desc: "18年经验，方法实用",
+    icon: GraduationCap,
+  },
+  {
+    title: "学习数据分析",
+    desc: "老师监督，解决拖延",
+    icon: BarChart3,
+  },
+  {
+    title: "AI智能练习",
+    desc: "个性化推荐，高效提分",
+    icon: Bot,
+  },
+  {
+    title: "培生剑桥全真模考",
+    desc: "模拟考试环境，查漏补缺",
+    icon: ClipboardCheck,
+  },
+];
+
+const heroHighlights = [
+  {
+    title: "AI 智能评测",
+    desc: "PTE 雅思提分引擎",
+    icon: Bot,
+  },
+  {
+    title: "个性化学习",
+    desc: "定制专属学习计划",
+    icon: Target,
+  },
+  {
+    title: "名师资源",
+    desc: "经验丰富名师团队",
+    icon: BookOpen,
+  },
+  {
+    title: "高效提分",
+    desc: "科学方法快速提升",
+    icon: TrendingUp,
+  },
 ];
 
 const resources = [
-  ["雅思真题库", "历年真题及解析"],
-  ["PTE真题库", "机考真题及解析"],
-  ["备考指南", "考试攻略与技巧"],
-  ["词汇资料", "高频词汇整理"],
-  ["免费模考", "全真模拟考试"],
+  {
+    title: "雅思真题库",
+    desc: "历年真题及解析",
+    icon: FileText,
+  },
+  {
+    title: "PTE真题库",
+    desc: "机考真题及解析",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "备考指南",
+    desc: "考试攻略与技巧",
+    icon: BookOpen,
+  },
+  {
+    title: "词汇资料",
+    desc: "高频词汇整理",
+    icon: Sparkles,
+  },
+  {
+    title: "免费模考",
+    desc: "全真模拟考试",
+    icon: Target,
+  },
 ];
-/**
- * SEO: 首页 metadata
- * 说明：
- * 1. title 和 description 是首页最重要的 SEO 信息
- * 2. keywords 现在对 Google 影响不大，但保留无妨
- * 3. metadataBase 请替换成你的正式域名
- */
+
+const faqItems = [
+  {
+    question: "PTE 和雅思哪个更适合留学移民？",
+    answer:
+      "PTE 和雅思都可用于留学与移民申请，但不同院校、签证类型和个人英语基础适合的考试可能不同。致远教育不仅提供 PTE 与雅思的学习资源、题库训练和 AI 辅助练习，更会帮助学生找到更适合自己的备考路径。",
+  },
+  {
+    question: "AI 可以帮助批改雅思或 PTE 写作吗？",
+    answer:
+      "可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，提供更高频、更即时的反馈。致远教育的 AI 辅助功能适合用于日常练习、改写提升和考试前复盘。",
+  },
+  {
+    question: "初学者可以从哪里开始准备 PTE 或雅思？",
+    answer:
+      "建议先了解考试结构，再从基础词汇、听说读写分项训练和真题题库练习开始。首页的考试模块与文章资源可以帮助你逐步建立清晰的学习路线。",
+  },
+];
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://loftypte.com.au"),
   title: "致远教育 | PTE 雅思 备考学习平台",
@@ -60,6 +144,113 @@ export const metadata: Metadata = {
   },
 };
 
+function SectionHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mx-auto max-w-3xl text-center">
+      <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
+        <Sparkles size={14} />
+        {eyebrow}
+      </div>
+
+      <h2 className="mt-5 text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
+        {title}
+      </h2>
+
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function ExamCard({
+  title,
+  desc,
+  points,
+  href,
+  image,
+  badge,
+  imageTitle,
+  imageDesc,
+}: {
+  title: string;
+  desc: string;
+  points: string[];
+  href: string;
+  image: string;
+  badge: string;
+  imageTitle: string;
+  imageDesc: string;
+}) {
+  return (
+    <article className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+      <Link href={href} className="block">
+        <div
+          className="relative min-h-[260px] overflow-hidden bg-cover bg-center bg-no-repeat md:min-h-[300px]"
+          style={{ backgroundImage: `url(${image})` }}
+        >
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/32 to-transparent" />
+
+          <div className="relative z-10 flex min-h-[260px] max-w-[78%] flex-col justify-center px-6 py-8 md:min-h-[300px] md:px-8">
+            <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/25 bg-white/15 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
+              {badge}
+            </span>
+
+            <h3 className="text-2xl font-semibold leading-tight text-white md:text-3xl">
+              {imageTitle}
+            </h3>
+
+            <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
+              {imageDesc}
+            </p>
+          </div>
+        </div>
+      </Link>
+
+      <div className="p-5 md:p-7">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--text)]">
+              {title}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
+              {desc}
+            </p>
+
+            <ul className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {points.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-center gap-2 text-xs font-semibold text-[var(--text)]"
+                >
+                  <CheckCircle2 size={14} className="text-[var(--primary)]" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <Link
+            href={href}
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
+          >
+            开始学习
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default async function HomePage() {
   const supabase = await createClient();
   const heroSlogan = getRandomSlogan();
@@ -89,12 +280,8 @@ export default async function HomePage() {
     .order("published_at", { ascending: false })
     .limit(50);
 
-  /**
-   * SEO: 结构化数据（JSON-LD）
-   * 说明：
-   * 1. 帮助搜索引擎理解你的网站是教育品牌/学习平台
-   * 2. url / logo / sameAs 这些以后都可以继续补
-   */
+  const latestPosts = posts?.slice(0, 3) ?? [];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -112,254 +299,109 @@ export default async function HomePage() {
       "AI Assisted Learning",
     ],
   };
-  function ExamCard({
-    title,
-    desc,
-    points,
-    href,
-    image,
-    badge,
-    imageTitle,
-    imageDesc,
-  }: {
-    title: string;
-    desc: string;
-    points: string[];
-    href: string;
-    image: string;
-    badge: string;
-    imageTitle: string;
-    imageDesc: string;
-  }) {
-    return (
-      <div className="group overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,.08)]">
-        {/* Image */}
-        <div
-          className="relative h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat md:h-[280px]"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/35" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-
-          {/* Content */}
-          <div className="relative z-10 flex h-full max-w-[76%] flex-col justify-center px-7 py-8">
-            {/* Badge */}
-            <div className="mb-4 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
-              {badge}
-            </div>
-
-            {/* Title */}
-            <h3 className="text-2xl font-black leading-tight text-white">
-              {imageTitle}
-            </h3>
-
-            {/* Desc */}
-            <p className="mt-3 text-sm leading-7 text-white/85">{imageDesc}</p>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="flex items-end justify-between gap-4 p-5 md:p-10">
-          {/* Left */}
-          <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-black tracking-tight text-[var(--text)]">
-              {title}
-            </h3>
-
-            <p className="mt-1.5 text-sm leading-6 text-[var(--text-soft)]">
-              {desc}
-            </p>
-
-            {/* Points */}
-            <ul className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-              {points.map((point) => (
-                <li
-                  key={point}
-                  className="flex items-center gap-2 text-xs font-medium text-[var(--text)]"
-                >
-                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
-
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right Button */}
-          <Link
-            href={href}
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-5 text-sm font-semibold whitespace-nowrap text-white shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]"
-          >
-            开始学习
-          </Link>
-        </div>
-      </div>
-    );
-  }
   return (
-    <main className="min-h-screen ">
-      {/* Hero */}
-      <section
-        className="site-hero relative min-h-[560px] overflow-hidden rounded-b-[32px] bg-cover bg-center bg-no-repeat md:min-h-[640px] md:rounded-b-[48px]"
-      >
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/10" />
-        <div className="absolute inset-0 bg-black/15" /> */}
+    <main className="min-h-screen overflow-hidden bg-[var(--bg)] text-[var(--text)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-        <div className="relative z-10 mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-14 sm:px-6 md:min-h-[540px] md:px-10">
-          <div className="mx-auto max-w-3xl text-center md:mx-0 md:text-left">
-            <div className="mb-6 inline-flex items-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 px-4 py-2 text-xs font-semibold text-[var(--text-soft)] shadow-[var(--shadow-sm)] backdrop-blur-md dark:border-[color:var(--primary)]/45 dark:bg-[color:var(--primary-soft)]/70 dark:text-[var(--text)] dark:shadow-[0_12px_30px_rgba(0,0,0,0.28)]">
+      <section className="site-hero relative min-h-[620px] overflow-hidden rounded-b-[32px] bg-cover bg-center bg-no-repeat md:min-h-[700px] md:rounded-b-[48px]">
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg)]/18 via-[var(--bg)]/8 to-transparent dark:from-white/10 dark:via-white/5" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--bg)]/55 via-[var(--bg)]/16 to-transparent" />
+
+        <div className="relative z-10 mx-auto flex min-h-[560px] max-w-7xl items-center px-4 py-16 sm:px-6 md:min-h-[640px] md:px-10">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[color:var(--card)]/86 px-4 py-2 text-xs font-semibold text-[var(--text-soft)] shadow-[var(--shadow-sm)] backdrop-blur-md dark:border-[color:var(--primary)]/35 dark:bg-[color:var(--card)]/76 dark:text-[var(--text)]">
+              <Sparkles size={14} className="text-[var(--primary)]" />
               {heroSlogan}
             </div>
-            <h1 className="text-xl font-semibold text-[--text] leading-tight drop-shadow-lg sm:text-2xl md:text-3xl lg:text-4xl">
+
+            <h1 className="mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-[var(--text)] drop-shadow-sm sm:text-4xl lg:text-5xl">
               PTE · 雅思
-              <br />
-              学生系统刷题，督学全程跟踪
+              <span className="block text-[var(--primary)]">
+                系统刷题与督学提分平台
+              </span>
             </h1>
 
-            <p className="mt-5 text-sm font-semibold tracking-wide text-[var(--text-soft)] drop-shadow-md dark:text-[var(--text)] dark:drop-shadow-lg md:text-lg">
-              成绩可用于留学申请· 澳洲工作签证 · 永居申请 · 和职业注册
+            <p className="mt-5 max-w-2xl text-base font-semibold leading-8 text-[var(--text-soft)] drop-shadow-sm dark:text-[var(--text)] md:text-lg">
+              成绩可用于留学申请 · 澳洲工作签证 · 永居申请 · 职业注册。
             </p>
-            <div className="mt-14 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
-                  <Bot className="h-4 w-4 text-[var(--text-soft)]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
-                    AI 智能评测
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">PTE 雅思提分引擎</p>
-                </div>
-              </div>
 
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
-                  <Target className="h-4 w-4 text-[var(--text-soft)]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
-                    个性化学习
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">定制专属学习计划</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
-                  <BookOpen className="h-4 w-4 text-[var(--text-soft)]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
-                    名师资源
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">经验丰富名师团队</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[var(--border)] bg-[color:var(--card)]/82 shadow-sm backdrop-blur-md">
-                  <TrendingUp className="h-4 w-4 text-[var(--text-soft)]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--text)] drop-shadow-sm">
-                    高效提分
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-[var(--text-soft)] drop-shadow-sm">科学方法快速提升</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:justify-center md:justify-start">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/courses"
-                className="rounded border border-[var(--border)] bg-[color:var(--card)]/90 px-6 py-3 text-center text-sm font-semibold text-[var(--primary)] shadow-lg backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[var(--card)]"
+                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/92 px-6 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-md)] backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[var(--card)]"
               >
                 雅思课程
               </Link>
 
               <Link
                 href="/courses"
-                className="rounded bg-[#4040A8] px-6 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-hover)]"
               >
                 PTE课程
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Features */}
-      <section className="relative z-20 mx-auto -mt-8 max-w-6xl px-4 sm:px-6 md:-mt-12">
-        <div className="relative overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--card)]/92 shadow-[var(--shadow-lg)] backdrop-blur-2xl">
-          {/* 背景光晕 */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(109,93,252,0.10),transparent_24%),radial-gradient(circle_at_left,rgba(124,58,237,0.06),transparent_18%)]" />
-
-          <div className="relative grid grid-cols-2 md:grid-cols-4">
-            {features.map(([title, desc], index) => (
-              <div
-                key={title}
-                className="group relative px-4 py-6 text-center transition-all duration-300 hover:bg-[var(--card-hover)] md:px-6 md:py-8"
-              >
-                {/* 分割线 */}
-                {index !== features.length - 1 && (
-                  <div className="absolute right-0 top-1/2 hidden h-[58%] w-px -translate-y-1/2 bg-[var(--border)] md:block" />
-                )}
-
-                {/* Icon */}
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-xl shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-md)]">
-                  <span className="transition-all duration-300 group-hover:scale-110">
-                    {icons[index]}
-                  </span>
+            <div className="mt-10 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {heroHighlights.map(({ title, desc, icon: Icon }) => (
+                <div
+                  key={title}
+                  className="group rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/90 p-4 shadow-[var(--shadow-sm)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-[color:var(--card)]/96 hover:shadow-[var(--shadow-md)] dark:bg-white/14 dark:hover:bg-white/18"
+                >
+                  <div className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
+                    <Icon size={17} />
+                  </div>
+                  <p className="mt-3 text-sm font-semibold text-[var(--text)]">
+                    {title}
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-[var(--text-soft)]">
+                    {desc}
+                  </p>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-sm font-bold tracking-tight text-[var(--text)] md:text-base">
-                  {title}
-                </h3>
-
-                {/* Desc */}
-                <p className="mt-2 text-xs leading-6 text-[var(--text-soft)] md:text-sm">
-                  {desc}
-                </p>
-
-                {/* Hover Glow */}
-                <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-0 transition-all duration-300 group-hover:scale-x-100 group-hover:opacity-100" />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* IELTS / PTE Choice */}
-
-      <section className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-24">
-        <div className="relative text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
-            <span className="text-sm">✦</span>
-            English Test Preparation
-          </div>
-
-          {/* Title */}
-          <div className="mt-5">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
-              IELTS · PTE Academic
+      <section className="relative z-20 mx-auto -mt-10 max-w-6xl px-4 sm:px-6 md:-mt-14">
+        <div className="grid overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]/95 shadow-[var(--shadow-lg)] backdrop-blur-2xl md:grid-cols-4">
+          {features.map(({ title, desc, icon: Icon }, index) => (
+            <div
+              key={title}
+              className="group relative border-b border-[var(--border)] p-5 transition hover:bg-[var(--card-hover)] md:border-b-0 md:border-r md:last:border-r-0"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)] transition group-hover:scale-105">
+                  <Icon size={20} />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-faint)]">
+                    0{index + 1}
+                  </div>
+                  <h3 className="mt-1 text-sm font-semibold text-[var(--text)]">
+                    {title}
+                  </h3>
+                  <p className="mt-1 text-xs leading-5 text-[var(--text-soft)]">
+                    {desc}
+                  </p>
+                </div>
+              </div>
             </div>
-
-            <h2 className="text-2xl font-black tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
-              选择适合你的英语考试
-            </h2>
-          </div>
-
-          {/* Description */}
-          <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-            根据你的目标、学习习惯与考试需求，
-            选择最适合自己的英语考试与备考路径。
-          </p>
+          ))}
         </div>
+      </section>
 
-        {/* Cards */}
+      <section className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <SectionHeading
+          eyebrow="IELTS · PTE Academic"
+          title="选择适合你的英语考试"
+          description="根据你的目标、学习习惯与考试需求，选择最适合自己的英语考试与备考路径。"
+        />
+
         <div className="relative mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
           <ExamCard
             title="雅思 IELTS"
@@ -384,251 +426,164 @@ export default async function HomePage() {
           />
         </div>
       </section>
-{/* Resources */}
-<section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6 md:pb-20">
-  
-  {/* Header */}
-  <div className="text-center">
-    
-    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
-      <span className="text-sm">✦</span>
-      Learning Resources
-    </div>
 
-    <div className="mt-5">
-      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
-        IELTS · PTE Academic
-      </div>
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+        <SectionHeading
+          eyebrow="Learning Resources"
+          title="网站内部备考资料与学习资源"
+          description="精选题库、学习资料与模考资源，帮助你更高效地建立英语能力体系。"
+        />
 
-      <h2 className="text-2xl font-black tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
-        网站内部备考资料与学习资源
-      </h2>
-    </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {resources.map(({ title, desc, icon: Icon }) => (
+            <div
+              key={title}
+              className="group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)] transition group-hover:scale-105">
+                <Icon size={19} />
+              </div>
+              <h3 className="mt-5 text-sm font-semibold tracking-tight text-[var(--text)]">
+                {title}
+              </h3>
+              <p className="mt-2 text-xs leading-6 text-[var(--text-soft)]">
+                {desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-    <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-      精选题库、学习资料与模考资源，
-      帮助你更高效地建立英语能力体系。
-    </p>
-  </div>
-
-  {/* Resource Grid */}
-  <div className="mt-10 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)]">
-    <div className="grid grid-cols-2 md:grid-cols-5">
-      {resources.map(([title, desc], index) => (
-        <div
-          key={title}
-          className="group relative px-4 py-6 text-center transition-all duration-300 hover:bg-[var(--card-hover)] md:px-5 md:py-7"
-        >
-          {/* Divider */}
-          {index !== resources.length - 1 && (
-            <div className="absolute right-0 top-1/2 hidden h-[55%] w-px -translate-y-1/2 bg-[var(--border)] md:block" />
-          )}
-
-          {/* Icon */}
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-lg shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-md)]">
-            📄
+      {latestPosts.length ? (
+        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--primary)]">
+                Articles
+              </div>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl">
+                最新备考文章
+              </h2>
+            </div>
+            <Link
+              href="/posts"
+              className="inline-flex h-10 items-center gap-2 text-sm font-semibold text-[var(--primary)] transition hover:translate-x-0.5"
+            >
+              查看全部文章
+              <ArrowRight size={16} />
+            </Link>
           </div>
 
-          {/* Title */}
-          <h3 className="text-sm font-bold tracking-tight text-[var(--text)]">
-            {title}
-          </h3>
+          <div className="grid gap-5 md:grid-cols-3">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/posts/${post.slug}`}
+                className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
+              >
+                <div className="h-40 bg-[var(--bg-soft)]">
+                  {post.cover_image ? (
+                    <img
+                      src={post.cover_image}
+                      alt={post.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">
+                      Lofty Article
+                    </div>
+                  )}
+                </div>
+                <div className="p-5">
+                  <h3 className="line-clamp-2 text-base font-semibold leading-6 text-[var(--text)]">
+                    {post.title}
+                  </h3>
+                  {post.excerpt ? (
+                    <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
+                      {post.excerpt}
+                    </p>
+                  ) : null}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
-          {/* Desc */}
-          <p className="mt-2 text-xs leading-6 text-[var(--text-soft)]">
-            {desc}
-          </p>
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+        <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--primary)] px-6 py-12 text-center text-white shadow-[0_28px_70px_rgba(64,64,168,.24)] md:px-10 md:py-14">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_26%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_42%)]" />
 
-          {/* Hover Line */}
-          <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-0 transition-all duration-300 group-hover:scale-x-100 group-hover:opacity-100" />
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
+              <Users size={14} />
+              AI Learning Platform
+            </div>
+
+            <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+              加入致远教育，和更多学员一起进步
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-white/85 sm:text-base">
+              从 AI 智能练习、老师监督到真题训练，致远教育帮助学生建立长期、高效且可持续的学习体系。
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                href="/sign-up"
+                className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-white px-7 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-md)] transition hover:-translate-y-0.5"
+              >
+                立即注册
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15"
+              >
+                联系老师
+              </Link>
+            </div>
+
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/75">
+              {heroSlogan}
+            </p>
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* CTA */}
-<section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
-  <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-r from-[var(--primary)] via-[#7C6BFF] to-[#A78BFA] px-6 py-12 text-center text-white shadow-[0_30px_60px_rgba(109,93,252,.20)] md:px-10 md:py-14">
+      <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
+        <SectionHeading
+          eyebrow="FAQ"
+          title="常见问题"
+          description="关于 PTE、雅思与 AI 学习平台的常见问题。"
+        />
 
-    {/* Light */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%)]" />
-
-    <div className="relative z-10">
-      
-      {/* Badge */}
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
-        <span>✦</span>
-        AI Learning Platform
-      </div>
-
-      {/* Title */}
-      <h2 className="mx-auto mt-6 max-w-[760px] text-3xl font-black leading-tight tracking-tight md:text-5xl">
-        加入致远教育
-        <br className="hidden md:block" />
-        和更多学员一起进步
-      </h2>
-
-      {/* Desc */}
-      <p className="mx-auto mt-5 max-w-[620px] text-sm leading-8 text-white/85 sm:text-base">
-        从 AI 智能练习、老师监督到真题训练，
-        致远教育帮助学生建立长期、高效且可持续的学习体系。
-      </p>
-
-      {/* CTA */}
-      <div className="mt-8 flex justify-center">
-        <Link
-          href="/sign-up"
-          className="inline-flex h-11 items-center justify-center rounded-[var(--radius-sm)] bg-white px-7 text-sm font-bold text-[var(--primary)] shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(255,255,255,.18)]"
-        >
-          立即注册
-        </Link>
-      </div>
-
-      {/* Slogan */}
-      <p className="mx-auto mt-6 max-w-[520px] text-sm leading-7 text-white/75 sm:text-base">
-        {heroSlogan}
-      </p>
-    </div>
-  </div>
-</section>
-
-{/* FAQ */}
-<section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
-  
-  {/* Header */}
-  <div className="text-center">
-    
-    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
-      <span className="text-sm">✦</span>
-      FAQ
-    </div>
-
-    <h2 className="mt-5 text-3xl font-black tracking-tight text-[var(--text)] md:text-4xl">
-      常见问题
-    </h2>
-
-    <p className="mx-auto mt-4 max-w-[560px] text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-      关于 PTE、雅思与 AI 学习平台的常见问题。
-    </p>
-  </div>
-
-  {/* FAQ Cards */}
-  <div className="mt-10 grid gap-5 sm:gap-6">
-    
-    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
-      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
-        PTE 和雅思哪个更适合留学移民？
-      </h3>
-
-      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
-        PTE 和雅思都可用于留学与移民申请，但不同院校、
-        签证类型和个人英语基础适合的考试可能不同。
-        致远教育不仅提供 PTE 与雅思的学习资源、题库训练和 AI 辅助练习，
-        更会帮助学生找到更适合自己的备考路径。
-      </p>
-    </article>
-
-    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
-      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
-        AI 可以帮助批改雅思或 PTE 写作吗？
-      </h3>
-
-      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
-        可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，
-        提供更高频、更即时的反馈。
-        致远教育的 AI 辅助功能适合用于日常练习、
-        改写提升和考试前复盘。
-      </p>
-    </article>
-
-    <article className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
-      <h3 className="mb-3 text-lg font-bold tracking-tight text-[var(--primary)]">
-        初学者可以从哪里开始准备 PTE 或雅思？
-      </h3>
-
-      <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
-        建议先了解考试结构，再从基础词汇、
-        听说读写分项训练和真题题库练习开始。
-        首页的考试模块与文章资源可以帮助你逐步建立清晰的学习路线。
-      </p>
-    </article>
-  </div>
-</section>
-    </main>
-  );
-}
-function ExamCard({
-  title,
-  desc,
-  points,
-  href,
-  image,
-  badge,
-  imageTitle,
-  imageDesc,
-}: {
-  title: string;
-  desc: string;
-  points: string[];
-  href: string;
-  image: string;
-  badge: string;
-  imageTitle: string;
-  imageDesc: string;
-}) {
-  return (
-    <div className="overflow-hidden round bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl md:round">
-      <div
-        className="relative h-[260px] w-full overflow-hidden bg-cover bg-center bg-no-repeat md:h-[280px]"
-        style={{ backgroundImage: `url(${image})` }}
-      >
-        {/* 更深的 overlay，解决白色文字看不清的问题 */}
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
-
-        <div className="relative z-10 flex h-full max-w-[72%] flex-col justify-center px-7 py-8 md:px-8">
-          <span className="mb-4 inline-flex w-fit rounded border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
-            {badge}
-          </span>
-
-          <h3 className="text-xl font-semibold leading-tight text-white drop-shadow-lg md:text-2xl">
-            {imageTitle}
-          </h3>
-
-          <p className="mt-3 max-w-[280px] text-sm leading-relaxed text-white/90 drop-shadow-md">
-            {imageDesc}
-          </p>
-        </div>
-      </div>
-
-      <div className="p-5 md:p-7">
-        <h3 className="text-xl font-bold text-[#4040A8] md:text-2xl">
-          {title}
-        </h3>
-        <p className="mt-2 text-sm text-[#5E638B]">{desc}</p>
-
-        <ul className="mt-5 space-y-3">
-          {points.map((item) => (
-            <li
-              key={item}
-              className="flex items-center gap-3 text-sm text-[#5E638B]"
+        <div className="mt-10 grid gap-4">
+          {faqItems.map((item) => (
+            <article
+              key={item.question}
+              className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
             >
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#EEEAFE] text-xs text-[#746BFF]">
-                ✓
-              </span>
-              {item}
-            </li>
+              <div className="flex gap-4">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
+                  <MessageCircle size={17} />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold tracking-tight text-[var(--text)] sm:text-lg">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm leading-8 text-[var(--text-soft)] sm:text-base">
+                    {item.answer}
+                  </p>
+                </div>
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
+      </section>
 
-        <Link
-          href={href}
-          className="mt-6 inline-flex rounded border border-[#B9B5FF] px-5 py-2 text-sm font-semibold text-[#5A55D6] transition hover:bg-[#EEEAFE]"
-        >
-          了解更多 →
-        </Link>
-      </div>
-    </div>
+      {canManagePosts ? (
+        <div className="sr-only">Admin content tools enabled</div>
+      ) : null}
+    </main>
   );
 }

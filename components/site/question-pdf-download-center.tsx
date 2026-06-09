@@ -1,6 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { Download, FileText, Loader2 } from "lucide-react";
+
+import { Badge } from "@/components/ui-v2/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui-v2/card";
 
 type DownloadItem = {
   key: string;
@@ -119,21 +129,16 @@ export default function QuestionPdfDownloadCenter() {
 
   return (
     <div className="space-y-8">
-      <section className="round border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-        <div className="mb-6">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
-            PTE DOWNLOAD CENTER
-          </p>
+      <Card className="rounded-[var(--radius-lg)]">
+        <CardHeader className="flex-col items-start gap-1">
+          <Badge variant="secondary">PTE Download Center</Badge>
+          <CardTitle>PTE 题库 PDF</CardTitle>
+          <CardDescription>
+            点击对应题型，直接下载数据库中的全部题目 PDF。
+          </CardDescription>
+        </CardHeader>
 
-          <h2 className="text-2xl font-semibold text-(--theme)">
-            PTE 题库 PDF 下载中心
-          </h2>
-
-          <p className="mt-2 text-sm text-gray-500">
-            点击对应题型，直接下载数据库中的全部题目 PDF
-          </p>
-        </div>
-
+        <CardContent>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {DOWNLOAD_ITEMS.map((item) => (
             <button
@@ -141,21 +146,41 @@ export default function QuestionPdfDownloadCenter() {
               type="button"
               onClick={() => handleDownload(item)}
               disabled={loadingKey === item.key}
-              className="cursor-pointer rounded border border-gray-200 bg-(--bg) p-5 text-left transition hover:shadow-md hover:border-(--theme) disabled:opacity-60"
+              className="group cursor-pointer rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-5 text-left shadow-[var(--shadow-xs)] transition hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:bg-[var(--card)] hover:shadow-[var(--shadow-md)] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              <div className="mb-2 text-lg font-semibold text-(--theme)">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)] transition group-hover:scale-105">
+                  {loadingKey === item.key ? (
+                    <Loader2 size={19} className="animate-spin" />
+                  ) : (
+                    <FileText size={19} />
+                  )}
+                </div>
+
+                <div className="rounded-full bg-[var(--card)] px-2.5 py-1 text-xs font-semibold text-[var(--text-soft)]">
+                  PDF
+                </div>
+              </div>
+
+              <div className="mt-5 text-lg font-semibold text-[var(--text)]">
                 {item.label}
               </div>
 
-              <div className="text-sm leading-6 text-gray-600">
+              <div className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
                 {loadingKey === item.key
                   ? "Exporting..."
                   : item.description}
               </div>
+
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">
+                <Download size={15} />
+                下载 PDF
+              </div>
             </button>
           ))}
         </div>
-      </section>
+        </CardContent>
+      </Card>
     </div>
   );
 }

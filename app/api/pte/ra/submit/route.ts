@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreRA } from "@/lib/pte-speaking/score-ra";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
 
 const MODULE_TYPE = "RA";
 const QUESTION_SOURCE = "ra";
+
+function getAudioExtension(file: File) {
+  if (file.type.includes("wav")) return "wav";
+  if (file.type.includes("ogg")) return "ogg";
+  return "webm";
+}
 
 export async function POST(req: Request) {
   try {
@@ -51,7 +58,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const filePath = `students-audio/ra/${user.id}/${Date.now()}.webm`;
+    const filePath = `students-audio/ra/${user.id}/${Date.now()}.${getAudioExtension(file)}`;
 
     const { error: uploadError } = await supabase.storage
       .from("pte-audio")
@@ -69,19 +76,68 @@ export async function POST(req: Request) {
       .getPublicUrl(filePath);
 
     const audioUrl = publicUrlData.publicUrl;
-    const transcript = await transcribeAudio(file);
+
+    const { error: recordingInsertError } = await supabase
+      .from("student_recordings")
+      .insert({
+        user_id: user.id,
+        question_source: QUESTION_SOURCE,
+        question_id: questionId,
+        audio_url: audioUrl,
+        duration_seconds: durationSeconds,
+      });
+
+    if (recordingInsertError) {
+      console.error("student_recordings insert error:", recordingInsertError);
+      return NextResponse.json(
+        { ok: false, message: "保存录音记录失败" },
+        { status: 500 },
+      );
+    }
+
+    const questionText = question.question_text ?? "";
+    const [transcript, azurePronunciation] = await Promise.all([
+      transcribeAudio(file),
+      assessAzurePronunciation({
+        file,
+        referenceText: questionText,
+        durationSeconds,
+      }),
+    ]);
     const aiResult = await scoreRA({
-      questionText: question.question_text ?? "",
+      questionText,
       transcript,
     });
+    const azurePronunciationScore =
+      azurePronunciation.summary.pronunciationScorePte ??
+      aiResult.pronunciationScore;
+    const enhancedResult = {
+      ...aiResult,
+      pronunciationScore: azurePronunciationScore,
+      overallScore: Math.round(
+        (
+          aiResult.contentScore +
+          aiResult.fluencyScore +
+          azurePronunciationScore
+        ) / 3,
+      ),
+      azure: azurePronunciation.summary,
+    };
 
     const feedbackJson = {
-      feedback: aiResult.feedback,
-      suggestions: aiResult.suggestions,
-      raw: aiResult,
+      feedback: enhancedResult.feedback,
+      suggestions: enhancedResult.suggestions,
+      raw: enhancedResult,
+      azure: {
+        summary: azurePronunciation.summary,
+        raw: azurePronunciation.raw,
+      },
     };
-    const transcriptText = aiResult.transcript || transcript;
-    const score = aiResult.overallScore;
+    const transcriptText =
+      enhancedResult.transcript ||
+      azurePronunciation.summary.recognizedText ||
+      transcript;
+    const score = enhancedResult.overallScore;
     const isCorrect = score >= 65;
     const nowIso = new Date().toISOString();
     const startedAtIso = new Date(
@@ -100,7 +156,7 @@ export async function POST(req: Request) {
         submitted_at: nowIso,
         duration_seconds: durationSeconds,
         user_answer: transcriptText,
-        correct_answer: question.question_text ?? null,
+        correct_answer: questionText || null,
         is_correct: isCorrect,
         accuracy: score,
         score,
@@ -128,9 +184,15 @@ export async function POST(req: Request) {
         audio_url: audioUrl,
         transcript: transcriptText,
         overall_score: score,
-        content_score: aiResult.contentScore,
-        fluency_score: aiResult.fluencyScore,
-        pronunciation_score: aiResult.pronunciationScore,
+        content_score: enhancedResult.contentScore,
+        fluency_score: enhancedResult.fluencyScore,
+        pronunciation_score: enhancedResult.pronunciationScore,
+        accuracy_score: azurePronunciation.summary.accuracyScore,
+        completeness_score: azurePronunciation.summary.completenessScore,
+        azure_result_json: {
+          summary: azurePronunciation.summary,
+          raw: azurePronunciation.raw,
+        },
         feedback_json: feedbackJson,
       });
 
@@ -144,7 +206,7 @@ export async function POST(req: Request) {
 
     try {
       await updateSpeakingRecordingStats({
-        supabase: supabase as any,
+        supabase,
         userId: user.id,
         moduleType: MODULE_TYPE,
         questionSource: QUESTION_SOURCE,
@@ -236,7 +298,7 @@ export async function POST(req: Request) {
       attemptId: studentAttempt.id,
       isCorrect,
       score,
-      aiFeedback: aiResult,
+      aiFeedback: enhancedResult,
     });
   } catch (error) {
     console.error("RA submit API crash:", error);

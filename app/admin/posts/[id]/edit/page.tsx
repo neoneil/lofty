@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+
 import EditPostForm from "@/components/admin/edit-post-form";
+import { createClient } from "@/lib/supabase/server";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -39,10 +41,44 @@ export default async function EditPostPage({ params }: PageProps) {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-12">
-      <h1 className="mb-6 text-3xl font-bold">Edit Post</h1>
+    <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl">
+        <div className="mb-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
+                Content Management
+              </p>
+              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--text)]">
+                Edit Post
+              </h1>
+              <p className="mt-2 max-w-2xl text-sm text-[var(--text-soft)]">
+                Update article copy, publishing status, and the live learning
+                content shown on the Lofty site.
+              </p>
+            </div>
 
-      <EditPostForm post={post} />
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/admin/posts"
+                className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-xs)] transition hover:bg-[var(--bg-soft)]"
+              >
+                Back to Posts
+              </Link>
+              {post.slug ? (
+                <Link
+                  href={`/posts/${post.slug}`}
+                  className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
+                >
+                  View Post
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <EditPostForm post={post} />
+      </section>
     </main>
   );
 }

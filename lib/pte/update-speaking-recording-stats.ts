@@ -1,39 +1,6 @@
-type SupabaseClientLike = {
-  from: (table: string) => {
-    select: (columns: string) => {
-      eq: (column: string, value: string) => {
-        eq: (column: string, value: string) => {
-          eq: (column: string, value: string) => {
-            maybeSingle: () => Promise<{
-              data: {
-                id: string;
-                attempt_count: number | null;
-                completed_count: number | null;
-                correct_count: number | null;
-                wrong_count: number | null;
-                total_duration_seconds: number | null;
-                best_score: number | null;
-                latest_score: number | null;
-                last_correct_at: string | null;
-                last_wrong_at: string | null;
-                is_in_wrong_book: boolean | null;
-              } | null;
-              error: { message: string } | null;
-            }>;
-          };
-        };
-      };
-    };
-    insert: (values: Record<string, unknown>) => Promise<{
-      error: { message: string } | null;
-    }>;
-    update: (values: Record<string, unknown>) => {
-      eq: (column: string, value: string) => Promise<{
-        error: { message: string } | null;
-      }>;
-    };
-  };
-};
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+type SupabaseClientLike = Pick<SupabaseClient, "from">;
 
 type Args = {
   supabase: SupabaseClientLike;

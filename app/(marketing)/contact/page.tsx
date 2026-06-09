@@ -1,4 +1,14 @@
 import type { Metadata } from "next";
+
+import { Badge } from "@/components/ui-v2/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui-v2/card";
+
 import ContactForm from "./contact-form";
 
 export const metadata: Metadata = {
@@ -10,198 +20,104 @@ export const metadata: Metadata = {
 const highlights = [
   {
     zh: "18年以上教学经验",
-    en: "18+ years of teaching experience",
+    en: "长期深耕 PTE 与 IELTS 教学",
   },
   {
     zh: "2008年起教授雅思，2010年开始教授PTE",
-    en: "Teaching IELTS since 2008, later expanded into PTE",
+    en: "熟悉不同基础学生的提分路径",
   },
   {
     zh: "老师亲历亲为，跟进学习进度",
-    en: "Hands-on teaching with close progress tracking",
+    en: "从目标、练习到复盘持续跟进",
   },
   {
     zh: "内功与招式并重，能力与技巧结合",
-    en: "Fundamentals, techniques, knowledge, and strategy",
+    en: "语言能力、题型技巧和考试策略结合",
   },
 ];
 
-const cardStyle = {
-  borderColor: "var(--border)",
-  background: "var(--card)",
-  boxShadow: "var(--shadow-md)",
-};
-
-const softCardStyle = {
-  borderColor: "var(--border)",
-  background: "var(--bg-soft)",
-};
-
-const primaryButtonClass =
-  "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]";
-
-const secondaryButtonClass =
-  "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border px-5 text-sm font-semibold shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--bg-soft)] hover:shadow-[var(--shadow-md)]";
-
 export default function ContactPage() {
   return (
-    <main
-      className="min-h-screen overflow-hidden"
-      style={{
-        background: "var(--bg)",
-        color: "var(--text)",
-      }}
-    >
-      <section
-        className="relative border-b"
-        style={{ borderColor: "var(--border)" }}
-      >
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="max-w-3xl">
-              <div
-                className="inline-flex items-center rounded-[var(--radius-sm)] border px-4 py-2 text-sm font-medium shadow-[var(--shadow-sm)]"
-                style={{
-                  borderColor: "var(--border)",
-                  background: "var(--card)",
-                  color: "var(--text-soft)",
-                }}
-              >
-                Lofty · 致远教育 · Melbourne, Australia
-              </div>
+    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <section className="border-b border-[var(--border)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:items-stretch">
+            <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8 lg:p-10">
+              <Badge variant="default">墨尔本英语考试培训</Badge>
 
-              <h1 className="mt-7 text-3xl font-semibold tracking-tight sm:text-5xl lg:text-4xl">
+              <h1 className="mt-5 text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
                 致远教育
-                <span
-                  className="mt-3 block text-xl font-medium sm:text-2xl lg:text-3xl"
-                  style={{ color: "var(--text-soft)" }}
-                >
+                <span className="mt-2 block text-xl font-medium text-[var(--text-soft)] sm:text-2xl">
                   Lofty Education
                 </span>
               </h1>
 
-              <p
-                className="mt-7 max-w-2xl text-base leading-8 sm:text-lg"
-                style={{ color: "var(--text-soft)" }}
-              >
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
                 总部位于澳大利亚墨尔本，专注于 PTE、IELTS
                 等英语考试培训与语言能力提升。我们相信，真正有效的学习，不只是技巧，而是理解语言背后的逻辑。
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href="#contact-form"
-                  className={primaryButtonClass}
-                  style={{
-                    background: "var(--primary)",
-                  }}
+                  className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
                 >
-                  添加微信
+                  添加微信咨询
                 </a>
-
                 <a
                   href="#contact-form"
-                  className={secondaryButtonClass}
-                  style={{
-                    borderColor: "var(--border)",
-                    background: "var(--card)",
-                    color: "var(--text)",
-                  }}
+                  className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-xs)] transition hover:bg-[var(--bg-soft)]"
                 >
                   预约咨询
                 </a>
               </div>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {[
+                  ["2008", "起教授雅思"],
+                  ["18+", "年教学经验"],
+                  ["PTE · IELTS", "双考试体系"],
+                ].map(([value, label]) => (
+                  <div
+                    key={value}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"
+                  >
+                    <div className="text-2xl font-semibold text-[var(--primary)]">
+                      {value}
+                    </div>
+                    <div className="mt-1 text-sm text-[var(--text-soft)]">
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div
-              className="rounded-[var(--radius-lg)] border p-4 sm:p-5"
-              style={cardStyle}
-            >
-              <div
-                className="rounded-[var(--radius-md)] border p-6 sm:p-8"
-                style={softCardStyle}
-              >
-                <div
-                  className="text-sm font-medium uppercase tracking-[0.18em]"
-                  style={{ color: "var(--text-soft)" }}
-                >
-                  Why Lofty
-                </div>
-
-                <div className="mt-6 grid gap-4">
+            <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
+              <CardHeader className="flex-col items-start gap-1">
+                <CardTitle>为什么选择致远</CardTitle>
+                <CardDescription>
+                  老师直接参与诊断、训练和反馈，帮助学生把练习变成可见进步。
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-3">
                   {highlights.map((item) => (
                     <div
                       key={item.en}
-                      className="rounded-[var(--radius-md)] border p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
-                      style={cardStyle}
+                      className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 transition hover:shadow-[var(--shadow-sm)]"
                     >
-                      <div
-                        className="text-lg font-semibold"
-                        style={{ color: "var(--text)" }}
-                      >
+                      <div className="text-base font-semibold text-[var(--text)]">
                         {item.zh}
                       </div>
-                      <div
-                        className="mt-2 text-sm leading-6"
-                        style={{ color: "var(--text-soft)" }}
-                      >
+                      <div className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
                         {item.en}
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="mt-12 grid gap-4 rounded-[var(--radius-lg)] border p-4 sm:grid-cols-3 sm:p-5"
-            style={cardStyle}
-          >
-            <div
-              className="rounded-[var(--radius-md)] border p-5"
-              style={softCardStyle}
-            >
-              <div
-                className="text-3xl font-semibold"
-                style={{ color: "var(--primary)" }}
-              >
-                2008
-              </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
-                起教授雅思，长期深耕英语考试教学。
-              </p>
-            </div>
-
-            <div
-              className="rounded-[var(--radius-md)] border p-5"
-              style={softCardStyle}
-            >
-              <div
-                className="text-3xl font-semibold"
-                style={{ color: "var(--primary)" }}
-              >
-                18+
-              </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
-                年教学经验，覆盖不同基础和目标分数学生。
-              </p>
-            </div>
-
-            <div
-              className="rounded-[var(--radius-md)] border p-5"
-              style={softCardStyle}
-            >
-              <div
-                className="text-3xl font-semibold"
-                style={{ color: "var(--primary)" }}
-              >
-                PTE · IELTS
-              </div>
-              <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-soft)" }}>
-                技巧、知识、逻辑与训练体系结合。
-              </p>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

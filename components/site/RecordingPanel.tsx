@@ -19,6 +19,7 @@ type Props = {
   preparationDuration?: number;
   autoStart?: boolean;
   uploadUrl: string;
+  uploadFormat?: "original" | "wav";
   initialRecordings?: string[];
   onUploadSuccess?: (recording: {
     id: string;
@@ -30,6 +31,89 @@ type Props = {
   }, response?: Record<string, unknown>) => void;
 };
 
+function getPreferredAudioMimeType() {
+  if (typeof MediaRecorder === "undefined") return undefined;
+
+  const candidates = [
+    "audio/ogg;codecs=opus",
+    "audio/webm;codecs=opus",
+    "audio/webm",
+  ];
+
+  return candidates.find((mimeType) => MediaRecorder.isTypeSupported(mimeType));
+}
+
+function writeString(view: DataView, offset: number, value: string) {
+  for (let index = 0; index < value.length; index += 1) {
+    view.setUint8(offset + index, value.charCodeAt(index));
+  }
+}
+
+function encodeWav(buffer: AudioBuffer) {
+  const samples = buffer.getChannelData(0);
+  const bytesPerSample = 2;
+  const blockAlign = bytesPerSample;
+  const dataSize = samples.length * bytesPerSample;
+  const arrayBuffer = new ArrayBuffer(44 + dataSize);
+  const view = new DataView(arrayBuffer);
+
+  writeString(view, 0, "RIFF");
+  view.setUint32(4, 36 + dataSize, true);
+  writeString(view, 8, "WAVE");
+  writeString(view, 12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, buffer.sampleRate, true);
+  view.setUint32(28, buffer.sampleRate * blockAlign, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, 16, true);
+  writeString(view, 36, "data");
+  view.setUint32(40, dataSize, true);
+
+  let offset = 44;
+  for (const sample of samples) {
+    const clampedSample = Math.max(-1, Math.min(1, sample));
+    view.setInt16(
+      offset,
+      clampedSample < 0 ? clampedSample * 0x8000 : clampedSample * 0x7fff,
+      true,
+    );
+    offset += bytesPerSample;
+  }
+
+  return new Blob([arrayBuffer], { type: "audio/wav" });
+}
+
+async function convertBlobToWav(blob: Blob) {
+  const browserWindow = window as Window &
+    typeof globalThis & {
+      webkitAudioContext?: typeof AudioContext;
+    };
+  const AudioContextClass =
+    browserWindow.AudioContext || browserWindow.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    throw new Error("当前浏览器不支持音频格式转换");
+  }
+
+  const audioContext = new AudioContextClass();
+  const decodedBuffer = await audioContext.decodeAudioData(
+    await blob.arrayBuffer(),
+  );
+  await audioContext.close();
+
+  const sampleRate = 16000;
+  const frameCount = Math.ceil(decodedBuffer.duration * sampleRate);
+  const offlineContext = new OfflineAudioContext(1, frameCount, sampleRate);
+  const source = offlineContext.createBufferSource();
+  source.buffer = decodedBuffer;
+  source.connect(offlineContext.destination);
+  source.start(0);
+
+  return encodeWav(await offlineContext.startRendering());
+}
+
 export default function RecordingPanel({
   questionId,
   type,
@@ -37,6 +121,7 @@ export default function RecordingPanel({
   preparationDuration = 0,
   autoStart = false,
   uploadUrl,
+  uploadFormat = "original",
   initialRecordings = [],
   onUploadSuccess,
 }: Props) {
@@ -47,6 +132,7 @@ export default function RecordingPanel({
   const [timeLeft, setTimeLeft] = useState(maxDuration);
   const [confirmUpload, setConfirmUpload] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [recordings, setRecordings] = useState<string[]>(initialRecordings);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -104,7 +190,11 @@ export default function RecordingPanel({
 
     streamRef.current = stream;
 
-    const recorder = new MediaRecorder(stream);
+    const mimeType = getPreferredAudioMimeType();
+    const recorder = new MediaRecorder(
+      stream,
+      mimeType ? { mimeType } : undefined,
+    );
     mediaRecorderRef.current = recorder;
 
     chunksRef.current = [];
@@ -115,7 +205,7 @@ export default function RecordingPanel({
 
     recorder.onstop = () => {
       tempBlobRef.current = new Blob(chunksRef.current, {
-        type: "audio/webm",
+        type: recorder.mimeType || mimeType || "audio/webm",
       });
       cleanupStream();
       setConfirmUpload(true);
@@ -199,41 +289,52 @@ export default function RecordingPanel({
     if (!tempBlobRef.current) return;
 
     setIsUploading(true);
+    setUploadError(null);
 
-    const formData = new FormData();
-    const durationSeconds = Math.max(1, Math.floor(maxDuration - timeLeft));
-    formData.append("file", tempBlobRef.current);
-    formData.append("questionId", questionId);
-    formData.append("durationSeconds", String(durationSeconds));
+    try {
+      const durationSeconds = Math.max(1, Math.floor(maxDuration - timeLeft));
+      const uploadBlob =
+        uploadFormat === "wav"
+          ? await convertBlobToWav(tempBlobRef.current)
+          : tempBlobRef.current;
 
-    const res = await fetch(uploadUrl, {
-      method: "POST",
-      body: formData,
-    });
+      const formData = new FormData();
+      formData.append("file", uploadBlob);
+      formData.append("questionId", questionId);
+      formData.append("durationSeconds", String(durationSeconds));
 
-    const data = await res.json();
+      const res = await fetch(uploadUrl, {
+        method: "POST",
+        body: formData,
+      });
 
-    if (!res.ok) {
+      const data = await res.json();
+
+      if (!res.ok) {
+        setUploadError(data.message ?? data.error ?? "上传失败");
+        return;
+      }
+
+      if (onUploadSuccess) {
+        onUploadSuccess({
+          id: crypto.randomUUID(),
+          question_source: type.toLowerCase(),
+          question_id: questionId,
+          audio_url: data.audioUrl,
+          duration_seconds: durationSeconds,
+          created_at: new Date().toISOString(),
+        }, data);
+      }
+      setRecordings((prev) => [...prev, data.audioUrl]);
+
+      setConfirmUpload(false);
+      setPhase("idle");
+      tempBlobRef.current = null;
+    } catch (error) {
+      setUploadError(error instanceof Error ? error.message : "上传失败");
+    } finally {
       setIsUploading(false);
-      throw new Error(data.message ?? data.error ?? "上传失败");
     }
-
-    if (onUploadSuccess) {
-      onUploadSuccess({
-        id: crypto.randomUUID(),
-        question_source: type.toLowerCase(),
-        question_id: questionId,
-        audio_url: data.audioUrl,
-        duration_seconds: durationSeconds,
-        created_at: new Date().toISOString(),
-      }, data);
-    }
-    setRecordings((prev) => [...prev, data.audioUrl]);
-
-    setIsUploading(false);
-    setConfirmUpload(false);
-    setPhase("idle");
-    tempBlobRef.current = null;
   };
 
   useEffect(() => {
@@ -352,6 +453,12 @@ export default function RecordingPanel({
               <CardTitle>录音完毕</CardTitle>
               <CardDescription>是否上传本次录音？</CardDescription>
             </div>
+
+            {uploadError ? (
+              <div className="rounded border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-3 py-2 text-sm font-medium text-[var(--danger)]">
+                {uploadError}
+              </div>
+            ) : null}
 
             <div className="flex justify-center gap-3">
               <Button

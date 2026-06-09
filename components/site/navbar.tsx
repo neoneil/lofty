@@ -104,8 +104,9 @@ export default async function Navbar() {
 
   return (
     <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
-      <div className="navbar-shell mx-auto max-w-[88rem] overflow-hidden border border-[var(--border)] bg-[color:var(--card)]/88 shadow-[var(--shadow-lg)] backdrop-blur-xl">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.10),transparent_28%),radial-gradient(circle_at_left,rgba(59,130,246,0.08),transparent_24%)]" />
+      <div className="mx-auto max-w-[90rem] overflow-hidden rounded-[var(--radius-lg)] bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
+        <div className="absolute inset-0 bg-transparent" />
 
         <Container>
           <div className="relative py-2">
@@ -127,14 +128,14 @@ export default async function Navbar() {
 
             {/* 桌面端 */}
             <div className="hidden h-14 items-center justify-between gap-4 lg:flex">
-              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-3 rounded-[var(--radius-lg)] border border-transparent px-3 py-2 transition-all duration-300 hover:border-[var(--border)] hover:bg-[var(--card-soft)]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[var(--shadow-md)]">
+              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-3 rounded-[var(--radius-lg)] bg-transparent px-3 py-2 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[var(--shadow-md)]">
                   <Image
-                    src="/SVG/121.svg"
+                    src="/favicon-32x32.png"
                     alt="Lofty Education"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6 object-contain opacity-90"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
                   />
                 </div>
 
@@ -149,7 +150,7 @@ export default async function Navbar() {
                 </div>
               </Link>
 
-              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-2 px-4">
+              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1.5 rounded-[var(--radius-lg)] bg-transparent px-3 py-1 shadow-[var(--shadow-xs)]">
                 {navItems.map((item) => (
                   <div key={item.href + item.label} className="group relative">
                     <Link
@@ -167,7 +168,7 @@ export default async function Navbar() {
                 </div>
               </nav>
 
-              <div className="flex shrink-0 items-center gap-2">
+              <div className="flex shrink-0 items-center gap-2 rounded-[var(--radius-lg)] bg-transparent px-2 py-1 shadow-[var(--shadow-xs)]">
                 {user ? (
                   <>
                     <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-2.5 pr-3 shadow-[var(--shadow-sm)] transition-all duration-300 hover:border-[color:var(--primary)]/35 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)]">

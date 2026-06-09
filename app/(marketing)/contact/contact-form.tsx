@@ -2,6 +2,19 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+
+import { Badge } from "@/components/ui-v2/badge";
+import { Button } from "@/components/ui-v2/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui-v2/card";
+import { Input } from "@/components/ui-v2/input";
+import { Textarea } from "@/components/ui-v2/textarea";
+
 import { sendContactEmail } from "./actions";
 
 type FormState = {
@@ -14,26 +27,18 @@ const initialState: FormState = {
   message: "",
 };
 
-const inputClass =
-  "w-full rounded border px-4 py-3 text-sm outline-none transition duration-300 focus:-translate-y-0.5 focus:shadow-[0_0_0_4px_rgba(47,74,63,0.12)]";
-
-const inputStyle = {
-  borderColor: "var(--border)",
-  background: "var(--bg)",
-  color: "var(--text)",
-};
-
 function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
       disabled={pending}
-      className="text-(--brand-accent) cursor-pointer inline-flex min-w-42 items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(47,74,63,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
+      fullWidth
+      className="sm:w-auto"
     >
-      {pending ? "发送中... / Sending..." : "提交咨询 / Send Message"}
-    </button>
+      {pending ? "发送中..." : "提交咨询"}
+    </Button>
   );
 }
 
@@ -43,150 +48,108 @@ export default function ContactForm() {
   return (
     <section
       id="contact-form"
-      className="border-t"
-      style={{
-        background: "var(--bg)",
-        borderColor: "var(--border)",
-      }}
+      className="border-t border-[var(--border)] bg-[var(--bg)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14"
     >
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-7xl">
         {state.message ? (
           <div
-            className="mb-6 rounded border px-4 py-3 text-sm shadow-sm"
-            style={{
-              borderColor: state.ok
-                ? "rgba(16,185,129,0.3)"
-                : "rgba(244,63,94,0.3)",
-              background: state.ok
-                ? "rgba(16,185,129,0.08)"
-                : "rgba(244,63,94,0.08)",
-              color: "var(--text)",
-            }}
+            className={`mb-6 rounded-[var(--radius-md)] border px-4 py-3 text-sm font-medium shadow-[var(--shadow-sm)] ${
+              state.ok
+                ? "border-[var(--success)]/25 bg-[var(--success-soft)] text-[var(--success)]"
+                : "border-[var(--danger)]/25 bg-[var(--danger-soft)] text-[var(--danger)]"
+            }`}
           >
             {state.message}
           </div>
         ) : null}
 
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* 左侧 */}
-          <div
-            className="round border p-6 shadow-sm sm:p-8"
-            style={{
-              background: "var(--bg)",
-              borderColor: "var(--border)",
-            }}
-          >
-            <div
-              className="text-sm font-medium uppercase tracking-[0.18em]"
-              style={{ color: "var(--muted)" }}
-            >
-              Contact
-            </div>
+        <div className="grid gap-6 lg:grid-cols-[390px_1fr]">
+          <Card className="rounded-[var(--radius-lg)]">
+            <CardHeader className="flex-col items-start gap-1">
+              <Badge variant="secondary">联系方式</Badge>
+              <CardTitle>联系老师</CardTitle>
+              <CardDescription>
+                扫码添加微信，或填写右侧表单说明你的目标分数和备考时间。
+              </CardDescription>
+            </CardHeader>
 
-            <h2
-              className="mt-4 text-2xl font-bold"
-              style={{ color: "var(--text)" }}
-            >
-              联系老师
-            </h2>
-
-            <div className="mt-8 space-y-4">
-
-
-              {/* 微信 */}
-              <div
-                className="rounded border p-3"
-                style={{
-                  borderColor: "var(--bg)",
-                  background: "var(--bg)",
-                }}
-              >
-                <div
-                  className="text-sm font-medium"
-                  style={{ color: "var(--muted)" }}
-                >
-                  WeChat / 微信
+            <CardContent className="space-y-5">
+              <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
+                <div className="text-sm font-semibold text-[var(--text-soft)]">
+                  微信
                 </div>
-
-                <div
-                  className="mt-1 text-base font-semibold"
-                  style={{ color: "var(--text)" }}
-                >
+                <div className="mt-1 text-xl font-semibold text-[var(--text)]">
                   auschi666
                 </div>
 
-                {/* ⭐ 居中 + 放大 QR */}
                 <div className="mt-6 flex flex-col items-center justify-center">
-                  <div
-                    className="overflow-hidden rounded border p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:scale-[1.04] hover:shadow-xl"
-                    style={{
-                      borderColor: "var(--bg)",
-                      background: "var(--bg)",
-                    }}
-                  >
+                  <div className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-white p-4 shadow-[var(--shadow-sm)] transition hover:shadow-[var(--shadow-md)]">
                     <img
                       src="/qr.jpg"
                       alt="WeChat QR code"
-                      className="w-56 h-auto rounded object-contain"
+                      className="h-auto w-56 rounded-[var(--radius-md)] object-contain"
                     />
                   </div>
 
-                  <p
-                    className="mt-3 text-xs"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    扫码添加微信 / Scan to add WeChat
+                  <p className="mt-3 text-xs text-[var(--text-soft)]">
+                    扫码添加微信
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* 右侧表单 */}
-          <div
-            className="round border p-6 shadow-sm sm:p-8"
-            style={{
-              borderColor: "var(--border)",
-              background: "var(--card)",
-            }}
-          >
-            <div
-              className="text-sm font-medium uppercase tracking-[0.18em]"
-              style={{ color: "var(--muted)" }}
-            >
-              Send a Message
-            </div>
+              <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-5">
+                <div className="text-sm font-semibold text-[var(--text)]">
+                  咨询前可以简单准备
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-[var(--text-soft)]">
+                  <p>当前考试类型和基础分数</p>
+                  <p>目标分数和预计考试时间</p>
+                  <p>目前最薄弱的题型或技能</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-            <h2
-              className="mt-4 text-2xl font-bold"
-              style={{ color: "var(--text)" }}
-            >
-              预约咨询 / Send an Inquiry
-            </h2>
+          <Card className="rounded-[var(--radius-lg)]">
+            <CardHeader className="flex-col items-start gap-1">
+              <Badge variant="default">预约咨询</Badge>
+              <CardTitle>提交你的学习情况</CardTitle>
+              <CardDescription>
+                老师会根据你的目标、时间和当前基础给出下一步建议。
+              </CardDescription>
+            </CardHeader>
 
-            <form action={formAction} className="mt-8 space-y-5">
+            <CardContent>
+            <form action={formAction} className="space-y-5">
               <div className="grid gap-5 sm:grid-cols-2">
-                <input id="name" name="name" required className={inputClass} style={inputStyle} placeholder="姓名 / Name" />
-                <input id="email" name="email" type="email" className={inputClass} style={inputStyle} placeholder="邮箱 / Email" />
+                <Input id="name" name="name" required placeholder="姓名" />
+                <Input id="email" name="email" type="email" placeholder="邮箱" />
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
-                <input id="wechat" name="wechat" className={inputClass} style={inputStyle} placeholder="微信 / WeChat" />
-                <input id="exam" name="exam" className={inputClass} style={inputStyle} placeholder="考试类型 / Exam Type" />
+                <Input id="wechat" name="wechat" placeholder="微信" />
+                <Input id="exam" name="exam" placeholder="考试类型，例如 PTE / IELTS" />
               </div>
 
-              <input id="target" name="target" className={inputClass} style={inputStyle} placeholder="目标分数 / Target Score" />
+              <Input id="target" name="target" placeholder="目标分数" />
 
-              <textarea id="message" name="message" rows={6} required className={inputClass} style={inputStyle} placeholder="你的情况 / Message" />
+              <Textarea
+                id="message"
+                name="message"
+                rows={7}
+                required
+                placeholder="简单说明你的目前水平、目标分数、考试时间和想解决的问题"
+              />
 
-              <div className="flex justify-between items-center">
-                <p className="text-sm" style={{ color: "var(--muted)" }}>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-[var(--text-soft)]">
                   请填写邮箱或微信其中一项
                 </p>
                 <SubmitButton />
               </div>
             </form>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

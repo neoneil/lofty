@@ -37,7 +37,7 @@ const adminModules = [
   {
     title: "留言 / 评论",
     desc: "查看用户留言、评论和网站互动内容。",
-    href: "/admin/messages",
+    href: "/admin/chat",
     tag: "Messages",
   },
   {
@@ -88,25 +88,25 @@ export default async function AdminPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[--bg] px-4 py-10 text-[--text] sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
       <section className="mx-auto max-w-6xl">
-        <div className="mb-8 round border border-white/70 bg-[--bg] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
+        <div className="mb-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] backdrop-blur-xl sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="mb-3 text-sm font-medium text-neutral-500">
+              <p className="mb-3 text-sm font-semibold text-[var(--text-soft)]">
                 Lofty Education Admin
               </p>
 
-              <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight text-[var(--text)] md:text-3xl">
                 后台管理
               </h1>
             </div>
 
-            <div className="rounded bg-[#f5f5f7] px-5 py-4 text-sm text-neutral-600">
-              <p className="font-medium text-neutral-900">{profile.email}</p>
+            <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-5 py-4 text-sm text-[var(--text-soft)]">
+              <p className="font-semibold text-[var(--text)]">{profile.email}</p>
               <p className="mt-1">
                 Role:{" "}
-                <span className="font-semibold capitalize text-[#2F4A3F]">
+                <span className="font-semibold capitalize text-[var(--primary)]">
                   {profile.role}
                 </span>
               </p>
@@ -116,10 +116,10 @@ export default async function AdminPage() {
 
         <div className="mb-6 ml-5 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight text-[var(--text)]">
               管理模块
             </h2>
-            <p className="mt-1 text-sm text-neutral-500">
+            <p className="mt-1 text-sm text-[var(--text-soft)]">
               选择一个模块开始管理。
             </p>
           </div>
@@ -130,23 +130,23 @@ export default async function AdminPage() {
             <Link
               key={item.title}
               href={item.href}
-              className="group round border border-white/80 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.09)]"
+              className="group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/40 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)]"
             >
               <div className="mb-6 flex items-center justify-between">
-                <span className="rounded bg-[#f5f5f7] px-3 py-1 text-xs font-medium text-neutral-500">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-1 text-xs font-semibold text-[var(--text-soft)]">
                   {item.tag}
                 </span>
 
-                <span className="flex h-9 w-9 items-center justify-center rounded bg-[#2F4A3F] text-white transition-transform duration-300 group-hover:translate-x-1">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] text-white shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[var(--primary-hover)]">
                   →
                 </span>
               </div>
 
-              <h3 className="text-xl font-semibold tracking-tight">
+              <h3 className="text-xl font-bold tracking-tight text-[var(--text)]">
                 {item.title}
               </h3>
 
-              <p className="mt-3 text-sm leading-6 text-neutral-500">
+              <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
                 {item.desc}
               </p>
             </Link>

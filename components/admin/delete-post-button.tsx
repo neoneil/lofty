@@ -95,12 +95,16 @@ export default function DeletePostButton({
         type="button"
         onClick={handleDelete}
         disabled={loading}
-        className="rounded border px-3 py-2 text-sm"
+        className="inline-flex h-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--danger)]/30 bg-[var(--danger-soft)] px-3 text-sm font-semibold text-[var(--danger)] transition hover:border-[var(--danger)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {loading ? "Deleting..." : "Delete"}
       </button>
 
-      {message ? <p className="text-sm text-red-600">{message}</p> : null}
+      {message ? (
+        <p className="max-w-48 text-right text-xs text-[var(--danger)]">
+          {message}
+        </p>
+      ) : null}
     </div>
   );
 }

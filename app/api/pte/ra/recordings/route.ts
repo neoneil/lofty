@@ -15,10 +15,11 @@ export async function GET(req: NextRequest) {
   }
 
   const { data, error } = await supabase
-    .from("student_recordings")
-    .select("id, question_source, question_id, audio_url, duration_seconds, created_at")
+    .schema("pte")
+    .from("speaking_attempts")
+    .select("id, question_type, question_id, audio_url, transcript, overall_score, content_score, fluency_score, pronunciation_score, accuracy_score, completeness_score, feedback_json, azure_result_json, created_at")
     .eq("user_id", user.id)
-    .eq("question_source", "ra")
+    .eq("question_type", "RA")
     .eq("question_id", questionId)
     .order("created_at", { ascending: false });
 
@@ -31,6 +32,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
+    practices: data ?? [],
     recordings: data ?? [],
   });
 }

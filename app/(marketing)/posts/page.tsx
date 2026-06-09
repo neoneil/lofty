@@ -1,10 +1,32 @@
 import Link from "next/link";
+
+import { Badge } from "@/components/ui-v2/badge";
+import { Button } from "@/components/ui-v2/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui-v2/card";
+import { Input } from "@/components/ui-v2/input";
 import { createClient } from "@/lib/supabase/server";
-import Container from "@/components/site/container";
 
 type PostsPageProps = {
   searchParams: Promise<{ q?: string }>;
 };
+
+function formatDate(date: string | null) {
+  if (!date) {
+    return "暂无日期";
+  }
+
+  return new Intl.DateTimeFormat("en-AU", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(date));
+}
 
 export default async function PostsPage({ searchParams }: PostsPageProps) {
   const { q } = await searchParams;
@@ -14,186 +36,248 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 
   let query = supabase
     .from("posts")
-    .select("id, title, slug, excerpt, cover_image, published_at, created_at")
+    .select(
+      "id, title, slug, excerpt, cover_image, published_at, created_at, category",
+    )
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
   if (keyword) {
-    query = query.or(
-      `title.ilike.%${keyword}%,excerpt.ilike.%${keyword}%`
-    );
+    query = query.or(`title.ilike.%${keyword}%,excerpt.ilike.%${keyword}%`);
   }
 
   const { data: posts, error } = await query;
+  const featuredPost = posts?.[0] ?? null;
+  const otherPosts = posts?.slice(1) ?? [];
 
   return (
-    <main className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f]">
-      {/* HEADER */}
-      <section className="px-5 pt-12 pb-6 md:pt-16 md:pb-8">
-        <Container>
-          <div className="max-w-3xl ml-5">
-            <h1 className="text-1xl font-semibold md:text-3xl">
-              PTE · IELTS Articles
-            </h1>
-
-            <p className="mt-4 text-sm text-neutral-500 md:text-base">
-              提分方法 · 真题解析 · 学习策略
-            </p>
-
-            <form
-              action="/posts"
-              className="mt-6 flex max-w-xl items-center rounded bg-white px-4 py-2 shadow-sm"
-            >
-              <input
-                type="text"
-                name="q"
-                defaultValue={keyword}
-                placeholder="Search articles..."
-                className="w-full bg-transparent px-3 py-3 text-sm outline-none"
-              />
-              <button className="rounded bg-black px-5 py-2 text-sm text-white">
-                Search
-              </button>
-            </form>
-          </div>
-        </Container>
-      </section>
-
-      <section className="px-5 pb-16">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.90fr_340px]">
-
-            {/* LEFT：文章列表 */}
+    <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl">
+        <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6 lg:p-7">
+          <div className="grid gap-6 lg:grid-cols-[1fr_390px] lg:items-end">
             <div>
-              {error ? (
-                <p>加载失败</p>
-              ) : !posts || posts.length === 0 ? (
-                <p>没有文章</p>
-              ) : (
-                <div className="space-y-5">
-                  {posts.map((post) => (
-                    <article
-                      key={post.id}
-                      className="group overflow-hidden rounded bg-white p-4 shadow-sm transition hover:shadow-md"
-                    >
-                      <Link
-                        href={`/posts/${post.slug}`}
-                        className="flex gap-5"
-                      >
-                        {/* 图片 */}
-                        {post.cover_image && (
-                          <img
-                            src={post.cover_image}
-                            className="h-[130px] w-[200px] object-cover round transition duration-500 group-hover:scale-105"
-                          />
-                        )}
-
-                        {/* 内容 */}
-                        <div className="flex flex-col flex-1">
-                          <h2 className="text-lg font-semibold leading-snug">
-                            {post.title}
-                          </h2>
-
-                          <p className="mt-2 text-xs text-neutral-400">
-                            {post.published_at
-                              ? new Date(post.published_at).toLocaleDateString()
-                              : ""}
-                          </p>
-
-                          {post.excerpt && (
-                            <p className="mt-2 text-sm text-neutral-500 line-clamp-2">
-                              {post.excerpt}
-                            </p>
-                          )}
-
-                          <span className="mt-auto text-sm font-medium text-black">
-                            Read →
-                          </span>
-                        </div>
-                      </Link>
-                    </article>
-                  ))}
-                </div>
-              )}
+              <Badge variant="default">学习资料库</Badge>
+              <h1 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
+                PTE 与 IELTS 提分文章
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+                汇总考试策略、题型解析、备考方法和课程建议，帮助你更清晰地规划提分路径。
+              </p>
             </div>
 
-            {/* RIGHT：高转化 Sidebar */}
-            <aside className="space-y-6 lg:sticky lg:top-24">
+            <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
+              <CardContent className="p-4">
+                <form action="/posts" className="flex flex-col gap-3 sm:flex-row">
+                  <Input
+                    type="text"
+                    name="q"
+                    defaultValue={keyword}
+                    placeholder="搜索文章..."
+                    className="bg-[var(--card)]"
+                  />
+                  <Button type="submit" className="sm:w-auto">
+                    搜索
+                  </Button>
+                </form>
+                {keyword ? (
+                  <div className="mt-3 text-sm text-[var(--text-soft)]">
+                    当前搜索：
+                    <span className="font-semibold text-[var(--text)]">
+                      {keyword}
+                    </span>
+                  </div>
+                ) : null}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
 
-              {/* 1️⃣ 免费测评 */}
-              <div className="rounded bg-black p-6 text-white shadow-lg">
-                <h3 className="text-xl font-semibold">
-                  免费测评你的分数
-                </h3>
-                <p className="mt-3 text-sm text-white/70">
-                  2分钟了解你的 PTE / IELTS 当前水平
-                </p>
+        {error ? (
+          <Card className="mt-8 rounded-[var(--radius-lg)]">
+            <CardContent>
+              <p className="text-sm font-medium text-[var(--danger)]">
+                文章加载失败，请稍后再试。
+              </p>
+            </CardContent>
+          </Card>
+        ) : !posts || posts.length === 0 ? (
+          <Card className="mt-8 rounded-[var(--radius-lg)]">
+            <CardContent>
+              <p className="text-sm font-medium text-[var(--text-soft)]">
+                暂无相关文章。
+              </p>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_360px]">
+            <div className="space-y-6">
+              {featuredPost ? (
+                <Card className="overflow-hidden rounded-[var(--radius-lg)]">
+                  <Link
+                    href={`/posts/${featuredPost.slug}`}
+                    className="group grid gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)]"
+                  >
+                    <div className="min-h-[260px] bg-[var(--bg-soft)]">
+                      {featuredPost.cover_image ? (
+                        <img
+                          src={featuredPost.cover_image}
+                          alt={featuredPost.title}
+                          className="h-full min-h-[260px] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <div className="flex h-full min-h-[260px] items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">
+                          Lofty 文章
+                        </div>
+                      )}
+                    </div>
 
-                <Link
-                  href="/pte"
-                  className="mt-5 block rounded bg-white px-4 py-3 text-center text-sm font-semibold text-black"
-                >
-                  立即测评 →
-                </Link>
+                    <CardContent className="flex flex-col justify-between p-6 sm:p-8">
+                      <div>
+                        <div className="mb-4 flex flex-wrap items-center gap-3">
+                          <Badge variant="secondary">
+                            {featuredPost.category || "文章"}
+                          </Badge>
+                          <span className="text-sm font-medium text-[var(--text-soft)]">
+                            {formatDate(
+                              featuredPost.published_at ||
+                                featuredPost.created_at,
+                            )}
+                          </span>
+                        </div>
+
+                        <h2 className="text-2xl font-semibold leading-tight text-[var(--text)] sm:text-3xl">
+                          {featuredPost.title}
+                        </h2>
+
+                        {featuredPost.excerpt ? (
+                          <p className="mt-4 line-clamp-3 text-sm leading-7 text-[var(--text-soft)]">
+                            {featuredPost.excerpt}
+                          </p>
+                        ) : null}
+                      </div>
+
+                      <span className="mt-8 inline-flex text-sm font-semibold text-[var(--primary)]">
+                        阅读精选文章
+                      </span>
+                    </CardContent>
+                  </Link>
+                </Card>
+              ) : null}
+
+              <div className="grid gap-4">
+                {otherPosts.map((post) => (
+                  <Card
+                    key={post.id}
+                    className="overflow-hidden rounded-[var(--radius-lg)] hover:shadow-[var(--shadow-md)]"
+                  >
+                    <Link
+                      href={`/posts/${post.slug}`}
+                      className="group grid gap-0 sm:grid-cols-[180px_1fr]"
+                    >
+                      <div className="h-44 bg-[var(--bg-soft)] sm:h-full">
+                        {post.cover_image ? (
+                          <img
+                            src={post.cover_image}
+                            alt={post.title}
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-xs font-semibold text-[var(--primary)]">
+                            文章
+                          </div>
+                        )}
+                      </div>
+
+                      <CardContent className="p-5">
+                        <div className="mb-3 flex flex-wrap items-center gap-2">
+                          <Badge variant="outline">
+                            {post.category || "文章"}
+                          </Badge>
+                          <span className="text-xs font-medium text-[var(--text-soft)]">
+                            {formatDate(post.published_at || post.created_at)}
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg font-semibold leading-snug text-[var(--text)]">
+                          {post.title}
+                        </h3>
+
+                        {post.excerpt ? (
+                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
+                            {post.excerpt}
+                          </p>
+                        ) : null}
+
+                        <span className="mt-4 inline-flex text-sm font-semibold text-[var(--primary)]">
+                          阅读文章
+                        </span>
+                      </CardContent>
+                    </Link>
+                  </Card>
+                ))}
               </div>
+            </div>
 
-              {/* 2️⃣ 课程入口 */}
-              <div className="rounded bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold">
-                  提分课程
-                </h3>
-
-                <div className="mt-4 space-y-3">
+            <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
+              <Card className="rounded-[var(--radius-lg)] bg-[var(--primary)] text-white">
+                <CardHeader className="flex-col items-start gap-1">
+                  <CardTitle className="text-white">免费分数评估</CardTitle>
+                  <CardDescription className="text-white/75">
+                    快速了解你目前的 PTE 或 IELTS 水平。
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
                   <Link
                     href="/pte"
-                    className="block rounded bg-[#f5f5f7] p-4 hover:bg-neutral-100"
+                    className="inline-flex h-11 w-full items-center justify-center rounded-[var(--radius-md)] bg-white px-5 text-sm font-semibold text-[var(--primary)] transition hover:opacity-90"
                   >
-                    PTE 一对一 / 小班
+                    开始测评
                   </Link>
+                </CardContent>
+              </Card>
 
+              <Card className="rounded-[var(--radius-lg)]">
+                <CardHeader className="flex-col items-start gap-1">
+                  <CardTitle>提分课程</CardTitle>
+                  <CardDescription>
+                    根据目标分数选择更适合你的学习路径。
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <Link
+                    href="/pte"
+                    className="block rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)]/40 hover:text-[var(--primary)]"
+                  >
+                    PTE 提分课程
+                  </Link>
                   <Link
                     href="/ielts"
-                    className="block rounded bg-[#f5f5f7] p-4 hover:bg-neutral-100"
+                    className="block rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)]/40 hover:text-[var(--primary)]"
                   >
                     IELTS 提分课程
                   </Link>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
 
-              {/* 3️⃣ 信任感（很关键） */}
-              <div className="rounded bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold">
-                  学员成绩提升
-                </h3>
-
-                <div className="mt-4 space-y-3 text-sm text-neutral-600">
-                  <p>🎯 平均提升 +15分</p>
-                  <p>📈 90% 学员达标</p>
-                  <p>🔥 真实学员案例持续更新</p>
-                </div>
-              </div>
-
-              {/* 4️⃣ 最终 CTA */}
-              <div className="rounded bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold">
-                  需要专属学习方案？
-                </h3>
-
-                <p className="mt-3 text-sm text-neutral-500">
-                  我们会根据你的分数和时间制定路径
-                </p>
-
-                <Link
-                  href="/contact"
-                  className="mt-5 block rounded bg-black px-4 py-3 text-center text-sm font-semibold text-white"
-                >
-                  预约咨询 →
-                </Link>
-              </div>
-
+              <Card className="rounded-[var(--radius-lg)]">
+                <CardHeader className="flex-col items-start gap-1">
+                  <CardTitle>需要学习方案？</CardTitle>
+                  <CardDescription>
+                    根据目标分数和考试时间制定专属计划。
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-11 w-full items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] transition hover:bg-[var(--bg-soft)]"
+                  >
+                    联系老师
+                  </Link>
+                </CardContent>
+              </Card>
             </aside>
           </div>
-        </Container>
+        )}
       </section>
     </main>
   );
