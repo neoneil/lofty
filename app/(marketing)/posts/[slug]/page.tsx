@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 import { Badge } from "@/components/ui-v2/badge";
@@ -28,8 +28,11 @@ function formatDate(date: string | null) {
   }).format(new Date(date));
 }
 
-async function getPostBySlug(rawSlug: string) {
-  const slug = decodeURIComponent(rawSlug).trim();
+function normalizeSlug(rawSlug: string) {
+  return decodeURIComponent(rawSlug).trim();
+}
+
+const getCachedPostBySlug = cache(async (slug: string) => {
   const supabase = await createClient();
 
   const { data: post, error } = await supabase
@@ -46,6 +49,11 @@ async function getPostBySlug(rawSlug: string) {
   }
 
   return post;
+});
+
+async function getPostBySlug(rawSlug: string) {
+  const slug = normalizeSlug(rawSlug);
+  return getCachedPostBySlug(slug);
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
@@ -149,10 +157,7 @@ export default async function PostDetailPage({ params }: PostPageProps) {
         <Card className="mt-6 rounded-[var(--radius-lg)]">
           <CardContent className="p-6 sm:p-8">
             <div className="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:text-[var(--text)] prose-p:leading-8 prose-p:text-[var(--text-soft)] prose-a:text-[var(--primary)] prose-strong:text-[var(--text)] prose-li:text-[var(--text-soft)] prose-blockquote:border-[var(--primary)] prose-blockquote:text-[var(--text-soft)] prose-code:rounded prose-code:bg-[var(--bg-soft)] prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[var(--text)] prose-pre:border prose-pre:border-[var(--border)] prose-pre:bg-[var(--bg-soft)] prose-hr:border-[var(--border)]">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-              >
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {post.content}
               </ReactMarkdown>
             </div>
@@ -162,17 +167,17 @@ export default async function PostDetailPage({ params }: PostPageProps) {
         <div className="mt-8 flex flex-col gap-3 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-sm font-semibold text-[var(--text)]">
-              Need a study plan?
+              需要制定学习计划？
             </div>
             <p className="mt-1 text-sm text-[var(--text-soft)]">
-              Get a course path matched to your target score and deadline.
+              获得专属你自己的备考途径
             </p>
           </div>
           <Link
             href="/contact"
             className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
           >
-            Contact a Teacher
+            联系老师
           </Link>
         </div>
       </article>

@@ -1,15 +1,20 @@
 
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
 
-import ChatWidget from "@/components/chat/ChatWidget";
-
 import { DictionaryProvider } from "@/components/dictionary/dictionary-context";
-import DictionaryPopup from "@/components/dictionary/dictionary-popup";
 // import AuthDebug from "@/components/debug/auth-debug";
+import LazyGlobalWidgets from "@/components/lazy-global-widgets";
 import SearchProvider from "@/components/search/search-provider";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-latin",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.loftypte.com.au"),
@@ -92,7 +97,9 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
 
-      <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
+      <body
+        className={`${plusJakartaSans.variable} min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased`}
+      >
         <ThemeScript />
         {/* <AuthDebug /> */}
         <div className="fixed-bg" />
@@ -103,13 +110,11 @@ export default function RootLayout({
 
             {children}
 
-            <DictionaryPopup />
+            <LazyGlobalWidgets />
 
           </SearchProvider>
 
         </DictionaryProvider>
-
-        <ChatWidget />
 
         <Analytics />
 

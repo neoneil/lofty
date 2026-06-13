@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import Container from "./container";
 import NavbarMobileClient from "./navbar-mobile-client";
 import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
@@ -59,34 +60,42 @@ export default async function Navbar() {
   const navItems: NavItem[] = [
     {
       href: "/",
-      label: "主页",
+      label: "致远主页",
       tooltip: "Home",
     },
 
     {
       href: "/courses",
-      label: "课程",
-      tooltip: "",
-    },
-    {
-      href: "/pte/listening/sst",
-      label: "PTE在线练习",
+      label: "课程大纲",
       tooltip: "",
     },
     {
       href: "/dashboard-v2",
-      label: "新版dashboard",
+      label: "题型集训",
       tooltip: "",
     },
     {
       href: "/posts",
-      label: "文章",
+      label: "备考文章",
       tooltip: "Articles & Resources",
     },
     {
       href: "/contact",
       label: "联系老师",
       tooltip: "About Lofty",
+    },
+  ];
+
+  const practiceItems: NavItem[] = [
+    {
+      href: "/ielts",
+      label: "雅思练习",
+      tooltip: "IELTS Practice",
+    },
+    {
+      href: "/pte",
+      label: "PTE练习",
+      tooltip: "PTE Practice",
     },
   ];
 
@@ -102,9 +111,17 @@ export default async function Navbar() {
       ? []
       : [];
 
+  const mobileNavItems = [
+    ...navItems.slice(0, 2),
+    ...practiceItems,
+    ...navItems.slice(2),
+    ...mobileAdminItems,
+    ...mobileSelectiveItems,
+  ];
+
   return (
     <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
-      <div className="mx-auto max-w-[90rem] overflow-hidden rounded-[var(--radius-lg)] bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
+      <div className="relative mx-auto max-w-[90rem] overflow-visible rounded-[var(--radius-lg)] bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
         <div className="absolute inset-0 bg-transparent" />
 
@@ -113,7 +130,7 @@ export default async function Navbar() {
             {/* 手机端 */}
             <div className="lg:hidden">
               <NavbarMobileClient
-                navItems={[...navItems, ...mobileAdminItems, ...mobileSelectiveItems]}
+                navItems={mobileNavItems}
                 user={
                   user
                     ? {
@@ -150,8 +167,48 @@ export default async function Navbar() {
                 </div>
               </Link>
 
-              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1.5 rounded-[var(--radius-lg)] bg-transparent px-3 py-1 shadow-[var(--shadow-xs)]">
-                {navItems.map((item) => (
+              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1.5">
+                {navItems.slice(0, 2).map((item) => (
+                  <div key={item.href + item.label} className="group relative">
+                    <Link
+                      href={item.href}
+                      aria-label={item.tooltip}
+                      className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300  hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                ))}
+
+                <div className="group relative">
+                  <button
+                    type="button"
+                    className="btn-secondary relative flex h-10 cursor-pointer items-center gap-1.5 rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                    aria-haspopup="menu"
+                    aria-label="练习模块"
+                  >
+                    练习模块
+                    <ChevronDown className="h-4 w-4 text-[var(--text-faint)] transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
+                  </button>
+
+                  <div className="pointer-events-none absolute left-1/2 top-full z-[60] w-46 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                    <div className="overflow-hidden rounded border border-transparent bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
+                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
+                      {practiceItems.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          aria-label={item.tooltip}
+                          className="btn-secondary flex w-full items-center px-4 py-2.5 text-left text-sm font-medium text-[var(--text-soft)] transition-colors duration-150 hover:bg-[var(--card-soft)]/45 hover:text-[var(--primary)]"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {navItems.slice(2).map((item) => (
                   <div key={item.href + item.label} className="group relative">
                     <Link
                       href={item.href}

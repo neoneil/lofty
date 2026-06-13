@@ -12,12 +12,13 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import type { Modifier } from "@dnd-kit/core";
 
 import {
   arrayMove,
-  rectSortingStrategy,
   SortableContext,
   useSortable,
+  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
 import { CSS } from "@dnd-kit/utilities";
@@ -68,16 +69,37 @@ type Props = {
 type SentenceItem = {
   id: string;
   text: string;
+  displayOrder: number;
+};
+
+const keepDragInsideList: Modifier = ({
+  containerNodeRect,
+  draggingNodeRect,
+  transform,
+}) => {
+  if (!containerNodeRect || !draggingNodeRect) {
+    return {
+      ...transform,
+      x: 0,
+    };
+  }
+
+  const minY = containerNodeRect.top - draggingNodeRect.top;
+  const maxY = containerNodeRect.bottom - draggingNodeRect.bottom;
+
+  return {
+    ...transform,
+    x: 0,
+    y: Math.min(Math.max(transform.y, minY), maxY),
+  };
 };
 
 function SortableSentence({
   sentence,
-  index,
   submitted,
   isCorrect,
 }: {
   sentence: SentenceItem;
-  index: number;
   submitted: boolean;
   isCorrect: boolean;
 }) {
@@ -94,7 +116,7 @@ function SortableSentence({
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: isDragging ? undefined : transition,
   };
 
   return (
@@ -103,13 +125,13 @@ function SortableSentence({
       style={style}
       {...attributes}
       {...listeners}
-      className={`relative overflow-hidden rounded-2xl border bg-[var(--card)] transition-all duration-300 ${
+      className={`relative cursor-grab touch-none overflow-hidden rounded-2xl border bg-[var(--card)] transition-shadow duration-200 active:cursor-grabbing ${
         submitted
           ? isCorrect
             ? "border-[color:var(--success)]/30 shadow-[var(--shadow-md)]"
             : "border-[color:var(--danger)]/30 shadow-[var(--shadow-md)]"
           : isDragging
-            ? "scale-[1.015] border-[var(--primary)] shadow-2xl"
+            ? "z-10 border-[var(--primary)] shadow-2xl"
             : "border-[var(--border)] shadow-sm hover:border-[var(--primary)] hover:shadow-md"
       }`}
     >
@@ -123,7 +145,7 @@ function SortableSentence({
         />
       ) : null}
 
-      <div className="flex items-start gap-4 p-5">
+      <div className="flex items-start gap-3 p-3.5">
         {/* Left */}
 
         <div
@@ -141,8 +163,8 @@ function SortableSentence({
         {/* Right */}
 
         <div className="min-w-0 flex-1">
-          <div className="mb-3 flex items-center gap-2">
-            <Tag tone="theme">{index + 1}</Tag>
+          <div className="mb-1.5 flex items-center gap-2">
+            <Tag tone="theme">{sentence.displayOrder}</Tag>
 
             {submitted ? (
               isCorrect ? (
@@ -153,7 +175,9 @@ function SortableSentence({
             ) : null}
           </div>
 
-          <p className="text-[15px] leading-8 text-[var(--text-soft)]">{sentence.text}</p>
+          <p className="text-[15px] leading-6 text-[var(--text-soft)]">
+            {sentence.text}
+          </p>
         </div>
       </div>
     </div>
@@ -165,6 +189,7 @@ export default function RoDetailClient({ question, attempts }: Props) {
     return question.question_body_text.map((text, index) => ({
       id: `${index}`,
       text,
+      displayOrder: index + 1,
     }));
   }, [question.question_body_text]);
 
@@ -209,7 +234,12 @@ export default function RoDetailClient({ question, attempts }: Props) {
   }, [question.id]);
 
   useEffect(() => {
-    const shuffled = [...initialSentences].sort(() => Math.random() - 0.5);
+    const shuffled = [...initialSentences]
+      .sort(() => Math.random() - 0.5)
+      .map((sentence, index) => ({
+        ...sentence,
+        displayOrder: index + 1,
+      }));
 
     setInitialShuffle(shuffled);
 
@@ -321,13 +351,14 @@ export default function RoDetailClient({ question, attempts }: Props) {
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
+          modifiers={[keepDragInsideList]}
           onDragEnd={handleDragEnd}
         >
           <SortableContext
             items={sentences.map((s) => s.id)}
-            strategy={rectSortingStrategy}
+            strategy={verticalListSortingStrategy}
           >
-            <div className="space-y-4">
+            <div className="space-y-4 overflow-hidden rounded-2xl">
               {sentences.map((sentence, index) => {
                 const isCorrect = sentence.id === `${index}`;
 
@@ -335,7 +366,6 @@ export default function RoDetailClient({ question, attempts }: Props) {
                   <SortableSentence
                     key={sentence.id}
                     sentence={sentence}
-                    index={index}
                     submitted={submitted}
                     isCorrect={isCorrect}
                   />
@@ -372,13 +402,13 @@ export default function RoDetailClient({ question, attempts }: Props) {
             {question.question_body_text.map((sentence, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-[var(--border)] bg-[var(--bg-soft)] p-5"
+                className="rounded-xl border border-[var(--border)] bg-[var(--bg-soft)] p-3.5"
               >
-                <div className="mb-3">
+                <div className="mb-1.5">
                   <Tag tone="theme">Correct Order {index + 1}</Tag>
                 </div>
 
-                <p className="text-[15px] leading-8 text-[var(--text-soft)]">
+                <p className="text-[15px] leading-6 text-[var(--text-soft)]">
                   {sentence}
                 </p>
               </div>

@@ -225,19 +225,19 @@ export default function Footer() {
               <div className="space-y-3">
                 <ContactItem
                   icon={<MapPin size={18} />}
-                  label="Location"
+                  label="地址"
                   value="CBD Melbourne, VIC Australia"
                   tone="info"
                 />
                 <ContactItem
                   icon={<MessageCircle size={18} />}
-                  label="WeChat"
+                  label="微信/WeChat"
                   value="auschi666"
                   tone="success"
                 />
                 <ContactItem
                   icon={<Mail size={18} />}
-                  label="Consultation"
+                  label="免费预约咨询"
                   value="通过联系页预约课程咨询"
                   tone="primary"
                 />

@@ -1,8 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { createContext, useContext, useEffect, useState } from "react";
 
-import SearchModal from "./search-modal";
+const SearchModal = dynamic(
+  () => import("./search-modal"),
+  { ssr: false }
+);
 
 type SearchContextType = {
   openSearch: () => void;
@@ -97,10 +101,12 @@ export default function SearchProvider({
 
       {children}
 
-      <SearchModal
-        open={open}
-        onClose={() => setOpen(false)}
-      />
+      {open ? (
+        <SearchModal
+          open={open}
+          onClose={() => setOpen(false)}
+        />
+      ) : null}
 
     </SearchContext.Provider>
 

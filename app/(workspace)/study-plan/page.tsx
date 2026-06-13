@@ -6,10 +6,14 @@ import {
   Calendar,
   ChevronDown,
   ChevronUp,
+  CheckCircle2,
   Clock3,
+  ClipboardCheck,
   GraduationCap,
   Loader2,
+  Sparkles,
   Target,
+  TrendingUp,
 } from "lucide-react";
 
 import { createClient } from "@/lib/supabase/client";
@@ -92,6 +96,22 @@ const initialForm: StudyPlan = {
   daily_study_hours: "1-2 Hours",
 
   additional_notes: "",
+};
+
+const studyGoalLabels: Record<StudyGoal, string> = {
+  "485 Work Visa": "485 工作签证",
+  "190 State Nomination": "190 州担保",
+  "Employer Sponsorship": "雇主担保",
+  "Skills Assessment": "职业评估",
+  "University Admission": "大学申请",
+  Other: "其他",
+};
+
+const dailyHoursLabels: Record<DailyHours, string> = {
+  "0-1 Hours": "0-1 小时",
+  "1-2 Hours": "1-2 小时",
+  "2-4 Hours": "2-4 小时",
+  "4+ Hours": "4 小时以上",
 };
 
 export default function StudyPlanPage() {
@@ -230,27 +250,27 @@ export default function StudyPlanPage() {
 
   function validateForm() {
     if (!form.listening_target) {
-      return "Listening target is required.";
+      return "请填写听力目标分。";
     }
 
     if (!form.reading_target) {
-      return "Reading target is required.";
+      return "请填写阅读目标分。";
     }
 
     if (!form.writing_target) {
-      return "Writing target is required.";
+      return "请填写写作目标分。";
     }
 
     if (!form.speaking_target) {
-      return "Speaking target is required.";
+      return "请填写口语目标分。";
     }
 
     if (!form.overall_target) {
-      return "Overall target is required.";
+      return "请填写总分目标。";
     }
 
     if (!form.exam_deadline) {
-      return "Exam deadline is required.";
+      return "请选择考试日期。";
     }
 
     return null;
@@ -345,7 +365,7 @@ export default function StudyPlanPage() {
       if (error) {
         console.error("Update error:", error);
 
-        setSaveMessage("Failed to update study plan.");
+        setSaveMessage("学习计划更新失败。");
 
         setSaving(false);
 
@@ -354,7 +374,7 @@ export default function StudyPlanPage() {
 
       console.log("Study plan updated successfully.");
 
-      setSaveMessage("Study profile updated successfully.");
+      setSaveMessage("学习计划已更新。");
     } else {
       console.log("Creating new study plan...");
 
@@ -367,7 +387,7 @@ export default function StudyPlanPage() {
       if (error) {
         console.error("Insert error:", error);
 
-        setSaveMessage("Failed to create study plan.");
+        setSaveMessage("学习计划创建失败。");
 
         setSaving(false);
 
@@ -385,7 +405,7 @@ export default function StudyPlanPage() {
         }));
       }
 
-      setSaveMessage("Study profile created successfully.");
+      setSaveMessage("学习计划已创建。");
     }
 
     setExpanded(false);
@@ -402,370 +422,509 @@ export default function StudyPlanPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--bg)]">
-      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 lg:flex-row lg:px-6">
-        {/* LEFT */}
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 lg:px-6">
+        <section className="grid gap-6 lg:grid-cols-[1fr_420px]">
+          <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.10),transparent_30%)]" />
+            <div className="relative">
+              <Badge variant="default">学习计划</Badge>
+              <h1 className="mt-5 text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
+                个性化学习路线
+              </h1>
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+                设置目标分数、考试日期、学习目标和每日学习时间。老师可以根据你的学习档案更准确地安排训练节奏和跟进重点。
+              </p>
+            </div>
+          </div>
 
-        <div className="w-full lg:w-[460px]">
-          <Card className="overflow-hidden">
-            <CardHeader className="border-b border-[var(--border)] pb-5">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <Badge variant="secondary" className="mb-3">
-                    Study Profile
-                  </Badge>
-
-                  <CardTitle>Personalized Study Plan</CardTitle>
-
-                  <CardDescription>
-                    Build your AI-powered roadmap based on your target exam and
-                    timeline.
-                  </CardDescription>
-                </div>
-
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={() => setExpanded(!expanded)}
-                >
-                  {expanded ? (
-                    <ChevronUp size={18} />
-                  ) : (
-                    <ChevronDown size={18} />
-                  )}
-                </Button>
-              </div>
-
-              {hasExistingPlan && !expanded && (
-                <div className="mt-5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-                  <div className="mb-2 text-sm font-semibold text-[var(--text)]">
-                    Current Study Summary
-                  </div>
-
-                  <div className="space-y-1 text-sm leading-7 text-[var(--text-soft)]">
-                    <div>
-                      {form.exam_type} • Target {form.overall_target}
-                    </div>
-
-                    <div>Deadline: {form.exam_deadline}</div>
-
-                    <div>Study Time: {form.daily_study_hours}</div>
-                  </div>
-                </div>
-              )}
+          <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
+            <CardHeader className="flex-col items-start gap-1">
+              <CardTitle>计划概览</CardTitle>
+              <CardDescription>快速查看你当前的目标设置。</CardDescription>
             </CardHeader>
+            <CardContent className="grid grid-cols-2 gap-3">
+              <SnapshotItem label="考试" value={form.exam_type} />
+              <SnapshotItem label="目标" value={form.overall_target || "-"} />
+              <SnapshotItem
+                label="考试日期"
+                value={form.exam_deadline || "-"}
+              />
+              <SnapshotItem
+                label="剩余天数"
+                value={daysRemaining !== null ? `${daysRemaining}` : "-"}
+              />
+            </CardContent>
+          </Card>
+        </section>
 
-            {expanded && (
-              <CardContent className="space-y-6">
-                {/* EXAM TYPE */}
+        <div className="flex flex-col gap-6 lg:flex-row">
+          {/* LEFT */}
 
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <GraduationCap
-                      size={16}
-                      className="text-[var(--primary)]"
-                    />
+          <div className="w-full lg:w-[460px]">
+            <Card className="overflow-hidden rounded-[var(--radius-lg)]">
+              <CardHeader className="border-b border-[var(--border)] bg-[var(--card-soft)] pb-5">
+                <div className="space-y-4">
+                  <div>
+                    <Badge variant="secondary" className="mb-3">
+                      学习档案
+                    </Badge>
 
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      Exam Information
-                    </div>
+                    <CardTitle>个性化学习计划</CardTitle>
+
+                    <CardDescription>
+                      根据你的目标考试、目标分数和考试时间，建立更清晰的学习路线。
+                    </CardDescription>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    {["PTE", "IELTS"].map((type) => (
-                      <button
-                        key={type}
-                        type="button"
-                        onClick={() => updateField("exam_type", type)}
-                        className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
-                          form.exam_type === type
-                            ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                            : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)]"
-                        }`}
-                      >
-                        {type}
-                      </button>
-                    ))}
-                  </div>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setExpanded(!expanded)}
+                    fullWidth
+                  >
+                    {expanded ? (
+                      <span className="flex items-center gap-2">
+                        收起学习档案 <ChevronUp size={16} />
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        编辑学习档案 <ChevronDown size={16} />
+                      </span>
+                    )}
+                  </Button>
                 </div>
 
-                {/* TARGET SCORES */}
+                {hasExistingPlan && !expanded && (
+                  <div className="mt-5 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                      <ClipboardCheck
+                        size={15}
+                        className="text-[var(--primary)]"
+                      />
+                      当前学习摘要
+                    </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Target size={16} className="text-[var(--primary)]" />
+                    <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
+                      你的 {form.exam_type} 学习路线目前以总分{" "}
+                      <span className="font-semibold text-[var(--text)]">
+                        {form.overall_target || "-"}
+                      </span>
+                      为目标。
+                    </p>
 
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      Target Scores
+                    <div className="mt-4 space-y-2">
+                      <SnapshotItem label="考试" value={form.exam_type} />
+                      <SnapshotItem
+                        label="考试日期"
+                        value={form.exam_deadline || "-"}
+                      />
+                      <SnapshotItem
+                        label="学习时间"
+                        value={dailyHoursLabels[form.daily_study_hours]}
+                      />
                     </div>
                   </div>
+                )}
+              </CardHeader>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <Input
-                      value={form.listening_target}
-                      onChange={(e) =>
-                        updateField("listening_target", e.target.value)
-                      }
-                      placeholder="Listening Target"
-                    />
+              {expanded && (
+                <CardContent className="space-y-6 p-5 sm:p-6">
+                  {/* EXAM TYPE */}
 
-                    <Input
-                      value={form.listening_current}
-                      onChange={(e) =>
-                        updateField("listening_current", e.target.value)
-                      }
-                      placeholder="Listening Current"
-                    />
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <GraduationCap
+                        size={16}
+                        className="text-[var(--primary)]"
+                      />
 
-                    <Input
-                      value={form.reading_target}
-                      onChange={(e) =>
-                        updateField("reading_target", e.target.value)
-                      }
-                      placeholder="Reading Target"
-                    />
-
-                    <Input
-                      value={form.reading_current}
-                      onChange={(e) =>
-                        updateField("reading_current", e.target.value)
-                      }
-                      placeholder="Reading Current"
-                    />
-
-                    <Input
-                      value={form.writing_target}
-                      onChange={(e) =>
-                        updateField("writing_target", e.target.value)
-                      }
-                      placeholder="Writing Target"
-                    />
-
-                    <Input
-                      value={form.writing_current}
-                      onChange={(e) =>
-                        updateField("writing_current", e.target.value)
-                      }
-                      placeholder="Writing Current"
-                    />
-
-                    <Input
-                      value={form.speaking_target}
-                      onChange={(e) =>
-                        updateField("speaking_target", e.target.value)
-                      }
-                      placeholder="Speaking Target"
-                    />
-
-                    <Input
-                      value={form.speaking_current}
-                      onChange={(e) =>
-                        updateField("speaking_current", e.target.value)
-                      }
-                      placeholder="Speaking Current"
-                    />
-
-                    <Input
-                      value={form.overall_target}
-                      onChange={(e) =>
-                        updateField("overall_target", e.target.value)
-                      }
-                      placeholder="Overall Target"
-                      className="col-span-2"
-                    />
-                  </div>
-                </div>
-
-                {/* DEADLINE */}
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} className="text-[var(--primary)]" />
-
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      Exam Deadline
+                      <div className="text-sm font-semibold text-[var(--text)]">
+                        考试信息
+                      </div>
                     </div>
-                  </div>
 
-                  <Input
-                    type="date"
-                    min={today}
-                    value={form.exam_deadline}
-                    onChange={(e) =>
-                      updateField("exam_deadline", e.target.value)
-                    }
-                  />
-                </div>
-
-                {/* GOAL */}
-
-                <div className="space-y-4">
-                  <div className="text-sm font-semibold text-[var(--text)]">
-                    Study Goal
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      "485 Work Visa",
-                      "190 State Nomination",
-                      "Employer Sponsorship",
-                      "Skills Assessment",
-                      "University Admission",
-                      "Other",
-                    ].map((goal) => (
-                      <button
-                        key={goal}
-                        type="button"
-                        onClick={() => updateField("study_goal", goal)}
-                        className={`flex min-h-[48px] items-center justify-center rounded-[var(--radius-md)] border px-4 text-center text-sm font-medium transition-all duration-200 ${
-                          form.study_goal === goal
-                            ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                            : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
-                        }`}
-                      >
-                        {goal}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* DAILY HOURS */}
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Clock3 size={16} className="text-[var(--primary)]" />
-
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      Daily Study Hours
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"].map(
-                      (hour) => (
+                    <div className="grid grid-cols-2 gap-3">
+                      {["PTE", "IELTS"].map((type) => (
                         <button
-                          key={hour}
+                          key={type}
                           type="button"
-                          onClick={() => updateField("daily_study_hours", hour)}
+                          onClick={() => updateField("exam_type", type)}
                           className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
-                            form.daily_study_hours === hour
+                            form.exam_type === type
+                              ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                              : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)]"
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* TARGET SCORES */}
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Target size={16} className="text-[var(--primary)]" />
+
+                      <div className="text-sm font-semibold text-[var(--text)]">
+                        目标分数
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <Input
+                        value={form.listening_target}
+                        onChange={(e) =>
+                          updateField("listening_target", e.target.value)
+                        }
+                        placeholder="听力目标分"
+                      />
+
+                      <Input
+                        value={form.listening_current}
+                        onChange={(e) =>
+                          updateField("listening_current", e.target.value)
+                        }
+                        placeholder="听力当前分"
+                      />
+
+                      <Input
+                        value={form.reading_target}
+                        onChange={(e) =>
+                          updateField("reading_target", e.target.value)
+                        }
+                        placeholder="阅读目标分"
+                      />
+
+                      <Input
+                        value={form.reading_current}
+                        onChange={(e) =>
+                          updateField("reading_current", e.target.value)
+                        }
+                        placeholder="阅读当前分"
+                      />
+
+                      <Input
+                        value={form.writing_target}
+                        onChange={(e) =>
+                          updateField("writing_target", e.target.value)
+                        }
+                        placeholder="写作目标分"
+                      />
+
+                      <Input
+                        value={form.writing_current}
+                        onChange={(e) =>
+                          updateField("writing_current", e.target.value)
+                        }
+                        placeholder="写作当前分"
+                      />
+
+                      <Input
+                        value={form.speaking_target}
+                        onChange={(e) =>
+                          updateField("speaking_target", e.target.value)
+                        }
+                        placeholder="口语目标分"
+                      />
+
+                      <Input
+                        value={form.speaking_current}
+                        onChange={(e) =>
+                          updateField("speaking_current", e.target.value)
+                        }
+                        placeholder="口语当前分"
+                      />
+
+                      <Input
+                        value={form.overall_target}
+                        onChange={(e) =>
+                          updateField("overall_target", e.target.value)
+                        }
+                        placeholder="总分目标"
+                        className="col-span-2"
+                      />
+                    </div>
+                  </div>
+
+                  {/* DEADLINE */}
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} className="text-[var(--primary)]" />
+
+                      <div className="text-sm font-semibold text-[var(--text)]">
+                        考试日期
+                      </div>
+                    </div>
+
+                    <Input
+                      type="date"
+                      min={today}
+                      value={form.exam_deadline}
+                      onChange={(e) =>
+                        updateField("exam_deadline", e.target.value)
+                      }
+                    />
+                  </div>
+
+                  {/* GOAL */}
+
+                  <div className="space-y-4">
+                    <div className="text-sm font-semibold text-[var(--text)]">
+                      学习目标
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        "485 Work Visa",
+                        "190 State Nomination",
+                        "Employer Sponsorship",
+                        "Skills Assessment",
+                        "University Admission",
+                        "Other",
+                      ].map((goal) => (
+                        <button
+                          key={goal}
+                          type="button"
+                          onClick={() => updateField("study_goal", goal)}
+                          className={`flex min-h-[48px] items-center justify-center rounded-[var(--radius-md)] border px-4 text-center text-sm font-medium transition-all duration-200 ${
+                            form.study_goal === goal
                               ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
                               : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
                           }`}
                         >
-                          {hour}
+                          {studyGoalLabels[goal as StudyGoal]}
                         </button>
-                      ),
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* DAILY HOURS */}
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Clock3 size={16} className="text-[var(--primary)]" />
+
+                      <div className="text-sm font-semibold text-[var(--text)]">
+                        每日学习时间
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"].map(
+                        (hour) => (
+                          <button
+                            key={hour}
+                            type="button"
+                            onClick={() =>
+                              updateField("daily_study_hours", hour)
+                            }
+                            className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
+                              form.daily_study_hours === hour
+                                ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                                : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
+                            }`}
+                          >
+                            {dailyHoursLabels[hour as DailyHours]}
+                          </button>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  {/* NOTES */}
+
+                  <div className="space-y-4">
+                    <div className="text-sm font-semibold text-[var(--text)]">
+                      补充说明
+                    </div>
+
+                    <Textarea
+                      value={form.additional_notes}
+                      onChange={(e) =>
+                        updateField("additional_notes", e.target.value)
+                      }
+                      placeholder="可以补充你的备考情况、薄弱项、目标或时间安排..."
+                    />
+                  </div>
+
+                  {saveMessage && (
+                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-medium text-[var(--text-soft)]">
+                      {saveMessage}
+                    </div>
+                  )}
+
+                  <Button fullWidth onClick={handleSave} disabled={saving}>
+                    {saving ? (
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="animate-spin" size={16} />
+                        保存中...
+                      </div>
+                    ) : (
+                      "保存学习档案"
                     )}
-                  </div>
+                  </Button>
+                </CardContent>
+              )}
+            </Card>
+          </div>
+
+          {/* RIGHT */}
+
+          <div className="flex-1">
+            <Card className="h-full min-h-[720px] overflow-hidden rounded-[var(--radius-lg)]">
+              <CardHeader className="border-b border-[var(--border)] bg-[var(--card-soft)] pb-5">
+                <div>
+                  <Badge className="mb-3">智能学习计划</Badge>
+
+                  <CardTitle>你的个性化路线</CardTitle>
+
+                  <CardDescription>
+                    根据目标分数、考试时间和每日学习时间生成学习建议。
+                  </CardDescription>
                 </div>
+              </CardHeader>
 
-                {/* NOTES */}
-
-                <div className="space-y-4">
-                  <div className="text-sm font-semibold text-[var(--text)]">
-                    Additional Notes
-                  </div>
-
-                  <Textarea
-                    value={form.additional_notes}
-                    onChange={(e) =>
-                      updateField("additional_notes", e.target.value)
-                    }
-                    placeholder="Tell us more about your study situation, weak areas, or goals..."
+              <CardContent className="space-y-5 p-5 sm:p-6">
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  <RoadmapMetric
+                    icon={<GraduationCap size={17} />}
+                    label="考试类型"
+                    value={form.exam_type}
+                  />
+                  <RoadmapMetric
+                    icon={<Target size={17} />}
+                    label="总分目标"
+                    value={form.overall_target || "-"}
+                  />
+                  <RoadmapMetric
+                    icon={<Calendar size={17} />}
+                    label="考试日期"
+                    value={form.exam_deadline || "-"}
+                  />
+                  <RoadmapMetric
+                    icon={<Clock3 size={17} />}
+                    label="剩余天数"
+                    value={daysRemaining !== null ? `${daysRemaining} 天` : "-"}
                   />
                 </div>
 
-                {saveMessage && (
-                  <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm text-[var(--text-soft)]">
-                    {saveMessage}
+                <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
+                  <div className="mb-3 flex items-center gap-2 text-base font-semibold text-[var(--text)]">
+                    <TrendingUp size={17} className="text-[var(--primary)]" />
+                    学习概览
                   </div>
-                )}
 
-                <Button fullWidth onClick={handleSave} disabled={saving}>
-                  {saving ? (
-                    <div className="flex items-center gap-2">
-                      <Loader2 className="animate-spin" size={16} />
-                      Saving...
-                    </div>
-                  ) : (
-                    "Save Study Profile"
-                  )}
-                </Button>
+                  <div className="grid gap-3 text-sm leading-7 text-[var(--text-soft)] sm:grid-cols-2">
+                    <SummaryLine label="考试类型" value={form.exam_type} />
+                    <SummaryLine
+                      label="总分目标"
+                      value={form.overall_target || "-"}
+                    />
+                    <SummaryLine
+                      label="考试日期"
+                      value={form.exam_deadline || "-"}
+                    />
+                    <SummaryLine
+                      label="每日学习时间"
+                      value={dailyHoursLabels[form.daily_study_hours]}
+                    />
+                    <SummaryLine
+                      label="剩余天数"
+                      value={
+                        daysRemaining !== null ? `${daysRemaining} 天` : "-"
+                      }
+                    />
+                    <SummaryLine
+                      label="学习目标"
+                      value={studyGoalLabels[form.study_goal]}
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
+                  <div className="mb-3 flex items-center gap-2 text-base font-semibold text-[var(--text)]">
+                    <Sparkles size={17} className="text-[var(--primary)]" />
+                    学习建议
+                  </div>
+
+                  <div className="space-y-3 text-sm leading-7 text-[var(--text-soft)]">
+                    <SuggestionItem text="每天优先练习高频题型，保持稳定输入和复盘。" />
+
+                    <SuggestionItem text="听力和口语通常最依赖持续练习，建议固定每天训练。" />
+
+                    <SuggestionItem text="随着你完成更多练习，学习路线会更贴合你的真实薄弱项。" />
+
+                    {daysRemaining !== null && daysRemaining <= 30 && (
+                      <SuggestionItem text="考试时间较近，建议提高每日复习强度并集中处理高频失分点。" />
+                    )}
+                  </div>
+                </div>
               </CardContent>
-            )}
-          </Card>
-        </div>
-
-        {/* RIGHT */}
-
-        <div className="flex-1">
-          <Card className="h-full min-h-[720px]">
-            <CardHeader className="border-b border-[var(--border)] pb-5">
-              <div>
-                <Badge className="mb-3">AI Study Plan</Badge>
-
-                <CardTitle>Your Personalized Roadmap</CardTitle>
-
-                <CardDescription>
-                  Smart recommendations based on your target score, timeline,
-                  and available study hours.
-                </CardDescription>
-              </div>
-            </CardHeader>
-
-            <CardContent className="space-y-5">
-              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
-                <div className="mb-2 text-base font-semibold text-[var(--text)]">
-                  Study Overview
-                </div>
-
-                <div className="space-y-2 text-sm leading-7 text-[var(--text-soft)]">
-                  <div>Exam Type: {form.exam_type}</div>
-
-                  <div>Target Overall Score: {form.overall_target || "-"}</div>
-
-                  <div>Deadline: {form.exam_deadline || "-"}</div>
-
-                  <div>Daily Study Hours: {form.daily_study_hours}</div>
-
-                  <div>
-                    Days Remaining:{" "}
-                    {daysRemaining !== null ? `${daysRemaining} days` : "-"}
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5">
-                <div className="mb-2 text-base font-semibold text-[var(--text)]">
-                  Suggestions
-                </div>
-
-                <div className="space-y-2 text-sm leading-7 text-[var(--text-soft)]">
-                  <div>Focus on high-frequency question types daily.</div>
-
-                  <div>
-                    Listening and Speaking usually improve fastest with
-                    consistency.
-                  </div>
-
-                  <div>
-                    Your study roadmap will become more personalized as you
-                    complete more practice questions.
-                  </div>
-
-                  {daysRemaining !== null && daysRemaining <= 30 && (
-                    <div>
-                      Your exam is approaching soon. Increase your daily
-                      revision intensity.
-                    </div>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function SnapshotItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4">
+      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+        {label}
+      </div>
+      <div className="mt-2 truncate text-sm font-semibold text-[var(--text)]">
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function SummaryLine({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
+      <span className="font-semibold text-[var(--text)]">{label}:</span>{" "}
+      <span>{value || "-"}</span>
+    </div>
+  );
+}
+
+function RoadmapMetric({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+      <div className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
+        {icon}
+      </div>
+      <div className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+        {label}
+      </div>
+      <div className="mt-1 truncate text-sm font-semibold text-[var(--text)]">
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function SuggestionItem({ text }: { text: string }) {
+  return (
+    <div className="flex gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">
+      <CheckCircle2
+        size={16}
+        className="mt-0.5 shrink-0 text-[var(--primary)]"
+      />
+      <span>{text}</span>
     </div>
   );
 }

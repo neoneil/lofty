@@ -37,9 +37,10 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
   let query = supabase
     .from("posts")
     .select(
-      "id, title, slug, excerpt, cover_image, published_at, created_at, category",
+      "id, title, slug, excerpt, cover_image, published_at, created_at, category, pinned_order",
     )
     .eq("status", "published")
+    .order("pinned_order", { ascending: false })
     .order("published_at", { ascending: false });
 
   if (keyword) {

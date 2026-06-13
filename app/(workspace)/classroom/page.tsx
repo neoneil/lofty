@@ -1,9 +1,42 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { Lock, MonitorPlay, Sparkles, UserRound, Video } from "lucide-react";
+
+import { Badge } from "@/components/ui-v2/badge";
+import { Button } from "@/components/ui-v2/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui-v2/card";
+import { Input } from "@/components/ui-v2/input";
+
+type ZoomClient = {
+  init: (options: {
+    zoomAppRoot: HTMLElement;
+    language: string;
+    customize?: {
+      video?: {
+        isResizable?: boolean;
+      };
+    };
+  }) => Promise<void>;
+  join: (options: {
+    signature: string;
+    meetingNumber: string;
+    password: string;
+    userName: string;
+  }) => Promise<void>;
+  leaveMeeting?: () => void;
+  destroyClient?: () => void;
+};
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ZoomMtgEmbedded: any;
   }
 }
@@ -17,7 +50,7 @@ function waitForLayout() {
 }
 
 export default function ClassroomPage() {
-  const clientRef = useRef<any>(null);
+  const clientRef = useRef<ZoomClient | null>(null);
   const joinedRef = useRef(false);
 
   const [meetingNumber, setMeetingNumber] = useState("");
@@ -185,7 +218,7 @@ export default function ClassroomPage() {
     return (
       <main className="relative h-[calc(100dvh-var(--topbar-height)-0.5rem)] w-full overflow-hidden bg-black">
         {status ? (
-          <div className="absolute left-1/2 top-6 z-50 -translate-x-1/2 rounded-full bg-white px-5 py-2 text-sm font-medium text-black shadow-lg">
+          <div className="absolute left-1/2 top-6 z-50 -translate-x-1/2 rounded-full border border-white/15 bg-white/90 px-5 py-2 text-sm font-semibold text-black shadow-lg backdrop-blur-md dark:bg-[var(--card)]/90 dark:text-[var(--text)]">
             {status}
           </div>
         ) : null}
@@ -196,69 +229,125 @@ export default function ClassroomPage() {
   }
 
   return (
-    <main className="flex flex-1 items-center justify-center bg-[var(--bg)] px-4 py-8">
-      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-3xl border border-[var(--border)] bg-white p-8 shadow-[var(--shadow-md)]">
-        <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-[var(--text)]">
-            Join Classroom
-          </h1>
+    <main className="flex flex-1 items-center justify-center bg-[var(--bg)] px-4 py-8 text-[var(--text)] sm:px-6 lg:px-8">
+      <section className="grid w-full max-w-6xl gap-6 lg:grid-cols-[1fr_430px] lg:items-stretch">
+        <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.10),transparent_30%)]" />
 
-          <p className="mt-2 text-sm text-[var(--text-soft)]">
-            Enter your Zoom Meeting ID to join the online class.
-          </p>
-        </div>
+          <div className="relative">
+            <Badge variant="default">Live Classroom</Badge>
 
-        <div className="space-y-4">
-          <div>
-            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
-              Your name
-            </label>
+            <h1 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
+              Join your online classroom
+            </h1>
 
-            <input
-              value={userName}
-              onChange={(event) => setUserName(event.target.value)}
-              placeholder="Vivi"
-              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
-            />
-          </div>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+              Enter the Zoom meeting details provided by your teacher. The classroom will open directly inside this portal.
+            </p>
 
-          <div>
-            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
-              Meeting ID
-            </label>
-
-            <input
-              value={meetingNumber}
-              onChange={(event) => setMeetingNumber(event.target.value)}
-              placeholder="840 7968 1327"
-              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block text-sm font-medium text-[var(--text)]">
-              Password
-            </label>
-
-            <input
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="No password? Leave it empty"
-              className="h-12 w-full rounded-2xl border border-[var(--border)] bg-white px-4 text-sm outline-none transition focus:border-[var(--primary)]"
-            />
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              <InfoTile
+                icon={<Video size={18} />}
+                title="Zoom SDK"
+                text="Embedded class room"
+              />
+              <InfoTile
+                icon={<MonitorPlay size={18} />}
+                title="Live Lesson"
+                text="Join from browser"
+              />
+              <InfoTile
+                icon={<Sparkles size={18} />}
+                title="Teacher Led"
+                text="Real-time support"
+              />
+            </div>
           </div>
         </div>
 
-        {status ? (
-          <p className="mt-4 text-center text-sm text-red-500">
-            {status}
-          </p>
-        ) : null}
+        <Card className="rounded-[var(--radius-lg)]">
+          <CardHeader className="flex-col items-start gap-1">
+            <CardTitle>Meeting Details</CardTitle>
+            <CardDescription>
+              Use the Meeting ID and password from your classroom invitation.
+            </CardDescription>
+          </CardHeader>
 
-        <button type="submit" className="mt-6 h-12 w-full rounded-2xl bg-[var(--primary)] text-sm font-semibold text-white transition hover:bg-[var(--primary-hover)]">
-          Join Meeting
-        </button>
-      </form>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <label className="block">
+                <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                  <UserRound size={15} className="text-[var(--primary)]" />
+                  Your name
+                </span>
+                <Input
+                  value={userName}
+                  onChange={(event) => setUserName(event.target.value)}
+                  placeholder="Vivi"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                  <MonitorPlay size={15} className="text-[var(--primary)]" />
+                  Meeting ID
+                </span>
+                <Input
+                  value={meetingNumber}
+                  onChange={(event) => setMeetingNumber(event.target.value)}
+                  placeholder="840 7968 1327"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                  <Lock size={15} className="text-[var(--primary)]" />
+                  Password
+                </span>
+                <Input
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="No password? Leave it empty"
+                />
+              </label>
+
+              {status ? (
+                <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">
+                  {status}
+                </div>
+              ) : null}
+
+              <Button type="submit" fullWidth size="lg">
+                Join Meeting
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </section>
     </main>
+  );
+}
+
+function InfoTile({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card-soft)] p-4">
+      <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
+        {icon}
+      </div>
+      <div className="mt-4 text-sm font-semibold text-[var(--text)]">
+        {title}
+      </div>
+      <div className="mt-1 text-xs leading-5 text-[var(--text-soft)]">
+        {text}
+      </div>
+    </div>
   );
 }
