@@ -59,10 +59,22 @@ const adminModules = [
     tag: "Zoom 会议",
   },
   {
-    title: "数据库",
-    desc: "操作数据库",
+    title: "学生作文AI批改",
+    desc: "AI - PTE - IELTS writing",
+    href: "/admin/analyze_answer",
+    tag: "AI response",
+  },
+  {
+    title: "生成PTE 作文答案与句子库",
+    desc: "AI 反馈",
+    href: "/admin/generate_essay_answer",
+    tag: "AI response",
+  },
+  {
+    title: "WFD操作",
+    desc: "活跃题目待定",
     href: "/admin/db-playground",
-    tag: "Supabase",
+    tag: "WFD",
   },
 ];
 

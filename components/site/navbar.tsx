@@ -120,13 +120,13 @@ export default async function Navbar() {
   ];
 
   return (
-    <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-4 lg:px-6">
+    <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-3 lg:px-6">
       <div className="relative mx-auto max-w-[90rem] overflow-visible rounded-[var(--radius-lg)] bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
         <div className="absolute inset-0 bg-transparent" />
 
         <Container>
-          <div className="relative py-2">
+          <div className="relative py-1.5 lg:py-1">
             {/* 手机端 */}
             <div className="lg:hidden">
               <NavbarMobileClient
@@ -144,15 +144,15 @@ export default async function Navbar() {
             </div>
 
             {/* 桌面端 */}
-            <div className="hidden h-14 items-center justify-between gap-4 lg:flex">
-              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-3 rounded-[var(--radius-lg)] bg-transparent px-3 py-2 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[var(--shadow-md)]">
+            <div className="hidden h-12 items-center justify-between gap-3 lg:flex">
+              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-2.5 rounded-[var(--radius-lg)] bg-transparent px-2.5 py-1.5 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
+                <div className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[var(--shadow-md)]">
                   <Image
                     src="/favicon-32x32.png"
                     alt="Lofty Education"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
                   />
                 </div>
 
@@ -167,13 +167,13 @@ export default async function Navbar() {
                 </div>
               </Link>
 
-              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1.5">
+              <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1">
                 {navItems.slice(0, 2).map((item) => (
                   <div key={item.href + item.label} className="group relative">
                     <Link
                       href={item.href}
                       aria-label={item.tooltip}
-                      className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300  hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                      className="btn-secondary relative flex h-8 items-center rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
                     >
                       {item.label}
                     </Link>
@@ -183,7 +183,7 @@ export default async function Navbar() {
                 <div className="group relative">
                   <button
                     type="button"
-                    className="btn-secondary relative flex h-10 cursor-pointer items-center gap-1.5 rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                    className="btn-secondary relative flex h-8 cursor-pointer items-center gap-1.5 rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
                     aria-haspopup="menu"
                     aria-label="练习模块"
                   >
@@ -199,7 +199,9 @@ export default async function Navbar() {
                           key={item.href}
                           href={item.href}
                           aria-label={item.tooltip}
-                          className="btn-secondary flex w-full items-center px-4 py-2.5 text-left text-sm font-medium text-[var(--text-soft)] transition-colors duration-150 hover:bg-[var(--card-soft)]/45 hover:text-[var(--primary)]"
+                          className={`btn-secondary flex w-full items-center px-4 py-2.5 text-left text-sm font-medium text-[var(--text-soft)] transition-colors duration-150 hover:bg-[var(--card-soft)]/45 hover:text-[var(--primary)] ${
+                            item.href === "/pte" ? "mb-1.5" : ""
+                          }`}
                         >
                           {item.label}
                         </Link>
@@ -213,7 +215,7 @@ export default async function Navbar() {
                     <Link
                       href={item.href}
                       aria-label={item.tooltip}
-                      className="btn-secondary relative flex h-10 items-center rounded-[var(--radius-full)] border border-transparent px-4 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300  hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                      className="btn-secondary relative flex h-8 items-center rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
                     >
                       {item.label}
                     </Link>
@@ -225,19 +227,19 @@ export default async function Navbar() {
                 </div>
               </nav>
 
-              <div className="flex shrink-0 items-center gap-2 rounded-[var(--radius-lg)] bg-transparent px-2 py-1 shadow-[var(--shadow-xs)]">
+              <div className="flex shrink-0 items-center gap-1.5 rounded-[var(--radius-lg)] bg-transparent px-1 py-0 shadow-none">
                 {user ? (
                   <>
-                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-2.5 pr-3 shadow-[var(--shadow-sm)] transition-all duration-300 hover:border-[color:var(--primary)]/35 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)]">
-                      <div className="relative h-8 w-8 shrink-0">
+                    <div className="group flex h-9 items-center gap-2 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-300 hover:bg-[var(--card-soft)]/35">
+                      <div className="relative h-7 w-7 shrink-0">
                         <Image
                           src={avatar}
                           alt={name}
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 rounded-full border border-[var(--border)] object-cover shadow-[var(--shadow-sm)]"
+                          width={28}
+                          height={28}
+                          className="h-7 w-7 rounded-full border border-transparent object-cover shadow-none"
                         />
-                        <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-[var(--card)] bg-[var(--success)] shadow-[var(--shadow-sm)]" />
+                        <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[var(--success)]" />
                       </div>
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">
@@ -254,7 +256,7 @@ export default async function Navbar() {
                     {ChiMa && (
                       <Link
                         href="/admin"
-                        className="btn-secondary flex h-10 items-center rounded-[var(--radius-full)] bg-[var(--card-soft)] px-4 text-sm font-semibold text-[var(--primary)] transition-all duration-300 "
+                        className="btn-secondary flex h-8 items-center rounded-[var(--radius-full)] bg-transparent px-3 text-sm font-semibold text-[var(--primary)] transition-all duration-300 hover:bg-[var(--card-soft)]/45"
                       >
                         管理员
                       </Link>
@@ -269,7 +271,7 @@ export default async function Navbar() {
                     <Link
                       href="/login"
                       aria-label="Log in"
-                      className="flex h-10 min-w-[92px] items-center justify-center rounded-[var(--radius-full)] border border-[var(--primary)] bg-[var(--card-soft)] px-5 text-sm font-semibold text-[var(--text)] transition-all duration-300 hover:border-[var(--primary)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
+                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-full)] border border-[var(--primary)] bg-[var(--card-soft)] px-4 text-sm font-semibold text-[var(--text)] transition-all duration-300 hover:border-[var(--primary)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
                     >
                       登录
                     </Link>
@@ -277,7 +279,7 @@ export default async function Navbar() {
                     <Link
                       href="/sign-up"
                       aria-label="Sign up"
-                      className="flex h-10 min-w-[92px] items-center justify-center rounded-[var(--radius-full)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition-all duration-300 hover:translate-y-[-1px] hover:shadow-[var(--shadow-lg)]"
+                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-full)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition-all duration-300 hover:translate-y-[-1px] hover:shadow-[var(--shadow-lg)]"
                     >
                       注册
                     </Link>

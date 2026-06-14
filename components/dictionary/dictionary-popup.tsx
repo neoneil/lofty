@@ -178,7 +178,7 @@ export default function DictionaryPopup() {
         flex
         items-center
         justify-center
-        bg-black/30
+        bg-black/45
         backdrop-blur-md
       "
     >
@@ -189,9 +189,9 @@ export default function DictionaryPopup() {
           max-w-2xl
           rounded
           border
-          border-white/30
-          bg-white/90
-          shadow-2xl
+          border-[var(--border)]
+          bg-[var(--card)]/95
+          shadow-[var(--shadow-lg)]
           backdrop-blur-xl
         "
       >
@@ -203,12 +203,12 @@ export default function DictionaryPopup() {
             right-4
             top-4
             rounded
-            bg-gray-100
+            bg-[var(--bg-soft)]
             p-2
-            text-gray-500
+            text-[var(--text-soft)]
             transition
-            hover:bg-gray-200
-            hover:text-gray-700
+            hover:bg-[var(--card-hover)]
+            hover:text-[var(--text)]
           "
         >
           <X className="h-5 w-5" />
@@ -223,7 +223,7 @@ export default function DictionaryPopup() {
                 text-4xl
                 font-bold
                 tracking-tight
-                text-gray-900
+                text-[var(--text)]
               "
             >
               {word}
@@ -235,7 +235,7 @@ export default function DictionaryPopup() {
                 className="
                   mt-2
                   text-lg
-                  text-gray-500
+                  text-[var(--text-soft)]
                 "
               >
                 /{data.phonetic}/
@@ -249,7 +249,7 @@ export default function DictionaryPopup() {
               className="
                 py-16
                 text-center
-                text-gray-500
+                text-[var(--text-soft)]
               "
             >
               Loading...
@@ -262,7 +262,7 @@ export default function DictionaryPopup() {
               className="
                 py-16
                 text-center
-                text-gray-500
+                text-[var(--text-soft)]
               "
             >
               Word not found
@@ -284,7 +284,7 @@ export default function DictionaryPopup() {
         font-semibold
         uppercase
         tracking-widest
-        text-gray-400
+        text-[var(--text-faint)]
       "
                   >
                     Chinese Meaning
@@ -296,11 +296,13 @@ export default function DictionaryPopup() {
         overflow-y-auto
         pr-2
         rounded
-        bg-gray-50
+        border
+        border-[var(--border)]
+        bg-[var(--bg-soft)]
         p-5
         text-[16px]
         leading-8
-        text-gray-800
+        text-[var(--text)]
         whitespace-pre-line
       "
                   >
@@ -324,7 +326,7 @@ export default function DictionaryPopup() {
         font-semibold
         uppercase
         tracking-widest
-        text-gray-400
+        text-[var(--text-faint)]
       "
                   >
                     English Definition
@@ -336,11 +338,13 @@ export default function DictionaryPopup() {
         overflow-y-auto
         pr-2
         rounded
-        bg-gray-50
+        border
+        border-[var(--border)]
+        bg-[var(--bg-soft)]
         p-5
         text-[15px]
         leading-8
-        text-gray-700
+        text-[var(--text)]
         whitespace-pre-line
       "
                   >
@@ -364,7 +368,7 @@ export default function DictionaryPopup() {
                       font-semibold
                       uppercase
                       tracking-widest
-                      text-gray-400
+                      text-[var(--text-faint)]
                     "
                   >
                     PTE Examples
@@ -386,12 +390,13 @@ export default function DictionaryPopup() {
                           block
                           rounded
                           border
-                          border-gray-200
-                          bg-white
+                          border-[var(--border)]
+                          bg-[var(--bg-soft)]
                           p-4
                           transition
-                          hover:border-(--theme)
-                          hover:shadow-md
+                          hover:border-[var(--primary)]
+                          hover:bg-[var(--card-hover)]
+                          hover:shadow-[var(--shadow-md)]
                         "
                       >
 
@@ -405,7 +410,7 @@ export default function DictionaryPopup() {
                           <div
                             className="
                               rounded
-                              bg-(--theme)
+                              bg-[var(--primary)]
                               px-2 py-1
                               text-xs
                               font-semibold
@@ -419,7 +424,7 @@ export default function DictionaryPopup() {
                             className="
                               text-sm
                               font-medium
-                              text-gray-800
+                              text-[var(--text)]
                             "
                           >
                             {item.title}
@@ -431,7 +436,7 @@ export default function DictionaryPopup() {
                           className="
                             text-sm
                             leading-7
-                            text-gray-600
+                            text-[var(--text-soft)]
                           "
                           dangerouslySetInnerHTML={{
                             __html:

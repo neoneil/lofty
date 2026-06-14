@@ -117,10 +117,9 @@ export default async function PostDetailPage({ params }: PostPageProps) {
             href="/posts"
             className="font-medium text-[var(--text-soft)] transition hover:text-[var(--primary)]"
           >
-            Articles
+            全部文章
           </Link>
-          <span className="text-[var(--text-muted)]">/</span>
-          <span className="text-[var(--text-soft)]">Post</span>
+
         </div>
 
         <header className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">

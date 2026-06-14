@@ -72,7 +72,7 @@ export default function NavbarMobileClient({
           aria-label={open ? "关闭菜单" : "打开菜单"}
           aria-expanded={open}
           onClick={() => setOpen((prev) => !prev)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded border border-white/15 bg-white/10 text-(--brand-accent) transition hover:bg-white/15"
+          className="inline-flex h-9 w-9 items-center justify-center rounded border border-white/10 bg-white/5 text-(--brand-accent) transition hover:bg-white/10"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -101,7 +101,7 @@ export default function NavbarMobileClient({
           <div className="mt-3 border-t border-white/10 pt-3">
             {user ? (
               <div className="flex items-center justify-between gap-2">
-                <div className="flex min-w-0 items-center gap-2 rounded border border-white/15 bg-white/10 px-2 py-1 shadow-sm">
+                <div className="flex min-w-0 items-center gap-2 rounded border border-transparent bg-transparent px-1 py-0 shadow-none">
                   <Image
                     src={user.avatar}
                     alt={user.name}

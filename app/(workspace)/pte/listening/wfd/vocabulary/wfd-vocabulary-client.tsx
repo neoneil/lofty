@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import DictionaryText from "@/components/dictionary/dictionary-text";
 import { Input } from "@/components/ui-v2/input";
 import { Pagination } from "@/components/ui-v2/pagination";
 import type { WfdVocabularyItem } from "./page";
@@ -110,7 +111,9 @@ export default function WfdVocabularyClient({ vocabulary, stats }: Props) {
                 {paginatedVocabulary.map((item, index) => (
                   <tr key={item.id} className="border-t border-[var(--border)] text-sm">
                     <td className="px-5 py-4 text-[var(--text-soft)]">{startIndex + index + 1}</td>
-                    <td className="px-5 py-4 font-semibold text-[var(--text)]">{item.word}</td>
+                    <td className="px-5 py-4 font-semibold text-[var(--text)]">
+                      <DictionaryText text={item.word} />
+                    </td>
                     <td className="px-5 py-4 text-[var(--text)]">{item.frequency}</td>
                     <td className="px-5 py-4"><Badge variant="secondary">{normalizeCategory(item.category)}</Badge></td>
                   </tr>
@@ -125,7 +128,9 @@ export default function WfdVocabularyClient({ vocabulary, stats }: Props) {
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <Badge variant="secondary">#{startIndex + index + 1}</Badge>
-                    <h2 className="text-lg font-semibold text-[var(--text)]">{item.word}</h2>
+                    <h2 className="text-lg font-semibold text-[var(--text)]">
+                      <DictionaryText text={item.word} />
+                    </h2>
                   </div>
                   <Badge>{item.frequency}</Badge>
                 </div>

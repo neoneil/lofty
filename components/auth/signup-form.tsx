@@ -1,26 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
 
-function MascotHorse() {
-  return (
-    <div className="pointer-events-none absolute left-1/2 z-20 w-90 -translate-x-1/2 -top-9 sm:w-105 sm:-top-25">
-      <Image
-        src="/mascot/xiaoma.png"
-        alt="Lofty mascot horse"
-        width={580}
-        height={580}
-        priority
-        className="h-auto w-full select-none drop-shadow-[0_18px_32px_rgba(0,0,0,0.18)]"
-      />
-    </div>
-  );
-}
+const REGISTRATION_CLOSED = true;
 
 function GoogleIcon() {
   return (
@@ -45,17 +33,31 @@ function GoogleIcon() {
   );
 }
 
+function setAuthNextCookie(next: string) {
+  document.cookie = `auth_next=${encodeURIComponent(
+    next
+  )}; path=/; max-age=600; SameSite=Lax`;
+}
+
 export default function SignupForm() {
   const supabase = createClient();
+  const searchParams = useSearchParams();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const next = useMemo(() => searchParams.get("next") || "/", [searchParams]);
 
   async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (REGISTRATION_CLOSED) {
+      setMessage("注册功能临时关闭，如想咨询课程请联系致远老师");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
 
@@ -66,7 +68,7 @@ export default function SignupForm() {
         data: {
           full_name: fullName,
         },
-        emailRedirectTo: `${window.location.origin}/auth/confirm`,
+        emailRedirectTo: `${window.location.origin}/auth/confirm?next=${encodeURIComponent(next)}`,
       },
     });
 
@@ -85,8 +87,14 @@ export default function SignupForm() {
   }
 
   async function handleGoogleSignup() {
+    if (REGISTRATION_CLOSED) {
+      setMessage("注册功能临时关闭，如想咨询课程请联系致远老师");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
+    setAuthNextCookie(next);
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -107,6 +115,9 @@ export default function SignupForm() {
   const inputClassName =
     "h-12 rounded border-border bg-background/80 px-4 text-base text-foreground shadow-sm placeholder:text-muted-foreground/80 focus-visible:border-primary/70 focus-visible:ring-primary/20 dark:bg-input/30 dark:focus-visible:border-primary/60 sm:h-12";
 
+  const signupCardClassName =
+    "rounded-none rounded-tr-[var(--radius-lg)] rounded-bl-[var(--radius-lg)] rounded-br-[var(--radius-lg)] border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:border-border/70 dark:bg-card sm:p-10";
+
   const primaryButtonClassName =
     "h-12 w-full rounded text-base font-semibold shadow-sm shadow-primary/15 hover:shadow-md hover:shadow-primary/20 disabled:cursor-not-allowed";
 
@@ -120,13 +131,13 @@ export default function SignupForm() {
           {/* 桌面端 */}
           <div className="relative mx-auto hidden w-215 lg:block">
             {/* signup form：放右边 */}
-            <Card className="relative z-10 ml-85 w-full max-w-105 rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:border-border/70 dark:bg-card sm:p-10">
+            <Card className={`relative z-10 ml-85 w-full max-w-105 ${signupCardClassName}`}>
               <h1 className="mb-2 text-2xl font-bold text-(--text)">
-                Create your Lofty account
+                创建致远账号
               </h1>
 
               <p className="mb-6 text-sm text-(--muted)">
-                Build a sharper IELTS &amp; PTE study plan in minutes.
+                开始你的雅思与 PTE 学习计划。
               </p>
 
               <form onSubmit={handleSignup} className="space-y-4">
@@ -134,7 +145,7 @@ export default function SignupForm() {
                   <Input
                     id="fullName"
                     type="text"
-                    placeholder="Your full name"
+                    placeholder="姓名"
                     value={fullName}
                     autoComplete="name"
                     onChange={(e) => setFullName(e.target.value)}
@@ -146,7 +157,7 @@ export default function SignupForm() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="Work or study email"
+                    placeholder="邮箱"
                     value={email}
                     autoComplete="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -158,7 +169,7 @@ export default function SignupForm() {
                   <Input
                     id="password"
                     type="password"
-                    placeholder="Create a secure password"
+                    placeholder="设置密码"
                     value={password}
                     autoComplete="new-password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -178,7 +189,7 @@ export default function SignupForm() {
                   size="lg"
                   className={primaryButtonClassName}
                 >
-                  {loading ? "Creating account..." : "Create account"}
+                  {loading ? "创建中..." : "创建账号"}
                 </Button>
 
                 <Button
@@ -190,17 +201,17 @@ export default function SignupForm() {
                   className={googleButtonClassName}
                 >
                   <GoogleIcon />
-                  Sign up with Google
+                  使用 Google 注册
                 </Button>
               </form>
 
               <p className="mt-5 text-center text-sm text-(--muted)">
-                Already have an account?{" "}
+                已经有账号？{" "}
                 <a
                   href="/login"
                   className="font-semibold text-(--text) hover:opacity-70"
                 >
-                  Log in
+                  去登录
                 </a>
               </p>
             </Card>
@@ -221,20 +232,20 @@ export default function SignupForm() {
 
           {/* 手机端 */}
           <div className="mx-auto w-full max-w-105 lg:hidden">
-            <Card className="rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:border-border/70 dark:bg-card sm:p-10">
+            <Card className={signupCardClassName}>
               <h1 className="mb-2 text-3xl font-bold text-(--text)">
-                Create your Lofty account
+                创建致远账号
               </h1>
 
               <p className="mb-6 text-sm text-(--muted)">
-                Build a sharper IELTS &amp; PTE study plan in minutes.
+                开始你的雅思与 PTE 学习计划。
               </p>
 
               <form onSubmit={handleSignup} className="space-y-4">
                 <Input
                   id="fullName"
                   type="text"
-                  placeholder="Your full name"
+                  placeholder="姓名"
                   value={fullName}
                   autoComplete="name"
                   onChange={(e) => setFullName(e.target.value)}
@@ -244,7 +255,7 @@ export default function SignupForm() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Work or study email"
+                  placeholder="邮箱"
                   value={email}
                   autoComplete="email"
                   onChange={(e) => setEmail(e.target.value)}
@@ -254,7 +265,7 @@ export default function SignupForm() {
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Create a secure password"
+                  placeholder="设置密码"
                   value={password}
                   autoComplete="new-password"
                   onChange={(e) => setPassword(e.target.value)}
@@ -273,7 +284,7 @@ export default function SignupForm() {
                   size="lg"
                   className={primaryButtonClassName}
                 >
-                  {loading ? "Creating account..." : "Create account"}
+                  {loading ? "创建中..." : "创建账号"}
                 </Button>
 
                 <Button
@@ -285,7 +296,7 @@ export default function SignupForm() {
                   className={googleButtonClassName}
                 >
                   <GoogleIcon />
-                  Sign up with Google
+                  使用 Google 注册
                 </Button>
               </form>
             </Card>
