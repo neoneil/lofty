@@ -10,6 +10,31 @@ type PageProps = {
   }>;
 };
 
+export type EssayAnswerRow = {
+  id: string;
+  we_id: string;
+  thesis: string | null;
+  answer_text: string;
+  score_target: number | null;
+};
+
+export type EssaySentenceRow = {
+  id: string;
+  we_id: string;
+  essay_answer_id: string;
+  sentence_text: string;
+  chinese_explanation: string | null;
+  tag1: string | null;
+  tag2: string | null;
+  sentence_type: string | null;
+  source_type: string | null;
+  position_type: string | null;
+  argument_pattern: string | null;
+  peel_role: string | null;
+  difficulty_level: number | null;
+  is_featured: boolean | null;
+};
+
 export default async function EssayQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;
   const { supabase } = await requireUser(`/pte/writing/essay/${id}`);
@@ -45,6 +70,28 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
     .order("submitted_at", {
       ascending: false,
     });
+
+  const { data: essayAnswersData } = await supabase
+    .schema("pte")
+    .from("essay_answer")
+    .select("id,we_id,thesis,answer_text,score_target")
+    .eq("we_id", question.id);
+
+  const essayAnswers = (essayAnswersData ?? []) as EssayAnswerRow[];
+  const essayAnswerIds = essayAnswers.map((answer) => answer.id);
+
+  const { data: essaySentencesData } =
+    essayAnswerIds.length > 0
+      ? await supabase
+          .schema("pte")
+          .from("essay_sentence")
+          .select(
+            "id,we_id,essay_answer_id,sentence_text,chinese_explanation,tag1,tag2,sentence_type,source_type,position_type,argument_pattern,peel_role,difficulty_level,is_featured",
+          )
+          .in("essay_answer_id", essayAnswerIds)
+      : { data: [] };
+
+  const essaySentences = (essaySentencesData ?? []) as EssaySentenceRow[];
 
   return (
     <>
@@ -96,7 +143,12 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
               ) : null}
             </div>
 
-            <EssayDetailClient question={question} attempts={attempts ?? []} />
+            <EssayDetailClient
+              question={question}
+              attempts={attempts ?? []}
+              essayAnswers={essayAnswers}
+              essaySentences={essaySentences}
+            />
           </section>
         </section>
       </div>

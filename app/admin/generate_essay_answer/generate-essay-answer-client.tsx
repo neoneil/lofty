@@ -96,6 +96,7 @@ export type SentenceReview = {
 
 export type ReviewedSentence = SentenceReview & {
   id: string;
+  paragraph_index: number;
   review_status: "pending" | "reviewing" | "completed";
 };
 
@@ -115,12 +116,88 @@ type Props = {
   }) => Promise<SaveEssayAnswerState>;
 };
 
-function splitEssayIntoSentences(text: string) {
+function splitParagraphIntoSentences(text: string) {
   return text
-    .replace(/\s+/g, " ")
+    .replace(/[ \t]+/g, " ")
     .match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g)
     ?.map((sentence) => sentence.trim())
     .filter(Boolean) ?? [];
+}
+
+function splitEssayIntoParagraphs(text: string) {
+  const normalizedText = text.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
+
+  const paragraphs = normalizedText
+    .split(/\n\s*\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length > 1) {
+    return paragraphs;
+  }
+
+  const singleLineParagraphs = normalizedText
+    .split(/\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (singleLineParagraphs.length > 1) {
+    return singleLineParagraphs;
+  }
+
+  return paragraphs;
+}
+
+function buildFourParagraphEssay(text: string) {
+  const normalizedText = text.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
+  const existingParagraphs = splitEssayIntoParagraphs(normalizedText);
+
+  if (existingParagraphs.length >= 4) {
+    return existingParagraphs.slice(0, 4).join("\n\n");
+  }
+
+  if (existingParagraphs.length > 1) {
+    return existingParagraphs.join("\n\n");
+  }
+
+  const sentences = splitParagraphIntoSentences(normalizedText);
+
+  if (sentences.length < 4) {
+    return normalizedText.trim();
+  }
+
+  const introCount = Math.min(2, Math.max(1, Math.floor(sentences.length * 0.2)));
+  const conclusionCount = Math.min(
+    2,
+    Math.max(1, Math.floor(sentences.length * 0.18))
+  );
+  const middleSentences = sentences.slice(
+    introCount,
+    sentences.length - conclusionCount
+  );
+  const bodyOneCount = Math.ceil(middleSentences.length / 2);
+
+  const paragraphs = [
+    sentences.slice(0, introCount),
+    middleSentences.slice(0, bodyOneCount),
+    middleSentences.slice(bodyOneCount),
+    sentences.slice(sentences.length - conclusionCount),
+  ]
+    .filter((paragraph) => paragraph.length > 0)
+    .map((paragraph) => paragraph.join(" "));
+
+  return paragraphs.join("\n\n");
+}
+
+function splitEssayIntoReviewedSentences(text: string) {
+  return splitEssayIntoParagraphs(text).flatMap((paragraph, paragraphIndex) =>
+    splitParagraphIntoSentences(paragraph).map((sentenceText, sentenceIndex) => ({
+      ...normalizeSentenceReview(sentenceText),
+      id: `p${paragraphIndex + 1}-s${sentenceIndex + 1}-${sentenceText.slice(0, 24)}`,
+      paragraph_index: paragraphIndex + 1,
+      review_status: "pending" as const,
+    })),
+  );
 }
 
 function isOption<T extends readonly (string | number | boolean)[]>(
@@ -353,13 +430,13 @@ export default function GenerateEssayAnswerClient({
         throw new Error(data.error ?? "Failed to generate essay.");
       }
 
-      const nextEssay = data as EssayResult;
-      const nextSentences = splitEssayIntoSentences(nextEssay.answer_text).map(
-        (sentenceText, index) => ({
-          ...normalizeSentenceReview(sentenceText),
-          id: `${index}-${sentenceText.slice(0, 24)}`,
-          review_status: "pending" as const,
-        })
+      const generatedEssay = data as EssayResult;
+      const nextEssay = {
+        ...generatedEssay,
+        answer_text: buildFourParagraphEssay(generatedEssay.answer_text),
+      };
+      const nextSentences = splitEssayIntoReviewedSentences(
+        nextEssay.answer_text
       );
 
       setEssay(nextEssay);
@@ -403,6 +480,7 @@ export default function GenerateEssayAnswerClient({
   ).length;
   const allCompleted =
     sentences.length > 0 && reviewedCount === sentences.length;
+  const essayParagraphs = essay ? splitEssayIntoParagraphs(essay.answer_text) : [];
 
   return (
     <main className="min-h-screen bg-[var(--bg)] p-4 sm:p-5">
@@ -521,9 +599,19 @@ export default function GenerateEssayAnswerClient({
                   <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
                     Full Essay
                   </div>
-                  <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[var(--text)]">
-                    {essay.answer_text}
-                  </p>
+                  <div className="mt-3 space-y-8">
+                    {essayParagraphs.map((paragraph, index) => (
+                      <div
+                        key={`${index}-${paragraph.slice(0, 24)}`}
+                        className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-4"
+                      >
+                        <Badge variant="secondary">Paragraph {index + 1}</Badge>
+                        <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-[var(--text)]">
+                          {paragraph}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -565,7 +653,8 @@ export default function GenerateEssayAnswerClient({
                               : "border-[color:var(--warning)]/30 bg-[var(--warning-soft)] text-[var(--warning)]"
                       } disabled:cursor-not-allowed disabled:opacity-60`}
                     >
-                      S{index + 1} · {sentence.review_status}
+                      P{sentence.paragraph_index} · S{index + 1} ·{" "}
+                      {sentence.review_status}
                     </button>
                   );
                 })}

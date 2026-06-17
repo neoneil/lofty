@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
-import { getQuestionOrder } from "@/lib/question-order";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import AiThinking from "@/components/ai/ai-thinking";
 import AiSubmitButton from "@/components/ai/ai-submit-button";
 import DictionaryText from "@/components/dictionary/dictionary-text";
+import { Badge } from "@/components/ui-v2/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { Textarea } from "@/components/ui-v2/textarea";
 import Tag from "@/components/ui/tag";
+import type { EssayAnswerRow, EssaySentenceRow } from "./page";
 
 type Props = {
   question: {
@@ -27,10 +27,14 @@ type Props = {
 
     user_answer: string;
 
-    ai_feedback: any;
+    ai_feedback: SubmitResult["aiFeedback"] | null;
 
     submitted_at: string;
   }[];
+
+  essayAnswers: EssayAnswerRow[];
+
+  essaySentences: EssaySentenceRow[];
 };
 
 type SubmitResult = {
@@ -79,8 +83,349 @@ type SubmitResult = {
   };
 };
 
-export default function EssayDetailClient({ question, attempts }: Props) {
-  const [startedAt] = useState(Date.now());
+type FeedbackWeakness = SubmitResult["aiFeedback"]["weaknesses"][number];
+
+function subscribeQuestionOrder(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  return () => window.removeEventListener("storage", onStoreChange);
+}
+
+function getQuestionOrderSnapshot() {
+  return sessionStorage.getItem("we-question-order") ?? "[]";
+}
+
+function getServerQuestionOrderSnapshot() {
+  return "[]";
+}
+
+function splitEssayIntoParagraphs(text: string) {
+  const normalizedText = text.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
+
+  const paragraphs = normalizedText
+    .split(/\n\s*\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length > 1) {
+    return paragraphs;
+  }
+
+  const singleLineParagraphs = normalizedText
+    .split(/\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (singleLineParagraphs.length > 1) {
+    return singleLineParagraphs;
+  }
+
+  return paragraphs;
+}
+
+function orderSentencesByEssayText(
+  answerText: string,
+  sentences: EssaySentenceRow[],
+) {
+  return [...sentences].sort((first, second) => {
+    const firstIndex = answerText.indexOf(first.sentence_text);
+    const secondIndex = answerText.indexOf(second.sentence_text);
+
+    if (firstIndex === -1 && secondIndex === -1) {
+      return 0;
+    }
+
+    if (firstIndex === -1) {
+      return 1;
+    }
+
+    if (secondIndex === -1) {
+      return -1;
+    }
+
+    return firstIndex - secondIndex;
+  });
+}
+
+function groupSentencesByParagraph(
+  answerText: string,
+  sentences: EssaySentenceRow[],
+) {
+  const paragraphs = splitEssayIntoParagraphs(answerText);
+
+  if (paragraphs.length === 0) {
+    return [];
+  }
+
+  const usedSentenceIds = new Set<string>();
+
+  return paragraphs.map((paragraph, index) => {
+    const paragraphSentences = sentences.filter((sentence) => {
+      if (usedSentenceIds.has(sentence.id)) {
+        return false;
+      }
+
+      const isInParagraph = paragraph.includes(sentence.sentence_text);
+
+      if (isInParagraph) {
+        usedSentenceIds.add(sentence.id);
+      }
+
+      return isInParagraph;
+    });
+
+    if (index === paragraphs.length - 1) {
+      const remainingSentences = sentences.filter(
+        (sentence) => !usedSentenceIds.has(sentence.id),
+      );
+
+      return {
+        paragraph,
+        sentences: [...paragraphSentences, ...remainingSentences],
+      };
+    }
+
+    return {
+      paragraph,
+      sentences: paragraphSentences,
+    };
+  });
+}
+
+function EssayAnswerSentenceMeta({
+  sentence,
+}: {
+  sentence: EssaySentenceRow;
+}) {
+  const tags = [
+    ["tag1", sentence.tag1],
+    ["tag2", sentence.tag2],
+    ["type", sentence.sentence_type],
+    ["position", sentence.position_type],
+    ["pattern", sentence.argument_pattern],
+    ["peel", sentence.peel_role],
+    ["source", sentence.source_type],
+  ].filter((item): item is [string, string] => Boolean(item[1]));
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <div className="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-soft)]">
+          句子解析
+        </div>
+        <p className="text-sm leading-7 text-[var(--text-soft)]">
+          {sentence.chinese_explanation || "暂无解析"}
+        </p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {tags.map(([label, value]) => (
+          <Badge key={`${label}-${value}`} variant="secondary">
+            {label}: {value}
+          </Badge>
+        ))}
+
+        {typeof sentence.difficulty_level === "number" ? (
+          <Badge variant="outline">难度 {sentence.difficulty_level}</Badge>
+        ) : null}
+
+        {sentence.is_featured ? <Badge variant="default">精选句</Badge> : null}
+      </div>
+    </div>
+  );
+}
+
+function EssayAnswerLibrary({
+  answers,
+  sentences,
+}: {
+  answers: EssayAnswerRow[];
+  sentences: EssaySentenceRow[];
+}) {
+  const [expandedAnswerIds, setExpandedAnswerIds] = useState<string[]>([]);
+  const [selectedSentenceIds, setSelectedSentenceIds] = useState<
+    Record<string, string | null>
+  >({});
+
+  function toggleAnswer(answerId: string) {
+    setExpandedAnswerIds((current) =>
+      current.includes(answerId)
+        ? current.filter((id) => id !== answerId)
+        : [...current, answerId],
+    );
+  }
+
+  function selectSentence(answerId: string, sentenceId: string) {
+    setSelectedSentenceIds((current) => ({
+      ...current,
+      [answerId]: current[answerId] === sentenceId ? null : sentenceId,
+    }));
+  }
+
+  return (
+    <Card>
+      <CardHeader className="gap-3 border-b border-[var(--border)] px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <CardTitle className="text-lg">高分答案库</CardTitle>
+          <p className="mt-1 text-sm text-[var(--text-soft)]">
+            这道题的范文答案与句子拆解，点击文章后可展开逐句解析。
+          </p>
+        </div>
+        <Badge variant="default">{answers.length} 篇答案</Badge>
+      </CardHeader>
+
+      <CardContent className="space-y-3 p-4 sm:p-5">
+        {answers.length === 0 ? (
+          <div className="rounded-[var(--radius-sm)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm leading-7 text-[var(--text-soft)]">
+            这道题目前还没有录入高分答案。保存到{" "}
+            <span className="font-semibold text-[var(--text)]">
+              pte.essay_answer
+            </span>{" "}
+            和{" "}
+            <span className="font-semibold text-[var(--text)]">
+              pte.essay_sentence
+            </span>{" "}
+            后，会在这里显示答案文章和逐句解析。
+          </div>
+        ) : null}
+
+        {answers.map((answer, index) => {
+          const isExpanded = expandedAnswerIds.includes(answer.id);
+          const answerSentences = orderSentencesByEssayText(
+            answer.answer_text,
+            sentences.filter((sentence) => sentence.essay_answer_id === answer.id),
+          );
+          const answerParagraphs = groupSentencesByParagraph(
+            answer.answer_text,
+            answerSentences,
+          );
+          const selectedSentenceId = selectedSentenceIds[answer.id] ?? null;
+          const selectedSentence = answerSentences.find(
+            (sentence) => sentence.id === selectedSentenceId,
+          );
+
+          return (
+            <article
+              key={answer.id}
+              className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] transition hover:border-[var(--border-strong)]"
+            >
+              <button
+                type="button"
+                onClick={() => toggleAnswer(answer.id)}
+                className="flex w-full items-start justify-between gap-4 px-4 py-4 text-left"
+              >
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge variant="secondary">Answer #{index + 1}</Badge>
+                    <Badge variant="outline">
+                      Target {answer.score_target ?? 90}
+                    </Badge>
+                    <Badge variant={isExpanded ? "default" : "secondary"}>
+                      {isExpanded ? "已展开" : "默认关闭"}
+                    </Badge>
+                  </div>
+
+                  {answer.thesis ? (
+                    <p className="mt-3 line-clamp-2 text-sm font-medium leading-6 text-[var(--text)]">
+                      {answer.thesis}
+                    </p>
+                  ) : (
+                    <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
+                      {answer.answer_text}
+                    </p>
+                  )}
+                </div>
+
+                <span className="shrink-0 text-xs font-semibold text-[var(--primary)]">
+                  {isExpanded ? "收起" : "展开"}
+                </span>
+              </button>
+
+              {isExpanded ? (
+                <div className="border-t border-[var(--border)] px-4 py-4">
+                  <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-4">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                      <div className="text-sm font-semibold text-[var(--text)]">
+                        完整范文
+                      </div>
+                      <Badge variant="secondary">
+                        {answerSentences.length} 个句子
+                      </Badge>
+                    </div>
+
+                    <div className="space-y-8">
+                      {answerParagraphs.length > 0
+                        ? answerParagraphs.map((paragraph, paragraphIndex) => (
+                            <div
+                              key={`${paragraphIndex}-${paragraph.paragraph.slice(0, 24)}`}
+                              className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"
+                            >
+                              <Badge variant="secondary">
+                                Paragraph {paragraphIndex + 1}
+                              </Badge>
+
+                              <p className="mt-3 text-[15px] leading-8 text-[var(--text)]">
+                                {paragraph.sentences.length > 0
+                                  ? paragraph.sentences.map((sentence) => {
+                                      const selected =
+                                        selectedSentenceId === sentence.id;
+
+                                      return (
+                                        <button
+                                          key={sentence.id}
+                                          type="button"
+                                          onClick={() =>
+                                            selectSentence(answer.id, sentence.id)
+                                          }
+                                          className={`mx-0.5 rounded px-1 text-left align-baseline transition hover:bg-[var(--primary-soft)] hover:text-[var(--primary)] ${
+                                            selected
+                                              ? "bg-[var(--primary-soft)] text-[var(--primary)]"
+                                              : "text-[var(--text)]"
+                                          }`}
+                                        >
+                                          {sentence.sentence_text}
+                                        </button>
+                                      );
+                                    })
+                                  : paragraph.paragraph}
+                              </p>
+                            </div>
+                          ))
+                        : answer.answer_text}
+                    </div>
+                  </div>
+
+                  {selectedSentence ? (
+                    <div className="mt-4 rounded-[var(--radius-sm)] border border-[var(--primary)]/30 bg-[var(--primary-soft)] p-4">
+                      <div className="mb-2 text-sm font-semibold text-[var(--text)]">
+                        当前句子
+                      </div>
+                      <p className="mb-4 text-sm leading-7 text-[var(--text)]">
+                        {selectedSentence.sentence_text}
+                      </p>
+                      <EssayAnswerSentenceMeta sentence={selectedSentence} />
+                    </div>
+                  ) : (
+                    <div className="mt-4 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-4 text-sm leading-7 text-[var(--text-soft)]">
+                      点击范文中的任意句子查看标签、句型、PEEL 角色和中文解析。
+                    </div>
+                  )}
+                </div>
+              ) : null}
+            </article>
+          );
+        })}
+      </CardContent>
+    </Card>
+  );
+}
+
+export default function EssayDetailClient({
+  question,
+  attempts,
+  essayAnswers,
+  essaySentences,
+}: Props) {
+  const [startedAt] = useState(() => Date.now());
 
   const [answer, setAnswer] = useState("");
 
@@ -92,29 +437,40 @@ export default function EssayDetailClient({ question, attempts }: Props) {
 
   const router = useRouter();
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
+  const questionOrderSnapshot = useSyncExternalStore(
+    subscribeQuestionOrder,
+    getQuestionOrderSnapshot,
+    getServerQuestionOrderSnapshot,
+  );
 
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
+  const questionNav = useMemo(() => {
+    let ids: string[] = [];
 
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
-
-  useEffect(() => {
-    const ids = getQuestionOrder("we");
+    try {
+      ids = JSON.parse(questionOrderSnapshot);
+    } catch {
+      ids = [];
+    }
 
     const currentIndex = ids.findIndex((qId) => qId === question.id);
 
     if (currentIndex === -1) {
-      return;
+      return {
+        prevQuestionId: null,
+        nextQuestionId: null,
+        questionNumber: 0,
+      };
     }
 
-    setQuestionNumber(currentIndex + 1);
+    return {
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId:
+        currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+      questionNumber: currentIndex + 1,
+    };
+  }, [question.id, questionOrderSnapshot]);
 
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
-  }, [question.id]);
+  const { prevQuestionId, nextQuestionId, questionNumber } = questionNav;
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -173,7 +529,7 @@ export default function EssayDetailClient({ question, attempts }: Props) {
           <div className="flex items-center gap-2">
             <Tag tone="theme">Essay</Tag>
 
-            <Tag tone="green">第 {questionNumber} 题</Tag>
+            {questionNumber ? <Tag tone="green">第 {questionNumber} 题</Tag> : null}
           </div>
         </div>
         <div className="rounded border border-[var(--border)] bg-[var(--card)] p-4">
@@ -616,6 +972,8 @@ export default function EssayDetailClient({ question, attempts }: Props) {
         </div>
       ) : null}
 
+      <EssayAnswerLibrary answers={essayAnswers} sentences={essaySentences} />
+
       {/* ATTEMPT HISTORY */}
 
       <div
@@ -768,7 +1126,10 @@ export default function EssayDetailClient({ question, attempts }: Props) {
                       {attempt.ai_feedback.weaknesses?.length > 0 && (
                         <div className="space-y-3">
                           {attempt.ai_feedback.weaknesses.map(
-                            (weakness: any, weaknessIndex: number) => (
+                            (
+                              weakness: FeedbackWeakness,
+                              weaknessIndex: number,
+                            ) => (
                               <div
                                 key={weaknessIndex}
                                 className="

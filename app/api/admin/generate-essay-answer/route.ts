@@ -32,16 +32,78 @@ Question:
 ${questionText}
 
 Return ONLY valid JSON with this exact shape:
+
 {
-  "thesis": "one concise thesis sentence",
-  "answer_text": "a complete high-scoring PTE essay"
+"thesis": "one concise thesis sentence",
+"answer_text": "a complete high-scoring PTE essay"
 }
 
 Requirements:
-- Target PTE score: 90.
-- Write approximately 230 to 280 words.
-- Use clear academic language, strong cohesion, and balanced argumentation.
-- Do not include markdown, explanations, headings, or bullet points.
+
+Target PTE score: 90.
+Write approximately 230–280 words.
+Structure the essay into exactly 4 paragraphs:
+Introduction
+Body Paragraph 1
+Body Paragraph 2
+Conclusion
+In answer_text, separate paragraphs using "\\n\\n".
+Do not label paragraphs with headings.
+Do not use markdown.
+Do not use bullet points.
+Do not include explanations outside the JSON.
+
+Essay Strategy:
+
+Unless the question explicitly requires a completely one-sided position, adopt a balanced discussion approach.
+For Agree or Disagree topics, discuss arguments supporting the statement and arguments opposing the statement before reaching a balanced conclusion.
+For Discuss Both Views topics, explain both perspectives fairly and objectively.
+For Advantages and Disadvantages topics, discuss both benefits and drawbacks before drawing a conclusion.
+Avoid extreme or highly emotional positions.
+
+Writing Style:
+
+Use formal academic English.
+Maintain an objective and analytical tone.
+Demonstrate strong cohesion and logical progression.
+Use varied sentence structures and advanced academic vocabulary suitable for a PTE 90-level response.
+Ensure each body paragraph develops one major argument through:
+Topic sentence
+Explanation
+Example
+Impact or implication
+
+Examples:
+
+Do NOT use personal experiences or personal anecdotes.
+Never write:
+I think
+I believe
+In my opinion
+In my experience
+In my case
+From my personal perspective
+Even if the question requests personal examples, replace them with objective academic or societal examples.
+Use expressions such as:
+For example
+For instance
+A common example is
+Research has shown that
+Many societies have demonstrated that
+
+Thesis Requirements:
+
+The thesis must be a single concise sentence.
+The thesis should present a balanced and academically defensible position.
+Avoid absolute claims unless the topic explicitly demands them.
+
+Quality Requirements:
+
+Ensure the essay reads like a university-level academic discussion rather than a personal reflection.
+Avoid repetition.
+Avoid generic filler sentences.
+Keep arguments relevant to the topic.
+The conclusion should synthesize both sides and restate the overall position clearly.
 `;
 }
 

@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import RecordingStartBeep from "@/components/site/RecordingStartBeep";
 import { Button } from "@/components/ui-v2/button";
 import {
   Card,
@@ -11,6 +12,7 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui-v2/card";
+import aiAnimation from "@/public/lottie/AI.json";
 import recordingAnimation from "@/public/lottie/recording.json";
 type Props = {
   questionId: string;
@@ -126,7 +128,7 @@ export default function RecordingPanel({
   onUploadSuccess,
 }: Props) {
   const [phase, setPhase] = useState<
-    "idle" | "preparing" | "recording" | "ready"
+    "idle" | "preparing" | "beeping" | "recording" | "ready"
   >("idle");
   const [prepareTimeLeft, setPrepareTimeLeft] = useState(preparationDuration);
   const [timeLeft, setTimeLeft] = useState(maxDuration);
@@ -134,6 +136,7 @@ export default function RecordingPanel({
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [recordings, setRecordings] = useState<string[]>(initialRecordings);
+  const [beepPlayKey, setBeepPlayKey] = useState(0);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -143,6 +146,8 @@ export default function RecordingPanel({
   const prepareTimerRef = useRef<NodeJS.Timeout | null>(null);
   const preparationRunIdRef = useRef(0);
   const recordingRunIdRef = useRef(0);
+  const beepRunIdRef = useRef(0);
+  const shouldPlayStartBeep = true;
 
   // ===== 进度计算（核心）=====
   const progress = ((maxDuration - timeLeft) / maxDuration) * 100;
@@ -167,6 +172,7 @@ export default function RecordingPanel({
   const stopRecording = useCallback(() => {
     preparationRunIdRef.current += 1;
     recordingRunIdRef.current += 1;
+    beepRunIdRef.current += 1;
     if (mediaRecorderRef.current?.state === "recording") {
       mediaRecorderRef.current.stop();
     }
@@ -233,6 +239,29 @@ export default function RecordingPanel({
     }, 1000);
   }, [cleanupStream, clearTimers, maxDuration, stopRecording]);
 
+  const startBeepThenRecording = useCallback(async () => {
+    if (!shouldPlayStartBeep) {
+      await startActualRecording();
+      return;
+    }
+
+    const nextBeepRunId = beepRunIdRef.current + 1;
+    beepRunIdRef.current = nextBeepRunId;
+    setBeepPlayKey(nextBeepRunId);
+    setPhase("beeping");
+  }, [shouldPlayStartBeep, startActualRecording]);
+
+  const handleBeepComplete = useCallback(
+    (completedPlayKey: number) => {
+      if (completedPlayKey !== beepRunIdRef.current) {
+        return;
+      }
+
+      void startActualRecording();
+    },
+    [startActualRecording],
+  );
+
   const startRecording = useCallback(async () => {
     setConfirmUpload(false);
     tempBlobRef.current = null;
@@ -254,7 +283,7 @@ export default function RecordingPanel({
 
         setPrepareTimeLeft((prev) => {
           if (prev <= 1) {
-            void startActualRecording();
+            void startBeepThenRecording();
             return 0;
           }
           return prev - 1;
@@ -264,16 +293,17 @@ export default function RecordingPanel({
       return;
     }
 
-    await startActualRecording();
-  }, [clearTimers, preparationDuration, startActualRecording]);
+    await startBeepThenRecording();
+  }, [clearTimers, preparationDuration, startBeepThenRecording]);
 
   const skipPreparation = () => {
-    void startActualRecording();
+    void startBeepThenRecording();
   };
 
   const cancelRecording = () => {
     preparationRunIdRef.current += 1;
     recordingRunIdRef.current += 1;
+    beepRunIdRef.current += 1;
     clearTimers();
     cleanupStream();
     tempBlobRef.current = null;
@@ -358,6 +388,12 @@ export default function RecordingPanel({
 
   return (
     <div className="space-y-4">
+      <RecordingStartBeep
+        active={phase === "beeping"}
+        playKey={beepPlayKey}
+        onComplete={handleBeepComplete}
+      />
+
       {/* ===== 录音按钮 ===== */}
       {phase === "idle" && !autoStart ? (
         <Button type="button" onClick={startRecording} variant="secondary">
@@ -466,8 +502,28 @@ export default function RecordingPanel({
                 onClick={uploadRecording}
                 disabled={isUploading}
                 variant="primary"
+                className={`min-w-40 ${
+                  isUploading
+                    ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100"
+                    : ""
+                }`}
               >
-                {isUploading ? "上传中..." : "上传"}
+                {isUploading ? (
+                  <span className="inline-flex items-center justify-center gap-3">
+                    <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                      <Lottie
+                        animationData={aiAnimation}
+                        loop
+                        autoplay
+                      />
+                    </span>
+                    <span className="text-sm font-semibold tracking-wide text-white">
+                      上传AI分析中
+                    </span>
+                  </span>
+                ) : (
+                  "上传"
+                )}
               </Button>
               <Button
                 type="button"

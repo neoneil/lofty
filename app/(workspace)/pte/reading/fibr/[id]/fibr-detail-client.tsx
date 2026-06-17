@@ -64,7 +64,7 @@ function DraggableWord({
   source: string;
   insideBlank?: boolean;
 }) {
-  const { attributes, listeners, setNodeRef, transform, isDragging } =
+  const { attributes, listeners, setNodeRef, isDragging } =
     useDraggable({
       id: `${source}:${word}`,
       data: {
@@ -73,26 +73,20 @@ function DraggableWord({
       },
     });
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
-
   return (
     <button
       ref={setNodeRef}
-      style={style}
+      style={{ touchAction: "none" }}
       {...listeners}
       {...attributes}
-      className={`inline-flex items-center justify-center gap-2 text-[15px] font-medium transition-all ${
+      className={`inline-flex items-center justify-center gap-2 text-[15px] font-medium transition-colors duration-150 ${
         insideBlank
           ? isDragging
-            ? "text-[var(--primary)]"
+            ? "opacity-0 text-[var(--primary)]"
             : "text-[var(--text)]"
           : isDragging
-            ? "scale-[1.03] rounded-xl border border-[var(--primary)] bg-[var(--card)] px-4 text-[var(--primary)] shadow-2xl"
-            : "rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--text-soft)] shadow-sm hover:-translate-y-[1px] hover:border-[var(--primary)] hover:text-[var(--primary)] hover:shadow-md"
+            ? "rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--text-soft)] opacity-35 shadow-sm"
+            : "rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--text-soft)] shadow-sm hover:border-[var(--primary)] hover:text-[var(--primary)] hover:shadow-md"
       }`}
     >
       {word}
@@ -125,7 +119,7 @@ function BlankDropZone({
 
       <span
         ref={setNodeRef}
-        className={`inline-flex h-[42px] min-w-[120px] items-center justify-center rounded-xl border px-3 transition-all ${
+        className={`inline-flex h-[34px] min-w-[104px] items-center justify-center rounded-md border px-2 transition-colors duration-150 ${
           isCorrect
             ? "border-[color:var(--success)]/40 bg-[var(--success-soft)]"
             : isWrong
