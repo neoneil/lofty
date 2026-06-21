@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   CheckCircle2,
   FileText,
@@ -19,7 +19,10 @@ import {
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
-import type { IELTSTask2ReviewResult } from "@/types/ielts-writing";
+import type {
+  IELTSTask2ReviewResult,
+  SentenceAnalysis,
+} from "@/types/ielts-writing";
 
 const rubricLabels = [
   "Task Response",
@@ -35,12 +38,14 @@ export default function IELTSWritingPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<IELTSTask2ReviewResult | null>(null);
+  const [selectedSentenceId, setSelectedSentenceId] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError("");
     setResult(null);
+    setSelectedSentenceId(null);
 
     try {
       const res = await fetch("/api/ielts-writing", {
@@ -63,6 +68,8 @@ export default function IELTSWritingPage() {
       }
 
       setResult(data);
+      const firstSentence = data.paragraphs?.[0]?.sentences?.[0];
+      setSelectedSentenceId(firstSentence?.sentence_id ?? null);
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Unknown error occurred.";
@@ -73,6 +80,18 @@ export default function IELTSWritingPage() {
   }
 
   const essayWordCount = essayText.trim().split(/\s+/).filter(Boolean).length;
+
+  const selectedSentence = useMemo(() => {
+    if (!result || !selectedSentenceId) {
+      return null;
+    }
+
+    return (
+      result.paragraphs
+        .flatMap((paragraph) => paragraph.sentences)
+        .find((sentence) => sentence.sentence_id === selectedSentenceId) ?? null
+    );
+  }, [result, selectedSentenceId]);
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 pb-16 pt-28 text-[var(--text)] sm:px-6 lg:px-8">
@@ -315,6 +334,13 @@ export default function IELTSWritingPage() {
               </CardContent>
             </Card>
 
+            <SentenceDeepAnalysis
+              result={result}
+              selectedSentence={selectedSentence}
+              selectedSentenceId={selectedSentenceId}
+              onSelectSentence={setSelectedSentenceId}
+            />
+
             <Card className="rounded-[var(--radius-lg)]">
               <CardHeader className="flex-col items-start gap-1">
                 <CardTitle>Paragraph Feedback</CardTitle>
@@ -450,6 +476,263 @@ export default function IELTSWritingPage() {
         ) : null}
       </section>
     </main>
+  );
+}
+
+
+function SentenceDeepAnalysis({
+  result,
+  selectedSentence,
+  selectedSentenceId,
+  onSelectSentence,
+}: {
+  result: IELTSTask2ReviewResult;
+  selectedSentence: SentenceAnalysis | null;
+  selectedSentenceId: string | null;
+  onSelectSentence: (sentenceId: string) => void;
+}) {
+  return (
+    <Card className="rounded-[var(--radius-lg)]">
+      <CardHeader className="flex-col items-start gap-1">
+        <CardTitle>逐段落与逐句分析</CardTitle>
+        <CardDescription>
+          点击作文中的任意句子，查看语法、词汇、搭配、衔接和高分改写。
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]">
+          <div className="space-y-4">
+            {result.paragraphs.map((paragraph) => (
+              <div
+                key={paragraph.paragraph_id}
+                className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-4"
+              >
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <Badge variant="default">{`Paragraph ${paragraph.paragraph_number}`}</Badge>
+                  <Badge variant="outline">{paragraph.role}</Badge>
+                  <Badge variant="secondary">{paragraph.support_quality}</Badge>
+                </div>
+
+                <p className="mb-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-7 text-[var(--text-soft)]">
+                  {paragraph.paragraph_feedback_cn}
+                </p>
+
+                <div className="space-y-2 text-[15px] leading-8 text-[var(--text)]">
+                  {paragraph.sentences.map((sentence) => {
+                    const active = selectedSentenceId === sentence.sentence_id;
+
+                    return (
+                      <button
+                        key={sentence.sentence_id}
+                        type="button"
+                        onClick={() => onSelectSentence(sentence.sentence_id)}
+                        className={`block w-full rounded-[var(--radius-sm)] px-3 py-2 text-left transition hover:bg-[var(--primary-soft)] hover:text-[var(--primary)] ${
+                          active
+                            ? "bg-[var(--primary-soft)] text-[var(--primary)] ring-1 ring-[var(--primary)]/25"
+                            : "bg-transparent text-[var(--text)]"
+                        }`}
+                      >
+                        <span className="mr-2 text-xs font-semibold text-[var(--text-soft)]">
+                          {sentence.sentence_number}.
+                        </span>
+                        {sentence.original_sentence}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <SentenceFeedbackConsole sentence={selectedSentence} />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function SentenceFeedbackConsole({
+  sentence,
+}: {
+  sentence: SentenceAnalysis | null;
+}) {
+  const [activeTab, setActiveTab] = useState<
+    "overall" | "spelling" | "wording" | "grammar" | "chinglish"
+  >("overall");
+
+  if (!sentence) {
+    return (
+      <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm leading-7 text-[var(--text-soft)]">
+        {"\u8bf7\u9009\u62e9\u5de6\u4fa7\u4f5c\u6587\u4e2d\u7684\u4e00\u53e5\u8bdd\u67e5\u770b\u8be6\u7ec6\u53cd\u9988\u3002"}
+      </div>
+    );
+  }
+
+  const spellingIssues = sentence.issues.filter(
+    (issue) => issue.issue_type === "spelling",
+  );
+  const wordingIssues = sentence.issues.filter((issue) =>
+    ["word_choice", "word_form", "part_of_speech", "collocation"].includes(
+      issue.issue_type,
+    ),
+  );
+  const grammarIssues = sentence.issues.filter((issue) =>
+    ["grammar", "sentence_structure", "word_order", "punctuation", "cohesion"].includes(
+      issue.issue_type,
+    ),
+  );
+  const chinglishIssues = sentence.issues.filter(
+    (issue) => issue.issue_type === "chinglish",
+  );
+
+  const tabs = [
+    {
+      id: "overall" as const,
+      label: "\u53e5\u5b50\u603b\u8bc4",
+      count: null,
+    },
+    {
+      id: "spelling" as const,
+      label: "\u62fc\u5199\u9519\u8bef",
+      count: spellingIssues.length,
+    },
+    {
+      id: "wording" as const,
+      label: "\u7528\u8bcd\u642d\u914d\u9519\u8bef",
+      count: wordingIssues.length,
+    },
+    {
+      id: "grammar" as const,
+      label: "\u53e5\u5b50\u8bed\u6cd5\u9519\u8bef",
+      count: grammarIssues.length,
+    },
+    {
+      id: "chinglish" as const,
+      label: "\u662f\u5426\u4e2d\u5f0f\u8868\u8fbe",
+      count: chinglishIssues.length,
+    },
+  ];
+
+  const activeIssues =
+    activeTab === "spelling"
+      ? spellingIssues
+      : activeTab === "wording"
+        ? wordingIssues
+        : activeTab === "grammar"
+          ? grammarIssues
+          : activeTab === "chinglish"
+            ? chinglishIssues
+            : [];
+
+  return (
+    <aside className="space-y-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 xl:sticky xl:top-28 xl:self-start">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge variant="default">{sentence.sentence_id}</Badge>
+        <Badge variant="outline">{`${sentence.issues.length} issues`}</Badge>
+      </div>
+
+      <div className="flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-2">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActiveTab(tab.id)}
+            className={`rounded-[var(--radius-sm)] px-3 py-2 text-xs font-semibold transition ${
+              activeTab === tab.id
+                ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                : "text-[var(--text-soft)] hover:bg-[var(--card)] hover:text-[var(--text)]"
+            }`}
+          >
+            {tab.label}
+            {tab.count === null ? null : (
+              <span className="ml-1 opacity-80">{tab.count}</span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      {activeTab === "overall" ? (
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-base font-semibold text-[var(--text)]">
+              {"\u53e5\u5b50\u603b\u8bc4"}
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">
+              {sentence.sentence_level_comment_cn || sentence.explanation_cn}
+            </p>
+          </div>
+
+          <VersionBlock label={"\u539f\u53e5"} value={sentence.original_sentence} />
+          <VersionBlock label={"\u4fee\u6b63\u7248\u672c"} value={sentence.corrected_sentence} />
+          <VersionBlock label={"+0.5 \u5206\u7248\u672c"} value={sentence.plus_0_5_version} />
+          <VersionBlock label={"Band 8 \u7248\u672c"} value={sentence.band8_version} />
+          <VersionBlock label={"Band 9 \u7248\u672c"} value={sentence.band9_version} featured />
+        </div>
+      ) : (
+        <IssueTabPanel issues={activeIssues} />
+      )}
+    </aside>
+  );
+}
+
+function IssueTabPanel({ issues }: { issues: SentenceAnalysis["issues"] }) {
+  if (!issues.length) {
+    return (
+      <p className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text-soft)]">
+        {"\u8fd9\u4e2a\u5206\u7c7b\u6682\u65f6\u6ca1\u6709\u660e\u663e\u95ee\u9898\uff0c\u53ef\u4ee5\u91cd\u70b9\u53c2\u8003\u53e5\u5b50\u603b\u8bc4\u91cc\u7684\u9ad8\u5206\u6539\u5199\u3002"}
+      </p>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      {issues.map((issue, index) => (
+        <div
+          key={`${issue.issue_type}-${index}`}
+          className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"
+        >
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <Badge variant="warning">{issue.issue_type}</Badge>
+            <Badge variant="outline">{issue.severity}</Badge>
+          </div>
+          <div className="space-y-2 text-sm leading-7">
+            <IssueLine label={"\u539f\u6587"} value={issue.original_text} />
+            <IssueLine label={"\u5efa\u8bae"} value={issue.suggested_text} />
+            <IssueLine label={"\u89e3\u91ca"} value={issue.explanation_cn} />
+            <IssueLine label={"\u5206\u6570\u5f71\u54cd"} value={issue.band_impact} />
+            <IssueLine label={"\u6700\u5c0f\u4fee\u6539"} value={issue.micro_fix} />
+            <IssueLine label={"\u66f4\u597d\u7248\u672c"} value={issue.better_version} />
+            <IssueLine label="Band 8" value={issue.band8_version} />
+            <IssueLine label="Band 9" value={issue.band9_version} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VersionBlock({
+  label,
+  value,
+  featured = false,
+}: {
+  label: string;
+  value: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`rounded-[var(--radius-md)] border p-3 ${
+        featured
+          ? "border-[var(--primary)]/30 bg-[var(--primary-soft)]"
+          : "border-[var(--border)] bg-[var(--bg-soft)]"
+      }`}
+    >
+      <div className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+        {label}
+      </div>
+      <p className="text-sm leading-7 text-[var(--text)]">{value}</p>
+    </div>
   );
 }
 

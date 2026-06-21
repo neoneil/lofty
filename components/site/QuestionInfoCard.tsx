@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
 import {
     Card,
@@ -246,6 +248,7 @@ function MetricCard({
 export function QuestionInfoCard({
     questionInfo,
 }: Props) {
+    const [expanded, setExpanded] = useState(false);
 
     if (!questionInfo) return null;
 
@@ -260,11 +263,16 @@ export function QuestionInfoCard({
 
             <Card className="overflow-hidden rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
 
-                <CardHeader className="flex-col items-start gap-3 border-b border-[var(--border)] bg-[var(--card-soft)] px-5 py-4 sm:px-6">
+                <CardHeader className={`flex-col items-start gap-3 bg-[var(--card-soft)] px-5 py-4 sm:px-6 ${expanded ? "border-b border-[var(--border)]" : ""}`}>
 
                     <div className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 
-                        <div className="min-w-0">
+                        <button
+                            type="button"
+                            className="min-w-0 text-left"
+                            onClick={() => setExpanded((current) => !current)}
+                            aria-expanded={expanded}
+                        >
 
                             <div className="mb-3 flex flex-wrap items-center gap-2">
 
@@ -284,7 +292,14 @@ export function QuestionInfoCard({
 
                             <CardTitle className="text-xl sm:text-2xl">
 
-                                题型详细信息
+                                <span className="inline-flex items-center gap-2">
+                                    {expanded ? (
+                                        <ChevronDown size={20} className="text-[var(--primary)]" />
+                                    ) : (
+                                        <ChevronRight size={20} className="text-[var(--primary)]" />
+                                    )}
+                                    题型详细信息
+                                </span>
 
                             </CardTitle>
 
@@ -294,7 +309,7 @@ export function QuestionInfoCard({
 
                             </CardDescription>
 
-                        </div>
+                        </button>
 
                         <div className="grid w-full gap-3 sm:grid-cols-3 lg:max-w-md">
 
@@ -320,7 +335,8 @@ export function QuestionInfoCard({
 
                 </CardHeader>
 
-                <CardContent className="p-4 sm:p-5">
+                {expanded ? (
+                    <CardContent className="p-4 sm:p-5">
 
                     <div className="grid gap-4 xl:grid-cols-[1fr_350px]">
 
@@ -436,7 +452,8 @@ export function QuestionInfoCard({
 
                     </div>
 
-                </CardContent>
+                    </CardContent>
+                ) : null}
 
             </Card>
 

@@ -64,18 +64,18 @@ export default async function IeltsSpeakingPage() {
   const part2Topics = (part2Data ?? []) as SpeakingPart2Topic[];
 
   return (
-    <main className="py-12 sm:py-16 lg:py-20">
+    <main className="py-12 text-[var(--text)] sm:py-16 lg:py-20">
       <Container>
-        <section className="mb-10">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 sm:text-sm">
+        <section className="mb-10 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)] sm:text-sm">
             IELTS SPEAKING
           </p>
 
-          <h1 className="mb-5 text-3xl font-bold tracking-tight text-(--theme) sm:text-4xl">
+          <h1 className="mb-5 text-3xl font-bold tracking-tight text-[var(--primary)] sm:text-4xl">
             雅思口语
           </h1>
 
-          <p className="max-w-3xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
+          <p className="max-w-3xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
             本页整合了 Speaking Part 1 与 Speaking Part 2 / 3 题库。
             点击分类按钮可快速筛选，点击卡片可展开查看完整内容。
           </p>
@@ -84,13 +84,13 @@ export default async function IeltsSpeakingPage() {
         <IELTSSubnav current="speaking" />
 
         {part1Error ? (
-          <p className="mb-4 text-red-500">
+          <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
             Part 1 加载失败：{part1Error.message}
           </p>
         ) : null}
 
         {part2Error ? (
-          <p className="mb-4 text-red-500">
+          <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
             Part 2 加载失败：{part2Error.message}
           </p>
         ) : null}

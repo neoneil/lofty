@@ -188,11 +188,35 @@ export default function PTEPage() {
 
               </div>
 
-              <Badge variant="secondary">
+              <div className="flex flex-wrap justify-end gap-2">
 
-                AI 智能学习
+                <Link href="/pte/info">
 
-              </Badge>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                  >
+
+                    题型占比
+
+                  </Button>
+
+                </Link>
+
+                <Link href="/pte-templates">
+
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                  >
+
+                    PTE 模板
+
+                  </Button>
+
+                </Link>
+
+              </div>
 
             </div>
 

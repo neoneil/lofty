@@ -9,11 +9,6 @@ import {
   MainTab,
 } from "./pte-config";
 
-import {
-  Card,
-  CardContent,
-} from "@/components/ui-v2/card";
-
 type Props = {
   currentMain: MainTab;
   currentSub?: PTESubTab;
@@ -33,22 +28,20 @@ function SubTabItem({
 
     <Link
       href={href}
-      className="block w-fit flex-shrink-0"
+      className={`group relative flex h-8 flex-shrink-0 items-center justify-center rounded-[var(--radius-sm)] px-3 text-[12px] font-semibold tracking-[0.02em] transition-all duration-200 sm:h-9 sm:px-3.5 sm:text-[13px] ${
+        active
+          ? "bg-[var(--primary-soft)] text-[var(--primary)]"
+          : "bg-transparent text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
+      }`}
     >
-
-      <Card
-        className={`overflow-hidden border transition-all duration-200 ${active ? "border-[var(--primary)] bg-[var(--primary)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)]"}`}
-      >
-
-        <CardContent
-          className={`flex min-h-[42px] items-center justify-center px-4 py-2 text-[12px] font-semibold whitespace-nowrap sm:min-h-[46px] sm:px-5 sm:py-2.5 sm:text-[13px] ${active ? "text-white" : "text-[var(--text-soft)]"}`}
-        >
-
-          {label}
-
-        </CardContent>
-
-      </Card>
+      <span className="whitespace-nowrap">{label}</span>
+      <span
+        className={`absolute inset-x-2 -bottom-px h-0.5 rounded-full transition ${
+          active
+            ? "bg-[var(--primary)] opacity-100"
+            : "bg-[var(--primary)] opacity-0 group-hover:opacity-35"
+        }`}
+      />
 
     </Link>
 
@@ -75,9 +68,9 @@ export default function PTETopNav({
 
   return (
 
-    <div className="mb-4 sm:mb-6">
+    <div className="mb-1 mt-3 sm:mb-2 sm:mt-4">
 
-      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide sm:gap-3">
+      <div className="flex w-fit max-w-full gap-1.5 overflow-x-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-1 shadow-[var(--shadow-sm)] scrollbar-hide sm:gap-2">
 
         {subTabs.map((tab) => (
 

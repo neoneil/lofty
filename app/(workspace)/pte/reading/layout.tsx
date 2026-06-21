@@ -10,7 +10,7 @@ export default function ReadingLayout({ children }: { children: ReactNode }) {
       <Container className="relative z-10">
         <PTETopNav currentMain="reading" />
 
-        <div className="mt-4">{children}</div>
+        <div className="mt-2">{children}</div>
       </Container>
     </main>
   );

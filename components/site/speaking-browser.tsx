@@ -195,18 +195,17 @@ export default function SpeakingBrowser({
             <section>
                 <div className="mb-6 flex items-end justify-between gap-4">
                     <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
                             Speaking Section
                         </p>
-                        <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
+                        <h2 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">
                             Part 1
                         </h2>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3">
                         <div
-                            className="rounded border px-4 py-2 text-sm text-(--theme)"
-                            style={{ borderColor: "var(--border)" }}
+                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] shadow-[var(--shadow-sm)]"
                         >
                             {visiblePart1Groups.reduce((sum, group) => sum + group.items.length, 0)} questions
                         </div>
@@ -215,8 +214,7 @@ export default function SpeakingBrowser({
                             type="button"
                             onClick={handleExportPart1}
                             disabled={isExportingPart1}
-                            className="btn-secondary rounded"
-                            style={{ borderColor: "var(--border)" }}
+                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--bg-soft)] disabled:opacity-60"
                         >
                             {isExportingPart1 ? "Exporting..." : "下载 Part 1 PDF"}
                         </button>
@@ -252,11 +250,10 @@ export default function SpeakingBrowser({
                                 className={`
                                         pill-button
                                         ${active
-                                        ? "bg-(--theme) text-white shadow-md"
-                                        : "bg-(--bg) text-(--theme) hover:shadow-md"
+                                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
+                                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
                                     }
 `}
-                                style={{ borderColor: "var(--border)" }}
                             >
                                 {filter.label} ({filter.count})
                             </button>
@@ -277,21 +274,20 @@ export default function SpeakingBrowser({
                                     <div
                                         key={item.id}
                                         className="
-                      rounded border bg-(--card-soft) px-4 py-4
+                      rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-4
                       transition-all duration-300
-                      hover:-translate-y-0.5 hover:shadow-md
+                      hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-[var(--card)] hover:shadow-[var(--shadow-md)]
                     "
-                                        style={{ borderColor: "var(--border)" }}
                                     >
-                                        <p className="mb-2 text-sm font-medium text-gray-500">
+                                        <p className="mb-2 text-sm font-medium text-[var(--text-faint)]">
                                             Question {item.question_number}
                                         </p>
 
-                                        <h3 className="mb-3 text-base font-semibold leading-7 text-(--theme) sm:text-lg">
+                                        <h3 className="mb-3 text-base font-semibold leading-7 text-[var(--text)] sm:text-lg">
                                             {item.question_text}
                                         </h3>
 
-                                        <p className="text-sm leading-7 text-gray-700 sm:text-base">
+                                        <p className="text-sm leading-7 text-[var(--text-soft)] sm:text-base">
                                             {item.answer_text}
                                         </p>
                                     </div>
@@ -306,18 +302,17 @@ export default function SpeakingBrowser({
             <section>
                 <div className="mb-6 flex items-end justify-between gap-4">
                     <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
                             Speaking Section
                         </p>
-                        <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
+                        <h2 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">
                             Part 2
                         </h2>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3">
                         <div
-                            className="rounded border px-4 py-2 text-sm text-gray-600"
-                            style={{ borderColor: "var(--border)" }}
+                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] shadow-[var(--shadow-sm)]"
                         >
                             {visiblePart2Topics.length} Questions
                         </div>
@@ -326,8 +321,7 @@ export default function SpeakingBrowser({
                             type="button"
                             onClick={handleExportPart2}
                             disabled={isExportingPart2}
-                            className="btn-secondary rounded"
-                            style={{ borderColor: "var(--border)" }}
+                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--bg-soft)] disabled:opacity-60"
                         >
                             {isExportingPart2 ? "Exporting..." : "下载 Part 2/3 PDF"}
                         </button>
@@ -365,11 +359,10 @@ export default function SpeakingBrowser({
                                 className={`
                                             pill-button
                                             ${active
-                                        ? "bg-(--theme) text-white shadow-md"
-                                        : "bg-(--bg) text-(--theme) hover:shadow-md"
+                                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
+                                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
                                     }
                                 `}
-                                style={{ borderColor: "var(--border)" }}
                             >
                                 {filter.label} ({filter.count})
                             </button>
@@ -408,17 +401,17 @@ export default function SpeakingBrowser({
                             >
                                 <div className="space-y-6">
                                     {item.chinese_title && (
-                                        <p className="text-base font-medium leading-7 text-(--theme) sm:text-lg">
+                                        <p className="text-base font-medium leading-7 text-[var(--text)] sm:text-lg">
                                             {item.chinese_title}
                                         </p>
                                     )}
 
                                     {item.part2_question && (
                                         <div>
-                                            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                                            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
                                                 Part 2 Question
                                             </p>
-                                            <p className="text-base leading-7 text-(--theme)  sm:text-lg">
+                                            <p className="text-base leading-7 text-[var(--text)] sm:text-lg">
                                                 {item.part2_question}
                                             </p>
                                         </div>
@@ -426,18 +419,17 @@ export default function SpeakingBrowser({
 
                                     {cueCards.length > 0 && (
                                         <div
-                                            className="rounded border bg-(--card-soft) px-5 py-5"
-                                            style={{ borderColor: "var(--border)" }}
+                                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-5 py-5"
                                         >
-                                            <p className="mb-4 text-sm font-semibold text-(--theme) ">
+                                            <p className="mb-4 text-sm font-semibold text-[var(--primary)]">
                                                 You should say:
                                             </p>
 
                                             <div className="space-y-3">
                                                 {cueCards.map((cue, index) => (
                                                     <div key={index} className="flex items-start gap-3">
-                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded bg-(--theme)" />
-                                                        <p className="text-sm leading-7 text-(--theme)  sm:text-base">
+                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded bg-[var(--primary)]" />
+                                                        <p className="text-sm leading-7 text-[var(--text)] sm:text-base">
                                                             {cue}
                                                         </p>
                                                     </div>
@@ -448,7 +440,7 @@ export default function SpeakingBrowser({
 
                                     {part3Questions.length > 0 && (
                                         <div>
-                                            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                                            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
                                                 Part 3 Discussion
                                             </p>
 
@@ -457,14 +449,13 @@ export default function SpeakingBrowser({
                                                     <div
                                                         key={index}
                                                         className="
-                              rounded border px-4 py-4
+                              rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-4
                               transition-all duration-300
-                              hover:-translate-y-0.5 hover:shadow-md
+                              hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-[var(--card)] hover:shadow-[var(--shadow-md)]
                             "
-                                                        style={{ borderColor: "var(--border)" }}
                                                     >
-                                                        <p className="text-sm leading-7 text-(--theme)  sm:text-base">
-                                                            <span className="mr-2 font-semibold text-gray-500">
+                                                        <p className="text-sm leading-7 text-[var(--text)] sm:text-base">
+                                                            <span className="mr-2 font-semibold text-[var(--text-faint)]">
                                                                 Q{index + 1}.
                                                             </span>
                                                             {q}

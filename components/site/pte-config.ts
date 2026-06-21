@@ -87,7 +87,7 @@ export const pteSubTabMap: Record<
   ],
 
   reading: [
-    { key: "rfib", label: "RFIB", href: "/pte/reading/fibr" },
+    { key: "rfib", label: "FIBR", href: "/pte/reading/fibr" },
     { key: "fibrw", label: "FIBRW", href: "/pte/reading/fibrw" },
     { key: "rmcsa", label: "RMCSA", href: "/pte/reading/rmcsa" },
     { key: "rmcma", label: "RMCMA", href: "/pte/reading/rmcma" },

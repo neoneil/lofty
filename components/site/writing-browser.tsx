@@ -160,18 +160,17 @@ export default function WritingBrowser({ topics }: Props) {
       <section>
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--theme)">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
               Writing Section
             </p>
-            <h2 className="text-2xl font-semibold text-(--theme) sm:text-3xl">
+            <h2 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">
               Task 2 Topics
             </h2>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <div
-              className="rounded border px-4 py-2 text-sm text-(--theme)"
-              style={{ borderColor: "var(--border)" }}
+              className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] shadow-[var(--shadow-sm)]"
             >
               {visibleTopics.length} topics
             </div>
@@ -180,8 +179,7 @@ export default function WritingBrowser({ topics }: Props) {
               type="button"
               onClick={handleExportWriting}
               disabled={isExporting}
-              className="btn-secondary rounded"
-              style={{ borderColor: "var(--border)" }}
+              className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--bg-soft)] disabled:opacity-60"
             >
               {isExporting ? "Exporting..." : "下载 Writing PDF"}
             </button>
@@ -189,7 +187,7 @@ export default function WritingBrowser({ topics }: Props) {
         </div>
 
         <div className="mb-6">
-          <p className="mb-3 text-sm font-semibold text-(--theme)">
+          <p className="mb-3 text-sm font-semibold text-[var(--text)]">
             Topic Category
           </p>
           <div className="flex flex-wrap gap-3">
@@ -205,11 +203,10 @@ export default function WritingBrowser({ topics }: Props) {
                     pill-button
                     ${
                       active
-                        ? "bg-(--theme) text-white shadow-md"
-                        : "bg-(--bg) text-(--theme) hover:shadow-md"
+                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
+                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
                     }
                   `}
-                  style={{ borderColor: "var(--border)" }}
                 >
                   {filter.label} ({filter.count})
                 </button>
@@ -219,7 +216,7 @@ export default function WritingBrowser({ topics }: Props) {
         </div>
 
         <div className="mb-8">
-          <p className="mb-3 text-sm font-semibold text-(--theme)">
+          <p className="mb-3 text-sm font-semibold text-[var(--text)]">
             Question Type
           </p>
           <div className="flex flex-wrap gap-3">
@@ -235,11 +232,10 @@ export default function WritingBrowser({ topics }: Props) {
                     pill-button
                     ${
                       active
-                        ? "bg-(--theme) text-white shadow-md"
-                        : "bg-(--bg) text-(--theme) hover:shadow-md"
+                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
+                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
                     }
                   `}
-                  style={{ borderColor: "var(--border)" }}
                 >
                   {filter.label} ({filter.count})
                 </button>
@@ -259,16 +255,14 @@ export default function WritingBrowser({ topics }: Props) {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-3">
                   <div
-                    className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
-                    style={{ borderColor: "var(--border)" }}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-2 text-sm text-[var(--text-soft)]"
                   >
                     Date: {formatDate(item.year, item.month, item.day)}
                   </div>
 
                   {item.topic_category && (
                     <div
-                      className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
-                      style={{ borderColor: "var(--border)" }}
+                      className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-2 text-sm text-[var(--text-soft)]"
                     >
                       Topic: {item.topic_category}
                     </div>
@@ -276,8 +270,7 @@ export default function WritingBrowser({ topics }: Props) {
 
                   {item.question_type && (
                     <div
-                      className="rounded border bg-(--card-soft) px-4 py-2 text-sm text-gray-700"
-                      style={{ borderColor: "var(--border)" }}
+                      className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-2 text-sm text-[var(--text-soft)]"
                     >
                       Type: {formatQuestionType(item.question_type)}
                     </div>
@@ -285,24 +278,22 @@ export default function WritingBrowser({ topics }: Props) {
                 </div>
 
                 <div
-                  className="rounded border bg-(--card-soft) px-5 py-5"
-                  style={{ borderColor: "var(--border)" }}
+                  className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-5 py-5"
                 >
-                  <p className="mb-3 text-sm font-semibold text-(--theme)">
+                  <p className="mb-3 text-sm font-semibold text-[var(--primary)]">
                     Essay Question
                   </p>
 
-                  <p className="text-sm leading-8 text-(--theme) sm:text-base">
+                  <p className="text-sm leading-8 text-[var(--text)] sm:text-base">
                     {item.question_en}
                   </p>
                 </div>
 
                 {item.question_zh && item.question_zh.trim() !== "" && (
                   <div
-                    className="rounded border px-5 py-5"
-                    style={{ borderColor: "var(--border)" }}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 py-5"
                   >
-                    <p className="text-sm leading-8 text-gray-700 sm:text-base">
+                    <p className="text-sm leading-8 text-[var(--text-soft)] sm:text-base">
                       {item.question_zh}
                     </p>
                   </div>

@@ -1,6 +1,7 @@
 
 "use client";
 import { Fragment } from "react";
+import { Card, CardContent } from "@/components/ui-v2/card";
 type Row = {
     id: number;
     type: string;
@@ -53,25 +54,25 @@ export default function PteTable() {
     ];
 
     return (
-        <div className="w-full max-w-6xl mx-auto px-4 py-10 mt-20">
-
-            {/* 🟦 Desktop */}
-            <div className="hidden md:block bg-white rounded shadow-xl border border-gray-400 overflow-hidden">
-                <div className="max-h-[600px] overflow-auto">
-                    <table className="w-full text-sm text-center border-collapse">
+        <div className="mx-auto mt-8 w-full max-w-7xl px-4 py-8">
+            {/* Desktop */}
+            <Card className="hidden overflow-hidden rounded-[var(--radius-lg)] border-[var(--border)] shadow-[var(--shadow-md)] md:block">
+                <CardContent className="p-0">
+                    <div className="max-h-[680px] overflow-auto">
+                        <table className="w-full min-w-[1080px] border-collapse text-center text-[15px]">
 
                         {/* HEADER */}
-                        <thead className="sticky top-0 bg-gray-900 text-white z-10">
-                            <tr className="text-xs uppercase tracking-wider">
-                                <th className="p-4 border-r border-gray-700 w-[60px]">#</th>
-                                <th className="px-4 border-r border-gray-700 w-[120px]">题型</th>
-                                <th className="px-4 border-r border-gray-700 w-[120px]">题目个数</th>
-                                <th className="px-4 border-r border-gray-700 w-[180px]">准备与答题时间</th>
-                                <th className="px-4 border-r border-gray-700">贡献总分百分比</th>
-                                <th className="px-4 border-r border-gray-700">Speaking</th>
-                                <th className="px-4 border-r border-gray-700">Writing</th>
-                                <th className="px-4 border-r border-gray-700">Reading</th>
-                                <th className="px-4">Listening</th>
+                        <thead className="sticky top-0 z-10 bg-[var(--primary)] text-white">
+                            <tr className="text-xs uppercase tracking-[0.14em]">
+                                <th className="w-[70px] border-r border-white/15 p-5 font-semibold">#</th>
+                                <th className="w-[130px] border-r border-white/15 px-5 font-semibold">题型</th>
+                                <th className="w-[130px] border-r border-white/15 px-5 font-semibold">题目个数</th>
+                                <th className="w-[210px] border-r border-white/15 px-5 font-semibold">准备与答题时间</th>
+                                <th className="border-r border-white/15 px-5 font-semibold">贡献总分百分比</th>
+                                <th className="border-r border-white/15 px-5 font-semibold">Speaking</th>
+                                <th className="border-r border-white/15 px-5 font-semibold">Writing</th>
+                                <th className="border-r border-white/15 px-5 font-semibold">Reading</th>
+                                <th className="px-5 font-semibold">Listening</th>
                             </tr>
                         </thead>
 
@@ -87,7 +88,7 @@ export default function PteTable() {
                                         <tr key={section.key}>
                                             <td
                                                 colSpan={9}
-                                                className="bg-gray-100 text-gray-700 font-semibold px-4 py-3 border-t border-gray-400"
+                                                className="border-t border-[var(--border)] bg-[var(--primary-soft)] px-5 py-4 font-semibold text-[var(--primary)]"
                                             >
                                                 {section.title}
                                             </td>
@@ -96,42 +97,44 @@ export default function PteTable() {
                                         {rows.map((row, i) => (
                                             <tr
                                                 key={row.id}
-                                                className="border-t border-gray-200 hover:bg-gray-50 even:bg-gray-50 transition"
+                                                className={`border-t border-[var(--border)] transition hover:bg-[var(--primary-soft)]/35 ${
+                                                    i % 2 === 0 ? "bg-[var(--card)]" : "bg-[var(--bg-soft)]/75"
+                                                }`}
                                             >
-                                                <td className="p-4 border-r border-gray-200 text-gray-500">
+                                                <td className="border-r border-[var(--border)] p-5 text-[var(--text-soft)]">
                                                     {i + 1}
                                                 </td>
 
-                                                <td className="px-4 border-r border-gray-200 font-semibold text-gray-800">
+                                                <td className="border-r border-[var(--border)] px-5 font-semibold text-[var(--text)]">
                                                     {row.type}
                                                 </td>
 
-                                                <td className="px-4 border-r border-gray-200">
+                                                <td className="border-r border-[var(--border)] px-5 text-[var(--text)]">
                                                     {row.count}
                                                 </td>
 
                                                 <td
-                                                    className="px-4 border-r border-gray-200 text-gray-500"
+                                                    className="border-r border-[var(--border)] px-5 leading-7 text-[var(--text-soft)]"
                                                     dangerouslySetInnerHTML={{ __html: row.time || "" }}
                                                 />
 
-                                                <td className="px-4 border-r border-gray-200 font-medium text-red-600">
+                                                <td className="border-r border-[var(--border)] px-5 font-semibold text-[var(--danger)]">
                                                     {row.overall}
                                                 </td>
 
-                                                <td className="px-4 border-r border-gray-200 text-blue-600 font-medium">
+                                                <td className="border-r border-[var(--border)] px-5 font-semibold text-[var(--primary)]">
                                                     {row.speaking}
                                                 </td>
 
-                                                <td className="px-4 border-r border-gray-200 text-green-600 font-medium">
+                                                <td className="border-r border-[var(--border)] px-5 font-semibold text-[var(--success)]">
                                                     {row.writing}
                                                 </td>
 
-                                                <td className="px-4 border-r border-gray-200 text-purple-600 font-medium">
+                                                <td className="border-r border-[var(--border)] px-5 font-semibold text-[var(--primary)]">
                                                     {row.reading}
                                                 </td>
 
-                                                <td className="px-4 text-orange-600 font-medium">
+                                                <td className="px-5 font-semibold text-[var(--warning)]">
                                                     {row.listening}
                                                 </td>
                                             </tr>
@@ -141,37 +144,38 @@ export default function PteTable() {
                             })}
                         </tbody>
                     </table>
-                </div>
-            </div>
+                    </div>
+                </CardContent>
+            </Card>
 
-            {/* 🟨 Mobile（稍微也优化了一点） */}
-            <div className="md:hidden space-y-4">
+            {/* Mobile */}
+            <div className="space-y-4 md:hidden">
                 {data.map((row) => (
                     <div
                         key={row.id}
-                        className="bg-white rounded shadow-md border border-gray-200 p-4"
+                        className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]"
                     >
                         <div className="flex justify-between mb-2">
-                            <span className="font-semibold text-gray-800">{row.type}</span>
-                            <span className="text-xs text-gray-400">#{row.id}</span>
+                            <span className="font-semibold text-[var(--text)]">{row.type}</span>
+                            <span className="text-xs text-[var(--text-soft)]">#{row.id}</span>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-y-1 text-sm">
-                            <span className="text-gray-500">Count</span><span>{row.count}</span>
-                            <span className="text-gray-500">Time</span><span>{row.time}</span>
-                            <span className="text-gray-500">Overall</span><span>{row.overall}</span>
+                        <div className="grid grid-cols-2 gap-y-1 text-sm text-[var(--text)]">
+                            <span className="text-[var(--text-soft)]">Count</span><span>{row.count}</span>
+                            <span className="text-[var(--text-soft)]">Time</span><span>{row.time}</span>
+                            <span className="text-[var(--text-soft)]">Overall</span><span className="font-semibold text-[var(--danger)]">{row.overall}</span>
 
-                            <span className="text-gray-500">Speaking</span>
-                            <span className="text-blue-600">{row.speaking}</span>
+                            <span className="text-[var(--text-soft)]">Speaking</span>
+                            <span className="font-semibold text-[var(--primary)]">{row.speaking}</span>
 
-                            <span className="text-gray-500">Writing</span>
-                            <span className="text-green-600">{row.writing}</span>
+                            <span className="text-[var(--text-soft)]">Writing</span>
+                            <span className="font-semibold text-[var(--success)]">{row.writing}</span>
 
-                            <span className="text-gray-500">Reading</span>
-                            <span className="text-purple-600">{row.reading}</span>
+                            <span className="text-[var(--text-soft)]">Reading</span>
+                            <span className="font-semibold text-[var(--primary)]">{row.reading}</span>
 
-                            <span className="text-gray-500">Listening</span>
-                            <span className="text-orange-600">{row.listening}</span>
+                            <span className="text-[var(--text-soft)]">Listening</span>
+                            <span className="font-semibold text-[var(--warning)]">{row.listening}</span>
                         </div>
                     </div>
                 ))}
@@ -179,5 +183,3 @@ export default function PteTable() {
         </div>
     );
 }
-
-

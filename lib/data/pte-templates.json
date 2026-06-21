@@ -1,0 +1,512 @@
+{
+  "version": "1.0.0",
+  "exam": "PTE Academic",
+  "placeholderStyle": "Chinese full-width brackets",
+  "templateGroups": [
+    {
+      "questionType": "DI",
+      "title": "Describe Image",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "line_single",
+              "label": "单线图",
+              "template": "This line graph illustrates 【标题】 over the period from 【起始时间】 to 【结束时间】.\n\nAs can be seen from the graph, 【指标】 shows a clear 【上升/下降/波动/稳定】 trend during the given period.\n\nAt the beginning, the figure stood at 【起始数值】. It then 【上升/下降/波动】 gradually and reached 【最高值/最低值】 in 【时间】.\n\nOverall, the graph provides useful information about 【标题】, and the general trend is likely to remain important in the future."
+            },
+            {
+              "key": "line_multiple",
+              "label": "多线图",
+              "template": "This line graph illustrates 【标题】 in relation to 【指标个数】 indicators over the period from 【起始时间】 to 【结束时间】.\n\nAs can be observed, 【指标1】 experienced the most noticeable 【上升/下降】 trend, while 【指标2】 showed a relatively 【稳定/波动】 pattern.\n\n【指标1】 started at 【数值1】 and reached 【数值2】 by the end of the period. By contrast, 【指标2】 changed from 【数值3】 to 【数值4】.\n\nIn conclusion, 【指标1】 was the most significant indicator compared with the others, and this pattern may continue in the future."
+            },
+            {
+              "key": "bar_single",
+              "label": "单柱图",
+              "template": "This bar chart illustrates 【标题】 in terms of 【指标个数】 indicators.\n\nAs can be seen from the chart, 【指标1】 recorded the highest figure, standing at 【数值1】, whereas 【指标2】 showed the lowest figure, at 【数值2】.\n\nIn addition, 【指标3】 occupied a moderate position, with a value of 【数值3】.\n\nOverall, the chart presents a clear comparison among the indicators, with 【指标1】 being the most prominent category."
+            },
+            {
+              "key": "bar_multiple",
+              "label": "多柱图",
+              "template": "This bar chart compares 【标题】 across 【指标个数】 indicators and 【分类个数】 categories.\n\nAs can be observed, 【指标1】 had the highest figure in 【分类1】, reaching 【数值1】, while 【指标2】 recorded a lower figure at 【数值2】.\n\nMeanwhile, 【分类2】 showed a different pattern, with 【指标3】 being relatively significant compared with the other indicators.\n\nOverall, the bar chart provides a clear comparison of the data, and 【指标1/分类1】 appears to be the most noticeable feature."
+            },
+            {
+              "key": "pie_single",
+              "label": "单饼图",
+              "template": "This pie chart illustrates 【标题】 in terms of 【指标个数】 indicators.\n\nAs can be seen from the pie chart, 【指标1】 represents the largest sector, accounting for 【百分比1】.\n\nThis is followed by 【指标2】, which takes up 【百分比2】. In comparison, 【指标3】 occupies a smaller proportion, at 【百分比3】.\n\nFinally, 【指标4】 ranks the lowest, making up only 【百分比4】.\n\nIn conclusion, 【指标1】 is the largest sector compared with the other indicators, and this distribution is likely to remain significant in the future."
+            },
+            {
+              "key": "pie_multiple",
+              "label": "多饼图",
+              "template": "These pie charts illustrate 【标题】 in terms of 【指标个数】 indicators across 【时间/类别】.\n\nAs can be observed, 【指标1】 accounts for the largest proportion in 【图表1】, making up 【百分比1】, while 【指标2】 represents 【百分比2】.\n\nIn 【图表2】, the proportion of 【指标1】 【increases/decreases】 to 【百分比3】, whereas 【指标2】 changes to 【百分比4】.\n\nOverall, the charts reveal a clear shift in the distribution of 【标题】, with 【指标1】 remaining one of the most significant sectors."
+            },
+            {
+              "key": "table",
+              "label": "表格",
+              "template": "This table presents information about 【标题】 in terms of 【指标个数】 indicators.\n\nAs can be seen from the table, 【指标1】 records the highest value, at 【数值1】, while 【指标2】 has the lowest value, at 【数值2】.\n\nIn addition, 【指标3】 shows a moderate figure of 【数值3】, which is higher/lower than 【指标4】.\n\nOverall, the table provides a clear comparison of the indicators, and 【指标1】 appears to be the most significant feature."
+            },
+            {
+              "key": "map",
+              "label": "地图",
+              "template": "This map describes 【标题】 in terms of 【指标个数】 indicators.\n\nAs can be seen from the map, 【指标1】, represented by 【颜色1】, can be found in the 【北部/南部/东部/西部】 of the map.\n\nThis is followed by 【指标2】, represented by 【颜色2】, which is mainly located in the 【方位2】. Finally, 【指标3】, shown in 【颜色3】, is distributed across the 【方位3】.\n\nIn conclusion, this is a highly informative map, showing the geographical distribution of 【标题】, and the pattern is likely to remain relevant in the future."
+            },
+            {
+              "key": "process",
+              "label": "流程图",
+              "template": "This flow chart illustrates the process of 【标题】.\n\nAs can be seen from the diagram, the process begins with 【步骤1】, followed by 【步骤2】.\n\nAfter that, 【步骤3】 takes place, which leads to 【步骤4】. Finally, the process ends with 【最终步骤】.\n\nOverall, this is a clear and informative flow chart for understanding how 【标题】 is completed."
+            },
+            {
+              "key": "picture",
+              "label": "图片",
+              "template": "This picture illustrates 【标题】 and presents several important visual details.\n\nAs can be seen from the image, 【主体1】 is located in the 【位置1】, while 【主体2】 can be observed in the 【位置2】.\n\nIn addition, the picture shows 【细节1】 and 【细节2】, which make the image more informative.\n\nOverall, the picture provides a clear visual representation of 【标题】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "line_single",
+              "label": "单线图",
+              "template": "The line graph provides information about 【标题】 over the period from 【起始时间】 to 【结束时间】.\n\nOverall, 【指标】 demonstrates a noticeable 【上升/下降/波动/稳定】 trend throughout the given period.\n\nAt the initial stage, the figure stood at 【起始数值】. It then 【rose/fell/fluctuated】 steadily before reaching 【最高值/最低值】 in 【时间】.\n\nBy the end of the period, the figure had reached 【结束数值】, indicating a significant change in 【标题】.\n\nIn conclusion, the graph highlights a clear trend, and 【指标】 appears to be an important feature of the data."
+            },
+            {
+              "key": "line_multiple",
+              "label": "多线图",
+              "template": "The line graph compares 【标题】 across 【指标个数】 indicators between 【起始时间】 and 【结束时间】.\n\nOverall, the most striking feature is that 【指标1】 experienced the most significant 【increase/decrease】, while 【指标2】 remained comparatively stable.\n\n【指标1】 started at 【数值1】 and increased/decreased to 【数值2】. Meanwhile, 【指标2】 moved from 【数值3】 to 【数值4】, showing a less dramatic change.\n\nIn contrast, 【指标3】 displayed a more fluctuating pattern during the same period.\n\nIn conclusion, 【指标1】 was the most prominent indicator, and the comparison clearly shows different patterns among the categories."
+            },
+            {
+              "key": "bar_single",
+              "label": "单柱图",
+              "template": "The bar chart presents a comparison of 【标题】 in relation to 【指标个数】 indicators.\n\nOverall, 【指标1】 stands out as the highest category, with a figure of 【数值1】, whereas 【指标2】 records the lowest figure, at 【数值2】.\n\nFurthermore, 【指标3】 accounts for 【数值3】, placing it in a middle position among the indicators.\n\nThe gap between 【指标1】 and 【指标2】 is particularly noticeable, suggesting a clear difference in their performance.\n\nIn conclusion, the chart offers a clear comparison, with 【指标1】 being the dominant feature."
+            },
+            {
+              "key": "bar_multiple",
+              "label": "多柱图",
+              "template": "The bar chart compares 【标题】 across 【分类个数】 categories and 【指标个数】 indicators.\n\nOverall, 【分类1】 records the highest value for 【指标1】, reaching 【数值1】, while 【分类2】 shows a lower figure of 【数值2】.\n\nIn addition, 【指标2】 follows a different pattern, with its highest point appearing in 【分类3】.\n\nThe comparison suggests that 【分类1/指标1】 plays a more significant role than the other categories.\n\nIn conclusion, the chart presents a clear contrast among the indicators and highlights the dominance of 【指标1】."
+            },
+            {
+              "key": "pie_single",
+              "label": "单饼图",
+              "template": "The pie chart illustrates 【标题】 in terms of 【指标个数】 indicators.\n\nOverall, 【指标1】 accounts for the largest proportion, representing 【百分比1】 of the total.\n\nIt is followed by 【指标2】, which makes up 【百分比2】. Meanwhile, 【指标3】 takes up 【百分比3】, showing a smaller but still noticeable share.\n\nFinally, 【指标4】 ranks as the smallest sector, accounting for only 【百分比4】.\n\nIn conclusion, 【指标1】 is the dominant sector compared with the other indicators, and this distribution remains a key feature of the chart."
+            },
+            {
+              "key": "pie_multiple",
+              "label": "多饼图",
+              "template": "The pie charts compare 【标题】 in terms of 【指标个数】 indicators across 【时间/类别】.\n\nOverall, 【指标1】 remains the largest sector in 【图表1】, accounting for 【百分比1】, while 【指标2】 represents 【百分比2】.\n\nIn 【图表2】, the share of 【指标1】 changes to 【百分比3】, suggesting a noticeable 【increase/decrease】. At the same time, 【指标2】 reaches 【百分比4】.\n\nThe charts therefore reveal both similarities and differences in the distribution of 【标题】.\n\nIn conclusion, 【指标1】 remains the most important sector, although some changes can be observed across the two charts."
+            },
+            {
+              "key": "table",
+              "label": "表格",
+              "template": "The table provides detailed information about 【标题】 across 【指标个数】 indicators.\n\nOverall, 【指标1】 records the highest figure, at 【数值1】, while 【指标2】 has the lowest figure, at 【数值2】.\n\nIn addition, 【指标3】 stands at 【数值3】, which is slightly higher/lower than 【指标4】.\n\nThe data shows a clear contrast between the highest and lowest categories.\n\nIn conclusion, the table presents a useful comparison of 【标题】, with 【指标1】 being the most significant indicator."
+            },
+            {
+              "key": "map",
+              "label": "地图",
+              "template": "The map illustrates 【标题】 in relation to 【指标个数】 indicators.\n\nOverall, the most noticeable feature is the distribution of 【指标1】, which is represented by 【颜色1】 and mainly located in the 【方位1】.\n\nIn comparison, 【指标2】, shown in 【颜色2】, can be found in the 【方位2】, while 【指标3】 is distributed across the 【方位3】.\n\nThis geographical pattern suggests a clear spatial difference among the indicators.\n\nIn conclusion, the map is highly informative and presents a clear overview of the distribution of 【标题】."
+            },
+            {
+              "key": "process",
+              "label": "流程图",
+              "template": "The flow chart demonstrates the process of 【标题】.\n\nOverall, the process consists of 【步骤数量】 main stages, beginning with 【步骤1】 and ending with 【最终步骤】.\n\nFirst, 【步骤1】 takes place. This is followed by 【步骤2】, after which 【步骤3】 is carried out.\n\nSubsequently, 【步骤4】 leads to 【步骤5】, and the process is finally completed with 【最终步骤】.\n\nIn conclusion, the diagram clearly explains how 【标题】 is developed through a sequence of connected stages."
+            },
+            {
+              "key": "picture",
+              "label": "图片",
+              "template": "The picture presents a visual description of 【标题】.\n\nOverall, the image contains several notable features, including 【主体1】, 【主体2】 and 【细节1】.\n\n【主体1】 can be seen in the 【位置1】, while 【主体2】 is located in the 【位置2】. In addition, 【细节1】 adds further information to the image.\n\nIn conclusion, the picture provides a clear and informative representation of 【标题】."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "line_single",
+              "label": "单线图",
+              "template": "The line graph provides a comprehensive overview of 【标题】 over the period from 【起始时间】 to 【结束时间】.\n\nOverall, the data reveals a pronounced 【upward/downward/fluctuating/stable】 trend, with 【指标】 undergoing a substantial change throughout the period.\n\nAt the beginning, the figure stood at 【起始数值】. It then 【increased/decreased/fluctuated】 steadily before reaching a peak/low of 【最高值/最低值】 in 【时间】.\n\nBy the end of the period, the figure had reached 【结束数值】, suggesting a notable transformation in 【标题】.\n\nIn conclusion, the graph highlights a clear and significant trend, and 【指标】 remains the most important feature of the data."
+            },
+            {
+              "key": "line_multiple",
+              "label": "多线图",
+              "template": "The line graph offers a detailed comparison of 【标题】 across 【指标个数】 indicators between 【起始时间】 and 【结束时间】.\n\nOverall, the most prominent feature is that 【指标1】 experienced a substantial 【increase/decrease】, whereas 【指标2】 displayed a comparatively moderate and stable pattern.\n\n【指标1】 began at 【数值1】 and rose/fell dramatically to 【数值2】. By contrast, 【指标2】 changed from 【数值3】 to 【数值4】, indicating a less significant variation.\n\nMeanwhile, 【指标3】 fluctuated throughout the period, suggesting a more irregular pattern compared with the other indicators.\n\nIn conclusion, the graph demonstrates clear differences among the indicators, with 【指标1】 emerging as the most dominant and significant trend."
+            },
+            {
+              "key": "bar_single",
+              "label": "单柱图",
+              "template": "The bar chart provides a clear comparison of 【标题】 across 【指标个数】 indicators.\n\nOverall, 【指标1】 is by far the most prominent category, recording the highest figure of 【数值1】, while 【指标2】 represents the lowest figure, at 【数值2】.\n\nIn addition, 【指标3】 occupies an intermediate position, with a value of 【数值3】, indicating a moderate level compared with the other categories.\n\nThe gap between 【指标1】 and 【指标2】 is particularly striking, reflecting a considerable difference among the indicators.\n\nIn conclusion, the chart presents a highly informative comparison, with 【指标1】 clearly dominating the overall pattern."
+            },
+            {
+              "key": "bar_multiple",
+              "label": "多柱图",
+              "template": "The bar chart provides a comparative analysis of 【标题】 across 【分类个数】 categories and 【指标个数】 indicators.\n\nOverall, 【指标1】 in 【分类1】 records the most substantial figure, reaching 【数值1】, whereas 【指标2】 in 【分类2】 represents a comparatively lower value of 【数值2】.\n\nFurthermore, 【指标3】 shows a distinctive pattern, particularly in 【分类3】, where it reaches 【数值3】.\n\nThe data indicates that the differences among the categories are significant, especially between 【分类1】 and 【分类2】.\n\nIn conclusion, the chart offers a detailed and informative comparison, highlighting 【指标1/分类1】 as the most prominent feature."
+            },
+            {
+              "key": "pie_single",
+              "label": "单饼图",
+              "template": "The pie chart illustrates the distribution of 【标题】 across 【指标个数】 indicators.\n\nOverall, 【指标1】 constitutes the largest sector, accounting for 【百分比1】 of the total.\n\nThis is followed by 【指标2】, which represents 【百分比2】, while 【指标3】 makes up 【百分比3】.\n\nBy comparison, 【指标4】 contributes the smallest proportion, at only 【百分比4】.\n\nIn conclusion, 【指标1】 is the dominant sector compared with the other indicators, and the overall distribution provides a clear insight into 【标题】."
+            },
+            {
+              "key": "pie_multiple",
+              "label": "多饼图",
+              "template": "The pie charts provide a comparative overview of 【标题】 across 【时间/类别】 in terms of 【指标个数】 indicators.\n\nOverall, 【指标1】 represents the largest proportion in 【图表1】, accounting for 【百分比1】, while 【指标2】 takes up 【百分比2】.\n\nIn 【图表2】, 【指标1】 changes to 【百分比3】, indicating a noticeable 【increase/decrease】. Meanwhile, 【指标2】 reaches 【百分比4】, showing a contrasting pattern.\n\nThe comparison reveals a clear shift in the distribution of the indicators over time/across categories.\n\nIn conclusion, the charts provide a highly informative comparison, with 【指标1】 remaining the most significant sector overall."
+            },
+            {
+              "key": "table",
+              "label": "表格",
+              "template": "The table provides a detailed overview of 【标题】 across 【指标个数】 indicators.\n\nOverall, 【指标1】 records the most substantial figure, at 【数值1】, whereas 【指标2】 has the lowest figure, at 【数值2】.\n\nIn addition, 【指标3】 stands at 【数值3】, which is considerably higher/lower than 【指标4】.\n\nThe data reveals a clear contrast among the indicators, particularly between the highest and lowest values.\n\nIn conclusion, the table presents a comprehensive comparison of 【标题】, with 【指标1】 emerging as the most significant category."
+            },
+            {
+              "key": "map",
+              "label": "地图",
+              "template": "The map provides a geographical overview of 【标题】 in relation to 【指标个数】 indicators.\n\nOverall, 【指标1】, represented by 【颜色1】, is predominantly located in the 【方位1】 of the map.\n\nMeanwhile, 【指标2】, shown in 【颜色2】, is mainly found in the 【方位2】, whereas 【指标3】 is distributed across the 【方位3】.\n\nThis spatial distribution suggests a clear geographical pattern and highlights the differences among the indicators.\n\nIn conclusion, the map is highly informative, offering a clear visual representation of 【标题】 and its regional distribution."
+            },
+            {
+              "key": "process",
+              "label": "流程图",
+              "template": "The flow chart provides a comprehensive explanation of the process of 【标题】.\n\nOverall, the process involves 【步骤数量】 main stages, beginning with 【步骤1】 and ultimately resulting in 【最终结果】.\n\nAt the initial stage, 【步骤1】 is carried out. This is followed by 【步骤2】, which then leads to 【步骤3】.\n\nSubsequently, 【步骤4】 takes place, after which 【步骤5】 is completed. The process finally concludes with 【最终步骤/最终结果】.\n\nIn conclusion, the diagram clearly demonstrates how 【标题】 is completed through a logical sequence of stages."
+            },
+            {
+              "key": "picture",
+              "label": "图片",
+              "template": "The picture provides a detailed visual representation of 【标题】.\n\nOverall, the image contains several important elements, including 【主体1】, 【主体2】 and 【细节1】.\n\n【主体1】 is positioned in the 【位置1】, while 【主体2】 can be observed in the 【位置2】. In addition, 【细节1】 further illustrates the main idea of the image.\n\nThe arrangement of these elements makes the picture informative and easy to interpret.\n\nIn conclusion, the image effectively presents the key features of 【标题】."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "RL",
+      "title": "Retell Lecture",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture mainly talks about 【主题】.\n\nThe speaker mentions 【关键词1】 and 【关键词2】.\n\nIn addition, the lecture also refers to 【关键词3】.\n\nOverall, this lecture provides useful information about 【主题】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture mainly focuses on 【主题】.\n\nAccording to the speaker, 【关键词1】 is an important point. The speaker also discusses 【关键词2】 and explains its connection with 【关键词3】.\n\nFurthermore, the lecture mentions 【关键词4】, which provides additional information about the topic.\n\nIn conclusion, the lecture gives a clear explanation of 【主题】 and its related ideas."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture provides an informative discussion of 【主题】.\n\nThe speaker begins by highlighting 【关键词1】, which appears to be central to the topic. The lecture then develops this idea by referring to 【关键词2】 and 【关键词3】.\n\nIn addition, the speaker emphasizes 【关键词4】 and explains how it is related to the broader issue of 【主题】.\n\nOverall, the lecture presents a well-structured explanation of 【主题】, with several important details and supporting ideas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "SGD",
+      "title": "Summarize Group Discussion",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用讨论模板",
+              "template": "The discussion mainly talks about 【主题】.\n\nOne speaker mentions 【观点1】, while another speaker talks about 【观点2】.\n\nThey also discuss 【关键词1】 and 【关键词2】.\n\nOverall, the discussion provides useful information about 【主题】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用讨论模板",
+              "template": "The group discussion mainly focuses on 【主题】.\n\nThe first speaker believes that 【观点1】, while another participant points out 【观点2】.\n\nIn addition, the speakers mention 【关键词1】 and 【关键词2】, which are closely related to the main topic.\n\nOverall, the discussion presents different views on 【主题】 and provides several useful details."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用讨论模板",
+              "template": "The group discussion provides a comprehensive overview of 【主题】.\n\nOne participant argues that 【观点1】, while another speaker presents a different perspective by emphasizing 【观点2】.\n\nThe discussion also highlights 【关键词1】 and 【关键词2】, both of which are important to understanding the issue.\n\nOverall, the speakers exchange several meaningful opinions, and the discussion offers a balanced and informative analysis of 【主题】."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "RTS",
+      "title": "Respond to a Situation",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "complaint",
+              "label": "投诉 / 抱怨类",
+              "template": "I am writing to express my concern about 【问题】.\n\nUnfortunately, this situation has caused 【影响】.\n\nI would appreciate it if you could look into this matter and provide a suitable solution.\n\nThank you for your attention."
+            },
+            {
+              "key": "request_help",
+              "label": "寻求帮助类",
+              "template": "I am contacting you to ask for your help with 【问题】.\n\nAt the moment, I am having difficulty with 【困难】.\n\nCould you please help me with this issue or give me some advice?\n\nThank you very much for your support."
+            },
+            {
+              "key": "apology",
+              "label": "道歉解释类",
+              "template": "I would like to apologise for 【问题】.\n\nThe reason is that 【原因】.\n\nI understand that this may have caused inconvenience, and I will try my best to avoid this situation in the future.\n\nThank you for your understanding."
+            },
+            {
+              "key": "suggestion",
+              "label": "建议解决类",
+              "template": "I would like to make a suggestion regarding 【问题】.\n\nIn my opinion, it would be helpful to 【建议】.\n\nThis may improve the situation and make things more efficient.\n\nThank you for considering my suggestion."
+            },
+            {
+              "key": "invitation",
+              "label": "邀请安排类",
+              "template": "I would like to invite you to 【活动】.\n\nThe event will take place at 【时间/地点】.\n\nIt would be great if you could join us.\n\nPlease let me know whether you are available."
+            },
+            {
+              "key": "refusal",
+              "label": "拒绝婉拒类",
+              "template": "Thank you very much for your invitation/request regarding 【事情】.\n\nUnfortunately, I am unable to accept it because 【原因】.\n\nI hope you can understand my situation.\n\nThank you again for your consideration."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "complaint",
+              "label": "投诉 / 抱怨类",
+              "template": "I am writing to formally express my concern about 【问题】.\n\nThis issue has caused 【影响】, and it has made the situation rather inconvenient.\n\nI would appreciate it if you could investigate this matter and provide an appropriate solution as soon as possible.\n\nThank you for your attention, and I look forward to your response."
+            },
+            {
+              "key": "request_help",
+              "label": "寻求帮助类",
+              "template": "I am contacting you to request assistance with 【问题】.\n\nCurrently, I am experiencing difficulty with 【困难】, and I am not sure how to deal with it effectively.\n\nI would be grateful if you could offer some guidance or help me resolve this issue.\n\nThank you for your time and support."
+            },
+            {
+              "key": "apology",
+              "label": "道歉解释类",
+              "template": "I would like to sincerely apologise for 【问题】.\n\nThis happened because 【原因】, and I understand that it may have caused inconvenience.\n\nI will take responsibility for the situation and make sure that similar problems do not happen again.\n\nThank you for your understanding and patience."
+            },
+            {
+              "key": "suggestion",
+              "label": "建议解决类",
+              "template": "I would like to offer a suggestion regarding 【问题】.\n\nFrom my perspective, it may be beneficial to 【建议】, as this could help improve 【方面】.\n\nThis solution may make the situation more effective and convenient for everyone involved.\n\nThank you for considering my suggestion."
+            },
+            {
+              "key": "invitation",
+              "label": "邀请安排类",
+              "template": "I would like to invite you to 【活动】, which will be held at 【时间/地点】.\n\nThis event will be a valuable opportunity to 【目的】.\n\nIt would be wonderful if you could attend and participate.\n\nPlease let me know whether you are available, and I hope to hear from you soon."
+            },
+            {
+              "key": "refusal",
+              "label": "拒绝婉拒类",
+              "template": "Thank you very much for your invitation/request regarding 【事情】.\n\nUnfortunately, I am unable to accept it due to 【原因】.\n\nI truly appreciate your consideration, and I hope there will be another opportunity in the future.\n\nThank you for your understanding."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "complaint",
+              "label": "投诉 / 抱怨类",
+              "template": "I am writing to formally raise my concern regarding 【问题】.\n\nUnfortunately, this matter has resulted in 【影响】, which has caused considerable inconvenience.\n\nI would greatly appreciate it if you could look into this issue carefully and arrange a suitable solution at your earliest convenience.\n\nThank you for your prompt attention to this matter, and I look forward to receiving your response."
+            },
+            {
+              "key": "request_help",
+              "label": "寻求帮助类",
+              "template": "I am contacting you to seek assistance with 【问题】.\n\nAt present, I am facing difficulty with 【困难】, and I would appreciate some professional guidance on how to resolve it.\n\nIt would be very helpful if you could provide advice, support, or an alternative solution.\n\nThank you very much for your time and assistance. I look forward to your reply."
+            },
+            {
+              "key": "apology",
+              "label": "道歉解释类",
+              "template": "I would like to offer my sincere apologies for 【问题】.\n\nThe situation occurred because 【原因】, and I fully understand that it may have caused inconvenience or difficulty.\n\nI will take appropriate steps to address the issue and ensure that a similar situation does not occur again.\n\nThank you for your understanding, patience and consideration."
+            },
+            {
+              "key": "suggestion",
+              "label": "建议解决类",
+              "template": "I would like to put forward a suggestion concerning 【问题】.\n\nIn my view, it would be highly beneficial to 【建议】, as this could improve 【方面】 and make the situation more efficient.\n\nThis approach may also help prevent similar issues in the future.\n\nThank you for taking my suggestion into consideration, and I hope it will be helpful."
+            },
+            {
+              "key": "invitation",
+              "label": "邀请安排类",
+              "template": "I would like to warmly invite you to 【活动】, which is scheduled to take place at 【时间/地点】.\n\nThe purpose of this event is to 【目的】, and your participation would be greatly appreciated.\n\nI believe it will be a valuable and enjoyable opportunity for everyone involved.\n\nPlease let me know whether you are available, and I look forward to your response."
+            },
+            {
+              "key": "refusal",
+              "label": "拒绝婉拒类",
+              "template": "Thank you very much for your kind invitation/request regarding 【事情】.\n\nRegrettably, I am unable to accept it due to 【原因】.\n\nI sincerely appreciate your consideration, and I hope there will be another suitable opportunity in the future.\n\nThank you again for your understanding, and I wish you all the best."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "SWT",
+      "title": "Summarize Written Text",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The passage discusses 【主题】 and explains 【观点1】, while also mentioning 【观点2】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The passage mainly discusses 【主题】, explaining that 【观点1】, while also emphasizing 【观点2】 and its influence on 【方面】."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The passage provides a detailed discussion of 【主题】, highlighting 【观点1】, explaining 【观点2】, and further emphasizing the significance of 【观点3】 in relation to 【方面】."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "Essay",
+      "title": "Essay",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "discussion",
+              "label": "讨论类",
+              "template": "Nowadays, the issue of 【话题】 has become a common topic of discussion. Some people believe that 【观点1】, while others argue that 【观点2】. In my opinion, both views have their own reasons.\n\nOn the one hand, 【观点1】 may bring several benefits. For example, 【例子1】. This shows that 【解释1】.\n\nOn the other hand, 【观点2】 is also reasonable. For instance, 【例子2】. Therefore, 【解释2】.\n\nIn conclusion, although both sides are understandable, I believe that 【个人观点】."
+            },
+            {
+              "key": "non_discussion",
+              "label": "非讨论类",
+              "template": "Nowadays, 【话题】 has become an important issue in modern society. I believe that 【个人观点】.\n\nFirst of all, 【原因1】. For example, 【例子1】. This can help people understand why 【解释1】.\n\nIn addition, 【原因2】. For instance, 【例子2】. As a result, 【解释2】.\n\nIn conclusion, 【话题】 is important, and I believe that 【个人观点总结】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "discussion",
+              "label": "讨论类",
+              "template": "In recent years, the issue of 【话题】 has generated considerable debate. Some people claim that 【观点1】, whereas others believe that 【观点2】. From my perspective, although both opinions are reasonable, I tend to support 【个人观点】.\n\nOn the one hand, those who support 【观点1】 may argue that 【原因1】. For example, 【例子1】. This suggests that 【解释1】.\n\nOn the other hand, supporters of 【观点2】 believe that 【原因2】. For instance, 【例子2】. This is because 【解释2】.\n\nIn conclusion, while both views have valid points, I believe that 【个人观点】 is more convincing."
+            },
+            {
+              "key": "non_discussion",
+              "label": "非讨论类",
+              "template": "In contemporary society, 【话题】 has become increasingly important. I strongly believe that 【个人观点】.\n\nThe first reason is that 【原因1】. For example, 【例子1】. This demonstrates that 【解释1】.\n\nAnother important reason is that 【原因2】. For instance, 【例子2】. Therefore, 【解释2】.\n\nIn conclusion, considering the reasons above, I believe that 【个人观点总结】."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "discussion",
+              "label": "讨论类",
+              "template": "In contemporary society, the issue of 【话题】 has sparked widespread debate. While some individuals maintain that 【观点1】, others argue that 【观点2】. In my view, although both perspectives have merit, 【个人观点】 is more persuasive.\n\nOn the one hand, advocates of 【观点1】 may argue that 【原因1】. A clear example of this is 【例子1】. This indicates that 【解释1】, which can produce positive outcomes for individuals and society.\n\nOn the other hand, those who support 【观点2】 believe that 【原因2】. For instance, 【例子2】. This suggests that 【解释2】, especially in situations where 【条件】.\n\nIn conclusion, although both arguments are understandable, I am convinced that 【个人观点总结】 because it offers more practical and long-term benefits."
+            },
+            {
+              "key": "non_discussion",
+              "label": "非讨论类",
+              "template": "In the modern world, 【话题】 has become a matter of increasing importance. I firmly believe that 【个人观点】, as it can bring significant benefits to both individuals and society.\n\nTo begin with, 【原因1】 plays a crucial role in this issue. For example, 【例子1】. This demonstrates that 【解释1】, which can lead to more positive outcomes.\n\nFurthermore, 【原因2】 should not be overlooked. For instance, 【例子2】. This shows that 【解释2】 and highlights the broader significance of 【话题】.\n\nIn conclusion, based on the reasons discussed above, I strongly believe that 【个人观点总结】."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionType": "SST",
+      "title": "Summarize Spoken Text",
+      "needTemplate": true,
+      "scores": [
+        {
+          "level": 6,
+          "label": "6分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture mainly discusses 【主题】. The speaker mentions 【关键词1】 and 【关键词2】. In addition, 【关键词3】 is also discussed. Overall, the lecture provides useful information about 【主题】."
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "label": "7分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture mainly focuses on 【主题】. The speaker explains that 【观点1】 and also mentions 【关键词1】. In addition, the lecture discusses 【关键词2】, which is closely related to 【主题】. Overall, the lecture provides a clear explanation of the topic."
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "label": "8分 / 满分模板",
+          "categories": [
+            {
+              "key": "general",
+              "label": "通用模板",
+              "template": "The lecture provides an informative discussion of 【主题】. The speaker highlights 【观点1】 and explains its relationship with 【关键词1】. Furthermore, the lecture emphasizes 【关键词2】 and 【关键词3】, which are important for understanding the main issue. Overall, the lecture presents a clear and detailed explanation of 【主题】."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,6 @@
 
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
-
-const NEW_OAUTH_USER_BLOCK_WINDOW_MS = 10 * 60 * 1000;
 const AUTH_NEXT_COOKIE = "auth_next";
 
 function getCookieValue(request: Request, name: string) {
@@ -82,53 +79,6 @@ export async function GET(request: Request) {
       );
     }
 
-    const profileCreatedAt =
-      typeof profile.created_at === "string"
-        ? new Date(profile.created_at)
-        : null;
-
-    const userCreatedAt =
-      typeof user.created_at === "string" ? new Date(user.created_at) : null;
-
-    const now = Date.now();
-
-    const profileWasJustCreated =
-      profileCreatedAt !== null &&
-      now - profileCreatedAt.getTime() >= 0 &&
-      now - profileCreatedAt.getTime() <= NEW_OAUTH_USER_BLOCK_WINDOW_MS;
-
-    const authUserWasJustCreated =
-      userCreatedAt !== null &&
-      now - userCreatedAt.getTime() >= 0 &&
-      now - userCreatedAt.getTime() <= NEW_OAUTH_USER_BLOCK_WINDOW_MS;
-
-    if (profileWasJustCreated || authUserWasJustCreated) {
-      console.log("new OAuth profile blocked =", user.id);
-
-      await supabase.auth.signOut();
-
-      const adminSupabase = createAdminClient();
-
-      const { error: deleteProfileError } = await adminSupabase
-        .from("profiles")
-        .delete()
-        .eq("id", user.id);
-
-      if (deleteProfileError) {
-        console.error("delete new OAuth profile failed:", deleteProfileError);
-      }
-
-      const { error: deleteUserError } =
-        await adminSupabase.auth.admin.deleteUser(user.id);
-
-      if (deleteUserError) {
-        console.error("delete new OAuth auth user failed:", deleteUserError);
-      }
-
-      return redirectAndClearAuthNext(
-        `${origin}/sign-up?error=${encodeURIComponent("registration_closed")}`
-      );
-    }
   }
 
   console.log("redirecting to =", `${origin}${next}`);

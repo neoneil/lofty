@@ -295,6 +295,30 @@ a,
   user-select: none;
 }
 
+@keyframes profile-menu-in {
+  from {
+    opacity: 0;
+    transform: translate(12px, -10px) scale(0.72);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes profile-menu-out {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(12px, -10px) scale(0.72);
+  }
+}
+
   /* 统一 scrollbar */
 ::selection {
   background: var(--primary-soft);

@@ -386,6 +386,9 @@ export default function RecordingPanel({
     };
   }, [autoStart, startRecording]);
 
+  const showRecordingPanel = phase === "beeping" || phase === "recording";
+  const isRecording = phase === "recording";
+
   return (
     <div className="space-y-4">
       <RecordingStartBeep
@@ -442,7 +445,7 @@ export default function RecordingPanel({
         </div>
       ) : null}
 
-      {phase === "recording" ? (
+      {showRecordingPanel ? (
         <Card className="mx-auto w-full">
           <CardContent className="space-y-4">
             {/* ===== 进度条（你要的核心）===== */}
@@ -468,13 +471,18 @@ export default function RecordingPanel({
                 <Lottie animationData={recordingAnimation} loop />
               </div>
               <div className="text-sm font-semibold text-[var(--text)]">
-                正在录音
+                {isRecording ? "正在录音" : "即将开始录音"}
               </div>
             </div>
 
             <div className="flex justify-center">
-              <Button type="button" onClick={stopRecording} variant="primary">
-                结束
+              <Button
+                type="button"
+                onClick={stopRecording}
+                variant="primary"
+                disabled={!isRecording}
+              >
+                {isRecording ? "结束" : "准备中"}
               </Button>
             </div>
           </CardContent>

@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
 
-const REGISTRATION_CLOSED = true;
+const REGISTRATION_CLOSED = false;
 
 function GoogleIcon() {
   return (

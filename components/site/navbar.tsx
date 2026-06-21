@@ -22,11 +22,14 @@ export default async function Navbar() {
 
   let role: string | null = null;
   let selectiveAccess = false;
+  let profileName: string | null = null;
+  let profileEmail: string | null = null;
+  let profileAvatar: string | null = null;
 
   if (user) {
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role, selective_access")
+      .select("role, selective_access, full_name, email, avatar_url")
       .eq("id", user.id)
       .single();
 
@@ -36,6 +39,9 @@ export default async function Navbar() {
 
     role = profile?.role ?? null;
     selectiveAccess = profile?.selective_access ?? false;
+    profileName = profile?.full_name ?? null;
+    profileEmail = profile?.email ?? null;
+    profileAvatar = profile?.avatar_url ?? null;
   }
 
   const fallbackAdminEmails = ["adelaideneocs@gmail.com"];
@@ -46,13 +52,15 @@ export default async function Navbar() {
     (user?.email ? fallbackAdminEmails.includes(user.email) : false);
 
   const name =
+    profileName ||
     user?.user_metadata?.full_name ||
     user?.user_metadata?.name ||
     "User";
 
-  const email = user?.email || "";
+  const email = profileEmail || user?.email || "";
 
   const avatar =
+    profileAvatar ||
     user?.user_metadata?.avatar_url ||
     user?.user_metadata?.picture ||
     "/default-avatar.png";

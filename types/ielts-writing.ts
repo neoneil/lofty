@@ -34,35 +34,91 @@ export type ParagraphRole =
 export type LanguageIssueType =
   | "grammar"
   | "word_choice"
+  | "word_form"
+  | "part_of_speech"
   | "collocation"
   | "sentence_structure"
+  | "word_order"
   | "punctuation"
   | "spelling"
-  | "cohesion";
+  | "cohesion"
+  | "chinglish";
 
 export type SupportQuality = "strong" | "adequate" | "weak";
 
-export type IELTSTask2ReviewResult = {
+export type IssueSeverity = "low" | "medium" | "high";
+
+export type BandUpgradeVersions = {
+  original_sentence: string;
+  corrected_sentence: string;
+  plus_0_5_version: string;
+  band8_version: string;
+  band9_version: string;
+  explanation_cn: string;
+  explanation_en: string;
+};
+
+export type SentenceIssue = {
+  issue_type: LanguageIssueType;
+  severity: IssueSeverity;
+  original_text: string;
+  suggested_text: string;
+  explanation_cn: string;
+  explanation_en: string;
+  band_impact: string;
+  micro_fix: string;
+  better_version: string;
+  band8_version: string;
+  band9_version: string;
+};
+
+export type SentenceAnalysis = BandUpgradeVersions & {
+  sentence_id: string;
+  sentence_number: number;
+  sentence_level_comment_cn: string;
+  sentence_level_comment_en: string;
+  issues: SentenceIssue[];
+};
+
+export type ParagraphAnalysis = {
+  paragraph_id: string;
+  paragraph_number: number;
+  role: ParagraphRole;
+  original_text: string;
+  paragraph_feedback_cn: string;
+  paragraph_feedback_en: string;
+  logic_feedback: string;
+  support_quality: SupportQuality;
+  sentences: SentenceAnalysis[];
+};
+
+export type EssayAnalysisResponse = {
   task: "IELTS Writing Task 2";
   word_count: number;
   estimated_overall_band: number;
+  essay_type: EssayType;
+  stance_style: StanceStyle;
+  stance_consistency: StanceConsistency;
+  logic_quality: LogicQuality;
+  overall_band: number;
+  scores: {
+    task_response: number;
+    coherence_cohesion: number;
+    lexical_resource: number;
+    grammar_accuracy: number;
+  };
   band_scores: {
-    task_response: {
-      score: number;
-      comment: string;
-    };
-    coherence_and_cohesion: {
-      score: number;
-      comment: string;
-    };
-    lexical_resource: {
-      score: number;
-      comment: string;
-    };
-    grammatical_range_and_accuracy: {
-      score: number;
-      comment: string;
-    };
+    task_response: { score: number; comment: string };
+    coherence_and_cohesion: { score: number; comment: string };
+    lexical_resource: { score: number; comment: string };
+    grammatical_range_and_accuracy: { score: number; comment: string };
+  };
+  overall_feedback: {
+    summary_cn: string;
+    summary_en: string;
+    main_strengths: string[];
+    main_weaknesses: string[];
+    priority_actions: string[];
   };
   overall_assessment: {
     essay_type: EssayType;
@@ -80,11 +136,19 @@ export type IELTSTask2ReviewResult = {
     problems: string[];
     suggestions: string[];
   }[];
+  paragraphs: ParagraphAnalysis[];
   language_issues: {
     original: string;
     issue_type: LanguageIssueType;
     explanation: string;
     suggested_revision: string;
+  }[];
+  top_10_language_issues: {
+    issue_type: LanguageIssueType;
+    original_text: string;
+    suggested_text: string;
+    explanation_cn: string;
+    explanation_en: string;
   }[];
   argument_feedback: {
     main_points_supported: boolean;
@@ -99,4 +163,11 @@ export type IELTSTask2ReviewResult = {
     priority_3: string;
     next_step_advice: string;
   };
+  final_rewritten_essay: {
+    band7_version: string;
+    band8_version: string;
+    band9_version: string;
+  };
 };
+
+export type IELTSTask2ReviewResult = EssayAnalysisResponse;
