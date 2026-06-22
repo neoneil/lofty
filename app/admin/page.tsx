@@ -71,6 +71,12 @@ const adminModules = [
     tag: "AI response",
   },
   {
+    title: "AI 使用额度管理",
+    desc: "查看用户 AI 使用量，调整每日/月度额度和无限额度。",
+    href: "/admin/ai-usage",
+    tag: "AI Usage",
+  },
+  {
     title: "WFD操作",
     desc: "活跃题目待定",
     href: "/admin/db-playground",

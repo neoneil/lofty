@@ -428,23 +428,6 @@ export default function AdminSelectiveHistoryPage() {
       .sort((a, b) => b.day.localeCompare(a.day));
   }, [writingRows, mathRows]);
 
-  useEffect(() => {
-    if (groupedDays.length === 0) return;
-
-    setOpenStudents((prev) => {
-      const next = { ...prev };
-      for (const dayGroup of groupedDays) {
-        for (const student of dayGroup.students) {
-          const key = `${dayGroup.day}__${student.userId}`;
-          if (!(key in next)) {
-            next[key] = false;
-          }
-        }
-      }
-      return next;
-    });
-  }, [groupedDays]);
-
   function toggleStudent(day: string, userId: string) {
     const key = `${day}__${userId}`;
     setOpenStudents((prev) => ({

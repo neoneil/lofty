@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   closestCenter,
@@ -56,8 +56,8 @@ type Question = {
 type Attempt = {
   id: string;
   score: number | null;
-  user_answer: any;
-  ai_feedback: any;
+  user_answer: unknown;
+  ai_feedback: unknown;
   submitted_at: string;
 };
 
@@ -71,6 +71,20 @@ type SentenceItem = {
   text: string;
   displayOrder: number;
 };
+
+function createShuffledSentences(sentences: string[]) {
+  return sentences
+    .map((text, index) => ({
+      id: `${index}`,
+      text,
+      displayOrder: index + 1,
+    }))
+    .sort(() => Math.random() - 0.5)
+    .map((sentence, index) => ({
+      ...sentence,
+      displayOrder: index + 1,
+    }));
+}
 
 const keepDragInsideList: Modifier = ({
   containerNodeRect,
@@ -185,27 +199,33 @@ function SortableSentence({
 }
 
 export default function RoDetailClient({ question, attempts }: Props) {
-  const initialSentences = useMemo(() => {
-    return question.question_body_text.map((text, index) => ({
-      id: `${index}`,
-      text,
-      displayOrder: index + 1,
-    }));
-  }, [question.question_body_text]);
+  const [initialShuffle] = useState<SentenceItem[]>(() => createShuffledSentences(question.question_body_text));
 
-  const [initialShuffle, setInitialShuffle] = useState<SentenceItem[]>([]);
-
-  const [sentences, setSentences] = useState<SentenceItem[]>([]);
+  const [sentences, setSentences] = useState<SentenceItem[]>(() => initialShuffle);
 
   const [submitted, setSubmitted] = useState(false);
 
   const [correctCount, setCorrectCount] = useState(0);
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
+  const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
+    const ids = getQuestionOrder("ro");
 
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
+    const currentIndex = ids.findIndex((qId) => qId === question.id);
 
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
+    if (currentIndex === -1) {
+      return {
+        prevQuestionId: null,
+        nextQuestionId: null,
+        questionNumber: 0,
+      };
+    }
+
+    return {
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+      questionNumber: currentIndex + 1,
+    };
+  }, [question.id]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -214,37 +234,6 @@ export default function RoDetailClient({ question, attempts }: Props) {
       },
     }),
   );
-
-  useEffect(() => {
-    const ids = getQuestionOrder("ro");
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return;
-    }
-
-    setQuestionNumber(currentIndex + 1);
-
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
-  }, [question.id]);
-
-  useEffect(() => {
-    const shuffled = [...initialSentences]
-      .sort(() => Math.random() - 0.5)
-      .map((sentence, index) => ({
-        ...sentence,
-        displayOrder: index + 1,
-      }));
-
-    setInitialShuffle(shuffled);
-
-    setSentences(shuffled);
-  }, [initialSentences]);
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;

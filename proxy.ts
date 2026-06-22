@@ -11,7 +11,7 @@ export async function proxy(
   request: NextRequest,
 ) {
 
-  let response =
+  const response =
     NextResponse.next();
 
   /////////////////////////////////////////

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { createClient } from "@/lib/supabase/server";
 import type {
   IELTSWritingTask2Request,
   IELTSTask2ReviewResult,
@@ -8,6 +10,9 @@ import type {
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const AI_FEATURE = "ielts_writing_review";
+const AI_MODEL = "gpt-4o-mini";
 
 const SYSTEM_PROMPT = `
 You are a professional IELTS Writing Task 2 examiner and writing coach.
@@ -269,6 +274,16 @@ Important:
 
 export async function POST(req: Request) {
   try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body: IELTSWritingTask2Request = await req.json();
 
     if (!body.promptQuestion || !body.essayText) {
@@ -280,14 +295,44 @@ export async function POST(req: Request) {
 
     const localWordCount = countWords(body.essayText);
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.2,
-      response_format: { type: "json_object" },
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: buildUserPrompt(body) },
-      ],
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
+    let completion;
+
+    try {
+      completion = await openai.chat.completions.create({
+        model: AI_MODEL,
+        temperature: 0.2,
+        response_format: { type: "json_object" },
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: buildUserPrompt(body) },
+        ],
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({
+      userId: user.id,
+      feature: AI_FEATURE,
+      model: AI_MODEL,
+      promptTokens: completion.usage?.prompt_tokens ?? 0,
+      completionTokens: completion.usage?.completion_tokens ?? 0,
+      totalTokens: completion.usage?.total_tokens ?? 0,
+      status: "success",
     });
 
     const content = completion.choices[0]?.message?.content;

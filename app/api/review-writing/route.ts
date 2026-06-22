@@ -1,10 +1,15 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const AI_FEATURE = "selective_writing_review";
+const AI_MODEL = "gpt-5.4";
 
 type RequestBody = {
   writingQuestionId?: string;
@@ -18,6 +23,16 @@ type RequestBody = {
 
 export async function POST(req: Request) {
   try {
+    const authSupabase = await createClient();
+    const {
+      data: { user },
+      error: userError,
+    } = await authSupabase.auth.getUser();
+
+    if (userError || !user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = (await req.json()) as RequestBody;
 
     const writingQuestionId = String(body.writingQuestionId ?? "");
@@ -49,6 +64,10 @@ export async function POST(req: Request) {
         { error: "Missing userId." },
         { status: 400 }
       );
+    }
+
+    if (userId !== user.id) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     if (!essay.trim()) {
@@ -141,8 +160,17 @@ export async function POST(req: Request) {
       strict: true,
     };
 
-    const response = await client.responses.create({
-      model: "gpt-5.4",
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
+    let response;
+
+    try {
+      response = await client.responses.create({
+      model: AI_MODEL,
       input: [
         {
           role: "system",
@@ -216,6 +244,29 @@ The Chinese should match the English closely.
           ...schema,
         },
       },
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+      });
+
+      throw error;
+    }
+
+    const usage = response.usage as { input_tokens?: number; output_tokens?: number; total_tokens?: number } | undefined;
+
+    await recordAiUsage({
+      userId: user.id,
+      feature: AI_FEATURE,
+      model: AI_MODEL,
+      promptTokens: usage?.input_tokens ?? 0,
+      completionTokens: usage?.output_tokens ?? 0,
+      totalTokens: usage?.total_tokens ?? 0,
+      status: "success",
     });
 
     const parsed = JSON.parse(response.output_text) as {

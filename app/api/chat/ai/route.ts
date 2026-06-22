@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const AI_FEATURE = 'chat';
+const AI_MODEL = 'gpt-4o-mini';
 
 const SYSTEM_PROMPT = `
 You are the AI tutor for LoftyPTE (致远教育).
@@ -134,6 +138,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
     // 取最近 5 条，先按新->旧，再 reverse 成 旧->新 给模型
     const { data: recentMessagesDesc, error: messagesError } = await supabase
       .from('chat_messages')
@@ -152,16 +162,40 @@ export async function POST(req: NextRequest) {
 
     const recentMessages = [...(recentMessagesDesc ?? [])].reverse();
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      temperature: 0.4,
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        {
-          role: 'user',
-          content: buildUserPrompt(trimmedMessage, recentMessages),
-        },
-      ],
+    let completion;
+
+    try {
+      completion = await openai.chat.completions.create({
+        model: AI_MODEL,
+        temperature: 0.4,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          {
+            role: 'user',
+            content: buildUserPrompt(trimmedMessage, recentMessages),
+          },
+        ],
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: 'error',
+        errorMessage: error instanceof Error ? error.message : 'OpenAI request failed',
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({
+      userId: user.id,
+      feature: AI_FEATURE,
+      model: AI_MODEL,
+      promptTokens: completion.usage?.prompt_tokens ?? 0,
+      completionTokens: completion.usage?.completion_tokens ?? 0,
+      totalTokens: completion.usage?.total_tokens ?? 0,
+      status: 'success',
     });
 
     const reply = completion.choices[0]?.message?.content?.trim();
@@ -373,4 +407,3 @@ export async function POST(req: NextRequest) {
 //     );
 //   }
 // }
-

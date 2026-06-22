@@ -4,8 +4,13 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+type ContactFormState = {
+  ok: boolean;
+  message: string;
+};
+
 export async function sendContactEmail(
-  prevState: any,
+  _prevState: ContactFormState,
   formData: FormData
 ) {
   try {
@@ -40,7 +45,7 @@ export async function sendContactEmail(
       ok: true,
       message: "提交成功，我们会联系你！",
     };
-  } catch (e) {
+  } catch {
     return {
       ok: false,
       message: "发送失败，请稍后再试",

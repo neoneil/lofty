@@ -24,7 +24,7 @@ type Tone = "primary" | "success" | "warning" | "danger";
 type Props = {
   variant?: Variant;
 
-  data: Record<string, any>[];
+  data: Record<string, unknown>[];
 
   xKey?: string;
 

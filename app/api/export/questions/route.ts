@@ -24,12 +24,14 @@ type ExportPayload = {
   exportKey: string;
 };
 
+type ExportRow = Record<string, string | number | boolean | null | undefined>;
+
 type ExportConfig = {
   title: string;
   schema: string;
   table: string;
   sortColumns?: { column: string; ascending?: boolean }[];
-  formatter: (item: any, index: number) => string[];
+  formatter: (item: ExportRow, index: number) => string[];
 };
 
 const EXPORT_CONFIG: Record<string, ExportConfig> = {

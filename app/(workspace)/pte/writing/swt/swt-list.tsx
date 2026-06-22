@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
@@ -64,12 +64,6 @@ export default function SwtList({
         const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
         return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
     }, [safeCurrentPage, initialQuestions]);
-
-    useEffect(() => {
-        if (currentPage > totalPages) {
-            setCurrentPage(totalPages);
-        }
-    }, [currentPage, totalPages]);
 
     const goToPage = (page: number) => {
         setCurrentPage(page);
@@ -245,6 +239,5 @@ export default function SwtList({
     </section>
   );
 }
-
 
 

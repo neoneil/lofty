@@ -79,23 +79,23 @@ export async function checkAiAccess({
 
   const { count: todayUsed } = await supabase
     .from("ai_usage_logs")
-    .select("*", {
+    .select("id", {
       count: "exact",
       head: true,
     })
     .eq("user_id", userId)
-    .eq("status", "success")
-    .gte("created_at", todayStart);
+    .gte("created_at", todayStart)
+    .eq("status", "success");
 
   const { count: monthUsed } = await supabase
     .from("ai_usage_logs")
-    .select("*", {
+    .select("id", {
       count: "exact",
       head: true,
     })
     .eq("user_id", userId)
-    .eq("status", "success")
-    .gte("created_at", monthStart);
+    .gte("created_at", monthStart)
+    .eq("status", "success");
 
   const usedToday = todayUsed ?? 0;
   const usedMonth = monthUsed ?? 0;

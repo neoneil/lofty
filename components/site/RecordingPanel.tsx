@@ -3,6 +3,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
+import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import RecordingStartBeep from "@/components/site/RecordingStartBeep";
 import { Button } from "@/components/ui-v2/button";
@@ -22,6 +23,7 @@ type Props = {
   autoStart?: boolean;
   uploadUrl: string;
   uploadFormat?: "original" | "wav";
+  aiUsageFeature?: string;
   initialRecordings?: string[];
   onUploadSuccess?: (recording: {
     id: string;
@@ -124,6 +126,7 @@ export default function RecordingPanel({
   autoStart = false,
   uploadUrl,
   uploadFormat = "original",
+  aiUsageFeature,
   initialRecordings = [],
   onUploadSuccess,
 }: Props) {
@@ -505,34 +508,37 @@ export default function RecordingPanel({
             ) : null}
 
             <div className="flex justify-center gap-3">
-              <Button
-                type="button"
-                onClick={uploadRecording}
-                disabled={isUploading}
-                variant="primary"
-                className={`min-w-40 ${
-                  isUploading
-                    ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100"
-                    : ""
-                }`}
-              >
-                {isUploading ? (
-                  <span className="inline-flex items-center justify-center gap-3">
-                    <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
-                      <Lottie
-                        animationData={aiAnimation}
-                        loop
-                        autoplay
-                      />
+              {aiUsageFeature ? (
+                <AiUsageConfirmDialog feature={aiUsageFeature} title="确认上传并使用 AI 评分" description="上传本次录音并生成 AI 评分反馈会消耗 1 次 AI 评分反馈机会。" onConfirm={uploadRecording}>
+                  {(openDialog) => (
+                    <Button type="button" onClick={openDialog} disabled={isUploading} variant="primary" className={`min-w-40 ${isUploading ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100" : ""}`}>
+                      {isUploading ? (
+                        <span className="inline-flex items-center justify-center gap-3">
+                          <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                            <Lottie animationData={aiAnimation} loop autoplay />
+                          </span>
+                          <span className="text-sm font-semibold tracking-wide text-white">上传AI分析中</span>
+                        </span>
+                      ) : (
+                        "上传"
+                      )}
+                    </Button>
+                  )}
+                </AiUsageConfirmDialog>
+              ) : (
+                <Button type="button" onClick={uploadRecording} disabled={isUploading} variant="primary" className={`min-w-40 ${isUploading ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100" : ""}`}>
+                  {isUploading ? (
+                    <span className="inline-flex items-center justify-center gap-3">
+                      <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                        <Lottie animationData={aiAnimation} loop autoplay />
+                      </span>
+                      <span className="text-sm font-semibold tracking-wide text-white">上传AI分析中</span>
                     </span>
-                    <span className="text-sm font-semibold tracking-wide text-white">
-                      上传AI分析中
-                    </span>
-                  </span>
-                ) : (
-                  "上传"
-                )}
-              </Button>
+                  ) : (
+                    "上传"
+                  )}
+                </Button>
+              )}
               <Button
                 type="button"
                 onClick={cancelRecording}

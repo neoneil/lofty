@@ -15,29 +15,17 @@ import {
 import { Input } from "@/components/ui-v2/input";
 
 type ZoomClient = {
-  init: (options: {
-    zoomAppRoot: HTMLElement;
-    language: string;
-    customize?: {
-      video?: {
-        isResizable?: boolean;
-      };
-    };
-  }) => Promise<void>;
-  join: (options: {
-    signature: string;
-    meetingNumber: string;
-    password: string;
-    userName: string;
-  }) => Promise<void>;
+  init: (options: Record<string, unknown>) => Promise<unknown>;
+  join: (options: Record<string, unknown>) => Promise<unknown>;
   leaveMeeting?: () => void;
   destroyClient?: () => void;
 };
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ZoomMtgEmbedded: any;
+    ZoomMtgEmbedded: {
+      createClient: () => ZoomClient;
+    };
   }
 }
 

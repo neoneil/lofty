@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { getQuestionOrder } from "@/lib/question-order";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Textarea } from "@/components/ui-v2/textarea";
 import DictionaryText from "@/components/dictionary/dictionary-text";
+import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 
 import Tag from "@/components/ui/tag";
 
@@ -26,7 +27,16 @@ type Props = {
 
     user_answer: string;
 
-    ai_feedback: any;
+    ai_feedback: {
+      overallFeedback?: string;
+      improvedAnswer?: string;
+      weaknesses?: {
+        category?: string;
+        issue?: string;
+        example?: string;
+        suggestion?: string;
+      }[];
+    } | null;
 
     submitted_at: string;
   }[];
@@ -79,7 +89,7 @@ type SubmitResult = {
 };
 
 export default function SwtDetailClient({ question, attempts }: Props) {
-  const [startedAt] = useState(Date.now());
+  const [startedAt] = useState(() => Date.now());
 
   const [answer, setAnswer] = useState("");
 
@@ -91,28 +101,24 @@ export default function SwtDetailClient({ question, attempts }: Props) {
 
   const router = useRouter();
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
-
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
-
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
-
-  useEffect(() => {
+  const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
     const ids = getQuestionOrder("swt");
 
     const currentIndex = ids.findIndex((qId) => qId === question.id);
 
     if (currentIndex === -1) {
-      return;
+      return {
+        prevQuestionId: null,
+        nextQuestionId: null,
+        questionNumber: 0,
+      };
     }
 
-    setQuestionNumber(currentIndex + 1);
-
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
+    return {
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+      questionNumber: currentIndex + 1,
+    };
   }, [question.id]);
 
   const handleSubmit = async () => {
@@ -497,28 +503,13 @@ export default function SwtDetailClient({ question, attempts }: Props) {
       {/* SUBMIT */}
 
       <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={handleSubmit}
-          disabled={loading}
-          className="
-                        cursor-pointer
-                        inline-flex items-center
-                        justify-center
-                        gap-2
-                        rounded
-                        bg-[var(--theme)]
-                        px-5 py-3
-                        text-sm font-semibold
-                        text-white
-                        transition
-                        hover:opacity-90
-                        disabled:cursor-not-allowed
-                        disabled:opacity-50
-                    "
-        >
-          {loading ? "提交中..." : "提交答案"}
-        </button>
+        <AiUsageConfirmDialog feature="pte_swt" onConfirm={handleSubmit}>
+          {(openDialog) => (
+            <button type="button" onClick={openDialog} disabled={loading} className="inline-flex cursor-pointer items-center justify-center gap-2 rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
+              {loading ? "提交中..." : "提交答案"}
+            </button>
+          )}
+        </AiUsageConfirmDialog>
       </div>
 
       {/* NAVIGATION */}
@@ -780,10 +771,10 @@ export default function SwtDetailClient({ question, attempts }: Props) {
 
                       {/* WEAKNESSES */}
 
-                      {attempt.ai_feedback.weaknesses?.length > 0 && (
+                      {(attempt.ai_feedback.weaknesses?.length ?? 0) > 0 && (
                         <div className="space-y-3">
-                          {attempt.ai_feedback.weaknesses.map(
-                            (weakness: any, weaknessIndex: number) => (
+                          {(attempt.ai_feedback.weaknesses ?? []).map(
+                            (weakness, weaknessIndex) => (
                               <div
                                 key={weaknessIndex}
                                 className="

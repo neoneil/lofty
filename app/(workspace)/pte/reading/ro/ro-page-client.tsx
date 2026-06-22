@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentProps } from "react";
 import { useMemo, useState } from "react";
 import { QuestionInfoCard } from "@/components/site/QuestionInfoCard";
 import QuestionToolbar from "@/components/site/question-toolbar";
@@ -29,13 +30,14 @@ type Question = {
 
 type Props = {
   questions: Question[];
-  questionInfo: any;
+  questionInfo: ComponentProps<typeof QuestionInfoCard>["questionInfo"];
 };
 
 export default function RoPageClient({
   questions,
   questionInfo,
 }: Props) {
+  const [nowMs] = useState(() => Date.now());
   const [searchTerm, setSearchTerm] = useState("");
 
   const [questionStatus, setQuestionStatus] = useState("is_prediction");
@@ -69,9 +71,7 @@ export default function RoPageClient({
       result = result.filter((q) => {
         const created = new Date(q.created_at).getTime();
 
-        const now = Date.now();
-
-        const days = (now - created) / (1000 * 60 * 60 * 24);
+        const days = (nowMs - created) / (1000 * 60 * 60 * 24);
 
         return days <= 14;
       });
@@ -125,7 +125,7 @@ export default function RoPageClient({
     }
 
     return result;
-  }, [questions, searchTerm, questionStatus, practiceStatus, activityStatus]);
+  }, [questions, searchTerm, questionStatus, practiceStatus, activityStatus, nowMs]);
 
   return (
     <section className="w-full space-y-2">

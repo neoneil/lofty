@@ -124,19 +124,13 @@ export default function SelectiveMathPage() {
     );
   }, [topicCategory]);
 
-  const availableSubtopics = selectedTopic?.subtopics ?? [];
+  const availableSubtopics = useMemo(() => selectedTopic?.subtopics ?? [], [selectedTopic]);
 
-  useEffect(() => {
-    if (!availableSubtopics.length) {
-      setSubtopic("");
-      return;
-    }
-
-    const stillValid = availableSubtopics.some((item) => item.key === subtopic);
-    if (!stillValid) {
-      setSubtopic(availableSubtopics[0].key);
-    }
-  }, [availableSubtopics, subtopic]);
+  function handleTopicCategoryChange(value: string) {
+    const nextTopic = mathematicsBlueprint.find((item) => item.key === value);
+    setTopicCategory(value);
+    setSubtopic(nextTopic?.subtopics[0]?.key ?? "");
+  }
 
   async function handleGenerateQuestion() {
     if (!user) {
@@ -314,7 +308,7 @@ export default function SelectiveMathPage() {
             </label>
             <select
               value={topicCategory}
-              onChange={(e) => setTopicCategory(e.target.value)}
+              onChange={(e) => handleTopicCategoryChange(e.target.value)}
               className="w-full round border border-(--border-color) bg-white px-3 py-2 text-(--text-main) outline-none"
             >
               {mathematicsBlueprint.map((topic) => (

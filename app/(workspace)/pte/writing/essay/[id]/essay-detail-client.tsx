@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
+import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import AiSubmitButton from "@/components/ai/ai-submit-button";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import { Badge } from "@/components/ui-v2/badge";
@@ -854,12 +855,11 @@ export default function EssayDetailClient({
       {/* SUBMIT */}
 
       <div className="flex justify-end">
-        <AiSubmitButton
-          loading={loading}
-          disabled={loading || !!result}
-          completed={!!result}
-          onClick={handleSubmit}
-        />
+        <AiUsageConfirmDialog feature="pte_essay" onConfirm={handleSubmit}>
+          {(openDialog) => (
+            <AiSubmitButton loading={loading} disabled={loading || !!result} completed={!!result} onClick={openDialog} />
+          )}
+        </AiUsageConfirmDialog>
       </div>
 
       {/* NAVIGATION */}

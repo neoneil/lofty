@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreRA } from "@/lib/pte-speaking/score-ra";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
@@ -7,6 +8,8 @@ import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recordin
 
 const MODULE_TYPE = "RA";
 const QUESTION_SOURCE = "ra";
+const AI_FEATURE = "pte_ra";
+const AI_MODEL = "gpt-4o-transcribe+gpt-4o-mini";
 
 function getAudioExtension(file: File) {
   if (file.type.includes("wav")) return "wav";
@@ -58,6 +61,12 @@ export async function POST(req: Request) {
       );
     }
 
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
     const filePath = `students-audio/ra/${user.id}/${Date.now()}.${getAudioExtension(file)}`;
 
     const { error: uploadError } = await supabase.storage
@@ -96,18 +105,36 @@ export async function POST(req: Request) {
     }
 
     const questionText = question.question_text ?? "";
-    const [transcript, azurePronunciation] = await Promise.all([
-      transcribeAudio(file),
-      assessAzurePronunciation({
-        file,
-        referenceText: questionText,
-        durationSeconds,
-      }),
-    ]);
-    const aiResult = await scoreRA({
-      questionText,
-      transcript,
-    });
+    let transcript: string;
+    let azurePronunciation;
+    let aiResult;
+
+    try {
+      [transcript, azurePronunciation] = await Promise.all([
+        transcribeAudio(file),
+        assessAzurePronunciation({
+          file,
+          referenceText: questionText,
+          durationSeconds,
+        }),
+      ]);
+      aiResult = await scoreRA({
+        questionText,
+        transcript,
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "AI scoring failed",
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({ userId: user.id, feature: AI_FEATURE, model: AI_MODEL, status: "success" });
     const azurePronunciationScore =
       azurePronunciation.summary.pronunciationScorePte ??
       aiResult.pronunciationScore;

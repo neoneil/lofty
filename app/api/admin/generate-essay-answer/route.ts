@@ -1,19 +1,24 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import type { User } from "@supabase/supabase-js";
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createClient } from "@/lib/supabase/server";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function isAdmin() {
+const AI_FEATURE = "admin_generate_essay_answer";
+const AI_MODEL = "gpt-4o-mini";
+
+async function getAdminUser(): Promise<User | null> {
   const supabase = await createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) return false;
+  if (!user) return null;
 
   const { data: profile, error } = await supabase
     .from("profiles")
@@ -21,7 +26,7 @@ async function isAdmin() {
     .eq("id", user.id)
     .single();
 
-  return !error && profile?.role === "admin";
+  return !error && profile?.role === "admin" ? user : null;
 }
 
 function buildUserPrompt(questionText: string) {
@@ -109,7 +114,9 @@ The conclusion should synthesize both sides and restate the overall position cle
 
 export async function POST(req: Request) {
   try {
-    if (!(await isAdmin())) {
+    const user = await getAdminUser();
+
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -125,18 +132,48 @@ export async function POST(req: Request) {
       );
     }
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.4,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are an expert PTE Write Essay teacher. Return only valid JSON.",
-        },
-        { role: "user", content: buildUserPrompt(body.question_text) },
-      ],
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
+    let completion;
+
+    try {
+      completion = await openai.chat.completions.create({
+        model: AI_MODEL,
+        temperature: 0.4,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are an expert PTE Write Essay teacher. Return only valid JSON.",
+          },
+          { role: "user", content: buildUserPrompt(body.question_text) },
+        ],
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({
+      userId: user.id,
+      feature: AI_FEATURE,
+      model: AI_MODEL,
+      promptTokens: completion.usage?.prompt_tokens ?? 0,
+      completionTokens: completion.usage?.completion_tokens ?? 0,
+      totalTokens: completion.usage?.total_tokens ?? 0,
+      status: "success",
     });
 
     const content = completion.choices[0]?.message?.content;

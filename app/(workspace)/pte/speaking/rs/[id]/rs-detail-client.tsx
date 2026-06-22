@@ -229,6 +229,7 @@ export default function RsDetailClient({ question }: Props) {
             autoStart
             uploadUrl="/api/pte/rs/submit"
             uploadFormat="wav"
+            aiUsageFeature="pte_rs"
             onUploadSuccess={(newRecording, response) => {
               const aiFeedback = response?.aiFeedback as RSScoreResult | undefined;
               if (aiFeedback) {
@@ -288,7 +289,7 @@ export default function RsDetailClient({ question }: Props) {
                 <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
                   <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-sm font-semibold text-[var(--text)]">
-                      Azure 发音细节
+                      培生规则下发音细节得分
                     </h3>
                     <span className="text-xs font-medium text-[var(--text-soft)]">
                       原始分 0-100，PTE 展示分已换算到 0-90

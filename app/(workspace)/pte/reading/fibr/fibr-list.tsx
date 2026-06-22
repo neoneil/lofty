@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import {
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -115,20 +114,6 @@ export default function FibrList({
       safeCurrentPage,
       initialQuestions,
     ]);
-
-  useEffect(() => {
-    if (
-      currentPage >
-      totalPages
-    ) {
-      setCurrentPage(
-        totalPages,
-      );
-    }
-  }, [
-    currentPage,
-    totalPages,
-  ]);
 
   const goToPage = (
     page: number,

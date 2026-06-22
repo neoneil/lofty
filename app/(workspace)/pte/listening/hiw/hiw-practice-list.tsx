@@ -467,12 +467,6 @@ export default function HiwPracticeList({
     [safeCurrentPage, totalPages]
   );
 
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
-
   const goToPage = (page: number) => {
     setCurrentPage(page);
     setOpenId(null);

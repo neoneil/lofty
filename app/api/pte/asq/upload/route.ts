@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
     try {
       await updateSpeakingRecordingStats({
-        supabase: supabase as any,
+        supabase,
         userId: user.id,
         moduleType: "ASQ",
         questionSource: "asq",

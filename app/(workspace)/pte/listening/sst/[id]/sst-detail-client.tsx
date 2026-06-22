@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui-v2/textarea";
 import DictionaryText from "@/components/dictionary/dictionary-text";
+import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 
 import Tag from "@/components/ui/tag";
 
@@ -475,28 +476,13 @@ export default function SstDetailClient({ question, attempts }: Props) {
       {/* SUBMIT */}
 
       <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={handleSubmit}
-          disabled={loading}
-          className="
-                        cursor-pointer
-                        inline-flex items-center
-                        justify-center
-                        gap-2
-                        rounded
-                        bg-[var(--theme)]
-                        px-5 py-3
-                        text-sm font-semibold
-                        text-white
-                        transition
-                        hover:opacity-90
-                        disabled:cursor-not-allowed
-                        disabled:opacity-50
-                    "
-        >
-          {loading ? "提交中..." : "提交答案"}
-        </button>
+        <AiUsageConfirmDialog feature="pte_sst" onConfirm={handleSubmit}>
+          {(openDialog) => (
+            <button type="button" onClick={openDialog} disabled={loading} className="inline-flex cursor-pointer items-center justify-center gap-2 rounded bg-[var(--theme)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
+              {loading ? "提交中..." : "提交答案"}
+            </button>
+          )}
+        </AiUsageConfirmDialog>
       </div>
 
       {/* NAVIGATION */}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   AlertTriangle,
@@ -78,12 +78,6 @@ export default function RoList({
       startIndex + PAGE_SIZE,
     );
   }, [safeCurrentPage, initialQuestions]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
 
   const goToPage = (page: number) => {
     setCurrentPage(page);

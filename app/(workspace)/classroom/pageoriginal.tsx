@@ -3,16 +3,27 @@
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
+type ZoomEmbeddedClient = {
+  init: (params: Record<string, unknown>) => Promise<unknown>;
+  join: (params: Record<string, unknown>) => Promise<unknown>;
+  leaveMeeting?: () => void;
+  destroyClient?: () => void;
+};
+
+type ZoomMtgEmbeddedSdk = {
+  createClient: () => ZoomEmbeddedClient;
+};
+
 declare global {
   interface Window {
-    ZoomMtgEmbedded: any;
+    ZoomMtgEmbedded: ZoomMtgEmbeddedSdk;
   }
 }
 
 export default function ClassroomPage() {
   const searchParams = useSearchParams();
 
-  const clientRef = useRef<any>(null);
+  const clientRef = useRef<ZoomEmbeddedClient | null>(null);
   const initializedRef = useRef(false);
   const joinedRef = useRef(false);
 

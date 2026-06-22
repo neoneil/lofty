@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 import Link from "next/link";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { ChevronLeft, ChevronRight, Move, RotateCcw } from "lucide-react";
 
@@ -12,6 +12,7 @@ import {
   DndContext,
   DragEndEvent,
   DragOverlay,
+  DragStartEvent,
   PointerSensor,
   useDraggable,
   useDroppable,
@@ -169,30 +170,26 @@ function FibrDetailClient({ question, attempts }: Props) {
   const [score, setScore] = useState(0);
 
   const [loading, setLoading] = useState(false);
-  const [startedAt] = useState(Date.now());
+  const [startedAt] = useState(() => Date.now());
 
-  const [prevQuestionId, setPrevQuestionId] = useState<string | null>(null);
-
-  const [nextQuestionId, setNextQuestionId] = useState<string | null>(null);
-
-  const [questionNumber, setQuestionNumber] = useState(0);
-
-  useEffect(() => {
+  const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
     const ids = getQuestionOrder("fibr");
 
     const currentIndex = ids.findIndex((qId) => qId === question.id);
 
     if (currentIndex === -1) {
-      return;
+      return {
+        prevQuestionId: null,
+        nextQuestionId: null,
+        questionNumber: 0,
+      };
     }
 
-    setQuestionNumber(currentIndex + 1);
-
-    setPrevQuestionId(currentIndex > 0 ? ids[currentIndex - 1] : null);
-
-    setNextQuestionId(
-      currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    );
+    return {
+      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
+      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
+      questionNumber: currentIndex + 1,
+    };
   }, [question.id]);
 
   const optionPool = useMemo(() => {
@@ -205,7 +202,7 @@ function FibrDetailClient({ question, attempts }: Props) {
     return question.question_body_text.split(/(\[\[blank_\d+\]\])/g);
   }, [question.question_body_text]);
 
-  function handleDragStart(event: any) {
+  function handleDragStart(event: DragStartEvent) {
     const activeData = event.active.data.current;
 
     if (!activeData) {

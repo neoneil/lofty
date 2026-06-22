@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Props = {
   open: boolean;
@@ -31,6 +31,10 @@ export default function SearchModal({
   const [results, setResults] =
     useState<SearchResult[]>([]);
 
+  const hasQuery = query.trim().length > 0;
+
+  const visibleResults = useMemo(() => hasQuery ? results : [], [hasQuery, results]);
+
   useEffect(() => {
 
     const handleKeyDown = (
@@ -58,10 +62,7 @@ export default function SearchModal({
 
   useEffect(() => {
 
-    if (!query.trim()) {
-
-      setResults([]);
-
+    if (!hasQuery) {
       return;
     }
 
@@ -101,7 +102,7 @@ export default function SearchModal({
 
     return () => clearTimeout(timeout);
 
-  }, [query]);
+  }, [hasQuery, query]);
 
   if (!open) return null;
 
@@ -182,7 +183,7 @@ export default function SearchModal({
 
         {/* results */}
 
-        {!loading && results.length > 0 && (
+        {!loading && visibleResults.length > 0 && (
 
           <div
             className="
@@ -191,7 +192,7 @@ export default function SearchModal({
             "
           >
 
-            {results.map((item) => (
+            {visibleResults.map((item) => (
 
               <a
                 key={item.question_id}
@@ -262,7 +263,7 @@ export default function SearchModal({
 
         {!loading &&
           query &&
-          results.length === 0 && (
+          visibleResults.length === 0 && (
 
           <div
             className="

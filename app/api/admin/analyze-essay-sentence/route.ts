@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import type { User } from "@supabase/supabase-js";
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createClient } from "@/lib/supabase/server";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const AI_FEATURE = "admin_analyze_essay_sentence";
+const AI_MODEL = "gpt-4o-mini";
 
 const TAG_OPTIONS = [
   "education",
@@ -59,14 +64,14 @@ const ARGUMENT_PATTERN_OPTIONS = [
 const PEEL_ROLE_OPTIONS = ["point", "explanation", "example", "link"] as const;
 const DIFFICULTY_LEVEL_OPTIONS = [1, 2, 3] as const;
 
-async function isAdmin() {
+async function getAdminUser(): Promise<User | null> {
   const supabase = await createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) return false;
+  if (!user) return null;
 
   const { data: profile, error } = await supabase
     .from("profiles")
@@ -74,7 +79,7 @@ async function isAdmin() {
     .eq("id", user.id)
     .single();
 
-  return !error && profile?.role === "admin";
+  return !error && profile?.role === "admin" ? user : null;
 }
 
 function includesOption<T extends readonly (string | number)[]>(
@@ -132,7 +137,9 @@ Chinese explanation should explain the role and writing value of the sentence in
 
 export async function POST(req: Request) {
   try {
-    if (!(await isAdmin())) {
+    const user = await getAdminUser();
+
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -155,25 +162,55 @@ export async function POST(req: Request) {
       );
     }
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.2,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are an expert PTE Write Essay teacher. Return only valid JSON using the allowed enum values.",
-        },
-        {
-          role: "user",
-          content: buildUserPrompt({
-            question_text: body.question_text,
-            essay_text: body.essay_text,
-            sentence_text: body.sentence_text,
-          }),
-        },
-      ],
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
+    let completion;
+
+    try {
+      completion = await openai.chat.completions.create({
+        model: AI_MODEL,
+        temperature: 0.2,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are an expert PTE Write Essay teacher. Return only valid JSON using the allowed enum values.",
+          },
+          {
+            role: "user",
+            content: buildUserPrompt({
+              question_text: body.question_text,
+              essay_text: body.essay_text,
+              sentence_text: body.sentence_text,
+            }),
+          },
+        ],
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({
+      userId: user.id,
+      feature: AI_FEATURE,
+      model: AI_MODEL,
+      promptTokens: completion.usage?.prompt_tokens ?? 0,
+      completionTokens: completion.usage?.completion_tokens ?? 0,
+      totalTokens: completion.usage?.total_tokens ?? 0,
+      status: "success",
     });
 
     const content = completion.choices[0]?.message?.content;

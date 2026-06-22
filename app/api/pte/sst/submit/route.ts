@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
 
+import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+
 import { scoreSST } from "./scoring/score-sst";
 
 const EXAM_TYPE = "PTE";
@@ -9,6 +11,8 @@ const MODULE_TYPE = "SST";
 const QUESTION_SOURCE = "sst";
 const QUESTION_TABLE = "sst";
 const QUESTION_SCHEMA = "pte";
+const AI_FEATURE = "pte_sst";
+const AI_MODEL = "gpt-4o-mini";
 
 export async function POST(req: Request) {
 
@@ -97,13 +101,35 @@ export async function POST(req: Request) {
     ======================================
     */
 
-    const aiResult = await scoreSST({
+    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+
+    if (!usageLimit.allowed) {
+      return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
+    }
+
+    let aiResult;
+
+    try {
+      aiResult = await scoreSST({
 
       transcriptText:
         question.transcript_text ?? "",
 
       userAnswer,
-    });
+      });
+    } catch (error) {
+      await recordAiUsage({
+        userId: user.id,
+        feature: AI_FEATURE,
+        model: AI_MODEL,
+        status: "error",
+        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+      });
+
+      throw error;
+    }
+
+    await recordAiUsage({ userId: user.id, feature: AI_FEATURE, model: AI_MODEL, status: "success" });
 
     /*
     ======================================

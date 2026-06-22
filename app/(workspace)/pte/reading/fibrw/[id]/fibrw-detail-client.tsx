@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import {
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -163,28 +162,13 @@ function FibrwDetailClient({
     useState(false);
 
   const [startedAt] =
-    useState(Date.now());
+    useState(() => Date.now());
 
-  const [
+  const {
     prevQuestionId,
-    setPrevQuestionId,
-  ] = useState<string | null>(
-    null,
-  );
-
-  const [
     nextQuestionId,
-    setNextQuestionId,
-  ] = useState<string | null>(
-    null,
-  );
-
-  const [
     questionNumber,
-    setQuestionNumber,
-  ] = useState(0);
-
-  useEffect(() => {
+  } = useMemo(() => {
 
     const ids =
       getQuestionOrder(
@@ -200,29 +184,30 @@ function FibrwDetailClient({
     if (
       currentIndex === -1
     ) {
-      return;
+      return {
+        prevQuestionId: null,
+        nextQuestionId: null,
+        questionNumber: 0,
+      };
     }
 
-    setQuestionNumber(
-      currentIndex + 1,
-    );
-
-    setPrevQuestionId(
-      currentIndex > 0
-        ? ids[
-            currentIndex - 1
-          ]
-        : null,
-    );
-
-    setNextQuestionId(
-      currentIndex <
-        ids.length - 1
-        ? ids[
-            currentIndex + 1
-          ]
-        : null,
-    );
+    return {
+      prevQuestionId:
+        currentIndex > 0
+          ? ids[
+              currentIndex - 1
+            ]
+          : null,
+      nextQuestionId:
+        currentIndex <
+          ids.length - 1
+          ? ids[
+              currentIndex + 1
+            ]
+          : null,
+      questionNumber:
+        currentIndex + 1,
+    };
 
   }, [question.id]);
 

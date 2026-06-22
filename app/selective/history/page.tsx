@@ -377,20 +377,6 @@ export default function SelectiveHistoryPage() {
       .sort((a, b) => b.day.localeCompare(a.day));
   }, [writingRows, mathRows]);
 
-  useEffect(() => {
-    if (groupedRows.length === 0) return;
-
-    setOpenDays((prev) => {
-      const next = { ...prev };
-      for (const group of groupedRows) {
-        if (!(group.day in next)) {
-          next[group.day] = false; // 不展開
-        }
-      }
-      return next;
-    });
-  }, [groupedRows]);
-
   function toggleDay(day: string) {
     setOpenDays((prev) => ({
       ...prev,

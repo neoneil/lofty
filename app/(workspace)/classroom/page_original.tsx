@@ -2,10 +2,21 @@
 
 import { useEffect, useRef } from "react";
 
+type ZoomEmbeddedClient = {
+  init: (params: Record<string, unknown>) => Promise<unknown>;
+  join: (params: Record<string, unknown>) => Promise<unknown>;
+  leaveMeeting?: () => void;
+  destroyClient?: () => void;
+};
+
+type ZoomMtgEmbeddedSdk = {
+  createClient: () => ZoomEmbeddedClient;
+};
+
 declare global {
 
   interface Window {
-    ZoomMtgEmbedded: any;
+    ZoomMtgEmbedded: ZoomMtgEmbeddedSdk;
   }
 
 }
@@ -13,7 +24,7 @@ declare global {
 export default function ClassroomPage() {
 
   const clientRef =
-    useRef<any>(null);
+    useRef<ZoomEmbeddedClient | null>(null);
 
   const initializedRef =
     useRef(false);
@@ -256,9 +267,9 @@ export default function ClassroomPage() {
           clientRef.current
         ) {
 
-          clientRef.current.leaveMeeting();
+          clientRef.current.leaveMeeting?.();
 
-          clientRef.current.destroyClient();
+          clientRef.current.destroyClient?.();
 
           clientRef.current =
             null;

@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  type ComponentProps,
   useMemo,
   useState,
 } from "react";
@@ -48,7 +49,7 @@ type Question = {
 
 type Props = {
   questions: Question[];
-  questionInfo: any;
+  questionInfo: ComponentProps<typeof QuestionInfoCard>["questionInfo"];
 };
 
 function getBlankCount(
@@ -61,6 +62,9 @@ export default function FibrPageClient({
   questions,
   questionInfo,
 }: Props) {
+  const [nowMs] =
+    useState(() => Date.now());
+
   const [searchTerm, setSearchTerm] =
     useState("");
 
@@ -123,11 +127,8 @@ export default function FibrPageClient({
                 q.created_at,
               ).getTime();
 
-            const now =
-              Date.now();
-
             const days =
-              (now - created) /
+              (nowMs - created) /
               (1000 *
                 60 *
                 60 *
@@ -262,6 +263,7 @@ export default function FibrPageClient({
       questionStatus,
       practiceStatus,
       activityStatus,
+      nowMs,
     ]);
 
   return (
