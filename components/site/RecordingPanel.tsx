@@ -184,7 +184,7 @@ export default function RecordingPanel({
   }, []);
 
   // ===== 开始录音 =====
-  const startActualRecording = useCallback(async () => {
+  const startActualRecording = useCallback(async (playStartBeep = false) => {
     preparationRunIdRef.current += 1;
     const runId = recordingRunIdRef.current + 1;
     recordingRunIdRef.current = runId;
@@ -225,6 +225,12 @@ export default function RecordingPanel({
     setPhase("recording");
     setTimeLeft(maxDuration);
 
+    if (playStartBeep) {
+      const nextBeepRunId = beepRunIdRef.current + 1;
+      beepRunIdRef.current = nextBeepRunId;
+      setBeepPlayKey(nextBeepRunId);
+    }
+
     timerRef.current = setInterval(() => {
       if (runId !== recordingRunIdRef.current) {
         if (timerRef.current) clearInterval(timerRef.current);
@@ -243,15 +249,7 @@ export default function RecordingPanel({
   }, [cleanupStream, clearTimers, maxDuration, stopRecording]);
 
   const startBeepThenRecording = useCallback(async () => {
-    if (!shouldPlayStartBeep) {
-      await startActualRecording();
-      return;
-    }
-
-    const nextBeepRunId = beepRunIdRef.current + 1;
-    beepRunIdRef.current = nextBeepRunId;
-    setBeepPlayKey(nextBeepRunId);
-    setPhase("beeping");
+    await startActualRecording(shouldPlayStartBeep);
   }, [shouldPlayStartBeep, startActualRecording]);
 
   const handleBeepComplete = useCallback(
@@ -259,10 +257,8 @@ export default function RecordingPanel({
       if (completedPlayKey !== beepRunIdRef.current) {
         return;
       }
-
-      void startActualRecording();
     },
-    [startActualRecording],
+    [],
   );
 
   const startRecording = useCallback(async () => {
@@ -395,7 +391,7 @@ export default function RecordingPanel({
   return (
     <div className="space-y-4">
       <RecordingStartBeep
-        active={phase === "beeping"}
+        active={phase === "recording"}
         playKey={beepPlayKey}
         onComplete={handleBeepComplete}
       />
@@ -440,7 +436,7 @@ export default function RecordingPanel({
               type="button"
               onClick={skipPreparation}
               variant="primary"
-              className="min-w-36 px-10"
+              className="w-full sm:w-auto sm:min-w-36 sm:px-10"
             >
               SKIP
             </Button>

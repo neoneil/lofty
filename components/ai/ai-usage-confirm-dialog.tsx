@@ -103,7 +103,7 @@ export default function AiUsageConfirmDialog({
               ) : usage ? (
                 <div className="space-y-3">
                   {usage.is_unlimited ? (
-                    <div className="rounded-[var(--radius-md)] bg-[var(--primary-soft)] px-3 py-2 text-sm font-semibold text-[var(--primary)]">你当前为无限 AI 评分额度。</div>
+                    <div className="rounded-[var(--radius-md)] bg-[var(--primary-soft)] px-3 py-2 text-sm font-semibold text-[var(--primary)]">内部学生无限 AI 评分额度。</div>
                   ) : (
                     <>
                       <div className="flex items-center justify-between gap-3 text-sm">
@@ -131,7 +131,7 @@ export default function AiUsageConfirmDialog({
 
             <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
               <Button type="button" variant="secondary" onClick={() => setOpen(false)}>取消</Button>
-              <Button type="button" onClick={handleConfirm} disabled={loadingUsage || !canContinue}>确认消耗 1 次机会</Button>
+              <Button type="button" onClick={handleConfirm} disabled={loadingUsage || !canContinue}>{usage?.is_unlimited ? "确认" : "确认消耗 1 次机会"}</Button>
             </div>
           </div>
         </div>

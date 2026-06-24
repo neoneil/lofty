@@ -260,7 +260,7 @@ export default function SelectiveMathPage() {
 
   if (loadingUser) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
         <p className="mt-4 text-(--text-secondary)">Loading...</p>
       </main>
@@ -269,7 +269,7 @@ export default function SelectiveMathPage() {
 
   if (!user) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
         <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           Please log in to use Selective School features.
@@ -280,7 +280,7 @@ export default function SelectiveMathPage() {
 
   if (!user.selectiveAccess) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
         <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           You do not have access to Selective School features.
@@ -290,13 +290,13 @@ export default function SelectiveMathPage() {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="text-3xl font-bold text-(--text-main)">Mathematics</h1>
       <p className="mt-3 text-(--text-secondary)">
         Generate selective-school mathematics questions by topic, subtopic, and difficulty.
       </p>
 
-      <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) p-6 shadow-sm">
+      <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) p-4 shadow-sm sm:p-6">
         <h2 className="text-xl font-semibold text-(--text-main)">
           AI Question Generator
         </h2>

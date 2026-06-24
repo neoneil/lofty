@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import MasteryProgress from "@/components/ui/mastery-progress";
+import ScorePercentProgress from "@/components/ui/score-percent-progress";
 import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
 import { Pagination } from "@/components/ui-v2/pagination";
@@ -74,7 +74,7 @@ export default function SstList({
   };
 
   return (
-    <section className="mx-auto block w-full max-w-[84%]">
+    <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
       {/* Header */}
 
       <div className="mb-4 overflow-hidden rounded-[var(--radius-sm)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
@@ -232,10 +232,7 @@ export default function SstList({
                     {/* Progress */}
 
                     <div className="hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
-                      <MasteryProgress
-                        correct={item.best_score}
-                        total={getWordCount(item.question_text)}
-                      />
+                      <ScorePercentProgress score={item.best_score} />
                     </div>
                   </div>
                 </div>

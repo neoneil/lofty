@@ -67,7 +67,7 @@ export default function EssayList({
     };
 
    return (
-    <section className="mx-auto block w-full max-w-[84%]">
+    <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
       {/* Header */}
 
       <div className="mb-4 overflow-hidden rounded-[var(--radius-sm)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
@@ -225,5 +225,4 @@ export default function EssayList({
     </section>
   );
 }
-
 

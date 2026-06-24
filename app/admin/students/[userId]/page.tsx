@@ -166,7 +166,7 @@ export default async function AdminStudentDetailPage({
                   {TYPE_LABEL_MAP[item.question_source] ?? item.question_source}
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-3">
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
                   <div className="rounded bg-white px-3 py-3">
                     <div className="text-xs text-gray-500">Attempts</div>
                     <div className="mt-1 text-lg font-bold text-gray-900">

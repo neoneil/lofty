@@ -42,6 +42,22 @@ export default function AudioPlayer({
 
   const compact = size === "compact";
 
+  const pauseAudio = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    audio.pause();
+    setPlaying(false);
+
+    if (countdownTimerRef.current) {
+      clearInterval(countdownTimerRef.current);
+      countdownTimerRef.current = null;
+    }
+
+    setCountdownLeft(null);
+  };
+
   // ===== 初始化 =====
   useEffect(() => {
 
@@ -77,6 +93,22 @@ export default function AudioPlayer({
     };
 
   }, [url, onEnded]);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        pauseAudio();
+      }
+    };
+
+    window.addEventListener("pagehide", pauseAudio);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("pagehide", pauseAudio);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  });
   // ===== 音量同步 =====
   useEffect(() => {
 

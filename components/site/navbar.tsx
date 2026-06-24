@@ -153,24 +153,19 @@ export default async function Navbar() {
 
             {/* 桌面端 */}
             <div className="hidden h-12 items-center justify-between gap-3 lg:flex">
-              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-2.5 rounded-[var(--radius-lg)] bg-transparent px-2.5 py-1.5 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
-                <div className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[var(--shadow-md)]">
-                  <Image
-                    src="/favicon-32x32.png"
-                    alt="Lofty Education"
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain"
-                  />
+              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-2.5 rounded-[var(--radius-lg)] bg-transparent px-3 py-1.5 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
+                <div className="flex h-10 w-8 flex-col items-center justify-center gap-0.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] text-[12px] font-black leading-none tracking-[0.08em] text-[var(--primary)] shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:border-[var(--primary)]/40 group-hover:bg-[var(--primary-soft)]">
+                  <span>致</span>
+                  <span>远</span>
                 </div>
 
                 <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
-                  <span className="text-sm font-bold tracking-tight text-[var(--text)] transition-all duration-300 group-hover:text-[var(--primary)]">
-                    致远教育
+                  <span className="text-lg font-black tracking-[0.14em] text-[var(--text)] transition-all duration-300 group-hover:text-[var(--primary)]">
+                    LOFTY
                   </span>
 
-                  <span className="text-[11px] font-medium tracking-[0.18em] text-[var(--text-soft)] uppercase">
-                    Lofty Education
+                  <span className="text-[10px] font-semibold tracking-[0.24em] text-[var(--text-soft)] uppercase">
+                    Education
                   </span>
                 </div>
               </Link>
@@ -238,16 +233,16 @@ export default async function Navbar() {
               <div className="flex shrink-0 items-center gap-1.5 rounded-[var(--radius-lg)] bg-transparent px-1 py-0 shadow-none">
                 {user ? (
                   <>
-                    <div className="group flex h-9 items-center gap-2 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-300 hover:bg-[var(--card-soft)]/35">
-                      <div className="relative h-7 w-7 shrink-0">
+                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-300 hover:bg-[var(--card-soft)]/35">
+                      <div className="relative h-9 w-9 shrink-0">
                         <Image
                           src={avatar}
                           alt={name}
-                          width={28}
-                          height={28}
-                          className="h-7 w-7 rounded-full border border-transparent object-cover shadow-none"
+                          width={36}
+                          height={36}
+                          className="h-9 w-9 rounded-full border border-transparent object-cover shadow-none"
                         />
-                        <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[var(--success)]" />
+                        <span className="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-[var(--card)] bg-[var(--success)]" />
                       </div>
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">

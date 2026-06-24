@@ -250,7 +250,7 @@ export default function AdminChatPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 sm:w-[360px]">
+            <div className="grid gap-3 sm:w-[360px] sm:grid-cols-3">
               <StatPill label="Sessions" value={sessions.length} />
               <StatPill
                 label="Unread"
@@ -264,7 +264,7 @@ export default function AdminChatPage() {
           </div>
         </div>
 
-        <div className="grid h-[calc(100vh-210px)] min-h-[620px] gap-5 lg:grid-cols-[340px_1fr]">
+        <div className="grid gap-5 lg:h-[calc(100vh-210px)] lg:min-h-[620px] lg:grid-cols-[340px_1fr]">
           <aside className="flex min-h-0 flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
             <div className="border-b border-[var(--border)] px-4 py-4">
               <div className="flex items-center justify-between gap-3">

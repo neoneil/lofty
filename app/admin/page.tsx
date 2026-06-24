@@ -132,7 +132,7 @@ export default async function AdminPage() {
           </div>
         </div>
 
-        <div className="mb-6 ml-5 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between sm:ml-5">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-[var(--text)]">
               管理模块

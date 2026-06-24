@@ -177,7 +177,7 @@ export default function WfdAudioClient({ questions }: Props) {
   };
 
   return (
-    <section className="mx-auto w-full max-w-[84%] space-y-5">
+    <section className="mx-auto w-full max-w-7xl space-y-5 px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
       <div className="rounded-[var(--radius-lg)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>

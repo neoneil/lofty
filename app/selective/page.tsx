@@ -28,9 +28,9 @@ const rows = [
 ];
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <section className="mb-10">
-        <h1 className="text-4xl font-bold tracking-tight text-(--text-main)">
+        <h1 className="text-3xl font-bold tracking-tight text-(--text-main) sm:text-4xl">
           Selective School Practice
         </h1>
         <p className="mt-3 max-w-2xl text-(--text-secondary)">
@@ -61,9 +61,9 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="bg-[#f3f4f6] px-6 py-16 text-[#24364b] sm:px-8 lg:px-12">
+      <section className="bg-[#f3f4f6] px-4 py-12 text-[#24364b] sm:px-8 sm:py-16 lg:px-12">
         <div className="mx-auto max-w-3xl">
-          <h1 className="mb-8 text-4xl font-medium tracking-tight sm:text-5xl">
+            <h1 className="mb-8 text-3xl font-medium tracking-tight sm:text-5xl">
             Exam format
           </h1>
 
@@ -165,7 +165,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="w-full py-12">
-        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mb-10">
             <h2 className="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
               What is tested in Mathematics and Quantitative Reasoning

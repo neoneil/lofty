@@ -257,7 +257,7 @@ export default function MathsPage() {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <MathPracticeClient />
       <h1 className="text-3xl font-bold text-(--text-main)">Maths</h1>
       <p className="mt-3 text-(--text-secondary)">

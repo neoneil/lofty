@@ -167,7 +167,7 @@ export default function FibrwList({
   };
 
   return (
-    <section className="mx-auto block w-full max-w-[84%]">
+    <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
 
       {/* Header */}
 

@@ -438,7 +438,7 @@ export default function AdminSelectiveHistoryPage() {
 
   if (loading) {
     return (
-      <main className="mx-auto max-w-7xl px-6 py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">
           Admin Selective History
         </h1>
@@ -449,7 +449,7 @@ export default function AdminSelectiveHistoryPage() {
 
   if (!currentUser) {
     return (
-      <main className="mx-auto max-w-7xl px-6 py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">
           Admin Selective History
         </h1>
@@ -462,7 +462,7 @@ export default function AdminSelectiveHistoryPage() {
 
   if (!(currentUser.role === "admin" || currentUser.role === "editor")) {
     return (
-      <main className="mx-auto max-w-7xl px-6 py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">
           Admin Selective History
         </h1>
@@ -481,7 +481,7 @@ export default function AdminSelectiveHistoryPage() {
   ]).size;
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-(--text-main)">
@@ -513,7 +513,7 @@ export default function AdminSelectiveHistoryPage() {
       )}
 
       {!error && groupedDays.length === 0 && (
-        <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
+        <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-4 py-8 text-(--text-secondary) shadow-sm sm:px-6 sm:py-10">
           No student history found.
         </div>
       )}

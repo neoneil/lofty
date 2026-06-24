@@ -386,7 +386,7 @@ export default function SelectiveHistoryPage() {
 
   if (loading) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">History</h1>
         <p className="mt-4 text-(--text-secondary)">Loading your history...</p>
       </main>
@@ -395,7 +395,7 @@ export default function SelectiveHistoryPage() {
 
   if (!user) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <h1 className="text-3xl font-bold text-(--text-main)">History</h1>
         <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           Please log in to view your history.
@@ -407,7 +407,7 @@ export default function SelectiveHistoryPage() {
   const totalCount = writingRows.length + mathRows.length;
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-(--text-main)">History</h1>
@@ -429,7 +429,7 @@ export default function SelectiveHistoryPage() {
       )}
 
       {!error && totalCount === 0 && (
-        <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-6 py-10 text-(--text-secondary) shadow-sm">
+        <div className="mt-8 rounded border border-(--border-color) bg-(--bg-card) px-4 py-8 text-(--text-secondary) shadow-sm sm:px-6 sm:py-10">
           You do not have any history yet.
         </div>
       )}

@@ -36,7 +36,7 @@ export default async function DownloadsPage() {
                 PDF 会按题型导出，下载前请确认当前账号已登录。
               </CardDescription>
             </CardHeader>
-            <CardContent className="grid grid-cols-3 gap-3">
+            <CardContent className="grid gap-3 sm:grid-cols-3">
               {["PTE", "PDF", "题库"].map((item) => (
                 <div
                   key={item}

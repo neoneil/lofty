@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { Pagination } from "@/components/ui-v2/pagination";
 import { Badge } from "@/components/ui-v2/badge";
 import Tag from "@/components/ui/tag";
-import MasteryProgress from "@/components/ui/mastery-progress";
+import ScorePercentProgress from "@/components/ui/score-percent-progress";
 import { saveQuestionOrder } from "@/lib/question-order";
 import {
   AlertTriangle,
@@ -53,7 +53,7 @@ export default function SgdPracticeList({
   };
 
   return (
-    <section className="mx-auto block w-full max-w-[84%]">
+    <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
       <div className="mb-4 overflow-hidden rounded-[var(--radius-sm)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
         <div className="flex items-center justify-between px-5 py-4 sm:px-6">
           <div className="flex items-center gap-6">
@@ -154,10 +154,7 @@ export default function SgdPracticeList({
                   </div>
 
                   <div className="hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
-                    <MasteryProgress
-                      correct={item.best_score}
-                      total={Math.max(1, item.attempt_count || 1)}
-                    />
+                    <ScorePercentProgress score={item.best_score} />
                   </div>
                 </div>
               </div>
