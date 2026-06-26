@@ -452,58 +452,33 @@ export default function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
-        <div
-          className="flex h-155 w-97.5 flex-col overflow-hidden round border shadow-2xl"
-          style={{
-            backgroundColor: 'var(--card)',
-            borderColor: 'var(--border)',
-            color: 'var(--text)',
-          }}
-        >
-          <div
-            className="relative border-b px-5 py-4"
-            style={{
-              borderColor: 'var(--border)',
-              background:
-                'linear-gradient(135deg, var(--navbar-bg) 0%, var(--footer-bg) 100%)',
-            }}
-          >
+    <div className="fixed inset-x-4 bottom-4 z-50 flex justify-end sm:inset-x-auto sm:right-5">
+        <div className="flex h-[min(680px,calc(100vh-2rem))] w-full max-w-[420px] flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] text-[var(--text)] shadow-[var(--shadow-lg)]">
+          <div className="relative border-b border-[var(--border)] bg-[var(--card)] px-5 py-4">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--primary-soft)] via-transparent to-[var(--bg-soft)] opacity-80" />
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <div
-                    className="flex h-10 w-10 items-center justify-center rounded text-sm font-semibold"
-                    style={{
-                      backgroundColor: 'rgba(255,255,255,0.7)',
-                      color: 'var(--primary)',
-                    }}
-                  >
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--primary)]/15 bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
                     IB
                   </div>
 
-                  <div>
-                    <div className="font-semibold">Ibot</div>
-                    <div
-                      className="text-xs"
-                      style={{ color: 'rgba(17,17,17,0.72)' }}
-                    >
-                      Lofty - AI 
+                  <div className="relative">
+                    <div className="font-semibold tracking-tight text-[var(--text)]">Ibot</div>
+                    <div className="text-xs font-medium text-[var(--text-soft)]">
+                      Lofty AI Coach
                     </div>
                   </div>
                 </div>
               </div>
 
               <button
+                type="button"
                 onClick={() => {
                   setOpen(false);
                   setAiReplying(false);
                 }}
-                className="rounded px-3 py-1.5 text-xs font-medium transition"
-                style={{
-                  backgroundColor: 'rgba(255,255,255,0.65)',
-                  color: 'var(--text)',
-                }}
+                className="relative rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-1.5 text-xs font-semibold text-[var(--text-soft)] transition hover:border-[var(--primary)]/30 hover:text-[var(--primary)]"
               >
                 关闭
               </button>
@@ -512,29 +487,18 @@ export default function ChatWidget() {
 
           <div
             ref={scrollContainerRef}
-            className="flex-1 overflow-y-auto px-4 py-4"
-            style={{ backgroundColor: 'var(--bg)' }}
+            className="flex-1 overflow-y-auto bg-[var(--bg-soft)] px-4 py-4"
           >
             {initialLoading ? (
-              <div
-                className="mt-14 text-center text-sm"
-                style={{ color: 'var(--muted)' }}
-              >
+              <div className="mt-14 text-center text-sm font-medium text-[var(--text-soft)]">
                 Loading chat...
               </div>
             ) : initError ? (
-              <div className="mt-14 text-center text-sm text-red-500">
+              <div className="mt-14 rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-center text-sm font-medium text-[var(--danger)]">
                 {initError}
               </div>
             ) : messages.length === 0 ? (
-              <div
-                className="mt-14 rounded border px-4 py-5 text-center text-sm shadow-sm"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  borderColor: 'var(--border)',
-                  color: 'var(--muted)',
-                }}
-              >
+              <div className="mt-14 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-5 text-center text-sm leading-7 text-[var(--text-soft)] shadow-[var(--shadow-sm)]">
                 Hi! Ask me anything about IELTS, PTE, writing, speaking, or
                 vocabulary.
               </div>
@@ -543,14 +507,10 @@ export default function ChatWidget() {
                 {hasMore && (
                   <div className="flex justify-center">
                     <button
+                      type="button"
                       onClick={() => void loadOlderMessages()}
                       disabled={loadingOlder}
-                      className="rounded border px-3 py-1.5 text-xs transition disabled:opacity-60"
-                      style={{
-                        borderColor: 'var(--border)',
-                        backgroundColor: 'var(--card)',
-                        color: 'var(--muted)',
-                      }}
+                      className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-1.5 text-xs font-semibold text-[var(--text-soft)] transition hover:border-[var(--primary)]/30 hover:text-[var(--primary)] disabled:opacity-60"
                     >
                       {loadingOlder ? 'Loading...' : 'Load earlier messages'}
                     </button>
@@ -567,39 +527,16 @@ export default function ChatWidget() {
                       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
                     >
                       <div className="max-w-[84%]">
-                        <div
-                          className={`mb-1 px-1 text-[11px] font-medium ${
-                            isUser ? 'text-right' : 'text-left'
-                          }`}
-                          style={{ color: 'var(--muted)' }}
-                        >
+                        <div className={`mb-1 px-1 text-[11px] font-semibold text-[var(--text-faint)] ${isUser ? 'text-right' : 'text-left'}`}>
                           {isUser ? userDisplayName : isAi ? 'Ibot' : '马老师'}
                         </div>
 
-                        <div
-                          className="round px-4 py-3 text-sm leading-6 shadow-sm"
-                          style={{
-                            backgroundColor: isUser
-                              ? 'var(--primary)'
-                              : isAi
-                              ? 'var(--card)'
-                              : 'var(--card-soft)',
-                            color: isUser ? '#ffffff' : 'var(--text)',
-                            border: isUser ? 'none' : `1px solid var(--border)`,
-                          }}
-                        >
+                        <div className={`rounded-[var(--radius-md)] px-4 py-3 text-sm leading-6 shadow-[var(--shadow-sm)] ${isUser ? 'bg-[var(--primary)] text-white' : isAi ? 'border border-[var(--border)] bg-[var(--card)] text-[var(--text)]' : 'border border-[var(--border)] bg-[var(--card-soft)] text-[var(--text)]'}`}>
                           <div className="whitespace-pre-wrap wrap-break-word">
                             {msg.content}
                           </div>
 
-                          <div
-                            className="mt-2 text-[10px]"
-                            style={{
-                              color: isUser
-                                ? 'rgba(255,255,255,0.72)'
-                                : 'var(--muted)',
-                            }}
-                          >
+                          <div className={`mt-2 text-[10px] ${isUser ? 'text-white/70' : 'text-[var(--text-faint)]'}`}>
                             {new Date(msg.created_at).toLocaleTimeString()}
                           </div>
                         </div>
@@ -611,42 +548,17 @@ export default function ChatWidget() {
                 {aiReplying && (
                   <div className="flex justify-start">
                     <div className="max-w-[84%]">
-                      <div
-                        className="mb-1 px-1 text-[11px] font-medium"
-                        style={{ color: 'var(--muted)' }}
-                      >
+                      <div className="mb-1 px-1 text-[11px] font-semibold text-[var(--text-faint)]">
                         Ibot
                       </div>
 
-                      <div
-                        className="round border px-4 py-3 text-sm shadow-sm"
-                        style={{
-                          backgroundColor: 'var(--card)',
-                          borderColor: 'var(--border)',
-                          color: 'var(--text)',
-                        }}
-                      >
+                      <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm text-[var(--text)] shadow-[var(--shadow-sm)]">
                         <div className="flex items-center gap-2">
                           <span>Ibot 思考中</span>
                           <span className="inline-flex gap-1">
-                            <span
-                              className="h-1.5 w-1.5 animate-bounce rounded"
-                              style={{ backgroundColor: 'var(--muted)' }}
-                            />
-                            <span
-                              className="h-1.5 w-1.5 animate-bounce rounded"
-                              style={{
-                                backgroundColor: 'var(--muted)',
-                                animationDelay: '0.15s',
-                              }}
-                            />
-                            <span
-                              className="h-1.5 w-1.5 animate-bounce rounded"
-                              style={{
-                                backgroundColor: 'var(--muted)',
-                                animationDelay: '0.3s',
-                              }}
-                            />
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[var(--text-soft)]" />
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[var(--text-soft)] [animation-delay:0.15s]" />
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[var(--text-soft)] [animation-delay:0.3s]" />
                           </span>
                         </div>
                       </div>
@@ -659,28 +571,15 @@ export default function ChatWidget() {
             <div ref={bottomRef} />
           </div>
 
-          <div
-            className="border-t px-4 py-4"
-            style={{
-              borderColor: 'var(--border)',
-              backgroundColor: 'var(--card)',
-            }}
-          >
+          <div className="border-t border-[var(--border)] bg-[var(--card)] px-4 py-4">
             <div className="flex gap-3">
-              <div
-                className="flex flex-1 items-end rounded border px-3 py-2 shadow-sm"
-                style={{
-                  borderColor: 'var(--border)',
-                  backgroundColor: 'var(--bg)',
-                }}
-              >
+              <div className="flex flex-1 items-end rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2 shadow-[var(--shadow-sm)] focus-within:border-[var(--primary)]/45">
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="请输入你的问题..."
                   rows={2}
-                  className="min-h-11 flex-1 resize-none bg-transparent px-1 py-1 text-sm outline-none"
-                  style={{ color: 'var(--text)' }}
+                  className="min-h-11 flex-1 resize-none bg-transparent px-1 py-1 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text-faint)]"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
                       e.preventDefault();
@@ -691,22 +590,19 @@ export default function ChatWidget() {
                 />
 
                 <button
+                  type="button"
                   onClick={() => void sendMessage()}
                   disabled={
                     loading || initialLoading || !input.trim() || !!initError
                   }
-                  className="ml-2 rounded px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  className="ml-2 rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--primary-hover)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {loading ? 'Sending...' : '发送'}
                 </button>
               </div>
             </div>
 
-            <div
-              className="mt-2 px-1 text-[11px]"
-              style={{ color: 'var(--muted)' }}
-            >
+            <div className="mt-2 px-1 text-[11px] font-medium text-[var(--text-faint)]">
               Enter 发送，Shift+Enter 换行
             </div>
           </div>

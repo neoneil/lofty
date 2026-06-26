@@ -224,7 +224,7 @@ export function Sidebar() {
         </SidebarGroup>
         <SidebarGroup collapsed={collapsed}>
           <SidebarItem
-            href="/practice"
+            href="/my-courses"
             label="My Practice"
             icon={<Mic size={18} />}
             collapsed={collapsed}

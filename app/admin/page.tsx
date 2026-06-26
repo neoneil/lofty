@@ -77,6 +77,12 @@ const adminModules = [
     tag: "AI Usage",
   },
   {
+    title: "课程上传",
+    desc: "上传 TED 或 LoftyPTE 视频、缩略图和字幕到 R2，并创建课程记录。",
+    href: "/admin/course-upload",
+    tag: "Courses",
+  },
+  {
     title: "WFD操作",
     desc: "活跃题目待定",
     href: "/admin/db-playground",
