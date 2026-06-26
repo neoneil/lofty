@@ -12,6 +12,8 @@ import {
   LineChart,
   Pie,
   PieChart,
+  ReferenceLine,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -98,15 +100,17 @@ export function AnalyticsChart({
   const colors = toneMap[tone];
 
   const chartType = smooth ? "monotone" : "linear";
+  const chartWidth = variant === "bar" && data.length > 6 ? Math.max(data.length * 68, 520) : "100%";
+  const tooltipStyle = { background: "var(--card)", border: "1px solid var(--border)", borderRadius: 6, color: "var(--text)" };
 
   return (
-    <div className="w-full overflow-hidden" style={{ height }}>
+    <div className="w-full overflow-x-auto" style={{ height }}>
+      <div style={{ width: chartWidth, height }}>
+        <ResponsiveContainer width="100%" height="100%">
       {/* AREA */}
 
       {variant === "area" && (
         <AreaChart
-          width={700}
-          height={height}
           data={data}
           margin={{
             top: 10,
@@ -146,18 +150,15 @@ export function AnalyticsChart({
             }}
           />
 
-          {showTooltip && <Tooltip />}
+          {showTooltip && <Tooltip contentStyle={tooltipStyle} />}
 
           {showLegend && <Legend />}
 
           {goal && (
-            <Line
-              type="linear"
-              dataKey={() => goal}
+            <ReferenceLine
+              y={goal}
               stroke="var(--danger)"
               strokeDasharray="6 6"
-              dot={false}
-              strokeWidth={2}
             />
           )}
 
@@ -175,8 +176,6 @@ export function AnalyticsChart({
 
       {variant === "line" && (
         <LineChart
-          width={700}
-          height={height}
           data={data}
           margin={{
             top: 10,
@@ -208,18 +207,15 @@ export function AnalyticsChart({
             }}
           />
 
-          {showTooltip && <Tooltip />}
+          {showTooltip && <Tooltip contentStyle={tooltipStyle} />}
 
           {showLegend && <Legend />}
 
           {goal && (
-            <Line
-              type="linear"
-              dataKey={() => goal}
+            <ReferenceLine
+              y={goal}
               stroke="var(--danger)"
               strokeDasharray="6 6"
-              dot={false}
-              strokeWidth={2}
             />
           )}
 
@@ -244,8 +240,6 @@ export function AnalyticsChart({
 
       {variant === "bar" && (
         <BarChart
-          width={700}
-          height={height}
           data={data}
           margin={{
             top: 10,
@@ -277,7 +271,7 @@ export function AnalyticsChart({
             }}
           />
 
-          {showTooltip && <Tooltip />}
+          {showTooltip && <Tooltip contentStyle={tooltipStyle} />}
 
           {showLegend && <Legend />}
 
@@ -289,8 +283,6 @@ export function AnalyticsChart({
 
       {variant === "pie" && (
         <PieChart
-          width={700}
-          height={height}
           margin={{
             top: 10,
             right: 10,
@@ -298,7 +290,7 @@ export function AnalyticsChart({
             bottom: 40,
           }}
         >
-          {showTooltip && <Tooltip />}
+          {showTooltip && <Tooltip contentStyle={tooltipStyle} />}
 
           {showLegend && <Legend />}
 
@@ -316,6 +308,8 @@ export function AnalyticsChart({
           </Pie>
         </PieChart>
       )}
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

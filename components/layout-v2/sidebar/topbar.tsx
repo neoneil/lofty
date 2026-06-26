@@ -16,6 +16,7 @@ import {
   Mic,
   PenTool,
   Settings,
+  Trophy,
   Video,
 } from "lucide-react";
 
@@ -33,6 +34,11 @@ const primaryItems: NavItem[] = [
     href: "/dashboard-v2",
     label: "Dashboard",
     icon: <LayoutDashboard size={16} />,
+  },
+  {
+    href: "/achievements",
+    label: "成就",
+    icon: <Trophy size={16} />,
   },
   {
     href: "/classroom",

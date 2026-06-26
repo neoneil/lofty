@@ -15,6 +15,7 @@ import {
   Mic,
   PenTool,
   Settings,
+  Trophy,
   Video,
 } from "lucide-react";
 
@@ -77,6 +78,13 @@ export function Sidebar() {
             href="/dashboard-v2"
             label="Dashboard"
             icon={<LayoutDashboard size={18} />}
+            collapsed={collapsed}
+          />
+
+          <SidebarItem
+            href="/achievements"
+            label="Achievements"
+            icon={<Trophy size={18} />}
             collapsed={collapsed}
           />
 

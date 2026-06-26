@@ -84,6 +84,7 @@ export function ProfileMenu({
   const [selectedAvatarUrl, setSelectedAvatarUrl] = useState<string | null>(
     null,
   );
+  const [achievementTitle, setAchievementTitle] = useState<string | null>(null);
 
   const email =
     profile?.email ||
@@ -205,6 +206,27 @@ export function ProfileMenu({
       cancelled = true;
     };
   }, [open, supabase, user]);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const controller = new AbortController();
+
+    async function loadAchievementTitle() {
+      try {
+        const response = await fetch("/api/profile/achievement-overview", { signal: controller.signal });
+        if (!response.ok) return;
+
+        const data = await response.json() as { overall_achievement_title?: string | null };
+        setAchievementTitle(data.overall_achievement_title?.trim() || null);
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === "AbortError")) console.error("Failed to load achievement title", error);
+      }
+    }
+
+    loadAchievementTitle();
+    return () => controller.abort();
+  }, [user]);
 
   useEffect(() => {
     if (!open || avatars.length > 0) {
@@ -343,8 +365,9 @@ export function ProfileMenu({
         </div>
 
         <div className="hidden min-w-0 text-left lg:block">
-          <div className="max-w-36 truncate text-sm font-medium text-[var(--text)]">
-            {displayName}
+          <div className="flex max-w-56 items-center gap-1.5">
+            {achievementTitle ? <span className="max-w-24 shrink-0 truncate rounded-[3px] border border-[var(--border-strong)] bg-[var(--bg-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-4 text-[var(--primary)]">{achievementTitle}</span> : null}
+            <span className="min-w-0 truncate text-sm font-medium text-[var(--text)]">{displayName}</span>
           </div>
 
           <div className="max-w-44 truncate text-xs text-[var(--text-soft)]">

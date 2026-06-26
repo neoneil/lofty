@@ -1,0 +1,585 @@
+{
+  "version": "1.0.0",
+  "theme": "wuxia",
+  "appName": "LoftyPTE",
+  "description": "LoftyPTE martial-arts themed achievement configuration. Designed for frontend rendering and achievement-rule mapping.",
+  "display": {
+    "defaultLanguage": "zh-CN",
+    "showEnglishSubtitle": true,
+    "badgeStyle": "wuxia-medal",
+    "iconStyle": "line-icon"
+  },
+  "categories": [
+    {
+      "id": "overall",
+      "name": "江湖总览",
+      "englishName": "Overall Realm",
+      "description": "根据用户总练习量、学习天数、综合正确率和 AI 分数计算总称号。",
+      "icon": "mountain",
+      "colorToken": "achievement.overall",
+      "levels": [
+        {
+          "level": 1,
+          "title": "初入江湖",
+          "englishTitle": "New Wanderer",
+          "subtitle": "刚踏入 Lofty 江湖，开始第一段修行。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 1
+          }
+        },
+        {
+          "level": 2,
+          "title": "江湖新秀",
+          "englishTitle": "Rising Rookie",
+          "subtitle": "已熟悉基础题型，开始形成学习节奏。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 100
+          }
+        },
+        {
+          "level": 3,
+          "title": "青衫少侠",
+          "englishTitle": "Young Swordsman",
+          "subtitle": "勤练不辍，已有少侠之风。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 300
+          }
+        },
+        {
+          "level": 4,
+          "title": "快剑行者",
+          "englishTitle": "Swift Blade",
+          "subtitle": "出手渐稳，刷题速度与准确率同步提升。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 800
+          }
+        },
+        {
+          "level": 5,
+          "title": "名动一方",
+          "englishTitle": "Known Wanderer",
+          "subtitle": "已在各题型中积累扎实功力。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 1500
+          }
+        },
+        {
+          "level": 6,
+          "title": "江湖大侠",
+          "englishTitle": "Great Hero",
+          "subtitle": "听说读写皆有根基，综合能力明显提升。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 3000
+          }
+        },
+        {
+          "level": 7,
+          "title": "一派宗师",
+          "englishTitle": "Grand Master",
+          "subtitle": "形成自己的学习体系，弱项逐渐被攻破。",
+          "condition": {
+            "type": "total_completed_questions",
+            "gte": 5000
+          }
+        },
+        {
+          "level": 8,
+          "title": "武林盟主",
+          "englishTitle": "Martial Alliance Leader",
+          "subtitle": "综合表现稳定，已具备冲击高分的实力。",
+          "condition": {
+            "type": "overall_accuracy",
+            "gte": 0.85,
+            "minCompletedQuestions": 5000
+          }
+        },
+        {
+          "level": 9,
+          "title": "天人合一",
+          "englishTitle": "One with the Way",
+          "subtitle": "速度、准确率和稳定性高度统一。",
+          "condition": {
+            "type": "overall_accuracy",
+            "gte": 0.9,
+            "minCompletedQuestions": 8000
+          }
+        },
+        {
+          "level": 10,
+          "title": "一代传奇",
+          "englishTitle": "Living Legend",
+          "subtitle": "Lofty 江湖传说级修行者。",
+          "condition": {
+            "type": "overall_accuracy",
+            "gte": 0.95,
+            "minCompletedQuestions": 10000
+          }
+        }
+      ]
+    },
+    {
+      "id": "speaking",
+      "name": "剑道阁",
+      "englishName": "Sword Hall",
+      "description": "Speaking 模块。口语如出剑，讲究流利、准确和气势。",
+      "icon": "sword",
+      "colorToken": "achievement.speaking",
+      "levels": [
+        { "level": 1, "title": "木剑学徒", "englishTitle": "Wooden Sword Apprentice", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 20 } },
+        { "level": 2, "title": "试剑少年", "englishTitle": "Blade Initiate", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 80 } },
+        { "level": 3, "title": "快剑客", "englishTitle": "Swift Swordsman", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 200 } },
+        { "level": 4, "title": "剑术大师", "englishTitle": "Sword Master", "condition": { "type": "module_accuracy", "module": "speaking", "gte": 0.8, "minCompletedQuestions": 300 } },
+        { "level": 5, "title": "剑圣", "englishTitle": "Sword Saint", "condition": { "type": "module_accuracy", "module": "speaking", "gte": 0.9, "minCompletedQuestions": 500 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "ra",
+          "name": "Read Aloud",
+          "wuxiaName": "天音剑诀",
+          "icon": "mic",
+          "levels": ["朗读童子", "声律弟子", "天音使", "诵读宗师", "天音剑圣"]
+        },
+        {
+          "id": "rs",
+          "name": "Repeat Sentence",
+          "wuxiaName": "回声剑法",
+          "icon": "repeat",
+          "levels": ["回声学徒", "回音使", "复诵高手", "回声宗师", "九霄回响"]
+        },
+        {
+          "id": "di",
+          "name": "Describe Image",
+          "wuxiaName": "万象剑势",
+          "icon": "image",
+          "levels": ["观图者", "图解使", "洞察高手", "万象宗师", "万象通明"]
+        },
+        {
+          "id": "rl",
+          "name": "Retell Lecture",
+          "wuxiaName": "传音剑魂",
+          "icon": "audio-lines",
+          "levels": ["听道者", "述道者", "传音使", "博闻宗师", "传道圣者"]
+        },
+        {
+          "id": "asq",
+          "name": "Answer Short Question",
+          "wuxiaName": "问心一剑",
+          "icon": "circle-help",
+          "levels": ["问答新手", "问心弟子", "应答高手", "问心宗师", "一剑定音"]
+        },
+        {
+          "id": "rts",
+          "name": "Respond to Situation",
+          "wuxiaName": "临阵应变",
+          "icon": "messages-square",
+          "levels": ["临阵学徒", "应变使", "机锋高手", "临阵宗师", "机变无双"]
+        },
+        {
+          "id": "sgd",
+          "name": "Summarize Group Discussion",
+          "wuxiaName": "群英论剑",
+          "icon": "users",
+          "levels": ["旁听弟子", "论剑使", "群英高手", "论剑宗师", "群英盟主"]
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "name": "墨心阁",
+      "englishName": "Ink Heart Hall",
+      "description": "Writing 模块。以笔为剑，讲究结构、逻辑和表达。",
+      "icon": "feather",
+      "colorToken": "achievement.writing",
+      "levels": [
+        { "level": 1, "title": "墨童", "englishTitle": "Ink Apprentice", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 10 } },
+        { "level": 2, "title": "执笔人", "englishTitle": "Brush Bearer", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 40 } },
+        { "level": 3, "title": "江湖墨客", "englishTitle": "Wandering Scholar", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 100 } },
+        { "level": 4, "title": "文宗", "englishTitle": "Master of Letters", "condition": { "type": "module_accuracy", "module": "writing", "gte": 0.8, "minCompletedQuestions": 150 } },
+        { "level": 5, "title": "文圣", "englishTitle": "Sage of Letters", "condition": { "type": "module_accuracy", "module": "writing", "gte": 0.9, "minCompletedQuestions": 250 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "swt",
+          "name": "Summarize Written Text",
+          "wuxiaName": "凝墨心经",
+          "icon": "align-left",
+          "levels": ["缩文新手", "凝墨弟子", "炼句高手", "凝墨宗师", "一语破万言"]
+        },
+        {
+          "id": "essay",
+          "name": "Essay",
+          "wuxiaName": "妙笔神功",
+          "icon": "file-pen-line",
+          "levels": ["小秀才", "举人", "进士", "翰林", "妙笔文圣"]
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "name": "藏经阁",
+      "englishName": "Scripture Pavilion",
+      "description": "Reading 模块。读万卷，破文脉，悟结构。",
+      "icon": "book-open",
+      "colorToken": "achievement.reading",
+      "levels": [
+        { "level": 1, "title": "入阁弟子", "englishTitle": "Pavilion Initiate", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 20 } },
+        { "level": 2, "title": "经卷学徒", "englishTitle": "Scripture Apprentice", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 80 } },
+        { "level": 3, "title": "藏经使", "englishTitle": "Pavilion Keeper", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 200 } },
+        { "level": 4, "title": "经阁长老", "englishTitle": "Scripture Elder", "condition": { "type": "module_accuracy", "module": "reading", "gte": 0.8, "minCompletedQuestions": 300 } },
+        { "level": 5, "title": "大彻大悟", "englishTitle": "Deep Enlightenment", "condition": { "type": "module_accuracy", "module": "reading", "gte": 0.9, "minCompletedQuestions": 500 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "rfib",
+          "name": "Reading Fill in the Blanks",
+          "wuxiaName": "补缺心法",
+          "icon": "text-cursor-input",
+          "levels": ["补缺者", "填词客", "文脉使", "补缺宗师", "一字千金"]
+        },
+        {
+          "id": "fibrw",
+          "name": "Reading & Writing Fill in the Blanks",
+          "wuxiaName": "双修填词诀",
+          "icon": "list-checks",
+          "levels": ["双修学徒", "选词弟子", "文理高手", "双修宗师", "文脉通玄"]
+        },
+        {
+          "id": "ro",
+          "name": "Re-order Paragraphs",
+          "wuxiaName": "文阵步法",
+          "icon": "list-ordered",
+          "levels": ["排阵弟子", "排序高手", "布阵宗师", "排局圣手", "文阵无双"]
+        },
+        {
+          "id": "rmcsa",
+          "name": "Reading Multiple Choice Single Answer",
+          "wuxiaName": "独门一指",
+          "icon": "circle-dot",
+          "levels": ["辨题新手", "独选弟子", "破题高手", "独门宗师", "一指破局"]
+        },
+        {
+          "id": "rmcma",
+          "name": "Reading Multiple Choice Multiple Answers",
+          "wuxiaName": "七星摘句手",
+          "icon": "list-check",
+          "levels": ["摘句新手", "多选弟子", "辨文高手", "摘句宗师", "七星连珠"]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "name": "听风楼",
+      "englishName": "Wind Listening Tower",
+      "description": "Listening 模块。听声辨意，闻风知文。",
+      "icon": "ear",
+      "colorToken": "achievement.listening",
+      "levels": [
+        { "level": 1, "title": "听风少年", "englishTitle": "Young Wind Listener", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 20 } },
+        { "level": 2, "title": "顺风耳", "englishTitle": "Sharp Ear", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 80 } },
+        { "level": 3, "title": "听风使", "englishTitle": "Wind Messenger", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 200 } },
+        { "level": 4, "title": "天听者", "englishTitle": "Heaven Listener", "condition": { "type": "module_accuracy", "module": "listening", "gte": 0.8, "minCompletedQuestions": 300 } },
+        { "level": 5, "title": "千里闻声", "englishTitle": "Thousand-Mile Hearing", "condition": { "type": "module_accuracy", "module": "listening", "gte": 0.9, "minCompletedQuestions": 500 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "sst",
+          "name": "Summarize Spoken Text",
+          "wuxiaName": "听意归元功",
+          "icon": "file-audio",
+          "levels": ["听意学徒", "归纳使", "听文高手", "归元宗师", "一听成章"]
+        },
+        {
+          "id": "mcsa",
+          "name": "Listening Multiple Choice Single Answer",
+          "wuxiaName": "听声一诀",
+          "icon": "circle-dot",
+          "levels": ["听题新手", "独听弟子", "辨声高手", "听声宗师", "一诀定音"]
+        },
+        {
+          "id": "mcma",
+          "name": "Listening Multiple Choice Multiple Answers",
+          "wuxiaName": "听风摘星手",
+          "icon": "list-check",
+          "levels": ["摘音新手", "多听弟子", "辨音高手", "摘星宗师", "听风摘星"]
+        },
+        {
+          "id": "fib_l",
+          "name": "Listening Fill in the Blanks",
+          "wuxiaName": "听缺补文诀",
+          "icon": "text-cursor-input",
+          "levels": ["听缺者", "补音弟子", "听写高手", "补文宗师", "字字入耳"]
+        },
+        {
+          "id": "smw",
+          "name": "Select Missing Word",
+          "wuxiaName": "断音寻踪",
+          "icon": "search",
+          "levels": ["寻踪新手", "断音弟子", "追声高手", "寻踪宗师", "听断乾坤"]
+        },
+        {
+          "id": "hiw",
+          "name": "Highlight Incorrect Words",
+          "wuxiaName": "天耳辨伪功",
+          "icon": "scan-text",
+          "levels": ["辨伪新手", "天耳弟子", "纠音高手", "辨伪宗师", "天耳通"]
+        },
+        {
+          "id": "hcs",
+          "name": "Highlight Correct Summary",
+          "wuxiaName": "听纲识要",
+          "icon": "highlighter",
+          "levels": ["识要新手", "听纲弟子", "抓意高手", "识要宗师", "一耳明纲"]
+        },
+        {
+          "id": "wfd",
+          "name": "Write From Dictation",
+          "wuxiaName": "听风默写诀",
+          "icon": "keyboard",
+          "levels": ["抄录童子", "默写弟子", "记忆高手", "听写宗师", "天书传人"]
+        }
+      ]
+    }
+  ],
+  "globalAchievements": [
+    {
+      "id": "first_practice",
+      "title": "初涉江湖",
+      "englishTitle": "First Step into Jianghu",
+      "description": "完成第一道练习。",
+      "icon": "footprints",
+      "rarity": "common",
+      "condition": { "type": "total_completed_questions", "gte": 1 }
+    },
+    {
+      "id": "practice_100",
+      "title": "初试锋芒",
+      "englishTitle": "First Flash of the Blade",
+      "description": "累计完成 100 道题。",
+      "icon": "sparkles",
+      "rarity": "common",
+      "condition": { "type": "total_completed_questions", "gte": 100 }
+    },
+    {
+      "id": "practice_500",
+      "title": "小有所成",
+      "englishTitle": "Promising Progress",
+      "description": "累计完成 500 道题。",
+      "icon": "medal",
+      "rarity": "uncommon",
+      "condition": { "type": "total_completed_questions", "gte": 500 }
+    },
+    {
+      "id": "practice_1000",
+      "title": "名震一方",
+      "englishTitle": "Known Across the Land",
+      "description": "累计完成 1000 道题。",
+      "icon": "trophy",
+      "rarity": "rare",
+      "condition": { "type": "total_completed_questions", "gte": 1000 }
+    },
+    {
+      "id": "practice_5000",
+      "title": "威震江湖",
+      "englishTitle": "Famous in Jianghu",
+      "description": "累计完成 5000 道题。",
+      "icon": "crown",
+      "rarity": "epic",
+      "condition": { "type": "total_completed_questions", "gte": 5000 }
+    },
+    {
+      "id": "practice_10000",
+      "title": "天下第一",
+      "englishTitle": "Number One Under Heaven",
+      "description": "累计完成 10000 道题。",
+      "icon": "gem",
+      "rarity": "legendary",
+      "condition": { "type": "total_completed_questions", "gte": 10000 }
+    },
+    {
+      "id": "accuracy_90",
+      "title": "百发百中",
+      "englishTitle": "Hundred Shots, Hundred Hits",
+      "description": "综合正确率达到 90%，且至少完成 300 道题。",
+      "icon": "target",
+      "rarity": "rare",
+      "condition": { "type": "overall_accuracy", "gte": 0.9, "minCompletedQuestions": 300 }
+    },
+    {
+      "id": "accuracy_95",
+      "title": "出神入化",
+      "englishTitle": "Beyond Mastery",
+      "description": "综合正确率达到 95%，且至少完成 500 道题。",
+      "icon": "wand-sparkles",
+      "rarity": "epic",
+      "condition": { "type": "overall_accuracy", "gte": 0.95, "minCompletedQuestions": 500 }
+    },
+    {
+      "id": "accuracy_100",
+      "title": "人剑合一",
+      "englishTitle": "One with the Sword",
+      "description": "连续 50 道题全对。",
+      "icon": "swords",
+      "rarity": "legendary",
+      "condition": { "type": "correct_streak", "gte": 50 }
+    }
+  ],
+  "streakAchievements": [
+    { "id": "streak_1", "title": "初练", "englishTitle": "First Practice", "days": 1, "icon": "flame", "rarity": "common" },
+    { "id": "streak_3", "title": "勤修三日", "englishTitle": "Three Days of Discipline", "days": 3, "icon": "flame", "rarity": "common" },
+    { "id": "streak_7", "title": "七日闭关", "englishTitle": "Seven-Day Retreat", "days": 7, "icon": "flame", "rarity": "uncommon" },
+    { "id": "streak_15", "title": "心无旁骛", "englishTitle": "Undistracted Mind", "days": 15, "icon": "flame", "rarity": "rare" },
+    { "id": "streak_30", "title": "功力渐深", "englishTitle": "Deepening Inner Power", "days": 30, "icon": "flame", "rarity": "rare" },
+    { "id": "streak_60", "title": "炉火纯青", "englishTitle": "Refined to Perfection", "days": 60, "icon": "flame", "rarity": "epic" },
+    { "id": "streak_100", "title": "闭关百日", "englishTitle": "Hundred-Day Retreat", "days": 100, "icon": "flame", "rarity": "legendary" },
+    { "id": "streak_365", "title": "剑心永恒", "englishTitle": "Eternal Sword Heart", "days": 365, "icon": "flame", "rarity": "mythic" }
+  ],
+  "scoreAchievements": [
+    {
+      "id": "score_65",
+      "title": "破阵有成",
+      "englishTitle": "Breaking the Formation",
+      "description": "任意 AI 评分达到 65+。",
+      "icon": "shield-check",
+      "rarity": "uncommon",
+      "condition": { "type": "any_ai_score", "gte": 65 }
+    },
+    {
+      "id": "score_79",
+      "title": "七星剑客",
+      "englishTitle": "Seven-Star Swordsman",
+      "description": "任意 AI 评分达到 79+。",
+      "icon": "star",
+      "rarity": "rare",
+      "condition": { "type": "any_ai_score", "gte": 79 }
+    },
+    {
+      "id": "score_85",
+      "title": "剑宗高手",
+      "englishTitle": "Sword Sect Master",
+      "description": "任意 AI 评分达到 85+。",
+      "icon": "badge-check",
+      "rarity": "epic",
+      "condition": { "type": "any_ai_score", "gte": 85 }
+    },
+    {
+      "id": "score_90",
+      "title": "登峰造极",
+      "englishTitle": "At the Summit",
+      "description": "任意 AI 评分达到 90。",
+      "icon": "mountain-snow",
+      "rarity": "legendary",
+      "condition": { "type": "any_ai_score", "gte": 90 }
+    }
+  ],
+  "hiddenAchievements": [
+    {
+      "id": "midnight_hero",
+      "title": "夜行侠",
+      "englishTitle": "Midnight Wanderer",
+      "description": "凌晨 12 点后完成一次练习。",
+      "icon": "moon",
+      "rarity": "rare",
+      "hidden": true,
+      "condition": { "type": "practice_time_window", "from": "00:00", "to": "04:00" }
+    },
+    {
+      "id": "all_modules_started",
+      "title": "四门初开",
+      "englishTitle": "Four Gates Opened",
+      "description": "Speaking、Writing、Reading、Listening 都至少完成 1 道题。",
+      "icon": "layout-grid",
+      "rarity": "uncommon",
+      "hidden": true,
+      "condition": { "type": "all_modules_completed_at_least", "gte": 1 }
+    },
+    {
+      "id": "all_listening_done",
+      "title": "天耳通",
+      "englishTitle": "Heavenly Ear",
+      "description": "完成所有 Listening 题型至少各 10 道。",
+      "icon": "ear",
+      "rarity": "epic",
+      "hidden": true,
+      "condition": { "type": "all_question_types_completed", "module": "listening", "gte": 10 }
+    },
+    {
+      "id": "all_reading_done",
+      "title": "博览群书",
+      "englishTitle": "Reader of Ten Thousand Scrolls",
+      "description": "完成所有 Reading 题型至少各 10 道。",
+      "icon": "library",
+      "rarity": "epic",
+      "hidden": true,
+      "condition": { "type": "all_question_types_completed", "module": "reading", "gte": 10 }
+    },
+    {
+      "id": "all_speaking_done",
+      "title": "剑胆琴心",
+      "englishTitle": "Sword Courage, Zither Heart",
+      "description": "完成所有 Speaking 题型至少各 10 道。",
+      "icon": "mic-2",
+      "rarity": "epic",
+      "hidden": true,
+      "condition": { "type": "all_question_types_completed", "module": "speaking", "gte": 10 }
+    },
+    {
+      "id": "all_writing_done",
+      "title": "妙笔生花",
+      "englishTitle": "Flowers from the Brush",
+      "description": "完成所有 Writing 题型至少各 10 道。",
+      "icon": "pen-tool",
+      "rarity": "epic",
+      "hidden": true,
+      "condition": { "type": "all_question_types_completed", "module": "writing", "gte": 10 }
+    },
+    {
+      "id": "all_modules_90",
+      "title": "六脉神剑",
+      "englishTitle": "Six Meridian Divine Sword",
+      "description": "四大模块正确率均达到 90%，且每个模块至少完成 100 道题。",
+      "icon": "sparkle",
+      "rarity": "mythic",
+      "hidden": true,
+      "condition": { "type": "all_modules_accuracy", "gte": 0.9, "minCompletedQuestionsPerModule": 100 }
+    }
+  ],
+  "typeLevelRule": {
+    "description": "For questionTypes.levels array. Use completed count and accuracy to map a user to one of five wuxia titles.",
+    "levels": [
+      {
+        "index": 0,
+        "condition": { "completed": { "gte": 1 } }
+      },
+      {
+        "index": 1,
+        "condition": { "completed": { "gte": 20 } }
+      },
+      {
+        "index": 2,
+        "condition": { "completed": { "gte": 50 } }
+      },
+      {
+        "index": 3,
+        "condition": { "completed": { "gte": 100 }, "accuracy": { "gte": 0.8 } }
+      },
+      {
+        "index": 4,
+        "condition": { "completed": { "gte": 200 }, "accuracy": { "gte": 0.9 } }
+      }
+    ]
+  },
+  "rarityLabels": {
+    "common": "凡品",
+    "uncommon": "良品",
+    "rare": "珍品",
+    "epic": "绝品",
+    "legendary": "传说",
+    "mythic": "神话"
+  }
+}
