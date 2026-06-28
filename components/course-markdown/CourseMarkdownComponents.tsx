@@ -4,6 +4,8 @@ import type { Components } from "react-markdown";
 import CourseAdmonition from "./CourseAdmonition";
 import CourseAnimatedBlock from "./CourseAnimatedBlock";
 import FlowDiagram from "./flow-diagram";
+import Columns from "./columns";
+import Column from "./column";
 import { courseAdmonitionTypes, type CourseAdmonitionType } from "./course-admonition-config";
 import { courseAnimationTypes, type CourseAnimationType } from "@/lib/course-markdown/markdown-transforms";
 
@@ -16,6 +18,12 @@ function getCodeLanguage(className: string | undefined) {
 
 function getCodeText(children: ReactNode) {
   return Children.toArray(children).map((child) => typeof child === "string" || typeof child === "number" ? String(child) : "").join("").replace(/\n$/, "");
+}
+
+function getColumnsRatio(className: string | undefined) {
+  const ratioClass = className?.split(" ").find((name) => /^course-columns-ratio-\d{1,3}-\d{1,3}$/.test(name));
+  const match = ratioClass?.match(/^course-columns-ratio-(\d{1,3})-(\d{1,3})$/);
+  return match ? `${match[1]}/${match[2]}` : null;
 }
 
 function getClassType(className: string | undefined, prefix: string) {
@@ -126,6 +134,9 @@ export const courseMarkdownComponents: Components = {
     return <aside className={className}>{children}</aside>;
   },
   div({ className, children }) {
+    if (className?.split(" ").includes("course-columns")) return <Columns ratio={getColumnsRatio(className)}>{children}</Columns>;
+    if (className?.split(" ").includes("course-column")) return <Column>{children}</Column>;
+
     const animation = getClassType(className, "course-animation-");
     const admonition = getClassType(className, "course-admonition-");
 

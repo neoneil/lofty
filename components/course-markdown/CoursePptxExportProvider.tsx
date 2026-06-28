@@ -10,6 +10,7 @@ type ExportProgress = {
 type ExportHandler = (onProgress: (completed: number, total: number) => void) => Promise<void>;
 
 type CoursePptxExportContextValue = {
+  clearResult: () => void;
   error: string | null;
   isExporting: boolean;
   progress: ExportProgress | null;
@@ -29,6 +30,12 @@ export function CoursePptxExportProvider({ children }: { children: ReactNode }) 
     handlerRef.current = handler;
   }, []);
 
+  const clearResult = useCallback(() => {
+    if (isExporting) return;
+    setProgress(null);
+    setError(null);
+  }, [isExporting]);
+
   const startExport = useCallback(async () => {
     if (isExporting || !handlerRef.current) return;
     setIsExporting(true);
@@ -45,7 +52,7 @@ export function CoursePptxExportProvider({ children }: { children: ReactNode }) 
     }
   }, [isExporting]);
 
-  return <CoursePptxExportContext.Provider value={{ error, isExporting, progress, registerExportHandler, startExport }}>{children}</CoursePptxExportContext.Provider>;
+  return <CoursePptxExportContext.Provider value={{ clearResult, error, isExporting, progress, registerExportHandler, startExport }}>{children}</CoursePptxExportContext.Provider>;
 }
 
 export function useCoursePptxExport() {

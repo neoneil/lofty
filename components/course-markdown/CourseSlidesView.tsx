@@ -102,8 +102,8 @@ export default function CourseSlidesView({ slides, predictionQuestions = [], exp
             const exportDensity = getSlideDensity(slide.content);
             return (
               <div key={`export-${index}`} data-course-export-slide="true" style={gradientStyle} className="relative h-[720px] w-[1280px] overflow-hidden bg-[var(--card)] text-[var(--text)]">
-                <div className={`h-full overflow-hidden px-16 py-12 ${slide.footer ? "pb-20" : ""}`}>
-                  <div className={`course-slide-content course-slide-content--${exportDensity}`} data-course-markdown-content="true"><CourseMarkdownBody content={slide.content} /></div>
+                <div data-course-export-viewport="true" className={`h-full overflow-hidden px-16 py-12 ${slide.footer ? "pb-20" : ""}`}>
+                  <div data-course-export-content="true" className={`course-slide-content course-slide-content--${exportDensity}`} data-course-markdown-content="true"><CourseMarkdownBody content={slide.content} /></div>
                 </div>
                 {slide.footer ? <CourseSlideFooter footer={slide.footer} page={index + 1} totalPages={parsedSlides.length} /> : null}
               </div>

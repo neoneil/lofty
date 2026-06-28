@@ -3,6 +3,8 @@ import { courseAdmonitionTypes, type CourseAdmonitionType } from "@/components/c
 type MarkdownNode = {
   type: string;
   value?: string;
+  name?: string;
+  attributes?: Record<string, string | null | undefined>;
   children?: MarkdownNode[];
   data?: {
     hName?: string;
@@ -16,7 +18,7 @@ export type CourseAnimationType = (typeof courseAnimationTypes)[number];
 const admonitionTypeSet = new Set<string>(courseAdmonitionTypes);
 const animationTypeSet = new Set<string>(courseAnimationTypes);
 const ADMONITION_PATTERN = /^\s*\[!([A-Z][A-Z-]*)\]\s*/i;
-const ANIMATION_PATTERN = /^\s*\[!ANIMATE(?::([A-Z-]+))?\]\s*/i;
+const ANIMATION_PATTERN = /^\s*\[!ANIMATE(?:(?::|@)([A-Z-]+))?\]\s*/i;
 const INLINE_PATTERN = /(==(.+?)==|\{(red|green|yellow|blue|purple)\}(.+?)\{\/\3\}|\[badge:\s*([^\]]+)\])/gi;
 
 function findFirstText(node: MarkdownNode): MarkdownNode | null {
@@ -62,6 +64,20 @@ function setBlockType(node: MarkdownNode, className: string) {
       className,
     },
   };
+}
+
+function transformDirective(node: MarkdownNode) {
+  if (node.type !== "containerDirective") return;
+  const name = node.name?.toLowerCase();
+
+  if (name === "columns") {
+    const ratio = node.attributes?.ratio?.replace(/\s+/g, "");
+    const ratioMatch = ratio?.match(/^(\d{1,3})\/(\d{1,3})$/);
+    const ratioClass = ratioMatch && Number(ratioMatch[1]) > 0 && Number(ratioMatch[2]) > 0 ? ` course-columns-ratio-${ratioMatch[1]}-${ratioMatch[2]}` : "";
+    node.data = { ...node.data, hName: "div", hProperties: { ...node.data?.hProperties, className: `course-columns${ratioClass}` } };
+  } else if (name === "column") {
+    node.data = { ...node.data, hName: "div", hProperties: { ...node.data?.hProperties, className: "course-column" } };
+  }
 }
 
 function transformBlock(node: MarkdownNode) {
@@ -141,6 +157,7 @@ function transformInlineText(value: string) {
 }
 
 function transformTree(node: MarkdownNode) {
+  transformDirective(node);
   transformBlock(node);
 
   if (!node.children || node.type === "code" || node.type === "inlineCode") return;
