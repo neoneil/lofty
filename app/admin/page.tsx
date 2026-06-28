@@ -17,6 +17,18 @@ const adminModules = [
     tag: "Posts",
   },
   {
+    title: "授课笔记",
+    desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。",
+    href: "/admin/lesson-notes",
+    tag: "PTE / IELTS",
+  },
+  {
+    title: "Markdown 备忘录",
+    desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。",
+    href: "/admin/markdown-memo",
+    tag: "Course Design",
+  },
+  {
     title: "作文批改",
     desc: "批改学生作文。",
     href: "/ielts-writing",

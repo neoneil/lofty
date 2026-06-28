@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import {
@@ -56,6 +56,7 @@ export default function PTETopNav({
 
   const pathname =
     usePathname();
+  const searchParams = useSearchParams();
 
   const pathnameSub =
     pathname.split("/")[3] as PTESubTab | undefined;
@@ -65,6 +66,8 @@ export default function PTETopNav({
 
   const subTabs =
     pteSubTabMap[currentMain];
+
+  if (searchParams.get("embed") === "course") return null;
 
   return (
 

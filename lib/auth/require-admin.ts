@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function requireAdmin(nextPath?: string) {
+async function requireStaffRole(roles: string[], nextPath?: string) {
   const supabase = await createClient();
 
   const {
@@ -22,9 +22,17 @@ export async function requireAdmin(nextPath?: string) {
     .eq("id", user.id)
     .single();
 
-  if (error || !profile || profile.role !== "admin") {
+  if (error || !profile || !roles.includes(profile.role)) {
     redirect("/");
   }
 
   return { supabase, user, profile };
+}
+
+export async function requireAdmin(nextPath?: string) {
+  return requireStaffRole(["admin"], nextPath);
+}
+
+export async function requireAdminOrEditor(nextPath?: string) {
+  return requireStaffRole(["admin", "editor"], nextPath);
 }

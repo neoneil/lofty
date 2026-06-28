@@ -1,4 +1,7 @@
+"use client";
+
 import { ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { Sidebar } from "@/components/layout-v2/sidebar/sidebar";
 import { SidebarTopbar } from "@/components/layout-v2/sidebar/topbar";
@@ -15,6 +18,12 @@ export function AppLayout({
   children,
   user,
 }: Props) {
+  const searchParams = useSearchParams();
+  const isCourseEmbed = searchParams.get("embed") === "course";
+
+  if (isCourseEmbed) {
+    return <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]"><main className="min-h-screen p-1 sm:p-2">{children}</main></div>;
+  }
 
   return (
     <div className="flex h-screen min-h-0 flex-col bg-[var(--bg)] lg:flex-row">

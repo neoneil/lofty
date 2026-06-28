@@ -153,3 +153,14 @@ export async function getVocabularyContent(): Promise<VocabularyContent> {
     wordRoots: parseWordRoots(wordRootContent),
   };
 }
+
+export async function searchResembleEntries(query: string, limit = 6) {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) return [];
+
+  const { resemble } = await getVocabularyContent();
+
+  return resemble
+    .filter((entry) => [entry.title, entry.summary, ...entry.terms, ...entry.notes, ...entry.definitions.flatMap((item) => [item.term, item.explanation])].join(" ").toLowerCase().includes(normalizedQuery))
+    .slice(0, Math.max(1, Math.min(limit, 10)));
+}

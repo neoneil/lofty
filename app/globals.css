@@ -373,3 +373,64 @@ mark {
     transform: translateY(0) scale(1);
   }
 }
+
+.course-slide-content--dense p,
+.course-slide-content--dense li,
+.course-slide-content--dense table {
+  font-size: 0.875rem !important;
+  line-height: 1.55rem !important;
+}
+
+.course-slide-content--dense h1 {
+  font-size: 1.75rem !important;
+}
+
+.course-slide-content--dense h2 {
+  font-size: 1.375rem !important;
+}
+
+.course-slide-content--dense h3 {
+  font-size: 1.125rem !important;
+}
+
+.course-slide-content--dense h1,
+.course-slide-content--dense h2,
+.course-slide-content--dense h3,
+.course-slide-content--dense p,
+.course-slide-content--dense ul,
+.course-slide-content--dense ol,
+.course-slide-content--dense aside {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.course-slide-content--compact p,
+.course-slide-content--compact li,
+.course-slide-content--compact table,
+.course-slide-content--compact aside {
+  font-size: 0.78rem !important;
+  line-height: 1.35rem !important;
+}
+
+.course-slide-content--compact h1 {
+  font-size: 1.45rem !important;
+}
+
+.course-slide-content--compact h2 {
+  font-size: 1.15rem !important;
+}
+
+.course-slide-content--compact h3 {
+  font-size: 1rem !important;
+}
+
+.course-slide-content--compact h1,
+.course-slide-content--compact h2,
+.course-slide-content--compact h3,
+.course-slide-content--compact p,
+.course-slide-content--compact ul,
+.course-slide-content--compact ol,
+.course-slide-content--compact aside {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
