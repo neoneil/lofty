@@ -85,7 +85,7 @@ export default function ContactForm() {
                 <div className="mt-6 flex flex-col items-center justify-center">
                   <div className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-white p-4 shadow-[var(--shadow-sm)] transition hover:shadow-[var(--shadow-md)]">
                     <img
-                      src="/qr.jpg"
+                      src="/qr.png"
                       alt="WeChat QR code"
                       className="h-auto w-56 rounded-[var(--radius-md)] object-contain"
                     />

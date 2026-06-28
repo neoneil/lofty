@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
+import { getAchievementSnapshot } from "@/lib/achievements/client";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -214,10 +215,8 @@ export function ProfileMenu({
 
     async function loadAchievementTitle() {
       try {
-        const response = await fetch("/api/profile/achievement-overview", { signal: controller.signal });
-        if (!response.ok) return;
-
-        const data = await response.json() as { overall_achievement_title?: string | null };
+        const data = await getAchievementSnapshot();
+        if (controller.signal.aborted) return;
         setAchievementTitle(data.overall_achievement_title?.trim() || null);
       } catch (error) {
         if (!(error instanceof DOMException && error.name === "AbortError")) console.error("Failed to load achievement title", error);
@@ -227,6 +226,15 @@ export function ProfileMenu({
     loadAchievementTitle();
     return () => controller.abort();
   }, [user]);
+
+  useEffect(() => {
+    const handleAchievementSnapshot = (event: WindowEventMap["lofty:achievement-snapshot"]) => {
+      setAchievementTitle(event.detail.overallAchievementTitle?.trim() || null);
+    };
+
+    window.addEventListener("lofty:achievement-snapshot", handleAchievementSnapshot);
+    return () => window.removeEventListener("lofty:achievement-snapshot", handleAchievementSnapshot);
+  }, []);
 
   useEffect(() => {
     if (!open || avatars.length > 0) {

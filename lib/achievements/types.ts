@@ -109,3 +109,13 @@ export type AchievementEvaluation = {
   supported: boolean;
   progress: AchievementProgress[];
 };
+
+export type UnlockedAchievement = {
+  id: string;
+  title: string;
+  englishTitle: string;
+  description: string;
+  group: string;
+  statusLabel: string;
+  progress: AchievementProgress[];
+};

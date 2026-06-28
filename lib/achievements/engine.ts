@@ -1,4 +1,4 @@
-import type { AchievementCondition, AchievementConfig, AchievementEvaluation, AchievementOverview, AchievementProgress, QuestionTypeStat, StandaloneAchievement } from "@/lib/achievements/types";
+import type { AchievementCondition, AchievementConfig, AchievementEvaluation, AchievementOverview, AchievementProgress, QuestionTypeStat, StandaloneAchievement, UnlockedAchievement } from "@/lib/achievements/types";
 
 type ModuleStat = {
   completed: number;
@@ -146,6 +146,72 @@ export function getHighestUnlockedCategoryLevel(config: AchievementConfig, categ
   return [...category.levels]
     .sort((a, b) => b.level - a.level)
     .find((level) => evaluateAchievementCondition(level.condition, context).unlocked) ?? null;
+}
+
+export function collectUnlockedAchievements(config: AchievementConfig, context: AchievementEngineContext): UnlockedAchievement[] {
+  const unlocked: UnlockedAchievement[] = [];
+
+  for (const category of config.categories) {
+    for (const level of category.levels) {
+      const evaluation = evaluateAchievementCondition(level.condition, context);
+      if (!evaluation.unlocked) continue;
+
+      unlocked.push({
+        id: `category:${category.id}:level:${level.level}`,
+        title: level.title,
+        englishTitle: level.englishTitle,
+        description: level.subtitle ?? category.description,
+        group: category.name,
+        statusLabel: `LEVEL ${level.level}`,
+        progress: evaluation.progress,
+      });
+    }
+
+    for (const questionType of category.questionTypes ?? []) {
+      const stat = context.questionTypeMap.get(questionType.id);
+
+      config.typeLevelRule.levels.forEach((rule, index) => {
+        const evaluation = evaluateQuestionTypeRule(rule.condition, stat);
+        if (!evaluation.unlocked) return;
+
+        unlocked.push({
+          id: `question-type:${questionType.id}:level:${index + 1}`,
+          title: questionType.levels[index],
+          englishTitle: questionType.name,
+          description: `${questionType.name} 专属称号达到第 ${index + 1} 级。`,
+          group: category.name,
+          statusLabel: `LEVEL ${index + 1}`,
+          progress: evaluation.progress,
+        });
+      });
+    }
+  }
+
+  const collections = [
+    { group: "江湖里程碑", items: config.globalAchievements },
+    { group: "连续修行", items: config.streakAchievements },
+    { group: "高分试炼", items: config.scoreAchievements },
+    { group: "隐藏成就", items: config.hiddenAchievements },
+  ];
+
+  for (const collection of collections) {
+    for (const achievement of collection.items) {
+      const evaluation = evaluateStandaloneAchievement(achievement, context);
+      if (!evaluation.unlocked) continue;
+
+      unlocked.push({
+        id: `achievement:${achievement.id}`,
+        title: achievement.title,
+        englishTitle: achievement.englishTitle,
+        description: achievement.description ?? (achievement.days ? `连续学习 ${achievement.days} 天。` : "已达成指定学习目标。"),
+        group: collection.group,
+        statusLabel: config.rarityLabels[achievement.rarity] ?? achievement.rarity,
+        progress: evaluation.progress,
+      });
+    }
+  }
+
+  return unlocked;
 }
 
 export function evaluateQuestionTypeRule(condition: AchievementCondition, stat?: QuestionTypeStat): AchievementEvaluation {

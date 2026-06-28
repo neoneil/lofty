@@ -19,14 +19,14 @@ export function EnrollmentPanel() {
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]"><GraduationCap size={23} /></div>
           <div>
             <Badge variant="outline">Course Enrollment</Badge>
-            <h2 className="mt-3 text-xl font-semibold text-[var(--text)] sm:text-2xl">需要系统课程与老师带学？</h2>
+            <h2 className="mt-3 text-xl font-semibold text-[var(--text)] sm:text-xl">需要系统课程与老师带学？免费试听活动中，可以联系老师安排试听时间！</h2>
             <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">查看 PTE、IELTS 一对一与精品小班课程，了解适用人群、课程结构、课后服务与当前班期。</p>
             <div className="mt-3 flex flex-wrap gap-2"><Badge variant="secondary">PTE VIP 一对一</Badge><Badge variant="secondary">PTE 精品小班</Badge><Badge variant="secondary">IELTS VIP 一对一</Badge><Badge variant="secondary">IELTS 精品小班</Badge></div>
           </div>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
           <Link href="/courses" className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white transition-colors hover:bg-[var(--primary-hover)]">查看报课课程<ArrowRight size={15} /></Link>
-          <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] transition-colors hover:bg-[var(--bg-soft)]">咨询课程顾问</Link>
+          <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] transition-colors hover:bg-[var(--bg-soft)]">咨询主讲教师</Link>
         </div>
       </CardContent>
     </Card>

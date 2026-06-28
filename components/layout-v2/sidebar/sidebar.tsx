@@ -76,47 +76,55 @@ export function Sidebar() {
         <SidebarGroup collapsed={collapsed}>
           <SidebarItem
             href="/dashboard-v2"
-            label="Dashboard"
+            label="总览"
+            subtitle="Dashboard"
             icon={<LayoutDashboard size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/achievements"
-            label="Achievements"
+            label="成就"
+            subtitle="Achievements"
             icon={<Trophy size={18} />}
+            iconTone="warning"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/classroom"
-            label="Classroom"
+            label="直播课堂"
+            subtitle="Classroom"
             icon={<Video size={18} />}
+            iconTone="danger"
             collapsed={collapsed}
-            badge="Live"
+            badge="直播"
           />
 
           <SidebarItem
             href="/study-plan"
-            label="Study Plan"
+            label="学习计划"
+            subtitle="Study Plan"
             icon={<GraduationCap size={18} />}
+            iconTone="success"
             collapsed={collapsed}
           />
         </SidebarGroup>
 
-        <SidebarGroup title="PTE Question Bank" collapsed={collapsed}>
+        <SidebarGroup title="PTE 题库" subtitle="PTE Question Bank" collapsed={collapsed}>
           <button
             onClick={() => setQuestionBankOpen(!questionBankOpen)}
             className={cn(
-              "flex h-11 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
+              "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
               collapsed ? "justify-center" : "justify-between",
             )}
           >
             <div className="flex items-center gap-3">
-              <FolderOpen size={18} />
+              <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[var(--primary-soft)] text-[var(--primary)]"><FolderOpen size={17} /></span>
 
               {!collapsed && (
-                <span className="text-sm font-medium">Question Bank</span>
+                <span className="flex flex-col text-left"><span className="text-[13px] font-semibold leading-4 text-[var(--text)]">PTE 题库</span><span className="mt-0.5 text-[10px] font-medium leading-3 text-[var(--text-faint)]">Question Bank</span></span>
               )}
             </div>
 
@@ -135,51 +143,59 @@ export function Sidebar() {
             <div className="space-y-1">
               <SidebarItem
                 href="/pte/speaking"
-                label="Speaking"
+                label="口语"
+                subtitle="Speaking"
                 icon={<Mic size={16} />}
+                iconTone="danger"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/pte/writing"
-                label="Writing"
+                label="写作"
+                subtitle="Writing"
                 icon={<PenTool size={16} />}
+                iconTone="primary"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/pte/reading"
-                label="Reading"
+                label="阅读"
+                subtitle="Reading"
                 icon={<BookOpen size={16} />}
+                iconTone="success"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/pte/listening"
-                label="Listening"
+                label="听力"
+                subtitle="Listening"
                 icon={<Headphones size={16} />}
+                iconTone="warning"
                 collapsed={collapsed}
                 nested
               />
             </div>
           )}
         </SidebarGroup>
-        <SidebarGroup title="IELTS Question Bank" collapsed={collapsed}>
+        <SidebarGroup title="IELTS 题库" subtitle="IELTS Question Bank" collapsed={collapsed}>
           <button
             onClick={() => setQuestionBankOpen2(!questionBankOpen2)}
             className={cn(
-              "flex h-11 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
+              "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
               collapsed ? "justify-center" : "justify-between",
             )}
           >
             <div className="flex items-center gap-3">
-              <FolderOpen size={18} />
+              <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[var(--success-soft)] text-[var(--success)]"><FolderOpen size={17} /></span>
 
               {!collapsed && (
-                <span className="text-sm font-medium">Question Bank</span>
+                <span className="flex flex-col text-left"><span className="text-[13px] font-semibold leading-4 text-[var(--text)]">IELTS 题库</span><span className="mt-0.5 text-[10px] font-medium leading-3 text-[var(--text-faint)]">Question Bank</span></span>
               )}
             </div>
 
@@ -198,32 +214,40 @@ export function Sidebar() {
             <div className="space-y-1">
               <SidebarItem
                 href="/ielts/speaking"
-                label="Speaking"
+                label="口语"
+                subtitle="Speaking"
                 icon={<Mic size={16} />}
+                iconTone="danger"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/ielts/writing"
-                label="Writing"
+                label="写作"
+                subtitle="Writing"
                 icon={<PenTool size={16} />}
+                iconTone="primary"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/ielts/reading"
-                label="Reading"
+                label="阅读"
+                subtitle="Reading"
                 icon={<BookOpen size={16} />}
+                iconTone="success"
                 collapsed={collapsed}
                 nested
               />
 
               <SidebarItem
                 href="/ielts/listening"
-                label="Listening"
+                label="听力"
+                subtitle="Listening"
                 icon={<Headphones size={16} />}
+                iconTone="warning"
                 collapsed={collapsed}
                 nested
               />
@@ -233,36 +257,46 @@ export function Sidebar() {
         <SidebarGroup collapsed={collapsed}>
           <SidebarItem
             href="/my-courses"
-            label="My Practice"
+            label="我的课程"
+            subtitle="My Courses"
             icon={<Mic size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/mock-test"
-            label="Mock Test"
+            label="模拟考试"
+            subtitle="Mock Test"
             icon={<BookOpen size={18} />}
+            iconTone="warning"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/vocabulary"
-            label="Vocabulary"
+            label="词汇"
+            subtitle="Vocabulary"
             icon={<BookOpen size={18} />}
+            iconTone="success"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/grammar"
-            label="Grammar"
+            label="语法"
+            subtitle="Grammar"
             icon={<PenTool size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
 
           <SidebarItem
             href="/analytics"
-            label="Analytics"
+            label="学习分析"
+            subtitle="Analytics"
             icon={<ChartNoAxesColumn size={18} />}
+            iconTone="danger"
             collapsed={collapsed}
           />
         </SidebarGroup>
@@ -270,8 +304,10 @@ export function Sidebar() {
         <SidebarGroup collapsed={collapsed}>
           <SidebarItem
             href="/settings"
-            label="Settings"
+            label="设置"
+            subtitle="Settings"
             icon={<Settings size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
         </SidebarGroup>

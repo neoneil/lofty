@@ -4,6 +4,7 @@ import { Sidebar } from "@/components/layout-v2/sidebar/sidebar";
 import { SidebarTopbar } from "@/components/layout-v2/sidebar/topbar";
 import type { User } from "@supabase/supabase-js";
 import { Topbar } from "@/components/layout-v2/topbar/topbar";
+import { AchievementUnlockNotifier } from "@/components/achievements/achievement-unlock-notifier";
 
 type Props = {
   children: ReactNode;
@@ -37,6 +38,8 @@ export function AppLayout({
         </main>
 
       </div>
+
+      <AchievementUnlockNotifier userId={user?.id ?? null} />
 
     </div>
   );

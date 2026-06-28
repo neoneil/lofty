@@ -166,7 +166,7 @@ export function AchievementGallery({ config, overview, questionTypeStats }: { co
                         const unlockedLevel = levelEvaluations.reduce((highest, evaluation, index) => evaluation.unlocked ? index : highest, -1);
                         const nextEvaluation = levelEvaluations[Math.min(unlockedLevel + 1, levelEvaluations.length - 1)];
                         return (
-                          <div key={questionType.id} className="relative rounded-[var(--radius-md)] border border-[var(--border)] px-4 py-3.5">
+                          <div key={questionType.id} className="relative rounded-[var(--radius-md)] border border-[var(--border)] px-4 py-3.5 lg:w-4/5 lg:justify-self-center">
                             {unlockedLevel === questionType.levels.length - 1 ? <AchievementDoneStamp compact /> : null}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"><div className="font-semibold text-[var(--text)]">{questionType.wuxiaName}</div><div className="text-xs text-[var(--text-faint)]">{questionType.name}</div></div>
                             <div className="mt-3 flex flex-wrap gap-1.5">{questionType.levels.map((level, index) => <Badge key={level} variant={levelEvaluations[index]?.unlocked ? "default" : "secondary"} className={levelEvaluations[index]?.unlocked ? "" : "opacity-60"}>{levelEvaluations[index]?.unlocked ? <Check size={11} className="mr-1" /> : <LockKeyhole size={11} className="mr-1" />}{index + 1}. {level}</Badge>)}</div>

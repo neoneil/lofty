@@ -25,110 +25,148 @@ import { cn } from "@/lib/utils";
 type NavItem = {
   href: string;
   label: string;
+  subtitle: string;
   icon: React.ReactNode;
+  iconTone: "primary" | "success" | "warning" | "danger";
   badge?: string;
 };
 
 const primaryItems: NavItem[] = [
   {
     href: "/dashboard-v2",
-    label: "Dashboard",
+    label: "总览",
+    subtitle: "Dashboard",
     icon: <LayoutDashboard size={16} />,
+    iconTone: "primary",
   },
   {
     href: "/achievements",
     label: "成就",
+    subtitle: "Achievements",
     icon: <Trophy size={16} />,
+    iconTone: "warning",
   },
   {
     href: "/classroom",
-    label: "Classroom",
+    label: "直播课堂",
+    subtitle: "Classroom",
     icon: <Video size={16} />,
-    badge: "Live",
+    iconTone: "danger",
+    badge: "直播",
   },
   {
     href: "/study-plan",
-    label: "Study Plan",
+    label: "学习计划",
+    subtitle: "Study Plan",
     icon: <GraduationCap size={16} />,
+    iconTone: "success",
   },
 ];
 
 const pteItems: NavItem[] = [
   {
     href: "/pte/speaking",
-    label: "Speaking",
+    label: "口语",
+    subtitle: "Speaking",
     icon: <Mic size={15} />,
+    iconTone: "danger",
   },
   {
     href: "/pte/writing",
-    label: "Writing",
+    label: "写作",
+    subtitle: "Writing",
     icon: <PenTool size={15} />,
+    iconTone: "primary",
   },
   {
     href: "/pte/reading",
-    label: "Reading",
+    label: "阅读",
+    subtitle: "Reading",
     icon: <BookOpen size={15} />,
+    iconTone: "success",
   },
   {
     href: "/pte/listening",
-    label: "Listening",
+    label: "听力",
+    subtitle: "Listening",
     icon: <Headphones size={15} />,
+    iconTone: "warning",
   },
 ];
 
 const ieltsItems: NavItem[] = [
   {
     href: "/ielts/speaking",
-    label: "Speaking",
+    label: "口语",
+    subtitle: "Speaking",
     icon: <Mic size={15} />,
+    iconTone: "danger",
   },
   {
     href: "/ielts/writing",
-    label: "Writing",
+    label: "写作",
+    subtitle: "Writing",
     icon: <PenTool size={15} />,
+    iconTone: "primary",
   },
   {
     href: "/ielts/reading",
-    label: "Reading",
+    label: "阅读",
+    subtitle: "Reading",
     icon: <BookOpen size={15} />,
+    iconTone: "success",
   },
   {
     href: "/ielts/listening",
-    label: "Listening",
+    label: "听力",
+    subtitle: "Listening",
     icon: <Headphones size={15} />,
+    iconTone: "warning",
   },
 ];
 
 const utilityItems: NavItem[] = [
   {
     href: "/practice",
-    label: "My Practice",
+    label: "我的练习",
+    subtitle: "My Practice",
     icon: <Mic size={16} />,
+    iconTone: "primary",
   },
   {
     href: "/mock-test",
-    label: "Mock Test",
+    label: "模拟考试",
+    subtitle: "Mock Test",
     icon: <BookOpen size={16} />,
+    iconTone: "warning",
   },
   {
     href: "/vocabulary",
-    label: "Vocabulary",
+    label: "词汇",
+    subtitle: "Vocabulary",
     icon: <BookOpen size={16} />,
+    iconTone: "success",
   },
   {
     href: "/grammar",
-    label: "Grammar",
+    label: "语法",
+    subtitle: "Grammar",
     icon: <PenTool size={16} />,
+    iconTone: "primary",
   },
   {
     href: "/analytics",
-    label: "Analytics",
+    label: "学习分析",
+    subtitle: "Analytics",
     icon: <ChartNoAxesColumn size={16} />,
+    iconTone: "danger",
   },
   {
     href: "/settings",
-    label: "Settings",
+    label: "设置",
+    subtitle: "Settings",
     icon: <Settings size={16} />,
+    iconTone: "primary",
   },
 ];
 
@@ -138,22 +176,28 @@ function isActive(pathname: string, href: string) {
 
 function TopbarItem({ item, pathname }: { item: NavItem; pathname: string }) {
   const active = isActive(pathname, item.href);
+  const iconToneClasses = {
+    primary: "bg-[var(--primary-soft)] text-[var(--primary)]",
+    success: "bg-[var(--success-soft)] text-[var(--success)]",
+    warning: "bg-[var(--warning-soft)] text-[var(--warning)]",
+    danger: "bg-[var(--danger-soft)] text-[var(--danger)]",
+  };
 
   return (
     <Link
       href={item.href}
       className={cn(
-        "inline-flex h-10 flex-shrink-0 items-center gap-2 rounded-[var(--radius-md)] border px-3 text-[13px] font-medium transition-all duration-200",
+        "inline-flex h-12 flex-shrink-0 items-center gap-2 rounded-[var(--radius-md)] border px-2.5 transition-all duration-200",
         active
           ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]"
           : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
       )}
     >
-      <span className="flex h-4 w-4 items-center justify-center">
+      <span className={cn("flex h-8 w-8 items-center justify-center rounded-[7px]", iconToneClasses[item.iconTone])}>
         {item.icon}
       </span>
 
-      <span className="whitespace-nowrap">{item.label}</span>
+      <span className="flex flex-col whitespace-nowrap text-left"><span className="text-xs font-semibold leading-4 text-[var(--text)]">{item.label}</span><span className="text-[9px] font-medium leading-3 text-[var(--text-faint)]">{item.subtitle}</span></span>
 
       {item.badge ? (
         <span className="rounded-full bg-[var(--primary)] px-1.5 py-0.5 text-[10px] font-semibold text-white">
@@ -166,26 +210,32 @@ function TopbarItem({ item, pathname }: { item: NavItem; pathname: string }) {
 
 function BankToggle({
   label,
+  subtitle,
+  tone,
   open,
   onClick,
 }: {
   label: string;
+  subtitle: string;
+  tone: "primary" | "success";
   open: boolean;
   onClick: () => void;
 }) {
+  const iconClassName = tone === "primary" ? "bg-[var(--primary-soft)] text-[var(--primary)]" : "bg-[var(--success-soft)] text-[var(--success)]";
+
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex h-10 flex-shrink-0 items-center gap-2 rounded-[var(--radius-md)] border px-3 text-[13px] font-semibold transition-all duration-200",
+        "inline-flex h-12 flex-shrink-0 items-center gap-2 rounded-[var(--radius-md)] border px-2.5 transition-all duration-200",
         open
           ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]"
           : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
       )}
     >
-      <FolderOpen size={16} />
-      <span>{label}</span>
+      <span className={cn("flex h-8 w-8 items-center justify-center rounded-[7px]", iconClassName)}><FolderOpen size={16} /></span>
+      <span className="flex flex-col whitespace-nowrap text-left"><span className="text-xs font-semibold leading-4 text-[var(--text)]">{label}</span><span className="text-[9px] font-medium leading-3 text-[var(--text-faint)]">{subtitle}</span></span>
       <ChevronDown
         size={15}
         className={cn("transition-transform duration-200", open && "rotate-180")}
@@ -227,13 +277,17 @@ export function SidebarTopbar() {
         ))}
 
         <BankToggle
-          label="PTE Bank"
+          label="PTE 题库"
+          subtitle="Question Bank"
+          tone="primary"
           open={questionBankOpen}
           onClick={() => setQuestionBankOpen(!questionBankOpen)}
         />
 
         <BankToggle
-          label="IELTS Bank"
+          label="IELTS 题库"
+          subtitle="Question Bank"
+          tone="success"
           open={questionBankOpen2}
           onClick={() => setQuestionBankOpen2(!questionBankOpen2)}
         />

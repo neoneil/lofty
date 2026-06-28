@@ -31,7 +31,7 @@ export default async function CoursesPage() {
             <div className="max-w-3xl">
               <Badge className="mb-4">My Learning</Badge>
               <h1 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">课程学习中心</h1>
-              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">集中观看 TED、PTE、IELTS 与 Lofty 自研视频课程，并快速进入直播课堂、学习计划和学习分析。</p>
+              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">集中观看致远英语Lofty自研online课程、PTE、IELTS 与高阶TED演讲，提升学术听力水平。</p>
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:min-w-28"><div className="text-xl font-semibold text-[var(--text)]">{courses.length}</div><div className="mt-1 text-xs text-[var(--text-faint)]">可学课程</div></div>
