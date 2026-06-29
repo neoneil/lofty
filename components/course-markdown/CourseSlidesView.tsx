@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, BookOpen, ListChecks, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 import { Button } from "@/components/ui-v2/button";
@@ -8,13 +8,17 @@ import { Card, CardContent } from "@/components/ui-v2/card";
 import type { CoursePredictionQuestion } from "@/lib/pte/course-prediction-questions";
 import { parseCourseSlideFooter } from "@/lib/course-markdown/parse-slide-footer";
 import { exportSlidesToPptx } from "@/lib/course-markdown/export-slides-to-pptx";
+import { exportSlidesToPdf } from "@/lib/course-markdown/export-slides-to-pdf";
 import { useCourseAppearance } from "./CourseAppearanceProvider";
 import CourseEmbeddedQuestion from "./CourseEmbeddedQuestion";
 import CourseMarkdownBody from "./CourseMarkdownBody";
 import CoursePredictionQuestionList from "./CoursePredictionQuestionList";
 import CourseSlideThumbnail from "./CourseSlideThumbnail";
 import CourseSlideFooter from "./CourseSlideFooter";
-import { useCoursePptxExport } from "./CoursePptxExportProvider";
+import { useCoursePptxExport, type CourseExportFormat } from "./CoursePptxExportProvider";
+import CourseCanvasOverlay from "./CourseCanvasOverlay";
+import { useCourseCanvasEditor } from "./CourseCanvasEditorProvider";
+import { useCourseFullscreen } from "./CourseFullscreenProvider";
 
 function getSlideDensity(content: string) {
   const plainTextLength = content.replace(/<!--.*?-->/g, "").replace(/[#>*_`=\[\]{}|:-]/g, "").replace(/\s+/g, " ").trim().length;
@@ -34,6 +38,9 @@ type CourseSlidesViewProps = {
 export default function CourseSlidesView({ slides, predictionQuestions = [], exportFileName }: CourseSlidesViewProps) {
   const { gradientStyle } = useCourseAppearance();
   const { isExporting, registerExportHandler } = useCoursePptxExport();
+  const { setCurrentSlideIndex } = useCourseCanvasEditor();
+  const { isFullscreen, registerPresentationElement } = useCourseFullscreen();
+  const presentationRef = useRef<HTMLDivElement>(null);
   const parsedSlides = useMemo(() => slides.map(parseCourseSlideFooter), [slides]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playbackVersion, setPlaybackVersion] = useState(0);
@@ -46,16 +53,26 @@ export default function CourseSlidesView({ slides, predictionQuestions = [], exp
   const currentSlide = parsedSlides[currentIndex];
   const density = getSlideDensity(currentSlide.content);
 
-  const exportPptx = useCallback(async (onProgress: (completed: number, total: number) => void) => {
+  useEffect(() => {
+    setCurrentSlideIndex(currentIndex);
+  }, [currentIndex, setCurrentSlideIndex]);
+
+  useEffect(() => {
+    registerPresentationElement(presentationRef.current);
+    return () => registerPresentationElement(null);
+  }, [registerPresentationElement]);
+
+  const exportSlides = useCallback(async (format: CourseExportFormat, onProgress: (completed: number, total: number) => void) => {
     await new Promise((resolve) => window.setTimeout(resolve, 1400));
     const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-course-export-slide="true"]'));
-    await exportSlidesToPptx({ elements, fileName: exportFileName, onProgress });
+    if (format === "pdf") await exportSlidesToPdf({ elements, fileName: exportFileName, onProgress });
+    else await exportSlidesToPptx({ elements, fileName: exportFileName, onProgress });
   }, [exportFileName]);
 
   useEffect(() => {
-    registerExportHandler(exportPptx);
+    registerExportHandler(exportSlides);
     return () => registerExportHandler(null);
-  }, [exportPptx, registerExportHandler]);
+  }, [exportSlides, registerExportHandler]);
 
   const replayAt = useCallback((index: number) => {
     setSelectedQuestion(null);
@@ -79,7 +96,8 @@ export default function CourseSlidesView({ slides, predictionQuestions = [], exp
     function handleKeyDown(event: KeyboardEvent) {
       if (selectedQuestion) return;
       const target = event.target as HTMLElement | null;
-      if (target?.isContentEditable || ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(target?.tagName ?? "")) return;
+      if (target?.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target?.tagName ?? "")) return;
+      if (target?.tagName === "BUTTON" && (!isFullscreen || event.code === "Space")) return;
 
       if (["ArrowRight", "ArrowDown"].includes(event.key) || event.code === "Space") {
         event.preventDefault();
@@ -92,7 +110,7 @@ export default function CourseSlidesView({ slides, predictionQuestions = [], exp
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedQuestion, showNext, showPrevious]);
+  }, [isFullscreen, selectedQuestion, showNext, showPrevious]);
 
   return (
     <>
@@ -137,12 +155,14 @@ export default function CourseSlidesView({ slides, predictionQuestions = [], exp
             {mobileQuestionsOpen && <div className="mt-2 max-h-[360px] overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3"><CoursePredictionQuestionList questions={predictionQuestions} selectedId={selectedQuestion?.id} onSelect={(question) => { setSelectedQuestion(question); setMobileQuestionsOpen(false); }} /></div>}
           </div>
         )}
-        <Card style={selectedQuestion ? undefined : gradientStyle} className="relative h-[520px] rounded-[var(--radius-lg)] sm:h-[600px] lg:h-[640px]">
-          <button type="button" onClick={() => setThumbnailsCollapsed((collapsed) => !collapsed)} className="absolute -left-3 top-4 z-10 hidden h-8 w-8 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] shadow-[var(--shadow-sm)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] lg:flex" aria-label={thumbnailsCollapsed ? "展开左侧缩略图" : "收起左侧缩略图"} title={thumbnailsCollapsed ? "展开缩略图" : "收起缩略图"}>
-            {thumbnailsCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
-          </button>
-          {selectedQuestion ? <CourseEmbeddedQuestion question={selectedQuestion} onRestore={() => setSelectedQuestion(null)} /> : <><CardContent className={`h-full overflow-y-auto overscroll-contain p-5 sm:p-8 lg:p-10 ${currentSlide.footer ? "pb-16 sm:pb-20" : ""}`}><div className={`course-slide-content course-slide-content--${density}`} data-course-markdown-content="true"><CourseMarkdownBody key={`${currentIndex}-${playbackVersion}`} content={currentSlide.content} /></div></CardContent>{currentSlide.footer ? <CourseSlideFooter footer={currentSlide.footer} page={currentIndex + 1} totalPages={slides.length} /> : null}</>}
-        </Card>
+        <div ref={presentationRef} className={isFullscreen ? "h-screen w-screen overflow-hidden bg-[var(--bg)]" : ""}>
+          <Card style={selectedQuestion ? undefined : gradientStyle} className={`relative ${isFullscreen ? "h-screen w-screen rounded-none border-0 shadow-none" : "h-[520px] rounded-[var(--radius-lg)] sm:h-[600px] lg:h-[640px]"}`}>
+            <button type="button" onClick={() => setThumbnailsCollapsed((collapsed) => !collapsed)} className={`absolute -left-3 top-4 z-10 h-8 w-8 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] shadow-[var(--shadow-sm)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] ${isFullscreen ? "hidden" : "hidden lg:flex"}`} aria-label={thumbnailsCollapsed ? "展开左侧缩略图" : "收起左侧缩略图"} title={thumbnailsCollapsed ? "展开缩略图" : "收起缩略图"}>
+              {thumbnailsCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
+            </button>
+            {selectedQuestion ? <CourseEmbeddedQuestion question={selectedQuestion} onRestore={() => setSelectedQuestion(null)} /> : <><CardContent className={`h-full overflow-y-auto overscroll-contain p-5 sm:p-8 lg:p-10 ${isFullscreen ? "xl:p-14" : ""} ${currentSlide.footer ? "pb-16 sm:pb-20" : ""}`}><div className={`course-slide-content course-slide-content--${density}`} data-course-markdown-content="true"><CourseMarkdownBody key={`${currentIndex}-${playbackVersion}`} content={currentSlide.content} /></div></CardContent>{currentSlide.footer ? <CourseSlideFooter footer={currentSlide.footer} page={currentIndex + 1} totalPages={slides.length} /> : null}<CourseCanvasOverlay key={currentIndex} fullscreen={isFullscreen} slideIndex={currentIndex} /></>}
+          </Card>
+        </div>
 
         <div className={`mt-4 flex flex-col gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3 shadow-[var(--shadow-sm)] sm:flex-row sm:items-center sm:justify-between ${selectedQuestion ? "pointer-events-none opacity-45" : ""}`}>
           <Button type="button" variant="secondary" onClick={showPrevious} disabled={isFirst} className="gap-2">

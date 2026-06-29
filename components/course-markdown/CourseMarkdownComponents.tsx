@@ -3,6 +3,7 @@ import type { Components } from "react-markdown";
 
 import CourseAdmonition from "./CourseAdmonition";
 import CourseAnimatedBlock from "./CourseAnimatedBlock";
+import CourseQuiz from "./course-quiz";
 import FlowDiagram from "./flow-diagram";
 import Columns from "./columns";
 import Column from "./column";
@@ -90,6 +91,7 @@ export const courseMarkdownComponents: Components = {
   },
   code({ className, children }) {
     if (getCodeLanguage(className) === "flow") return <FlowDiagram code={getCodeText(children)} />;
+    if (getCodeLanguage(className) === "course-quiz") return <CourseQuiz source={getCodeText(children)} />;
 
     return <code className={className ? `${className} text-sm` : "rounded bg-[var(--bg-soft)] px-1.5 py-0.5 text-[0.9em] font-semibold text-[var(--primary)]"}>{children}</code>;
   },
@@ -98,6 +100,10 @@ export const courseMarkdownComponents: Components = {
 
     if (isValidElement<{ className?: string; children?: ReactNode }>(child) && getCodeLanguage(child.props.className) === "flow") {
       return <FlowDiagram code={getCodeText(child.props.children)} />;
+    }
+
+    if (isValidElement<{ className?: string; children?: ReactNode }>(child) && getCodeLanguage(child.props.className) === "course-quiz") {
+      return <CourseQuiz source={getCodeText(child.props.children)} />;
     }
 
     return <pre className="my-6 overflow-x-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text)] shadow-[var(--shadow-sm)] [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-inherit">{children}</pre>;

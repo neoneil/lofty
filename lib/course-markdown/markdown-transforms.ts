@@ -77,6 +77,11 @@ function transformDirective(node: MarkdownNode) {
     node.data = { ...node.data, hName: "div", hProperties: { ...node.data?.hProperties, className: `course-columns${ratioClass}` } };
   } else if (name === "column") {
     node.data = { ...node.data, hName: "div", hProperties: { ...node.data?.hProperties, className: "course-column" } };
+  } else if (name === "course-animation") {
+    const animation = node.attributes?.type?.toLowerCase();
+    if (animation && animationTypeSet.has(animation)) {
+      node.data = { ...node.data, hName: "div", hProperties: { ...node.data?.hProperties, className: `course-animation-${animation}` } };
+    }
   }
 }
 

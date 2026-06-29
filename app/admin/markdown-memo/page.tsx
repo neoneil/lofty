@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, BookOpenCheck, Columns3, FileText } from "lucide-react";
+import { ArrowLeft, BookOpenCheck, CircleHelp, Columns3, FileText } from "lucide-react";
 
 import { courseAdmonitionConfig, courseAdmonitionTypes } from "@/components/course-markdown/course-admonition-config";
 import { Badge } from "@/components/ui-v2/badge";
@@ -62,6 +62,40 @@ const animationExample = `> [!ANIMATE:fade-in]
 
 > [!ANIMATE:typing]
 > 打字机效果`;
+
+const quizExample = `:::quiz
+type: single
+title: Quick Check
+question: Which sentence is the best Thesis Statement?
+options:
+- This essay will discuss both views and give my own opinion.
+- Although both views have merits, I believe practical skills are more important.
+- In this essay, I will discuss both sides.
+answer: 2
+explanation: The second sentence clearly expresses the writer's position.
+:::
+
+:::quiz
+type: short-answer
+title: Think About It
+question: What are the three parts of a standard Introduction?
+sample_answer: Definition, Paraphrase, Thesis Statement.
+explanation: A standard Introduction defines, paraphrases, and presents the position.
+:::`;
+
+const animatedQuizExample = `> [!ANIMATE:slide-up]
+
+:::quiz
+type: single
+title: Quick Check
+question: Which option is correct?
+options:
+- Option A
+- Option B
+- Option C
+answer: 2
+explanation: Option B is correct.
+:::`;
 
 const fullLessonExample = `---
 id: ra-lesson-01
@@ -178,6 +212,13 @@ export default async function MarkdownMemoPage() {
           <MemoSection title="高亮、彩色文字与 Badge"><MemoCodeBlock>{extendedSyntaxExample}</MemoCodeBlock><p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">普通的 <code>---</code> 会渲染为带品牌强调点的课程分割线。</p></MemoSection>
 
           <MemoSection title="动画语法" description="动画使用 framer-motion 在客户端执行。未知动画类型会降级为 NOTE 卡片。"><MemoCodeBlock>{animationExample}</MemoCodeBlock></MemoSection>
+
+          <MemoSection title="Quiz 互动题" description="Quiz 只使用下面的 YAML 风格。type 必须是 single 或 short-answer；选择题选项必须使用 - 列表。">
+            <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-[var(--text)]"><CircleHelp size={18} className="text-[var(--primary)]" />标准 Quiz Block</div>
+            <MemoCodeBlock>{quizExample}</MemoCodeBlock>
+            <p className="mt-5 text-sm font-semibold text-[var(--text)]">为整张 Quiz Card 添加动画</p>
+            <MemoCodeBlock>{animatedQuizExample}</MemoCodeBlock>
+          </MemoSection>
 
           <MemoSection title="完整 lesson01.md 示例" description="下面的内容可直接作为 slides 课程模板。"><MemoCodeBlock>{fullLessonExample}</MemoCodeBlock></MemoSection>
         </div>

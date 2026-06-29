@@ -7,15 +7,18 @@ type ExportProgress = {
   total: number;
 };
 
-type ExportHandler = (onProgress: (completed: number, total: number) => void) => Promise<void>;
+export type CourseExportFormat = "pdf" | "pptx";
+
+type ExportHandler = (format: CourseExportFormat, onProgress: (completed: number, total: number) => void) => Promise<void>;
 
 type CoursePptxExportContextValue = {
   clearResult: () => void;
   error: string | null;
   isExporting: boolean;
+  lastFormat: CourseExportFormat | null;
   progress: ExportProgress | null;
   registerExportHandler: (handler: ExportHandler | null) => void;
-  startExport: () => Promise<void>;
+  startExport: (format: CourseExportFormat) => Promise<void>;
 };
 
 const CoursePptxExportContext = createContext<CoursePptxExportContextValue | null>(null);
@@ -23,6 +26,7 @@ const CoursePptxExportContext = createContext<CoursePptxExportContextValue | nul
 export function CoursePptxExportProvider({ children }: { children: ReactNode }) {
   const handlerRef = useRef<ExportHandler | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [lastFormat, setLastFormat] = useState<CourseExportFormat | null>(null);
   const [progress, setProgress] = useState<ExportProgress | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,25 +38,27 @@ export function CoursePptxExportProvider({ children }: { children: ReactNode }) 
     if (isExporting) return;
     setProgress(null);
     setError(null);
+    setLastFormat(null);
   }, [isExporting]);
 
-  const startExport = useCallback(async () => {
+  const startExport = useCallback(async (format: CourseExportFormat) => {
     if (isExporting || !handlerRef.current) return;
     setIsExporting(true);
+    setLastFormat(format);
     setProgress(null);
     setError(null);
 
     try {
       await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
-      await handlerRef.current((completed, total) => setProgress({ completed, total }));
+      await handlerRef.current(format, (completed, total) => setProgress({ completed, total }));
     } catch (exportError) {
-      setError(exportError instanceof Error ? exportError.message : "PPTX 导出失败，请稍后重试。");
+      setError(exportError instanceof Error ? exportError.message : `${format.toUpperCase()} 导出失败，请稍后重试。`);
     } finally {
       setIsExporting(false);
     }
   }, [isExporting]);
 
-  return <CoursePptxExportContext.Provider value={{ clearResult, error, isExporting, progress, registerExportHandler, startExport }}>{children}</CoursePptxExportContext.Provider>;
+  return <CoursePptxExportContext.Provider value={{ clearResult, error, isExporting, lastFormat, progress, registerExportHandler, startExport }}>{children}</CoursePptxExportContext.Provider>;
 }
 
 export function useCoursePptxExport() {

@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
-import { AudioLines, BadgeDollarSign, Brain, Braces, Briefcase, Building2, CircleAlert, CircleCheckBig, CircleHelp, CircleX, Drama, FastForward, FlaskConical, GraduationCap, KeyRound, Languages, Lightbulb, ListChecks, ListOrdered, ListTodo, Mail, MessageCircle, NotebookPen, Presentation, Route, ScanSearch, ScrollText, StickyNote, Target, Trophy, TriangleAlert, UserRound, Zap } from "lucide-react";
+import { AudioLines, BadgeDollarSign, Brain, Braces, Briefcase, Building2, CircleAlert, CircleCheckBig, CircleHelp, CircleX, Drama, FastForward, FlaskConical, GraduationCap, KeyRound, Languages, Lightbulb, ListChecks, ListOrdered, ListTodo, Mail, MessageCircle, NotebookPen, Presentation, Quote, Route, ScanSearch, ScrollText, StickyNote, Target, Trophy, TriangleAlert, UserRound, Zap } from "lucide-react";
 
-export const courseAdmonitionTypes = ["note", "tip", "success", "warning", "important", "example", "question", "summary", "goal", "outcome", "agenda", "keypoint", "strategy", "exam", "common-mistake", "teacher-says", "action", "checklist", "homework", "vocabulary", "pronunciation", "grammar", "case-study", "business", "script", "roleplay", "client", "email", "meeting", "sales", "mindset", "reflection", "next"] as const;
+export const courseAdmonitionTypes = ["note", "tip", "success", "warning", "important", "example", "question", "summary", "quote", "goal", "outcome", "agenda", "keypoint", "strategy", "exam", "common-mistake", "teacher-says", "action", "checklist", "homework", "vocabulary", "pronunciation", "grammar", "case-study", "business", "script", "roleplay", "client", "email", "meeting", "sales", "mindset", "reflection", "next"] as const;
 
 export type CourseAdmonitionType = (typeof courseAdmonitionTypes)[number];
 
@@ -21,6 +21,7 @@ export const courseAdmonitionConfig: Record<CourseAdmonitionType, CourseAdmoniti
   example: { title: "示例", Icon: FlaskConical, cardClassName: "border-violet-500/35 bg-violet-500/10", accentClassName: "text-violet-600" },
   question: { title: "思考题", Icon: CircleHelp, cardClassName: "border-cyan-500/35 bg-cyan-500/10", accentClassName: "text-cyan-600" },
   summary: { title: "本节总结", Icon: ListChecks, cardClassName: "border-zinc-500/35 bg-zinc-500/10", accentClassName: "text-zinc-500" },
+  quote: { title: "重点引用", Icon: Quote, cardClassName: "border-slate-500/35 bg-slate-500/10", accentClassName: "text-slate-600 dark:text-slate-300" },
   goal: { title: "学习目标", Icon: Target, cardClassName: "border-indigo-500/35 bg-indigo-500/10", accentClassName: "text-indigo-600" },
   outcome: { title: "学习成果", Icon: Trophy, cardClassName: "border-emerald-400/40 bg-emerald-400/10", accentClassName: "text-emerald-500" },
   agenda: { title: "课程流程", Icon: ListOrdered, cardClassName: "border-sky-500/35 bg-sky-500/10", accentClassName: "text-sky-600" },

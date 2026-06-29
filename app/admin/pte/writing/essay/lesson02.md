@@ -2517,6 +2517,61 @@ right: {{page}}
 left: Created by Chi - Lofty
 right: {{page}}
 
+
+<!-- slide -->
+
+> [!ANIMATE:highlight]
+> # Quick Check
+>
+> ## Argumentative Devices
+
+> [!ANIMATE:slide-up]
+> [!GOAL]
+> 完成下面三道题，检查你是否真正理解了 Argumentative Devices。
+
+:::quiz
+type: single
+title: Question 1
+question: Which argumentative device is mainly used to explain why an idea is true or important?
+options:
+- Exemplification
+- Explanation
+- Comparison & Contrast
+- Classification
+answer: 2
+explanation: Explanation develops an idea by answering "why" or "how", making the topic sentence clearer and more convincing.
+:::
+
+---
+
+:::quiz
+type: single
+title: Question 2
+question: Which combination is generally more persuasive in a body paragraph?
+options:
+- Example → Example → Example
+- Topic Sentence → Explanation → Example → Cause & Effect
+- Topic Sentence → Example → Example
+- Topic Sentence → Comparison only
+answer: 2
+explanation: High-scoring paragraphs usually combine different argumentative devices instead of relying on only one method.
+
+:::
+
+---
+
+:::quiz
+type: short-answer
+title: Think About It
+question: Name any three argumentative devices you learned in this lesson.
+sample_answer: Exemplification, Explanation, Cause & Effect. (Other correct answers include Comparison & Contrast, Concession & Refutation, and Classification.)
+explanation: There are six major argumentative devices introduced in this lesson. Any three correct names are acceptable.
+:::
+
+[footer]
+left: Created by Chi - Lofty
+right: {{page}}
+
 <!-- slide -->
 
 > [!ANIMATE:highlight]
@@ -3501,8 +3556,8 @@ right: {{page}}
 
 > [!ANIMATE:zoom-in]
 > [!QUOTE]
-
-==A high-score paragraph is built step by step, not sentence by sentence.==
+>
+> ==A high-score paragraph is built step by step, not sentence by sentence.==
 
 [footer]
 left: Created by Chi - Lofty

@@ -1,15 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Bold, Highlighter, Paintbrush, PanelRightClose, RotateCcw, Settings2, Strikethrough, Underline, Undo2 } from "lucide-react";
 
 type FormatOperation = {
   wrappers: HTMLSpanElement[];
 };
 
+type FloatingPosition = {
+  left: number;
+  top: number;
+};
+
 type CourseTextStyleToolbarProps = {
   expanded: boolean;
   showCollapsed: boolean;
+  showSelectionPopover?: boolean;
   onExpandedChange: (expanded: boolean) => void;
 };
 
@@ -27,16 +34,19 @@ function unwrap(element: HTMLElement) {
   parent.normalize();
 }
 
-export default function CourseTextStyleToolbar({ expanded, showCollapsed, onExpandedChange }: CourseTextStyleToolbarProps) {
+export default function CourseTextStyleToolbar({ expanded, showCollapsed, showSelectionPopover = false, onExpandedChange }: CourseTextStyleToolbarProps) {
   const [hasSelection, setHasSelection] = useState(false);
+  const [floatingPosition, setFloatingPosition] = useState<FloatingPosition | null>(null);
   const [undoCount, setUndoCount] = useState(0);
   const toolbarRef = useRef<HTMLDivElement>(null);
+  const floatingToolbarRef = useRef<HTMLDivElement>(null);
   const savedRangeRef = useRef<Range | null>(null);
   const undoStackRef = useRef<FormatOperation[]>([]);
 
   function clearSelectionState() {
     savedRangeRef.current = null;
     setHasSelection(false);
+    setFloatingPosition(null);
   }
 
   useEffect(() => {
@@ -48,8 +58,10 @@ export default function CourseTextStyleToolbar({ expanded, showCollapsed, onExpa
       const root = document.querySelector<HTMLElement>(COURSE_CONTENT_SELECTOR);
 
       if (root?.contains(range.commonAncestorContainer)) {
+        const rect = range.getBoundingClientRect();
         savedRangeRef.current = range.cloneRange();
         setHasSelection(true);
+        setFloatingPosition({ left: Math.min(window.innerWidth - 12, Math.max(268, rect.right)), top: Math.max(58, rect.top - 10) });
       } else {
         clearSelectionState();
       }
@@ -57,8 +69,7 @@ export default function CourseTextStyleToolbar({ expanded, showCollapsed, onExpa
 
     function handlePointerDown(event: PointerEvent) {
       const target = event.target as Node;
-      const root = document.querySelector<HTMLElement>(COURSE_CONTENT_SELECTOR);
-      if (toolbarRef.current?.contains(target) || root?.contains(target)) return;
+      if (toolbarRef.current?.contains(target) || floatingToolbarRef.current?.contains(target)) return;
       clearSelectionState();
     }
 
@@ -150,7 +161,22 @@ export default function CourseTextStyleToolbar({ expanded, showCollapsed, onExpa
   }
 
   if (!expanded) {
-    return showCollapsed ? <button type="button" onClick={() => onExpandedChange(true)} className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-lg)] transition hover:bg-[var(--bg-soft)]" aria-label="展开文字样式工具栏" title="文字样式"><Settings2 size={19} /></button> : null;
+    return (
+      <>
+        {showSelectionPopover && hasSelection && floatingPosition && typeof document !== "undefined" ? createPortal(
+          <div ref={floatingToolbarRef} className="fixed z-[70] flex -translate-x-full -translate-y-full items-center gap-1 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-1.5 shadow-[var(--shadow-lg)]" style={{ left: floatingPosition.left, top: floatingPosition.top }} role="toolbar" aria-label="选区样式快捷工具栏">
+            <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={() => applyStyle({ fontWeight: "700" })} className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-sm)] text-[var(--text)] transition hover:bg-[var(--bg-soft)]" aria-label="加粗" title="加粗"><Bold size={15} /></button>
+            <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={() => applyStyle({ textDecorationLine: "underline" })} className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-sm)] text-[var(--text)] transition hover:bg-[var(--bg-soft)]" aria-label="下划线" title="下划线"><Underline size={15} /></button>
+            <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={() => applyStyle({ textDecorationLine: "line-through" })} className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-sm)] text-[var(--text)] transition hover:bg-[var(--bg-soft)]" aria-label="删除线" title="删除线"><Strikethrough size={15} /></button>
+            <span className="mx-0.5 h-5 w-px bg-[var(--border)]" aria-hidden="true" />
+            <label className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] text-[var(--primary)] transition hover:bg-[var(--bg-soft)]" title="字体颜色"><Paintbrush size={15} /><input type="color" defaultValue="#2563eb" onChange={(event) => applyStyle({ color: event.target.value })} className="absolute inset-0 cursor-pointer opacity-0" aria-label="字体颜色" /></label>
+            <label className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] text-amber-500 transition hover:bg-[var(--bg-soft)]" title="背景颜色"><Highlighter size={15} /><input type="color" defaultValue="#fde68a" onChange={(event) => applyStyle({ backgroundColor: event.target.value })} className="absolute inset-0 cursor-pointer opacity-0" aria-label="背景颜色" /></label>
+          </div>,
+          document.body,
+        ) : null}
+        {showCollapsed ? <button type="button" onClick={() => onExpandedChange(true)} className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-lg)] transition hover:bg-[var(--bg-soft)]" aria-label="展开文字样式工具栏" title="文字样式"><Settings2 size={19} /></button> : null}
+      </>
+    );
   }
 
   return (

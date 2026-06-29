@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui-v2/button";
 
 type ConfirmDialogProps = {
   cancelLabel?: string;
+  children?: ReactNode;
   confirmLabel?: string;
   description: string;
   onCancel: () => void;
@@ -16,7 +17,7 @@ type ConfirmDialogProps = {
   title: string;
 };
 
-export function ConfirmDialog({ cancelLabel = "取消", confirmLabel = "确定", description, onCancel, onConfirm, open, title }: ConfirmDialogProps) {
+export function ConfirmDialog({ cancelLabel = "取消", children, confirmLabel = "确定", description, onCancel, onConfirm, open, title }: ConfirmDialogProps) {
   const confirmRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export function ConfirmDialog({ cancelLabel = "取消", confirmLabel = "确定",
           <div className="min-w-0"><h2 id="confirm-dialog-title" className="text-lg font-semibold text-[var(--text)]">{title}</h2><p id="confirm-dialog-description" className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{description}</p></div>
           <button type="button" onClick={onCancel} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-sm)] text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--text)]" aria-label="关闭确认窗口"><X size={17} /></button>
         </div>
+        {children ? <div className="mt-5">{children}</div> : null}
         <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <Button type="button" variant="secondary" size="sm" onClick={onCancel}>{cancelLabel}</Button>
           <Button ref={confirmRef} type="button" size="sm" onClick={onConfirm}>{confirmLabel}</Button>

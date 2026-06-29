@@ -1,9 +1,10 @@
 "use client";
 
-import { createContext, type CSSProperties, type ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, type CSSProperties, type ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
-export type CourseGradientDirection = "to-bottom-right" | "to-top-right";
-export type CourseGradientStops = 2 | 3;
+import { COURSE_GRADIENT_PRESETS, type CourseGradientDirection, type CourseGradientStops } from "./course-gradient-presets";
+
+export type { CourseGradientDirection, CourseGradientStops } from "./course-gradient-presets";
 
 type CourseGradientConfig = {
   enabled: boolean;
@@ -32,6 +33,27 @@ const CourseAppearanceContext = createContext<CourseAppearanceContextValue | nul
 
 export function CourseAppearanceProvider({ children }: { children: ReactNode }) {
   const [gradient, setGradient] = useState<CourseGradientConfig>(DEFAULT_GRADIENT);
+
+  useEffect(() => {
+    function syncGradientWithTheme() {
+      if (document.documentElement.dataset.theme === "dark") {
+        setGradient(DEFAULT_GRADIENT);
+        return;
+      }
+
+      const preset = COURSE_GRADIENT_PRESETS[Math.floor(Math.random() * COURSE_GRADIENT_PRESETS.length)];
+      setGradient({ enabled: true, direction: preset.direction, stops: preset.stops, colors: [...preset.light] });
+    }
+
+    const timer = window.setTimeout(syncGradientWithTheme, 0);
+    const observer = new MutationObserver(syncGradientWithTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+    return () => {
+      window.clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
 
   const gradientStyle = useMemo<CSSProperties | undefined>(() => {
     if (!gradient.enabled) return undefined;
