@@ -1,0 +1,217 @@
+
+{
+  "category_id": "articles",
+  "category_cn": "冠词",
+  "category_en": "Articles",
+  "questions": [
+    {
+      "id": "articles_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "I bought _____ umbrella yesterday.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "umbrella 以元音音素开头，因此使用 an。",
+      "explanation_en": "Use 'an' before words beginning with a vowel sound.",
+      "grammar_point": "Indefinite Articles",
+      "tags": ["articles", "a", "an"]
+    },
+    {
+      "id": "articles_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "She wants to become _____ engineer.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "engineer 以元音音素开头，所以使用 an。",
+      "explanation_en": "'Engineer' begins with a vowel sound, so use 'an'.",
+      "grammar_point": "Indefinite Articles",
+      "tags": ["articles", "an"]
+    },
+    {
+      "id": "articles_003",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "My father is _____ doctor.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "职业前通常使用不定冠词，doctor 以辅音音素开头，因此用 a。",
+      "explanation_en": "Use 'a' before professions beginning with a consonant sound.",
+      "grammar_point": "Articles Before Professions",
+      "tags": ["profession", "a"]
+    },
+    {
+      "id": "articles_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "_____ sun rises in the east.",
+      "options": [
+        { "id": "A", "text": "A" },
+        { "id": "B", "text": "An" },
+        { "id": "C", "text": "The" },
+        { "id": "D", "text": "No article" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "太阳是独一无二的事物，因此使用 the。",
+      "explanation_en": "Use 'the' for unique things like the sun.",
+      "grammar_point": "Definite Article",
+      "tags": ["the", "unique"]
+    },
+    {
+      "id": "articles_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "He studies at _____ university in Melbourne.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "university 发音以 /juː/ 开头，是辅音音素，因此用 a。",
+      "explanation_en": "'University' starts with the consonant sound /juː/, so use 'a'.",
+      "grammar_point": "A vs An",
+      "tags": ["pronunciation", "a"]
+    },
+    {
+      "id": "articles_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "She can play _____ piano very well.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "表示演奏乐器时，一般使用 the。",
+      "explanation_en": "We normally use 'the' before musical instruments.",
+      "grammar_point": "Articles with Musical Instruments",
+      "tags": ["music", "the"]
+    },
+    {
+      "id": "articles_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "I have _____ hour before the meeting starts.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "hour 中 h 不发音，以元音音素开头，因此使用 an。",
+      "explanation_en": "'Hour' begins with a vowel sound because the 'h' is silent, so use 'an'.",
+      "grammar_point": "A vs An",
+      "tags": ["articles", "silent h"]
+    },
+    {
+      "id": "articles_008",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "_____ Mount Everest is the highest mountain in the world.",
+      "options": [
+        { "id": "A", "text": "A" },
+        { "id": "B", "text": "An" },
+        { "id": "C", "text": "The" },
+        { "id": "D", "text": "No article" }
+      ],
+      "correct_answer": ["D"],
+      "explanation_cn": "大多数山峰名称前不用冠词，例如 Mount Everest。",
+      "explanation_en": "Most mountain names such as 'Mount Everest' do not take an article.",
+      "grammar_point": "Zero Article",
+      "tags": ["geography", "zero article"]
+    },
+    {
+      "id": "articles_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "He was sent to _____ prison for five years.",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["D"],
+      "explanation_cn": "表示'坐牢'这一用途时，go to prison 不用冠词；若表示具体建筑，则可用 the prison。",
+      "explanation_en": "When referring to the institution or purpose, use no article: 'go to prison'.",
+      "grammar_point": "Zero Article with Institutions",
+      "tags": ["institution", "zero article"]
+    },
+    {
+      "id": "articles_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Could you pass me _____ salt on the table?",
+      "options": [
+        { "id": "A", "text": "a" },
+        { "id": "B", "text": "an" },
+        { "id": "C", "text": "the" },
+        { "id": "D", "text": "no article" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "双方都知道是哪一份盐，因此使用定冠词 the。",
+      "explanation_en": "Use 'the' because both speakers know which salt is being referred to.",
+      "grammar_point": "Definite Article",
+      "tags": ["the", "specific reference"]
+    },
+    {
+      "id": "articles_011",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She is an honest person."
+        },
+        {
+          "id": "B",
+          "text": "He bought an university textbook."
+        },
+        {
+          "id": "C",
+          "text": "The Pacific Ocean is the largest ocean."
+        },
+        {
+          "id": "D",
+          "text": "My brother is a engineer."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation_cn": "A 正确：honest 的 h 不发音，用 an。C 正确：海洋名称前用 the。B 错误：university 发音以 /juː/ 开头，应为 a university。D 错误：engineer 以元音音素开头，应为 an engineer。",
+      "explanation_en": "A is correct because 'honest' starts with a vowel sound. C is correct because oceans take 'the'. B should be 'a university', and D should be 'an engineer'.",
+      "grammar_point": "Articles (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "articles",
+        "a",
+        "an",
+        "the",
+        "zero article"
+      ]
+    }
+  ]
+}

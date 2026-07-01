@@ -1,0 +1,218 @@
+{
+  "category_id": "pronouns_determiners",
+  "category_cn": "代词与限定词",
+  "category_en": "Pronouns & Determiners",
+  "questions": [
+    {
+      "id": "pronouns_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "This book belongs to Tom. It is _____.",
+      "options": [
+        { "id": "A", "text": "he" },
+        { "id": "B", "text": "his" },
+        { "id": "C", "text": "him" },
+        { "id": "D", "text": "himself" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "表示“他的（书）”，需要使用名词性物主代词 his。",
+      "explanation_en": "Use the possessive pronoun 'his' to show ownership.",
+      "grammar_point": "Possessive Pronouns",
+      "tags": ["pronouns", "possessive"]
+    },
+    {
+      "id": "pronouns_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Sarah and I enjoyed _____ at the party.",
+      "options": [
+        { "id": "A", "text": "ourselves" },
+        { "id": "B", "text": "our" },
+        { "id": "C", "text": "us" },
+        { "id": "D", "text": "ours" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "enjoy oneself 是固定搭配，因此用 ourselves。",
+      "explanation_en": "'Enjoy oneself' is a fixed expression, so 'ourselves' is correct.",
+      "grammar_point": "Reflexive Pronouns",
+      "tags": ["pronouns", "reflexive"]
+    },
+    {
+      "id": "pronouns_003",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "_____ of the students passed the final exam.",
+      "options": [
+        { "id": "A", "text": "Every" },
+        { "id": "B", "text": "Each" },
+        { "id": "C", "text": "Much" },
+        { "id": "D", "text": "Little" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "Each of + 复数名词，表示“每一个”。Every 后面不能直接接 of。",
+      "explanation_en": "'Each of' is correct. 'Every of' is incorrect.",
+      "grammar_point": "Determiners",
+      "tags": ["determiners", "each", "every"]
+    },
+    {
+      "id": "pronouns_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "I have two brothers. _____ of them are doctors.",
+      "options": [
+        { "id": "A", "text": "Both" },
+        { "id": "B", "text": "All" },
+        { "id": "C", "text": "Either" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "两个人都……，使用 both。",
+      "explanation_en": "Use 'both' when referring to two people together.",
+      "grammar_point": "Quantifying Pronouns",
+      "tags": ["both", "either", "neither"]
+    },
+    {
+      "id": "pronouns_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Would you like _____ coffee?",
+      "options": [
+        { "id": "A", "text": "some" },
+        { "id": "B", "text": "any" },
+        { "id": "C", "text": "many" },
+        { "id": "D", "text": "few" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "表示邀请或请求时，通常使用 some，而不是 any。",
+      "explanation_en": "In offers and requests, 'some' is usually preferred instead of 'any'.",
+      "grammar_point": "Some vs Any",
+      "tags": ["some", "any"]
+    },
+    {
+      "id": "pronouns_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "There isn't _____ milk left in the fridge.",
+      "options": [
+        { "id": "A", "text": "some" },
+        { "id": "B", "text": "many" },
+        { "id": "C", "text": "any" },
+        { "id": "D", "text": "few" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "否定句中通常使用 any。",
+      "explanation_en": "'Any' is commonly used in negative sentences.",
+      "grammar_point": "Some vs Any",
+      "tags": ["some", "any", "negative"]
+    },
+    {
+      "id": "pronouns_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "There are five students in the classroom. _____ student has a laptop.",
+      "options": [
+        { "id": "A", "text": "Every" },
+        { "id": "B", "text": "Each of" },
+        { "id": "C", "text": "All" },
+        { "id": "D", "text": "Both" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Every 后面直接接单数名词；Each of 后面必须接复数名词。",
+      "explanation_en": "'Every' is followed by a singular noun, while 'Each of' must be followed by a plural noun.",
+      "grammar_point": "Every vs Each",
+      "tags": ["every", "each", "determiners"]
+    },
+    {
+      "id": "pronouns_008",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "I invited ten friends, but only _____ came.",
+      "options": [
+        { "id": "A", "text": "few" },
+        { "id": "B", "text": "a few" },
+        { "id": "C", "text": "little" },
+        { "id": "D", "text": "much" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "a few 表示'有几个'；few 表示'几乎没有'，带否定含义。",
+      "explanation_en": "'A few' means 'some', while 'few' means 'almost none'.",
+      "grammar_point": "Few vs A Few",
+      "tags": ["few", "a few"]
+    },
+    {
+      "id": "pronouns_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Neither of the answers _____ correct.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "Neither 作主语通常看作单数，因此使用 is。",
+      "explanation_en": "'Neither' is generally treated as singular, so 'is' is correct.",
+      "grammar_point": "Indefinite Pronouns",
+      "tags": ["neither", "subject-verb agreement"]
+    },
+    {
+      "id": "pronouns_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The manager introduced _____ before starting the meeting.",
+      "options": [
+        { "id": "A", "text": "him" },
+        { "id": "B", "text": "his" },
+        { "id": "C", "text": "himself" },
+        { "id": "D", "text": "he" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "主语和宾语是同一个人时，应使用反身代词 himself。",
+      "explanation_en": "Use a reflexive pronoun when the subject and object are the same person.",
+      "grammar_point": "Reflexive Pronouns",
+      "tags": ["reflexive", "himself"]
+    },
+    {
+      "id": "pronouns_011",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Each student has a textbook."
+        },
+        {
+          "id": "B",
+          "text": "Every of the students passed the test."
+        },
+        {
+          "id": "C",
+          "text": "Neither answer is correct."
+        },
+        {
+          "id": "D",
+          "text": "Would you like some coffee?"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation_cn": "A 正确：Each 后接单数名词。B 错误：应为 Each of the students 或 Every student。C 正确：Neither 通常视为单数。D 正确：表示邀请时通常使用 some。",
+      "explanation_en": "A is correct because 'Each' takes a singular noun. B is incorrect because 'Every of' is not grammatical. C is correct because 'Neither' is generally singular. D is correct because 'some' is preferred in offers.",
+      "grammar_point": "Pronouns & Determiners (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "each",
+        "every",
+        "neither",
+        "some"
+      ]
+    }
+  ]
+}
+
+

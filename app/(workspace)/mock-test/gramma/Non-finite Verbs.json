@@ -1,0 +1,232 @@
+{
+  "category_id": "non_finite_verbs",
+  "category_cn": "非谓语动词",
+  "category_en": "Non-finite Verbs",
+  "questions": [
+    {
+      "id": "non_finite_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Many students hope _____ overseas after graduation.",
+      "options": [
+        { "id": "A", "text": "study" },
+        { "id": "B", "text": "to study" },
+        { "id": "C", "text": "studying" },
+        { "id": "D", "text": "studied" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "hope 后面通常接 to do，不接 doing。",
+      "explanation_en": "'Hope' is followed by an infinitive (to do), not a gerund.",
+      "grammar_point": "Verb + Infinitive",
+      "tags": ["hope", "infinitive", "IELTS"]
+    },
+    {
+      "id": "non_finite_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The professor suggested _____ more academic journals before writing the essay.",
+      "options": [
+        { "id": "A", "text": "read" },
+        { "id": "B", "text": "to read" },
+        { "id": "C", "text": "reading" },
+        { "id": "D", "text": "reads" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "suggest 后面接动名词（doing），这是 IELTS/PTE 高频考点。",
+      "explanation_en": "'Suggest' is followed by a gerund (doing).",
+      "grammar_point": "Verb + Gerund",
+      "tags": ["suggest", "gerund", "academic"]
+    },
+    {
+      "id": "non_finite_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The researchers stopped _____ because the equipment had malfunctioned.",
+      "options": [
+        { "id": "A", "text": "to collect data" },
+        { "id": "B", "text": "collecting data" },
+        { "id": "C", "text": "collect" },
+        { "id": "D", "text": "collected data" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "stop doing 表示停止正在做的事情；stop to do 表示停下来去做另一件事。",
+      "explanation_en": "'Stop doing' means to stop an activity already in progress, while 'stop to do' means to pause in order to do something else.",
+      "grammar_point": "Stop Doing vs Stop To Do",
+      "tags": ["stop", "gerund", "IELTS"]
+    },
+    {
+      "id": "non_finite_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Students are encouraged _____ critical thinking skills throughout the course.",
+      "options": [
+        { "id": "A", "text": "develop" },
+        { "id": "B", "text": "developing" },
+        { "id": "C", "text": "to develop" },
+        { "id": "D", "text": "developed" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "be encouraged to do 是学术英语中的固定表达。",
+      "explanation_en": "'Be encouraged to do' is a common academic passive structure.",
+      "grammar_point": "Passive + Infinitive",
+      "tags": ["encouraged", "infinitive", "academic"]
+    },
+    {
+      "id": "non_finite_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ carefully, the research findings provide strong evidence for the theory.",
+      "options": [
+        { "id": "A", "text": "Analysing" },
+        { "id": "B", "text": "Analysed" },
+        { "id": "C", "text": "Having analysing" },
+        { "id": "D", "text": "To analyse" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "研究结果是'被分析'，因此使用过去分词作状语：Analysed carefully。",
+      "explanation_en": "The findings receive the action, so a past participle ('Analysed') is required.",
+      "grammar_point": "Past Participle as Adverbial",
+      "tags": ["participle", "academic writing"]
+    },
+    {
+      "id": "non_finite_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ the experiment several times, the scientists finally obtained consistent results.",
+      "options": [
+        { "id": "A", "text": "Repeating" },
+        { "id": "B", "text": "Having repeated" },
+        { "id": "C", "text": "Repeated" },
+        { "id": "D", "text": "To repeating" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "Having + 过去分词表示该动作发生在主句动作之前，是 IELTS Writing 的高级语法。",
+      "explanation_en": "'Having + past participle' indicates an action completed before the main action.",
+      "grammar_point": "Perfect Participle",
+      "tags": ["having done", "advanced grammar", "IELTS Writing"]
+    },
+     {
+      "id": "non_finite_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "I clearly remember _____ the application before the deadline.",
+      "options": [
+        { "id": "A", "text": "submit" },
+        { "id": "B", "text": "to submit" },
+        { "id": "C", "text": "submitting" },
+        { "id": "D", "text": "submitted" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "remember doing 表示记得做过某事；remember to do 表示记得去做某事。",
+      "explanation_en": "'Remember doing' refers to a past memory, while 'remember to do' means not forgetting a future action.",
+      "grammar_point": "Remember Doing vs Remember To Do",
+      "tags": [
+        "remember",
+        "gerund",
+        "infinitive"
+      ]
+    },
+    {
+      "id": "non_finite_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Please don't forget _____ your passport before leaving for the airport.",
+      "options": [
+        { "id": "A", "text": "bringing" },
+        { "id": "B", "text": "to bring" },
+        { "id": "C", "text": "bring" },
+        { "id": "D", "text": "brought" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "forget to do 表示忘记去做；forget doing 表示忘记已经做过。",
+      "explanation_en": "'Forget to do' means failing to do something. 'Forget doing' means having no memory of doing it.",
+      "grammar_point": "Forget Doing vs Forget To Do",
+      "tags": [
+        "forget",
+        "infinitive"
+      ]
+    },
+    {
+      "id": "non_finite_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The laboratory equipment needs _____.",
+      "options": [
+        { "id": "A", "text": "repair" },
+        { "id": "B", "text": "to repairing" },
+        { "id": "C", "text": "repairing" },
+        { "id": "D", "text": "repaired" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "need doing = need to be done，表示某物需要被……，这是 IELTS/PTE 高频结构。",
+      "explanation_en": "'Need doing' has the same meaning as 'need to be done'.",
+      "grammar_point": "Need Doing",
+      "tags": [
+        "need doing",
+        "passive meaning",
+        "academic"
+      ]
+    },
+    {
+      "id": "non_finite_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The supervisor made the students _____ the experiment again after discovering several errors.",
+      "options": [
+        { "id": "A", "text": "to repeat" },
+        { "id": "B", "text": "repeating" },
+        { "id": "C", "text": "repeat" },
+        { "id": "D", "text": "repeated" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "make + 宾语 + 动词原形，是使役动词的固定用法。",
+      "explanation_en": "'Make + object + base verb' is the correct causative structure.",
+      "grammar_point": "Causative Verbs",
+      "tags": [
+        "make",
+        "causative",
+        "bare infinitive"
+      ]
+    },
+    {
+      "id": "non_finite_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "I regret telling him the truth."
+        },
+        {
+          "id": "B",
+          "text": "The essay needs checking before submission."
+        },
+        {
+          "id": "C",
+          "text": "The teacher made us to rewrite the report."
+        },
+        {
+          "id": "D",
+          "text": "She avoided answering the question directly."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A 正确：regret doing 表示后悔做过某事。B 正确：need doing = need to be done。C 错误：make 后接动词原形，应为 make us rewrite。D 正确：avoid 后必须接动名词。",
+      "explanation_en": "A correctly uses 'regret doing'. B correctly uses 'need doing'. C is incorrect because 'make' is followed by the base verb, not 'to + verb'. D correctly uses a gerund after 'avoid'.",
+      "grammar_point": "Non-finite Verbs (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "gerund",
+        "infinitive",
+        "causative",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

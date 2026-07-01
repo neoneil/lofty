@@ -1,0 +1,216 @@
+{
+  "category_id": "prepositions",
+  "category_cn": "介词",
+  "category_en": "Prepositions",
+  "questions": [
+    {
+      "id": "prepositions_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The meeting will start _____ 9:00 a.m.",
+      "options": [
+        { "id": "A", "text": "at" },
+        { "id": "B", "text": "in" },
+        { "id": "C", "text": "on" },
+        { "id": "D", "text": "for" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "具体时间点前使用 at，例如 at 9:00 a.m.。",
+      "explanation_en": "Use 'at' for specific times.",
+      "grammar_point": "Prepositions of Time",
+      "tags": ["time", "at"]
+    },
+    {
+      "id": "prepositions_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "My birthday is _____ July.",
+      "options": [
+        { "id": "A", "text": "at" },
+        { "id": "B", "text": "in" },
+        { "id": "C", "text": "on" },
+        { "id": "D", "text": "by" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "月份前使用 in。",
+      "explanation_en": "Use 'in' before months.",
+      "grammar_point": "Prepositions of Time",
+      "tags": ["month", "in"]
+    },
+    {
+      "id": "prepositions_003",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "We don't have classes _____ Sunday.",
+      "options": [
+        { "id": "A", "text": "in" },
+        { "id": "B", "text": "at" },
+        { "id": "C", "text": "on" },
+        { "id": "D", "text": "during" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "星期和具体日期前使用 on。",
+      "explanation_en": "Use 'on' before days of the week and specific dates.",
+      "grammar_point": "Prepositions of Time",
+      "tags": ["day", "on"]
+    },
+    {
+      "id": "prepositions_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The supermarket is _____ the bank and the post office.",
+      "options": [
+        { "id": "A", "text": "between" },
+        { "id": "B", "text": "among" },
+        { "id": "C", "text": "over" },
+        { "id": "D", "text": "through" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "between 用于两者之间；among 用于三者及以上。",
+      "explanation_en": "Use 'between' for two people or things, and 'among' for three or more.",
+      "grammar_point": "Prepositions of Place",
+      "tags": ["between", "among"]
+    },
+    {
+      "id": "prepositions_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The cat is hiding _____ the table.",
+      "options": [
+        { "id": "A", "text": "above" },
+        { "id": "B", "text": "under" },
+        { "id": "C", "text": "behind of" },
+        { "id": "D", "text": "onto" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "猫藏在桌子下面，应使用 under。behind 后面不能加 of。",
+      "explanation_en": "Use 'under' to show something is below another object. 'Behind of' is incorrect.",
+      "grammar_point": "Prepositions of Place",
+      "tags": ["under", "place"]
+    },
+    {
+      "id": "prepositions_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "She arrived _____ Australia last week.",
+      "options": [
+        { "id": "A", "text": "at" },
+        { "id": "B", "text": "to" },
+        { "id": "C", "text": "in" },
+        { "id": "D", "text": "into" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "arrive in + 国家/城市；arrive at + 小地点。",
+      "explanation_en": "Use 'arrive in' with countries and cities, and 'arrive at' with smaller places.",
+      "grammar_point": "Arrive In vs Arrive At",
+      "tags": ["arrive", "in", "at"]
+    },
+    {
+      "id": "prepositions_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "She has lived in Melbourne _____ 2022.",
+      "options": [
+        { "id": "A", "text": "for" },
+        { "id": "B", "text": "since" },
+        { "id": "C", "text": "during" },
+        { "id": "D", "text": "from" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "since 后接时间点；for 后接一段时间。",
+      "explanation_en": "Use 'since' with a point in time and 'for' with a period of time.",
+      "grammar_point": "Since vs For",
+      "tags": ["since", "for", "time"]
+    },
+    {
+      "id": "prepositions_008",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The children slept _____ the movie.",
+      "options": [
+        { "id": "A", "text": "while" },
+        { "id": "B", "text": "during" },
+        { "id": "C", "text": "since" },
+        { "id": "D", "text": "until" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "during 后接名词；while 后接完整句子。",
+      "explanation_en": "'During' is followed by a noun, while 'while' is followed by a clause.",
+      "grammar_point": "During vs While",
+      "tags": ["during", "while"]
+    },
+    {
+      "id": "prepositions_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "You must finish the assignment _____ Friday.",
+      "options": [
+        { "id": "A", "text": "until" },
+        { "id": "B", "text": "by" },
+        { "id": "C", "text": "since" },
+        { "id": "D", "text": "through" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "by Friday 表示'最迟到周五之前'；until 表示动作持续到某时。",
+      "explanation_en": "'By Friday' means no later than Friday. 'Until' indicates duration.",
+      "grammar_point": "By vs Until",
+      "tags": ["by", "until"]
+    },
+    {
+      "id": "prepositions_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The river flows _____ the city.",
+      "options": [
+        { "id": "A", "text": "across" },
+        { "id": "B", "text": "through" },
+        { "id": "C", "text": "over" },
+        { "id": "D", "text": "between" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "through 表示'穿过内部'；across 表示'横跨表面'。河流流经城市，应使用 through。",
+      "explanation_en": "'Through' means passing within something, while 'across' means over a surface.",
+      "grammar_point": "Across vs Through",
+      "tags": ["through", "across"]
+    },
+    {
+      "id": "prepositions_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She is interested in science."
+        },
+        {
+          "id": "B",
+          "text": "The result depends on your effort."
+        },
+        {
+          "id": "C",
+          "text": "He arrived to Melbourne yesterday."
+        },
+        {
+          "id": "D",
+          "text": "I borrowed a book from my friend."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：固定搭配 interested in。B：固定搭配 depend on。C：错误，应为 arrived in Melbourne。D：borrow ... from ... 为固定搭配。",
+      "explanation_en": "A uses 'interested in' correctly. B uses 'depend on' correctly. C should be 'arrived in Melbourne'. D correctly uses 'borrow...from...'.",
+      "grammar_point": "Common Preposition Collocations",
+      "tags": [
+        "multiple_choice",
+        "collocation",
+        "prepositions",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

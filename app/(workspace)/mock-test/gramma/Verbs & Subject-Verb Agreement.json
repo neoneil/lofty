@@ -1,0 +1,231 @@
+{
+  "category_id": "verbs_subject_verb_agreement",
+  "category_cn": "动词基础与主谓一致",
+  "category_en": "Verbs & Subject-Verb Agreement",
+  "questions": [
+    {
+      "id": "verbs_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The number of international students _____ increasing every year.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "is" },
+        { "id": "C", "text": "have" },
+        { "id": "D", "text": "were" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "'The number of...' 作主语时，看作单数，因此用 is。",
+      "explanation_en": "'The number of...' takes a singular verb.",
+      "grammar_point": "Subject-Verb Agreement",
+      "tags": ["the number of", "agreement", "IELTS"]
+    },
+    {
+      "id": "verbs_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "A number of university students _____ part-time jobs.",
+      "options": [
+        { "id": "A", "text": "has" },
+        { "id": "B", "text": "takes" },
+        { "id": "C", "text": "have" },
+        { "id": "D", "text": "is" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn":"'A number of...' 表示'许多……'，谓语动词用复数。",
+      "explanation_en":"'A number of...' is followed by a plural verb.",
+      "grammar_point": "Subject-Verb Agreement",
+      "tags": ["a number of", "plural"]
+    },
+    {
+      "id": "verbs_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Each participant _____ required to complete the questionnaire.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn":"Each 作主语时，谓语动词通常使用单数。",
+      "explanation_en":"'Each' is singular and takes a singular verb.",
+      "grammar_point": "Subject-Verb Agreement",
+      "tags": ["each", "singular"]
+    },
+    {
+      "id": "verbs_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Neither the teacher nor the students _____ aware of the schedule change.",
+      "options": [
+        { "id": "A", "text": "was" },
+        { "id": "B", "text": "is" },
+        { "id": "C", "text": "are" },
+        { "id": "D", "text": "has been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn":"Neither...nor... 遵循就近原则，离谓语最近的是 students，因此用 are。",
+      "explanation_en":"With 'Neither...nor...', the verb agrees with the nearest subject.",
+      "grammar_point": "Proximity Agreement",
+      "tags": ["neither...nor", "agreement"]
+    },
+    {
+      "id": "verbs_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Research on climate change _____ become increasingly important over the past decade.",
+      "options": [
+        { "id": "A", "text": "have" },
+        { "id": "B", "text": "has" },
+        { "id": "C", "text": "are" },
+        { "id": "D", "text": "were" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn":"Research 是不可数名词，作主语时使用单数谓语。",
+      "explanation_en":"'Research' is an uncountable noun and takes a singular verb.",
+      "grammar_point": "Uncountable Nouns as Subjects",
+      "tags": ["research", "academic"]
+    },
+    {
+      "id": "verbs_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Not only the students but also the professor _____ expected to attend the conference.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn":"Not only...but also... 同样遵循就近原则，最近的主语 professor 为单数，因此用 is。",
+      "explanation_en":"With 'Not only...but also...', the verb agrees with the nearest subject.",
+      "grammar_point": "Subject-Verb Agreement",
+      "tags": ["not only...but also", "agreement", "academic"]
+    },
+     {
+      "id": "verbs_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Either the lecturers or the course coordinator _____ responsible for updating the timetable.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "Either...or... 遵循就近原则，最近的主语 coordinator 为单数，因此使用 is。",
+      "explanation_en": "With 'Either...or...', the verb agrees with the nearest subject.",
+      "grammar_point": "Proximity Agreement",
+      "tags": [
+        "either...or",
+        "subject-verb agreement",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "verbs_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "One of the most important skills students _____ is critical thinking.",
+      "options": [
+        { "id": "A", "text": "need" },
+        { "id": "B", "text": "needs" },
+        { "id": "C", "text": "needing" },
+        { "id": "D", "text": "has needed" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "students 是定语从句中的先行词，因此从句谓语应用复数 need。",
+      "explanation_en": "The relative clause modifies 'students', so the verb should be plural: 'need'.",
+      "grammar_point": "Relative Clause + Subject-Verb Agreement",
+      "tags": [
+        "one of",
+        "relative clause",
+        "academic"
+      ]
+    },
+    {
+      "id": "verbs_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Every teacher and every student _____ expected to attend the academic seminar.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "Every...and every... 强调每一个个体，因此谓语动词使用单数。",
+      "explanation_en": "'Every...and every...' takes a singular verb because each individual is emphasized.",
+      "grammar_point": "Subject-Verb Agreement",
+      "tags": [
+        "every",
+        "agreement"
+      ]
+    },
+    {
+      "id": "verbs_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The news about the scholarship _____ encouraging.",
+      "options": [
+        { "id": "A", "text": "are" },
+        { "id": "B", "text": "were" },
+        { "id": "C", "text": "is" },
+        { "id": "D", "text": "have been" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "news 虽然以 s 结尾，但属于单数不可数名词。",
+      "explanation_en": "'News' ends in 's' but is grammatically singular.",
+      "grammar_point": "Special Singular Nouns",
+      "tags": [
+        "news",
+        "agreement",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "verbs_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The number of applicants has increased significantly."
+        },
+        {
+          "id": "B",
+          "text": "A number of researchers are working on the project."
+        },
+        {
+          "id": "C",
+          "text": "Every student and every teacher are required to register."
+        },
+        {
+          "id": "D",
+          "text": "Neither the manager nor the employees were informed in advance."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：The number of + 复数名词，谓语用单数。B：A number of + 复数名词，谓语用复数。C：错误，应为 Every...and every... is。D：就近原则，最近主语 employees 为复数，因此 were 正确。",
+      "explanation_en": "A is correct because 'The number of' takes a singular verb. B is correct because 'A number of' takes a plural verb. C is incorrect because 'Every...and every...' requires a singular verb. D is correct because the verb agrees with the nearest subject 'employees'.",
+      "grammar_point": "Subject-Verb Agreement (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "agreement",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    }
+  ]
+}

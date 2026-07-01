@@ -1,7 +1,7 @@
 import "server-only";
 
 import { requireUser } from "@/lib/auth/require-user";
-import { grammarAssessmentQuestions } from "@/lib/mock-assessment/grammar-questions";
+import { loadGrammarAssessmentQuestions } from "@/lib/mock-assessment/load-grammar-questions";
 import type { AbilityAssessmentData, ChoiceQuestion, ListeningQuestion, ReadingQuestion, SpeakingAssessment, WritingAssessment } from "@/lib/mock-assessment/types";
 
 type DictionaryRow = {
@@ -128,6 +128,14 @@ function buildSpeakingAssessment(part1Rows: Part1Row[], part23Rows: Part23Row[])
 export async function loadAbilityAssessment(): Promise<AbilityAssessmentData> {
   const { supabase } = await requireUser("/mock-test");
   const warnings: string[] = [];
+  let grammar: ChoiceQuestion[] = [];
+
+  try {
+    grammar = await loadGrammarAssessmentQuestions();
+  } catch (error) {
+    console.error("LOAD GRAMMAR ASSESSMENT ERROR", error);
+    warnings.push("语法题库暂时不可用");
+  }
 
   const [dictionaryCount, fibrwCount, wfdCount, writingResult, part1Result, part23Result] = await Promise.all([
     supabase.schema("dictionary").from("words").select("word", { count: "exact", head: true }).not("meaning_zh", "is", null),
@@ -164,7 +172,7 @@ export async function loadAbilityAssessment(): Promise<AbilityAssessmentData> {
   return {
     assessmentId: crypto.randomUUID(),
     vocabulary: buildVocabularyQuestions((vocabularyResult.data ?? []) as DictionaryRow[]),
-    grammar: grammarAssessmentQuestions,
+    grammar,
     reading: buildReadingQuestions((fibrwResult.data ?? []) as FibrwRow[]),
     listening: buildListeningQuestions((wfdResult.data ?? []) as WfdRow[]),
     speaking: buildSpeakingAssessment((part1Result.data ?? []) as Part1Row[], (part23Result.data ?? []) as Part23Row[]),

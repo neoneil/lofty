@@ -1,0 +1,215 @@
+{
+  "category_id": "adjectives_adverbs_comparison",
+  "category_cn": "形容词、副词与比较",
+  "category_en": "Adjectives, Adverbs & Comparison",
+  "questions": [
+    {
+      "id": "adj_adv_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "She speaks English very _____.",
+      "options": [
+        { "id": "A", "text": "good" },
+        { "id": "B", "text": "well" },
+        { "id": "C", "text": "better" },
+        { "id": "D", "text": "best" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "修饰动词 speaks 要用副词 well，而不是形容词 good。",
+      "explanation_en": "Use the adverb 'well' to modify the verb 'speaks'.",
+      "grammar_point": "Adverbs",
+      "tags": ["adverb", "well", "good"]
+    },
+    {
+      "id": "adj_adv_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "This book is _____ than the one I read last week.",
+      "options": [
+        { "id": "A", "text": "interesting" },
+        { "id": "B", "text": "more interesting" },
+        { "id": "C", "text": "most interesting" },
+        { "id": "D", "text": "interestingly" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "than 表示比较，因此使用比较级 more interesting。",
+      "explanation_en": "The word 'than' requires the comparative form.",
+      "grammar_point": "Comparatives",
+      "tags": ["comparative", "than"]
+    },
+    {
+      "id": "adj_adv_003",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Jack is the _____ student in our class.",
+      "options": [
+        { "id": "A", "text": "tall" },
+        { "id": "B", "text": "taller" },
+        { "id": "C", "text": "tallest" },
+        { "id": "D", "text": "more tall" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "the 后面表示三者及以上最高级，因此使用 tallest。",
+      "explanation_en": "Use the superlative form after 'the' when comparing three or more.",
+      "grammar_point": "Superlatives",
+      "tags": ["superlative", "the"]
+    },
+    {
+      "id": "adj_adv_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The train arrived _____ than we expected.",
+      "options": [
+        { "id": "A", "text": "early" },
+        { "id": "B", "text": "earlier" },
+        { "id": "C", "text": "earliest" },
+        { "id": "D", "text": "more early" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "than 表示比较，因此使用 earlier。",
+      "explanation_en": "'Than' signals a comparison, so use the comparative adverb 'earlier'.",
+      "grammar_point": "Comparative Adverbs",
+      "tags": ["comparative", "adverb"]
+    },
+    {
+      "id": "adj_adv_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "This is one of the _____ cities in Australia.",
+      "options": [
+        { "id": "A", "text": "beautiful" },
+        { "id": "B", "text": "more beautiful" },
+        { "id": "C", "text": "most beautiful" },
+        { "id": "D", "text": "beautifully" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "one of the + 最高级 + 复数名词 是固定结构。",
+      "explanation_en": "'One of the' is followed by a superlative adjective.",
+      "grammar_point": "Superlatives",
+      "tags": ["superlative", "one of the"]
+    },
+    {
+      "id": "adj_adv_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "He completed the task _____ than anyone else.",
+      "options": [
+        { "id": "A", "text": "quick" },
+        { "id": "B", "text": "quickly" },
+        { "id": "C", "text": "more quickly" },
+        { "id": "D", "text": "most quickly" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "修饰动词 completed 用副词；than 表示比较，因此用 more quickly。",
+      "explanation_en": "Use the comparative adverb 'more quickly' because of 'than'.",
+      "grammar_point": "Comparative Adverbs",
+      "tags": ["adverb", "comparative"]
+    },
+    {
+      "id": "adj_adv_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "This exam is _____ as the previous one.",
+      "options": [
+        { "id": "A", "text": "as difficult" },
+        { "id": "B", "text": "more difficult" },
+        { "id": "C", "text": "most difficult" },
+        { "id": "D", "text": "difficultly" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "as...as 表示双方程度相同，固定结构为 as + 形容词原级 + as。",
+      "explanation_en": "Use 'as + adjective + as' to show equal comparison.",
+      "grammar_point": "Equal Comparison",
+      "tags": ["as...as", "comparison"]
+    },
+    {
+      "id": "adj_adv_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Tom worked _____ all the other employees.",
+      "options": [
+        { "id": "A", "text": "hard" },
+        { "id": "B", "text": "harder than" },
+        { "id": "C", "text": "hardest" },
+        { "id": "D", "text": "hardly" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "与其他所有员工比较，应使用比较级 harder than。hardly 意为'几乎不'，意思完全不同。",
+      "explanation_en": "'Harder than' is the correct comparative form. 'Hardly' means 'almost not' and is unrelated.",
+      "grammar_point": "Comparatives & Confusing Adverbs",
+      "tags": ["hard", "hardly", "comparative"]
+    },
+    {
+      "id": "adj_adv_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The weather today is not _____ yesterday.",
+      "options": [
+        { "id": "A", "text": "as cold as" },
+        { "id": "B", "text": "so colder than" },
+        { "id": "C", "text": "more cold than" },
+        { "id": "D", "text": "coldest" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "否定比较使用 not as...as，不能使用 so colder than。",
+      "explanation_en": "Use 'not as...as' for negative comparisons.",
+      "grammar_point": "Negative Comparison",
+      "tags": ["not as...as"]
+    },
+    {
+      "id": "adj_adv_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The _____ you practise, the _____ you become.",
+      "options": [
+        { "id": "A", "text": "more / better" },
+        { "id": "B", "text": "most / best" },
+        { "id": "C", "text": "much / good" },
+        { "id": "D", "text": "many / better" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "固定句型：The + 比较级，the + 比较级，表示'越……，越……'。",
+      "explanation_en": "Use the pattern 'The + comparative..., the + comparative...' to express increasing change.",
+      "grammar_point": "Double Comparative",
+      "tags": ["the more", "comparative"]
+    },
+    {
+      "id": "adj_adv_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She sings better than her sister."
+        },
+        {
+          "id": "B",
+          "text": "This is the most expensive restaurant in town."
+        },
+        {
+          "id": "C",
+          "text": "Tom is more taller than Jack."
+        },
+        {
+          "id": "D",
+          "text": "The harder you study, the more confident you become."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A 正确：副词比较级。B 正确：最高级结构。C 错误：不能同时使用 more 和 taller。D 正确：'The + 比较级，the + 比较级' 为固定句型。",
+      "explanation_en": "A uses the comparative adverb correctly. B uses the superlative correctly. C is incorrect because 'more taller' is redundant. D correctly follows the double-comparative pattern.",
+      "grammar_point": "Comparatives & Superlatives (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "comparative",
+        "superlative",
+        "double_comparative"
+      ]
+    }
+  ]
+}

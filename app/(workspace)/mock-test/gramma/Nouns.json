@@ -1,0 +1,214 @@
+{
+  "category_id": "nouns",
+  "category_cn": "名词",
+  "category_en": "Nouns",
+  "questions": [
+    {
+      "id": "nouns_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "There are many _____ in the library.",
+      "options": [
+        { "id": "A", "text": "book" },
+        { "id": "B", "text": "books" },
+        { "id": "C", "text": "bookes" },
+        { "id": "D", "text": "booking" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "many 后面接可数名词复数，所以用 books。",
+      "explanation_en": "After 'many', we need a plural countable noun, so 'books' is correct.",
+      "grammar_point": "Countable Nouns",
+      "tags": ["nouns", "plural", "countable"]
+    },
+    {
+      "id": "nouns_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "I need some _____ about the course.",
+      "options": [
+        { "id": "A", "text": "information" },
+        { "id": "B", "text": "informations" },
+        { "id": "C", "text": "an information" },
+        { "id": "D", "text": "many information" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "information 是不可数名词，不能加 s，也不能直接用 an。",
+      "explanation_en": "'Information' is an uncountable noun, so it does not take plural -s or 'an'.",
+      "grammar_point": "Uncountable Nouns",
+      "tags": ["nouns", "uncountable"]
+    },
+    {
+      "id": "nouns_003",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "She gave me a useful piece of _____.",
+      "options": [
+        { "id": "A", "text": "advice" },
+        { "id": "B", "text": "advices" },
+        { "id": "C", "text": "an advice" },
+        { "id": "D", "text": "many advices" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "advice 是不可数名词。要表达“一条建议”，可以说 a piece of advice。",
+      "explanation_en": "'Advice' is uncountable. To mean one item of advice, we say 'a piece of advice'.",
+      "grammar_point": "Uncountable Nouns",
+      "tags": ["nouns", "advice", "uncountable"]
+    },
+    {
+      "id": "nouns_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The _____ room is on the second floor.",
+      "options": [
+        { "id": "A", "text": "teachers" },
+        { "id": "B", "text": "teacher" },
+        { "id": "C", "text": "teachers'" },
+        { "id": "D", "text": "teacher's" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "这里表示“老师们的房间”，teachers 是复数，所有格要写成 teachers'。",
+      "explanation_en": "The room belongs to more than one teacher, so the plural possessive form is 'teachers''.",
+      "grammar_point": "Plural Possessive Nouns",
+      "tags": ["nouns", "possessive"]
+    },
+    {
+      "id": "nouns_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "My _____ car is parked outside.",
+      "options": [
+        { "id": "A", "text": "brother" },
+        { "id": "B", "text": "brothers" },
+        { "id": "C", "text": "brother's" },
+        { "id": "D", "text": "brothers's" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "表示“我哥哥/弟弟的车”，单数名词 brother 的所有格是 brother's。",
+      "explanation_en": "For a singular noun, we add 's to show possession: brother's car.",
+      "grammar_point": "Singular Possessive Nouns",
+      "tags": ["nouns", "possessive"]
+    },
+    {
+      "id": "nouns_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The company has bought new _____.",
+      "options": [
+        { "id": "A", "text": "equipment" },
+        { "id": "B", "text": "equipments" },
+        { "id": "C", "text": "an equipment" },
+        { "id": "D", "text": "many equipment" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "equipment 是不可数名词，不能加 s。可以说 pieces of equipment。",
+      "explanation_en": "'Equipment' is uncountable, so it does not take plural -s. We can say 'pieces of equipment'.",
+      "grammar_point": "Uncountable Nouns",
+      "tags": ["nouns", "equipment", "uncountable"]
+    },
+     {
+      "id": "nouns_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The _____ are playing happily in the park.",
+      "options": [
+        { "id": "A", "text": "child" },
+        { "id": "B", "text": "childs" },
+        { "id": "C", "text": "children" },
+        { "id": "D", "text": "childrens" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "child 的复数是不规则变化，为 children。",
+      "explanation_en": "The plural form of 'child' is the irregular noun 'children'.",
+      "grammar_point": "Irregular Plural Nouns",
+      "tags": ["plural", "irregular", "children"]
+    },
+    {
+      "id": "nouns_008",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "There isn't much _____ left in the bottle.",
+      "options": [
+        { "id": "A", "text": "waters" },
+        { "id": "B", "text": "water" },
+        { "id": "C", "text": "a water" },
+        { "id": "D", "text": "many water" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "water 是不可数名词，much 修饰不可数名词。",
+      "explanation_en": "'Water' is an uncountable noun, and 'much' is used with uncountable nouns.",
+      "grammar_point": "Uncountable Nouns",
+      "tags": ["uncountable", "water"]
+    },
+    {
+      "id": "nouns_009",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Both _____ passed the driving test.",
+      "options": [
+        { "id": "A", "text": "woman" },
+        { "id": "B", "text": "womans" },
+        { "id": "C", "text": "women" },
+        { "id": "D", "text": "womens" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "woman 的复数是不规则变化，为 women。",
+      "explanation_en": "The plural form of 'woman' is 'women'.",
+      "grammar_point": "Irregular Plural Nouns",
+      "tags": ["plural", "women"]
+    },
+    {
+      "id": "nouns_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The _____ opinions were quite different.",
+      "options": [
+        { "id": "A", "text": "student's" },
+        { "id": "B", "text": "students" },
+        { "id": "C", "text": "students'" },
+        { "id": "D", "text": "student" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "表示多个学生的意见，复数所有格应写为 students'。",
+      "explanation_en": "The opinions belong to multiple students, so use the plural possessive 'students''.",
+      "grammar_point": "Plural Possessive Nouns",
+      "tags": ["possessive", "plural"]
+    },
+    {
+      "id": "nouns_011",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Which of the following nouns are uncountable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Furniture"
+        },
+        {
+          "id": "B",
+          "text": "Information"
+        },
+        {
+          "id": "C",
+          "text": "Apple"
+        },
+        {
+          "id": "D",
+          "text": "Equipment"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "Furniture、Information、Equipment 都是不可数名词；Apple 是可数名词。",
+      "explanation_en": "Furniture, information and equipment are uncountable nouns. Apple is a countable noun.",
+      "grammar_point": "Countable vs Uncountable Nouns",
+      "tags": [
+        "multiple_choice",
+        "uncountable",
+        "countable"
+      ]
+    }
+  ]
+}

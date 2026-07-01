@@ -1,0 +1,254 @@
+{
+  "category_id": "relative_clauses",
+  "category_cn": "定语从句",
+  "category_en": "Relative Clauses",
+  "questions": [
+    {
+      "id": "relative_clause_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The scientist _____ discovered the new vaccine received an international award.",
+      "options": [
+        { "id": "A", "text": "which" },
+        { "id": "B", "text": "who" },
+        { "id": "C", "text": "whose" },
+        { "id": "D", "text": "whom" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "先行词是 scientist（人），并且关系词在从句中作主语，因此使用 who。",
+      "explanation_en": "The antecedent is a person, and the relative pronoun functions as the subject, so 'who' is correct.",
+      "grammar_point": "Who as Subject",
+      "tags": [
+        "who",
+        "relative clause",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "relative_clause_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The report _____ was published last week has attracted worldwide attention.",
+      "options": [
+        { "id": "A", "text": "who" },
+        { "id": "B", "text": "whose" },
+        { "id": "C", "text": "which" },
+        { "id": "D", "text": "whom" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "先行词是 report（物），因此使用 which。",
+      "explanation_en": "The antecedent is a thing, so 'which' is the correct relative pronoun.",
+      "grammar_point": "Which for Things",
+      "tags": [
+        "which",
+        "academic"
+      ]
+    },
+    {
+      "id": "relative_clause_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Students _____ essays demonstrate critical thinking usually receive higher scores.",
+      "options": [
+        { "id": "A", "text": "who" },
+        { "id": "B", "text": "whose" },
+        { "id": "C", "text": "which" },
+        { "id": "D", "text": "whom" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "表示'学生的论文'，需要使用 whose 表示所属关系。",
+      "explanation_en": "'Whose' expresses possession: the essays belong to the students.",
+      "grammar_point": "Whose",
+      "tags": [
+        "whose",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "relative_clause_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The university _____ I graduated from is ranked among the top 100 in the world.",
+      "options": [
+        { "id": "A", "text": "who" },
+        { "id": "B", "text": "where" },
+        { "id": "C", "text": "which" },
+        { "id": "D", "text": "whom" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "graduate from 后缺少宾语，因此需要 which。where 后不能接 from。",
+      "explanation_en": "'Graduate from' requires an object. 'Which' is correct because it refers to the university.",
+      "grammar_point": "Which as Object",
+      "tags": [
+        "which",
+        "graduate from"
+      ]
+    },
+    {
+      "id": "relative_clause_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The researcher to _____ the award was presented has published over 100 academic papers.",
+      "options": [
+        { "id": "A", "text": "who" },
+        { "id": "B", "text": "whom" },
+        { "id": "C", "text": "whose" },
+        { "id": "D", "text": "which" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "介词后表示人，应使用 whom，这是 IELTS 阅读中的经典结构。",
+      "explanation_en": "After a preposition, use 'whom' when referring to people.",
+      "grammar_point": "Preposition + Whom",
+      "tags": [
+        "whom",
+        "formal English",
+        "academic"
+      ]
+    },
+    {
+      "id": "relative_clause_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The conference, _____ attracted scholars from over 40 countries, focused on sustainable development.",
+      "options": [
+        { "id": "A", "text": "that" },
+        { "id": "B", "text": "which" },
+        { "id": "C", "text": "who" },
+        { "id": "D", "text": "whose" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "逗号后的非限制性定语从句不能使用 that，只能使用 which。",
+      "explanation_en": "'That' cannot introduce a non-restrictive relative clause. Use 'which' after commas.",
+      "grammar_point": "Non-restrictive Relative Clauses",
+      "tags": [
+        "which",
+        "non-restrictive",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "relative_clause_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The laboratory _____ the experiment was conducted is equipped with advanced technology.",
+      "options": [
+        { "id": "A", "text": "which" },
+        { "id": "B", "text": "where" },
+        { "id": "C", "text": "whose" },
+        { "id": "D", "text": "whom" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "表示地点时，可使用 where (= in which)。这是 IELTS 阅读中的高频结构。",
+      "explanation_en": "'Where' refers to a place and can be replaced by 'in which'.",
+      "grammar_point": "Where Clauses",
+      "tags": [
+        "where",
+        "relative clause",
+        "IELTS Reading"
+      ]
+    },
+    {
+      "id": "relative_clause_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The year _____ the university was founded is recorded in the main hall.",
+      "options": [
+        { "id": "A", "text": "where" },
+        { "id": "B", "text": "which" },
+        { "id": "C", "text": "when" },
+        { "id": "D", "text": "whose" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "表示时间时，应使用 when (= in which)。",
+      "explanation_en": "'When' refers to time and can be replaced by 'in which'.",
+      "grammar_point": "When Clauses",
+      "tags": [
+        "when",
+        "time",
+        "academic"
+      ]
+    },
+    {
+      "id": "relative_clause_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The university in _____ she completed her PhD is internationally recognised.",
+      "options": [
+        { "id": "A", "text": "that" },
+        { "id": "B", "text": "where" },
+        { "id": "C", "text": "which" },
+        { "id": "D", "text": "who" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "介词后不能使用 that 或 where，应使用 in which。这是正式学术英语中的常见表达。",
+      "explanation_en": "After a preposition, use 'which', not 'that' or 'where'.",
+      "grammar_point": "Preposition + Which",
+      "tags": [
+        "in which",
+        "formal English",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "relative_clause_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The company's profits increased by 18%, _____ exceeded analysts' expectations.",
+      "options": [
+        { "id": "A", "text": "that" },
+        { "id": "B", "text": "which" },
+        { "id": "C", "text": "what" },
+        { "id": "D", "text": "who" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "which 可以指代前面整个句子的内容，这是 IELTS Writing Task 1 和 Academic Writing 的高频结构。",
+      "explanation_en": "'Which' can refer to the entire preceding clause, a common feature in academic writing.",
+      "grammar_point": "Which Referring to a Whole Clause",
+      "tags": [
+        "which",
+        "academic writing",
+        "IELTS Task 1"
+      ]
+    },
+    {
+      "id": "relative_clause_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The conference, which was attended by over 500 researchers, focused on artificial intelligence."
+        },
+        {
+          "id": "B",
+          "text": "The laboratory where the samples were analysed has recently been upgraded."
+        },
+        {
+          "id": "C",
+          "text": "The report, that was published yesterday, received international attention."
+        },
+        {
+          "id": "D",
+          "text": "The university from which she graduated is one of Australia's leading institutions."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A 正确：非限制性定语从句使用 which。B 正确：where 引导地点定语从句。C 错误：逗号后的非限制性定语从句不能使用 that。D 正确：'from which' 是正式英语和 IELTS 阅读中的高频表达。",
+      "explanation_en": "A correctly uses a non-restrictive relative clause. B correctly uses 'where' for a place. C is incorrect because 'that' cannot introduce a non-restrictive clause. D correctly uses the formal structure 'from which'.",
+      "grammar_point": "Relative Clauses (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "relative clauses",
+        "formal English",
+        "IELTS",
+        "PTE",
+        "academic writing"
+      ]
+    }
+  ]
+}

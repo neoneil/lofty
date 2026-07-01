@@ -1,0 +1,235 @@
+
+{
+  "category_id": "adverbial_clauses",
+  "category_cn": "状语从句",
+  "category_en": "Adverbial Clauses",
+  "questions": [
+    {
+      "id": "adverbial_clause_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Many students choose online learning _____ it offers greater flexibility.",
+      "options": [
+        { "id": "A", "text": "because" },
+        { "id": "B", "text": "although" },
+        { "id": "C", "text": "unless" },
+        { "id": "D", "text": "whereas" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "前后是因果关系，因此使用 because。",
+      "explanation_en": "'Because' introduces the reason for choosing online learning.",
+      "grammar_point": "Adverbial Clause of Reason",
+      "tags": ["because", "reason", "IELTS"]
+    },
+    {
+      "id": "adverbial_clause_002",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "_____ technology has improved communication, it has also created new privacy concerns.",
+      "options": [
+        { "id": "A", "text": "Because" },
+        { "id": "B", "text": "Although" },
+        { "id": "C", "text": "Unless" },
+        { "id": "D", "text": "Since" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "前后表示让步关系，应使用 although。",
+      "explanation_en": "'Although' introduces a contrast between two ideas.",
+      "grammar_point": "Adverbial Clause of Concession",
+      "tags": ["although", "contrast", "academic"]
+    },
+    {
+      "id": "adverbial_clause_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The researchers repeated the experiment _____ they could verify the results.",
+      "options": [
+        { "id": "A", "text": "so that" },
+        { "id": "B", "text": "because" },
+        { "id": "C", "text": "despite" },
+        { "id": "D", "text": "whereas" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "so that 表示目的，意为'为了……'。",
+      "explanation_en": "'So that' introduces a purpose clause.",
+      "grammar_point": "Adverbial Clause of Purpose",
+      "tags": ["so that", "purpose", "IELTS Writing"]
+    },
+    {
+      "id": "adverbial_clause_004",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ the evidence was limited, the researchers drew cautious conclusions.",
+      "options": [
+        { "id": "A", "text": "Because" },
+        { "id": "B", "text": "While" },
+        { "id": "C", "text": "Unless" },
+        { "id": "D", "text": "Therefore" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "while 可表示'虽然、尽管'，常用于学术英语表示让步。",
+      "explanation_en": "'While' can introduce a concession, meaning 'although' in formal English.",
+      "grammar_point": "While as Concession",
+      "tags": ["while", "academic", "IELTS"]
+    },
+    {
+      "id": "adverbial_clause_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The data were analysed carefully _____ the researchers could identify reliable patterns.",
+      "options": [
+        { "id": "A", "text": "because" },
+        { "id": "B", "text": "so that" },
+        { "id": "C", "text": "unless" },
+        { "id": "D", "text": "whereas" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "分析数据的目的，是为了识别可靠的规律，因此使用 so that。",
+      "explanation_en": "'So that' expresses the purpose of analysing the data.",
+      "grammar_point": "Purpose Clause",
+      "tags": ["purpose", "academic writing"]
+    },
+    {
+      "id": "adverbial_clause_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ many countries have reduced carbon emissions, global temperatures continue to rise.",
+      "options": [
+        { "id": "A", "text": "Although" },
+        { "id": "B", "text": "Because" },
+        { "id": "C", "text": "Since" },
+        { "id": "D", "text": "So that" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "前后存在明显转折关系，因此使用 although。",
+      "explanation_en": "'Although' correctly introduces a contrast between the two clauses.",
+      "grammar_point": "Concession Clauses",
+      "tags": ["although", "environment", "IELTS Essay"]
+    },
+    {
+      "id": "adverbial_clause_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ the limited budget, the research team completed the project successfully.",
+      "options": [
+        { "id": "A", "text": "Although" },
+        { "id": "B", "text": "Despite" },
+        { "id": "C", "text": "Because" },
+        { "id": "D", "text": "Unless" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "despite 后接名词或名词短语；although 后接完整句子。这是 IELTS/PTE 高频考点。",
+      "explanation_en": "'Despite' is followed by a noun phrase, whereas 'although' introduces a clause.",
+      "grammar_point": "Despite vs Although",
+      "tags": [
+        "despite",
+        "although",
+        "IELTS",
+        "PTE"
+      ]
+    },
+    {
+      "id": "adverbial_clause_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The university will offer you a place _____ you meet all the admission requirements.",
+      "options": [
+        { "id": "A", "text": "provided that" },
+        { "id": "B", "text": "despite" },
+        { "id": "C", "text": "whereas" },
+        { "id": "D", "text": "therefore" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "provided that 表示'只要、如果'，常用于正式英语和合同、学校规定。",
+      "explanation_en": "'Provided that' means 'if' or 'on the condition that' in formal English.",
+      "grammar_point": "Conditional Clauses",
+      "tags": [
+        "provided that",
+        "formal English",
+        "academic"
+      ]
+    },
+    {
+      "id": "adverbial_clause_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The two studies reached different conclusions, _____ both examined the same issue.",
+      "options": [
+        { "id": "A", "text": "because" },
+        { "id": "B", "text": "whereas" },
+        { "id": "C", "text": "unless" },
+        { "id": "D", "text": "so that" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "whereas 用于比较和对比，是 IELTS 阅读和写作中的高频连接词。",
+      "explanation_en": "'Whereas' introduces a contrast between two related ideas.",
+      "grammar_point": "Comparison & Contrast",
+      "tags": [
+        "whereas",
+        "academic writing"
+      ]
+    },
+    {
+      "id": "adverbial_clause_010",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "No sooner _____ the presentation than the audience began asking challenging questions.",
+      "options": [
+        { "id": "A", "text": "had the speaker finished" },
+        { "id": "B", "text": "the speaker had finished" },
+        { "id": "C", "text": "did the speaker finish" },
+        { "id": "D", "text": "has the speaker finished" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "固定倒装结构：No sooner had + 主语 + 过去分词 + than...，属于 IELTS 7.5+、PTE 高分语法。",
+      "explanation_en": "'No sooner...than...' requires inversion: 'No sooner had + subject + past participle...'.",
+      "grammar_point": "Inversion",
+      "tags": [
+        "no sooner",
+        "inversion",
+        "advanced grammar"
+      ]
+    },
+    {
+      "id": "adverbial_clause_011",
+      "type": "multiple_choice",
+      "difficulty": "very_hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Despite the increasing demand, the company decided not to expand production."
+        },
+        {
+          "id": "B",
+          "text": "Although demand increased, the company decided not to expand production."
+        },
+        {
+          "id": "C",
+          "text": "Despite demand increased, the company decided not to expand production."
+        },
+        {
+          "id": "D",
+          "text": "The policy will remain effective provided that all participants follow the regulations."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：正确，despite 后接名词短语。B：正确，although 后接完整句子。C：错误，despite 后不能接完整句子。D：正确，provided that 引导条件状语从句，是正式英语中的高频表达。",
+      "explanation_en": "A correctly uses 'despite' with a noun phrase. B correctly uses 'although' with a clause. C is incorrect because 'despite' cannot be followed directly by a clause. D correctly uses 'provided that' to express a condition.",
+      "grammar_point": "Adverbial Clauses (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "although",
+        "despite",
+        "provided that",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    }
+  ]
+}

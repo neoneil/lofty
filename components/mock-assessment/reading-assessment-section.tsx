@@ -25,11 +25,11 @@ export function ReadingAssessmentSection({ questions }: { questions: ReadingQues
     const parts = question.body.split(/(\[\[blank_\d+\]\])/g);
     return <section key={question.id} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 sm:p-6"><p className="text-xs font-semibold uppercase tracking-wide text-[var(--primary)]">Passage {index + 1}</p><h3 className="mt-2 text-base font-semibold text-[var(--text)]">{question.title}</h3><div className="mt-4 text-[15px] leading-[2.8] text-[var(--text)]">{parts.map((part, partIndex) => {
       const match = part.match(/\[\[blank_(\d+)\]\]/);
-      if (!match) return <span key={`${question.id}-${partIndex}`}>{part}</span>;
+      if (!match) return <span key={`${question.id}-text-${partIndex}`}>{part}</span>;
       const blank = question.blanks.find((item) => item.blankIndex === Number(match[1]));
       if (!blank) return null;
-      const key = `${question.id}-${blank.blankIndex}`;
-      return <ReadingBlankSelect key={key} blank={blank} value={answers[key] ?? ""} revealed={revealed} onChange={(value) => { setAnswers((current) => ({ ...current, [key]: value })); setRevealed(false); }} />;
+      const answerKey = `${question.id}-${blank.blankIndex}`;
+      return <ReadingBlankSelect key={`${question.id}-blank-${partIndex}`} blank={blank} value={answers[answerKey] ?? ""} revealed={revealed} onChange={(value) => { setAnswers((current) => ({ ...current, [answerKey]: value })); setRevealed(false); }} />;
     })}</div></section>;
   })}<div className="flex justify-end"><Button type="button" onClick={() => setRevealed(true)}>核对阅读答案</Button></div></CardContent></Card>;
 }

@@ -1,0 +1,257 @@
+{
+  "category_id": "subjunctive_mood",
+  "category_cn": "虚拟语气与虚拟条件句",
+  "category_en": "Subjunctive Mood & Unreal Conditionals",
+  "questions": [
+    {
+      "id": "subjunctive_001",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "If I _____ more time, I would pursue a doctoral degree.",
+      "options": [
+        { "id": "A", "text": "have" },
+        { "id": "B", "text": "had" },
+        { "id": "C", "text": "will have" },
+        { "id": "D", "text": "would have" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "与现在事实相反的虚拟条件句：If + 一般过去时，主句 + would + 动词原形。",
+      "explanation_en": "This is a second conditional expressing an unreal present situation.",
+      "grammar_point": "Second Conditional",
+      "tags": [
+        "if",
+        "second conditional",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "subjunctive_002",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "If the researchers _____ the error earlier, they would have avoided repeating the experiment.",
+      "options": [
+        { "id": "A", "text": "noticed" },
+        { "id": "B", "text": "had noticed" },
+        { "id": "C", "text": "would notice" },
+        { "id": "D", "text": "have noticed" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "与过去事实相反：If + had + 过去分词，主句 + would have + 过去分词。",
+      "explanation_en": "This is a third conditional expressing an unreal past situation.",
+      "grammar_point": "Third Conditional",
+      "tags": [
+        "third conditional",
+        "academic",
+        "research"
+      ]
+    },
+    {
+      "id": "subjunctive_003",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "I wish more people _____ the importance of environmental protection.",
+      "options": [
+        { "id": "A", "text": "understand" },
+        { "id": "B", "text": "understood" },
+        { "id": "C", "text": "will understand" },
+        { "id": "D", "text": "have understood" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "wish 表示与现在事实相反时，后面使用一般过去时。",
+      "explanation_en": "After 'wish', use the past simple to express an unreal present situation.",
+      "grammar_point": "Wish + Past Simple",
+      "tags": [
+        "wish",
+        "subjunctive",
+        "IELTS Essay"
+      ]
+    },
+    {
+      "id": "subjunctive_004",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "If I _____ about the scholarship earlier, I would have applied for it.",
+      "options": [
+        { "id": "A", "text": "knew" },
+        { "id": "B", "text": "had known" },
+        { "id": "C", "text": "know" },
+        { "id": "D", "text": "would know" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "过去虚拟条件句：If + had known，主句 would have applied。",
+      "explanation_en": "Use the past perfect in the if-clause for unreal past conditions.",
+      "grammar_point": "Third Conditional",
+      "tags": [
+        "had known",
+        "conditional",
+        "PTE"
+      ]
+    },
+    {
+      "id": "subjunctive_005",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "If I _____ you, I would invest more in renewable energy technologies.",
+      "options": [
+        { "id": "A", "text": "am" },
+        { "id": "B", "text": "was" },
+        { "id": "C", "text": "were" },
+        { "id": "D", "text": "be" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "固定虚拟语气：If I were you...，正式英语中不用 was。",
+      "explanation_en": "'If I were you' is the standard subjunctive form in formal English.",
+      "grammar_point": "Subjunctive Were",
+      "tags": [
+        "if I were",
+        "formal English",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "subjunctive_006",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "It's high time governments _____ stronger measures to address climate change.",
+      "options": [
+        { "id": "A", "text": "take" },
+        { "id": "B", "text": "took" },
+        { "id": "C", "text": "have taken" },
+        { "id": "D", "text": "will take" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "It's high time 后面使用一般过去时，表示'早就应该……了'，这是 IELTS 大作文高分句型。",
+      "explanation_en": "'It's high time' is followed by the past simple to express that something should already have happened.",
+      "grammar_point": "It's High Time",
+      "tags": [
+        "it's high time",
+        "subjunctive",
+        "Band 8 Writing"
+      ]
+    },
+     {
+      "id": "subjunctive_007",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "I wish I _____ more attention to the professor's advice before submitting my dissertation.",
+      "options": [
+        { "id": "A", "text": "paid" },
+        { "id": "B", "text": "had paid" },
+        { "id": "C", "text": "would pay" },
+        { "id": "D", "text": "have paid" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "wish + had + 过去分词，表示对过去事实的遗憾。",
+      "explanation_en": "'Wish + past perfect' expresses regret about a past situation.",
+      "grammar_point": "Wish + Past Perfect",
+      "tags": [
+        "wish",
+        "past perfect",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "subjunctive_008",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The findings were discussed as if they _____ already been confirmed by further research.",
+      "options": [
+        { "id": "A", "text": "have" },
+        { "id": "B", "text": "had" },
+        { "id": "C", "text": "were" },
+        { "id": "D", "text": "would" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "as if 表示与过去事实相反时，使用过去完成时。",
+      "explanation_en": "After 'as if', use the past perfect to describe an unreal past situation.",
+      "grammar_point": "As If + Past Perfect",
+      "tags": [
+        "as if",
+        "subjunctive",
+        "academic"
+      ]
+    },
+    {
+      "id": "subjunctive_009",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The committee recommended that every applicant _____ an interview before admission.",
+      "options": [
+        { "id": "A", "text": "attends" },
+        { "id": "B", "text": "attend" },
+        { "id": "C", "text": "attended" },
+        { "id": "D", "text": "will attend" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "recommend、suggest、insist、demand 等后面的 that 从句使用虚拟语气：动词原形（美式英语）或 should + 动词原形。",
+      "explanation_en": "After verbs such as 'recommend', use the base verb (or 'should + base verb') in the that-clause.",
+      "grammar_point": "Mandative Subjunctive",
+      "tags": [
+        "recommend",
+        "subjunctive",
+        "academic writing"
+      ]
+    },
+    {
+      "id": "subjunctive_010",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "If the government had invested more in public transport, traffic congestion _____ much less serious today.",
+      "options": [
+        { "id": "A", "text": "is" },
+        { "id": "B", "text": "would be" },
+        { "id": "C", "text": "would have been" },
+        { "id": "D", "text": "has been" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "这是混合虚拟：过去条件 + 现在结果，是 IELTS 7.5+ 的经典考点。",
+      "explanation_en": "This is a mixed conditional: an unreal past condition leading to a present result.",
+      "grammar_point": "Mixed Conditional",
+      "tags": [
+        "mixed conditional",
+        "advanced grammar",
+        "IELTS Band 8"
+      ]
+    },
+    {
+      "id": "subjunctive_011",
+      "type": "multiple_choice",
+      "difficulty": "very_hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "If I were the project manager, I would allocate more funding to research."
+        },
+        {
+          "id": "B",
+          "text": "The professor suggested that the report be revised before publication."
+        },
+        {
+          "id": "C",
+          "text": "I wish I know the answer."
+        },
+        {
+          "id": "D",
+          "text": "If the experiment had been repeated, the results might have been more reliable."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：正确，If I were... 为标准虚拟语气。B：正确，suggest that + 动词原形（be）属于命令式虚拟语气。C：错误，应为 I wish I knew...（现在）或 I wish I had known...（过去）。D：正确，第三类虚拟条件句，表示对过去事实的假设。",
+      "explanation_en": "A correctly uses the subjunctive 'were'. B correctly uses the mandative subjunctive ('be revised'). C is incorrect because 'wish' requires a subjunctive form. D correctly uses the third conditional.",
+      "grammar_point": "Subjunctive Mood (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "subjunctive",
+        "mixed conditional",
+        "IELTS",
+        "PTE",
+        "academic writing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "category_id": "noun_clauses",
+  "category_cn": "名词性从句",
+  "category_en": "Noun Clauses",
+  "questions": [
+    {
+      "id": "noun_clause_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The professor explained _____ climate change has become a global concern.",
+      "options": [
+        { "id": "A", "text": "why" },
+        { "id": "B", "text": "because" },
+        { "id": "C", "text": "how about" },
+        { "id": "D", "text": "although" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "explain 后接宾语从句。why 引导原因；because 不能直接引导宾语从句。",
+      "explanation_en": "'Explain' is followed by a noun clause. 'Why' correctly introduces the clause, while 'because' cannot.",
+      "grammar_point": "Object Clauses",
+      "tags": ["why", "object clause", "IELTS"]
+    },
+    {
+      "id": "noun_clause_002",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "_____ the new policy will reduce carbon emissions remains uncertain.",
+      "options": [
+        { "id": "A", "text": "If" },
+        { "id": "B", "text": "Whether" },
+        { "id": "C", "text": "Because" },
+        { "id": "D", "text": "Although" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "主语从句表示'是否'时，通常使用 whether，不用 if。",
+      "explanation_en": "'Whether' is preferred in subject clauses. 'If' is generally not used in this position.",
+      "grammar_point": "Subject Clauses",
+      "tags": ["whether", "subject clause", "academic"]
+    },
+    {
+      "id": "noun_clause_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Scientists have not yet discovered _____ caused the sudden decline in biodiversity.",
+      "options": [
+        { "id": "A", "text": "that" },
+        { "id": "B", "text": "what" },
+        { "id": "C", "text": "which of" },
+        { "id": "D", "text": "because" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "what 在从句中作主语，表示'什么导致了……'；that 在从句中不充当成分。",
+      "explanation_en": "'What' functions as the subject of the clause, whereas 'that' introduces a clause without serving as a sentence element.",
+      "grammar_point": "What Clauses",
+      "tags": ["what", "noun clause", "IELTS Reading"]
+    },
+    {
+      "id": "noun_clause_004",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The committee has not decided _____ the proposal should be approved.",
+      "options": [
+        { "id": "A", "text": "whether" },
+        { "id": "B", "text": "that" },
+        { "id": "C", "text": "because" },
+        { "id": "D", "text": "whose" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "decide whether... 是固定搭配，表示'决定是否……'。",
+      "explanation_en": "'Decide whether...' is the correct structure when expressing uncertainty between alternatives.",
+      "grammar_point": "Whether Clauses",
+      "tags": ["whether", "decision", "academic"]
+    },
+    {
+      "id": "noun_clause_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The fact _____ many endangered species are disappearing has raised global concern.",
+      "options": [
+        { "id": "A", "text": "which" },
+        { "id": "B", "text": "that" },
+        { "id": "C", "text": "what" },
+        { "id": "D", "text": "where" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "The fact that... 是 IELTS 写作和阅读中的高频同位语从句。",
+      "explanation_en": "'The fact that...' is a common appositive clause in academic English.",
+      "grammar_point": "Appositive Clauses",
+      "tags": ["fact that", "appositive clause", "IELTS Writing"]
+    },
+    {
+      "id": "noun_clause_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "One reason for the increase in obesity is _____ people consume more processed food than ever before.",
+      "options": [
+        { "id": "A", "text": "which" },
+        { "id": "B", "text": "that" },
+        { "id": "C", "text": "what" },
+        { "id": "D", "text": "because" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "is that... 构成表语从句，是 IELTS 大作文中非常常见的表达。",
+      "explanation_en": "'Is that...' introduces a predicative clause and is widely used in academic writing.",
+      "grammar_point": "Predicative Clauses",
+      "tags": ["predicative clause", "that", "IELTS Essay"]
+    },
+     {
+      "id": "noun_clause_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The lecturer asked _____ the students had completed the reading assignment.",
+      "options": [
+        { "id": "A", "text": "had" },
+        { "id": "B", "text": "if" },
+        { "id": "C", "text": "did" },
+        { "id": "D", "text": "have" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "宾语从句必须使用陈述语序，因此应为 if the students had completed...，不能倒装。",
+      "explanation_en": "Object clauses use statement word order. The correct structure is 'if the students had completed...'.",
+      "grammar_point": "Object Clause Word Order",
+      "tags": [
+        "object clause",
+        "word order",
+        "PTE"
+      ]
+    },
+    {
+      "id": "noun_clause_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "_____ wins the scholarship will have the opportunity to study overseas.",
+      "options": [
+        { "id": "A", "text": "Who" },
+        { "id": "B", "text": "Whoever" },
+        { "id": "C", "text": "Whom" },
+        { "id": "D", "text": "Whose" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "Whoever 表示'无论谁'，可引导主语从句，是 IELTS 阅读中的常见结构。",
+      "explanation_en": "'Whoever' means 'anyone who' and commonly introduces subject clauses.",
+      "grammar_point": "Whoever Clause",
+      "tags": [
+        "whoever",
+        "subject clause",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "noun_clause_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "It is widely accepted _____ regular exercise improves both physical and mental health.",
+      "options": [
+        { "id": "A", "text": "what" },
+        { "id": "B", "text": "that" },
+        { "id": "C", "text": "whether" },
+        { "id": "D", "text": "which" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "It is widely accepted that... 是 IELTS 写作中的经典句型，that 不可省略。",
+      "explanation_en": "'It is widely accepted that...' is one of the most common academic sentence patterns.",
+      "grammar_point": "It + Be + Adjective + That Clause",
+      "tags": [
+        "formal subject",
+        "academic writing",
+        "that clause"
+      ]
+    },
+    {
+      "id": "noun_clause_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The study demonstrates _____ people with higher levels of education tend to have healthier lifestyles.",
+      "options": [
+        { "id": "A", "text": "that" },
+        { "id": "B", "text": "what" },
+        { "id": "C", "text": "whether" },
+        { "id": "D", "text": "whose" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "demonstrate that...、show that...、indicate that... 都是 IELTS Academic 的高频表达。",
+      "explanation_en": "'Demonstrate that...' is a common academic reporting structure in IELTS and PTE.",
+      "grammar_point": "Reporting Verbs + That Clause",
+      "tags": [
+        "reporting verbs",
+        "that clause",
+        "academic"
+      ]
+    },
+    {
+      "id": "noun_clause_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The fact that technology is developing rapidly has changed the way people communicate."
+        },
+        {
+          "id": "B",
+          "text": "The professor asked what did the students think about the experiment."
+        },
+        {
+          "id": "C",
+          "text": "It is widely believed that climate change requires international cooperation."
+        },
+        {
+          "id": "D",
+          "text": "Whether the project succeeds depends on adequate funding."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation_cn": "A 正确：The fact that... 为同位语从句。B 错误：宾语从句应使用陈述语序，应为 'what the students thought...'。C 正确：It is widely believed that... 是学术英语固定表达。D 正确：Whether 引导主语从句。",
+      "explanation_en": "A correctly uses an appositive clause. B is incorrect because object clauses require statement word order. C correctly uses the academic structure 'It is widely believed that...'. D correctly uses a subject clause introduced by 'Whether'.",
+      "grammar_point": "Noun Clauses (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "noun clauses",
+        "academic English",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

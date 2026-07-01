@@ -1,0 +1,216 @@
+{
+  "category_id": "passive_voice",
+  "category_cn": "被动语态",
+  "category_en": "Passive Voice",
+  "questions": [
+    {
+      "id": "passive_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The results _____ tomorrow.",
+      "options": [
+        { "id": "A", "text": "will announce" },
+        { "id": "B", "text": "will be announced" },
+        { "id": "C", "text": "announce" },
+        { "id": "D", "text": "announced" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "主语是 results（结果），结果不会自己宣布，因此使用一般将来时的被动语态：will be + 过去分词。",
+      "explanation_en": "The subject 'results' receives the action, so the future passive 'will be announced' is required.",
+      "grammar_point": "Future Passive",
+      "tags": ["future passive", "IELTS"]
+    },
+    {
+      "id": "passive_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "English _____ in many countries around the world.",
+      "options": [
+        { "id": "A", "text": "speaks" },
+        { "id": "B", "text": "is spoken" },
+        { "id": "C", "text": "has spoken" },
+        { "id": "D", "text": "was speaking" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "英语是被人们说，因此使用一般现在时被动语态 is spoken。",
+      "explanation_en": "English receives the action, so use the present passive 'is spoken'.",
+      "grammar_point": "Present Passive",
+      "tags": ["present passive"]
+    },
+    {
+      "id": "passive_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The experiment _____ by researchers before the report was published.",
+      "options": [
+        { "id": "A", "text": "completed" },
+        { "id": "B", "text": "had completed" },
+        { "id": "C", "text": "had been completed" },
+        { "id": "D", "text": "has completed" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "实验先于报告发表完成，并且是被完成，因此使用过去完成时被动语态。",
+      "explanation_en": "The experiment was completed before another past event, requiring the past perfect passive.",
+      "grammar_point": "Past Perfect Passive",
+      "tags": ["past perfect passive", "academic"]
+    },
+    {
+      "id": "passive_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "More than 5,000 questionnaires _____ during the survey.",
+      "options": [
+        { "id": "A", "text": "collected" },
+        { "id": "B", "text": "were collected" },
+        { "id": "C", "text": "have collected" },
+        { "id": "D", "text": "are collecting" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "问卷是被收集，因此使用一般过去时被动语态。",
+      "explanation_en": "The questionnaires received the action, so use the past passive.",
+      "grammar_point": "Past Passive",
+      "tags": ["survey", "academic", "passive"]
+    },
+    {
+      "id": "passive_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "It is widely _____ that regular exercise improves mental health.",
+      "options": [
+        { "id": "A", "text": "believe" },
+        { "id": "B", "text": "believed" },
+        { "id": "C", "text": "believing" },
+        { "id": "D", "text": "belief" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "这是 IELTS 写作高频句型：It is widely believed that...（人们普遍认为……）。",
+      "explanation_en": "'It is widely believed that...' is a very common academic passive structure.",
+      "grammar_point": "Academic Passive",
+      "tags": ["IELTS Writing", "academic", "passive"]
+    },
+    {
+      "id": "passive_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "According to the report, over 80% of the waste _____ every year.",
+      "options": [
+        { "id": "A", "text": "recycle" },
+        { "id": "B", "text": "is recycled" },
+        { "id": "C", "text": "recycled" },
+        { "id": "D", "text": "has recycling" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "waste 是被回收，因此使用一般现在时被动语态。这类句型经常出现在 IELTS Reading 和 Writing Task 1。",
+      "explanation_en": "Waste receives the action, so use the present passive 'is recycled'.",
+      "grammar_point": "Present Passive",
+      "tags": ["environment", "IELTS Reading", "passive"]
+    },
+     {
+      "id": "passive_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "All applicants _____ to submit their supporting documents before the deadline.",
+      "options": [
+        { "id": "A", "text": "require" },
+        { "id": "B", "text": "are required" },
+        { "id": "C", "text": "required" },
+        { "id": "D", "text": "have requiring" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "固定学术表达：be required to do sth（被要求做某事），常见于 IELTS 阅读和学校通知。",
+      "explanation_en": "'Be required to' is a common academic passive structure meaning 'must do something'.",
+      "grammar_point": "Be Required To",
+      "tags": ["academic", "required", "passive"]
+    },
+    {
+      "id": "passive_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The new policy _____ by the government to improve air quality.",
+      "options": [
+        { "id": "A", "text": "has introduced" },
+        { "id": "B", "text": "has been introduced" },
+        { "id": "C", "text": "introduced" },
+        { "id": "D", "text": "is introducing" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "政策是'被推出'，并且强调已经完成且影响现在，因此使用现在完成时被动语态。",
+      "explanation_en": "The policy receives the action. The present perfect passive emphasizes a completed action with present relevance.",
+      "grammar_point": "Present Perfect Passive",
+      "tags": ["present perfect passive", "government", "IELTS Writing"]
+    },
+    {
+      "id": "passive_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Artificial intelligence _____ as one of the most influential technologies of the 21st century.",
+      "options": [
+        { "id": "A", "text": "knows" },
+        { "id": "B", "text": "is known" },
+        { "id": "C", "text": "has known" },
+        { "id": "D", "text": "knowing" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "固定表达：be known as（被称为……），是 IELTS/PTE 高频搭配。",
+      "explanation_en": "'Be known as' is a fixed passive expression meaning 'be recognized as'.",
+      "grammar_point": "Be Known As",
+      "tags": ["known as", "technology", "academic"]
+    },
+    {
+      "id": "passive_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "To reduce plagiarism, all assignments _____ through plagiarism detection software before grading.",
+      "options": [
+        { "id": "A", "text": "must check" },
+        { "id": "B", "text": "must be checked" },
+        { "id": "C", "text": "must checked" },
+        { "id": "D", "text": "must have checking" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "情态动词的被动语态：modal verb + be + 过去分词。",
+      "explanation_en": "The passive form after a modal verb is 'modal + be + past participle'.",
+      "grammar_point": "Modal Passive",
+      "tags": ["modal passive", "academic writing", "plagiarism"]
+    },
+    {
+      "id": "passive_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The data were collected from over 2,000 participants."
+        },
+        {
+          "id": "B",
+          "text": "Students are expected to complete the assessment independently."
+        },
+        {
+          "id": "C",
+          "text": "The proposal has approved by the committee."
+        },
+        {
+          "id": "D",
+          "text": "It is generally believed that regular exercise improves overall health."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：正确，过去时被动语态。B：正确，be expected to 是学术英语固定表达。C：错误，应为 has been approved。D：正确，It is generally believed that... 是 IELTS Writing 高频句型。",
+      "explanation_en": "A correctly uses the past passive. B correctly uses the academic expression 'be expected to'. C is incorrect because it should be 'has been approved'. D correctly uses the common academic passive 'It is generally believed that...'.",
+      "grammar_point": "Passive Voice (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "academic",
+        "passive voice",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

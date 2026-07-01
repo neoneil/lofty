@@ -1,0 +1,257 @@
+{
+  "category_id": "emphasis_ellipsis_substitution",
+  "category_cn": "强调、省略与替代",
+  "category_en": "Emphasis, Ellipsis & Substitution",
+  "questions": [
+    {
+      "id": "emphasis_001",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "I _____ appreciate your constructive feedback on my research proposal.",
+      "options": [
+        { "id": "A", "text": "do" },
+        { "id": "B", "text": "did" },
+        { "id": "C", "text": "have" },
+        { "id": "D", "text": "will" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "do + 动词原形可用于强调，表示'我确实很感谢……'，IELTS 口语和写作都可使用。",
+      "explanation_en": "'Do + base verb' is used for emphasis.",
+      "grammar_point": "Emphatic Do",
+      "tags": [
+        "emphasis",
+        "do",
+        "IELTS Speaking"
+      ]
+    },
+    {
+      "id": "emphasis_002",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "I enjoy reading academic journals, and _____ my supervisor.",
+      "options": [
+        { "id": "A", "text": "so does" },
+        { "id": "B", "text": "so do" },
+        { "id": "C", "text": "does so" },
+        { "id": "D", "text": "also does" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "So + 助动词 + 主语，表示'……也是如此'。主语是第三人称单数，因此使用 does。",
+      "explanation_en": "'So + auxiliary + subject' expresses agreement. The auxiliary agrees with the subject.",
+      "grammar_point": "So + Auxiliary",
+      "tags": [
+        "so do I",
+        "agreement"
+      ]
+    },
+    {
+      "id": "emphasis_003",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The first solution is more practical than the second _____.",
+      "options": [
+        { "id": "A", "text": "solution" },
+        { "id": "B", "text": "one" },
+        { "id": "C", "text": "ones" },
+        { "id": "D", "text": "it" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "one 用来替代前面提到的可数名词，避免重复。",
+      "explanation_en": "'One' replaces a previously mentioned singular countable noun.",
+      "grammar_point": "Substitution with One",
+      "tags": [
+        "one",
+        "substitution",
+        "academic"
+      ]
+    },
+    {
+      "id": "emphasis_004",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The researchers promised to publish the data, and they _____ after completing the peer review.",
+      "options": [
+        { "id": "A", "text": "did so" },
+        { "id": "B", "text": "did it" },
+        { "id": "C", "text": "did them" },
+        { "id": "D", "text": "made so" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "do so 表示'这样做'，避免重复前面的整个动作。",
+      "explanation_en": "'Do so' replaces an entire previously mentioned action.",
+      "grammar_point": "Do So",
+      "tags": [
+        "do so",
+        "substitution",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "emphasis_005",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Of the two proposed solutions, the _____ appears more cost-effective.",
+      "options": [
+        { "id": "A", "text": "former" },
+        { "id": "B", "text": "latter" },
+        { "id": "C", "text": "previous" },
+        { "id": "D", "text": "next" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "the former 指前者；the latter 指后者，是学术文章中的高频表达。",
+      "explanation_en": "'The former' refers to the first of two items, while 'the latter' refers to the second.",
+      "grammar_point": "Former vs Latter",
+      "tags": [
+        "former",
+        "latter",
+        "academic English"
+      ]
+    },
+    {
+      "id": "emphasis_006",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The new curriculum is far more effective than the old _____.",
+      "options": [
+        { "id": "A", "text": "one" },
+        { "id": "B", "text": "curriculum" },
+        { "id": "C", "text": "it" },
+        { "id": "D", "text": "that one is" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "one 用于替代前面出现的单数可数名词，避免重复，是 IELTS Reading 和 Writing 中的高频考点。",
+      "explanation_en": "'One' is commonly used to avoid repeating a singular countable noun.",
+      "grammar_point": "Nominal Substitution",
+      "tags": [
+        "one",
+        "ellipsis",
+        "academic writing"
+      ]
+    },
+    {
+      "id": "emphasis_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "I don't agree with the proposal, and neither _____ my colleagues.",
+      "options": [
+        { "id": "A", "text": "do" },
+        { "id": "B", "text": "does" },
+        { "id": "C", "text": "are" },
+        { "id": "D", "text": "have" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Neither/Nor + 助动词 + 主语，表示'……也不……'。主语是复数 my colleagues，因此使用 do。",
+      "explanation_en": "'Neither + auxiliary + subject' expresses negative agreement. The auxiliary agrees with the subject.",
+      "grammar_point": "Neither + Auxiliary",
+      "tags": [
+        "neither",
+        "agreement",
+        "IELTS Speaking"
+      ]
+    },
+    {
+      "id": "emphasis_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The new policy is more effective than _____ introduced five years ago.",
+      "options": [
+        { "id": "A", "text": "it" },
+        { "id": "B", "text": "that" },
+        { "id": "C", "text": "one" },
+        { "id": "D", "text": "those" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "that 可替代前面提到的单数不可数名词或整个同类事物（如 policy、system、method），这是 IELTS 阅读高频考点。",
+      "explanation_en": "'That' replaces a previously mentioned singular noun to avoid repetition.",
+      "grammar_point": "That as Substitution",
+      "tags": [
+        "that",
+        "substitution",
+        "academic"
+      ]
+    },
+    {
+      "id": "emphasis_009",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The living standards in developed countries are generally higher than _____ in developing countries.",
+      "options": [
+        { "id": "A", "text": "those" },
+        { "id": "B", "text": "them" },
+        { "id": "C", "text": "ones" },
+        { "id": "D", "text": "these" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "those 用来替代前面提到的复数名词（living standards），这是 IELTS Writing Task 1 非常高频的表达。",
+      "explanation_en": "'Those' replaces a previously mentioned plural noun and is common in academic writing.",
+      "grammar_point": "Those as Substitution",
+      "tags": [
+        "those",
+        "comparison",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "emphasis_010",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The professor encouraged students to think independently, and many of them _____ during the discussion.",
+      "options": [
+        { "id": "A", "text": "did so" },
+        { "id": "B", "text": "did it" },
+        { "id": "C", "text": "did them" },
+        { "id": "D", "text": "did that thing" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "do so 替代前面整个动作（think independently），不能用 do it 替代动作。",
+      "explanation_en": "'Do so' replaces an entire action, whereas 'do it' refers to a specific object or task.",
+      "grammar_point": "Do So vs Do It",
+      "tags": [
+        "do so",
+        "academic writing",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "emphasis_011",
+      "type": "multiple_choice",
+      "difficulty": "very_hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The population of Australia is smaller than that of China."
+        },
+        {
+          "id": "B",
+          "text": "I enjoyed the first proposal, but the latter was more practical."
+        },
+        {
+          "id": "C",
+          "text": "The researchers promised to publish the results, and they did so."
+        },
+        {
+          "id": "D",
+          "text": "The climate in Melbourne is milder than Sydney."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation_cn": "A 正确：that of China 替代 the population。B 正确：the latter 指后者。C 正确：did so 替代前面的整个动作。D 错误：应为 'than that in Sydney' 或 'than the climate in Sydney'，比较对象必须一致，这是 IELTS 写作最常见的错误之一。",
+      "explanation_en": "A correctly uses 'that' to replace 'the population'. B correctly uses 'the latter'. C correctly uses 'did so' to replace the previous action. D is incorrect because the comparison is illogical; it should compare climate with climate.",
+      "grammar_point": "Emphasis, Ellipsis & Substitution (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "substitution",
+        "ellipsis",
+        "comparison",
+        "IELTS",
+        "PTE",
+        "academic writing"
+      ]
+    }
+  ]
+}

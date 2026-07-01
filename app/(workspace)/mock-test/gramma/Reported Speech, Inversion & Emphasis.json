@@ -1,0 +1,259 @@
+
+{
+  "category_id": "advanced_sentence_structures",
+  "category_cn": "高级句式（倒装）",
+  "category_en": "Advanced Sentence Structures (Inversion)",
+  "questions": [
+    {
+      "id": "inversion_001",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Not only _____ renewable energy reduce carbon emissions, but it also creates new employment opportunities.",
+      "options": [
+        { "id": "A", "text": "does" },
+        { "id": "B", "text": "renewable energy does" },
+        { "id": "C", "text": "it does" },
+        { "id": "D", "text": "did" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Not only 位于句首时，需要部分倒装：Not only + 助动词 + 主语 + 动词。",
+      "explanation_en": "When 'Not only' begins a sentence, inversion is required.",
+      "grammar_point": "Inversion after Not Only",
+      "tags": [
+        "inversion",
+        "not only",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "inversion_002",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Only after the data had been analysed _____ the researchers recognise the significance of the findings.",
+      "options": [
+        { "id": "A", "text": "did" },
+        { "id": "B", "text": "the researchers did" },
+        { "id": "C", "text": "have" },
+        { "id": "D", "text": "recognised" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Only + 状语位于句首时，主句必须部分倒装。",
+      "explanation_en": "When 'Only + adverbial' begins a sentence, the main clause requires inversion.",
+      "grammar_point": "Only + Adverbial",
+      "tags": [
+        "only after",
+        "inversion",
+        "academic"
+      ]
+    },
+    {
+      "id": "inversion_003",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Rarely _____ such a significant improvement in air quality within such a short period.",
+      "options": [
+        { "id": "A", "text": "scientists have observed" },
+        { "id": "B", "text": "have scientists observed" },
+        { "id": "C", "text": "scientists observed" },
+        { "id": "D", "text": "did scientists have observed" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "Rarely 位于句首，需要部分倒装。",
+      "explanation_en": "'Rarely' at the beginning of a sentence requires inversion.",
+      "grammar_point": "Negative Adverb Inversion",
+      "tags": [
+        "rarely",
+        "inversion",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "inversion_004",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Little _____ that the discovery would completely transform modern medicine.",
+      "options": [
+        { "id": "A", "text": "did scientists know" },
+        { "id": "B", "text": "scientists knew" },
+        { "id": "C", "text": "have scientists known" },
+        { "id": "D", "text": "scientists did know" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Little 位于句首表示'几乎不知道'，需要倒装。",
+      "explanation_en": "'Little' at the beginning requires inversion to emphasize negation.",
+      "grammar_point": "Little Inversion",
+      "tags": [
+        "little",
+        "advanced grammar",
+        "academic"
+      ]
+    },
+    {
+      "id": "inversion_005",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Under no circumstances _____ confidential research data be shared without permission.",
+      "options": [
+        { "id": "A", "text": "should" },
+        { "id": "B", "text": "researchers should" },
+        { "id": "C", "text": "they should" },
+        { "id": "D", "text": "must researchers" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Under no circumstances 位于句首时，需要部分倒装，是 IELTS Academic 高频表达。",
+      "explanation_en": "'Under no circumstances' requires inversion in formal English.",
+      "grammar_point": "Negative Inversion",
+      "tags": [
+        "under no circumstances",
+        "formal English",
+        "IELTS Writing"
+      ]
+    },
+    {
+      "id": "inversion_006",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Only when governments, businesses and individuals work together _____ meaningful progress be achieved.",
+      "options": [
+        { "id": "A", "text": "can" },
+        { "id": "B", "text": "meaningful progress can" },
+        { "id": "C", "text": "could" },
+        { "id": "D", "text": "has" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Only when... 位于句首时，主句需要倒装，这是 IELTS 大作文非常常见的高级句型。",
+      "explanation_en": "When 'Only when...' begins a sentence, the main clause requires inversion.",
+      "grammar_point": "Only When Inversion",
+      "tags": [
+        "only when",
+        "IELTS Essay",
+        "advanced grammar"
+      ]
+    },
+    {
+      "id": "inversion_007",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Hardly _____ the experiment begun when the equipment malfunctioned.",
+      "options": [
+        { "id": "A", "text": "had" },
+        { "id": "B", "text": "did" },
+        { "id": "C", "text": "has" },
+        { "id": "D", "text": "was" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "固定结构：Hardly had + 主语 + 过去分词 + when...，表示'刚……就……'。",
+      "explanation_en": "'Hardly...when...' requires inversion with the past perfect.",
+      "grammar_point": "Hardly...When",
+      "tags": [
+        "hardly",
+        "inversion",
+        "advanced grammar",
+        "IELTS"
+      ]
+    },
+    {
+      "id": "inversion_008",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Not until the final report was published _____ the significance of the findings.",
+      "options": [
+        { "id": "A", "text": "did researchers realise" },
+        { "id": "B", "text": "researchers realised" },
+        { "id": "C", "text": "had researchers realised" },
+        { "id": "D", "text": "researchers had realised" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "Not until 位于句首时，主句需要部分倒装。",
+      "explanation_en": "'Not until' at the beginning of a sentence requires inversion in the main clause.",
+      "grammar_point": "Not Until Inversion",
+      "tags": [
+        "not until",
+        "IELTS Writing",
+        "formal English"
+      ]
+    },
+    {
+      "id": "inversion_009",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "So convincing _____ the evidence that the committee approved the proposal immediately.",
+      "options": [
+        { "id": "A", "text": "was" },
+        { "id": "B", "text": "the evidence was" },
+        { "id": "C", "text": "did the evidence" },
+        { "id": "D", "text": "has been" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "So + 形容词 + be + 主语 + that... 是正式英语中的倒装结构。",
+      "explanation_en": "'So + adjective + be + subject + that...' is an inverted structure used in formal writing.",
+      "grammar_point": "So...That Inversion",
+      "tags": [
+        "so...that",
+        "inversion",
+        "academic"
+      ]
+    },
+    {
+      "id": "inversion_010",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Such _____ that several universities adopted it as a teaching model.",
+      "options": [
+        { "id": "A", "text": "an innovative approach was" },
+        { "id": "B", "text": "was an innovative approach" },
+        { "id": "C", "text": "innovative the approach was" },
+        { "id": "D", "text": "the approach was innovative" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "固定倒装结构：Such + be + 名词 + that...。",
+      "explanation_en": "'Such + be + noun + that...' is a formal inverted structure.",
+      "grammar_point": "Such...That Inversion",
+      "tags": [
+        "such...that",
+        "advanced grammar",
+        "IELTS Band 8"
+      ]
+    },
+    {
+      "id": "inversion_011",
+      "type": "multiple_choice",
+      "difficulty": "very_hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only after completing the experiment did the researchers publish their findings."
+        },
+        {
+          "id": "B",
+          "text": "Rarely have scientists encountered such a complex problem."
+        },
+        {
+          "id": "C",
+          "text": "Not only the study improved public awareness, but it also influenced government policy."
+        },
+        {
+          "id": "D",
+          "text": "Under no circumstances should confidential information be disclosed."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A 正确：Only after 位于句首需要倒装。B 正确：Rarely 位于句首需要倒装。C 错误：Not only 位于句首时应为 Not only did the study improve...。D 正确：Under no circumstances 位于句首需要倒装，是正式英语高频表达。",
+      "explanation_en": "A correctly uses inversion after 'Only after'. B correctly inverts after 'Rarely'. C is incorrect because 'Not only' at the beginning requires inversion ('did the study improve'). D correctly uses inversion after 'Under no circumstances'.",
+      "grammar_point": "Advanced Inversion (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "inversion",
+        "formal English",
+        "IELTS",
+        "PTE",
+        "Band 8 Writing"
+      ]
+    }
+  ]
+}

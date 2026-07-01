@@ -1,0 +1,217 @@
+
+{
+  "category_id": "modal_verbs",
+  "category_cn": "情态动词",
+  "category_en": "Modal Verbs",
+  "questions": [
+    {
+      "id": "modal_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Students _____ submit their assignments before the deadline.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "can" },
+        { "id": "C", "text": "may" },
+        { "id": "D", "text": "would" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "must 表示强制义务，是学校规定、考试要求中的高频表达。",
+      "explanation_en": "'Must' expresses obligation or requirement.",
+      "grammar_point": "Must (Obligation)",
+      "tags": ["must", "obligation", "IELTS"]
+    },
+    {
+      "id": "modal_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Researchers _____ be careful when interpreting statistical data.",
+      "options": [
+        { "id": "A", "text": "should" },
+        { "id": "B", "text": "might" },
+        { "id": "C", "text": "could" },
+        { "id": "D", "text": "would" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "should 表示建议或职责，在学术写作中十分常见。",
+      "explanation_en": "'Should' expresses advice or recommendation.",
+      "grammar_point": "Should (Advice)",
+      "tags": ["should", "recommendation"]
+    },
+    {
+      "id": "modal_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The results _____ indicate a significant improvement, but further research is needed.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "might" },
+        { "id": "C", "text": "shall" },
+        { "id": "D", "text": "need" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "might 表示可能性，不确定，符合科研论文表达。",
+      "explanation_en": "'Might' expresses possibility rather than certainty.",
+      "grammar_point": "Might (Possibility)",
+      "tags": ["might", "possibility", "academic"]
+    },
+    {
+      "id": "modal_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Candidates _____ bring a valid photo ID to the examination centre.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "could" },
+        { "id": "C", "text": "would" },
+        { "id": "D", "text": "may have" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "考试规定属于强制要求，应使用 must。",
+      "explanation_en": "'Must' is used for compulsory rules and regulations.",
+      "grammar_point": "Must (Rules)",
+      "tags": ["exam", "must", "PTE", "IELTS"]
+    },
+    {
+      "id": "modal_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The experiment _____ have failed because all the equipment was functioning normally.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "can't" },
+        { "id": "C", "text": "should" },
+        { "id": "D", "text": "may" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "can't have + 过去分词 表示对过去发生事情的否定推测。",
+      "explanation_en": "'Can't have + past participle' expresses a strong negative deduction about the past.",
+      "grammar_point": "Modal Perfect",
+      "tags": ["can't have", "deduction", "past"]
+    },
+    {
+      "id": "modal_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Governments _____ invest more in renewable energy to reduce carbon emissions.",
+      "options": [
+        { "id": "A", "text": "should" },
+        { "id": "B", "text": "can" },
+        { "id": "C", "text": "might have" },
+        { "id": "D", "text": "used to" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "IELTS 大作文中表示建议最常用 should。",
+      "explanation_en": "'Should' is the most appropriate modal verb when giving recommendations in academic writing.",
+      "grammar_point": "Should (Recommendation)",
+      "tags": ["essay", "government", "environment", "IELTS Writing"]
+    },
+     {
+      "id": "modal_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "You _____ submit your application online, but paper applications are also accepted.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "have to" },
+        { "id": "C", "text": "can" },
+        { "id": "D", "text": "should have" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "can 表示允许、可以。这里说明网上申请是一种可选方式，而不是强制要求。",
+      "explanation_en": "'Can' expresses permission or possibility, indicating that online submission is optional.",
+      "grammar_point": "Can (Permission)",
+      "tags": ["can", "permission", "IELTS"]
+    },
+    {
+      "id": "modal_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The students _____ have completed the assignment because the deadline is tomorrow.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "can't" },
+        { "id": "C", "text": "should" },
+        { "id": "D", "text": "needn't" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "截止日期是明天，因此学生现在不可能已经完成，使用 can't have done 表示强烈否定推测。",
+      "explanation_en": "'Can't have + past participle' expresses a strong negative deduction about a past action.",
+      "grammar_point": "Can't Have Done",
+      "tags": ["modal perfect", "deduction", "PTE"]
+    },
+    {
+      "id": "modal_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The government _____ have taken earlier action to reduce air pollution.",
+      "options": [
+        { "id": "A", "text": "should" },
+        { "id": "B", "text": "should have" },
+        { "id": "C", "text": "must" },
+        { "id": "D", "text": "can" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "should have done 表示过去本应该做但没有做，IELTS 写作中用于提出批评或建议。",
+      "explanation_en": "'Should have + past participle' expresses that something ought to have happened in the past.",
+      "grammar_point": "Should Have Done",
+      "tags": ["should have", "IELTS Writing", "environment"]
+    },
+    {
+      "id": "modal_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Based on the latest evidence, the treatment _____ improve patients' recovery rates, although more research is required.",
+      "options": [
+        { "id": "A", "text": "must" },
+        { "id": "B", "text": "might" },
+        { "id": "C", "text": "has to" },
+        { "id": "D", "text": "used to" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "学术论文中表示不确定的推测，通常使用 might，而不是 must。",
+      "explanation_en": "'Might' is commonly used in academic writing to express cautious possibility.",
+      "grammar_point": "Might (Academic Hedging)",
+      "tags": ["might", "academic", "research"]
+    },
+    {
+      "id": "modal_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Researchers should consider alternative explanations before drawing conclusions."
+        },
+        {
+          "id": "B",
+          "text": "The accident can't have happened yesterday because the road was closed."
+        },
+        {
+          "id": "C",
+          "text": "Students must to wear their ID cards during the examination."
+        },
+        {
+          "id": "D",
+          "text": "The new policy might improve educational outcomes in the long term."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A 正确：should + 动词原形。B 正确：can't have done 表示对过去的否定推测。C 错误：must 后直接接动词原形，不能用 to。D 正确：might 表示谨慎推测，是 IELTS/PTE 学术写作常用表达。",
+      "explanation_en": "A correctly uses 'should' with the base verb. B correctly uses 'can't have' for past deduction. C is incorrect because 'must' is followed directly by the base verb. D correctly uses 'might' for cautious academic prediction.",
+      "grammar_point": "Modal Verbs (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "modal_verbs",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    }
+  ]
+}

@@ -3,6 +3,8 @@ export type ChoiceQuestion = {
   prompt: string;
   options: string[];
   answer: string;
+  answers?: string[];
+  selectionMode?: "single" | "multiple";
   meta?: string | null;
   explanation?: string | null;
 };

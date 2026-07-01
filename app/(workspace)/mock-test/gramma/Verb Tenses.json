@@ -1,0 +1,217 @@
+{
+  "category_id": "verb_tenses",
+  "category_cn": "动词时态",
+  "category_en": "Verb Tenses",
+  "questions": [
+    {
+      "id": "verb_tenses_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Researchers _____ significant progress in renewable energy over the past decade.",
+      "options": [
+        { "id": "A", "text": "made" },
+        { "id": "B", "text": "have made" },
+        { "id": "C", "text": "make" },
+        { "id": "D", "text": "are making" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "over the past decade 表示从过去持续到现在，应使用现在完成时。",
+      "explanation_en": "'Over the past decade' refers to a period continuing to the present, so use the present perfect.",
+      "grammar_point": "Present Perfect",
+      "tags": ["present perfect", "IELTS", "academic"]
+    },
+    {
+      "id": "verb_tenses_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "At the moment, many universities _____ online learning platforms.",
+      "options": [
+        { "id": "A", "text": "adopt" },
+        { "id": "B", "text": "adopted" },
+        { "id": "C", "text": "are adopting" },
+        { "id": "D", "text": "have adopted" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "At the moment 表示此刻正在发生，应使用现在进行时。",
+      "explanation_en": "'At the moment' indicates an action happening now, so use the present continuous.",
+      "grammar_point": "Present Continuous",
+      "tags": ["present continuous"]
+    },
+    {
+      "id": "verb_tenses_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "By the time the lecture started, most students _____ their seats.",
+      "options": [
+        { "id": "A", "text": "took" },
+        { "id": "B", "text": "had taken" },
+        { "id": "C", "text": "have taken" },
+        { "id": "D", "text": "were taking" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "一个过去动作发生在另一个过去动作之前，应使用过去完成时。",
+      "explanation_en": "Use the past perfect for an action completed before another past action.",
+      "grammar_point": "Past Perfect",
+      "tags": ["past perfect", "before"]
+    },
+    {
+      "id": "verb_tenses_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "If the weather is fine tomorrow, we _____ the field survey.",
+      "options": [
+        { "id": "A", "text": "conduct" },
+        { "id": "B", "text": "conducted" },
+        { "id": "C", "text": "will conduct" },
+        { "id": "D", "text": "have conducted" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "第一类条件句：If + 一般现在时，主句使用 will + 动词原形。",
+      "explanation_en": "In the first conditional, use the present simple after 'if' and 'will' in the main clause.",
+      "grammar_point": "Future Simple",
+      "tags": ["future", "first conditional"]
+    },
+    {
+      "id": "verb_tenses_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Scientists _____ the effects of climate change for many years before the policy was introduced.",
+      "options": [
+        { "id": "A", "text": "study" },
+        { "id": "B", "text": "have studied" },
+        { "id": "C", "text": "had been studying" },
+        { "id": "D", "text": "are studying" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "强调过去某动作持续了一段时间并发生在另一个过去动作之前，应使用过去完成进行时。",
+      "explanation_en": "Use the past perfect continuous to emphasize duration before another past event.",
+      "grammar_point": "Past Perfect Continuous",
+      "tags": ["past perfect continuous", "academic"]
+    },
+    {
+      "id": "verb_tenses_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "This time next week, I _____ my final IELTS preparation course.",
+      "options": [
+        { "id": "A", "text": "complete" },
+        { "id": "B", "text": "will complete" },
+        { "id": "C", "text": "will be completing" },
+        { "id": "D", "text": "have completed" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "This time next week 表示未来某一时刻正在进行，应使用将来进行时。",
+      "explanation_en": "'This time next week' refers to an action in progress at a future time, requiring the future continuous.",
+      "grammar_point": "Future Continuous",
+      "tags": ["future continuous", "IELTS"]
+    },
+     {
+      "id": "verb_tenses_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "I _____ this research article already, so I don't need to read it again.",
+      "options": [
+        { "id": "A", "text": "read" },
+        { "id": "B", "text": "have read" },
+        { "id": "C", "text": "had read" },
+        { "id": "D", "text": "am reading" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "already 常与现在完成时连用，表示已经完成。",
+      "explanation_en": "'Already' is commonly used with the present perfect to describe completed actions.",
+      "grammar_point": "Present Perfect",
+      "tags": ["already", "present perfect", "IELTS"]
+    },
+    {
+      "id": "verb_tenses_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "While the professor _____ the lecture, several students were taking notes.",
+      "options": [
+        { "id": "A", "text": "gave" },
+        { "id": "B", "text": "was giving" },
+        { "id": "C", "text": "has given" },
+        { "id": "D", "text": "had given" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "while 引导持续动作，通常使用过去进行时。",
+      "explanation_en": "'While' often introduces a continuous action in the past, requiring the past continuous.",
+      "grammar_point": "Past Continuous",
+      "tags": ["while", "past continuous"]
+    },
+    {
+      "id": "verb_tenses_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "By 2035, renewable energy _____ the primary source of electricity in many countries.",
+      "options": [
+        { "id": "A", "text": "becomes" },
+        { "id": "B", "text": "became" },
+        { "id": "C", "text": "will have become" },
+        { "id": "D", "text": "has become" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "By + 将来时间，通常使用将来完成时。",
+      "explanation_en": "Use the future perfect after 'By' when referring to a completed future action.",
+      "grammar_point": "Future Perfect",
+      "tags": ["future perfect", "by"]
+    },
+    {
+      "id": "verb_tenses_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The graph shows that the unemployment rate _____ steadily since 2020.",
+      "options": [
+        { "id": "A", "text": "fell" },
+        { "id": "B", "text": "has fallen" },
+        { "id": "C", "text": "had fallen" },
+        { "id": "D", "text": "falls" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "since 2020 表示从过去持续到现在，因此使用现在完成时。这也是 IELTS Writing Task 1 的高频表达。",
+      "explanation_en": "'Since 2020' requires the present perfect because the action continues to the present.",
+      "grammar_point": "Present Perfect",
+      "tags": ["IELTS Writing", "since", "graph"]
+    },
+    {
+      "id": "verb_tenses_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "I have lived in Australia since 2022."
+        },
+        {
+          "id": "B",
+          "text": "When I arrived, the meeting had already started."
+        },
+        {
+          "id": "C",
+          "text": "She has finished the report yesterday."
+        },
+        {
+          "id": "D",
+          "text": "By next month, they will have completed the project."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：since + 时间点，用现在完成时。B：过去完成时表示'过去的过去'。C：错误，yesterday 是明确过去时间，应使用一般过去时（finished）。D：By next month 使用将来完成时，是 IELTS/PTE 高频考点。",
+      "explanation_en": "A correctly uses the present perfect with 'since'. B correctly uses the past perfect for an earlier past action. C is incorrect because 'yesterday' requires the simple past. D correctly uses the future perfect with 'By next month'.",
+      "grammar_point": "Verb Tenses (Comprehensive)",
+      "tags": [
+        "multiple_choice",
+        "present perfect",
+        "past perfect",
+        "future perfect",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

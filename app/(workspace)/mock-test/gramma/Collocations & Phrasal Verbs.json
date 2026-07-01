@@ -1,0 +1,1261 @@
+{
+  "category_id": "academic_collocations",
+  "category_cn": "学术固定搭配",
+  "category_en": "Academic Collocations",
+  "questions": [
+    {
+      "id": "academic_collocations_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Before making any investment, it is important to _____ based on reliable information.",
+      "options": [
+        { "id": "A", "text": "make a decision" },
+        { "id": "B", "text": "reach a research" },
+        { "id": "C", "text": "play awareness" },
+        { "id": "D", "text": "draw success" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "make a decision 是固定搭配，表示'做决定'。",
+      "explanation_en": "'Make a decision' is the correct collocation meaning 'decide'.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["verb+noun","decision","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "After analysing all the evidence, the scientists were finally able to _____.",
+      "options": [
+        { "id": "A", "text": "reach a conclusion" },
+        { "id": "B", "text": "conduct a conclusion" },
+        { "id": "C", "text": "play a conclusion" },
+        { "id": "D", "text": "meet a conclusion" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "reach a conclusion 表示'得出结论'。",
+      "explanation_en": "'Reach a conclusion' is the standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["verb+noun","research","academic"]
+    },
+    {
+      "id": "academic_collocations_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Universities encourage postgraduate students to _____ before publishing their findings.",
+      "options": [
+        { "id": "A", "text": "conduct research" },
+        { "id": "B", "text": "make research" },
+        { "id": "C", "text": "do conclusion" },
+        { "id": "D", "text": "reach evidence" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "conduct research 是学术英语中最常见的固定搭配。",
+      "explanation_en": "'Conduct research' means to carry out research.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["research","verb+noun","IELTS Reading"]
+    },
+    {
+      "id": "academic_collocations_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The available evidence allows researchers to _____ about the effectiveness of the treatment.",
+      "options": [
+        { "id": "A", "text": "draw a conclusion" },
+        { "id": "B", "text": "make a conclusion" },
+        { "id": "C", "text": "conduct a conclusion" },
+        { "id": "D", "text": "raise a conclusion" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "draw a conclusion 是 IELTS 阅读和写作高频搭配。",
+      "explanation_en": "'Draw a conclusion' means to form a conclusion based on evidence.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["verb+noun","academic writing"]
+    },
+    {
+      "id": "academic_collocations_005",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Education plays an important _____ in reducing social inequality.",
+      "options": [
+        { "id": "A", "text": "role" },
+        { "id": "B", "text": "research" },
+        { "id": "C", "text": "decision" },
+        { "id": "D", "text": "requirement" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "play a role in... 表示'在……中发挥作用'。",
+      "explanation_en": "'Play a role in' is one of the most common academic collocations.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["play a role","IELTS Essay"]
+    },
+    {
+      "id": "academic_collocations_006",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Large corporations should _____ for reducing carbon emissions.",
+      "options": [
+        { "id": "A", "text": "take responsibility" },
+        { "id": "B", "text": "make responsibility" },
+        { "id": "C", "text": "reach responsibility" },
+        { "id": "D", "text": "conduct responsibility" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "take responsibility for... 表示'对……负责'。",
+      "explanation_en": "'Take responsibility for' is the correct collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["responsibility","environment"]
+    },
+    {
+      "id": "academic_collocations_007",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Public campaigns are designed to _____ about mental health issues.",
+      "options": [
+        { "id": "A", "text": "raise awareness" },
+        { "id": "B", "text": "lift awareness" },
+        { "id": "C", "text": "grow awareness" },
+        { "id": "D", "text": "build awarenesses" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "raise awareness 是固定表达，表示'提高意识'。",
+      "explanation_en": "'Raise awareness' means to increase public awareness.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["health","IELTS","awareness"]
+    },
+    {
+      "id": "academic_collocations_008",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Climate change continues to _____ global food security.",
+      "options": [
+        { "id": "A", "text": "pose a threat to" },
+        { "id": "B", "text": "make a threat on" },
+        { "id": "C", "text": "reach a threat" },
+        { "id": "D", "text": "play a threat" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "pose a threat to... 表示'对……构成威胁'。",
+      "explanation_en": "'Pose a threat to' is a standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["environment","threat","IELTS Reading"]
+    },
+    {
+      "id": "academic_collocations_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Applicants must _____ all admission requirements before enrolment.",
+      "options": [
+        { "id": "A", "text": "meet requirements" },
+        { "id": "B", "text": "reach requirements" },
+        { "id": "C", "text": "make requirements" },
+        { "id": "D", "text": "play requirements" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "meet requirements 表示'满足要求'。",
+      "explanation_en": "'Meet requirements' means to satisfy the required standards.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["education","requirements"]
+    },
+    {
+      "id": "academic_collocations_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Hard work, persistence and careful planning are essential to _____.",
+      "options": [
+        { "id": "A", "text": "achieve success" },
+        { "id": "B", "text": "reach successes" },
+        { "id": "C", "text": "conduct success" },
+        { "id": "D", "text": "draw success" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "achieve success 表示'取得成功'。",
+      "explanation_en": "'Achieve success' is the standard collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["success","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following are correct academic collocations?",
+      "options": [
+        {
+          "id": "A",
+          "text": "conduct research"
+        },
+        {
+          "id": "B",
+          "text": "raise awareness"
+        },
+        {
+          "id": "C",
+          "text": "make research"
+        },
+        {
+          "id": "D",
+          "text": "take responsibility"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "conduct research、raise awareness、take responsibility 都是标准学术搭配；make research 是中国学生最常见的错误之一，正确应为 conduct/do research。",
+      "explanation_en": "'Conduct research', 'raise awareness', and 'take responsibility' are correct academic collocations. 'Make research' is incorrect.",
+      "grammar_point": "Academic Collocations (Verb + Noun)",
+      "tags": [
+        "multiple_choice",
+        "verb+noun",
+        "academic",
+        "IELTS",
+        "PTE"
+      ]
+    },
+    {
+      "id": "academic_collocations_012",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The new teaching method has led to a _____ in students' writing skills.",
+      "options": [
+        { "id": "A", "text": "significant improvement" },
+        { "id": "B", "text": "strong improvement" },
+        { "id": "C", "text": "big advancement" },
+        { "id": "D", "text": "large betterment" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "significant improvement 是学术英语固定搭配，表示'显著改善'。",
+      "explanation_en": "'Significant improvement' is the standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["adjective+noun","education","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_013",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The country has experienced _____ over the past decade.",
+      "options": [
+        { "id": "A", "text": "rapid growth" },
+        { "id": "B", "text": "fast developmenting" },
+        { "id": "C", "text": "quick increase level" },
+        { "id": "D", "text": "speed growth" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "rapid growth 是经济、人口、科技等领域最常见的固定搭配。",
+      "explanation_en": "'Rapid growth' is a common academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["growth","academic"]
+    },
+    {
+      "id": "academic_collocations_014",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Many governments are investing heavily in _____.",
+      "options": [
+        { "id": "A", "text": "renewable energy" },
+        { "id": "B", "text": "green electric" },
+        { "id": "C", "text": "recycling power" },
+        { "id": "D", "text": "clean electricity source" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "renewable energy 是雅思阅读和写作最高频的话题搭配之一。",
+      "explanation_en": "'Renewable energy' is one of the most common academic collocations in IELTS.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["environment","energy","IELTS"]
+    },
+    {
+      "id": "academic_collocations_015",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "_____ is becoming a serious problem in many large cities.",
+      "options": [
+        { "id": "A", "text": "Heavy traffic" },
+        { "id": "B", "text": "Strong traffic" },
+        { "id": "C", "text": "Big traffic" },
+        { "id": "D", "text": "High traffic jam" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "heavy traffic 是固定搭配，不能说 strong traffic 或 big traffic。",
+      "explanation_en": "'Heavy traffic' is the correct collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["transport","cities"]
+    },
+    {
+      "id": "academic_collocations_016",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Regular reading can greatly improve students' _____.",
+      "options": [
+        { "id": "A", "text": "academic performance" },
+        { "id": "B", "text": "study achievement level" },
+        { "id": "C", "text": "school result" },
+        { "id": "D", "text": "learning score performance" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "academic performance 表示'学业表现'，是教育类文章高频搭配。",
+      "explanation_en": "'Academic performance' is the standard educational collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["education","academic performance"]
+    },
+    {
+      "id": "academic_collocations_017",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Many governments are introducing policies to reduce _____.",
+      "options": [
+        { "id": "A", "text": "social inequality" },
+        { "id": "B", "text": "society inequality" },
+        { "id": "C", "text": "community unfairness" },
+        { "id": "D", "text": "public imbalance" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "social inequality 是社会学和雅思写作中的固定表达。",
+      "explanation_en": "'Social inequality' is a common academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["society","IELTS Writing"]
+    },
+    {
+      "id": "academic_collocations_018",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Governments should take effective measures to reduce _____.",
+      "options": [
+        { "id": "A", "text": "environmental pollution" },
+        { "id": "B", "text": "environment pollution" },
+        { "id": "C", "text": "nature pollution" },
+        { "id": "D", "text": "ecology pollution" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "environmental pollution 是环境类文章最常见搭配。",
+      "explanation_en": "'Environmental pollution' is the standard collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["environment","pollution"]
+    },
+    {
+      "id": "academic_collocations_019",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The report highlights the need for _____ in urban areas.",
+      "options": [
+        { "id": "A", "text": "public transport" },
+        { "id": "B", "text": "common transport" },
+        { "id": "C", "text": "people transport" },
+        { "id": "D", "text": "government buses" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "public transport 是固定表达，雅思写作高频。",
+      "explanation_en": "'Public transport' is the standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["transport","cities"]
+    },
+    {
+      "id": "academic_collocations_020",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Investment in education contributes to long-term _____.",
+      "options": [
+        { "id": "A", "text": "economic development" },
+        { "id": "B", "text": "economy growthing" },
+        { "id": "C", "text": "financial progression" },
+        { "id": "D", "text": "economic improving" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "economic development 是经济类文章最常见搭配。",
+      "explanation_en": "'Economic development' is a standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["economy","development"]
+    },
+    {
+      "id": "academic_collocations_021",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The conclusion is supported by strong _____.",
+      "options": [
+        { "id": "A", "text": "scientific evidence" },
+        { "id": "B", "text": "science proofs" },
+        { "id": "C", "text": "research factses" },
+        { "id": "D", "text": "academic proof" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "scientific evidence 是论文、阅读中的高频搭配。",
+      "explanation_en": "'Scientific evidence' is a standard academic collocation.",
+      "grammar_point": "Academic Collocation",
+      "tags": ["research","evidence","IELTS Reading"]
+    },
+    {
+      "id": "academic_collocations_022",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following are correct academic collocations?",
+      "options": [
+        {
+          "id": "A",
+          "text": "rapid growth"
+        },
+        {
+          "id": "B",
+          "text": "renewable energy"
+        },
+        {
+          "id": "C",
+          "text": "strong traffic"
+        },
+        {
+          "id": "D",
+          "text": "academic performance"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "rapid growth、renewable energy、academic performance 都是标准学术搭配；strong traffic 属于中式英语，正确表达是 heavy traffic。",
+      "explanation_en": "'Rapid growth', 'renewable energy', and 'academic performance' are correct collocations. 'Strong traffic' is incorrect; the correct collocation is 'heavy traffic'.",
+      "grammar_point": "Academic Collocations (Adjective + Noun)",
+      "tags": [
+        "multiple_choice",
+        "adjective+noun",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    },
+     {
+      "id": "academic_collocations_023",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Many university students _____ their teachers for academic guidance.",
+      "options": [
+        { "id": "A", "text": "depend on" },
+        { "id": "B", "text": "depend at" },
+        { "id": "C", "text": "depend with" },
+        { "id": "D", "text": "depend into" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "depend on 表示'依赖；取决于'，是固定搭配。",
+      "explanation_en": "'Depend on' means 'rely on' and is a standard collocation.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["depend on","verb+preposition","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_024",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "A lack of exercise can _____ serious health problems.",
+      "options": [
+        { "id": "A", "text": "result in" },
+        { "id": "B", "text": "result to" },
+        { "id": "C", "text": "result from" },
+        { "id": "D", "text": "result with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "result in 表示'导致'；result from 表示'由……导致'。",
+      "explanation_en": "'Result in' means 'cause', while 'result from' means 'be caused by'.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["result in","cause","IELTS"]
+    },
+    {
+      "id": "academic_collocations_025",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Regular physical activity can _____ better mental health.",
+      "options": [
+        { "id": "A", "text": "contribute to" },
+        { "id": "B", "text": "contribute for" },
+        { "id": "C", "text": "contribute with" },
+        { "id": "D", "text": "contribute at" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "contribute to 表示'有助于；促成'。",
+      "explanation_en": "'Contribute to' means 'help to achieve or cause'.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["contribute to","health","academic"]
+    },
+    {
+      "id": "academic_collocations_026",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The research mainly _____ the impact of artificial intelligence on education.",
+      "options": [
+        { "id": "A", "text": "focuses on" },
+        { "id": "B", "text": "focuses at" },
+        { "id": "C", "text": "focuses in" },
+        { "id": "D", "text": "focuses for" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "focus on 是固定搭配，表示'专注于；研究……'。",
+      "explanation_en": "'Focus on' is the correct collocation.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["focus on","research"]
+    },
+    {
+      "id": "academic_collocations_027",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Millions of people _____ chronic diseases every year.",
+      "options": [
+        { "id": "A", "text": "suffer from" },
+        { "id": "B", "text": "suffer with" },
+        { "id": "C", "text": "suffer at" },
+        { "id": "D", "text": "suffer on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "suffer from 表示'患有；遭受'。",
+      "explanation_en": "'Suffer from' means to experience or have an illness or problem.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["suffer from","health","IELTS"]
+    },
+    {
+      "id": "academic_collocations_028",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "More than 5,000 volunteers _____ the nationwide survey.",
+      "options": [
+        { "id": "A", "text": "participated in" },
+        { "id": "B", "text": "participated on" },
+        { "id": "C", "text": "participated at" },
+        { "id": "D", "text": "participated for" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "participate in 表示'参加'，后接活动、项目、比赛等。",
+      "explanation_en": "'Participate in' means 'take part in'.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["participate in","survey","PTE"]
+    },
+    {
+      "id": "academic_collocations_029",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Students can _____ online learning platforms if they use them effectively.",
+      "options": [
+        { "id": "A", "text": "benefit from" },
+        { "id": "B", "text": "benefit with" },
+        { "id": "C", "text": "benefit on" },
+        { "id": "D", "text": "benefit into" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "benefit from 表示'从……中受益'。",
+      "explanation_en": "'Benefit from' means to gain an advantage from something.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["benefit from","education"]
+    },
+    {
+      "id": "academic_collocations_030",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "University students must learn to _____ academic pressure.",
+      "options": [
+        { "id": "A", "text": "cope with" },
+        { "id": "B", "text": "cope to" },
+        { "id": "C", "text": "cope at" },
+        { "id": "D", "text": "cope on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "cope with 表示'应对；处理'。",
+      "explanation_en": "'Cope with' means to deal successfully with a difficult situation.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["cope with","stress","IELTS"]
+    },
+    {
+      "id": "academic_collocations_031",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Poor dietary habits often _____ obesity and heart disease.",
+      "options": [
+        { "id": "A", "text": "result in" },
+        { "id": "B", "text": "depend on" },
+        { "id": "C", "text": "focus on" },
+        { "id": "D", "text": "participate in" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "这里考查真正理解搭配，而不仅是介词。'导致肥胖'应使用 result in。",
+      "explanation_en": "'Result in' correctly expresses a cause-and-effect relationship.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["cause","health","academic"]
+    },
+    {
+      "id": "academic_collocations_032",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Many factors _____ differences in academic achievement among students.",
+      "options": [
+        { "id": "A", "text": "contribute to" },
+        { "id": "B", "text": "cope with" },
+        { "id": "C", "text": "participate in" },
+        { "id": "D", "text": "suffer from" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "contribute to differences 是学术论文中的高频表达。",
+      "explanation_en": "'Contribute to differences' is a common academic expression.",
+      "grammar_point": "Verb + Preposition",
+      "tags": ["education","research","IELTS Writing"]
+    },
+    {
+      "id": "academic_collocations_033",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following are correct verb + preposition collocations?",
+      "options": [
+        {
+          "id": "A",
+          "text": "focus on"
+        },
+        {
+          "id": "B",
+          "text": "benefit from"
+        },
+        {
+          "id": "C",
+          "text": "participate at"
+        },
+        {
+          "id": "D",
+          "text": "cope with"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "focus on、benefit from、cope with 都是标准搭配；participate 后应接 in，而不是 at。",
+      "explanation_en": "'Focus on', 'benefit from', and 'cope with' are correct collocations. The correct form is 'participate in', not 'participate at'.",
+      "grammar_point": "Academic Collocations (Verb + Preposition)",
+      "tags": [
+        "multiple_choice",
+        "verb+preposition",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    },
+    {
+      "id": "academic_collocations_034",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Teachers are _____ ensuring that students receive equal learning opportunities.",
+      "options": [
+        { "id": "A", "text": "responsible for" },
+        { "id": "B", "text": "responsible to" },
+        { "id": "C", "text": "responsible with" },
+        { "id": "D", "text": "responsible on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "responsible for 表示'对……负责'，是固定搭配。",
+      "explanation_en": "'Responsible for' means having the duty or obligation for something.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["responsible for", "education", "IELTS", "PTE"]
+    },
+    {
+      "id": "academic_collocations_035",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Many young people are _____ studying abroad after graduation.",
+      "options": [
+        { "id": "A", "text": "interested in" },
+        { "id": "B", "text": "interested on" },
+        { "id": "C", "text": "interested for" },
+        { "id": "D", "text": "interested with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "interested in 是固定搭配，表示'对……感兴趣'。",
+      "explanation_en": "'Interested in' is the correct collocation.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["interested in", "education"]
+    },
+    {
+      "id": "academic_collocations_036",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Modern computers are _____ processing enormous amounts of data.",
+      "options": [
+        { "id": "A", "text": "capable of" },
+        { "id": "B", "text": "capable to" },
+        { "id": "C", "text": "capable for" },
+        { "id": "D", "text": "capable with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "capable of 后接名词或动名词，表示'有能力……'。",
+      "explanation_en": "'Capable of' means having the ability to do something.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["capable of", "technology", "academic"]
+    },
+    {
+      "id": "academic_collocations_037",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Students should become _____ academic writing conventions before submitting their essays.",
+      "options": [
+        { "id": "A", "text": "familiar with" },
+        { "id": "B", "text": "familiar to" },
+        { "id": "C", "text": "familiar on" },
+        { "id": "D", "text": "familiar at" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "familiar with 表示'熟悉……'。",
+      "explanation_en": "'Familiar with' means knowing something well.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["familiar with", "academic writing"]
+    },
+    {
+      "id": "academic_collocations_038",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The public is becoming increasingly _____ the importance of environmental protection.",
+      "options": [
+        { "id": "A", "text": "aware of" },
+        { "id": "B", "text": "aware about" },
+        { "id": "C", "text": "aware for" },
+        { "id": "D", "text": "aware with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "aware of 是固定搭配，表示'意识到……'。",
+      "explanation_en": "'Aware of' means having knowledge or understanding of something.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["aware of", "environment"]
+    },
+    {
+      "id": "academic_collocations_039",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "This research method is _____ the one used in previous studies.",
+      "options": [
+        { "id": "A", "text": "similar to" },
+        { "id": "B", "text": "similar with" },
+        { "id": "C", "text": "similar as" },
+        { "id": "D", "text": "similar for" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "similar to 是固定搭配。",
+      "explanation_en": "'Similar to' is the standard collocation.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["similar to", "research"]
+    },
+    {
+      "id": "academic_collocations_040",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Life in rural areas is quite _____ life in large cities.",
+      "options": [
+        { "id": "A", "text": "different from" },
+        { "id": "B", "text": "different with" },
+        { "id": "C", "text": "different than" },
+        { "id": "D", "text": "different of" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "different from 是标准英语搭配，也是 IELTS 官方推荐表达。",
+      "explanation_en": "'Different from' is the standard collocation in formal English.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["different from", "IELTS"]
+    },
+    {
+      "id": "academic_collocations_041",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Electric vehicles are becoming increasingly _____ consumers around the world.",
+      "options": [
+        { "id": "A", "text": "popular with" },
+        { "id": "B", "text": "popular to" },
+        { "id": "C", "text": "popular at" },
+        { "id": "D", "text": "popular for with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "popular with 表示'受……欢迎'；popular among 也可以，但本题只有 with 正确。",
+      "explanation_en": "'Popular with' means liked by a particular group of people.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["popular with", "technology"]
+    },
+    {
+      "id": "academic_collocations_042",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Good communication skills are _____ effective leadership.",
+      "options": [
+        { "id": "A", "text": "essential for" },
+        { "id": "B", "text": "essential to for" },
+        { "id": "C", "text": "essential with" },
+        { "id": "D", "text": "essential at" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "essential for 表示'对……至关重要'。",
+      "explanation_en": "'Essential for' means extremely important for something.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["essential for", "leadership", "academic"]
+    },
+    {
+      "id": "academic_collocations_043",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The increase in obesity is closely _____ unhealthy eating habits.",
+      "options": [
+        { "id": "A", "text": "related to" },
+        { "id": "B", "text": "related with" },
+        { "id": "C", "text": "related for" },
+        { "id": "D", "text": "related on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "related to 是学术论文中非常高频的固定搭配。",
+      "explanation_en": "'Related to' means connected with or associated with.",
+      "grammar_point": "Adjective + Preposition",
+      "tags": ["related to", "health", "IELTS Writing"]
+    },
+    {
+      "id": "academic_collocations_044",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following are correct adjective + preposition collocations?",
+      "options": [
+        {
+          "id": "A",
+          "text": "aware of"
+        },
+        {
+          "id": "B",
+          "text": "familiar with"
+        },
+        {
+          "id": "C",
+          "text": "interested on"
+        },
+        {
+          "id": "D",
+          "text": "responsible for"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "aware of、familiar with、responsible for 都是标准搭配；interested 的正确搭配是 interested in，而不是 interested on。",
+      "explanation_en": "'Aware of', 'familiar with', and 'responsible for' are correct collocations. The correct form is 'interested in', not 'interested on'.",
+      "grammar_point": "Academic Collocations (Adjective + Preposition)",
+      "tags": [
+        "multiple_choice",
+        "adjective+preposition",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    },
+     {
+      "id": "academic_collocations_045",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Scientists are expected to _____ further research before publishing their conclusions.",
+      "options": [
+        { "id": "A", "text": "carry out" },
+        { "id": "B", "text": "carry on with to" },
+        { "id": "C", "text": "carry in" },
+        { "id": "D", "text": "carry over" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "carry out research 表示'开展、进行研究'，是学术英语最高频短语动词之一。",
+      "explanation_en": "'Carry out research' means to conduct research.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["carry out","research","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_046",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "The professor _____ several weaknesses in the students' arguments.",
+      "options": [
+        { "id": "A", "text": "pointed out" },
+        { "id": "B", "text": "pointed at" },
+        { "id": "C", "text": "pointed with" },
+        { "id": "D", "text": "pointed over" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "point out 表示'指出'，是 IELTS 阅读和听力中的高频表达。",
+      "explanation_en": "'Point out' means to identify or draw attention to something.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["point out","education","academic"]
+    },
+    {
+      "id": "academic_collocations_047",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Many countries are trying to _____ the challenges of an ageing population.",
+      "options": [
+        { "id": "A", "text": "deal with" },
+        { "id": "B", "text": "deal to" },
+        { "id": "C", "text": "deal for" },
+        { "id": "D", "text": "deal at" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "deal with 表示'处理；应对'。",
+      "explanation_en": "'Deal with' means to handle or manage a problem.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["deal with","society"]
+    },
+    {
+      "id": "academic_collocations_048",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Excessive carbon emissions may _____ global warming.",
+      "options": [
+        { "id": "A", "text": "lead to" },
+        { "id": "B", "text": "lead on" },
+        { "id": "C", "text": "lead with" },
+        { "id": "D", "text": "lead over" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "lead to 表示'导致'，与 result in 含义相近。",
+      "explanation_en": "'Lead to' means to cause or result in something.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["lead to","environment","IELTS"]
+    },
+    {
+      "id": "academic_collocations_049",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The report attempts to _____ the sharp increase in housing prices.",
+      "options": [
+        { "id": "A", "text": "account for" },
+        { "id": "B", "text": "account on" },
+        { "id": "C", "text": "account with" },
+        { "id": "D", "text": "account into" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "account for 表示'解释……的原因；占据'，IELTS 阅读高频。",
+      "explanation_en": "'Account for' means to explain or be responsible for.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["account for","IELTS Reading"]
+    },
+    {
+      "id": "academic_collocations_050",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The new policy is expected to _____ significant changes in the education system.",
+      "options": [
+        { "id": "A", "text": "bring about" },
+        { "id": "B", "text": "bring with" },
+        { "id": "C", "text": "bring for" },
+        { "id": "D", "text": "bring at" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "bring about 表示'引起；带来（变化）'。",
+      "explanation_en": "'Bring about' means to cause something to happen.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["bring about","education"]
+    },
+    {
+      "id": "academic_collocations_051",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The university plans to _____ a new research centre next year.",
+      "options": [
+        { "id": "A", "text": "set up" },
+        { "id": "B", "text": "set in" },
+        { "id": "C", "text": "set over" },
+        { "id": "D", "text": "set onto" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "set up 表示'建立；创立'。",
+      "explanation_en": "'Set up' means to establish or found something.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["set up","research","PTE"]
+    },
+    {
+      "id": "academic_collocations_052",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Researchers are still trying to _____ why the treatment was ineffective.",
+      "options": [
+        { "id": "A", "text": "work out" },
+        { "id": "B", "text": "work on" },
+        { "id": "C", "text": "work in" },
+        { "id": "D", "text": "work for" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "work out 表示'弄清楚；解决'。",
+      "explanation_en": "'Work out' means to figure out or solve.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["work out","research"]
+    },
+    {
+      "id": "academic_collocations_053",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Scientists hope to _____ how the disease spreads so quickly.",
+      "options": [
+        { "id": "A", "text": "figure out" },
+        { "id": "B", "text": "figure on" },
+        { "id": "C", "text": "figure in" },
+        { "id": "D", "text": "figure with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "figure out 表示'弄明白；搞清楚'，常用于科研和学习场景。",
+      "explanation_en": "'Figure out' means to understand or discover the answer.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["figure out","science","academic"]
+    },
+    {
+      "id": "academic_collocations_054",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "A lack of public awareness can _____ serious environmental problems.",
+      "options": [
+        { "id": "A", "text": "lead to" },
+        { "id": "B", "text": "deal with" },
+        { "id": "C", "text": "point out" },
+        { "id": "D", "text": "carry out" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "这里考查真正理解短语动词含义，而不仅是记忆搭配。lead to 表示'导致'。",
+      "explanation_en": "'Lead to' correctly expresses cause and effect.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["lead to","environment","IELTS Writing"]
+    },
+    {
+      "id": "academic_collocations_055",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following are correct academic phrasal verbs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "carry out research"
+        },
+        {
+          "id": "B",
+          "text": "point out a mistake"
+        },
+        {
+          "id": "C",
+          "text": "deal to a problem"
+        },
+        {
+          "id": "D",
+          "text": "bring about change"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "carry out research、point out a mistake、bring about change 都是标准学术表达；deal with a problem 才是正确搭配，不能说 deal to a problem。",
+      "explanation_en": "'Carry out research', 'point out a mistake', and 'bring about change' are correct. The correct expression is 'deal with a problem', not 'deal to a problem'.",
+      "grammar_point": "Academic Collocations (Academic Phrasal Verbs)",
+      "tags": [
+        "multiple_choice",
+        "phrasal_verbs",
+        "IELTS",
+        "PTE",
+        "academic"
+      ]
+    },
+    {
+      "id": "academic_collocations_056",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The latest survey _____ that nearly 70% of students prefer online learning.",
+      "options": [
+        { "id": "A", "text": "points out" },
+        { "id": "B", "text": "carries out" },
+        { "id": "C", "text": "sets up" },
+        { "id": "D", "text": "works out" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "point out 表示'指出、表明'，常用于报告、研究结果。",
+      "explanation_en": "'Point out' means to indicate or highlight.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["point out","research","IELTS","PTE"]
+    },
+    {
+      "id": "academic_collocations_057",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The research team plans to _____ a nationwide health survey next year.",
+      "options": [
+        { "id": "A", "text": "carry out" },
+        { "id": "B", "text": "bring about" },
+        { "id": "C", "text": "figure out" },
+        { "id": "D", "text": "lead to" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "carry out a survey 是固定搭配，表示'开展调查'。",
+      "explanation_en": "'Carry out a survey' is a standard academic collocation.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["carry out","survey"]
+    },
+    {
+      "id": "academic_collocations_058",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The researchers are trying to _____ the unexpected differences in the results.",
+      "options": [
+        { "id": "A", "text": "account for" },
+        { "id": "B", "text": "participate in" },
+        { "id": "C", "text": "cope with" },
+        { "id": "D", "text": "focus on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "account for 表示'解释……的原因'。",
+      "explanation_en": "'Account for' means to explain the reason for something.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["account for","research"]
+    },
+    {
+      "id": "academic_collocations_059",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The new environmental policy may _____ significant economic changes.",
+      "options": [
+        { "id": "A", "text": "bring about" },
+        { "id": "B", "text": "point out" },
+        { "id": "C", "text": "deal with" },
+        { "id": "D", "text": "figure out" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "bring about 表示'引起、带来（变化）'。",
+      "explanation_en": "'Bring about' means to cause or produce a change.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["bring about","environment"]
+    },
+    {
+      "id": "academic_collocations_060",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The university hopes to _____ an international research institute within the next five years.",
+      "options": [
+        { "id": "A", "text": "set up" },
+        { "id": "B", "text": "point out" },
+        { "id": "C", "text": "account for" },
+        { "id": "D", "text": "cope with" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "set up 表示'建立、创办'。",
+      "explanation_en": "'Set up' means to establish an organization or institution.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["set up","education"]
+    },
+    {
+      "id": "academic_collocations_061",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "After several months of analysis, the scientists finally _____ the cause of the problem.",
+      "options": [
+        { "id": "A", "text": "worked out" },
+        { "id": "B", "text": "carried out" },
+        { "id": "C", "text": "pointed out" },
+        { "id": "D", "text": "set up" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "work out 表示'弄清楚、解决'。",
+      "explanation_en": "'Work out' means to solve or figure out.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["work out","science"]
+    },
+    {
+      "id": "academic_collocations_062",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Scientists have not yet been able to _____ exactly how the virus spreads.",
+      "options": [
+        { "id": "A", "text": "figure out" },
+        { "id": "B", "text": "bring about" },
+        { "id": "C", "text": "carry out" },
+        { "id": "D", "text": "set up" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "figure out 表示'弄明白、搞清楚'。",
+      "explanation_en": "'Figure out' means to understand or discover the answer.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["figure out","health","research"]
+    },
+    {
+      "id": "academic_collocations_063",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "A lack of investment in education can _____ long-term economic problems.",
+      "options": [
+        { "id": "A", "text": "lead to" },
+        { "id": "B", "text": "point out" },
+        { "id": "C", "text": "deal with" },
+        { "id": "D", "text": "carry out" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "lead to 表示'导致'，强调因果关系。",
+      "explanation_en": "'Lead to' expresses cause and effect.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["lead to","economy","IELTS Writing"]
+    },
+    {
+      "id": "academic_collocations_064",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "Government agencies must _____ a wide range of environmental issues.",
+      "options": [
+        { "id": "A", "text": "deal with" },
+        { "id": "B", "text": "account for" },
+        { "id": "C", "text": "bring about" },
+        { "id": "D", "text": "point out" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "deal with 表示'处理、应对'。",
+      "explanation_en": "'Deal with' means to handle or manage something.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["deal with","government"]
+    },
+    {
+      "id": "academic_collocations_065",
+      "type": "single_choice",
+      "difficulty": "very_hard",
+      "question": "The data clearly _____ a strong relationship between sleep quality and academic performance.",
+      "options": [
+        { "id": "A", "text": "point to" },
+        { "id": "B", "text": "point out" },
+        { "id": "C", "text": "set up" },
+        { "id": "D", "text": "carry on" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "point to 表示'表明、指向（证据）'，是学术论文中的高频表达。",
+      "explanation_en": "'Point to' means to indicate or suggest based on evidence.",
+      "grammar_point": "Academic Phrasal Verbs",
+      "tags": ["point to","evidence","academic"]
+    },
+    {
+      "id": "academic_collocations_066",
+      "type": "multiple_choice",
+      "difficulty": "very_hard",
+      "question": "Which of the following are correct academic phrasal verbs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "set up a laboratory"
+        },
+        {
+          "id": "B",
+          "text": "work out a solution"
+        },
+        {
+          "id": "C",
+          "text": "lead on climate change"
+        },
+        {
+          "id": "D",
+          "text": "figure out the answer"
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A、B、D 都是标准学术搭配。C 错误，正确表达应为 lead to climate change（导致气候变化）或 lead on 不是这个意思。",
+      "explanation_en": "'Set up a laboratory', 'work out a solution', and 'figure out the answer' are correct. 'Lead on climate change' is incorrect.",
+      "grammar_point": "Academic Collocations (Phrasal Verbs Review)",
+      "tags": [
+        "multiple_choice",
+        "phrasal_verbs",
+        "academic",
+        "IELTS",
+        "PTE"
+      ]
+    }
+  ]
+}

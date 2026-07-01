@@ -35,11 +35,13 @@ export default function AbilityAssessment({ data }: { data: AbilityAssessmentDat
 
     <nav aria-label="能力评估模块" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">{sections.map((section) => { const Icon = section.icon; const active = activeSection === section.id; return <button key={section.id} type="button" onClick={() => setActiveSection(section.id)} className={`flex min-h-20 items-center gap-3 rounded-[var(--radius-md)] border p-3 text-left transition ${active ? "border-[var(--primary)] bg-[var(--card)] shadow-[var(--shadow-md)]" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/40 hover:bg-[var(--bg-soft)]"}`}><span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] ${section.bg} ${section.color}`}><Icon size={20} /></span><span><span className="block text-sm font-semibold text-[var(--text)]">{section.label}</span><span className="mt-0.5 block text-[10px] uppercase tracking-wide text-[var(--text-faint)]">{section.english}</span></span></button>; })}</nav>
 
-    {activeSection === "vocabulary" ? <ChoiceAssessmentSection title="单词能力" description="从词汇数据库随机抽取 10 个非基础词，选择最准确的中文释义。" questions={data.vocabulary} /> : null}
-    {activeSection === "grammar" ? <ChoiceAssessmentSection title="语法能力" description="通过时态、虚拟语气、倒装、主谓一致和从句诊断语法基础。" questions={data.grammar} /> : null}
-    {activeSection === "listening" ? <ListeningAssessmentSection questions={data.listening} /> : null}
-    {activeSection === "speaking" ? <SpeakingAssessmentSection assessment={data.speaking} /> : null}
-    {activeSection === "reading" ? <ReadingAssessmentSection questions={data.reading} /> : null}
-    {activeSection === "writing" ? <WritingAssessmentSection assessment={data.writing} /> : null}
+    <div className="mx-auto w-full max-w-4xl">
+      {activeSection === "vocabulary" ? <ChoiceAssessmentSection title="单词能力" description="从词汇数据库随机抽取 10 个非基础词，选择最准确的中文释义。" questions={data.vocabulary} /> : null}
+      {activeSection === "grammar" ? <ChoiceAssessmentSection title="语法能力" description="从 18 个语法分类中各随机抽取 2 道单选和 1 道多选，逐题确认答案。" questions={data.grammar} /> : null}
+      {activeSection === "listening" ? <ListeningAssessmentSection questions={data.listening} /> : null}
+      {activeSection === "speaking" ? <SpeakingAssessmentSection assessment={data.speaking} /> : null}
+      {activeSection === "reading" ? <ReadingAssessmentSection questions={data.reading} /> : null}
+      {activeSection === "writing" ? <WritingAssessmentSection assessment={data.writing} /> : null}
+    </div>
   </div>;
 }

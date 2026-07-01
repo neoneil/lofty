@@ -1,0 +1,217 @@
+
+{
+  "category_id": "conjunctions_parallel_structure",
+  "category_cn": "连词与平行结构",
+  "category_en": "Conjunctions & Parallel Structure",
+  "questions": [
+    {
+      "id": "conjunctions_001",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Many students choose online courses _____ they offer greater flexibility.",
+      "options": [
+        { "id": "A", "text": "because" },
+        { "id": "B", "text": "although" },
+        { "id": "C", "text": "unless" },
+        { "id": "D", "text": "despite" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "前后是因果关系，因此使用 because。",
+      "explanation_en": "The second clause gives the reason, so 'because' is correct.",
+      "grammar_point": "Cause and Effect",
+      "tags": ["because", "IELTS"]
+    },
+    {
+      "id": "conjunctions_002",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "_____ the weather was terrible, the flight departed on time.",
+      "options": [
+        { "id": "A", "text": "Because" },
+        { "id": "B", "text": "Although" },
+        { "id": "C", "text": "Unless" },
+        { "id": "D", "text": "Since" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "前后表示转折，应使用 Although。",
+      "explanation_en": "The sentence expresses contrast, so 'Although' is correct.",
+      "grammar_point": "Contrast",
+      "tags": ["although", "contrast"]
+    },
+    {
+      "id": "conjunctions_003",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "You won't improve your English _____ you practise regularly.",
+      "options": [
+        { "id": "A", "text": "because" },
+        { "id": "B", "text": "unless" },
+        { "id": "C", "text": "while" },
+        { "id": "D", "text": "whereas" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "unless = if...not，表示'除非'。",
+      "explanation_en": "'Unless' means 'if not'.",
+      "grammar_point": "Condition",
+      "tags": ["unless", "condition"]
+    },
+    {
+      "id": "conjunctions_004",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The company aims to reduce costs _____ improve customer satisfaction.",
+      "options": [
+        { "id": "A", "text": "but" },
+        { "id": "B", "text": "or" },
+        { "id": "C", "text": "and" },
+        { "id": "D", "text": "yet" }
+      ],
+      "correct_answer": ["C"],
+      "explanation_cn": "两个并列目标，应使用 and。",
+      "explanation_en": "'And' correctly joins two parallel objectives.",
+      "grammar_point": "Coordinating Conjunctions",
+      "tags": ["parallel", "and"]
+    },
+    {
+      "id": "conjunctions_005",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The report was well written; _____, it lacked sufficient evidence.",
+      "options": [
+        { "id": "A", "text": "therefore" },
+        { "id": "B", "text": "however" },
+        { "id": "C", "text": "moreover" },
+        { "id": "D", "text": "consequently" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "前后表示转折，因此使用 however。",
+      "explanation_en": "'However' introduces a contrast.",
+      "grammar_point": "Linking Adverbs",
+      "tags": ["however", "academic"]
+    },
+    {
+      "id": "conjunctions_006",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The course focuses on developing students' ability to analyse, evaluate, and _____.",
+      "options": [
+        { "id": "A", "text": "critical thinking" },
+        { "id": "B", "text": "communicate effectively" },
+        { "id": "C", "text": "effective communication" },
+        { "id": "D", "text": "being creative" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "analyse、evaluate 都是动词，因此第三项也必须保持动词形式，符合平行结构。",
+      "explanation_en": "Items in a series should have the same grammatical form. Here, all three should be verbs.",
+      "grammar_point": "Parallel Structure",
+      "tags": ["parallel structure", "IELTS Writing", "academic"]
+    },
+    {
+      "id": "conjunctions_007",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "The university not only provides modern facilities _____ offers excellent academic support.",
+      "options": [
+        { "id": "A", "text": "but also" },
+        { "id": "B", "text": "and also" },
+        { "id": "C", "text": "or" },
+        { "id": "D", "text": "although" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "固定搭配：not only...but also...。",
+      "explanation_en": "Use the correlative conjunction 'not only...but also...'.",
+      "grammar_point": "Correlative Conjunctions",
+      "tags": ["not only...but also", "IELTS", "PTE"]
+    },
+    {
+      "id": "conjunctions_008",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Students can choose _____ online learning _____ face-to-face classes.",
+      "options": [
+        { "id": "A", "text": "both...and" },
+        { "id": "B", "text": "either...or" },
+        { "id": "C", "text": "not only...but also" },
+        { "id": "D", "text": "whether...and" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "表示二选一，应使用 either...or...。",
+      "explanation_en": "Use 'either...or...' when presenting two alternatives.",
+      "grammar_point": "Correlative Conjunctions",
+      "tags": ["either...or"]
+    },
+    {
+      "id": "conjunctions_009",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The research was rejected _____ its innovative methodology.",
+      "options": [
+        { "id": "A", "text": "although" },
+        { "id": "B", "text": "despite" },
+        { "id": "C", "text": "because" },
+        { "id": "D", "text": "unless" }
+      ],
+      "correct_answer": ["B"],
+      "explanation_cn": "despite 后接名词或名词短语；although 后接完整句子。",
+      "explanation_en": "'Despite' is followed by a noun phrase, whereas 'although' introduces a clause.",
+      "grammar_point": "Despite vs Although",
+      "tags": ["despite", "although", "academic"]
+    },
+    {
+      "id": "conjunctions_010",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "The professor encouraged students to think critically rather than _____ information.",
+      "options": [
+        { "id": "A", "text": "memorise" },
+        { "id": "B", "text": "memorising" },
+        { "id": "C", "text": "to memorise" },
+        { "id": "D", "text": "memorised" }
+      ],
+      "correct_answer": ["A"],
+      "explanation_cn": "rather than 前后应保持平行结构。前面是 think，后面也应使用动词原形 memorise。",
+      "explanation_en": "Maintain parallel structure. After 'rather than', use the same grammatical form as the previous verb.",
+      "grammar_point": "Parallel Structure",
+      "tags": ["rather than", "parallel structure", "IELTS Writing"]
+    },
+    {
+      "id": "conjunctions_011",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Which of the following sentences are grammatically correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Not only did she pass the exam, but she also received a scholarship."
+        },
+        {
+          "id": "B",
+          "text": "Despite the heavy rain, the match continued."
+        },
+        {
+          "id": "C",
+          "text": "Although the heavy rain, the match continued."
+        },
+        {
+          "id": "D",
+          "text": "The course aims to develop students' ability to analyse, evaluate, and solve problems."
+        }
+      ],
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation_cn": "A：not only 位于句首时需要部分倒装。B：despite 后接名词短语。C：错误，although 后必须接完整句子。D：analyse、evaluate、solve 保持平行结构，是 IELTS/PTE 写作中的高频考点。",
+      "explanation_en": "A correctly uses inversion after 'Not only'. B correctly uses 'despite' with a noun phrase. C is incorrect because 'although' must be followed by a clause. D correctly maintains parallel structure.",
+      "grammar_point": "Academic Conjunctions & Parallel Structure",
+      "tags": [
+        "multiple_choice",
+        "parallel_structure",
+        "IELTS",
+        "PTE",
+        "academic_writing"
+      ]
+    }
+  ]
+}

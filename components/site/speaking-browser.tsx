@@ -1,476 +1,188 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import AccordionCard from "@/components/site/accordion-card";
+import { useMemo, useRef, useState } from "react";
+import { BookOpenText, ChevronRight, Download, MessagesSquare } from "lucide-react";
+
+import { Badge } from "@/components/ui-v2/badge";
+import { Button } from "@/components/ui-v2/button";
+import { Card, CardContent } from "@/components/ui-v2/card";
 
 type SpeakingPart1Question = {
-    id: number;
-    topic_title: string;
-    question_number: number;
-    question_text: string;
-    answer_text: string;
+  id: number;
+  topic_title: string;
+  question_number: number;
+  question_text: string;
+  answer_text: string;
 };
 
 type SpeakingPart2Topic = {
-    id: number;
-    chinese_title: string | null;
-    english_title: string | null;
-    part2_question: string | null;
-    cue_card_1: string | null;
-    cue_card_2: string | null;
-    cue_card_3: string | null;
-    cue_card_4: string | null;
-    part3_q1: string | null;
-    part3_q2: string | null;
-    part3_q3: string | null;
-    part3_q4: string | null;
-    part3_q5: string | null;
-    part3_q6: string | null;
-    part3_q7: string | null;
-    part3_q8: string | null;
-    part3_q9: string | null;
-    part3_q10: string | null;
-    category: string | null;
-    difficulty: string | null;
-    status: string | null;
-    sort_order: number | null;
+  id: number;
+  chinese_title: string | null;
+  english_title: string | null;
+  part2_question: string | null;
+  cue_card_1: string | null;
+  cue_card_2: string | null;
+  cue_card_3: string | null;
+  cue_card_4: string | null;
+  part3_q1: string | null;
+  part3_q2: string | null;
+  part3_q3: string | null;
+  part3_q4: string | null;
+  part3_q5: string | null;
+  part3_q6: string | null;
+  part3_q7: string | null;
+  part3_q8: string | null;
+  part3_q9: string | null;
+  part3_q10: string | null;
+  category: string | null;
+  difficulty: string | null;
+  status: string | null;
+  sort_order: number | null;
 };
 
 type Props = {
-    part1Questions: SpeakingPart1Question[];
-    part2Topics: SpeakingPart2Topic[];
+  part1Questions: SpeakingPart1Question[];
+  part2Topics: SpeakingPart2Topic[];
 };
 
-export default function SpeakingBrowser({
-    part1Questions,
-    part2Topics,
-}: Props) {
-    const [activePart1Topic, setActivePart1Topic] = useState("All");
-    const [activePart2Category, setActivePart2Category] = useState("All");
+type Part1Group = {
+  topic: string;
+  items: SpeakingPart1Question[];
+};
 
-    const groupedPart1 = useMemo(() => {
-        return Object.values(
-            part1Questions.reduce<
-                Record<string, { topic: string; items: SpeakingPart1Question[] }>
-            >((acc, item) => {
-                if (!acc[item.topic_title]) {
-                    acc[item.topic_title] = {
-                        topic: item.topic_title,
-                        items: [],
-                    };
-                }
-                acc[item.topic_title].items.push(item);
-                return acc;
-            }, {})
-        ).sort((a, b) => a.topic.localeCompare(b.topic));
-    }, [part1Questions]);
+function getPart3Questions(topic: SpeakingPart2Topic) {
+  return [topic.part3_q1, topic.part3_q2, topic.part3_q3, topic.part3_q4, topic.part3_q5, topic.part3_q6, topic.part3_q7, topic.part3_q8, topic.part3_q9, topic.part3_q10].filter(Boolean) as string[];
+}
 
-    const part1Filters = useMemo(() => {
-        return [
-            { label: "All", count: part1Questions.length },
-            ...groupedPart1.map((group) => ({
-                label: group.topic,
-                count: group.items.length,
-            })),
-        ];
-    }, [groupedPart1, part1Questions.length]);
+function getCueCards(topic: SpeakingPart2Topic) {
+  return [topic.cue_card_1, topic.cue_card_2, topic.cue_card_3, topic.cue_card_4].filter(Boolean) as string[];
+}
 
-    const visiblePart1Groups = useMemo(() => {
-        if (activePart1Topic === "All") return groupedPart1;
-        return groupedPart1.filter((group) => group.topic === activePart1Topic);
-    }, [activePart1Topic, groupedPart1]);
+export default function SpeakingBrowser({ part1Questions, part2Topics }: Props) {
+  const detailsRef = useRef<HTMLDivElement>(null);
+  const [activePart, setActivePart] = useState<"part1" | "part23">("part1");
+  const [activePart1Topic, setActivePart1Topic] = useState("All");
+  const [activePart2Category, setActivePart2Category] = useState("All");
+  const [selectedPart1Topic, setSelectedPart1Topic] = useState<string | null>(null);
+  const [selectedPart2Id, setSelectedPart2Id] = useState<number | null>(null);
+  const [isExportingPart1, setIsExportingPart1] = useState(false);
+  const [isExportingPart2, setIsExportingPart2] = useState(false);
 
-    const part2Filters = useMemo(() => {
-        const counts = part2Topics.reduce<Record<string, number>>((acc, item) => {
-            const key = item.category || "Uncategorized";
-            acc[key] = (acc[key] || 0) + 1;
-            return acc;
-        }, {});
+  const groupedPart1 = useMemo(() => Object.values(part1Questions.reduce<Record<string, Part1Group>>((groups, item) => {
+    groups[item.topic_title] ??= { topic: item.topic_title, items: [] };
+    groups[item.topic_title].items.push(item);
+    return groups;
+  }, {})).sort((a, b) => a.topic.localeCompare(b.topic)), [part1Questions]);
 
-        return [
-            { label: "All", count: part2Topics.length },
-            ...Object.entries(counts)
-                .sort((a, b) => a[0].localeCompare(b[0]))
-                .map(([label, count]) => ({ label, count })),
-        ];
-    }, [part2Topics]);
+  const part1Filters = useMemo(() => [{ label: "All", count: part1Questions.length }, ...groupedPart1.map((group) => ({ label: group.topic, count: group.items.length }))], [groupedPart1, part1Questions.length]);
+  const visiblePart1Groups = useMemo(() => activePart1Topic === "All" ? groupedPart1 : groupedPart1.filter((group) => group.topic === activePart1Topic), [activePart1Topic, groupedPart1]);
+  const selectedPart1Group = groupedPart1.find((group) => group.topic === selectedPart1Topic) ?? null;
 
-    const visiblePart2Topics = useMemo(() => {
-        if (activePart2Category === "All") return part2Topics;
-        return part2Topics.filter(
-            (item) => (item.category || "Uncategorized") === activePart2Category
-        );
-    }, [activePart2Category, part2Topics]);
+  const part2Filters = useMemo(() => {
+    const counts = part2Topics.reduce<Record<string, number>>((result, item) => {
+      const category = item.category || "Uncategorized";
+      result[category] = (result[category] || 0) + 1;
+      return result;
+    }, {});
+    return [{ label: "All", count: part2Topics.length }, ...Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0])).map(([label, count]) => ({ label, count }))];
+  }, [part2Topics]);
 
-    // 导出 pdf
-    const [isExportingPart1, setIsExportingPart1] = useState(false);
-    const [isExportingPart2, setIsExportingPart2] = useState(false);
+  const visiblePart2Topics = useMemo(() => activePart2Category === "All" ? part2Topics : part2Topics.filter((item) => (item.category || "Uncategorized") === activePart2Category), [activePart2Category, part2Topics]);
+  const selectedPart2Topic = part2Topics.find((topic) => topic.id === selectedPart2Id) ?? null;
 
-    async function downloadPdf(blob: Blob, filename: string) {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
+  function scrollToDetails() {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => detailsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    });
+  }
+
+  function handleSelectPart1Topic(topic: string) {
+    setSelectedPart1Topic(topic);
+    scrollToDetails();
+  }
+
+  function handleSelectPart2Topic(id: number) {
+    setSelectedPart2Id(id);
+    scrollToDetails();
+  }
+
+  async function downloadPdf(blob: Blob, filename: string) {
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    window.URL.revokeObjectURL(url);
+  }
+
+  async function handleExportPart1() {
+    try {
+      setIsExportingPart1(true);
+      const response = await fetch("/api/ielts/speaking/export", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ part: "part1", topic: activePart1Topic }) });
+      if (!response.ok) throw new Error(await response.text() || "Part 1 PDF 导出失败");
+      await downloadPdf(await response.blob(), activePart1Topic === "All" ? "speaking-part1-all.pdf" : `speaking-part1-${activePart1Topic}.pdf`);
+    } catch (error) {
+      console.error(error);
+      alert("Part 1 PDF 导出失败");
+    } finally {
+      setIsExportingPart1(false);
     }
+  }
 
-    async function handleExportPart1() {
-        try {
-            setIsExportingPart1(true);
-
-            const res = await fetch("/api/ielts/speaking/export", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    part: "part1",
-                    topic: activePart1Topic,
-                }),
-            });
-
-            if (!res.ok) {
-                const text = await res.text();
-                throw new Error(text || "Part 1 PDF 导出失败");
-            }
-
-            const blob = await res.blob();
-            const filename =
-                activePart1Topic === "All"
-                    ? "speaking-part1-all.pdf"
-                    : `speaking-part1-${activePart1Topic}.pdf`;
-
-            await downloadPdf(blob, filename);
-        } catch (error) {
-            console.error(error);
-            alert("Part 1 PDF 导出失败");
-        } finally {
-            setIsExportingPart1(false);
-        }
+  async function handleExportPart2() {
+    try {
+      setIsExportingPart2(true);
+      const response = await fetch("/api/ielts/speaking/export", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ part: "part2", category: activePart2Category }) });
+      if (!response.ok) throw new Error(await response.text() || "Part 2/3 PDF 导出失败");
+      await downloadPdf(await response.blob(), activePart2Category === "All" ? "speaking-part2-3-all.pdf" : `speaking-part2-3-${activePart2Category}.pdf`);
+    } catch (error) {
+      console.error(error);
+      alert("Part 2/3 PDF 导出失败");
+    } finally {
+      setIsExportingPart2(false);
     }
+  }
 
-    async function handleExportPart2() {
-        try {
-            setIsExportingPart2(true);
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-1.5">
+        <button type="button" onClick={() => setActivePart("part1")} className={`flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-sm)] px-3 text-sm font-semibold transition ${activePart === "part1" ? "bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:text-[var(--text)]"}`}><BookOpenText size={17} />Part 1</button>
+        <button type="button" onClick={() => setActivePart("part23")} className={`flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-sm)] px-3 text-sm font-semibold transition ${activePart === "part23" ? "bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:text-[var(--text)]"}`}><MessagesSquare size={17} />Part 2 &amp; 3</button>
+      </div>
 
-            const res = await fetch("/api/ielts/speaking/export", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    part: "part2",
-                    category: activePart2Category,
-                }),
-            });
+      {activePart === "part1" ? (
+        <section className="space-y-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-faint)]">IELTS Speaking</p><h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">Part 1 Topics</h2></div>
+            <div className="flex items-center gap-2"><Badge variant="secondary">{visiblePart1Groups.length} topics</Badge><Button type="button" size="sm" variant="secondary" onClick={handleExportPart1} disabled={isExportingPart1} className="gap-2"><Download size={15} />{isExportingPart1 ? "导出中" : "下载 PDF"}</Button></div>
+          </div>
 
-            if (!res.ok) {
-                const text = await res.text();
-                throw new Error(text || "Part 2/3 PDF 导出失败");
-            }
+          <div className="flex flex-wrap gap-2">{part1Filters.map((filter) => <Button key={filter.label} type="button" size="sm" variant={activePart1Topic === filter.label ? "primary" : "secondary"} onClick={() => { setActivePart1Topic(filter.label); setSelectedPart1Topic(null); }}>{filter.label} ({filter.count})</Button>)}</div>
 
-            const blob = await res.blob();
-            const filename =
-                activePart2Category === "All"
-                    ? "speaking-part2-3-all.pdf"
-                    : `speaking-part2-3-${activePart2Category}.pdf`;
+          {selectedPart1Group ? (
+            <div ref={detailsRef} className="scroll-mt-24"><Card className="border-[var(--primary)]/30"><CardContent className="p-4 sm:p-5"><div className="flex items-center justify-between gap-3"><div><Badge>Part 1</Badge><h3 className="mt-2 text-lg font-semibold text-[var(--text)]">{selectedPart1Group.topic}</h3></div><button type="button" onClick={() => setSelectedPart1Topic(null)} className="text-sm font-semibold text-[var(--text-soft)] transition hover:text-[var(--primary)]">收起</button></div><div className="mt-4 grid gap-3 md:grid-cols-2">{selectedPart1Group.items.map((item) => <div key={item.id} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3"><p className="text-xs font-semibold text-[var(--text-faint)]">Question {item.question_number}</p><p className="mt-1.5 text-sm font-semibold leading-6 text-[var(--text)]">{item.question_text}</p>{item.answer_text ? <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{item.answer_text}</p> : null}</div>)}</div></CardContent></Card></div>
+          ) : null}
 
-            await downloadPdf(blob, filename);
-        } catch (error) {
-            console.error(error);
-            alert("Part 2/3 PDF 导出失败");
-        } finally {
-            setIsExportingPart2(false);
-        }
-    }
+          <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{visiblePart1Groups.map((group) => <button key={group.topic} type="button" onClick={() => handleSelectPart1Topic(group.topic)} className="group text-left"><Card className="h-full rounded-[var(--radius-md)] transition group-hover:-translate-y-0.5 group-hover:border-[var(--primary)] group-hover:shadow-[var(--shadow-md)]"><CardContent className="p-4"><div className="flex items-center justify-between gap-2"><Badge variant="secondary">Part 1</Badge><span className="text-xs font-semibold text-[var(--text-faint)]">{group.items.length} 题</span></div><h3 className="mt-3 line-clamp-2 min-h-12 text-base font-semibold leading-6 text-[var(--text)] group-hover:text-[var(--primary)]">{group.topic}</h3><p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-soft)]">{group.items[0]?.question_text}</p><div className="mt-3 flex items-center justify-end text-xs font-semibold text-[var(--primary)]">查看题目<ChevronRight size={14} /></div></CardContent></Card></button>)}</div>
+        </section>
+      ) : (
+        <section className="space-y-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-faint)]">IELTS Speaking</p><h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">Part 2 &amp; 3 Topics</h2></div>
+            <div className="flex items-center gap-2"><Badge variant="secondary">{visiblePart2Topics.length} topics</Badge><Button type="button" size="sm" variant="secondary" onClick={handleExportPart2} disabled={isExportingPart2} className="gap-2"><Download size={15} />{isExportingPart2 ? "导出中" : "下载 PDF"}</Button></div>
+          </div>
 
+          <div className="flex flex-wrap gap-2">{part2Filters.map((filter) => <Button key={filter.label} type="button" size="sm" variant={activePart2Category === filter.label ? "primary" : "secondary"} onClick={() => { setActivePart2Category(filter.label); setSelectedPart2Id(null); }}>{filter.label} ({filter.count})</Button>)}</div>
 
+          {selectedPart2Topic ? (
+            <div ref={detailsRef} className="scroll-mt-24"><Card className="border-[var(--primary)]/30"><CardContent className="p-4 sm:p-5"><div className="flex items-start justify-between gap-3"><div><div className="flex flex-wrap gap-2"><Badge>Part 2 &amp; 3</Badge>{selectedPart2Topic.difficulty ? <Badge variant="secondary">{selectedPart2Topic.difficulty}</Badge> : null}</div><h3 className="mt-2 text-lg font-semibold text-[var(--text)]">{selectedPart2Topic.english_title || selectedPart2Topic.part2_question || "Untitled"}</h3>{selectedPart2Topic.chinese_title ? <p className="mt-1 text-sm text-[var(--text-soft)]">{selectedPart2Topic.chinese_title}</p> : null}</div><button type="button" onClick={() => setSelectedPart2Id(null)} className="shrink-0 text-sm font-semibold text-[var(--text-soft)] transition hover:text-[var(--primary)]">收起</button></div>{selectedPart2Topic.part2_question ? <div className="mt-4 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><p className="text-xs font-semibold uppercase text-[var(--primary)]">Part 2 Question</p><p className="mt-2 text-sm font-semibold leading-7 text-[var(--text)]">{selectedPart2Topic.part2_question}</p>{getCueCards(selectedPart2Topic).length ? <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--text-soft)]">{getCueCards(selectedPart2Topic).map((cue) => <li key={cue} className="flex gap-2"><span className="text-[var(--primary)]">•</span><span>{cue}</span></li>)}</ul> : null}</div> : null}{getPart3Questions(selectedPart2Topic).length ? <div className="mt-4"><p className="text-xs font-semibold uppercase text-[var(--primary)]">Part 3 Discussion</p><div className="mt-2 grid gap-2 md:grid-cols-2">{getPart3Questions(selectedPart2Topic).map((question, index) => <div key={question} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-3 text-sm leading-6 text-[var(--text)]"><span className="mr-2 font-semibold text-[var(--text-faint)]">Q{index + 1}.</span>{question}</div>)}</div></div> : null}</CardContent></Card></div>
+          ) : null}
 
-    return (
-        <div className="space-y-14">
-            {/* Part 1 */}
-            <section>
-                <div className="mb-6 flex items-end justify-between gap-4">
-                    <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
-                            Speaking Section
-                        </p>
-                        <h2 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">
-                            Part 1
-                        </h2>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3">
-                        <div
-                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] shadow-[var(--shadow-sm)]"
-                        >
-                            {visiblePart1Groups.reduce((sum, group) => sum + group.items.length, 0)} questions
-                        </div>
-
-                        <button
-                            type="button"
-                            onClick={handleExportPart1}
-                            disabled={isExportingPart1}
-                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--bg-soft)] disabled:opacity-60"
-                        >
-                            {isExportingPart1 ? "Exporting..." : "下载 Part 1 PDF"}
-                        </button>
-                    </div>
-                </div>
-                {/* <div className="mb-6 flex items-end justify-between gap-4">
-                    <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                            Speaking Section
-                        </p>
-                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
-                            Part 1
-                        </h2>
-                    </div>
-
-                    <div
-                        className="rounded border px-4 py-2 text-sm text-gray-600"
-                        style={{ borderColor: "var(--border)" }}
-                    >
-                        {part1Questions.length} questions
-                    </div>
-                </div> */}
-
-                <div className="mb-6 flex flex-wrap gap-3">
-                    {part1Filters.map((filter) => {
-                        const active = activePart1Topic === filter.label;
-
-                        return (
-                            <button
-                                key={filter.label}
-                                type="button"
-                                onClick={() => setActivePart1Topic(filter.label)}
-                                className={`
-                                        pill-button
-                                        ${active
-                                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
-                                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
-                                    }
-`}
-                            >
-                                {filter.label} ({filter.count})
-                            </button>
-                        );
-                    })}
-                </div>
-
-                <div className="space-y-5">
-                    {visiblePart1Groups.map((group) => (
-                        <AccordionCard
-                            key={group.topic}
-                            title={group.topic}
-                            subtitle="Speaking Part 1"
-                            badge={`${group.items.length} Questions`}
-                        >
-                            <div className="space-y-5">
-                                {group.items.map((item) => (
-                                    <div
-                                        key={item.id}
-                                        className="
-                      rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-4
-                      transition-all duration-300
-                      hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-[var(--card)] hover:shadow-[var(--shadow-md)]
-                    "
-                                    >
-                                        <p className="mb-2 text-sm font-medium text-[var(--text-faint)]">
-                                            Question {item.question_number}
-                                        </p>
-
-                                        <h3 className="mb-3 text-base font-semibold leading-7 text-[var(--text)] sm:text-lg">
-                                            {item.question_text}
-                                        </h3>
-
-                                        <p className="text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-                                            {item.answer_text}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </AccordionCard>
-                    ))}
-                </div>
-            </section>
-
-            {/* Part 2 */}
-            <section>
-                <div className="mb-6 flex items-end justify-between gap-4">
-                    <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
-                            Speaking Section
-                        </p>
-                        <h2 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">
-                            Part 2
-                        </h2>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3">
-                        <div
-                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text-soft)] shadow-[var(--shadow-sm)]"
-                        >
-                            {visiblePart2Topics.length} Questions
-                        </div>
-
-                        <button
-                            type="button"
-                            onClick={handleExportPart2}
-                            disabled={isExportingPart2}
-                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--bg-soft)] disabled:opacity-60"
-                        >
-                            {isExportingPart2 ? "Exporting..." : "下载 Part 2/3 PDF"}
-                        </button>
-                    </div>
-                </div>
-
-
-                {/* <div className="mb-6 flex items-end justify-between gap-4">
-                    <div>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                            Speaking Section
-                        </p>
-                        <h2 className="text-2xl font-semibold text-black sm:text-3xl">
-                            Part 2
-                        </h2>
-                    </div>
-
-                    <div
-                        className="rounded border px-4 py-2 text-sm text-gray-600"
-                        style={{ borderColor: "var(--border)" }}
-                    >
-                        {part2Topics.length} cards
-                    </div>
-                </div> */}
-
-                <div className="mb-6 flex flex-wrap gap-3">
-                    {part2Filters.map((filter) => {
-                        const active = activePart2Category === filter.label;
-
-                        return (
-                            <button
-                                key={filter.label}
-                                type="button"
-                                onClick={() => setActivePart2Category(filter.label)}
-                                className={`
-                                            pill-button
-                                            ${active
-                                        ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-[var(--shadow-md)]"
-                                        : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] hover:shadow-[var(--shadow-sm)]"
-                                    }
-                                `}
-                            >
-                                {filter.label} ({filter.count})
-                            </button>
-                        );
-                    })}
-                </div>
-
-                <div className="space-y-5">
-                    {visiblePart2Topics.map((item) => {
-                        const part3Questions = [
-                            item.part3_q1,
-                            item.part3_q2,
-                            item.part3_q3,
-                            item.part3_q4,
-                            item.part3_q5,
-                            item.part3_q6,
-                            item.part3_q7,
-                            item.part3_q8,
-                            item.part3_q9,
-                            item.part3_q10,
-                        ].filter(Boolean) as string[];
-
-                        const cueCards = [
-                            item.cue_card_1,
-                            item.cue_card_2,
-                            item.cue_card_3,
-                            item.cue_card_4,
-                        ].filter(Boolean) as string[];
-
-                        return (
-                            <AccordionCard
-                                key={item.id}
-                                title={item.english_title || item.part2_question || "Untitled"}
-                                subtitle={item.category || "Speaking Part 2"}
-                                badge={item.difficulty || "general"}
-                            >
-                                <div className="space-y-6">
-                                    {item.chinese_title && (
-                                        <p className="text-base font-medium leading-7 text-[var(--text)] sm:text-lg">
-                                            {item.chinese_title}
-                                        </p>
-                                    )}
-
-                                    {item.part2_question && (
-                                        <div>
-                                            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
-                                                Part 2 Question
-                                            </p>
-                                            <p className="text-base leading-7 text-[var(--text)] sm:text-lg">
-                                                {item.part2_question}
-                                            </p>
-                                        </div>
-                                    )}
-
-                                    {cueCards.length > 0 && (
-                                        <div
-                                            className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-5 py-5"
-                                        >
-                                            <p className="mb-4 text-sm font-semibold text-[var(--primary)]">
-                                                You should say:
-                                            </p>
-
-                                            <div className="space-y-3">
-                                                {cueCards.map((cue, index) => (
-                                                    <div key={index} className="flex items-start gap-3">
-                                                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded bg-[var(--primary)]" />
-                                                        <p className="text-sm leading-7 text-[var(--text)] sm:text-base">
-                                                            {cue}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {part3Questions.length > 0 && (
-                                        <div>
-                                            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)]">
-                                                Part 3 Discussion
-                                            </p>
-
-                                            <div className="space-y-3">
-                                                {part3Questions.map((q, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className="
-                              rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-4
-                              transition-all duration-300
-                              hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-[var(--card)] hover:shadow-[var(--shadow-md)]
-                            "
-                                                    >
-                                                        <p className="text-sm leading-7 text-[var(--text)] sm:text-base">
-                                                            <span className="mr-2 font-semibold text-[var(--text-faint)]">
-                                                                Q{index + 1}.
-                                                            </span>
-                                                            {q}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </AccordionCard>
-                        );
-                    })}
-                </div>
-            </section>
-        </div>
-    );
+          <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{visiblePart2Topics.map((topic) => <button key={topic.id} type="button" onClick={() => handleSelectPart2Topic(topic.id)} className="group text-left"><Card className="h-full rounded-[var(--radius-md)] transition group-hover:-translate-y-0.5 group-hover:border-[var(--primary)] group-hover:shadow-[var(--shadow-md)]"><CardContent className="p-4"><div className="flex items-center justify-between gap-2"><Badge variant="secondary">{topic.category || "General"}</Badge>{topic.difficulty ? <span className="text-[10px] font-semibold uppercase text-[var(--text-faint)]">{topic.difficulty}</span> : null}</div><h3 className="mt-3 line-clamp-2 min-h-12 text-sm font-semibold leading-6 text-[var(--text)] group-hover:text-[var(--primary)]">{topic.english_title || topic.part2_question || "Untitled"}</h3>{topic.chinese_title ? <p className="mt-1 line-clamp-1 text-xs text-[var(--text-soft)]">{topic.chinese_title}</p> : null}<div className="mt-3 flex items-center justify-between text-xs"><span className="text-[var(--text-faint)]">{getPart3Questions(topic).length} Part 3</span><span className="flex items-center font-semibold text-[var(--primary)]">查看详情<ChevronRight size={14} /></span></div></CardContent></Card></button>)}</div>
+        </section>
+      )}
+    </div>
+  );
 }
