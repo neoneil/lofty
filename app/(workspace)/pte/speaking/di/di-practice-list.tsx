@@ -27,7 +27,7 @@ type Question = {
   image_url: string | null;
   answer_info: string | null;
   video_url: string | null;
-  ai_keywords: string[] | null;
+  ai_keywords: string | null;
   difficulty_level: string | null;
   difficulty_raw: string | null;
   is_prediction: boolean | null;

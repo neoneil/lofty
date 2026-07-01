@@ -176,12 +176,12 @@ export async function assessAzurePronunciation({
     throw new Error("Azure Speech key 未配置");
   }
 
+  const scripted = Boolean(referenceText.trim());
   const assessmentHeader = toBase64Json({
-    ReferenceText: referenceText,
+    ...(scripted ? { ReferenceText: referenceText, EnableMiscue: true } : {}),
     GradingSystem: "HundredMark",
     Granularity: "Phoneme",
     Dimension: "Comprehensive",
-    EnableMiscue: true,
     PhonemeAlphabet: "IPA",
     NBestPhonemeCount: 5,
   });

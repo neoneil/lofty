@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
+import LogoutButton from "@/components/auth/logout-button";
 import { getAchievementSnapshot } from "@/lib/achievements/client";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,12 @@ type Profile = {
   full_name: string | null;
   email: string | null;
   avatar_url: string | null;
+};
+
+type StudyPlanSummary = {
+  exam_type: string | null;
+  overall_target: number | null;
+  exam_deadline: string | null;
 };
 
 type AvatarOption = {
@@ -80,6 +87,7 @@ export function ProfileMenu({
   const [saved, setSaved] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [studyPlan, setStudyPlan] = useState<StudyPlanSummary | null>(null);
   const [avatars, setAvatars] = useState<AvatarOption[]>([]);
   const [fullName, setFullName] = useState("");
   const [selectedAvatarUrl, setSelectedAvatarUrl] = useState<string | null>(
@@ -171,11 +179,10 @@ export function ProfileMenu({
         setStatus(null);
       }
 
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("full_name, email, avatar_url")
-        .eq("id", currentUser.id)
-        .maybeSingle();
+      const [{ data, error }, { data: studyPlanData, error: studyPlanError }] = await Promise.all([
+        supabase.from("profiles").select("full_name, email, avatar_url").eq("id", currentUser.id).maybeSingle(),
+        supabase.from("study_plans").select("exam_type, overall_target, exam_deadline").eq("user_id", currentUser.id).maybeSingle(),
+      ]);
 
       if (cancelled) {
         return;
@@ -187,6 +194,10 @@ export function ProfileMenu({
         }
       }
 
+      if (studyPlanError) {
+        console.error("Study plan summary query failed:", studyPlanError);
+      }
+
       const nextProfile = data ?? {
         full_name: getAuthName(currentUser),
         email: currentUser.email ?? null,
@@ -194,6 +205,7 @@ export function ProfileMenu({
       };
 
       setProfile(nextProfile);
+      setStudyPlan(studyPlanData ?? null);
       setFullName(nextProfile.full_name?.trim() || getAuthName(currentUser));
       setSelectedAvatarUrl(nextProfile.avatar_url || getAuthAvatar(currentUser));
       if (open) {
@@ -425,28 +437,22 @@ export function ProfileMenu({
               </button>
             </div>
 
-            <div className="mb-5 flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-              <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-[var(--primary-soft)] text-xl font-semibold text-[var(--primary)]">
-                {selectedAvatarUrl ? (
-                  <img
-                    src={selectedAvatarUrl}
-                    alt={fullName || displayName}
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  initials
-                )}
+            <div className="mb-5 flex flex-col gap-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 sm:flex-row sm:items-center">
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-xl font-semibold text-[var(--primary)]">
+                  {selectedAvatarUrl ? <img src={selectedAvatarUrl} alt={fullName || displayName} referrerPolicy="no-referrer" className="h-full w-full object-cover" /> : initials}
+                </div>
+
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold text-[var(--text)]">{fullName || displayName}</div>
+                  <div className="mt-1 truncate text-xs text-[var(--text-soft)]">{email}</div>
+                </div>
               </div>
 
-              <div className="min-w-0">
-                <div className="truncate text-sm font-medium text-[var(--text)]">
-                  {fullName || displayName}
-                </div>
-
-                <div className="truncate text-xs text-[var(--text-soft)]">
-                  {email}
-                </div>
+              <div className="grid min-w-0 flex-1 grid-cols-3 gap-2 sm:ml-auto sm:max-w-[430px]">
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2.5"><div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">考试类型</div><div className="mt-1 truncate text-sm font-semibold text-[var(--text)]">{loadingProfile ? "--" : studyPlan?.exam_type || "未设置"}</div></div>
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2.5"><div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">总分目标</div><div className="mt-1 truncate text-sm font-semibold text-[var(--primary)]">{loadingProfile ? "--" : studyPlan?.overall_target ?? "未设置"}</div></div>
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2.5"><div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">考试日期</div><div className="mt-1 truncate text-sm font-semibold text-[var(--text)]">{loadingProfile ? "--" : studyPlan?.exam_deadline || "未设置"}</div></div>
               </div>
             </div>
 
@@ -524,25 +530,16 @@ export function ProfileMenu({
             ) : null}
           </div>
 
-          <div className="flex flex-shrink-0 items-center justify-end gap-2 border-t border-[var(--border)] bg-[var(--card)] px-6 py-5">
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={closeMenu}
-              disabled={saving}
-            >
-              取消
-            </Button>
+          <div className="flex flex-shrink-0 flex-col gap-3 border-t border-[var(--border)] bg-[var(--card)] px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <LogoutButton label="退出登录" showIcon onError={setStatus} className="h-10 w-full rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 text-sm font-semibold text-[var(--danger)] hover:border-[var(--danger)]/45 sm:w-auto" />
 
-            <Button
-              type="button"
-              onClick={handleSave}
-              disabled={!user || saving || loadingProfile}
-              className="gap-2"
-            >
-              {saving ? <Loader2 size={15} className="animate-spin" /> : null}
-              {saving ? "保存中..." : saved ? "已保存" : "保存修改"}
-            </Button>
+            <div className="flex items-center justify-end gap-2">
+              <Button type="button" variant="ghost" onClick={closeMenu} disabled={saving}>取消</Button>
+              <Button type="button" onClick={handleSave} disabled={!user || saving || loadingProfile} className="gap-2">
+                {saving ? <Loader2 size={15} className="animate-spin" /> : null}
+                {saving ? "保存中..." : saved ? "已保存" : "保存修改"}
+              </Button>
+            </div>
           </div>
         </div>
       ) : null}

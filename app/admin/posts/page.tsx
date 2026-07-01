@@ -1,29 +1,10 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import DeletePostButton from "@/components/admin/delete-post-button";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdminOrEditor } from "@/lib/auth/require-admin";
 
 export default async function AdminPostsPage() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || (profile.role !== "admin" && profile.role !== "editor")) {
-    redirect("/");
-  }
+  const { supabase } = await requireAdminOrEditor("/admin/posts");
 
   const { data: posts, error } = await supabase
     .from("posts")

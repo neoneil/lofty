@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import type { User } from "@supabase/supabase-js";
 import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
-import { createClient } from "@/lib/supabase/server";
+import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -64,24 +63,6 @@ const ARGUMENT_PATTERN_OPTIONS = [
 const PEEL_ROLE_OPTIONS = ["point", "explanation", "example", "link"] as const;
 const DIFFICULTY_LEVEL_OPTIONS = [1, 2, 3] as const;
 
-async function getAdminUser(): Promise<User | null> {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) return null;
-
-  const { data: profile, error } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  return !error && profile?.role === "admin" ? user : null;
-}
-
 function includesOption<T extends readonly (string | number)[]>(
   options: T,
   value: unknown
@@ -137,11 +118,9 @@ Chinese explanation should explain the role and writing value of the sentence in
 
 export async function POST(req: Request) {
   try {
-    const user = await getAdminUser();
-
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+    const auth = await requireApiAdmin();
+    if (!auth.ok) return auth.response;
+    const { user } = auth;
 
     const body = (await req.json()) as {
       we_id?: string;

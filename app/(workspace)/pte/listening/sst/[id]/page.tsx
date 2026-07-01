@@ -13,7 +13,7 @@ type PageProps = {
 
 export default async function SstQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const { supabase } = await requireUser(`/pte/listening/sst/${id}`);
+  const { supabase, user } = await requireUser(`/pte/listening/sst/${id}`);
 
   // 当前题目
   const { data: question, error } = await supabase
@@ -33,14 +33,10 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
     );
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   const { data: attempts } = await supabase
     .from("student_attempts")
     .select(`id,score,user_answer,ai_feedback,submitted_at`)
-    .eq("user_id", user!.id)
+    .eq("user_id", user.id)
     .eq("question_source", "sst")
     .eq("question_id", question.id)
     .order("submitted_at", {

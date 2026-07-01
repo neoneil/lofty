@@ -20,7 +20,7 @@ export default async function RoQuestionDetailPage({
 }: PageProps) {
   const { id } = await params;
 
-  const { supabase } = await requireUser(`/pte/reading/ro/${id}`);
+  const { supabase, user } = await requireUser(`/pte/reading/ro/${id}`);
 
   // 当前题目
   const { data: question, error } = await supabase
@@ -40,10 +40,6 @@ export default async function RoQuestionDetailPage({
     );
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   const { data: attempts } = await supabase
     .from("student_attempts")
     .select(`
@@ -53,7 +49,7 @@ export default async function RoQuestionDetailPage({
       ai_feedback,
       submitted_at
     `)
-    .eq("user_id", user!.id)
+    .eq("user_id", user.id)
     .eq("question_source", "ro")
     .eq("question_id", question.id)
     .order("submitted_at", {

@@ -37,7 +37,7 @@ export type EssaySentenceRow = {
 
 export default async function EssayQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const { supabase } = await requireUser(`/pte/writing/essay/${id}`);
+  const { supabase, user } = await requireUser(`/pte/writing/essay/${id}`);
 
   // 当前题目
   const { data: question, error } = await supabase
@@ -57,14 +57,10 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
     );
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   const { data: attempts } = await supabase
     .from("student_attempts")
     .select(`id,score,user_answer,ai_feedback,submitted_at`)
-    .eq("user_id", user!.id)
+    .eq("user_id", user.id)
     .eq("question_source", "we")
     .eq("question_id", question.id)
     .order("submitted_at", {

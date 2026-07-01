@@ -1,6 +1,7 @@
 
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 const AUTH_NEXT_COOKIE = "auth_next";
 
 function getCookieValue(request: Request, name: string) {
@@ -11,14 +12,6 @@ function getCookieValue(request: Request, name: string) {
   if (!match) return null;
 
   return decodeURIComponent(match.slice(name.length + 1));
-}
-
-function getSafeNext(value: string | null) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) {
-    return "/";
-  }
-
-  return value;
 }
 
 function redirectAndClearAuthNext(url: string) {
@@ -35,7 +28,7 @@ function redirectAndClearAuthNext(url: string) {
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = getSafeNext(
+  const next = getSafeNextPath(
     searchParams.get("next") ?? getCookieValue(request, AUTH_NEXT_COOKIE)
   );
 
@@ -52,7 +45,7 @@ export async function GET(request: Request) {
 
     if (error) {
       return redirectAndClearAuthNext(
-        `${origin}/login?error=${encodeURIComponent("google_login_failed")}`
+        `${origin}/login?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
       );
     }
 
@@ -61,7 +54,7 @@ export async function GET(request: Request) {
     if (!user) {
       await supabase.auth.signOut();
       return redirectAndClearAuthNext(
-        `${origin}/sign-up?error=${encodeURIComponent("profile_required")}`
+        `${origin}/sign-up?error=${encodeURIComponent("profile_required")}&next=${encodeURIComponent(next)}`
       );
     }
 
@@ -75,7 +68,7 @@ export async function GET(request: Request) {
       console.log("profile check failed =", profileError);
       await supabase.auth.signOut();
       return redirectAndClearAuthNext(
-        `${origin}/sign-up?error=${encodeURIComponent("profile_required")}`
+        `${origin}/sign-up?error=${encodeURIComponent("profile_required")}&next=${encodeURIComponent(next)}`
       );
     }
 

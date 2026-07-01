@@ -1,24 +1,41 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
+import { useMemo, useState } from "react";
+import { Loader2, LogOut } from "lucide-react";
 
-export default function LogoutButton() {
-  const supabase = createClient();
+import { createClient } from "@/lib/supabase/client";
+import { cn } from "@/lib/utils";
+
+type LogoutButtonProps = {
+  className?: string;
+  label?: string;
+  onError?: (message: string) => void;
+  showIcon?: boolean;
+};
+
+export default function LogoutButton({ className, label = "退出", onError, showIcon = false }: LogoutButtonProps) {
+  const supabase = useMemo(() => createClient(), []);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   async function handleLogout() {
-    await supabase.auth.signOut();
-    window.location.href = "/";
+    if (loggingOut) return;
+    setLoggingOut(true);
+
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      onError?.("退出失败，请稍后重试。");
+      setLoggingOut(false);
+      return;
+    }
+
+    document.cookie = "auth_next=; path=/; max-age=0; SameSite=Lax";
+    window.location.replace("/");
   }
 
   return (
-    <div className="group relative">
-      <button
-        onClick={handleLogout}
-        className="nav-link btn-secondary text-[var(--primary)]"
-        aria-label="Log out"
-      >
-        退出
-      </button>
-    </div>
+    <button type="button" onClick={handleLogout} disabled={loggingOut} className={cn("inline-flex items-center justify-center gap-2 transition disabled:cursor-wait disabled:opacity-65", className ?? "nav-link btn-secondary text-[var(--primary)]")} aria-label="退出登录">
+      {loggingOut ? <Loader2 size={15} className="animate-spin" aria-hidden="true" /> : showIcon ? <LogOut size={16} aria-hidden="true" /> : null}
+      {loggingOut ? "退出中..." : label}
+    </button>
   );
 }

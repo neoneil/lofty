@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
+import { SpeakingKeywordScoreCard, type SpeakingKeywordScoreResult } from "@/components/pte-speaking/keyword-score-card";
 import {
   Card,
   CardContent,
@@ -26,15 +27,23 @@ type Question = {
   storage_path: string | null;
   original_text: string | null;
   answer_info: string | null;
+  ai_keywords: string | null;
   keywords: string | null;
 };
 
 type UserRecording = {
   id: string;
-  question_source: string;
+  question_source?: string;
+  question_type?: string;
   question_id: string;
   audio_url: string;
   duration_seconds: number | null;
+  transcript: string | null;
+  overall_score: number | null;
+  content_score: number | null;
+  fluency_score: number | null;
+  pronunciation_score: number | null;
+  feedback_json: { raw?: SpeakingKeywordScoreResult } | null;
   created_at: string | null;
 };
 
@@ -124,42 +133,29 @@ export default function RlDetailClient({ question }: Props) {
   const [recordingsLoading, setRecordingsLoading] = useState(true);
   const [audioFinished, setAudioFinished] = useState(!getAudioUrl(question));
   const [isOriginalTextOpen, setIsOriginalTextOpen] = useState(false);
+  const [scoreResult, setScoreResult] = useState<SpeakingKeywordScoreResult | null>(null);
 
   const audioUrl = getAudioUrl(question);
   const originalText = question.original_text?.trim();
 
-  useEffect(() => {
-    let cancelled = false;
-
-    const loadRecordings = async () => {
-      setRecordingsLoading(true);
-
-      try {
-        const res = await fetch(`/api/pte/rl/recordings?questionId=${question.id}`);
-        const json = await res.json();
-
-        if (!res.ok || !json.ok) {
-          throw new Error(json.message || "加载历史录音失败");
-        }
-
-        if (!cancelled) {
-          setRecordings(json.recordings ?? []);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (!cancelled) {
-          setRecordingsLoading(false);
-        }
-      }
-    };
-
-    void loadRecordings();
-
-    return () => {
-      cancelled = true;
-    };
+  const loadRecordings = useCallback(async ({ showLoading = true }: { showLoading?: boolean } = {}) => {
+    if (showLoading) setRecordingsLoading(true);
+    try {
+      const res = await fetch(`/api/pte/rl/recordings?questionId=${question.id}`);
+      const json = await res.json();
+      if (!res.ok || !json.ok) throw new Error(json.message || "加载历史录音失败");
+      setRecordings(json.recordings ?? []);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      if (showLoading) setRecordingsLoading(false);
+    }
   }, [question.id]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => void loadRecordings(), 0);
+    return () => window.clearTimeout(timer);
+  }, [loadRecordings]);
 
   return (
     <div className="mt-8 space-y-6">
@@ -203,13 +199,19 @@ export default function RlDetailClient({ question }: Props) {
             preparationDuration={10}
             maxDuration={40}
             autoStart
-            uploadUrl="/api/pte/rl/upload"
-            onUploadSuccess={(newRecording) => {
-              setRecordings((prev) => [newRecording, ...prev]);
+            uploadUrl="/api/pte/rl/submit"
+            uploadFormat="wav"
+            aiUsageFeature="pte_rl"
+            onUploadSuccess={(_newRecording, response) => {
+              const aiFeedback = response?.aiFeedback as SpeakingKeywordScoreResult | undefined;
+              if (aiFeedback) setScoreResult(aiFeedback);
+              void loadRecordings({ showLoading: false });
               router.refresh();
             }}
           />
         ) : null}
+
+        {scoreResult ? <SpeakingKeywordScoreCard result={scoreResult} questionType="RL" /> : null}
 
         {originalText ? (
           <Card>
@@ -280,9 +282,13 @@ export default function RlDetailClient({ question }: Props) {
                         : ""}
                     </div>
 
+                    {recording.overall_score !== null ? <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">{[["总分", recording.overall_score], ["内容", recording.content_score], ["流利度", recording.fluency_score], ["发音", recording.pronunciation_score]].map(([label, value]) => <div key={label} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-2.5 py-2"><div className="text-[10px] font-semibold text-[var(--text-faint)]">{label}</div><div className="mt-0.5 text-sm font-bold text-[var(--primary)]">{value ?? "-"}</div></div>)}</div> : null}
+
                     <div className="mx-auto w-full max-w-[88%] max-sm:max-w-full">
                       <AudioPlayer url={recording.audio_url} size="compact" />
                     </div>
+
+                    {recording.transcript ? <p className="mt-3 rounded-[var(--radius-sm)] bg-[var(--card)] px-3 py-2 text-xs leading-6 text-[var(--text-soft)]">{recording.transcript}</p> : null}
                   </div>
                 ))}
               </div>

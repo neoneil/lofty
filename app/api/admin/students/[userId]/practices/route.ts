@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 const SPEAKING_AI_TYPES = new Set(["RA", "DI", "RL", "SGD"]);
@@ -48,43 +48,6 @@ type SpeakingAttempt = {
   created_at: string | null;
 };
 
-async function requireAdminJson() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return {
-      ok: false as const,
-      response: NextResponse.json(
-        { ok: false, message: "Unauthorized" },
-        { status: 401 },
-      ),
-    };
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || profile.role !== "admin") {
-    return {
-      ok: false as const,
-      response: NextResponse.json(
-        { ok: false, message: "Forbidden" },
-        { status: 403 },
-      ),
-    };
-  }
-
-  return {
-    ok: true as const,
-  };
-}
-
 function getFeedback(feedbackJson: StudentAttempt["ai_feedback"]) {
   return feedbackJson?.feedback ?? feedbackJson?.raw?.feedback ?? "";
 }
@@ -97,7 +60,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ userId: string }> },
 ) {
-  const adminCheck = await requireAdminJson();
+  const adminCheck = await requireApiAdmin();
 
   if (!adminCheck.ok) {
     return adminCheck.response;

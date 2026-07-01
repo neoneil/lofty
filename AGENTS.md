@@ -39,6 +39,11 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Browser/client components should use `lib/supabase/client.ts` only.
 - Do not create new Supabase clients, auth checks, admin role checks, cookie handling, or service-key logic inline unless the user explicitly asks for a new shared helper.
 - Never expose `SUPABASE_SECRET_KEY` or service-role behavior to client components.
+- Treat the hosted Supabase project as a mature, non-empty production database.
+- Before any remote database structure or data change, show the proposed SQL, affected objects, risk, and verification or rollback plan to the user and receive explicit confirmation.
+- This confirmation requirement includes `supabase db push`, table or column changes, indexes, RLS policies, functions, triggers, views, bulk updates, deletes, backfills, and migration repairs.
+- Store every approved schema change as a timestamped SQL file in `supabase/migrations/`. Run `db:push:dry-run` before any approved `db:push`.
+- Never run `supabase db push`, migration repair, reset, destructive SQL, or bulk data mutation merely because migration tooling is configured.
 
 ## UI And Styling
 

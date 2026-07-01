@@ -25,7 +25,7 @@ export default async function FibrwQuestionDetailPage({
   const { id } =
     await params;
 
-  const { supabase } =
+  const { supabase, user } =
     await requireUser(
       `/pte/reading/fibrw/${id}`,
     );
@@ -61,11 +61,6 @@ export default async function FibrwQuestionDetailPage({
   }
 
   const {
-    data: { user },
-  } =
-    await supabase.auth.getUser();
-
-  const {
     data: attempts,
   } = await supabase
     .from(
@@ -80,7 +75,7 @@ export default async function FibrwQuestionDetailPage({
     `)
     .eq(
       "user_id",
-      user!.id,
+      user.id,
     )
     .eq(
       "question_source",

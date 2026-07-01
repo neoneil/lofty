@@ -1,8 +1,8 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { createClient } from "@/lib/supabase/server";
 
 const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -19,25 +19,9 @@ type RequestBody = {
 
 export async function POST(req: Request) {
     try {
-        const authSupabase = await createClient();
-        const {
-            data: { user },
-            error: userError,
-        } = await authSupabase.auth.getUser();
-
-        if (userError || !user) {
-            return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-        }
-
-        const { data: profile, error: profileError } = await authSupabase
-            .from("profiles")
-            .select("role")
-            .eq("id", user.id)
-            .single();
-
-        if (profileError || profile?.role !== "admin") {
-            return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-        }
+        const auth = await requireApiAdmin();
+        if (!auth.ok) return auth.response;
+        const { user } = auth;
 
         const body = (await req.json()) as RequestBody;
 

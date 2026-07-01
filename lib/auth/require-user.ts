@@ -1,20 +1,11 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { getLoginUrl } from "@/lib/auth/auth-redirect";
+import { getServerUser } from "@/lib/auth/server-auth";
 
 export async function requireUser(nextPath?: string) {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    const loginUrl = nextPath
-      ? `/login?next=${encodeURIComponent(nextPath)}`
-      : "/login";
-
-    redirect(loginUrl);
+  const context = await getServerUser();
+  if (!context) {
+    redirect(await getLoginUrl(nextPath));
   }
-
-  return { supabase, user };
+  return context;
 }

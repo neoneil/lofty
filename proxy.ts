@@ -10,9 +10,10 @@ import {
 export async function proxy(
   request: NextRequest,
 ) {
-
-  const response =
-    NextResponse.next();
+  const pathname = request.nextUrl.pathname;
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-lofty-pathname", `${pathname}${request.nextUrl.search}`);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   /////////////////////////////////////////
   // maintenance mode
@@ -21,9 +22,6 @@ export async function proxy(
     process.env
       .NEXT_PUBLIC_MAINTENANCE_MODE ===
     "true";
-
-  const pathname =
-    request.nextUrl.pathname;
 
   // 放行 maintenance 页面
 

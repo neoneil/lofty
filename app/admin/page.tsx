@@ -1,7 +1,6 @@
 
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdminOrEditor } from "@/lib/auth/require-admin";
 
 const adminModules = [
   {
@@ -103,25 +102,7 @@ const adminModules = [
 ];
 
 export default async function AdminPage() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("email, role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || (profile.role !== "admin" && profile.role !== "editor")) {
-    redirect("/");
-  }
+  const { profile, user } = await requireAdminOrEditor("/admin");
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
@@ -139,7 +120,7 @@ export default async function AdminPage() {
             </div>
 
             <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-5 py-4 text-sm text-[var(--text-soft)]">
-              <p className="font-semibold text-[var(--text)]">{profile.email}</p>
+              <p className="font-semibold text-[var(--text)]">{user.email}</p>
               <p className="mt-1">
                 Role:{" "}
                 <span className="font-semibold capitalize text-[var(--primary)]">
@@ -192,36 +173,3 @@ export default async function AdminPage() {
     </main>
   );
 }
-
-// import { redirect } from "next/navigation";
-// import { createClient } from "@/lib/supabase/server";
-
-// export default async function AdminPage() {
-//   const supabase = await createClient();
-
-//   const {
-//     data: { user },
-//   } = await supabase.auth.getUser();
-
-//   if (!user) {
-//     redirect("/login");
-//   }
-
-//   const { data: profile } = await supabase
-//     .from("profiles")
-//     .select("email, role")
-//     .eq("id", user.id)
-//     .single();
-
-//   if (!profile || (profile.role !== "admin" && profile.role !== "editor")) {
-//     redirect("/");
-//   }
-
-//   return (
-//     <main className="mx-auto max-w-4xl px-6 py-12 mt-5">
-//       <h1 className="mb-4 text-3xl font-bold">Admin Dashboard</h1>
-//       <p>Welcome, {profile.email}</p>
-//       <p>Role: {profile.role}</p>
-//     </main>
-//   );
-// }

@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 
 function GoogleIcon() {
   return (
@@ -48,7 +49,7 @@ export default function CommercialLoginForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const next = useMemo(() => searchParams.get("next") || "/", [searchParams]);
+  const next = useMemo(() => getSafeNextPath(searchParams.get("next")), [searchParams]);
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

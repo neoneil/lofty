@@ -1,29 +1,10 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import CreatePostForm from "@/components/admin/create-post-form";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdminOrEditor } from "@/lib/auth/require-admin";
 
 export default async function NewPostPage() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || (profile.role !== "admin" && profile.role !== "editor")) {
-    redirect("/");
-  }
+  await requireAdminOrEditor("/admin/posts/new");
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">

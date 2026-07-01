@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
+import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 
 const REGISTRATION_CLOSED = false;
 
@@ -48,7 +49,7 @@ export default function SignupForm() {
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const next = useMemo(() => searchParams.get("next") || "/", [searchParams]);
+  const next = useMemo(() => getSafeNextPath(searchParams.get("next")), [searchParams]);
 
   async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -208,7 +209,7 @@ export default function SignupForm() {
               <p className="mt-5 text-center text-sm text-(--muted)">
                 已经有账号？{" "}
                 <a
-                  href="/login"
+                  href={`/login?next=${encodeURIComponent(next)}`}
                   className="font-semibold text-(--text) hover:opacity-70"
                 >
                   去登录

@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 
+import { requireApiRole } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { createClient } from "@/lib/supabase/server";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,29 +19,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const authSupabase = await createClient();
+    const auth = await requireApiRole(["admin", "teacher", "editor"]);
+    if (!auth.ok) return auth.response;
+    const { user } = auth;
     const adminSupabase = createAdminClient();
-
-    const {
-      data: { user },
-      error: userError,
-    } = await authSupabase.auth.getUser();
-
-    if (userError || !user) {
-      return Response.json(
-        {
-          ok: false,
-          message: "Not logged in",
-        },
-        {
-          status: 401,
-        },
-      );
-    }
 
     const { data: teacherProfile, error: teacherError } = await adminSupabase
       .from("profiles")
-      .select("id, full_name, role")
+      .select("id, full_name")
       .eq("id", user.id)
       .maybeSingle();
 
@@ -55,18 +40,6 @@ export async function POST(request: NextRequest) {
         {
           ok: false,
           message: "Teacher profile not found",
-        },
-        {
-          status: 403,
-        },
-      );
-    }
-
-    if (!["admin", "teacher", "editor"].includes(teacherProfile.role)) {
-      return Response.json(
-        {
-          ok: false,
-          message: "No permission",
         },
         {
           status: 403,

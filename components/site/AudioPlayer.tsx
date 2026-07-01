@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function AudioPlayer({
   url,
@@ -16,6 +16,7 @@ export default function AudioPlayer({
   onEnded?: () => void;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const onEndedRef = useRef(onEnded);
 
   const [playing, setPlaying] = useState(false);
 
@@ -42,7 +43,11 @@ export default function AudioPlayer({
 
   const compact = size === "compact";
 
-  const pauseAudio = () => {
+  useEffect(() => {
+    onEndedRef.current = onEnded;
+  }, [onEnded]);
+
+  const pauseAudio = useCallback(() => {
     const audio = audioRef.current;
 
     if (!audio) return;
@@ -56,21 +61,22 @@ export default function AudioPlayer({
     }
 
     setCountdownLeft(null);
-  };
+  }, []);
 
   // ===== 初始化 =====
   useEffect(() => {
-
     const audio = new Audio(url);
+    let disposed = false;
 
     audioRef.current = audio;
 
     audio.onloadedmetadata = () => {
+      if (disposed) return;
       setDuration(audio.duration || 0);
     };
 
     audio.ontimeupdate = () => {
-
+      if (disposed) return;
       if (
         !isDraggingRef.current &&
         audio.duration
@@ -84,15 +90,22 @@ export default function AudioPlayer({
     };
 
     audio.onended = () => {
+      if (disposed) return;
       setPlaying(false);
-      onEnded?.();
+      onEndedRef.current?.();
     };
 
     return () => {
+      disposed = true;
       audio.pause();
+      audio.onloadedmetadata = null;
+      audio.ontimeupdate = null;
+      audio.onended = null;
+      audio.removeAttribute("src");
+      audio.load();
+      if (audioRef.current === audio) audioRef.current = null;
     };
-
-  }, [url, onEnded]);
+  }, [url]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -108,7 +121,7 @@ export default function AudioPlayer({
       window.removeEventListener("pagehide", pauseAudio);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  });
+  }, [pauseAudio]);
   // ===== 音量同步 =====
   useEffect(() => {
 
@@ -200,23 +213,24 @@ export default function AudioPlayer({
 
   // ===== waveform =====
   useEffect(() => {
+    const abortController = new AbortController();
+    let cancelled = false;
+    let audioContext: AudioContext | null = null;
 
-    const generateWaveform =
-      async () => {
+    const generateWaveform = async () => {
 
         try {
 
           const res =
-            await fetch(url);
+            await fetch(url, { signal: abortController.signal });
 
           const buffer =
             await res.arrayBuffer();
 
-          const ctx =
-            new AudioContext();
+          audioContext = new AudioContext();
 
           const audioBuffer =
-            await ctx.decodeAudioData(
+            await audioContext.decodeAudioData(
               buffer
             );
 
@@ -256,15 +270,16 @@ export default function AudioPlayer({
             data.push(sum / blockSize);
           }
 
-          setWaveform(data);
+          if (!cancelled) setWaveform(data);
 
-        } catch {
+        } catch (error) {
+          if (cancelled || (error instanceof DOMException && error.name === "AbortError")) return;
 
           console.warn(
             "waveform disabled for this audio"
           );
 
-          setWaveform(
+          if (!cancelled) setWaveform(
             Array.from(
               { length: 60 },
               () =>
@@ -277,6 +292,11 @@ export default function AudioPlayer({
 
     generateWaveform();
 
+    return () => {
+      cancelled = true;
+      abortController.abort();
+      void audioContext?.close();
+    };
   }, [url]);
 
   // ===== skip =====

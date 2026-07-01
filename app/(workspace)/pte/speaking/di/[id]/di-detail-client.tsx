@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui-v2/card";
 import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
+import DIScoreCard, { type DIScoreResult } from "@/components/pte-speaking/keyword-score-card";
 
 type Question = {
   id: string;
@@ -23,7 +24,7 @@ type Question = {
   question_text: string | null;
   image_url: string | null;
   answer_info: string | null;
-  ai_keywords: string[] | null;
+  ai_keywords: string | null;
   tag1: string | number | null;
   tag2: string | number | null;
   tag3: string | number | null;
@@ -32,10 +33,17 @@ type Question = {
 
 type UserRecording = {
   id: string;
-  question_source: string;
+  question_source?: string;
+  question_type?: string;
   question_id: string;
   audio_url: string;
   duration_seconds: number | null;
+  transcript: string | null;
+  overall_score: number | null;
+  content_score: number | null;
+  fluency_score: number | null;
+  pronunciation_score: number | null;
+  feedback_json: { raw?: DIScoreResult } | null;
   created_at: string | null;
 };
 
@@ -160,42 +168,29 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
   const [tag1Input, setTag1Input] = useState(String(question.tag1 ?? ""));
   const [tagUpdateLoading, setTagUpdateLoading] = useState(false);
   const [tagUpdateMessage, setTagUpdateMessage] = useState<string | null>(null);
+  const [scoreResult, setScoreResult] = useState<DIScoreResult | null>(null);
 
   const tags = getTags(question);
   const imageUrl = question.image_url ? getImageUrl(question.image_url) : null;
 
-  useEffect(() => {
-    let cancelled = false;
-
-    const loadRecordings = async () => {
-      setRecordingsLoading(true);
-
-      try {
-        const res = await fetch(`/api/pte/di/recordings?questionId=${question.id}`);
-        const json = await res.json();
-
-        if (!res.ok || !json.ok) {
-          throw new Error(json.message || "加载历史录音失败");
-        }
-
-        if (!cancelled) {
-          setRecordings(json.recordings ?? []);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (!cancelled) {
-          setRecordingsLoading(false);
-        }
-      }
-    };
-
-    void loadRecordings();
-
-    return () => {
-      cancelled = true;
-    };
+  const loadRecordings = useCallback(async ({ showLoading = true }: { showLoading?: boolean } = {}) => {
+    if (showLoading) setRecordingsLoading(true);
+    try {
+      const res = await fetch(`/api/pte/di/recordings?questionId=${question.id}`);
+      const json = await res.json();
+      if (!res.ok || !json.ok) throw new Error(json.message || "加载历史录音失败");
+      setRecordings(json.recordings ?? []);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      if (showLoading) setRecordingsLoading(false);
+    }
   }, [question.id]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => void loadRecordings(), 0);
+    return () => window.clearTimeout(timer);
+  }, [loadRecordings]);
 
   return (
     <div className="mt-8 space-y-6">
@@ -371,12 +366,18 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
           preparationDuration={40}
           maxDuration={40}
           autoStart
-          uploadUrl="/api/pte/di/upload"
-          onUploadSuccess={(newRecording) => {
-            setRecordings((prev) => [newRecording, ...prev]);
+          uploadUrl="/api/pte/di/submit"
+          uploadFormat="wav"
+          aiUsageFeature="pte_di"
+          onUploadSuccess={(_newRecording, response) => {
+            const aiFeedback = response?.aiFeedback as DIScoreResult | undefined;
+            if (aiFeedback) setScoreResult(aiFeedback);
+            void loadRecordings({ showLoading: false });
             router.refresh();
           }}
         />
+
+        {scoreResult ? <DIScoreCard result={scoreResult} /> : null}
 
         <Card>
           <CardHeader>
@@ -411,9 +412,13 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
                         : ""}
                     </div>
 
+                    {recording.overall_score !== null ? <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">{[["总分", recording.overall_score], ["内容", recording.content_score], ["流利度", recording.fluency_score], ["发音", recording.pronunciation_score]].map(([label, value]) => <div key={label} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-2.5 py-2"><div className="text-[10px] font-semibold text-[var(--text-faint)]">{label}</div><div className="mt-0.5 text-sm font-bold text-[var(--primary)]">{value ?? "-"}</div></div>)}</div> : null}
+
                     <div className="mx-auto w-full max-w-[88%] max-sm:max-w-full">
                       <AudioPlayer url={recording.audio_url} size="compact" />
                     </div>
+
+                    {recording.transcript ? <p className="mt-3 rounded-[var(--radius-sm)] bg-[var(--card)] px-3 py-2 text-xs leading-6 text-[var(--text-soft)]">{recording.transcript}</p> : null}
                   </div>
                 ))}
               </div>

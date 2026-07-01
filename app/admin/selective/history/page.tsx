@@ -104,13 +104,6 @@ type MathHistoryRow = {
   hints: string[];
 };
 
-type CurrentUser = {
-  id: string;
-  email?: string;
-  fullName: string;
-  role: string | null;
-};
-
 type StudentGroup = {
   userId: string;
   studentName: string;
@@ -166,7 +159,6 @@ function getStudentDisplayName(
 }
 
 export default function AdminSelectiveHistoryPage() {
-  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [writingRows, setWritingRows] = useState<WritingHistoryRow[]>([]);
   const [mathRows, setMathRows] = useState<MathHistoryRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -180,55 +172,6 @@ export default function AdminSelectiveHistoryPage() {
       setLoading(true);
       setError("");
 
-      const {
-        data: { user },
-        error: authError,
-      } = await supabase.auth.getUser();
-
-      if (authError) {
-        console.error("Failed to get current user:", authError);
-        if (mounted) {
-          setCurrentUser(null);
-          setError("Failed to load your account.");
-          setLoading(false);
-        }
-        return;
-      }
-
-      if (!user) {
-        if (mounted) {
-          setCurrentUser(null);
-          setLoading(false);
-        }
-        return;
-      }
-
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("full_name, role")
-        .eq("id", user.id)
-        .single();
-
-      if (profileError) {
-        console.error("Failed to load profile:", profileError);
-      }
-
-      const role = profile?.role ?? null;
-      const isAdminPageAllowed = role === "admin" || role === "editor";
-
-      if (!isAdminPageAllowed) {
-        if (mounted) {
-          setCurrentUser({
-            id: user.id,
-            email: user.email,
-            fullName: profile?.full_name || "User",
-            role,
-          });
-          setLoading(false);
-        }
-        return;
-      }
-
       const { data: writingData, error: writingError } = await supabase
         .schema("selective")
         .from("v_writing_history")
@@ -238,12 +181,6 @@ export default function AdminSelectiveHistoryPage() {
       if (writingError) {
         console.error("Failed to load writing history:", writingError);
         if (mounted) {
-          setCurrentUser({
-            id: user.id,
-            email: user.email,
-            fullName: profile?.full_name || "User",
-            role,
-          });
           setError("Failed to load writing history.");
           setLoading(false);
         }
@@ -260,12 +197,6 @@ export default function AdminSelectiveHistoryPage() {
       if (attemptError) {
         console.error("Failed to load math attempts:", attemptError);
         if (mounted) {
-          setCurrentUser({
-            id: user.id,
-            email: user.email,
-            fullName: profile?.full_name || "User",
-            role,
-          });
           setWritingRows((writingData as WritingHistoryRow[]) ?? []);
           setError("Failed to load math attempts.");
           setLoading(false);
@@ -292,12 +223,6 @@ export default function AdminSelectiveHistoryPage() {
         if (mathQuestionError) {
           console.error("Failed to load math questions:", mathQuestionError);
           if (mounted) {
-            setCurrentUser({
-              id: user.id,
-              email: user.email,
-              fullName: profile?.full_name || "User",
-              role,
-            });
             setWritingRows((writingData as WritingHistoryRow[]) ?? []);
             setError("Failed to load math question details.");
             setLoading(false);
@@ -350,12 +275,6 @@ export default function AdminSelectiveHistoryPage() {
 
       if (!mounted) return;
 
-      setCurrentUser({
-        id: user.id,
-        email: user.email,
-        fullName: profile?.full_name || "User",
-        role,
-      });
       setWritingRows((writingData as WritingHistoryRow[]) ?? []);
       setMathRows(mergedMathRows);
       setLoading(false);
@@ -447,32 +366,6 @@ export default function AdminSelectiveHistoryPage() {
     );
   }
 
-  if (!currentUser) {
-    return (
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-        <h1 className="text-3xl font-bold text-(--text-main)">
-          Admin Selective History
-        </h1>
-        <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          Please log in to view this page.
-        </div>
-      </main>
-    );
-  }
-
-  if (!(currentUser.role === "admin" || currentUser.role === "editor")) {
-    return (
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-        <h1 className="text-3xl font-bold text-(--text-main)">
-          Admin Selective History
-        </h1>
-        <div className="mt-6 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          You do not have permission to view this page.
-        </div>
-      </main>
-    );
-  }
-
   const totalWriting = writingRows.length;
   const totalMath = mathRows.length;
   const totalStudents = new Set([
@@ -488,8 +381,7 @@ export default function AdminSelectiveHistoryPage() {
             Admin Selective History
           </h1>
           <p className="mt-3 text-(--text-secondary)">
-            All student activity visible to {currentUser.fullName}
-            {currentUser.email ? ` (${currentUser.email})` : ""}.
+            All student writing and mathematics activity.
           </p>
         </div>
 
