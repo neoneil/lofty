@@ -1,6 +1,7 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, Sparkles } from "lucide-react";
 
 import { Breadcrumbs } from "./breadcrumbs";
 import { NotificationDropdown } from "./notification-dropdown";
@@ -11,8 +12,9 @@ import type { User } from "@supabase/supabase-js";
 
 type Props = {
   user: User | null;
+  canAccessAdmin: boolean;
 };
-export function Topbar({ user }: Props) {
+export function Topbar({ user, canAccessAdmin }: Props) {
   const openAiCoach = () => {
     window.dispatchEvent(new Event("lofty:open-chat-widget"));
   };
@@ -36,6 +38,8 @@ export function Topbar({ user }: Props) {
         <ThemeToggle />
 
         <TopbarUser user={user} />
+
+        {canAccessAdmin ? <Link href="/admin" aria-label="进入管理员后台" title="管理员" className="flex h-10 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]"><ShieldCheck size={17} /><span className="hidden xl:inline">管理员</span></Link> : null}
       </div>
     </header>
   );

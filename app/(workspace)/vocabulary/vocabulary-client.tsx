@@ -10,6 +10,7 @@ import { Pagination } from "@/components/ui-v2/pagination";
 import type { ResembleEntry, WordRootEntry } from "@/lib/vocabulary/content";
 
 type Collection = "resemble" | "wordRoots";
+type AffixType = "prefix" | "suffix";
 
 type Props = {
   resemble: ResembleEntry[];
@@ -119,11 +120,20 @@ function WordRootCard({ entry, keyword }: { entry: WordRootEntry; keyword: strin
 
 export default function VocabularyClient({ resemble, wordRoots }: Props) {
   const [activeCollection, setActiveCollection] = useState<Collection>("resemble");
+  const [activeAffixType, setActiveAffixType] = useState<AffixType>("prefix");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const activeMeta = collections.find((item) => item.value === activeCollection) ?? collections[0];
-  const activeItems = activeCollection === "resemble" ? resemble : wordRoots;
+  const affixCounts = useMemo(() => ({
+    prefix: wordRoots.filter((entry) => entry.wordClass.trim().toLowerCase() === "prefix").length,
+    suffix: wordRoots.filter((entry) => entry.wordClass.trim().toLowerCase().includes("suffix")).length,
+  }), [wordRoots]);
+  const activeWordRoots = useMemo(() => wordRoots.filter((entry) => {
+    const wordClass = entry.wordClass.trim().toLowerCase();
+    return activeAffixType === "prefix" ? wordClass === "prefix" : wordClass.includes("suffix");
+  }), [activeAffixType, wordRoots]);
+  const activeItems = activeCollection === "resemble" ? resemble : activeWordRoots;
   const keyword = searchTerm.trim().toLowerCase();
 
   const filteredItems = useMemo(() => {
@@ -143,6 +153,11 @@ export default function VocabularyClient({ resemble, wordRoots }: Props) {
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
+    setCurrentPage(1);
+  };
+
+  const handleAffixTypeChange = (affixType: AffixType) => {
+    setActiveAffixType(affixType);
     setCurrentPage(1);
   };
 
@@ -180,6 +195,17 @@ export default function VocabularyClient({ resemble, wordRoots }: Props) {
             </button>
           ))}
         </section>
+
+        {activeCollection === "wordRoots" ? (
+          <Card className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+            <CardContent className="p-3 sm:p-4">
+              <div className="grid grid-cols-2 gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-1.5">
+                <button type="button" onClick={() => handleAffixTypeChange("prefix")} className={`flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-sm)] px-3 text-sm font-semibold transition ${activeAffixType === "prefix" ? "bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:text-[var(--text)]"}`}>前缀 <span className="text-xs font-medium text-[var(--text-faint)]">Prefixes · {affixCounts.prefix}</span></button>
+                <button type="button" onClick={() => handleAffixTypeChange("suffix")} className={`flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-sm)] px-3 text-sm font-semibold transition ${activeAffixType === "suffix" ? "bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:text-[var(--text)]"}`}>后缀 <span className="text-xs font-medium text-[var(--text-faint)]">Suffixes · {affixCounts.suffix}</span></button>
+              </div>
+            </CardContent>
+          </Card>
+        ) : null}
 
         <Card className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
           <CardContent className="space-y-4 p-4 sm:p-5">

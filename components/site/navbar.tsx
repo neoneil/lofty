@@ -2,10 +2,13 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { BookOpenCheck, ChevronDown, ChevronRight, GraduationCap } from "lucide-react";
 import Container from "./container";
 import NavbarMobileClient from "./navbar-mobile-client";
 import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
+import { canAccessAdmin } from "@/lib/auth/admin-access";
+import { BRAND_NAME_CN } from "@/lib/brand";
+import { BrandLockup } from "@/components/site/brand-lockup";
 
 type NavItem = {
   href: string;
@@ -44,12 +47,7 @@ export default async function Navbar() {
     profileAvatar = profile?.avatar_url ?? null;
   }
 
-  const fallbackAdminEmails = ["adelaideneocs@gmail.com"];
-
-  const ChiMa =
-    role === "admin" ||
-    role === "editor" ||
-    (user?.email ? fallbackAdminEmails.includes(user.email) : false);
+  const ChiMa = canAccessAdmin(role, user?.email);
 
   const name =
     profileName ||
@@ -68,7 +66,7 @@ export default async function Navbar() {
   const navItems: NavItem[] = [
     {
       href: "/",
-      label: "致远主页",
+      label: `${BRAND_NAME_CN}主页`,
       tooltip: "Home",
     },
 
@@ -153,22 +151,7 @@ export default async function Navbar() {
 
             {/* 桌面端 */}
             <div className="hidden h-12 items-center justify-between gap-3 lg:flex">
-              <Link href="/" className="group ml-1 flex shrink-0 items-center gap-2.5 rounded-[var(--radius-lg)] bg-transparent px-3 py-1.5 transition-all duration-300 hover:bg-[var(--card-soft)]/45">
-                <div className="flex h-10 w-8 flex-col items-center justify-center gap-0.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] text-[12px] font-black leading-none tracking-[0.08em] text-[var(--primary)] shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:border-[var(--primary)]/40 group-hover:bg-[var(--primary-soft)]">
-                  <span>致</span>
-                  <span>远</span>
-                </div>
-
-                <div className="flex flex-col justify-center whitespace-nowrap leading-tight">
-                  <span className="text-lg font-black tracking-[0.14em] text-[var(--text)] transition-all duration-300 group-hover:text-[var(--primary)]">
-                    LOFTY
-                  </span>
-
-                  <span className="text-[10px] font-semibold tracking-[0.24em] text-[var(--text-soft)] uppercase">
-                    Education
-                  </span>
-                </div>
-              </Link>
+              <Link href="/" className="group ml-1 flex shrink-0 rounded-[var(--radius-md)] px-2.5 py-1 transition-colors duration-200 hover:bg-[var(--card-soft)]/45"><BrandLockup label={`${BRAND_NAME_CN}雅思PTE`} /></Link>
 
               <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1">
                 {navItems.slice(0, 2).map((item) => (
@@ -194,21 +177,22 @@ export default async function Navbar() {
                     <ChevronDown className="h-4 w-4 text-[var(--text-faint)] transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
                   </button>
 
-                  <div className="pointer-events-none absolute left-1/2 top-full z-[60] w-46 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-                    <div className="overflow-hidden rounded border border-transparent bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
-                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
-                      {practiceItems.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          aria-label={item.tooltip}
-                          className={`btn-secondary flex w-full items-center px-4 py-2.5 text-left text-sm font-medium text-[var(--text-soft)] transition-colors duration-150 hover:bg-[var(--card-soft)]/45 hover:text-[var(--primary)] ${
-                            item.href === "/pte" ? "mb-1.5" : ""
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
+                  <div className="pointer-events-none absolute left-1/2 top-full z-[60] w-[280px] -translate-x-1/2 translate-y-1 scale-[0.98] pt-3 opacity-0 transition-all duration-200 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100">
+                    <div role="menu" aria-label="练习模块" className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/95 p-1.5 shadow-[var(--shadow-lg)] backdrop-blur-xl">
+                      <div className="border-b border-[var(--border)] px-3 py-2.5"><div className="text-xs font-semibold text-[var(--text)]">考试练习</div><div className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-faint)]">Practice Hub</div></div>
+                      <div className="py-1">
+                        {practiceItems.map((item) => {
+                          const PracticeIcon = item.href === "/pte" ? GraduationCap : BookOpenCheck;
+                          const englishLabel = item.href === "/pte" ? "PTE Academic Practice" : "IELTS Practice";
+                          return (
+                            <Link key={item.href} href={item.href} role="menuitem" aria-label={item.tooltip} className="group/item flex w-full items-center gap-3 rounded-[var(--radius-sm)] px-3 py-3 text-left transition-colors duration-150 hover:bg-[var(--primary-soft)] focus-visible:bg-[var(--primary-soft)] focus-visible:outline-none">
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition-colors group-hover/item:border-[var(--primary)]/30 group-hover/item:bg-[var(--card)]"><PracticeIcon size={17} /></span>
+                              <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-[var(--text)] group-hover/item:text-[var(--primary)]">{item.label}</span><span className="mt-0.5 block text-[11px] text-[var(--text-faint)]">{englishLabel}</span></span>
+                              <ChevronRight size={15} className="shrink-0 text-[var(--text-faint)] transition-transform group-hover/item:translate-x-0.5 group-hover/item:text-[var(--primary)]" />
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -255,15 +239,6 @@ export default async function Navbar() {
                         </span>
                       </div>
                     </div>
-
-                    {ChiMa && (
-                      <Link
-                        href="/admin"
-                        className="btn-secondary flex h-8 items-center rounded-[var(--radius-full)] bg-transparent px-3 text-sm font-semibold text-[var(--primary)] transition-all duration-300 hover:bg-[var(--card-soft)]/45"
-                      >
-                        管理员
-                      </Link>
-                    )}
 
                     <div className="origin-right scale-90">
                       <LogoutButton />

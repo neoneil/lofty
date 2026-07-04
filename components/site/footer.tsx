@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import Container from "./container";
+import { BRAND_EDUCATION_CN } from "@/lib/brand";
 
 const serviceLinks = [
   {
@@ -170,7 +171,7 @@ export default function Footer() {
                     Lofty Education
                   </div>
                   <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
-                    致远教育
+                    {BRAND_EDUCATION_CN}
                   </div>
                 </div>
               </div>

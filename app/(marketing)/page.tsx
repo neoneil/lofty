@@ -18,6 +18,7 @@ import {
 
 import { createClient } from "@/lib/supabase/server";
 import { getRandomSlogan } from "@/lib/slogan/slogan";
+import { BRAND_EDUCATION_CN } from "@/lib/brand";
 
 const features = [
   {
@@ -97,12 +98,12 @@ const faqItems = [
   {
     question: "PTE 和雅思哪个更适合留学移民？",
     answer:
-      "PTE 和雅思都可用于留学与移民申请，但不同院校、签证类型和个人英语基础适合的考试可能不同。致远教育不仅提供 PTE 与雅思的学习资源、题库训练和 AI 辅助练习，更会帮助学生找到更适合自己的备考路径。",
+      `PTE 和雅思都可用于留学与移民申请，但不同院校、签证类型和个人英语基础适合的考试可能不同。${BRAND_EDUCATION_CN}不仅提供 PTE 与雅思的学习资源、题库训练和 AI 辅助练习，更会帮助学生找到更适合自己的备考路径。`,
   },
   {
     question: "AI 可以帮助批改雅思或 PTE 写作吗？",
     answer:
-      "可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，提供更高频、更即时的反馈。致远教育的 AI 辅助功能适合用于日常练习、改写提升和考试前复盘。",
+      `可以。AI 可以帮助分析写作结构、语法、词汇和逻辑表达，提供更高频、更即时的反馈。${BRAND_EDUCATION_CN}的 AI 辅助功能适合用于日常练习、改写提升和考试前复盘。`,
   },
   {
     question: "初学者可以从哪里开始准备 PTE 或雅思？",
@@ -113,11 +114,11 @@ const faqItems = [
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://loftypte.com.au"),
-  title: "致远教育 | PTE 雅思 备考学习平台",
+  title: `${BRAND_EDUCATION_CN} | PTE 雅思 备考学习平台`,
   description:
-    "致远教育专注 PTE、雅思与英语培训，提供 AI 写作批改、口语智能练习、考试题库、留学移民英语辅导。",
+    `${BRAND_EDUCATION_CN}专注 PTE、雅思与英语培训，提供 AI 写作批改、口语智能练习、考试题库、留学移民英语辅导。`,
   keywords: [
-    "致远教育",
+    BRAND_EDUCATION_CN,
     "Lofty Education",
     "PTE",
     "雅思",
@@ -134,11 +135,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "致远教育 | PTE 雅思 AI 备考学习平台",
+    title: `${BRAND_EDUCATION_CN} | PTE 雅思 AI 备考学习平台`,
     description:
-      "致远教育专注 PTE、雅思与英语培训，提供 AI 写作批改、口语练习、考试题库与留学移民英语辅导。",
+      `${BRAND_EDUCATION_CN}专注 PTE、雅思与英语培训，提供 AI 写作批改、口语练习、考试题库与留学移民英语辅导。`,
     url: "https://loftypte.com.au",
-    siteName: "致远教育 Lofty Education",
+    siteName: `${BRAND_EDUCATION_CN} Lofty Education`,
     locale: "zh_CN",
     type: "website",
   },
@@ -285,11 +286,11 @@ export default async function HomePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    name: "致远教育PTE",
+    name: `${BRAND_EDUCATION_CN}PTE`,
     alternateName: "Lofty Education",
     url: "https://loftypte.com.au",
     description:
-      "致远教育专注 PTE、雅思与英语培训，提供 AI 写作批改、口语练习、考试题库与留学移民英语辅导。",
+      `${BRAND_EDUCATION_CN}专注 PTE、雅思与英语培训，提供 AI 写作批改、口语练习、考试题库与留学移民英语辅导。`,
     areaServed: "Australia",
     knowsAbout: [
       "PTE Academic",
@@ -521,11 +522,11 @@ export default async function HomePage() {
             </div>
 
             <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-              加入致远教育，和更多学员一起进步
+              加入{BRAND_EDUCATION_CN}，和更多学员一起进步
             </h2>
 
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-white/85 sm:text-base">
-              从 AI 智能练习、老师监督到真题训练，致远教育帮助学生建立长期、高效且可持续的学习体系。
+              从 AI 智能练习、老师监督到真题训练，{BRAND_EDUCATION_CN}帮助学生建立长期、高效且可持续的学习体系。
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

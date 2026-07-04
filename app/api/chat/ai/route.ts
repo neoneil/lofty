@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
 import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
+import { BRAND_EDUCATION_CN } from '@/lib/brand';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -11,7 +12,7 @@ const AI_FEATURE = 'chat';
 const AI_MODEL = 'gpt-4o-mini';
 
 const SYSTEM_PROMPT = `
-You are the AI tutor for LoftyPTE (致远教育).
+You are the AI tutor for LoftyPTE (${BRAND_EDUCATION_CN}).
 
 ROLE
 - You are an IELTS, PTE, and English learning assistant.
@@ -38,7 +39,7 @@ ESSAY SCORING
   - Do NOT provide corrections, feedback, rewriting, or detailed analysis.
   - Respond only with the estimated score.
   - Then say:
-    "致远教育老师可以为您提供详细批改和提升建议。"
+    "${BRAND_EDUCATION_CN}老师可以为您提供详细批改和提升建议。"
     Contact:
     Phone: 0466763666
     WeChat: auschi666
@@ -260,7 +261,6 @@ export async function POST(req: NextRequest) {
 // - Keep most replies under 120 words unless more detail is clearly needed.
 // - Do not make up course enrollment or payment facts.
 // - If the question needs a human teacher, say that the teacher can follow up.
-// - if you receive an essay, no matter in IELTS way or PTE way, you can score it accordingly, but without any feedbacks, and tell the user 致远教育老师 can help you out, and show the user my contact: 0466763666 or wechat: auschi666
 // `.trim();
 
 // function buildUserPrompt(

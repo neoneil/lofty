@@ -61,6 +61,10 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Run focused verification after changes when practical, such as TypeScript, lint for touched files, or build for config/framework changes.
 - If a command fails because of unrelated existing issues, report that clearly and separate it from the current change.
 - For frontend UI work, verify the relevant page visually when a dev server/browser is available and the route can be accessed.
+- Before starting a dev server for testing, check whether port `3001` already has a listener.
+- If port `3001` is already in use, treat that dev server as user-managed. Reuse it for testing and never stop, restart, or replace it after making changes.
+- If port `3001` has no listener and testing requires the app, start the project dev server on port `3001`, track the process started by Codex, and stop only that process after testing is complete.
+- Never terminate a pre-existing process on port `3001`.
 
 ## Communication
 

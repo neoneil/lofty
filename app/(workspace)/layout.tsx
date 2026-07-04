@@ -1,4 +1,5 @@
 import { AppLayout } from "@/components/layout-v2/app-layout";
+import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 
 export default async function WorkspaceLayout({
@@ -7,11 +8,12 @@ export default async function WorkspaceLayout({
   children: React.ReactNode;
 }) {
 
-  const { user } = await requireUser();
+  const context = await requireUser();
+  const canAccessAdmin = await getAdminAccess(context);
 
   return (
 
-    <AppLayout user={user}>
+    <AppLayout user={context.user} canAccessAdmin={canAccessAdmin}>
 
       {children}
 

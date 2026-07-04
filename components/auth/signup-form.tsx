@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
+import { BRAND_NAME_CN, BRAND_TEACHER_CN } from "@/lib/brand";
 
 const REGISTRATION_CLOSED = false;
 
@@ -55,7 +56,7 @@ export default function SignupForm() {
     e.preventDefault();
 
     if (REGISTRATION_CLOSED) {
-      setMessage("注册功能临时关闭，如想咨询课程请联系致远老师");
+      setMessage(`注册功能临时关闭，如想咨询课程请联系${BRAND_TEACHER_CN}`);
       return;
     }
 
@@ -89,7 +90,7 @@ export default function SignupForm() {
 
   async function handleGoogleSignup() {
     if (REGISTRATION_CLOSED) {
-      setMessage("注册功能临时关闭，如想咨询课程请联系致远老师");
+      setMessage(`注册功能临时关闭，如想咨询课程请联系${BRAND_TEACHER_CN}`);
       return;
     }
 
@@ -134,7 +135,7 @@ export default function SignupForm() {
             {/* signup form：放右边 */}
             <Card className={`relative z-10 ml-85 w-full max-w-105 ${signupCardClassName}`}>
               <h1 className="mb-2 text-2xl font-bold text-(--text)">
-                创建致远账号
+                创建{BRAND_NAME_CN}账号
               </h1>
 
               <p className="mb-6 text-sm text-(--muted)">
@@ -235,7 +236,7 @@ export default function SignupForm() {
           <div className="mx-auto w-full max-w-105 lg:hidden">
             <Card className={signupCardClassName}>
               <h1 className="mb-2 text-3xl font-bold text-(--text)">
-                创建致远账号
+                创建{BRAND_NAME_CN}账号
               </h1>
 
               <p className="mb-6 text-sm text-(--muted)">

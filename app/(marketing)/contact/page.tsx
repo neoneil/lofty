@@ -10,11 +10,12 @@ import {
 } from "@/components/ui-v2/card";
 
 import ContactForm from "./contact-form";
+import { BRAND_EDUCATION_CN, BRAND_NAME_CN } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Contact | Lofty Education",
   description:
-    "Contact Lofty Education / 致远教育 — bilingual English and Chinese test preparation based in Melbourne, Australia.",
+    `Contact Lofty Education / ${BRAND_EDUCATION_CN} — bilingual English and Chinese test preparation based in Melbourne, Australia.`,
 };
 
 const highlights = [
@@ -46,7 +47,7 @@ export default function ContactPage() {
               <Badge variant="default">墨尔本英语考试培训</Badge>
 
               <h1 className="mt-5 text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
-                致远教育
+                {BRAND_EDUCATION_CN}
                 <span className="mt-2 block text-xl font-medium text-[var(--text-soft)] sm:text-2xl">
                   Lofty Education
                 </span>
@@ -95,7 +96,7 @@ export default function ContactPage() {
 
             <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
               <CardHeader className="flex-col items-start gap-1">
-                <CardTitle>为什么选择致远</CardTitle>
+                <CardTitle>为什么选择{BRAND_NAME_CN}</CardTitle>
                 <CardDescription>
                   老师直接参与诊断、训练和反馈，帮助学生把练习变成可见进步。
                 </CardDescription>

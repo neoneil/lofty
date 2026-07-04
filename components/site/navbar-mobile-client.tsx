@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import LogoutButton from "@/components/auth/logout-button";
 import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
+import { BrandLockup } from "@/components/site/brand-lockup";
+import { BRAND_NAME_CN } from "@/lib/brand";
 type NavItem = {
   href: string;
   label: string;
@@ -34,37 +36,7 @@ export default function NavbarMobileClient({
           href="/"
           className="group -ml-1 flex min-w-0 shrink items-center gap-2 transition"
         >
-          {/* <div className="relative h-9 w-9 shrink-0 overflow-hidden">
-            <Image
-              src="logo.png"
-              alt="致远教育 Logo"
-              fill
-              className="object-cover scale-150"
-              priority
-            />
-          </div> */}
-
-          <div className="flex min-w-0 flex-col justify-center whitespace-nowrap leading-tight pl-6">
-            <span
-              className="text-base font-extrabold tracking-tight"
-              style={{
-                color: "#2F4A3F",
-                textShadow: "0 1px 0 rgba(255,255,255,0.18)",
-              }}
-            >
-              致远教育
-            </span>
-
-            <span
-              className="text-[10px] font-semibold"
-              style={{
-                color: "#2F4A3F",
-                textShadow: "0 1px 0 rgba(255,255,255,0.12)",
-              }}
-            >
-              Lofty Education
-            </span>
-          </div>
+          <BrandLockup size="sm" label={`${BRAND_NAME_CN}雅思PTE`} />
         </Link>
 
         <button

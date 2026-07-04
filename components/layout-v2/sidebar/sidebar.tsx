@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import {
@@ -25,17 +24,19 @@ import { SidebarCollapseButton } from "./sidebar-collapse-button";
 import { SidebarGroup } from "./sidebar-group";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarUser } from "./sidebar-user";
+import { BrandLockup } from "@/components/site/brand-lockup";
+import { BRAND_NAME_CN } from "@/lib/brand";
 
 export function Sidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
-  const [questionBankOpen, setQuestionBankOpen] = useState(() =>
-    pathname.startsWith("/pte"),
-  );
-  const [questionBankOpen2, setQuestionBankOpen2] = useState(() =>
-    pathname.startsWith("/ielts"),
-  );
+  const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
+  const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
+  const activeQuestionBank = questionBankOverride?.pathname === pathname ? questionBankOverride.value : routeQuestionBank;
+  const questionBankOpen = activeQuestionBank === "pte";
+  const questionBankOpen2 = activeQuestionBank === "ielts";
+  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
 
   return (
     <aside
@@ -51,19 +52,7 @@ export function Sidebar() {
         )}
       >
         {!collapsed && (
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-[var(--text)] transition-opacity duration-200 hover:opacity-70"
-          >
-            <Image
-              src="/brand3.png"
-              alt="LoftyPTE"
-              width={28}
-              height={28}
-              className="h-12 w-12"
-            />
-            <span>LoftyPTE</span>
-          </Link>
+          <Link href="/" className="min-w-0 rounded-[var(--radius-md)] px-1.5 py-1 transition-colors duration-200 hover:bg-[var(--bg-soft)]"><BrandLockup size="sm" label={brandLabel} /></Link>
         )}
 
         <SidebarCollapseButton
@@ -114,7 +103,7 @@ export function Sidebar() {
 
         <SidebarGroup title="PTE 题库" subtitle="PTE Question Bank" collapsed={collapsed}>
           <button
-            onClick={() => setQuestionBankOpen(!questionBankOpen)}
+            onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen ? null : "pte" })}
             className={cn(
               "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
               collapsed ? "justify-center" : "justify-between",
@@ -185,7 +174,7 @@ export function Sidebar() {
         </SidebarGroup>
         <SidebarGroup title="IELTS 题库" subtitle="IELTS Question Bank" collapsed={collapsed}>
           <button
-            onClick={() => setQuestionBankOpen2(!questionBankOpen2)}
+            onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen2 ? null : "ielts" })}
             className={cn(
               "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
               collapsed ? "justify-center" : "justify-between",

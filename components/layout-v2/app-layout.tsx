@@ -12,11 +12,13 @@ import { AchievementUnlockNotifier } from "@/components/achievements/achievement
 type Props = {
   children: ReactNode;
   user: User | null;
+  canAccessAdmin: boolean;
 };
 
 export function AppLayout({
   children,
   user,
+  canAccessAdmin,
 }: Props) {
   const searchParams = useSearchParams();
   const isCourseEmbed = searchParams.get("embed") === "course";
@@ -38,7 +40,7 @@ export function AppLayout({
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
 
-        <Topbar user={user} /> 
+        <Topbar user={user} canAccessAdmin={canAccessAdmin} />
 
         <main className="flex min-h-0 flex-1 flex-col overflow-y-auto p-1">
 

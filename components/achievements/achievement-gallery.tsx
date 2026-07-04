@@ -1,6 +1,7 @@
 import { Award, BookOpen, Check, Crown, Ear, Flame, LockKeyhole, Medal, Mic, PenTool, ShieldCheck, Sparkles, Star, Target, Trophy } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
+import { BRAND_NAME_CN } from "@/lib/brand";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { createAchievementEngineContext, evaluateAchievementCondition, evaluateQuestionTypeRule, evaluateStandaloneAchievement, isHiddenAchievement } from "@/lib/achievements/engine";
 import type { AchievementConfig, AchievementEvaluation, AchievementOverview, QuestionTypeStat, StandaloneAchievement } from "@/lib/achievements/types";
@@ -116,7 +117,7 @@ export function AchievementGallery({ config, overview, questionTypeStats }: { co
           <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[var(--primary-soft)] blur-3xl" />
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />致远成就图鉴</Badge>
+              <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />{BRAND_NAME_CN}成就图鉴</Badge>
               <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">练习有迹，成就可循</h1>
               <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">成就状态根据你的真实练习统计实时计算，继续学习即可逐步解锁。</p>
             </div>

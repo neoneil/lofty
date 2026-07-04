@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { BRAND_ENGLISH_CN } from "@/lib/brand";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 
 export const metadata: Metadata = {
-  title: "课程视频 Demo | 致远英语",
-  description: "致远英语 IELTS 与 PTE 听说读写课程视频 Demo 展示。",
+  title: `课程视频 Demo | ${BRAND_ENGLISH_CN}`,
+  description: `${BRAND_ENGLISH_CN} IELTS 与 PTE 听说读写课程视频 Demo 展示。`,
 };
 
 type ExamName = "雅思" | "PTE";

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -21,6 +20,8 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { BrandLockup } from "@/components/site/brand-lockup";
+import { BRAND_NAME_CN } from "@/lib/brand";
 
 type NavItem = {
   href: string;
@@ -246,29 +247,17 @@ function BankToggle({
 
 export function SidebarTopbar() {
   const pathname = usePathname();
-  const [questionBankOpen, setQuestionBankOpen] = useState(() =>
-    pathname.startsWith("/pte"),
-  );
-  const [questionBankOpen2, setQuestionBankOpen2] = useState(() =>
-    pathname.startsWith("/ielts"),
-  );
+  const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
+  const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
+  const activeQuestionBank = questionBankOverride?.pathname === pathname ? questionBankOverride.value : routeQuestionBank;
+  const questionBankOpen = activeQuestionBank === "pte";
+  const questionBankOpen2 = activeQuestionBank === "ielts";
+  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
 
   return (
     <div className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--sidebar)]/95 px-3 py-3 backdrop-blur-xl">
       <div className="flex items-center justify-between gap-3">
-        <Link
-          href="/"
-          className="flex min-w-0 items-center gap-2 text-base font-semibold tracking-tight text-[var(--text)]"
-        >
-          <Image
-            src="/brand3.png"
-            alt="LoftyPTE"
-            width={34}
-            height={34}
-            className="h-9 w-9 flex-shrink-0"
-          />
-          <span className="truncate">LoftyPTE</span>
-        </Link>
+        <Link href="/" className="min-w-0 rounded-[var(--radius-md)] px-1 py-0.5"><BrandLockup size="sm" label={brandLabel} /></Link>
       </div>
 
       <div className="scrollbar-hide mt-3 flex gap-2 overflow-x-auto pb-1">
@@ -281,7 +270,7 @@ export function SidebarTopbar() {
           subtitle="Question Bank"
           tone="primary"
           open={questionBankOpen}
-          onClick={() => setQuestionBankOpen(!questionBankOpen)}
+          onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen ? null : "pte" })}
         />
 
         <BankToggle
@@ -289,7 +278,7 @@ export function SidebarTopbar() {
           subtitle="Question Bank"
           tone="success"
           open={questionBankOpen2}
-          onClick={() => setQuestionBankOpen2(!questionBankOpen2)}
+          onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen2 ? null : "ielts" })}
         />
 
         {utilityItems.map((item) => (
