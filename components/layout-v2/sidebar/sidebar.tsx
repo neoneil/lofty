@@ -13,7 +13,6 @@ import {
   LayoutDashboard,
   Mic,
   PenTool,
-  Settings,
   Trophy,
   Video,
 } from "lucide-react";
@@ -24,6 +23,7 @@ import { SidebarCollapseButton } from "./sidebar-collapse-button";
 import { SidebarGroup } from "./sidebar-group";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarUser } from "./sidebar-user";
+import { SidebarSettings } from "./sidebar-settings";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { BRAND_NAME_CN } from "@/lib/brand";
 
@@ -291,14 +291,7 @@ export function Sidebar() {
         </SidebarGroup>
 
         <SidebarGroup collapsed={collapsed}>
-          <SidebarItem
-            href="/settings"
-            label="设置"
-            subtitle="Settings"
-            icon={<Settings size={18} />}
-            iconTone="primary"
-            collapsed={collapsed}
-          />
+          <SidebarSettings collapsed={collapsed} />
         </SidebarGroup>
       </div>
 
