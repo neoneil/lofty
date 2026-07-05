@@ -32,11 +32,8 @@ export default function NavbarMobileClient({
     <div className="flex flex-col gap-2">
       {/* 第一行 */}
       <div className="flex items-center justify-between gap-3">
-        <Link
-          href="/"
-          className="group -ml-1 flex min-w-0 shrink items-center gap-2 transition"
-        >
-          <BrandLockup size="sm" label={`${BRAND_NAME_CN}雅思PTE`} />
+        <Link href="/" className="group -ml-1 flex min-w-0 shrink items-center gap-2 rounded-[var(--radius-md)] px-1 py-0.5 transition-colors hover:bg-[var(--bg-soft)]">
+          <BrandLockup size="sm" label={`${BRAND_NAME_CN}雅思PTE`} variant="navbar" />
         </Link>
 
         <button
@@ -44,7 +41,7 @@ export default function NavbarMobileClient({
           aria-label={open ? "关闭菜单" : "打开菜单"}
           aria-expanded={open}
           onClick={() => setOpen((prev) => !prev)}
-          className="inline-flex h-9 w-9 items-center justify-center rounded border border-white/10 bg-white/5 text-(--brand-accent) transition hover:bg-white/10"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -52,14 +49,14 @@ export default function NavbarMobileClient({
 
       {/* 展开菜单 */}
       {open && (
-        <div className="rounded border border-white/10 bg-white/10 p-3 shadow-sm backdrop-blur-md">
+        <div className="rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[color:var(--card)]/98 p-3 shadow-[var(--shadow-lg)] backdrop-blur-xl">
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.href + item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="nav-link btn-secondary"
+                className="flex min-h-10 items-center rounded-[var(--radius-sm)] border border-transparent px-3 text-sm font-semibold text-[var(--text-soft)] transition-colors hover:border-[var(--border)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"
               >
                 {item.label}
               </Link>
@@ -70,23 +67,23 @@ export default function NavbarMobileClient({
             </div>
           </nav>
 
-          <div className="mt-3 border-t border-white/10 pt-3">
+          <div className="mt-3 border-t border-[var(--border)] pt-3">
             {user ? (
               <div className="flex items-center justify-between gap-2">
-                <div className="flex min-w-0 items-center gap-2 rounded border border-transparent bg-transparent px-1 py-0 shadow-none">
+                <div className="flex min-w-0 items-center gap-2 rounded-[var(--radius-sm)] border border-transparent bg-transparent px-1 py-0 shadow-none">
                   <Image
                     src={user.avatar}
                     alt={user.name}
                     width={28}
                     height={28}
-                    className="h-7 w-7 rounded object-cover"
+                    className="h-7 w-7 rounded-full border border-[var(--border)] object-cover"
                   />
 
                   <div className="min-w-0 leading-tight">
-                    <span className="block max-w-23.75 truncate text-xs font-semibold text-(--brand-accent)">
+                    <span className="block max-w-23.75 truncate text-xs font-semibold text-[var(--text)]">
                       {user.name}
                     </span>
-                    <span className="block max-w-32.5 truncate text-[10px] text-(--brand-accent)">
+                    <span className="block max-w-32.5 truncate text-[10px] text-[var(--text-soft)]">
                       {user.email}
                     </span>
                   </div>
@@ -101,7 +98,7 @@ export default function NavbarMobileClient({
                 <Link
                   href="/login"
                   onClick={() => setOpen(false)}
-                  className="btn-primary min-w-25"
+                  className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
                 >
                   登录
                 </Link>
@@ -109,7 +106,7 @@ export default function NavbarMobileClient({
                 <Link
                   href="/sign-up"
                   onClick={() => setOpen(false)}
-                  className="btn-primary min-w-25"
+                  className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--primary-hover)]"
                 >
                   注册
                 </Link>

@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
 import { canAccessAdmin } from "@/lib/auth/admin-access";
 import { BRAND_NAME_CN } from "@/lib/brand";
 import { BrandLockup } from "@/components/site/brand-lockup";
+import { NavbarScrollShell } from "@/components/site/navbar-scroll-shell";
 
 type NavItem = {
   href: string;
@@ -126,10 +127,9 @@ export default async function Navbar() {
   ];
 
   return (
-    <header className="fixed left-0 top-2 z-50 w-full px-4 lg:top-3 lg:px-6">
-      <div className="relative mx-auto max-w-[90rem] overflow-visible rounded-[var(--radius-lg)] bg-transparent shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur-2xl dark:shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/45 to-transparent" />
-        <div className="absolute inset-0 bg-transparent" />
+    <NavbarScrollShell>
+      <div className="relative mx-auto max-w-[90rem] overflow-visible rounded-[var(--radius-lg)] border border-[var(--border)] bg-[color:var(--card)]/94 shadow-[var(--shadow-md)] backdrop-blur-2xl">
+        <div className="absolute inset-y-2 left-0 w-0.5 rounded-full bg-[var(--primary)]" />
 
         <Container>
           <div className="relative py-1.5 lg:py-1">
@@ -151,7 +151,7 @@ export default async function Navbar() {
 
             {/* 桌面端 */}
             <div className="hidden h-12 items-center justify-between gap-3 lg:flex">
-              <Link href="/" className="group ml-1 flex shrink-0 rounded-[var(--radius-md)] px-2.5 py-1 transition-colors duration-200 hover:bg-[var(--card-soft)]/45"><BrandLockup label={`${BRAND_NAME_CN}雅思PTE`} /></Link>
+              <Link href="/" className="group ml-1 flex shrink-0 rounded-[var(--radius-md)] px-2.5 py-1 transition-colors duration-200 hover:bg-[var(--bg-soft)]"><BrandLockup label={`${BRAND_NAME_CN}雅思PTE`} variant="navbar" /></Link>
 
               <nav className="flex min-w-0 max-w-full flex-1 items-center justify-center gap-1">
                 {navItems.slice(0, 2).map((item) => (
@@ -159,7 +159,7 @@ export default async function Navbar() {
                     <Link
                       href={item.href}
                       aria-label={item.tooltip}
-                      className="btn-secondary relative flex h-8 items-center rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                      className="relative flex h-8 items-center rounded-[var(--radius-sm)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"
                     >
                       {item.label}
                     </Link>
@@ -169,7 +169,7 @@ export default async function Navbar() {
                 <div className="group relative">
                   <button
                     type="button"
-                    className="btn-secondary relative flex h-8 cursor-pointer items-center gap-1.5 rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                    className="relative flex h-8 cursor-pointer items-center gap-1.5 rounded-[var(--radius-sm)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"
                     aria-haspopup="menu"
                     aria-label="练习模块"
                   >
@@ -178,7 +178,7 @@ export default async function Navbar() {
                   </button>
 
                   <div className="pointer-events-none absolute left-1/2 top-full z-[60] w-[280px] -translate-x-1/2 translate-y-1 scale-[0.98] pt-3 opacity-0 transition-all duration-200 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100">
-                    <div role="menu" aria-label="练习模块" className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/95 p-1.5 shadow-[var(--shadow-lg)] backdrop-blur-xl">
+                    <div role="menu" aria-label="练习模块" className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[color:var(--card)]/98 p-1.5 shadow-[var(--shadow-lg)] backdrop-blur-xl">
                       <div className="border-b border-[var(--border)] px-3 py-2.5"><div className="text-xs font-semibold text-[var(--text)]">考试练习</div><div className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-faint)]">Practice Hub</div></div>
                       <div className="py-1">
                         {practiceItems.map((item) => {
@@ -202,7 +202,7 @@ export default async function Navbar() {
                     <Link
                       href={item.href}
                       aria-label={item.tooltip}
-                      className="btn-secondary relative flex h-8 items-center rounded-[var(--radius-full)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--card-soft)] hover:text-[var(--primary)]"
+                      className="relative flex h-8 items-center rounded-[var(--radius-sm)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"
                     >
                       {item.label}
                     </Link>
@@ -214,10 +214,10 @@ export default async function Navbar() {
                 </div>
               </nav>
 
-              <div className="flex shrink-0 items-center gap-1.5 rounded-[var(--radius-lg)] bg-transparent px-1 py-0 shadow-none">
+              <div className="flex shrink-0 items-center gap-1.5 border-l border-[var(--border)] py-0 pl-3 pr-1">
                 {user ? (
                   <>
-                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-300 hover:bg-[var(--card-soft)]/35">
+                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)]">
                       <div className="relative h-9 w-9 shrink-0">
                         <Image
                           src={avatar}
@@ -247,7 +247,7 @@ export default async function Navbar() {
                     <Link
                       href="/login"
                       aria-label="Log in"
-                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-full)] border border-[var(--primary)] bg-[var(--card-soft)] px-4 text-sm font-semibold text-[var(--text)] transition-all duration-300 hover:border-[var(--primary)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
+                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-all duration-200 hover:border-[var(--primary)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
                     >
                       登录
                     </Link>
@@ -255,7 +255,7 @@ export default async function Navbar() {
                     <Link
                       href="/sign-up"
                       aria-label="Sign up"
-                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-full)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition-all duration-300 hover:translate-y-[-1px] hover:shadow-[var(--shadow-lg)]"
+                      className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]"
                     >
                       注册
                     </Link>
@@ -266,6 +266,6 @@ export default async function Navbar() {
           </div>
         </Container>
       </div>
-    </header>
+    </NavbarScrollShell>
   );
 }

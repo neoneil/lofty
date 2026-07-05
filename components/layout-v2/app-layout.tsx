@@ -35,7 +35,7 @@ export function AppLayout({
       </div>
 
       <div className="hidden lg:block">
-        <Sidebar />
+        <Sidebar userId={user?.id ?? null} />
       </div>
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">

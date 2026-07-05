@@ -30,7 +30,7 @@ export function useUiSkin() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
-export function UiSkinPicker() {
+export function UiSkinPicker({ showFooter = true }: { showFooter?: boolean }) {
   const activeSkin = useUiSkin();
   const activeMeta = UI_SKINS.find((skin) => skin.id === activeSkin) ?? UI_SKINS[0];
 
@@ -55,10 +55,10 @@ export function UiSkinPicker() {
         })}
       </div>
 
-      <div className="mt-5 flex flex-col-reverse gap-3 border-t border-[var(--border)] pt-4 sm:flex-row sm:items-center sm:justify-between">
+      {showFooter ? <div className="mt-5 flex flex-col-reverse gap-3 border-t border-[var(--border)] pt-4 sm:flex-row sm:items-center sm:justify-between">
         <span className="text-xs text-[var(--text-faint)]">当前：{activeMeta.label}</span>
         <Button type="button" variant="secondary" onClick={() => applyUiSkin("default")} className="gap-2"><RotateCcw size={15} />恢复默认</Button>
-      </div>
+      </div> : null}
     </div>
   );
 }

@@ -27,7 +27,7 @@ import { SidebarSettings } from "./sidebar-settings";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { BRAND_NAME_CN } from "@/lib/brand";
 
-export function Sidebar() {
+export function Sidebar({ userId }: { userId: string | null }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -296,7 +296,7 @@ export function Sidebar() {
       </div>
 
       <div className="border-t border-[var(--border)] pt-4">
-        <SidebarUser collapsed={collapsed} />
+        <SidebarUser collapsed={collapsed} userId={userId} />
       </div>
     </aside>
   );

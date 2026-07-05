@@ -110,7 +110,7 @@ export default async function PostDetailPage({ params }: PostPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[var(--bg)] px-4 pb-10 pt-24 text-[var(--text)] sm:px-6 lg:px-8 lg:pt-[104px]">
       <article className="mx-auto max-w-4xl">
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm">
           <Link

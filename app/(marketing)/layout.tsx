@@ -12,7 +12,7 @@ export default function MarketingLayout({
 
       <Navbar />
 
-      <main className="flex-1 pt-14 lg:pt-16">
+      <main className="flex-1">
 
         {children}
 

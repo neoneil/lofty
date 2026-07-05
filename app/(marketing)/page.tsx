@@ -156,16 +156,13 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-xs font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
-        <Sparkles size={14} />
-        {eyebrow}
-      </div>
+      <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]"><span className="h-px w-7 bg-[var(--primary)]/45" />{eyebrow}<span className="h-px w-7 bg-[var(--primary)]/45" /></div>
 
-      <h2 className="mt-5 text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
+      <h2 className="mt-4 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">
         {title}
       </h2>
 
-      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
+      <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
         {description}
       </p>
     </div>
@@ -192,35 +189,31 @@ function ExamCard({
   imageDesc: string;
 }) {
   return (
-    <article className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
+    <article className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-lg)]">
       <Link href={href} className="block">
-        <div
-          className="relative min-h-[260px] overflow-hidden bg-cover bg-center bg-no-repeat md:min-h-[300px]"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/32 to-transparent" />
+        <div className="relative min-h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat md:min-h-[280px]" style={{ backgroundImage: `url(${image})` }}>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/5" />
 
-          <div className="relative z-10 flex min-h-[260px] max-w-[78%] flex-col justify-center px-6 py-8 md:min-h-[300px] md:px-8">
-            <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/25 bg-white/15 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
+          <div className="relative z-10 flex min-h-[240px] max-w-xl flex-col justify-end px-5 py-6 md:min-h-[280px] md:px-7 md:py-8">
+            <span className="mb-3 inline-flex w-fit items-center rounded-[var(--radius-sm)] border border-white/30 bg-black/20 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
               {badge}
             </span>
 
-            <h3 className="text-2xl font-semibold leading-tight text-white md:text-3xl">
+            <h3 className="text-2xl font-bold leading-tight text-white md:text-3xl">
               {imageTitle}
             </h3>
 
-            <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
+            <p className="mt-2 max-w-sm text-sm leading-6 text-white/80">
               {imageDesc}
             </p>
           </div>
         </div>
       </Link>
 
-      <div className="p-5 md:p-7">
+      <div className="p-5 md:p-6">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--text)]">
+            <h3 className="text-lg font-bold tracking-tight text-[var(--text)]">
               {title}
             </h3>
             <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
@@ -229,10 +222,7 @@ function ExamCard({
 
             <ul className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
               {points.map((point) => (
-                <li
-                  key={point}
-                  className="flex items-center gap-2 text-xs font-semibold text-[var(--text)]"
-                >
+                <li key={point} className="flex items-center gap-2 text-xs font-semibold text-[var(--text)]">
                   <CheckCircle2 size={14} className="text-[var(--primary)]" />
                   {point}
                 </li>
@@ -240,11 +230,8 @@ function ExamCard({
             </ul>
           </div>
 
-          <Link
-            href={href}
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
-          >
-            开始学习
+          <Link href={href} className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">
+            开始学习<ArrowRight size={15} />
           </Link>
         </div>
       </div>
@@ -313,34 +300,34 @@ export default async function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--bg)]/55 via-[var(--bg)]/16 to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[560px] max-w-7xl items-center px-4 py-16 sm:px-6 md:min-h-[640px] md:px-10">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[color:var(--card)]/86 px-4 py-2 text-xs font-semibold text-[var(--text-soft)] shadow-[var(--shadow-sm)] backdrop-blur-md dark:border-[color:var(--primary)]/35 dark:bg-[color:var(--card)]/76 dark:text-[var(--text)]">
+          <div className="max-w-4xl translate-y-14 lg:translate-y-16">
+            <div className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[color:var(--card)]/94 px-4 py-2 text-xs font-bold text-[var(--text-soft)] shadow-[var(--shadow-md)] backdrop-blur-xl">
               <Sparkles size={14} className="text-[var(--primary)]" />
               {heroSlogan}
             </div>
 
-            <h1 className="mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-[var(--text)] drop-shadow-sm sm:text-4xl lg:text-5xl">
+            <h1 className="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-[var(--text)] sm:text-4xl lg:text-5xl">
               PTE · 雅思
-              <span className="block text-[var(--primary)]">
+              <span className="block font-extrabold text-[var(--primary)]">
                 系统刷题与督学提分平台
               </span>
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base font-semibold leading-8 text-[var(--text-soft)] drop-shadow-sm dark:text-[var(--text)] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-[var(--text-soft)] dark:text-[var(--text)] md:text-lg">
               成绩可用于留学申请 · 澳洲工作签证 · 永居申请 · 职业注册。
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/courses"
-                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/92 px-6 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-md)] backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[var(--card)]"
+                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[color:var(--card)]/95 px-6 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-md)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:text-[var(--primary)]"
               >
                 雅思课程
               </Link>
 
               <Link
                 href="/courses"
-                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-hover)]"
+                className="inline-flex h-12 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-lg)]"
               >
                 PTE课程
               </Link>
@@ -348,10 +335,7 @@ export default async function HomePage() {
 
             <div className="mt-10 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {heroHighlights.map(({ title, desc, icon: Icon }) => (
-                <div
-                  key={title}
-                  className="group rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/90 p-4 shadow-[var(--shadow-sm)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-[color:var(--card)]/96 hover:shadow-[var(--shadow-md)] dark:bg-white/14 dark:hover:bg-white/18"
-                >
+                <div key={title} className="group rounded-[var(--radius-md)] border border-[var(--border)] bg-[color:var(--card)]/90 p-4 shadow-[var(--shadow-sm)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-[color:var(--card)]/96 hover:shadow-[var(--shadow-md)] dark:bg-white/14 dark:hover:bg-white/18">
                   <div className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
                     <Icon size={17} />
                   </div>
@@ -368,42 +352,30 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto -mt-10 max-w-6xl px-4 sm:px-6 md:-mt-14">
-        <div className="grid overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]/95 shadow-[var(--shadow-lg)] backdrop-blur-2xl md:grid-cols-4">
+      <section className="relative z-20 mx-auto -mt-10 max-w-6xl px-4 sm:px-6 md:-mt-12">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {features.map(({ title, desc, icon: Icon }, index) => (
-            <div
-              key={title}
-              className="group relative border-b border-[var(--border)] p-5 transition hover:bg-[var(--card-hover)] md:border-b-0 md:border-r md:last:border-r-0"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)] transition group-hover:scale-105">
-                  <Icon size={20} />
-                </div>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-faint)]">
-                    0{index + 1}
-                  </div>
-                  <h3 className="mt-1 text-sm font-semibold text-[var(--text)]">
-                    {title}
-                  </h3>
-                  <p className="mt-1 text-xs leading-5 text-[var(--text-soft)]">
-                    {desc}
-                  </p>
-                </div>
+            <article key={title} className="group relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]/95 p-5 shadow-[var(--shadow-md)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-lg)]">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-[var(--primary)] opacity-65" />
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] transition group-hover:bg-[var(--primary)] group-hover:text-white"><Icon size={20} /></div>
+                <span className="text-xl font-bold tabular-nums text-[var(--text-faint)]/35">0{index + 1}</span>
               </div>
-            </div>
+              <h3 className="mt-5 text-sm font-bold text-[var(--text)]">{title}</h3>
+              <p className="mt-1.5 text-xs leading-5 text-[var(--text-soft)]">{desc}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
         <SectionHeading
           eyebrow="IELTS · PTE Academic"
           title="选择适合你的英语考试"
           description="根据你的目标、学习习惯与考试需求，选择最适合自己的英语考试与备考路径。"
         />
 
-        <div className="relative mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
+        <div className="relative mt-10 grid gap-5 md:mt-14 md:grid-cols-2">
           <ExamCard
             title="雅思 IELTS"
             desc="全球认可的英语能力测试"
@@ -428,75 +400,50 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
-        <SectionHeading
-          eyebrow="Learning Resources"
-          title="网站内部备考资料与学习资源"
-          description="精选题库、学习资料与模考资源，帮助你更高效地建立英语能力体系。"
-        />
+      <section className="border-y border-[var(--border)] bg-[var(--bg-soft)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+          <SectionHeading eyebrow="Learning Resources" title="网站内部备考资料与学习资源" description="精选题库、学习资料与模考资源，帮助你更高效地建立英语能力体系。" />
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {resources.map(({ title, desc, icon: Icon }) => (
-            <div
-              key={title}
-              className="group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)] transition group-hover:scale-105">
-                <Icon size={19} />
-              </div>
-              <h3 className="mt-5 text-sm font-semibold tracking-tight text-[var(--text)]">
-                {title}
-              </h3>
-              <p className="mt-2 text-xs leading-6 text-[var(--text-soft)]">
-                {desc}
-              </p>
-            </div>
-          ))}
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {resources.map(({ title, desc, icon: Icon }, index) => (
+              <article key={title} className="group flex min-h-44 flex-col rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
+                <div className="flex items-start justify-between gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)] transition group-hover:bg-[var(--primary)] group-hover:text-white"><Icon size={18} /></div><span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--text-faint)]">Resource {String(index + 1).padStart(2, "0")}</span></div>
+                <h3 className="mt-auto pt-6 text-sm font-bold tracking-tight text-[var(--text)]">{title}</h3>
+                <p className="mt-1.5 text-xs leading-5 text-[var(--text-soft)]">{desc}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {latestPosts.length ? (
-        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+          <div className="mb-8 flex flex-col gap-4 border-b border-[var(--border)] pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--primary)]">
-                Articles
-              </div>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl">
+              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]"><span className="h-px w-6 bg-[var(--primary)]/50" />Articles</div>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">
                 最新备考文章
               </h2>
             </div>
-            <Link
-              href="/posts"
-              className="inline-flex h-10 items-center gap-2 text-sm font-semibold text-[var(--primary)] transition hover:translate-x-0.5"
-            >
+            <Link href="/posts" className="inline-flex h-10 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-sm)] transition hover:border-[var(--primary)]/40 hover:text-[var(--primary)]">
               查看全部文章
               <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {latestPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/posts/${post.slug}`}
-                className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
-              >
-                <div className="h-40 bg-[var(--bg-soft)]">
+          <div className="grid gap-4 md:grid-cols-3">
+            {latestPosts.map((post, index) => (
+              <Link key={post.slug} href={`/posts/${post.slug}`} className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
+                <div className="relative h-44 overflow-hidden bg-[var(--bg-soft)]">
                   {post.cover_image ? (
-                    <img
-                      src={post.cover_image}
-                      alt={post.title}
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                    />
+                    <img src={post.cover_image} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
                   ) : (
-                    <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">
-                      Lofty Article
-                    </div>
+                    <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">Lofty Article</div>
                   )}
+                  <span className="absolute left-4 top-4 rounded-[var(--radius-sm)] border border-white/25 bg-black/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">Article {String(index + 1).padStart(2, "0")}</span>
                 </div>
-                <div className="p-5">
-                  <h3 className="line-clamp-2 text-base font-semibold leading-6 text-[var(--text)]">
+                <div className="p-5 md:p-6">
+                  <h3 className="line-clamp-2 text-base font-bold leading-6 text-[var(--text)]">
                     {post.title}
                   </h3>
                   {post.excerpt ? (
@@ -504,6 +451,7 @@ export default async function HomePage() {
                       {post.excerpt}
                     </p>
                   ) : null}
+                  <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-[var(--primary)]">阅读全文<ArrowRight size={14} className="transition-transform group-hover:translate-x-1" /></span>
                 </div>
               </Link>
             ))}
@@ -511,74 +459,41 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
-        <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--primary)] px-6 py-12 text-center text-white shadow-[0_28px_70px_rgba(64,64,168,.24)] md:px-10 md:py-14">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_26%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_42%)]" />
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-strong)] bg-[var(--card)] px-6 py-10 shadow-[var(--shadow-lg)] md:px-10 md:py-12">
+          <div className="absolute inset-y-0 left-0 w-1 bg-[var(--primary)]" />
 
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
-              <Users size={14} />
-              AI Learning Platform
+          <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12">
+            <div>
+              <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--primary)]"><Users size={14} />AI Learning Platform</div>
+              <h2 className="mt-4 max-w-3xl text-2xl font-bold leading-tight tracking-tight text-[var(--text)] sm:text-3xl md:text-4xl">加入{BRAND_EDUCATION_CN}，和更多学员一起进步</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">从 AI 智能练习、老师监督到真题训练，{BRAND_EDUCATION_CN}帮助学生建立长期、高效且可持续的学习体系。</p>
+              <p className="mt-4 text-xs leading-6 text-[var(--text-faint)]">{heroSlogan}</p>
             </div>
 
-            <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-              加入{BRAND_EDUCATION_CN}，和更多学员一起进步
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-white/85 sm:text-base">
-              从 AI 智能练习、老师监督到真题训练，{BRAND_EDUCATION_CN}帮助学生建立长期、高效且可持续的学习体系。
-            </p>
-
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link
-                href="/sign-up"
-                className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-white px-7 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-md)] transition hover:-translate-y-0.5"
-              >
-                立即注册
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15"
-              >
-                联系老师
-              </Link>
+            <div className="flex min-w-44 flex-col gap-3">
+              <Link href="/sign-up" className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-md)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-hover)]">立即注册<ArrowRight size={15} /></Link>
+              <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-7 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)]/40 hover:text-[var(--primary)]">联系老师</Link>
             </div>
-
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/75">
-              {heroSlogan}
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
-        <SectionHeading
-          eyebrow="FAQ"
-          title="常见问题"
-          description="关于 PTE、雅思与 AI 学习平台的常见问题。"
-        />
+      <section className="border-t border-[var(--border)] bg-[var(--bg-soft)]">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24">
+          <SectionHeading eyebrow="FAQ" title="常见问题" description="关于 PTE、雅思与 AI 学习平台的常见问题。" />
 
-        <div className="mt-10 grid gap-4">
-          {faqItems.map((item) => (
-            <article
-              key={item.question}
-              className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
-            >
-              <div className="flex gap-4">
-                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
-                  <MessageCircle size={17} />
-                </div>
+          <div className="mt-10 divide-y divide-[var(--border)] border-y border-[var(--border)]">
+            {faqItems.map((item, index) => (
+              <article key={item.question} className="group grid gap-4 bg-[var(--card)] px-5 py-6 transition-colors hover:bg-[var(--card-hover)] sm:grid-cols-[52px_minmax(0,1fr)] sm:px-7 sm:py-7">
+                <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-xs font-bold tabular-nums text-[var(--primary)]">Q{String(index + 1).padStart(2, "0")}</div>
                 <div>
-                  <h3 className="text-base font-semibold tracking-tight text-[var(--text)] sm:text-lg">
-                    {item.question}
-                  </h3>
-                  <p className="mt-3 text-sm leading-8 text-[var(--text-soft)] sm:text-base">
-                    {item.answer}
-                  </p>
+                  <div className="flex items-start gap-3"><MessageCircle size={17} className="mt-1 shrink-0 text-[var(--primary)]" /><h3 className="text-base font-bold tracking-tight text-[var(--text)] sm:text-lg">{item.question}</h3></div>
+                  <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base sm:leading-8">{item.answer}</p>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

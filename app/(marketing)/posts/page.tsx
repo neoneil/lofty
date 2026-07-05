@@ -52,7 +52,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
   const otherPosts = posts?.slice(1) ?? [];
 
   return (
-    <main className="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[var(--bg)] px-4 pb-10 pt-24 text-[var(--text)] sm:px-6 lg:px-8 lg:pt-[104px]">
       <section className="mx-auto max-w-7xl">
         <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6 lg:p-7">
           <div className="grid gap-6 lg:grid-cols-[1fr_390px] lg:items-end">

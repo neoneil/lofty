@@ -6,6 +6,7 @@ function getUsageWindows() {
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
   return {
+    nowMs: now.getTime(),
     todayStart: todayStart.toISOString(),
     monthStart: monthStart.toISOString(),
   };
@@ -13,12 +14,12 @@ function getUsageWindows() {
 
 export default async function AiUsageSettingsPage() {
   const { supabase, user } = await requireUser("/settings/ai-usage");
-  const { todayStart, monthStart } = getUsageWindows();
+  const { nowMs, todayStart, monthStart } = getUsageWindows();
 
   const [limitResult, todayResult, monthResult, logsResult] = await Promise.all([
     supabase
       .from("ai_user_limits")
-      .select("daily_limit, monthly_limit, is_unlimited")
+      .select("daily_limit, monthly_limit, is_unlimited, unlimited_until")
       .eq("user_id", user.id)
       .maybeSingle(),
     supabase
@@ -42,6 +43,8 @@ export default async function AiUsageSettingsPage() {
   ]);
 
   const limit = limitResult.data;
+  const unlimitedUntil = limit?.unlimited_until ? new Date(limit.unlimited_until) : null;
+  const isUnlimitedActive = Boolean(limit?.is_unlimited && (!unlimitedUntil || unlimitedUntil.getTime() > nowMs));
   const todayUsed = todayResult.count ?? 0;
   const monthUsed = monthResult.count ?? 0;
   const logs = logsResult.data ?? [];
@@ -69,7 +72,8 @@ export default async function AiUsageSettingsPage() {
             </div>
             <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
               <p className="text-sm text-[var(--text-soft)]">无限额度</p>
-              <div className="mt-3 text-3xl font-bold text-[var(--text)]">{limit.is_unlimited ? "是" : "否"}</div>
+              <div className="mt-3 text-3xl font-bold text-[var(--text)]">{isUnlimitedActive ? "是" : "否"}</div>
+              {isUnlimitedActive && unlimitedUntil ? <p className="mt-2 text-xs text-[var(--text-soft)]">有效至 {unlimitedUntil.toLocaleString("zh-CN")}</p> : null}
             </div>
           </div>
         )}

@@ -17,6 +17,7 @@ export type AiUsageLimitResult =
       monthUsed: number;
       dailyLimit: number;
       monthlyLimit: number;
+      unlimitedUntil: string | null;
     }
   | {
       allowed: false;
@@ -29,6 +30,7 @@ export type AiUsageLimitResult =
       dailyLimit: number | null;
       monthlyLimit: number | null;
       isUnlimited: boolean;
+      unlimitedUntil: string | null;
     };
 
 export type RecordAiUsageParams = {
@@ -84,7 +86,7 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
 
   const { data: limit, error } = await supabase
     .from("ai_user_limits")
-    .select("daily_limit, monthly_limit, is_unlimited")
+    .select("daily_limit, monthly_limit, is_unlimited, unlimited_until")
     .eq("user_id", userId)
     .maybeSingle();
 
@@ -100,10 +102,20 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
       dailyLimit: null,
       monthlyLimit: null,
       isUnlimited: false,
+      unlimitedUntil: null,
     };
   }
 
-  if (limit.is_unlimited) {
+  const unlimitedUntil = limit.unlimited_until ? new Date(limit.unlimited_until) : null;
+  const unlimitedExpired = Boolean(limit.is_unlimited && unlimitedUntil && unlimitedUntil.getTime() <= Date.now());
+  const unlimitedActive = limit.is_unlimited && !unlimitedExpired;
+
+  if (unlimitedExpired) {
+    const { error: expiryError } = await supabase.from("ai_user_limits").update({ is_unlimited: false, unlimited_until: null }).eq("user_id", userId);
+    if (expiryError) console.error("Failed to clear expired unlimited AI access:", expiryError.message);
+  }
+
+  if (unlimitedActive) {
     return {
       allowed: true,
       userId,
@@ -113,6 +125,7 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
       monthUsed: 0,
       dailyLimit: limit.daily_limit,
       monthlyLimit: limit.monthly_limit,
+      unlimitedUntil: limit.unlimited_until,
     };
   }
 
@@ -130,6 +143,7 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
       dailyLimit: limit.daily_limit,
       monthlyLimit: limit.monthly_limit,
       isUnlimited: false,
+      unlimitedUntil: null,
     };
   }
 
@@ -145,6 +159,7 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
       dailyLimit: limit.daily_limit,
       monthlyLimit: limit.monthly_limit,
       isUnlimited: false,
+      unlimitedUntil: null,
     };
   }
 
@@ -157,6 +172,7 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
     monthUsed,
     dailyLimit: limit.daily_limit,
     monthlyLimit: limit.monthly_limit,
+    unlimitedUntil: null,
   };
 }
 

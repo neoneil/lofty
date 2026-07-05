@@ -39,7 +39,7 @@ const highlights = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+    <main className="min-h-screen bg-[var(--bg)] pt-14 text-[var(--text)] lg:pt-16">
       <section className="border-b border-[var(--border)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:items-stretch">
