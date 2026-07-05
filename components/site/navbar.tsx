@@ -240,9 +240,7 @@ export default async function Navbar() {
                       </div>
                     </div>
 
-                    <div className="origin-right scale-90">
-                      <LogoutButton />
-                    </div>
+                    <LogoutButton showIcon className="flex h-10 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]" />
                   </>
                 ) : (
                   <>

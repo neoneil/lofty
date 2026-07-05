@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import "./ui-skins.css";
 
 import { Analytics } from "@vercel/analytics/next";
 
@@ -80,6 +81,8 @@ function ThemeScript() {
     const theme = storedTheme || (prefersDark ? "dark" : "light");
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.dataset.theme = theme;
+    const storedUiSkin = window.localStorage.getItem("lofty-ui-skin") || "default";
+    document.documentElement.dataset.uiSkin = storedUiSkin;
     document.documentElement.style.colorScheme = theme;
     document.documentElement.style.setProperty("--hero-image", theme === "dark" ? "url('/hero_dark.png')" : "url('/hero4.png')");
   } catch {}

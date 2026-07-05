@@ -1,0 +1,167 @@
+html[data-ui-skin="jade"] {
+  --bg: #f4f8f6;
+  --bg-soft: #f8fbf9;
+  --card: #ffffff;
+  --card-hover: #f9fcfa;
+  --sidebar: #f8fbf9;
+  --border: #dce8e2;
+  --border-soft: #e8f0ec;
+  --border-strong: #c5d8cf;
+  --text: #17221e;
+  --text-soft: #607169;
+  --text-faint: #8b9a93;
+  --theme: #18765a;
+  --primary: #18765a;
+  --theme-hover: #125d47;
+  --primary-hover: #125d47;
+  --primary-soft: #dff3ea;
+  --shadow-sm: 0 1px 3px rgba(19, 74, 57, 0.08);
+  --shadow-md: 0 8px 22px rgba(19, 74, 57, 0.09);
+  --shadow-lg: 0 24px 55px rgba(19, 74, 57, 0.12);
+}
+
+html[data-ui-skin="cobalt"] {
+  --bg: #f5f7fb;
+  --bg-soft: #f9faff;
+  --card: #ffffff;
+  --card-hover: #f8faff;
+  --sidebar: #f8faff;
+  --border: #dce4f0;
+  --border-soft: #e9eef6;
+  --border-strong: #c7d3e5;
+  --text: #172033;
+  --text-soft: #637087;
+  --text-faint: #909bad;
+  --theme: #2459a9;
+  --primary: #2459a9;
+  --theme-hover: #1d4787;
+  --primary-hover: #1d4787;
+  --primary-soft: #e6eefb;
+  --shadow-sm: 0 1px 3px rgba(36, 89, 169, 0.07);
+  --shadow-md: 0 8px 22px rgba(36, 89, 169, 0.08);
+  --shadow-lg: 0 24px 55px rgba(36, 89, 169, 0.11);
+}
+
+html[data-ui-skin="claret"] {
+  --bg: #f8f6f7;
+  --bg-soft: #fcf9fa;
+  --card: #ffffff;
+  --card-hover: #fdf9fa;
+  --sidebar: #fcf9fa;
+  --border: #eadde1;
+  --border-soft: #f1e8eb;
+  --border-strong: #dac5cc;
+  --text: #28191e;
+  --text-soft: #77636a;
+  --text-faint: #a18f95;
+  --theme: #9c2f4e;
+  --primary: #9c2f4e;
+  --theme-hover: #7e263f;
+  --primary-hover: #7e263f;
+  --primary-soft: #f8e8ed;
+  --shadow-sm: 0 1px 3px rgba(112, 37, 59, 0.07);
+  --shadow-md: 0 8px 22px rgba(112, 37, 59, 0.08);
+  --shadow-lg: 0 24px 55px rgba(112, 37, 59, 0.11);
+}
+
+html[data-ui-skin="graphite"] {
+  --bg: #f5f6f7;
+  --bg-soft: #fafafa;
+  --card: #ffffff;
+  --card-hover: #f8f9fa;
+  --sidebar: #f9fafb;
+  --border: #dfe3e8;
+  --border-soft: #eaedf0;
+  --border-strong: #cbd1d8;
+  --text: #191d24;
+  --text-soft: #66707e;
+  --text-faint: #949ca7;
+  --theme: #344054;
+  --primary: #344054;
+  --theme-hover: #1f2937;
+  --primary-hover: #1f2937;
+  --primary-soft: #e7ebef;
+  --shadow-sm: 0 1px 3px rgba(31, 41, 55, 0.07);
+  --shadow-md: 0 8px 22px rgba(31, 41, 55, 0.08);
+  --shadow-lg: 0 24px 55px rgba(31, 41, 55, 0.11);
+}
+
+html.dark[data-ui-skin="jade"],
+html[data-theme="dark"][data-ui-skin="jade"] {
+  --bg: #0e1512;
+  --bg-soft: #151e1a;
+  --card: #1a2520;
+  --card-hover: #213029;
+  --sidebar: #121c18;
+  --border: #2b3b34;
+  --border-soft: #24342d;
+  --border-strong: #40534a;
+  --text: #f0f6f3;
+  --text-soft: #b2c2ba;
+  --text-faint: #7f9289;
+  --theme: #63d5ad;
+  --primary: #63d5ad;
+  --theme-hover: #82e1bf;
+  --primary-hover: #82e1bf;
+  --primary-soft: rgba(99, 213, 173, 0.16);
+}
+
+html.dark[data-ui-skin="cobalt"],
+html[data-theme="dark"][data-ui-skin="cobalt"] {
+  --bg: #10141c;
+  --bg-soft: #171d28;
+  --card: #1c2431;
+  --card-hover: #232e3e;
+  --sidebar: #141b25;
+  --border: #2c394b;
+  --border-soft: #263244;
+  --border-strong: #41516a;
+  --text: #f1f5fb;
+  --text-soft: #b5c0d0;
+  --text-faint: #7d8aa0;
+  --theme: #78a7ee;
+  --primary: #78a7ee;
+  --theme-hover: #94b9f1;
+  --primary-hover: #94b9f1;
+  --primary-soft: rgba(120, 167, 238, 0.17);
+}
+
+html.dark[data-ui-skin="claret"],
+html[data-theme="dark"][data-ui-skin="claret"] {
+  --bg: #171013;
+  --bg-soft: #21171b;
+  --card: #291d22;
+  --card-hover: #34252b;
+  --sidebar: #1d1418;
+  --border: #443039;
+  --border-soft: #392a31;
+  --border-strong: #5c414b;
+  --text: #faf2f5;
+  --text-soft: #c9b4bb;
+  --text-faint: #917a83;
+  --theme: #e084a1;
+  --primary: #e084a1;
+  --theme-hover: #eba0b6;
+  --primary-hover: #eba0b6;
+  --primary-soft: rgba(224, 132, 161, 0.17);
+}
+
+html.dark[data-ui-skin="graphite"],
+html[data-theme="dark"][data-ui-skin="graphite"] {
+  --bg: #111315;
+  --bg-soft: #191c20;
+  --card: #202429;
+  --card-hover: #292e35;
+  --sidebar: #171a1e;
+  --border: #333941;
+  --border-soft: #2c3138;
+  --border-strong: #484f59;
+  --text: #f4f5f6;
+  --text-soft: #bbc0c7;
+  --text-faint: #848b94;
+  --theme: #c7d0db;
+  --primary: #c7d0db;
+  --theme-hover: #e0e5eb;
+  --primary-hover: #e0e5eb;
+  --primary-soft: rgba(199, 208, 219, 0.14);
+}
