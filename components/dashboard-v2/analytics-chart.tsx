@@ -19,7 +19,7 @@ import {
   YAxis,
 } from "recharts";
 
-type Variant = "area" | "line" | "bar" | "pie";
+type Variant = "area" | "line" | "bar" | "horizontalBar" | "pie";
 
 type Tone = "primary" | "success" | "warning" | "danger";
 
@@ -276,6 +276,61 @@ export function AnalyticsChart({
           {showLegend && <Legend />}
 
           <Bar dataKey={yKey} fill={colors.fill} radius={[10, 10, 0, 0]} />
+        </BarChart>
+      )}
+
+      {/* HORIZONTAL BAR */}
+
+      {variant === "horizontalBar" && (
+        <BarChart
+          data={data}
+          layout="vertical"
+          margin={{
+            top: 10,
+            right: 24,
+            left: 18,
+            bottom: 10,
+          }}
+        >
+          {showGrid && (
+            <CartesianGrid stroke="var(--border)" horizontal={false} />
+          )}
+
+          <XAxis
+            type="number"
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
+
+          <YAxis
+            dataKey={xKey}
+            type="category"
+            width={72}
+            tickLine={false}
+            axisLine={false}
+            tick={{
+              fill: "var(--text-soft)",
+              fontSize: 12,
+            }}
+          />
+
+          {showTooltip && <Tooltip contentStyle={tooltipStyle} />}
+
+          {showLegend && <Legend />}
+
+          {goal && (
+            <ReferenceLine
+              x={goal}
+              stroke="var(--danger)"
+              strokeDasharray="6 6"
+            />
+          )}
+
+          <Bar dataKey={yKey} fill={colors.fill} radius={[0, 10, 10, 0]} />
         </BarChart>
       )}
 

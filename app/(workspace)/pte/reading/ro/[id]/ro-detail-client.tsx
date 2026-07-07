@@ -199,6 +199,8 @@ function SortableSentence({
 }
 
 export default function RoDetailClient({ question, attempts }: Props) {
+  const [startedAt, setStartedAt] = useState(() => Date.now());
+
   const [initialShuffle] = useState<SentenceItem[]>(() => createShuffledSentences(question.question_body_text));
 
   const [sentences, setSentences] = useState<SentenceItem[]>(() => initialShuffle);
@@ -206,6 +208,10 @@ export default function RoDetailClient({ question, attempts }: Props) {
   const [submitted, setSubmitted] = useState(false);
 
   const [correctCount, setCorrectCount] = useState(0);
+
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const [saving, setSaving] = useState(false);
 
   const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
     const ids = getQuestionOrder("ro");
@@ -257,9 +263,13 @@ export default function RoDetailClient({ question, attempts }: Props) {
     setSubmitted(false);
 
     setCorrectCount(0);
+
+    setSubmitError(null);
+
+    setStartedAt(Date.now());
   }
 
-  function handleCheckAnswer() {
+  async function handleCheckAnswer() {
     let correct = 0;
 
     sentences.forEach((sentence, index) => {
@@ -271,6 +281,36 @@ export default function RoDetailClient({ question, attempts }: Props) {
     setCorrectCount(correct);
 
     setSubmitted(true);
+
+    setSubmitError(null);
+    setSaving(true);
+
+    try {
+      const response = await fetch("/api/pte/ro/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          questionId: question.id,
+          startedAt,
+          userAnswer: sentences.map((sentence, index) => ({
+            sentenceId: sentence.id,
+            text: sentence.text,
+            order: index + 1,
+          })),
+        }),
+      });
+
+      const json = await response.json();
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message || "保存练习记录失败");
+      }
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "保存练习记录失败");
+    } finally {
+      setSaving(false);
+    }
   }
 
   const accuracy =
@@ -368,8 +408,8 @@ export default function RoDetailClient({ question, attempts }: Props) {
       {/* Actions */}
 
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button variant="primary" onClick={handleCheckAnswer}>
-          Check Answer
+        <Button variant="primary" onClick={handleCheckAnswer} disabled={saving || submitted}>
+          {saving ? "Saving..." : submitted ? "Saved" : "Check Answer"}
         </Button>
 
         <Button variant="secondary" onClick={handleReset}>
@@ -385,6 +425,8 @@ export default function RoDetailClient({ question, attempts }: Props) {
             <Tag tone="green">Correct {correctCount}</Tag>
 
             <Tag tone="theme">Accuracy {accuracy}%</Tag>
+
+            {submitError ? <Tag tone="pink">{submitError}</Tag> : null}
           </div>
 
           <div className="space-y-3">

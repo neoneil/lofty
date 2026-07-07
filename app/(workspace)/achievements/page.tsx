@@ -8,5 +8,9 @@ export default async function AchievementsPage() {
   const { supabase, user } = await requireUser("/achievements");
   const { overview, questionTypeStats } = await getAchievementStatsForUser(supabase, user.id);
 
-  return <AchievementGallery config={achievementConfig as AchievementConfig} overview={overview} questionTypeStats={questionTypeStats} />;
+  return (
+    <div className="mx-auto w-full max-w-7xl">
+      <AchievementGallery config={achievementConfig as AchievementConfig} overview={overview} questionTypeStats={questionTypeStats} />
+    </div>
+  );
 }

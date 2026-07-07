@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getPteAnalyticsForUser } from "@/lib/analytics/pte-analytics";
 
 const SPEAKING_AI_TYPES = new Set(["RA", "DI", "RL", "SGD"]);
 
@@ -74,6 +75,7 @@ export async function GET(
   const [
     { data: allAttempts, error: attemptsError },
     { data: studyPlan, error: studyPlanError },
+    analytics,
   ] = await Promise.all([
     supabase
       .from("student_attempts")
@@ -81,9 +83,10 @@ export async function GET(
       .eq("user_id", userId),
     supabase
       .from("study_plans")
-      .select("overall_target, exam_deadline")
+      .select("exam_type, overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours, additional_notes")
       .eq("user_id", userId)
       .maybeSingle(),
+    getPteAnalyticsForUser(supabase, userId),
   ]);
 
   if (attemptsError || studyPlanError) {
@@ -142,6 +145,7 @@ export async function GET(
       ok: true,
       summaries,
       studyPlan,
+      analytics,
       practices: [],
     });
   }
@@ -189,6 +193,7 @@ export async function GET(
       ok: true,
       summaries,
       studyPlan,
+      analytics,
       practices,
     });
   }
@@ -228,6 +233,7 @@ export async function GET(
     ok: true,
     summaries,
     studyPlan,
+    analytics,
     practices,
   });
 }

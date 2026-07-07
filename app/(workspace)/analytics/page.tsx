@@ -4,46 +4,7 @@ import { AnalyticsChart } from "@/components/dashboard-v2/analytics-chart";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { requireUser } from "@/lib/auth/require-user";
-import { getAchievementStatsForUser } from "@/lib/achievements/stats";
-import type { QuestionTypeStat } from "@/lib/achievements/types";
-
-const MODULES = [
-  { id: "listening", label: "听力" },
-  { id: "speaking", label: "口语" },
-  { id: "reading", label: "阅读" },
-  { id: "writing", label: "写作" },
-] as const;
-
-const QUESTION_TYPE_LABELS: Record<string, string> = {
-  essay: "Essay",
-  rfib: "RFIB",
-  fibrw: "FIBRW",
-  fib_l: "FIB-L",
-};
-
-function round(value: number, digits = 1) {
-  const factor = 10 ** digits;
-  return Math.round(value * factor) / factor;
-}
-
-function getQuestionTypeLabel(questionType: string) {
-  return QUESTION_TYPE_LABELS[questionType] ?? questionType.toUpperCase();
-}
-
-function aggregateModules(questionTypeStats: QuestionTypeStat[]) {
-  return MODULES.map((module) => {
-    const rows = questionTypeStats.filter((stat) => stat.module_type === module.id);
-    const completed = rows.reduce((total, stat) => total + stat.completed, 0);
-    const correct = rows.reduce((total, stat) => total + stat.correct, 0);
-
-    return {
-      module: module.label,
-      completed,
-      accuracy: completed > 0 ? round((correct / completed) * 100) : 0,
-      studyMinutes: round(rows.reduce((total, stat) => total + stat.total_study_minutes, 0)),
-    };
-  });
-}
+import { getPteAnalyticsForUser, round } from "@/lib/analytics/pte-analytics";
 
 function ChartEmptyState({ message }: { message: string }) {
   return <div className="flex h-full min-h-[260px] items-center justify-center rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-6 text-center text-sm text-[var(--text-faint)]">{message}</div>;
@@ -51,19 +12,12 @@ function ChartEmptyState({ message }: { message: string }) {
 
 export default async function AnalyticsPage() {
   const { supabase, user } = await requireUser("/analytics");
-  const { overview, questionTypeStats } = await getAchievementStatsForUser(supabase, user.id);
-  const moduleData = aggregateModules(questionTypeStats);
-  const practicedQuestionTypes = questionTypeStats.filter((stat) => stat.completed > 0);
-  const questionAccuracyData = practicedQuestionTypes
-    .map((stat) => ({ type: getQuestionTypeLabel(stat.question_type), accuracy: round(stat.accuracy), completed: stat.completed }))
-    .sort((a, b) => b.completed - a.completed);
-  const weakestQuestionType = [...practicedQuestionTypes].sort((a, b) => a.accuracy - b.accuracy)[0];
-  const hasModuleData = moduleData.some((item) => item.completed > 0);
-  const hasStudyTime = moduleData.some((item) => item.studyMinutes > 0);
+  const analytics = await getPteAnalyticsForUser(supabase, user.id);
+  const { overview, moduleData, questionTypeCompletionData, recentStudyTimeData, questionAccuracyData, weakestQuestionType, hasQuestionCompletionData, hasRecentStudyTime, hasStudyTime } = analytics;
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <div className="mx-auto flex w-full max-w-[1700px] flex-col gap-6 px-3 py-4 sm:px-4 sm:py-6 lg:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 py-4 sm:px-4 sm:py-6 lg:px-6">
         <header>
           <Badge className="mb-3">Learning Analytics</Badge>
           <h1 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">学习数据分析</h1>
@@ -102,17 +56,17 @@ export default async function AnalyticsPage() {
 
         <section className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-6">
           <Card>
-            <CardHeader><div><Badge variant="secondary" className="mb-3">Completion</Badge><CardTitle>模块完成量</CardTitle><CardDescription>听说读写各模块累计完成次数</CardDescription></div></CardHeader>
-            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasModuleData ? <AnalyticsChart variant="area" data={moduleData} xKey="module" yKey="completed" height={320} /> : <ChartEmptyState message="完成练习后，这里将显示模块完成量。" />}</CardContent>
+            <CardHeader><div><Badge variant="secondary" className="mb-3">Completion</Badge><CardTitle>题型完成度</CardTitle><CardDescription>已练预测题 / 当前预测题总量，按活跃题目计算</CardDescription></div></CardHeader>
+            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasQuestionCompletionData ? <AnalyticsChart variant="horizontalBar" data={questionTypeCompletionData} xKey="type" yKey="completion" height={420} /> : <ChartEmptyState message="暂无可计算的预测题完成度。" />}</CardContent>
           </Card>
 
           <Card>
-            <CardHeader><div><Badge variant="secondary" className="mb-3">Accuracy</Badge><CardTitle>模块正确率</CardTitle><CardDescription>按各模块完成量加权计算正确率</CardDescription></div></CardHeader>
-            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasModuleData ? <AnalyticsChart variant="line" data={moduleData} xKey="module" yKey="accuracy" tone="success" goal={80} height={320} /> : <ChartEmptyState message="暂时没有可计算的模块正确率。" />}</CardContent>
+            <CardHeader><div><Badge variant="secondary" className="mb-3">Study Time</Badge><CardTitle>最近 7 天练习时间</CardTitle><CardDescription>按每天提交题型计算，单位：分钟</CardDescription></div></CardHeader>
+            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasRecentStudyTime ? <AnalyticsChart variant="line" data={recentStudyTimeData} xKey="day" yKey="minutes" tone="success" height={320} /> : <ChartEmptyState message="最近 7 天暂无可计算的练习时间。" />}</CardContent>
           </Card>
 
           <Card>
-            <CardHeader><div><Badge variant="secondary" className="mb-3">Question Types</Badge><CardTitle>题型正确率</CardTitle><CardDescription>{weakestQuestionType ? `当前最需关注：${getQuestionTypeLabel(weakestQuestionType.question_type)}（${round(weakestQuestionType.accuracy)}%）` : "完成题型练习后自动生成比较"}</CardDescription></div></CardHeader>
+            <CardHeader><div><Badge variant="secondary" className="mb-3">Question Types</Badge><CardTitle>题型正确率</CardTitle><CardDescription>{weakestQuestionType ? `当前最需关注：${weakestQuestionType.label}（${round(weakestQuestionType.accuracy)}%）` : "完成题型练习后自动生成比较"}</CardDescription></div></CardHeader>
             <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{questionAccuracyData.length > 0 ? <AnalyticsChart variant="bar" data={questionAccuracyData} xKey="type" yKey="accuracy" tone="warning" height={320} /> : <ChartEmptyState message="暂时没有已练习题型数据。" />}</CardContent>
           </Card>
 

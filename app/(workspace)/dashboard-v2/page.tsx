@@ -168,7 +168,7 @@ export default async function DashboardPage() {
   const targetProgress = studyPlan?.overall_target ? Math.round((toNumber(studyPlan.overall_current) / toNumber(studyPlan.overall_target)) * 100) : 0;
 
   return (
-    <main className="space-y-5 sm:space-y-6">
+    <main className="mx-auto w-full max-w-7xl space-y-5 sm:space-y-6">
       <section className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.65fr)]">
         <Card className="relative overflow-hidden rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)]">
           <div className="absolute right-[-10%] top-[-30%] h-72 w-72 rounded-full bg-[var(--primary-soft)] blur-3xl" />

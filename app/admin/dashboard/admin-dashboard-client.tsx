@@ -2,7 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { CalendarDays, ChevronDown, ChevronUp, Clock3, GraduationCap, Target } from "lucide-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import { AnalyticsChart } from "@/components/dashboard-v2/analytics-chart";
 
 type OverviewStats = {
   total_attempts: number;
@@ -52,8 +54,43 @@ type Practice = {
 };
 
 type StudyPlanSummary = {
+  exam_type: string | null;
   overall_target: string | number | null;
+  overall_current: string | number | null;
+  listening_target: string | number | null;
+  listening_current: string | number | null;
+  reading_target: string | number | null;
+  reading_current: string | number | null;
+  writing_target: string | number | null;
+  writing_current: string | number | null;
+  speaking_target: string | number | null;
+  speaking_current: string | number | null;
   exam_deadline: string | null;
+  study_goal: string | null;
+  daily_study_hours: string | null;
+  additional_notes: string | null;
+} | null;
+
+type AnalyticsData = {
+  overview: {
+    overall_accuracy: number;
+    total_correct: number;
+    total_completed: number;
+    practiced_question_count: number;
+    longest_study_streak_days: number;
+    highest_ai_score: number;
+    average_score: number;
+    total_study_minutes: number;
+    max_correct_streak: number;
+  };
+  moduleData: Array<{ module: string; completed: number; accuracy: number; studyMinutes: number }>;
+  questionTypeCompletionData: Array<{ type: string; completed: number; total: number; completion: number }>;
+  recentStudyTimeData: Array<{ day: string; minutes: number }>;
+  questionAccuracyData: Array<{ type: string; accuracy: number; completed: number }>;
+  weakestQuestionType: { question_type: string; label: string; accuracy: number } | null;
+  hasQuestionCompletionData: boolean;
+  hasRecentStudyTime: boolean;
+  hasStudyTime: boolean;
 } | null;
 
 type Props = {
@@ -127,6 +164,129 @@ function stringifyAnswer(value: string | null | undefined) {
   }
 }
 
+function round(value: number, digits = 1) {
+  const factor = 10 ** digits;
+  return Math.round(value * factor) / factor;
+}
+
+function ChartEmptyState({ message }: { message: string }) {
+  return <div className="flex h-full min-h-[240px] items-center justify-center rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-6 text-center text-sm text-[var(--text-faint)]">{message}</div>;
+}
+
+function getDaysRemaining(value: string | null | undefined) {
+  if (!value) return null;
+  const deadline = new Date(value).getTime();
+  if (!Number.isFinite(deadline)) return null;
+  return Math.ceil((deadline - Date.now()) / 86_400_000);
+}
+
+function StudyPlanMetric({ label, value, icon: Icon }: { label: string; value: string | number | null | undefined; icon: typeof Target }) {
+  return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]"><Icon size={14} className="text-[var(--primary)]" />{label}</div><div className="mt-2 truncate text-lg font-black text-[var(--text)]">{value || "—"}</div></div>;
+}
+
+function ScorePair({ label, target, current }: { label: string; target: string | number | null | undefined; current: string | number | null | undefined }) {
+  return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3"><div className="text-xs font-semibold text-[var(--text-faint)]">{label}</div><div className="mt-2 grid grid-cols-2 gap-2 text-sm"><div><span className="block text-[10px] uppercase tracking-wide text-[var(--text-faint)]">Target</span><span className="font-bold text-[var(--primary)]">{target || "—"}</span></div><div><span className="block text-[10px] uppercase tracking-wide text-[var(--text-faint)]">Current</span><span className="font-bold text-[var(--text)]">{current || "—"}</span></div></div></div>;
+}
+
+function AdminStudyPlanPanel({ studyPlan }: { studyPlan: StudyPlanSummary }) {
+  const daysRemaining = getDaysRemaining(studyPlan?.exam_deadline);
+
+  if (!studyPlan) {
+    return <div className="mt-5 rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm text-[var(--text-soft)]">这个学生还没有创建学习计划。</div>;
+  }
+
+  return (
+    <div className="mt-5 space-y-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 sm:p-5">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <StudyPlanMetric label="考试类型" value={studyPlan.exam_type} icon={GraduationCap} />
+        <StudyPlanMetric label="总分目标" value={studyPlan.overall_target} icon={Target} />
+        <StudyPlanMetric label="考试日期" value={formatDate(studyPlan.exam_deadline)} icon={CalendarDays} />
+        <StudyPlanMetric label="剩余天数" value={daysRemaining === null ? "—" : `${daysRemaining} 天`} icon={Clock3} />
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <ScorePair label="Listening" target={studyPlan.listening_target} current={studyPlan.listening_current} />
+        <ScorePair label="Reading" target={studyPlan.reading_target} current={studyPlan.reading_current} />
+        <ScorePair label="Writing" target={studyPlan.writing_target} current={studyPlan.writing_current} />
+        <ScorePair label="Speaking" target={studyPlan.speaking_target} current={studyPlan.speaking_current} />
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-2">
+        <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">学习目标</div><div className="mt-2 text-sm font-bold text-[var(--text)]">{studyPlan.study_goal || "—"}</div></div>
+        <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">每日学习时间</div><div className="mt-2 text-sm font-bold text-[var(--text)]">{studyPlan.daily_study_hours || "—"}</div></div>
+      </div>
+
+      {studyPlan.additional_notes ? <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">补充说明</div><p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-[var(--text-soft)]">{studyPlan.additional_notes}</p></div> : null}
+    </div>
+  );
+}
+
+function AdminStudentAnalytics({ analytics, loading }: { analytics: AnalyticsData; loading: boolean }) {
+  if (loading && !analytics) {
+    return (
+      <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)] shadow-[var(--shadow-sm)]">
+        Loading analytics...
+      </div>
+    );
+  }
+
+  if (!analytics) {
+    return (
+      <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)] shadow-[var(--shadow-sm)]">
+        No analytics data.
+      </div>
+    );
+  }
+
+  const { overview, moduleData, questionTypeCompletionData, recentStudyTimeData, questionAccuracyData, weakestQuestionType, hasQuestionCompletionData, hasRecentStudyTime, hasStudyTime } = analytics;
+
+  return (
+    <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+      <div className="border-b border-[var(--border)] px-5 py-4">
+        <h3 className="text-lg font-bold text-[var(--text)]">Learning Analytics</h3>
+        <p className="mt-1 text-sm text-[var(--text-soft)]">Same data model as the student analytics page.</p>
+      </div>
+
+      <div className="space-y-5 p-5">
+        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs font-semibold text-[var(--text-soft)]">综合正确率</div><div className="mt-2 text-2xl font-black text-[var(--primary)]">{round(overview.overall_accuracy)}%</div><div className="mt-1 text-xs text-[var(--text-faint)]">{overview.total_correct} correct</div></div>
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs font-semibold text-[var(--text-soft)]">累计完成</div><div className="mt-2 text-2xl font-black text-[var(--primary)]">{overview.total_completed}</div><div className="mt-1 text-xs text-[var(--text-faint)]">{overview.practiced_question_count} practiced</div></div>
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs font-semibold text-[var(--text-soft)]">最长连续学习</div><div className="mt-2 text-2xl font-black text-[var(--primary)]">{overview.longest_study_streak_days}</div><div className="mt-1 text-xs text-[var(--text-faint)]">days</div></div>
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs font-semibold text-[var(--text-soft)]">最高 AI 评分</div><div className="mt-2 text-2xl font-black text-[var(--primary)]">{round(overview.highest_ai_score)}</div><div className="mt-1 text-xs text-[var(--text-faint)]">best score</div></div>
+        </section>
+
+        <section className="grid gap-4 xl:grid-cols-2">
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <div className="mb-3"><div className="text-sm font-bold text-[var(--text)]">题型完成度</div><div className="mt-1 text-xs text-[var(--text-soft)]">已练预测题 / 当前预测题总量</div></div>
+            {hasQuestionCompletionData ? <AnalyticsChart variant="horizontalBar" data={questionTypeCompletionData} xKey="type" yKey="completion" height={420} /> : <ChartEmptyState message="暂无可计算的预测题完成度。" />}
+          </div>
+
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <div className="mb-3"><div className="text-sm font-bold text-[var(--text)]">最近 7 天练习时间</div><div className="mt-1 text-xs text-[var(--text-soft)]">按每天提交记录汇总，单位：分钟</div></div>
+            {hasRecentStudyTime ? <AnalyticsChart variant="line" data={recentStudyTimeData} xKey="day" yKey="minutes" tone="success" height={320} /> : <ChartEmptyState message="最近 7 天暂无可计算的练习时间。" />}
+          </div>
+
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <div className="mb-3"><div className="text-sm font-bold text-[var(--text)]">题型正确率</div><div className="mt-1 text-xs text-[var(--text-soft)]">{weakestQuestionType ? `最需关注：${weakestQuestionType.label}（${round(weakestQuestionType.accuracy)}%）` : "完成题型练习后自动生成比较"}</div></div>
+            {questionAccuracyData.length > 0 ? <AnalyticsChart variant="bar" data={questionAccuracyData} xKey="type" yKey="accuracy" tone="warning" height={320} /> : <ChartEmptyState message="暂时没有已练习题型数据。" />}
+          </div>
+
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <div className="mb-3"><div className="text-sm font-bold text-[var(--text)]">模块学习时间</div><div className="mt-1 text-xs text-[var(--text-soft)]">累计 {round(overview.total_study_minutes / 60)} 小时</div></div>
+            {hasStudyTime ? <AnalyticsChart variant="pie" data={moduleData} pieDataKey="studyMinutes" pieNameKey="module" showLegend height={320} /> : <ChartEmptyState message="有计时练习后，这里将显示学习时间分配。" />}
+          </div>
+        </section>
+
+        <section className="grid gap-3 sm:grid-cols-3">
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs text-[var(--text-faint)]">平均最新评分</div><div className="mt-1 font-bold text-[var(--text)]">{round(overview.average_score)}</div></div>
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs text-[var(--text-faint)]">累计学习时间</div><div className="mt-1 font-bold text-[var(--text)]">{round(overview.total_study_minutes / 60)} 小时</div></div>
+          <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs text-[var(--text-faint)]">历史最高连续答对</div><div className="mt-1 font-bold text-[var(--text)]">{overview.max_correct_streak} 道</div></div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminDashboardClient({ overview, students }: Props) {
   const [selectedStudentId, setSelectedStudentId] = useState(
     students[0]?.user_id ?? "",
@@ -135,6 +295,8 @@ export default function AdminDashboardClient({ overview, students }: Props) {
   const [summaries, setSummaries] = useState<TypeSummary[]>([]);
   const [practices, setPractices] = useState<Practice[]>([]);
   const [studyPlan, setStudyPlan] = useState<StudyPlanSummary>(null);
+  const [studyPlanOpen, setStudyPlanOpen] = useState(false);
+  const [analytics, setAnalytics] = useState<AnalyticsData>(null);
   const [loading, setLoading] = useState(false);
   const [expandedPracticeIds, setExpandedPracticeIds] = useState<Set<string>>(
     () => new Set(),
@@ -156,6 +318,7 @@ export default function AdminDashboardClient({ overview, students }: Props) {
       const loadStudent = async () => {
         setLoading(true);
         setPractices([]);
+        setAnalytics(null);
         setExpandedPracticeIds(new Set());
 
         try {
@@ -173,6 +336,7 @@ export default function AdminDashboardClient({ overview, students }: Props) {
           setSummaries(json.summaries ?? []);
           setPractices(json.practices ?? []);
           setStudyPlan(json.studyPlan ?? null);
+          setAnalytics(json.analytics ?? null);
         } catch (error) {
           if (!controller.signal.aborted) {
             console.error(error);
@@ -279,6 +443,7 @@ export default function AdminDashboardClient({ overview, students }: Props) {
                     onClick={() => {
                       setSelectedStudentId(student.user_id);
                       setSelectedType("");
+                      setStudyPlanOpen(false);
                     }}
                     className={`flex w-full items-center gap-3 rounded-[var(--radius-md)] border px-3 py-3 text-left transition ${
                       active
@@ -329,51 +494,60 @@ export default function AdminDashboardClient({ overview, students }: Props) {
         <section className="min-w-0 space-y-5">
           <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
             {selectedStudent ? (
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="min-w-0">
-                  <h2 className="truncate text-xl font-bold text-[var(--text)]">
-                    {getStudentName(selectedStudent)}
-                  </h2>
-                  <div className="mt-1 truncate text-sm text-[var(--text-soft)]">
-                    {selectedStudent.email || selectedStudent.user_id}
+              <>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="min-w-0">
+                    <h2 className="truncate text-xl font-bold text-[var(--text)]">
+                      {getStudentName(selectedStudent)}
+                    </h2>
+                    <div className="mt-1 truncate text-sm text-[var(--text-soft)]">
+                      {selectedStudent.email || selectedStudent.user_id}
+                    </div>
+                  </div>
+
+                  <button type="button" onClick={() => setStudyPlanOpen((current) => !current)} className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 text-sm font-bold text-[var(--text)] transition hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]">
+                    学习计划
+                    {studyPlanOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </button>
+
+                  <div className="grid gap-2 sm:grid-cols-2 lg:min-w-[560px] xl:grid-cols-4">
+                    <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                      <div className="text-xs font-semibold text-[var(--text-soft)]">
+                        All Attempts
+                      </div>
+                      <div className="mt-1 text-2xl font-black text-[var(--primary)]">
+                        {totalStudentAttempts}
+                      </div>
+                    </div>
+                    <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                      <div className="text-xs font-semibold text-[var(--text-soft)]">
+                        Question Types
+                      </div>
+                      <div className="mt-1 text-2xl font-black text-[var(--primary)]">
+                        {summaries.length}
+                      </div>
+                    </div>
+                    <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                      <div className="text-xs font-semibold text-[var(--text-soft)]">
+                        Target Overall Score
+                      </div>
+                      <div className="mt-1 text-2xl font-black text-[var(--primary)]">
+                        {studyPlan?.overall_target || "—"}
+                      </div>
+                    </div>
+                    <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                      <div className="text-xs font-semibold text-[var(--text-soft)]">
+                        Deadline
+                      </div>
+                      <div className="mt-1 truncate text-sm font-bold text-[var(--text)]">
+                        {formatDate(studyPlan?.exam_deadline)}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid gap-2 sm:grid-cols-2 lg:min-w-[560px] xl:grid-cols-4">
-                  <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
-                    <div className="text-xs font-semibold text-[var(--text-soft)]">
-                      All Attempts
-                    </div>
-                    <div className="mt-1 text-2xl font-black text-[var(--primary)]">
-                      {totalStudentAttempts}
-                    </div>
-                  </div>
-                  <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
-                    <div className="text-xs font-semibold text-[var(--text-soft)]">
-                      Question Types
-                    </div>
-                    <div className="mt-1 text-2xl font-black text-[var(--primary)]">
-                      {summaries.length}
-                    </div>
-                  </div>
-                  <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
-                    <div className="text-xs font-semibold text-[var(--text-soft)]">
-                      Target Overall Score
-                    </div>
-                    <div className="mt-1 text-2xl font-black text-[var(--primary)]">
-                      {studyPlan?.overall_target || "—"}
-                    </div>
-                  </div>
-                  <div className="rounded border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
-                    <div className="text-xs font-semibold text-[var(--text-soft)]">
-                      Deadline
-                    </div>
-                    <div className="mt-1 truncate text-sm font-bold text-[var(--text)]">
-                      {formatDate(studyPlan?.exam_deadline)}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                {studyPlanOpen ? <AdminStudyPlanPanel studyPlan={studyPlan} /> : null}
+              </>
             ) : (
               <p className="text-sm text-[var(--text-soft)]">
                 Select a student.
@@ -600,6 +774,8 @@ export default function AdminDashboardClient({ overview, students }: Props) {
               )}
             </div>
           </div>
+
+          <AdminStudentAnalytics analytics={analytics} loading={loading} />
         </section>
       </div>
     </div>

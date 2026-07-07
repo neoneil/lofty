@@ -17,6 +17,10 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get("file") as File;
     const questionId = formData.get("questionId") as string;
+    const rawDurationSeconds = Number(formData.get("durationSeconds"));
+    const durationSeconds = Number.isFinite(rawDurationSeconds)
+      ? Math.max(1, Math.floor(rawDurationSeconds))
+      : 1;
 
     if (!file) {
       return NextResponse.json({ error: "no file" }, { status: 400 });
@@ -45,6 +49,7 @@ export async function POST(req: Request) {
         question_source: "asq",
         question_id: questionId,
         audio_url: audioUrl,
+        duration_seconds: durationSeconds,
       });
 
     if (insertError) {
@@ -58,6 +63,7 @@ export async function POST(req: Request) {
         moduleType: "ASQ",
         questionSource: "asq",
         questionId,
+        durationSeconds,
       });
     } catch (statsError) {
       console.error("ASQ stats update error:", statsError);
