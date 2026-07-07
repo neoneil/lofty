@@ -57,7 +57,7 @@ export function SidebarItem({
       )}
     >
 
-      <div className="inline-flex min-w-0 items-center gap-2.5 sm:gap-3">
+      <div className={cn("inline-flex min-w-0 items-center", collapsed ? "gap-0" : "gap-2.5 sm:gap-3")}>
 
         <div className={cn("flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-[7px]", iconToneClasses[iconTone])}>
 

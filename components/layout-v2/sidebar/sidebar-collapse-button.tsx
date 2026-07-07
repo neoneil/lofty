@@ -15,7 +15,7 @@ export function SidebarCollapseButton({
   return (
     <button
       onClick={onToggle}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
+      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
     >
 
       {collapsed ? (

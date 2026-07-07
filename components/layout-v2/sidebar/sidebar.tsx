@@ -48,11 +48,11 @@ export function Sidebar({ userId }: { userId: string | null }) {
       <div
         className={cn(
           "flex h-14 items-center",
-          collapsed ? "justify-center" : "justify-between px-2",
+          collapsed ? "justify-center" : "gap-2 pl-2 pr-0",
         )}
       >
         {!collapsed && (
-          <Link href="/" className="min-w-0 rounded-[var(--radius-md)] px-1.5 py-1 transition-colors duration-200 hover:bg-[var(--bg-soft)]"><BrandLockup size="sm" label={brandLabel} /></Link>
+          <Link href="/" className="min-w-0 flex-1 rounded-[var(--radius-md)] px-1.5 py-1 transition-colors duration-200 hover:bg-[var(--bg-soft)]"><BrandLockup size="sm" label={brandLabel} /></Link>
         )}
 
         <SidebarCollapseButton
@@ -105,11 +105,11 @@ export function Sidebar({ userId }: { userId: string | null }) {
           <button
             onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen ? null : "pte" })}
             className={cn(
-              "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
-              collapsed ? "justify-center" : "justify-between",
+              "flex h-12 w-full items-center rounded-[var(--radius-xsm)] text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
+              collapsed ? "justify-center px-0" : "justify-between px-2.5 sm:px-3",
             )}
           >
-            <div className="flex items-center gap-3">
+            <div className={cn("flex items-center", collapsed ? "gap-0" : "gap-3")}>
               <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[var(--primary-soft)] text-[var(--primary)]"><FolderOpen size={17} /></span>
 
               {!collapsed && (
@@ -176,11 +176,11 @@ export function Sidebar({ userId }: { userId: string | null }) {
           <button
             onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen2 ? null : "ielts" })}
             className={cn(
-              "flex h-12 w-full items-center rounded-[var(--radius-md)] px-3 text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
-              collapsed ? "justify-center" : "justify-between",
+              "flex h-12 w-full items-center rounded-[var(--radius-xsm)] text-[var(--text-soft)] transition-all duration-300 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
+              collapsed ? "justify-center px-0" : "justify-between px-2.5 sm:px-3",
             )}
           >
-            <div className="flex items-center gap-3">
+            <div className={cn("flex items-center", collapsed ? "gap-0" : "gap-3")}>
               <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[var(--success-soft)] text-[var(--success)]"><FolderOpen size={17} /></span>
 
               {!collapsed && (

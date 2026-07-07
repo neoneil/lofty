@@ -434,7 +434,7 @@ export default async function HomePage() {
           <div className="grid gap-4 md:grid-cols-3">
             {latestPosts.map((post, index) => (
               <Link key={post.slug} href={`/posts/${post.slug}`} className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
-                <div className="relative h-44 overflow-hidden bg-[var(--bg-soft)]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-soft)] md:aspect-[16/11]">
                   {post.cover_image ? (
                     <img src={post.cover_image} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
                   ) : (
