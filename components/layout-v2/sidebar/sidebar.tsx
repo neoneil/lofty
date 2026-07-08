@@ -8,6 +8,7 @@ import {
   ChartNoAxesColumn,
   ChevronDown,
   FolderOpen,
+  Gamepad2,
   GraduationCap,
   Headphones,
   LayoutDashboard,
@@ -286,6 +287,15 @@ export function Sidebar({ userId }: { userId: string | null }) {
             subtitle="Analytics"
             icon={<ChartNoAxesColumn size={18} />}
             iconTone="danger"
+            collapsed={collapsed}
+          />
+
+          <SidebarItem
+            href="/audio-collection"
+            label="轻松时刻"
+            subtitle="Game Lab"
+            icon={<Gamepad2 size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
         </SidebarGroup>
