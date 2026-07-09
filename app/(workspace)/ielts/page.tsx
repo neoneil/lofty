@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BookOpen,
   Headphones,
+  LibraryBig,
   Mic,
   PenTool,
 } from "lucide-react";
@@ -40,6 +41,13 @@ const sections = [
     href: "/ielts/listening",
     icon: Headphones,
   },
+  {
+    title: "雅思练习题",
+    description:
+      "按剑桥雅思 21-16 浏览完整练习资料，集中查看听力、阅读、写作与后续口语内容。",
+    href: "/ielts/practice",
+    icon: LibraryBig,
+  },
 ];
 
 export default function IELTSPage() {
@@ -71,7 +79,7 @@ export default function IELTSPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {sections.map((section) => {
           const Icon = section.icon;
 

@@ -12,6 +12,7 @@ import {
   GraduationCap,
   Headphones,
   LayoutDashboard,
+  LibraryBig,
   Mic,
   PenTool,
   Trophy,
@@ -238,6 +239,16 @@ export function Sidebar({ userId }: { userId: string | null }) {
                 subtitle="Listening"
                 icon={<Headphones size={16} />}
                 iconTone="warning"
+                collapsed={collapsed}
+                nested
+              />
+
+              <SidebarItem
+                href="/ielts/practice"
+                label="雅思练习题"
+                subtitle="Practice Library"
+                icon={<LibraryBig size={16} />}
+                iconTone="success"
                 collapsed={collapsed}
                 nested
               />
