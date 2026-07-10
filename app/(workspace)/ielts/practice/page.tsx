@@ -19,7 +19,7 @@ export default async function IeltsPracticePage() {
           <div>
             <Badge className="mb-3 w-fit">IELTS Practice Library</Badge>
             <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">雅思练习题</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">按剑桥雅思 21-16 进入完整练习资料。当前已接入的书籍会展示听力、阅读、写作数据；数据库暂未覆盖的模块会先显示待开发。</p>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">按剑桥雅思 21-7 进入完整练习资料。当前已接入的书籍会展示听力、阅读、写作数据；数据库暂未覆盖的模块会先显示待开发。</p>
           </div>
           <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm text-[var(--text-soft)]">
             <div className="mb-1 flex items-center gap-2 font-semibold text-[var(--text)]"><LibraryBig size={17} className="text-[var(--primary)]" />当前已接入</div>
@@ -34,7 +34,7 @@ export default async function IeltsPracticePage() {
         <CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
           <div>
             <h2 className="text-lg font-semibold text-[var(--text)]">建议先从剑桥雅思 21 开始</h2>
-            <p className="mt-1 text-sm leading-6 text-[var(--text-soft)]">21 已经有导入数据，可以查看音频、题目、图片资料和答案。后续导入 20-17 后页面会自动展示。</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--text-soft)]">已导入的数据会自动展示音频、题目、图片资料和答案；未覆盖的模块会保留待开发状态。</p>
           </div>
           <Link href="/ielts/practice/21" className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">进入剑桥雅思 21 <ArrowRight size={16} /></Link>
         </CardContent>

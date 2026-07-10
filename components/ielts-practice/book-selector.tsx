@@ -3,10 +3,9 @@ import { BookOpen, CheckCircle2, Clock3 } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import { IELTS_PRACTICE_BOOK_NUMBERS } from "@/lib/ielts/books";
 import { cn } from "@/lib/utils";
 import type { IeltsPracticeSummary } from "@/lib/ielts/practice";
-
-const BOOK_NUMBERS = [21, 20, 19, 18, 17, 16];
 
 type Props = {
   summaries: IeltsPracticeSummary[];
@@ -15,8 +14,8 @@ type Props = {
 
 export function IeltsBookSelector({ summaries, activeBookNumber }: Props) {
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-      {BOOK_NUMBERS.map((bookNumber) => {
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {IELTS_PRACTICE_BOOK_NUMBERS.map((bookNumber) => {
         const summary = summaries.find((item) => item.book.book_number === bookNumber);
         const isActive = activeBookNumber === bookNumber;
         const isReady = Boolean(summary && summary.sectionCount > 0);

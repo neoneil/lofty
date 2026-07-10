@@ -119,21 +119,21 @@ function ModuleBlock({ moduleInfo, ieltsModule, data, testNumber }: { moduleInfo
   const sections = ieltsModule ? data.sections.filter((section) => section.module_id === ieltsModule.id) : [];
   const assets = ieltsModule ? data.assets.filter((asset) => asset.module_id === ieltsModule.id) : [];
   const audioItems = buildAudioItems({
-    assets: assets.filter((asset) => asset.asset_type === "audio"),
+    assets: moduleInfo.type === "reading" ? [] : assets.filter((asset) => asset.asset_type === "audio"),
     sections,
     bookNumber: data.book?.book_number,
     testNumber,
   });
-  const fullAudioItems = audioItems.filter((item) => !item.sectionId);
+  const fullAudioItems = moduleInfo.type === "reading" ? [] : audioItems.filter((item) => !item.sectionId);
   const imageAssets = assets.filter((asset) => asset.asset_type === "image");
 
   return (
-    <section id={`test-${testNumber}-${moduleInfo.type}`} className="scroll-mt-24 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)]/55 p-4 sm:p-5">
+    <section id={`test-${testNumber}-${moduleInfo.type}`} className="scroll-mt-24 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]"><Icon size={20} /></div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]"><Icon size={20} /></div>
           <div>
-            <h3 className="text-base font-semibold text-[var(--text)]">{moduleInfo.label}</h3>
+            <h3 className="text-base font-semibold tracking-tight text-[var(--text)]">{moduleInfo.label}</h3>
             <p className="text-xs text-[var(--text-soft)]">{moduleInfo.description}</p>
           </div>
         </div>
@@ -143,10 +143,10 @@ function ModuleBlock({ moduleInfo, ieltsModule, data, testNumber }: { moduleInfo
       {sections.length === 0 ? (
         <PendingModule moduleType={moduleInfo.type} />
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {fullAudioItems.length > 0 && <AssetAudioList items={fullAudioItems} />}
-          {imageAssets.length > 0 && <AssetImageList assets={imageAssets} />}
-          {sections.map((section) => <SectionBlock key={section.id} section={section} data={data} moduleType={moduleInfo.type} audioItems={audioItems.filter((item) => item.sectionId === section.id)} />)}
+          {moduleInfo.type !== "reading" && imageAssets.length > 0 && <AssetImageList assets={imageAssets} />}
+          {sections.map((section) => <SectionBlock key={section.id} section={section} data={data} moduleType={moduleInfo.type} audioItems={moduleInfo.type === "reading" ? [] : audioItems.filter((item) => item.sectionId === section.id)} />)}
         </div>
       )}
     </section>
@@ -196,12 +196,12 @@ function SectionBlock({ section, data, moduleType, audioItems }: { section: Ielt
   const raw = section.raw_data;
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 sm:p-5">
+    <div className="border-t border-[var(--border)] pt-5 first:border-t-0 first:pt-0">
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="text-sm font-semibold text-[var(--text)]">Section {section.section_number}</div>
-          <h4 className="mt-1 text-lg font-semibold text-[var(--text)]">{section.title || section.passage_title || "练习内容"}</h4>
-          {section.instruction && <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{stripHtml(section.instruction)}</p>}
+          <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">Section {section.section_number}</div>
+          <h4 className="mt-1 text-xl font-semibold tracking-tight text-[var(--text)]">{section.title || section.passage_title || "练习内容"}</h4>
+          {section.instruction && <p className="mt-2 max-w-4xl text-sm leading-7 text-[var(--text-soft)]">{stripHtml(section.instruction)}</p>}
         </div>
         <Badge variant="outline">{questions.length} 组题</Badge>
       </div>
@@ -210,23 +210,27 @@ function SectionBlock({ section, data, moduleType, audioItems }: { section: Ielt
 
       <RichHtml html={section.passage_text || stringValue(raw, "content")} />
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-4">
         {questions.map((question) => (
-          <QuestionBlock key={question.id} question={question} answer={data.answers.find((item) => item.question_id === question.id)} moduleType={moduleType} />
+          <QuestionBlock key={question.id} question={question} answer={data.answers.find((item) => item.question_id === question.id)} moduleType={moduleType} sectionTitle={section.passage_title || section.title || ""} sectionPassage={section.passage_text || stringValue(raw, "content")} />
         ))}
       </div>
     </div>
   );
 }
 
-function QuestionBlock({ question, answer, moduleType }: { question: IeltsQuestion; answer?: IeltsAnswer; moduleType: ModuleType }) {
+function QuestionBlock({ question, answer, moduleType, sectionTitle, sectionPassage }: { question: IeltsQuestion; answer?: IeltsAnswer; moduleType: ModuleType; sectionTitle: string; sectionPassage: string }) {
   const questionRange = question.question_number_end && question.question_number_end !== question.question_number_start ? `${question.question_number_start}-${question.question_number_end}` : `${question.question_number_start}`;
   const sourceQuestions = arrayValue(question.content, "questions");
   const pageContent = stringValue(question.content, "page_content") || stringValue(question.content, "part_content");
+  const answerValues = getAnswerValues(answer);
+  const cleanedPageContent = removeDuplicatePassageTitle(removeDuplicateReadingPassage(removeTrailingInlineAnswers(pageContent, answerValues), sectionTitle, sectionPassage, question.question_number_start), sectionTitle);
+  const isAnswerBank = hasBlankPlaceholder(cleanedPageContent) && isAnswerBankOptionList(question.options);
+  const shouldShowOptions = question.options.length > 0 && !isAnswerOptionList(question.options, answerValues) && !isAnswerBank;
   const sectionDesc = stringValue(question.content, "section_desc") || question.instruction;
 
   return (
-    <article className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)]/65 p-4">
+    <article className="border-l-2 border-[var(--primary)]/35 bg-[var(--bg-soft)]/35 py-4 pl-4 pr-2 sm:pl-5 sm:pr-4">
       <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-2">
           <Badge>{moduleType.toUpperCase()}</Badge>
@@ -234,11 +238,12 @@ function QuestionBlock({ question, answer, moduleType }: { question: IeltsQuesti
           <Badge variant="outline">{question.question_type}</Badge>
         </div>
       </div>
-      {question.prompt && <h5 className="mb-2 text-sm font-semibold text-[var(--text)]">{stripHtml(question.prompt)}</h5>}
+      {question.prompt && <h5 className="mb-2 text-base font-semibold tracking-tight text-[var(--text)]">{stripHtml(question.prompt)}</h5>}
       {sectionDesc && <RichHtml html={sectionDesc} compact />}
-      <RichHtml html={pageContent} compact />
+      <RichHtml html={cleanedPageContent} compact />
       {sourceQuestions.length > 0 && <QuestionList questions={sourceQuestions} />}
-      {question.options.length > 0 && <OptionList options={question.options} />}
+      {isAnswerBank && <CollapsibleAnswer label="查看备选答案"><OptionList options={question.options} /></CollapsibleAnswer>}
+      {shouldShowOptions && <OptionList options={question.options} />}
       {answer && <AnswerBlock answer={answer} />}
     </article>
   );
@@ -249,9 +254,11 @@ function QuestionList({ questions }: { questions: Record<string, unknown>[] }) {
     .map((question, index) => {
       const label = stringValue(question, "questionNo") || stringValue(question, "sort") || `${index + 1}`;
       const title = stringValue(question, "title") || stringValue(question, "content") || "";
-      return { label, title, index };
+      const options = stringArrayValue(question, "option");
+      const answers = stringArrayValue(question, "answer");
+      return { label, title, options, answers, index };
     })
-    .filter((question) => !isRedundantBlankQuestion(question.label, question.title));
+    .filter((question) => question.options.length > 0 || (!isRedundantBlankQuestion(question.label, question.title) && !isAnswerOnlyQuestion(question.label, question.title, question.answers)));
 
   if (visibleQuestions.length === 0) return null;
 
@@ -259,9 +266,10 @@ function QuestionList({ questions }: { questions: Record<string, unknown>[] }) {
     <div className="mt-3 space-y-2">
       {visibleQuestions.map((question) => {
         return (
-          <div key={`${question.label}-${question.index}`} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
+          <div key={`${question.label}-${question.index}`} className="rounded-[var(--radius-sm)] bg-[var(--card)]/70 px-3 py-2">
             <div className="mb-1 text-xs font-semibold text-[var(--primary)]">Question {question.label}</div>
-            <RichHtml html={question.title} compact />
+            {question.title ? <RichHtml html={question.title} compact /> : null}
+            {question.options.length > 0 ? <div className="mt-2 grid gap-1.5 sm:grid-cols-2">{question.options.map((option, optionIndex) => <div key={`${question.label}-${optionIndex}`} className="rounded-[var(--radius-sm)] bg-[var(--bg-soft)] px-3 py-2 text-sm text-[var(--text-soft)]"><RichHtml html={option} compact /></div>)}</div> : null}
           </div>
         );
       })}
@@ -273,8 +281,8 @@ function OptionList({ options }: { options: Record<string, unknown>[] }) {
   return (
     <div className="mt-3 grid gap-2 sm:grid-cols-2">
       {options.map((option, index) => (
-        <div key={`${stringValue(option, "id") || stringValue(option, "optionId") || index}`} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm text-[var(--text-soft)]">
-          <RichHtml html={stringValue(option, "title") || stringValue(option, "content") || stringValue(option, "value")} compact />
+        <div key={`${stringValue(option, "id") || stringValue(option, "optionId") || index}`} className="rounded-[var(--radius-sm)] border border-[var(--border)]/70 bg-[var(--card)]/75 px-3 py-2 text-sm text-[var(--text-soft)]">
+          <RichHtml html={optionText(option)} compact />
         </div>
       ))}
     </div>
@@ -301,12 +309,19 @@ function AnswerBlock({ answer }: { answer: IeltsAnswer }) {
 
 function RichHtml({ html, compact = false }: { html?: string | null; compact?: boolean }) {
   if (!html) return null;
-  return <div className={cn("max-w-none text-sm leading-7 text-[var(--text-soft)] [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text-soft)] [&_a]:!text-[var(--primary)] [&_em]:!text-[var(--text)] [&_img]:my-3 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_p]:my-2 [&_strong]:!text-[var(--text)] [&_table]:my-3 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-[var(--border)] [&_td]:p-2 [&_th]:border [&_th]:border-[var(--border)] [&_th]:p-2 [&_u]:!text-[var(--text)]", compact && "leading-6")} dangerouslySetInnerHTML={{ __html: normalizeQuestionBlanks(html) }} />;
+  return <div className={cn("max-w-none text-[15px] leading-8 text-[var(--text-soft)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text-soft)] [&_a]:!text-[var(--primary)] [&_em]:!text-[var(--text)] [&_img]:my-3 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-2.5 [&_strong]:!font-semibold [&_strong]:!text-[var(--text)] [&_table]:my-3 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-[var(--border)] [&_td]:p-2.5 [&_th]:border [&_th]:border-[var(--border)] [&_th]:p-2.5 [&_u]:!text-[var(--text)]", compact && "text-sm leading-7")} dangerouslySetInnerHTML={{ __html: normalizeQuestionBlanks(html) }} />;
 }
 
 function arrayValue(record: Record<string, unknown>, key: string) {
   const value = record[key];
   return Array.isArray(value) ? value.filter((item): item is Record<string, unknown> => Boolean(item) && typeof item === "object" && !Array.isArray(item)) : [];
+}
+
+function stringArrayValue(record: Record<string, unknown>, key: string) {
+  const value = record[key];
+  if (Array.isArray(value)) return value.map((item) => typeof item === "string" || typeof item === "number" ? `${item}` : "").filter(Boolean);
+  if (typeof value === "string" || typeof value === "number") return [`${value}`];
+  return [];
 }
 
 function stringValue(record: Record<string, unknown>, key: string) {
@@ -316,8 +331,23 @@ function stringValue(record: Record<string, unknown>, key: string) {
   return "";
 }
 
+function recordValue(record: Record<string, unknown>, key: string) {
+  const value = record[key];
+  return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
+}
+
 function stripHtml(value: string) {
-  return normalizeQuestionBlanks(value).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return decodeHtmlEntities(normalizeQuestionBlanks(value).replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
+}
+
+function decodeHtmlEntities(value: string) {
+  return value
+    .replace(/&nbsp;|&#160;|&#xA0;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, "\"")
+    .replace(/&#39;|&apos;/gi, "'");
 }
 
 function isRedundantBlankQuestion(label: string, title: string) {
@@ -329,6 +359,16 @@ function isRedundantBlankQuestion(label: string, title: string) {
 
 function normalizeQuestionLabel(value: string) {
   return value.replace(/[.)。．、\s]/g, "").trim();
+}
+
+function isAnswerOnlyQuestion(label: string, title: string, answers: string[]) {
+  const cleanTitle = normalizeQuestionLabel(stripHtml(title)).toLowerCase();
+  if (!cleanTitle || answers.length === 0) return false;
+  return answers.some((answer) => {
+    const cleanAnswer = normalizeQuestionLabel(stripHtml(answer)).toLowerCase();
+    if (!cleanAnswer) return false;
+    return cleanTitle === cleanAnswer || cleanTitle === `${normalizeQuestionLabel(label).toLowerCase()}${cleanAnswer}` || cleanTitle === `question${normalizeQuestionLabel(label).toLowerCase()}${cleanAnswer}`;
+  });
 }
 
 function answerText(row: Record<string, unknown>, options: Record<string, unknown>[]) {
@@ -343,13 +383,139 @@ function answerText(row: Record<string, unknown>, options: Record<string, unknow
   }).join(" / ");
 }
 
+function getAnswerValues(answer?: IeltsAnswer) {
+  const rows = answer?.answer_data.answers ?? [];
+  return rows.flatMap((row) => {
+    const direct = stringValue(row, "answer_value");
+    const values = stringArrayValue(row, "answer_values");
+    return [...values, direct].flatMap((value) => value.split(/\s*[/|]\s*/)).map((value) => stripHtml(value).trim()).filter(Boolean);
+  });
+}
+
+function removeTrailingInlineAnswers(html: string, answers: string[]) {
+  if (!html || answers.length === 0) return html;
+  const lastBlankIndex = Math.max(
+    ...[...html.matchAll(/#{2,}\s*-\s*\d{1,3}\s*-\s*#{2,}/g), ...html.matchAll(/\[blank\]\s*\[\/blank\]/gi)].map((match) => match.index ?? -1),
+  );
+  if (lastBlankIndex < 0) return html;
+
+  const suffix = html.slice(lastBlankIndex);
+  const normalizedAnswers = [...new Set(answers.map(normalizeAnswerToken).filter((answer) => answer.length >= 2))];
+  const matchedAnswers = normalizedAnswers.filter((answer) => normalizeAnswerToken(suffix).includes(answer));
+  if (matchedAnswers.length < Math.min(3, normalizedAnswers.length)) return html;
+
+  const firstAnswerIndex = normalizedAnswers.reduce((earliest, answer) => {
+    const index = suffix.toLowerCase().search(new RegExp(escapeRegExp(answer), "i"));
+    return index >= 0 ? Math.min(earliest, index) : earliest;
+  }, Number.POSITIVE_INFINITY);
+
+  return Number.isFinite(firstAnswerIndex) ? html.slice(0, lastBlankIndex + firstAnswerIndex).trim() : html;
+}
+
+function removeDuplicatePassageTitle(html: string, title: string) {
+  const cleanTitle = stripHtml(title);
+  if (!html || !cleanTitle) return html;
+  const escapedTitle = escapeRegExp(cleanTitle);
+  return html
+    .replace(new RegExp(`(<p[^>]*>\\s*)${escapedTitle}(\\s*</p>)`, "gi"), "")
+    .replace(new RegExp(`(<div[^>]*>\\s*)${escapedTitle}(\\s*</div>)`, "gi"), "")
+    .replace(new RegExp(`((?:<br\\s*/?>|&nbsp;|\\s)+)${escapedTitle}\\s*$`, "gi"), "")
+    .trim();
+}
+
+function removeDuplicateReadingPassage(html: string, title: string, passageText: string, questionStart: number) {
+  const cleanTitle = stripHtml(title);
+  const cleanPassage = stripHtml(passageText);
+  if (!html || !cleanTitle) return html;
+
+  const titleMatch = new RegExp(escapeRegExp(cleanTitle), "i").exec(html);
+  if (!titleMatch) return html;
+
+  const beforeTitle = html.slice(0, titleMatch.index).trim();
+  const afterTitle = html.slice(titleMatch.index + titleMatch[0].length);
+  const passageSample = cleanPassage.length >= 300 ? cleanPassage.split(/\s+/).slice(0, 18).join(" ") : "";
+  const normalizedSample = normalizeComparableText(passageSample);
+  const hasMatchingPassageSample = Boolean(normalizedSample && normalizeComparableText(stripHtml(afterTitle)).includes(normalizedSample));
+  const hasDuplicatedPassageShape = looksLikeDuplicatedReadingPassage(afterTitle);
+  if (!hasMatchingPassageSample && !hasDuplicatedPassageShape) return html;
+
+  const questionMarkerIndex = findQuestionMarkerIndex(afterTitle, questionStart);
+  if (questionMarkerIndex < 0) return beforeTitle;
+
+  return `${beforeTitle}\n\n${afterTitle.slice(questionMarkerIndex).trim()}`.trim();
+}
+
+function looksLikeDuplicatedReadingPassage(html: string) {
+  const text = stripHtml(html);
+  const hasEarlyParagraphA = /(?:^|\s)A\s*\.\s+\S+/i.test(text.slice(0, 600));
+  const paragraphLabels = text.match(/(?:^|\s)[A-G]\s*\.\s+/g) ?? [];
+  return hasEarlyParagraphA && paragraphLabels.length >= 3;
+}
+
+function findQuestionMarkerIndex(html: string, questionStart: number) {
+  const exact = new RegExp(`Question(?:\\s|&nbsp;|&#160;|&#xA0;|<[^>]*>)+${questionStart}\\b`, "i").exec(html);
+  if (exact?.index !== undefined) return exact.index;
+  const any = /Question(?:\s|&nbsp;|&#160;|&#xA0;|<[^>]*>)+\d{1,3}\b/i.exec(html);
+  return any?.index ?? -1;
+}
+
+function isAnswerOptionList(options: Record<string, unknown>[], answers: string[]) {
+  if (options.length === 0 || answers.length === 0) return false;
+  const normalizedAnswers = new Set(answers.map(normalizeAnswerToken).filter(Boolean));
+  const optionTexts = options.map((option) => normalizeAnswerToken(optionText(option))).filter(Boolean);
+  if (optionTexts.length === 0) return false;
+  const matchedCount = optionTexts.filter((option) => normalizedAnswers.has(option)).length;
+  return matchedCount >= Math.min(3, optionTexts.length) && matchedCount / optionTexts.length >= 0.7;
+}
+
+function hasBlankPlaceholder(value: string) {
+  return /#{2,}\s*-\s*\d{1,3}\s*-\s*#{2,}/.test(value) || /\[blank\]\s*\[\/blank\]/i.test(value) || /_{3,}\s*\d{1,3}\s*_{3,}/.test(value);
+}
+
+function isAnswerBankOptionList(options: Record<string, unknown>[]) {
+  const optionTexts = options.map(optionText).map(stripHtml).map((text) => text.trim()).filter(Boolean);
+  if (optionTexts.length < 3) return false;
+  const choiceLikeCount = optionTexts.filter((text) => /^[A-Z]\s+/.test(text) || /^[A-Z][.)]\s*/.test(text)).length;
+  if (choiceLikeCount >= Math.ceil(optionTexts.length * 0.5)) return false;
+  const shortTextCount = optionTexts.filter((text) => text.split(/\s+/).length <= 4 && !/[?.!。？！]/.test(text)).length;
+  return shortTextCount / optionTexts.length >= 0.8;
+}
+
+function optionText(option: Record<string, unknown>) {
+  return stringValue(option, "title") || stringValue(option, "content") || stringValue(option, "value") || stringValue(option, "label") || stringValue(option, "text") || stringValue(option, "name");
+}
+
+function normalizeAnswerToken(value: string) {
+  return stripHtml(value).toLowerCase().replace(/&nbsp;/g, " ").replace(/[^a-z0-9\u4e00-\u9fff]+/gi, " ").trim();
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeComparableText(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/gi, " ").replace(/\s+/g, " ").trim();
+}
+
+function normalizedSourceAssetUrl(value: string) {
+  if (!value) return "";
+  if (value.startsWith("//")) return `https:${value}`;
+  if (value.startsWith("/")) return `https://www.winielts.com${value}`;
+  return value;
+}
+
 function buildAudioItems({ assets, sections, bookNumber, testNumber }: { assets: IeltsAsset[]; sections: IeltsSection[]; bookNumber?: number; testNumber: number }) {
   const sectionSources = new Map<string, IeltsSection>();
   sections.forEach((section) => {
-    const audio = stringValue(section.raw_data, "audio");
-    const analysisAudio = stringValue(section.raw_data, "analysisAudio");
+    const audio = normalizedSourceAssetUrl(stringValue(section.raw_data, "audio"));
+    const analysisAudio = normalizedSourceAssetUrl(stringValue(section.raw_data, "analysisAudio"));
+    const detail = recordValue(section.raw_data, "detail");
+    const audioUrl = normalizedSourceAssetUrl(stringValue(detail, "audioUrl"));
+    const listenAudio = normalizedSourceAssetUrl(stringValue(detail, "listenAudio"));
     if (audio) sectionSources.set(audio, section);
     if (analysisAudio) sectionSources.set(analysisAudio, section);
+    if (audioUrl) sectionSources.set(audioUrl, section);
+    if (listenAudio) sectionSources.set(listenAudio, section);
   });
 
   return assets.map((asset) => {
@@ -374,5 +540,10 @@ function buildAudioItems({ assets, sections, bookNumber, testNumber }: { assets:
 }
 
 function normalizeQuestionBlanks(value: string) {
-  return value.replace(/#{2,}\s*-\s*(\d{1,3})\s*-\s*#{2,}/g, "_____$1______");
+  return value
+    .replace(/#{2,}\s*-\s*(\d{1,3})\s*-\s*#{2,}/g, "_____$1______")
+    .replace(/(\d{1,3})\s*\[blank\]\s*\[\/blank\]/gi, "_____$1______")
+    .replace(/\[blank\]\s*(\d{1,3})\s*\[\/blank\]/gi, "_____$1______")
+    .replace(/\[blank\]\s*\[\/blank\]\s*(\d{1,3})/gi, "_____$1______")
+    .replace(/\[blank\]\s*\[\/blank\]/gi, "______");
 }

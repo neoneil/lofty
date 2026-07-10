@@ -44,7 +44,7 @@ const sections = [
   {
     title: "雅思练习题",
     description:
-      "按剑桥雅思 21-16 浏览完整练习资料，集中查看听力、阅读、写作与后续口语内容。",
+      "按剑桥雅思 21-7 浏览完整练习资料，集中查看听力、阅读、写作与后续口语内容。",
     href: "/ielts/practice",
     icon: LibraryBig,
   },

@@ -6,6 +6,7 @@ import { IeltsBookSelector } from "@/components/ielts-practice/book-selector";
 import { IeltsPracticeDetail } from "@/components/ielts-practice/practice-detail";
 import { Badge } from "@/components/ui-v2/badge";
 import { requireUser } from "@/lib/auth/require-user";
+import { isSupportedIeltsPracticeBook } from "@/lib/ielts/books";
 import { getIeltsBookPracticeData, getIeltsPracticeSummaries } from "@/lib/ielts/practice";
 
 type Props = {
@@ -17,7 +18,7 @@ export default async function IeltsPracticeBookPage({ params, searchParams }: Pr
   const { bookNumber } = await params;
   const { test } = await searchParams;
   const parsedBookNumber = Number(bookNumber);
-  if (![21, 20, 19, 18, 17, 16].includes(parsedBookNumber)) notFound();
+  if (!isSupportedIeltsPracticeBook(parsedBookNumber)) notFound();
   const requestedTestNumber = Number(test);
 
   const nextPath = test ? `/ielts/practice/${bookNumber}?test=${encodeURIComponent(test)}` : `/ielts/practice/${bookNumber}`;

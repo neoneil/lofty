@@ -1,3 +1,5 @@
+import { IELTS_PRACTICE_BOOK_NUMBERS } from "@/lib/ielts/books";
+
 type QueryResult<T> = PromiseLike<{ data: T[] | null; error: { message: string } | null }>;
 
 type QueryBuilder<T> = QueryResult<T> & {
@@ -13,6 +15,8 @@ type SupabaseLike = {
     };
   };
 };
+
+const QUERY_CHUNK_SIZE = 60;
 
 export type IeltsBook = {
   id: string;
@@ -116,6 +120,14 @@ async function runQuery<T>(query: QueryResult<T>) {
   return data ?? [];
 }
 
+async function runInChunks<T>(values: Array<string | number>, buildQuery: (chunk: Array<string | number>) => QueryResult<T>) {
+  const rows: T[] = [];
+  for (let index = 0; index < values.length; index += QUERY_CHUNK_SIZE) {
+    rows.push(...await runQuery<T>(buildQuery(values.slice(index, index + QUERY_CHUNK_SIZE))));
+  }
+  return rows;
+}
+
 function ids(rows: Array<{ id: string }>) {
   return rows.map((row) => row.id);
 }
@@ -144,22 +156,26 @@ type AssetSummaryRow = {
 export async function getIeltsPracticeSummaries(client: unknown): Promise<IeltsPracticeSummary[]> {
   const schema = (client as SupabaseLike).schema("ielts");
   const books = await runQuery<IeltsBook>(
-    schema.from("cambridge_books").select<IeltsBook>("id, book_number, title, is_active").in("book_number", [21, 20, 19, 18, 17, 16]).order("book_number", { ascending: false }),
+    schema.from("cambridge_books").select<IeltsBook>("id, book_number, title, is_active").in("book_number", [...IELTS_PRACTICE_BOOK_NUMBERS]).order("book_number", { ascending: false }),
   );
   const tests = books.length > 0 ? await runQuery<IeltsTest>(
     schema.from("tests").select<IeltsTest>("id, book_id, test_number, title").in("book_id", ids(books)).order("test_number", { ascending: true }),
   ) : [];
-  const modules = tests.length > 0 ? await runQuery<ModuleSummaryRow>(
-    schema.from("test_modules").select<ModuleSummaryRow>("id, test_id").in("test_id", ids(tests)),
+  const modules = tests.length > 0 ? await runInChunks<ModuleSummaryRow>(
+    ids(tests),
+    (chunk) => schema.from("test_modules").select<ModuleSummaryRow>("id, test_id").in("test_id", chunk),
   ) : [];
-  const sections = modules.length > 0 ? await runQuery<SectionSummaryRow>(
-    schema.from("sections").select<SectionSummaryRow>("id, module_id").in("module_id", ids(modules)),
+  const sections = modules.length > 0 ? await runInChunks<SectionSummaryRow>(
+    ids(modules),
+    (chunk) => schema.from("sections").select<SectionSummaryRow>("id, module_id").in("module_id", chunk),
   ) : [];
-  const questions = sections.length > 0 ? await runQuery<QuestionSummaryRow>(
-    schema.from("questions").select<QuestionSummaryRow>("id, section_id").in("section_id", ids(sections)),
+  const questions = sections.length > 0 ? await runInChunks<QuestionSummaryRow>(
+    ids(sections),
+    (chunk) => schema.from("questions").select<QuestionSummaryRow>("id, section_id").in("section_id", chunk),
   ) : [];
-  const assets = tests.length > 0 ? await runQuery<AssetSummaryRow>(
-    schema.from("assets").select<AssetSummaryRow>("id, book_id, test_id").in("test_id", ids(tests)),
+  const assets = tests.length > 0 ? await runInChunks<AssetSummaryRow>(
+    ids(tests),
+    (chunk) => schema.from("assets").select<AssetSummaryRow>("id, book_id, test_id").in("test_id", chunk),
   ) : [];
 
   return books.map((book) => {
@@ -195,20 +211,25 @@ export async function getIeltsBookPracticeData(client: unknown, bookNumber: numb
   );
   const activeTest = tests.find((test) => test.test_number === testNumber) ?? tests[0];
   const activeTests = activeTest ? [activeTest] : [];
-  const modules = activeTests.length > 0 ? await runQuery<IeltsModule>(
-    schema.from("test_modules").select<IeltsModule>("id, test_id, module_type, title, duration_minutes, sort_order, raw_data").in("test_id", ids(activeTests)).order("sort_order", { ascending: true }),
+  const modules = activeTests.length > 0 ? await runInChunks<IeltsModule>(
+    ids(activeTests),
+    (chunk) => schema.from("test_modules").select<IeltsModule>("id, test_id, module_type, title, duration_minutes, sort_order, raw_data").in("test_id", chunk).order("sort_order", { ascending: true }),
   ) : [];
-  const sections = modules.length > 0 ? await runQuery<IeltsSection>(
-    schema.from("sections").select<IeltsSection>("id, module_id, section_number, title, instruction, passage_title, passage_text, sort_order, raw_data").in("module_id", ids(modules)).order("sort_order", { ascending: true }),
+  const sections = modules.length > 0 ? await runInChunks<IeltsSection>(
+    ids(modules),
+    (chunk) => schema.from("sections").select<IeltsSection>("id, module_id, section_number, title, instruction, passage_title, passage_text, sort_order, raw_data").in("module_id", chunk).order("sort_order", { ascending: true }),
   ) : [];
-  const questions = sections.length > 0 ? await runQuery<IeltsQuestion>(
-    schema.from("questions").select<IeltsQuestion>("id, section_id, question_number_start, question_number_end, question_type, prompt, instruction, content, options, sort_order").in("section_id", ids(sections)).order("sort_order", { ascending: true }),
+  const questions = sections.length > 0 ? await runInChunks<IeltsQuestion>(
+    ids(sections),
+    (chunk) => schema.from("questions").select<IeltsQuestion>("id, section_id, question_number_start, question_number_end, question_type, prompt, instruction, content, options, sort_order").in("section_id", chunk).order("sort_order", { ascending: true }),
   ) : [];
-  const answers = questions.length > 0 ? await runQuery<IeltsAnswer>(
-    schema.from("answers").select<IeltsAnswer>("id, question_id, answer_data, explanation").in("question_id", ids(questions)),
+  const answers = questions.length > 0 ? await runInChunks<IeltsAnswer>(
+    ids(questions),
+    (chunk) => schema.from("answers").select<IeltsAnswer>("id, question_id, answer_data, explanation").in("question_id", chunk),
   ) : [];
-  const assets = activeTests.length > 0 ? await runQuery<IeltsAsset>(
-    schema.from("assets").select<IeltsAsset>("id, book_id, test_id, module_id, section_id, question_id, asset_type, bucket, storage_path, public_url, mime_type, duration_seconds, metadata").in("test_id", ids(activeTests)),
+  const assets = activeTests.length > 0 ? await runInChunks<IeltsAsset>(
+    ids(activeTests),
+    (chunk) => schema.from("assets").select<IeltsAsset>("id, book_id, test_id, module_id, section_id, question_id, asset_type, bucket, storage_path, public_url, mime_type, duration_seconds, metadata").in("test_id", chunk),
   ) : [];
 
   return { book, tests, modules, sections, questions, answers, assets };
