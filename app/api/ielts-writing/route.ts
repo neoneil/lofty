@@ -5,6 +5,9 @@ import { createClient } from "@/lib/supabase/server";
 import type {
   IELTSWritingTask2Request,
   IELTSTask2ReviewResult,
+  ParagraphAnalysis,
+  ParagraphRole,
+  SupportQuality,
 } from "@/types/ielts-writing";
 
 const openai = new OpenAI({
@@ -13,23 +16,15 @@ const openai = new OpenAI({
 
 const AI_FEATURE = "ielts_writing_review";
 const AI_MODEL = "gpt-4o-mini";
+const AI_REQUEST_TIMEOUT_MS = 90_000;
 
 const SYSTEM_PROMPT = `
 You are a professional IELTS Writing Task 2 examiner and writing coach.
-
-You must evaluate the essay based on IELTS Writing Task 2 band descriptors.
 
 Return ONLY valid JSON.
 Do not return markdown.
 Do not return explanations outside JSON.
 Do not include comments or trailing commas.
-
-The goal is to provide:
-1. Overall IELTS band feedback.
-2. Paragraph-level analysis.
-3. Sentence-by-sentence clickable feedback.
-4. Detailed error diagnosis for each sentence.
-5. Multiple upgraded versions of each sentence.
 
 Use IELTS Writing Task 2 standards:
 - Task Response
@@ -38,38 +33,6 @@ Use IELTS Writing Task 2 standards:
 - Grammatical Range and Accuracy
 
 Band scores must be from 0 to 9 in 0.5 increments.
-
-Essay types must be one of:
-- agree_disagree
-- discussion
-- advantages_disadvantages
-- problem_solution
-- double_question
-- mixed
-
-Stance style must be one of:
-- one-sided
-- balanced
-- unclear
-
-Stance consistency must be one of:
-- clear
-- mostly_clear
-- unclear
-- inconsistent
-
-Logic quality must be one of:
-- strong
-- adequate
-- weak
-
-Paragraph role must be one of:
-- introduction
-- body_1
-- body_2
-- body_3
-- conclusion
-- other
 
 Language issue type must be one of:
 - grammar
@@ -95,26 +58,23 @@ Support quality must be one of:
 - weak
 
 Rules:
-- Automatically split the essay into paragraphs.
-- Automatically split each paragraph into sentences.
-- Keep the original order of paragraphs and sentences.
-- Every paragraph must have a paragraph_id such as p1, p2, p3.
-- Every sentence must have a sentence_id such as p1_s1, p1_s2.
-- Every sentence must include detailed feedback, even if it has no serious error.
-- Do not invent errors.
-- Focus on errors and improvements that affect IELTS band scores.
-- For every sentence, you MUST provide at least 3 wording/collocation items. These items should use issue_type from word_choice, word_form, part_of_speech, or collocation.
-- For every sentence, you MUST provide at least 3 sentence grammar/structure items. These items should use issue_type from grammar, sentence_structure, word_order, punctuation, or cohesion.
-- If there are not enough real errors in either category, provide upgrade opportunities instead. For upgrade opportunities, keep severity as low, set original_text to the relevant phrase or sentence part, suggested_text to the improved wording, and explain in Chinese that it is an upgrade point rather than a mistake.
-- For word_choice issues, clearly compare the original word and the suggested word.
-- For collocation issues, explain why the original combination is unnatural or how it can sound more academic/natural.
-- For word_order issues, explain whether the sentence follows natural English order.
-- For sentence_structure issues, explain whether the sentence is too simple, fragmented, run-on, or awkward, or how the structure can be upgraded.
-- Use chinglish when the sentence is grammatically understandable but follows unnatural Chinese-influenced English expression, logic, phrasing, or collocation.
-- All user-facing feedback, comments, explanations, band impact, micro-fix reasoning, paragraph feedback, overall feedback, and priority actions must be in Simplified Chinese.
-- Fields ending with _en should use concise English.
-- Keep the student's original English text exactly where original_text or original_sentence is requested.
-- Return stable structured JSON that the frontend can render directly.
+- The server already split the essay into paragraph_id and sentence_id. Use those ids exactly.
+- Return only the requested compact JSON shape.
+- Keep all user-facing explanations, comments, score feedback, idea assessment, and action advice in Simplified Chinese.
+- In writing_correction.changes, operation must be English only: Added, Deleted, or Replaced.
+- In writing_correction.changes, explanation_cn must be Simplified Chinese.
+- original_text should be a short exact span from the mapped sentence. revised_text should be the replacement/addition.
+- Return 6 to 12 high-value writing_correction changes only.
+- Use Added for missing articles, prepositions, linking words, punctuation, or necessary words.
+- Use Deleted for redundant words, repeated words, incorrect extra words, or unnecessary phrases.
+- Use Replaced for incorrect words, awkward phrases, wrong collocations, or grammar structures that need substitution.
+- A realistic correction list should normally contain a mix of Added, Deleted, and Replaced when the essay has multiple errors.
+- If the essay clearly has missing words and redundant words, include at least 2 Added changes and at least 2 Deleted changes. Do not force this only when no such issue exists.
+- Do not invent tiny issues. Prefer band-relevant corrections.
+- band8_model_essay.band8_essay must be natural English.
+- band8_model_essay.band8_essay must be separated into clear IELTS paragraphs with blank lines between paragraphs: introduction, body paragraph 1, body paragraph 2, and conclusion.
+- band8_model_essay must include feedback on both thinking quality and detail development quality.
+- Keep Chinese explanations concise, usually 1 sentence.
 `;
 
 function countWords(text: string) {
@@ -124,28 +84,88 @@ function countWords(text: string) {
     .filter(Boolean).length;
 }
 
+function inferParagraphRole(index: number, total: number): ParagraphRole {
+  if (index === 0) return "introduction";
+  if (index === total - 1 && total >= 4) return "conclusion";
+  if (index === 1) return "body_1";
+  if (index === 2) return "body_2";
+  if (index === 3) return "body_3";
+  return "other";
+}
+
+function splitSentences(text: string) {
+  const matches = text.match(/[^.!?]+[.!?]+(?:["')\]]+)?|[^.!?]+$/g);
+  return (matches ?? [text]).map((sentence) => sentence.trim()).filter(Boolean);
+}
+
+function buildParagraphsFromEssay(essayText: string): ParagraphAnalysis[] {
+  const rawParagraphs = essayText.split(/\n{2,}/).map((paragraph) => paragraph.trim()).filter(Boolean);
+  const paragraphs = rawParagraphs.length ? rawParagraphs : [essayText.trim()];
+  const total = paragraphs.length;
+
+  return paragraphs.map((paragraphText, paragraphIndex) => {
+    const paragraphNumber = paragraphIndex + 1;
+    const paragraphId = `p${paragraphNumber}`;
+    const role = inferParagraphRole(paragraphIndex, total);
+    const sentences = splitSentences(paragraphText).map((sentence, sentenceIndex) => {
+      const sentenceNumber = sentenceIndex + 1;
+      return {
+        sentence_id: `${paragraphId}_s${sentenceNumber}`,
+        sentence_number: sentenceNumber,
+        original_sentence: sentence,
+        corrected_sentence: "",
+        plus_0_5_version: "",
+        band8_version: "",
+        band9_version: "",
+        explanation_cn: "",
+        explanation_en: "",
+        sentence_level_comment_cn: "",
+        sentence_level_comment_en: "",
+        issues: [],
+      };
+    });
+
+    return {
+      paragraph_id: paragraphId,
+      paragraph_number: paragraphNumber,
+      role,
+      original_text: paragraphText,
+      paragraph_feedback_cn: "",
+      paragraph_feedback_en: "",
+      logic_feedback: "",
+      support_quality: "adequate" as SupportQuality,
+      sentences,
+    };
+  });
+}
+
+function buildEssayMap(paragraphs: ParagraphAnalysis[]) {
+  return paragraphs
+    .map((paragraph) => {
+      const sentences = paragraph.sentences.map((sentence) => `${sentence.sentence_id}: ${sentence.original_sentence}`).join("\n");
+      return `${paragraph.paragraph_id} (${paragraph.role})\n${sentences}`;
+    })
+    .join("\n\n");
+}
+
 function buildUserPrompt(data: IELTSWritingTask2Request) {
+  const paragraphs = buildParagraphsFromEssay(data.essayText);
+  const essayMap = buildEssayMap(paragraphs);
+
   return `
 Evaluate the following IELTS Writing Task 2 essay.
 
 Essay Question:
 ${data.promptQuestion}
 
-Student Essay:
-${data.essayText}
+Student Essay Map:
+${essayMap}
 
 ${data.targetBand ? `Target Band: ${data.targetBand}` : ""}
 
-Return JSON in this exact structure. Keep both the legacy fields and the upgraded fields populated:
+Return JSON in this exact compact structure:
 {
-  "task": "IELTS Writing Task 2",
-  "word_count": number,
   "estimated_overall_band": number,
-  "essay_type": "",
-  "stance_style": "",
-  "stance_consistency": "",
-  "logic_quality": "",
-  "overall_band": number,
   "scores": {
     "task_response": number,
     "coherence_cohesion": number,
@@ -160,91 +180,21 @@ Return JSON in this exact structure. Keep both the legacy fields and the upgrade
   },
   "overall_feedback": {
     "summary_cn": "",
-    "summary_en": "",
     "main_strengths": [],
     "main_weaknesses": [],
     "priority_actions": []
   },
   "overall_assessment": {
-    "essay_type": "",
-    "stance_style": "",
-    "stance_consistency": "",
-    "logic_quality": "",
+    "essay_type": "agree_disagree",
+    "stance_style": "one-sided",
+    "stance_consistency": "clear",
+    "logic_quality": "adequate",
     "main_strengths": [],
     "main_problems": []
   },
-  "paragraph_feedback": [
-    {
-      "paragraph_number": number,
-      "paragraph_role": "",
-      "summary": "Chinese paragraph summary",
-      "strengths": [],
-      "problems": [],
-      "suggestions": []
-    }
-  ],
-  "paragraphs": [
-    {
-      "paragraph_id": "p1",
-      "paragraph_number": 1,
-      "role": "",
-      "original_text": "",
-      "paragraph_feedback_cn": "",
-      "paragraph_feedback_en": "",
-      "logic_feedback": "",
-      "support_quality": "strong",
-      "sentences": [
-        {
-          "sentence_id": "p1_s1",
-          "sentence_number": 1,
-          "original_sentence": "",
-          "corrected_sentence": "",
-          "plus_0_5_version": "",
-          "band8_version": "",
-          "band9_version": "",
-          "explanation_cn": "",
-          "explanation_en": "",
-          "sentence_level_comment_cn": "",
-          "sentence_level_comment_en": "",
-          "issues": [
-            {
-              "issue_type": "grammar",
-              "severity": "medium",
-              "original_text": "",
-              "suggested_text": "",
-              "explanation_cn": "",
-              "explanation_en": "",
-              "band_impact": "",
-              "micro_fix": "",
-              "better_version": "",
-              "band8_version": "",
-              "band9_version": ""
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "language_issues": [
-    {
-      "original": "",
-      "issue_type": "grammar",
-      "explanation": "Chinese explanation",
-      "suggested_revision": ""
-    }
-  ],
-  "top_10_language_issues": [
-    {
-      "issue_type": "grammar",
-      "original_text": "",
-      "suggested_text": "",
-      "explanation_cn": "",
-      "explanation_en": ""
-    }
-  ],
   "argument_feedback": {
     "main_points_supported": boolean,
-    "support_quality": "strong",
+    "support_quality": "adequate",
     "methods_used": [],
     "methods_missing": [],
     "comment": "Chinese rubric comment"
@@ -255,21 +205,135 @@ Return JSON in this exact structure. Keep both the legacy fields and the upgrade
     "priority_3": "",
     "next_step_advice": ""
   },
-  "final_rewritten_essay": {
-    "band7_version": "",
-    "band8_version": "",
-    "band9_version": ""
+  "writing_correction": {
+    "corrected_essay": "",
+    "changes": [
+      {
+        "change_id": "c1",
+        "paragraph_id": "p1",
+        "sentence_id": "p1_s1",
+        "operation": "Replaced",
+        "category": "grammar",
+        "severity": "medium",
+        "original_text": "",
+        "revised_text": "",
+        "explanation_cn": "中文解释"
+      }
+    ]
+  },
+  "band8_model_essay": {
+    "keep_student_core_idea": true,
+    "idea_assessment_cn": "中文说明：学生原思路是否成立。如果成立，说明如何保留并强化；如果不成立，说明哪里需要调整。",
+    "current_idea_detail_feedback_cn": [],
+    "improved_thinking_cn": [],
+    "detail_upgrade_suggestions_cn": [],
+    "band8_essay": "",
+    "why_band8_cn": []
   }
 }
 
 Important:
-- The paragraphs array is the source of truth for frontend rendering.
-- The frontend will not split text itself, so paragraphs and sentences must preserve the student's original order.
-- Paragraph count can be fewer or more than four.
-- Each sentence must include at least 6 issues or upgrade opportunities in total: at least 3 wording/collocation items and at least 3 sentence grammar/structure items. Do not use an empty issues array.
-- top_10_language_issues should summarize the most important issues across the essay.
+- Do NOT return paragraphs.
+- Do NOT return sentence-by-sentence issue arrays.
+- Use only sentence_id values from Student Essay Map.
+- writing_correction.changes should include the most important Word-style corrections across the whole essay. Prefer 6 to 12 high-value changes.
+- Do not return only Replaced unless the essay truly has no missing words and no redundant words.
+- For Added, original_text should be a nearby anchor phrase from the original sentence, and revised_text should be only the added text.
+- For Deleted, original_text should be the exact redundant text, and revised_text should be an empty string.
+- For Replaced, original_text should be exact original span, and revised_text should be the improved span.
+- writing_correction.corrected_essay should be a clean corrected version of the student's essay, not the Band 8 model essay.
+- band8_model_essay.band8_essay should be a complete IELTS Task 2 Band 8 style essay.
+- band8_model_essay.band8_essay must contain paragraph breaks. Use a blank line between each paragraph.
+- band8_model_essay.current_idea_detail_feedback_cn should explain how well the student's existing ideas are developed, including examples, specificity, logic depth, and paragraph support.
+- band8_model_essay.improved_thinking_cn should give 3 to 5 idea-level improvements.
+- band8_model_essay.detail_upgrade_suggestions_cn should give 3 to 5 concrete detail-development suggestions based on the student's existing thinking.
 - Do not include markdown.
 `;
+}
+
+function normalizeReviewResult(
+  parsed: Partial<IELTSTask2ReviewResult>,
+  essayText: string,
+  localWordCount: number,
+): IELTSTask2ReviewResult {
+  const paragraphs = buildParagraphsFromEssay(essayText);
+  const overallBand = parsed.estimated_overall_band ?? parsed.overall_band ?? 0;
+  const scores = parsed.scores ?? {
+    task_response: overallBand,
+    coherence_cohesion: overallBand,
+    lexical_resource: overallBand,
+    grammar_accuracy: overallBand,
+  };
+  const bandScores = parsed.band_scores ?? {
+    task_response: { score: scores.task_response, comment: "" },
+    coherence_and_cohesion: { score: scores.coherence_cohesion, comment: "" },
+    lexical_resource: { score: scores.lexical_resource, comment: "" },
+    grammatical_range_and_accuracy: { score: scores.grammar_accuracy, comment: "" },
+  };
+  const modelEssay = parsed.band8_model_essay ?? {
+    keep_student_core_idea: true,
+    idea_assessment_cn: "",
+    current_idea_detail_feedback_cn: [],
+    improved_thinking_cn: [],
+    detail_upgrade_suggestions_cn: [],
+    band8_essay: parsed.final_rewritten_essay?.band8_version ?? "",
+    why_band8_cn: [],
+  };
+
+  return {
+    task: "IELTS Writing Task 2",
+    word_count: localWordCount,
+    estimated_overall_band: overallBand,
+    essay_type: parsed.overall_assessment?.essay_type ?? "mixed",
+    stance_style: parsed.overall_assessment?.stance_style ?? "unclear",
+    stance_consistency: parsed.overall_assessment?.stance_consistency ?? "unclear",
+    logic_quality: parsed.overall_assessment?.logic_quality ?? "adequate",
+    overall_band: overallBand,
+    scores,
+    band_scores: bandScores,
+    overall_feedback: {
+      summary_cn: parsed.overall_feedback?.summary_cn ?? "",
+      summary_en: parsed.overall_feedback?.summary_en ?? "",
+      main_strengths: parsed.overall_feedback?.main_strengths ?? [],
+      main_weaknesses: parsed.overall_feedback?.main_weaknesses ?? [],
+      priority_actions: parsed.overall_feedback?.priority_actions ?? [],
+    },
+    overall_assessment: {
+      essay_type: parsed.overall_assessment?.essay_type ?? "mixed",
+      stance_style: parsed.overall_assessment?.stance_style ?? "unclear",
+      stance_consistency: parsed.overall_assessment?.stance_consistency ?? "unclear",
+      logic_quality: parsed.overall_assessment?.logic_quality ?? "adequate",
+      main_strengths: parsed.overall_assessment?.main_strengths ?? [],
+      main_problems: parsed.overall_assessment?.main_problems ?? [],
+    },
+    paragraph_feedback: [],
+    paragraphs,
+    language_issues: [],
+    top_10_language_issues: [],
+    argument_feedback: parsed.argument_feedback ?? {
+      main_points_supported: false,
+      support_quality: "adequate",
+      methods_used: [],
+      methods_missing: [],
+      comment: "",
+    },
+    revision_plan: parsed.revision_plan ?? {
+      priority_1: "",
+      priority_2: "",
+      priority_3: "",
+      next_step_advice: "",
+    },
+    final_rewritten_essay: {
+      band7_version: parsed.final_rewritten_essay?.band7_version ?? "",
+      band8_version: modelEssay.band8_essay,
+      band9_version: parsed.final_rewritten_essay?.band9_version ?? "",
+    },
+    writing_correction: parsed.writing_correction ?? {
+      corrected_essay: "",
+      changes: [],
+    },
+    band8_model_essay: modelEssay,
+  };
 }
 
 export async function POST(req: Request) {
@@ -303,6 +367,9 @@ export async function POST(req: Request) {
 
     let completion;
 
+    const abortController = new AbortController();
+    const timeout = setTimeout(() => abortController.abort(), AI_REQUEST_TIMEOUT_MS);
+
     try {
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
@@ -312,6 +379,8 @@ export async function POST(req: Request) {
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: buildUserPrompt(body) },
         ],
+      }, {
+        signal: abortController.signal,
       });
     } catch (error) {
       await recordAiUsage({
@@ -322,7 +391,16 @@ export async function POST(req: Request) {
         errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
       });
 
+      if (abortController.signal.aborted) {
+        return NextResponse.json(
+          { error: "AI 批改超时，请缩短作文或稍后重试。" },
+          { status: 504 },
+        );
+      }
+
       throw error;
+    } finally {
+      clearTimeout(timeout);
     }
 
     await recordAiUsage({
@@ -344,10 +422,10 @@ export async function POST(req: Request) {
       );
     }
 
-    let parsed: IELTSTask2ReviewResult;
+    let parsed: Partial<IELTSTask2ReviewResult>;
 
     try {
-      parsed = JSON.parse(content) as IELTSTask2ReviewResult;
+      parsed = JSON.parse(content) as Partial<IELTSTask2ReviewResult>;
     } catch {
       console.error("AI returned invalid JSON:", content);
       return NextResponse.json(
@@ -359,12 +437,9 @@ export async function POST(req: Request) {
       );
     }
 
-    parsed.word_count = localWordCount;
-    parsed.estimated_overall_band =
-      parsed.estimated_overall_band ?? parsed.overall_band;
-    parsed.overall_band = parsed.overall_band ?? parsed.estimated_overall_band;
+    const normalized = normalizeReviewResult(parsed, body.essayText, localWordCount);
 
-    return NextResponse.json(parsed);
+    return NextResponse.json(normalized);
   } catch (error) {
     console.error("IELTS writing API error:", error);
     return NextResponse.json(

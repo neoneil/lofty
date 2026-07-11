@@ -1,5 +1,4 @@
 import Container from "@/components/site/container";
-import IELTSSubnav from "@/components/site/ielts-subnav";
 import WritingBrowser from "@/components/site/writing-browser";
 import { requireUser } from "@/lib/auth/require-user";
 
@@ -43,11 +42,9 @@ export default async function IeltsWritingPage() {
           </h1>
 
           <p className="max-w-3xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
-            当前展示 Writing Task 2 题库。你可以按话题分类和题型分类快速筛选题目。
+            全球同步 Writing Task 2 真题回忆。
           </p>
         </section>
-
-        <IELTSSubnav current="writing" />
 
         {error ? (
           <p className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">

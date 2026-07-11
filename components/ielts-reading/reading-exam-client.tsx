@@ -4,10 +4,12 @@ import { memo, type CSSProperties, useEffect, useMemo, useRef, useState } from "
 import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
 
+import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
 import { BrandMark } from "@/components/site/brand-mark";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { BRAND_NAME_CN } from "@/lib/brand";
+import { buildIeltsSubmitResult } from "@/lib/ielts/answer-scoring";
 import type { IeltsAnswer, IeltsBookPracticeData, IeltsQuestion, IeltsSection } from "@/lib/ielts/practice";
 import { cn } from "@/lib/utils";
 
@@ -57,6 +59,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   const [canUndoFormat, setCanUndoFormat] = useState(false);
   const [navActive, setNavActive] = useState(false);
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [submitDialogMode, setSubmitDialogMode] = useState<"confirm" | "result" | null>(null);
   const [submitNotice, setSubmitNotice] = useState("");
 
   const readingModule = data.modules.find((module) => module.module_type === "reading");
@@ -68,13 +71,14 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   }), [data.questions, sections]);
   const activePart = useMemo(() => parts[activePartIndex] ?? parts[0] ?? null, [activePartIndex, parts]);
   const officialAnswerByNumber = useMemo(() => {
-    const questionById = new Map(data.questions.map((question) => [question.id, question]));
+    const readingQuestions = parts.flatMap((part) => part.questions);
+    const questionById = new Map(readingQuestions.map((question) => [question.id, question]));
     const rows = data.answers.flatMap((answer) => {
       const question = questionById.get(answer.question_id);
       return question ? getOfficialAnswerRows(question, answer) : [];
     });
     return Object.fromEntries(rows.map((row) => [row.questionNumber, row.answerText]));
-  }, [data.answers, data.questions]);
+  }, [data.answers, parts]);
   const remainingSeconds = Math.max(0, READING_DURATION_SECONDS - elapsedSeconds);
   const overtimeSeconds = Math.max(0, elapsedSeconds - READING_DURATION_SECONDS);
   const isOvertime = elapsedSeconds >= READING_DURATION_SECONDS;
@@ -245,6 +249,11 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
     setNotesOpen(false);
   }
 
+  function handleSubmit() {
+    const result = buildIeltsSubmitResult("reading", answers, officialAnswerByNumber);
+    setSubmitDialogMode(result.unanswered.length > 0 ? "confirm" : "result");
+  }
+
   const splitStyle = { "--left-width": `${splitPercent}%`, "--right-width": `${100 - splitPercent}%` } as CSSProperties & Record<"--left-width" | "--right-width", string>;
 
   if (!data.book || !readingModule) {
@@ -284,7 +293,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
                 <span className="font-bold tabular-nums text-[var(--success)]">{formatTimer(remainingSeconds)}</span>
               )}
             </div>
-            <Button type="button" size="sm" onClick={() => setSubmitNotice("提交功能已预留，后续接入数据库保存。")} className="gap-2 rounded-full">Submit <SendHorizontal size={17} /></Button>
+            <Button type="button" size="sm" onClick={handleSubmit} className="gap-2 rounded-full">Submit <SendHorizontal size={17} /></Button>
           </div>
         </div>
       </header>
@@ -319,6 +328,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
       {selectionToolbar && <SelectionFormatToolbar top={selectionToolbar.top} left={selectionToolbar.left} canUndo={canUndoFormat} onFormat={applySelectionFormat} onUndo={undoLastSelectionFormat} />}
       {timeNotice === "five-minutes" && <TimeNoticePopup type="warning" seconds={remainingSeconds} onClose={() => setTimeNotice(null)} />}
       {timeNotice === "time-up" && <TimeNoticePopup type="time-up" seconds={overtimeSeconds} onClose={() => setTimeNotice(null)} />}
+      {submitDialogMode && <IeltsSubmitDialog moduleType="reading" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
   );

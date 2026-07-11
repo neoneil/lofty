@@ -15,8 +15,8 @@ export function IeltsListeningBookSelector() {
         <Badge className="mb-3 w-fit">IELTS Listening Exam</Badge>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">雅思听力机考练习</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">选择剑桥雅思 21-16，进入 Test 后使用音频播放器、题目导航、倒计时、笔记和 Review 面板进行完整听力训练。</p>
+            <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">剑桥雅思听力练习</h1>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">选择剑桥雅思 21-16，和对应的Test进行学习。</p>
           </div>
           <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm text-[var(--text-soft)]">
             <div className="mb-1 flex items-center gap-2 font-semibold text-[var(--text)]"><Headphones size={17} className="text-[var(--primary)]" />Listening Library</div>

@@ -1,5 +1,4 @@
 import Container from "@/components/site/container";
-import IELTSSubnav from "@/components/site/ielts-subnav";
 import SpeakingBrowser from "@/components/site/speaking-browser";
 import { requireUser } from "@/lib/auth/require-user";
 
@@ -76,12 +75,9 @@ export default async function IeltsSpeakingPage() {
           </h1>
 
           <p className="max-w-3xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
-            本页整合了 Speaking Part 1 与 Speaking Part 2 / 3 题库。
-            点击分类按钮可快速筛选，点击卡片可展开查看完整内容。
+            同步全球近3个月的口语真题 - 题目稳定期间命中率 100%
           </p>
         </section>
-
-        <IELTSSubnav current="speaking" />
 
         {part1Error ? (
           <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">

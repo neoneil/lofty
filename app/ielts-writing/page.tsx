@@ -1,35 +1,22 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  CheckCircle2,
-  FileText,
-  Sparkles,
-  Target,
-} from "lucide-react";
-
+import { CheckCircle2, Download, FileText, Loader2, PenLine, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui-v2/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
-import type {
-  IELTSTask2ReviewResult,
-  SentenceAnalysis,
-} from "@/types/ielts-writing";
+import type { IELTSTask2ReviewResult, SentenceAnalysis, SentenceIssue, WritingCorrectionItem } from "@/types/ielts-writing";
 
-const rubricLabels = [
-  "Task Response",
-  "Coherence",
-  "Vocabulary",
-  "Grammar",
-];
+type CorrectionSpan = { type: "text"; text: string } | { type: "delete"; text: string; change: WritingCorrectionItem } | { type: "insert"; text: string; change: WritingCorrectionItem };
+
+const rubricCards = [
+  { key: "task_response", title: "Task Achievement", subtitle: "回应题目与论证完整度" },
+  { key: "coherence_and_cohesion", title: "Coherence and Cohesion", subtitle: "段落推进与衔接质量" },
+  { key: "lexical_resource", title: "Lexical Resource", subtitle: "词汇准确度与学术表达" },
+  { key: "grammatical_range_and_accuracy", title: "Grammatical Range and Accuracy", subtitle: "句式范围与语法准确性" },
+] as const;
 
 export default function IELTSWritingPage() {
   const [promptQuestion, setPromptQuestion] = useState("");
@@ -38,219 +25,112 @@ export default function IELTSWritingPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<IELTSTask2ReviewResult | null>(null);
-  const [selectedSentenceId, setSelectedSentenceId] = useState<string | null>(null);
+  const [activeChangeId, setActiveChangeId] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError("");
     setResult(null);
-    setSelectedSentenceId(null);
+    setActiveChangeId(null);
+    const abortController = new AbortController();
+    const timeout = window.setTimeout(() => abortController.abort(), 120_000);
 
     try {
-      const res = await fetch("/api/ielts-writing", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          promptQuestion,
-          essayText,
-          feedbackMode: "quick",
-          targetBand: targetBand ? Number(targetBand) : undefined,
-        }),
-      });
-
+      const res = await fetch("/api/ielts-writing", { method: "POST", headers: { "Content-Type": "application/json" }, signal: abortController.signal, body: JSON.stringify({ promptQuestion, essayText, feedbackMode: "quick", targetBand: targetBand ? Number(targetBand) : undefined }) });
       const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Something went wrong.");
-      }
-
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
       setResult(data);
-      const firstSentence = data.paragraphs?.[0]?.sentences?.[0];
-      setSelectedSentenceId(firstSentence?.sentence_id ?? null);
+      setActiveChangeId(getCorrectionItems(data)[0]?.change_id ?? null);
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Unknown error occurred.";
-      setError(message);
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setError("AI 批改超时，请缩短作文或稍后重试。");
+      } else {
+        setError(err instanceof Error ? err.message : "Unknown error occurred.");
+      }
     } finally {
+      window.clearTimeout(timeout);
       setLoading(false);
     }
   }
 
   const essayWordCount = essayText.trim().split(/\s+/).filter(Boolean).length;
-
-  const selectedSentence = useMemo(() => {
-    if (!result || !selectedSentenceId) {
-      return null;
-    }
-
-    return (
-      result.paragraphs
-        .flatMap((paragraph) => paragraph.sentences)
-        .find((sentence) => sentence.sentence_id === selectedSentenceId) ?? null
-    );
-  }, [result, selectedSentenceId]);
+  const correctionItems = useMemo(() => getCorrectionItems(result), [result]);
+  const activeChange = correctionItems.find((item) => item.change_id === activeChangeId) ?? correctionItems[0] ?? null;
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 pb-16 pt-28 text-[var(--text)] sm:px-6 lg:px-8">
-      <section className="mx-auto max-w-7xl">
-        <div className="grid gap-6 lg:grid-cols-[1fr_380px] lg:items-stretch">
-          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
-            <Badge variant="default">IELTS Writing Task 2</Badge>
-            <h1 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
-              雅思大作文 AI 评分与修改建议
-            </h1>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-              粘贴 Task 2 题目和作文，获得预估分数、四项评分、段落反馈、语言问题和下一步修改计划。
-            </p>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-4">
-              {rubricLabels.map((label) => (
-                <div
-                  key={label}
-                  className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3"
-                >
-                  <div className="text-xs font-semibold text-[var(--primary)]">
-                    {label}
-                  </div>
-                  <div className="mt-1 text-xs text-[var(--text-soft)]">
-                    IELTS rubric
-                  </div>
-                </div>
-              ))}
+      <section className="mx-auto max-w-7xl space-y-6">
+        <section className="overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)]">
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_390px]">
+            <div className="p-5 sm:p-7">
+              <Badge variant="default">IELTS Writing Task 2</Badge>
+              <h1 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">雅思大作文 AI 批改与 8 分范文</h1>
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">提交题目与作文后，系统会给出 Word 式动态修改、四项评分、中文解释、思路判断，并基于原思路或优化思路生成 Band 8 范文。</p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-4">
+                {rubricCards.map((card) => <div key={card.key} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3"><div className="text-xs font-semibold text-[var(--primary)]">{card.title}</div><div className="mt-1 text-xs text-[var(--text-soft)]">{card.subtitle}</div></div>)}
+              </div>
+            </div>
+            <div className="border-t border-[var(--border)] bg-[linear-gradient(135deg,var(--primary-soft),var(--card))] p-5 sm:p-7 lg:border-l lg:border-t-0">
+              <div className="grid gap-3">
+                <ProcessItem icon={<FileText size={16} />} text="粘贴题目与学生作文" />
+                <ProcessItem icon={<PenLine size={16} />} text="生成动态语法纠错与中文解释" />
+                <ProcessItem icon={<Sparkles size={16} />} text="输出 Band 8 范文与离线 HTML 报告" />
+              </div>
             </div>
           </div>
+        </section>
 
-          <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
-            <CardHeader className="flex-col items-start gap-1">
-              <CardTitle>使用方式</CardTitle>
-              <CardDescription>
-                输入题目、作文和目标分数，系统会按雅思 Task 2 标准分析。
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <ProcessItem icon={<FileText size={16} />} text="粘贴题目与作文原文" />
-              <ProcessItem icon={<Target size={16} />} text="可选填写目标分数" />
-              <ProcessItem icon={<Sparkles size={16} />} text="生成评分与修改计划" />
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
-          <Card className="rounded-[var(--radius-lg)]">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <Card className="rounded-[var(--radius-xl)]">
             <CardHeader className="flex-col items-start gap-1">
               <CardTitle>提交作文</CardTitle>
-              <CardDescription>
-                建议提交完整 Task 2 作文，反馈会更准确。
-              </CardDescription>
+              <CardDescription>建议提交完整 Task 2 作文，反馈会更准确。</CardDescription>
             </CardHeader>
-
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-[var(--text)]">
-                    Essay Question
-                  </span>
-                  <Textarea
-                    value={promptQuestion}
-                    onChange={(e) => setPromptQuestion(e.target.value)}
-                    placeholder="Paste the IELTS Task 2 prompt here..."
-                    className="min-h-[130px]"
-                    required
-                  />
+                  <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Essay Question</span>
+                  <Textarea value={promptQuestion} onChange={(e) => setPromptQuestion(e.target.value)} placeholder="Paste the IELTS Task 2 prompt here..." className="min-h-[120px]" required />
                 </label>
-
                 <label className="block">
-                  <span className="mb-2 flex items-center justify-between gap-3 text-sm font-semibold text-[var(--text)]">
-                    <span>Student Essay</span>
-                    <span className="text-xs font-medium text-[var(--text-soft)]">
-                      {essayWordCount} words
-                    </span>
-                  </span>
-                  <Textarea
-                    value={essayText}
-                    onChange={(e) => setEssayText(e.target.value)}
-                    placeholder="Paste the student's essay here..."
-                    className="min-h-[360px]"
-                    required
-                  />
+                  <span className="mb-2 flex items-center justify-between gap-3 text-sm font-semibold text-[var(--text)]"><span>Student Essay</span><span className="text-xs font-medium text-[var(--text-soft)]">{essayWordCount} words</span></span>
+                  <Textarea value={essayText} onChange={(e) => setEssayText(e.target.value)} placeholder="Paste the student's essay here..." className="min-h-[320px]" required />
                 </label>
-
                 <div className="grid gap-4 sm:grid-cols-[220px_1fr] sm:items-end">
                   <label className="block">
-                    <span className="mb-2 block text-sm font-semibold text-[var(--text)]">
-                      Target Band
-                    </span>
-                    <Input
-                      type="number"
-                      min="0"
-                      max="9"
-                      step="0.5"
-                      value={targetBand}
-                      onChange={(e) => setTargetBand(e.target.value)}
-                      placeholder="e.g. 6.5"
-                    />
+                    <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Target Band</span>
+                    <Input type="number" min="0" max="9" step="0.5" value={targetBand} onChange={(e) => setTargetBand(e.target.value)} placeholder="e.g. 6.5" />
                   </label>
-
-                  <Button type="submit" disabled={loading} fullWidth>
-                    {loading ? "Checking..." : "Check Essay"}
-                  </Button>
+                  <Button type="submit" disabled={loading} fullWidth>{loading ? <span className="inline-flex items-center gap-2"><Loader2 size={16} className="animate-spin" />正在批改，通常 30-90 秒...</span> : "Check Essay"}</Button>
                 </div>
-
-                {error ? (
-                  <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">
-                    {error}
-                  </div>
-                ) : null}
+                {error ? <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">{error}</div> : null}
               </form>
             </CardContent>
           </Card>
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-            <Card className="rounded-[var(--radius-lg)]">
+            <Card className="rounded-[var(--radius-xl)]">
               <CardHeader className="flex-col items-start gap-1">
                 <CardTitle>当前输入</CardTitle>
-                <CardDescription>
-                  提交前快速检查作文长度和目标。
-                </CardDescription>
+                <CardDescription>提交前快速检查作文长度和目标。</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <MetricCard label="Essay Words" value={essayWordCount || "-"} />
                 <MetricCard label="Target Band" value={targetBand || "-"} />
-                <MetricCard
-                  label="Question"
-                  value={promptQuestion.trim() ? "Ready" : "Missing"}
-                />
+                <MetricCard label="Question" value={promptQuestion.trim() ? "Ready" : "Missing"} />
               </CardContent>
             </Card>
 
             {result ? (
-              <Card className="rounded-[var(--radius-lg)] bg-[var(--primary)] text-white">
+              <Card className="rounded-[var(--radius-xl)] bg-[var(--primary)] text-white">
                 <CardHeader className="flex-col items-start gap-1">
-                  <CardTitle className="text-white">评分完成</CardTitle>
-                  <CardDescription className="text-white/75">
-                    Overall band and word count summary.
-                  </CardDescription>
+                  <CardTitle className="text-white">Overall Score</CardTitle>
+                  <CardDescription className="text-white/75">AI estimated IELTS band.</CardDescription>
                 </CardHeader>
-                <CardContent className="grid grid-cols-2 gap-3">
-                  <div className="rounded-[var(--radius-md)] bg-white/12 p-4">
-                    <div className="text-xs font-semibold text-white/75">
-                      Overall
-                    </div>
-                    <div className="mt-1 text-3xl font-semibold">
-                      {result.estimated_overall_band}
-                    </div>
-                  </div>
-                  <div className="rounded-[var(--radius-md)] bg-white/12 p-4">
-                    <div className="text-xs font-semibold text-white/75">
-                      Words
-                    </div>
-                    <div className="mt-1 text-3xl font-semibold">
-                      {result.word_count}
-                    </div>
-                  </div>
+                <CardContent className="space-y-4">
+                  <div className="rounded-[var(--radius-lg)] bg-white/12 px-5 py-4 text-center text-4xl font-semibold">{formatBand(result.estimated_overall_band ?? result.overall_band)}</div>
+                  <Button type="button" variant="secondary" fullWidth className="gap-2 bg-white text-[var(--primary)] hover:bg-white/90" onClick={() => downloadInteractiveHtml(result, promptQuestion)}><Download size={16} />下载动态 HTML</Button>
                 </CardContent>
               </Card>
             ) : null}
@@ -258,220 +138,11 @@ export default function IELTSWritingPage() {
         </div>
 
         {result ? (
-          <div className="mt-8 space-y-6">
-            <Card className="rounded-[var(--radius-lg)]">
-              <CardHeader className="flex-col items-start gap-1">
-                <CardTitle>Band Scores</CardTitle>
-                <CardDescription>
-                  Four IELTS Writing Task 2 rubric areas.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-4 md:grid-cols-2">
-                <ScoreCard
-                  title="Task Response"
-                  score={result.band_scores.task_response.score}
-                  comment={result.band_scores.task_response.comment}
-                />
-                <ScoreCard
-                  title="Coherence and Cohesion"
-                  score={result.band_scores.coherence_and_cohesion.score}
-                  comment={result.band_scores.coherence_and_cohesion.comment}
-                />
-                <ScoreCard
-                  title="Lexical Resource"
-                  score={result.band_scores.lexical_resource.score}
-                  comment={result.band_scores.lexical_resource.comment}
-                />
-                <ScoreCard
-                  title="Grammatical Range and Accuracy"
-                  score={result.band_scores.grammatical_range_and_accuracy.score}
-                  comment={
-                    result.band_scores.grammatical_range_and_accuracy.comment
-                  }
-                />
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-[var(--radius-lg)]">
-              <CardHeader className="flex-col items-start gap-1">
-                <CardTitle>Overall Assessment</CardTitle>
-                <CardDescription>
-                  Essay type, stance, logic and the most important observations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-5">
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                  <InfoPill
-                    label="Essay Type"
-                    value={result.overall_assessment.essay_type}
-                  />
-                  <InfoPill
-                    label="Stance Style"
-                    value={result.overall_assessment.stance_style}
-                  />
-                  <InfoPill
-                    label="Stance Consistency"
-                    value={result.overall_assessment.stance_consistency}
-                  />
-                  <InfoPill
-                    label="Logic Quality"
-                    value={result.overall_assessment.logic_quality}
-                  />
-                </div>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <ListBlock
-                    title="Main Strengths"
-                    items={result.overall_assessment.main_strengths}
-                    tone="success"
-                  />
-                  <ListBlock
-                    title="Main Problems"
-                    items={result.overall_assessment.main_problems}
-                    tone="danger"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            <SentenceDeepAnalysis
-              result={result}
-              selectedSentence={selectedSentence}
-              selectedSentenceId={selectedSentenceId}
-              onSelectSentence={setSelectedSentenceId}
-            />
-
-            <Card className="rounded-[var(--radius-lg)]">
-              <CardHeader className="flex-col items-start gap-1">
-                <CardTitle>Paragraph Feedback</CardTitle>
-                <CardDescription>
-                  Paragraph-by-paragraph structure and content feedback.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.paragraph_feedback.map((para) => (
-                  <div
-                    key={para.paragraph_number}
-                    className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-4"
-                  >
-                    <div className="mb-3 flex flex-wrap items-center gap-2">
-                      <Badge>Paragraph {para.paragraph_number}</Badge>
-                      <Badge variant="outline">{para.paragraph_role}</Badge>
-                    </div>
-
-                    <p className="mb-4 text-sm leading-7 text-[var(--text-soft)]">
-                      {para.summary}
-                    </p>
-
-                    <div className="grid gap-4 md:grid-cols-3">
-                      <ListBlock title="Strengths" items={para.strengths} />
-                      <ListBlock title="Problems" items={para.problems} />
-                      <ListBlock title="Suggestions" items={para.suggestions} />
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-[var(--radius-lg)]">
-              <CardHeader className="flex-col items-start gap-1">
-                <CardTitle>Language Issues</CardTitle>
-                <CardDescription>
-                  Grammar, vocabulary, collocation and sentence-level problems.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.language_issues.map((issue, index) => (
-                  <div
-                    key={index}
-                    className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-4"
-                  >
-                    <Badge variant="warning">{issue.issue_type}</Badge>
-                    <div className="mt-4 space-y-3 text-sm leading-7">
-                      <IssueLine label="Original" value={issue.original} />
-                      <IssueLine
-                        label="Explanation"
-                        value={issue.explanation}
-                      />
-                      <IssueLine
-                        label="Suggested revision"
-                        value={issue.suggested_revision}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="rounded-[var(--radius-lg)]">
-                <CardHeader className="flex-col items-start gap-1">
-                  <CardTitle>Argument Feedback</CardTitle>
-                  <CardDescription>
-                    Support quality and development methods.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-5">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <InfoPill
-                      label="Main Points Supported"
-                      value={
-                        result.argument_feedback.main_points_supported
-                          ? "Yes"
-                          : "No"
-                      }
-                    />
-                    <InfoPill
-                      label="Support Quality"
-                      value={result.argument_feedback.support_quality}
-                    />
-                  </div>
-
-                  <p className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text-soft)]">
-                    {result.argument_feedback.comment}
-                  </p>
-
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <ListBlock
-                      title="Methods Used"
-                      items={result.argument_feedback.methods_used}
-                    />
-                    <ListBlock
-                      title="Methods Missing"
-                      items={result.argument_feedback.methods_missing}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="rounded-[var(--radius-lg)]">
-                <CardHeader className="flex-col items-start gap-1">
-                  <CardTitle>Revision Plan</CardTitle>
-                  <CardDescription>
-                    Your next three editing priorities.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <PriorityItem
-                    label="Priority 1"
-                    value={result.revision_plan.priority_1}
-                  />
-                  <PriorityItem
-                    label="Priority 2"
-                    value={result.revision_plan.priority_2}
-                  />
-                  <PriorityItem
-                    label="Priority 3"
-                    value={result.revision_plan.priority_3}
-                  />
-                  <PriorityItem
-                    label="Next Step"
-                    value={result.revision_plan.next_step_advice}
-                    featured
-                  />
-                </CardContent>
-              </Card>
-            </div>
+          <div className="space-y-6">
+            <CorrectionReport result={result} question={promptQuestion} correctionItems={correctionItems} activeChange={activeChange} activeChangeId={activeChangeId} onSelectChange={setActiveChangeId} />
+            <EvaluationGrid result={result} />
+            <ModelEssayPanel result={result} />
+            <StrategyAndRevision result={result} />
           </div>
         ) : null}
       </section>
@@ -479,401 +150,276 @@ export default function IELTSWritingPage() {
   );
 }
 
-
-function SentenceDeepAnalysis({
-  result,
-  selectedSentence,
-  selectedSentenceId,
-  onSelectSentence,
-}: {
-  result: IELTSTask2ReviewResult;
-  selectedSentence: SentenceAnalysis | null;
-  selectedSentenceId: string | null;
-  onSelectSentence: (sentenceId: string) => void;
-}) {
+function CorrectionReport({ result, question, correctionItems, activeChange, activeChangeId, onSelectChange }: { result: IELTSTask2ReviewResult; question: string; correctionItems: WritingCorrectionItem[]; activeChange: WritingCorrectionItem | null; activeChangeId: string | null; onSelectChange: (changeId: string) => void }) {
   return (
-    <Card className="rounded-[var(--radius-lg)]">
-      <CardHeader className="flex-col items-start gap-1">
-        <CardTitle>逐段落与逐句分析</CardTitle>
-        <CardDescription>
-          点击作文中的任意句子，查看语法、词汇、搭配、衔接和高分改写。
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]">
-          <div className="space-y-4">
+    <Card className="overflow-hidden rounded-[var(--radius-xl)]">
+      <div className="flex flex-col items-center justify-center gap-2 border-b border-[var(--border)] bg-[var(--bg-soft)] px-5 py-5 sm:flex-row">
+        <span className="text-sm font-semibold text-[var(--text-soft)]">Overall score:</span>
+        <span className="min-w-32 rounded-full border border-[var(--primary)]/35 bg-[var(--card)] px-10 py-2 text-center text-2xl font-semibold text-[var(--primary)]">{formatBand(result.estimated_overall_band ?? result.overall_band)}</span>
+      </div>
+      <SectionBar title="Questions" />
+      <div className="border-b border-[var(--border)] bg-[var(--card)] p-5 text-sm leading-7 text-[var(--text-soft)] sm:p-6">{question}</div>
+      <SectionBar title="Answer & Correction" />
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_360px]">
+        <div className="min-h-[420px] border-b border-[var(--border)] p-5 sm:p-6 lg:border-b-0 lg:border-r">
+          <div className="space-y-5 text-[15px] leading-8 text-[var(--text)]">
             {result.paragraphs.map((paragraph) => (
-              <div
-                key={paragraph.paragraph_id}
-                className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-4"
-              >
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <Badge variant="default">{`Paragraph ${paragraph.paragraph_number}`}</Badge>
-                  <Badge variant="outline">{paragraph.role}</Badge>
-                  <Badge variant="secondary">{paragraph.support_quality}</Badge>
-                </div>
-
-                <p className="mb-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-7 text-[var(--text-soft)]">
-                  {paragraph.paragraph_feedback_cn}
-                </p>
-
-                <div className="space-y-2 text-[15px] leading-8 text-[var(--text)]">
-                  {paragraph.sentences.map((sentence) => {
-                    const active = selectedSentenceId === sentence.sentence_id;
-
-                    return (
-                      <button
-                        key={sentence.sentence_id}
-                        type="button"
-                        onClick={() => onSelectSentence(sentence.sentence_id)}
-                        className={`block w-full rounded-[var(--radius-sm)] px-3 py-2 text-left transition hover:bg-[var(--primary-soft)] hover:text-[var(--primary)] ${
-                          active
-                            ? "bg-[var(--primary-soft)] text-[var(--primary)] ring-1 ring-[var(--primary)]/25"
-                            : "bg-transparent text-[var(--text)]"
-                        }`}
-                      >
-                        <span className="mr-2 text-xs font-semibold text-[var(--text-soft)]">
-                          {sentence.sentence_number}.
-                        </span>
-                        {sentence.original_sentence}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+              <p key={paragraph.paragraph_id}>
+                {paragraph.sentences.map((sentence) => <AnnotatedSentence key={sentence.sentence_id} sentence={sentence} changes={correctionItems.filter((item) => item.sentence_id === sentence.sentence_id)} activeChangeId={activeChangeId} onSelectChange={onSelectChange} />)}
+              </p>
             ))}
           </div>
-
-          <SentenceFeedbackConsole sentence={selectedSentence} />
+          <div className="mt-5 text-sm font-semibold text-[var(--text-soft)]">({result.word_count} words)</div>
         </div>
+        <aside className="max-h-[560px] overflow-y-auto bg-[var(--bg-soft)] p-4">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--text)]">Revision List</h3>
+              <p className="mt-1 text-xs text-[var(--text-soft)]">标签用英文，解释用中文。</p>
+            </div>
+            <Badge variant="secondary">{correctionItems.length}</Badge>
+          </div>
+          {activeChange ? <div className="mb-4 rounded-[var(--radius-md)] border border-[var(--primary)]/25 bg-[var(--card)] p-3 text-sm leading-6"><Badge variant={getOperationVariant(activeChange.operation)}>{activeChange.operation}</Badge><p className="mt-2 font-semibold text-[var(--text)]">{activeChange.original_text || activeChange.revised_text}</p><p className="mt-2 text-[var(--text-soft)]">{activeChange.explanation_cn}</p></div> : null}
+          <div className="space-y-2">
+            {correctionItems.map((item) => <button key={item.change_id} type="button" onClick={() => onSelectChange(item.change_id)} className={`block w-full rounded-[var(--radius-sm)] border px-3 py-2 text-left text-sm transition ${activeChangeId === item.change_id ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/45"}`}><span className="mb-1 inline-flex"><Badge variant={getOperationVariant(item.operation)}>{item.operation}</Badge></span><span className="block truncate font-medium text-[var(--text)]">{item.operation === "Added" ? item.revised_text : item.original_text}</span><span className="mt-1 line-clamp-2 block text-xs leading-5 text-[var(--text-soft)]">{item.explanation_cn}</span></button>)}
+          </div>
+        </aside>
+      </div>
+    </Card>
+  );
+}
+
+function AnnotatedSentence({ sentence, changes, activeChangeId, onSelectChange }: { sentence: SentenceAnalysis; changes: WritingCorrectionItem[]; activeChangeId: string | null; onSelectChange: (changeId: string) => void }) {
+  const spans = buildCorrectionSpans(sentence.original_sentence, changes);
+  return (
+    <span className="mr-1">
+      {spans.map((span, index) => {
+        if (span.type === "text") return <span key={index}>{span.text}</span>;
+        const active = activeChangeId === span.change.change_id;
+        if (span.type === "delete") return <button key={index} type="button" onClick={() => onSelectChange(span.change.change_id)} className={`mx-0.5 rounded-[4px] px-0.5 text-[var(--danger)] line-through decoration-2 ${active ? "bg-[var(--danger-soft)] ring-1 ring-[var(--danger)]/35" : "bg-transparent"}`}>{span.text}</button>;
+        return <button key={index} type="button" onClick={() => onSelectChange(span.change.change_id)} className={`mx-0.5 rounded-[4px] border-b border-dashed border-[var(--primary)] px-0.5 font-medium text-[var(--primary)] ${active ? "bg-[var(--primary-soft)] ring-1 ring-[var(--primary)]/35" : "bg-transparent"}`}>{span.text}</button>;
+      })}{" "}
+    </span>
+  );
+}
+
+function EvaluationGrid({ result }: { result: IELTSTask2ReviewResult }) {
+  const scores = result.band_scores;
+  return (
+    <Card className="overflow-hidden rounded-[var(--radius-xl)]">
+      <SectionBar title="Evaluation" />
+      <CardContent className="grid gap-5 p-5 md:grid-cols-2 sm:p-6">
+        <ScoreCard title="Task Achievement" score={scores.task_response.score} comment={scores.task_response.comment} />
+        <ScoreCard title="Coherence and Cohesion" score={scores.coherence_and_cohesion.score} comment={scores.coherence_and_cohesion.comment} />
+        <ScoreCard title="Lexical Resource" score={scores.lexical_resource.score} comment={scores.lexical_resource.comment} />
+        <ScoreCard title="Grammatical Range and Accuracy" score={scores.grammatical_range_and_accuracy.score} comment={scores.grammatical_range_and_accuracy.comment} />
       </CardContent>
     </Card>
   );
 }
 
-function SentenceFeedbackConsole({
-  sentence,
-}: {
-  sentence: SentenceAnalysis | null;
-}) {
-  const [activeTab, setActiveTab] = useState<
-    "overall" | "spelling" | "wording" | "grammar" | "chinglish"
-  >("overall");
-
-  if (!sentence) {
-    return (
-      <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm leading-7 text-[var(--text-soft)]">
-        {"\u8bf7\u9009\u62e9\u5de6\u4fa7\u4f5c\u6587\u4e2d\u7684\u4e00\u53e5\u8bdd\u67e5\u770b\u8be6\u7ec6\u53cd\u9988\u3002"}
-      </div>
-    );
-  }
-
-  const spellingIssues = sentence.issues.filter(
-    (issue) => issue.issue_type === "spelling",
-  );
-  const wordingIssues = sentence.issues.filter((issue) =>
-    ["word_choice", "word_form", "part_of_speech", "collocation"].includes(
-      issue.issue_type,
-    ),
-  );
-  const grammarIssues = sentence.issues.filter((issue) =>
-    ["grammar", "sentence_structure", "word_order", "punctuation", "cohesion"].includes(
-      issue.issue_type,
-    ),
-  );
-  const chinglishIssues = sentence.issues.filter(
-    (issue) => issue.issue_type === "chinglish",
-  );
-
-  const tabs = [
-    {
-      id: "overall" as const,
-      label: "\u53e5\u5b50\u603b\u8bc4",
-      count: null,
-    },
-    {
-      id: "spelling" as const,
-      label: "\u62fc\u5199\u9519\u8bef",
-      count: spellingIssues.length,
-    },
-    {
-      id: "wording" as const,
-      label: "\u7528\u8bcd\u642d\u914d\u9519\u8bef",
-      count: wordingIssues.length,
-    },
-    {
-      id: "grammar" as const,
-      label: "\u53e5\u5b50\u8bed\u6cd5\u9519\u8bef",
-      count: grammarIssues.length,
-    },
-    {
-      id: "chinglish" as const,
-      label: "\u662f\u5426\u4e2d\u5f0f\u8868\u8fbe",
-      count: chinglishIssues.length,
-    },
-  ];
-
-  const activeIssues =
-    activeTab === "spelling"
-      ? spellingIssues
-      : activeTab === "wording"
-        ? wordingIssues
-        : activeTab === "grammar"
-          ? grammarIssues
-          : activeTab === "chinglish"
-            ? chinglishIssues
-            : [];
-
+function ModelEssayPanel({ result }: { result: IELTSTask2ReviewResult }) {
+  const model = result.band8_model_essay;
+  const band8Essay = model?.band8_essay || result.final_rewritten_essay.band8_version;
   return (
-    <aside className="space-y-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 xl:sticky xl:top-28 xl:self-start">
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge variant="default">{sentence.sentence_id}</Badge>
-        <Badge variant="outline">{`${sentence.issues.length} issues`}</Badge>
-      </div>
-
-      <div className="flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-2">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setActiveTab(tab.id)}
-            className={`rounded-[var(--radius-sm)] px-3 py-2 text-xs font-semibold transition ${
-              activeTab === tab.id
-                ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                : "text-[var(--text-soft)] hover:bg-[var(--card)] hover:text-[var(--text)]"
-            }`}
-          >
-            {tab.label}
-            {tab.count === null ? null : (
-              <span className="ml-1 opacity-80">{tab.count}</span>
-            )}
-          </button>
-        ))}
-      </div>
-
-      {activeTab === "overall" ? (
+    <Card className="overflow-hidden rounded-[var(--radius-xl)]">
+      <SectionBar title="Band 8 Model Essay" />
+      <CardContent className="grid gap-5 p-5 lg:grid-cols-[360px_minmax(0,1fr)] sm:p-6">
         <div className="space-y-4">
-          <div>
-            <h3 className="text-base font-semibold text-[var(--text)]">
-              {"\u53e5\u5b50\u603b\u8bc4"}
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">
-              {sentence.sentence_level_comment_cn || sentence.explanation_cn}
-            </p>
+          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <Badge variant={model?.keep_student_core_idea ? "success" : "warning"}>{model?.keep_student_core_idea ? "保留原思路" : "优化原思路"}</Badge>
+            <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{model?.idea_assessment_cn || "系统基于学生作文生成 Band 8 范文。"}</p>
           </div>
-
-          <VersionBlock label={"\u539f\u53e5"} value={sentence.original_sentence} />
-          <VersionBlock label={"\u4fee\u6b63\u7248\u672c"} value={sentence.corrected_sentence} />
-          <VersionBlock label={"+0.5 \u5206\u7248\u672c"} value={sentence.plus_0_5_version} />
-          <VersionBlock label={"Band 8 \u7248\u672c"} value={sentence.band8_version} />
-          <VersionBlock label={"Band 9 \u7248\u672c"} value={sentence.band9_version} featured />
+          <ListBlock title="现有思路细节表现" items={model?.current_idea_detail_feedback_cn ?? []} />
+          <ListBlock title="思路优化" items={model?.improved_thinking_cn ?? result.overall_feedback.priority_actions} />
+          <ListBlock title="细节升级建议" items={model?.detail_upgrade_suggestions_cn ?? []} />
+          <ListBlock title="为什么达到 Band 8" items={model?.why_band8_cn ?? []} tone="success" />
         </div>
-      ) : (
-        <IssueTabPanel issues={activeIssues} />
-      )}
-    </aside>
+        <article className="space-y-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-5 text-sm leading-8 text-[var(--text)]">
+          {splitEssayParagraphs(band8Essay).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+        </article>
+      </CardContent>
+    </Card>
   );
 }
 
-function IssueTabPanel({ issues }: { issues: SentenceAnalysis["issues"] }) {
-  if (!issues.length) {
-    return (
-      <p className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text-soft)]">
-        {"\u8fd9\u4e2a\u5206\u7c7b\u6682\u65f6\u6ca1\u6709\u660e\u663e\u95ee\u9898\uff0c\u53ef\u4ee5\u91cd\u70b9\u53c2\u8003\u53e5\u5b50\u603b\u8bc4\u91cc\u7684\u9ad8\u5206\u6539\u5199\u3002"}
-      </p>
-    );
-  }
-
+function StrategyAndRevision({ result }: { result: IELTSTask2ReviewResult }) {
   return (
-    <div className="space-y-3">
-      {issues.map((issue, index) => (
-        <div
-          key={`${issue.issue_type}-${index}`}
-          className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"
-        >
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Badge variant="warning">{issue.issue_type}</Badge>
-            <Badge variant="outline">{issue.severity}</Badge>
+    <div className="grid gap-6 lg:grid-cols-2">
+      <Card className="rounded-[var(--radius-xl)]">
+        <CardHeader className="flex-col items-start gap-1">
+          <CardTitle>Argument Feedback</CardTitle>
+          <CardDescription>论证质量与内容支撑。</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <InfoPill label="Main Points Supported" value={result.argument_feedback.main_points_supported ? "Yes" : "No"} />
+            <InfoPill label="Support Quality" value={result.argument_feedback.support_quality} />
           </div>
-          <div className="space-y-2 text-sm leading-7">
-            <IssueLine label={"\u539f\u6587"} value={issue.original_text} />
-            <IssueLine label={"\u5efa\u8bae"} value={issue.suggested_text} />
-            <IssueLine label={"\u89e3\u91ca"} value={issue.explanation_cn} />
-            <IssueLine label={"\u5206\u6570\u5f71\u54cd"} value={issue.band_impact} />
-            <IssueLine label={"\u6700\u5c0f\u4fee\u6539"} value={issue.micro_fix} />
-            <IssueLine label={"\u66f4\u597d\u7248\u672c"} value={issue.better_version} />
-            <IssueLine label="Band 8" value={issue.band8_version} />
-            <IssueLine label="Band 9" value={issue.band9_version} />
+          <p className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text-soft)]">{result.argument_feedback.comment}</p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <ListBlock title="Methods Used" items={result.argument_feedback.methods_used} />
+            <ListBlock title="Methods Missing" items={result.argument_feedback.methods_missing} />
           </div>
-        </div>
-      ))}
+        </CardContent>
+      </Card>
+      <Card className="rounded-[var(--radius-xl)]">
+        <CardHeader className="flex-col items-start gap-1">
+          <CardTitle>Revision Plan</CardTitle>
+          <CardDescription>下一步最重要的修改顺序。</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <PriorityItem label="Priority 1" value={result.revision_plan.priority_1} />
+          <PriorityItem label="Priority 2" value={result.revision_plan.priority_2} />
+          <PriorityItem label="Priority 3" value={result.revision_plan.priority_3} />
+          <PriorityItem label="Next Step" value={result.revision_plan.next_step_advice} featured />
+        </CardContent>
+      </Card>
     </div>
   );
 }
 
-function VersionBlock({
-  label,
-  value,
-  featured = false,
-}: {
-  label: string;
-  value: string;
-  featured?: boolean;
-}) {
-  return (
-    <div
-      className={`rounded-[var(--radius-md)] border p-3 ${
-        featured
-          ? "border-[var(--primary)]/30 bg-[var(--primary-soft)]"
-          : "border-[var(--border)] bg-[var(--bg-soft)]"
-      }`}
-    >
-      <div className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
-        {label}
-      </div>
-      <p className="text-sm leading-7 text-[var(--text)]">{value}</p>
-    </div>
-  );
+function buildCorrectionSpans(sentence: string, changes: WritingCorrectionItem[]): CorrectionSpan[] {
+  let spans: CorrectionSpan[] = [{ type: "text", text: sentence }];
+  const usableChanges = changes.filter((change) => change.operation === "Added" || change.original_text.trim());
+
+  usableChanges.forEach((change) => {
+    const target = change.original_text.trim();
+    if (change.operation === "Added" && !target) {
+      spans.push({ type: "insert", text: change.revised_text, change });
+      return;
+    }
+
+    const nextSpans: CorrectionSpan[] = [];
+    let applied = false;
+
+    spans.forEach((span) => {
+      if (span.type !== "text" || applied) {
+        nextSpans.push(span);
+        return;
+      }
+
+      const index = span.text.indexOf(target);
+      if (index < 0) {
+        nextSpans.push(span);
+        return;
+      }
+
+      const before = span.text.slice(0, index);
+      const after = span.text.slice(index + target.length);
+      if (before) nextSpans.push({ type: "text", text: before });
+      if (change.operation === "Deleted") nextSpans.push({ type: "delete", text: target, change });
+      if (change.operation === "Replaced") {
+        nextSpans.push({ type: "delete", text: target, change });
+        if (change.revised_text) nextSpans.push({ type: "insert", text: change.revised_text, change });
+      }
+      if (change.operation === "Added") {
+        nextSpans.push({ type: "text", text: target });
+        if (change.revised_text) nextSpans.push({ type: "insert", text: formatAddedText(change.revised_text), change });
+      }
+      if (after) nextSpans.push({ type: "text", text: after });
+      applied = true;
+    });
+
+    spans = applied ? nextSpans : spans;
+  });
+
+  return spans;
 }
 
-function ProcessItem({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)]">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
-        {icon}
-      </div>
-      {text}
-    </div>
-  );
+function formatAddedText(value: string) {
+  if (!value) return value;
+  return /^[\s.,;:!?]/.test(value) ? value : ` ${value}`;
 }
 
-function MetricCard({
-  label,
-  value,
-}: {
-  label: string;
-  value: string | number;
-}) {
-  return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
-        {label}
-      </div>
-      <div className="mt-2 text-lg font-semibold text-[var(--text)]">
-        {value}
-      </div>
-    </div>
-  );
+function getCorrectionItems(result: IELTSTask2ReviewResult | null): WritingCorrectionItem[] {
+  if (!result) return [];
+  const provided = result.writing_correction?.changes ?? [];
+  if (provided.length) return provided.map((item, index) => ({ ...item, change_id: item.change_id || `c${index + 1}` }));
+
+  return result.paragraphs.flatMap((paragraph) => paragraph.sentences.flatMap((sentence) => sentence.issues.slice(0, 2).map((issue, index) => issueToCorrection(issue, paragraph.paragraph_id, sentence.sentence_id, `${sentence.sentence_id}_${index + 1}`)))).slice(0, 30);
 }
 
-function ScoreCard({
-  title,
-  score,
-  comment,
-}: {
-  title: string;
-  score: number;
-  comment: string;
-}) {
-  return (
-    <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-5">
-      <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-semibold text-[var(--text)]">{title}</p>
-        <div className="rounded-full bg-[var(--primary-soft)] px-3 py-1 text-sm font-semibold text-[var(--primary)]">
-          {score}
-        </div>
-      </div>
-      <p className="mt-4 text-sm leading-7 text-[var(--text-soft)]">
-        {comment}
-      </p>
-    </div>
-  );
+function issueToCorrection(issue: SentenceIssue, paragraphId: string, sentenceId: string, changeId: string): WritingCorrectionItem {
+  return { change_id: changeId, paragraph_id: paragraphId, sentence_id: sentenceId, operation: issue.suggested_text ? "Replaced" : "Deleted", category: issue.issue_type, severity: issue.severity, original_text: issue.original_text, revised_text: issue.suggested_text, explanation_cn: issue.explanation_cn || issue.band_impact || "这处修改可以提升表达准确度。" };
+}
+
+function downloadInteractiveHtml(result: IELTSTask2ReviewResult, question: string) {
+  const changes = getCorrectionItems(result);
+  const html = buildOfflineHtml(result, question, changes);
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `ielts-writing-report-band-${formatBand(result.estimated_overall_band ?? result.overall_band)}.html`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
+function buildOfflineHtml(result: IELTSTask2ReviewResult, question: string, changes: WritingCorrectionItem[]) {
+  const score = formatBand(result.estimated_overall_band ?? result.overall_band);
+  const model = result.band8_model_essay;
+  const essayHtml = result.paragraphs.map((paragraph) => `<p>${paragraph.sentences.map((sentence) => escapeHtml(sentence.original_sentence)).join(" ")}</p>`).join("");
+  const changeHtml = changes.map((item) => `<button class="change" data-id="${escapeHtml(item.change_id)}"><strong>${escapeHtml(item.operation)}</strong><span>${escapeHtml(item.operation === "Added" ? item.revised_text : item.original_text)}</span><small>${escapeHtml(item.explanation_cn)}</small></button>`).join("");
+  const scoreHtml = rubricCards.map((card) => {
+    const band = result.band_scores[card.key];
+    return `<section class="score"><h3>${escapeHtml(card.title)} <b>${escapeHtml(formatBand(band.score))}</b></h3><p>${escapeHtml(band.comment)}</p></section>`;
+  }).join("");
+  const modelHtml = splitEssayParagraphs(model?.band8_essay || result.final_rewritten_essay.band8_version).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
+  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IELTS Writing Report</title><style>:root{color-scheme:light dark;--bg:#f7f8fb;--card:#ffffff;--soft:#f1f5f9;--text:#172033;--muted:#657184;--border:#d8dee8;--primary:#2563eb;--primary-soft:#eaf1ff;--success:#16875a;--danger:#c2413d;--shadow:0 18px 50px rgba(15,23,42,.08)}@media(prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#121821;--soft:#182130;--text:#edf3fb;--muted:#9aa8ba;--border:#2b3545;--primary:#7aa7ff;--primary-soft:#17243a;--success:#6ee7b7;--danger:#fca5a5;--shadow:0 18px 50px rgba(0,0,0,.28)}}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Microsoft YaHei",sans-serif}.wrap{max-width:1100px;margin:0 auto;padding:24px}.top{display:flex;justify-content:center;gap:12px;align-items:center;padding:20px;background:linear-gradient(135deg,var(--primary-soft),var(--card));border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}.score-pill{min-width:120px;border:1px solid color-mix(in srgb,var(--primary) 55%,var(--border));border-radius:999px;background:var(--card);padding:8px 32px;text-align:center;font-size:28px;font-weight:800;color:var(--primary)}.bar{margin-top:14px;background:linear-gradient(90deg,var(--primary),color-mix(in srgb,var(--primary) 70%,var(--success)));color:#fff;padding:16px 22px;font-size:22px;font-weight:800}.panel{background:var(--card);border:1px solid var(--border);padding:22px}.grid{display:grid;grid-template-columns:1fr 340px}.essay{line-height:1.9;font-size:16px}.side{border-left:1px solid var(--border);background:var(--soft);padding:14px;max-height:560px;overflow:auto}.change{display:block;width:100%;text-align:left;margin:0 0 8px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text)}.change.active{border-color:var(--primary);background:var(--primary-soft)}.change strong{display:inline-block;margin-bottom:6px;color:var(--primary)}.change span,.change small{display:block}.change small{margin-top:6px;color:var(--muted)}.scores{display:grid;grid-template-columns:1fr 1fr;gap:16px}.score{background:var(--card);border:1px solid var(--border);padding:18px}.score h3{display:flex;justify-content:space-between}.score b{color:var(--primary)}.model{line-height:1.9}.model p{margin:0 0 16px}.muted{color:var(--muted)}@media(max-width:800px){.grid,.scores{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--border)}}</style></head><body><main class="wrap"><section class="top"><span class="muted">Overall score:</span><span class="score-pill">${escapeHtml(score)}</span></section><div class="bar">Questions</div><section class="panel">${escapeHtml(question)}</section><div class="bar">Answer & Correction</div><section class="panel grid"><article class="essay">${essayHtml}<p class="muted">(${escapeHtml(String(result.word_count))} words)</p></article><aside class="side">${changeHtml}</aside></section><div class="bar">Evaluation</div><section class="panel scores">${scoreHtml}</section><div class="bar">Band 8 Model Essay</div><section class="panel"><p class="muted">${escapeHtml(model?.idea_assessment_cn || "")}</p><article class="model">${modelHtml}</article></section></main><script>document.querySelectorAll(".change").forEach(function(btn){btn.addEventListener("click",function(){document.querySelectorAll(".change").forEach(function(x){x.classList.remove("active")});btn.classList.add("active")})});</script></body></html>`;
+}
+
+function SectionBar({ title }: { title: string }) {
+  return <div className="flex items-center justify-between border-y border-[var(--border)] bg-[linear-gradient(90deg,var(--primary),color-mix(in_srgb,var(--primary)_72%,var(--success)))] px-5 py-4 text-xl font-semibold text-white sm:px-6">{title}<span className="text-sm opacity-80">⌃</span></div>;
+}
+
+function ProcessItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)]"><div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">{icon}</div>{text}</div>;
+}
+
+function MetricCard({ label, value }: { label: string; value: string | number }) {
+  return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">{label}</div><div className="mt-2 text-lg font-semibold text-[var(--text)]">{value}</div></div>;
+}
+
+function ScoreCard({ title, score, comment }: { title: string; score: number; comment: string }) {
+  return <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] p-5"><div className="flex items-start justify-between gap-3"><div><p className="text-base font-semibold text-[var(--text)]">{title}</p><p className="mt-1 text-xs text-[var(--text-soft)]">IELTS rubric</p></div><div className="rounded-[var(--radius-md)] bg-[var(--primary)] px-6 py-3 text-xl font-semibold text-white">{formatBand(score)}</div></div><p className="mt-4 max-h-36 overflow-y-auto rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text-soft)]">{comment}</p></div>;
 }
 
 function InfoPill({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
-        {label}
-      </p>
-      <p className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</p>
-    </div>
-  );
+  return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">{label}</p><p className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</p></div>;
 }
 
-function ListBlock({
-  title,
-  items,
-  tone = "default",
-}: {
-  title: string;
-  items: string[];
-  tone?: "default" | "success" | "danger";
-}) {
-  const iconColor =
-    tone === "success"
-      ? "text-[var(--success)]"
-      : tone === "danger"
-        ? "text-[var(--danger)]"
-        : "text-[var(--primary)]";
-
-  return (
-    <div>
-      <h3 className="mb-2 text-sm font-semibold text-[var(--text)]">{title}</h3>
-      <ul className="space-y-2">
-        {items.length > 0 ? (
-          items.map((item, index) => (
-            <li
-              key={index}
-              className="flex gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-6 text-[var(--text-soft)]"
-            >
-              <CheckCircle2 size={15} className={`mt-0.5 shrink-0 ${iconColor}`} />
-              <span>{item}</span>
-            </li>
-          ))
-        ) : (
-          <li className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm text-[var(--text-soft)]">
-            None
-          </li>
-        )}
-      </ul>
-    </div>
-  );
+function ListBlock({ title, items, tone = "default" }: { title: string; items: string[]; tone?: "default" | "success" | "danger" }) {
+  const iconColor = tone === "success" ? "text-[var(--success)]" : tone === "danger" ? "text-[var(--danger)]" : "text-[var(--primary)]";
+  return <div><h3 className="mb-2 text-sm font-semibold text-[var(--text)]">{title}</h3><ul className="space-y-2">{items.length > 0 ? items.map((item, index) => <li key={index} className="flex gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-6 text-[var(--text-soft)]"><CheckCircle2 size={15} className={`mt-0.5 shrink-0 ${iconColor}`} /><span>{item}</span></li>) : <li className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm text-[var(--text-soft)]">暂无</li>}</ul></div>;
 }
 
-function IssueLine({ label, value }: { label: string; value: string }) {
-  return (
-    <p>
-      <span className="font-semibold text-[var(--text)]">{label}:</span>{" "}
-      <span className="text-[var(--text-soft)]">{value}</span>
-    </p>
-  );
+function PriorityItem({ label, value, featured = false }: { label: string; value: string; featured?: boolean }) {
+  return <div className={`rounded-[var(--radius-md)] border p-4 text-sm leading-7 ${featured ? "border-[var(--primary)]/25 bg-[var(--primary-soft)] text-[var(--text)]" : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)]"}`}><span className="font-semibold text-[var(--text)]">{label}:</span> {value}</div>;
 }
 
-function PriorityItem({
-  label,
-  value,
-  featured = false,
-}: {
-  label: string;
-  value: string;
-  featured?: boolean;
-}) {
-  return (
-    <div
-      className={`rounded-[var(--radius-md)] border p-4 text-sm leading-7 ${
-        featured
-          ? "border-[var(--primary)]/25 bg-[var(--primary-soft)] text-[var(--text)]"
-          : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)]"
-      }`}
-    >
-      <span className="font-semibold text-[var(--text)]">{label}:</span> {value}
-    </div>
-  );
+function getOperationVariant(operation: WritingCorrectionItem["operation"]) {
+  if (operation === "Added") return "success";
+  if (operation === "Deleted") return "danger";
+  return "warning";
+}
+
+function formatBand(value: number | undefined) {
+  return typeof value === "number" ? value.toFixed(1) : "-";
+}
+
+function splitEssayParagraphs(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return [];
+  const byBlankLines = trimmed.split(/\n{2,}/).map((paragraph) => paragraph.trim()).filter(Boolean);
+  if (byBlankLines.length > 1) return byBlankLines;
+  const lines = trimmed.split(/\n/).map((line) => line.trim()).filter(Boolean);
+  if (lines.length > 1) return lines;
+  return [trimmed];
+}
+
+function escapeHtml(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }

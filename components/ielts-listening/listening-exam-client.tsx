@@ -4,10 +4,12 @@ import { memo, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, FileText, Headphones, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
 
+import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
 import { BrandMark } from "@/components/site/brand-mark";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { BRAND_NAME_CN } from "@/lib/brand";
+import { buildIeltsSubmitResult } from "@/lib/ielts/answer-scoring";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsQuestion, IeltsSection } from "@/lib/ielts/practice";
 import { cn } from "@/lib/utils";
 
@@ -41,6 +43,7 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
   const [transcriptOpen, setTranscriptOpen] = useState(false);
   const [navActive, setNavActive] = useState(false);
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [submitDialogMode, setSubmitDialogMode] = useState<"confirm" | "result" | null>(null);
   const [submitNotice, setSubmitNotice] = useState("");
 
   const listeningModule = data.modules.find((module) => module.module_type === "listening");
@@ -134,6 +137,11 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
     void audioRef.current.play().catch(() => undefined);
   }
 
+  function handleSubmit() {
+    const result = buildIeltsSubmitResult("listening", answers, officialAnswerByNumber);
+    setSubmitDialogMode(result.unanswered.length > 0 ? "confirm" : "result");
+  }
+
   if (!data.book || !listeningModule) {
     return (
       <main className="container-main py-6">
@@ -167,7 +175,7 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
               <span className="text-[var(--success)]">◷</span>
               <span className="font-bold tabular-nums text-[var(--success)]">{formatTimer(elapsedSeconds)}</span>
             </div>
-            <Button type="button" size="sm" onClick={() => setSubmitNotice("提交功能已预留，后续接入数据库保存。")} className="gap-2 rounded-full">Submit <SendHorizontal size={17} /></Button>
+            <Button type="button" size="sm" onClick={handleSubmit} className="gap-2 rounded-full">Submit <SendHorizontal size={17} /></Button>
           </div>
         </div>
       </header>
@@ -195,6 +203,7 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
       {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} showOfficialToggle={isAdmin} onClose={() => setReviewOpen(false)} />}
+      {submitDialogMode && <IeltsSubmitDialog moduleType="listening" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
   );
@@ -213,7 +222,6 @@ function ListeningQuestionPart({ part, answers, onAnswerChange, isAdmin, audioRe
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <Badge className="mb-2 w-fit">Part {part.displayNumber}</Badge>
-            <h1 className="text-xl font-bold text-[var(--text)]">{part.section.title || `Listening Part ${part.displayNumber}`}</h1>
             {part.section.instruction && <ReadingRichText html={part.section.instruction} compact />}
           </div>
           <ListeningAudioPlayer audio={part.audio} partNumber={part.displayNumber} audioRef={audioRef} onTimeChange={onAudioTimeChange} />
@@ -232,10 +240,25 @@ function ListeningQuestionPart({ part, answers, onAnswerChange, isAdmin, audioRe
 }
 
 function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { audio?: IeltsAsset; partNumber: number; audioRef: React.RefObject<HTMLAudioElement | null>; onTimeChange: (value: number) => void }) {
+  const [playbackRate, setPlaybackRate] = useState(1);
+  const playbackRates = [0.8, 1, 1.2, 1.5];
+
+  function changePlaybackRate(nextRate: number) {
+    setPlaybackRate(nextRate);
+    if (audioRef.current) audioRef.current.playbackRate = nextRate;
+  }
+
   return (
-    <div className="w-full rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 lg:max-w-md">
-      <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text)]"><Headphones size={16} className="text-[var(--primary)]" />Part {partNumber} Audio</div>
-      {audio?.public_url ? <audio ref={audioRef} key={audio.public_url} controls preload="metadata" src={audio.public_url} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} className="w-full" /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
+    <div className="w-full rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 shadow-[var(--shadow-sm)] lg:max-w-md">
+      <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-2 text-sm font-semibold text-[var(--text)]"><Headphones size={16} className="text-[var(--primary)]" />Part {partNumber} Audio</div>
+        <div className="flex flex-wrap gap-1.5">
+          {playbackRates.map((rate) => (
+            <button key={rate} type="button" onClick={() => changePlaybackRate(rate)} className={cn("h-7 rounded-full border px-2.5 text-xs font-semibold tabular-nums transition", playbackRate === rate ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)] hover:text-[var(--primary)]")}>{rate}x</button>
+          ))}
+        </div>
+      </div>
+      {audio?.public_url ? <audio ref={audioRef} key={audio.public_url} controls controlsList="nodownload" preload="metadata" src={audio.public_url} onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onContextMenu={(event) => event.preventDefault()} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} className="w-full accent-[var(--primary)]" /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
     </div>
   );
 }
@@ -312,7 +335,7 @@ function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, o
   return (
     <div className="flex h-full flex-col rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)]">
       <div className="border-b border-[var(--border)] p-4">
-        <div className="text-sm font-semibold text-[var(--text)]">动态字幕</div>
+        <div className="text-sm font-semibold text-[var(--text)]">听力原文</div>
         <p className="mt-1 text-xs text-[var(--text-soft)]">Cambridge {bookNumber} · Test {testNumber} · Part {sectionNumber}</p>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto p-4">

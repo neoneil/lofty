@@ -72,6 +72,35 @@ export type SentenceIssue = {
   band9_version: string;
 };
 
+export type WritingCorrectionOperation = "Added" | "Deleted" | "Replaced";
+
+export type WritingCorrectionItem = {
+  change_id: string;
+  paragraph_id: string;
+  sentence_id: string;
+  operation: WritingCorrectionOperation;
+  category: LanguageIssueType;
+  severity: IssueSeverity;
+  original_text: string;
+  revised_text: string;
+  explanation_cn: string;
+};
+
+export type WritingCorrectionSummary = {
+  corrected_essay: string;
+  changes: WritingCorrectionItem[];
+};
+
+export type Band8ModelEssay = {
+  keep_student_core_idea: boolean;
+  idea_assessment_cn: string;
+  current_idea_detail_feedback_cn: string[];
+  improved_thinking_cn: string[];
+  detail_upgrade_suggestions_cn: string[];
+  band8_essay: string;
+  why_band8_cn: string[];
+};
+
 export type SentenceAnalysis = BandUpgradeVersions & {
   sentence_id: string;
   sentence_number: number;
@@ -168,6 +197,8 @@ export type EssayAnalysisResponse = {
     band8_version: string;
     band9_version: string;
   };
+  writing_correction?: WritingCorrectionSummary;
+  band8_model_essay?: Band8ModelEssay;
 };
 
 export type IELTSTask2ReviewResult = EssayAnalysisResponse;

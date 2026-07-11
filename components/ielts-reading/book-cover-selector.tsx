@@ -20,8 +20,8 @@ export function IeltsReadingBookCoverSelector({ basePath = "/ielts/reading", sou
         <Badge className="mb-3 w-fit">IELTS Reading Exam</Badge>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">雅思阅读机考练习</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">选择剑桥雅思 21-7，进入 Test 后使用左右分屏、倒计时、题目导航、笔记和 Review 面板进行完整阅读训练。</p>
+            <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">剑桥雅思阅读练习</h1>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">选择剑桥雅思 21-7，和Test进行练习。</p>
           </div>
           <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm text-[var(--text-soft)]">
             <div className="mb-1 flex items-center gap-2 font-semibold text-[var(--text)]"><BookOpenCheck size={17} className="text-[var(--primary)]" />Reading Library</div>
