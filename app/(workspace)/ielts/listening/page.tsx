@@ -1,57 +1,80 @@
-import Link from "next/link";
-import { Headphones } from "lucide-react";
+import { notFound } from "next/navigation";
 
-import IELTSSubnav from "@/components/site/ielts-subnav";
-import { Badge } from "@/components/ui-v2/badge";
-import { Button } from "@/components/ui-v2/button";
-import { Card, CardContent } from "@/components/ui-v2/card";
+import { IeltsListeningExamClient } from "@/components/ielts-listening/listening-exam-client";
+import { IeltsListeningBookSelector, IeltsListeningTestSelector } from "@/components/ielts-listening/listening-selectors";
+import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
+import { getIeltsMarkdownBookPracticeData } from "@/lib/ielts/markdown-practice";
+import { getIeltsBookPracticeData, type IeltsAsset, type IeltsBookPracticeData } from "@/lib/ielts/practice";
 
-export default async function IeltsListeningPage() {
-  await requireUser("/ielts/listening");
+const LISTENING_BOOKS = [21, 20, 19, 18, 17, 16];
 
-  return (
-    <main className="container-main py-8 sm:py-10">
-      <section className="mb-8">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 sm:text-sm">
-          IELTS LISTENING
-        </p>
+type Props = {
+  searchParams: Promise<{ book?: string; test?: string }>;
+};
 
-        <h1 className="mb-5 text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">
-          雅思听力
-        </h1>
+export default async function IeltsListeningPage({ searchParams }: Props) {
+  const { book, test } = await searchParams;
+  const bookNumber = Number(book);
+  const testNumber = Number(test);
 
-        <p className="max-w-3xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
-          IELTS Listening 题库模块正在准备中。
-        </p>
-      </section>
+  if (!book) return <IeltsListeningBookSelector />;
+  if (!LISTENING_BOOKS.includes(bookNumber)) notFound();
 
-      <IELTSSubnav current="listening" />
+  const nextPath = test ? `/ielts/listening?book=${bookNumber}&test=${encodeURIComponent(test)}` : `/ielts/listening?book=${bookNumber}`;
+  const userContext = await requireUser(nextPath);
+  const { supabase } = userContext;
+  const isAdmin = await getAdminAccess(userContext);
+  const markdownData = await getIeltsMarkdownBookPracticeData(bookNumber, Number.isFinite(testNumber) ? testNumber : undefined);
 
-      <Card className="mx-auto mt-8 max-w-2xl">
-        <CardContent className="flex flex-col items-center p-8 text-center">
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--primary-soft)] text-[var(--primary)]">
-            <Headphones size={28} />
-          </div>
+  if (!markdownData.book) notFound();
+  if (!test) return <IeltsListeningTestSelector bookNumber={bookNumber} data={markdownData} />;
 
-          <Badge variant="secondary" className="mb-4">
-            Coming Soon
-          </Badge>
+  const selectedTestNumber = markdownData.tests.some((item) => item.test_number === testNumber) ? testNumber : markdownData.tests[0]?.test_number ?? 1;
+  const databaseData = await getIeltsBookPracticeData(supabase, bookNumber, selectedTestNumber);
+  const data = isAdmin ? mergeDatabaseAudioAssets(markdownData, databaseData.assets) : sanitizePracticeDataForStudent(mergeDatabaseAudioAssets(markdownData, databaseData.assets));
 
-          <h2 className="mb-3 text-xl font-semibold text-[var(--text)]">
-            听力练习即将上线
-          </h2>
+  return <IeltsListeningExamClient data={data} selectedTestNumber={selectedTestNumber} isAdmin={isAdmin} />;
+}
 
-          <p className="mb-6 max-w-lg text-sm leading-7 text-[var(--text-soft)]">
-            后续会接入 IELTS Listening 题库、音频播放与练习记录。
-            目前可以先使用口语、写作和阅读模块。
-          </p>
+function mergeDatabaseAudioAssets(markdownData: IeltsBookPracticeData, databaseAssets: IeltsAsset[]): IeltsBookPracticeData {
+  const databaseByPath = new Map(databaseAssets.map((asset) => [asset.storage_path, asset]));
+  return {
+    ...markdownData,
+    assets: markdownData.assets.map((asset) => asset.asset_type === "audio" ? databaseByPath.get(asset.storage_path) ?? asset : asset),
+  };
+}
 
-          <Link href="/ielts/speaking">
-            <Button variant="secondary">返回口语题库</Button>
-          </Link>
-        </CardContent>
-      </Card>
-    </main>
-  );
+function sanitizePracticeDataForStudent(data: IeltsBookPracticeData): IeltsBookPracticeData {
+  return {
+    ...data,
+    answers: [],
+    questions: data.questions.map((question) => {
+      const contentQuestions = Array.isArray(question.content.questions) ? question.content.questions.map(stripAnswerFields) : question.content.questions;
+      return {
+        ...question,
+        options: isListeningFillAnswerBank(question) ? [] : question.options,
+        content: {
+          ...question.content,
+          questions: contentQuestions,
+        },
+      };
+    }),
+  };
+}
+
+function stripAnswerFields(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return value;
+  const { answerId: _answerId, optionId: _optionId, optionIds: _optionIds, answerValue: _answerValue, answerExplain: _answerExplain, ...rest } = value as Record<string, unknown>;
+  return rest;
+}
+
+function isListeningFillAnswerBank(question: IeltsBookPracticeData["questions"][number]) {
+  const pageContent = typeof question.content.page_content === "string" ? question.content.page_content : "";
+  const instruction = `${question.prompt ?? ""} ${question.instruction ?? ""} ${typeof question.content.section_desc === "string" ? question.content.section_desc : ""} ${pageContent}`.toLowerCase();
+  return question.question_type === "11" || hasListeningBlanks(pageContent) || (instruction.includes("complete the") && !instruction.includes("choose"));
+}
+
+function hasListeningBlanks(value: string) {
+  return /#{2,}\s*-\s*\d{1,3}\s*-\s*#{2,}/.test(value) || /\[blank\]\s*\[\/blank\]/i.test(value) || /_{3,}\s*\d{1,3}\s*_{3,}/.test(value);
 }

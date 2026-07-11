@@ -1,43 +1,39 @@
-"use client";
+import { notFound } from "next/navigation";
 
-import { useMemo, useState } from "react";
-import IELTSSubnav from "@/components/site/ielts-subnav";
-import ReadingWorkspace from "@/components/reading/pdf-workspace";
+import { IeltsReadingBookCoverSelector } from "@/components/ielts-reading/book-cover-selector";
+import type { IeltsReadingDataSource } from "@/components/ielts-reading/data-source-switch";
+import { IeltsReadingExamClient } from "@/components/ielts-reading/reading-exam-client";
+import { IeltsReadingTestSelector } from "@/components/ielts-reading/test-selector";
+import { requireUser } from "@/lib/auth/require-user";
+import { getServerUserWithRole } from "@/lib/auth/server-auth";
+import { getIeltsMarkdownBookPracticeData } from "@/lib/ielts/markdown-practice";
+import { getIeltsBookPracticeData } from "@/lib/ielts/practice";
 
-export default function ReadingPage() {
-  const [selectedBook, setSelectedBook] = useState(10);
+const READING_BOOKS = [21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7];
 
-  const pdfUrl = useMemo(() => {
-    return `/cambridge_ielts/${selectedBook}.pdf`;
-  }, [selectedBook]);
+type Props = {
+  searchParams: Promise<{ book?: string; test?: string; source?: string }>;
+};
 
-  const books = Array.from({ length: 11 }, (_, i) => i + 10);
+export default async function IeltsReadingPage({ searchParams }: Props) {
+  const { book, test, source: sourceParam } = await searchParams;
+  const source: IeltsReadingDataSource = sourceParam === "database" ? "database" : "markdown";
+  const bookNumber = Number(book);
+  const testNumber = Number(test);
 
-  return (
-    <main className="mt-20 h-[calc(100vh-72px)] w-full bg-(--bg)">
-      <IELTSSubnav current="reading" />
-      <div className="flex items-center gap-3 px-4 py-3">
-        <label htmlFor="cambridge-book" className="text-sm font-medium">
-          Choose Cambridge:
-        </label>
+  if (!book) return <IeltsReadingBookCoverSelector source={source} />;
+  if (!READING_BOOKS.includes(bookNumber)) notFound();
 
-        <select
-          id="cambridge-book"
-          value={selectedBook}
-          onChange={(e) => setSelectedBook(Number(e.target.value))}
-          className="round border border-gray-300 bg-white px-3 py-2 text-sm"
-        >
-          {books.map((book) => (
-            <option key={book} value={book}>
-              Cambridge {book}
-            </option>
-          ))}
-        </select>
-      </div>
+  const sourceQuery = source === "database" ? "source=database&" : "";
+  const nextPath = test ? `/ielts/reading?${sourceQuery}book=${bookNumber}&test=${encodeURIComponent(test)}` : `/ielts/reading?${sourceQuery}book=${bookNumber}`;
+  const userContext = await requireUser(nextPath);
+  const { supabase } = userContext;
+  const adminContext = await getServerUserWithRole(["admin"], userContext);
+  const data = source === "database" ? await getIeltsBookPracticeData(supabase, bookNumber, Number.isFinite(testNumber) ? testNumber : undefined) : await getIeltsMarkdownBookPracticeData(bookNumber, Number.isFinite(testNumber) ? testNumber : undefined);
 
-      <div className="h-[calc(100%-56px)]">
-        <ReadingWorkspace leftPdfUrl={pdfUrl} rightPdfUrl={pdfUrl} />
-      </div>
-    </main>
-  );
+  if (!data.book) notFound();
+  if (!test) return <IeltsReadingTestSelector bookNumber={bookNumber} data={data} source={source} />;
+
+  const selectedTestNumber = data.tests.some((item) => item.test_number === testNumber) ? testNumber : data.tests[0]?.test_number ?? 1;
+  return <IeltsReadingExamClient data={data} selectedTestNumber={selectedTestNumber} isAdmin={Boolean(adminContext)} />;
 }
