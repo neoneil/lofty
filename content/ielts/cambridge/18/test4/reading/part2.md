@@ -1583,5 +1583,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The growth mindset",
+      "zh": "成长型思维模式"
+    },
+    {
+      "id": "s2",
+      "en": "Over the past century, a powerful idea has taken root in the educational landscape.",
+      "zh": "在过去的一个世纪里，一个强有力的观点已经在教育领域扎根。"
+    },
+    {
+      "id": "s3",
+      "en": "The concept of intelligence as something innate has been supplanted by the idea that intelligence is not fixed, and that, with the right training, we can be the authors of our own cognitive capabilities.",
+      "zh": "将智力视为与生俱来的观念已被智力不是固定不变的观点取代，并且通过正确的训练，我们可以成为自己认知能力的创造者。"
+    },
+    {
+      "id": "s4",
+      "en": "Psychologist Alfred Binet, the developer of the first intelligence tests, was one of many 19th-century scientists who held that earlier view and sought to quantify cognitive ability.",
+      "zh": "心理学家阿尔弗雷德·比奈是第一批制定智力测试的人之一，他是19世纪许多持有早期观点并试图量化认知能力的科学家中的一员。"
+    },
+    {
+      "id": "s5",
+      "en": "Then, in the early 20th century, progressive thinkers revolted against the notion that inherent ability is destiny.",
+      "zh": "随后，在20世纪初，进步思想家反对“天赋决定命运”的观念。"
+    },
+    {
+      "id": "s6",
+      "en": "Instead, educators such as John Dewey argued that every child's intelligence could be developed, given the right environment.",
+      "zh": "相反，教育家约翰·杜威等人主张，只要有适当的环境，每个孩子的智力都可以得到发展。"
+    },
+    {
+      "id": "s7",
+      "en": "'Growth mindset theory' is a relatively new — and extremely popular — version of this idea.",
+      "zh": "“成长型思维理论”是这个观点的一个相对较新且非常受欢迎的版本。"
+    },
+    {
+      "id": "s8",
+      "en": "In many schools today you will see hallways covered in motivational posters and hear speeches on the mindset of great sporting heroes who simply believed their way to the top.",
+      "zh": "如今在许多学校的走廊里你会看到贴满激励海报，并听到有关伟大运动英雄心态的演讲——他们只是凭信念登上巅峰。"
+    },
+    {
+      "id": "s9",
+      "en": "A major focus of the growth mindset in schools is coaxing students away from seeing failure as an indication of their ability, and towards seeing it as a chance to improve that ability.",
+      "zh": "成长型思维在学校的一个主要焦点是引导学生不要把失败看作能力的体现，而应把它视为提升能力的机会。"
+    },
+    {
+      "id": "s10",
+      "en": "As educationalist Jeff Howard noted several decades ago: 'Smart is not something that you just are, smart is something that you can get.'",
+      "zh": "教育家杰夫·霍华德几十年前指出：“聪明不是你与生俱有的东西，聪明是你可以获得的东西。”"
+    },
+    {
+      "id": "s11",
+      "en": "The idea of the growth mindset is based on the work of psychologist Carol Dweck in California in the 1990s.",
+      "zh": "成长型思维的概念基于心理学家卡罗尔·德韦克1990年代在加州的研究成果。"
+    },
+    {
+      "id": "s12",
+      "en": "In one key experiment, Dweck divided a group of 10- to 12-year-olds into two groups.",
+      "zh": "在一个关键实验中，德韦克将一组10至12岁的儿童分成两组。"
+    },
+    {
+      "id": "s13",
+      "en": "All were told that they had achieved a high score on a test but the first group were praised for their intelligence in achieving this, while the others were praised for their effort.",
+      "zh": "所有孩子都被告知他们在测试中得了高分，但第一组被赞扬为凭借智力取得成绩，另一组则因努力而受到表扬。"
+    },
+    {
+      "id": "s14",
+      "en": "The second group — those who had been instilled with a 'growth mindset' - were subsequently far more likely to put effort into future tasks.",
+      "zh": "第二组——那些被灌输“成长型思维”的孩子——后来更有可能在未来的任务中投入努力。"
+    },
+    {
+      "id": "s15",
+      "en": "Meanwhile, the former took on only those tasks that would not risk their sense of worth.",
+      "zh": "而前一组则只接受那些不会威胁其自我价值感的任务。"
+    },
+    {
+      "id": "s16",
+      "en": "This group had inferred that success or failure is due to innate ability, and this 'fixed mindset' had led them to fear of failure and lack of effort.",
+      "zh": "这一组推断成功或失败源于天生能力，这种“固定型思维”导致他们害怕失败并且缺乏努力。"
+    },
+    {
+      "id": "s17",
+      "en": "Praising ability actually made the students perform worse, while praising effort emphasised that change was possible.",
+      "zh": "表扬能力反而使学生表现更差，而表扬努力则强调改变是可能的。"
+    },
+    {
+      "id": "s18",
+      "en": "One of the greatest impediments to successfully implementing a growth mindset, however, is the education system itself: in many parts of the world, the school climate is obsessed with performance in the form of constant testing, analysing and ranking of students — a key characteristic of the fixed mindset.",
+      "zh": "然而，成功实施成长型思维的最大障碍之一是教育系统本身：在世界许多地区，学校氛围过于关注通过不断测试、分析和排名学生的表现——这是固定型思维的一个关键特征。"
+    },
+    {
+      "id": "s19",
+      "en": "Nor is it unusual for schools to create a certain cognitive dissonance, when they applaud the benefits of a growth mindset but then hand out fixed target grades in lessons based on performance.",
+      "zh": "当学校赞扬成长型思维的好处，却又根据表现固定目标成绩时，制造一定的认知失调也是很常见的。"
+    },
+    {
+      "id": "s20",
+      "en": "Aside from the implementation problem, the original growth mindset research has also received harsh criticism.",
+      "zh": "除了实施问题外，最初的成长型思维研究也受到了严厉批评。"
+    },
+    {
+      "id": "s21",
+      "en": "The statistician Andrew Gelman claims that 'their research designs have enough degrees of freedom that they could take their data to support just about any theory at all'.",
+      "zh": "统计学家安德鲁·盖尔曼声称：“他们的研究设计自由度足够，几乎可以用数据支持任何理论。”"
+    },
+    {
+      "id": "s22",
+      "en": "Professor of Psychology Timothy Bates, who has been trying to replicate Dweck's work, is finding that the results are repeatedly null.",
+      "zh": "心理学教授蒂莫西·贝茨尝试复制德韦克的研究，发现结果多次无效。"
+    },
+    {
+      "id": "s23",
+      "en": "He notes that: 'People with a growth mindset don't cope any better with failure ...",
+      "zh": "他指出：“拥有成长型思维的人面对失败并不处理得更好……”"
+    },
+    {
+      "id": "s24",
+      "en": "Kids with the growth mindset aren't getting better grades, either before or after our intervention study.'",
+      "zh": "拥有成长型思维的孩子在我们干预研究的前后，成绩也没有更好。”"
+    },
+    {
+      "id": "s25",
+      "en": "Much of this criticism is not lost on Dweck, and she deserves great credit for responding to it and adapting her work accordingly.",
+      "zh": "这些批评德韦克大部分都能理解，她值得高度赞扬，因为她做出了回应并相应调整了自己的研究。"
+    },
+    {
+      "id": "s26",
+      "en": "In fact, she argues that her work has been misunderstood and misapplied in a range of ways.",
+      "zh": "实际上，她认为自己的工作在很多方面被误解和误用。"
+    },
+    {
+      "id": "s27",
+      "en": "She has also expressed concerns that her theories are being misappropriated in schools by being conflated with the self-esteem movement: 'For me the growth mindset is a tool for learning and improvement.",
+      "zh": "她还表达了担忧，认为她的理论在学校被错误利用，与自尊运动混为一谈：“对我来说，成长型思维是学习和提升的工具。"
+    },
+    {
+      "id": "s28",
+      "en": "It's not just a vehicle for making children feel good.'",
+      "zh": "它不仅仅是让孩子感觉良好的手段。”"
+    },
+    {
+      "id": "s29",
+      "en": "But there is another factor at work here.",
+      "zh": "但是这里还有另一个因素在起作用。"
+    },
+    {
+      "id": "s30",
+      "en": "The failure to translate the growth mindset into the classroom might reflect a misunderstanding of the nature of teaching and learning itself.",
+      "zh": "未能将成长型思维成功应用到课堂上，可能反映出对教学和学习本质的误解。"
+    },
+    {
+      "id": "s31",
+      "en": "Growth mindset supporters David Yeager and Gregory Walton claim that interventions should be delivered in a subtle way to maximise their effectiveness.",
+      "zh": "成长型思维的支持者大卫·耶格和格雷戈里·沃尔顿认为，干预应以微妙的方式进行，以最大限度提高其效果。"
+    },
+    {
+      "id": "s32",
+      "en": "They say that if adolescents perceive a teacher's intervention as conveying that they are in need of help, this could undo its intended effects.",
+      "zh": "他们指出，如果青少年觉得老师的干预是在暗示他们需要帮助，这可能会适得其反。"
+    },
+    {
+      "id": "s33",
+      "en": "A lot of what drives students is their innate beliefs and how they perceive themselves.",
+      "zh": "驱动学生的很大一部分是他们内在的信念和自我认知。"
+    },
+    {
+      "id": "s34",
+      "en": "There is a strong correlation between self-perception and achievement, but there is evidence to suggest that the actual effect of achievement on self-perception is stronger than the other way round.",
+      "zh": "自我认知与成就之间有很强的相关性，但有证据表明成就对自我认知的影响比反过来更强。"
+    },
+    {
+      "id": "s35",
+      "en": "To stand up in a classroom and successfully deliver a good speech is a genuine achievement, and that is likely to be more powerfully motivating than vague notions of 'motivation' itself.",
+      "zh": "在教室里站起来并成功发表一场好演讲是实实在在的成就，这比模糊的“动力”概念更能激励人。"
+    },
+    {
+      "id": "s36",
+      "en": "Recent evidence would suggest that growth mindset interventions are not the elixir of student learning that its proponents claim it to be.",
+      "zh": "最新证据显示，成长型思维的干预并非其支持者所宣称的学生学习灵丹妙药。"
+    },
+    {
+      "id": "s37",
+      "en": "The growth mindset appears to be a viable construct in the lab, which, when administered in the classroom via targeted interventions, doesn't seem to work.",
+      "zh": "成长型思维在实验室中似乎是一个可行的概念，但通过有针对性的课堂干预实施时，效果似乎并不好。"
+    },
+    {
+      "id": "s38",
+      "en": "It is hard to dispute that having faith in the capacity to change is a good attribute for students.",
+      "zh": "毋庸置疑，相信自己有改变的能力对学生来说是一种良好品质。"
+    },
+    {
+      "id": "s39",
+      "en": "Paradoxically, however, that aspiration is not well served by direct interventions that try to instil it.",
+      "zh": "然而，矛盾的是，试图直接灌输这种信念的干预并不能很好地实现这个目标。"
+    },
+    {
+      "id": "s40",
+      "en": "Motivational posters and talks are often a waste of time, and might well give students a deluded notion of what success actually means.",
+      "zh": "励志海报和讲座常常浪费时间，甚至可能使学生对成功的真正含义产生误解。"
+    },
+    {
+      "id": "s41",
+      "en": "Teaching concrete skills such as how to write an effective introduction to an essay then praising students' effort in getting there is probably a far better way of improving confidence than telling them how unique they are, or indeed how capable they are of changing their own brains.",
+      "zh": "教授具体技能，比如如何写好一篇作文的开头，然后表扬学生达到目标所付出的努力，或许比告诉他们自身的独特性，或他们有多大能改变自己的大脑，这种方式更能有效增强信心。"
+    },
+    {
+      "id": "s42",
+      "en": "Perhaps growth mindset works best as a philosophy and not an intervention.",
+      "zh": "或许成长型思维更适合作为一种哲学理念，而非一种干预手段。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">&nbsp;<span style="color: inherit; font-family: " source="" sans="" pro",="" sans-serif;="" font-size:="" 24px;="" text-align:="" center;"="">The&nbsp;growth&nbsp;mindset</span></span></strong></h3><p>Over the past century, a powerful idea has taken root in the educational landscape. The concept of intelligence as something innate has been supplanted by the idea that intelligence is not fixed, and that, with the right training, we can be the authors of our own cognitive capabilities. Psychologist Alfred Binet, the developer of the first intelligence tests, was one of many 19th-century scientists who held that earlier view and sought to quantify cognitive ability. Then, in the early 20th century, progressive thinkers revolted against the notion that inherent ability is destiny. Instead, educators such as John Dewey argued that every child's intelligence could be developed, given the right environment.</p><p><br></p><p>'Growth mindset theory' is a relatively new — and extremely popular — version of this idea. In many schools today you will see hallways covered in motivational posters and hear speeches on the mindset of great sporting heroes who simply <em>believed</em> their way to the top. A major focus of the growth mindset in schools is coaxing students away from seeing failure as an indication of their ability, and towards seeing it as a chance to improve that ability. As educationalist Jeff Howard noted several decades ago: 'Smart is not something that you just are, smart is something that you can get.'</p><p><br></p><p>The idea of the growth mindset is based on the work of psychologist Carol Dweck in California in the 1990s. In one key experiment, Dweck divided a group of 10- to 12-year-olds into two groups. All were told that they had achieved a high score on a test but the first group were praised for their intelligence in achieving this, while the others were praised for their effort. The second group — those who had been instilled with a 'growth mindset' - were subsequently far more likely to put effort into future tasks. Meanwhile, the former took on only those tasks that would not risk their sense of worth. This group had inferred that success or failure is due to innate ability, and this 'fixed mindset' had led them to fear of failure and lack of effort. Praising ability actually made the students perform worse, while praising effort emphasised that change was possible.</p><p><br></p><p>One of the greatest impediments to successfully implementing a growth mindset, however, is the education system itself: in many parts of the world, the school climate is obsessed with performance in the form of constant testing, analysing and ranking of students — a key characteristic of the fixed mindset. Nor is it unusual for schools to create a certain cognitive dissonance, when they applaud the benefits of a growth mindset but then hand out fixed target grades in lessons based on performance.</p><p><br></p><p>Aside from the implementation problem, the original growth mindset research has also received harsh criticism. The statistician Andrew Gelman claims that 'their research designs have enough degrees of freedom that they could take their data to support just about any theory at all'. Professor of Psychology Timothy Bates, who has been trying to replicate Dweck's work, is finding that the results are repeatedly null. He notes that: 'People with a growth mindset don't cope any better with failure ... Kids with the growth mindset aren't getting better grades, either before or after our intervention study.'</p><p><br></p><p>Much of this criticism is not lost on Dweck, and she deserves great credit for responding to it and adapting her work accordingly. In fact, she argues that her work has been misunderstood and misapplied in a range of ways. She has also expressed concerns that her theories are being misappropriated in schools by being conflated with the self-esteem movement: 'For me the growth mindset is a tool for learning and improvement. It's not just a vehicle for making children feel good.'</p><p><br></p><p>But there is another factor at work here. The failure to translate the growth mindset into the classroom might reflect a misunderstanding of the nature of teaching and learning itself. Growth mindset supporters David Yeager and Gregory Walton claim that interventions should be delivered in a subtle way to maximise their effectiveness. They say that if adolescents perceive a teacher's intervention as conveying that they are in need of help, this could undo its intended effects.</p><p><br></p><p>A lot of what drives students is their innate beliefs and how they perceive themselves. There is a strong correlation between self-perception and achievement, but there is evidence to suggest that the actual effect of achievement on self-perception is stronger than the other way round. To stand up in a classroom and successfully deliver a good speech is a genuine achievement, and that is likely to be more powerfully motivating than vague notions of 'motivation' itself.</p><p><br></p><p>Recent evidence would suggest that growth mindset interventions are not the elixir of student learning that its proponents claim it to be. The growth mindset appears to be a viable construct in the lab, which, when administered in the classroom via targeted interventions, doesn't seem to work. It is hard to dispute that having faith in the capacity to change is a good attribute for students. Paradoxically, however, that aspiration is not well served by direct interventions that try to instil it.</p><p><br></p><p>Motivational posters and talks are often a waste of time, and might well give students a deluded notion of what success actually means. Teaching concrete skills such as how to write an effective introduction to an essay then praising students' effort in getting there is probably a far better way of improving confidence than telling them how unique they are, or indeed how capable they are of changing their own brains. Perhaps growth mindset works best as a philosophy and not an intervention.</p><p><br></p>

@@ -2,6 +2,8 @@ import { AppLayout } from "@/components/layout-v2/app-layout";
 import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 
+export const dynamic = "force-dynamic";
+
 export default async function WorkspaceLayout({
   children,
 }: {

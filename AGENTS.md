@@ -45,6 +45,35 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Store every approved schema change as a timestamped SQL file in `supabase/migrations/`. Run `db:push:dry-run` before any approved `db:push`.
 - Never run `supabase db push`, migration repair, reset, destructive SQL, or bulk data mutation merely because migration tooling is configured.
 
+## PTE Essay Sample Generation
+
+- PTE Write Essay sample generation should be incremental and idempotent.
+- When new WE questions are added to the database, first compare active prediction questions in `pte.we` with existing rows in `pte.essay_answer`.
+- Only generate samples for WE questions that do not already have a row in `pte.essay_answer`.
+- Never overwrite existing essay samples or sentence translations unless the user explicitly asks for regeneration.
+- Generate in small batches, preferably 5 questions at a time. After each batch, re-count total, completed, and missing questions before continuing.
+- Save each generated essay immediately to `pte.essay_answer`, then save its sentence rows to `pte.essay_sentence`.
+- If another page, worker, or admin process saves a sample while a batch is running, skip that question instead of creating a duplicate.
+- Record AI usage for successful and failed generation attempts using the existing AI usage logging flow.
+- If a batch fails midway, keep already saved samples and resume later by finding the remaining missing questions.
+- Do not run bulk generation against the remote database without explicit user confirmation because it writes database rows and consumes OpenAI tokens.
+
+## PTE SWT Sample Generation
+
+- PTE Summarize Written Text sample generation should also be incremental and idempotent.
+- When new SWT questions are added to the database, first compare active prediction questions in `pte.swt` with existing rows in `pte.swt_answer`.
+- Only generate samples for SWT questions that do not already have a row in `pte.swt_answer`.
+- Never overwrite existing SWT answers, source translations, answer translations, or component rows unless the user explicitly asks for regeneration.
+- Generate in small batches, preferably 5 questions at a time. After each batch, re-count total, completed, and missing questions before continuing.
+- Save each generated one-sentence SWT answer immediately to `pte.swt_answer`.
+- Store the answer Chinese translation in `pte.swt_answer.chinese_explanation`.
+- Store the source passage Chinese translation as a `pte.swt_component` row with `component_role = 'source_translation'`.
+- Store sentence-combining explanation rows in `pte.swt_component` with grammar pattern, component role, source idea, and Chinese explanation.
+- If another page, worker, or admin process saves a SWT answer while a batch is running, skip that question instead of creating a duplicate.
+- Record AI usage for successful and failed SWT generation attempts using the existing AI usage logging flow.
+- If a batch fails midway, keep already saved samples and resume later by finding the remaining missing questions.
+- Do not run bulk SWT generation against the remote database without explicit user confirmation because it writes database rows and consumes OpenAI tokens.
+
 ## UI And Styling
 
 - Reuse the existing Lofty UI system and design tokens first.

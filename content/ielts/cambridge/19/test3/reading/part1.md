@@ -1071,5 +1071,168 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Archaeologists discover evidence of prehistoric island settlers",
+      "zh": "考古学家发现史前岛屿定居者的证据"
+    },
+    {
+      "id": "s2",
+      "en": "In early April 2019, Dr Ceri Shipton and his colleagues from Australian National University became the first archaeologists to explore Obi, one of many tropical islands in Indonesia's Maluku Utara province.",
+      "zh": "2019年4月初，澳大利亚国立大学的塞里·希普顿博士及其同事成为首批探索印度尼西亚马鲁古乌塔拉省众多热带岛屿之一—奥比岛的考古学家。"
+    },
+    {
+      "id": "s3",
+      "en": "The research team's discoveries suggest that the prehistoric people who lived on Obi were adept on both land and sea, hunting in the dense rainforest, foraging on the seashore, and possibly even voyaging between islands.",
+      "zh": "研究团队的发现表明，生活在奥比岛的史前人类既擅长陆地活动，也能适应海上生活，他们在茂密的雨林中狩猎，在海岸线上采集食物，甚至可能在岛屿之间航行。"
+    },
+    {
+      "id": "s4",
+      "en": "The excavations were part of a project to learn more about how people first dispersed from mainland Asia, through the Indonesian archipelago and into the prehistoric continent that once connected Australia and New Guinea.",
+      "zh": "这次发掘是一个项目的一部分，旨在深入了解人类如何首次从亚洲大陆穿过印度尼西亚群岛，进入曾经连接澳大利亚和新几内亚的史前大陆。"
+    },
+    {
+      "id": "s5",
+      "en": "The team's earlier research suggested that the northernmost islands in the group, known as the Wallacean islands, including Obi, would have offered the easiest migration route.",
+      "zh": "该团队早期的研究表明，该群岛中最北部的岛屿，被称为华莱士群岛，包括奥比岛，很可能提供了最便捷的迁徙路线。"
+    },
+    {
+      "id": "s6",
+      "en": "It also seemed likely that these islands were crucial 'stepping stones' on humans' island-hopping voyages through this region millennia ago.",
+      "zh": "这些岛屿很可能是数千年前人类通过该地区进行跳岛航行的重要“垫脚石”。"
+    },
+    {
+      "id": "s7",
+      "en": "But to support this idea, they needed archaeological evidence for humans living in this remote area in the ancient past.",
+      "zh": "但为了支持这一观点，他们需要在这个偏远地区发现古代人类生活的考古证据。"
+    },
+    {
+      "id": "s8",
+      "en": "So, they travelled to Obi to look for sites that might reveal evidence of early occupation.",
+      "zh": "因此，他们前往奥比岛寻找可能揭示早期居住证据的遗址。"
+    },
+    {
+      "id": "s9",
+      "en": "Just inland from the village of Kelo on Obi's northern coast, Shipton and his colleagues found two caves containing prehistoric rock shelters that were suitable for excavation.",
+      "zh": "在奥比岛北海岸凯洛村内陆不远处，希普顿和他的同事发现了两个洞穴，里面有适合发掘的史前岩石庇护所。"
+    },
+    {
+      "id": "s10",
+      "en": "With the permission and help of the local people of Kelo, they dug a small test excavation in each shelter.",
+      "zh": "在凯洛当地居民的允许和帮助下，他们在每个庇护所进行了小型试掘。"
+    },
+    {
+      "id": "s11",
+      "en": "There they found numerous artefacts, including fragments of axes, some dating to about 14,000 years ago.",
+      "zh": "在那里，他们发现了众多文物，包括一些约有14,000年历史的斧头碎片。"
+    },
+    {
+      "id": "s12",
+      "en": "The earliest axes at Kelo were made using clam shells.",
+      "zh": "凯洛出土的最早斧头是用蛤壳制成的。"
+    },
+    {
+      "id": "s13",
+      "en": "Axes made from clam shells from roughly the same time had also previously been found elsewhere in this region, including on the nearby island of Gebe to the northeast.",
+      "zh": "在该地区其他地方也曾发现过同一时期用蛤壳制成的斧头，包括东北方向临近的格贝岛。"
+    },
+    {
+      "id": "s14",
+      "en": "As on Gebe, it is highly likely that Obi's axes were used in the construction of canoes, thus allowing these early peoples to maintain connections between communities on neighbouring islands.",
+      "zh": "正如在格贝岛一样，奥比岛的斧头很可能用于独木舟的制作，从而使早期人们能维持邻近岛屿社区之间的联系。"
+    },
+    {
+      "id": "s15",
+      "en": "The oldest cultural layers from the Kelo site provided the team with the earliest record for human occupation on Obi, dating back around 18,000 years.",
+      "zh": "凯洛遗址中最古老的文化层为团队提供了奥比岛最早的人类居住记录，距今约18,000年。"
+    },
+    {
+      "id": "s16",
+      "en": "At this time the climate was drier and colder than today, and the island's dense rainforests would likely have been much less impenetrable than they are now.",
+      "zh": "当时气候比现在更干燥、更寒冷，岛上的浓密雨林很可能没有现在这样难以穿越。"
+    },
+    {
+      "id": "s17",
+      "en": "Sea levels were about 120 metres lower, meaning Obi was a much larger island, encompassing what is today the separate island of Bisa, as well as several other small islands nearby.",
+      "zh": "海平面比今天低约120米，这意味着奥比曾是一个更大的岛屿，包括如今独立的比萨岛以及附近的几个小岛。"
+    },
+    {
+      "id": "s18",
+      "en": "Roughly 11,700 years ago, as the most recent ice age ended, the climate became significantly warmer and wetter, no doubt making Obi's jungle much thicker.",
+      "zh": "大约11,700年前，最近一次冰河时期结束，气候显著变得更温暖、更湿润，毫无疑问这使奥比的丛林变得更为茂密。"
+    },
+    {
+      "id": "s19",
+      "en": "According to the researchers, it is no coincidence that around this time the first axes crafted from stone rather than sea shells appear, likely in response to their heavy-duty use for clearing and modification of the increasingly dense rainforest.",
+      "zh": "研究人员认为，这一时期首次出现用石头而非蛤壳制作的斧头绝非巧合，这很可能是因为斧头被大量用于清理和改造日益茂密的雨林。"
+    },
+    {
+      "id": "s20",
+      "en": "While stone takes about twice as long to grind into an axe compared to shell, the harder material keeps its sharp edge for longer.",
+      "zh": "虽然石头打磨成斧头所需时间约为蛤壳的两倍，但石质材料的锋利度保持时间更长。"
+    },
+    {
+      "id": "s21",
+      "en": "Judging by the bones which the researchers unearthed in the Kelo caves, people living there mainly hunted the Rothschild's cuscus, a possum-like creature that still lives on Obi today.",
+      "zh": "根据研究人员在凯洛洞穴发现的骨骼，当地人主要猎捕罗斯柴尔德袋鼯，这种类似负鼠的动物至今仍生活在奥比岛上。"
+    },
+    {
+      "id": "s22",
+      "en": "As the forest grew more dense, people probably used axes to clear patches of forest and make hunting easier.",
+      "zh": "随着森林变得更加茂密，人们可能使用斧头开辟出空地，以便狩猎变得更加容易。"
+    },
+    {
+      "id": "s23",
+      "en": "Shipton's team's excavation of the shelters at the Kelo site unearthed a volcanic glass substance called obsidian, which must have been brought over from another island, as there is no known source on Obi.",
+      "zh": "希普顿团队在凯洛遗址庇护所的发掘中发现了一种名为黑曜石的火山玻璃物质，这种材料必定是从别的岛屿带来的，因为奥比岛并无已知的黑曜石产地。"
+    },
+    {
+      "id": "s24",
+      "en": "It also revealed particular types of beads, similar to those previously found on islands in southern Wallacea.",
+      "zh": "发掘还发现了一些特定类型的珠子，与此前在华莱士南部群岛上发现的珠子相似。"
+    },
+    {
+      "id": "s25",
+      "en": "These finds again support the idea that Obi islanders routinely travelled to other islands.",
+      "zh": "这些发现再次支持奥比岛居民经常出行前往其他岛屿的观点。"
+    },
+    {
+      "id": "s26",
+      "en": "The excavations suggest people successfully lived in the two Kelo shelters for about 10,000 years.",
+      "zh": "发掘显示人们在两个凯洛庇护所中成功居住了约10,000年。"
+    },
+    {
+      "id": "s27",
+      "en": "But then, about 8,000 years ago, both were abandoned.",
+      "zh": "但约在8,000年前，这两个庇护所都被遗弃了。"
+    },
+    {
+      "id": "s28",
+      "en": "Did the residents leave Obi completely, or move elsewhere on the island?",
+      "zh": "居民是完全离开了奥比岛，还是迁移到了岛上的其他地方？"
+    },
+    {
+      "id": "s29",
+      "en": "Perhaps the jungle had grown so thick that axes were no longer a match for the dense undergrowth.",
+      "zh": "也许丛林变得如此茂密，以至于斧头已无法应对浓密的灌木丛。"
+    },
+    {
+      "id": "s30",
+      "en": "Perhaps people simply moved to the coast and turned to fishing rather than hunting as a means of survival.",
+      "zh": "或者人们只是迁移到海岸，转而以捕鱼取代狩猎作为生存手段。"
+    },
+    {
+      "id": "s31",
+      "en": "Whatever the reason for the departure, there is no evidence for use of the Kelo shelters after this time, until about 1,000 years ago, when they were re-occupied by people who owned pottery as well as items made out of gold and silver.",
+      "zh": "无论离开的原因是什么，从此以后直到约1,000年前，均无凯洛庇护所使用的证据，随后这里被拥有陶器及黄金银制品的人再次占用。"
+    },
+    {
+      "id": "s32",
+      "en": "It seems likely, in view of Obi's location, that this final phase of occupation also saw the Kelo shelters used by people involved in the historic trade in spices between the Maluku islands and the rest of the world.",
+      "zh": "鉴于奥比岛的位置，这一最后的居住阶段很可能使凯洛庇护所成为参与马鲁古群岛与世界其他地区之间历史性香料贸易的人的活动场所。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Archaeologists discover evidence of prehistoric island settlers</span></strong></p><p>In early April 2019, Dr Ceri Shipton and his colleagues from Australian National University became the first archaeologists to explore Obi, one of many tropical islands in Indonesia's Maluku Utara province. The research team's discoveries suggest that the prehistoric people who lived on Obi were adept on both land and sea, hunting in the dense rainforest, foraging on the seashore, and possibly even voyaging between islands.</p><p><br></p><p>The excavations were part of a project to learn more about how people first dispersed from mainland Asia, through the Indonesian archipelago and into the prehistoric continent that once connected Australia and New Guinea. The team's earlier research suggested that the northernmost islands in the group, known as the Wallacean islands, including Obi, would have offered the easiest migration route. It also seemed likely that these islands were crucial 'stepping stones' on humans' island-hopping voyages through this region millennia ago. But to support this idea, they needed archaeological evidence for humans living in this remote area in the ancient past. So, they travelled to Obi to look for sites that might reveal evidence of early occupation.</p><p><br></p><p>Just inland from the village of Kelo on Obi's northern coast, Shipton and his colleagues found two caves containing prehistoric rock shelters that were suitable for excavation. With the permission and help of the local people of Kelo, they dug a small test excavation in each shelter. There they found numerous artefacts, including fragments of axes, some dating to about 14,000 years ago. The earliest axes at Kelo were made using clam shells. Axes made from clam shells from roughly the same time had also previously been found elsewhere in this region, including on the nearby island of Gebe to the northeast. As on Gebe, it is highly likely that Obi's axes were used in the construction of canoes, thus allowing these early peoples to maintain connections between communities on neighbouring islands.</p><p><br></p><p>The oldest cultural layers from the Kelo site provided the team with the earliest record for human occupation on Obi, dating back around 18,000 years. At this time the climate was drier and colder than today, and the island's dense rainforests would likely have been much less impenetrable than they are now. Sea levels were about 120 metres lower, meaning Obi was a much larger island, encompassing what is today the separate island of Bisa, as well as several other small islands nearby.<br></p><p><br></p><p>Roughly 11,700 years ago, as the most recent ice age ended, the climate became significantly warmer and wetter, no doubt making Obi's jungle much thicker. According to the researchers, it is no coincidence that around this time the first axes crafted from stone rather than sea shells appear, likely in response to their heavy-duty use for clearing and modification of the increasingly dense rainforest. While stone takes about twice as long to grind into an axe compared to shell, the harder material keeps its sharp edge for longer.<br></p><p><br></p><p>Judging by the bones which the researchers unearthed in the Kelo caves, people living there mainly hunted the Rothschild's cuscus, a possum-like creature that still lives on Obi today. As the forest grew more dense, people probably used axes to clear patches of forest and make hunting easier.</p><p><br></p><p>Shipton's team's excavation of the shelters at the Kelo site unearthed a volcanic glass substance called obsidian, which must have been brought over from another island, as there is no known source on Obi. It also revealed particular types of beads, similar to those previously found on islands in southern Wallacea. These finds again support the idea that Obi islanders routinely travelled to other islands.</p><p><br></p><p>The excavations suggest people successfully lived in the two Kelo shelters for about 10,000 years. But then, about 8,000 years ago, both were abandoned. Did the residents leave Obi completely, or move elsewhere on the island? Perhaps the jungle had grown so thick that axes were no longer a match for the dense undergrowth. Perhaps people simply moved to the coast and turned to fishing rather than hunting as a means of survival.</p><p><br></p><p>Whatever the reason for the departure, there is no evidence for use of the Kelo shelters after this time, until about 1,000 years ago, when they were re-occupied by people who owned pottery as well as items made out of gold and silver. It seems likely, in view of Obi's location, that this final phase of occupation also saw the Kelo shelters used by people involved in the historic trade in spices between the Maluku islands and the rest of the world.</p><p><strong><br></strong></p>

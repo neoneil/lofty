@@ -1539,5 +1539,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Climate change reveals ancient artefacts in Norway's glaciers",
+      "zh": "气候变化揭示了挪威冰川中的古代文物"
+    },
+    {
+      "id": "s2",
+      "en": "Well above the treeline in Norway's highest mountains, ancient fields of ice are shrinking as Earth's climate warms.",
+      "zh": "在挪威最高山脉的树线之上，古老的冰原随着地球气候的变暖正在缩小。"
+    },
+    {
+      "id": "s3",
+      "en": "As the ice has vanished, it has been giving up the treasures it has preserved in cold storage for the last 6,000 years - items such as ancient arrows and skis from Viking Age* traders.",
+      "zh": "随着冰层的消失，它释放出了在过去6000年冷藏保存的宝藏——比如维京时代*商人的古箭和滑雪板。"
+    },
+    {
+      "id": "s4",
+      "en": "And those artefacts have provided archaeologists with some surprising insights into how ancient Norwegians made their livings.",
+      "zh": "这些文物为考古学家提供了一些关于古代挪威人谋生方式的惊人见解。"
+    },
+    {
+      "id": "s5",
+      "en": "Organic materials like textiles and hides are relatively rare finds at archaeological sites.",
+      "zh": "纺织品和皮革等有机材料在考古遗址中相对罕见。"
+    },
+    {
+      "id": "s6",
+      "en": "This is because unless they're protected from the microorganisms that cause decay, they tend not to last long.",
+      "zh": "这是因为除非受到防止微生物腐烂的保护，否则这些材料很难长久保存。"
+    },
+    {
+      "id": "s7",
+      "en": "Extreme cold is one reliable way to keep artefacts relatively fresh for a few thousand years, but once thawed out, these materials experience degradation relatively swiftly.",
+      "zh": "极端的寒冷是保持文物相对新鲜几千年的可靠方法，但一旦解冻，这些材料会很快发生退化。"
+    },
+    {
+      "id": "s8",
+      "en": "With climate change shrinking ice cover around the world, glacial archaeologists need to race the clock to find newly revealed artefacts, preserve them, and study them.",
+      "zh": "随着气候变化导致全球冰川覆盖面积缩小，冰川考古学家必须争分夺秒地寻找新露出的文物，保护并研究它们。"
+    },
+    {
+      "id": "s9",
+      "en": "If something fragile dries and is windblown it might very soon be lost to science, or an arrow might be exposed and then covered again by the next snow and remain well-preserved.",
+      "zh": "如果脆弱的物品干燥后被风吹走，很快可能就会丢失；而箭矢则可能被暴露出来后又被新雪覆盖，从而得以保存完好。"
+    },
+    {
+      "id": "s10",
+      "en": "The unpredictability means that glacial archaeologists have to be systematic in their approach to fieldwork.",
+      "zh": "这种不可预测性意味着冰川考古学家必须采用系统化的方法进行野外工作。"
+    },
+    {
+      "id": "s11",
+      "en": "Over a nine-year period, a team of archaeologists, which included Lars Pile of Oppland County Council, Norway, and James Barrett of the McDonald Institute for Archaeological Research, surveyed patches of ice in Oppland, an area of south-central Norway that is home to some of the country's highest mountains.",
+      "zh": "在九年间，一个考古学团队，包括挪威奥普兰县议会的Lars Pile和麦克唐纳考古研究所的James Barrett，对奥普兰地区——挪威中南部拥有该国一些最高山峰的区域——的冰川进行了调查。"
+    },
+    {
+      "id": "s12",
+      "en": "Reindeer once congregated on these icy patches in the later summer months to escape biting insects, and from the late Stone Age**, hunters followed.",
+      "zh": "驯鹿曾在夏末几个月聚集在这些冰面上以躲避叮咬的昆虫，而从晚期石器时代**起，猎人们也随之而来。"
+    },
+    {
+      "id": "s13",
+      "en": "In addition, trade routes threaded through the mountain passes of Oppland, linking settlements in Norway to the rest of Europe.",
+      "zh": "此外，贸易路线穿过奥普兰的山口，将挪威定居点与欧洲其他地区连接起来。"
+    },
+    {
+      "id": "s14",
+      "en": "The slow but steady movement of glaciers tends to destroy anything at their bases, so the team focused on stationary patches of ice, mostly above 1,400 metres.",
+      "zh": "冰川缓慢而稳定的移动往往会摧毁其底部的所有物体，因此团队专注于稳定不动的冰块，主要位于1400米以上。"
+    },
+    {
+      "id": "s15",
+      "en": "That ice is found amid fields of frost-weathered boulders, fallen rocks, and exposed bedrock that for nine months of the year is buried beneath snow.",
+      "zh": "这些冰块位于霜蚀巨石、坠落岩石和裸露基岩的区域，这些地区有九个月被积雪覆盖。"
+    },
+    {
+      "id": "s16",
+      "en": "'Fieldwork is hard work — hiking with all our equipment, often camping on permafrost — but very rewarding.",
+      "zh": "“野外工作非常辛苦——背负所有设备徒步行进，经常在永久冻土上露营——但却非常有成就感。”"
+    },
+    {
+      "id": "s17",
+      "en": "You're rescuing the archaeology, bringing the melting ice to wider attention, discovering a unique environmental history and really connecting with the natural environment, ' says Barrett.",
+      "zh": "“你是在挽救考古遗产，让更多人关注融化的冰川，发现独特的环境历史，并真正与自然环境建立联系，”Barrett说道。"
+    },
+    {
+      "id": "s18",
+      "en": "At the edges of the contracting ice patches, archaeologists found more than 2,000 artefacts, which formed a material record that ran from 4,000 BCE to the beginnings of the Renaissance in the 14th century.",
+      "zh": "在不断缩小的冰面边缘，考古学家发现了2000多件文物，这些文物形成了一份从公元前4000年到14世纪文艺复兴初期的物质记录。"
+    },
+    {
+      "id": "s19",
+      "en": "Many of the artefacts are associated with hunting.",
+      "zh": "许多文物与狩猎有关。"
+    },
+    {
+      "id": "s20",
+      "en": "Hunters would have easily misplaced arrows and they often discarded broken bows rather than take them all the way home.",
+      "zh": "猎人们很容易遗失箭矢，且他们通常会丢弃断裂的弓，而不是带回家。"
+    },
+    {
+      "id": "s21",
+      "en": "Other items could have been used by hunters traversing the high mountain passes of Oppland: all-purpose items like tools, skis, and horse tack.",
+      "zh": "其他物品可能被猎人用来穿越奥普兰高山山口，包括多用途工具、滑雪板和马具。"
+    },
+    {
+      "id": "s22",
+      "en": "Barrett's team radiocarbon-dated 153 of the artefacts and compared those dates to the timing of major environmental changes in the region — such as periods of cooling or warming — and major social and economic shifts — such as the growth of farming settlements and the spread of international trade networks leading up to the Viking Age.",
+      "zh": "Barrett的团队对153件文物进行了放射性碳测定，并将这些日期与该地区主要环境变化（如冷期或暖期）及重大社会经济变迁（如农耕定居点的增长和通往维京时代的国际贸易网络扩展）进行了比对。"
+    },
+    {
+      "id": "s23",
+      "en": "They found that some periods had produced lots of artefacts, which indicates that people had been pretty active in the mountains during those times.",
+      "zh": "他们发现某些时期产生了大量文物，这表明当时人们在山区活动频繁。"
+    },
+    {
+      "id": "s24",
+      "en": "But there were few or no signs of activity during other periods.",
+      "zh": "但在其他时期则很少或没有活动迹象。"
+    },
+    {
+      "id": "s25",
+      "en": "What was surprising, according to Barrett, was the timing of these periods.",
+      "zh": "据Barrett称，令人惊讶的是这些活跃期的时间点。"
+    },
+    {
+      "id": "s26",
+      "en": "Oppland's mountains present daunting terrain and in periods of extreme cold, glaciers could block the higher mountain passes and make travel in the upper reaches of the mountains extremely difficult.",
+      "zh": "奥普兰的山脉地形险峻，在极寒时期，冰川可能封堵较高的山口，使得山区高处的通行极为困难。"
+    },
+    {
+      "id": "s27",
+      "en": "Archaeologists assumed people would stick to lower elevations during a time like the Late Antique Little Ice Age, a short period of deeper-than-usual cold from about 536-600 CE.",
+      "zh": "考古学家曾假设人们会在类似晚古小冰期（约公元536-600年这段较为寒冷的短期时期）期间主要停留在较低海拔地区。"
+    },
+    {
+      "id": "s28",
+      "en": "But it turned out that hunters kept regularly venturing into the mountains even when the climate turned cold, based on the amount of stuff they had apparently dropped there.",
+      "zh": "但根据他们显然丢落的物品数量，事实证明即使气候转冷，猎人们仍经常进山狩猎。"
+    },
+    {
+      "id": "s29",
+      "en": "'Remarkably, though, the finds from the ice may have continued through this period, perhaps suggesting that the importance of mountain hunting increased to supplement failing agricultural harvests in times of low temperatures, ' says Barrett.",
+      "zh": "“然而令人惊讶的是，冰层中的发现可能持续到了这一时期，这或许表明在低温导致农作物歉收时，山地狩猎的重要性有所提升，”Barrett说。"
+    },
+    {
+      "id": "s30",
+      "en": "A colder turn in the Scandinavian climate would likely have meant widespread crop failures, so more people would have depended on hunting to make up for those losses.",
+      "zh": "斯堪的纳维亚气候变冷可能导致大面积农作物歉收，因而更多人依赖狩猎来弥补损失。"
+    },
+    {
+      "id": "s31",
+      "en": "Many of the artefacts Barrett's team recovered date from the beginning of the Viking Age, the 700s through to the 900s CE.",
+      "zh": "Barrett团队发现的许多文物可追溯到维京时代初期，即公元700至900年代。"
+    },
+    {
+      "id": "s32",
+      "en": "Trade networks connecting Scandinavia with Europe and the Middle East were expanding around this time.",
+      "zh": "当时连接斯堪的纳维亚与欧洲及中东的贸易网络正在扩大。"
+    },
+    {
+      "id": "s33",
+      "en": "Although we usually think of ships when we think of Scandinavian expansion, these recent discoveries show that plenty of goods travelled on overland routes, like the mountain passes of Oppland.",
+      "zh": "虽然提到斯堪的纳维亚扩张时我们通常想到的是船只，但这些最新发现表明大量货物通过陆路运输，例如奥普兰的山口。"
+    },
+    {
+      "id": "s34",
+      "en": "And growing Norwegian towns, along with export markets, would have created a booming demand for hides to fight off the cold, as well as antlers to make useful things like combs.",
+      "zh": "快速发展的挪威城镇及出口市场激增了对兽皮（防寒用）和鹿角（制作梳子等用品）的需求。"
+    },
+    {
+      "id": "s35",
+      "en": "Business must have been good for hunters.",
+      "zh": "这对猎人来说肯定是个好生意。"
+    },
+    {
+      "id": "s36",
+      "en": "Norway's mountains are probably still hiding a lot of history — and prehistory — in remote ice patches.",
+      "zh": "挪威山脉可能仍在偏远冰区藏有大量历史甚至史前遗迹。"
+    },
+    {
+      "id": "s37",
+      "en": "When Barrett's team looked at the dates for their sample of 153 artefacts, they noticed a gap with almost no artefacts from about 3,800 to 2,200 BCE.",
+      "zh": "Barrett团队查看他们采样的153件文物日期时，发现约公元前3800年至2200年间几乎没有文物。"
+    },
+    {
+      "id": "s38",
+      "en": "In fact, archaeological finds from that period are rare all over Norway.",
+      "zh": "事实上，那一时期的考古发现遍布挪威都相当罕见。"
+    },
+    {
+      "id": "s39",
+      "en": "The researchers say that could be because many of those artefacts have already disintegrated or are still frozen in the ice.",
+      "zh": "研究人员表示，这可能是因为许多文物已经解体，或仍然被冻结在冰中。"
+    },
+    {
+      "id": "s40",
+      "en": "That means archaeologists could be extracting some of those artefacts from retreating ice in years to come.",
+      "zh": "这意味着未来几年考古学家可能会从后退的冰层中提取出部分文物。"
+    },
+    {
+      "id": "s41",
+      "en": "*Viking Age: a period of European history from around 700 CE to around 1050 CE when Scandinavian Vikings migrated throughout Europe by means of trade and warfare",
+      "zh": "*维京时代：欧洲历史上的一个时期，大约从公元700年到1050年，斯堪的纳维亚维京人通过贸易和战争迁徙遍及欧洲"
+    },
+    {
+      "id": "s42",
+      "en": "**The Stone Age: a period in early history that began about 3.4 million years ago",
+      "zh": "**石器时代：早期历史中的一个时期，约始于340万年前"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Climate change reveals ancient artefacts in Norway's glaciers&nbsp;</strong></span></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;"><strong>A</strong></p><p style="text-align:left;">Well above the treeline in Norway's highest mountains, ancient fields of ice are shrinking as Earth's climate warms. As the ice has vanished, it has been giving up the treasures it has preserved in cold storage for the last 6,000 years - items such as ancient arrows and skis from Viking Age* traders. And those artefacts have provided archaeologists with some surprising insights into how ancient Norwegians made their livings.&nbsp;<strong>&nbsp;</strong></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>B</strong></p><p style="text-align:left;">Organic materials like textiles and hides are relatively rare finds at archaeological sites. This is because unless they're protected from the microorganisms that cause decay, they tend not to last long. Extreme cold is one reliable way to keep artefacts relatively fresh for a few thousand years, but once thawed out, these materials experience degradation relatively swiftly.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">With climate change shrinking ice cover around the world, glacial archaeologists need to race the clock to find newly revealed artefacts, preserve them, and study them. If something fragile dries and is windblown it might very soon be lost to science, or an arrow might be exposed and then covered again by the next snow and remain well-preserved. The unpredictability means that glacial archaeologists have to be systematic in their approach to fieldwork.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>C</strong></p><p style="text-align:left;">Over a nine-year period, a team of archaeologists, which included Lars Pile of Oppland County Council, Norway, and James Barrett of the McDonald Institute for Archaeological Research, surveyed patches of ice in Oppland, an area of south-central Norway that is home to some of the country's highest mountains. Reindeer once congregated on these icy patches in the later summer months to escape biting insects, and from the late Stone Age**, hunters followed. In addition, trade routes threaded through the mountain passes of Oppland, linking settlements in Norway to the rest of Europe.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The slow but steady movement of glaciers tends to destroy anything at their bases, so the team focused on stationary patches of ice, mostly above 1,400 metres. That ice is found amid fields of frost-weathered boulders, fallen rocks, and exposed bedrock that for nine months of the year is buried beneath snow.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">'Fieldwork is hard work — hiking with all our equipment, often camping on permafrost — but very rewarding. You're rescuing the archaeology, bringing the melting ice to wider attention, discovering a unique environmental history and really connecting with the natural environment, ' says Barrett.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>D</strong></p><p style="text-align:left;">At the edges of the contracting ice patches, archaeologists found more than 2,000 artefacts, which formed a material record that ran from 4,000 BCE to the beginnings of the Renaissance in the 14th century. Many of the artefacts are associated with hunting. Hunters would have easily misplaced arrows and they often discarded broken bows rather than take them all the way home. Other items could have been used by hunters traversing the high mountain passes of Oppland: all-purpose items like tools, skis, and horse tack.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>E</strong></p><p style="text-align:left;">Barrett's team radiocarbon-dated 153 of the artefacts and compared those dates to the timing of major environmental changes in the region — such as periods of cooling or warming — and major social and economic shifts — such as the growth of farming settlements and the spread of international trade networks leading up to the Viking Age. They found that some periods had produced lots of artefacts, which indicates that people had been pretty active in the mountains during those times. But there were few or no signs of activity during other periods.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>F</strong></p><p style="text-align:left;">What was surprising, according to Barrett, was the timing of these periods. Oppland's mountains present daunting terrain and in periods of extreme cold, glaciers could block the higher mountain passes and make travel in the upper reaches of the mountains extremely difficult. Archaeologists assumed people would stick to lower elevations during a time like the Late Antique Little Ice Age, a short period of deeper-than-usual cold from about 536-600 CE. But it turned out that hunters kept regularly venturing into the mountains even when the climate turned cold, based on the amount of stuff they had apparently dropped there.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">'Remarkably, though, the finds from the ice may have continued through this period, perhaps suggesting that the importance of mountain hunting increased to supplement failing agricultural harvests in times of low temperatures, ' says Barrett. A colder turn in the Scandinavian climate would likely have meant widespread crop failures, so more people would have depended on hunting to make up for those losses.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>G</strong></p><p style="text-align:left;">Many of the artefacts Barrett's team recovered date from the beginning of the Viking Age, the 700s through to the 900s CE. Trade networks connecting Scandinavia with Europe and the Middle East were expanding around this time. Although we usually think of ships when we think of Scandinavian expansion, these recent discoveries show that plenty of goods travelled on overland routes, like the mountain passes of Oppland. And growing Norwegian towns, along with export markets, would have created a booming demand for hides to fight off the cold, as well as antlers to make useful things like combs. Business must have been good for hunters.&nbsp;&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><strong>H</strong></p><p style="text-align:left;">Norway's mountains are probably still hiding a lot of history — and prehistory — in remote ice patches. When Barrett's team looked at the dates for their sample of 153 artefacts, they noticed a gap with almost no artefacts from about 3,800 to 2,200 BCE. In fact, archaeological finds from that period are rare all over Norway. The researchers say that could be because many of those artefacts have already disintegrated or are still frozen in the ice. That means archaeologists could be extracting some of those artefacts from retreating ice in years to come.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p><i>*Viking Age: a period of European history from around 700 CE to around 1050 CE when Scandinavian Vikings migrated throughout Europe by means of trade and warfare</i></p><p><i>**The Stone Age: a period in early history that began about 3.4 million years ago</i>&nbsp;</p>

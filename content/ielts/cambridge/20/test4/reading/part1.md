@@ -1088,5 +1088,198 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Georgia O'Keeffe",
+      "zh": "乔治亚·欧姬夫"
+    },
+    {
+      "id": "s2",
+      "en": "For seven decades, Georgia O'Keeffe (1887-1986) was a major figure in American art.",
+      "zh": "七十年来，乔治亚·欧姬夫（1887-1986）一直是美国艺术的重要人物。"
+    },
+    {
+      "id": "s3",
+      "en": "Remarkably, she remained independent from shifting art trends and her work stayed true to her own vision, which was based on finding the essential, abstract forms in nature.",
+      "zh": "令人惊讶的是，她始终保持独立，不随艺术潮流变动而改变，她的作品忠实于她自己的视角，基于发现自然中本质的抽象形式。"
+    },
+    {
+      "id": "s4",
+      "en": "With exceptionally keen powers of observation and great finesse with a paintbrush, she recorded subtle nuances of colour, shape, and light that enlivened her paintings and attracted a wide audience.",
+      "zh": "凭借极其敏锐的观察力和高超的画笔技巧，她捕捉到细微的色彩、形状和光线变化，令她的画作生动有趣，吸引了广大观众。"
+    },
+    {
+      "id": "s5",
+      "en": "Born in 1887 near Sun Prairie, Wisconsin to cattle breeders Francis and Ida O'Keeffe, Georgia was raised on their farm along with her six siblings.",
+      "zh": "乔治亚于1887年出生在威斯康星州圣普雷里附近，她的父母弗朗西斯和艾达·欧姬夫是养牛户，乔治亚和她的六个兄弟姐妹一起在农场长大。"
+    },
+    {
+      "id": "s6",
+      "en": "By the time she graduated from high school in 1905, she had determined to make her way as an artist.",
+      "zh": "到1905年高中毕业时，她已经决定以艺术家为职业。"
+    },
+    {
+      "id": "s7",
+      "en": "She studied the techniques of traditional painting at the Art Institute of Chicago school (1905) and the Art Students League of New York (1907-8).",
+      "zh": "她在芝加哥艺术学院（1905年）和纽约艺术学生联盟（1907-1908年）学习传统绘画技法。"
+    },
+    {
+      "id": "s8",
+      "en": "After attending university and then training college, she became an art teacher and taught in elementary schools, high schools, and colleges in Virginia, Texas, and South Carolina from 1911 to 1918.",
+      "zh": "大学毕业并完成师范培训后，1911年至1918年间，她在弗吉尼亚、德克萨斯和南卡罗来纳的中小学及大学任教美术。"
+    },
+    {
+      "id": "s9",
+      "en": "During this period, O'Keeffe began to experiment with creating abstract compositions in charcoal, and produced a series of innovative drawings that led her art in a new direction.",
+      "zh": "这期间，欧姬夫开始尝试用炭笔创作抽象作品，创作了一系列创新的素描，使她的艺术走向了新的方向。"
+    },
+    {
+      "id": "s10",
+      "en": "She sent some of these drawings to a friend in New York, who showed them to art collector and photographer Alfred Stieglitz in January 1916.",
+      "zh": "她将一些素描寄给在纽约的朋友，该朋友于1916年1月将这些作品展示给艺术收藏家和摄影师阿尔弗雷德·斯蒂格利茨。"
+    },
+    {
+      "id": "s11",
+      "en": "Stieglitz was impressed, and exhibited the drawings later that year at his gallery on Fifth Avenue, New York City, where the works of many avant-garde artists and photographers were introduced to the American public.",
+      "zh": "斯蒂格利茨印象深刻，随后在当年于纽约第五大道的画廊展出了这些素描，该画廊是许多先锋艺术家和摄影师作品向美国公众展示的重要场所。"
+    },
+    {
+      "id": "s12",
+      "en": "With Stieglitz's encouragement and promise of financial support, O'Keeffe arrived in New York in June 1918 to begin a career as an artist.",
+      "zh": "在斯蒂格利茨的鼓励和经济支持承诺下，欧姬夫于1918年6月抵达纽约，开始艺术家生涯。"
+    },
+    {
+      "id": "s13",
+      "en": "For the next three decades, Stieglitz vigorously promoted her work in twenty-two solo exhibitions and numerous group installations.",
+      "zh": "接下来的三十年，斯蒂格利茨积极推广她的作品，举办了22场个人展览和许多群展。"
+    },
+    {
+      "id": "s14",
+      "en": "The two were married in 1924.",
+      "zh": "两人于1924年结婚。"
+    },
+    {
+      "id": "s15",
+      "en": "The ups and downs of their personal and professional relationship were recorded in Stieglitz's celebrated black-and-white portraits of O'Keeffe, taken over the course of twenty years (1917-37).",
+      "zh": "他们个人和职业关系的起伏，被斯蒂格利茨在20年间（1917-1937）拍摄的欧姬夫著名黑白肖像中真实记录下来。"
+    },
+    {
+      "id": "s16",
+      "en": "By the mid-1920s, O'Keeffe was recognized as one of America's most important and successful artists, widely known for the architectural pictures that dramatically depict the soaring skyscrapers of New York.",
+      "zh": "到1920年代中期，欧姬夫被公认为美国最重要和最成功的艺术家之一，以生动描绘纽约摩天大楼的建筑作品闻名。"
+    },
+    {
+      "id": "s17",
+      "en": "But most often, she painted botanical subjects, inspired by annual trips to the Stieglitz family summer home.",
+      "zh": "但她最常画的是植物题材，灵感来源于每年对斯蒂格利茨家族夏季别墅的拜访。"
+    },
+    {
+      "id": "s18",
+      "en": "In her magnified images depicting flowers, begun in 1924, O'Keeffe brings the viewer right into the picture.",
+      "zh": "从1924年开始，她创作的放大花卉图像使观众仿佛进入画中。"
+    },
+    {
+      "id": "s19",
+      "en": "Enlarging the tiniest details to fill an entire metre-wide canvas emphasized their shapes and lines and made them appear abstract.",
+      "zh": "将最细微的细节放大至一整米宽的画布，凸显了形状和线条，使之显得抽象。"
+    },
+    {
+      "id": "s20",
+      "en": "Such daring compositions helped establish O'Keeffe's reputation as an innovative modernist.",
+      "zh": "这种大胆的构图帮助确立了欧姬夫作为创新现代主义者的声誉。"
+    },
+    {
+      "id": "s21",
+      "en": "In 1929, O'Keeffe made her first extended trip to the state of New Mexico.",
+      "zh": "1929年，欧姬夫首次长时间访问新墨西哥州。"
+    },
+    {
+      "id": "s22",
+      "en": "It was a visit that had a lasting impact on her life, and an immediate effect on her work.",
+      "zh": "这次访问对她的生活产生了深远影响，也立即影响了她的艺术创作。"
+    },
+    {
+      "id": "s23",
+      "en": "Over the next two decades she made almost annual trips to New Mexico, staying up to six months there, painting in relative solitude, then returning to New York each winter to exhibit the new work at Stieglitz's gallery.",
+      "zh": "接下来的二十年里，她几乎每年都会去新墨西哥，最长停留六个月，在相对孤独中作画，然后每年冬天返回纽约，在斯蒂格利茨的画廊展出新作。"
+    },
+    {
+      "id": "s24",
+      "en": "This pattern continued until she moved permanently to New Mexico in 1949.",
+      "zh": "这一规律持续到1949年她永久搬到新墨西哥为止。"
+    },
+    {
+      "id": "s25",
+      "en": "There, O'Keeffe found new inspiration: at first, it was the numerous sun-bleached bones she came across in the state's rugged terrain that sparked her imagination.",
+      "zh": "在那里，欧姬夫获得了新的灵感：起初是她在该州崎岖地形中发现的大量日晒白骨激发了她的想象力。"
+    },
+    {
+      "id": "s26",
+      "en": "Two of her earliest and most celebrated Southwestern paintings exquisitely reproduce a cow skull's weathered surfaces, jagged edges, and irregular openings.",
+      "zh": "她的两幅早期且备受赞誉的西南画作精细再现了牛头骨风化的表面、锯齿状边缘和不规则开口。"
+    },
+    {
+      "id": "s27",
+      "en": "Later, she also explored another variation on this theme in her large series of Pelvis pictures, which focused on the contrasts between convex and concave surfaces, and solid and open spaces.",
+      "zh": "后来，她在大量骨盆系列画作中又对这一主题进行了探索，关注凸面与凹面、实体与空隙之间的对比。"
+    },
+    {
+      "id": "s28",
+      "en": "However, it was the region's spectacular landscape, with its unusual geological formations, vivid colours, clarity of light, and exotic vegetation, that held the artist's imagination for more than four decades.",
+      "zh": "然而，这一地区壮观的自然景观——奇特的地质结构、鲜明的色彩、明朗的光线和异域植物——四十余年来一直激发着她的创作灵感。"
+    },
+    {
+      "id": "s29",
+      "en": "Often, she painted the rocks, cliffs, and mountains in striking close-up, just as she had done with her botanical subjects.",
+      "zh": "她经常以引人注目的特写画法描绘岩石、悬崖和山脉，就像她处理植物题材一样。"
+    },
+    {
+      "id": "s30",
+      "en": "O'Keeffe eventually owned two homes in New Mexico - the first, her summer retreat at Ghost Ranch, was nestled beneath 200-metre cliffs, while the second, used as her winter residence, was in the small town of Abiquiú.",
+      "zh": "欧姬夫最终在新墨西哥拥有两处住宅——第一处是位于“鬼牧场”的夏季度假屋，坐落在200米高的悬崖下；第二处是她的冬季住所，位于阿比奎的小镇。"
+    },
+    {
+      "id": "s31",
+      "en": "While both locales provided a wealth of imagery for her paintings, one feature of the Abiquiú house - the large walled patio with its black door - was particularly inspirational.",
+      "zh": "这两个地方都为她的绘画提供了丰富的素材，但阿比奎住宅极具特色的部分——带有黑色门的大围墙庭院——尤其激发了她的灵感。"
+    },
+    {
+      "id": "s32",
+      "en": "In more than thirty pictures between 1946 and 1960, she reinvented the patio into an abstract arrangement of geometric shapes.",
+      "zh": "1946年至1960年间，她在30多幅画作中将庭院重新演绎为由几何图形组成的抽象构图。"
+    },
+    {
+      "id": "s33",
+      "en": "From the 1950s into the 1970s, O'Keeffe travelled widely, making trips to Asia, the Middle East, and Europe.",
+      "zh": "从1950年代到1970年代，欧姬夫广泛旅行，访问了亚洲、中东和欧洲。"
+    },
+    {
+      "id": "s34",
+      "en": "Flying in planes inspired her last two major series - aerial views of rivers and expansive paintings of the sky viewed from just above clouds.",
+      "zh": "飞行经历激发了她最后两个主要系列作品——河流的空中视角和俯视云层上方的广阔天空画作。"
+    },
+    {
+      "id": "s35",
+      "en": "In both series, O'Keeffe increased the size of her canvases, sometimes to mural proportions, reflecting perhaps her newly expanded view of the world.",
+      "zh": "这两个系列中，欧姬夫加大了画布尺寸，有时甚至达到壁画大小，或许这体现了她对世界视野的扩展。"
+    },
+    {
+      "id": "s36",
+      "en": "When in 1965 she successfully translated one of her cloud motifs to a monumental canvas measuring 6 metres in length (with the help of assistants), it was an enormous challenge and a special feat for an artist nearing eighty years of age.",
+      "zh": "1965年，她在助手帮助下，成功将其中一幅云彩主题创作成长达6米的巨幅画布，这对一位接近八十岁的艺术家来说是巨大的挑战和非凡的成就。"
+    },
+    {
+      "id": "s37",
+      "en": "The last two decades of the artist's life were relatively unproductive as ill health and blindness hindered her ability to work.",
+      "zh": "艺术家的最后二十年因健康状况不佳和失明，工作效率较低。"
+    },
+    {
+      "id": "s38",
+      "en": "O'Keeffe died in 1986 at the age of ninety-eight, but her rich legacy of some 900 paintings has continued to attract subsequent generations of artists and art lovers who derive inspiration from these very American images.",
+      "zh": "欧姬夫于1986年去世，享年98岁，但她约900幅画作的丰富遗产持续吸引着后世艺术家和艺术爱好者，从这些充满美国特色的图像中汲取灵感。"
+    }
+  ]
 ---
 <p style="text-align: center;"><span style="font-size: 22px;"><b>Georgia O'Keeffe</b></span></p><p>For seven decades, Georgia O'Keeffe (1887-1986) was a major figure in American art. Remarkably, she remained independent from shifting art trends and her work stayed true to her own vision, which was based on finding the essential, abstract forms in nature. With exceptionally keen powers of observation and great finesse with a paintbrush, she recorded subtle nuances of colour, shape, and light that enlivened her paintings and attracted a wide audience.</p><p><br></p><p>Born in 1887 near Sun Prairie, Wisconsin to cattle breeders Francis and Ida O'Keeffe, Georgia was raised on their farm along with her six siblings. By the time she graduated from high school in 1905, she had determined to make her way as an artist. She studied the techniques of traditional painting at the Art Institute of Chicago school (1905) and the Art Students League of New York (1907-8). After attending university and then training college, she became an art teacher and taught in elementary schools, high schools, and colleges in Virginia, Texas, and South Carolina from 1911 to 1918.</p><p><br></p><p>During this period, O'Keeffe began to experiment with creating abstract compositions in charcoal, and produced a series of innovative drawings that led her art in a new direction. She sent some of these drawings to a friend in New York, who showed them to art collector and photographer Alfred Stieglitz in January 1916. Stieglitz was impressed, and exhibited the drawings later that year at his gallery on Fifth Avenue, New York City, where the works of many avant-garde artists and photographers were introduced to the American public.</p><p><br></p><p>With Stieglitz's encouragement and promise of financial support, O'Keeffe arrived in New York in June 1918 to begin a career as an artist. For the next three decades, Stieglitz vigorously promoted her work in twenty-two solo exhibitions and numerous group installations. The two were married in 1924. The ups and downs of their personal and professional relationship were recorded in Stieglitz's celebrated black-and-white portraits of O'Keeffe, taken over the course of twenty years (1917-37).</p><p><br></p><p>By the mid-1920s, O'Keeffe was recognized as one of America's most important and successful artists, widely known for the architectural pictures that dramatically depict the soaring skyscrapers of New York. But most often, she painted botanical subjects, inspired by annual trips to the Stieglitz family summer home. In her magnified images depicting flowers, begun in 1924, O'Keeffe brings the viewer right into the picture.</p><p><br></p><p>Enlarging the tiniest details to fill an entire metre-wide canvas emphasized their shapes and lines and made them appear abstract. Such daring compositions helped establish O'Keeffe's reputation as an innovative modernist.</p><p><br></p><p>In 1929, O'Keeffe made her first extended trip to the state of New Mexico. It was a visit that had a lasting impact on her life, and an immediate effect on her work. Over the next two decades she made almost annual trips to New Mexico, staying up to six months there, painting in relative solitude, then returning to New York each winter to exhibit the new work at Stieglitz's gallery. This pattern continued until she moved permanently to New Mexico in 1949.</p><p><br></p><p>There, O'Keeffe found new inspiration: at first, it was the numerous sun-bleached bones she came across in the state's rugged terrain that sparked her imagination. Two of her earliest and most celebrated Southwestern paintings exquisitely reproduce a cow skull's weathered surfaces, jagged edges, and irregular openings. Later, she also explored another variation on this theme in her large series of <i>Pelvis </i>pictures, which focused on the contrasts between convex and concave surfaces, and solid and open spaces.</p><p><br></p><p>However, it was the region's spectacular landscape, with its unusual geological formations, vivid colours, clarity of light, and exotic vegetation, that held the artist's imagination for more than four decades. Often, she painted the rocks, cliffs, and mountains in striking close-up, just as she had done with her botanical subjects.</p><p><br></p><p>O'Keeffe eventually owned two homes in New Mexico - the first, her summer retreat at Ghost Ranch, was nestled beneath 200-metre cliffs, while the second, used as her winter residence, was in the small town of Abiquiú. While both locales provided a wealth of imagery for her paintings, one feature of the Abiquiú house - the large walled patio with its black door - was particularly inspirational. In more than thirty pictures between 1946 and 1960, she reinvented the patio into an abstract arrangement of geometric shapes.</p><p><br></p><p>From the 1950s into the 1970s, O'Keeffe travelled widely, making trips to Asia, the Middle East, and Europe. Flying in planes inspired her last two major series - aerial views of rivers and expansive paintings of the sky viewed from just above clouds. In both series, O'Keeffe increased the size of her canvases, sometimes to mural proportions, reflecting perhaps her newly expanded view of the world. When in 1965 she successfully translated one of her cloud motifs to a monumental canvas measuring 6 metres in length (with the help of assistants), it was an enormous challenge and a special feat for an artist nearing eighty years of age.</p><p><br></p><p>The last two decades of the artist's life were relatively unproductive as ill health and blindness hindered her ability to work. O'Keeffe died in 1986 at the age of ninety-eight, but her rich legacy of some 900 paintings has continued to attract subsequent generations of artists and art lovers who derive inspiration from these very American images.</p><p><br></p>

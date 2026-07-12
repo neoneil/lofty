@@ -1767,5 +1767,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Changes in reading habits",
+      "zh": "阅读习惯的变化"
+    },
+    {
+      "id": "s2",
+      "en": "What are the implications of the way we read today?",
+      "zh": "我们今天的阅读方式有什么影响？"
+    },
+    {
+      "id": "s3",
+      "en": "Look around on your next plane trip.",
+      "zh": "下次乘坐飞机时环顾四周。"
+    },
+    {
+      "id": "s4",
+      "en": "The iPad is the new pacifier for babies and toddlers.",
+      "zh": "iPad成了婴幼儿的新安抚物。"
+    },
+    {
+      "id": "s5",
+      "en": "Younger school-aged children read stories on smartphones; older kids don't read at all, but hunch over video games.",
+      "zh": "年幼的学龄儿童在智能手机上阅读故事；年长的孩子则完全不读书，而是沉迷于视频游戏。"
+    },
+    {
+      "id": "s6",
+      "en": "Parents and other passengers read on tablets or skim a flotilla of email and news feeds.",
+      "zh": "家长和其他乘客在平板电脑上阅读，或者浏览大量电子邮件和新闻推送。"
+    },
+    {
+      "id": "s7",
+      "en": "Unbeknown to most of us, an invisible, game-changing transformation links everyone in this picture: the neuronal circuit that underlies the brain's ability to read is subtly, rapidly changing and this has implications for everyone from the pre-reading toddler to the expert adult.",
+      "zh": "大多数人并未意识到，照片中的每个人都被一种无形且改变游戏规则的转变连接着：支持大脑阅读能力的神经回路正在微妙且快速地变化，这对从尚未识字的幼儿到阅读专家的成年人都有影响。"
+    },
+    {
+      "id": "s8",
+      "en": "As work in neurosciences indicates, the acquisition of literacy necessitated a new circuit in our species's brain more than 6,000 years ago.",
+      "zh": "神经科学的研究表明，识字的获得要求我们物种的大脑在6000多年前形成了一个新的神经回路。"
+    },
+    {
+      "id": "s9",
+      "en": "That circuit evolved from a very simple mechanism for decoding basic information, like the number of goats in one's herd, to the present, highly elaborated reading brain.",
+      "zh": "该回路从一个非常简单的机制（比如解码群中山羊数量等基本信息）演变为现在高度复杂的阅读大脑。"
+    },
+    {
+      "id": "s10",
+      "en": "My research depicts how the present reading brain enables the development of some of our most important intellectual and affective processes: internalized knowledge, analogical reasoning, and inference; perspective-taking and empathy; critical analysis and the generation of insight.",
+      "zh": "我的研究描绘了现代阅读大脑如何促进我们一些最重要的智力和情感过程的发展：内化知识、类比推理和推断；观点采择与共情；批判性分析和洞察力的产生。"
+    },
+    {
+      "id": "s11",
+      "en": "Research surfacing in many parts of the world now cautions that each of these essential 'deep reading' processes may be under threat as we move into digital-based modes of reading.",
+      "zh": "全球各地的研究现在警示随着我们向数字化阅读方式转变，这些必不可少的“深度阅读”过程中的每一种都可能面临威胁。"
+    },
+    {
+      "id": "s12",
+      "en": "This is not a simple, binary issue of print versus digital reading and technological innovation.",
+      "zh": "这不是一个简单的印刷阅读与数字阅读及技术创新的二元对立问题。"
+    },
+    {
+      "id": "s13",
+      "en": "As MIT scholar Sherry Turkle has written, we do not err as a society when we innovate but when we ignore what we disrupt or diminish while innovating.",
+      "zh": "正如麻省理工学院学者雪莉·特克尔所言，我们作为社会在创新时不会犯错，错误在于我们忽视了创新过程中所破坏或削弱的事物。"
+    },
+    {
+      "id": "s14",
+      "en": "In this hinge moment between print and digital cultures, society needs to confront what is diminishing in the expert reading circuit, what our children and older students are not developing, and what we can do about it.",
+      "zh": "在印刷文化与数字文化的关键转折点，社会需要正视专家阅读回路中正在衰退的部分，我们的孩子和年长学生没有培养起来的能力，以及我们能采取的措施。"
+    },
+    {
+      "id": "s15",
+      "en": "We know from research that the reading circuit is not given to human beings through a genetic blueprint like vision or language; it needs an environment to develop.",
+      "zh": "研究表明，阅读回路不像视觉或语言那样通过基因蓝图赋予人类；它需要适宜的环境才能发展。"
+    },
+    {
+      "id": "s16",
+      "en": "Further, it will adapt to that environment's requirements-from different writing systems to the characteristics of whatever medium is used.",
+      "zh": "此外，它会适应环境的需求——从不同的书写系统，到所使用媒介的特点。"
+    },
+    {
+      "id": "s17",
+      "en": "If the dominant medium advantages processes that are fast, multi-task oriented and well-suited for large volumes of information, like the current digital medium, so will the reading circuit.",
+      "zh": "如果主流媒介有利于快速、多任务处理且适合大量信息的过程，比如当前的数字媒介，那么阅读回路也会相应地适应。"
+    },
+    {
+      "id": "s18",
+      "en": "As UCLA psychologist Patricia Greenfield writes, the result is that less attention and time will be allocated to slower, time-demanding deep reading processes.",
+      "zh": "正如加州大学洛杉矶分校心理学家帕特里夏·格林菲尔德所说，结果是分配给缓慢且耗时的深度阅读过程的注意力和时间会减少。"
+    },
+    {
+      "id": "s19",
+      "en": "Increasing reports from educators and from researchers in psychology and the humanities bear this out.",
+      "zh": "教育者以及心理学和人文学科的研究人员越来越多的报告证实了这一点。"
+    },
+    {
+      "id": "s20",
+      "en": "English literature scholar and teacher Mark Edmundson describes how many college students actively avoid the classic literature of the 19th and 20th centuries in favour of something simpler as they no longer have the patience to read longer, denser, more difficult texts.",
+      "zh": "英国文学学者兼教师马克·埃德蒙森描述了许多大学生主动回避19世纪和20世纪的经典文学，转而选择更简单的读物，因为他们已经没有耐心阅读更长、更密集、更难的文本。"
+    },
+    {
+      "id": "s21",
+      "en": "We should be less concerned with students' 'cognitive impatience', however, than by what may underlie it: the potential inability of large numbers of students to read with a level of critical analysis sufficient to comprehend the complexity of thought and argument found in more demanding texts.",
+      "zh": "然而，我们不应过分担心学生的“认知急躁”，而应关注其背后的原因：大量学生可能无法以足够的批判性分析水平阅读，从而理解更深奥文本中的复杂思维和论证。"
+    },
+    {
+      "id": "s22",
+      "en": "Multiple studies show that digital screen use may be causing a variety of troubling downstream effects on reading comprehension in older high school and college students.",
+      "zh": "多项研究表明，数字屏幕的使用可能导致高中大龄学生和大学生的阅读理解出现各种令人担忧的下游影响。"
+    },
+    {
+      "id": "s23",
+      "en": "In Stavanger, Norway, psychologist Anne Mangen and her colleagues studied how high school students comprehend the same material in different mediums.",
+      "zh": "在挪威斯塔万格，心理学家安妮·曼根及其同事研究了高中学生如何通过不同媒介理解相同材料。"
+    },
+    {
+      "id": "s24",
+      "en": "Mangen's group asked subjects questions about a short story whose plot had universal student appeal; half of the students read the story on a tablet, the other half in paperback.",
+      "zh": "曼根团队向被试提出关于一篇故事情节普遍受学生欢迎的短篇小说的问题；一半学生在平板电脑上阅读，另一半则是纸质版。"
+    },
+    {
+      "id": "s25",
+      "en": "Results indicated that students who read on print were superior in their comprehension to screen-reading peers, particularly in their ability to sequence detail and reconstruct the plot in chronological order.",
+      "zh": "结果显示，纸质阅读的学生理解能力优于屏幕阅读的同龄人，尤其是在细节排序和按时间顺序重构情节方面表现更好。"
+    },
+    {
+      "id": "s26",
+      "en": "Ziming Liu from San Jose State University has conducted a series of studies which indicate that the new 'norm' in reading is skimming, involving word-spotting and browsing through the text.",
+      "zh": "来自圣何塞州立大学的刘子明进行了一系列研究，表明阅读的新“常态”是略读，包括寻找关键词和浏览文本。"
+    },
+    {
+      "id": "s27",
+      "en": "Many readers now use a pattern when reading in which they sample the first line and then word-spot through the rest of the text.",
+      "zh": "许多读者现在的阅读模式是先扫视第一行，然后在其余部分通过词语捕捉进行浏览。"
+    },
+    {
+      "id": "s28",
+      "en": "When the reading brain skims like this, it reduces time allocated to deep reading processes.",
+      "zh": "当阅读大脑以这种略读方式进行时，分配给深度阅读过程的时间会减少。"
+    },
+    {
+      "id": "s29",
+      "en": "In other words, we don't have time to grasp complexity, to understand another's feelings, to perceive beauty, and to create thoughts of the reader's own.",
+      "zh": "换句话说，我们没有时间去把握复杂性，去理解他人的情感，感知美，或创造属于读者自己的思想。"
+    },
+    {
+      "id": "s30",
+      "en": "The possibility that critical analysis, empathy and other deep reading processes could become the unintended 'collateral damage' of our digital culture is not a straightforward binary issue about print versus digital reading.",
+      "zh": "批判性分析、共情及其他深度阅读过程可能成为我们数字文化的意外“附带损害”这一可能性，并非印刷阅读与数字阅读的简单二元问题。"
+    },
+    {
+      "id": "s31",
+      "en": "It is about how we all have begun to read on various mediums and how that changes not only what we read, but also the purposes for which we read.",
+      "zh": "这关系到我们如何开始在各种媒介上阅读，以及这不仅改变了我们阅读的内容，也改变了我们阅读的目的。"
+    },
+    {
+      "id": "s32",
+      "en": "Nor is it only about the young.",
+      "zh": "这也不仅仅是年轻人的问题。"
+    },
+    {
+      "id": "s33",
+      "en": "The subtle atrophy of critical analysis and empathy affects us all equally.",
+      "zh": "批判性分析和共情能力的细微衰退同样影响着我们所有人。"
+    },
+    {
+      "id": "s34",
+      "en": "It affects our ability to navigate a constant bombardment of information.",
+      "zh": "它影响我们应对不断轰炸的信息的能力。"
+    },
+    {
+      "id": "s35",
+      "en": "It incentivizes a retreat to the most familiar stores of unchecked information, which require and receive no analysis, leaving us susceptible to false information and irrational ideas.",
+      "zh": "它促使我们退回到最熟悉的未经核实的信息源，这些信息不需要也不接受分析，使我们易受虚假信息和非理性观念的影响。"
+    },
+    {
+      "id": "s36",
+      "en": "There's an old rule in neuroscience that does not alter with age: use it or lose it.",
+      "zh": "神经科学有一条古老的法则，不随年龄改变：不用则废。"
+    },
+    {
+      "id": "s37",
+      "en": "It is a very hopeful principle when applied to critical thought in the reading brain because it implies choice.",
+      "zh": "将其应用于阅读大脑中的批判性思维时，这是一条非常充满希望的原则，因为它暗示着选择权。"
+    },
+    {
+      "id": "s38",
+      "en": "The story of the changing reading brain is hardly finished.",
+      "zh": "关于阅读大脑变化的故事远未结束。"
+    },
+    {
+      "id": "s39",
+      "en": "We possess both the science and the technology to identify and redress the changes in how we read before they become entrenched.",
+      "zh": "我们拥有科学和技术，能够在阅读方式变得根深蒂固之前识别并纠正这些变化。"
+    },
+    {
+      "id": "s40",
+      "en": "If we work to understand exactly what we will lose, alongside the extraordinary new capacities that the digital world has brought us, there is as much reason for excitement as caution.",
+      "zh": "如果我们努力准确了解将失去的东西以及数字世界带来的非凡新能力，我们既有理由感到兴奋，也有理由保持警惕。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Changes&nbsp;in&nbsp;reading&nbsp;habits</strong></span></p><p style="text-align:center;"><i>What are the implications of the way we read today?</i></p><p style="text-align:center;">&nbsp;</p><p>Look around on your next plane trip. The iPad is the new pacifier for babies and toddlers. Younger school-aged children read stories on smartphones; older kids don't read at all, but hunch over video games. Parents and other passengers read on tablets or skim a flotilla of email and news feeds. Unbeknown to most of us, an invisible, game-changing transformation links everyone in this picture: the neuronal circuit that underlies the brain's ability to read is subtly, rapidly changing and this has implications for everyone from the pre-reading toddler to the expert adult.</p><p>&nbsp;</p><p>As work in neurosciences indicates, the acquisition of literacy necessitated a new circuit in our species's brain more than 6,000 years ago. That circuit evolved from a very simple mechanism for decoding basic information, like the number of goats in one's herd, to the present, highly elaborated reading brain. My research depicts how the present reading brain enables the development of some of our most important intellectual and affective processes: internalized knowledge, analogical reasoning, and inference; perspective-taking and empathy; critical analysis and the generation of insight. Research surfacing in many parts of the world now cautions that each of these essential 'deep reading' processes may be under threat as we move into digital-based modes of reading.</p><p>&nbsp;</p><p>This is not a simple, binary issue of print versus digital reading and technological innovation. As MIT scholar Sherry Turkle has written, we do not err as a society when we innovate but when we ignore what we disrupt or diminish while innovating. In this hinge moment between print and digital cultures, society needs to confront what is diminishing in the expert reading circuit, what our children and older students are not developing, and what we can do about it.</p><p>&nbsp;</p><p>We know from research that the reading circuit is not given to human beings through a genetic blueprint like vision or language; it needs an environment to develop. Further, it will adapt to that environment's requirements-from different writing systems to the characteristics of whatever medium is used. If the dominant medium advantages processes that are fast, multi-task oriented and well-suited for large volumes of information, like the current digital medium, so will the reading circuit. As UCLA psychologist Patricia Greenfield writes, the result is that less attention and time will be allocated to slower, time-demanding deep reading processes.</p><p>&nbsp;</p><p>Increasing reports from educators and from researchers in psychology and the humanities bear this out. English literature scholar and teacher Mark Edmundson describes how many college students actively avoid the classic literature of the 19th and 20th centuries in favour of something simpler as they no longer have the patience to read longer, denser, more difficult texts. We should be less concerned with students' 'cognitive impatience', however, than by what may underlie it: the potential inability of large numbers of students to read with a level of critical analysis sufficient to comprehend the complexity of thought and argument found in more demanding texts.</p><p>&nbsp;</p><p>Multiple studies show that digital screen use may be causing a variety of troubling downstream effects on reading comprehension in older high school and college students. In Stavanger, Norway, psychologist Anne Mangen and her colleagues studied how high school students comprehend the same material in different mediums. Mangen's group asked subjects questions about a short story whose plot had universal student appeal; half of the students read the story on a tablet, the other half in paperback. Results indicated that students who read on print were superior in their comprehension to screen-reading peers, particularly in their ability to sequence detail and reconstruct the plot in chronological order.</p><p>&nbsp;</p><p>Ziming Liu from San Jose State University has conducted a series of studies which indicate that the new 'norm' in reading is skimming, involving word-spotting and browsing through the text. Many readers now use a pattern when reading in which they sample the first line and then word-spot through the rest of the text. When the reading brain skims like this, it reduces time allocated to deep reading processes. In other words, we don't have time to grasp complexity, to understand another's feelings, to perceive beauty, and to create thoughts of the reader's own.</p><p>&nbsp;</p><p>The possibility that critical analysis, empathy and other deep reading processes could become the unintended 'collateral damage' of our digital culture is not a straightforward binary issue about print versus digital reading. It is about how we all have begun to read on various mediums and how that changes not only what we read, but also the purposes for which we read. Nor is it only about the young. The subtle atrophy of critical analysis and empathy affects us all equally. It affects our ability to navigate a constant bombardment of information. It incentivizes a retreat to the most familiar stores of unchecked information, which require and receive no analysis, leaving us susceptible to false information and irrational ideas.</p><p>&nbsp;</p><p>There's an old rule in neuroscience that does not alter with age: use it or lose it. It is a very hopeful principle when applied to critical thought in the reading brain because it implies choice. The story of the changing reading brain is hardly finished. We possess both the science and the technology to identify and redress the changes in how we read before they become entrenched. If we work to understand exactly what we will lose, alongside the extraordinary new capacities that the digital world has brought us, there is as much reason for excitement as caution.</p>

@@ -1071,5 +1071,248 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The development of the London underground railway",
+      "zh": "伦敦地铁的发展"
+    },
+    {
+      "id": "s2",
+      "en": "In the first half of the 1800s, London’s population grew at an astonishing rate, and the central area became increasingly congested.",
+      "zh": "19世纪上半叶，伦敦人口以惊人的速度增长，市中心区域变得日益拥挤。"
+    },
+    {
+      "id": "s3",
+      "en": "In addition, the expansion of the overground railway network resulted in more and more passengers arriving in the capital.",
+      "zh": "此外，地上铁路网络的扩展导致越来越多的乘客涌入首都。"
+    },
+    {
+      "id": "s4",
+      "en": "However, in 1846, a Royal Commission decided that the railways should not be allowed to enter the City, the capital’s historic and business centre.",
+      "zh": "然而，1846年，皇家委员会决定不允许铁路进入市区，即首都的历史和商业中心。"
+    },
+    {
+      "id": "s5",
+      "en": "The result was that the overground railway stations formed a ring around the City.",
+      "zh": "结果是地上铁路车站形成了环绕市区的一圈。"
+    },
+    {
+      "id": "s6",
+      "en": "The area within consisted of poorly built, overcrowded slums and the streets were full of horse-drawn traffic.",
+      "zh": "市区内部是建筑简陋、过度拥挤的贫民窟，街道上充满了马车交通。"
+    },
+    {
+      "id": "s7",
+      "en": "Crossing the City became a nightmare.",
+      "zh": "穿越市区成了一场噩梦。"
+    },
+    {
+      "id": "s8",
+      "en": "It could take an hour and a half to travel 8 km by horse-drawn carriage or bus.",
+      "zh": "坐马车或公共汽车走8公里可能需要一个半小时。"
+    },
+    {
+      "id": "s9",
+      "en": "Numerous schemes were proposed to resolve these problems, but few succeeded.",
+      "zh": "为解决这些问题提出了许多计划，但很少成功。"
+    },
+    {
+      "id": "s10",
+      "en": "Amongst the most vocal advocates for a solution to London’s traffic problems was Charles Pearson, who worked as a solicitor for the City of London.",
+      "zh": "在为伦敦交通问题寻求解决方案的最积极倡导者中，有一位名叫查尔斯·皮尔逊的律师，他为伦敦市工作。"
+    },
+    {
+      "id": "s11",
+      "en": "He saw both social and economic advantages in building an underground railway that would link the overground railway stations together and clear London slums at the same time.",
+      "zh": "他认为建设一条连接地上铁路车站的地铁线路，同时清理伦敦贫民窟，具有社会和经济双重优势。"
+    },
+    {
+      "id": "s12",
+      "en": "His idea was to relocate the poor workers who lived in the inner-city slums to newly constructed suburbs, and to provide cheap rail travel for them to get to work.",
+      "zh": "他的想法是将住在市中心贫民窟的贫困工人迁移到新建郊区，并为他们提供廉价的铁路交通方便上班。"
+    },
+    {
+      "id": "s13",
+      "en": "Pearson’s ideas gained support amongst some businessmen and in 1851 he submitted a plan to Parliament.",
+      "zh": "皮尔逊的想法得到了部分商人的支持，1851年他向议会提交了一个计划。"
+    },
+    {
+      "id": "s14",
+      "en": "It was rejected, but coincided with a proposal from another group for an underground connecting line, which Parliament passed.",
+      "zh": "计划被否决，但恰逢另一个团体提出一条地下连接线的提案，该提案获议会通过。"
+    },
+    {
+      "id": "s15",
+      "en": "The two groups merged and established the Metropolitan Railway Company in August 1854.",
+      "zh": "两个团体合并，于1854年8月成立了大都会铁路公司。"
+    },
+    {
+      "id": "s16",
+      "en": "The company’s plan was to construct an underground railway line from the Great Western Railway’s (GWR) station at Paddington to the edge of the City at Farringdon Street – a distance of almost 5 km.",
+      "zh": "公司的计划是从大西部铁路（GWR）帕丁顿车站修建一条地下铁路，直达市区边缘的法灵顿街，全长近5公里。"
+    },
+    {
+      "id": "s17",
+      "en": "The organisation had difficulty in raising the funding for such a radical and expensive scheme, not least because of the critical articles printed by the press.",
+      "zh": "该组织筹集资金困难重重，特别是因为媒体发表了许多批评性的报道。"
+    },
+    {
+      "id": "s18",
+      "en": "Objectors argued that the tunnels would collapse under the weight of traffic overhead, buildings would be shaken and passengers would be poisoned by the emissions from the train engines.",
+      "zh": "反对者认为隧道会因上方交通重量而坍塌，建筑受震动，乘客会被火车引擎的废气毒害。"
+    },
+    {
+      "id": "s19",
+      "en": "However, Pearson and his partners persisted.",
+      "zh": "然而，皮尔逊和他的合伙人坚持不懈。"
+    },
+    {
+      "id": "s20",
+      "en": "The GWR, aware that the new line would finally enable them to run trains into the heart of the City, invested almost £250,000 in the scheme.",
+      "zh": "大西部铁路意识到新线将使其火车最终进入市中心，投资近25万英镑支持该计划。"
+    },
+    {
+      "id": "s21",
+      "en": "Eventually, over a five-year period, £1m was raised.",
+      "zh": "最终，在五年期间筹集了100万英镑。"
+    },
+    {
+      "id": "s22",
+      "en": "The chosen route ran beneath existing main roads to minimise the expense of demolishing buildings.",
+      "zh": "选定的路线铺设在现有主干道下方，以减少拆除建筑的费用。"
+    },
+    {
+      "id": "s23",
+      "en": "Originally scheduled to be completed in 21 months, the construction of the underground line took three years.",
+      "zh": "地铁线路的建设原计划21个月完成，但实际用了三年。"
+    },
+    {
+      "id": "s24",
+      "en": "It was built just below street level using a technique known as 'cut and cover'.",
+      "zh": "采用“挖掘覆盖”技术，线路建在街道下方不远处。"
+    },
+    {
+      "id": "s25",
+      "en": "A trench about ten metres wide and six metres deep was dug, and the sides temporarily held up with timber beams.",
+      "zh": "挖了一条大约10米宽、6米深的沟渠，边缘临时用木梁支撑。"
+    },
+    {
+      "id": "s26",
+      "en": "Brick walls were then constructed, and finally a brick arch was added to create a tunnel.",
+      "zh": "随后建造了砖墙，最后砌筑了砖拱，形成隧道。"
+    },
+    {
+      "id": "s27",
+      "en": "A two-metre-deep layer of soil was laid on top of the tunnel and the road above rebuilt.",
+      "zh": "在隧道上覆盖了2米深的土层，随后重建了道路。"
+    },
+    {
+      "id": "s28",
+      "en": "The Metropolitan line, which opened on 10 January 1863, was the world’s first underground railway.",
+      "zh": "大都会线于1863年1月10日开放，是世界上第一条地铁线路。"
+    },
+    {
+      "id": "s29",
+      "en": "On its first day, almost 40,000 passengers were carried between Paddington and Farringdon, the journey taking about 18 minutes.",
+      "zh": "首日运行中，近4万人在帕丁顿和法灵顿之间乘坐，旅程大约18分钟。"
+    },
+    {
+      "id": "s30",
+      "en": "By the end of the Metropolitan’s first year of operation, 9.5 million journeys had been made.",
+      "zh": "大都会线运营第一年结束时，乘车次数已达950万次。"
+    },
+    {
+      "id": "s31",
+      "en": "Even as the Metropolitan began operation, the first extensions to the line were being authorised; these were built over the next five years, reaching Moorgate in the east of London and Hammersmith in the west.",
+      "zh": "大都会线刚开始运营时，首批延伸线路已经获批；接下来的五年间延伸至伦敦东部的摩尔盖特和西部的汉默史密斯。"
+    },
+    {
+      "id": "s32",
+      "en": "The original plan was to pull the trains with steam locomotives, using firebricks in the boilers to provide steam, but these engines were never introduced.",
+      "zh": "最初计划用蒸汽机车牵引火车，利用炉内耐火砖发汽，但这种机车从未投入使用。"
+    },
+    {
+      "id": "s33",
+      "en": "Instead, the line used specially designed locomotives that were fitted with water tanks in which steam could be condensed.",
+      "zh": "取而代之的是，该线路使用了特别设计的机车，配备了可冷凝蒸汽的水箱。"
+    },
+    {
+      "id": "s34",
+      "en": "However, smoke and fumes remained a problem, even though ventilation shafts were added to the tunnels.",
+      "zh": "尽管在隧道内增加了通风井，烟雾和废气仍然是个问题。"
+    },
+    {
+      "id": "s35",
+      "en": "Despite the extension of the underground railway, by the 1880s, congestion on London’s streets had become worse.",
+      "zh": "尽管地铁线路有所延伸，但到19世纪80年代，伦敦街道拥堵状况有所加剧。"
+    },
+    {
+      "id": "s36",
+      "en": "The problem was partly that the existing underground lines formed a circuit around the centre of London and extended to the suburbs, but did not cross the capital’s centre.",
+      "zh": "问题部分原因是现有地铁线路环绕伦敦市中心并延伸至郊区，但没有穿越市中心。"
+    },
+    {
+      "id": "s37",
+      "en": "The 'cut and cover' method of construction was not an option in this part of the capital.",
+      "zh": "“挖掘覆盖”施工方法在该市中心区域不可行。"
+    },
+    {
+      "id": "s38",
+      "en": "The only alternative was to tunnel deep underground.",
+      "zh": "唯一的选择是挖建深层隧道。"
+    },
+    {
+      "id": "s39",
+      "en": "Although the technology to create these tunnels existed, steam locomotives could not be used in such a confined space.",
+      "zh": "尽管已有建造此类隧道的技术，但蒸汽机车无法在如此狭窄空间内使用。"
+    },
+    {
+      "id": "s40",
+      "en": "It wasn’t until the development of a reliable electric motor, and a means of transferring power from the generator to a moving train, that the world’s first deep-level electric railway, the City & South London, became possible.",
+      "zh": "直到可靠的电动机和将电力从发电机传输到行驶列车的方法出现后，世界上第一条深层电气化铁路——伦敦市与南伦敦线才成为可能。"
+    },
+    {
+      "id": "s41",
+      "en": "The line opened in 1890, and ran from the City to Stockwell, south of the River Thames.",
+      "zh": "该线路于1890年开放，运行路线为市区至泰晤士河南部的斯托克韦尔。"
+    },
+    {
+      "id": "s42",
+      "en": "The trains were made up of three carriages and driven by electric engines.",
+      "zh": "列车由三节车厢组成，由电动机驱动。"
+    },
+    {
+      "id": "s43",
+      "en": "The carriages were narrow and had tiny windows just below the roof because it was thought that passengers would not want to look out at the tunnel walls.",
+      "zh": "车厢狭窄，车顶下方有小窗，因为认为乘客不会想看隧道墙壁。"
+    },
+    {
+      "id": "s44",
+      "en": "The line was not without its problems, mainly caused by an unreliable power supply.",
+      "zh": "该线路并非没有问题，主要是电力供应不稳定造成的。"
+    },
+    {
+      "id": "s45",
+      "en": "Although the City & South London Railway was a great technical achievement, it did not make a profit.",
+      "zh": "尽管伦敦市与南伦敦铁路是重大技术成就，但未能盈利。"
+    },
+    {
+      "id": "s46",
+      "en": "Then, in 1900, the Central London Railway, known as the 'Tuppenny Tube', began operation using new electric locomotives.",
+      "zh": "随后，1900年，中伦敦铁路（俗称“塔比尼地铁”）开始使用新的电动机车运行。"
+    },
+    {
+      "id": "s47",
+      "en": "It was very popular and soon afterwards new railways and extensions were added to the growing tube network.",
+      "zh": "它非常受欢迎，不久后，新线路和延伸线路陆续加入不断扩展的地铁网络。"
+    },
+    {
+      "id": "s48",
+      "en": "By 1907, the heart of today’s Underground system was in place.",
+      "zh": "到1907年，今天地铁系统的核心部分已基本形成。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size:24px">The development of the London underground railway </span></strong></p><p style="text-align: center;"></p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>In the first half of the 1800s, London’s population grew at an astonishing rate, and the central area became increasingly congested. In addition, the expansion of the overground railway network resulted in more and more passengers arriving in the capital. However, in 1846, a Royal Commission decided that the railways should not be allowed to enter the City, the capital’s historic and business centre. The result was that the overground railway stations formed a ring around the City. The area within consisted of poorly built, overcrowded slums and the streets were full of horse-drawn traffic. Crossing the City became a nightmare. It could take an hour and a half to travel 8 km by horse-drawn carriage or bus. Numerous schemes were proposed to resolve these problems, but few succeeded.<span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></p><p>Amongst the most vocal advocates for a solution to London’s traffic problems was Charles Pearson, who worked as a solicitor for the City of London. He saw both social and economic advantages in building an underground railway that would link the overground railway stations together and clear London slums at the same time. His idea was to relocate the poor workers who lived in the inner-city slums to newly constructed suburbs, and to provide cheap rail travel for them to get to work. Pearson’s ideas gained support amongst some businessmen and in 1851 he submitted a plan to Parliament. It was rejected, but coincided with a proposal from another group for an underground connecting line, which Parliament passed.</p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></p><p>The two groups merged and established the Metropolitan Railway Company in August 1854. The company’s plan was to construct an underground railway line from the Great Western Railway’s (GWR) station at Paddington to the edge of the City at Farringdon Street – a distance of almost 5 km. The organisation had difficulty in raising the funding for such a radical and expensive scheme, not least because of the critical articles printed by the press. Objectors argued that the tunnels would collapse under the weight of traffic overhead, buildings would be shaken and passengers would be poisoned by the emissions from the train engines. However, Pearson and his partners persisted.</p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></span></p><p>The GWR, aware that the new line would finally enable them to run trains into the heart of the City, invested almost £250,000 in the scheme. Eventually, over a five-year period, £1m was raised. The chosen route ran beneath existing main roads to minimise the expense of demolishing buildings. Originally scheduled to be completed in 21 months, the construction of the underground line took three years. It was built just below street level using a technique known as 'cut and cover'. A trench about ten metres wide and six metres deep was dug, and the sides temporarily held up with timber beams. Brick walls were then constructed, and finally a brick arch was added to create a tunnel. A two-metre-deep layer of soil was laid on top of the tunnel and the road above rebuilt.</p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></p><p>The Metropolitan line, which opened on 10 January 1863, was the world’s first underground railway. On its first day, almost 40,000 passengers were carried between Paddington and Farringdon, the journey taking about 18 minutes. By the end of the Metropolitan’s first year of operation, 9.5 million journeys had been made.</p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></p><p>Even as the Metropolitan began operation, the first extensions to the line were being authorised; these were built over the next five years, reaching Moorgate in the east of London and Hammersmith in the west. The original plan was to pull the trains with steam locomotives, using firebricks in the boilers to provide steam, but these engines were never introduced. Instead, the line used specially designed locomotives that were fitted with water tanks in which steam could be condensed. However, smoke and fumes remained a problem, even though ventilation shafts were added to the tunnels.</p><p><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></span></p><p>Despite the extension of the underground railway, by the 1880s, congestion on London’s streets had become worse. The problem was partly that the existing underground lines formed a circuit around the centre of London and extended to the suburbs, but did not cross the capital’s centre. The 'cut and cover' method of construction was not an option in this part of the capital. The only alternative was to tunnel deep underground.</p><p><span style="text-align: center;"><br/></span></p><p><span style="text-align: center;">Although the technology to create these tunnels existed, steam locomotives could not be used in such a confined space. It wasn’t until the development of a reliable electric motor, and a means of transferring power from the generator to a moving train, that the world’s first deep-level electric railway, the City & South London, became possible. The line opened in 1890, and ran from the City to Stockwell, south of the River Thames. The trains were made up of three carriages and driven by electric engines. The carriages were narrow and had tiny windows just below the roof because it was thought that passengers would not want to look out at the tunnel walls. The line was not without its problems, mainly caused by an unreliable power supply. Although the City & South London Railway was a great technical achievement, it did not make a profit. Then, in 1900, the Central London Railway, known as the 'Tuppenny Tube', began operation using new electric locomotives. It was very popular and soon afterwards new railways and extensions were added to the growing tube network. By 1907, the heart of today’s Underground system was in place.</span><br/></p>

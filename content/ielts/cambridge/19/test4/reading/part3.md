@@ -1765,5 +1765,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The Unselfish Gene",
+      "zh": "无私的基因"
+    },
+    {
+      "id": "s2",
+      "en": "A psychologist gives his view on how humans became self-centred",
+      "zh": "一位心理学家阐述了人类如何变得以自我为中心的看法"
+    },
+    {
+      "id": "s3",
+      "en": "There has long been a general assumption that human beings are essentially selfish.",
+      "zh": "长期以来，人们普遍认为人类本质上是自私的。"
+    },
+    {
+      "id": "s4",
+      "en": "We're apparently ruthless, with strong impulses to compete against each other for resources and to accumulate power and possessions.",
+      "zh": "我们显得无情，具有强烈的冲动去相互竞争资源，并积累权力和财产。"
+    },
+    {
+      "id": "s5",
+      "en": "If we are kind to one another, it's usually because we have ulterior motives.",
+      "zh": "如果我们对彼此友善，通常是因为我们有隐秘的动机。"
+    },
+    {
+      "id": "s6",
+      "en": "If we are good, it's only because we have managed to control and transcend our innate selfishness and brutality.",
+      "zh": "如果我们表现得善良，那只是因为我们已设法控制并超越了与生俱来的自私和残酷。"
+    },
+    {
+      "id": "s7",
+      "en": "This bleak view of human nature is closely associated with the science writer Richard Dawkins, whose 1976 book The Selfish Gene became popular because it fitted so well with - and helped to justify - the competitive and individualistic ethos that was so prevalent in late 20th-century societies.",
+      "zh": "这种对人性阴暗的看法与科学作家理查德·道金斯密切相关，他1976年的著作《自私的基因》广受欢迎，因为它与20世纪后期社会中盛行的竞争和个人主义精神非常契合，并帮助为其提供了正当理由。"
+    },
+    {
+      "id": "s8",
+      "en": "Like many others, Dawkins justifies his views with reference to the field of evolutionary psychology.",
+      "zh": "和许多人一样，道金斯用进化心理学领域的观点来为自己的看法辩护。"
+    },
+    {
+      "id": "s9",
+      "en": "Evolutionary psychology theorises that present-day human traits developed in prehistoric times, during what is termed the 'environment of evolutionary adaptedness'.",
+      "zh": "进化心理学理论认为，现在的人类特质是在史前时代，也称为“进化适应环境”期间形成的。"
+    },
+    {
+      "id": "s10",
+      "en": "Prehistory is usually seen as a period of intense competition, when life was such a brutal battle that only those with traits such as selfishness, aggression and ruthlessness survived.",
+      "zh": "史前时期通常被视为竞争激烈的阶段，生活如同残酷的战斗，只有具备自私、攻击性和无情等特质的人才能存活。"
+    },
+    {
+      "id": "s11",
+      "en": "And because survival depended on access to resources - such as rivers, forests and animals - there was bound to be conflict between rival groups, which led to the development of traits such as racism and warfare.",
+      "zh": "由于生存依赖于获得资源——如河流、森林和动物——竞争群体之间必然会产生冲突，这便促成了诸如种族主义和战争等特质的发展。"
+    },
+    {
+      "id": "s12",
+      "en": "This seems logical.",
+      "zh": "这似乎合乎逻辑。"
+    },
+    {
+      "id": "s13",
+      "en": "But, in fact, the assumption on which this all rests - that prehistoric life was a desperate struggle for survival - is false.",
+      "zh": "但事实上，这一切的基础假设——史前生活是一场绝望的求生斗争——是错误的。"
+    },
+    {
+      "id": "s14",
+      "en": "It's important to remember that in the prehistoric era, the world was very sparsely populated.",
+      "zh": "必须记住，史前时代世界人口非常稀少。"
+    },
+    {
+      "id": "s15",
+      "en": "According to some estimates, around 15,000 years ago, the population of Europe was only 29,000, and the population of the whole world was less than half a million.",
+      "zh": "据一些估计，大约在一万五千年前，欧洲人口只有29,000人，全球总人口不足五十万。"
+    },
+    {
+      "id": "s16",
+      "en": "Humans at that time were hunter-gatherers: people who lived by hunting wild animals and collecting wild plants.",
+      "zh": "当时的人类是狩猎采集者：通过猎捕野生动物和采集野生植物维生。"
+    },
+    {
+      "id": "s17",
+      "en": "With such small population densities, it seems unlikely that prehistoric hunter-gatherer groups had to compete against each other for resources or had any need to develop ruthlessness and competitiveness, or to go to war.",
+      "zh": "在人口密度如此稀少的情况下，史前的狩猎采集群体之间需要为资源竞争，或必须发展无情和竞争性、发动战争的可能性很小。"
+    },
+    {
+      "id": "s18",
+      "en": "There is significant evidence to back this notion from contemporary hunter-gatherer groups, who live in the same way as prehistoric humans did.",
+      "zh": "来自现代狩猎采集群体的实质性证据支持这一观点，他们的生活方式与史前人类相同。"
+    },
+    {
+      "id": "s19",
+      "en": "As the anthropologist Bruce Knauft has remarked, hunter-gatherers are characterised by 'extreme political and sexual egalitarianism'.",
+      "zh": "正如人类学家布鲁斯·克诺夫特所说，狩猎采集者的特点是“极端的政治和平等主义”。"
+    },
+    {
+      "id": "s20",
+      "en": "Knauft has observed that individuals in such groups don't accumulate property or possessions and have an ethical obligation to share everything.",
+      "zh": "克诺夫特观察到，这些群体中的个人不积累财产，且有道德义务分享一切。"
+    },
+    {
+      "id": "s21",
+      "en": "They also have methods of preserving egalitarianism by ensuring that disparities of status don't arise.",
+      "zh": "他们还有保持平等主义的方法，确保不会出现地位差异。"
+    },
+    {
+      "id": "s22",
+      "en": "Kung people of southern Africa, for example, swap arrows before going hunting and when an animal is killed, the acclaim does not go to the person who fired the arrow, but to the person the arrow belongs to.",
+      "zh": "例如，南非的昆格人猎前会交换箭支，猎获动物时，赞誉归属于箭的主人，而非射箭者。"
+    },
+    {
+      "id": "s23",
+      "en": "And if a person becomes too domineering, the other members of the group ostracise them, exiling the offender from society.",
+      "zh": "如果有人变得过于专横，群体其他成员会将其排斥，将其驱逐出社会。"
+    },
+    {
+      "id": "s24",
+      "en": "Typically in such groups, men do not dictate what women do.",
+      "zh": "通常在这些群体中，男性不会支配女性的行为。"
+    },
+    {
+      "id": "s25",
+      "en": "Women in hunter-gatherer groups worldwide often benefit from a high level of autonomy, being able to select their own marriage partners, decide what work they do and work whenever they choose to.",
+      "zh": "全球狩猎采集群体中的女性通常享有高度自主权，可以选择自己的伴侣、决定从事何种工作，并自主安排工作时间。"
+    },
+    {
+      "id": "s26",
+      "en": "And if a marriage breaks down, they have custody rights over their children.",
+      "zh": "如果婚姻破裂，女性拥有子女的抚养权。"
+    },
+    {
+      "id": "s27",
+      "en": "Many anthropologists believe that societies such as the !",
+      "zh": "许多人类学家认为，像这样的社会！"
+    },
+    {
+      "id": "s28",
+      "en": "Kung were normal until a few thousand years ago, when population growth led to the development of agriculture and a settled lifestyle.",
+      "zh": "昆格人这样的社会在几千年前一直很正常，直到人口增长促使农业和定居生活方式的发展。"
+    },
+    {
+      "id": "s29",
+      "en": "In view of the above, there seems little reason to assume that traits such as racism, warfare and male domination should have been selected by evolution - as they would have been of little benefit in the prehistoric era.",
+      "zh": "综上所述，似乎没有理由认为种族主义、战争和男性统治等特质是通过进化选择出来的——因为它们在史前时代几乎无益。"
+    },
+    {
+      "id": "s30",
+      "en": "Individuals who behaved selfishly and ruthlessly would be less likely to survive, since they would have been ostracised from their groups.",
+      "zh": "自私和无情行为的个体存活可能性较低，因为他们会被群体排斥。"
+    },
+    {
+      "id": "s31",
+      "en": "It makes more sense, then, to see traits such as cooperation, egalitarianism, altruism and peacefulness as innate characteristics of human beings.",
+      "zh": "因此，将合作、平等主义、利他主义与和平等特质视为人类与生俱来的特征更加合理。"
+    },
+    {
+      "id": "s32",
+      "en": "These were the traits that were prevalent in human life for tens of thousands of years.",
+      "zh": "这些特质在人类生活中盛行了数万年。"
+    },
+    {
+      "id": "s33",
+      "en": "So presumably these traits are still strong in us now.",
+      "zh": "所以，这些特质很可能仍然在我们身上根深蒂固。"
+    },
+    {
+      "id": "s34",
+      "en": "But if prehistoric life wasn't really as brutal as has often been assumed, why do modern humans behave so selfishly and ruthlessly?",
+      "zh": "但如果史前生活并不像人们常假设的那样残酷，为什么现代人类会表现得如此自私和无情呢？"
+    },
+    {
+      "id": "s35",
+      "en": "Perhaps these negative traits should be seen as a later development, the result of environmental and psychological factors.",
+      "zh": "也许这些负面特质应被视为后来的产物，是环境和心理因素的结果。"
+    },
+    {
+      "id": "s36",
+      "en": "Research has shown repeatedly that when the natural habitats of primates such as apes and gorillas are disrupted, they tend to become more violent and hierarchical.",
+      "zh": "研究反复表明，当猿类如黑猩猩和大猩猩的自然栖息地被破坏时，它们往往变得更加暴力和等级分明。"
+    },
+    {
+      "id": "s37",
+      "en": "So, it could well be that the same thing has happened to us.",
+      "zh": "因此，这种情况很可能同样发生在我们身上。"
+    },
+    {
+      "id": "s38",
+      "en": "I believe that the end of the hunter-gatherer lifestyle and the advent of farming was connected to a psychological change that occurred in some groups of people.",
+      "zh": "我认为狩猎采集生活方式的结束以及农业的出现，与某些人群发生的心理变化有关。"
+    },
+    {
+      "id": "s39",
+      "en": "There was a new sense of individuality and separateness, which led to a new selfishness, and ultimately to hierarchical societies, patriarchy and warfare.",
+      "zh": "出现了一种新的个体意识和分离感，这导致了新的自私，最终发展成等级社会、父权制和战争。"
+    },
+    {
+      "id": "s40",
+      "en": "At any rate, these negative traits appear to have developed so recently that it doesn't seem feasible to explain them in adaptive or evolutionary terms.",
+      "zh": "无论如何，这些负面特质似乎发展得非常近期，因此用适应性或进化论来解释它们似乎不太可行。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The Unselfish Gene</span></strong></p><p style="text-align: center;"><em>A psychologist gives his view on how humans became self-centred</em></p><p>There has long been a general assumption that human beings are essentially selfish. We're apparently ruthless, with strong impulses to compete against each other for resources and to accumulate power and possessions. If we are kind to one another, it's usually because we have ulterior motives. If we are good, it's only because we have managed to control and transcend our innate selfishness and brutality.</p><p><br></p><p></p><p>This bleak view of human nature is closely associated with the science writer Richard Dawkins, whose 1976 book The Selfish Gene became popular because it fitted so well with - and helped to justify - the competitive and individualistic ethos that was so prevalent in late 20th-century societies. Like many others, Dawkins justifies his views with reference to the field of evolutionary psychology. Evolutionary psychology theorises that present-day human traits developed in prehistoric times, during what is termed the 'environment of evolutionary adaptedness'.</p><p><br></p><p></p><p>Prehistory is usually seen as a period of intense competition, when life was such a brutal battle that only those with traits such as selfishness, aggression and ruthlessness survived. And because survival depended on access to resources - such as rivers, forests and animals - there was bound to be conflict between rival groups, which led to the development of traits such as racism and warfare. This seems logical. But, in fact, the assumption on which this all rests - that prehistoric life was a desperate struggle for survival - is false.</p><p><br></p><p></p><p>It's important to remember that in the prehistoric era, the world was very sparsely populated. According to some estimates, around 15,000 years ago, the population of Europe was only 29,000, and the population of the whole world was less than half a million. Humans at that time were hunter-gatherers: people who lived by hunting wild animals and collecting wild plants. With such small population densities, it seems unlikely that prehistoric hunter-gatherer groups had to compete against each other for resources or had any need to develop ruthlessness and competitiveness, or to go to war.</p><p><br></p><p></p><p>There is significant evidence to back this notion from contemporary hunter-gatherer groups, who live in the same way as prehistoric humans did. As the anthropologist Bruce Knauft has remarked, hunter-gatherers are characterised by 'extreme political and sexual egalitarianism'. Knauft has observed that individuals in such groups don't accumulate property or possessions and have an ethical obligation to share everything. They also have methods of preserving egalitarianism by ensuring that disparities of status don't arise.</p><p></p><p><br></p><p>The !Kung people of southern Africa, for example, swap arrows before going hunting and when an animal is killed, the acclaim does not go to the person who fired the arrow, but to the person the arrow belongs to. And if a person becomes too domineering, the other members of the group ostracise them, exiling the offender from society. Typically in such groups, men do not dictate what women do. Women in hunter-gatherer groups worldwide often benefit from a high level of autonomy, being able to select their own marriage partners, decide what work they do and work whenever they choose to. And if a marriage breaks down, they have custody rights over their children.</p><p></p><p><br></p><p>Many anthropologists believe that societies such as the !Kung were normal until a few thousand years ago, when population growth led to the development of agriculture and a settled lifestyle. In view of the above, there seems little reason to assume that traits such as racism, warfare and male domination should have been selected by evolution - as they would have been of little benefit in the prehistoric era. Individuals who behaved selfishly and ruthlessly would be less likely to survive, since they would have been ostracised from their groups.</p><p></p><p><br></p><p>It makes more sense, then, to see traits such as cooperation, egalitarianism, altruism and peacefulness as innate characteristics of human beings. These were the traits that were prevalent in human life for tens of thousands of years. So presumably these traits are still strong in us now.</p><p></p><p><br></p><p>But if prehistoric life wasn't really as brutal as has often been assumed, why do modern humans behave so selfishly and ruthlessly? Perhaps these negative traits should be seen as a later development, the result of environmental and psychological factors. Research has shown repeatedly that when the natural habitats of primates such as apes and gorillas are disrupted, they tend to become more violent and hierarchical.</p><p></p><p><br></p><p>So, it could well be that the same thing has happened to us. I believe that the end of the hunter-gatherer lifestyle and the advent of farming was connected to a psychological change that occurred in some groups of people. There was a new sense of individuality and separateness, which led to a new selfishness, and ultimately to hierarchical societies, patriarchy and warfare. At any rate, these negative traits appear to have developed so recently that it doesn't seem feasible to explain them in adaptive or evolutionary terms.</p><p></p><p></p><p><br></p>

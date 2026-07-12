@@ -1892,5 +1892,283 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The case for mixed-ability classes",
+      "zh": "支持混合能力班级的理由"
+    },
+    {
+      "id": "s2",
+      "en": "Picture this scene.",
+      "zh": "想象这样一个场景。"
+    },
+    {
+      "id": "s3",
+      "en": "It's an English literature lesson in a UK school, and the teacher has just read an extract from Shakespeare's Romeo and Juliet with a class of 15-year-olds.",
+      "zh": "这是英国一所学校的英语文学课，老师刚刚和一班15岁的学生一起朗读了莎士比亚《罗密欧与朱丽叶》的一段摘录。"
+    },
+    {
+      "id": "s4",
+      "en": "He's given some of the students copies of No Fear Shakespeare , a kid-friendly translation of the original.",
+      "zh": "他给一些学生发了《无畏莎士比亚》（No Fear Shakespeare）的副本，这是一种对原著的儿童友好译本。"
+    },
+    {
+      "id": "s5",
+      "en": "For three students, even these literacy demands are beyond them.",
+      "zh": "有三名学生连这些基本的阅读要求都无法胜任。"
+    },
+    {
+      "id": "s6",
+      "en": "Another girl simply can't focus and he gives her pens and paper to draw with.",
+      "zh": "另一名女孩根本无法集中注意力，老师给了她笔和纸，让她画画。"
+    },
+    {
+      "id": "s7",
+      "en": "The teacher can ask the No Fear group to identify the key characters and maybe provide a tentative plot summary.",
+      "zh": "老师可以让使用《无畏莎士比亚》版本的学生辨认主要角色，可能还会让他们提供一个初步的剧情概要。"
+    },
+    {
+      "id": "s8",
+      "en": "He can ask most of the class about character development, and five of them might be able to support their statements with textual evidence.",
+      "zh": "他可以提问大部分学生关于人物发展的问题，其中有五人可能能用文本证据支持他们的观点。"
+    },
+    {
+      "id": "s9",
+      "en": "Now two curious students are wondering whether Shakespeare advocates living a life of moderation or one of passionate engagement.",
+      "zh": "现在有两名好奇的学生在思考莎士比亚是主张过一种适度的生活，还是热情投入的生活。"
+    },
+    {
+      "id": "s10",
+      "en": "As a teacher myself, I'd think my lesson would be going rather well if the discussion went as described above.",
+      "zh": "作为一名教师，如果课堂讨论如上所述，我会认为这节课进展得相当顺利。"
+    },
+    {
+      "id": "s11",
+      "en": "But wouldn't this kind of class work better if there weren't such a huge gap between the top and the bottom?",
+      "zh": "但如果班里成绩优秀和成绩较差的学生差距没有这么大，这样的课堂会不会更加有效？"
+    },
+    {
+      "id": "s12",
+      "en": "If we put all the kids who needed literacy support into one class, and all the students who want to discuss the virtue of moderation into another?",
+      "zh": "如果我们把所有需要阅读支持的孩子放在一个班，把所有想讨论适度美德的学生放到另一个班会怎样？"
+    },
+    {
+      "id": "s13",
+      "en": "The practice of 'streaming', or 'tracking', involves separating students into classes depending on their diagnosed levels of attainment.",
+      "zh": "“分班”或“分轨”是一种做法，根据学生被评定的学习水平将他们分到不同的班级。"
+    },
+    {
+      "id": "s14",
+      "en": "At a macro level, it requires the establishment of academically selective schools for the brightest students, and comprehensive schools for the rest.",
+      "zh": "从宏观层面来看，它需要设立针对最优秀学生的学术择优学校，以及为其他学生设立的综合学校。"
+    },
+    {
+      "id": "s15",
+      "en": "Within schools, it means selecting students into a 'stream' of general ability, or 'sets' of subject-specific ability.",
+      "zh": "在校内，这意味着将学生按一般能力分入“轨道”，或按学科能力分入“组别”。"
+    },
+    {
+      "id": "s16",
+      "en": "The practice is intuitively appealing to almost every stakeholder.",
+      "zh": "这一做法直观上对几乎所有利益相关者都有吸引力。"
+    },
+    {
+      "id": "s17",
+      "en": "I have heard the mixed-ability model attacked by way of analogy: a group hike.",
+      "zh": "我听过有人用打比方的方式批评混合能力班级：一场集体徒步。"
+    },
+    {
+      "id": "s18",
+      "en": "The fittest in the group take the lead and set a brisk pace, only to have to stop and wait every 20 minutes.",
+      "zh": "体能最好的人带头快步前进，但每二十分钟就得停下来等人。"
+    },
+    {
+      "id": "s19",
+      "en": "This is frustrating, and their enthusiasm wanes.",
+      "zh": "这令人沮丧，他们的热情也逐渐减退。"
+    },
+    {
+      "id": "s20",
+      "en": "Meanwhile, the slowest ones are not only embarrassed but physically struggling to keep up.",
+      "zh": "与此同时，走得最慢的人不仅感到尴尬，还在体力上吃力地跟不上。"
+    },
+    {
+      "id": "s21",
+      "en": "What's worse, they never get a long enough break.",
+      "zh": "更糟的是，他们从未得到足够长的休息时间。"
+    },
+    {
+      "id": "s22",
+      "en": "They honestly just want to quit.",
+      "zh": "他们真的只想放弃。"
+    },
+    {
+      "id": "s23",
+      "en": "Hiking, they feel, is not for them.",
+      "zh": "他们觉得徒步旅行不适合自己。"
+    },
+    {
+      "id": "s24",
+      "en": "Mixed-ability classes bore students, frustrate parents and burn out teachers.",
+      "zh": "混合能力班令学生感到无聊，令家长失望，也让老师感到疲惫不堪。"
+    },
+    {
+      "id": "s25",
+      "en": "The brightest ones will never summit Mount Qomolangma, and the stragglers won't enjoy the lovely stroll in the park they are perhaps more suited to.",
+      "zh": "最聪明的学生永远无法登顶珠穆朗玛峰，而落后的学生也无法享受他们可能更适合的美好公园散步。"
+    },
+    {
+      "id": "s26",
+      "en": "Individuals suffer at the demands of the collective, mediocrity prevails.",
+      "zh": "个人因集体的要求而受苦，中庸之道盛行。"
+    },
+    {
+      "id": "s27",
+      "en": "So: is learning like hiking?",
+      "zh": "那么：学习真像徒步旅行吗？"
+    },
+    {
+      "id": "s28",
+      "en": "The current pedagogical paradigm is arguably that of constructivism, which emerged out of the work of psychologist Lev Vygotsky.",
+      "zh": "当前的教学范式可以说是建构主义，这一理论源于心理学家莱夫·维果茨基的研究。"
+    },
+    {
+      "id": "s29",
+      "en": "In the 1930s, Vygotsky emphasised the importance of targeting a student's specific 'zone of proximal development' (ZPD).",
+      "zh": "20世纪30年代，维果茨基强调了针对学生特定“近侧发展区”（ZPD）教学的重要性。"
+    },
+    {
+      "id": "s30",
+      "en": "This is the gap between what they can achieve only with support — teachers, textbooks, worked examples, parents and so on — and what they can achieve independently.",
+      "zh": "这指的是学生仅靠支持——比如老师、教材、示范例题、家长等——才能完成的水平，与他们能独立完成的水平之间的差距。"
+    },
+    {
+      "id": "s31",
+      "en": "The purpose of teaching is to provide and then gradually remove this 'scaffolding' until they are autonomous.",
+      "zh": "教学的目的是提供并逐步撤去这种“支架”，直到学生能自主完成学习。"
+    },
+    {
+      "id": "s32",
+      "en": "If we accept this model, it follows that streaming students with similar ZPDs would be an efficient and effective solution.",
+      "zh": "如果接受这一模型，那么把具有相似近侧发展区的学生分班，就是一种高效有效的解决方案。"
+    },
+    {
+      "id": "s33",
+      "en": "And that forcing everyone on the same hike — regardless of aptitude — would be madness.",
+      "zh": "而强迫所有人参加同样的徒步旅行——不管能力如何——则是疯狂的。"
+    },
+    {
+      "id": "s34",
+      "en": "Despite all this, there is limited empirical evidence to suggest that streaming results in better outcomes for students.",
+      "zh": "尽管如此，关于分班能带来更好学习成果的实证证据却很有限。"
+    },
+    {
+      "id": "s35",
+      "en": "Professor John Hattie, director of the Melbourne Education Research Institute, notes that 'tracking has minimal effects on learning outcomes'.",
+      "zh": "墨尔本教育研究所所长约翰·哈蒂教授指出，“分轨对学习成果的影响微乎其微”。"
+    },
+    {
+      "id": "s36",
+      "en": "What is more, streaming appears to significantly — and negatively — affect those students assigned to the lowest sets.",
+      "zh": "而且，分班似乎对分到最低等级组的学生产生了显著的负面影响。"
+    },
+    {
+      "id": "s37",
+      "en": "These students tend to have much higher representation of low socioeconomic class.",
+      "zh": "这些学生中低社会经济阶层的比例往往更高。"
+    },
+    {
+      "id": "s38",
+      "en": "Less significant is the small benefit for those lucky clever students in the higher sets.",
+      "zh": "而对那些幸运地进入高等级组的聪明学生，分班带来的收益则较小，不太显著。"
+    },
+    {
+      "id": "s39",
+      "en": "The overall result is that the smart stay smart and the dumb get dumber, further entrenching the social divide.",
+      "zh": "总体来看，聪明的学生保持聪明，较差的学生变得更差，加深了社会分化。"
+    },
+    {
+      "id": "s40",
+      "en": "In the latest update of Hattie's influential meta-analysis of factors influencing student achievement, one of the most significant factors is the teachers' estimate of achievement.",
+      "zh": "在哈蒂最新的影响学生成绩因素的权威元分析更新中，最重要的因素之一是教师对学生成绩的评估。"
+    },
+    {
+      "id": "s41",
+      "en": "Streaming students by diagnosed achievement automatically limits what the teacher feels the student is capable of.",
+      "zh": "根据评定成就分班，自动限制了教师对学生能力的预期。"
+    },
+    {
+      "id": "s42",
+      "en": "Meanwhile, in a mixed environment, teachers' estimates need to be more diverse and flexible.",
+      "zh": "而在混合环境中，教师的评估需要更为多样和灵活。"
+    },
+    {
+      "id": "s43",
+      "en": "While streaming might seem to help teachers effectively target a student's ZPD, it can underestimate the importance of peer-to-peer learning.",
+      "zh": "虽然分班似乎有助于教师有效关注学生的近侧发展区，但它可能低估了同伴互助学习的重要性。"
+    },
+    {
+      "id": "s44",
+      "en": "A crucial aspect of constructivist theory is the role of the MKO — 'more-knowledgeable other' — in knowledge construction.",
+      "zh": "建构主义理论的一个关键方面是“MKO”——“更有知识的他者”——在知识构建中的作用。"
+    },
+    {
+      "id": "s45",
+      "en": "While teachers are traditionally the MKOs in classrooms, the value of knowledgeable student peers must not go unrecognised either.",
+      "zh": "教师传统上是课堂上的MKO，但有知识的同学同伴的价值也不可忽视。"
+    },
+    {
+      "id": "s46",
+      "en": "I find it amazing to watch students get over an idea to their peers in ways that I would never think of.",
+      "zh": "我发现学生以我从未想到的方式向同伴传递知识，这令人惊讶。"
+    },
+    {
+      "id": "s47",
+      "en": "They operate with different language tools and different social tools from teachers and, having just learnt it themselves, they possess similar cognitive structures to their struggling classmates.",
+      "zh": "他们使用的语言工具和社交工具与老师不同，而且刚学会的他们在认知结构上与那些挣扎中的同学较为接近。"
+    },
+    {
+      "id": "s48",
+      "en": "There is also something exciting about passing on skills and knowledge that you yourself have just mastered — a certain pride and zeal, a certain freshness to the interaction between 'teacher' and 'learner' that is often lost by the expert for whom the steps are obvious and the joy of discovery forgotten.",
+      "zh": "将自己刚掌握的技能和知识传授给别人也令人兴奋——那是一种自豪和热情，是“教师”和“学习者”之间互动的新鲜感，而专家往往因步骤自明而失去发现的乐趣。"
+    },
+    {
+      "id": "s49",
+      "en": "Having a variety of different abilities in a collaborative learning environment provides valuable resources for helping students meet their learning needs, not to mention improving their communication and social skills.",
+      "zh": "在合作学习环境中拥有多样化的能力，为帮助学生满足学习需求提供了宝贵资源，更不用说还能提升他们的沟通和社交技能。"
+    },
+    {
+      "id": "s50",
+      "en": "And today, more than ever, we need the many to flourish — not suffer at the expense of a few bright stars.",
+      "zh": "而如今，比以往任何时候都更需要让多数人茁壮成长——而不是让少数明星学生的成功成为多数人的牺牲。"
+    },
+    {
+      "id": "s51",
+      "en": "Once a year, I go on a hike with my class, a mixed bunch of students.",
+      "zh": "每年我都会和我的班级——一个混合能力的学生群体——一起徒步旅行。"
+    },
+    {
+      "id": "s52",
+      "en": "It is challenging.",
+      "zh": "这很有挑战性。"
+    },
+    {
+      "id": "s53",
+      "en": "The fittest students realise they need to encourage the reluctant.",
+      "zh": "体能最好的学生意识到他们需要激励那些不情愿的人。"
+    },
+    {
+      "id": "s54",
+      "en": "There are lookouts who report back, and extra items to carry for others.",
+      "zh": "有人担任侦察员回报情况，也有人为他人携带额外物品。"
+    },
+    {
+      "id": "s55",
+      "en": "We make it together.",
+      "zh": "我们共同完成了这次旅程。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">The case for mixed-ability classes</span></strong></h3><p>Picture this scene. It's an English literature lesson in a UK school, and the teacher has just read an extract from Shakespeare's <em>Romeo and Juliet </em>with a class of 15-year-olds. He's given some of the students copies of <em>No Fear Shakespeare</em>, a kid-friendly translation of the original. For three students, even these literacy demands are beyond them. Another girl simply can't focus and he gives her pens and paper to draw with. The teacher can ask the <em>No Fear</em> group to identify the key characters&nbsp; and maybe provide a tentative plot summary. He can ask most of the class about character development, and five of them might be able to support their statements with textual evidence. Now two curious students are wondering whether Shakespeare advocates living a life of moderation or one of passionate engagement.</p><p><br></p><p>As a teacher myself, I'd think my lesson would be going rather well if the discussion went as described above. But wouldn't this kind of class work better if there weren't such a huge gap between the top and the bottom? If we put all the kids who needed literacy support into one class, and all the students who want to discuss the virtue of moderation into another?</p><p><br></p><p>The practice of 'streaming', or 'tracking', involves separating students into classes depending on their diagnosed levels of attainment. At a macro level, it requires the establishment of academically selective schools for the brightest students, and comprehensive schools for the rest. Within schools, it means selecting students into a 'stream' of general ability, or 'sets' of subject-specific ability. The practice is intuitively appealing to almost every stakeholder.</p><p><br></p><p>I have heard the mixed-ability model attacked by way of analogy: a group hike. The fittest in the group take the lead and set a brisk pace, only to have to stop and wait every 20 minutes. This is frustrating, and their enthusiasm wanes. Meanwhile, the slowest ones are not only embarrassed but physically struggling to keep up. What's worse, they never get a long enough break. They honestly just want to quit. Hiking, they feel, is not for them.</p><p><br></p><p><span style="text-wrap: wrap;">Mixed-ability classes bore students, frustrate parents and burn out teachers. The brightest ones will never summit Mount Qomolangma, and the stragglers won't enjoy the lovely stroll in the park they are perhaps more suited to. Individuals suffer at the demands of the collective, mediocrity prevails. So: is learning like hiking?</span></p><p><span style="text-wrap: wrap;"><br></span></p><p><span style="text-wrap: wrap;">The current pedagogical paradigm is arguably that of constructivism, which emerged out of the work of psychologist Lev Vygotsky. In the 1930s, Vygotsky emphasised the importance of targeting a student's specific 'zone of proximal development' (ZPD). This is the gap between what they can achieve only with support — teachers, textbooks, worked examples, parents and so on — and what they can achieve independently. The purpose of teaching is to provide and then gradually remove this 'scaffolding' until they are autonomous. If we accept this model, it follows that streaming students with similar ZPDs would be an efficient and effective solution. And that forcing everyone on the same hike — regardless of aptitude — would be madness.</span></p><p><span style="text-wrap: wrap;"><br></span></p><p><span style="text-wrap: wrap;">Despite all this, there is limited empirical evidence to suggest that streaming results in better outcomes for students. Professor John Hattie, director of the Melbourne Education Research Institute, notes that 'tracking has minimal effects on learning outcomes'. What is more, streaming appears to significantly — and negatively — affect those students assigned to the lowest sets. These students tend to have much higher representation of low socioeconomic class. Less significant is the small benefit for those lucky clever students in the higher sets. The overall result is that the smart stay smart and the dumb get dumber, further entrenching the social divide.</span></p><p><br></p><p>In the latest update of Hattie's influential meta-analysis of factors influencing student achievement, one of the most significant factors is the teachers' estimate of achievement. Streaming students by diagnosed achievement automatically limits what the teacher feels the student is capable of. Meanwhile, in a mixed environment, teachers' estimates need to be more diverse and flexible.</p><p><br></p><p>While streaming might seem to help teachers effectively target a student's ZPD, it can underestimate the importance of peer-to-peer learning. A crucial aspect of constructivist theory is the role of the MKO — 'more-knowledgeable other' — in knowledge construction. While teachers are traditionally the MKOs in classrooms, the value of knowledgeable student peers must not go unrecognised either.</p><p><br></p><p>I find it amazing to watch students get over an idea to their peers in ways that I would never think of. They operate with different language tools and different social tools from teachers and, having just learnt it themselves, they possess similar cognitive structures to their struggling classmates. There is also something exciting about passing on skills and knowledge that you yourself have just mastered — a certain pride and zeal, a certain freshness to the interaction between 'teacher' and 'learner' that is often lost by the expert for whom the steps are obvious and the joy of discovery forgotten.</p><p><br></p><p>Having a variety of different abilities in a collaborative learning environment provides valuable resources for helping students meet their learning needs, not to mention improving their communication and social skills. And today, more than ever, we need the many to flourish — not suffer at the expense of a few bright stars. Once a year, I go on a hike with my class, a mixed bunch of students. It is challenging. The fittest students realise they need to encourage the reluctant. There are lookouts who report back, and extra items to carry for others. We make it together.</p><p><br></p>

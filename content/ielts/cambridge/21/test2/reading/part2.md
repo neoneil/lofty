@@ -1342,5 +1342,198 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Mapungubwe",
+      "zh": "马普恩古布韦"
+    },
+    {
+      "id": "s2",
+      "en": "Located in southern Africa just below the Limpopo River, the kingdom of Mapungubwe, flourished between the 11th and 13th century CE",
+      "zh": "马普恩古布韦王国位于南非，靠近林波波河以南，于公元11至13世纪间繁荣发展。"
+    },
+    {
+      "id": "s3",
+      "en": "A Mapungubwe, which was one of the first states in southern Africa, was formed by Bantu-speaking peoples who were farmers.",
+      "zh": "马普恩古布韦是南非最早的国家之一，由讲班图语的农民群体建立。"
+    },
+    {
+      "id": "s4",
+      "en": "The area controlled by the rulers of Mapungubwe had at its heart a large sandstone plateau, which was easily defended due to its inaccessibility.",
+      "zh": "马普恩古布韦统治者控制的地区核心是一块大型砂岩高原，因地势险要难以接近，防御十分容易。"
+    },
+    {
+      "id": "s5",
+      "en": "As with other kingdoms in the region of southern Africa, cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods.",
+      "zh": "与南非其他王国类似，养牛和其他农业生产带来了丰富的食物和盈余，可以用来交换所需物品。"
+    },
+    {
+      "id": "s6",
+      "en": "Archaeology has revealed extensive layers of bones and manure, which indicate that from the 9th century CE there were large cattle herds, the traditional source of political power in southern African communities.",
+      "zh": "考古发现表明，从公元9世纪起就有大量的牛群存在，这通过大量的骨骼和粪肥层得以证实；牛群是南非社区传统的政治权力来源。"
+    },
+    {
+      "id": "s7",
+      "en": "The archaeological record for the 10th century shows a marked increase in the number of domesticated cattle in the area as well as cotton cultivation and weaving, as indicated by abundant finds of spindle whorls.",
+      "zh": "10世纪的考古记录显示，该地区家养牛数量显著增加，同时出现了棉花种植和纺织业，丰富的纺锤轧环出土证实了这一点。"
+    },
+    {
+      "id": "s8",
+      "en": "B The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people.",
+      "zh": "马普恩古布韦在13世纪中叶达到人口高峰时，约有5000人。"
+    },
+    {
+      "id": "s9",
+      "en": "The chief or king of Mapungubwe was likely the wealthiest individual in the society, and would have owned more cattle and precious materials than anyone else.",
+      "zh": "马普恩古布韦的酋长或国王很可能是社会中最富有的人，拥有的牛群和贵重物品比任何人都多。"
+    },
+    {
+      "id": "s10",
+      "en": "The king and his advisers dwelt in a stone enclosure composed of stone walls and housing built on the highest level of the community’s territory, a natural sandstone hill which is some 30 metres high and 100 metres in length.",
+      "zh": "国王和他的顾问们住在由石墙和住房组成的石质围院内，位于社区领地的最高处，这是一座天然砂岩丘陵，高约30米，长约100米。"
+    },
+    {
+      "id": "s11",
+      "en": "Occupation on the hill dates from the 11th century and the entire complex was surrounded by a wooden palisade*, as indicated by postholes made in the rock.",
+      "zh": "该山丘的居住始于11世纪，整个建筑群被木栅栏包围，从岩石中留下的柱洞可以证明这一点。"
+    },
+    {
+      "id": "s12",
+      "en": "The rest of the community lived in mud and thatch housing spread out below the hill, although there is one stone structure here.",
+      "zh": "社区的其他成员居住在山丘下分布的泥土和茅草房屋中，尽管这里有一处石质建筑。"
+    },
+    {
+      "id": "s13",
+      "en": "This settlement, known as Babandyanalo, covers around 5 hectares (12.3 acres) and predates the hilltop structures.",
+      "zh": "这个名为巴班迪亚纳洛的定居点占地约5公顷（12.3英亩），其历史早于山顶建筑。"
+    },
+    {
+      "id": "s14",
+      "en": "C The kings of Mapungubwe were buried at the top of the hill site in a demarcated area away from the dwellings, while other members of the community were buried at the surrounding valley level.",
+      "zh": "马普恩古布韦的国王葬于山顶划定的区域，远离居住区，而社区的其他成员则葬于周围的山谷地带。"
+    },
+    {
+      "id": "s15",
+      "en": "A wooden staircase connected the two levels, the sockets for the steps being clearly visible in the sandstone cliff face.",
+      "zh": "一座木制楼梯连接了两个层面，台阶的插槽清晰可见于砂岩悬崖壁上。"
+    },
+    {
+      "id": "s16",
+      "en": "There were some grander residences dotted around the outskirts of Babandyanalo, and these probably belonged to male relatives of the king.",
+      "zh": "巴班迪亚纳洛外围点缀着一些较为豪华的住宅，这些可能属于国王的男性亲属。"
+    },
+    {
+      "id": "s17",
+      "en": "There are many other smaller but still impressive sites across the Mapungubwe plateau, which are located anywhere from 15 to 100 kilometres from the major hill site.",
+      "zh": "马普恩古布韦高原上还有许多较小但仍令人印象深刻的遗址，距离主要山地遗址在15至100公里范围内。"
+    },
+    {
+      "id": "s18",
+      "en": "Containing stone residences and walls, they likely belonged to local chiefs who acted as servants to the king.",
+      "zh": "这些遗址包含石质住宅和城墙，很可能属于作为国王仆从的当地酋长。"
+    },
+    {
+      "id": "s19",
+      "en": "D The Mapungubwe plateau has a very high number of carnivore animal remains and ivory splinters, suggesting that the skins of these large animals and ivory elephant tusks were accumulated, probably for trade with coastal areas reached by the Limpopo River.",
+      "zh": "马普恩古布韦高原出土大量食肉动物遗骸和象牙碎片，表明这些大型动物的皮肤和象牙被收集起来，很可能用于与通过林波波河通达的沿海地区的贸易。"
+    },
+    {
+      "id": "s20",
+      "en": "The presence of glass beads, almost certainly from India, indicate there was trade of some sort with other states on the coast who, in turn, traded with merchants travelling from India by sea.",
+      "zh": "出土的玻璃珠几乎可以确定来自印度，这表明与沿海其他国家存在某种形式的贸易，这些国家又与从印度海路而来的商人进行交易。"
+    },
+    {
+      "id": "s21",
+      "en": "Mapungubwe also benefitted from locally-sourced copper and the gold trade as it passed from the kingdom of Great Zimbabwe (12-15th century), situated to the north of Mapungubwe, to the coastal city of Kosala.",
+      "zh": "马普恩古布韦还利用本地铜资源和黄金贸易，这些黄金从位于其北部的大津巴布韦王国（12至15世纪）流向沿海城市科萨拉。"
+    },
+    {
+      "id": "s22",
+      "en": "It is likely that trade links led to a strengthening of political authority in order to control and even monopolise these lucrative interregional connections.",
+      "zh": "贸易联系可能促进了政治权威的加强，以控制甚至垄断这些利润丰厚的跨区域联系。"
+    },
+    {
+      "id": "s23",
+      "en": "E Archaeological discoveries reveal that pottery was produced on a scale large enough to suggest the presence of professional potters, and is another indicator of the prosperity of Mapungubwe society.",
+      "zh": "考古发现表明陶器生产规模足够大，显示存在职业制陶工人，这也是马普恩古布韦社会繁荣的另一个标志。"
+    },
+    {
+      "id": "s24",
+      "en": "Archaeological finds include spherical vessels with short necks, beakers, and bowls, many of which have decorative stamps.",
+      "zh": "考古出土物包括带短颈的球形器皿、高脚杯和碗，许多器物上饰有装饰性印记。"
+    },
+    {
+      "id": "s25",
+      "en": "There are also ceramic discs, and whistles.",
+      "zh": "还有陶瓷圆盘和口哨。"
+    },
+    {
+      "id": "s26",
+      "en": "In addition, cattle, sheep, and goat figurines, and small figures of highly stylised humans with elongated bodies and short limbs have been found.",
+      "zh": "此外，还发现了牛、羊和山羊的小雕像，以及身体细长、四肢短小的高度程式化人形小雕像。"
+    },
+    {
+      "id": "s27",
+      "en": "The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known.",
+      "zh": "这些雕像可能用于仪式中作为献给祖先的供品，但其具体用途尚不清楚。"
+    },
+    {
+      "id": "s28",
+      "en": "Other discoveries include small jewellery items made from locally sourced copper.",
+      "zh": "其他发现还有采用本地铜制成的小型首饰。"
+    },
+    {
+      "id": "s29",
+      "en": "F Beautifully decorated artefacts made of gold have also been found at Mapungubwe.",
+      "zh": "在马普恩古布韦还发现了装饰精美的金制工艺品。"
+    },
+    {
+      "id": "s30",
+      "en": "A type of decoration, found nowhere else except Great Zimbabwe, involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it.",
+      "zh": "一种装饰形式仅在大津巴布韦发现过，将金子制成小矩形薄片并雕刻几何图案。"
+    },
+    {
+      "id": "s31",
+      "en": "These sheets were then used to cover wooden objects (which have not survived) using small tacks, also made of gold.",
+      "zh": "这些金片用小钉（同样是金制）钉在木制物品上进行覆盖（木质部分未保存下来）。"
+    },
+    {
+      "id": "s32",
+      "en": "One such object that has been discovered may have been a sceptre, while additional evidence of local gold-working is a rhinoceros figurine made from small hammered sheets, and thousands of small gold beads.",
+      "zh": "发现的此类物品中有可能是一根权杖，其他本地金工艺证据包括由小锤打的金片制成的犀牛雕像和成千上万的小金珠。"
+    },
+    {
+      "id": "s33",
+      "en": "These objects were all found at the royal burial site and date to c.",
+      "zh": "这些物品均出土于皇家墓地，年代约为公元……（未写明具体年代）。"
+    },
+    {
+      "id": "s34",
+      "en": "They are the first known indicators that gold had an intrinsic value of its own (as opposed to that of a currency) in southern Africa.",
+      "zh": "它们是已知的南非地区首批显示黄金具有自身内在价值（而非单纯作为货币）的证据。"
+    },
+    {
+      "id": "s35",
+      "en": "G The kingdom of Mapungubwe was already in decline by the late 13th century, probably because overpopulation placed too much stress on local resources, a situation that may have been brought to a crisis point by a series of droughts.",
+      "zh": "到13世纪末，马普恩古布韦王国开始衰落，可能因为人口过多对当地资源造成过大压力，而一系列干旱可能将这一状况推向危机。"
+    },
+    {
+      "id": "s36",
+      "en": "Trade routes may also have shifted northwards.",
+      "zh": "贸易路线也可能转向北方。"
+    },
+    {
+      "id": "s37",
+      "en": "Certainly, the areas that now prospered were to the north, such as Great Zimbabwe.",
+      "zh": "现在繁荣的地区确实位于北方，如大津巴布韦。"
+    },
+    {
+      "id": "s38",
+      "en": "* palisade: typically a row of closely placed, high vertical wooden or iron posts used as a means of defence",
+      "zh": "* 栅栏：通常指一排紧密竖立的高木柱或铁柱，用作防御措施"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Mapungubwe</strong></span></div><div style="text-align:center;"><i>Located in southern Africa just below the Limpopo River, the kingdom of Mapungubwe, flourished between the 11th and 13th century CE</i></div><p><br><strong>A</strong> Mapungubwe, which was one of the first states in southern Africa, was formed by Bantu-speaking peoples who were farmers. The area controlled by the rulers of Mapungubwe had at its heart a large sandstone plateau, which was easily defended due to its inaccessibility. As with other kingdoms in the region of southern Africa, cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods. Archaeology has revealed extensive layers of bones and manure, which indicate that from the 9th century CE there were large cattle herds, the traditional source of political power in southern African communities. The archaeological record for the 10th century shows a marked increase in the number of domesticated cattle in the area as well as cotton cultivation and weaving, as indicated by abundant finds of spindle whorls.&nbsp;<br><br><strong>B</strong> The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people. The chief or king of Mapungubwe was likely the wealthiest individual in the society, and would have owned more cattle and precious materials than anyone else. The king and his advisers dwelt in a stone enclosure composed of stone walls and housing built on the highest level of the community’s territory, a natural sandstone hill which is some 30 metres high and 100 metres in length. Occupation on the hill dates from the 11th century and the entire complex was surrounded by a wooden palisade*, as indicated by postholes made in the rock. The rest of the community lived in mud and thatch housing spread out below the hill, although there is one stone structure here. This settlement, known as Babandyanalo, covers around 5 hectares (12.3 acres) and predates the hilltop structures.&nbsp;<br><br><strong>C</strong> The kings of Mapungubwe were buried at the top of the hill site in a demarcated area away from the dwellings, while other members of the community were buried at the surrounding valley level. A wooden staircase connected the two levels, the sockets for the steps being clearly visible in the sandstone cliff face. There were some grander residences dotted around the outskirts of Babandyanalo, and these probably belonged to male relatives of the king. There are many other smaller but still impressive sites across the Mapungubwe plateau,&nbsp;which are located anywhere from 15 to 100 kilometres from the major hill site. Containing stone residences and walls, they likely belonged to local chiefs who acted as servants to the king.&nbsp;<br><br><strong>D&nbsp;</strong>The Mapungubwe plateau has a very high number of carnivore animal remains and ivory splinters, suggesting that the skins of these large animals and ivory elephant tusks were accumulated, probably for trade with coastal areas reached by the Limpopo River. The presence of glass beads, almost certainly from India, indicate there was trade of some sort with other states on the coast who, in turn, traded with merchants travelling from India by sea. Mapungubwe also benefitted from locally-sourced copper and the gold trade as it passed from the kingdom of Great Zimbabwe (12-15th century), situated to the north of Mapungubwe, to the coastal city of Kosala. It is likely that trade links led to a strengthening of political authority in order to control and even monopolise these lucrative interregional connections.&nbsp;<br><br><strong>E</strong> Archaeological discoveries reveal that pottery was produced on a scale large enough to suggest the presence of professional potters, and is another indicator of the prosperity of Mapungubwe society. Archaeological finds include spherical vessels with short necks, beakers, and bowls, many of which have decorative stamps. There are also ceramic discs, and whistles. In addition, cattle, sheep, and goat figurines, and small figures of highly stylised humans with elongated bodies and short limbs have been found. The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known. Other discoveries include small jewellery items made from locally sourced copper.&nbsp;<br><br><strong>F&nbsp;</strong>Beautifully decorated artefacts made of gold have also been found at Mapungubwe. A type of decoration, found nowhere else except Great Zimbabwe, involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it. These sheets were then used to cover wooden objects (which have not survived) using small tacks, also made of gold. One such object that has been discovered may have been a sceptre, while additional evidence of local gold-working is a rhinoceros figurine made from small hammered sheets, and thousands of small gold beads. These objects were all found at the royal burial site and date to c. 1150. They are the first known indicators that gold had an intrinsic value of its own (as opposed to that of a currency) in southern Africa.&nbsp;<br><br><strong>G</strong>&nbsp;The kingdom of Mapungubwe was already in decline by the late 13th century, probably because overpopulation placed too much stress on local resources, a situation that may have been brought to a crisis point by a series of droughts. Trade routes may also have shifted northwards. Certainly, the areas that now prospered were to the north, such as Great Zimbabwe.&nbsp;<br><br><span style="font-size:12px;">* palisade: typically a row of closely placed, high vertical wooden or iron posts used as a means of defence</span></p>

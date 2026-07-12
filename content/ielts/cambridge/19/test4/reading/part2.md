@@ -1286,5 +1286,173 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Deep-sea mining",
+      "zh": "深海采矿"
+    },
+    {
+      "id": "s2",
+      "en": "Bacteria from the ocean floor can beat superbugs and cancer.",
+      "zh": "来自海底的细菌可以击败超级细菌和癌症。"
+    },
+    {
+      "id": "s3",
+      "en": "But habitats are at risk from the hunger for marine minerals",
+      "zh": "但对海洋矿物的渴求正威胁着栖息地。"
+    },
+    {
+      "id": "s4",
+      "en": "When Professor Mat Upton found that a microbe from a deep-sea sponge was killing pathogenic bugs in his laboratory, he realised it could be a breakthrough in the fight against antibiotic-resistant superbugs, which are responsible for thousands of deaths a year in the UK alone.",
+      "zh": "当Mat Upton教授发现一株来自深海海绵的微生物在实验室中杀死致病细菌时，他意识到这可能是在对抗抗生素耐药超级细菌方面的突破，而仅在英国，每年这种超级细菌就导致数千人死亡。"
+    },
+    {
+      "id": "s5",
+      "en": "Further tests confirmed that an antibiotic from the sponge bacteria, found living more than 700 metres under the sea at the Rockall trough in the north-east Atlantic, was previously unknown to science, boosting its potential as a life-saving medicine.",
+      "zh": "进一步测试确认，这种来自海绵细菌的抗生素是在北大西洋东北部Rockall海槽700多米海底发现的，科学界此前从未了解过，这提升了它作为救命药物的潜力。"
+    },
+    {
+      "id": "s6",
+      "en": "But Upton, and other scientists who view the deep ocean and its wealth of unique and undocumented species as a prospecting ground for new medicines, fear such potential will be lost in the rush to exploit the deep sea's equally rich metal and mineral resources.",
+      "zh": "但Upton教授以及其他把深海和其丰富独特且未被记录的物种视为新药物开采地的科学家担心，这种潜力会在争相开发深海同样丰富的金属和矿产资源的过程中丧失。"
+    },
+    {
+      "id": "s7",
+      "en": "'We're looking at the bioactive potential of marine resources, to see if there are any more medicines or drugs down there before we destroy it for ever,' says Upton, a medical microbiologist at the University of Plymouth.",
+      "zh": "普利茅斯大学医学微生物学家Upton说：“我们正在研究海洋资源的生物活性潜力，看看那里是否还有更多药物或药品，在我们永久破坏它之前。”"
+    },
+    {
+      "id": "s8",
+      "en": "He is among many scientists urging a halt to deep-sea mining, asking for time to weigh up the pros and cons.",
+      "zh": "他是众多呼吁暂停深海采矿的科学家之一，要求有时间权衡利弊。"
+    },
+    {
+      "id": "s9",
+      "en": "'In sustainability terms, this could be a better way of exploiting the economic potential of the deep sea,' he argues.",
+      "zh": "他认为：“从可持续性的角度来看，这可能是开发深海经济潜力的更好方式。”"
+    },
+    {
+      "id": "s10",
+      "en": "Oceanographers using remotely operated vehicles have spotted many new species.",
+      "zh": "海洋学家使用遥控潜水器发现了许多新物种。"
+    },
+    {
+      "id": "s11",
+      "en": "Among them have been sea cucumbers with tails allowing them to sail along the ocean floor, and a rare 'Dumbo' octopus, found 3,000 metres under the Pacific Ocean, off the coast of California.",
+      "zh": "其中包括带有尾巴可以沿海底滑行的海参，以及罕见的“多比”章鱼，发现于加利福尼亚海岸太平洋下方3000米深处。"
+    },
+    {
+      "id": "s12",
+      "en": "Any one of these could offer lifesaving potential.",
+      "zh": "这些中的任何一种都可能具有救命的潜力。"
+    },
+    {
+      "id": "s13",
+      "en": "Upton estimates it could take up to a decade for a newly discovered antibiotic to become a medicine-but the race towards commercial mining in the ocean abyss has already begun.",
+      "zh": "Upton估计，新发现的抗生素成为药物可能需要十年时间，但针对海洋深渊的商业采矿竞赛已然开始。"
+    },
+    {
+      "id": "s14",
+      "en": "The deep sea contains more nickel, cobalt and rare earth metals than all land reserves combined, according to the US Geological Survey.",
+      "zh": "根据美国地质调查局的资料，深海中所含的镍、钴和稀土金属比陆地上所有储量加起来还要多。"
+    },
+    {
+      "id": "s15",
+      "en": "Mining corporations argue that deep-sea exploration could help diversify the supply of metals and point to the fact that demand for resources such as copper, aluminium, cobalt for electric car batteries and other metals to power technology and smartphones, is soaring.",
+      "zh": "采矿公司认为，深海探索有助于多样化金属供应，并指出铜、铝、电动汽车电池用钴以及为技术和智能手机提供动力的其他金属的需求正在飙升。"
+    },
+    {
+      "id": "s16",
+      "en": "They say that deep-sea mining could yield far superior ore to land mining with little, if any, waste.",
+      "zh": "他们表示，深海采矿所获得的矿石质量远优于陆地采矿，而且几乎没有废料。"
+    },
+    {
+      "id": "s17",
+      "en": "Different methods of extraction exist, but most involve employing some form of converted machinery previously used in terrestrial mining to excavate materials from the sea floor, at depths of up to 6,000 metres, then drawing a seawater slurry, containing rock and other solid particles, from the sea floor to ships on the surface.",
+      "zh": "存在不同的开采方法，但大多数涉及使用某种改装的、先前在陆地采矿中使用过的机械，从海底开采物质，深度可达6000米，然后将含有岩石和其他固体颗粒的海水泥浆从海底抽至水面船只。"
+    },
+    {
+      "id": "s18",
+      "en": "The slurry is then 'de-watered' and transferred to another vessel for shipping.",
+      "zh": "然后，泥浆被“脱水”，并转移到另一艘船运输。"
+    },
+    {
+      "id": "s19",
+      "en": "Extracted seawater is pumped back down and discharged close to the sea floor.",
+      "zh": "抽取的海水被泵回海底附近排放。"
+    },
+    {
+      "id": "s20",
+      "en": "But environmental and legal groups have urged caution, arguing there are potentially massive and unknown ramifications for the environment and for nearby communities, and that the global regulatory framework is not yet drafted.",
+      "zh": "但环保和法律团体呼吁谨慎，认为这可能对环境和附近社区带来巨大且未知的影响，且全球监管框架尚未制定。"
+    },
+    {
+      "id": "s21",
+      "en": "'Despite arising in the last half century, the“new global gold rush”of deep-sea mining shares many features with past resource scrambles-including a general disregard for environmental and social impacts, and the marginalisation of indigenous peoples and their rights,' a paper, written by Julie Hunter and Julian Aguon, from Blue Ocean Law, and Pradeep Singh, from the Center for Marine Environmental Sciences, Bremen, argues.",
+      "zh": "来自Blue Ocean Law的Julie Hunter和Julian Aguon，以及不来梅海洋环境科学中心的Pradeep Singh在一篇论文中指出：“尽管深海采矿这场‘新全球淘金热’是在过去半个世纪出现的，但它和以往资源争夺有许多相似之处——包括普遍忽视环境和社会影响，以及边缘化原住民及其权利。”"
+    },
+    {
+      "id": "s22",
+      "en": "The authors say that knowledge of the deep seabed remains extremely limited.",
+      "zh": "作者们表示，我们对深海海床的了解仍然极其有限。"
+    },
+    {
+      "id": "s23",
+      "en": "'The surface of the Moon, Mars and even Venus have all been mapped and studied in much greater detail, leading marine scientists to commonly remark that, with respect to the deep sea, 'We don't yet know what we need to know.'",
+      "zh": "“月球、火星甚至金星的表面都已被绘制和研究得更为详细，这使得海洋科学家常常感叹：关于深海，我们还不知道我们需要知道的东西。”"
+    },
+    {
+      "id": "s24",
+      "en": "Scientific research-including a recent paper in Marine Policy journal-has suggested the deep seabed, and hydrothermal vents, which are created when seawater meets volcanic magma, have crucial impacts upon biodiversity and the global climate.",
+      "zh": "包括最近在《海洋政策》期刊发表的一篇论文在内的科学研究表明，深海海床和热液喷口（由海水遇火山岩浆形成）对生物多样性和全球气候有重要影响。"
+    },
+    {
+      "id": "s25",
+      "en": "The mineral-rich vents and their surrounds are also home to many well-known animals including crustaceans, tubeworms, clams, slugs, anemones and fish.",
+      "zh": "富含矿物质的喷口及其周边区域也是许多知名动物的栖息地，其中包括甲壳类、管虫、蛤蜊、海蛞蝓、海葵和鱼类。"
+    },
+    {
+      "id": "s26",
+      "en": "'It is becoming increasingly clear that deep-sea mining poses a grave threat to these vital seabed functions,' the paper says.",
+      "zh": "论文指出：“越来越明显的是，深海采矿对这些重要的海床功能构成严重威胁。”"
+    },
+    {
+      "id": "s27",
+      "en": "'Extraction methods would produce large sediment plumes and involve the discharge of waste back into the ocean, significantly disturbing seafloor environments,' the paper continues.",
+      "zh": "论文继续指出：“开采方法会产生大量沉积物烟羽，并将废物排回海洋，严重干扰海床环境。”"
+    },
+    {
+      "id": "s28",
+      "en": "'On deep sea vents, scientists are clear,' says Dr Jon Copley of the National Oceanography Centre, Southampton: 'we don't want mining on them.'",
+      "zh": "英国南安普敦国家海洋中心的Jon Copley博士表示：“科学家们对深海热液喷口的态度很明确：我们不希望在那里进行采矿。”"
+    },
+    {
+      "id": "s29",
+      "en": "The oceans occupy around 70% of the planet and are relatively unexplored, says Mike Johnston, chief executive of Nautilus, a Canadian underwater exploration company: 'It makes sense to explore this untapped potential in an environmentally sustainable way, instead of continually looking at the fast depleting land resources of the planet to meet society's rising needs.'",
+      "zh": "加拿大水下勘探公司Nautilus的首席执行官Mike Johnston说：“海洋占据地球约70%的面积，且相对未被充分探索。以环境可持续的方式开发这片未开发的潜力，比起不断依赖快速枯竭的陆地资源以满足社会不断增长的需求，更加合理。”"
+    },
+    {
+      "id": "s30",
+      "en": "Those leading the global rush to place giant mining machines thousands of metres below the sea surface say the environmental impacts will be far lower than on land.",
+      "zh": "领导全球深海采矿热潮的人士表示，将巨型采矿设备放置在海面以下数千米处，环境影响将远远低于陆地采矿。"
+    },
+    {
+      "id": "s31",
+      "en": "But critics say exotic and little-known ecosystems in the deep oceans could be destroyed and must be protected.",
+      "zh": "但批评者认为，深海中那些奇异且鲜为人知的生态系统可能会被摧毁，必须予以保护。"
+    },
+    {
+      "id": "s32",
+      "en": "'Mining will be the greatest assault on deep-sea ecosystems ever inflicted by humans,' according to hydrothermal vent expert Verena Tunnicliffe, at the University of Victoria in Canada.",
+      "zh": "来自加拿大维多利亚大学的热液喷口专家Verena Tunnicliffe表示：“采矿将是人类对深海生态系统造成的最严重攻击。”"
+    },
+    {
+      "id": "s33",
+      "en": "She argues that active vents must be off-limits for mining to protect the new knowledge and biotechnology spin-offs they can deliver, and that strict controls must be in place elsewhere.",
+      "zh": "她主张，为了保护热液喷口能带来的新知识和生物技术衍生成果，活跃喷口必须禁止采矿，且其他区域也必须实施严格管控。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Deep-sea mining</span></strong></p><p style="text-align: center;"><em>Bacteria from the ocean floor can beat superbugs and cancer. But habitats are at risk&nbsp;from the hunger for marine minerals</em></p><p><strong></strong></p><p><strong>A</strong></p><p>When Professor Mat Upton found that a microbe from a deep-sea sponge was killing pathogenic bugs in his laboratory, he realised it could be a breakthrough in the fight against antibiotic-resistant superbugs, which are responsible for thousands of deaths a year in the UK alone. Further tests confirmed that an antibiotic from the sponge bacteria, found living more than 700 metres under the sea at the Rockall trough in the north-east Atlantic, was previously unknown to science, boosting its potential as a life-saving medicine. But Upton, and other scientists who view the deep ocean and its wealth of unique and undocumented species as a prospecting ground for new medicines, fear such potential will be lost in the rush to exploit the deep sea's equally rich metal and mineral resources.</p><p></p><p><strong><br></strong></p><p><strong>B</strong></p><p>'We're looking at the bioactive potential of marine resources, to see if there are any more medicines or drugs down there before we destroy it for ever,' says Upton, a medical microbiologist at the University of Plymouth. He is among many scientists urging a halt to deep-sea mining, asking for time to weigh up the pros and cons. 'In sustainability terms, this could be a better way of exploiting the economic potential of the deep sea,' he argues. Oceanographers using remotely operated vehicles have spotted many new species. Among them have been sea cucumbers with tails allowing them to sail along the ocean floor, and a rare 'Dumbo' octopus, found 3,000 metres under the Pacific Ocean, off the coast of California. Any one of these could offer lifesaving potential. Upton estimates it could take up to a decade for a newly discovered antibiotic to become a medicine-but the race towards commercial mining in the ocean abyss has already begun.</p><p></p><p><strong><br></strong></p><p><strong>C</strong></p><p>The deep sea contains more nickel, cobalt and rare earth metals than all land reserves combined, according to the US Geological Survey. Mining corporations argue that deep-sea exploration could help diversify the supply of metals and point to the fact that demand for resources such as copper, aluminium, cobalt for electric car batteries and other metals to power technology and smartphones, is soaring. They say that deep-sea mining could yield far superior ore to land mining with little, if any, waste. Different methods of extraction exist, but most involve employing some form of converted machinery previously used in terrestrial mining to excavate materials from the sea floor, at depths of up to 6,000 metres, then drawing a seawater slurry, containing rock and other solid particles, from the sea floor to ships on the surface. The slurry is then 'de-watered' and transferred to another vessel for shipping. Extracted seawater is pumped back down and discharged close to the sea floor.</p><p></p><p><strong><br></strong></p><p><strong>D</strong></p><p>But environmental and legal groups have urged caution, arguing there are potentially massive and unknown ramifications for the environment and for nearby communities, and that the global regulatory framework is not yet drafted. 'Despite arising in the last half century, the“new global gold rush”of deep-sea mining shares many features with past resource scrambles-including a general disregard for environmental and social impacts, and the marginalisation of indigenous peoples and their rights,' a paper, written by Julie Hunter and Julian Aguon, from Blue Ocean Law, and Pradeep Singh, from the Center for Marine Environmental Sciences, Bremen, argues. The authors say that knowledge of the deep seabed remains extremely limited. 'The surface of the Moon, Mars and even Venus have all been mapped and studied in much greater detail, leading marine scientists to commonly remark that, with respect to the deep sea, 'We don't yet know what we need to know.'</p><p></p><p><strong><br></strong></p><p><strong>E</strong></p><p>Scientific research-including a recent paper in Marine Policy journal-has suggested the deep seabed, and hydrothermal vents, which are created when seawater meets volcanic magma, have crucial impacts upon biodiversity and the global climate. The mineral-rich vents and their surrounds are also home to many well-known animals including crustaceans, tubeworms, clams, slugs, anemones and fish. 'It is becoming increasingly clear that deep-sea mining poses a grave threat to these vital seabed functions,' the paper says. 'Extraction methods would produce large sediment plumes and involve the discharge of waste back into the ocean, significantly disturbing seafloor environments,' the paper continues. 'On deep sea vents, scientists are clear,' says Dr Jon Copley of the National Oceanography Centre, Southampton: 'we don't want mining on them.'</p><p></p><p><strong><br></strong></p><p><strong>F</strong> </p><p>The oceans occupy around 70% of the planet and are relatively unexplored, says Mike Johnston, chief executive of Nautilus, a Canadian underwater exploration company: 'It makes sense to explore this untapped potential in an environmentally sustainable way, instead of continually looking at the fast depleting land resources of the planet to meet society's rising needs.' Those leading the global rush to place giant mining machines thousands of metres below the sea surface say the environmental impacts will be far lower than on land. But critics say exotic and little-known ecosystems in the deep oceans could be destroyed and must be protected. 'Mining will be the greatest assault on deep-sea ecosystems ever inflicted by humans,' according to hydrothermal vent expert Verena Tunnicliffe, at the University of Victoria in Canada. She argues that active vents must be off-limits for mining to protect the new knowledge and biotechnology spin-offs they can deliver, and that strict controls must be in place elsewhere.</p><p></p><p></p><p><br></p>

@@ -1125,5 +1125,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The Industrial Revolution in Britain",
+      "zh": "英国的工业革命"
+    },
+    {
+      "id": "s2",
+      "en": "The Industrial Revolution began in Britain in the mid-1700s and by the 1830s and 1840s had spread to many other parts of the world, including the United States.",
+      "zh": "工业革命始于18世纪中叶的英国，到19世纪30年代和40年代已经传播到包括美国在内的许多世界其他地区。"
+    },
+    {
+      "id": "s3",
+      "en": "In Britain, it was a period when a largely rural, agrarian* society was transformed into an industrialised, urban one.",
+      "zh": "在英国，这是一个主要以农村农业社会转变为工业化、城市化社会的时期。"
+    },
+    {
+      "id": "s4",
+      "en": "Goods that had once been crafted by hand started to be produced in mass quantities by machines in factories, thanks to the invention of steam power and the introduction of new machines and manufacturing techniques in textiles, iron-making and other industries.",
+      "zh": "曾经手工制作的商品开始由机器在工厂大量生产，这得益于蒸汽动力的发明以及纺织、炼铁和其他行业中新机器和制造技术的引进。"
+    },
+    {
+      "id": "s5",
+      "en": "The foundations of the Industrial Revolution date back to the early 1700s, when the English inventor Thomas Newcomen designed the first modern steam engine.",
+      "zh": "工业革命的基础可以追溯到18世纪初，当时英国发明家托马斯·纽科门设计了第一台现代蒸汽机。"
+    },
+    {
+      "id": "s6",
+      "en": "Called the 'atmospheric steam engine', Newcomen's invention was originally used to power machines that pumped water out of mines.",
+      "zh": "纽科门的发明被称为“大气蒸汽机”，最初用于驱动抽水机，将水从矿井中排出。"
+    },
+    {
+      "id": "s7",
+      "en": "In the 1760s, the Scottish engineer James Watt started to adapt one of Newcomen's models, and succeeded in making it far more efficient.",
+      "zh": "18世纪60年代，苏格兰工程师詹姆斯·瓦特开始改良纽科门的蒸汽机模型，并成功使其效率大幅提升。"
+    },
+    {
+      "id": "s8",
+      "en": "Watt later worked with the English manufacturer Matthew Boulton to invent a new steam engine driven by both the forward and backward strokes of the piston, while the gear mechanism it was connected to produced rotary motion.",
+      "zh": "瓦特后来与英国制造商马修·博尔顿合作发明了一种新型蒸汽机，该机利用活塞的正反两个行程驱动，且连接的齿轮机构产生旋转运动。"
+    },
+    {
+      "id": "s9",
+      "en": "It was a key innovation that would allow steam power to spread across British industries.",
+      "zh": "这是一个关键创新，使蒸汽动力能够广泛应用于英国各行各业。"
+    },
+    {
+      "id": "s10",
+      "en": "The demand for coal, which was a relatively cheap energy source, grew rapidly during the Industrial Revolution, as it was needed to run not only the factories used to produce manufactured goods, but also steam-powered transportation.",
+      "zh": "煤炭作为一种相对廉价的能源，在工业革命期间需求迅速增长，因为不仅用于工厂生产制成品，还用于蒸汽动力的交通运输。"
+    },
+    {
+      "id": "s11",
+      "en": "In the early 1800s, the English engineer Richard Trevithick built a steam-powered locomotive, and by 1830 goods and passengers were being transported between the industrial centres of Manchester and Liverpool.",
+      "zh": "19世纪初，英国工程师理查德·特雷维西克制造了蒸汽动力机车，到1830年，货物和乘客已能在曼彻斯特和利物浦这两个工业中心之间运输。"
+    },
+    {
+      "id": "s12",
+      "en": "In addition, steam-powered boats and ships were widely used to carry goods along Britain's canals as well as across the Atlantic.",
+      "zh": "此外，蒸汽动力的船只广泛用于沿英国运河及跨越大西洋运送货物。"
+    },
+    {
+      "id": "s13",
+      "en": "Britain had produced textiles like wool, linen and cotton, for hundreds of years, but prior to the Industrial Revolution, the British textile business was a true 'cottage industry', with the work performed in small workshops or even homes by individual spinners, weavers and dyers.",
+      "zh": "英国生产羊毛、亚麻和棉制纺织品已有数百年历史，但在工业革命之前，英国纺织业是真正的“家庭工业”，由个人纺纱工、织布工和染色工在小作坊甚至家中完成工作。"
+    },
+    {
+      "id": "s14",
+      "en": "Starting in the mid-1700s, innovations like the spinning jenny and the power loom made weaving cloth and spinning yarn and thread much easier.",
+      "zh": "从18世纪中叶开始，珍妮纺纱机和动力织机等创新使织布和纺纱变得更加容易。"
+    },
+    {
+      "id": "s15",
+      "en": "With these machines, relatively little labour was required to produce cloth, and the new, mechanised textile factories that opened around the country were quickly able to meet customer demand for cloth both at home and abroad.",
+      "zh": "有了这些机器，生产布料所需的劳动力相对较少，全国新开设的机械化纺织厂很快满足了国内外市场对布料的需求。"
+    },
+    {
+      "id": "s16",
+      "en": "The British iron industry also underwent major change as it adopted new innovations.",
+      "zh": "英国的铁工业也经历了重大变革，采用了新的创新技术。"
+    },
+    {
+      "id": "s17",
+      "en": "Chief among the new techniques was the smelting of iron ore with coke (a material made by heating coal)instead of the traditional charcoal.",
+      "zh": "其中最重要的新技术是用焦炭（一种通过煤加热制成的材料）代替传统木炭来冶炼铁矿石。"
+    },
+    {
+      "id": "s18",
+      "en": "This method was cheaper and produced metals that were of a higher quality, enabling Britain's iron and steel production to expand in response to demand created by the Napoleonic Wars(1803-15) and the expansion of the railways from the 1830s.",
+      "zh": "这种方法成本更低，生产的金属质量更高，使得英国的铁钢产量得以扩大，以满足拿破仑战争（1803-1815年）和从19世纪30年代开始铁路扩张所带来的需求。"
+    },
+    {
+      "id": "s19",
+      "en": "The latter part of the Industrial Revolution also saw key advances in communication methods, as people increasingly saw the need to communicate efficiently over long distances.",
+      "zh": "工业革命后期还出现了通信方法的重大进步，人们越来越认识到高效远距离交流的必要性。"
+    },
+    {
+      "id": "s20",
+      "en": "In 1837, British inventors William Cooke and Charles Wheatstone patented the first commercial telegraphy system.",
+      "zh": "1837年，英国发明家威廉·库克和查尔斯·惠斯通获得了第一套商业电报系统的专利。"
+    },
+    {
+      "id": "s21",
+      "en": "In the 1830s and 1840s, Samuel Morse and other inventors worked on their own versions in the United States.",
+      "zh": "在1830年代和1840年代，美国的塞缪尔·莫尔斯和其他发明家开发了他们自己的电报系统。"
+    },
+    {
+      "id": "s22",
+      "en": "Cooke and Wheatstone's system was soon used for railway signalling in the UK.",
+      "zh": "库克和惠斯通的系统很快被用于英国铁路信号。"
+    },
+    {
+      "id": "s23",
+      "en": "As the speed of the new locomotives increased, it was essential to have a fast and effective means of avoiding collisions.",
+      "zh": "随着新型机车速度的提升，有快速有效的防止碰撞的手段变得至关重要。"
+    },
+    {
+      "id": "s24",
+      "en": "The impact of the Industrial Revolution on people's lives was immense.",
+      "zh": "工业革命对人们生活的影响巨大。"
+    },
+    {
+      "id": "s25",
+      "en": "Although many people in Britain had begun moving to the cities from rural areas before the Industrial Revolution, this accelerated dramatically with industrialisation, as the rise of large factories turned smaller towns into major cities in just a few decades.",
+      "zh": "尽管在工业革命之前，许多英国人已开始从农村迁往城市，但随着工业化的发展，这一进程显著加快，大型工厂的兴起使小城镇在短短数十年内变成了大城市。"
+    },
+    {
+      "id": "s26",
+      "en": "This rapid urbanisation brought significant challenges, as overcrowded cities suffered from pollution and inadequate sanitation.",
+      "zh": "这种快速城市化带来了重大挑战，过度拥挤的城市面临污染和卫生设施不足的问题。"
+    },
+    {
+      "id": "s27",
+      "en": "Although industrialisation increased the country's economic output overall and improved the standard of living for the middle and upper classes, many poor people continued to struggle.",
+      "zh": "尽管工业化总体上提升了国家的经济产出并改善了中上阶层的生活水平，许多贫困人群依然在困苦中挣扎。"
+    },
+    {
+      "id": "s28",
+      "en": "Factory workers had to work long hours in dangerous conditions for extremely low wages.",
+      "zh": "工厂工人在危险的环境下长时间工作，但工资极其低廉。"
+    },
+    {
+      "id": "s29",
+      "en": "These conditions along with the rapid pace of change fuelled opposition to industrialisation.",
+      "zh": "这些状况加上快速的社会变革激发了对工业化的反对情绪。"
+    },
+    {
+      "id": "s30",
+      "en": "A group of British workers who became known as 'Luddites' were British weavers and textile workers who objected to the increased use of mechanised looms and knitting frames.",
+      "zh": "一群被称为“卢德分子”的英国工人，主要是织布工和纺织工，他们反对机械织布机和针织机的日益使用。"
+    },
+    {
+      "id": "s31",
+      "en": "Many had spent years learning their craft, and they feared that unskilled machine operators were robbing them of their livelihood.",
+      "zh": "许多人花费多年时间学习手艺，他们担心技术不熟练的机械操作员会抢走他们的生计。"
+    },
+    {
+      "id": "s32",
+      "en": "A few desperate weavers began breaking into factories and smashing textile machines.",
+      "zh": "一些走投无路的织布工开始闯入工厂，砸毁纺织机器。"
+    },
+    {
+      "id": "s33",
+      "en": "They called themselves Luddites after Ned Ludd, a young apprentice who was rumoured to have wrecked a textile machine in 1779.",
+      "zh": "他们以内德·卢德为名，内德是一位年轻学徒，据传在1779年破坏了一台纺织机。"
+    },
+    {
+      "id": "s34",
+      "en": "The first major instances of machine breaking took place in 1811 in the city of Nottingham, and the practice soon spread across the country.",
+      "zh": "首次大规模破坏机器事件发生于1811年诺丁汉市，这一行为很快蔓延到全国。"
+    },
+    {
+      "id": "s35",
+      "en": "Machine-breaking Luddites attacked and burned factories, and in some cases they even exchanged gunfire with company guards and soldiers.",
+      "zh": "破坏机器的卢德分子攻击并焚烧工厂，有时甚至与公司保安和士兵交火。"
+    },
+    {
+      "id": "s36",
+      "en": "The workers wanted employers to stop installing new machinery, but the British government responded to the uprisings by making machine-breaking punishable by death.",
+      "zh": "工人们要求雇主停止安装新机器，但英国政府通过立法将破坏机器行为判处死刑来镇压起义。"
+    },
+    {
+      "id": "s37",
+      "en": "The unrest finally reached its peak in April 1812, when a few Luddites were shot during an attack on a mill near Huddersfield.",
+      "zh": "1812年4月，动乱达到顶峰，一些卢德分子在一次袭击哈德斯菲尔德附近工厂时被射杀。"
+    },
+    {
+      "id": "s38",
+      "en": "In the days that followed, other Luddites were arrested, and dozens were hanged or transported to Australia.",
+      "zh": "随后几天，其他卢德分子被捕，数十人被绞死或流放到澳大利亚。"
+    },
+    {
+      "id": "s39",
+      "en": "By 1813, the Luddite resistance had all but vanished.",
+      "zh": "到1813年，卢德分子的抵抗几乎消失。"
+    },
+    {
+      "id": "s40",
+      "en": "*agrarian: relating to the land, especially the use of land for farming",
+      "zh": "*农业的：与土地有关，尤其指土地的农业用途"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The Industrial Revolution in Britain</span></strong></p><p>The Industrial Revolution began in Britain in the mid-1700s and by the 1830s and 1840s had spread to many other parts of the world, including the United States. In Britain, it was a period when a largely rural, agrarian* society was transformed into an industrialised, urban one. Goods that had once been crafted by hand started to be produced in mass quantities by machines in factories, thanks to the invention of steam power and the introduction of new machines and manufacturing techniques in textiles, iron-making and other industries.</p><p><br></p><p></p><p>The foundations of the Industrial Revolution date back to the early 1700s, when the English inventor Thomas Newcomen designed the first modern steam engine. Called the 'atmospheric steam engine', Newcomen's invention was originally used to power machines that pumped water out of mines. In the 1760s, the Scottish engineer James Watt started to adapt one of Newcomen's models, and succeeded in making it far more efficient. Watt later worked with the English manufacturer Matthew Boulton to invent a new steam engine driven by both the forward and backward strokes of the piston, while the gear mechanism it was connected to produced rotary motion. It was a key innovation that would allow steam power to spread across British industries.</p><p></p><p><br></p><p>The demand for coal, which was a relatively cheap energy source, grew rapidly during the Industrial Revolution, as it was needed to run not only the factories used to produce manufactured goods, but also steam-powered transportation. In the early 1800s, the English engineer Richard Trevithick built a steam-powered locomotive, and by 1830 goods and passengers were being transported between the industrial centres of Manchester and Liverpool. In addition, steam-powered boats and ships were widely used to carry goods along Britain's canals as well as across the Atlantic.</p><p></p><p><br></p><p>Britain had produced textiles like wool, linen and cotton, for hundreds of years, but prior to the Industrial Revolution, the British textile business was a true 'cottage industry', with the work performed in small workshops or even homes by individual spinners, weavers and dyers. Starting in the mid-1700s, innovations like the spinning jenny and the power loom made weaving cloth and spinning yarn and thread much easier. With these machines, relatively little labour was required to produce cloth, and the new, mechanised textile factories that opened around the country were quickly able to meet customer demand for cloth both at home and abroad.</p><p></p><p><br></p><p>The British iron industry also underwent major change as it adopted new innovations. Chief among the new techniques was the smelting of iron ore with coke (a material made by heating coal)instead of the traditional charcoal. This method was cheaper and produced metals that were of a higher quality, enabling Britain's iron and steel production to expand in response to demand created by the Napoleonic Wars(1803-15) and the expansion of the railways from the 1830s.</p><p></p><p><br></p><p>The latter part of the Industrial Revolution also saw key advances in communication methods, as people increasingly saw the need to communicate efficiently over long distances. In 1837, British inventors William Cooke and Charles Wheatstone patented the first commercial telegraphy system. In the 1830s and 1840s, Samuel Morse and other inventors worked on their own versions in the United States. Cooke and Wheatstone's system was soon used for railway signalling in the UK. As the speed of the new locomotives increased, it was essential to have a fast and effective means of avoiding collisions.</p><p></p><p><br></p><p>The impact of the Industrial Revolution on people's lives was immense. Although many people in Britain had begun moving to the cities from rural areas before the Industrial Revolution, this accelerated dramatically with industrialisation, as the rise of large factories turned smaller towns into major cities in just a few decades. This rapid urbanisation brought significant challenges, as overcrowded cities suffered from pollution and inadequate sanitation.</p><p></p><p><br></p><p>Although industrialisation increased the country's economic output overall and improved the standard of living for the middle and upper classes, many poor people continued to struggle. Factory workers had to work long hours in dangerous conditions for extremely low wages. These conditions along with the rapid pace of change fuelled opposition to industrialisation. A group of British workers who became known as 'Luddites' were British weavers and textile workers who objected to the increased use of mechanised looms and knitting frames. Many had spent years learning their craft, and they feared that unskilled machine operators were robbing them of their livelihood. A few desperate weavers began breaking into factories and smashing textile machines. They called themselves Luddites after Ned Ludd, a young apprentice who was rumoured to have wrecked a textile machine in 1779.</p><p></p><p><br></p><p>The first major instances of machine breaking took place in 1811 in the city of Nottingham, and the practice soon spread across the country. Machine-breaking Luddites attacked and burned factories, and in some cases they even exchanged gunfire with company guards and soldiers. The workers wanted employers to stop installing new machinery, but the British government responded to the uprisings by making machine-breaking punishable by death. The unrest finally reached its peak in April 1812, when a few Luddites were shot during an attack on a mill near Huddersfield. In the days that followed, other Luddites were arrested, and dozens were hanged or transported to Australia. By 1813, the Luddite resistance had all but vanished.</p><p><br></p><p></p><p>*agrarian: relating to the land, especially the use of land for farming</p><p class="paragraph text-align-type-justify" style="margin: 4px 0;text-align: justify;font-family: 等线;font-size: 16px"></p><p></p>

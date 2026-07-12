@@ -2098,5 +2098,173 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "How could multilingualism benefit India's poorest schoolchildren?",
+      "zh": "多语言能力如何惠及印度最贫困的学童？"
+    },
+    {
+      "id": "s2",
+      "en": "The crowded and bustling streets of Delhi teem with life.",
+      "zh": "德里的街道拥挤而繁忙，充满了生机。"
+    },
+    {
+      "id": "s3",
+      "en": "Stop to listen and, above the din of rickshaws and buses, you'll hear a multitude of languages, as more than 20 million people go about their daily lives.",
+      "zh": "停下来聆听，在嘈杂的人力车和公交车声中，你会听到多种语言，有超过两千万人在这里进行日常生活。"
+    },
+    {
+      "id": "s4",
+      "en": "Many were born and raised here, and many millions more have recently made India's capital their home, having moved from surrounding neighbourhoods, cities and states or across the country, often in the hope of gaining better jobs and a better life.",
+      "zh": "许多人在这里出生和长大，还有数以百万计的人最近搬到了印度首都，他们从周边社区、城市和各邦甚至全国各地迁来，通常是为了寻求更好的工作和生活。"
+    },
+    {
+      "id": "s5",
+      "en": "Some arrive speaking fluent Hindi, the dominant language in Delhi (and the official language of government), but many arrive speaking any number of India's 22 officially recognised languages, let alone the hundreds of regional languages in a country of more than 1.3 billion people.",
+      "zh": "一些人到来时讲流利的印地语，印地语是德里的主要语言（也是政府的官方语言），但更多人讲印度22种官方认可语言中的任意一种，更不用说在这个拥有超过13亿人口的国家中数百种地区语言了。"
+    },
+    {
+      "id": "s6",
+      "en": "A team of researchers led by Professor Ianthi Tsimpli of Cambridge University is currently working on a project collecting data on 1,000 primary-age children in Delhi and the cities of Hyderabad and Bihar.",
+      "zh": "剑桥大学的伊安西·茨姆普利教授领导的研究团队目前正在进行一项项目，收集德里、海得拉巴和比哈尔三座城市中1000名小学年龄儿童的数据。"
+    },
+    {
+      "id": "s7",
+      "en": "The overriding aim of the four-year project, called 'Multilingualism and Multiliteracy', is to find out why in a country where multilingualism is so common (more than 255 million people in India speak at least two languages, and nearly 90 million speak three or more languages), the many benefits of speaking more than one language, observed in schools in Europe for instance, do not apply to many of India's schoolchildren.",
+      "zh": "这项为期四年的名为“多语言与多重读写能力”的项目的主要目标是弄清为什么在一个多语言如此普遍的国家（印度有超过2.55亿人至少说两种语言，近9000万人说三种或三种以上语言），在欧洲学校等地观察到的多语言带来的诸多好处，却未能惠及印度许多学童。"
+    },
+    {
+      "id": "s8",
+      "en": "'Each year across India, 600,000 children are tested, and year after year over 50% of children in Standard 5 [ten-year-olds] cannot read a Standard 2 [seven-year-olds] task fluently, and just under 50% of them cannot solve a Standard 2 subtraction task,' says Tsimpli.",
+      "zh": "茨姆普利说：“印度每年有60万儿童接受测试，一年又一年，超过50%的五年级（十岁）儿童不能流利地完成二年级（七岁）水平的阅读任务，接近50%的儿童不能完成二年级的减法题目。”"
+    },
+    {
+      "id": "s9",
+      "en": "She explains that low educational achievement can lead to many of these students dropping out of school – a problem disproportionately affecting female students.",
+      "zh": "她解释说，学习成绩低会导致许多学生辍学，这个问题对女学生的影响尤为严重。"
+    },
+    {
+      "id": "s10",
+      "en": "Tsimpli and her colleagues are investigating whether these low learning outcomes could be caused by an Indian school system where the language that children are taught in often differs from the language used at home.",
+      "zh": "茨姆普利和她的同事们正在调查，这些低学习成果是否由于印度学校系统中所使用的教学语言往往与孩子们在家使用的语言不同所致。"
+    },
+    {
+      "id": "s11",
+      "en": "The research project, which focuses on 8 to 11-year-old schoolchildren in rural and urban areas, collects data on whether the schoolchildren live in slum* or non-slum areas.",
+      "zh": "该研究项目聚焦于农村和城市地区8至11岁的学童，收集他们是居住在贫民区*还是非贫民区的数据。"
+    },
+    {
+      "id": "s12",
+      "en": "Many of the children have moved from remote, rural areas to urban areas.",
+      "zh": "许多孩子从偏远农村地区迁移到城市。"
+    },
+    {
+      "id": "s13",
+      "en": "They are so poor they have to live in slums and, as a result of migration, they may speak languages that are different from the regional language.",
+      "zh": "他们十分贫困，不得不住在贫民区，因迁移而可能说着不同于本地区语言的语言。"
+    },
+    {
+      "id": "s14",
+      "en": "Having already tested 1,000 children, the researchers will now embark on retesting them.",
+      "zh": "研究人员已经测试了1000名儿童，现将开始对他们进行重新测试。"
+    },
+    {
+      "id": "s15",
+      "en": "They intend to look not only at test results, but also at variables such as the standard of schooling, the environment and the teaching practices themselves.",
+      "zh": "他们计划不仅查看测试成绩，还会考察教学质量、环境和教学方法等变量。"
+    },
+    {
+      "id": "s16",
+      "en": "It's possible that one of the causes of low performance is the lack of pupil-centred teaching methods; in many Indian primary schools the teacher dominates and there is little room for independent learning.",
+      "zh": "低成绩的原因之一可能是缺乏以学生为中心的教学方法；在许多印度小学，教师主导课堂，学生几乎没有独立学习的空间。"
+    },
+    {
+      "id": "s17",
+      "en": "Although the findings are at a preliminary stage, Tsimpli and her team have found that the medium of instruction used in schools, especially English, may hold back those children who have little familiarity with, or exposure to, the language before starting school and outside of school life.",
+      "zh": "尽管研究结果还处于初步阶段，茨姆普利和她的团队发现，学校使用的教学媒介，尤其是英语，可能会阻碍那些入学前及课外生活中对该语言不熟悉或接触较少的孩子。"
+    },
+    {
+      "id": "s18",
+      "en": "According to Tsimpli, most of the evidence from this and other projects shows that English instruction for children from low socio-economic areas might not be the best way for them to learn, at least in the first three years of primary education.",
+      "zh": "茨姆普利表示，这个项目和其他项目的大多数证据表明，对于来自社会经济地位较低地区的孩子来说，至少在小学前三年，使用英语教学可能不是最适合他们的学习方式。"
+    },
+    {
+      "id": "s19",
+      "en": "'What we would recommend for everyone, not just low socio-economic status children, would be to start learning in the language they feel comfortable learning in … English can still be used, but perhaps not as the medium of instruction in primary schools.",
+      "zh": "“我们建议所有人，不仅是社会经济地位较低的孩子，都应从他们感到舒适的语言开始学习……英语仍然可以使用，但可能不适合作为小学的主要教学语言。"
+    },
+    {
+      "id": "s20",
+      "en": "It could, for example, be one of the subjects that are being taught alongside other subjects.",
+      "zh": "例如，英语可以作为一门科目，与其他学科一起教授。"
+    },
+    {
+      "id": "s21",
+      "en": "We are not suggesting that English be withdrawn – that ship has sailed – but we perhaps have to think more about learner needs.",
+      "zh": "我们并不是建议撤销英语教学——这已经不可能了——但我们或许需要更多考虑学生的需求。"
+    },
+    {
+      "id": "s22",
+      "en": "There is perhaps too much uniformity in teaching and less tailoring to the children's language abilities and needs,' says Tsimpli.",
+      "zh": "茨姆普利说：“教学方式可能过于统一，缺乏针对孩子语言能力和需求的个性化调整。”"
+    },
+    {
+      "id": "s23",
+      "en": "While the preliminary results show there is no difference in general intelligence among boys and girls from slum areas versus those from urban poor backgrounds, an unanticipated finding has been that children from slum backgrounds do not seem to lag behind children from other urban poor backgrounds – and in some cases outperform them (e.g. in numeracy and literacy tasks).",
+      "zh": "虽然初步结果显示贫民区男孩女孩与城市贫困背景儿童的总体智力没有差异，但一个意外发现是贫民区儿童似乎并不落后于其他城市贫困儿童，甚至在一些方面（如算术和识字任务）表现更好。"
+    },
+    {
+      "id": "s24",
+      "en": "According to the researchers, this unexpected finding may be down to the life experiences of children growing up in slums.",
+      "zh": "研究人员认为，这一意外发现可能与贫民区儿童的成长经历有关。"
+    },
+    {
+      "id": "s25",
+      "en": "They are likely to mature faster and come into closer contact with the numeracy skills essential for day-to-day survival.",
+      "zh": "他们可能更早成熟，且更频繁接触日常生存所必需的算术技能。"
+    },
+    {
+      "id": "s26",
+      "en": "The project has already caught the attention of government ministers, who are keen to use the findings of the study to inform and adjust school policy in Delhi and the wider state.",
+      "zh": "该项目已经引起了政府部长们的关注，他们热切希望利用研究结果来指导并调整德里及更广泛地区的学校政策。"
+    },
+    {
+      "id": "s27",
+      "en": "'They are as keen as us to understand how the challenging context of deprivation can be attenuated when focusing on the languages children learn and use while at school.",
+      "zh": "“他们和我们一样渴望了解，在关注孩子们在校学习和使用的语言时，如何减轻贫困这一艰难环境的影响。"
+    },
+    {
+      "id": "s28",
+      "en": "Our findings don't mean you're doomed if you're poor.",
+      "zh": "我们的发现并不意味着贫困的人注定失败。"
+    },
+    {
+      "id": "s29",
+      "en": "It may be that these low learning outcomes are because of the way education is provided in India, with a huge focus on Hindi and English as the mediums of instruction, to the potential detriment of children unfamiliar with those languages,' explains Tsimpli.",
+      "zh": "茨姆普利解释道：“这些低学习成绩可能是由于印度的教育方式，过分强调以印地语和英语作为教学媒介，从而可能不利于不熟悉这些语言的孩子。”"
+    },
+    {
+      "id": "s30",
+      "en": "'Language is central to the way knowledge is transferred – so the medium of instruction is obviously hugely influential.",
+      "zh": "“语言是知识传递的核心，因此教学媒介显然具有极大的影响力。"
+    },
+    {
+      "id": "s31",
+      "en": "We hope to … show that problem solving, numeracy and literacy can and do improve in children who are educated in a language of instruction they know.",
+      "zh": "我们希望…证明用孩子熟悉的教学语言教育，能有效提升他们的解决问题能力、计算能力和识字能力。"
+    },
+    {
+      "id": "s32",
+      "en": "The trick may be to bridge school skills with life skills and make use of the richness of a child's life experience to help them learn in the most effective ways possible,' says Tsimpli.",
+      "zh": "茨姆普利说：“诀窍可能在于将学校技能与生活技能结合起来，利用孩子丰富的生活经验，帮助他们以最有效的方式学习。”"
+    },
+    {
+      "id": "s33",
+      "en": "* slum: a very densely populated area in which the infrastructure is incomplete and services inadequate or non-existent",
+      "zh": "* 贫民区：人口极为稠密，基础设施不完善，服务不足或不存在的地区。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>How could multilingualism benefit India's poorest schoolchildren?</strong></span></div><p><br>The crowded and bustling streets of Delhi teem with life. Stop to listen and, above the din of rickshaws and buses, you'll hear a multitude of languages, as more than 20 million people go about their daily lives. Many were born and raised here, and many millions more have recently made India's capital their home, having moved from surrounding neighbourhoods, cities and states or across the country, often in the hope of gaining better jobs and a better life. Some arrive speaking fluent Hindi, the dominant language in Delhi (and the official language of government), but many arrive speaking any number of India's 22 officially recognised languages, let alone the hundreds of regional languages in a country of more than 1.3 billion people.&nbsp;<br><br>A team of researchers led by Professor Ianthi Tsimpli of Cambridge University is currently working on a project collecting data on 1,000 primary-age children in Delhi and the cities of Hyderabad and Bihar. The overriding aim of the four-year project, called 'Multilingualism and Multiliteracy', is to find out why in a country where multilingualism is so common (more than 255 million people in India speak at least two languages, and nearly 90 million speak three or more languages), the many benefits of speaking more than one language, observed in schools in Europe for instance, do not apply to many of India's schoolchildren.&nbsp;<br><br>'Each year across India, 600,000 children are tested, and year after year over 50% of children in Standard 5 [ten-year-olds] cannot read a Standard 2 [seven-year-olds] task fluently, and just under 50% of them cannot solve a Standard 2 subtraction task,' says Tsimpli. She explains that low educational achievement can lead to many of these students dropping out of school – a problem disproportionately affecting female students.&nbsp;<br><br>Tsimpli and her colleagues are investigating whether these low learning outcomes could be caused by an Indian school system where the language that children are taught in often differs from the language used at home. The research project, which focuses on 8 to 11-year-old schoolchildren in rural and urban areas, collects data on whether the schoolchildren live in slum* or non-slum areas. Many of the children have moved from remote, rural areas to urban areas. They are so poor they have to live in slums and, as a result of migration, they may speak languages that are different from the regional language.&nbsp;<br><br>Having already tested 1,000 children, the researchers will now embark on retesting them. They intend to look not only at test results, but also at variables such as the standard of schooling, the environment and the teaching practices themselves. It's possible that one of the causes of low performance is the lack of pupil-centred teaching methods; in many Indian primary schools the teacher dominates and there is little room for independent learning.&nbsp;<br><br>Although the findings are at a preliminary stage, Tsimpli and her team have found that the medium of instruction used in schools, especially English, may hold back those children who have little familiarity with, or exposure to, the language before starting school and outside of school life. According to Tsimpli, most of the evidence from this and other projects shows that English instruction for children from low socio-economic areas might not be the best way for them to learn, at least in the first three years of primary education.&nbsp;<br><br>'What we would recommend for everyone, not just low socio-economic status children, would be to start learning in the language they feel comfortable learning in … English can still be used, but perhaps not as the medium of instruction in primary schools. It could, for example, be one of the subjects that are being taught alongside other subjects. We are not suggesting that English be withdrawn – that ship has sailed – but we perhaps have to think more about learner needs. There is perhaps too much uniformity in teaching and less tailoring to the children's language abilities and needs,' says Tsimpli.&nbsp;<br><br>While the preliminary results show there is no difference in general intelligence among boys and girls from slum areas versus those from urban poor backgrounds, an unanticipated finding has been that children from slum backgrounds do not seem to lag behind children from other urban poor backgrounds – and in some cases outperform them (e.g. in numeracy and literacy tasks). According to the researchers, this unexpected finding may be down to the life experiences of children growing up in slums. They are likely to mature faster and come into closer contact with the numeracy skills essential for day-to-day survival.&nbsp;<br><br>The project has already caught the attention of government ministers, who are keen to use the findings of the study to inform and adjust school policy in Delhi and the wider state. 'They are as keen as us to understand how the challenging context of deprivation can be attenuated when focusing on the languages children learn and use while at school. Our findings don't mean you're doomed if you're poor. It may be that these low learning outcomes are because of the way education is provided in India, with a huge focus on Hindi and English as the mediums of instruction, to the potential detriment of children unfamiliar with those languages,' explains Tsimpli.&nbsp;<br><br>'Language is central to the way knowledge is transferred – so the medium of instruction is obviously hugely influential. We hope to … show that problem solving, numeracy and literacy can and do improve in children who are educated in a language of instruction they know. The trick may be to bridge school skills with life skills and make use of the richness of a child's life experience to help them learn in the most effective ways possible,' says Tsimpli.&nbsp;<br><br><span style="font-size:12px;">* slum: a very densely populated area in which the infrastructure is incomplete and services inadequate or non-existent</span></p>

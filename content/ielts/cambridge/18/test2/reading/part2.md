@@ -2096,5 +2096,268 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Living with artificial intelligence",
+      "zh": "与人工智能共存"
+    },
+    {
+      "id": "s2",
+      "en": "Powerful artificial intelligence (AI) needs to be reliably aligned with human values, but does this mean AI will eventually have to police those values?",
+      "zh": "强大的人工智能（AI）需要可靠地与人类价值观保持一致，但这是否意味着AI最终必须监管这些价值观？"
+    },
+    {
+      "id": "s3",
+      "en": "This has been the decade of AI, with one astonishing feat after another.",
+      "zh": "这是人工智能的十年，一个又一个惊人的成就接连出现。"
+    },
+    {
+      "id": "s4",
+      "en": "A chess-playing AI that can defeat not only all human chess players, but also all previous human-programmed chess machines, after learning the game in just four hours?",
+      "zh": "一个下棋的人工智能，不仅能击败所有人类棋手，还能战胜所有以往人类编程的棋类机器，而且只需四小时即可学会这项游戏？"
+    },
+    {
+      "id": "s5",
+      "en": "That's yesterday's news, what's next?",
+      "zh": "那已经是过去的新闻了，接下来会怎样？"
+    },
+    {
+      "id": "s6",
+      "en": "True, these prodigious accomplishments are all in so-called narrow AI, where machines perform highly specialised tasks.",
+      "zh": "确实，这些惊人的成就都是所谓的狭义人工智能，即机器执行高度专业化的任务。"
+    },
+    {
+      "id": "s7",
+      "en": "But many experts believe this restriction is very temporary.",
+      "zh": "但许多专家认为这种限制只是暂时的。"
+    },
+    {
+      "id": "s8",
+      "en": "By mid-century, we may have artificial general intelligence (AGI) — machines that can achieve human-level performance on the full range of tasks that we ourselves can tackle.",
+      "zh": "到本世纪中叶，我们可能会拥有人工通用智能（AGI）——能够在人类能处理的全部任务上达到人类水平的机器。"
+    },
+    {
+      "id": "s9",
+      "en": "If so, there's little reason to think it will stop there.",
+      "zh": "如果是这样，就没有理由认为它会止步于此。"
+    },
+    {
+      "id": "s10",
+      "en": "Machines will be free of many of the physical constraints on human intelligence.",
+      "zh": "机器将摆脱人类智慧许多物理上的限制。"
+    },
+    {
+      "id": "s11",
+      "en": "Our brains run at slow biochemical processing speeds on the power of a light bulb, and their size is restricted by the dimensions of the human birth canal.",
+      "zh": "我们的大脑以缓慢的生化处理速度运行，能量仅相当于一个灯泡，其体积还受到人类产道大小的限制。"
+    },
+    {
+      "id": "s12",
+      "en": "It is remarkable what they accomplish, given these handicaps.",
+      "zh": "鉴于这些限制，它们所取得的成就是非凡的。"
+    },
+    {
+      "id": "s13",
+      "en": "But they may be as far from the physical limits of thought as our eyes are from the incredibly powerful Webb Space Telescope.",
+      "zh": "但我们的思维能力距离物理极限可能如同我们的眼睛与极其强大的韦伯太空望远镜的距离一样遥远。"
+    },
+    {
+      "id": "s14",
+      "en": "Once machines are better than us at designing even smarter machines, progress towards these limits could accelerate.",
+      "zh": "一旦机器在设计更智能的机器方面超过了我们，向这些极限的进步可能会加速。"
+    },
+    {
+      "id": "s15",
+      "en": "What would this mean for us?",
+      "zh": "这对我们意味着什么？"
+    },
+    {
+      "id": "s16",
+      "en": "Could we ensure a safe and worthwhile coexistence with such machines?",
+      "zh": "我们能否确保与这样的机器安全且有意义地共存？"
+    },
+    {
+      "id": "s17",
+      "en": "On the plus side, AI is already useful and profitable for many things, and super AI might be expected to be super useful, and super profitable.",
+      "zh": "积极方面，人工智能已经在许多领域有用且盈利，而超级人工智能或许会更加有用且极具盈利性。"
+    },
+    {
+      "id": "s18",
+      "en": "But the more powerful AI becomes, the more important it will be to specify its goals with great care.",
+      "zh": "但人工智能越强大，越需要非常认真地明确其目标。"
+    },
+    {
+      "id": "s19",
+      "en": "Folklore is full of tales of people who ask for the wrong thing, with disastrous consequences — King Midas, for example, might have wished that everything he touched turned to gold, but didn't really intend this to apply to his breakfast.",
+      "zh": "民间故事中充满了人们提出错误愿望并导致灾难性后果的例子——比如，国王密达斯曾希望自己触碰的一切都变成黄金，但他并不真心希望这样包括他的早餐。"
+    },
+    {
+      "id": "s20",
+      "en": "So we need to create powerful AI machines that are 'human-friendly'— that have goals reliably aligned with our own values.",
+      "zh": "所以我们需要创造强大且“对人类友好”的人工智能——其目标可靠地与我们自身的价值观保持一致。"
+    },
+    {
+      "id": "s21",
+      "en": "One thing that makes this task difficult is that we are far from reliably human-friendly ourselves.",
+      "zh": "让这项任务变得困难的一点是，我们自己也远未能可靠地做到对人类友好。"
+    },
+    {
+      "id": "s22",
+      "en": "We do many terrible things to each other and to many other creatures with whom we share the planet.",
+      "zh": "我们对彼此以及与我们共处地球的许多其他生物做了许多可怕的事情。"
+    },
+    {
+      "id": "s23",
+      "en": "If superintelligent machines don't do a lot better than us, we'll be in deep trouble.",
+      "zh": "如果超级智能机器做得不远胜于我们，我们将陷入大麻烦。"
+    },
+    {
+      "id": "s24",
+      "en": "We'll have powerful new intelligence amplifying the dark sides of our own fallible natures.",
+      "zh": "我们将拥有强大的新智能加强我们自身有缺陷的本性的阴暗面。"
+    },
+    {
+      "id": "s25",
+      "en": "For safety's sake, then, we want the machines to be ethically as well as cognitively superhuman.",
+      "zh": "因此，为了安全起见，我们希望机器不仅在认知上超越人类，在伦理上也能超越人类。"
+    },
+    {
+      "id": "s26",
+      "en": "We want them to aim for the moral high ground, not for the troughs in which many of us spend some of our time.",
+      "zh": "我们希望它们追求道德高地，而不是我们许多人偶尔所处的低谷。"
+    },
+    {
+      "id": "s27",
+      "en": "Luckily they'll be smart enough for the job.",
+      "zh": "幸运的是，它们足够聪明来完成这项任务。"
+    },
+    {
+      "id": "s28",
+      "en": "If there are routes to the moral high ground, they'll be better than us at finding them, and steering us in the right direction.",
+      "zh": "如果通往道德高地有路径，它们将在寻找这些路径并引导我们朝正确方向前进方面胜过我们。"
+    },
+    {
+      "id": "s29",
+      "en": "However, there are two big problems with this utopian vision.",
+      "zh": "然而，这个乌托邦式的愿景存在两个大问题。"
+    },
+    {
+      "id": "s30",
+      "en": "One is how we get the machines started on the journey, the other is what it would mean to reach this destination.",
+      "zh": "一个是我们如何让机器开始这段旅程，另一个是达到这一目标意味着什么。"
+    },
+    {
+      "id": "s31",
+      "en": "The 'getting started' problem is that we need to tell the machines what they're looking for with sufficient clarity that we can be confident they will find it—whatever 'it' actually turns out to be.",
+      "zh": "“启动”问题在于我们需要足够清楚地告诉机器它们要寻找什么，这样我们才能确信它们会找到它——无论“它”实际上是什么。"
+    },
+    {
+      "id": "s32",
+      "en": "This won't be easy, given that we are tribal creatures and conflicted about the ideals ourselves.",
+      "zh": "这并不容易，因为我们是部落性动物，对理想本身也存在矛盾。"
+    },
+    {
+      "id": "s33",
+      "en": "We often ignore the suffering of strangers, and even contribute to it, at least indirectly.",
+      "zh": "我们常常忽视陌生人的痛苦，甚至至少间接助长了这种痛苦。"
+    },
+    {
+      "id": "s34",
+      "en": "How then, do we point machines in the direction of something better?",
+      "zh": "那么，我们如何引导机器朝更好的方向前进呢？"
+    },
+    {
+      "id": "s35",
+      "en": "As for the 'destination' problem, we might, by putting ourselves in the hands of these moral guides and gatekeepers, be sacrificing our own autonomy — an important part of what makes us human.",
+      "zh": "至于“目标”问题，通过将自己托付给这些道德引导者和守门人，我们可能会牺牲自身的自主权——这是构成我们人性的一个重要部分。"
+    },
+    {
+      "id": "s36",
+      "en": "Machines who are better than us at sticking to the moral high ground may be expected to discourage some of the lapses we presently take for granted.",
+      "zh": "那些比我们更善于坚守道德高地的机器，可能会阻止我们目前习以为常的一些失误行为。"
+    },
+    {
+      "id": "s37",
+      "en": "We might lose our freedom to discriminate in favour of our own communities, for example.",
+      "zh": "例如，我们可能会失去偏袒自己社区的自由。"
+    },
+    {
+      "id": "s38",
+      "en": "Loss of freedom to behave badly isn't always a bad thing, of course: denying ourselves the freedom to put children to work in factories, or to smoke in restaurants are signs of progress.",
+      "zh": "当然，失去做坏事的自由并非总是坏事：拒绝让儿童在工厂劳动的自由，或禁止餐厅吸烟，都是进步的表现。"
+    },
+    {
+      "id": "s39",
+      "en": "But are we ready for ethical silicon police limiting our options?",
+      "zh": "但我们准备好让道德上的硅基“警察”限制我们的选择了吗？"
+    },
+    {
+      "id": "s40",
+      "en": "They might be so good at doing it that we won't notice them; but few of us are likely to welcome such a future.",
+      "zh": "它们可能做得如此出色，以至于我们察觉不到；但我们中很少有人会欢迎这样的未来。"
+    },
+    {
+      "id": "s41",
+      "en": "These issues might seem far-fetched, but they are to some extent already here.",
+      "zh": "这些问题看起来或许牵强，但在某种程度上已然出现。"
+    },
+    {
+      "id": "s42",
+      "en": "AI already has some input into how resources are used in our National Health Service (NHS) here in the UK, for example.",
+      "zh": "例如，人工智能已经对我们英国国家医疗服务体系（NHS）资源的使用有所影响。"
+    },
+    {
+      "id": "s43",
+      "en": "If it was given a greater role, it might do so much more efficiently than humans can manage, and act in the interests of taxpayers and those who use the health system.",
+      "zh": "如果赋予它更大的角色，人工智能可能会比人类更高效地管理资源，并代表纳税人及医疗系统使用者的利益行事。"
+    },
+    {
+      "id": "s44",
+      "en": "However, we'd be depriving some humans (e.g. senior doctors) of the control they presently enjoy.",
+      "zh": "然而，这样会剥夺部分人类（如资深医生）当前享有的控制权。"
+    },
+    {
+      "id": "s45",
+      "en": "Since we'd want to ensure that people are treated equally and that policies are fair, the goals of AI would need to be specified correctly.",
+      "zh": "由于我们希望确保人人平等对待且政策公平，人工智能的目标必须被正确设定。"
+    },
+    {
+      "id": "s46",
+      "en": "We have a new powerful technology to deal with — itself, literally, a new way of thinking.",
+      "zh": "我们面临一项新的强大技术——字面意义上的一种全新思维方式。"
+    },
+    {
+      "id": "s47",
+      "en": "For our own safety, we need to point these new thinkers in the right direction, and get them to act well for us.",
+      "zh": "为了我们自身的安全，我们需要引导这些新型思考者朝正确方向前进，并让它们为我们行善。"
+    },
+    {
+      "id": "s48",
+      "en": "It is not yet clear whether this is possible, but if it is, it will require a cooperative spirit, and a willingness to set aside self-interest.",
+      "zh": "目前尚不清楚这是否可能，但如果可能，将需要合作精神和愿意放下私利的态度。"
+    },
+    {
+      "id": "s49",
+      "en": "Both general intelligence and moral reasoning are often thought to be uniquely human capacities.",
+      "zh": "通用智能和道德推理通常被认为是人类独有的能力。"
+    },
+    {
+      "id": "s50",
+      "en": "But safety seems to require that we think of them as a package: if we are to give general intelligence to machines, we'll need to give them moral authority, too.",
+      "zh": "但安全似乎要求我们将它们视为一套组合：如果我们授予机器通用智能，也必须赋予它们道德权威。"
+    },
+    {
+      "id": "s51",
+      "en": "And where exactly would that leave human beings?",
+      "zh": "那样的话，人类究竟会处于怎样的位置？"
+    },
+    {
+      "id": "s52",
+      "en": "All the more reason to think about the destination now, and to be careful about what we wish for.",
+      "zh": "这更加说明，我们现在就应该思考未来的方向，并谨慎对待我们的愿望。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">Living&nbsp;with&nbsp;artificial&nbsp;intelligence</span></strong></h3><p style="text-align: center;"><em>Powerful artificial intelligence (AI) needs to be reliably aligned with human values, but&nbsp;does this mean AI will eventually have to&nbsp;police those values?</em></p><p style="text-align: center;"><br></p><p>This has been the decade of AI, with one astonishing feat after another. A chess-playing AI that can defeat not only all human chess players, but also all previous&nbsp;human-programmed chess machines, after learning the game in just four hours? That's yesterday's news, what's next? True, these prodigious accomplishments are all in so-called narrow AI, where machines perform highly specialised tasks. But many experts believe this restriction is very temporary. By mid-century, we may have artificial general&nbsp;intelligence (AGI) — machines that can achieve human-level&nbsp;performance on the full&nbsp;range of tasks that we ourselves can tackle.</p><p>&nbsp;</p><p><br></p><p>If so, there's little reason to think it will stop there. Machines will be free of many of the physical constraints on human intelligence. Our brains run at slow biochemical processing speeds on the power of a light bulb, and their size is restricted by the&nbsp;dimensions of the human birth canal. It is remarkable what they accomplish, given these&nbsp;handicaps. But they may be as far from the&nbsp;physical limits of thought as our eyes are from the incredibly powerful Webb Space Telescope.</p><p>&nbsp;</p><p><br></p><p>Once machines are better than us at designing even smarter machines, progress&nbsp;towards these limits could accelerate. What would this mean for us? Could we ensure&nbsp;a safe and worthwhile coexistence with such machines? On the plus side, AI is already useful and profitable for many things, and super AI might be expected to be super useful, and super profitable. But the more powerful AI becomes, the more important it will be to specify its goals with great care. Folklore is full of tales of people who ask for the wrong thing, with disastrous consequences — King Midas, for example, might have wished that everything he touched turned to gold, but didn't really intend this to apply to his breakfast.</p><p>&nbsp;</p><p><br></p><p>So we need to create powerful AI machines that are 'human-friendly'— that have goals reliably aligned with our own values. One thing that makes this task difficult is that we are far from reliably human-friendly ourselves. We do many terrible things to each other and to many other creatures with whom we share the planet. If superintelligent machines don't do a lot better than us, we'll be in deep trouble. We'll have powerful new intelligence amplifying the dark sides of our own fallible natures.</p><p>&nbsp;</p><p><br></p><p>For safety's sake, then, we want the machines to be ethically as well as cognitively&nbsp;superhuman. We want them to aim for the moral high ground, not for the troughs in&nbsp;which many of us spend some of our time. Luckily they'll be smart enough for the job. If there are routes to the moral high ground, they'll be better than us at finding them, and steering us in the right direction.</p><p>&nbsp;</p><p><br></p><p>However, there are two big problems with this utopian vision. One is how we get the machines started on the journey, the other is what it would mean to reach this destination. The 'getting started' problem is that we need to tell the machines what they're looking for with sufficient clarity that we can be confident they will find it—whatever 'it' actually turns out to be. This won't be easy, given that we are tribal&nbsp;creatures and conflicted about the ideals ourselves. We often ignore the suffering of&nbsp;strangers, and even contribute to it, at least indirectly. How then, do we point machines in the direction of something better?</p><p>&nbsp;</p><p><br></p><p>As for the 'destination' problem, we might, by putting ourselves in the hands of these moral guides and gatekeepers, be sacrificing our own autonomy — an important part of what makes us human. Machines who are better than us at sticking to the moral&nbsp;high ground may be expected to discourage some of the lapses we presently take for granted. We might lose our freedom to discriminate in favour of our own communities, for example.</p><p>&nbsp;</p><p><br></p><p>Loss of freedom to behave badly isn't always a bad thing, of course: denying ourselves the freedom to put children to work in factories, or to smoke in restaurants are signs of progress. But are we ready for ethical silicon police limiting our options? They might be so&nbsp;&nbsp;good at doing it that we won't notice them; but few of us are likely to welcome such a future.</p><p>&nbsp;</p><p><br></p><p>These issues might seem far-fetched, but they are to some extent already here. AI&nbsp;already has some input into how resources are used in our National Health Service (NHS) here in the UK, for example. If it was given a greater role, it might do so much more&nbsp;efficiently than humans can&nbsp;manage, and act in the interests of taxpayers and those who use the health system. However,&nbsp;we'd be depriving some humans (e.g. senior doctors) of the control they presently enjoy. Since we'd want to ensure that people are treated equally and that policies are fair, the goals of AI would need to be specified correctly.</p><p>&nbsp;</p><p><br></p><p>We have a new powerful technology to deal with — itself, literally, a new way of thinking. For our own safety, we need to point these new thinkers in the right direction, and get&nbsp;them to act well for us. It is not yet clear whether this is possible, but if it is, it will require a cooperative spirit, and a willingness to set aside self-interest.</p><p>&nbsp;</p><p><br></p><p>Both general intelligence and moral reasoning are often thought to be uniquely human&nbsp;capacities. But safety seems to require that we think of them as a package: if we are to give general intelligence to machines, we'll need to give them moral authority, too. And where exactly would that leave human beings? All the more reason to think about the destination now, and to be careful about what we wish for.</p><p>&nbsp;</p><p><br></p>

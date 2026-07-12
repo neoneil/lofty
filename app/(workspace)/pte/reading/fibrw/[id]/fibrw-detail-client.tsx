@@ -328,7 +328,7 @@ function FibrwDetailClient({
         <div className="flex flex-wrap items-center gap-2">
 
           <Tag tone="theme">
-            FIB-RW #
+            FIB-RW
             {
               questionNumber
             }

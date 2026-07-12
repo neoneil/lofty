@@ -649,7 +649,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="text-sm font-semibold text-[var(--text)]">
-                    Attempt #{attempts.length - index}
+                    Attempt {attempts.length - index}
                   </div>
 
                   <button

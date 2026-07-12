@@ -1762,5 +1762,203 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Saving the saiga",
+      "zh": "保护赛加羚羊"
+    },
+    {
+      "id": "s2",
+      "en": "The saiga, a species of antelope native to Central Asia, once roamed the vast grasslands of this region in enormous herds, many millions strong.",
+      "zh": "赛加羚羊是一种中亚特有的羚羊，曾经成群结队地在这片广阔的草原上漫游，数量多达数百万。"
+    },
+    {
+      "id": "s3",
+      "en": "Regrettably, such spectacular sights are a thing of the past.",
+      "zh": "令人遗憾的是，如此壮观的景象已成为过去。"
+    },
+    {
+      "id": "s4",
+      "en": "Today, the saiga is largely confined to a single country: Kazakhstan.",
+      "zh": "如今，赛加羚羊主要被限制在一个国家：哈萨克斯坦。"
+    },
+    {
+      "id": "s5",
+      "en": "This country is estimated to be home to well over 90% of the global saiga population, with Russia, Mongolia and Uzbekistan accounting for the rest.",
+      "zh": "据估计，全球90%以上的赛加羚羊都生活在该国，俄罗斯、蒙古和乌兹别克斯坦占据其余部分。"
+    },
+    {
+      "id": "s6",
+      "en": "The saiga is perfectly adapted to the tough conditions of the remote wilderness of the steppes of Central Asia.",
+      "zh": "赛加羚羊完美适应了中亚草原偏远荒野的严酷环境。"
+    },
+    {
+      "id": "s7",
+      "en": "One such adaptation is its bizarre bulbous nose, which enables the animal to survive the extreme seasonal temperature swings of the region.",
+      "zh": "其中一种适应是它奇特的球形鼻子，使其能够在该地区极端的季节性温度变化中生存。"
+    },
+    {
+      "id": "s8",
+      "en": "The swollen nostrils of the nose serve several purposes: they filter out dust and cool the blood during hot, dry summers, and they warm the cold air before it enters the saiga's lungs in winter.",
+      "zh": "肿胀的鼻孔有多种功能：在炎热干燥的夏天过滤尘埃并降低血液温度，冬天则使冷空气加温后才进入赛加羚羊的肺部。"
+    },
+    {
+      "id": "s9",
+      "en": "Other seasonal adaptations include a heavy winter coat that the saiga sheds when the weather warms up.",
+      "zh": "其他季节性适应还包括厚重的冬毛，天气变暖时赛加羚羊会脱掉。"
+    },
+    {
+      "id": "s10",
+      "en": "Despite these superb adaptations to harsh conditions, the saiga has no defence against the threats posed by humans.",
+      "zh": "尽管具备这些出色的严酷环境适应能力，赛加羚羊对人类带来的威胁却无力防御。"
+    },
+    {
+      "id": "s11",
+      "en": "It was almost driven to extinction by hunters in the 19th century.",
+      "zh": "19世纪，赛加羚羊几乎被猎人捕杀至灭绝边缘。"
+    },
+    {
+      "id": "s12",
+      "en": "Legal protection ensured its survival for a while, and numbers steadily recovered throughout most of the 20th century.",
+      "zh": "法律保护使其得以生存了一段时间，20世纪大部分时期其种群数量稳步恢复。"
+    },
+    {
+      "id": "s13",
+      "en": "But the respite was only temporary.",
+      "zh": "但这种缓解只是暂时的。"
+    },
+    {
+      "id": "s14",
+      "en": "In the ten years following the break-up of the former Soviet Union in 1991, over 95% of the global population was lost – one of the fastest examples of species loss ever recorded for a mammal.",
+      "zh": "前苏联于1991年解体后的十年间，全球赛加羚羊数量减少了95%以上——这是哺乳动物物种灭绝速度最快的记录之一。"
+    },
+    {
+      "id": "s15",
+      "en": "The dramatic decline during this decade was due to illegal poaching on an industrial scale.",
+      "zh": "这十年的急剧下降是由于大规模非法偷猎所致。"
+    },
+    {
+      "id": "s16",
+      "en": "Male saiga are a particular target, because their horns are highly prized by traditional medicine practitioners.",
+      "zh": "雄性赛加羚羊尤其成为目标，因为它们的角被传统医药从业者高度珍视。"
+    },
+    {
+      "id": "s17",
+      "en": "Poaching reached epidemic levels after misguided conservationists tried to relieve the pressure on threatened African rhinos by actively encouraging the use of saiga horns in traditional medicine as an alternative to those of rhinos.",
+      "zh": "在一些误导性的保护主义者积极鼓励将赛加羚羊角作为非洲濒危犀牛角的替代品用于传统医学后，偷猎达到了流行病般的水平。"
+    },
+    {
+      "id": "s18",
+      "en": "Male saiga were almost wiped out, leading to a population crash from which the species has been struggling to recover ever since.",
+      "zh": "雄性赛加羚羊几乎被消灭，导致种群崩溃，该物种从此一直在努力恢复。"
+    },
+    {
+      "id": "s19",
+      "en": "Another threat to the survival of the saiga is loss of habitat, as a result of agricultural expansion and human settlement.",
+      "zh": "赛加羚羊生存的另一威胁是栖息地的丧失，这主要是由于农业扩张和人类定居。"
+    },
+    {
+      "id": "s20",
+      "en": "Physical barriers such as railways, pipelines and fences can block the seasonal migration routes of this transboundary species.",
+      "zh": "铁路、管道和围栏等实体障碍物可能阻断这一跨境物种的季节性迁徙路线。"
+    },
+    {
+      "id": "s21",
+      "en": "In the worst cases, herds may starve to death after being trapped.",
+      "zh": "在最严重的情况下，羚羊群可能被困后饿死。"
+    },
+    {
+      "id": "s22",
+      "en": "Then there is the risk of disease.",
+      "zh": "此外还有疾病风险。"
+    },
+    {
+      "id": "s23",
+      "en": "In 2015, an outbreak of haemorrhagic septicaemia, caused by the normally harmless bacterium Pasteurella multocida, killed over 75% of the global adult saiga population in just three weeks.",
+      "zh": "2015年，由通常无害的巴氏杆菌引起的出血性败血症爆发，在短短三周内杀死了全球超过75%的成年赛加羚羊。"
+    },
+    {
+      "id": "s24",
+      "en": "In 2017, 60% of the Mongolian saiga population – a subspecies found nowhere else in the world – was killed by a virus that spilled over from livestock.",
+      "zh": "2017年，蒙古赛加羚羊（一种全球唯一存在的亚种）60%的种群被一场从牲畜传播过来的病毒杀死。"
+    },
+    {
+      "id": "s25",
+      "en": "These so-called mass mortality events represent an unpredictable and serious threat to the species.",
+      "zh": "这些所谓的大规模死亡事件对该物种构成了不可预测且严重的威胁。"
+    },
+    {
+      "id": "s26",
+      "en": "Climate change poses a further threat.",
+      "zh": "气候变化带来了进一步威胁。"
+    },
+    {
+      "id": "s27",
+      "en": "Although well adapted to cold winters and hot summers, saiga struggle to cope with temperature extremes and unpredictable fluctuations in climate.",
+      "zh": "尽管赛加羚羊适应寒冷的冬季和炎热的夏季，但仍难以应对极端温度和气候的不可预测波动。"
+    },
+    {
+      "id": "s28",
+      "en": "Experts believe that unusually warm weather may have triggered the 2015 mass mortality event.",
+      "zh": "专家认为，异常的高温天气可能触发了2015年的大规模死亡事件。"
+    },
+    {
+      "id": "s29",
+      "en": "The steppe region has also become increasingly arid in recent years, and many of the smaller streams that the species normally depended on have dried up and vanished.",
+      "zh": "近年来，草原地区变得越来越干燥，许多赛加羚羊通常依赖的小溪干涸消失。"
+    },
+    {
+      "id": "s30",
+      "en": "Recent efforts to save the saiga have been spearheaded by the Altyn Dala Conservation Initiative, a project led by the Association for the Conservation of Biodiversity of Kazakhstan, working in partnership with the Kazakh government's Committee for Forestry and Wildlife, Frankfurt Zoological Society and Fauna and Flora, an international conservation charity.",
+      "zh": "近年来，保护赛加羚羊的努力由阿尔廷达拉保护倡议牵头，该项目由哈萨克斯坦生物多样性保护协会领导，与哈萨克政府森林与野生动物委员会、法兰克福动物学会和国际保护慈善机构Fauna and Flora合作。"
+    },
+    {
+      "id": "s31",
+      "en": "Its purpose is to protect and restore Kazakhstan's steppe, semi-desert and desert ecosystems and the many species they support, including the critically endangered saiga.",
+      "zh": "其目的是保护和恢复哈萨克斯坦的草原、半沙漠及沙漠生态系统及其支持的众多物种，包括极度濒危的赛加羚羊。"
+    },
+    {
+      "id": "s32",
+      "en": "In 2022 the United Nations recognised the initiative as a World Restoration Flagship project, an accolade reserved for the ten best examples of large-scale ecosystem restoration around the globe.",
+      "zh": "2022年，联合国将该倡议认定为世界生态恢复旗舰项目，这是全球十个大型生态恢复典范项目的荣誉称号。"
+    },
+    {
+      "id": "s33",
+      "en": "So, how many saiga are there now?",
+      "zh": "那么，现在赛加羚羊有多少只？"
+    },
+    {
+      "id": "s34",
+      "en": "By 2000, the global saiga population had hit an all-time low of just 21,000 individuals.",
+      "zh": "到2000年，全球赛加羚羊数量降至历史最低点，仅有2.1万只。"
+    },
+    {
+      "id": "s35",
+      "en": "There was some recovery in the first decade of the new millennium but this was then crushed by devastating mass mortality events that saw the loss of hundreds of thousands of the species.",
+      "zh": "新千年头十年曾有一定恢复，但随后被毁灭性的大规模死亡事件击溃，数十万只赛加羚羊丧生。"
+    },
+    {
+      "id": "s36",
+      "en": "But thanks to the intervention of the Altyn Dala Conservation Initiative, the most recent episodes in the ongoing story of the saiga have been relatively uplifting.",
+      "zh": "但多亏了阿尔廷达拉保护倡议的介入，赛加羚羊近期的情势较为乐观。"
+    },
+    {
+      "id": "s37",
+      "en": "Three years ago, the Ustyurt Plateau population in Kazakhstan experienced its largest mass birth of saiga calves in many years.",
+      "zh": "三年前，哈萨克斯坦乌斯季尔特高原的赛加羚羊群经历了多年来最大规模的羚羊幼崽集体出生。"
+    },
+    {
+      "id": "s38",
+      "en": "An aerial census two years ago recorded an estimated 842,000 saiga across Kazakhstan as a whole, and according to an aerial survey earlier this year, the saiga population in Kazakhstan now exceeds 1.9 million.",
+      "zh": "两年前的一次空中普查估计哈萨克斯坦赛加羚羊总数约为84.2万只，今年早些时候的空中调查显示该国赛加羚羊数量现已超过190万只。"
+    },
+    {
+      "id": "s39",
+      "en": "The world's strangest-looking antelope remains critically endangered, but the direction of travel is positive.",
+      "zh": "这只世界上最奇特的羚羊依然处于极度濒危状态，但其种群动态呈积极向好趋势。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Saving the saiga</strong></span></div><p><br>The saiga, a species of antelope native to Central Asia, once roamed the vast grasslands of this region in enormous herds, many millions strong. Regrettably, such spectacular sights are a thing of the past. Today, the saiga is largely confined to a single country: Kazakhstan. This country is estimated to be home to well over 90% of the global saiga population, with Russia, Mongolia and Uzbekistan accounting for the rest.&nbsp;<br><br>The saiga is perfectly adapted to the tough conditions of the remote wilderness of the steppes of Central Asia. One such adaptation is its bizarre bulbous nose, which enables the animal to survive the extreme seasonal temperature swings of the region. The swollen nostrils of the nose serve several purposes: they filter out dust and cool the blood during hot, dry summers, and they warm the cold air before it enters the saiga's lungs in winter. Other seasonal adaptations include a heavy winter coat that the saiga sheds when the weather warms up.&nbsp;<br><br>Despite these superb adaptations to harsh conditions, the saiga has no defence against the threats posed by humans. It was almost driven to extinction by hunters in the 19th century. Legal protection ensured its survival for a while, and numbers steadily recovered throughout most of the 20th century. But the respite was only temporary. In the ten years following the break-up of the former Soviet Union in 1991, over 95% of the global population was lost – one of the fastest examples of species loss ever recorded for a mammal.&nbsp;<br><br>The dramatic decline during this decade was due to illegal poaching on an industrial scale. Male saiga are a particular target, because their horns are highly prized by traditional medicine practitioners. Poaching reached epidemic levels after misguided conservationists tried to relieve the pressure on threatened African rhinos by actively encouraging the use of saiga horns in traditional medicine as an alternative to those of rhinos. Male saiga were almost wiped out, leading to a population crash from which the species has been struggling to recover ever since.&nbsp;<br><br>Another threat to the survival of the saiga is loss of habitat, as a result of agricultural expansion and human settlement. Physical barriers such as railways, pipelines and fences can block the seasonal migration routes of this transboundary species. In the worst cases, herds may starve to death after being trapped.&nbsp;<br><br>Then there is the risk of disease. In 2015, an outbreak of haemorrhagic septicaemia, caused by the normally harmless bacterium Pasteurella multocida, killed over 75% of the global adult saiga population in just three weeks. In 2017, 60% of the Mongolian saiga population – a subspecies found nowhere else in the world – was killed by a virus that spilled over from livestock. These so-called mass mortality events represent an unpredictable and serious threat to the species.&nbsp;<br><br>Climate change poses a further threat. Although well adapted to cold winters and hot summers, saiga struggle to cope with temperature extremes and unpredictable fluctuations in climate. Experts believe that unusually warm weather may have triggered the 2015 mass mortality event. The steppe region has also become increasingly arid in recent years, and many of the smaller streams that the species normally depended on have dried up and vanished.&nbsp;<br><br>Recent efforts to save the saiga have been spearheaded by the Altyn Dala Conservation Initiative, a project led by the Association for the Conservation of Biodiversity of Kazakhstan, working in partnership with the Kazakh government's Committee for Forestry and Wildlife, Frankfurt Zoological Society and Fauna and Flora, an international conservation charity. Its purpose is to protect and restore Kazakhstan's steppe, semi-desert and desert ecosystems and the many species they support, including the critically endangered saiga. In 2022 the United Nations recognised the initiative as a World Restoration Flagship project, an accolade reserved for the ten best examples of large-scale ecosystem restoration around the globe.&nbsp;<br><br>So, how many saiga are there now? By 2000, the global saiga population had hit an all-time low of just 21,000 individuals. There was some recovery in the first decade of the new millennium but this was then crushed by devastating mass mortality events that saw the loss of hundreds of thousands of the species. But thanks to the intervention of the Altyn Dala Conservation Initiative, the most recent episodes in the ongoing story of the saiga have been relatively uplifting. Three years ago, the Ustyurt Plateau population in Kazakhstan experienced its largest mass birth of saiga calves in many years. An aerial census two years ago recorded an estimated 842,000 saiga across Kazakhstan as a whole, and according to an aerial survey earlier this year, the saiga population in Kazakhstan now exceeds 1.9 million. The world's strangest-looking antelope remains critically endangered, but the direction of travel is positive.&nbsp;<br>&nbsp;</p>

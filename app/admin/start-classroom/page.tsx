@@ -114,7 +114,7 @@ export default async function AdminStartClassroomPage() {
                             {history.slice(0, 5).map((item, index) => (
                               <div key={item.id} className="flex flex-wrap items-center gap-2 text-sm text-[var(--text-soft)]">
                                 <span className="rounded-full bg-[var(--primary)]/10 px-2 py-0.5 text-xs font-semibold text-[var(--primary)]">
-                                  #{history.length - index}
+                                  {history.length - index}
                                 </span>
 
                                 <span>

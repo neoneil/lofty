@@ -9,7 +9,7 @@ import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import { UI_SKINS } from "@/lib/ui-skins";
 
-export function UiSkinCard() {
+export function UiSkinCard({ variant = "grid" }: { variant?: "grid" | "list" }) {
   const activeSkin = useUiSkin();
   const [open, setOpen] = useState(false);
 
@@ -21,15 +21,18 @@ export function UiSkinCard() {
   }, [open]);
 
   const activeMeta = UI_SKINS.find((skin) => skin.id === activeSkin) ?? UI_SKINS[0];
+  const isList = variant === "list";
 
   return (
     <>
-      <Card className="group overflow-hidden rounded-[var(--radius-lg)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)]">
-        <button type="button" onClick={() => setOpen(true)} className="w-full p-6 text-left">
-          <div className="mb-6 flex items-center justify-between"><Badge variant="secondary">Appearance</Badge><span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] text-white shadow-[var(--shadow-sm)] transition-transform duration-300 group-hover:translate-x-1"><Palette size={17} /></span></div>
-          <h3 className="text-xl font-bold tracking-tight text-[var(--text)]">一键换肤</h3>
-          <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">切换全站 Card、Button、背景、边框与主题色。</p>
-          <div className="mt-5 flex items-center justify-between gap-3"><div className="flex -space-x-1">{activeMeta.colors.map((color) => <span key={color} className="h-5 w-5 rounded-full border-2 border-[var(--card)]" style={{ backgroundColor: color }} />)}</div><span className="text-xs font-semibold text-[var(--primary)]">{activeMeta.label}</span></div>
+      <Card className={`group overflow-hidden rounded-[var(--radius-lg)] transition-all duration-300 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)] ${isList ? "" : "hover:-translate-y-0.5"}`}>
+        <button type="button" onClick={() => setOpen(true)} className={`w-full text-left ${isList ? "flex flex-col gap-3 p-4 sm:flex-row sm:items-center" : "p-4"}`}>
+          <div className={isList ? "flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]" : "mb-4 flex items-center justify-between"}>{isList ? <Palette size={17} /> : <><Badge variant="secondary">Appearance</Badge><span className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] text-white shadow-[var(--shadow-sm)] transition-transform duration-300 group-hover:translate-x-0.5"><Palette size={16} /></span></>}</div>
+          <div className={isList ? "min-w-0 flex-1" : ""}>
+            <div className={isList ? "flex flex-wrap items-center gap-2" : ""}><h3 className="text-base font-bold tracking-tight text-[var(--text)]">一键换肤</h3>{isList ? <Badge variant="secondary">Appearance</Badge> : null}</div>
+            <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">切换全站 Card、Button、背景、边框与主题色。</p>
+          </div>
+          <div className={isList ? "flex items-center gap-3 sm:w-44 sm:justify-end" : "mt-4 flex items-center justify-between gap-3"}><div className="flex -space-x-1">{activeMeta.colors.map((color) => <span key={color} className="h-4 w-4 rounded-full border-2 border-[var(--card)]" style={{ backgroundColor: color }} />)}</div><span className="text-xs font-semibold text-[var(--primary)]">{activeMeta.label}</span></div>
         </button>
       </Card>
 

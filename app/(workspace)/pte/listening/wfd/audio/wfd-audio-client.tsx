@@ -360,7 +360,7 @@ export default function WfdAudioClient({ questions }: Props) {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-xs font-semibold">
-                      #{index + 1}
+                      {index + 1}
                     </span>
                     <span className="text-xs text-[var(--text-soft)]">
                       {formatDuration(question.audio_duration_seconds)}

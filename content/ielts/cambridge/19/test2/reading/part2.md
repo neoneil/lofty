@@ -1509,5 +1509,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Athletes and stress",
+      "zh": "运动员与压力"
+    },
+    {
+      "id": "s2",
+      "en": "It isn't easy being a professional athlete.",
+      "zh": "成为职业运动员并不容易。"
+    },
+    {
+      "id": "s3",
+      "en": "Not only are the physical demands greater than most people could handle, athletes also face intense psychological pressure during competition.",
+      "zh": "不仅身体上的要求远超大多数人能够承受，运动员在比赛中还面临巨大的心理压力。"
+    },
+    {
+      "id": "s4",
+      "en": "This is something that British tennis player Emma Raducanu wrote about on social media following her withdrawal from the 2021 Wimbledon tournament.",
+      "zh": "英国网球选手艾玛·拉杜卡努在退出2021年温布尔登锦标赛后，曾在社交媒体上写到了这一点。"
+    },
+    {
+      "id": "s5",
+      "en": "Though the young player had been doing well in the tournament, she began having difficulty regulating her breathing and heart rate during a match, which she later attributed to 'the accumulation of the excitement and the buzz'.",
+      "zh": "尽管这位年轻选手在比赛中表现不错，但她开始难以控制自己的呼吸和心率，她后来将此归因于“兴奋感和激动情绪的积累”。"
+    },
+    {
+      "id": "s6",
+      "en": "For athletes, some level of performance stress is almost unavoidable.",
+      "zh": "对运动员来说，某种程度的比赛压力几乎是不可避免的。"
+    },
+    {
+      "id": "s7",
+      "en": "But there are many different factors that dictate just how people's minds and bodies respond to stressful events.",
+      "zh": "不过，有许多不同因素决定了人们的身心如何应对压力事件。"
+    },
+    {
+      "id": "s8",
+      "en": "Typically, stress is the result of an exchange between two factors: demands and resources.",
+      "zh": "通常，压力是两种因素——需求和资源之间交互的结果。"
+    },
+    {
+      "id": "s9",
+      "en": "An athlete may feel stressed about an event if they feel the demands on them are greater than they can handle.",
+      "zh": "如果运动员觉得对他们的要求超出了他们能承受的范围，就可能对此感到压力。"
+    },
+    {
+      "id": "s10",
+      "en": "These demands include the high level of physical and mental effort required to succeed, and also the athlete's concerns about the difficulty of the event, their chance of succeeding, and any potential dangers such as injury.",
+      "zh": "这些需求包括取得成功所需的高强度身心努力，以及运动员对赛事难度、成功机会和潜在危险（如受伤）的担忧。"
+    },
+    {
+      "id": "s11",
+      "en": "Resources, on the other hand, are a person's ability to cope with these demands.",
+      "zh": "资源则是指个人应对这些需求的能力。"
+    },
+    {
+      "id": "s12",
+      "en": "These include factors such as the competitor's degree of confidence, how much they believe they can control the situation's outcome, and whether they're looking forward to the event or not.",
+      "zh": "这包括竞争者的自信程度、他们认为自己能控制局势结果的信念，以及他们是否期待这场比赛等因素。"
+    },
+    {
+      "id": "s13",
+      "en": "Each new demand or change in circumstances affects whether a person responds positively or negatively to stress.",
+      "zh": "每一个新的需求或环境变化都会影响一个人对压力是产生积极还是消极反应。"
+    },
+    {
+      "id": "s14",
+      "en": "Typically, the more resources a person feels they have in handling the situation, the more positive their stress response.",
+      "zh": "通常，一个人感觉拥有的应对资源越多，他们对压力的反应就越积极。"
+    },
+    {
+      "id": "s15",
+      "en": "This positive stress response is called a challenge state.",
+      "zh": "这种积极的压力反应被称为挑战状态。"
+    },
+    {
+      "id": "s16",
+      "en": "But should the person feel there are too many demands placed on them, the more likely they are to experience a negative stress response—known as a threat state.",
+      "zh": "但如果一个人觉得所承受的需求过多，就更可能经历负面的压力反应——这被称为威胁状态。"
+    },
+    {
+      "id": "s17",
+      "en": "Research shows that the challenge states lead to good performance, while threat states lead to poorer performance.",
+      "zh": "研究显示，挑战状态会带来良好表现，而威胁状态则导致表现较差。"
+    },
+    {
+      "id": "s18",
+      "en": "So, in Emma Raducanu's case, a much larger audience, higher expectations and facing a more skilful opponent, may all have led her to feel there were greater demands being placed on her at Wimbledon—but she didn't have the resources to tackle them.",
+      "zh": "因此，就艾玛·拉杜卡努而言，更多的观众、更高的期望以及面对更高水平的对手，可能都使她觉得温布尔登赛场上的压力更大——但她缺乏应对这些压力的资源。"
+    },
+    {
+      "id": "s19",
+      "en": "This led to her experiencing a threat response.",
+      "zh": "这导致她产生了威胁反应。"
+    },
+    {
+      "id": "s20",
+      "en": "Our challenge and threat responses essentially influence how our body responds to stressful situations, as both affect the production of adrenaline and cortisol — also known as 'stress hormones'.",
+      "zh": "我们的挑战和威胁反应本质上影响着身体对压力情境的反应，因为这两者都会影响肾上腺素和皮质醇的分泌——这两种物质也被称为“压力激素”。"
+    },
+    {
+      "id": "s21",
+      "en": "During a challenge state, adrenaline increases the amount of blood pumped from the heart and expands the blood vessels, which allows more energy to be delivered to the muscles and brain.",
+      "zh": "在挑战状态下，肾上腺素会增加心脏泵出的血液量并扩张血管，从而使更多能量输送到肌肉和大脑。"
+    },
+    {
+      "id": "s22",
+      "en": "This increase of blood and decrease of pressure in the blood vessels has been consistently related to superior sport performance in everything from cricket batting, to golf putting and football penalty taking.",
+      "zh": "血液流量增加和血管压力下降已被持续证明与从板球击球、高尔夫推杆到足球点球等运动中的优异表现相关。"
+    },
+    {
+      "id": "s23",
+      "en": "But during a threat state, cortisol inhibits the positive effect of adrenaline, resulting in tighter blood vessels, higher blood pressure, slower psychological responses, and a faster heart rate.",
+      "zh": "但在威胁状态下，皮质醇抑制肾上腺素的积极作用，导致血管收缩、血压升高、心理反应变慢和心率加快。"
+    },
+    {
+      "id": "s24",
+      "en": "In short, a threat state makes people more anxious—they make worse decisions and perform more poorly.",
+      "zh": "简而言之，威胁状态使人更加焦虑——他们做出更差的决策，表现也更差。"
+    },
+    {
+      "id": "s25",
+      "en": "In tennis players, cortisol has been associated with more unsuccessful serves and greater anxiety.",
+      "zh": "对于网球运动员来说，皮质醇与更多失误发球和更强的焦虑感相关。"
+    },
+    {
+      "id": "s26",
+      "en": "That said, anxiety is also a common experience for athletes when they're under pressure.",
+      "zh": "不过，焦虑也是运动员在压力下常见的体验。"
+    },
+    {
+      "id": "s27",
+      "en": "Anxiety can increase heart rate and perspiration, cause heart palpitations, muscle tremors and shortness of breath, as well as headaches, nausea, stomach pain, weakness and a desire to escape in more extreme cases.",
+      "zh": "焦虑会导致心率加快和出汗，心悸、肌肉颤抖和呼吸急促，以及头痛、恶心、胃痛、虚弱，在更极端的情况下甚至会产生逃避的冲动。"
+    },
+    {
+      "id": "s28",
+      "en": "Anxiety can also reduce concentration and self-control and cause overthinking.",
+      "zh": "焦虑还能降低注意力和自控力，导致过度思考。"
+    },
+    {
+      "id": "s29",
+      "en": "The intensity with which a person experiences anxiety depends on the demands and resources they have.",
+      "zh": "一个人体验焦虑的强度取决于他们所面临的需求与拥有的资源。"
+    },
+    {
+      "id": "s30",
+      "en": "Anxiety may also manifest itself in the form of excitement or nervousness depending on the stress response.",
+      "zh": "焦虑也可能表现为兴奋或紧张，具体取决于压力反应的类型。"
+    },
+    {
+      "id": "s31",
+      "en": "Negative stress responses can be damaging to both physical and mental health—and repeated episodes of anxiety coupled with negative responses can increase risk of heart disease and depression.",
+      "zh": "负面的压力反应会损害身体和心理健康——反复的焦虑和负面反应可能增加患心脏病和抑郁症的风险。"
+    },
+    {
+      "id": "s32",
+      "en": "But there are many ways athletes can ensure they respond positively under pressure.",
+      "zh": "但运动员有许多方法可以确保在压力下做出积极反应。"
+    },
+    {
+      "id": "s33",
+      "en": "Positive stress responses can be promoted through the language that they and others—such as coaches or parents—use.",
+      "zh": "积极的压力反应可以通过他们自己和他人（如教练或家长）使用的语言来促进。"
+    },
+    {
+      "id": "s34",
+      "en": "Psychologists can also help athletes change how they see their physiological responses—such as helping them see a higher heart rate as excitement, rather than nerves.",
+      "zh": "心理学家还可以帮助运动员改变他们对自身生理反应的看法，比如帮助他们把心率加快视为兴奋而非紧张。"
+    },
+    {
+      "id": "s35",
+      "en": "Developing psychological skills, such as visualisation, can also help decrease physiological responses to threat.",
+      "zh": "培养心理技能，比如视觉化，也能帮助减少对威胁的生理反应。"
+    },
+    {
+      "id": "s36",
+      "en": "Visualisation may involve the athlete recreating a mental picture of a time when they performed well, or picturing themselves doing well in the future.",
+      "zh": "视觉化可能包括运动员在脑海中重现自己表现出色的时刻，或者想象自己未来表现良好。"
+    },
+    {
+      "id": "s37",
+      "en": "This can help create a feeling of control over the stressful event.",
+      "zh": "这可以帮助他们对压力事件产生掌控感。"
+    },
+    {
+      "id": "s38",
+      "en": "Recreating competitive pressure during training can also help athletes learn how to deal with stress.",
+      "zh": "在训练中模拟竞争压力也能帮助运动员学习如何应对压力。"
+    },
+    {
+      "id": "s39",
+      "en": "An example of this might be scoring athletes against their peers to create a sense of competition.",
+      "zh": "比如通过与同伴比拼得分来营造竞争氛围。"
+    },
+    {
+      "id": "s40",
+      "en": "This would increase the demands which players experience compared to a normal training session, while still allowing them to practise coping with stress.",
+      "zh": "这将比普通训练课程带来更多压力，但同时让选手练习应对压力的方法。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Athletes and stress</span></strong></p><p><strong></strong></p><p><strong>A</strong></p><p>It isn't easy being a professional athlete. Not only are the physical demands greater than most people could handle, athletes also face intense psychological pressure during competition. This is something that British tennis player Emma Raducanu wrote about on social media following her withdrawal from the 2021 Wimbledon tournament. Though the young player had been doing well in the tournament, she began having difficulty regulating her breathing and heart rate during a match, which she later attributed to 'the accumulation of the excitement and the buzz'.</p><p><br></p><p></p><p><strong>B</strong></p><p>For athletes, some level of performance stress is almost unavoidable. But there are many different factors that dictate just how people's minds and bodies respond to stressful events. Typically, stress is the result of an exchange between two factors: demands and resources. An athlete may feel stressed about an event if they feel the demands on them are greater than they can handle. These demands include the high level of physical and mental effort required to succeed, and also the athlete's concerns about the difficulty of the event, their chance of succeeding, and any potential dangers such as injury. Resources, on the other hand, are a person's ability to cope with these demands. These include factors such as the competitor's degree of confidence, how much they believe they can control the situation's outcome, and whether they're looking forward to the event or not.</p><p><br></p><p></p><p><strong>C</strong></p><p>Each new demand or change in circumstances affects whether a person responds positively or negatively to stress. Typically, the more resources a person feels they have in handling the situation, the more positive their stress response. This positive stress response is called a challenge state. But should the person feel there are too many demands placed on them, the more likely they are to experience a negative stress response—known as a threat state. Research shows that the challenge states lead to good performance, while threat states lead to poorer performance. So, in Emma Raducanu's case, a much larger audience, higher expectations and facing a more skilful opponent, may all have led her to feel there were greater demands being placed on her at Wimbledon—but she didn't have the resources to tackle them. This led to her experiencing a threat response.</p><p><br></p><p></p><p><strong>D</strong></p><p>Our challenge and threat responses essentially influence how our body responds to stressful situations, as both affect the production of adrenaline and cortisol — also known as 'stress hormones'. During a challenge state, adrenaline increases the amount of blood pumped from the heart and expands the blood vessels, which allows more energy to be delivered to the muscles and brain. This increase of blood and decrease of pressure in the blood vessels has been consistently related to superior sport performance in everything from cricket batting, to golf putting and football penalty taking. But during a threat state, cortisol inhibits the positive effect of adrenaline, resulting in tighter blood vessels, higher blood pressure, slower psychological responses, and a faster heart rate. In short, a threat state makes people more anxious—they make worse decisions and perform more poorly. In tennis players, cortisol has been associated with more unsuccessful serves and greater anxiety.</p><p><br></p><p></p><p><strong>E</strong></p><p>That said, anxiety is also a common experience for athletes when they're under pressure. Anxiety can increase heart rate and perspiration, cause heart palpitations, muscle tremors and shortness of breath, as well as headaches, nausea, stomach pain, weakness and a desire to escape in more extreme cases. Anxiety can also reduce concentration and self-control and cause overthinking. The intensity with which a person experiences anxiety depends on the demands and resources they have. Anxiety may also manifest itself in the form of excitement or nervousness depending on the stress response. Negative stress responses can be damaging to both physical and mental health—and repeated episodes of anxiety coupled with negative responses can increase risk of heart disease and depression.</p><p><br></p><p></p><p></p><p><strong>F</strong></p><p>But there are many ways athletes can ensure they respond positively under pressure. Positive stress responses can be promoted through the language that they and others—such as coaches or parents—use. Psychologists can also help athletes change how they see their physiological responses—such as helping them see a higher heart rate as excitement, rather than nerves. Developing psychological skills, such as visualisation, can also help decrease physiological responses to threat. Visualisation may involve the athlete recreating a mental picture of a time when they performed well, or picturing themselves doing well in the future. This can help create a feeling of control over the stressful event. Recreating competitive pressure during training can also help athletes learn how to deal with stress. An example of this might be scoring athletes against their peers to create a sense of competition. This would increase the demands which players experience compared to a normal training session, while still allowing them to practise coping with stress.</p><p><br></p><p class="paragraph text-align-type-justify" style="margin: 4px 0;text-align: justify;font-family: 等线;font-size: 16px"></p><p></p>

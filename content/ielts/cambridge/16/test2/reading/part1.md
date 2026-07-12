@@ -1053,5 +1053,228 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The White Horse of Uffington",
+      "zh": "阿芬顿白马"
+    },
+    {
+      "id": "s2",
+      "en": "The cutting of huge figures or 'geoglyphs' into the earth of English hillsides has taken place for more than 3,000 years.",
+      "zh": "在英格兰山坡上刻画巨大的图形或“地貌标志”已有三千多年历史。"
+    },
+    {
+      "id": "s3",
+      "en": "There are 56 hill figures scattered around England, with the vast majority on the chalk downlands of the country's southern counties.",
+      "zh": "英格兰各地散布着56个山丘图形，其中绝大多数位于该国南部郡县的白垩岩丘陵地带。"
+    },
+    {
+      "id": "s4",
+      "en": "The figures include giants, horses, crosses and regimental badges.",
+      "zh": "这些图形包括巨人、马、十字架和军团徽章。"
+    },
+    {
+      "id": "s5",
+      "en": "Although the majority of these geoglyphs date within the last 300 years or so, there are one or two that are much older.",
+      "zh": "尽管大多数地貌标志的年代在过去约300年内，但有一两个要古老得多。"
+    },
+    {
+      "id": "s6",
+      "en": "The most famous of these figures is perhaps also the most mysterious - the Uffington White Horse in Oxfordshire.",
+      "zh": "这些图形中最著名的也许就是最神秘的——位于牛津郡的阿芬顿白马。"
+    },
+    {
+      "id": "s7",
+      "en": "The White Horse has recently been re-dated and shown to be even older than its previously assigned ancient pre-Roman Iron Age* date.",
+      "zh": "阿芬顿白马最近被重新定年，结果显示其历史比之前认为的古罗马前铁器时代*还要久远。"
+    },
+    {
+      "id": "s8",
+      "en": "More controversial is the date of the enigmatic Long Man of Wilmington in Sussex.",
+      "zh": "更具争议的是位于萨塞克斯的神秘“温灵顿长人”的年代。"
+    },
+    {
+      "id": "s9",
+      "en": "While many historians are convinced the figure is prehistoric, others believe that it was the work of an artistic monk from a nearby priory and was created between the 11th and 15th centuries.",
+      "zh": "许多历史学家坚信这图形属于史前时代，但也有人认为它是附近修道院一位艺术僧侣的作品，创作于11至15世纪间。"
+    },
+    {
+      "id": "s10",
+      "en": "The method of cutting these huge figures was simply to remove the overlying grass to reveal the gleaming white chalk below.",
+      "zh": "雕刻这些巨大图形的方法很简单，就是移除覆盖的草皮，露出下面发光的白垩岩。"
+    },
+    {
+      "id": "s11",
+      "en": "However, the grass would soon grow over the geoglyph again unless it was regularly cleaned or scoured by a fairly large team of people.",
+      "zh": "然而，除非有一支相当规模的团队定期清理，否则草很快会重新覆盖地貌标志。"
+    },
+    {
+      "id": "s12",
+      "en": "One reason that the vast majority of hill figures have disappeared is that when the traditions associated with the figures faded, people no longer bothered or remembered to clear away the grass to expose the chalk outline.",
+      "zh": "绝大多数山丘图形消失的一个原因是相关传统消逝后，人们不再费心或记得清除草地以显露白垩轮廓。"
+    },
+    {
+      "id": "s13",
+      "en": "Furthermore, over hundreds of years the outlines would sometimes change due to people not always cutting in exactly the same place, thus creating a different shape to the original geoglyph.",
+      "zh": "此外，经过数百年，图形轮廓有时会因人们不总是在完全相同的位置修剪而发生变化，从而形成与原始地貌标志不同的形状。"
+    },
+    {
+      "id": "s14",
+      "en": "The fact that any ancient hill figures survive at all in England today is testament to the strength and continuity of local customs and beliefs which, in one case at least, must stretch back over millennia.",
+      "zh": "如今英格兰仍存有古老山丘图形，这证明了当地风俗和信仰的力量与延续性，其中至少有一个案例可追溯数千年。"
+    },
+    {
+      "id": "s15",
+      "en": "The Uffington White Horse is a unique, stylised representation of a horse consisting of a long, sleek back, thin disjointed legs, a streaming tail, and a bird-like beaked head.",
+      "zh": "阿芬顿白马是一种独特且程式化的马形象，包括修长光滑的背部、细长分离的腿、飘逸的尾巴和类鸟喙状的头部。"
+    },
+    {
+      "id": "s16",
+      "en": "The elegant creature almost melts into the landscape.",
+      "zh": "这优雅的形象几乎与自然景观融为一体。"
+    },
+    {
+      "id": "s17",
+      "en": "The horse is situated 2.5 km from Uffington village on a steep slope close to the Late Bronze Age* (c.7th century BCE) hillfort of Uffington Castle and below the Ridgeway, a long-distance Neolithic** track.",
+      "zh": "这匹马位于阿芬顿村2.5公里处一个陡坡上，靠近晚期青铜时代*（约公元前7世纪）的阿芬顿城堡山寨，位于长途新石器时代**古道“岭路”之下。"
+    },
+    {
+      "id": "s18",
+      "en": "The Uffington Horse is also surrounded by Bronze Age burial mounds.",
+      "zh": "阿芬顿白马周围还有青铜时代的坟丘。"
+    },
+    {
+      "id": "s19",
+      "en": "It is not far from the Bronze Age cemetery of Lambourn Seven Barrows, which consists of more than 30 well-preserved burial mounds.",
+      "zh": "它距离兰伯恩七坟场青铜时代墓地不远，该墓地包括30多个保存完好的墓丘。"
+    },
+    {
+      "id": "s20",
+      "en": "The carving has been placed in such a way as to make it extremely difficult to see from close quarters, and like many geoglyphs is best appreciated from the air.",
+      "zh": "该雕刻的位置使得从近处非常难以看清，和许多地貌标志一样，最适合从空中欣赏。"
+    },
+    {
+      "id": "s21",
+      "en": "Nevertheless, there are certain areas of the Vale of the White Horse, the valley containing and named after the enigmatic creature, from which an adequate impression may be gained.",
+      "zh": "不过，在“白马谷”中的某些地区——这个因这神秘生物而得名的山谷——可以较好地观赏到这一图形。"
+    },
+    {
+      "id": "s22",
+      "en": "Indeed on a clear day the carving can be seen from up to 30 km away.",
+      "zh": "事实上，天气晴朗时，该雕刻甚至可从30公里外看到。"
+    },
+    {
+      "id": "s23",
+      "en": "The earliest evidence of a horse at Uffington is from the 1070s CE when 'White Horse Hill' is mentioned in documents from the nearby Abbey of Abingdon, and the first reference to the horse itself is soon after, in 1190 CE.",
+      "zh": "阿芬顿地区关于马的最早记录来自公元1070年代，当时附近的阿宾登修道院文献中提到“白马山”，随后在1190年首次提及这匹马图形本身。"
+    },
+    {
+      "id": "s24",
+      "en": "However, the carving is believed to date back much further than that.",
+      "zh": "然而，该雕刻被认为远比这更古老。"
+    },
+    {
+      "id": "s25",
+      "en": "Due to the similarity of the Uffington White Horse to the stylised depictions of horses on 1st century BCE coins, it had been thought that the creature must also date to that period.",
+      "zh": "由于阿芬顿白马与公元前1世纪硬币上程式化的马形象相似，曾一度认为该图形也属于那个时期。"
+    },
+    {
+      "id": "s26",
+      "en": "However, in 1995 Optically Stimulated Luminescence (OSL) testing was carried out by the Oxford Archaeological Unit on soil from two of the lower layers of the horse's body, and from another cut near the base.",
+      "zh": "然而，1995年，牛津考古单位对马体下层两层土壤及基部附近另一处切割处进行了光致激发发光（OSL）测年。"
+    },
+    {
+      "id": "s27",
+      "en": "The result was a date for the horse's construction somewhere between 1400 and 600 BCE - in other words, it had a Late Bronze Age or Early Iron Age origin.",
+      "zh": "结果表明马的制作时间落在公元前1400年至600年之间，换言之，它起源于晚期青铜时代或早期铁器时代。"
+    },
+    {
+      "id": "s28",
+      "en": "The latter end of this date range would tie the carving of the horse in with occupation of the nearby Uffington hillfort, indicating that it may represent a tribal emblem marking the land of the inhabitants of the hillfort.",
+      "zh": "这一时间范围的后期与附近阿芬顿山寨的使用时期相符，表明这雕刻可能是部落的象征，用以标示山寨居民的领地。"
+    },
+    {
+      "id": "s29",
+      "en": "Alternatively, the carving may have been carried out during a Bronze or Iron Age ritual.",
+      "zh": "或者，这个雕刻可能是在青铜时代或铁器时代的某种仪式中完成的。"
+    },
+    {
+      "id": "s30",
+      "en": "Some researchers see the horse as representing the Celtic*** horse goddess Epona, who was worshipped as a protector of horses, and for her associations with fertility.",
+      "zh": "一些研究者认为这匹马代表凯尔特***马神埃波娜，埃波娜被崇拜为马的保护神，并与生育相关联。"
+    },
+    {
+      "id": "s31",
+      "en": "However, the cult of Epona was not imported from Gaul (France) until around the first century CE.",
+      "zh": "然而，埃波娜崇拜直到公元1世纪才从高卢（法国）传入。"
+    },
+    {
+      "id": "s32",
+      "en": "This date is at least six centuries after the Uffington Horse was probably carved.",
+      "zh": "这个时间至少比阿芬顿白马雕刻时代晚了六个世纪。"
+    },
+    {
+      "id": "s33",
+      "en": "Nevertheless, the horse had great ritual and economic significance during the Bronze and Iron Ages, as attested by its depictions on jewellery and other metal objects.",
+      "zh": "尽管如此，这匹马在青铜时代和铁器时代具有重要的仪式和经济意义，其形象见于首饰和其他金属制品上即为证明。"
+    },
+    {
+      "id": "s34",
+      "en": "It is possible that the carving represents a goddess in native mythology, such as Rhiannon, described in later Welsh mythology as a beautiful woman dressed in gold and riding a white horse.",
+      "zh": "这雕刻也可能代表本土神话中的女神，如后期威尔士神话中描述的瑞安农，她是身穿金衣、骑着白马的美丽女子。"
+    },
+    {
+      "id": "s35",
+      "en": "The fact that geoglyphs can disappear easily, along with their associated rituals and meaning, indicates that they were never intended to be anything more than temporary gestures.",
+      "zh": "地貌标志易于消失及其相关的仪式和含义也随之消逝，这表明它们从未被设想为超越临时表示的东西。"
+    },
+    {
+      "id": "s36",
+      "en": "But this does not lessen their importance.",
+      "zh": "但这并不减少它们的重要性。"
+    },
+    {
+      "id": "s37",
+      "en": "These giant carvings are a fascinating glimpse into the minds of their creators and how they viewed the landscape in which they lived.",
+      "zh": "这些巨型雕刻让人们得以窥见创作者的思想，以及他们如何看待自己所生活的景观，极具吸引力。"
+    },
+    {
+      "id": "s38",
+      "en": "*Iron Age: a period (in Britain 800 BCE - 43 CE) that is characterised by the use of iron tools",
+      "zh": "*铁器时代：指英国的一个时期（公元前800年至公元43年），其特征是使用铁制工具。"
+    },
+    {
+      "id": "s39",
+      "en": "*Bronze Age: a period (in Britain c.",
+      "zh": "*青铜时代：指英国约公元前"
+    },
+    {
+      "id": "s40",
+      "en": "2500 BCE - 800 BCE) that is characterised by the development of bronze tools",
+      "zh": "2500年至公元前800年间，特点是青铜工具的发展。"
+    },
+    {
+      "id": "s41",
+      "en": "**Neolithic: a period (in Britain c.",
+      "zh": "**新石器时代：指英国约公元前"
+    },
+    {
+      "id": "s42",
+      "en": "4000BCE - c.",
+      "zh": "4000年至约"
+    },
+    {
+      "id": "s43",
+      "en": "2500BCE) that is significant for the spread of agricultural practices, and the use of stone tools",
+      "zh": "公元前2500年间，该时期标志着农业的传播和石器的使用。"
+    },
+    {
+      "id": "s44",
+      "en": "***Celtic: an ancient people who migrated from Europe to Britain before the Romans",
+      "zh": "***凯尔特人：一支古老民族，在罗马人入侵前从欧洲迁徙到不列颠。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>The White Horse of Uffington</strong></span></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;">The cutting of huge figures or 'geoglyphs' into the earth of English hillsides has taken place for more than 3,000 years. There are 56 hill figures scattered around England, with the vast majority on the chalk downlands of the country's southern counties. The figures include giants, horses, crosses and regimental badges. Although the majority of these geoglyphs date within the last 300 years or so, there are one or two that are much older.</p><p style="text-align:left;"><br>&nbsp;</p><p style="text-align:left;">The most famous of these figures is perhaps also the most mysterious - the Uffington White Horse in Oxfordshire. The White Horse has recently been re-dated and shown to be even older than its previously assigned ancient pre-Roman Iron Age* date. More controversial is the date of the enigmatic Long Man of Wilmington in Sussex. While many historians are convinced the figure is prehistoric, others believe that it was the work of an artistic monk from a nearby priory and was created between the 11th and 15th centuries.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The method of cutting these huge figures was simply to remove the overlying grass to reveal the gleaming white chalk below. However, the grass would soon grow over the geoglyph again unless it was regularly cleaned or scoured by a fairly large team of people. One reason that the vast majority of hill figures have disappeared is that when the traditions associated with the figures faded, people no longer bothered or remembered to clear away the grass to expose the chalk outline. Furthermore, over hundreds of years the outlines would sometimes change due to people not always cutting in exactly the same place, thus creating a different shape to the original geoglyph. The fact that any ancient hill figures survive at all in England today is testament to the strength and continuity of local customs and beliefs which, in one case at least, must stretch back over millennia.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The Uffington White Horse is a unique, stylised representation of a horse consisting of a long, sleek back, thin disjointed legs, a streaming tail, and a bird-like beaked head. The elegant creature almost melts into the landscape. The horse is situated 2.5 km from Uffington village on a steep slope close to the Late Bronze Age* (c.7th century BCE) hillfort of Uffington Castle and below the Ridgeway, a long-distance Neolithic** track.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The Uffington Horse is also surrounded by Bronze Age burial mounds. It is not far from the Bronze Age cemetery of Lambourn Seven Barrows, which consists of more than 30 well-preserved burial mounds. The carving has been placed in such a way as to make it extremely difficult to see from close quarters, and like many geoglyphs is best appreciated from the air. Nevertheless, there are certain areas of the Vale of the White Horse, the valley containing and named after the enigmatic creature, from which an adequate impression may be gained. Indeed on a clear day the carving can be seen from up to 30 km away.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The earliest evidence of a horse at Uffington is from the 1070s CE when 'White Horse Hill' is mentioned in documents from the nearby Abbey of Abingdon, and the first reference to the horse itself is soon after, in 1190 CE. However, the carving is believed to date back much further than that. Due to the similarity of the Uffington White Horse to the stylised depictions of horses on 1st century BCE coins, it had been thought that the creature must also date to that period.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">However, in 1995 Optically Stimulated Luminescence (OSL) testing was carried out by the Oxford Archaeological Unit on soil from two of the lower layers of the horse's body, and from another cut near the base. The result was a date for the horse's construction somewhere between 1400 and 600 BCE - in other words, it had a Late Bronze Age or Early Iron Age origin.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The latter end of this date range would tie the carving of the horse in with occupation of the nearby Uffington hillfort, indicating that it may represent a tribal emblem marking the land of the inhabitants of the hillfort. Alternatively, the carving may have been carried out during a Bronze or Iron Age ritual. Some researchers see the horse as representing the Celtic*** horse goddess Epona, who was worshipped as a protector of horses, and for her associations with fertility. However, the cult of Epona was not imported from Gaul (France) until around the first century CE. This date is at least six centuries after the Uffington Horse was probably carved. Nevertheless, the horse had great ritual and economic significance during the Bronze and Iron Ages, as attested by its depictions on jewellery and other metal objects. It is possible that the carving represents a goddess in native mythology, such as Rhiannon, described in later Welsh mythology as a beautiful woman dressed in gold and riding a white horse.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The fact that geoglyphs can disappear easily, along with their associated rituals and meaning, indicates that they were never intended to be anything more than temporary gestures. But this does not lessen their importance. These giant carvings are a fascinating glimpse into the minds of their creators and how they viewed the landscape in which they lived.</p><p style="text-align:left;">&nbsp;</p><p><i>*Iron Age: a period (in Britain 800 BCE - 43 CE) that is characterised by the use of iron tools</i></p><p><i>*Bronze Age: a period (in Britain c. 2500 BCE - 800 BCE) that is characterised by the development of bronze tools</i></p><p><i>**Neolithic: a period (in Britain c. 4000BCE - c. 2500BCE) that is significant for the spread of agricultural practices, and the use of stone tools</i></p><p><i>***Celtic: an ancient people who migrated from Europe to Britain before the Romans</i></p>

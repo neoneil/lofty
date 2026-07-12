@@ -1273,5 +1273,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Adapting to the effects of climate change",
+      "zh": "适应气候变化的影响"
+    },
+    {
+      "id": "s2",
+      "en": "All around the world, nations are already preparing for, and adapting to, climate change and its impacts.",
+      "zh": "世界各地的国家已经开始为气候变化及其影响做准备并进行适应。"
+    },
+    {
+      "id": "s3",
+      "en": "Even if we stopped all CO₂ emissions tomorrow, we would continue to see the impact of the CO₂ already released since industrial times, with scientists forecasting that global warming would continue for around 40 years.",
+      "zh": "即使我们明天停止所有二氧化碳排放，我们仍将看到自工业时代以来已经释放的二氧化碳的影响，科学家预测全球变暖将持续约40年。"
+    },
+    {
+      "id": "s4",
+      "en": "In the meantime, ice caps would continue to melt and sea levels rise.",
+      "zh": "与此同时，冰盖将继续融化，海平面将持续上升。"
+    },
+    {
+      "id": "s5",
+      "en": "Some countries and regions will suffer more extreme impacts from these changes than others.",
+      "zh": "某些国家和地区将比其他地方遭受更极端的变化影响。"
+    },
+    {
+      "id": "s6",
+      "en": "It's in these places that innovation is thriving.",
+      "zh": "正是在这些地方，创新蓬勃发展。"
+    },
+    {
+      "id": "s7",
+      "en": "In Miami Beach, Florida, USA, seawater isn't just breaching the island city's walls, it's seeping up through the ground, so the only way to save the city is to lift it up above sea level.",
+      "zh": "在美国佛罗里达州迈阿密海滩，海水不仅冲破了岛城的海堤，还渗透到地下，因此拯救这座城市的唯一方法是将它抬高至海平面之上。"
+    },
+    {
+      "id": "s8",
+      "en": "Starting in the lowest and most vulnerable neighbourhoods, roads have been raised by as much as 61 centimetres.",
+      "zh": "从最低洼且最脆弱的社区开始，道路被抬高了多达61厘米。"
+    },
+    {
+      "id": "s9",
+      "en": "The elevation work was carried out as part of Miami Beach's ambitious but much-needed stormwater-management programme.",
+      "zh": "抬高道路的工作是迈阿密海滩雄心勃勃但极为必要的雨水管理计划的一部分。"
+    },
+    {
+      "id": "s10",
+      "en": "In addition to the road adaptations, the city has set up new pumps that can remove up to 75,000 litres of water per minute.",
+      "zh": "除了道路改造，城市还安装了新的泵浦，每分钟可排出高达75,000升的水。"
+    },
+    {
+      "id": "s11",
+      "en": "In the face of floods, climate-mitigation strategies have often been overlooked, says Yanira Pineda, a senior sustainability coordinator.",
+      "zh": "高级可持续发展协调员Yanira Pineda说，在洪水面前，气候减缓策略常常被忽视。"
+    },
+    {
+      "id": "s12",
+      "en": "She knows that they're essential and that the job is far from over.",
+      "zh": "她知道这些策略至关重要，而且工作远未完成。"
+    },
+    {
+      "id": "s13",
+      "en": "'We know that in 20, 30, 40 years, we'll need to go back in there and adjust to the changing environment,' she says.",
+      "zh": "“我们知道20年、30年、40年后，我们还需要返回那里，适应不断变化的环境，”她说。"
+    },
+    {
+      "id": "s14",
+      "en": "Seawalls are a staple strategy for many coastal communities, but on the soft, muddy northern shores of Java, Indonesia, they frequently collapse, further exacerbating coastal erosion.",
+      "zh": "海堤是许多沿海社区的基本策略，但在印度尼西亚爪哇岛北部软泥质的海岸，海堤经常坍塌，进一步加剧了海岸侵蚀。"
+    },
+    {
+      "id": "s15",
+      "en": "There have been many attempts to restore the island's coastal mangroves: ecosystems of trees and shrubs that help defend coastal areas by trapping sediment in their net-like root systems, elevating the sea bed and dampening the energy of waves and tidal currents.",
+      "zh": "有人多次尝试恢复该岛的沿海红树林：这种由树木和灌木组成的生态系统通过其网状根系截留沉积物，提高海床，并削弱波浪和潮汐流的能量，从而帮助保护沿海地区。"
+    },
+    {
+      "id": "s16",
+      "en": "But Susanna Tol of the not-for-profit organisation Wetlands International says that, while hugely popular, the majority of mangrove-planting projects fail.",
+      "zh": "但非营利组织国际湿地联盟的Susanna Tol表示，尽管非常受欢迎，大多数红树林种植项目都失败了。"
+    },
+    {
+      "id": "s17",
+      "en": "So, Wetlands International started out with a different approach, building semi-permeable dams, made from bamboo poles and brushwood, to mimic the role of mangrove roots and create favourable conditions for mangroves to grow back naturally.",
+      "zh": "因此，国际湿地联盟采取了不同的方法，用竹杆和灌木做成半渗透性堤坝，模拟红树林根系的作用，创造有利条件让红树林自然恢复生长。"
+    },
+    {
+      "id": "s18",
+      "en": "The programme has seen moderate success, mainly in areas with less subsidence.",
+      "zh": "该项目取得了中等程度的成功，主要是在地面下沉较少的地区。"
+    },
+    {
+      "id": "s19",
+      "en": "'Unfortunately, traditional infrastructure is often single-solution focused,' says Tol.",
+      "zh": "Tol说：“不幸的是，传统基础设施往往只专注于单一解决方案。”"
+    },
+    {
+      "id": "s20",
+      "en": "'For long-term success, it's critical that we transition towards multifunctional approaches that embed natural processes and that engage and benefit communities and local decision-makers.'",
+      "zh": "“为了实现长期成功，关键是我们要转向多功能的方法，将自然过程融入其中，并让社区与当地决策者参与并受益。”"
+    },
+    {
+      "id": "s21",
+      "en": "As the floodwaters rose in the rice fields of the Mekong Delta in September 2018, four small houses rose with them.",
+      "zh": "2018年9月，当湄公河三角洲的稻田洪水上涨时，四座小房屋随水位一起升起。"
+    },
+    {
+      "id": "s22",
+      "en": "Homes in this part of Vietnam are traditionally built on stilts but these ones had been built to float.",
+      "zh": "越南这一地区的房屋传统上建在高脚架上，但这些房屋被建成了漂浮式的。"
+    },
+    {
+      "id": "s23",
+      "en": "The modifications were made by the Buoyant Foundation Project, a not-for-profit organisation that has been researching and retrofitting amphibious houses since 2006.",
+      "zh": "这些改造由非营利组织浮动基础项目完成，该组织自2006年起一直研究和改造两栖房屋。"
+    },
+    {
+      "id": "s24",
+      "en": "'When I started this,' explains founder Elizabeth English, 'climate change was not on the tip of everybody's tongue, but this technology is becoming necessary in places that didn't previously need it.'",
+      "zh": "创始人伊丽莎白·英格利希解释说：“当我开始做这项工作时，气候变化还不是普遍热议的话题，但这项技术正变得必不可少，甚至在那些以前不需要它的地方。”"
+    },
+    {
+      "id": "s25",
+      "en": "It's much cheaper than permanently elevating houses, English explains - about a third of what it would cost to completely replace a building's foundations.",
+      "zh": "英格利希解释说，这比永久性抬高房屋要便宜得多——大约只需完全更换建筑地基费用的三分之一。"
+    },
+    {
+      "id": "s26",
+      "en": "It also avoids the problem of taller houses being at greater risk from wind damage.",
+      "zh": "它还避免了更高房屋受风力损害风险更大的问题。"
+    },
+    {
+      "id": "s27",
+      "en": "Another plus comes from the fact that amphibious structures can be sensitively adapted to meet cultural needs and match the kind of houses that are already common in a community.",
+      "zh": "另一个优点是两栖结构可以灵活适应文化需求，并与社区中已有的房屋类型相匹配。"
+    },
+    {
+      "id": "s28",
+      "en": "Bangladesh is especially vulnerable to climate change.",
+      "zh": "孟加拉国对气候变化特别脆弱。"
+    },
+    {
+      "id": "s29",
+      "en": "Most of the country is less than a metre above sea level and 80 per cent of its land lies on floodplains.",
+      "zh": "该国大部分地区海拔不到一米，80%的土地位于洪泛区。"
+    },
+    {
+      "id": "s30",
+      "en": "'Almost 35 million people living on the coastal belt of Bangladesh are currently affected by soil and water salinity,' says Raisa Chowdhury of the international development organisation ICCO Cooperation.",
+      "zh": "国际发展组织ICCO Cooperation的Raisa Chowdhury说：“孟加拉国沿海带约有3500万人目前受到土壤和水体盐碱化的影响。”"
+    },
+    {
+      "id": "s31",
+      "en": "Rather than fighting against it, one project is helping communities adapt to salt-affected soils.",
+      "zh": "一个项目没有与之抗争，而是帮助社区适应盐碱土壤。"
+    },
+    {
+      "id": "s32",
+      "en": "ICCO Cooperation has been working with 10,000 farmers in Bangladesh to start cultivating naturally salt-tolerant crops in the region.",
+      "zh": "ICCO Cooperation一直与孟加拉国的1万名农民合作，开始种植自然耐盐的农作物。"
+    },
+    {
+      "id": "s33",
+      "en": "Certain varieties of carrot, potato, kohlrabi, cabbage and beetroot have been found to be better suited to salty soil than the rice and wheat that is typically grown there.",
+      "zh": "某些品种的胡萝卜、土豆、球茎甘蓝、卷心菜和甜菜被发现比当地通常种植的水稻和小麦更适应盐碱土壤。"
+    },
+    {
+      "id": "s34",
+      "en": "Chowdhury says that the results are very visible, comparing a barren plot of land to the 'beautiful, lush green vegetable garden' sitting beside it, in which he and his team have been working with the farmers.",
+      "zh": "Chowdhury表示，结果非常明显，他将一块荒地与邻近的“美丽茂盛的绿菜园”相比，他和他的团队一直在那与农民合作。"
+    },
+    {
+      "id": "s35",
+      "en": "Since the project began, farmers trained in saline agriculture have reported increases of two to three more harvests per year.",
+      "zh": "项目开始以来，接受盐碱农业培训的农民报告说每年多收获了两到三次。"
+    },
+    {
+      "id": "s36",
+      "en": "Greg Spotts from Los Angeles (LA) in the USA is chief sustainability officer of the city's street services department.",
+      "zh": "来自美国洛杉矶的Greg Spotts是该市街道服务部门的首席可持续发展官。"
+    },
+    {
+      "id": "s37",
+      "en": "He leads the Cool Streets LA programme, a series of pilot projects, which include the planting of trees and the installation of a 'cool pavement' system, designed to help reach the city's goal of bringing down its average temperature by 1.5°C.",
+      "zh": "他领导“洛杉矶凉爽街道”项目，这是一系列试点工程，包括植树和安装“凉爽路面”系统，旨在帮助实现该市降低平均温度1.5摄氏度的目标。"
+    },
+    {
+      "id": "s38",
+      "en": "'Urban cooling is literally a matter of life and death for our future in LA,' says Spotts.",
+      "zh": "Spotts说：“城市降温对洛杉矶的未来来说，确实关系到生死。”"
+    },
+    {
+      "id": "s39",
+      "en": "Using a Geographic Information System data mapping tool, the programme identified streets with low tree canopy cover in three of the city's neighbourhoods and covered them with a light-grey, light-reflecting coating, which had already been shown to lower road surface temperature in Los Angeles by 6°C.",
+      "zh": "该项目利用地理信息系统（GIS）数据绘图工具，确定了该市三个社区中树冠覆盖率低的街道，并用浅灰色反光涂层覆盖，这种涂层已被证明能降低洛杉矶路面温度6摄氏度。"
+    },
+    {
+      "id": "s40",
+      "en": "Spotts says one of these streets, in the Winnetka neighbourhood of San Fernando Valley, can now be seen as a pale crescent, the only cool spot on an otherwise red thermal image, from the International Space Station.",
+      "zh": "Spotts说，在圣费尔南多谷温尼特卡社区的其中一条街道现可被国际空间站看到，在红色热成像中呈现为淡淡的新月形，是唯一的凉爽区域。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Adapting to the effects of climate change</span></strong></p><p><strong>A. </strong></p><p>All around the world, nations are already preparing for, and adapting to, climate change and its impacts. Even if we stopped all&nbsp;&nbsp;CO₂&nbsp;emissions tomorrow, we would continue to see the impact of the CO₂ already released since industrial times, with scientists forecasting that global warming would continue for around 40 years. In the meantime, ice caps would continue to melt and sea levels rise. Some countries and regions will suffer more extreme impacts from these changes than others. It's in these places that innovation is thriving.</p><p><br></p><p><strong>B. </strong></p><p>In Miami Beach, Florida, USA, seawater isn't just breaching the island city's walls, it's seeping up through the ground, so the only way to save the city is to lift it up above sea level. Starting in the lowest and most vulnerable neighbourhoods, roads have been raised by as much as 61 centimetres. The elevation work was carried out as part of Miami Beach's ambitious but much-needed stormwater-management programme. In addition to the road adaptations, the city has set up new pumps that can remove up to 75,000 litres of water per minute. In the face of floods, climate-mitigation strategies have often been overlooked, says Yanira Pineda, a senior sustainability coordinator. She knows that they're essential and that the job is far from over. 'We know that in 20, 30, 40 years, we'll need to go back in there and adjust to the changing environment,' she says.</p><p><br></p><p><strong>C. </strong></p><p>Seawalls are a staple strategy for many coastal communities, but on the soft, muddy northern shores of Java, Indonesia, they frequently collapse, further exacerbating coastal erosion. There have been many attempts to restore the island's coastal mangroves: ecosystems of trees and shrubs that help defend coastal areas by trapping sediment in their net-like root systems, elevating the sea bed and dampening the energy of waves and tidal currents. But Susanna Tol of the not-for-profit organisation Wetlands International says that, while hugely popular, the majority of mangrove-planting projects fail. So, Wetlands International started out with a different approach, building semi-permeable dams, made from bamboo poles and brushwood, to mimic the role of mangrove roots and create favourable conditions for mangroves to grow back naturally. The programme has seen moderate success, mainly in areas with less subsidence. 'Unfortunately, traditional infrastructure is often single-solution focused,' says Tol. 'For long-term success, it's critical that we transition towards multifunctional approaches that embed natural processes and that engage and benefit communities and local decision-makers.'</p><p><br></p><p><strong>D. </strong></p><p>As the floodwaters rose in the rice fields of the Mekong Delta in September 2018, four small houses rose with them. Homes in this part of Vietnam are traditionally built on stilts but these ones had been built to float. The modifications were made by the Buoyant Foundation Project, a not-for-profit organisation that has been researching and retrofitting amphibious houses since 2006. 'When I started this,' explains founder Elizabeth English, 'climate change was not on the tip of everybody's tongue, but this technology is becoming necessary in places that didn't previously need it.' It's much cheaper than permanently elevating houses, English explains - about a third of what it would cost to completely replace a building's foundations. It also avoids the problem of taller houses being at greater risk from wind damage. Another plus comes from the fact that amphibious structures can be sensitively adapted to meet cultural needs and match the kind of houses that are already common in a community.</p><p><br></p><p><strong>E. </strong></p><p>Bangladesh is especially vulnerable to climate change. Most of the country is less than a metre above sea level and 80 per cent of its land lies on floodplains. 'Almost 35 million people living on the coastal belt of Bangladesh are currently affected by soil and water salinity,' says Raisa Chowdhury of the international development organisation ICCO Cooperation. Rather than fighting against it, one project is helping communities adapt to salt-affected soils. ICCO Cooperation has been working with 10,000 farmers in Bangladesh to start cultivating naturally salt-tolerant crops in the region. Certain varieties of carrot, potato, kohlrabi, cabbage and beetroot have been found to be better suited to salty soil than the rice and wheat that is typically grown there. Chowdhury says that the results are very visible, comparing a barren plot of land to the 'beautiful, lush green vegetable garden' sitting beside it, in which he and his team have been working with the farmers. Since the project began, farmers trained in saline agriculture have reported increases of two to three more harvests per year.</p><p><br></p><p><strong>F. </strong></p><p>Greg Spotts from Los Angeles (LA) in the USA is chief sustainability officer of the city's street services department. He leads the Cool Streets LA programme, a series of pilot projects, which include the planting of trees and the installation of a 'cool pavement' system, designed to help reach the city's goal of bringing down its average temperature by 1.5°C. 'Urban cooling is literally a matter of life and death for our future in LA,' says Spotts. Using a Geographic Information System data mapping tool, the programme identified streets with low tree canopy cover in three of the city's neighbourhoods and covered them with a light-grey, light-reflecting coating, which had already been shown to lower road surface temperature in Los Angeles by 6°C. Spotts says one of these streets, in the Winnetka neighbourhood of San Fernando Valley, can now be seen as a pale crescent, the only cool spot on an otherwise red thermal image, from the International Space Station.</p><p><br></p>

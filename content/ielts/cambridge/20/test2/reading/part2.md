@@ -1430,5 +1430,243 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Procrastination",
+      "zh": "拖延症"
+    },
+    {
+      "id": "s2",
+      "en": "A psychologist explains why we put off important tasks and how we can break this habit",
+      "zh": "一位心理学家解释了我们为何推迟重要任务以及如何打破这一习惯"
+    },
+    {
+      "id": "s3",
+      "en": "Procrastination is the habit of delaying a necessary task, usually by focusing on less urgent, more enjoyable, and easier activities instead.",
+      "zh": "拖延症是指推迟完成必要任务的习惯，通常是转而关注那些不那么紧急、更令人愉快且更轻松的活动。"
+    },
+    {
+      "id": "s4",
+      "en": "We all do it from time to time.",
+      "zh": "我们都会时不时有这种情况。"
+    },
+    {
+      "id": "s5",
+      "en": "We might be composing a message to a friend who we have to let down, or putting together an important report for college or work; we're doing our best to avoid doing the job at hand, but deep down we know that we should just be getting on with it.",
+      "zh": "我们可能在给一个必须让他失望的朋友写信息，或者在为大学或工作准备一份重要的报告；我们尽力避免眼前的工作，但内心深处明白自己应该继续着手去做。"
+    },
+    {
+      "id": "s6",
+      "en": "Unfortunately, berating ourselves won't stop us procrastinating again.",
+      "zh": "不幸的是，自责并不能阻止我们再次拖延。"
+    },
+    {
+      "id": "s7",
+      "en": "In fact, it's one of the worst things we can do.",
+      "zh": "事实上，这是我们能做的最糟糕的事情之一。"
+    },
+    {
+      "id": "s8",
+      "en": "This matters because, as my research shows, procrastination doesn't just waste time, but is actually linked to other problems, too.",
+      "zh": "这很重要，因为我的研究表明，拖延不仅浪费时间，还与其他问题有关联。"
+    },
+    {
+      "id": "s9",
+      "en": "Contrary to popular belief, procrastination is not due to laziness or poor time management.",
+      "zh": "与普遍看法相反，拖延不是由于懒惰或时间管理差。"
+    },
+    {
+      "id": "s10",
+      "en": "Scientific studies suggest procrastination is, in fact, caused by poor mood management.",
+      "zh": "科学研究表明，事实上拖延是由情绪管理不善引起的。"
+    },
+    {
+      "id": "s11",
+      "en": "This makes sense if we consider that people are more likely to put off starting or completing tasks that they are really not keen to do.",
+      "zh": "如果我们考虑到人们更可能推迟开始或完成他们不想做的任务，这就很有道理了。"
+    },
+    {
+      "id": "s12",
+      "en": "If just thinking about the task threatens our sense of self-worth or makes us anxious, we will be more likely to put it off.",
+      "zh": "如果仅仅想到任务就威胁到我们的自我价值感或让我们感到焦虑，我们就更可能拖延。"
+    },
+    {
+      "id": "s13",
+      "en": "Research involving brain imaging has found that areas of the brain linked to detection of threats and emotion regulation are actually different in people who chronically procrastinate compared to those who don't procrastinate frequently.",
+      "zh": "涉及脑成像的研究发现，与那些不经常拖延的人相比，长期拖延者的大脑中与威胁感知和情绪调节相关的区域实际上存在差异。"
+    },
+    {
+      "id": "s14",
+      "en": "Tasks that are emotionally loaded or difficult, such as preparing for exams, are prime candidates for procrastination.",
+      "zh": "情绪负担重或较难完成的任务，如备考，是拖延的主要对象。"
+    },
+    {
+      "id": "s15",
+      "en": "People with low self-esteem are more likely to procrastinate.",
+      "zh": "自尊心低的人更容易拖延。"
+    },
+    {
+      "id": "s16",
+      "en": "Another group of people who tend to procrastinate are perfectionists, who worry their work will be judged harshly by others.",
+      "zh": "另一类容易拖延的人是完美主义者，他们担心自己的工作会被他人严厉评判。"
+    },
+    {
+      "id": "s17",
+      "en": "We know that if we don't finish that report or complete those home repairs, then what we did can't be evaluated.",
+      "zh": "我们知道，如果不完成那份报告或家里的维修工作，那么我们的表现就无法被评价。"
+    },
+    {
+      "id": "s18",
+      "en": "When we avoid such tasks, we also avoid the negative emotions associated with them.",
+      "zh": "当我们逃避这些任务时，也是在回避与之相关的负面情绪。"
+    },
+    {
+      "id": "s19",
+      "en": "This is rewarding, and it conditions us to use procrastination to repair our mood.",
+      "zh": "这让人感到愉快，并使我们习惯于通过拖延来改善情绪。"
+    },
+    {
+      "id": "s20",
+      "en": "If we engage in more enjoyable tasks instead, we get another mood boost.",
+      "zh": "如果我们转而从事更愉快的活动，就会获得另一次情绪提升。"
+    },
+    {
+      "id": "s21",
+      "en": "In the long run, however, procrastination isn't an effective way of managing emotions.",
+      "zh": "但从长远来看，拖延并不是管理情绪的有效方式。"
+    },
+    {
+      "id": "s22",
+      "en": "The 'mood repair' we experience is temporary.",
+      "zh": "我们所体验的“情绪修复”是暂时的。"
+    },
+    {
+      "id": "s23",
+      "en": "Afterwards, people tend to be left with a sense of guilt that not only increases their negative mood, but also reinforces their tendency to procrastinate.",
+      "zh": "事后，人们往往会感到内疚，这不仅加重了他们的负面情绪，也强化了他们拖延的倾向。"
+    },
+    {
+      "id": "s24",
+      "en": "So why is this such a problem?",
+      "zh": "那么，为什么这会成为一个问题呢？"
+    },
+    {
+      "id": "s25",
+      "en": "When most people think of the costs of procrastination, they think of the toll on productivity.",
+      "zh": "大多数人在想到拖延的代价时，首先想到的是对生产力的影响。"
+    },
+    {
+      "id": "s26",
+      "en": "For example, studies have shown that procrastination negatively impacts on student performance.",
+      "zh": "例如，研究显示拖延会对学生的表现产生负面影响。"
+    },
+    {
+      "id": "s27",
+      "en": "But putting off reading textbooks and writing essays may affect other areas of students' lives.",
+      "zh": "但拖延阅读教材和写论文也可能影响学生生活的其他方面。"
+    },
+    {
+      "id": "s28",
+      "en": "In one study of over 3,000 German students over a six-month period, those who reported procrastinating over their university work were also more likely to engage in study-related misconduct, such as cheating and plagiarism.",
+      "zh": "在一项对3000多名德国学生进行为期六个月的研究中，那些报告在大学学习上拖延的学生更可能参与学术不端行为，如作弊和抄袭。"
+    },
+    {
+      "id": "s29",
+      "en": "But the behaviour that procrastination was most closely linked with was using fraudulent excuses to get deadline extensions.",
+      "zh": "但拖延最密切相关的行为是使用欺骗性的借口来延长截止期限。"
+    },
+    {
+      "id": "s30",
+      "en": "Other research shows that employees on average spend almost a quarter of their workday procrastinating, and again this is linked with negative outcomes.",
+      "zh": "其他研究显示，员工平均每天近四分之一的工作时间在拖延，这同样与负面结果有关。"
+    },
+    {
+      "id": "s31",
+      "en": "In fact, in one US survey of over 22,000 employees, participants who said they regularly procrastinated had less annual income and less employment stability.",
+      "zh": "事实上，在一项针对超过22000名美国员工的调查中，那些表示经常拖延的参与者的年收入较低，工作稳定性也较差。"
+    },
+    {
+      "id": "s32",
+      "en": "For every one-point increase on a measure of chronic procrastination, annual income decreased by US$15,000.",
+      "zh": "在慢性拖延的衡量指标上每增加一点，年收入就减少15000美元。"
+    },
+    {
+      "id": "s33",
+      "en": "Procrastination also correlates with serious health and well-being problems.",
+      "zh": "拖延还与严重的健康和幸福问题有关。"
+    },
+    {
+      "id": "s34",
+      "en": "A tendency to procrastinate is linked to poor mental health, including higher levels of depression and anxiety.",
+      "zh": "拖延倾向与心理健康状况不佳有关，包括较高水平的抑郁和焦虑。"
+    },
+    {
+      "id": "s35",
+      "en": "Across numerous studies, I've found people who regularly procrastinate report a greater number of health issues, such as headaches, flu and colds, and digestive issues.",
+      "zh": "在多项研究中，我发现经常拖延的人报告的健康问题更多，如头痛、流感和感冒，以及消化系统问题。"
+    },
+    {
+      "id": "s36",
+      "en": "They also experience higher levels of stress and poor sleep quality.",
+      "zh": "他们还经历更高水平的压力和睡眠质量差。"
+    },
+    {
+      "id": "s37",
+      "en": "They are less likely to practise healthy behaviours, such as eating a healthy diet and regularly exercising, and use destructive coping strategies to manage their stress.",
+      "zh": "他们不太可能养成健康的生活习惯，如健康饮食和定期锻炼，而是使用破坏性的应对策略来管理压力。"
+    },
+    {
+      "id": "s38",
+      "en": "In one study of over 700 people, I found people prone to procrastination had a 63% greater risk of poor heart health after accounting for other personality traits and demographics.",
+      "zh": "在一项对700多人进行的研究中，我发现拖延倾向者在排除其他人格特征和人口统计因素后，心脏健康不佳的风险增加了63%。"
+    },
+    {
+      "id": "s39",
+      "en": "Finding better ways of managing our emotions is one route out of the vicious cycle of procrastination.",
+      "zh": "找到更好管理情绪的方式，是摆脱拖延恶性循环的一条途径。"
+    },
+    {
+      "id": "s40",
+      "en": "An important first step is to manage our environment and how we view the task.",
+      "zh": "重要的第一步是管理我们的环境以及我们看待任务的方式。"
+    },
+    {
+      "id": "s41",
+      "en": "There are a number of evidence-based strategies that can help us fend off distractions that can occupy our minds when we should be focusing on the thing we should be getting on with.",
+      "zh": "有许多基于证据的策略可以帮助我们抵御那些在我们应该专注于正事时分散注意力的干扰。"
+    },
+    {
+      "id": "s42",
+      "en": "For example, reminding ourselves about why the task is important and valuable can increase positive feelings towards it.",
+      "zh": "例如，提醒自己任务为何重要且有价值，可以增强对它的积极感受。"
+    },
+    {
+      "id": "s43",
+      "en": "Forgiving ourselves and feeling compassion when we procrastinate can help break the procrastination cycle.",
+      "zh": "在拖延时宽恕自己并怀有同情心，可以帮助打破拖延循环。"
+    },
+    {
+      "id": "s44",
+      "en": "We should admit that we feel bad, but not be overly critical of ourselves.",
+      "zh": "我们应该承认自己感到不好，但不要过分自责。"
+    },
+    {
+      "id": "s45",
+      "en": "We should remind ourselves that we're not the first person to procrastinate, nor the last.",
+      "zh": "我们应提醒自己，我们不是第一个拖延的人，也不会是最后一个。"
+    },
+    {
+      "id": "s46",
+      "en": "Doing this can take the edge off the negative feelings we have about ourselves when we procrastinate.",
+      "zh": "这样做可以减轻我们在拖延时对自己的负面感受。"
+    },
+    {
+      "id": "s47",
+      "en": "This can all make it easier to get back on track.",
+      "zh": "这一切都能让我们更容易重新回到正轨。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Procrastination</span></strong></p><p style="text-align: left;"><strong></strong></p><p style="text-align: center;"><em>A psychologist explains why we put off important tasks and how we can break this habit</em></p><p style="text-align: left;"><strong></strong><br></p><p style="text-align: left;"><strong>A</strong>&nbsp;</p><p style="text-align: left;">Procrastination is the habit of delaying a necessary task, usually by focusing on less urgent, more enjoyable, and easier activities instead. We all do it from time to time. We might be composing a message to a friend who we have to let down, or putting together an important report for college or work; we're doing our best to avoid doing the job at hand, but deep down we know that we should just be getting on with it. Unfortunately, berating ourselves won't stop us procrastinating again. In fact, it's one of the worst things we can do. This matters because, as my research shows, procrastination doesn't just waste time, but is actually linked to other problems, too.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>B</strong>&nbsp;</p><p style="text-align: left;">Contrary to popular belief, procrastination is not due to laziness or poor time management. Scientific studies suggest procrastination is, in fact, caused by poor mood management. This makes sense if we consider that people are more likely to put off starting or completing tasks that they are really not keen to do. If just thinking about the task threatens our sense of self-worth or makes us anxious, we will be more likely to put it off. Research involving brain imaging has found that areas of the brain linked to detection of threats and emotion regulation are actually different in people who chronically procrastinate compared to those who don't procrastinate frequently.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>C</strong>&nbsp;</p><p style="text-align: left;">Tasks that are emotionally loaded or difficult, such as preparing for exams, are prime candidates for procrastination. People with low self-esteem are more likely to procrastinate. Another group of people who tend to procrastinate are perfectionists, who worry their work will be judged harshly by others. We know that if we don't finish that report or complete those home repairs, then what we did can't be evaluated. When we avoid such tasks, we also avoid the negative emotions associated with them. This is rewarding, and it conditions us to use procrastination to repair our mood. If we engage in more enjoyable tasks instead, we get another mood boost. In the long run, however, procrastination isn't an effective way of managing emotions. The 'mood repair' we experience is temporary. Afterwards, people tend to be left with a sense of guilt that not only increases their negative mood, but also reinforces their tendency to procrastinate.<br></p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>D</strong>&nbsp;</p><p style="text-align: left;">So why is this such a problem? When most people think of the costs of procrastination, they think of the toll on productivity. For example, studies have shown that procrastination negatively impacts on student performance. But putting off reading textbooks and writing essays may affect other areas of students' lives. In one study of over 3,000 German students over a six-month period, those who reported procrastinating over their university work were also more likely to engage in study-related misconduct, such as cheating and plagiarism. But the behaviour that procrastination was most closely linked with was using fraudulent excuses to get deadline extensions. Other research shows that employees on average spend almost a quarter of their workday procrastinating, and again this is linked with negative outcomes. In fact, in one US survey of over 22,000 employees, participants who said they regularly procrastinated had less annual income and less employment stability. For every one-point increase on a measure of chronic procrastination, annual income decreased by US$15,000.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>E</strong>&nbsp;</p><p style="text-align: left;">Procrastination also correlates with serious health and well-being problems. A tendency to procrastinate is linked to poor mental health, including higher levels of depression and anxiety. Across numerous studies, I've found people who regularly procrastinate report a greater number of health issues, such as headaches, flu and colds, and digestive issues. They also experience higher levels of stress and poor sleep quality. They are less likely to practise healthy behaviours, such as eating a healthy diet and regularly exercising, and use destructive coping strategies to manage their stress. In one study of over 700 people, I found people prone to procrastination had a 63% greater risk of poor heart health after accounting for other personality traits and demographics.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>F</strong>&nbsp;</p><p style="text-align: left;">Finding better ways of managing our emotions is one route out of the vicious cycle of procrastination. An important first step is to manage our environment and how we view the task. There are a number of evidence-based strategies that can help us fend off distractions that can occupy our minds when we should be focusing on the thing we should be getting on with. For example, reminding ourselves about why the task is important and valuable can increase positive feelings towards it. Forgiving ourselves and feeling compassion when we procrastinate can help break the procrastination cycle. We should admit that we feel bad, but not be overly critical of ourselves. We should remind ourselves that we're not the first person to procrastinate, nor the last. Doing this can take the edge off the negative feelings we have about ourselves when we procrastinate. This can all make it easier to get back on track.<br></p><p style="text-align: left;"><br></p>

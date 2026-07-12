@@ -1437,5 +1437,223 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Conquering Earth’s space junk problem",
+      "zh": "解决地球太空垃圾问题"
+    },
+    {
+      "id": "s2",
+      "en": "Satellites, rocket shards and collision debris are creating major traffic risks in orbit around the planet.",
+      "zh": "卫星、火箭碎片和碰撞产生的碎片正在地球轨道上造成严重的交通风险。"
+    },
+    {
+      "id": "s3",
+      "en": "Researchers are working to reduce these threats",
+      "zh": "研究人员正在努力减少这些威胁。"
+    },
+    {
+      "id": "s4",
+      "en": "Last year, commercial companies, military and civil departments and amateurs sent more than 400 satellites into orbit, over four times the yearly average in the previous decade.",
+      "zh": "去年，商业公司、军方和民间部门以及业余爱好者将超过400颗卫星送入轨道，是前十年年均数的四倍多。"
+    },
+    {
+      "id": "s5",
+      "en": "Numbers could rise even more sharply if leading space companies follow through on plans to deploy hundreds to thousands of large constellations of satellites to space in the next few years.",
+      "zh": "如果领先的航天公司在未来几年落实部署数百至数千颗大型卫星星座的计划，数量可能会更大幅增长。"
+    },
+    {
+      "id": "s6",
+      "en": "All that traffic can lead to disaster.",
+      "zh": "大量的航天活动可能导致灾难。"
+    },
+    {
+      "id": "s7",
+      "en": "Ten years ago, a US commercial Iridium satellite smashed into an inactive Russian communications satellite called Cosmos-2251, creating thousands of new pieces of space shrapnel that now threaten other satellites in low Earth orbit— the zone stretching up to 2,000 kilometres in altitude.",
+      "zh": "十年前，一颗美国商业“铱星”卫星撞上了一颗名为“宇宙2251号”的废弃俄罗斯通信卫星，产生了数千片新的太空弹片，这些碎片现在威胁着近地轨道（高度达2000公里）的其他卫星。"
+    },
+    {
+      "id": "s8",
+      "en": "Altogether, there are roughly 20,000 human-made objects in orbit, from working satellites to small rocket pieces.",
+      "zh": "目前轨道上大约有2万个人工制造物体，包括正在工作的卫星和小型火箭碎片。"
+    },
+    {
+      "id": "s9",
+      "en": "And satellite operators can't steer away from every potential crash, because each move consumes time and fuel that could otherwise be used for the spacecraft's main job.",
+      "zh": "卫星操控者无法躲避所有潜在碰撞，因为每次规避动作都会消耗时间和燃料，而这些本可用于航天器的主要任务。"
+    },
+    {
+      "id": "s10",
+      "en": "Concern about space junk goes back to the beginning of the satellite era, but the number of objects in orbit is rising so rapidly that researchers are investigating new ways of attacking the problem.",
+      "zh": "对太空垃圾的关注可以追溯到卫星时代的开始，但轨道上物体数量快速上升，促使研究人员探索解决这一问题的新方法。"
+    },
+    {
+      "id": "s11",
+      "en": "Several teams are trying to improve methods for assessing what is in orbit, so that satellite operators can work more efficiently in ever-more-crowded space.",
+      "zh": "多个团队正在努力改进评估轨道物体的方法，以便卫星操控者能在日益拥挤的太空中更高效地工作。"
+    },
+    {
+      "id": "s12",
+      "en": "Some researchers are now starting to compile a massive data set that includes the best possible information on where everything is in orbit.",
+      "zh": "一些研究人员开始编制庞大的数据集，收集轨道上所有物体的最佳位置信息。"
+    },
+    {
+      "id": "s13",
+      "en": "Others are developing taxonomies of space debris — working on measuring properties such as the shape and size of an object, so that satellite operators know how much to worry about what's coming their way.",
+      "zh": "还有人正在制定太空碎片分类法，测量物体的形状和大小等属性，以便卫星操控者了解即将接近的物体威胁的程度。"
+    },
+    {
+      "id": "s14",
+      "en": "The alternative, many say, is unthinkable.",
+      "zh": "许多人说，另一种情况是不可想象的。"
+    },
+    {
+      "id": "s15",
+      "en": "Just a few uncontrolled space crashes could generate enough debris to set off a runaway cascade of fragments, rendering near-Earth space unusable.",
+      "zh": "仅少数几个失控的太空碰撞就可能产生足够的碎片，引发连锁反应，使近地空间无法使用。"
+    },
+    {
+      "id": "s16",
+      "en": "'If we go on like this, we will reach a point of no return,' says Carolin Frueh, an astrodynamical researcher at Purdue University in West Lafayette, Indiana.",
+      "zh": "印第安纳州西拉法叶市普渡大学的天体动力学研究员Carolin Frueh说：“如果我们继续这样下去，将会达到无法回头的临界点。”"
+    },
+    {
+      "id": "s17",
+      "en": "Even as our ability to monitor space objects increases, so too does the total number of items in orbit.",
+      "zh": "即使我们监测太空物体的能力增强，轨道上物体的总数也在增加。"
+    },
+    {
+      "id": "s18",
+      "en": "That means companies, governments and other players in space are collaborating in new ways to avoid a shared threat.",
+      "zh": "这意味着公司、政府及其他航天参与者正在以新的方式合作，共同应对这一威胁。"
+    },
+    {
+      "id": "s19",
+      "en": "International groups such as the Inter-Agency Space Debris Coordination Committee have developed guidelines on space sustainability.",
+      "zh": "国际组织如“各机构间太空碎片协调委员会”制定了有关太空可持续发展的指导方针。"
+    },
+    {
+      "id": "s20",
+      "en": "Those include inactivating satellites at the end of their useful life by venting pressurised materials or leftover fuel that might lead to explosions.",
+      "zh": "这些指导方针包括在卫星使用寿命结束时通过排放加压物质或剩余燃料使其失效，以防爆炸发生。"
+    },
+    {
+      "id": "s21",
+      "en": "The intergovernmental groups also advise lowering satellites deep enough into the atmosphere that they will burn up or disintegrate within 25 years.",
+      "zh": "政府间组织还建议将卫星降低到足够低的高度，以便其在25年内燃烧或解体。"
+    },
+    {
+      "id": "s22",
+      "en": "But so far, only about half of all missions have abided by this 25-year goal, says Holger Krag, head of the European Space Agency's space-debris office in Darmstadt, Germany.",
+      "zh": "但迄今为止，只有大约一半的任务遵守了这一25年目标，德国达姆施塔特欧洲航天局太空碎片办公室负责人霍尔格·克拉格说。"
+    },
+    {
+      "id": "s23",
+      "en": "Operators of the planned large constellations of satellites say they will be responsible stewards in their enterprises in space, but Krag worries that problems could increase, despite their best intentions.",
+      "zh": "计划部署大型卫星星座的运营商表示将负责任地管理其太空行动，但克拉格担忧即便他们有良好意图，问题仍可能加剧。"
+    },
+    {
+      "id": "s24",
+      "en": "'What happens to those that fail or go bankrupt?'",
+      "zh": "“那些失败或破产的会怎样？”"
+    },
+    {
+      "id": "s25",
+      "en": "he asks.'",
+      "zh": "他问道。"
+    },
+    {
+      "id": "s26",
+      "en": "They are probably not going to spend money to remove their satellites from space.'",
+      "zh": "他们很可能不会花钱将卫星移出太空。”"
+    },
+    {
+      "id": "s27",
+      "en": "In theory, given the vastness of space, satellite operators should have plenty of room for all these missions to fly safely without ever nearing another object.",
+      "zh": "理论上，考虑到太空的浩瀚，卫星运营者应该有充足空间让所有任务安全飞行而不与其他物体接近。"
+    },
+    {
+      "id": "s28",
+      "en": "So some scientists are tackling the problem of space junk by trying to find out where all the debris is to a high degree of precision.",
+      "zh": "因此，一些科学家通过高精度定位所有碎片来解决太空垃圾问题。"
+    },
+    {
+      "id": "s29",
+      "en": "That would alleviate the need for many of the unnecessary manoeuvres that are carried out to avoid potential collisions. 'lf you knew precisely where everything was, you would almost never have a problem,' says Marlon Sorge, a space-debris specialist at the Aerospace Corporation in El Segundo, California.",
+      "zh": "这将减少为避免潜在碰撞而执行的许多不必要机动。“如果你能准确知道所有物体的位置，几乎就不会有问题，”加利福尼亚州埃尔塞贡多航天公司太空碎片专家马龙·索尔格说。"
+    },
+    {
+      "id": "s30",
+      "en": "The field is called space traffic management, because it's similar to managing traffic on the roads or in the air.",
+      "zh": "这项领域被称为“太空交通管理”，因为它类似于管理道路或空中交通。"
+    },
+    {
+      "id": "s31",
+      "en": "Think about a busy day at an airport, says Moriba Jah, an astrodynamicist at the University of Texas at Austin: planes line up in the sky,landing and taking off close to one another in a carefully choreographed routine.",
+      "zh": "得克萨斯大学奥斯汀分校天体动力学家莫里巴·贾说，想象机场的繁忙时刻：飞机在天空中排队，彼此靠近地起降，流程井然有序。"
+    },
+    {
+      "id": "s32",
+      "en": "Air-traffic controllers know the location of the planes down to one metre in accuracy .",
+      "zh": "空中交通管制员能以1米精度掌握飞机位置。"
+    },
+    {
+      "id": "s33",
+      "en": "The same can't be said for space debris.",
+      "zh": "但太空碎片情况则不然。"
+    },
+    {
+      "id": "s34",
+      "en": "Not all objects in orbit are known, and even those included in databases are not tracked consistently.",
+      "zh": "不是所有轨道物体都被知晓，甚至那些已录入数据库的也未被持续追踪。"
+    },
+    {
+      "id": "s35",
+      "en": "An additional problem is that there is no authoritative catalogue that accurately lists the orbits of all known space debris.",
+      "zh": "另一个问题是，尚无权威目录能准确列出所有已知太空碎片的轨道。"
+    },
+    {
+      "id": "s36",
+      "en": "Jah illustrates this with a web-based database that he has developed.",
+      "zh": "贾通过他开发的一个基于网络的数据库展示了这一点。"
+    },
+    {
+      "id": "s37",
+      "en": "It draws on several sources, such as catalogues maintained by the US and Russian governments, to visualise where objects are in space.",
+      "zh": "该数据库整合了多个信息源，如美俄政府维护的目录，用以可视化空间物体位置。"
+    },
+    {
+      "id": "s38",
+      "en": "When he types in an identifier for a particular space object, the database draws a purple line to designate its orbit.",
+      "zh": "当他输入某个太空物体的识别码时，数据库会画出紫色轨迹线标示其轨道。"
+    },
+    {
+      "id": "s39",
+      "en": "Only this doesn't quite work for a number of objects, such as a Russian rocket body designated in the database as object number 32280.",
+      "zh": "不过，这对某些物体并不适用，比如数据库中编号为32280的俄罗斯火箭残骸。"
+    },
+    {
+      "id": "s40",
+      "en": "When Jah enters that number, the database draws two purple lines: the US and Russian sources contain two completely different orbits for the same object.",
+      "zh": "当贾输入该编号时，数据库绘出两条紫色轨迹线：美俄两方来源显示了同一物体两个完全不同的轨道。"
+    },
+    {
+      "id": "s41",
+      "en": "Jah says that it is almost impossible to tell which is correct, unless a third source of information made it possible to cross-correlate.",
+      "zh": "贾表示，除非有第三方信息源进行交叉验证，否则几乎无法判断哪个轨道数据正确。"
+    },
+    {
+      "id": "s42",
+      "en": "Jah describes himself as a space environmentalist: 'I want to make space a place that is safe to operate, that is free and useful for generations to come.",
+      "zh": "贾自称是太空环保主义者：“我希望让太空成为一个安全可操作、自由且为子孙后代所用的地方。”"
+    },
+    {
+      "id": "s43",
+      "en": "' Until that happens, he argues, the space community will continue devolving into a tragedy in which all spaceflight operators are polluting a common resource.",
+      "zh": "他认为，在这一目标实现之前，太空界将继续陷入悲剧，所有航天运营者都在污染一个共同的资源。”"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">Conquering Earth’s space junk problem</span></strong></h3><p style="text-align: center;"><em>Satellites,&nbsp;rocket&nbsp;shards&nbsp;and&nbsp;collision&nbsp;debris&nbsp;are&nbsp;creating&nbsp;major&nbsp;traffic&nbsp;risks&nbsp;in&nbsp;orbit&nbsp;around&nbsp;the&nbsp;planet.&nbsp;Researchers&nbsp;are&nbsp;working&nbsp;to&nbsp;reduce&nbsp;these&nbsp;threats</em></p><p><br></p><p><strong>A</strong></p><p>Last year, commercial companies, military and civil departments and amateurs sent more than 400 satellites into orbit, over four times the yearly average in the previous decade. Numbers could rise even more sharply if leading space companies follow through on plans to deploy hundreds to thousands of large constellations of satellites to space in the next few years.</p><p>All that traffic can lead to disaster. Ten years ago, a US commercial Iridium satellite smashed into an inactive Russian communications satellite called Cosmos-2251, creating thousands of new pieces of space shrapnel that now threaten other satellites in low Earth orbit— the zone stretching up to 2,000 kilometres in altitude. Altogether, there are roughly 20,000 human-made objects in orbit, from working satellites to small rocket pieces. And satellite operators can't steer away from every potential crash, because each move consumes time and fuel that could otherwise be used for the spacecraft's main job.</p><p><br></p><p><strong>B</strong></p><p></p><p>Concern about space junk goes back to the beginning of the satellite era, but the number of objects in orbit is rising so rapidly that researchers are investigating new ways of attacking the problem. Several teams are trying to improve methods for assessing what is in orbit, so that satellite operators can work more efficiently in ever-more-crowded space. Some researchers are now starting to compile a massive data set that includes the best possible information on where everything is in orbit. Others are developing taxonomies of space debris <span style="text-wrap: wrap;">—&nbsp;</span>working on measuring properties such as the shape and size of an object, so that satellite operators know how much to worry about what's coming their way.&nbsp;</p><p>The alternative, many say, is unthinkable. Just a few uncontrolled space crashes could generate enough debris to set off a runaway cascade of fragments, rendering near-Earth space unusable. 'If we go on like this, we will reach a point of no return,' says Carolin Frueh, an astrodynamical researcher at Purdue University in West Lafayette, Indiana.</p><p><br></p><p></p><p><strong>C</strong></p><p>Even as our ability to monitor space objects increases, so too does the total number of items in orbit. That means companies, governments and other players in space are collaborating in new ways to avoid a shared threat. International groups such as the Inter-Agency Space Debris Coordination Committee have developed guidelines on space sustainability. Those include inactivating satellites at the end of their useful life by venting pressurised materials or leftover fuel that might lead to explosions. The intergovernmental groups also advise lowering satellites deep enough into the atmosphere that they will burn up or disintegrate within 25 years. But so far, only about half of all missions have abided by this 25-year goal, says Holger Krag, head of the European Space Agency's space-debris office in Darmstadt, Germany. Operators of the planned large constellations of satellites say they will be responsible stewards in their enterprises in space, but Krag worries that problems could increase, despite their best intentions. 'What happens to those that fail or go bankrupt?' he asks.' They are probably not going to spend money to remove their satellites from space.'</p><p><br></p><p><strong>D</strong></p><p>In theory, given the vastness of space, satellite operators should have plenty of room for all these missions to fly safely without ever nearing another object. So some scientists are tackling the problem of space junk by trying to find out where all the debris is to a high degree of precision. That would alleviate the need for many of the unnecessary manoeuvres that are carried out to avoid potential collisions. 'lf you knew precisely where everything was, you would almost never have a problem,' says Marlon Sorge, a space-debris specialist at the Aerospace Corporation in El Segundo, California.</p><p><br></p><p><strong>E</strong> </p><p>The field is called space traffic management, because it's similar to managing traffic on the roads or in the air. Think about a busy day at an airport, says Moriba Jah, an astrodynamicist at the University of Texas at Austin: planes line up in the sky,landing and taking off close to one another in a carefully choreographed routine. Air-traffic controllers know the location of the planes down to one metre in accuracy .The same can't be said for space debris. Not all objects in orbit are known, and even those included in databases are not tracked consistently.</p><p><br></p><p><strong>F</strong></p><p>An additional problem is that there is no authoritative catalogue that accurately lists the orbits of all known space debris. Jah illustrates this with a web-based database that he has developed. It draws on several sources, such as catalogues maintained by the US and Russian governments, to visualise where objects are in space. When he types in an identifier for a particular space object, the database draws a purple line to designate its orbit. Only this doesn't quite work for a number of objects, such as a Russian rocket body designated in the database as object number 32280. When Jah enters that number, the database draws two purple lines: the US and Russian sources contain two completely different orbits for the same object. Jah says that it is almost impossible to tell which is correct, unless a third source of information made it possible to cross-correlate. Jah describes himself as a space environmentalist: 'I want to make space a place that is safe to operate, that is free and useful for generations to come. ' Until that happens, he argues, the space community will continue devolving into a tragedy in which all spaceflight operators are polluting a common resource.</p>

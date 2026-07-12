@@ -1107,5 +1107,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Roman shipbuilding and navigation",
+      "zh": "罗马造船与航海"
+    },
+    {
+      "id": "s2",
+      "en": "Shipbuilding today is based on science and ships are built using computers and sophisticated tools.",
+      "zh": "今天的造船基于科学，使用计算机和先进工具建造船只。"
+    },
+    {
+      "id": "s3",
+      "en": "Shipbuilding in ancient Rome, however, was more of an art relying on estimation, inherited techniques and personal experience.",
+      "zh": "然而，古罗马的造船更像是一门艺术，依赖估算、传承的技术和个人经验。"
+    },
+    {
+      "id": "s4",
+      "en": "The Romans were not traditionally sailors but mostly land-based people, who learned to build ships from the people that they conquered, namely the Greeks and the Egyptians.",
+      "zh": "罗马人传统上不是水手，而主要是陆地居民，他们向被征服的希腊人和埃及人学习造船。"
+    },
+    {
+      "id": "s5",
+      "en": "There are a few surviving written documents that give descriptions and representations of ancient Roman ships, including the sails and rigging.",
+      "zh": "现存少数文字资料描述和展示了古罗马的船只，包括帆和索具。"
+    },
+    {
+      "id": "s6",
+      "en": "Excavated vessels also provide some clues about ancient shipbuilding techniques.",
+      "zh": "出土的船只也提供了关于古代造船技术的一些线索。"
+    },
+    {
+      "id": "s7",
+      "en": "Studies of these have taught us that ancient Roman shipbuilders built the outer hull first, then proceeded with the frame and the rest of the ship.",
+      "zh": "研究表明，古罗马造船工先建造外壳，然后再制作骨架和船的其他部分。"
+    },
+    {
+      "id": "s8",
+      "en": "Planks used to build the outer hull were initially sewn together.",
+      "zh": "用于建造外壳的木板最初是缝合在一起的。"
+    },
+    {
+      "id": "s9",
+      "en": "Starting from the 6th century BCE, they were fixed using a method called mortise and tenon, whereby one plank locked into another without the need for stitching.",
+      "zh": "从公元前6世纪起，采用了“榫卯”方法，将一块木板插入另一块木板，无需缝合。"
+    },
+    {
+      "id": "s10",
+      "en": "Then in the first centuries of the current era, Mediterranean shipbuilders shifted to another shipbuilding method, still in use today, which consisted of building the frame first and then proceeding with the hull and the other components of the ship.",
+      "zh": "公元初期，地中海造船工改用另一种造船方法，该方法现今仍在使用，即先建骨架，再建造船壳及其他部件。"
+    },
+    {
+      "id": "s11",
+      "en": "This method was more systematic and dramatically shortened ship construction times.",
+      "zh": "这种方法更加系统，大大缩短了造船时间。"
+    },
+    {
+      "id": "s12",
+      "en": "The ancient Romans built large merchant ships and warships whose size and technology were unequalled until the 16th century CE.",
+      "zh": "古罗马人建造的大型商船和军舰，其规模和技术直到公元16世纪才被超越。"
+    },
+    {
+      "id": "s13",
+      "en": "Warships were built to be lightweight and very speedy.",
+      "zh": "军舰设计轻便且速度极快。"
+    },
+    {
+      "id": "s14",
+      "en": "They had to be able to sail near the coast, which is why they had no ballast or excess load and were built with a long, narrow hull.",
+      "zh": "它们必须能靠近海岸航行，因此没有压舱物或多余负载，船体细长狭窄。"
+    },
+    {
+      "id": "s15",
+      "en": "They did not sink when damaged and often would lie crippled on the sea's surface following naval battles.",
+      "zh": "受损后不会沉没，常常在海面上搁浅残废，参加海战时尤为明显。"
+    },
+    {
+      "id": "s16",
+      "en": "They had a bronze battering ram, which was used to pierce the timber hulls or break the oars of enemy vessels.",
+      "zh": "配备铜制撞角，用于刺穿敌方木质船体或折断桨。"
+    },
+    {
+      "id": "s17",
+      "en": "Warships used both wind (sails) and human power (oarsmen) and were therefore very fast.",
+      "zh": "军舰同时利用风力（帆）和人力（桨手），因此速度很快。"
+    },
+    {
+      "id": "s18",
+      "en": "Eventually, Rome's navy became the largest and most powerful in the Mediterranean, and the Romans had control over what they therefore called Mare Nostrum meaning 'our sea'.",
+      "zh": "最终，罗马海军成为地中海最大最强的海军，罗马人称其为Mare Nostrum，意为“我们的海”。"
+    },
+    {
+      "id": "s19",
+      "en": "There were many kinds of warship.",
+      "zh": "军舰种类多样。"
+    },
+    {
+      "id": "s20",
+      "en": "The 'trireme' was the dominant warship from the 7th to 4th century BCE.",
+      "zh": "三列桨战舰是公元前7至4世纪的主力军舰。"
+    },
+    {
+      "id": "s21",
+      "en": "It had rowers in the top, middle and lower levels, and approximately 50 rowers in each bank.",
+      "zh": "它在上层、中层和下层设有划手，每层约50人。"
+    },
+    {
+      "id": "s22",
+      "en": "The rowers at the bottom had the most uncomfortable position as they were under the other rowers and were exposed to the water entering through the oar-holes.",
+      "zh": "最底层的划手位置最为不舒适，他们处于其他划手下面，还会接触通过浆孔进入的海水。"
+    },
+    {
+      "id": "s23",
+      "en": "It is worth noting that contrary to popular perception, rowers were not slaves but mostly Roman citizens enrolled in the military.",
+      "zh": "值得注意的是，与普遍看法相反，划手不是奴隶，而大多是加入军队的罗马公民。"
+    },
+    {
+      "id": "s24",
+      "en": "The trireme was superseded by larger ships with even more rowers.",
+      "zh": "三列桨舰后来被更大型、更多划手的战舰取代。"
+    },
+    {
+      "id": "s25",
+      "en": "Merchant ships were built to transport lots of cargo over long distances and at a reasonable cost.",
+      "zh": "商船设计用于远距离大量运输货物且成本合理。"
+    },
+    {
+      "id": "s26",
+      "en": "They had a wider hull, double planking and a solid interior for added stability.",
+      "zh": "它们船体更宽，有双层甲板和坚固的内部结构以增加稳定性。"
+    },
+    {
+      "id": "s27",
+      "en": "Unlike warships, their V-shaped hull was deep underwater, meaning that they could not sail too close to the coast.",
+      "zh": "与军舰不同，商船V型船体沉入水中较深，不能太靠近海岸航行。"
+    },
+    {
+      "id": "s28",
+      "en": "They usually had two huge side rudders located off the stern and controlled by a small tiller bar connected to a system of cables.",
+      "zh": "通常装有位于船尾两侧的大舵，由小舵杆和绳索系统操作控制。"
+    },
+    {
+      "id": "s29",
+      "en": "They had from one to three masts with large square sails and a small triangular sail at the bow.",
+      "zh": "配备一到三根桅杆，装有大方帆和船头的小三角帆。"
+    },
+    {
+      "id": "s30",
+      "en": "Just like warships, merchant ships used oarsmen, but coordinating the hundreds of rowers in both types of ship was not an easy task.",
+      "zh": "与军舰一样，商船也配有桨手，但协调数百名划手不是一件容易的事。"
+    },
+    {
+      "id": "s31",
+      "en": "In order to assist them, music would be played on an instrument, and oars would then keep time with this.",
+      "zh": "为帮助协调，会上演奏乐器，划手们就根据节奏划桨。"
+    },
+    {
+      "id": "s32",
+      "en": "The cargo on merchant ships included raw materials (e.g. iron bars, copper, marble and granite), and agricultural products (e.g. grain from Egypt's Nile valley).",
+      "zh": "商船运载的货物包括原材料（如铁条、铜、大理石和花岗岩）和农产品（如来自埃及尼罗河谷的谷物）。"
+    },
+    {
+      "id": "s33",
+      "en": "During the Empire, Rome was a huge city by ancient standards of about one million inhabitants.",
+      "zh": "帝国时期，罗马按古代标准看是座巨大城市，人口约一百万。"
+    },
+    {
+      "id": "s34",
+      "en": "Goods from all over the world would come to the city through the port of Pozzuoli situated west of the bay of Naples in Italy and through the gigantic port of Ostia situated at the mouth of the Tiber River.",
+      "zh": "世界各地的货物通过意大利那不勒斯湾西侧的波佐利港和位于台伯河口的巨大奥斯蒂亚港运抵罗马。"
+    },
+    {
+      "id": "s35",
+      "en": "Large merchant ships would approach the destination port and, just like today, be intercepted by a number of towboats that would drag them to the quay.",
+      "zh": "大型商船驶近目的港时，如同今天，会被多艘拖船拦截并拖靠码头。"
+    },
+    {
+      "id": "s36",
+      "en": "The time of travel along the many sailing routes could vary widely.",
+      "zh": "沿许多航线的航行时间差异很大。"
+    },
+    {
+      "id": "s37",
+      "en": "Navigation in ancient Rome did not rely on sophisticated instruments such as compasses but on experience, local knowledge and observation of natural phenomena.",
+      "zh": "古罗马航海不依赖高级仪器如指南针，而靠经验、当地知识和对自然现象的观察。"
+    },
+    {
+      "id": "s38",
+      "en": "In conditions of good visibility, seamen in the Mediterranean often had the mainland or islands in sight, which greatly facilitated navigation.",
+      "zh": "在能见度良好时，地中海水手常能看到陆地或岛屿，极大便利了航行。"
+    },
+    {
+      "id": "s39",
+      "en": "They sailed by noting their position relative to a succession of recognisable landmarks.",
+      "zh": "他们通过观察与一系列可识别地标的相对位置来航行。"
+    },
+    {
+      "id": "s40",
+      "en": "When weather conditions were not good or where land was no longer visible, Roman mariners estimated directions from the pole star or, with less accuracy, from the Sun at noon.",
+      "zh": "天气不好或无法看到陆地时，罗马水手会根据北极星或（准确度较低的）中午太阳估算方向。"
+    },
+    {
+      "id": "s41",
+      "en": "They also estimated directions relative to the wind and swell.",
+      "zh": "他们还根据风向和海浪估算方向。"
+    },
+    {
+      "id": "s42",
+      "en": "Overall, shipping in ancient Roman times resembled shipping today with large vessels regularly crossing the seas and bringing supplies from their Empire.",
+      "zh": "总体来说，古罗马时代的航运类似今天，大型船只定期横跨海洋，从帝国各地运送物资。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Roman shipbuilding and navigation</strong></span></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;">Shipbuilding today is based on science and ships are built using computers and sophisticated tools. Shipbuilding in ancient Rome, however, was more of an art relying on estimation, inherited techniques and personal experience. The Romans were not traditionally sailors but mostly land-based people, who learned to build ships from the people that they conquered, namely the Greeks and the Egyptians.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">There are a few surviving written documents that give descriptions and representations of ancient Roman ships, including the sails and rigging. Excavated vessels also provide some clues about ancient shipbuilding techniques. Studies of these have taught us that ancient Roman shipbuilders built the outer hull first, then proceeded with the frame and the rest of the ship. Planks used to build the outer hull were initially sewn together. Starting from the 6th century BCE, they were fixed using a method called mortise and tenon, whereby one plank locked into another without the need for stitching. Then in the first centuries of the current era, Mediterranean shipbuilders shifted to another shipbuilding method, still in use today, which consisted of building the frame first and then proceeding with the hull and the other components of the ship. This method was more systematic and dramatically shortened ship construction times. The ancient Romans built large merchant ships and warships whose size and technology were unequalled until the 16th century CE.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Warships were built to be lightweight and very speedy. They had to be able to sail near the coast, which is why they had no ballast or excess load and were built with a long, narrow hull. They did not sink when damaged and often would lie crippled on the sea's surface following naval battles. They had a bronze battering ram, which was used to pierce the timber hulls or break the oars of enemy vessels. Warships used both wind (sails) and human power (oarsmen) and were therefore very fast. Eventually, Rome's navy became the largest and most powerful in the Mediterranean, and the Romans had control over what they therefore called <i>Mare Nostrum</i> meaning 'our sea'.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">There were many kinds of warship. The 'trireme' was the dominant warship from the 7th to 4th century BCE. It had rowers in the top, middle and lower levels, and approximately 50 rowers in each bank. The rowers at the bottom had the most uncomfortable position as they were under the other rowers and were exposed to the water entering through the oar-holes. It is worth noting that contrary to popular perception, rowers were not slaves but mostly Roman citizens enrolled in the military. The trireme was superseded by larger ships with even more rowers.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Merchant ships were built to transport lots of cargo over long distances and at a reasonable cost. They had a wider hull, double planking and a solid interior for added stability. Unlike warships, their V-shaped hull was deep underwater, meaning that they could not sail too close to the coast. They usually had two huge side rudders located off the stern and controlled by a small tiller bar connected to a system of cables. They had from one to three masts with large square sails and a small triangular sail at the bow. Just like warships, merchant ships used oarsmen, but coordinating the hundreds of rowers in both types of ship was not an easy task. In order to assist them, music would be played on an instrument, and oars would then keep time with this.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The cargo on merchant ships included raw materials (e.g. iron bars, copper, marble and granite), and agricultural products (e.g. grain from Egypt's Nile valley). During the Empire, Rome was a huge city by ancient standards of about one million inhabitants. Goods from all over the world would come to the city through the port of Pozzuoli situated west of the bay of Naples in Italy and through the gigantic port of Ostia situated at the mouth of the Tiber River. Large merchant ships would approach the destination port and, just like today, be intercepted by a number of towboats that would drag them to the quay.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The time of travel along the many sailing routes could vary widely. Navigation in ancient Rome did not rely on sophisticated instruments such as compasses but on experience, local knowledge and observation of natural phenomena. In conditions of good visibility, seamen in the Mediterranean often had the mainland or islands in sight, which greatly facilitated navigation. They sailed by noting their position relative to a succession of recognisable landmarks. When weather conditions were not good or where land was no longer visible, Roman mariners estimated directions from the pole star or, with less accuracy, from the Sun at noon. They also estimated directions relative to the wind and swell. Overall, shipping in ancient Roman times resembled shipping today with large vessels regularly crossing the seas and bringing supplies from their Empire.<strong>&nbsp;</strong></p>

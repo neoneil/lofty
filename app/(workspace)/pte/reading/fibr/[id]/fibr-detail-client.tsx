@@ -339,7 +339,7 @@ function FibrDetailClient({ question, attempts }: Props) {
 
       <div className="flex items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <Tag tone="theme">FIB-R #{questionNumber}</Tag>
+          <Tag tone="theme">FIB-R {questionNumber}</Tag>
 
           <Tag tone="yellow">{question.blanks_json.length} Blanks</Tag>
 

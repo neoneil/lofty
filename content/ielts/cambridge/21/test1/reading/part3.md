@@ -2287,5 +2287,233 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Book review: The World of Sugar by Ulbe Bosma",
+      "zh": "书评：《糖的世界》作者乌尔贝·博斯马"
+    },
+    {
+      "id": "s2",
+      "en": "Ulbe Bosma's The World of Sugar is a genuinely global history.",
+      "zh": "乌尔贝·博斯马的《糖的世界》是一部真正的全球史。"
+    },
+    {
+      "id": "s3",
+      "en": "Bosma discusses all the sugar-growing places of the world, beginning with Cuba and Java, the largest exporters of the early 20th century.",
+      "zh": "博斯马讨论了世界上所有种植糖的地方，首先是20世纪初最大的出口国古巴和爪哇。"
+    },
+    {
+      "id": "s4",
+      "en": "But this is a history not just of cane sugar but also of beet sugar, an equally important form of traded sugar over the last hundred years.",
+      "zh": "但这不仅是甘蔗糖的历史，也是甜菜糖的历史，后者在过去一百年中同样是重要的贸易糖种。"
+    },
+    {
+      "id": "s5",
+      "en": "Beet sugar is grown mainly in Europe and the United States.",
+      "zh": "甜菜糖主要种植在欧洲和美国。"
+    },
+    {
+      "id": "s6",
+      "en": "It has also been massively subsidised and sold at artificially low prices on world markets, threatening the livelihood of producers of cane sugar.",
+      "zh": "它还得到了大量补贴，并在全球市场以人为压低的价格销售，威胁到了甘蔗糖生产者的生计。"
+    },
+    {
+      "id": "s7",
+      "en": "Bosma's discussion of the sugar market in Britain gives a sense of the book's range.",
+      "zh": "博斯马对英国糖市场的讨论让人感受到这本书的广泛视角。"
+    },
+    {
+      "id": "s8",
+      "en": "The sweet-toothed British first bought cane sugar from their own slavery-dependent colonial plantations.",
+      "zh": "贪甜的英国人最初从他们依赖奴隶制的殖民地庄园购买甘蔗糖。"
+    },
+    {
+      "id": "s9",
+      "en": "Following the abolition of slavery in the British Empire, cane sugar was imported to Britain from places which retained the practice, such as Cuba and Brazil.",
+      "zh": "英国帝国废除奴隶制后，甘蔗糖从保持奴隶制的地区进口到英国，比如古巴和巴西。"
+    },
+    {
+      "id": "s10",
+      "en": "Towards the end of the 19th century, the British started to import beet sugar from continental Europe.",
+      "zh": "19世纪末，英国开始从欧洲大陆进口甜菜糖。"
+    },
+    {
+      "id": "s11",
+      "en": "Only in the 20th century was there a move to develop a national beet sugar industry.",
+      "zh": "直到20世纪，才开始发展国家级的甜菜糖产业。"
+    },
+    {
+      "id": "s12",
+      "en": "The book provides a global labour history, investigating the wide range of labour regimes associated with growing sugar.",
+      "zh": "这本书提供了一部全球劳动史，探讨了与种植糖相关的各种劳动制度。"
+    },
+    {
+      "id": "s13",
+      "en": "Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men.",
+      "zh": "与普遍看法相反，甘蔗糖生产并非仅限于富豪拥有的大型专用庄园。"
+    },
+    {
+      "id": "s14",
+      "en": "For example, in Java, a huge exporter of sugar in the early 20th century, sugar cane was grown together with rice in an extraordinarily labour-intensive way by small farmers.",
+      "zh": "例如，爪哇是20世纪初巨大的糖出口地，小农户以极其劳动密集的方式将甘蔗和水稻一起种植。"
+    },
+    {
+      "id": "s15",
+      "en": "The World of Sugar is also a story of similarity and continuity in sugar cultivation.",
+      "zh": "《糖的世界》也是糖种植中相似性和延续性的故事。"
+    },
+    {
+      "id": "s16",
+      "en": "For example, imported labour has been used for much large-scale production.",
+      "zh": "例如，大规模生产中大量使用了外来劳工。"
+    },
+    {
+      "id": "s17",
+      "en": "German beet fields employed Polish workers; Mexicans and many others, including Sicilians, were vital to US sugar production.",
+      "zh": "德国甜菜田雇用了波兰工人；墨西哥人以及包括西西里人在内的许多人对美国糖业生产至关重要。"
+    },
+    {
+      "id": "s18",
+      "en": "Cane cutting, Bosma shows, remains a poorly paid and brutal business to this day in many places in the world.",
+      "zh": "博斯马指出，割甘蔗至今在世界许多地方依然是薪酬低廉且残酷的工作。"
+    },
+    {
+      "id": "s19",
+      "en": "But as well as this, the book is about the continuity of the use of traditional methods on small farms.",
+      "zh": "此外，这本书还讲述了小农场上传统方法使用的持续性。"
+    },
+    {
+      "id": "s20",
+      "en": "In the mid 20th-century, this type of sugar production dominated in South Asia and Latin America.",
+      "zh": "20世纪中期，这种糖生产方式在南亚和拉丁美洲占主导地位。"
+    },
+    {
+      "id": "s21",
+      "en": "This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods.",
+      "zh": "这也是资本家和糖业家族的历史，以及一些长时间保持影响力的企业史。"
+    },
+    {
+      "id": "s22",
+      "en": "Great firms and great interests have had profound influence on the policies of states.",
+      "zh": "大型公司和重大利益对国家政策具有深远影响。"
+    },
+    {
+      "id": "s23",
+      "en": "In many places – not just the British Caribbean but Cuba and the Philippines too – a powerful sugar bourgeoisie played a major role in politics and their interests were consequently protected by trade barriers and subsidies.",
+      "zh": "在许多地方——不仅是英属加勒比，还有古巴和菲律宾——强大的糖业资产阶级在政治中发挥了重要作用，他们的利益因此受到贸易壁垒和补贴的保护。"
+    },
+    {
+      "id": "s24",
+      "en": "In the battle for control of the industry, it was inevitably the poor countries which came off worse.",
+      "zh": "在工业控制的争夺中，贫穷国家不可避免地处于不利地位。"
+    },
+    {
+      "id": "s25",
+      "en": "All this is explored by Bosma with wonderful subtlety and control.",
+      "zh": "博斯马以极其微妙和掌控的方式探讨了所有这些。"
+    },
+    {
+      "id": "s26",
+      "en": "But sugar production was never just a matter of agriculture.",
+      "zh": "但糖的生产从来不仅是农业问题。"
+    },
+    {
+      "id": "s27",
+      "en": "It also involved the extraction, close to the place of harvest, of sucrose from the sugar plant, a process which required machinery powered by humans, animals, wind or steam.",
+      "zh": "它还涉及在收获地附近提取蔗糖的过程，这一过程需要人力、畜力、风力或蒸汽驱动的机械。"
+    },
+    {
+      "id": "s28",
+      "en": "Further processes involved boiling (from the 19th century, this often involved vacuum systems) and the separation of sugar from other materials in a process known as refinement.",
+      "zh": "后续工序包括煮沸（19世纪起常用真空系统）以及将糖与其他物质分离的精炼过程。"
+    },
+    {
+      "id": "s29",
+      "en": "From very early on, sugar production was an energy-intensive industrial process, mostly taking place in the countryside and in refineries in centres of consumption, both small and large.",
+      "zh": "很早以前，糖生产就是一种能源密集型工业过程，主要发生在乡村及大小消费中心的精炼厂。"
+    },
+    {
+      "id": "s30",
+      "en": "The growth of the industry entailed a very rapid diffusion of ideas and techniques from one country to another.",
+      "zh": "该产业的发展促使理念和技术在各国间迅速传播。"
+    },
+    {
+      "id": "s31",
+      "en": "Cuba, for example, developed an extraordinarily dense system of railways to transport workers and cane, as well as steam-powered sugar factories.",
+      "zh": "例如古巴发展了异常密集的铁路系统，用于运输工人和甘蔗，还有蒸汽动力糖厂。"
+    },
+    {
+      "id": "s32",
+      "en": "Particular varieties of cane sugar and beet sugar spread very rapidly across the world, in accordance with local needs and demands.",
+      "zh": "特定品种的甘蔗糖和甜菜糖根据当地需求迅速传播到全球。"
+    },
+    {
+      "id": "s33",
+      "en": "Where once only tiny quantities of sugar could be produced, now new techniques, varieties, fertilisers, irrigation systems and much more have turned gleaming white sugar into a ubiquitous chemical.",
+      "zh": "过去只能生产极少量糖的地方，如今新技术、品种、肥料、灌溉系统等将晶莹洁白的糖变成了无处不在的化学品。"
+    },
+    {
+      "id": "s34",
+      "en": "Over the same time, there has been a massive increase in consumption.",
+      "zh": "与此同时，糖的消费量大幅增加。"
+    },
+    {
+      "id": "s35",
+      "en": "Once regarded as a luxury, sugar came to be promoted as a valuable source of energy.",
+      "zh": "糖曾被视为奢侈品，后来被宣传为宝贵的能量来源。"
+    },
+    {
+      "id": "s36",
+      "en": "But as the consumption of sugar has increased, so has the harm it does, whether to people's teeth or weight.",
+      "zh": "但随着糖消费增加，它造成的伤害也在加剧，无论是对牙齿还是体重。"
+    },
+    {
+      "id": "s37",
+      "en": "In the face of appalling obstruction from the sugar industry to attempts to reduce consumption, some countries have been forced to tax sugar in order to bring that about.",
+      "zh": "面对糖业对减少消费尝试的严重阻挠，一些国家被迫对糖征税以实现这一目标。"
+    },
+    {
+      "id": "s38",
+      "en": "The sugar industry has a history of attacking its critics and, when it comes to obesity, of trying to blame fats, and lack of exercise and self-control.",
+      "zh": "糖业历史上常攻击批评者，面对肥胖问题时试图归咎于脂肪、不运动和缺乏自控。"
+    },
+    {
+      "id": "s39",
+      "en": "And the recent past has seen worrying new developments in mass sweetening.",
+      "zh": "最近几年，大规模甜味剂的发展令人担忧。"
+    },
+    {
+      "id": "s40",
+      "en": "High-fructose corn syrup made from maize using an enzymatic process invented in Japan in the 1960s has a similar number of calories to table sugar but is far cheaper to produce.",
+      "zh": "用1960年代日本发明的酶法工艺从玉米制成的高果糖浆，热量与蔗糖相似，但生产成本低得多。"
+    },
+    {
+      "id": "s41",
+      "en": "It is now widely consumed, having been adopted in the making of soft drinks and a large number of processed foods, and is regarded as a leading cause of obesity.",
+      "zh": "它现被广泛消费，应用于软饮料和大量加工食品，被视为肥胖的主要原因之一。"
+    },
+    {
+      "id": "s42",
+      "en": "This is a wonderfully rich book, a model of global history, the history of production and the history of capitalism.",
+      "zh": "这是一部内容极其丰富的书，是全球历史、生产史和资本主义史的典范。"
+    },
+    {
+      "id": "s43",
+      "en": "Bosma avoids outbursts of emotion, celebratory or critical, even if they might have made his analysis of the multiple tragedies involving sugar all the more powerful.",
+      "zh": "博斯马避免情绪化的爆发，无论是庆祝还是批评，尽管那样或许会使他对涉及糖的多重悲剧的分析更具冲击力。"
+    },
+    {
+      "id": "s44",
+      "en": "He shows that we could always have done without sugar and that today we have many alternative sources of sweetness.",
+      "zh": "他表明我们其实完全可以没有糖，现在我们也有许多替代的甜味来源。"
+    },
+    {
+      "id": "s45",
+      "en": "Yet many of the poorest people in the world still depend on it to make a living.",
+      "zh": "然而，世界上许多最贫困的人仍依赖糖谋生。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Book review: </strong><i><strong>The World of Sugar</strong></i><strong> by Ulbe Bosma</strong></span></div><p><br>Ulbe Bosma's <i>The World of Sugar</i> is a genuinely global history. Bosma discusses all the sugar-growing places of the world, beginning with Cuba and Java, the largest exporters of the early 20th century. But this is a history not just of cane sugar but also of beet sugar, an equally important form of traded sugar over the last hundred years. Beet sugar is grown mainly in Europe and the United States. It has also been massively subsidised and sold at artificially low prices on world markets, threatening the livelihood of producers of cane sugar.&nbsp;<br><br>Bosma's discussion of the sugar market in Britain gives a sense of the book's range. The sweet-toothed British first bought cane sugar from their own slavery-dependent colonial plantations. Following the abolition of slavery in the British Empire, cane sugar was imported to Britain from places which retained the practice, such as Cuba and Brazil. Towards the end of the 19th century, the British started to import beet sugar from continental Europe. Only in the 20th century was there a move to develop a national beet sugar industry.<br><br>The book provides a global labour history, investigating the wide range of labour regimes associated with growing sugar. Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men. For example, in Java, a huge exporter of sugar in the early 20th century, sugar cane was grown together with rice in an extraordinarily labour-intensive way by small farmers.&nbsp;<br><br><i>The World of Sugar</i> is also a story of similarity and continuity in sugar cultivation. For example, imported labour has been used for much large-scale production. German beet fields employed Polish workers; Mexicans and many others, including Sicilians, were vital to US sugar production. Cane cutting, Bosma shows, remains a poorly paid and brutal business to this day in many places in the world. But as well as this, the book is about the continuity of the use of traditional methods on small farms. In the mid 20th-century, this type of sugar production dominated in South Asia and Latin America.&nbsp;<br><br>This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods. Great firms and great interests have had profound influence on the policies of states. In many places – not just the British Caribbean but Cuba and the Philippines too – a powerful sugar bourgeoisie played a major role in politics and their interests were consequently protected by trade barriers and subsidies. In the battle for control of the industry, it was inevitably the poor countries which came off worse. All this is explored by Bosma with wonderful subtlety and control.&nbsp;<br><br>But sugar production was never just a matter of agriculture. It also involved the extraction, close to the place of harvest, of sucrose from the sugar plant, a process which required machinery powered by humans, animals, wind or steam. Further processes involved boiling (from the 19th century, this often involved vacuum systems) and the separation of sugar from other materials in a process known as refinement. From very early on, sugar production was an energy-intensive industrial process, mostly taking place in the countryside and in refineries in centres of consumption, both small and large. The growth of the industry entailed a very rapid diffusion of ideas and techniques from one country to another. Cuba, for example, developed an extraordinarily dense system of railways to transport workers and cane, as well as steam-powered sugar factories. Particular varieties of cane sugar and beet sugar spread very rapidly across the world, in accordance with local needs and demands.&nbsp;<br><br>Where once only tiny quantities of sugar could be produced, now new techniques, varieties, fertilisers, irrigation systems and much more have turned gleaming white sugar into a ubiquitous chemical. Over the same time, there has been a massive increase in consumption. Once regarded as a luxury, sugar came to be promoted as a valuable source of energy. But as the consumption of sugar has increased, so has the harm it does, whether to people's teeth or weight. In the face of appalling obstruction from the sugar industry to attempts to reduce consumption, some countries have been forced to tax sugar in order to bring that about. The sugar industry has a history of attacking its critics and, when it comes to obesity, of trying to blame fats, and lack of exercise and self-control. And the recent past has seen worrying new developments in mass sweetening. High-fructose corn syrup made from maize using an enzymatic process invented in Japan in the 1960s has a similar number of calories to table sugar but is far cheaper to produce. It is now widely consumed, having been adopted in the making of soft drinks and a large number of processed foods, and is regarded as a leading cause of obesity.&nbsp;<br><br>This is a wonderfully rich book, a model of global history, the history of production and the history of capitalism. Bosma avoids outbursts of emotion, celebratory or critical, even if they might have made his analysis of the multiple tragedies involving sugar all the more powerful. He shows that we could always have done without sugar and that today we have many alternative sources of sweetness. Yet many of the poorest people in the world still depend on it to make a living.</p>

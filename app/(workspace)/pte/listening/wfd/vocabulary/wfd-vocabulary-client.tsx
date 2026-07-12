@@ -101,7 +101,7 @@ export default function WfdVocabularyClient({ vocabulary, stats }: Props) {
             <table className="w-full border-collapse">
               <thead className="bg-[var(--bg-soft)]">
                 <tr className="text-left text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-soft)]">
-                  <th className="px-5 py-4">#</th>
+                  <th className="px-5 py-4">No.</th>
                   <th className="px-5 py-4">Word</th>
                   <th className="px-5 py-4">Frequency</th>
                   <th className="px-5 py-4">Category</th>
@@ -127,7 +127,7 @@ export default function WfdVocabularyClient({ vocabulary, stats }: Props) {
               <article key={item.id} className="p-4">
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <Badge variant="secondary">#{startIndex + index + 1}</Badge>
+                    <Badge variant="secondary">{startIndex + index + 1}</Badge>
                     <h2 className="text-lg font-semibold text-[var(--text)]">
                       <DictionaryText text={item.word} />
                     </h2>

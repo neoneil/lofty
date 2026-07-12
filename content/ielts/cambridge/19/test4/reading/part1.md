@@ -1107,5 +1107,188 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The impact of climate change on butterflies in Britain",
+      "zh": "气候变化对英国蝴蝶的影响"
+    },
+    {
+      "id": "s2",
+      "en": "According to conservationists, populations of around two thirds of butterfly species have declined in Britain over the past 40 years.",
+      "zh": "保护主义者表示，在过去40年里，英国大约三分之二的蝴蝶物种数量有所减少。"
+    },
+    {
+      "id": "s3",
+      "en": "If this trend continues, it might have unpredictable knock-on effects for other species in the ecosystem.",
+      "zh": "如果这种趋势继续下去，可能会对生态系统中的其他物种产生不可预测的连锁反应。"
+    },
+    {
+      "id": "s4",
+      "en": "Butterfly eggs develop into caterpillars and these insects, which are the second stage in a new butterfly's lifecycle, consume vast quantities of plant material, and in turn act as prey for birds as well as bats and other small mammals.",
+      "zh": "蝴蝶卵孵化成毛毛虫，毛毛虫是蝴蝶生命周期的第二阶段，它们会消耗大量植物，进而成为鸟类、蝙蝠及其他小型哺乳动物的猎物。"
+    },
+    {
+      "id": "s5",
+      "en": "Only by arming themselves with an understanding of why butterfly numbers are down can conservationists hope to halt or reverse the decline.",
+      "zh": "只有了解蝴蝶数量减少的原因，保护者才能有希望阻止或扭转这一下降趋势。"
+    },
+    {
+      "id": "s6",
+      "en": "Butterflies prefer outdoor conditions to be 'just right', which means neither too hot nor too cold.",
+      "zh": "蝴蝶偏爱“恰到好处”的户外环境，也就是说既不过热也不过冷。"
+    },
+    {
+      "id": "s7",
+      "en": "Under the conditions of climate change, the temperature at any given time in summer is generally getting warmer, leaving butterflies with the challenge of how to deal with this.",
+      "zh": "在气候变化的背景下，夏季任意时刻的温度总体上升，这给蝴蝶带来了如何适应这一变化的挑战。"
+    },
+    {
+      "id": "s8",
+      "en": "One of the main ways in which species are ensuring conditions suit them is by changing the time of year at which they are active and reproduce.",
+      "zh": "物种为了确保适合自身的环境，主要方法之一是改变它们活动和繁殖的时间。"
+    },
+    {
+      "id": "s9",
+      "en": "Scientists refer to the timing of such lifecycle events as 'phenology', so when an animal or plant starts to do something earlier in the year than it usually does, it is said to be 'advancing its phenology'.",
+      "zh": "科学家把这种生命周期事件的时间称为“物候”，当动植物比往年更早开始某种活动时，称其为“提前了物候”。"
+    },
+    {
+      "id": "s10",
+      "en": "These advances have been observed already in a wide range of butterflies - indeed, most species are advancing their phenology to some extent.",
+      "zh": "这种提前现象已经在许多蝴蝶种类中被观察到——事实上，大多数物种在某种程度上都提前了物候。"
+    },
+    {
+      "id": "s11",
+      "en": "In Britain, as the average spring temperature has increased by roughly 0.5℃ over the past 20 years, species have advanced by between three days and a week on average, to keep in line with cooler temperatures.",
+      "zh": "在英国，过去20年里平均春季气温上升了大约0.5℃，各物种的物候期平均提前了三天到一周，以适应较凉的温度。"
+    },
+    {
+      "id": "s12",
+      "en": "Is this a sign that butterflies are well equipped to cope with climate change, and readily adjust to new temperatures?",
+      "zh": "这是否表明蝴蝶能够很好地应对气候变化，并且能轻松适应新的温度？"
+    },
+    {
+      "id": "s13",
+      "en": "Or are these populations under stress, being dragged along unwillingly by unnaturally fast changes?",
+      "zh": "还是说这些种群正处于压力之下，被非自然快速的变化所拖累，不得不被动应对？"
+    },
+    {
+      "id": "s14",
+      "en": "The answer is still unknown, but a new study is seeking to answer these questions.",
+      "zh": "答案尚不明确，但一项新研究正致力于解决这些问题。"
+    },
+    {
+      "id": "s15",
+      "en": "First, the researchers pulled together data from millions of records that had been submitted by butterfly enthusiasts - people who spend their free time observing the activities of different species.",
+      "zh": "首先，研究人员收集了由蝴蝶爱好者提交的数百万条记录——这些人利用闲暇时间观察不同物种的活动。"
+    },
+    {
+      "id": "s16",
+      "en": "This provided information on 130 species of butterflies in Great Britain every year for a 20-year period.",
+      "zh": "这些数据涵盖了英国130个蝴蝶物种，连续20年每年都有记录。"
+    },
+    {
+      "id": "s17",
+      "en": "They then estimated the abundance and distribution of each species across this time, along with how far north in the country they had moved.",
+      "zh": "之后，他们估算了每个物种在这段时间内的数量和分布，以及它们向北迁移的距离。"
+    },
+    {
+      "id": "s18",
+      "en": "The data also, crucially, allowed researchers to estimate subtle changes in what time of the year each species was changing into an adult butterfly.",
+      "zh": "这些数据还至关重要，因为它们使研究人员能够估算每个物种成蝶的时间细微变化。"
+    },
+    {
+      "id": "s19",
+      "en": "Analysing the trends in each variable, the researchers discovered that species with more flexible lifecycles were more likely to be able to benefit from an earlier emergence driven by climate change.",
+      "zh": "分析各变量趋势后，研究人员发现生命周期较为灵活的物种更可能从气候变化推动的提前出世中受益。"
+    },
+    {
+      "id": "s20",
+      "en": "Some species are able to go from caterpillar to butterfly twice or more per year, so that the individual butterflies you see flying in the spring are the grandchildren or great-grandchildren of the individuals seen a year previously.",
+      "zh": "一些物种一年中能经历两次甚至更多次毛毛虫到蝴蝶的转变，所以春季飞舞的蝴蝶可能是前一年蝴蝶的孙辈或曾孙辈。"
+    },
+    {
+      "id": "s21",
+      "en": "Among these species, researchers observed that those which have been advancing their phenology the most over the 20-year study period also had the most positive trends in abundance, distribution and northwards extent.",
+      "zh": "在这些物种中，研究人员观察到，过去20年物候期提前最多的物种，在数量、分布和向北扩展方面也表现出最积极的趋势。"
+    },
+    {
+      "id": "s22",
+      "en": "For these species, such as Britain's tiniest butterfly, the dainty Small Blue, whose colonies are up to a hundred strong, some develop into butterflies early in spring, allowing their summer generations to complete another reproductive cycle by autumn so that more population growth occurs.",
+      "zh": "对于这些物种，如英国体型最小的蝴蝶——娇小的蓝灰蝶，其殖民地最多可达一百只，有的在春季早期发育成蝶，使得夏季世代能在秋季前完成另一次繁殖周期，从而促进种群增长。"
+    },
+    {
+      "id": "s23",
+      "en": "Other species, however, are less flexible and restricted to a single reproductive cycle per year.",
+      "zh": "然而，其他物种则较为不灵活，一年只允许进行一次繁殖周期。"
+    },
+    {
+      "id": "s24",
+      "en": "For these species, there was no evidence of any benefit to emerging earlier.",
+      "zh": "对于这些物种，没有证据显示提前出世带来任何益处。"
+    },
+    {
+      "id": "s25",
+      "en": "Indeed, worryingly, it was found that the species in this group that specialise in very specific habitat types, often related to the caterpillar's preferred diet, actually tended to be most at harm from advancing phenology.",
+      "zh": "事实上，令人担忧的是，该组中特别依赖某些特定生境、通常与毛毛虫喜好的食物相关的物种，反而最容易因物候提前而受到伤害。"
+    },
+    {
+      "id": "s26",
+      "en": "The beautiful High Brown Fritillary, often described as Britain's most endangered butterfly, is in this group.",
+      "zh": "美丽的高棕纹蝶，经常被称为英国最濒危的蝴蝶，就属于这一类。"
+    },
+    {
+      "id": "s27",
+      "en": "It is found only in coppiced woodland and limestone pavement habitats.",
+      "zh": "它仅栖息于林分更新的树林和石灰岩石板生境中。"
+    },
+    {
+      "id": "s28",
+      "en": "It is also a single-generation butterfly that has advanced its phenology.",
+      "zh": "它也是一种只有一代的蝴蝶，且其物候期有所提前。"
+    },
+    {
+      "id": "s29",
+      "en": "This suggests that climate change, while undoubtedly not the sole cause, might have played a part in the downfall of this species.",
+      "zh": "这表明气候变化虽然绝非唯一原因，但可能在该物种的衰退中起到了作用。"
+    },
+    {
+      "id": "s30",
+      "en": "All is not lost, however.",
+      "zh": "然而，情况尚未绝望。"
+    },
+    {
+      "id": "s31",
+      "en": "Many of Britain's single-generation species show the capacity, in continental Europe, to add a second generation in years that are sufficiently warm.",
+      "zh": "英国许多单代物种在欧洲大陆的温暖年份表现出增加第二代的能力。"
+    },
+    {
+      "id": "s32",
+      "en": "Therefore, as the climate continues to warm, species like the Silver-studded Blue might be able to switch to multiple generations in the UK as well, and so begin to extract benefits from the additional warmth, potentially leading to population increases.",
+      "zh": "因此，随着气候持续变暖，像银斑灰蝶这样的物种可能也能在英国增加世代数，从而开始从额外的温暖中获益，可能促进种群增长。"
+    },
+    {
+      "id": "s33",
+      "en": "More immediately, conservationists can arm themselves with all this knowledge to spot the warning signs of species that may be at risk.",
+      "zh": "更现实的是，保护者可以利用所有这些知识识别处于危险中的物种的预警信号。"
+    },
+    {
+      "id": "s34",
+      "en": "The White Admiral of southern England, a much sought-after butterfly, experienced a significant increase in numbers from the 1920s but has shown a considerable decline in the past 20 years.",
+      "zh": "南英格兰的白帝蝶，一种备受喜爱的蝴蝶，自1920年代起数量显著增加，但在过去20年里大幅减少。"
+    },
+    {
+      "id": "s35",
+      "en": "This may be because the caterpillar exists solely on a diet of a plant called honeysuckle.",
+      "zh": "这可能是因为其毛毛虫仅以一种称为金银花的植物为食。"
+    },
+    {
+      "id": "s36",
+      "en": "But it is also likely to be due to climate change.",
+      "zh": "但这也可能是由于气候变化所致。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The impact of climate change on butterflies in Britain</span></strong></p><p>According to conservationists, populations of around two thirds of butterfly species have declined in Britain over the past 40 years. If this trend continues, it might have unpredictable knock-on effects for other species in the ecosystem. Butterfly eggs develop into caterpillars and these insects, which are the second stage in a new butterfly's lifecycle, consume vast quantities of plant material, and in turn act as prey for birds as well as bats and other small mammals. Only by arming themselves with an understanding of why butterfly numbers are down can conservationists hope to halt or reverse the decline.</p><p><br></p><p></p><p>Butterflies prefer outdoor conditions to be 'just right', which means neither too hot nor too cold. Under the conditions of climate change, the temperature at any given time in summer is generally getting warmer, leaving butterflies with the challenge of how to deal with this. One of the main ways in which species are ensuring conditions suit them is by changing the time of year at which they are active and reproduce. Scientists refer to the timing of such lifecycle events as 'phenology', so when an animal or plant starts to do something earlier in the year than it usually does, it is said to be 'advancing its phenology'.</p><p><br></p><p></p><p>These advances have been observed already in a wide range of butterflies - indeed, most species are advancing their phenology to some extent. In Britain, as the average spring temperature has increased by roughly 0.5℃ over the past 20 years, species have advanced by between three days and a week on average, to keep in line with cooler temperatures. Is this a sign that butterflies are well equipped to cope with climate change, and readily adjust to new temperatures? Or are these populations under stress, being dragged along unwillingly by unnaturally fast changes? The answer is still unknown, but a new study is seeking to answer these questions.</p><p><br></p><p></p><p>First, the researchers pulled together data from millions of records that had been submitted by butterfly enthusiasts - people who spend their free time observing the activities of different species. This provided information on 130 species of butterflies in Great Britain every year for a 20-year period. They then estimated the abundance and distribution of each species across this time, along with how far north in the country they had moved. The data also, crucially, allowed researchers to estimate subtle changes in what time of the year each species was changing into an adult butterfly.</p><p><br></p><p></p><p>Analysing the trends in each variable, the researchers discovered that species with more flexible lifecycles were more likely to be able to benefit from an earlier emergence driven by climate change. Some species are able to go from caterpillar to butterfly twice or more per year, so that the individual butterflies you see flying in the spring are the grandchildren or great-grandchildren of the individuals seen a year previously.</p><p><br></p><p></p><p>Among these species, researchers observed that those which have been advancing their phenology the most over the 20-year study period also had the most positive trends in abundance, distribution and northwards extent. For these species, such as Britain's tiniest butterfly, the dainty Small Blue, whose colonies are up to a hundred strong, some develop into butterflies early in spring, allowing their summer generations to complete another reproductive cycle by autumn so that more population growth occurs.</p><p><br></p><p></p><p>Other species, however, are less flexible and restricted to a single reproductive cycle per year. For these species, there was no evidence of any benefit to emerging earlier. Indeed, worryingly, it was found that the species in this group that specialise in very specific habitat types, often related to the caterpillar's preferred diet, actually tended to be most at harm from advancing phenology. The beautiful High Brown Fritillary, often described as Britain's most endangered butterfly, is in this group. It is found only in coppiced woodland and limestone pavement habitats. It is also a single-generation butterfly that has advanced its phenology. This suggests that climate change, while undoubtedly not the sole cause, might have played a part in the downfall of this species.</p><p><br></p><p></p><p>All is not lost, however. Many of Britain's single-generation species show the capacity, in continental Europe, to add a second generation in years that are sufficiently warm. Therefore, as the climate continues to warm, species like the Silver-studded Blue might be able to switch to multiple generations in the UK as well, and so begin to extract benefits from the additional warmth, potentially leading to population increases.</p><p><br></p><p></p><p>More immediately, conservationists can arm themselves with all this knowledge to spot the warning signs of species that may be at risk. The White Admiral of southern England, a much sought-after butterfly, experienced a significant increase in numbers from the 1920s but has shown a considerable decline in the past 20 years. This may be because the caterpillar exists solely on a diet of a plant called honeysuckle. But it is also likely to be due to climate change.</p><p></p><p></p><p><br></p>

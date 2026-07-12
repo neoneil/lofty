@@ -32,6 +32,7 @@ type LessonFrontmatter = {
   section_sort_order?: number;
   module_raw_data_json?: string;
   section_raw_data_json?: string;
+  passage_translation_json?: string;
   questions_json?: string;
   answers_json?: string;
   assets_json?: string;
@@ -82,6 +83,9 @@ export async function getIeltsMarkdownBookPracticeData(bookNumber: number, testN
         raw_data: parseJsonRecord(parsed.module_raw_data_json),
       };
 
+      const sectionRawData = parseJsonRecord(parsed.section_raw_data_json);
+      const passageTranslation = parseJsonArray(parsed.passage_translation_json);
+
       sections.push({
         id: parsed.section_id || `markdown-${bookNumber}-${activeTest.test_number}-${moduleType}-${parsed.section_number}`,
         module_id: testModule.id,
@@ -91,7 +95,7 @@ export async function getIeltsMarkdownBookPracticeData(bookNumber: number, testN
         passage_title: parsed.passage_title ?? null,
         passage_text: parsed.content.trim() || null,
         sort_order: parsed.section_sort_order ?? sectionNumberFromFile(file),
-        raw_data: parseJsonRecord(parsed.section_raw_data_json),
+        raw_data: passageTranslation.length > 0 ? { ...sectionRawData, passage_translation: passageTranslation } : sectionRawData,
       });
 
       questions.push(...parseJsonArray<IeltsQuestion>(parsed.questions_json));

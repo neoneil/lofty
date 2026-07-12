@@ -2,7 +2,7 @@
 
 import { memo, type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, Languages, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
 
 import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
 import { BrandMark } from "@/components/site/brand-mark";
@@ -35,6 +35,11 @@ type SelectionToolbarState = {
 
 type SelectionFormat = "bold" | "underline" | "yellow" | "red" | "blue";
 type TimeNotice = "five-minutes" | "time-up" | null;
+type PassageTranslationItem = {
+  id: string;
+  en: string;
+  zh: string;
+};
 
 const READING_DURATION_SECONDS = 60 * 60;
 const FIVE_MINUTES_SECONDS = 5 * 60;
@@ -55,6 +60,8 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   const [splitPercent, setSplitPercent] = useState(50);
   const [activePartIndex, setActivePartIndex] = useState(0);
   const [notesOpen, setNotesOpen] = useState(false);
+  const [translationOpen, setTranslationOpen] = useState(false);
+  const [activeTranslationId, setActiveTranslationId] = useState<string | null>(null);
   const [selectionToolbar, setSelectionToolbar] = useState<SelectionToolbarState | null>(null);
   const [canUndoFormat, setCanUndoFormat] = useState(false);
   const [navActive, setNavActive] = useState(false);
@@ -70,6 +77,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
     return { section, displayNumber: index + 1, questions, numbers };
   }), [data.questions, sections]);
   const activePart = useMemo(() => parts[activePartIndex] ?? parts[0] ?? null, [activePartIndex, parts]);
+  const activeTranslations = useMemo(() => activePart ? getPassageTranslations(activePart.section) : [], [activePart]);
   const officialAnswerByNumber = useMemo(() => {
     const readingQuestions = parts.flatMap((part) => part.questions);
     const questionById = new Map(readingQuestions.map((question) => [question.id, question]));
@@ -106,7 +114,10 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
     passagePanelRef.current?.scrollTo({ top: 0 });
     questionPanelRef.current?.scrollTo({ top: 0 });
     selectionRangeRef.current = null;
-    const frame = window.requestAnimationFrame(() => setSelectionToolbar(null));
+    const frame = window.requestAnimationFrame(() => {
+      setActiveTranslationId(null);
+      setSelectionToolbar(null);
+    });
     return () => window.cancelAnimationFrame(frame);
   }, [activePart?.section.id]);
 
@@ -194,6 +205,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
       hideSelectionToolbar();
       return;
     }
+    updateActiveTranslationFromSelection(selection, container);
     const rect = range.getBoundingClientRect();
     if (rect.width === 0 && rect.height === 0) {
       hideSelectionToolbar();
@@ -249,6 +261,17 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
     setNotesOpen(false);
   }
 
+  function updateActiveTranslationFromSelection(selection: Selection, container: Node) {
+    if (!translationOpen || activeTranslations.length === 0 || !passagePanelRef.current?.contains(container)) return;
+    const selectedText = normalizeTranslationText(selection.toString());
+    if (selectedText.length < 6) return;
+    const match = activeTranslations.find((item) => {
+      const english = normalizeTranslationText(item.en);
+      return english.includes(selectedText) || selectedText.includes(english);
+    });
+    if (match) setActiveTranslationId(match.id);
+  }
+
   function handleSubmit() {
     const result = buildIeltsSubmitResult("reading", answers, officialAnswerByNumber);
     setSubmitDialogMode(result.unanswered.length > 0 ? "confirm" : "result");
@@ -283,6 +306,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
           </div>
           <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
             <span data-notes-toggle><ExamIconButton label="记笔记" onClick={() => setNotesOpen(true)}><ClipboardPenLine size={18} /></ExamIconButton></span>
+            <ExamIconButton label="中文翻译" active={translationOpen} onClick={() => setTranslationOpen((value) => !value)}><Languages size={18} /></ExamIconButton>
             <ExamIconButton label="全屏模式" onClick={() => void toggleFullscreen()}><Expand size={18} /></ExamIconButton>
             <Button type="button" variant="secondary" size="sm" onClick={() => setReviewOpen(true)} className="gap-2 rounded-full"><ListChecks size={17} />Review</Button>
             <div className={cn("flex h-9 w-32 shrink-0 items-center justify-center gap-1.5 rounded-full border px-3 text-sm text-[var(--text-soft)] sm:w-36", isOvertime ? "border-red-400/45 bg-red-500/10" : "border-[var(--border)] bg-[var(--bg-soft)]")}>
@@ -324,6 +348,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
       </footer>
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
+      <TranslationDrawer open={translationOpen} title={`Part ${activePart?.displayNumber ?? 1} 中文翻译`} translations={activeTranslations} activeId={activeTranslationId} onClose={() => setTranslationOpen(false)} />
       {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} onClose={() => setReviewOpen(false)} />}
       {selectionToolbar && <SelectionFormatToolbar top={selectionToolbar.top} left={selectionToolbar.left} canUndo={canUndoFormat} onFormat={applySelectionFormat} onUndo={undoLastSelectionFormat} />}
       {timeNotice === "five-minutes" && <TimeNoticePopup type="warning" seconds={remainingSeconds} onClose={() => setTimeNotice(null)} />}
@@ -587,6 +612,44 @@ function NotesDrawer({ open, onClose }: { open: boolean; onClose: () => void }) 
         <button type="button" onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text-soft)] transition hover:text-[var(--primary)]"><X size={17} /></button>
       </div>
       <textarea className="min-h-0 flex-1 resize-none bg-[var(--bg)] p-4 text-sm leading-7 text-[var(--text)] outline-none" placeholder="记录关键词、定位句、错题原因..." />
+    </aside>
+  );
+}
+
+function TranslationDrawer({ open, title, translations, activeId, onClose }: { open: boolean; title: string; translations: PassageTranslationItem[]; activeId: string | null; onClose: () => void }) {
+  const activeRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open || !activeId) return;
+    activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [activeId, open]);
+
+  return (
+    <aside className={cn("fixed bottom-[5.6rem] right-0 top-16 z-40 flex w-[min(50vw,46rem)] min-w-[min(100vw,24rem)] flex-col border-l border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)] transition-transform duration-300 ease-out", open ? "translate-x-0" : "pointer-events-none translate-x-full")}>
+      <div className="flex items-center justify-between border-b border-[var(--border)] p-4">
+        <div>
+          <div className="flex items-center gap-2 text-base font-semibold text-[var(--text)]"><Languages size={18} className="text-[var(--primary)]" />{title}</div>
+          <p className="mt-1 text-xs text-[var(--text-soft)]">选中左侧英文句子后，对应中文会自动高亮。</p>
+        </div>
+        <button type="button" onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text-soft)] transition hover:text-[var(--primary)]"><X size={17} /></button>
+      </div>
+      <div className="min-h-0 flex-1 overflow-y-auto bg-[var(--bg)] p-4">
+        {translations.length > 0 ? (
+          <div className="space-y-3">
+            {translations.map((item, index) => {
+              const active = item.id === activeId;
+              return (
+                <div key={item.id} ref={active ? activeRef : undefined} className={cn("rounded-[var(--radius-md)] border px-4 py-3 transition-all duration-300", active ? "border-[var(--primary)] bg-[var(--primary-soft)] shadow-[var(--shadow-sm)]" : "border-transparent bg-[var(--card)]")}>
+                  <div className="mb-1 text-xs font-semibold text-[var(--text-faint)]">Sentence {index + 1}</div>
+                  <p className="text-sm leading-7 text-[var(--text)]">{item.zh}</p>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--card)] p-5 text-sm leading-7 text-[var(--text-soft)]">这篇文章还没有写入中文翻译。翻译写入对应 Markdown 后，这里会自动显示。</div>
+        )}
+      </div>
     </aside>
   );
 }
@@ -882,6 +945,32 @@ function stringValue(record: Record<string, unknown>, key: string) {
   if (typeof value === "string") return value;
   if (typeof value === "number") return `${value}`;
   return "";
+}
+
+function getPassageTranslations(section: IeltsSection): PassageTranslationItem[] {
+  const raw = section.raw_data.passage_translation;
+  if (!Array.isArray(raw)) return [];
+  return raw.map((item, index) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) return null;
+    const record = item as Record<string, unknown>;
+    const en = stringValue(record, "en");
+    const zh = stringValue(record, "zh");
+    if (!en || !zh) return null;
+    return {
+      id: stringValue(record, "id") || `sentence-${index + 1}`,
+      en,
+      zh,
+    };
+  }).filter((item): item is PassageTranslationItem => Boolean(item));
+}
+
+function normalizeTranslationText(value: string) {
+  return decodeHtmlEntities(value)
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
 }
 
 function optionText(option: Record<string, unknown>) {

@@ -1189,5 +1189,288 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Return of the elm: reintroducing the beloved tree to Britain",
+      "zh": "榆树的回归：将这棵受人喜爱的树重新引入英国"
+    },
+    {
+      "id": "s2",
+      "en": "Mark Rowe investigates attempts to reintroduce elms to Britain",
+      "zh": "马克·罗斯调查了将榆树重新引入英国的尝试"
+    },
+    {
+      "id": "s3",
+      "en": "Around 25 million elms, accounting for 90% of all elm trees in the UK, died during the 1960s and '70s of Dutch elm disease.",
+      "zh": "大约有2500万棵榆树，占英国所有榆树的90%，在20世纪60年代和70年代死于荷兰榆树病。"
+    },
+    {
+      "id": "s4",
+      "en": "In the aftermath, the elm, once so dominant in the British landscape, was largely forgotten.",
+      "zh": "之后，曾经在英国景观中占主导地位的榆树在很大程度上被人们遗忘了。"
+    },
+    {
+      "id": "s5",
+      "en": "However, there's now hope the elm may be reintroduced to the countryside of central and southern England.",
+      "zh": "然而，现在有人希望榆树能重新被引入英格兰中部和南部的乡村地区。"
+    },
+    {
+      "id": "s6",
+      "en": "Any reintroduction will start from a very low base.",
+      "zh": "任何重新引入的工作都将从非常低的起点开始。"
+    },
+    {
+      "id": "s7",
+      "en": "'The impact of the disease is difficult to picture if you hadn't seen what was there before,' says Matt Elliot of the Woodland Trust.",
+      "zh": "“如果你没见过病发前的景象，很难想象这种疾病的影响，”林地信托机构的马特·艾略特说。"
+    },
+    {
+      "id": "s8",
+      "en": "'You look at old photographs from the 1960s and it's only then that you realise the impact [elms had] ...",
+      "zh": "“当你看1960年代的老照片时，才会真正意识到榆树的影响……”"
+    },
+    {
+      "id": "s9",
+      "en": "They were significant, large trees … then they were gone.'",
+      "zh": "它们是重要且巨大的树……然后就消失了。”"
+    },
+    {
+      "id": "s10",
+      "en": "The disease is caused by a fungus that blocks the elms' vascular (water, nutrient and food transport) system, causing branches to wilt and die.",
+      "zh": "这种疾病由一种真菌引起，真菌堵塞了榆树的输导系统（水分、养分和食物运输系统），导致树枝枯萎死亡。"
+    },
+    {
+      "id": "s11",
+      "en": "A first epidemic, which occurred in the 1920s, gradually died down, but in the '70s a second epidemic was triggered by shipments of elm from Canada.",
+      "zh": "第一次疫情发生在1920年代，逐渐平息，但70年代由加拿大进口的榆木引发了第二次疫情。"
+    },
+    {
+      "id": "s12",
+      "en": "The wood came in the form of logs destined for boat building and its intact bark was perfect for the elm bark beetles that spread the deadly fungus.",
+      "zh": "这些木材以原木形式运来，原本用于造船，其完整的树皮为传播致命真菌的榆树树皮甲虫提供了理想的栖息地。"
+    },
+    {
+      "id": "s13",
+      "en": "This time, the beetles carried a much more virulent strain that destroyed the vast majority of British elms.",
+      "zh": "这次，甲虫携带了一种更具毒性的菌株，毁灭了绝大多数英国的榆树。"
+    },
+    {
+      "id": "s14",
+      "en": "Today, elms still exist in the southern English countryside but mostly only in low hedgerows between fields.",
+      "zh": "如今，榆树仍存在于英格兰南部的乡村，但大多只出现在田间矮篱笆丛中。"
+    },
+    {
+      "id": "s15",
+      "en": "'We have millions of small elms in hedgerows but they get targeted by the beetle as soon as they reach a certain size,' says Karen Russell, co-author of the report 'Where we are with elm'.",
+      "zh": "“我们在篱笆丛中有数百万棵小榆树，但它们一长到一定大小就会被甲虫盯上，”报告《榆树现状》的共同作者凯伦·拉塞尔说。"
+    },
+    {
+      "id": "s16",
+      "en": "Once the trunk of the elm reaches 10–15 centimetres or so in diameter, it becomes a perfect size for beetles to lay eggs and for the fungus to take hold.",
+      "zh": "一旦榆树的树干直径达到大约10至15厘米，就成为甲虫产卵和真菌感染的理想尺寸。"
+    },
+    {
+      "id": "s17",
+      "en": "Yet mature specimens have been identified, in counties such as Cambridgeshire, that are hundreds of years old, and have mysteriously escaped the epidemic.",
+      "zh": "然而，在剑桥郡等地发现了一些成熟的榆树样本，它们已有数百年历史，并神秘地逃过了这场疫情。"
+    },
+    {
+      "id": "s18",
+      "en": "The key, Russell says, is to identify and study those trees that have survived and work out why they stood tall when millions of others succumbed.",
+      "zh": "拉塞尔说，关键是识别并研究那些幸存的榆树，弄清楚为何它们能在数百万棵树倒下时屹立不倒。"
+    },
+    {
+      "id": "s19",
+      "en": "Nevertheless, opportunities are limited as the number of these mature survivors is relatively small.",
+      "zh": "不过，机会有限，因为这些成熟幸存树的数量相对较少。"
+    },
+    {
+      "id": "s20",
+      "en": "'What are the reasons for their survival?'",
+      "zh": "“它们幸存的原因是什么？”"
+    },
+    {
+      "id": "s21",
+      "en": "asks Russell.",
+      "zh": "拉塞尔问道。"
+    },
+    {
+      "id": "s22",
+      "en": "'Avoidance, tolerance, resistance?",
+      "zh": "“是规避、耐受，还是抗性？"
+    },
+    {
+      "id": "s23",
+      "en": "We don't know where the balance lies between the three.",
+      "zh": "我们不知道这三者之间的平衡点在哪里。"
+    },
+    {
+      "id": "s24",
+      "en": "I don't see how it can be entirely down to luck.'",
+      "zh": "我认为这不可能完全归因于运气。”"
+    },
+    {
+      "id": "s25",
+      "en": "For centuries, elm ran a close second to oak as the hardwood tree of choice in Britain and was in many instances the most prominent tree in the landscape.",
+      "zh": "几个世纪以来，榆树在英国作为硬木树种的选择仅次于橡树，在许多情况下是景观中最显著的树木。"
+    },
+    {
+      "id": "s26",
+      "en": "Not only was elm common in European forests, it became a key component of birch, ash and hazel woodlands.",
+      "zh": "榆树不仅在欧洲森林中常见，还成为桦树、梣树和榛树林地的重要组成部分。"
+    },
+    {
+      "id": "s27",
+      "en": "The use of elm is thought to go back to the Bronze Age, when it was widely used for tools.",
+      "zh": "据认为，榆树的使用可以追溯到青铜时代，当时它被广泛用于制造工具。"
+    },
+    {
+      "id": "s28",
+      "en": "Elm was also the preferred material for shields and early swords.",
+      "zh": "榆木也是制作盾牌和早期剑的首选材料。"
+    },
+    {
+      "id": "s29",
+      "en": "In the 18th century, it was planted more widely and its wood was used for items such as storage crates and flooring.",
+      "zh": "18世纪，榆树被更广泛地种植，其木材用于制造储物箱和地板等物品。"
+    },
+    {
+      "id": "s30",
+      "en": "It was also suitable for items that experienced high levels of impact and was used to build the keel of the 19th-century sailing ship Cutty Sark as well as mining equipment.",
+      "zh": "它也适用于承受高冲击的物品，并被用来建造19世纪帆船“卡蒂萨克号”的龙骨以及矿山设备。"
+    },
+    {
+      "id": "s31",
+      "en": "Given how ingrained elm is in British culture, it's unsurprising the tree has many advocates.",
+      "zh": "鉴于榆树在英国文化中的根深蒂固，不足为奇的是它有许多支持者。"
+    },
+    {
+      "id": "s32",
+      "en": "Amongst them is Peter Bourne of the National Elm Collection in Brighton.",
+      "zh": "其中包括布莱顿国家榆树收藏的彼得·伯恩。"
+    },
+    {
+      "id": "s33",
+      "en": "'I saw Dutch elm disease unfold as a small boy,' he says.",
+      "zh": "他说：“我小时候就见证了荷兰榆树病的爆发。”"
+    },
+    {
+      "id": "s34",
+      "en": "'The elm seemed to be part of rural England, but I remember watching trees just lose their leaves and that really stayed with me.'",
+      "zh": "“榆树似乎是英格兰乡村的一部分，我记得看到树木突然落叶的情景，这让我印象深刻。”"
+    },
+    {
+      "id": "s35",
+      "en": "Today, the city of Brighton's elms total about 17,000.",
+      "zh": "如今，布莱顿市内的榆树总数约为1.7万棵。"
+    },
+    {
+      "id": "s36",
+      "en": "Local factors appear to have contributed to their survival.",
+      "zh": "当地因素似乎有助于它们的存活。"
+    },
+    {
+      "id": "s37",
+      "en": "Strong winds from the sea make it difficult for the determined elm bark beetle to attack this coastal city's elm population.",
+      "zh": "来自海洋的强风使得坚韧的榆树树皮甲虫难以袭击这座沿海城市的榆树群。"
+    },
+    {
+      "id": "s38",
+      "en": "However, the situation is precarious.",
+      "zh": "然而，局势非常不稳定。"
+    },
+    {
+      "id": "s39",
+      "en": "'The beetles can just march in if we're not careful, as the threat is right on our doorstep,' says Bourne.",
+      "zh": "伯恩说：“如果我们不小心，甲虫就能轻易入侵，因为威胁就在我们家门口。”"
+    },
+    {
+      "id": "s40",
+      "en": "Any prospect of the elm returning relies heavily on trees being either resistant to, or tolerant of, the disease.",
+      "zh": "榆树能否重新出现，很大程度上取决于树木对这种疾病的抗性或耐受性。"
+    },
+    {
+      "id": "s41",
+      "en": "This means a widespread reintroduction would involve existing or new hybrid strains derived from resistant, generally non-native elm species.",
+      "zh": "这意味着广泛的重新引入将涉及现有或新的杂交品种，这些品种源自抗病性强的、通常是非本地的榆树种。"
+    },
+    {
+      "id": "s42",
+      "en": "A new generation of seedlings have been bred and tested to see if they can withstand the fungus by cutting a small slit on the bark and injecting a tiny amount of the pathogen.",
+      "zh": "新一代的苗木已经被培育和测试，通过在树皮上切开一个小口并注入少量病原体，以观察它们是否能抵抗真菌。"
+    },
+    {
+      "id": "s43",
+      "en": "'The effects are very quick,' says Russell.",
+      "zh": "拉塞尔说：“效果非常快。”"
+    },
+    {
+      "id": "s44",
+      "en": "'You return in four to six weeks and trees that are resistant show no symptoms, whereas those that are susceptible show leaf loss and may even have died completely.'",
+      "zh": "“四到六周后返回，抗病的树木没有症状，而易感树木会出现落叶，甚至可能完全死亡。”"
+    },
+    {
+      "id": "s45",
+      "en": "All of this raises questions of social acceptance, acknowledges Russell.",
+      "zh": "拉塞尔承认，这一切都引发了社会接受度的问题。"
+    },
+    {
+      "id": "s46",
+      "en": "'If we're putting elm back into the landscape, a small element of it is not native – are we bothered about that?'",
+      "zh": "“如果我们将榆树重新引入景观，有一小部分不是本地品种——我们对此在意吗？”"
+    },
+    {
+      "id": "s47",
+      "en": "For her, the environmental case for reintroducing elm is strong.",
+      "zh": "对她来说，重新引入榆树的环境理由是充分的。"
+    },
+    {
+      "id": "s48",
+      "en": "'They will host wildlife, which is a good thing.'",
+      "zh": "“它们将为野生动物提供栖息地，这是件好事。”"
+    },
+    {
+      "id": "s49",
+      "en": "Others are more wary.",
+      "zh": "其他人则更为谨慎。"
+    },
+    {
+      "id": "s50",
+      "en": "'On the face of it, it seems like a good idea,' says Elliot.",
+      "zh": "艾略特说：“表面上看，这似乎是个好主意。”"
+    },
+    {
+      "id": "s51",
+      "en": "The problem, he suggests, is that, 'You're replacing a native species with a horticultural analogue*.",
+      "zh": "他认为，问题在于：“你用一种园艺上的类似物取代了本地物种。"
+    },
+    {
+      "id": "s52",
+      "en": "You're effectively cloning.'",
+      "zh": "你实际上是在克隆。”"
+    },
+    {
+      "id": "s53",
+      "en": "There's also the risk of introducing new diseases.",
+      "zh": "还有引入新疾病的风险。"
+    },
+    {
+      "id": "s54",
+      "en": "Rather than plant new elms, the Woodland Trust emphasises providing space to those elms that have survived independently.",
+      "zh": "林地信托机构强调，不是种植新的榆树，而是给那些独立幸存的榆树提供空间。"
+    },
+    {
+      "id": "s55",
+      "en": "'Sometimes the best thing you can do is just give nature time to recover ... over time, you might get resistance,' says Elliot.",
+      "zh": "艾略特说：“有时你能做的最好的事就是给自然时间去恢复……随着时间推移，可能会出现抗性。”"
+    },
+    {
+      "id": "s56",
+      "en": "*horticultural analogue: a cultivated plant species that is genetically similar to an existing species",
+      "zh": "*园艺类似物：一种在遗传上与现有物种相似的栽培植物品种"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Return of the elm: reintroducing the beloved tree to Britain</span></strong></p><p style="text-align: center;"><em>Mark Rowe investigates attempts to reintroduce elms to Britain</em></p><p><strong>A.&nbsp;</strong></p><p>Around 25 million elms, accounting for 90% of all elm trees in the UK, died during the 1960s and '70s of Dutch elm disease. In the aftermath, the elm, once so dominant in the British landscape, was largely forgotten. However, there's now hope the elm may be reintroduced to the countryside of central and southern England. Any reintroduction will start from a very low base. 'The impact of the disease is difficult to picture if you hadn't seen what was there before,' says Matt Elliot of the Woodland Trust. 'You look at old photographs from the 1960s and it's only then that you realise the impact [elms had] ... They were significant, large trees … then they were gone.'</p><p><br></p><p><strong>B.&nbsp;</strong></p><p>The disease is caused by a fungus that blocks the elms' vascular (water, nutrient and food transport) system, causing branches to wilt and die. A first epidemic, which occurred in the 1920s, gradually died down, but in the '70s a second epidemic was triggered by shipments of elm from Canada. The wood came in the form of logs destined for boat building and its intact bark was perfect for the elm bark beetles that spread the deadly fungus. This time, the beetles carried a much more virulent strain that destroyed the vast majority of British elms.</p><p><br></p><p><strong>C.&nbsp;</strong></p><p>Today, elms still exist in the southern English countryside but mostly only in low hedgerows between fields. 'We have millions of small elms in hedgerows but they get targeted by the beetle as soon as they reach a certain size,' says Karen Russell, co-author of the report 'Where we are with elm'. Once the trunk of the elm reaches 10–15 centimetres or so in diameter, it becomes a perfect size for beetles to lay eggs and for the fungus to take hold. Yet mature specimens have been identified, in counties such as Cambridgeshire, that are hundreds of years old, and have mysteriously escaped the epidemic.</p><p>The key, Russell says, is to identify and study those trees that have survived and work out why they stood tall when millions of others succumbed. Nevertheless, opportunities are limited as the number of these mature survivors is relatively small. 'What are the reasons for their survival?' asks Russell. 'Avoidance, tolerance, resistance? We don't know where the balance lies between the three. I don't see how it can be entirely down to luck.'</p><p><br></p><p><strong>D.&nbsp;</strong></p><p>For centuries, elm ran a close second to oak as the hardwood tree of choice in Britain and was in many instances the most prominent tree in the landscape. Not only was elm common in European forests, it became a key component of birch, ash and hazel woodlands. The use of elm is thought to go back to the Bronze Age, when it was widely used for tools. Elm was also the preferred material for shields and early swords. In the 18th century, it was planted more widely and its wood was used for items such as storage crates and flooring. It was also suitable for items that experienced high levels of impact and was used to build the keel of the 19th-century sailing ship Cutty Sark as well as mining equipment.</p><p><br></p><p><strong>E.&nbsp;</strong></p><p>Given how ingrained elm is in British culture, it's unsurprising the tree has many advocates. Amongst them is Peter Bourne of the National Elm Collection in Brighton. 'I saw Dutch elm disease unfold as a small boy,' he says. 'The elm seemed to be part of rural England, but I remember watching trees just lose their leaves and that really stayed with me.' Today, the city of Brighton's elms total about 17,000. Local factors appear to have contributed to their survival. Strong winds from the sea make it difficult for the determined elm bark beetle to attack this coastal city's elm population. However, the situation is precarious. 'The beetles can just march in if we're not careful, as the threat is right on our doorstep,' says Bourne.</p><p><br></p><p><strong>F.&nbsp;</strong></p><p>Any prospect of the elm returning relies heavily on trees being either resistant to, or tolerant of, the disease. This means a widespread reintroduction would involve existing or new hybrid strains derived from resistant, generally non-native elm species. A new generation of seedlings have been bred and tested to see if they can withstand the fungus by cutting a small slit on the bark and injecting a tiny amount of the pathogen. 'The effects are very quick,' says Russell. 'You return in four to six weeks and trees that are resistant show no symptoms, whereas those that are susceptible show leaf loss and may even have died completely.'</p><p><br></p><p><strong>G.&nbsp;</strong></p><p>All of this raises questions of social acceptance, acknowledges Russell. 'If we're putting elm back into the landscape, a small element of it is not native – are we bothered about that?' For her, the environmental case for reintroducing elm is strong. 'They will host wildlife, which is a good thing.' Others are more wary. 'On the face of it, it seems like a good idea,' says Elliot. The problem, he suggests, is that, 'You're replacing a native species with a horticultural analogue*. You're effectively cloning.' There's also the risk of introducing new diseases. Rather than plant new elms, the Woodland Trust emphasises providing space to those elms that have survived independently. 'Sometimes the best thing you can do is just give nature time to recover ... over time, you might get resistance,' says Elliot.</p><p><br></p><p><em>*horticultural analogue: a cultivated plant species that is genetically similar to an existing species</em></p><p><br></p>

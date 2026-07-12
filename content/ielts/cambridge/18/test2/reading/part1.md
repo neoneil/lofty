@@ -1143,5 +1143,178 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Stonehenge",
+      "zh": "巨石阵"
+    },
+    {
+      "id": "s2",
+      "en": "For centuries, historians and archaeologists have puzzled over the many mysteries of Stonehenge, a prehistoric monument that took an estimated 1,500 years to erect.",
+      "zh": "几个世纪以来，历史学家和考古学家一直在困惑于巨石阵的许多谜团，这是一座史前遗迹，估计花费了约1500年时间才建成。"
+    },
+    {
+      "id": "s3",
+      "en": "Located on Salisbury Plain in southern England, it is comprised of roughly 100 massive upright stones placed in a circular layout.",
+      "zh": "它位于英格兰南部的索尔兹伯里平原，由大约100块巨大的竖立石头组成，呈圆形排列。"
+    },
+    {
+      "id": "s4",
+      "en": "Archaeologists believe England's most iconic prehistoric ruin was built in several stages, with the earliest constructed 5,000 or more years ago.",
+      "zh": "考古学家认为，这个英格兰最具代表性的史前遗址是在几个阶段建造的，最早的建造可追溯到5000多年前。"
+    },
+    {
+      "id": "s5",
+      "en": "First, Neolithic* Britons used primitive tools, which may have been fashioned out of deer antlers, to dig a massive circular ditch and bank, or henge.",
+      "zh": "首先，新石器时代的英国人使用了原始工具，这些工具可能由鹿角制成，用来挖掘一个巨大的环形壕沟和堤坝，也称为henge。"
+    },
+    {
+      "id": "s6",
+      "en": "Deep pits dating back to that era and located within the circle may have once held a ring of timber posts, according to some scholars.",
+      "zh": "根据一些学者的说法，位于该圆圈内部、可以追溯到那个时代的深坑，可能曾经竖立着一圈木桩。"
+    },
+    {
+      "id": "s7",
+      "en": "Several hundred years later, it is thought, Stonehenge's builders hoisted an estimated 80 bluestones, 43 of which remain today, into standing positions and placed them in either a horseshoe or circular formation.",
+      "zh": "据推测，几百年后，巨石阵的建造者把大约80块青石（其中43块至今仍然存在）竖立起来，并将它们排列成马蹄形或圆形。"
+    },
+    {
+      "id": "s8",
+      "en": "These stones have been traced all the way to the Preseli Hills in Wales, some 300 kilometres from Stonehenge.",
+      "zh": "这些石头被追溯到威尔士的普雷塞利山脉，距离巨石阵约300公里。"
+    },
+    {
+      "id": "s9",
+      "en": "How, then, did prehistoric builders without sophisticated tools or engineering haul these boulders, which weigh up to four tons, over such a great distance?",
+      "zh": "那么，没有复杂工具或工程技术的史前建造者，是如何将这些重达四吨的巨石拖运如此遥远的距离的呢？"
+    },
+    {
+      "id": "s10",
+      "en": "According to one long-standing theory among archaeologists, Stonehenge's builders fashioned sledges and rollers out of tree trunks to lug the bluestones from the Preseli Hills.",
+      "zh": "根据考古学家长期以来的一种理论，巨石阵的建造者用树干制成雪橇和滚轴，将青石从普雷塞利山脉拖运过来。"
+    },
+    {
+      "id": "s11",
+      "en": "They then transferred the boulders onto rafts and floated them first along the Welsh coast and then up the River Avon toward Salisbury Plain; alternatively, they may have towed each stone with a fleet of vessels.",
+      "zh": "然后，他们把巨石搬到筏子上，首先沿威尔士海岸漂浮，然后顺着埃文河驶向索尔兹伯里平原；或者，他们可能用一支船队拖曳每块石头。"
+    },
+    {
+      "id": "s12",
+      "en": "More recent archaeological hypotheses have them transporting the bluestones with supersized wicker baskets on a combination of ball bearings and long grooved planks, hauled by oxen.",
+      "zh": "更近的考古假说认为，他们用特大号的柳条篮子，将青石放在装有滚珠轴承和带长槽的木板上的装置，由牛拉着运输。"
+    },
+    {
+      "id": "s13",
+      "en": "As early as the 1970s, geologists have been adding their voices to the debate over how Stonehenge came into being.",
+      "zh": "早在20世纪70年代，地质学家就参与了关于巨石阵如何形成的争论。"
+    },
+    {
+      "id": "s14",
+      "en": "Challenging the classic image of industrious builders pushing, carting, rolling or hauling giant stones from faraway Wales, some scientists have suggested that it was glaciers, not humans, that carried the bluestones to Salisbury Plain.",
+      "zh": "一些科学家挑战了劳作者推动、拉运或滚动巨大石头从远方威尔士运来的传统观点，提出是冰川而非人类将青石搬运到索尔兹伯里平原。"
+    },
+    {
+      "id": "s15",
+      "en": "Most archaeologists have remained sceptical about this theory, however, wondering how the forces of nature could possibly have delivered the exact number of stones needed to complete the circle.",
+      "zh": "然而，大多数考古学家对此理论持怀疑态度，他们质疑自然力量怎么可能正好运来了圆圈所需的准确石块数目。"
+    },
+    {
+      "id": "s16",
+      "en": "The third phase of construction took place around 2000 BCE.",
+      "zh": "第三阶段的建造约发生在公元前2000年左右。"
+    },
+    {
+      "id": "s17",
+      "en": "At this point, sandstone slabs - known as 'sarsens' — were arranged into an outer crescent or ring; some were assembled into the iconic three-pieced structures called trilithons that stand tall in the centre of Stonehenge.",
+      "zh": "此时，砂岩板块——称为“巨石”——被排列成外部的新月形或环形；其中一些组装成标志性的三石门结构（三联拱），矗立在巨石阵中心。"
+    },
+    {
+      "id": "s18",
+      "en": "Some 50 of these stones are now visible on the site, which may once have contained many more.",
+      "zh": "现在遗址上还能看到大约50块这样的石头，曾经可能有更多。"
+    },
+    {
+      "id": "s19",
+      "en": "Radiocarbon dating has revealed that work continued at Stonehenge until roughly 1600 BCE, with the bluestones in particular being repositioned multiple times.",
+      "zh": "放射性碳定年显示，巨石阵的工程持续到大约公元前1600年，其中青石被多次重新安置。"
+    },
+    {
+      "id": "s20",
+      "en": "But who were the builders of Stonehenge?",
+      "zh": "那么，巨石阵的建造者是谁呢？"
+    },
+    {
+      "id": "s21",
+      "en": "In the 17th century, archaeologist John Aubrey made the claim that Stonehenge was the work of druids, who had important religious, judicial and political roles in Celtic** society.",
+      "zh": "17世纪，考古学家约翰·奥布里声称巨石阵是德鲁伊人的作品，德鲁伊人在凯尔特**社会中担任重要的宗教、司法和政治职务。"
+    },
+    {
+      "id": "s22",
+      "en": "This theory was widely popularized by the antiquarian William Stukeley, who had unearthed primitive graves at the site.",
+      "zh": "这一理论由古文物学家威廉·斯图克利广泛宣传，他曾在遗址发现原始坟墓。"
+    },
+    {
+      "id": "s23",
+      "en": "Even today, people who identify as modern druids continue to gather at Stonehenge for the summer solstice.",
+      "zh": "直到今天，自认为是现代德鲁伊的人仍会聚集在巨石阵庆祝夏至。"
+    },
+    {
+      "id": "s24",
+      "en": "However, in the mid-20th century, radiocarbon dating demonstrated that Stonehenge stood more than 1,000 years before the Celts inhabited the region.",
+      "zh": "然而，20世纪中叶，放射性碳定年证明巨石阵比凯尔特人居住该地区早了一千多年。"
+    },
+    {
+      "id": "s25",
+      "en": "Many modern historians and archaeologists now agree that several distinct tribes of people contributed to Stonehenge, each undertaking a different phase of its construction.",
+      "zh": "许多现代历史学家和考古学家现在认为，几个不同的部落参与了巨石阵的建造，每个部落负责不同的建设阶段。"
+    },
+    {
+      "id": "s26",
+      "en": "Bones, tools and other artefacts found on the site seem to support this hypothesis.",
+      "zh": "在遗址发现的骨骼、工具及其他遗物似乎支持这一假说。"
+    },
+    {
+      "id": "s27",
+      "en": "The first stage was achieved by Neolithic agrarians who were likely to have been indigenous to the British Isles.",
+      "zh": "第一阶段由新石器时代的农民完成，他们很可能是不列颠群岛的土著。"
+    },
+    {
+      "id": "s28",
+      "en": "Later, it is believed, groups with advanced tools and a more communal way of life left their mark on the site.",
+      "zh": "后来，据认为，拥有先进工具和更具社群生活方式的群体在遗址上留下了印记。"
+    },
+    {
+      "id": "s29",
+      "en": "Some believe that they were immigrants from the European continent, while others maintain that they were probably native Britons, descended from the original builders.",
+      "zh": "有人认为他们是来自欧洲大陆的移民，也有人坚持认为他们可能是本土的英国人，是最初建造者的后代。"
+    },
+    {
+      "id": "s30",
+      "en": "If the facts surrounding the architects and construction of Stonehenge remain shadowy at best, the purpose of the striking monument is even more of a mystery.",
+      "zh": "如果关于巨石阵建设者和建造过程的事实依然模糊，那么这座壮观遗迹的用途则更加神秘。"
+    },
+    {
+      "id": "s31",
+      "en": "While there is consensus among the majority of modern scholars that Stonehenge once served the function of burial ground, they have yet to determine what other purposes it had.",
+      "zh": "虽然大多数现代学者一致认为巨石阵曾用作墓地，但其其他用途尚未确定。"
+    },
+    {
+      "id": "s32",
+      "en": "In the 1960s, the astronomer Gerald Hawkins suggested that the cluster of megalithic stones operated as a form of calendar, with different points corresponding to astrological phenomena such as solstices, equinoxes and eclipses occurring at different times of the year.",
+      "zh": "20世纪60年代，天文学家杰拉尔德·霍金斯提出，这些巨石阵列作为一种日历，不同点位对应一年中不同时间发生的天象现象，如至日、分点和日食。"
+    },
+    {
+      "id": "s33",
+      "en": "While his theory has received a considerable amount of attention over the decades, critics maintain that Stonehenge's builders probably lacked the knowledge necessary to predict such events or that England's dense cloud cover would have obscured their view of the skies.",
+      "zh": "尽管他的理论数十年来引起了广泛关注，但批评者认为，巨石阵建造者可能缺乏预测此类事件的知识，或者英格兰浓密的云层会遮挡他们观测天空的视线。"
+    },
+    {
+      "id": "s34",
+      "en": "More recently, signs of illness and injury in the human remains unearthed at Stonehenge led a group of British archaeologists to speculate that it was considered a place of healing, perhaps because bluestones were thought to have curative powers.",
+      "zh": "最近，英国考古学家在巨石阵出土的人类遗骸中发现疾病和受伤的迹象，推测它被视为疗愈之地，或许是因为青石被认为具有治疗能力。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">Stonehenge</span></strong></h3><p>For centuries, historians and archaeologists have puzzled over the many mysteries of Stonehenge, a prehistoric monument that took an estimated 1,500 years to erect. Located on Salisbury Plain in southern England, it is comprised of roughly 100 massive upright stones placed in a circular layout.</p><p><br></p><p>Archaeologists believe England's most iconic prehistoric ruin was built in several stages, with the earliest constructed 5,000 or more years ago. First, Neolithic* Britons used primitive tools, which may have been fashioned out of deer antlers, to dig a massive circular ditch and bank, or henge. Deep pits dating back to that era and located within the circle may have once held a ring of timber posts, according to some scholars.</p><p><br></p><p>Several hundred years later, it is thought, Stonehenge's builders hoisted an estimated 80 bluestones, 43 of which remain today, into standing positions and placed them in either a horseshoe or circular formation. These stones have been traced all the way to the Preseli Hills in Wales, some 300 kilometres from Stonehenge. How, then, did prehistoric builders without sophisticated tools or engineering haul these boulders, which weigh up to four tons, over such a great distance?</p><p><br></p><p>According to one long-standing theory among archaeologists, Stonehenge's builders fashioned sledges and rollers out of tree trunks to lug the bluestones from the Preseli Hills. They then transferred the boulders onto rafts and floated them first along the Welsh coast and then up the River Avon toward Salisbury Plain; alternatively, they may have towed each stone with a fleet of vessels. More recent archaeological hypotheses have them transporting the bluestones with supersized wicker baskets on a combination of ball bearings and long grooved planks, hauled by oxen.</p><p><br></p><p>As early as the 1970s, geologists have been adding their voices to the debate over how Stonehenge came into being. Challenging the classic image of industrious builders pushing, carting, rolling or hauling giant stones from faraway Wales, some scientists have suggested that it was glaciers, not humans, that carried the bluestones to Salisbury Plain. Most archaeologists have remained sceptical about this theory, however, wondering how the forces of nature could possibly have delivered the exact number of stones needed to complete the circle.</p><p><br></p><p>The third phase of construction took place around 2000 BCE. At this point, sandstone slabs - known as 'sarsens' — were arranged into an outer crescent or ring; some were assembled into the iconic three-pieced structures called trilithons that stand tall in the centre of Stonehenge. Some 50 of these stones are now visible on the site, which may once have contained many more. Radiocarbon dating has revealed that work continued at Stonehenge until roughly 1600 BCE, with the bluestones in particular being repositioned multiple times.</p><p><br></p><p>But who were the builders of Stonehenge? In the 17th century, archaeologist John Aubrey made the claim that Stonehenge was the work of druids, who had important religious, judicial and political roles in Celtic** society. This theory was widely popularized by the antiquarian William Stukeley, who had unearthed primitive graves at the site. Even today, people who identify as modern druids continue to gather at Stonehenge for the summer solstice. However, in the mid-20th century, radiocarbon dating demonstrated that Stonehenge stood more than 1,000 years before the Celts inhabited the region.</p><p><br></p><p>Many modern historians and archaeologists now agree that several distinct tribes of people contributed to Stonehenge, each undertaking a different phase of its construction. Bones, tools and other artefacts found on the site seem to support this hypothesis. The first stage was achieved by Neolithic agrarians who were likely to have been indigenous to the British Isles. Later, it is believed, groups with advanced tools and a more communal way of life left their mark on the site. Some believe that they were immigrants from the European continent, while others maintain that they were probably native Britons, descended from the original builders.</p><p><br></p><p>If the facts surrounding the architects and construction of Stonehenge remain shadowy at best, the purpose of the striking monument is even more of a mystery. While there is consensus among the majority of modern scholars that Stonehenge once served the function of burial ground, they have yet to determine what other purposes it had.</p><p><br></p><p><span style="text-wrap: nowrap;"></span></p><p>In the 1960s, the astronomer Gerald Hawkins suggested that the cluster of megalithic stones operated as a form of calendar, with different points corresponding to astrological phenomena such as solstices, equinoxes and eclipses occurring at different times of the year. While his theory has received a considerable amount of attention over the decades, critics maintain that Stonehenge's builders probably lacked the knowledge necessary to predict such events or that England's dense cloud cover would have obscured their view of the skies.</p><p><span style="text-wrap: nowrap;"><br></span></p><p>More recently, signs of illness and injury in the human remains unearthed at Stonehenge led a group of British archaeologists to speculate that it was considered a place of healing, perhaps because bluestones were thought to have curative powers.</p><p><br></p>

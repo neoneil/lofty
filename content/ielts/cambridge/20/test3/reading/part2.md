@@ -1514,5 +1514,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Can the planet's coral reefs be saved?",
+      "zh": "地球上的珊瑚礁能被拯救吗？"
+    },
+    {
+      "id": "s2",
+      "en": "Conservationists have put the final touches to a giant artificial reef they have been assembling at the world-renowned Zoological Society of London (London Zoo).",
+      "zh": "保护主义者在世界著名的伦敦动物学会（伦敦动物园）完成了他们组装中的大型人工珊瑚礁的最后润色工作。"
+    },
+    {
+      "id": "s3",
+      "en": "Samples of the planet's most spectacular corals - vivid green branching coral, yellow scroll, blue ridge and many more species - have been added to the giant tank along with fish that thrive in their presence: blue tang, clownfish and many others.",
+      "zh": "地球上最壮观的珊瑚样本——鲜艳的绿色分枝珊瑚、黄色卷轴珊瑚、蓝脊珊瑚以及更多物种——连同在其环境中茁壮成长的鱼类：蓝刺尾鱼、小丑鱼等许多种类，已经被添加进这个大型水槽。"
+    },
+    {
+      "id": "s4",
+      "en": "The reef is in the zoo's new gallery, Tiny Giants, which is dedicated to the minuscule invertebrate creatures that sustain life across the planet.",
+      "zh": "这个珊瑚礁位于动物园新开的展厅“微小巨人”中，该展厅专注于那些支撑地球生命的微小无脊椎动物。"
+    },
+    {
+      "id": "s5",
+      "en": "The coral reef tank and its seven-metre-wide window form the core of the exhibition.",
+      "zh": "珊瑚礁水槽及其七米宽的观赏窗构成了展览的核心。"
+    },
+    {
+      "id": "s6",
+      "en": "'Coral reefs are the most diverse ecosystems on Earth and we want to show people how wonderful they are,' said Paul Pearce-Kelly, senior curator of invertebrates and fish at the Zoological Society of London.",
+      "zh": "“珊瑚礁是地球上物种最多样的生态系统，我们想向人们展示它们是多么的奇妙。”伦敦动物学会无脊椎动物及鱼类高级馆长保罗·皮尔斯-凯利说。"
+    },
+    {
+      "id": "s7",
+      "en": "'However, we also want to highlight the research and conservation efforts that are now being carried out to try to save them from the threat of global warming.'",
+      "zh": "“然而，我们也想强调目前为拯救珊瑚礁免受全球变暖威胁所进行的研究和保护工作。”"
+    },
+    {
+      "id": "s8",
+      "en": "They want people to see what is being done to try to save these wonders.",
+      "zh": "他们希望人们看到为了拯救这些奇观正在进行的努力。"
+    },
+    {
+      "id": "s9",
+      "en": "Corals are composed of tiny animals, known as polyps, with tentacles for capturing small marine creatures in the sea water.",
+      "zh": "珊瑚由微小的动物组成，称为珊瑚虫，这些珊瑚虫带有触手，用于捕捉海水中的小型海洋生物。"
+    },
+    {
+      "id": "s10",
+      "en": "These polyps are transparent but get their brilliant tones of pink, orange, blue, green, etc. from algae that live within them, which in turn get protection, while their photosynthesising of the sun's rays provides nutrients for the polyps.",
+      "zh": "这些珊瑚虫是透明的，但它们获得粉红色、橙色、蓝色、绿色等鲜艳色调是因为体内共生的藻类，这些藻类获得保护，同时通过光合作用利用阳光为珊瑚虫提供养分。"
+    },
+    {
+      "id": "s11",
+      "en": "This comfortable symbiotic relationship has led to the growth of coral reefs that cover 0.1% of the planet's ocean bed while providing homes for more than 25% of marine species, including fish, molluscs, sponges and shellfish.",
+      "zh": "这种和谐的共生关系促成了珊瑚礁的生长，珊瑚礁覆盖了地球海床的0.1%，为超过25%的海洋物种提供了栖息地，包括鱼类、软体动物、海绵和贝类。"
+    },
+    {
+      "id": "s12",
+      "en": "As a result, coral reefs are often described as the 'rainforests of the sea', though the comparison is dismissed by some naturalists, including David Attenborough.",
+      "zh": "因此，珊瑚礁常被形容为“海洋的雨林”，但包括大卫·阿滕伯勒在内的一些自然学家对此比喻持否定态度。"
+    },
+    {
+      "id": "s13",
+      "en": "'People say you cannot beat the rainforest,' Attenborough has stated.",
+      "zh": "阿滕伯勒曾表示：“人们说雨林无可匹敌，"
+    },
+    {
+      "id": "s14",
+      "en": "'But that is simply not true.",
+      "zh": "但那根本不是真的。"
+    },
+    {
+      "id": "s15",
+      "en": "You go there and the first thing you think is: where … are the birds?",
+      "zh": "你去那儿，第一反应是：鸟儿……在哪儿？"
+    },
+    {
+      "id": "s16",
+      "en": "Where are the animals?",
+      "zh": "动物们在哪儿？"
+    },
+    {
+      "id": "s17",
+      "en": "They are hiding in the trees, of course.",
+      "zh": "当然，它们藏在树上。"
+    },
+    {
+      "id": "s18",
+      "en": "No, if you want beauty and wildlife, you want a coral reef.",
+      "zh": "不，如果你想看美丽和野生动物，你要去珊瑚礁。"
+    },
+    {
+      "id": "s19",
+      "en": "Put on a mask and stick your head under the water.",
+      "zh": "戴上潜水面罩，把头伸入水中。"
+    },
+    {
+      "id": "s20",
+      "en": "The sight is mind-blowing.'",
+      "zh": "那景象令人震撼。”"
+    },
+    {
+      "id": "s21",
+      "en": "Unfortunately, these majestic sights are now under very serious threat, with the most immediate problem coming in the form of thermal stress.",
+      "zh": "不幸的是，这些壮丽的景象正面临严重威胁，最紧迫的问题是热应激。"
+    },
+    {
+      "id": "s22",
+      "en": "Rising ocean temperatures are triggering bleaching events that strip reefs of their colour and eventually kill them.",
+      "zh": "海洋温度升高引发珊瑚白化事件，剥夺珊瑚的颜色，最终导致其死亡。"
+    },
+    {
+      "id": "s23",
+      "en": "And that is just the start.",
+      "zh": "而这仅仅是开始。"
+    },
+    {
+      "id": "s24",
+      "en": "Other menaces include ocean acidification, sea level increase, pollution by humans, deoxygenation and ocean current changes, while the climate crisis is also increasing habitat destruction.",
+      "zh": "其他威胁还包括海洋酸化、海平面上升、人类污染、缺氧和洋流变化，气候危机也加剧了栖息地的破坏。"
+    },
+    {
+      "id": "s25",
+      "en": "As a result, vast areas - including massive chunks of Australia's Great Barrier Reef - have already been destroyed, and scientists advise that more than 90% of reefs could be lost by 2050 unless urgent action is taken to tackle global heating and greenhouse gas emissions.",
+      "zh": "因此，大片区域——包括澳大利亚大堡礁的大块区域——已被破坏，科学家警告如果不紧急采取行动应对全球变暖和温室气体排放，到2050年超过90%的珊瑚礁可能会消失。"
+    },
+    {
+      "id": "s26",
+      "en": "Pearce-Kelly says that coral reefs have to survive really harsh conditions - wave erosion and other factors.",
+      "zh": "皮尔斯-凯利说珊瑚礁必须在极其恶劣的条件下生存——包括波浪侵蚀和其他因素。"
+    },
+    {
+      "id": "s27",
+      "en": "And 'when things start to go wrong in the oceans, then corals will be the first to react.",
+      "zh": "“当海洋状况开始恶化时，珊瑚会是第一个反应的。"
+    },
+    {
+      "id": "s28",
+      "en": "And that is exactly what we are seeing now.",
+      "zh": "这正是我们现在所见。"
+    },
+    {
+      "id": "s29",
+      "en": "Coral reefs are dying and they are telling us that all is not well with our planet.'",
+      "zh": "珊瑚礁正在死亡，它们正在告诉我们地球状况不妙。”"
+    },
+    {
+      "id": "s30",
+      "en": "However, scientists are trying to pinpoint hardy types of coral that could survive our overheated oceans, and some of this research will be carried out at London Zoo.",
+      "zh": "不过，科学家们正在努力找出能在过热海洋中存活的耐寒珊瑚品种，而部分研究将在伦敦动物园进行。"
+    },
+    {
+      "id": "s31",
+      "en": "'Behind our … coral reef tank we have built laboratories where scientists will be studying coral species,' said Pearce-Kelly.",
+      "zh": "皮尔斯-凯利说：“在我们的珊瑚礁水槽后面，我们建有实验室，科学家将在那里研究珊瑚物种。”"
+    },
+    {
+      "id": "s32",
+      "en": "One aim will be to carry out research on species to find those that can survive best in warm, acidic waters.",
+      "zh": "其中一个目标是研究哪些珊瑚物种能最好地在温暖、酸性水域中存活。"
+    },
+    {
+      "id": "s33",
+      "en": "Another will be to try to increase coral breeding rates.",
+      "zh": "另一个目标是尝试提高珊瑚的繁殖速率。"
+    },
+    {
+      "id": "s34",
+      "en": "'Coral spawn just once a year,' he added.",
+      "zh": "他补充说：“珊瑚每年只繁殖一次。”"
+    },
+    {
+      "id": "s35",
+      "en": "'However, aquarium-based research has enabled some corals to spawn artificially, which can assist coral reef restoration efforts.",
+      "zh": "“不过，水族馆基础的研究已使一些珊瑚能人工繁殖，这可以帮助珊瑚礁恢复工作。”"
+    },
+    {
+      "id": "s36",
+      "en": "And if this can be extended for all species, we could consider the launching of coral-spawning programmes several times a year.",
+      "zh": "如果这能推广到所有物种，我们可以考虑每年开展多次珊瑚繁殖项目。"
+    },
+    {
+      "id": "s37",
+      "en": "That would be a big help in restoring blighted reefs.'",
+      "zh": "这将对恢复受损的珊瑚礁大有帮助。”"
+    },
+    {
+      "id": "s38",
+      "en": "Research in these fields is being conducted in laboratories around the world, with the London Zoo centre linked to this global network.",
+      "zh": "相关领域的研究正全球各地实验室同时进行，伦敦动物园中心也连接到这一全球网络。"
+    },
+    {
+      "id": "s39",
+      "en": "Studies carried out in one centre can then be tested in others.",
+      "zh": "一个中心的研究成果可以在其他中心进行验证。"
+    },
+    {
+      "id": "s40",
+      "en": "The resulting young coral can then be displayed in the tank in Tiny Giants.",
+      "zh": "培养出的幼小珊瑚随后可以在“微小巨人”展厅的水槽中展示。"
+    },
+    {
+      "id": "s41",
+      "en": "'The crucial point is that the progress we make in making coral better able to survive in a warming world can be shown to the public and encourage them to believe that we can do something to save the planet's reefs,' said Pearce-Kelly.",
+      "zh": "皮尔斯-凯利说：“关键点在于，我们让珊瑚更好适应变暖世界所取得的进展能向公众展示，鼓励他们相信我们能够做些什么来拯救地球上的珊瑚礁。”"
+    },
+    {
+      "id": "s42",
+      "en": "'Saving our coral reefs is now a critically important ecological goal.'",
+      "zh": "“拯救我们的珊瑚礁现在是一个极其重要的生态目标。”"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Can the planet's coral reefs be saved?</span></strong></p><p><strong>A&nbsp;<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10961">14</a></span></strong></p><p>Conservationists have put the final touches to a giant artificial reef they have been assembling at the world-renowned Zoological Society of London (London Zoo). Samples of the planet's most spectacular corals - vivid green branching coral, yellow scroll, blue ridge and many more species - have been added to the giant tank along with fish that thrive in their presence: blue tang, clownfish and many others. The reef is in the zoo's new gallery, Tiny Giants, which is dedicated to the minuscule invertebrate creatures that sustain life across the planet. The coral reef tank and its seven-metre-wide window form the core of the exhibition.</p><p><br></p><p>'Coral reefs are the most diverse ecosystems on Earth and we want to show people how wonderful they are,' said Paul Pearce-Kelly, senior curator of invertebrates and fish at the Zoological Society of London. 'However, we also want to highlight the research and conservation efforts that are now being carried out to try to save them from the threat of global warming.' They want people to see what is being done to try to save these wonders.</p><p><br></p><p><strong>B&nbsp;<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10962">15</a></span></strong></p><p>Corals are composed of tiny animals, known as polyps, with tentacles for capturing small marine creatures in the sea water. These polyps are transparent but get their brilliant tones of pink, orange, blue, green, etc. from algae that live within them, which in turn get protection, while their photosynthesising of the sun's rays provides nutrients for the polyps. This comfortable symbiotic relationship has led to the growth of coral reefs that cover 0.1% of the planet's ocean bed while providing homes for more than 25% of marine species, including fish, molluscs, sponges and shellfish.</p><p><br></p><p><strong>C&nbsp;<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10963">16</a></span></strong></p><p>As a result, coral reefs are often described as the 'rainforests of the sea', though the comparison is dismissed by some naturalists, including David Attenborough. 'People say you cannot beat the rainforest,' Attenborough has stated. 'But that is simply not true. You go there and the first thing you think is: where … are the birds? Where are the animals? They are hiding in the trees, of course. No, if you want beauty and wildlife, you want a coral reef. Put on a mask and stick your head under the water. The sight is mind-blowing.'</p><p><br></p><p><strong>D&nbsp;<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10964">17</a></span></strong></p><p>Unfortunately, these majestic sights are now under very serious threat, with the most immediate problem coming in the form of thermal stress. Rising ocean temperatures are triggering bleaching events that strip reefs of their colour and eventually kill them. And that is just the start. Other menaces include ocean acidification, sea level increase, pollution by humans, deoxygenation and ocean current changes, while the climate crisis is also increasing habitat destruction. As a result, vast areas - including massive chunks of Australia's Great Barrier Reef - have already been destroyed, and scientists advise that more than 90% of reefs could be lost by 2050 unless urgent action is taken to tackle global heating and greenhouse gas emissions.</p><p><br></p><p>Pearce-Kelly says that coral reefs have to survive really harsh conditions - wave erosion and other factors. And 'when things start to go wrong in the oceans, then corals will be the first to react. And that is exactly what we are seeing now. Coral reefs are dying and they are telling us that all is not well with our planet.'</p><p><br></p><p><strong>E<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10965">18</a></span></strong></p><p>However, scientists are trying to pinpoint hardy types of coral that could survive our overheated oceans, and some of this research will be carried out at London Zoo. 'Behind our … coral reef tank we have built laboratories where scientists will be studying coral species,' said Pearce-Kelly. One aim will be to carry out research on species to find those that can survive best in warm, acidic waters. Another will be to try to increase coral breeding rates. 'Coral spawn just once a year,' he added. 'However, aquarium-based research has enabled some corals to spawn artificially, which can assist coral reef restoration efforts. And if this can be extended for all species, we could consider the launching of coral-spawning programmes several times a year. That would be a big help in restoring blighted reefs.'</p><p><br></p><p><strong>F</strong>&nbsp;<span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap-mode:="" wrap;"=""><a name="10966">19</a></span></p><p>Research in these fields is being conducted in laboratories around the world, with the London Zoo centre linked to this global network. Studies carried out in one centre can then be tested in others. The resulting young coral can then be displayed in the tank in Tiny Giants. 'The crucial point is that the progress we make in making coral better able to survive in a warming world can be shown to the public and encourage them to believe that we can do something to save the planet's reefs,' said Pearce-Kelly. 'Saving our coral reefs is now a critically important ecological goal.'</p><p><br></p>

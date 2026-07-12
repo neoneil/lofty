@@ -1771,5 +1771,228 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Robots and us",
+      "zh": "机器人与我们"
+    },
+    {
+      "id": "s2",
+      "en": "Three leaders in their fields answer questions about our relationships with robots",
+      "zh": "三个领域的领军人物回答关于我们与机器人的关系的问题"
+    },
+    {
+      "id": "s3",
+      "en": "When asked 'Should robots be used to colonise other planets?', cosmology and astrophysics Professor Martin Rees said he believed the solar system would be mapped by robotic craft by the end of the century.",
+      "zh": "当被问及“是否应该使用机器人殖民其他星球？”时，宇宙学和天体物理学教授马丁·里斯表示，他相信在本世纪末，太阳系将由机器人飞船绘制地图。"
+    },
+    {
+      "id": "s4",
+      "en": "'The next step would be mining of asteroids, enabling fabrication of large structures in space without having to bring all the raw materials from Earth.",
+      "zh": "“下一步将是开采小行星，这将使我们能够在太空中制造大型结构，而不必把所有原材料从地球运来。”"
+    },
+    {
+      "id": "s5",
+      "en": "… I think this is more realistic and benign than the … \"terraforming\"* of planets.'",
+      "zh": "……我认为这比对行星进行“地球化”*更现实、更温和。”"
+    },
+    {
+      "id": "s6",
+      "en": "He maintains that colonised planets 'should be preserved with a status that is analogous to Antarctica here on Earth.'",
+      "zh": "他坚持认为，被殖民的行星“应当被保护，享有类似于地球上南极洲的地位。”"
+    },
+    {
+      "id": "s7",
+      "en": "On the question of using robots to colonise other planets and exploit mineral resources, engineering Professor Daniel Wolpert replied, 'I don't see a pressing need to colonise other planets unless we can bring [these] resources back to Earth.",
+      "zh": "针对使用机器人殖民其他星球并开发矿产资源的问题，工程学教授丹尼尔·沃尔珀特回答说，“除非我们能把这些资源带回地球，否则我不认为有紧迫需求去殖民其他星球。”"
+    },
+    {
+      "id": "s8",
+      "en": "The vast majority of Earth is currently inaccessible to us.",
+      "zh": "目前地球的大部分区域我们都无法进入。"
+    },
+    {
+      "id": "s9",
+      "en": "Using robots to gather resources nearer to home would seem to be a better use of our robotic tools.'",
+      "zh": "用机器人在离我们较近的地方采集资源似乎是机器人工具更好的利用方式。”"
+    },
+    {
+      "id": "s10",
+      "en": "Meanwhile, for anthropology Professor Kathleen Richardson, the idea of 'colonisation' of other planets seemed morally dubious: 'I think whether we do something on Earth or on Mars we should always do it in the spirit of a genuine interest in \"the Other\", not to impose a particular model, but to meet \"the Other\".'",
+      "zh": "与此同时，人类学教授凯瑟琳·理查森认为“殖民”其他星球的想法在道德上值得怀疑：“我认为无论我们是在地球还是火星做什么，都应以对‘他者’的真诚兴趣为精神，而非强加某种特定模式，而是去接触‘他者’。”"
+    },
+    {
+      "id": "s11",
+      "en": "In response to the second question, 'How soon will machine intelligence outstrip human intelligence?', Rees mentions robots that are advanced enough to beat humans at chess, but then goes on to say, 'Robots are still limited in their ability to sense their environment: they can't yet recognise and move the pieces on a real chessboard as cleverly as a child can.",
+      "zh": "针对第二个问题“机器智能何时会超越人类智能？”，里斯提到机器人已经足够先进，可以在国际象棋中战胜人类，但随后又说，“机器人在感知环境方面仍有限制：它们还不能像小孩那样聪明地识别并移动真实棋盘上的棋子。”"
+    },
+    {
+      "id": "s12",
+      "en": "Later this century, however, their more advanced successors may relate to their surroundings, and to people, as adeptly as we do.",
+      "zh": "不过，本世纪晚些时候，它们更先进的后续产品可能会像我们一样熟练地与环境及人类互动。"
+    },
+    {
+      "id": "s13",
+      "en": "Moral questions then arise.",
+      "zh": "于是随之而来的是道德问题。"
+    },
+    {
+      "id": "s14",
+      "en": "… Should we feel guilty about exploiting [sophisticated robots]?",
+      "zh": "……我们是否应该因为利用这些[高级机器人]而感到愧疚？"
+    },
+    {
+      "id": "s15",
+      "en": "Should we fret if they are underemployed, frustrated, or bored?'",
+      "zh": "如果它们工作不足、感到沮丧或无聊，我们是否应该担忧？”"
+    },
+    {
+      "id": "s16",
+      "en": "Wolpert's response to the question about machine intelligence outstripping human intelligence was this: 'In a limited sense it already has.",
+      "zh": "沃尔珀特对机器智能超越人类智能问题的回答是：“在某种有限意义上，它已经超越了。”"
+    },
+    {
+      "id": "s17",
+      "en": "Machines can already navigate, remember and search for items with an ability that far outstrips humans.",
+      "zh": "机器已经能够以远超人类的能力导航、记忆和搜索物品。"
+    },
+    {
+      "id": "s18",
+      "en": "However, there is no machine that can identify visual objects or speech with the reliability and flexibility of humans.",
+      "zh": "然而，没有机器能像人类那样既可靠又灵活地识别视觉物体或语言。"
+    },
+    {
+      "id": "s19",
+      "en": "… Expecting a machine close to the creative intelligence of a human within the next 50 years would be highly ambitious.'",
+      "zh": "……期望在未来50年内出现接近人类创造性智能的机器是非常雄心勃勃的。”"
+    },
+    {
+      "id": "s20",
+      "en": "Richardson believes that our fear of machines becoming too advanced has more to do with human nature than anything intrinsic to the machines themselves.",
+      "zh": "理查森认为，我们对机器变得过于先进的恐惧更多与人性有关，而非机器本身的特性。"
+    },
+    {
+      "id": "s21",
+      "en": "In her view, it stems from humans' tendency to personify inanimate objects: we create machines based on representations of ourselves, imagine that machines think and behave as we do, and therefore see them as an autonomous threat.",
+      "zh": "她认为，这源于人类赋予无生命物体人格的倾向：我们根据自己的形象创造机器，想象机器像我们一样思考和行为，因此将它们视为自主的威胁。"
+    },
+    {
+      "id": "s22",
+      "en": "'One of the consequences of thinking that the problem lies with machines is that … we tend to imagine they are greater and more powerful than they really are and subsequently they become so.'",
+      "zh": "“认为问题出在机器上的一个后果是……我们往往想象它们比实际更强大，结果它们真的变得如此。”"
+    },
+    {
+      "id": "s23",
+      "en": "This led on to the third question, 'Should we be scared by advances in artificial intelligence?'",
+      "zh": "这引出了第三个问题：“我们应该害怕人工智能的进步吗？”"
+    },
+    {
+      "id": "s24",
+      "en": "To this question, Rees replied, 'Those who should be worried are the futurologists who believe in the so-called \"singularity\".",
+      "zh": "对于这个问题，里斯回答说，“应该担心的是那些相信所谓‘奇点’的未来学家。"
+    },
+    {
+      "id": "s25",
+      "en": "** … And another worry is that we are increasingly dependent on computer networks, and that these could behave like a single \"brain\" with a mind of its own, and with goals that may be contrary to human welfare.",
+      "zh": "**……另一个担忧是我们越来越依赖计算机网络，而这些网络可能像拥有自我意识的单一“大脑”一样运作，其目标可能有悖于人类福祉。”"
+    },
+    {
+      "id": "s26",
+      "en": "I think we should ensure that robots remain as no more than \"idiot savants\" lacking the capacity to outwit us, even though they may greatly surpass us in the ability to calculate and process information.'",
+      "zh": "我认为我们应确保机器人不过是“笨拙的天才”，缺乏智胜我们的能力，尽管它们在计算和处理信息方面可能远远超过我们。”"
+    },
+    {
+      "id": "s27",
+      "en": "Wolpert's response was to say that we have already seen the damaging effects of artificial intelligence in the form of computer viruses.",
+      "zh": "沃尔珀特的回答是，我们已经看到人工智能以计算机病毒形式造成的破坏性影响。"
+    },
+    {
+      "id": "s28",
+      "en": "'But in this case,' he says, 'the real intelligence is the malicious designer.",
+      "zh": "他说：“但在这种情况下，真正的智能体是恶意设计者。”"
+    },
+    {
+      "id": "s29",
+      "en": "Critically, the benefits of computers outweigh the damage that computer viruses cause.",
+      "zh": "关键是计算机的益处远大于计算机病毒造成的损害。"
+    },
+    {
+      "id": "s30",
+      "en": "Similarly, while there may be misuses of robotics in the near future, the benefits that they will bring are likely to outweigh these negative aspects.'",
+      "zh": "同样，虽然未来可能会有机器人技术被滥用，但它们带来的好处可能会超过这些负面影响。”"
+    },
+    {
+      "id": "s31",
+      "en": "Richardson's response to this question was this: 'We need to ask why fears of artificial intelligence and robots persist; none have in fact risen up and challenged human supremacy.'",
+      "zh": "理查森对此问题的回答是：“我们需要问，为什么对人工智能和机器人的恐惧持续存在；事实上还没有哪个机器人崛起挑战人类的统治地位。”"
+    },
+    {
+      "id": "s32",
+      "en": "She believes that as robots have never shown themselves to be a threat to humans, it seems unlikely that they ever will.",
+      "zh": "她认为机器人从未表现出对人类的威胁，因此它们很可能永远不会成为威胁。"
+    },
+    {
+      "id": "s33",
+      "en": "In fact, she went on, 'Not all fear [robots]; many people welcome machine intelligence.'",
+      "zh": "事实上，她接着说，“并非所有人都害怕[机器人]；许多人欢迎机器智能。”"
+    },
+    {
+      "id": "s34",
+      "en": "In answer to the fourth question, 'What can science fiction tell us about robotics?', Rees replied, 'I sometimes advise students that it's better to read first-rate science fiction than second-rate science - more stimulating, and perhaps no more likely to be wrong.'",
+      "zh": "针对第四个问题“科幻小说能告诉我们关于机器人的什么？”，里斯回答说，“我有时建议学生，读顶级科幻小说比读二流科学更好——更有启发性，而且可能也不太可能出错。”"
+    },
+    {
+      "id": "s35",
+      "en": "As his response, Wolpert commented, 'Science fiction has often been remarkable at predicting the future.",
+      "zh": "作为回应，沃尔珀特评论道，“科幻小说经常在预测未来方面表现出色。"
+    },
+    {
+      "id": "s36",
+      "en": "… Science fiction has painted a vivid spectrum of possible futures, from cute and helpful robots to dystopian robotic societies.",
+      "zh": "……科幻小说描绘了丰富多彩的未来图景，从可爱且有用的机器人到反乌托邦式的机器人社会。"
+    },
+    {
+      "id": "s37",
+      "en": "Interestingly, almost no science fiction envisages a future without robots.'",
+      "zh": "有趣的是，几乎没有科幻小说设想没有机器人的未来。”"
+    },
+    {
+      "id": "s38",
+      "en": "Finally, on the question of science fiction, Richardson pointed out that in modern society, people tend to think there is reality on the one hand, and fiction and fantasy on the other.",
+      "zh": "最后，关于科幻小说问题，理查森指出，在现代社会，人们往往认为一方面是现实，另一方面是虚构和幻想。"
+    },
+    {
+      "id": "s39",
+      "en": "She then explained that the division did not always exist, and that scientists and technologists made this separation because they wanted to carve out the sphere of their work.",
+      "zh": "她接着解释说，这样的划分并非一直存在，科学家和技术专家之所以做出这种区分，是因为他们想划定自己的工作领域。"
+    },
+    {
+      "id": "s40",
+      "en": "'But the divide is not so clear cut, and that is why the worlds seem to collide at times,' she said.",
+      "zh": "“但这种划分并不那么明确，因此这些世界有时会冲突，”她说。"
+    },
+    {
+      "id": "s41",
+      "en": "'In some cases, we need to bring these different understandings together to get a whole perspective.",
+      "zh": "“在某些情况下，我们需要结合这些不同的理解，获得完整的视角。"
+    },
+    {
+      "id": "s42",
+      "en": "Perhaps then, we won't be so frightened that something we create as a copy of ourselves will be a [threat] to us.'",
+      "zh": "也许那时，我们不会那么害怕我们所创造的自我复制品会成为我们的[威胁]。”"
+    },
+    {
+      "id": "s43",
+      "en": "*terraforming: modifying a planet's atmosphere to suit human needs",
+      "zh": "*地球化：改造行星的大气以适合人类需求"
+    },
+    {
+      "id": "s44",
+      "en": "**singularity: the point when robots will be able to start creating ever more sophisticated versions of themselves",
+      "zh": "**奇点：机器人能够开始创造越来越复杂版本的临界点"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Robots and us</span></strong></p><p style="text-align: center;"><em><span><b>Three leaders in their fields answer questions about our relationships with robots</b></span></em></p><p>When asked 'Should robots be used to colonise other planets?', cosmology and astrophysics Professor Martin Rees said he believed the solar system would be mapped by robotic craft by the end of the century. 'The next step would be mining of asteroids, enabling fabrication of large structures in space without having to bring all the raw materials from Earth. … I think this is more realistic and benign than the … "terraforming"* of planets.' He maintains that colonised planets 'should be preserved with a status that is analogous to Antarctica here on Earth.'</p><p><br></p><p>On the question of using robots to colonise other planets and exploit mineral resources, engineering Professor Daniel Wolpert replied, 'I don't see a pressing need to colonise other planets unless we can bring [these] resources back to Earth. The vast majority of Earth is currently inaccessible to us. Using robots to gather resources nearer to home would seem to be a better use of our robotic tools.'</p><p><br></p><p>Meanwhile, for anthropology Professor Kathleen Richardson, the idea of 'colonisation' of other planets seemed morally dubious: 'I think whether we do something on Earth or on Mars we should always do it in the spirit of a genuine interest in "the Other", not to impose a particular model, but to meet "the Other".'</p><p><br></p><p>In response to the second question, 'How soon will machine intelligence outstrip human intelligence?', Rees mentions robots that are advanced enough to beat humans at chess, but then goes on to say, 'Robots are still limited in their ability to sense their environment: they can't yet recognise and move the pieces on a real chessboard as cleverly as a child can. Later this century, however, their more advanced successors may relate to their surroundings, and to people, as adeptly as we do. Moral questions then arise. … Should we feel guilty about exploiting [sophisticated robots]? Should we fret if they are underemployed, frustrated, or bored?'</p><p><br></p><p>Wolpert's response to the question about machine intelligence outstripping human intelligence was this: 'In a limited sense it already has. Machines can already navigate, remember and search for items with an ability that far outstrips humans. However, there is no machine that can identify visual objects or speech with the reliability and flexibility of humans. … Expecting a machine close to the creative intelligence of a human within the next 50 years would be highly ambitious.'</p><p><br></p><p>Richardson believes that our fear of machines becoming too advanced has more to do with human nature than anything intrinsic to the machines themselves. In her view, it stems from humans' tendency to personify inanimate objects: we create machines based on representations of ourselves, imagine that machines think and behave as we do, and therefore see them as an autonomous threat. 'One of the consequences of thinking that the problem lies with machines is that … we tend to imagine they are greater and more powerful than they really are and subsequently they become so.'</p><p><br></p><p>This led on to the third question, 'Should we be scared by advances in artificial intelligence?' To this question, Rees replied, 'Those who should be worried are the futurologists who believe in the so-called "singularity".** … And another worry is that we are increasingly dependent on computer networks, and that these could behave like a single "brain" with a mind of its own, and with goals that may be contrary to human welfare. I think we should ensure that robots remain as no more than "idiot savants" lacking the capacity to outwit us, even though they may greatly surpass us in the ability to calculate and process information.'</p><p><br></p><p>Wolpert's response was to say that we have already seen the damaging effects of artificial intelligence in the form of computer viruses. 'But in this case,' he says, 'the real intelligence is the malicious designer. Critically, the benefits of computers outweigh the damage that computer viruses cause. Similarly, while there may be misuses of robotics in the near future, the benefits that they will bring are likely to outweigh these negative aspects.'</p><p><br></p><p>Richardson's response to this question was this: 'We need to ask why fears of artificial intelligence and robots persist; none have in fact risen up and challenged human supremacy.' She believes that as robots have never shown themselves to be a threat to humans, it seems unlikely that they ever will. In fact, she went on, 'Not all fear [robots]; many people welcome machine intelligence.'</p><p><br></p><p>In answer to the fourth question, 'What can science fiction tell us about robotics?', Rees replied, 'I sometimes advise students that it's better to read first-rate science fiction than second-rate science - more stimulating, and perhaps no more likely to be wrong.'</p><p><br></p><p>As his response, Wolpert commented, 'Science fiction has often been remarkable at predicting the future. … Science fiction has painted a vivid spectrum of possible futures, from cute and helpful robots to dystopian robotic societies. Interestingly, almost no science fiction envisages a future without robots.'</p><p><br></p><p>Finally, on the question of science fiction, Richardson pointed out that in modern society, people tend to think there is reality on the one hand, and fiction and fantasy on the other. She then explained that the division did not always exist, and that scientists and technologists made this separation because they wanted to carve out the sphere of their work. 'But the divide is not so clear cut, and that is why the worlds seem to collide at times,' she said. 'In some cases, we need to bring these different understandings together to get a whole perspective. Perhaps then, we won't be so frightened that something we create as a copy of ourselves will be a [threat] to us.'</p><p><br></p><p>*terraforming: modifying a planet's atmosphere to suit human needs</p><p>**singularity: the point when robots will be able to start creating ever more sophisticated versions of themselves</p><p><br></p>

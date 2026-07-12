@@ -1977,5 +1977,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The problems and benefits created by the spread of the water hyacinth in Kenya",
+      "zh": "水葫芦在肯尼亚传播所带来的问题和益处"
+    },
+    {
+      "id": "s2",
+      "en": "Water hyacinth (Eichhornia crassipes), an aquatic plant native to South America, first appeared in countries in Africa in the early 1900s.",
+      "zh": "水葫芦（Eichhornia crassipes），一种原产于南美洲的水生植物，于20世纪初首次出现在非洲国家。"
+    },
+    {
+      "id": "s3",
+      "en": "Scientists there called it the 'world's worst aquatic weed', after it spread from the southernmost tip of Africa in the early 1900s and started obstructing major dams and rivers.",
+      "zh": "当地科学家称其为“世界上最糟糕的水生杂草”，因为它在20世纪初从非洲最南端蔓延开来，开始阻塞主要的水坝和河流。"
+    },
+    {
+      "id": "s4",
+      "en": "In east Africa the plant arrived with Belgian colonists in Rwanda, who liked the look of its glossy leaves and delicate purple flowers floating in their ponds.",
+      "zh": "在东非，这种植物随比利时殖民者来到卢旺达，殖民者喜欢它那光滑的叶子和漂浮在池塘中精致的紫色花朵的样子。"
+    },
+    {
+      "id": "s5",
+      "en": "But by the 1980s, it had 'escaped' out of the country via the Kagera river and made its way downstream to Lake Victoria.",
+      "zh": "但到了1980年代，它通过卡盖拉河“逃出”了该国，并顺流而下进入了维多利亚湖。"
+    },
+    {
+      "id": "s6",
+      "en": "There, with no natural predators and perfect temperature conditions, the plant began spreading in the open water, blocking fishing routes and providing a new habitat for disease-carrying mosquitoes.",
+      "zh": "在那里，由于没有天敌且温度条件适宜，这种植物开始在开放水域中蔓延，堵塞捕鱼航道，并为携带疾病的蚊子提供了新的栖息地。"
+    },
+    {
+      "id": "s7",
+      "en": "For the women who smoke fish from the lake to sell it has meant declining income, as the boats that once brought the fish to shore by the hundreds struggle to navigate through the mass of plants.",
+      "zh": "对于那些从湖中烟熏鱼以出售的女性来说，这意味着收入减少，因为曾经成百上千把鱼运上岸的船只现在很难穿过这片大量的水葫芦。"
+    },
+    {
+      "id": "s8",
+      "en": "But water hyacinth isn't their only headache.",
+      "zh": "但水葫芦并不是她们唯一的烦恼。"
+    },
+    {
+      "id": "s9",
+      "en": "In order to smoke the fish that they buy, they must gather huge quantities of firewood, sometimes walking as far as 10km each way to collect enough to complete their work.",
+      "zh": "为了烟熏她们购买的鱼，她们必须收集大量的柴火，有时来回步行长达10公里才能收集到足够完成工作的柴火。"
+    },
+    {
+      "id": "s10",
+      "en": "And each day as they cook, they breathe in the thick, grey smoke.",
+      "zh": "而且她们每天做饭时都要吸入浓厚的灰色烟雾。"
+    },
+    {
+      "id": "s11",
+      "en": "About three out of four families in Kenya depend on wood or charcoal to cook their daily meals, and the rate is even higher in rural areas, Kenya's latest demographic and health survey shows.",
+      "zh": "肯尼亚最新的人口和健康调查显示，大约四分之三的家庭依靠木材或木炭来烹饪日常饭菜，农村地区的比例甚至更高。"
+    },
+    {
+      "id": "s12",
+      "en": "Using solid fuels like these for cooking increases indoor pollution.",
+      "zh": "使用这些固体燃料做饭会增加室内污染。"
+    },
+    {
+      "id": "s13",
+      "en": "The World Health Organization estimates that about 14,300 Kenyans die annually as a result of indoor air pollution – most of which is caused by cooking and heating sources.",
+      "zh": "世界卫生组织估计，每年约有14,300名肯尼亚人死于室内空气污染，其中大部分由烹饪和取暖产生。"
+    },
+    {
+      "id": "s14",
+      "en": "Some years ago, on the shores of Lake Victoria, huge piles of water hyacinth that villagers had taken out of the water in an attempt to clear it were a common sight.",
+      "zh": "几年前，在维多利亚湖岸边，村民们捞出水中的大量水葫芦堆积成堆，成为常见景象，试图清理湖面。"
+    },
+    {
+      "id": "s15",
+      "en": "But buried in those decaying waxy leaves was a renewable energy gold mine.",
+      "zh": "但那些正在腐烂的蜡质叶子中蕴藏着一个可再生能源的金矿。"
+    },
+    {
+      "id": "s16",
+      "en": "It turns out the floating plant isn't just good at spreading – its foliage also contains a high ratio of carbon to nitrogen.",
+      "zh": "事实证明，这种漂浮的植物不仅繁殖能力强，其叶片还含有高比例的碳与氮。"
+    },
+    {
+      "id": "s17",
+      "en": "It's a magic combination that has captivated researchers' imaginations since as early as the 1980s when, across the world, they began to explore its potential as a biofuel.",
+      "zh": "这是一个神奇的组合，自20世纪80年代起，全球的研究人员就被它吸引，开始探索其作为生物燃料的潜力。"
+    },
+    {
+      "id": "s18",
+      "en": "Just about 4kg of the dried plant would be enough to cater for a large family's daily energy needs, early research predicted.",
+      "zh": "早期研究预测，约4公斤干燥后的植物就足以满足一个大家庭的日常能源需求。"
+    },
+    {
+      "id": "s19",
+      "en": "In 2014, Nigerian academics announced they had got better yields of biofuel gas when they mixed the plant with chicken manure.",
+      "zh": "2014年，尼日利亚学者宣布，当他们将该植物与鸡粪混合时，生物燃料气体的产量更高。"
+    },
+    {
+      "id": "s20",
+      "en": "A few years later, Kenyan scientists confirmed what their Nigerian peers and others had already found: manure worked to improve the process of converting the weed into gas.",
+      "zh": "几年后，肯尼亚科学家证实了尼日利亚同行及其他人早已发现的事实：粪肥有助于改进将杂草转化成气体的过程。"
+    },
+    {
+      "id": "s21",
+      "en": "In 2018, the technology came to a village on the shore of Lake Victoria, called Dunga.",
+      "zh": "2018年，这项技术来到维多利亚湖南岸的一个名为敦加的村庄。"
+    },
+    {
+      "id": "s22",
+      "en": "The project promised a two-for-one solution to the dual menaces of the water hyacinth and dependence on firewood.",
+      "zh": "该项目承诺为水葫芦危害和对柴火依赖这两大威胁提供一举两得的解决方案。"
+    },
+    {
+      "id": "s23",
+      "en": "The community received a pair of donated biogas digesters – machines that would transform a mix of water hyacinth and cow dung into biogas for cooking.",
+      "zh": "社区获得了两台捐赠的沼气发酵罐——这种机器可以将水葫芦和牛粪的混合物转化为用于烹饪的沼气。"
+    },
+    {
+      "id": "s24",
+      "en": "The digesters work a bit like a stomach.",
+      "zh": "这些发酵罐的工作原理有点像胃。"
+    },
+    {
+      "id": "s25",
+      "en": "The mixture goes in one end – think of it as a mouth – and over the next 20 to 30 days, it goes through a fermentation process and breaks down, giving off gas that comes out the other end.",
+      "zh": "混合物从一端进入——可以把它想象成口——在接下来的20到30天内经过发酵过程分解，释放出从另一端排出的气体。"
+    },
+    {
+      "id": "s26",
+      "en": "From there, the clean-burning gas is passed through pipes to the point of use, just like traditional domestic gas.",
+      "zh": "接着，这种燃烧清洁的气体通过管道输送到使用点，就像传统的家庭燃气一样。"
+    },
+    {
+      "id": "s27",
+      "en": "In Dunga, the machines produce enough gas to serve about 60% of the village's population.",
+      "zh": "在敦加，这些机器产生的气体足以满足约60%村民的需求。"
+    },
+    {
+      "id": "s28",
+      "en": "It is used in domestic stoves and for other household tasks such as purifying water and incubating chicks.",
+      "zh": "这种气体被用于家用炉灶和其他家务，如净化水和孵化小鸡。"
+    },
+    {
+      "id": "s29",
+      "en": "The project is testing whether biogas can provide an effective alternative to firewood and charcoal in rural Kenyan communities.",
+      "zh": "该项目正在测试沼气能否为肯尼亚农村社区提供一种有效替代柴火和木炭的能源。"
+    },
+    {
+      "id": "s30",
+      "en": "Results indicate that the programme seems to be working.",
+      "zh": "结果表明，该计划似乎正在发挥作用。"
+    },
+    {
+      "id": "s31",
+      "en": "The women who smoke the lake fish are already getting sick less often.",
+      "zh": "那些烟熏湖鱼的女性已经开始减少生病的次数。"
+    },
+    {
+      "id": "s32",
+      "en": "Besides, they don't have to devote a lot of time every day to gathering firewood, which is a great relief.",
+      "zh": "此外，她们每天不必花费大量时间收集柴火，这让她们感到非常宽慰。"
+    },
+    {
+      "id": "s33",
+      "en": "As a result, they're able to make more money for their families from other enterprises.",
+      "zh": "因此，她们能够通过其他生意为家庭赚取更多收入。"
+    },
+    {
+      "id": "s34",
+      "en": "Kanyiva Muindi is an epidemiologist and air pollution research fellow at the African Population and Health Research Centre in Nairobi.",
+      "zh": "坎伊瓦·穆因迪是内罗毕非洲人口与健康研究中心的流行病学家及空气污染研究员。"
+    },
+    {
+      "id": "s35",
+      "en": "She says families who switch to the smokeless cooking method could expect fewer respiratory diseases.",
+      "zh": "她表示，采用无烟烹饪方式的家庭可能会减少呼吸系统疾病。"
+    },
+    {
+      "id": "s36",
+      "en": "Women, young girls and children are particularly vulnerable because they are the ones who cook in the kitchen or outside over fires.",
+      "zh": "女性、少女和儿童尤其脆弱，因为她们通常是在厨房或户外火堆旁做饭的人。"
+    },
+    {
+      "id": "s37",
+      "en": "How much better the biogas stoves will be for the community's health still needs more research, says Dominic Kahumbu Wanjihia, Biogas International's chief executive.",
+      "zh": "沼气炉对社区健康改善的程度仍需进一步研究，沼气国际首席执行官多米尼克·卡洪布·万吉希亚表示。"
+    },
+    {
+      "id": "s38",
+      "en": "But unless the price of the machines drops, it's pretty clear that most communities will never be able to afford any, since they sell for about $750.",
+      "zh": "但除非机器价格下降，否则大多数社区显然买不起，因为售价约为750美元。"
+    },
+    {
+      "id": "s39",
+      "en": "Kanyiva says affordability is a challenge worth addressing, given the huge health and environmental dangers posed by 'dirty' fuels such as wood, charcoal and kerosene.",
+      "zh": "考虑到木材、木炭和煤油等“脏”燃料带来的巨大健康和环境危害，坎伊瓦说，经济负担能力是一个值得解决的挑战。"
+    },
+    {
+      "id": "s40",
+      "en": "If biogas could become affordable on a large scale, she says it 'would be life-changing for millions on the African continent and beyond'.",
+      "zh": "她说，如果沼气能够大规模变得负担得起，“这将改变非洲大陆乃至更广泛地区数百万人的生活”。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>The problems and benefits created by the spread of the water hyacinth in Kenya</strong></span></div><p><br>Water hyacinth (Eichhornia crassipes), an aquatic plant native to South America, first appeared in countries in Africa in the early 1900s. Scientists there called it the 'world's worst aquatic weed', after it spread from the southernmost tip of Africa in the early 1900s and started obstructing major dams and rivers.&nbsp;<br><br>In east Africa the plant arrived with Belgian colonists in Rwanda, who liked the look of its glossy leaves and delicate purple flowers floating in their ponds. But by the 1980s, it had 'escaped' out of the country via the Kagera river and made its way downstream to Lake Victoria. There, with no natural predators and perfect temperature conditions, the plant began spreading in the open water, blocking fishing routes and providing a new habitat for disease-carrying mosquitoes.&nbsp;<br><br>For the women who smoke fish from the lake to sell it has meant declining income, as the boats that once brought the fish to shore by the hundreds struggle to navigate through the mass of plants. But water hyacinth isn't their only headache. In order to smoke the fish that they buy, they must gather huge quantities of firewood, sometimes walking as far as 10km each way to collect enough to complete their work. And each day as they cook, they breathe in the thick, grey smoke. About three out of four families in Kenya depend on wood or charcoal to cook their daily meals, and the rate is even higher in rural areas, Kenya's latest demographic and health survey shows. Using solid fuels like these for cooking increases indoor pollution. The World Health Organization estimates that about 14,300 Kenyans die annually as a result of indoor air pollution – most of which is caused by cooking and heating sources.&nbsp;<br><br>Some years ago, on the shores of Lake Victoria, huge piles of water hyacinth that villagers had taken out of the water in an attempt to clear it were a common sight. But buried in those decaying waxy leaves was a renewable energy gold mine. It turns out the floating plant isn't just good at spreading – its foliage also contains a high ratio of carbon to nitrogen. It's a magic combination that has captivated researchers' imaginations since as early as the 1980s when, across the world, they began to explore its potential as a biofuel. Just about 4kg of the dried plant would be enough to cater for a large family's daily energy needs, early research predicted.&nbsp;<br><br>In 2014, Nigerian academics announced they had got better yields of biofuel gas when they mixed the plant with chicken manure. A few years later, Kenyan scientists confirmed what their Nigerian peers and others had already found: manure worked to improve the process of converting the weed into gas.&nbsp;<br><br>In 2018, the technology came to a village on the shore of Lake Victoria, called Dunga. The project promised a two-for-one solution to the dual menaces of the water hyacinth and dependence on firewood. The community received a pair of donated biogas digesters – machines that would transform a mix of water hyacinth and cow dung into biogas for cooking.&nbsp;<br><br>The digesters work a bit like a stomach. The mixture goes in one end – think of it as a mouth – and over the next 20 to 30 days, it goes through a fermentation process and breaks down, giving off gas that comes out the other end. From there, the clean-burning gas is passed through pipes to the point of use, just like traditional domestic gas. In Dunga, the machines produce enough gas to serve about 60% of the village's population. It is used in domestic stoves and for other household tasks such as purifying water and incubating chicks.&nbsp;<br><br>The project is testing whether biogas can provide an effective alternative to firewood and charcoal in rural Kenyan communities. Results indicate that the programme seems to be working. The women who smoke the lake fish are already getting sick less often. Besides, they don't have to devote a lot of time every day to gathering firewood, which is a great relief. As a result, they're able to make more money for their families from other enterprises.&nbsp;<br><br>Kanyiva Muindi is an epidemiologist and air pollution research fellow at the African Population and Health Research Centre in Nairobi. She says families who switch to the smokeless cooking method could expect fewer respiratory diseases. Women, young girls and children are particularly vulnerable because they are the ones who cook in the kitchen or outside over fires.&nbsp;<br><br>How much better the biogas stoves will be for the community's health still needs more research, says Dominic Kahumbu Wanjihia, Biogas International's chief executive. But unless the price of the machines drops, it's pretty clear that most communities will never be able to afford any, since they sell for about $750.&nbsp;<br><br>Kanyiva says affordability is a challenge worth addressing, given the huge health and environmental dangers posed by 'dirty' fuels such as wood, charcoal and kerosene. If biogas could become affordable on a large scale, she says it 'would be life-changing for millions on the African continent and beyond'.</p>

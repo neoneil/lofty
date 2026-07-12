@@ -1497,5 +1497,288 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The pirates of the ancient Mediterranean",
+      "zh": "古代地中海的海盗"
+    },
+    {
+      "id": "s2",
+      "en": "In the first and second millennia BCE, pirates sailed around the Mediterranean, attacking ships and avoiding pursuers",
+      "zh": "公元前第一和第二千年间，海盗在地中海航行，袭击船只并躲避追捕者。"
+    },
+    {
+      "id": "s3",
+      "en": "When one mentions pirates, an image springs to most people's minds of a crew of misfits, daredevils and adventurers in command of a tall sailing ship in the Caribbean Sea.",
+      "zh": "提到海盗时，大多数人脑海中浮现的是一群不合群的人、胆大妄为者和冒险家，驾驶着一艘高桅帆船在加勒比海上。"
+    },
+    {
+      "id": "s4",
+      "en": "Yet from the first to the third millennium BCE, thousands of years before these swashbucklers began spreading fear across the Caribbean, pirates prowled the Mediterranean, raiding merchant ships and threatening vital trade routes.",
+      "zh": "然而，从公元前三千年到第一千年，在这些浪荡海盗开始在加勒比海传播恐惧之前几千年，海盗就在地中海游荡，袭击商船，威胁着重要的贸易航线。"
+    },
+    {
+      "id": "s5",
+      "en": "However, despite all efforts and the might of various ancient states, piracy could not be stopped.",
+      "zh": "尽管各种古国付出了各种努力，依靠强大的力量，海盗活动仍然无法被根除。"
+    },
+    {
+      "id": "s6",
+      "en": "The situation remained unchanged for thousands of years.",
+      "zh": "这种情况持续了数千年没有改变。"
+    },
+    {
+      "id": "s7",
+      "en": "Only when the pirates directly threatened the interests of ancient Rome did the Roman Republic organise a massive fleet to eliminate piracy.",
+      "zh": "只有当海盗直接威胁到古罗马的利益时，罗马共和国才组织起庞大舰队来消灭海盗。"
+    },
+    {
+      "id": "s8",
+      "en": "Under the command of the Roman general Pompey, Rome eradicated piracy, transforming the Mediterranean into 'Mare Nostrum' (Our Sea).",
+      "zh": "在罗马将军庞培的指挥下，罗马消灭了海盗，将地中海变成了“我们的大海”（Mare Nostrum）。"
+    },
+    {
+      "id": "s9",
+      "en": "Although piracy in the Mediterranean is first recorded in ancient Egypt during the reign of Pharaoh Amenhotep III (c.",
+      "zh": "尽管地中海的海盗活动首次记录于埃及古王朝亚蒙霍特普三世法老统治时期（约"
+    },
+    {
+      "id": "s10",
+      "en": "1390-1353 BCE), it is reasonable to assume it predated this powerful civilisation.",
+      "zh": "公元前1390-1353年），但合理推测海盗活动早于这个强大文明的出现。"
+    },
+    {
+      "id": "s11",
+      "en": "This is partly due to the great importance the Mediterranean held at this time, and partly due to its geography.",
+      "zh": "这部分是因为当时地中海的重要性巨大，也与其地理位置有关。"
+    },
+    {
+      "id": "s12",
+      "en": "While the Mediterranean region is predominantly fertile, some parts are rugged and hilly, even mountainous.",
+      "zh": "尽管地中海地区大部分土地肥沃，但部分地区崎岖多山，甚至有山脉。"
+    },
+    {
+      "id": "s13",
+      "en": "In ancient times, the inhabitants of these areas relied heavily on marine resources, including fish and salt.",
+      "zh": "古代，这些地区的居民非常依赖海洋资源，包括鱼类和盐。"
+    },
+    {
+      "id": "s14",
+      "en": "Most had their own boats, possessed good seafaring skills, and unsurpassed knowledge of the local coastline and sailing routes.",
+      "zh": "大多数人拥有自己的船只，具备良好的航海技能，并对当地海岸线和航线有无可比拟的了解。"
+    },
+    {
+      "id": "s15",
+      "en": "Thus, it is not surprising that during hardships, these men turned to piracy.",
+      "zh": "因此，在困难时期这些人转向海盗活动并不令人惊讶。"
+    },
+    {
+      "id": "s16",
+      "en": "Geography itself further benefited the pirates, with the numerous coves along the coast providing places for them to hide their boats and strike undetected.",
+      "zh": "地理环境也进一步有利于海盗，沿海众多的小海湾为他们隐藏船只和悄无声息地发动袭击提供了场所。"
+    },
+    {
+      "id": "s17",
+      "en": "Before the invention of ocean-going caravels* in the 15th century, ships could not easily cross long distances over open water.",
+      "zh": "在15世纪远洋卡拉维尔帆船发明之前，船只难以轻松跨越开阔水域的长距离航行。"
+    },
+    {
+      "id": "s18",
+      "en": "Thus, in the ancient world most were restricted to a few well-known navigable routes that followed the coastline.",
+      "zh": "因此，在古代世界，大多数船只只能沿着沿海几条著名的航线航行。"
+    },
+    {
+      "id": "s19",
+      "en": "Caught in a trap, a slow merchant ship laden with goods had no other option but to surrender.",
+      "zh": "被困于陷阱中的满载货物的缓慢商船别无选择，只能投降。"
+    },
+    {
+      "id": "s20",
+      "en": "In addition, knowledge of the local area helped the pirates to avoid retaliation once a state fleet arrived.",
+      "zh": "此外，对当地环境的了解帮助海盗在国家舰队到来时躲避报复。"
+    },
+    {
+      "id": "s21",
+      "en": "One should also add that it was not unknown in the first and second millennia BCE for governments to resort to pirates' services, especially during wartime, employing their skills and numbers against their opponents.",
+      "zh": "还应补充的是，在公元前第一和第二千年，政府利用海盗服务并非罕见，尤其在战争期间，利用海盗的人数和技能对付敌人。"
+    },
+    {
+      "id": "s22",
+      "en": "A pirate fleet would serve in the first wave of attack, preparing the way for the navy.",
+      "zh": "海盗舰队通常作为第一波攻击力量，为海军铺平道路。"
+    },
+    {
+      "id": "s23",
+      "en": "Some of the regions were known for providing safe harbours to pirates, who, in return, boosted the local economy.",
+      "zh": "一些地区以为海盗提供安全港口而闻名，而海盗则反过来促进了当地经济发展。"
+    },
+    {
+      "id": "s24",
+      "en": "The first known record of a named group of Mediterranean pirates, made during the rule of ancient Egyptian Pharaoh Akhenaten (c.",
+      "zh": "关于地中海海盗的第一个已知命名记载出现于古埃及法老阿肯那顿统治时期（约"
+    },
+    {
+      "id": "s25",
+      "en": "1353-1336 BCE), was in the Amarna Letters.",
+      "zh": "公元前1353-1336年），记载于阿玛尔纳信件中。"
+    },
+    {
+      "id": "s26",
+      "en": "These were extracts of diplomatic correspondence between the pharaoh and his allies, and covered many pressing issues, including piracy.",
+      "zh": "这些信件摘录了法老与其盟友之间的外交往来，涵盖了包括海盗问题在内的多项紧迫议题。"
+    },
+    {
+      "id": "s27",
+      "en": "It seems the pharaoh was troubled by two distinct pirate groups, the Lukka and the Sherden.",
+      "zh": "看来法老被两个不同的海盗集团困扰，分别是卢卡族和舍尔登族。"
+    },
+    {
+      "id": "s28",
+      "en": "Despite the Egyptian fleet's best efforts, the pirates continued to cause substantial disruption to regional commerce.",
+      "zh": "尽管埃及舰队尽力而为，海盗仍持续对地区贸易造成重大干扰。"
+    },
+    {
+      "id": "s29",
+      "en": "In the letters, the king of Alashiya (modern Cyprus) rejected Akhenaten's claims of a connection with the Lukka (based in modern-day Turkey).",
+      "zh": "信件中，阿拉希亚（今塞浦路斯）的国王否认了阿肯那顿关于卢卡族（现土耳其境内）有联系的说法。"
+    },
+    {
+      "id": "s30",
+      "en": "The king assured Akhenaten he was prepared to punish any of his subjects involved in piracy.",
+      "zh": "该国王向阿肯那顿保证，他准备惩罚任何参与海盗活动的臣民。"
+    },
+    {
+      "id": "s31",
+      "en": "The ancient Greek world's experience of piracy was different from that of Egyptian rulers.",
+      "zh": "古希腊世界对海盗的体验与埃及统治者不同。"
+    },
+    {
+      "id": "s32",
+      "en": "While Egypt's power was land-based, the ancient Greeks relied on the Mediterranean in almost all aspects of life, from trade to warfare.",
+      "zh": "埃及的实力主要基于陆地，而古希腊人则几乎在生活的所有方面——从贸易到战争——都依赖地中海。"
+    },
+    {
+      "id": "s33",
+      "en": "Interestingly, in his works the Iliad and the Odyssey, the ancient Greek writer Homer not only condones, but praises the lifestyle and actions of pirates.",
+      "zh": "有趣的是，在《伊利亚特》和《奥德赛》中，古希腊作家荷马不仅宽容海盗的生活方式和行为，反而予以赞赏。"
+    },
+    {
+      "id": "s34",
+      "en": "The opinion remained unchanged in the following centuries.",
+      "zh": "这种观点在随后几个世纪中保持不变。"
+    },
+    {
+      "id": "s35",
+      "en": "The ancient Greek historian Thucydides, for instance, glorified pirates' daring attacks on ships or even cities.",
+      "zh": "例如，古希腊历史学家修昔底德赞颂海盗大胆袭击船只甚至城市的行为。"
+    },
+    {
+      "id": "s36",
+      "en": "For Greeks, piracy was a part of everyday life.",
+      "zh": "对希腊人来说，海盗活动是日常生活的一部分。"
+    },
+    {
+      "id": "s37",
+      "en": "Even high-ranking members of the state were not beyond engaging in such activities.",
+      "zh": "甚至国家的高级官员也未能免于参与此类活动。"
+    },
+    {
+      "id": "s38",
+      "en": "According to the Greek orator Demosthenes, in 355 BCE, Athenian ambassadors made a detour from their official travel to capture a ship sailing from Egypt, taking the wealth found onboard for themselves!",
+      "zh": "据希腊演说家狄摩斯梯尼记载，公元前355年，雅典使节在公事途中绕道抓获了一艘从埃及驶来的船只，并将船上财富据为己有！"
+    },
+    {
+      "id": "s39",
+      "en": "The Greeks' liberal approach towards piracy does not mean they always tolerated it, but attempts to curtail piracy were hampered by the large number of pirates operating in the Mediterranean.",
+      "zh": "希腊人对海盗的宽容态度并不意味着他们始终容忍海盗行为，但因地中海活跃着大量海盗，遏制海盗的努力受到了阻碍。"
+    },
+    {
+      "id": "s40",
+      "en": "The rising power of ancient Rome required the Roman Republic to deal with piracy in the Mediterranean.",
+      "zh": "古罗马崛起的力量迫使罗马共和国必须处理地中海的海盗问题。"
+    },
+    {
+      "id": "s41",
+      "en": "While piracy was a serious issue for the Republic, Rome profited greatly from its existence.",
+      "zh": "虽然海盗问题对共和国来说十分严重，但罗马在其存在中获益匪浅。"
+    },
+    {
+      "id": "s42",
+      "en": "Pirate raids provided a steady source of slaves, essential for Rome's agriculture and mining industries.",
+      "zh": "海盗袭击为罗马提供稳定的奴隶来源，这对农业和采矿业至关重要。"
+    },
+    {
+      "id": "s43",
+      "en": "But this arrangement could work only while the pirates left Roman interests alone.",
+      "zh": "但只有海盗不侵犯罗马利益时，这种安排才能奏效。"
+    },
+    {
+      "id": "s44",
+      "en": "Pirate attacks on grain ships, which were essential to Roman citizens, led to angry voices in the Senate, demanding punishment of the culprits.",
+      "zh": "海盗对运粮船的袭击触动罗马公民的核心利益，导致参议院内出现愤怒声音，要求惩处罪魁祸首。"
+    },
+    {
+      "id": "s45",
+      "en": "Rome, however, did nothing, further encouraging piracy.",
+      "zh": "然而罗马无所作为，反而助长了海盗行为。"
+    },
+    {
+      "id": "s46",
+      "en": "By the 1st century BCE, emboldened pirates kidnapped prominent Roman dignitaries, asking for a large ransom to be paid.",
+      "zh": "到了公元前1世纪，胆大妄为的海盗绑架了知名罗马贵族，索要巨额赎金。"
+    },
+    {
+      "id": "s47",
+      "en": "Their most famous hostage was none other than Julius Caesar, captured in 75 BCE.",
+      "zh": "他们最著名的人质之一正是朱利叶斯·凯撒，公元前75年被捕。"
+    },
+    {
+      "id": "s48",
+      "en": "By now, Rome was well aware that pirates had outlived their usefulness.",
+      "zh": "此时，罗马已清楚海盗的作用已尽。"
+    },
+    {
+      "id": "s49",
+      "en": "The time had come for concerted action.",
+      "zh": "采取统一行动的时刻到了。"
+    },
+    {
+      "id": "s50",
+      "en": "In 67 BCE, a new law granted Pompey vast funds to combat the Mediterranean menace.",
+      "zh": "公元前67年，一项新法律给予庞培巨额资金以对抗地中海的威胁。"
+    },
+    {
+      "id": "s51",
+      "en": "Taking personal command, Pompey divided the entire Mediterranean into 13 districts, assigning a fleet and commander to each.",
+      "zh": "庞培亲自指挥，将整个地中海划分为13个区，每区配备一支舰队和指挥官。"
+    },
+    {
+      "id": "s52",
+      "en": "After cleansing one district of pirates, the fleet would join another in the next district.",
+      "zh": "一旦清剿完一个区的海盗，舰队就会转战下一区。"
+    },
+    {
+      "id": "s53",
+      "en": "The process continued until the entire Mediterranean was free of pirates.",
+      "zh": "这一过程持续进行，直到整个地中海无海盗存在。"
+    },
+    {
+      "id": "s54",
+      "en": "Although thousands of pirates died at the hands of Pompey's troops, as a long-term solution to the problem, many more were offered land in fertile areas located far from the sea.",
+      "zh": "虽然成千上万的海盗死于庞培军队之手，但作为长期解决方案，更多海盗被提供了远离海岸的肥沃土地安置。"
+    },
+    {
+      "id": "s55",
+      "en": "Instead of a maritime menace, Rome got productive farmers that further boosted its economy.",
+      "zh": "罗马由此获得了勤劳的农民，而非海上威胁，进一步促进了经济发展。"
+    },
+    {
+      "id": "s56",
+      "en": "* caravel: a small, highly manoeuvrable sailing ship developed by the Portuguese",
+      "zh": "* 卡拉维尔帆船：葡萄牙人开发的一种小型、高机动性的帆船"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong style=""><span style="font-size: 22px;">The pirates of the ancient Mediterranean</span></strong></p><p style="text-align: center;"><em>In the first and second millennia BCE, pirates sailed around the Mediterranean, attacking ships and avoiding pursuers</em></p><p><em></em></p><p><strong></strong></p><p><strong>A.</strong></p><p>When one mentions pirates, an image springs to most people's minds of a crew of misfits, daredevils and adventurers in command of a tall sailing ship in the Caribbean Sea. Yet from the first to the third millennium BCE, thousands of years before these swashbucklers began spreading fear across the Caribbean, pirates prowled the Mediterranean, raiding merchant ships and threatening vital trade routes. However, despite all efforts and the might of various ancient states, piracy could not be stopped. The situation remained unchanged for thousands of years. Only when the pirates directly threatened the interests of ancient Rome did the Roman Republic organise a massive fleet to eliminate piracy. Under the command of the Roman general Pompey, Rome eradicated piracy, transforming the Mediterranean into<span style="font-style: italic;">'Mare Nostrum'</span> (Our Sea).</p><p></p><p><strong><br></strong></p><p><strong>B.</strong></p><p>Although piracy in the Mediterranean is first recorded in ancient Egypt during the reign of Pharaoh Amenhotep III (c. 1390-1353 BCE), it is reasonable to assume it predated this powerful civilisation. This is partly due to the great importance the Mediterranean held at this time, and partly due to its geography. While the Mediterranean region is predominantly fertile, some parts are rugged and hilly, even mountainous. In ancient times, the inhabitants of these areas relied heavily on marine resources, including fish and salt. Most had their own boats, possessed good seafaring skills, and unsurpassed knowledge of the local coastline and sailing routes. Thus, it is not surprising that during hardships, these men turned to piracy. Geography itself further benefited the pirates, with the numerous coves along the coast providing places for them to hide their boats and strike undetected. Before the invention of ocean-going caravels* in the 15th century, ships could not easily cross long distances over open water. Thus, in the ancient world most were restricted to a few well-known navigable routes that followed the coastline. Caught in a trap, a slow merchant ship laden with goods had no other option but to surrender. In addition, knowledge of the local area helped the pirates to avoid retaliation once a state fleet arrived.</p><p></p><p><br></p><p><strong>C.</strong></p><p>One should also add that it was not unknown in the first and second millennia BCE for governments to resort to pirates' services, especially during wartime, employing their skills and numbers against their opponents. A pirate fleet would serve in the first wave of attack, preparing the way for the navy. Some of the regions were known for providing safe harbours to pirates, who, in return, boosted the local economy.</p><p></p><p><br></p><p><strong>D.</strong></p><p>The first known record of a named group of Mediterranean pirates, made during the rule of ancient Egyptian Pharaoh Akhenaten (c. 1353-1336 BCE), was in the Amarna Letters. These were extracts of diplomatic correspondence between the pharaoh and his allies, and covered many pressing issues, including piracy. It seems the pharaoh was troubled by two distinct pirate groups, the Lukka and the Sherden. Despite the Egyptian fleet's best efforts, the pirates continued to cause substantial disruption to regional commerce. In the letters, the king of Alashiya (modern Cyprus) rejected Akhenaten's claims of a connection with the Lukka (based in modern-day Turkey). The king assured Akhenaten he was prepared to punish any of his subjects involved in piracy.</p><p></p><p><br></p><p><strong>E.</strong></p><p>The ancient Greek world's experience of piracy was different from that of Egyptian rulers. While Egypt's power was land-based, the ancient Greeks relied on the Mediterranean in almost all aspects of life, from trade to warfare. Interestingly, in his works the Iliad and the Odyssey, the ancient Greek writer Homer not only condones, but praises the lifestyle and actions of pirates. The opinion remained unchanged in the following centuries. The ancient Greek historian Thucydides, for instance, glorified pirates' daring attacks on ships or even cities. For Greeks, piracy was a part of everyday life. Even high-ranking members of the state were not beyond engaging in such activities. According to the Greek orator Demosthenes, in 355 BCE, Athenian ambassadors made a detour from their official travel to capture a ship sailing from Egypt, taking the wealth found onboard for themselves! The Greeks' liberal approach towards piracy does not mean they always tolerated it, but attempts to curtail piracy were hampered by the large number of pirates operating in the Mediterranean.</p><p></p><p><br></p><p><strong>F.</strong></p><p>The rising power of ancient Rome required the Roman Republic to deal with piracy in the Mediterranean. While piracy was a serious issue for the Republic, Rome profited greatly from its existence. Pirate raids provided a steady source of slaves, essential for Rome's agriculture and mining industries. But this arrangement could work only while the pirates left Roman interests alone. Pirate attacks on grain ships, which were essential to Roman citizens, led to angry voices in the Senate, demanding punishment of the culprits. Rome, however, did nothing, further encouraging piracy. By the 1st century BCE, emboldened pirates kidnapped prominent Roman dignitaries, asking for a large ransom to be paid. Their most famous hostage was none other than Julius Caesar, captured in 75 BCE.</p><p></p><p><br></p><p><strong>G.</strong></p><p>By now, Rome was well aware that pirates had outlived their usefulness. The time had come for concerted action. In 67 BCE, a new law granted Pompey vast funds to combat the Mediterranean menace. Taking personal command, Pompey divided the entire Mediterranean into 13 districts, assigning a fleet and commander to each. After cleansing one district of pirates, the fleet would join another in the next district. The process continued until the entire Mediterranean was free of pirates. Although thousands of pirates died at the hands of Pompey's troops, as a long-term solution to the problem, many more were offered land in fertile areas located far from the sea. Instead of a maritime menace, Rome got productive farmers that further boosted its economy.</p><p><br></p><p></p><p>* caravel: a small, highly manoeuvrable sailing ship developed by the Portuguese</p><p></p><p></p><p></p><p><br><em></em></p>

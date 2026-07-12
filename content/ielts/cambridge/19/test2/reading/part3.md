@@ -1777,5 +1777,263 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "An inquiry into the existence of the gifted child",
+      "zh": "对天才儿童存在的探究"
+    },
+    {
+      "id": "s2",
+      "en": "Let us start by looking at a modern 'genius', Maryam Mirzakhani, who died at the early age of 40.",
+      "zh": "让我们从一位现代“天才”玛丽亚姆·米尔扎哈尼说起，她在40岁这个早年去世。"
+    },
+    {
+      "id": "s3",
+      "en": "She was the only woman to win the Fields Medal—the mathematical equivalent of a Nobel prize.",
+      "zh": "她是唯一获得菲尔兹奖章的女性——这被誉为数学领域的诺贝尔奖。"
+    },
+    {
+      "id": "s4",
+      "en": "It would be easy to assume that someone as special as Mirzakhani must have been one of those 'gifted' children, those who have an extraordinary ability in a specific sphere of activity or knowledge.",
+      "zh": "很容易就会认为像米尔扎哈尼这样特别的人，一定是那些“天才”儿童之一——在某个特定领域或知识方面具有非凡能力的人。"
+    },
+    {
+      "id": "s5",
+      "en": "But look closer and a different story emerges.",
+      "zh": "但仔细观察，会发现一个不同的故事。"
+    },
+    {
+      "id": "s6",
+      "en": "Mirzakhani was born in Tehran, Iran.",
+      "zh": "米尔扎哈尼出生于伊朗德黑兰。"
+    },
+    {
+      "id": "s7",
+      "en": "She went to a highly selective girls' school but maths wasn't her interest—reading was.",
+      "zh": "她就读于一所择优录取的女子学校，但她对数学不感兴趣——她喜欢阅读。"
+    },
+    {
+      "id": "s8",
+      "en": "She loved novels and would read anything she could lay her hands on.",
+      "zh": "她喜欢小说，凡是能拿到的书都爱看。"
+    },
+    {
+      "id": "s9",
+      "en": "As for maths, she did rather poorly at it for the first couple of years in her middle school, but became interested when her elder brother told her about what he'd learned.",
+      "zh": "至于数学，她初中头几年成绩相当差，但后来在哥哥讲述他学到的东西时对数学产生了兴趣。"
+    },
+    {
+      "id": "s10",
+      "en": "He shared a famous maths problem from a magazine that fascinated her—and she was hooked.",
+      "zh": "他分享了杂志上的一个著名数学题吸引了她——她从此着迷。"
+    },
+    {
+      "id": "s11",
+      "en": "In adult life it is clear that she was curious, excited by what she did and also resolute in the face of setbacks.",
+      "zh": "成年后她显然充满好奇，对所做的事感到兴奋，并且面对挫折表现出坚定的决心。"
+    },
+    {
+      "id": "s12",
+      "en": "One of her comments sums it up.",
+      "zh": "她的一句评论总结了这一切。"
+    },
+    {
+      "id": "s13",
+      "en": "'Of course, the most rewarding part is the 'Aha' moment, the excitement of discovery and enjoyment of understanding something new...",
+      "zh": "“当然，最有回报的部分是‘啊哈’时刻，发现的兴奋和理解新事物的乐趣……"
+    },
+    {
+      "id": "s14",
+      "en": "But most of the time, doing mathematics for me is like being on a long hike with no trail and no end in sight.'",
+      "zh": "但对我来说，大多数时间做数学就像是一场没有路径、看不到尽头的长途徒步。”"
+    },
+    {
+      "id": "s15",
+      "en": "That trail took her to the heights of original research into mathematics.",
+      "zh": "这条道路引领她登上了数学原创研究的高峰。"
+    },
+    {
+      "id": "s16",
+      "en": "Is her background unusual?",
+      "zh": "她的背景不寻常吗？"
+    },
+    {
+      "id": "s17",
+      "en": "Apparently not.",
+      "zh": "显然不是。"
+    },
+    {
+      "id": "s18",
+      "en": "Most Nobel prize winners were unexceptional in childhood.",
+      "zh": "大多数诺贝尔奖获得者童年时期并不出众。"
+    },
+    {
+      "id": "s19",
+      "en": "Einstein was slow to talk as a baby.",
+      "zh": "爱因斯坦小时候学说话很慢。"
+    },
+    {
+      "id": "s20",
+      "en": "He failed the general part of the entry test to Zurich Polytechnic—though they let him in because of high physics and maths scores.",
+      "zh": "他未通过苏黎世理工学院入学考试的一般部分——但因物理和数学成绩优异被录取。"
+    },
+    {
+      "id": "s21",
+      "en": "He struggled at work initially, but he kept plugging away and eventually rewrote the laws of Newtonian mechanics with his theory of relativity.",
+      "zh": "他起初工作不顺，但坚持不懈，最终用相对论改写了牛顿力学定律。"
+    },
+    {
+      "id": "s22",
+      "en": "There has been a considerable amount of research on high performance over the last century that suggests it goes way beyond tested intelligence.",
+      "zh": "过去一个世纪有大量关于高绩效的研究表明，成就远远超出智商测试的范围。"
+    },
+    {
+      "id": "s23",
+      "en": "On top of that, research is clear that brains are flexible, new neural pathways can be created, and IQ isn't fixed.",
+      "zh": "此外，研究明确表明大脑是具有灵活性的，可以新建神经通路，智商不是固定不变的。"
+    },
+    {
+      "id": "s24",
+      "en": "For example, just because you can read stories with hundreds of pages at the age of five doesn't mean you will still be ahead of your contemporaries in your teens.",
+      "zh": "例如，仅仅因为你五岁时能阅读数百页的故事，并不意味着你十几岁时仍然领先于同龄人。"
+    },
+    {
+      "id": "s25",
+      "en": "While the jury is out on giftedness being innate and other factors potentially making the difference, what is certain is that the behaviours associated with high levels of performance are replicable and most can be taught—even traits such as curiosity.",
+      "zh": "关于天赋是否与生俱来以及其他因素是否起作用尚无定论，但可以确定的是，高绩效相关的行为是可以复制的，其中大多数甚至可以教授——包括好奇心等特质。"
+    },
+    {
+      "id": "s26",
+      "en": "According to my colleague Prof Deborah Eyre, with whom I've collaborated on the book Great Minds and How to Grow Them, the latest neuroscience and psychological research suggests most individuals can reach levels of performance associated in school with the gifted and talented.",
+      "zh": "据我合著《伟大心灵及其培养之道》的同事黛博拉·艾尔教授说，最新的神经科学和心理学研究表明，大多数人可以达到学校里被认为是天才和才华横溢水平的表现。"
+    },
+    {
+      "id": "s27",
+      "en": "However, they must be taught the right attitudes and approaches to their learning and develop the attributes of high performers—curiosity, persistence and hard work, for example—an approach Eyre calls 'high performance learning'.",
+      "zh": "然而，他们必须被教授正确的学习态度和方法，培养高绩效者的特质——如好奇心、毅力和勤奋——艾尔称之为“高绩效学习”方法。"
+    },
+    {
+      "id": "s28",
+      "en": "Critically, they need the right support in developing those approaches at home as well as at school.",
+      "zh": "关键是，他们需要在家和学校都得到正确的支持来培养这些方法。"
+    },
+    {
+      "id": "s29",
+      "en": "Prof Anders Ericsson, an eminent education psychologist at Florida State University, US, is the co-author of Peak: Secrets from the New Science of Expertise.",
+      "zh": "安德斯·埃里克森教授是美国佛罗里达州立大学著名教育心理学家，是《巅峰：新科学专长的秘密》一书的合著者。"
+    },
+    {
+      "id": "s30",
+      "en": "After research going back to 1980 into diverse achievements, from music to memory to sport, he doesn't think unique and innate talents are at the heart of performance.",
+      "zh": "经过自1980年以来对音乐、记忆、体育等多领域成就的研究，他认为独特且天生的才能并非表现的核心。"
+    },
+    {
+      "id": "s31",
+      "en": "Deliberate practice, that stretches you every step of the way, and around 10,000 hours of it, is what produces the goods.",
+      "zh": "刻意练习，每一步都不断挑战自己，约一万小时的训练，才是成就的关键。"
+    },
+    {
+      "id": "s32",
+      "en": "It's not a magic number—the highest performers move on to doing a whole lot more, of course.",
+      "zh": "这不是魔法数字——当然顶尖表现者通常投入更多时间。"
+    },
+    {
+      "id": "s33",
+      "en": "Ericsson's memory research is particularly interesting because random students, trained in memory techniques for the study, went on to outperform others thought to have innately superior memories—those who you might call gifted.",
+      "zh": "埃里克森的记忆研究尤为有趣，因为研究中接受记忆技巧训练的普通学生最终表现优于被认为天生记忆力更强的人—也就是通常所说的“天才”。"
+    },
+    {
+      "id": "s34",
+      "en": "But it is perhaps the work of Benjamin Bloom, another distinguished American educationist working in the 1980s, that gives the most pause for thought.",
+      "zh": "但也许是本杰明·布鲁姆这位1980年代杰出美国教育家的工作最令人深思。"
+    },
+    {
+      "id": "s35",
+      "en": "Bloom's team looked at a group of extraordinarily high achieving people in disciplines as varied as ballet, swimming, piano, tennis, maths, sculpture and neurology.",
+      "zh": "布鲁姆的团队研究了一群在芭蕾、游泳、钢琴、网球、数学、雕塑和神经学等多种领域取得非凡成就的人。"
+    },
+    {
+      "id": "s36",
+      "en": "He found a pattern of parents encouraging and supporting their children, often in areas they enjoyed themselves.",
+      "zh": "他发现这些人的父母都有一个模式，就是鼓励和支持孩子，且通常也是在他们自己喜欢的领域。"
+    },
+    {
+      "id": "s37",
+      "en": "Bloom's outstanding people had worked very hard and consistently at something they had become hooked on when at a young age, and their parents all emerged as having strong work ethics themselves.",
+      "zh": "布鲁姆研究的杰出人物从小就对某件事着迷，并且努力且持续地投入其中，同时他们的父母也展现出强烈的职业道德。"
+    },
+    {
+      "id": "s38",
+      "en": "Eyre says we know how high performers learn.",
+      "zh": "艾尔说我们知道高绩效者是如何学习的。"
+    },
+    {
+      "id": "s39",
+      "en": "From that she has developed a high performing learning approach.",
+      "zh": "基于此，她发展出一种高绩效学习方法。"
+    },
+    {
+      "id": "s40",
+      "en": "She is working on this with a group of schools, both in Britain and abroad.",
+      "zh": "她正与英国及海外的一些学校合作开展这项工作。"
+    },
+    {
+      "id": "s41",
+      "en": "Some spin-off research, which looked in detail at 24 of the 3,000 children being studied who were succeeding despite difficult circumstances, found something remarkable.",
+      "zh": "一项派生研究详细研究了3000名受试儿童中24名在艰难环境中取得成功的孩子，发现了一些惊人的情况。"
+    },
+    {
+      "id": "s42",
+      "en": "Half were getting free school meals because of poverty, more than half were living with a single parent, and four in five were living in disadvantaged areas.",
+      "zh": "一半孩子因贫困领取免费午餐，超过一半由单亲抚养，五分之四生活在不利地区。"
+    },
+    {
+      "id": "s43",
+      "en": "Interviews uncovered strong evidence of an adult or adults in the child's life who valued and supported education, either in the immediate or extended family or in the child's wider community.",
+      "zh": "访谈显示，孩子生活中有一位或多位成人非常重视并支持教育，这些成人可能是直系或旁系家庭成员，或孩子更广泛社区中的人。"
+    },
+    {
+      "id": "s44",
+      "en": "Children talked about the need to work hard at school, to listen in class and keep trying.",
+      "zh": "孩子们谈到必须努力学习、专心听课并不断尝试。"
+    },
+    {
+      "id": "s45",
+      "en": "Let us end with Einstein, the epitome of a genius.",
+      "zh": "让我们以爱因斯坦——天才的典范——作结。"
+    },
+    {
+      "id": "s46",
+      "en": "He clearly had curiosity, character and determination.",
+      "zh": "他显然拥有好奇心、品格和决心。"
+    },
+    {
+      "id": "s47",
+      "en": "He struggled against rejection in early life but was undeterred.",
+      "zh": "他早年经历过挫折和拒绝，但依然毫不气馁。"
+    },
+    {
+      "id": "s48",
+      "en": "Did he think he was a genius or even gifted?",
+      "zh": "他认为自己是天才甚至有天赋吗？"
+    },
+    {
+      "id": "s49",
+      "en": "He once wrote: 'It's not that I'm so smart, it's just that I stay with problems longer.",
+      "zh": "他曾写道：“不是我特别聪明，而是我会花更多时间钻研问题。"
+    },
+    {
+      "id": "s50",
+      "en": "Most people say it is the intellect which makes a great scientist.",
+      "zh": "大多数人说成就伟大科学家的关键是智力。"
+    },
+    {
+      "id": "s51",
+      "en": "They are wrong: it is character.'",
+      "zh": "他们错了：关键是品格。”"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">An inquiry into the existence of the gifted child</span></strong></p><p style="text-align: left;"><strong><span style="font-size:18px"></span></strong></p><p>Let us start by looking at a modern 'genius', Maryam Mirzakhani, who died at the early age of 40. She was the only woman to win the Fields Medal—the mathematical equivalent of a Nobel prize. It would be easy to assume that someone as special as Mirzakhani must have been one of those 'gifted' children, those who have an extraordinary ability in a specific sphere of activity or knowledge. But look closer and a different story emerges. Mirzakhani was born in Tehran, Iran. She went to a highly selective girls' school but maths wasn't her interest—reading was. She loved novels and would read anything she could lay her hands on. As for maths, she did rather poorly at it for the first couple of years in her middle school, but became interested when her elder brother told her about what he'd learned. He shared a famous maths problem from a magazine that fascinated her—and she was hooked.</p><p><br></p><p></p><p>In adult life it is clear that she was curious, excited by what she did and also resolute in the face of setbacks. One of her comments sums it up. 'Of course, the most rewarding part is the 'Aha' moment, the excitement of discovery and enjoyment of understanding something new... But most of the time, doing mathematics for me is like being on a long hike with no trail and no end in sight.' That trail took her to the heights of original research into mathematics.</p><p><br></p><p></p><p>Is her background unusual? Apparently not. Most Nobel prize winners were unexceptional in childhood. Einstein was slow to talk as a baby. He failed the general part of the entry test to Zurich Polytechnic—though they let him in because of high physics and maths scores. He struggled at work initially, but he kept plugging away and eventually rewrote the laws of Newtonian mechanics with his theory of relativity.</p><p><br></p><p></p><p>There has been a considerable amount of research on high performance over the last century that suggests it goes way beyond tested intelligence. On top of that, research is clear that brains are flexible, new neural pathways can be created, and IQ isn't fixed. For example, just because you can read stories with hundreds of pages at the age of five doesn't mean you will still be ahead of your contemporaries in your teens.</p><p><br></p><p></p><p></p><p>While the jury is out on giftedness being innate and other factors potentially making the difference, what is certain is that the behaviours associated with high levels of performance are replicable and most can be taught—even traits such as curiosity.</p><p><br></p><p></p><p>According to my colleague Prof Deborah Eyre, with whom I've collaborated on the book Great Minds and How to Grow Them, the latest neuroscience and psychological research suggests most individuals can reach levels of performance associated in school with the gifted and talented. However, they must be taught the right attitudes and approaches to their learning and develop the attributes of high performers—curiosity, persistence and hard work, for example—an approach Eyre calls 'high performance learning'. Critically, they need the right support in developing those approaches at home as well as at school.</p><p><br></p><p></p><p>Prof Anders Ericsson, an eminent education psychologist at Florida State University, US, is the co-author of Peak: Secrets from the New Science of Expertise. After research going back to 1980 into diverse achievements, from music to memory to sport, he doesn't think unique and innate talents are at the heart of performance. Deliberate practice, that stretches you every step of the way, and around 10,000 hours of it, is what produces the goods. It's not a magic number—the highest performers move on to doing a whole lot more, of course. Ericsson's memory research is particularly interesting because random students, trained in memory techniques for the study, went on to outperform others thought to have innately superior memories—those who you might call gifted.</p><p><br></p><p></p><p>But it is perhaps the work of Benjamin Bloom, another distinguished American educationist working in the 1980s, that gives the most pause for thought. Bloom's team looked at a group of extraordinarily high achieving people in disciplines as varied as ballet, swimming, piano, tennis, maths, sculpture and neurology. He found a pattern of parents encouraging and supporting their children, often in areas they enjoyed themselves. Bloom's outstanding people had worked very hard and consistently at something they had become hooked on when at a young age, and their parents all emerged as having strong work ethics themselves.</p><p><br></p><p></p><p>Eyre says we know how high performers learn. From that she has developed a high performing learning approach. She is working on this with a group of schools, both in Britain and abroad. Some spin-off research, which looked in detail at 24 of the 3,000 children being studied who were succeeding despite difficult circumstances, found something remarkable. Half were getting free school meals because of poverty, more than half were living with a single parent, and four in five were living in disadvantaged areas. Interviews uncovered strong evidence of an adult or adults in the child's life who valued and supported education, either in the immediate or extended family or in the child's wider community. Children talked about the need to work hard at school, to listen in class and keep trying.</p><p><br></p><p></p><p>Let us end with Einstein, the epitome of a genius. He clearly had curiosity, character and determination. He struggled against rejection in early life but was undeterred. Did he think he was a genius or even gifted? He once wrote: 'It's not that I'm so smart, it's just that I stay with problems longer. Most people say it is the intellect which makes a great scientist. They are wrong: it is character.'</p><p></p><p><br></p>

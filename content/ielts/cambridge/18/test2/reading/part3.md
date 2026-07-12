@@ -1139,5 +1139,183 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "An ideal city",
+      "zh": "理想城市"
+    },
+    {
+      "id": "s2",
+      "en": "Leonardo da Vinci's ideal city was centuries ahead of its time",
+      "zh": "达·芬奇的理想城市超前于他的时代几个世纪"
+    },
+    {
+      "id": "s3",
+      "en": "The word 'genius' is universally associated with the name of Leonardo da Vinci.",
+      "zh": "“天才”一词普遍与达·芬奇的名字联系在一起。"
+    },
+    {
+      "id": "s4",
+      "en": "A true Renaissance man, he embodied scientific spirit, artistic talent and humanist sensibilities.",
+      "zh": "作为真正的文艺复兴人，他体现了科学精神、艺术才能和人文主义情怀。"
+    },
+    {
+      "id": "s5",
+      "en": "Five hundred years have passed since Leonardo died in his home at Chateau du Clos Lucé, outside Tours, France.",
+      "zh": "自达·芬奇在法国图尔郊外的克洛卢塞城堡去世已经过去五百年了。"
+    },
+    {
+      "id": "s6",
+      "en": "Yet far from fading into insignificance his thinking has carried down the centuries and still surprises today.",
+      "zh": "然而，他的思想丝毫未被遗忘，而是流传了几个世纪，至今依然令人惊叹。"
+    },
+    {
+      "id": "s7",
+      "en": "The Renaissance marked the transition from the 15th century to modernity and took place after the spread of the plague in the 14th century, which caused a global crisis resulting in some 200 million deaths across Europe and Asia.",
+      "zh": "文艺复兴标志着从15世纪向现代的过渡，它发生在14世纪瘟疫蔓延之后，这场瘟疫引发了全球危机，导致欧洲和亚洲大约两亿人死亡。"
+    },
+    {
+      "id": "s8",
+      "en": "Today, the world is on the cusp of a climate crisis, which is predicted to cause widespread displacement, extinctions and death, if left unaddressed.",
+      "zh": "如今，世界正处于气候危机的边缘，预计如果不加以应对，将导致大规模流离失所、物种灭绝和死亡。"
+    },
+    {
+      "id": "s9",
+      "en": "Then, as now, radical solutions were called for to revolutionise the way people lived and safeguard humanity against catastrophe.",
+      "zh": "无论过去还是现在，都需要激进的解决方案来彻底改变人们的生活方式，保护人类免受灾难。"
+    },
+    {
+      "id": "s10",
+      "en": "Around 1486 - after a pestilence that killed half the population in Milan, Italy — Leonardo turned his thoughts to urban planning problems.",
+      "zh": "大约在1486年——意大利米兰发生瘟疫导致一半人口死亡之后——达·芬奇开始关注城市规划问题。"
+    },
+    {
+      "id": "s11",
+      "en": "Following a typical Renaissance trend, he began to work on an 'ideal city' project, which — due to its excessive costs — would remain unfulfilled.",
+      "zh": "按照典型的文艺复兴潮流，他开始着手一个“理想城市”项目，但由于成本过高，该项目最终未能实现。"
+    },
+    {
+      "id": "s12",
+      "en": "Yet given that unsustainable urban models are a key cause of global climate change today, it's only natural to wonder how Leonardo might have changed the shape of modern cities.",
+      "zh": "然而，鉴于不可持续的城市模式是当今全球气候变化的关键原因，自然会让人好奇达·芬奇如果设计，现代城市会有怎样的不同。"
+    },
+    {
+      "id": "s13",
+      "en": "Although the Renaissance is renowned as an era of incredible progress in art and architecture, it is rarely noted that the 15th century also marked the birth of urbanism as a true academic discipline.",
+      "zh": "尽管文艺复兴以艺术和建筑的巨大进步著称，但很少有人注意到15世纪也是城市学作为真正学科诞生的时期。"
+    },
+    {
+      "id": "s14",
+      "en": "The rigour and method behind the conscious conception of a city had been largely missing in Western thought until the moment when prominent Renaissance men pushed forward large-scale urban projects in Italy, such as the reconfiguration of the town of Pienza and the expansion of the city of Ferrara.",
+      "zh": "在显著的文艺复兴人物推动意大利大型城市项目之前，诸如彭扎镇的重新规划和费拉拉市的扩建，西方思想中对于城市有意识构想的严谨性和方法论基本缺失。"
+    },
+    {
+      "id": "s15",
+      "en": "These works surely inspired Leonardo's decision to rethink the design of medieval cities, with their winding and overcrowded streets and with houses piled against one another.",
+      "zh": "这些工程无疑激发了达·芬奇重新思考中世纪城市设计的决定，那时街道蜿蜒拥挤，房屋紧密相连。"
+    },
+    {
+      "id": "s16",
+      "en": "It is not easy to identify a coordinated vision of Leonardo's ideal city because of his disordered way of working with notes and sketches.",
+      "zh": "由于达·芬奇工作时笔记和草图零散杂乱，很难明确他的理想城市的整体构想。"
+    },
+    {
+      "id": "s17",
+      "en": "But from the largest collection of Leonardo's papers ever assembled, a series of innovative thoughts can be reconstructed regarding the foundation of a new city along the Ticino River, which runs from Switzerland into Italy and is 248 kilometres long.",
+      "zh": "但通过史上最大规模的达·芬奇手稿合集，可以重建他关于在提契诺河沿岸——这条河流从瑞士流入意大利，全长248公里——建立新城市的一系列创新想法。"
+    },
+    {
+      "id": "s18",
+      "en": "He designed the city for the easy transport of goods and clean urban spaces, and he wanted a comfortable and spacious city, with well-ordered streets and architecture.",
+      "zh": "他设计的城市方便货物运输且拥有整洁的城市空间，他期望建成一个舒适宽敞、街道和建筑井然有序的城市。"
+    },
+    {
+      "id": "s19",
+      "en": "He recommended 'high, strong walls', with 'towers and battlements of all necessary and pleasant beauty'.",
+      "zh": "他建议建造“高大坚固的城墙”，配以“必要且令人愉悦的美观塔楼和垛口”。"
+    },
+    {
+      "id": "s20",
+      "en": "His plans for a modern and 'rational' city were consistent with Renaissance ideals.",
+      "zh": "他对现代且“理性”城市的规划符合文艺复兴的理想。"
+    },
+    {
+      "id": "s21",
+      "en": "But, in keeping with his personality, Leonardo included several innovations in his urban design.",
+      "zh": "但符合他的个性，达·芬奇在城市设计中融入了多项创新。"
+    },
+    {
+      "id": "s22",
+      "en": "Leonardo wanted the city to be built on several levels, linked with vertical outdoor staircases.",
+      "zh": "他希望城市建成多层结构，通过垂直的室外楼梯相连。"
+    },
+    {
+      "id": "s23",
+      "en": "This design can be seen in some of today's high-rise buildings but was unconventional at the time.",
+      "zh": "这一设计在当今一些高层建筑中可见，但在当时非常不寻常。"
+    },
+    {
+      "id": "s24",
+      "en": "Indeed, this idea of taking full advantage of the interior spaces wasn't implemented until the 1920s and 1930s, with the birth of the Modernist movement.",
+      "zh": "事实上，充分利用室内空间的这一理念直到20世纪20至30年代现代主义运动兴起时才得以实施。"
+    },
+    {
+      "id": "s25",
+      "en": "While in the upper layers of the city, people could walk undisturbed between elegant palaces and streets, the lower layer was the place for services, trade, transport and industry.",
+      "zh": "城市的上层供人们在优雅的宫殿与街道间自由行走，下层则设为服务、贸易、运输和工业区。"
+    },
+    {
+      "id": "s26",
+      "en": "But the true originality of Leonardo's vision was its fusion of architecture and engineering.",
+      "zh": "但达·芬奇设想的真正创新在于建筑与工程的融合。"
+    },
+    {
+      "id": "s27",
+      "en": "Leonardo designed extensive hydraulic plants to create artificial canals throughout the city.",
+      "zh": "达·芬奇设计了大型水利设施，在城市内修建人工运河。"
+    },
+    {
+      "id": "s28",
+      "en": "The canals, regulated by clocks and basins, were supposed to make it easier for boats to navigate inland.",
+      "zh": "这些运河通过水闸和水池控制，旨在便于船只内陆航行。"
+    },
+    {
+      "id": "s29",
+      "en": "Leonardo also thought that the width of the streets ought to match the average height of the adjacent houses: a rule still followed in many contemporary cities across Italy, to allow access to sun and reduce the risk of damage from earthquakes.",
+      "zh": "达·芬奇还认为街道宽度应与相邻房屋的平均高度相匹配：这一规则如今仍在许多意大利现代城市中遵循，以保证日照并降低地震损害风险。"
+    },
+    {
+      "id": "s30",
+      "en": "Although some of these features existed in Roman cities, before Leonardo's drawings there had never been a multi-level, compact modern city which was thoroughly technically conceived.",
+      "zh": "虽然这些特点在罗马城市中曾出现过，但在达·芬奇的图纸出现之前，从未有过经过彻底技术构思的多层紧凑现代城市。"
+    },
+    {
+      "id": "s31",
+      "en": "Indeed, it wasn't until the 19th century that some of his ideas were applied.",
+      "zh": "实际上，他的一些理念直到19世纪才被采纳实施。"
+    },
+    {
+      "id": "s32",
+      "en": "For example, the subdivision of the city by function — with services and infrastructures located in the lower levels and wide and well-ventilated boulevards and walkways above for residents — is an idea that can be found in Georges - Eugene Haussmann's renovation of Paris under Emperor Napoleon III between 1853 and 1870.",
+      "zh": "例如，城市按功能划分——将服务和基础设施设于低层，宽敞通风的林荫大道和人行道置于上层供居民使用——这一理念出现在拿破仑三世统治期间（1853年至1870年）乔治·欧仁·奥斯曼对巴黎的改造中。"
+    },
+    {
+      "id": "s33",
+      "en": "Today, Leonardo's ideas are not simply valid, they actually suggest a way forward for urban planning.",
+      "zh": "如今，达·芬奇的理念不仅有效，还为城市规划指明了未来方向。"
+    },
+    {
+      "id": "s34",
+      "en": "Many scholars think that the compact city, built upwards instead of outwards, integrated with nature (especially water systems), with efficient transport infrastructure, could help modern cities become more efficient and sustainable.",
+      "zh": "许多学者认为，向上建造而非向外扩展的紧凑城市，融合自然（尤其是水系统），并拥有高效交通基础设施，能够助力现代城市变得更高效、更可持续。"
+    },
+    {
+      "id": "s35",
+      "en": "This is yet another reason why Leonardo was aligned so closely with modern urban planning and centuries ahead of his time.",
+      "zh": "这也是达·芬奇为何与现代城市规划如此契合、超前于时代几个世纪的又一原因。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">An ideal city</span></strong></h3><p>Leonardo da Vinci's ideal city was centuries ahead of its time</p><p><br></p><p>The word 'genius' is universally associated with the name of Leonardo da Vinci. A true Renaissance man, he embodied scientific spirit, artistic talent and humanist sensibilities. Five hundred years have passed since Leonardo died in his home at Chateau du Clos Lucé, outside Tours, France. Yet far from fading into insignificance his thinking has carried down the centuries and still surprises today.</p><p><br></p><p>The Renaissance marked the transition from the 15th century to modernity and took place after the spread of the plague in the 14th century, which caused a global crisis resulting in some 200 million deaths across Europe and Asia. Today, the world is on the cusp of a climate crisis, which is predicted to cause widespread displacement, extinctions and death, if left unaddressed. Then, as now, radical solutions were called for to revolutionise the way people lived and safeguard humanity against catastrophe.</p><p><br></p><p>Around 1486 - after a pestilence that killed half the population in Milan, Italy — Leonardo turned his thoughts to urban planning problems. Following a typical Renaissance trend, he began to work on an 'ideal city' project, which — due to its excessive costs — would remain unfulfilled. Yet given that unsustainable urban models are a key cause of global climate change today, it's only natural to wonder how Leonardo might have changed the shape of modern cities.</p><p><br></p><p>Although the Renaissance is renowned as an era of incredible progress in art and architecture, it is rarely noted that the 15th century also marked the birth of urbanism as a true academic discipline. The rigour and method behind the conscious conception of a city had been largely missing in Western thought until the moment when prominent Renaissance men pushed forward large-scale urban projects in Italy, such as the reconfiguration of the town of Pienza and the expansion of the city of Ferrara. These works surely inspired Leonardo's decision to rethink the design of medieval cities, with their winding and overcrowded streets and with houses piled against one another.</p><p><br></p><p>It is not easy to identify a coordinated vision of Leonardo's ideal city because of his disordered way of working with notes and sketches. But from the largest collection of Leonardo's papers ever assembled, a series of innovative thoughts can be reconstructed regarding the foundation of a new city along the Ticino River, which runs from Switzerland into Italy and is 248 kilometres long. He designed the city for the easy transport of goods and clean urban spaces, and he wanted a comfortable and spacious city, with well-ordered streets and architecture. He recommended 'high, strong walls', with 'towers and battlements of all necessary and pleasant beauty'.</p><p><br></p><p>His plans for a modern and 'rational' city were consistent with Renaissance ideals. But, in keeping with his personality, Leonardo included several innovations in his urban design. Leonardo wanted the city to be built on several levels, linked with vertical outdoor staircases. This design can be seen in some of today's high-rise buildings but was unconventional at the time. Indeed, this idea of taking full advantage of the interior spaces wasn't implemented until the 1920s and 1930s, with the birth of the Modernist movement.</p><p><br></p><p>While in the upper layers of the city, people could walk undisturbed between elegant palaces and streets, the lower layer was the place for services, trade, transport and industry. But the true originality of Leonardo's vision was its fusion of architecture and engineering. Leonardo designed extensive hydraulic plants to create artificial canals throughout the city. The canals, regulated by clocks and basins, were supposed to make it easier for boats to navigate inland. Leonardo also thought that the width of the streets ought to match the average height of the adjacent houses: a rule still followed in many contemporary cities across Italy, to allow access to sun and reduce the risk of damage from earthquakes.</p><p><br></p><p>Although some of these features existed in Roman cities, before Leonardo's drawings there had never been a multi-level, compact modern city which was thoroughly technically conceived. Indeed, it wasn't until the 19th century that some of his ideas were applied. For example, the subdivision of the city by function — with services and infrastructures located in the lower levels and wide and well-ventilated boulevards and walkways above for residents — is an idea that can be found in Georges - Eugene Haussmann's renovation of Paris under Emperor Napoleon III between 1853 and 1870.</p><p><br></p><p>Today, Leonardo's ideas are not simply valid, they actually suggest a way forward for urban planning. Many scholars think that the compact city, built upwards instead of outwards, integrated with nature (especially water systems), with efficient transport infrastructure, could help modern cities become more efficient and sustainable. This is yet another reason why Leonardo was aligned so closely with modern urban planning and centuries ahead of his time.</p><p><br></p>

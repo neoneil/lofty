@@ -517,7 +517,7 @@ export default function GenerateEssayAnswerClient({
                   }`}
                 >
                   <div className="mb-2 text-xs font-semibold text-[var(--text-soft)]">
-                    #{index + 1}
+                    {index + 1}
                   </div>
                   <p className="line-clamp-4 text-sm leading-5 text-[var(--text)]">
                     {question.question_text || "-"}

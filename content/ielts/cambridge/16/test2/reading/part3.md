@@ -1796,5 +1796,138 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "How to make wise decisions",
+      "zh": "如何做出明智的决定"
+    },
+    {
+      "id": "s2",
+      "en": "Across cultures, wisdom has been considered one of the most revered human qualities.",
+      "zh": "跨越不同文化，智慧被视为人类最受尊敬的品质之一。"
+    },
+    {
+      "id": "s3",
+      "en": "Although the truly wise may seem few and far between, empirical research examining wisdom suggests that it isn't an exceptional trait possessed by a small handful of bearded philosophers after all - in fact, the latest studies suggest that most of us have the ability to make wise decisions, given the right context.",
+      "zh": "尽管真正聪明的人似乎寥寥无几，但关于智慧的实证研究表明，智慧并非仅是少数留着胡子的哲学家所独有的特殊品质——事实上，最新的研究显示，在合适的环境下，我们大多数人都有能力做出明智的决定。"
+    },
+    {
+      "id": "s4",
+      "en": "'It appears that experiential, situational, and cultural factors are even more powerful in shaping wisdom than previously imagined,' says Associate Professor Igor Grossmann of the University of Waterloo in Ontario, Canada.",
+      "zh": "加拿大安大略省滑铁卢大学的副教授伊戈尔·格罗斯曼表示：“经验、情境和文化因素在塑造智慧方面的作用，比以往想象的还要强大。”"
+    },
+    {
+      "id": "s5",
+      "en": "'Recent empirical findings from cognitive, developmental, social, and personality psychology cumulatively suggest that people's ability to reason wisely varies dramatically across experiential and situational contexts.",
+      "zh": "认知、发展、社会及人格心理学的最新实证研究累计表明，人们明智推理的能力因经验和情境的不同而有显著差异。"
+    },
+    {
+      "id": "s6",
+      "en": "Understanding the role of such contextual factors offers unique insights into understanding wisdom in daily life, as well as how it can be enhanced and taught.'",
+      "zh": "理解这些情境因素的作用，有助于我们深入了解日常生活中的智慧，以及如何提升和教授智慧。"
+    },
+    {
+      "id": "s7",
+      "en": "It seems that it's not so much that some people simply possess wisdom and others lack it, but that our ability to reason wisely depends on a variety of external factors.",
+      "zh": "似乎并非某些人天生拥有智慧而其他人缺乏智慧，而是我们明智推理的能力取决于多种外部因素。"
+    },
+    {
+      "id": "s8",
+      "en": "'It is impossible to characterize thought processes attributed to wisdom without considering the role of contextual factors,' explains Grossmann.",
+      "zh": "格罗斯曼解释说：“如果不考虑情境因素的作用，就无法全面描述被归因于智慧的思维过程。”"
+    },
+    {
+      "id": "s9",
+      "en": "'In other words, wisdom is not solely an \"inner quality\" but rather unfolds as a function of situations people happen to be in.",
+      "zh": "换句话说，智慧不仅仅是一种“内在品质”，而是随着人们所处的具体情境而展现出来的。"
+    },
+    {
+      "id": "s10",
+      "en": "Some situations are more likely to promote wisdom than others.'",
+      "zh": "某些情境比其他情境更有可能促进智慧的产生。”"
+    },
+    {
+      "id": "s11",
+      "en": "Coming up with a definition of wisdom is challenging, but Grossmann and his colleagues have identified four key characteristics as part of a framework of wise reasoning.",
+      "zh": "给智慧下个定义很有挑战性，但格罗斯曼和他的同事们确定了智慧推理框架中的四个关键特征。"
+    },
+    {
+      "id": "s12",
+      "en": "One is intellectual humility or recognition of the limits of our own knowledge, and another is appreciation of perspectives wider than the issue at hand.",
+      "zh": "其中一个是智识谦逊，即认识到自身知识的局限；另一个是欣赏超越当前问题的更广阔视角。"
+    },
+    {
+      "id": "s13",
+      "en": "Sensitivity to the possibility of change in social relations is also key, along with compromise or integration of different attitudes and beliefs.",
+      "zh": "对社会关系可能变化的敏感性同样重要，以及对不同态度和信念的妥协或整合。"
+    },
+    {
+      "id": "s14",
+      "en": "Grossmann and his colleagues have also found that one of the most reliable ways to support wisdom in our own day-to-day decisions is to look at scenarios from a third-party perspective, as though giving advice to a friend.",
+      "zh": "格罗斯曼和他的同事们还发现，支持我们日常决策中智慧的最可靠方法之一，是从第三方视角来看待情境，就像向朋友提供建议一样。"
+    },
+    {
+      "id": "s15",
+      "en": "Research suggests that when adopting a first-person viewpoint we focus on 'the focal features of the environment' and when we adopt a third-person,' observer viewpoint we reason more broadly and focus more on interpersonal and moral ideals such as justice and impartiality.",
+      "zh": "研究表明，当采用第一人称视角时，我们会关注“环境的核心特征”；而采用第三人称“观察者”视角时，我们的推理更为广泛，更注重人际关系和道德理想，如公正和公平。"
+    },
+    {
+      "id": "s16",
+      "en": "Looking at problems from this more expansive viewpoint appears to foster cognitive processes related to wise decisions.",
+      "zh": "从这种更广阔的视角看待问题，有助于促进与明智决策相关的认知过程。"
+    },
+    {
+      "id": "s17",
+      "en": "For example, in one experiment that took place during the peak of a recent economic recession, graduating college seniors were asked to reflect on their job prospects.",
+      "zh": "例如，在一次发生于近期经济衰退高峰期的实验中，大学应届毕业生被要求思考他们的就业前景。"
+    },
+    {
+      "id": "s18",
+      "en": "The students were instructed to imagine their career either 'as if you were a distant observer' or 'before your own eyes as if you were right there'.",
+      "zh": "实验指导学生们要么“想象自己是一个远距离的观察者”，要么“就像亲眼目睹般地观察自己的职业生涯”。"
+    },
+    {
+      "id": "s19",
+      "en": "Participants in the group assigned to the 'distant observer' role displayed more wisdom-related reasoning (intellectual humility and recognition of change) than did participants in the control group.",
+      "zh": "被分配为“远距离观察者”角色的小组成员表现出更多与智慧相关的推理（如智识谦逊和对变化的认识），比对照组成员更明显。"
+    },
+    {
+      "id": "s20",
+      "en": "In another study, couples in long—term romantic relationships were instructed to visualize an unresolved relationship conflict either through the eyes of an outsider or from their own perspective.",
+      "zh": "另一项研究中，长期恋爱关系中的情侣被指导以外部观察者的视角或自身的视角，想象一段未解决的关系冲突。"
+    },
+    {
+      "id": "s21",
+      "en": "Participants then discussed the incident with their partner for 10 minutes, after which they wrote down their thoughts about it.",
+      "zh": "参与者随后与伴侣讨论这起事件10分钟，之后写下他们的想法。"
+    },
+    {
+      "id": "s22",
+      "en": "Couples in the 'other's eyes' condition were significantly more likely to rely on wise reasoning - recognizing others' perspectives and searching for a compromise — compared to the couples in the egocentric condition.",
+      "zh": "处于“他人视角”组的情侣比处于自我中心组的情侣更倾向于依赖智慧推理——认可对方的观点并寻求妥协。"
+    },
+    {
+      "id": "s23",
+      "en": "'Ego-decentering promotes greater focus on others and enables a bigger picture, conceptual view of the experience, affording recognition of intellectual humility and change,' says Grossmann.",
+      "zh": "格罗斯曼说：“去中心化自我促进了更多对他人的关注，促使人们以更宏观、概念化的视角看待经历，从而承认智识谦逊和变化。”"
+    },
+    {
+      "id": "s24",
+      "en": "We might associate wisdom with intelligence or particular personality traits, but research shows only a small positive relationship between wise thinking and crystallized intelligence and the personality traits of openness and agreeableness.",
+      "zh": "我们可能将智慧与智力或某些人格特质联系起来，但研究显示，智慧思维与晶化智力以及开放性和宜人性人格特质之间只有微弱的正相关。"
+    },
+    {
+      "id": "s25",
+      "en": "'It is remarkable how much people can vary in their wisdom from one situation to the next, and how much stronger such contextual effects are for understanding the relationship between wise judgment and its social and affective outcomes as compared to the generalized \"traits\",' Grossmann explains.",
+      "zh": "格罗斯曼解释说：“令人惊讶的是，人们在不同情境中的智慧可能差异巨大，而这些情境效应在理解明智判断与其社会及情感结果之间的关系时，比泛化的‘特质’更为强烈。”"
+    },
+    {
+      "id": "s26",
+      "en": "'That is, knowing how wisely a person behaves in a given situation is more informative for understanding their emotions or likelihood to forgive [or] retaliate as compared to knowing whether the person may be wise \"in general\".'",
+      "zh": "“也就是说，了解一个人在特定情境中表现得多明智，比了解此人‘总体上’是否聪明，对于理解他们的情感反应或宽恕与报复的可能性更有价值。”"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>How to make wise decisions&nbsp;</strong></span></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;">Across cultures, wisdom has been considered one of the most revered human qualities. Although the truly wise may seem few and far between, empirical research examining wisdom suggests that it isn't an exceptional trait possessed by a small handful of bearded philosophers after all - in fact, the latest studies suggest that most of us have the ability to make wise decisions, given the right context.&nbsp;</p><p style="text-align:left;"><br>&nbsp;</p><p style="text-align:left;">'It appears that experiential, situational, and cultural factors are even more powerful in shaping wisdom than previously imagined,' says Associate Professor Igor Grossmann of the University of Waterloo in Ontario, Canada. 'Recent empirical findings from cognitive, developmental, social, and personality psychology cumulatively suggest that people's ability to reason wisely varies dramatically across experiential and situational contexts. Understanding the role of such contextual factors offers unique insights into understanding wisdom in daily life, as well as how it can be enhanced and taught.'</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">It seems that it's not so much that some people simply possess wisdom and others lack it, but that our ability to reason wisely depends on a variety of external factors. 'It is impossible to characterize thought processes attributed to wisdom without considering the role of contextual factors,' explains Grossmann. 'In other words, wisdom is not solely an "inner quality" but rather unfolds as a function of situations people happen to be in. Some situations are more likely to promote wisdom than others.'</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Coming up with a definition of wisdom is challenging, but Grossmann and his colleagues have identified four key characteristics as part of a framework of wise reasoning. One is intellectual humility or recognition of the limits of our own knowledge, and another is appreciation of perspectives wider than the issue at hand. Sensitivity to the possibility of change in social relations is also key, along with compromise or integration of different attitudes and beliefs.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Grossmann and his colleagues have also found that one of the most reliable ways to support wisdom in our own day-to-day decisions is to look at scenarios from a third-party perspective, as though giving advice to a friend. Research suggests that when adopting a first-person viewpoint we focus on 'the focal features of the environment' and when we adopt a third-person,' observer viewpoint we reason more broadly and focus more on interpersonal and moral ideals such as justice and impartiality. Looking at problems from this more expansive viewpoint appears to foster cognitive processes related to wise decisions.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">For example, in one experiment that took place during the peak of a recent economic recession, graduating college seniors were asked to reflect on their job prospects. The students were instructed to imagine their career either 'as if you were a distant observer' or 'before your own eyes as if you were right there'. Participants in the group assigned to the 'distant observer' role displayed more wisdom-related reasoning (intellectual humility and recognition of change) than did participants in the control group.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">In another study, couples in long—term romantic relationships were instructed to visualize an unresolved relationship conflict either through the eyes of an outsider or from their own perspective. Participants then discussed the incident with their partner for 10 minutes, after which they wrote down their thoughts about it. Couples in the 'other's eyes' condition were significantly more likely to rely on wise reasoning - recognizing others' perspectives and searching for a compromise — compared to the couples in the egocentric condition.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">'Ego-decentering promotes greater focus on others and enables a bigger picture, conceptual view of the experience, affording recognition of intellectual humility and change,' says Grossmann.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">We might associate wisdom with intelligence or particular personality traits, but research shows only a small positive relationship between wise thinking and crystallized intelligence and the personality traits of openness and agreeableness. 'It is remarkable how much people can vary in their wisdom from one situation to the next, and how much stronger such contextual effects are for understanding the relationship between wise judgment and its social and affective outcomes as compared to the generalized "traits",' Grossmann explains. 'That is, knowing how wisely a person behaves in a given situation is more informative for understanding their emotions or likelihood to forgive [or] retaliate as compared to knowing whether the person may be wise "in general".'</p>

@@ -1654,5 +1654,233 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The steam car",
+      "zh": "蒸汽汽车"
+    },
+    {
+      "id": "s2",
+      "en": "The successes and failures of the Doble brothers and their steam cars",
+      "zh": "多布尔兄弟及其蒸汽汽车的成功与失败"
+    },
+    {
+      "id": "s3",
+      "en": "When primitive automobiles first began to appear in the 1800s, their engines were based on steam power.",
+      "zh": "当原始汽车在19世纪开始出现时，它们的发动机是基于蒸汽动力的。"
+    },
+    {
+      "id": "s4",
+      "en": "Steam had already enjoyed a long and successful career in the railways, so it was only natural that the technology evolved into a miniaturized version which was separate from the trains.",
+      "zh": "蒸汽在铁路领域已经有了悠久且成功的历程，因此这种技术发展成为独立于列车之外的小型版本也是理所当然的。"
+    },
+    {
+      "id": "s5",
+      "en": "But these early cars inherited steam's weaknesses along with its strengths.",
+      "zh": "但这些早期汽车既继承了蒸汽的优点，也带来了它的缺点。"
+    },
+    {
+      "id": "s6",
+      "en": "The boilers had to be lit by hand, and they required about twenty minutes to build up pressure before they could be driven.",
+      "zh": "锅炉必须手动点燃，并且需要大约二十分钟才能积聚足够的压力以供驾驶。"
+    },
+    {
+      "id": "s7",
+      "en": "Furthermore, their water reservoirs only lasted for about thirty miles before needing replenishment.",
+      "zh": "此外，它们的水箱只能支持大约三十英里的行驶距离，之后需要补充水源。"
+    },
+    {
+      "id": "s8",
+      "en": "Despite such shortcomings, these newly designed self-propelled carriages offered quick transportation, and by the early 1900s it was not uncommon to see such machines shuttling wealthy citizens around town.",
+      "zh": "尽管存在这些缺点，这些新设计的自行驱动马车仍提供了快捷的交通，到20世纪初，看到这样的机器载送富裕市民穿行于城镇已不罕见。"
+    },
+    {
+      "id": "s9",
+      "en": "But the glory days of steam cars were few.",
+      "zh": "但蒸汽汽车的辉煌时期并不长久。"
+    },
+    {
+      "id": "s10",
+      "en": "A new technology called the Internal Combustion Engine soon appeared, which offered the ability to drive down the road just moments after starting up.",
+      "zh": "一种名为内燃机的新技术很快出现，它能在启动后立即上路行驶。"
+    },
+    {
+      "id": "s11",
+      "en": "At first, these noisy gasoline cars were unpopular because they were more complicated to operate and they had difficult hand-crank starters, which were known to break arms when the engines backfired.",
+      "zh": "起初，这些噪音很大的汽油车不受欢迎，因为它们操作复杂，并配备了手摇启动装置，发动机返火时甚至有折断手臂的风险。"
+    },
+    {
+      "id": "s12",
+      "en": "But in 1912 General Motors introduced the electric starter, and over the following few years steam power was gradually phased out.",
+      "zh": "但1912年，通用汽车公司推出了电动启动器，随后几年蒸汽动力逐渐被淘汰。"
+    },
+    {
+      "id": "s13",
+      "en": "Even as the market was declining, four brothers made one last effort to rekindle the technology.",
+      "zh": "即使市场在衰退，四兄弟仍做出了最后一次努力，试图重燃这项技术。"
+    },
+    {
+      "id": "s14",
+      "en": "Between 1906 and 1909, while still attending high school, Abner Doble and his three brothers built their first steam car in their parents' basement.",
+      "zh": "1906年至1909年间，阿布纳·多布尔和他的三个兄弟在还在上高中的时候，在父母家的地下室建造了第一辆蒸汽汽车。"
+    },
+    {
+      "id": "s15",
+      "en": "It comprised parts taken from a wrecked early steam car but reconfigured to drive an engine of their own design.",
+      "zh": "它由一辆早期报废蒸汽车的零件组成，但重新配置以驱动他们自己设计的引擎。"
+    },
+    {
+      "id": "s16",
+      "en": "Though it did not run well, the Doble brothers went on to build a second and third prototype in the following years.",
+      "zh": "虽然它运行不佳，多布尔兄弟在接下来的几年里继续制造了第二和第三个原型。"
+    },
+    {
+      "id": "s17",
+      "en": "Though the Doble boys' third prototype, nicknamed the Model B, still lacked the convenience of an internal combustion engine, it drew the attention of automobile trade magazines due to its numerous improvements over previous steam cars.",
+      "zh": "尽管多布尔兄弟的第三个原型被称为B型，仍缺乏内燃机的便利性，但由于对以往蒸汽汽车的大量改进，引起了汽车贸易杂志的关注。"
+    },
+    {
+      "id": "s18",
+      "en": "The Model B proved to be superior to gasoline automobiles in many ways.",
+      "zh": "B型模型在许多方面被证明优于汽油汽车。"
+    },
+    {
+      "id": "s19",
+      "en": "Its high-pressure steam drove the engine pistons in virtual silence, in contrast to clattering gas engines which emitted the aroma of burned hydrocarbons.",
+      "zh": "其高压蒸汽驱动的发动机活塞几乎无声，与此形成对比的是汽油发动机的碰撞声和燃烧碳氢化合物的气味。"
+    },
+    {
+      "id": "s20",
+      "en": "Perhaps most impressively, the Model B was amazingly swift.",
+      "zh": "也许更令人印象深刻的是，B型模型速度惊人。"
+    },
+    {
+      "id": "s21",
+      "en": "It could accelerate from zero to sixty miles per hour in just fifteen seconds, a feat described as 'remarkable acceleration' by Automobile magazine in 1914.",
+      "zh": "它能在仅仅十五秒内从零加速到每小时六十英里，1914年《汽车》杂志称其为“非凡的加速”。"
+    },
+    {
+      "id": "s22",
+      "en": "The following year Abner Doble drove the Model B from Massachusetts to Detroit in order to seek investment in his automobile design, which he used to open the General Engineering Company.",
+      "zh": "次年，阿布纳·多布尔驾驶B型汽车从马萨诸塞州开到底特律，寻求对他的汽车设计的投资，随后他用这些资金创办了通用工程公司。"
+    },
+    {
+      "id": "s23",
+      "en": "He and his brothers immediately began working on the Model C, which was intended to expand upon the innovations of the Model B.",
+      "zh": "他和兄弟们立即开始研发C型模型，旨在扩展B型的创新。"
+    },
+    {
+      "id": "s24",
+      "en": "The brothers added features such as a key-based ignition in the cabin, eliminating the need for the operator to manually ignite the boiler.",
+      "zh": "兄弟们增加了如车舱钥匙点火等功能，免去了操作员手动点燃锅炉的需要。"
+    },
+    {
+      "id": "s25",
+      "en": "With these enhancements, the Dobles' new car company promised a steam vehicle which would provide all of the convenience of a gasoline car, but with much greater speed, much simpler driving controls, and a virtually silent powerplant.",
+      "zh": "凭借这些改进，多布尔兄弟的新汽车公司承诺推出一款既具汽油车便利性，又拥有更高速度、更简便操控和几乎无声动力装置的蒸汽车。"
+    },
+    {
+      "id": "s26",
+      "en": "By the following April, the General Engineering Company had received 5,390 deposits for Doble Detroits, which were scheduled for delivery in early 1918.",
+      "zh": "到翌年四月，通用工程公司已收到5390笔多布尔底特律汽车的订金，计划于1918年初交付。"
+    },
+    {
+      "id": "s27",
+      "en": "Later that year Abner Doble delivered unhappy news to those eagerly awaiting the delivery of their modern new cars.",
+      "zh": "当年晚些时候，阿布纳·多布尔向焦急等待新车交付的人们传达了令人失望的消息。"
+    },
+    {
+      "id": "s28",
+      "en": "Those buyers who received the handful of completed cars complained that the vehicles were sluggish and erratic, sometimes going in reverse when they should go forward.",
+      "zh": "收到少量成品车的买家投诉说车辆反应迟缓且运行不稳定，有时应该前进却倒退。"
+    },
+    {
+      "id": "s29",
+      "en": "The new engine design, though innovative, was still plagued with serious glitches.",
+      "zh": "尽管新型发动机设计具有创新性，但仍存在严重故障问题。"
+    },
+    {
+      "id": "s30",
+      "en": "The brothers made one final attempt to produce a viable steam automobile.",
+      "zh": "兄弟们做出了最后一次努力，试图制造出可行的蒸汽汽车。"
+    },
+    {
+      "id": "s31",
+      "en": "In early 1924, the Doble brothers shipped a Model E to New York City to be road-tested by the Automobile Club of America.",
+      "zh": "1924年初，多布尔兄弟将E型车运往纽约，由美国汽车俱乐部进行道路测试。"
+    },
+    {
+      "id": "s32",
+      "en": "After sitting overnight in freezing temperatures, the car was pushed out into the road and left to sit for over an hour in the frosty morning air.",
+      "zh": "车辆在零度以下的环境中静置一夜后，被推到路上，继续在寒冷的清晨空气中静置了一个多小时。"
+    },
+    {
+      "id": "s33",
+      "en": "At the turn of the key, the boiler lit and reached its operating pressure inside of forty seconds.",
+      "zh": "转动钥匙，锅炉点燃并在四十秒内达到工作压力。"
+    },
+    {
+      "id": "s34",
+      "en": "As they drove the test vehicle further, they found that its evenly distributed weight lent it surprisingly good handling, even though it was so heavy.",
+      "zh": "随着他们继续驾驶测试车，发现其均匀分布的重量赋予了车辆出乎意料的良好操控性，尽管车身非常重。"
+    },
+    {
+      "id": "s35",
+      "en": "As the new Doble steamer was further developed and tested, its maximum speed was pushed to over a hundred miles per hour, and it achieved about fifteen miles per gallon of kerosene with negligible emissions.",
+      "zh": "随着新型多布尔蒸汽车进一步开发和测试，其最高速度提升至每小时100英里以上，且每加仑煤油可行驶约十五英里，排放几乎可以忽略不计。"
+    },
+    {
+      "id": "s36",
+      "en": "Sadly, the Dobles' brilliant steam car never was a financial success.",
+      "zh": "遗憾的是，多布尔兄弟的杰出蒸汽车从未取得财务上的成功。"
+    },
+    {
+      "id": "s37",
+      "en": "Priced at around $18,000 in 1924, it was popular only among the very wealthy.",
+      "zh": "1924年售价约为1.8万美元，仅在极为富裕的人群中受欢迎。"
+    },
+    {
+      "id": "s38",
+      "en": "Plus, it is said that no two Model Es were quite the same, because Abner Doble tinkered endlessly with the design.",
+      "zh": "此外，据说没有两辆E型车完全相同，因为阿布纳·多布尔不断修改设计。"
+    },
+    {
+      "id": "s39",
+      "en": "By the time the company folded in 1931, fewer than fifty of the amazing Model E steam cars had been produced.",
+      "zh": "到公司于1931年关闭时，惊人的E型蒸汽车产量不到五十辆。"
+    },
+    {
+      "id": "s40",
+      "en": "For his whole career, until his death in 1961, Abner Doble remained adamant that steam-powered automobiles were at least equal to gasoline cars, if not superior.",
+      "zh": "在整个职业生涯中，直到1961年去世，阿布纳·多布尔始终坚信蒸汽动力汽车至少与汽油车同等，甚至更优。"
+    },
+    {
+      "id": "s41",
+      "en": "Given the evidence, he may have been right.",
+      "zh": "根据现有证据，他可能是正确的。"
+    },
+    {
+      "id": "s42",
+      "en": "Many of the Model E Dobles which have survived are still in good working condition, some having been driven over half a million miles with only normal maintenance.",
+      "zh": "许多幸存的多布尔E型车依然运行良好，其中一些经过正常维护已行驶超过50万英里。"
+    },
+    {
+      "id": "s43",
+      "en": "Astonishingly, an unmodified Doble Model E runs clean enough to pass the emissions laws in California today, and they are pretty strict.",
+      "zh": "令人惊讶的是，一辆未做改装的多布尔E型车足够环保，能够通过如今加州颇为严格的排放法规。"
+    },
+    {
+      "id": "s44",
+      "en": "It is true that the technology poses some difficult problems, but you cannot help but wonder how efficient a steam car might be with the benefit of modern materials and computers.",
+      "zh": "诚然，这项技术存在一些棘手问题，但你不禁会想，借助现代材料和计算机技术，蒸汽车会有多高效。"
+    },
+    {
+      "id": "s45",
+      "en": "Under the current pressure to improve automotive performance and reduce emissions, it is not unthinkable that the steam car may rise again.",
+      "zh": "在当前要求提升汽车性能和减少排放的压力下，蒸汽汽车再度崛起并非不可想象。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><span style="font-size: 22px;">The steam car</span></h3><div style="text-align: center;"><em>The successes and failures of the Doble brothers and their steam cars</em></div><p><strong>A. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9825">14</a></span> &nbsp; &nbsp;</p><p>When primitive automobiles first began to appear in the 1800s, their engines were based on steam power. Steam had already enjoyed a long and successful career in the railways, so it was only natural that the technology evolved into a miniaturized version which was separate from the trains. But these early cars inherited steam's weaknesses along with its strengths. The boilers had to be lit by hand, and they required about twenty minutes to build up pressure before they could be driven. Furthermore, their water reservoirs only lasted for about thirty miles before needing replenishment. Despite such shortcomings, these newly designed self-propelled carriages offered quick transportation, and by the early 1900s it was not uncommon to see such machines shuttling wealthy citizens around town.</p><p><br></p><p><strong>B. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9826">15</a></span></p><p>But the glory days of steam cars were few. A new technology called the Internal Combustion Engine soon appeared, which offered the ability to drive down the road just moments after starting up. At first, these noisy gasoline cars were unpopular because they were more complicated to operate and they had difficult hand-crank starters, which were known to break arms when the engines backfired. But in 1912 General Motors introduced the electric starter, and over the following few years steam power was gradually phased out.</p><p><br></p><p><strong>C. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9827">16</a></span></p><p>Even as the market was declining, four brothers made one last effort to rekindle the technology. Between 1906 and 1909, while still attending high school, Abner Doble and his three brothers built their first steam car in their parents' basement. It comprised parts taken from a wrecked early steam car but reconfigured to drive an engine of their own design. Though it did not run well, the Doble brothers went on to build a second and third prototype in the following years. Though the Doble boys' third prototype, nicknamed the Model B, still lacked the convenience of an internal combustion engine, it drew the attention of automobile trade magazines due to its numerous improvements over previous steam cars. The Model B proved to be superior to gasoline automobiles in many ways. Its high-pressure steam drove the engine pistons in virtual silence, in contrast to clattering gas engines which emitted the aroma of burned hydrocarbons. Perhaps most impressively, the Model B was amazingly swift. It could accelerate from zero to sixty miles per hour in just fifteen seconds, a feat described as 'remarkable acceleration' by Automobile magazine in 1914.</p><p><br></p><p><strong>D. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;"=""><a name="9828">17</a></span><br></p><p>The following year Abner Doble drove the Model B from Massachusetts to Detroit in order to seek investment in his automobile design, which he used to open the General Engineering Company. He and his brothers immediately began working on the Model C, which was intended to expand upon the innovations of the Model B. The brothers added features such as a key-based ignition in the cabin, eliminating the need for the operator to manually ignite the boiler. With these enhancements, the Dobles' new car company promised a steam vehicle which would provide all of the convenience of a gasoline car, but with much greater speed, much simpler driving controls, and a virtually silent powerplant. By the following April, the General Engineering Company had received 5,390 deposits for Doble Detroits, which were scheduled for delivery in early 1918.</p><p><br></p><p><strong>E. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9829">18</a></span></p><p>Later that year Abner Doble delivered unhappy news to those eagerly awaiting the delivery of their modern new cars. Those buyers who received the handful of completed cars complained that the vehicles were sluggish and erratic, sometimes going in reverse when they should go forward. The new engine design, though innovative, was still plagued with serious glitches.</p><p><br></p><p><strong>F. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9830">19</a></span></p><p>The brothers made one final attempt to produce a viable steam automobile. In early 1924, the Doble brothers shipped a Model E to New York City to be road-tested by the Automobile Club of America. After sitting overnight in freezing temperatures, the car was pushed out into the road and left to sit for over an hour in the frosty morning air. At the turn of the key, the boiler lit and reached its operating pressure inside of forty seconds. As they drove the test vehicle further, they found that its evenly distributed weight lent it surprisingly good handling, even though it was so heavy. As the new Doble steamer was further developed and tested, its maximum speed was pushed to over a hundred miles per hour, and it achieved about fifteen miles per gallon of kerosene with negligible emissions.</p><p><br></p><p><strong>G. </strong><span style="font-family: " source="" sans="" pro",="" "helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" font-size:="" 14px;="" text-wrap:="" wrap;"=""><a name="9831">20</a></span></p><p>Sadly, the Dobles' brilliant steam car never was a financial success. Priced at around $18,000 in 1924, it was popular only among the very wealthy. Plus, it is said that no two Model Es were quite the same, because Abner Doble tinkered endlessly with the design. By the time the company folded in 1931, fewer than fifty of the amazing Model E steam cars had been produced. For his whole career, until his death in 1961, Abner Doble remained adamant that steam-powered automobiles were at least equal to gasoline cars, if not superior. Given the evidence, he may have been right. Many of the Model <strong>E </strong>Dobles which have survived are still in good working condition, some having been driven over half a million miles with only normal maintenance. Astonishingly, an unmodified Doble Model E runs clean enough to pass the emissions laws in California today, and they are pretty strict. It is true that the technology poses some difficult problems, but you cannot help but wonder how efficient a steam car might be with the benefit of modern materials and computers. Under the current pressure to improve automotive performance and reduce emissions, it is not unthinkable that the steam car may rise again.</p><p><br></p>

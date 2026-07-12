@@ -16,9 +16,13 @@ type DownloadItem = {
   key: string;
   label: string;
   description?: string;
+  endpoint?: string;
+  payload?: Record<string, unknown>;
 };
 
-const DOWNLOAD_ITEMS: DownloadItem[] = [
+type ExamType = "pte" | "ielts";
+
+const PTE_DOWNLOAD_ITEMS: DownloadItem[] = [
   {
     key: "pte-wfd",
     label: "PTE WFD",
@@ -81,6 +85,23 @@ const DOWNLOAD_ITEMS: DownloadItem[] = [
   },
 ];
 
+const IELTS_DOWNLOAD_ITEMS: DownloadItem[] = [
+  {
+    key: "ielts-speaking",
+    label: "雅思口语",
+    description: "下载 Part 1、Part 2 和 Part 3 全部口语题",
+    endpoint: "/api/ielts/speaking/export",
+    payload: { part: "all" },
+  },
+  {
+    key: "ielts-writing",
+    label: "雅思写作",
+    description: "下载全部 Writing Task 2 真题",
+    endpoint: "/api/ielts/writing/export",
+    payload: { category: "All", questionType: "All" },
+  },
+];
+
 async function downloadBlob(blob: Blob, filename: string) {
   const url = window.URL.createObjectURL(blob);
 
@@ -96,20 +117,24 @@ async function downloadBlob(blob: Blob, filename: string) {
 }
 
 export default function QuestionPdfDownloadCenter() {
+  const [examType, setExamType] = useState<ExamType>("pte");
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
+  const items = examType === "pte" ? PTE_DOWNLOAD_ITEMS : IELTS_DOWNLOAD_ITEMS;
+  const title = examType === "pte" ? "PTE 题库 PDF" : "IELTS 题库 PDF";
+  const subtitle = examType === "pte" ? "点击对应题型，直接下载数据库中的全部题目 PDF。" : "雅思下载第一版先开放口语与写作，后续可继续接入听力和阅读。";
 
   async function handleDownload(item: DownloadItem) {
     try {
       setLoadingKey(item.key);
+      const endpoint = item.endpoint ?? "/api/export/questions";
+      const payload = item.payload ?? { exportKey: item.key };
 
-      const res = await fetch("/api/export/questions", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          exportKey: item.key,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
@@ -131,16 +156,33 @@ export default function QuestionPdfDownloadCenter() {
     <div className="space-y-8">
       <Card className="rounded-[var(--radius-lg)]">
         <CardHeader className="flex-col items-start gap-1">
-          <Badge variant="secondary">PTE Download Center</Badge>
-          <CardTitle>PTE 题库 PDF</CardTitle>
-          <CardDescription>
-            点击对应题型，直接下载数据库中的全部题目 PDF。
-          </CardDescription>
+          <Badge variant="secondary">Download Center</Badge>
+          <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <CardTitle>{title}</CardTitle>
+              <CardDescription className="mt-2">{subtitle}</CardDescription>
+            </div>
+            <div className="flex rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-1">
+              {([
+                { key: "pte", label: "PTE" },
+                { key: "ielts", label: "IELTS" },
+              ] as const).map((option) => (
+                <button
+                  key={option.key}
+                  type="button"
+                  onClick={() => setExamType(option.key)}
+                  className={`rounded-[var(--radius-sm)] px-4 py-2 text-sm font-semibold transition-colors ${examType === option.key ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:bg-[var(--card)] hover:text-[var(--text)]"}`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </CardHeader>
 
         <CardContent>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {DOWNLOAD_ITEMS.map((item) => (
+          {items.map((item) => (
             <button
               key={item.key}
               type="button"

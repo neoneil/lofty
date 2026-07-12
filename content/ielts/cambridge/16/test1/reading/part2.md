@@ -1376,5 +1376,173 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The Step Pyramid of Djoser",
+      "zh": "乔塞尔阶梯金字塔"
+    },
+    {
+      "id": "s2",
+      "en": "The pyramids are the most famous monuments of ancient Egypt and still hold enormous interest for people in the present day.",
+      "zh": "金字塔是古埃及最著名的纪念碑，至今仍吸引着人们极大的兴趣。"
+    },
+    {
+      "id": "s3",
+      "en": "These grand, impressive tributes to the memory of the Egyptian kings have become linked with the country even though other cultures, such as the Chinese and Mayan, also built pyramids.",
+      "zh": "这些宏伟壮观的纪念埃及国王的建筑已经成为埃及的象征，尽管其他文化如中国和玛雅文化也建造过金字塔。"
+    },
+    {
+      "id": "s4",
+      "en": "The evolution of the pyramid form has been written and argued about for centuries.",
+      "zh": "金字塔形态的演变几个世纪以来一直被书写和讨论。"
+    },
+    {
+      "id": "s5",
+      "en": "However, there is no question that, as far as Egypt is concerned, it began with one monument to one king designed by one brilliant architect: the Step Pyramid of Djoser at Saqqara.",
+      "zh": "然而，毫无疑问，就埃及而言，一切始于一位天才建筑师为一位国王设计的纪念碑——位于萨卡拉的乔塞尔阶梯金字塔。"
+    },
+    {
+      "id": "s6",
+      "en": "Djoser was the first king of the Third Dynasty of Egypt and the first to build in stone.",
+      "zh": "乔塞尔是埃及第三王朝的第一位国王，也是第一位用石头建造建筑的国王。"
+    },
+    {
+      "id": "s7",
+      "en": "Prior to Djoser's reign, tombs were rectangular monuments made of dried clay brick, which covered underground passages where the deceased person was buried.",
+      "zh": "在乔塞尔统治之前，坟墓是用干燥的泥砖建成的矩形纪念碑，覆盖着埋葬死者的地下通道。"
+    },
+    {
+      "id": "s8",
+      "en": "For reasons which remain unclear, Djoser's main official, whose name was Imhotep, conceived of building a taller, more impressive tomb for his king by stacking stone slabs on top of one another, progressively making them smaller, to form the shape now known as the Step Pyramid.",
+      "zh": "出于未知原因，乔塞尔的主要官员伊姆霍特普构思了为国王建造一座更高、更壮观的坟墓，他通过将石板一层层叠加且逐渐缩小，形成了如今所称的阶梯金字塔形状。"
+    },
+    {
+      "id": "s9",
+      "en": "Djoser is thought to have reigned for 19 years, but some historians and scholars attribute a much longer time for his rule, owing to the number and size of the monuments he built.",
+      "zh": "据认为乔塞尔统治了19年，但由于他建造的纪念碑数量和规模，有些历史学家和学者认为他的统治时间远远更长。"
+    },
+    {
+      "id": "s10",
+      "en": "The Step Pyramid has been thoroughly examined and investigated over the last century, and it is now known that the building process went through many different stages.",
+      "zh": "在过去一个世纪里，阶梯金字塔被彻底检查和研究，现在已知其建造过程经历了许多不同的阶段。"
+    },
+    {
+      "id": "s11",
+      "en": "Historian Marc Van de Mieroop comments on this, writing 'Much experimentation was involved, which is especially clear in the construction of the pyramid in the center of the complex.",
+      "zh": "历史学家马克·范德米洛普对此评论道：“涉及大量试验，这在复杂建筑中心金字塔的建造中表现得尤为明显。"
+    },
+    {
+      "id": "s12",
+      "en": "It had several plans ... before it became the first Step Pyramid in history, piling six levels on top of one another ...",
+      "zh": "它经历了多个方案……最终成为历史上第一座阶梯金字塔，叠加了六层……"
+    },
+    {
+      "id": "s13",
+      "en": "The weight of the enormous mass was a challenge for the builders, who placed the stones at an inward incline in order to prevent the monument breaking up.'",
+      "zh": "这庞大体量的重量对建筑师是个挑战，他们将石头设置成向内倾斜，以防止这座纪念碑崩裂。”"
+    },
+    {
+      "id": "s14",
+      "en": "When finally completed, the Step Pyramid rose 62 meters high and was the tallest structure of its time.",
+      "zh": "最终完成时，阶梯金字塔高达62米，是当时最高的建筑。"
+    },
+    {
+      "id": "s15",
+      "en": "The complex in which it was built was the size of a city in ancient Egypt and included a temple, courtyards, shrines, and living quarters for the priests.",
+      "zh": "它所建造的建筑群在古埃及相当于一个城市的规模，包括寺庙、庭院、神龛和祭司的住所。"
+    },
+    {
+      "id": "s16",
+      "en": "It covered a region of 16 hectares and was surrounded by a wall 10.5 meters high.",
+      "zh": "该区域占地16公顷，四周环绕一堵高10.5米的城墙。"
+    },
+    {
+      "id": "s17",
+      "en": "The wall had 13 false doors cut in to it with only one true entrance cut into the south-east corner; the entire wall was then ringed by a trench 750 meters long and 40 meters wide.",
+      "zh": "墙上有13个假门，仅有一个真正的入口位于东南角；整堵墙外还环绕有一条长750米、宽40米的壕沟。"
+    },
+    {
+      "id": "s18",
+      "en": "The false doors and the trench were incorporated into the complex to discourage unwanted visitors.",
+      "zh": "假门和壕沟被纳入建筑群设计中，用以阻挡不速之客。"
+    },
+    {
+      "id": "s19",
+      "en": "If someone wished to enter, he or she would have needed to know in advance how to find the location of the true opening in the wall.",
+      "zh": "如果有人想进入，必须事先知道真正入口的位置。"
+    },
+    {
+      "id": "s20",
+      "en": "Djoser was so proud of his accomplishment that he broke the tradition of having only his own name on the monument and had Imhotep's name carved on it as well.",
+      "zh": "乔塞尔为自己的成就非常自豪，他打破了只在纪念碑上刻自己名字的传统，还刻上了伊姆霍特普的名字。"
+    },
+    {
+      "id": "s21",
+      "en": "The burial chamber of the tomb, where the king's body was laid to rest, was dug beneath the base of the pyramid, surrounded by a vast maze of long tunnels that had rooms off them to discourage robbers.",
+      "zh": "墓葬的安葬室位于金字塔底座下方，四周环绕着由长长隧道组成的巨大迷宫，隧道中设有房间以阻止盗墓者。"
+    },
+    {
+      "id": "s22",
+      "en": "One of the most mysterious discoveries found inside the pyramid was a large number of stone vessels.",
+      "zh": "金字塔内部最神秘的发现之一是一大批石制容器。"
+    },
+    {
+      "id": "s23",
+      "en": "Over 40,000 of these vessels, of various forms and shapes, were discovered in storerooms off the pyramid's underground passages.",
+      "zh": "在金字塔地下通道的储藏室里发现了超过4万个各种形状和形式的石制容器。"
+    },
+    {
+      "id": "s24",
+      "en": "They are inscribed with the names of rulers from the First and Second Dynasties of Egypt and made from different kinds of stone.",
+      "zh": "这些器皿上刻有埃及第一和第二王朝统治者的名字，且由不同种类的石头制成。"
+    },
+    {
+      "id": "s25",
+      "en": "There is no agreement among scholars and archaeologists on why the vessels were placed in the tomb of Djoser or what they were supposed to represent.",
+      "zh": "学者和考古学家们对于这些器皿为何被置于乔塞尔墓中及其象征意义尚无共识。"
+    },
+    {
+      "id": "s26",
+      "en": "The archaeologist Jean-Philippe Lauer, who excavated most of the pyramid and complex, believes they were originally stored and then given a 'proper burial' by Djoser in his pyramid to honor his predecessors.",
+      "zh": "考古学家让-菲利普·洛尔（Jean-Philippe Lauer）负责发掘了大部分金字塔及其建筑群，他认为这些器皿最初被储存，后来被乔塞尔在他的金字塔中“正式安葬”，以纪念他的先行者。"
+    },
+    {
+      "id": "s27",
+      "en": "There are other historians, however, who claim the vessels were dumped into the shafts as yet another attempt to prevent grave robbers from getting to the king's burial chamber.",
+      "zh": "然而，也有其他历史学家认为这些器皿被扔进竖井，这是为了再度阻止盗墓者进入国王的安葬室。"
+    },
+    {
+      "id": "s28",
+      "en": "Unfortunately, all of the precautions and intricate design of the underground network did not prevent ancient robbers from finding a way in.",
+      "zh": "不幸的是，所有的防范措施和复杂的地下结构并未阻止古代盗墓者找到进入的方法。"
+    },
+    {
+      "id": "s29",
+      "en": "Djoser's grave goods, and even his body, were stolen at some point in the past and all archaeologists found were a small number of his valuables overlooked by the thieves.",
+      "zh": "乔塞尔的陪葬品，甚至他的遗体，在过去某个时期都被盗走了，考古学家仅发现了一些被盗贼忽略的少量贵重物品。"
+    },
+    {
+      "id": "s30",
+      "en": "There was enough left throughout the pyramid and its complex, however, to astonish and amaze the archaeologists who excavated it.",
+      "zh": "不过，金字塔及其建筑群中仍残留足够的遗物，令发掘的考古学家们感到震惊和惊叹。"
+    },
+    {
+      "id": "s31",
+      "en": "Egyptologist Miroslav Verner writes, 'Few monuments hold a place in human history as significant as that of the Step Pyramid in Saqqara ...",
+      "zh": "埃及学家米罗斯拉夫·维尔纳写道：“很少有纪念碑在人类历史上能像萨卡拉的阶梯金字塔一样占据如此重要的地位……"
+    },
+    {
+      "id": "s32",
+      "en": "It can be said without exaggeration that this pyramid complex constitutes a milestone in the evolution of monumental stone architecture in Egypt and in the world as a whole.'",
+      "zh": "毫不夸张地说，这个金字塔建筑群是埃及乃至全世界纪念性石质建筑演变的一个里程碑。”"
+    },
+    {
+      "id": "s33",
+      "en": "The Step Pyramid was a revolutionary advance in architecture and became the archetype which all the other great pyramid builders of Egypt would follow.",
+      "zh": "阶梯金字塔在建筑上是一次革命性的进步，成为后续所有埃及伟大金字塔建造者遵循的典范。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong>The Step Pyramid of Djoser</strong></p><p style="text-align: center;"><br/></p><p style="text-align: left;"><strong>A. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8000">14</a></span></strong></p><p>The pyramids are the most famous monuments of ancient Egypt and still hold enormous interest for people in the present day. These grand, impressive tributes to the memory of the Egyptian kings have become linked with the country even though other cultures, such as the Chinese and Mayan, also built pyramids. The evolution of the pyramid form has been written and argued about for centuries. However, there is no question that, as far as Egypt is concerned, it began with one monument to one king designed by one brilliant architect: the Step Pyramid of Djoser at Saqqara.</p><p><br/></p><p><strong>B. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8001">15</a></span></strong></p><p>Djoser was the first king of the Third Dynasty of Egypt and the first to build in stone. Prior to Djoser's reign, tombs were rectangular monuments made of dried clay brick, which covered underground passages where the deceased person was buried. For reasons which remain unclear, Djoser's main official, whose name was Imhotep, conceived of building a taller, more impressive tomb for his king by stacking stone slabs on top of one another, progressively making them smaller, to form the shape now known as the Step Pyramid. Djoser is thought to have reigned for 19 years, but some historians and scholars attribute a much longer time for his rule, owing to the number and size of the monuments he built.</p><p><br/></p><p><strong>C. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8002">16</a></span></strong></p><p>The Step Pyramid has been thoroughly examined and investigated over the last century, and it is now known that the building process went through many different stages. Historian Marc Van de Mieroop comments on this, writing 'Much experimentation was involved, which is especially clear in the construction of the pyramid in the center of the complex. It had several plans ... before it became the first Step Pyramid in history, piling six levels on top of one another ... The weight of the enormous mass was a challenge for the builders, who placed the stones at an inward incline in order to prevent the monument breaking up.'</p><p><br/></p><p><strong>D. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8003">17</a></span></strong></p><p>When finally completed, the Step Pyramid rose 62 meters high and was the tallest structure of its time. The complex in which it was built was the size of a city in ancient Egypt and included a temple, courtyards, shrines, and living quarters for the priests. It covered a region of 16 hectares and was surrounded by a wall 10.5 meters high. The wall had 13 false doors cut in to it with only one true entrance cut into the south-east corner; the entire wall was then ringed by a trench 750 meters long and 40 meters wide. The false doors and the trench were incorporated into the complex to discourage unwanted visitors. If someone wished to enter, he or she would have needed to know in advance how to find the location of the true opening in the wall. Djoser was so proud of his accomplishment that he broke the tradition of having only his own name on the monument and had Imhotep's name carved on it as well.</p><p><br/></p><p><strong>E. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8004">18</a></span></strong></p><p>The burial chamber of the tomb, where the king's body was laid to rest, was dug beneath the base of the pyramid, surrounded by a vast maze of long tunnels that had rooms off them to discourage robbers. One of the most mysterious discoveries found inside the pyramid was a large number of stone vessels. Over 40,000 of these vessels, of various forms and shapes, were discovered in storerooms off the pyramid's underground passages. They are inscribed with the names of rulers from the First and Second Dynasties of Egypt and made from different kinds of stone. There is no agreement among scholars and archaeologists on why the vessels were placed in the tomb of Djoser or what they were supposed to represent. The archaeologist Jean-Philippe Lauer, who excavated most of the pyramid and complex, believes they were originally stored and then given a 'proper burial' by Djoser in his pyramid to honor his predecessors. There are other historians, however, who claim the vessels were dumped into the shafts as yet another attempt to prevent grave robbers from getting to the king's burial chamber.</p><p><br/></p><p><strong>F. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8005">19</a></span></strong></p><p>Unfortunately, all of the precautions and intricate design of the underground network did not prevent ancient robbers from finding a way in. Djoser's grave goods, and even his body, were stolen at some point in the past and all archaeologists found were a small number of his valuables overlooked by the thieves. There was enough left throughout the pyramid and its complex, however, to astonish and amaze the archaeologists who excavated it.</p><p><br/></p><p><strong>G. <span style="font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; white-space: normal;"><a name="8006">20</a></span></strong></p><p>Egyptologist Miroslav Verner writes, 'Few monuments hold a place in human history as significant as that of the Step Pyramid in Saqqara ... It can be said without exaggeration that this pyramid complex constitutes a milestone in the evolution of monumental stone architecture in Egypt and in the world as a whole.' The Step Pyramid was a revolutionary advance in architecture and became the archetype which all the other great pyramid builders of Egypt would follow.</p><p style="text-align: left;">                                                                              <br/></p>

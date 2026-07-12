@@ -1950,5 +1950,188 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Urban farming",
+      "zh": "城市农业"
+    },
+    {
+      "id": "s2",
+      "en": "In Paris, urban farmers are trying a soil-free approach to agriculture that uses less space and fewer resources.",
+      "zh": "在巴黎，城市农民正在尝试一种无土农业方法，这种方法占用更少的空间和资源。"
+    },
+    {
+      "id": "s3",
+      "en": "Could it help cities face the threats to our food supplies?",
+      "zh": "它能帮助城市应对食品供应面临的威胁吗？"
+    },
+    {
+      "id": "s4",
+      "en": "On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit.",
+      "zh": "在巴黎南部一座引人注目的新展览馆顶上，世界上最大的城市屋顶农场开始结出果实。"
+    },
+    {
+      "id": "s5",
+      "en": "Strawberries that are small, intensely flavoured and resplendently red sprout abundantly from large plastic tubes.",
+      "zh": "从大型塑料管中大量长出小巧、味道浓郁且鲜红的草莓。"
+    },
+    {
+      "id": "s6",
+      "en": "Peer inside and you see the tubes are completely hollow, the roots of dozens of strawberry plants dangling down inside them.",
+      "zh": "往里面看，您会发现这些管子是完全中空的，几十株草莓植物的根部垂悬其中。"
+    },
+    {
+      "id": "s7",
+      "en": "From identical vertical tubes nearby burst row upon row of lettuces; near those are aromatic herbs, such as basil, sage and peppermint.",
+      "zh": "附近相同的垂直管道中长满一排排生菜；靠近那里的是芳香草本植物，如罗勒、鼠尾草和薄荷。"
+    },
+    {
+      "id": "s8",
+      "en": "Opposite, in narrow, horizontal trays packed not with soil but with coconut fibre, grow cherry tomatoes, shiny aubergines and brightly coloured chards.",
+      "zh": "对面狭窄的水平托盘中不装土壤，而是装满椰子纤维，种着樱桃番茄、光亮的茄子和鲜艳的瑞士甜菜。"
+    },
+    {
+      "id": "s9",
+      "en": "Pascal Hardy, an engineer and sustainable development consultant, began experimenting with vertical farming and aeroponic growing towers— as the soil-free plastic tubes are known— on his Paris apartment block roof five years ago.",
+      "zh": "工程师兼可持续发展顾问帕斯卡尔·哈迪五年前开始在他巴黎公寓楼的屋顶上试验垂直农业和气雾栽培塔——这些无土塑料管就叫做气雾栽培塔。"
+    },
+    {
+      "id": "s10",
+      "en": "The urban rooftop space above the exhibition hall is somewhat bigger: 14,000 square metres and almost exactly the size of a couple of football pitches.",
+      "zh": "展览馆上方的城市屋顶空间更大一些：1.4万平方米，几乎相当于两个足球场的大小。"
+    },
+    {
+      "id": "s11",
+      "en": "Already, the team of young urban farmers who tend it have picked, in one day, 3,000 lettuces and 150 punnets of strawberries.",
+      "zh": "照料农场的一队年轻城市农民一天就采摘了3000颗生菜和150盒草莓。"
+    },
+    {
+      "id": "s12",
+      "en": "When the remaining two thirds of the vast open area are in production, 20 staff will harvest up to 1,000 kg of perhaps 35 different varieties of fruit and vegetables, every day.",
+      "zh": "当其余三分之二的广阔开放区域投入生产时，20名工作人员每天将收获多达1000公斤、约35种不同品种的水果和蔬菜。"
+    },
+    {
+      "id": "s13",
+      "en": "'We're not ever, obviously, going to feed the whole city this way,' cautions Hardy.",
+      "zh": "哈迪提醒说：“显然，我们永远不可能用这种方式养活整座城市。”"
+    },
+    {
+      "id": "s14",
+      "en": "'In the urban environment you're working with very significant practical constraints, clearly, on what you can do and where.",
+      "zh": "他还说：“在城市环境中，你面临非常显著的现实限制，关于你能做什么以及在哪里做。”"
+    },
+    {
+      "id": "s15",
+      "en": "But if enough unused space can be developed like this, there's no reason why you shouldn't eventually target maybe between 5% and 10% of consumption.'",
+      "zh": "但如果足够多的闲置空间能被这样开发，就没有理由最终不能将目标设定在占消费总量的5%到10%。"
+    },
+    {
+      "id": "s16",
+      "en": "Perhaps most significantly, however, this is a real-life showcase for the work of Hardy's flourishing urban agriculture consultancy, Agripolis, which is currently fielding enquiries from around the world to design, build and equip a new breed of soil-free inner-city farm.",
+      "zh": "然而，也许更重要的是，这个项目成为了哈迪蓬勃发展的城市农业咨询公司Agripolis的现实展示，该公司目前正在接待来自全球的咨询，旨在设计、建造和装备新型无土内城区农场。"
+    },
+    {
+      "id": "s17",
+      "en": "'The method's advantages are many,' he says.",
+      "zh": "他说：“这种方法有很多优点。”"
+    },
+    {
+      "id": "s18",
+      "en": "'First, I don't much like the fact that most of the fruit and vegetables we eat have been treated with something like 17 different pesticides, or that the intensive farming techniques that produced them are such huge generators of greenhouse gases.",
+      "zh": "“首先，我很不喜欢我们吃的水果和蔬菜大多被使用了大约17种不同的农药，或者说生产它们的集约农业技术产生了大量温室气体。”"
+    },
+    {
+      "id": "s19",
+      "en": "I don't much like the fact, either, that they've travelled an average of 2,000 refrigerated kilometres to my plate, that their quality is so poor, because the varieties are selected for their capacity to withstand such substantial journeys, or that 80% of the price I pay goes to wholesalers and transport companies, not the producers.'",
+      "zh": "我也不喜欢这样一个事实：它们平均经过2000公里的冷链运输才能到我盘中，质量却很差，因为选择的品种是为了能耐受这种长途运输；而且我支付价格的80%流向批发商和运输公司，而非生产者。”"
+    },
+    {
+      "id": "s20",
+      "en": "Produce grown using this soil-free method, on the other hand — which relies solely on a small quantity of water, enriched with organic nutrients, pumped around a closed circuit of pipes, towers and trays— is 'produced up here, and sold locally, just down there.",
+      "zh": "另一方面，采用这种无土方法种植的农产品——完全依靠少量水分、富含有机养分，在封闭的管道、塔和托盘回路中循环——“就在这里生产，并在附近本地销售。”"
+    },
+    {
+      "id": "s21",
+      "en": "It barely travels at all,' Hardy says.",
+      "zh": "哈迪说：“它几乎不需要长途运输。”"
+    },
+    {
+      "id": "s22",
+      "en": "'You can select crop varieties for their flavour, not their resistance to the transport and storage chain, and you can pick them when they're really at their best, and not before.'",
+      "zh": "“你可以根据味道选择作物品种，而不是耐运输和储存的能力，而且可以在作物完全成熟、风味最佳时采摘，而不是提前采摘。”"
+    },
+    {
+      "id": "s23",
+      "en": "No soil is exhausted, and the water that gently showers the plants' roots every 12 minutes is recycled, so the method uses 90% less water than a classic intensive farm for the same yield.",
+      "zh": "没有土壤被耗尽，每12分钟轻轻浇灌植物根部的水是循环利用的，因此这种方法比传统集约农场在相同产量下节约90%的用水量。"
+    },
+    {
+      "id": "s24",
+      "en": "Urban farming is not, of course, a new phenomenon.",
+      "zh": "当然，城市农业并不是一个新现象。"
+    },
+    {
+      "id": "s25",
+      "en": "Inner-city agriculture is booming from Shanghai to Detroit and Tokyo to Bangkok.",
+      "zh": "从上海到底特律，从东京到曼谷，市中心农业正在蓬勃发展。"
+    },
+    {
+      "id": "s26",
+      "en": "Strawberries are being grown in disused shipping containers, mushrooms in underground carparks.",
+      "zh": "草莓在废弃的集装箱里种植，蘑菇在地下停车场里栽培。"
+    },
+    {
+      "id": "s27",
+      "en": "Aeroponic farming, he says, is 'virtuous'.",
+      "zh": "他说，气雾栽培是一种“优良”的农业方式。"
+    },
+    {
+      "id": "s28",
+      "en": "The equipment weighs little, can be installed on almost any flat surface and is cheap to buy: roughly €100 to €150 per square metre.",
+      "zh": "设备重量轻，可以安装在几乎任何平坦的表面，而且购买价格便宜：大约每平方米100到150欧元。"
+    },
+    {
+      "id": "s29",
+      "en": "It is cheap to run, too, consuming a tiny fraction of the electricity used by some techniques.",
+      "zh": "运行费用也很低，耗电量只是某些技术的极小一部分。"
+    },
+    {
+      "id": "s30",
+      "en": "Produce grown this way typically sells at prices that, while generally higher than those of classic intensive agriculture, are lower than soil-based organic growers.",
+      "zh": "用这种方式种出的农产品价格通常高于传统集约农业，但低于基于土壤的有机农产品。"
+    },
+    {
+      "id": "s31",
+      "en": "There are limits to what farmers can grow this way, of course, and much of the produce is suited to the summer months.",
+      "zh": "当然，用这种方式种植的作物是有一定限制的，而且大多数农产品适合生长在夏季。"
+    },
+    {
+      "id": "s32",
+      "en": "'Root vegetables we cannot do, at least not yet,' he says.",
+      "zh": "他说：“根茎类蔬菜我们做不了，至少目前还做不了。”"
+    },
+    {
+      "id": "s33",
+      "en": "'Radishes are OK, but carrots, potatoes, that kind of thing— the roots are simply too long.",
+      "zh": "“萝卜可以，但胡萝卜、土豆那些，根太长了。”"
+    },
+    {
+      "id": "s34",
+      "en": "Fruit trees are obviously not an option.",
+      "zh": "显然，果树不适合。"
+    },
+    {
+      "id": "s35",
+      "en": "And beans tend to take up a lot of space for not much return.'",
+      "zh": "豆类作物则占地面积大，收益却不高。”"
+    },
+    {
+      "id": "s36",
+      "en": "Nevertheless, urban farming of the kind being practised in Paris is one part of a bigger and fast-changing picture that is bringing food production closer to our lives.",
+      "zh": "尽管如此，巴黎进行的这类城市农业是一个更大且快速变化的格局的一部分，这格局正将食品生产带得离我们生活更近。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">Urban&nbsp;farming</span></strong></h3><p>In Paris, urban&nbsp; farmers&nbsp; are trying&nbsp; a&nbsp; soil-free&nbsp; approach to&nbsp; agriculture that uses&nbsp; less&nbsp; &nbsp;space&nbsp; and&nbsp; fewer resources.&nbsp; Could&nbsp; it help&nbsp; cities&nbsp; face the threats to&nbsp; our&nbsp; food&nbsp; supplies?<br></p><p><br></p><p><strong>A.</strong></p><p>On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. Strawberries that are small, intensely flavoured and resplendently red sprout abundantly from large plastic tubes. Peer inside and you see the tubes are completely hollow, the roots of dozens of strawberry plants dangling down inside them. From identical vertical tubes nearby burst row upon row of lettuces; near those are aromatic herbs, such as basil, sage and peppermint. Opposite, in narrow, horizontal trays packed not with soil but with coconut&nbsp; fibre, grow cherry tomatoes, shiny aubergines and brightly coloured chards.</p><p><br></p><p><strong>B.</strong></p><p>Pascal Hardy, an engineer and sustainable development consultant, began experimenting with vertical farming and aeroponic growing towers— <span style="font-size: 12pt; text-indent: -16.8pt;">as the soil-free plastic tubes are known— on his Paris apartment block roof five years ago. The urban rooftop space above the exhibition hall is somewhat bigger: 14,000 square metres and almost exactly the size of a couple of football pitches. Already, the team of young urban farmers who tend it have picked, in one day, 3,000&nbsp; lettuces and 150 punnets of strawberries. When the remaining two thirds of the vast open area are in production, 20 staff will harvest up to 1,000 kg of perhaps 35 different varieties of fruit and vegetables, every day. 'We're not ever, obviously, going to feed the whole city this way,' cautions Hardy. 'In the urban environment you're working with very significant practical constraints, clearly, on what you can do and where. But if enough unused space can be developed like this, there's no reason why you shouldn't eventually target maybe between 5% and 10% of consumption.'</span></p><p><br></p><p><strong>C.</strong></p><p>Perhaps most significantly, however, this is a real-life showcase for the work of Hardy's flourishing urban agriculture consultancy, Agripolis, which is currently fielding enquiries from around the world to design, build and equip a new breed of soil-free inner-city farm. 'The method's advantages are many,' he says. 'First, I don't much like the fact that most of the fruit and vegetables we eat have been treated with something like 17 different pesticides, or that the intensive farming techniques that produced them are such huge generators of greenhouse gases. I don't much like the fact, either, that they've&nbsp; travelled an average of 2,000 refrigerated kilometres to my plate, that their quality is so poor, because the varieties are selected for their capacity to withstand such substantial journeys, or that 80% of the price I pay goes to wholesalers and transport companies, not the producers.'</p><p><br></p><p><strong>D.</strong></p><p>Produce grown using this soil-free method, on the other hand<span style="text-wrap: wrap;">— </span>which relies solely on a small quantity of water, enriched with organic nutrients, pumped around a closed circuit of pipes, towers and trays— is 'produced up here, and sold locally, just down there. It barely travels at all,' Hardy says. 'You can select crop varieties for their flavour, not their resistance to the transport and storage chain, and you can pick them when they're really at their best, and not before.' No soil is exhausted, and the water that gently showers the plants' roots every 12 minutes is recycled, so the method uses 90% less water than a classic intensive farm for the same yield.</p><p><br></p><p><strong>E.</strong></p><p>Urban farming is not, of course, a new phenomenon. Inner-city agriculture is booming from Shanghai to Detroit and Tokyo to Bangkok. Strawberries are being grown in disused shipping containers, mushrooms in underground carparks. Aeroponic farming, he says, is 'virtuous'. The&nbsp; &nbsp;equipment weighs little, can be installed on almost any flat surface and is cheap to buy: roughly&nbsp; &nbsp;€100&nbsp;to €150&nbsp;per square metre. It is cheap to run, too, consuming a tiny fraction of the electricity used by some techniques.</p><p><br></p><p><strong>F.</strong></p><p>Produce grown this way typically sells at prices that, while generally higher than those of classic intensive agriculture, are lower than soil-based organic growers. There are limits to what farmers can grow this way, of course, and much of the produce is suited to the summer months. 'Root vegetables we cannot do, at least not yet,' he says. 'Radishes are OK, but carrots, potatoes, that kind of thing— the roots are simply too long. Fruit trees are obviously not an option. And beans tend to take up a lot of space for not much return.' Nevertheless, urban farming of the kind being practised in Paris is one part of a bigger and fast-changing picture that is bringing food production closer to our lives.</p><p><br></p>

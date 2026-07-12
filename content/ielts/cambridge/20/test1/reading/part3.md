@@ -1840,5 +1840,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "How stress affects our judgement",
+      "zh": "压力如何影响我们的判断"
+    },
+    {
+      "id": "s2",
+      "en": "Some of the most important decisions of our lives occur while we're feeling stressed and anxious.",
+      "zh": "我们生活中一些最重要的决定往往是在感到压力和焦虑时做出的。"
+    },
+    {
+      "id": "s3",
+      "en": "From medical decisions to financial and professional ones, we are all sometimes required to weigh up information under stressful conditions.",
+      "zh": "从医疗决策到财务和职业决策，我们有时都需要在压力环境下权衡信息。"
+    },
+    {
+      "id": "s4",
+      "en": "But do we become better or worse at processing and using information under such circumstances?",
+      "zh": "但是在这种情况下，我们处理和利用信息的能力会变好还是变差呢？"
+    },
+    {
+      "id": "s5",
+      "en": "My colleague and I, both neuroscientists, wanted to investigate how the mind operates under stress, so we visited some local fire stations.",
+      "zh": "我和我的同事都是神经科学家，我们想研究压力下大脑的运作方式，于是我们拜访了一些当地的消防站。"
+    },
+    {
+      "id": "s6",
+      "en": "Firefighters' workdays vary quite a bit.",
+      "zh": "消防员的工作日变化很大。"
+    },
+    {
+      "id": "s7",
+      "en": "Some are pretty relaxed; they'll spend their time washing the truck, cleaning equipment, cooking meals and reading.",
+      "zh": "有些日子相当轻松；他们会花时间清洗消防车、清洁设备、做饭和阅读。"
+    },
+    {
+      "id": "s8",
+      "en": "Other days can be hectic, with numerous life-threatening incidents to attend to; they'll enter burning homes to rescue trapped residents, and assist with medical emergencies.",
+      "zh": "其他日子可能非常忙碌，需处理许多危及生命的事故；他们会进入燃烧的房屋救助被困居民，并协助处理医疗紧急情况。"
+    },
+    {
+      "id": "s9",
+      "en": "These ups and downs presented the perfect setting for an experiment on how people's ability to use information changes when they feel under pressure.",
+      "zh": "这些起伏为我们开展有关人在压力下使用信息能力变化的实验提供了完美环境。"
+    },
+    {
+      "id": "s10",
+      "en": "We found that perceived threat acted as a trigger for a stress reaction that made the task of processing information easier for the firefighters - but only as long as it conveyed bad news.",
+      "zh": "我们发现感知到的威胁会触发压力反应，使消防员处理信息的任务变得更容易——但前提是信息传达的是坏消息。"
+    },
+    {
+      "id": "s11",
+      "en": "This is how we arrived at these results.",
+      "zh": "我们就是通过这种方式得出了这些结果。"
+    },
+    {
+      "id": "s12",
+      "en": "We asked the firefighters to estimate their likelihood of experiencing 40 different adverse events in their life, such as being involved in an accident or becoming a victim of card fraud.",
+      "zh": "我们让消防员估计他们一生中经历40种不同不良事件的可能性，比如发生事故或成为银行卡诈骗的受害者。"
+    },
+    {
+      "id": "s13",
+      "en": "We then gave them either good news (that their likelihood of experiencing these events was lower than they'd thought) or bad news (that it was higher) and asked them to provide new estimates.",
+      "zh": "然后我们给他们好消息（他们经历这些事件的可能性比他们想象的低）或坏消息（可能性更高），并要求他们重新估计。"
+    },
+    {
+      "id": "s14",
+      "en": "People are normally quite optimistic - they will ignore bad news and embrace the good.",
+      "zh": "人们通常相当乐观——他们会忽视坏消息，接受好消息。"
+    },
+    {
+      "id": "s15",
+      "en": "This is what happened when the firefighters were relaxed; but when they were under stress, a different pattern emerged.",
+      "zh": "当消防员放松时，情况就是如此；但当他们处于压力状态时，出现了不同的模式。"
+    },
+    {
+      "id": "s16",
+      "en": "Under these conditions, they became hyper-vigilant to bad news, even when it had nothing to do with their job (such as learning that the likelihood of card fraud was higher than they'd thought), and altered their beliefs in response.",
+      "zh": "在这些条件下，他们对坏消息变得高度警觉，即使这些消息与工作无关（例如得知银行卡诈骗的可能性比预想的更高），他们也会调整自己的信念。"
+    },
+    {
+      "id": "s17",
+      "en": "In contrast, stress didn't change how they responded to good news (such as learning that the likelihood of card fraud was lower than they'd thought).",
+      "zh": "相反，压力并没有改变他们对好消息（例如银行卡诈骗可能性比预期低）的反应。"
+    },
+    {
+      "id": "s18",
+      "en": "Back in our lab, we observed the same pattern in students who were told they had to give a surprise public speech, which would be judged by a panel, recorded and posted online.",
+      "zh": "回到实验室，我们在被告知必须进行一场突发公开演讲的学生身上观察到了同样的模式，这场演讲会被评委审评、录制并发布到网上。"
+    },
+    {
+      "id": "s19",
+      "en": "Sure enough, their cortisol levels spiked, their heart rates went up and they suddenly became better at processing unrelated, yet alarming, information about rates of disease and violence.",
+      "zh": "果然，他们的皮质醇水平飙升，心率上升，且突然在处理与此无关但令人警惕的疾病和暴力发生率信息方面表现得更好。"
+    },
+    {
+      "id": "s20",
+      "en": "When we experience stressful events, a physiological change is triggered that causes us to take in warnings and focus on what might go wrong.",
+      "zh": "当我们经历压力事件时，会触发生理变化，使我们接受警告并专注于可能出错的地方。"
+    },
+    {
+      "id": "s21",
+      "en": "Brain imaging reveals that this 'switch' is related to a sudden boost in a neural signal important for learning, specifically in response to unexpected warning signs, such as faces expressing fear.",
+      "zh": "脑成像显示，这种“开关”与对神经信号的突然增强有关，这种信号对学习很重要，特别是对意外警告信号的反应，比如表现出恐惧表情的脸。"
+    },
+    {
+      "id": "s22",
+      "en": "Such neural engineering could have helped prehistoric humans to survive.",
+      "zh": "这种神经机制可能帮助史前人类生存下来。"
+    },
+    {
+      "id": "s23",
+      "en": "When our ancestors found themselves surrounded by hungry animals, they would have benefited from an increased ability to learn about hazards.",
+      "zh": "当我们的祖先被饥饿的动物包围时，增强学习危险的能力将对他们有利。"
+    },
+    {
+      "id": "s24",
+      "en": "In a safe environment, however, it would have been wasteful to be on high alert constantly.",
+      "zh": "然而，在安全环境中，持续处于高度警觉是浪费的。"
+    },
+    {
+      "id": "s25",
+      "en": "So, a neural switch that automatically increases or decreases our ability to process warnings in response to changes in our environment could have been useful.",
+      "zh": "因此，一个能根据环境变化自动增强或减弱我们处理警告能力的神经开关可能很有用。"
+    },
+    {
+      "id": "s26",
+      "en": "In fact, people with clinical depression and anxiety seem unable to switch away from a state in which they absorb all the negative messages around them.",
+      "zh": "事实上，临床抑郁和焦虑患者似乎无法摆脱吸收周围所有负面信息的状态。"
+    },
+    {
+      "id": "s27",
+      "en": "It is also important to realise that stress travels rapidly from one person to the next.",
+      "zh": "同样重要的是要认识到，压力能迅速在人与人之间传播。"
+    },
+    {
+      "id": "s28",
+      "en": "If a co-worker is stressed, we are more likely to tense up and feel stressed ourselves.",
+      "zh": "如果同事感到压力，我们更可能紧张起来，也感到压力。"
+    },
+    {
+      "id": "s29",
+      "en": "We don't even need to be in the same room with someone for their emotions to influence our behaviour.",
+      "zh": "我们甚至不需要和某人在同一房间，他们的情绪也能影响我们的行为。"
+    },
+    {
+      "id": "s30",
+      "en": "Studies show that if we observe positive feeds on social media, such as images of a pink sunset, we are more likely to post uplifting messages ourselves.",
+      "zh": "研究表明，如果我们在社交媒体上看到积极内容，比如粉红色的日落图片，我们更可能发布鼓舞人心的信息。"
+    },
+    {
+      "id": "s31",
+      "en": "If we observe negative posts, such as complaints about a long queue at the coffee shop, we will in turn create more negative posts.",
+      "zh": "如果我们看到负面帖子，比如抱怨咖啡店排长队，我们也会发布更多负面内容。"
+    },
+    {
+      "id": "s32",
+      "en": "In some ways, many of us now live as if we are in danger, constantly ready to tackle demanding emails and text messages, and respond to news alerts and comments on social media.",
+      "zh": "某种程度上，我们许多人现在就像生活在危险中一样，随时准备应对繁重的邮件和短信，回复新闻提醒和社交媒体评论。"
+    },
+    {
+      "id": "s33",
+      "en": "Repeatedly checking your phone, according to a survey conducted by the American Psychological Association, is related to stress.",
+      "zh": "根据美国心理学会进行的一项调查，反复查看手机与压力有关。"
+    },
+    {
+      "id": "s34",
+      "en": "In other words, a pre-programmed physiological reaction, which evolution has equipped us with to help us avoid famished predators, is now being triggered by an online post.",
+      "zh": "换句话说，进化赋予我们的先天生理反应——帮助我们躲避饥饿掠食者——现在却被网络帖子触发了。"
+    },
+    {
+      "id": "s35",
+      "en": "Social media posting, according to one study, raises your pulse, makes you sweat, and enlarges your pupils more than most daily activities.",
+      "zh": "根据一项研究，社交媒体发帖比大多数日常活动更能使你的脉搏加快、出汗和瞳孔放大。"
+    },
+    {
+      "id": "s36",
+      "en": "The fact that stress increases the likelihood that we will focus more on alarming messages, together with the fact that it spreads extremely rapidly, can create collective fear that is not always justified.",
+      "zh": "压力增加我们关注恐慌信息的可能性，加上压力传播极快，这可能引发不总是合理的集体恐惧。"
+    },
+    {
+      "id": "s37",
+      "en": "After a stressful public event, such as a natural disaster or major financial crash, there is often a wave of alarming information in traditional and social media, which individuals become very aware of.",
+      "zh": "在自然灾害或重大金融崩盘等压力公共事件后，传统媒体和社交媒体上经常出现一波惊恐信息，个人对此非常关注。"
+    },
+    {
+      "id": "s38",
+      "en": "But that has the effect of exaggerating existing danger.",
+      "zh": "但这会导致对现有危险的夸大。"
+    },
+    {
+      "id": "s39",
+      "en": "And so, a reliable pattern emerges - stress is triggered, spreading from one person to the next, which temporarily enhances the likelihood that people will take in negative reports, which increases stress further.",
+      "zh": "因此出现一个可靠模式——压力被触发，在人群中传播，短暂地增加人们接受负面报道的可能性，从而进一步加重压力。"
+    },
+    {
+      "id": "s40",
+      "en": "As a result, trips are cancelled, even if the disaster took place across the globe; stocks are sold, even when holding on is the best thing to do.",
+      "zh": "结果，即使灾难发生在全球另一端，旅行也会被取消；股票也会被卖出，即便持有才是最佳选择。"
+    },
+    {
+      "id": "s41",
+      "en": "The good news, however, is that positive emotions, such as hope, are contagious too, and are powerful in inducing people to act to find solutions.",
+      "zh": "不过，好消息是，积极情绪如希望也具有传染性，能强烈激励人们采取行动寻找解决方案。"
+    },
+    {
+      "id": "s42",
+      "en": "Being aware of the close relationship between people's emotional state and how they process information can help us frame our messages more effectively and become conscientious agents of change.",
+      "zh": "意识到人们的情绪状态与他们处理信息的方式密切相关，可以帮助我们更有效地表达信息，成为负责任的变革推动者。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">How stress affects our judgement</span></strong></p><p style="text-align: left;">Some of the most important decisions of our lives occur while we're feeling stressed and anxious. From medical decisions to financial and professional ones, we are all sometimes required to weigh up information under stressful conditions. But do we become better or worse at processing and using information under such circumstances?</p><p style="text-align: left;"><strong><br></strong></p><p style="text-align: left;">My colleague and I, both neuroscientists, wanted to investigate how the mind operates under stress, so we visited some local fire stations. Firefighters' workdays vary quite a bit. Some are pretty relaxed; they'll spend their time washing the truck, cleaning equipment, cooking meals and reading. Other days can be hectic, with numerous life-threatening incidents to attend to; they'll enter burning homes to rescue trapped residents, and assist with medical emergencies. These ups and downs presented the perfect setting for an experiment on how people's ability to use information changes when they feel under pressure.</p><p style="text-align: left;"><br></p><p style="text-align: left;">We found that perceived threat acted as a trigger for a stress reaction that made the task of processing information easier for the firefighters - but only as long as it conveyed bad news.</p><p style="text-align: left;"><br></p><p style="text-align: left;">This is how we arrived at these results. We asked the firefighters to estimate their likelihood of experiencing 40 different adverse events in their life, such as being involved in an accident or becoming a victim of card fraud. We then gave them either good news (that their likelihood of experiencing these events was lower than they'd thought) or bad news (that it was higher) and asked them to provide new estimates.</p><p style="text-align: left;"><strong><br></strong></p><p style="text-align: left;">People are normally quite optimistic - they will ignore bad news and embrace the good. This is what happened when the firefighters were relaxed; but when they were under stress, a different pattern emerged. Under these conditions, they became hyper-vigilant to bad news, even when it had nothing to do with their job (such as learning that the likelihood of card fraud was higher than they'd thought), and altered their beliefs in response. In contrast, stress didn't change how they responded to good news (such as learning that the likelihood of card fraud was lower than they'd thought).</p><p style="text-align: left;"><br></p><p style="text-align: left;">Back in our lab, we observed the same pattern in students who were told they had to give a surprise public speech, which would be judged by a panel, recorded and posted online. Sure enough, their cortisol levels spiked, their heart rates went up and they suddenly became better at processing unrelated, yet alarming, information about rates of disease and violence.</p><p style="text-align: left;"><br></p><p style="text-align: left;">When we experience stressful events, a physiological change is triggered that causes us to take in warnings and focus on what might go wrong. Brain imaging reveals that this 'switch' is related to a sudden boost in a neural signal important for learning, specifically in response to unexpected warning signs, such as faces expressing fear.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Such neural engineering could have helped prehistoric humans to survive. When our ancestors found themselves surrounded by hungry animals, they would have benefited from an increased ability to learn about hazards. In a safe environment, however, it would have been wasteful to be on high alert constantly. So, a neural switch that automatically increases or decreases our ability to process warnings in response to changes in our environment could have been useful. In fact, people with clinical depression and anxiety seem unable to switch away from a state in which they absorb all the negative messages around them.</p><p style="text-align: left;"><br></p><p style="text-align: left;">It is also important to realise that stress travels rapidly from one person to the next. If a co-worker is stressed, we are more likely to tense up and feel stressed ourselves. We don't even need to be in the same room with someone for their emotions to influence our behaviour. Studies show that if we observe positive feeds on social media, such as images of a pink sunset, we are more likely to post uplifting messages ourselves. If we observe negative posts, such as complaints about a long queue at the coffee shop, we will in turn create more negative posts.</p><p style="text-align: left;"><br></p><p>In some ways, many of us now live as if we are in danger, constantly ready to tackle demanding emails and text messages, and respond to news alerts and comments on social media. Repeatedly checking your phone, according to a survey conducted by the American Psychological Association, is related to stress. In other words, a pre-programmed physiological reaction, which evolution has equipped us with to help us avoid famished predators, is now being triggered by an online post. Social media posting, according to one study, raises your pulse, makes you sweat, and enlarges your pupils more than most daily activities.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The fact that stress increases the likelihood that we will focus more on alarming messages, together with the fact that it spreads extremely rapidly, can create collective fear that is not always justified. After a stressful public event, such as a natural disaster or major financial crash, there is often a wave of alarming information in traditional and social media, which individuals become very aware of. But that has the effect of exaggerating existing danger. And so, a reliable pattern emerges - stress is triggered, spreading from one person to the next, which temporarily enhances the likelihood that people will take in negative reports, which increases stress further. As a result, trips are cancelled, even if the disaster took place across the globe; stocks are sold, even when holding on is the best thing to do.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The good news, however, is that positive emotions, such as hope, are contagious too, and are powerful in inducing people to act to find solutions. Being aware of the close relationship between people's emotional state and how they process information can help us frame our messages more effectively and become conscientious agents of change.</p><p style="text-align: left;"><br></p>

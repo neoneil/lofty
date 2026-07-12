@@ -316,7 +316,7 @@ function EssayAnswerLibrary({
               >
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="secondary">Answer #{index + 1}</Badge>
+                    <Badge variant="secondary">Answer {index + 1}</Badge>
                     <Badge variant="outline">
                       Target {answer.score_target ?? 90}
                     </Badge>
@@ -1002,7 +1002,7 @@ export default function EssayDetailClient({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="text-sm font-semibold text-[var(--text)]">
-                    Attempt #{attempts.length - index}
+                    Attempt {attempts.length - index}
                   </div>
 
                   <button

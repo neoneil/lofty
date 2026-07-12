@@ -37,6 +37,9 @@ type SpeakingPart2Topic = {
 
 type ExportPayload =
     | {
+        part: "all";
+    }
+    | {
         part: "part1";
         topic: string;
     }
@@ -240,6 +243,120 @@ export async function POST(req: NextRequest) {
         const addGap = (amount = 8) => {
             y -= amount;
         };
+
+        const addPageBreak = () => {
+            page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+            y = PAGE_HEIGHT - MARGIN_TOP;
+        };
+
+        if (payload.part === "all") {
+            const [part1Result, part2Result] = await Promise.all([
+                supabase
+                    .schema("ielts")
+                    .from("ielts_speaking_part1_questions")
+                    .select("*")
+                    .order("topic_title", { ascending: true })
+                    .order("question_number", { ascending: true }),
+                supabase
+                    .schema("ielts")
+                    .from("ielts_speaking_part2_3")
+                    .select("*")
+                    .eq("status", "published")
+                    .order("sort_order", { ascending: true }),
+            ]);
+
+            if (part1Result.error) {
+                return new Response(`Failed to load Part 1 data: ${part1Result.error.message}`, { status: 500 });
+            }
+
+            if (part2Result.error) {
+                return new Response(`Failed to load Part 2/3 data: ${part2Result.error.message}`, { status: 500 });
+            }
+
+            const part1Items = (part1Result.data ?? []) as SpeakingPart1Question[];
+            const part2Items = (part2Result.data ?? []) as SpeakingPart2Topic[];
+
+            drawLine("IELTS Speaking Question Bank", { size: TITLE_SIZE, bold: true });
+            drawLine("Part 1 + Part 2 / 3", { size: SUBTITLE_SIZE });
+            drawLine(`Total questions/cards: ${part1Items.length + part2Items.length}`, { size: SMALL_SIZE });
+            addGap(14);
+
+            drawLine("Part 1", { size: TITLE_SIZE, bold: true });
+            addGap(6);
+
+            let currentTopic = "";
+
+            for (const item of part1Items) {
+                const safeTopic = safePdfText(item.topic_title);
+
+                if (safeTopic !== currentTopic) {
+                    currentTopic = safeTopic;
+                    addGap(4);
+                    drawLine(currentTopic || "Untitled Topic", { size: SUBTITLE_SIZE, bold: true });
+                    addGap(2);
+                }
+
+                drawLine(`Question ${item.question_number}`, { size: SMALL_SIZE, bold: true, color: [0.35, 0.35, 0.35] });
+                drawLine(item.question_text || "", { bold: true });
+                addGap(1);
+                drawLine(item.answer_text || "");
+                addGap(8);
+            }
+
+            addPageBreak();
+            drawLine("Part 2 / 3", { size: TITLE_SIZE, bold: true });
+            addGap(8);
+
+            for (let index = 0; index < part2Items.length; index++) {
+                const item = part2Items[index];
+                const cueCards = [item.cue_card_1, item.cue_card_2, item.cue_card_3, item.cue_card_4].filter(Boolean) as string[];
+                const part3Questions = [item.part3_q1, item.part3_q2, item.part3_q3, item.part3_q4, item.part3_q5, item.part3_q6, item.part3_q7, item.part3_q8, item.part3_q9, item.part3_q10].filter(Boolean) as string[];
+
+                drawLine(`${index + 1}. ${safePdfText(item.english_title || item.part2_question || "Untitled")}`, { size: SUBTITLE_SIZE, bold: true });
+
+                if (item.category) {
+                    drawLine(`Category: ${safePdfText(item.category)}`, { size: SMALL_SIZE });
+                }
+
+                if (item.difficulty) {
+                    drawLine(`Difficulty: ${safePdfText(item.difficulty)}`, { size: SMALL_SIZE });
+                }
+
+                addGap(3);
+
+                if (item.part2_question) {
+                    drawLine("Part 2 Question", { size: SMALL_SIZE, bold: true });
+                    drawLine(item.part2_question);
+                    addGap(5);
+                }
+
+                if (cueCards.length > 0) {
+                    drawLine("You should say:", { size: SMALL_SIZE, bold: true });
+                    cueCards.forEach((cue) => drawLine(`- ${cue}`));
+                    addGap(5);
+                }
+
+                if (part3Questions.length > 0) {
+                    drawLine("Part 3 Discussion", { size: SMALL_SIZE, bold: true });
+                    part3Questions.forEach((q, idx) => drawLine(`Q${idx + 1}. ${q}`));
+                }
+
+                addGap(10);
+            }
+
+            addWatermarkAndFooter(pdfDoc, font, boldFont);
+
+            const pdfBytes = await pdfDoc.save();
+            const pdfBuffer = toPdfResponseBuffer(pdfBytes);
+
+            return new Response(pdfBuffer, {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/pdf",
+                    "Content-Disposition": "attachment; filename=\"ielts-speaking-all.pdf\"",
+                },
+            });
+        }
 
         if (payload.part === "part1") {
             let query = supabase

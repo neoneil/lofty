@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, Download, FileText, Loader2, PenLine, Sparkles } from "lucide-react";
+import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
@@ -27,8 +28,12 @@ export default function IELTSWritingPage() {
   const [result, setResult] = useState<IELTSTask2ReviewResult | null>(null);
   const [activeChangeId, setActiveChangeId] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function handleSubmit() {
+    if (!promptQuestion.trim() || !essayText.trim()) {
+      setError("请先填写题目和作文。");
+      return;
+    }
+
     setLoading(true);
     setError("");
     setResult(null);
@@ -88,7 +93,7 @@ export default function IELTSWritingPage() {
               <CardDescription>建议提交完整 Task 2 作文，反馈会更准确。</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={(event) => event.preventDefault()} className="space-y-5">
                 <label className="block">
                   <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Essay Question</span>
                   <Textarea value={promptQuestion} onChange={(e) => setPromptQuestion(e.target.value)} placeholder="Paste the IELTS Task 2 prompt here..." className="min-h-[120px]" required />
@@ -102,7 +107,7 @@ export default function IELTSWritingPage() {
                     <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Target Band</span>
                     <Input type="number" min="0" max="9" step="0.5" value={targetBand} onChange={(e) => setTargetBand(e.target.value)} placeholder="e.g. 6.5" />
                   </label>
-                  <Button type="submit" disabled={loading} fullWidth>{loading ? <span className="inline-flex items-center gap-2"><Loader2 size={16} className="animate-spin" />正在批改，通常 30-90 秒...</span> : "Check Essay"}</Button>
+                  <AiUsageConfirmDialog feature="ielts_writing_review" title="确认使用雅思写作 AI 评分" description="本次作文批改会消耗 1 次 AI 评分反馈机会。" onConfirm={handleSubmit}>{(openDialog) => <Button type="button" disabled={loading} fullWidth onClick={() => { if (!promptQuestion.trim() || !essayText.trim()) { setError("请先填写题目和作文。"); return; } openDialog(); }}>{loading ? <span className="inline-flex items-center gap-2"><Loader2 size={16} className="animate-spin" />正在批改，通常 30-90 秒...</span> : "Check Essay"}</Button>}</AiUsageConfirmDialog>
                 </div>
                 {error ? <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">{error}</div> : null}
               </form>

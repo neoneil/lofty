@@ -1704,5 +1704,313 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Invasion of the Robot Umpires",
+      "zh": "机器人裁判的入侵"
+    },
+    {
+      "id": "s2",
+      "en": "A few years ago, Fred DeJesus from Brooklyn, New York became the first umpire in a minor league baseball game to use something called the Automated Ball-Strike System (ABS), often referred to as the 'robo-umpire'.",
+      "zh": "几年前，来自纽约布鲁克林的弗雷德·德赫苏斯成为小联盟棒球比赛中第一位使用名为自动球-好球系统（ABS）的裁判，这个系统通常被称为“机器人裁判”。"
+    },
+    {
+      "id": "s3",
+      "en": "Instead of making any judgments himself about a strike*, DeJesus had decisions fed to him through an earpiece, connected to a modified missile-tracking system.",
+      "zh": "德赫苏斯并没有自己判定好球与否，而是通过一个耳机接收判决，该耳机连接着一个改装的导弹跟踪系统。"
+    },
+    {
+      "id": "s4",
+      "en": "The contraption looked like a large black pizza box with one glowing green eye; it was mounted above the press stand.",
+      "zh": "这个装置看起来像一个大型黑色披萨盒，有一个发光的绿色“眼睛”；它安装在新闻平台的上方。"
+    },
+    {
+      "id": "s5",
+      "en": "Major League Baseball (MLB), who had commissioned the system, wanted human umpires to announce the calls, just as they would have done in the past.",
+      "zh": "委托开发该系统的大联盟棒球（MLB）希望由人类裁判宣布判罚，就像过去一样。"
+    },
+    {
+      "id": "s6",
+      "en": "When the first pitch came in, a recorded voice told DeJesus it was a strike.",
+      "zh": "当第一球投出时，录音的声音告诉德赫苏斯这是一个好球。"
+    },
+    {
+      "id": "s7",
+      "en": "Previously, calling a strike was a judgment call on the part of the umpire.",
+      "zh": "以前，好球的判定是裁判的主观判断。"
+    },
+    {
+      "id": "s8",
+      "en": "Even if the batter does not hit the ball, a pitch that passes through the 'strike zone' (an imaginary zone about seventeen inches wide, stretching from the batter's knees to the middle of his chest) is considered a strike.",
+      "zh": "即使击球员没有击球，穿过“好球区”（一个大约17英寸宽，从击球员膝盖到胸部中部的假想区域）的投球也被视为好球。"
+    },
+    {
+      "id": "s9",
+      "en": "During that first game, when DeJesus announced calls, there was no heckling and no shouted disagreement.",
+      "zh": "在那场第一场比赛中，当德赫苏斯宣布判罚时，没有人起哄，也没有大声反对。"
+    },
+    {
+      "id": "s10",
+      "en": "Nobody said a word.",
+      "zh": "没有人发出任何声音。"
+    },
+    {
+      "id": "s11",
+      "en": "For a hundred and fifty years or so, the strike zone has been the game's animating force—countless arguments between a team's manager and the umpire have taken place over its boundaries and whether a ball had crossed through it.",
+      "zh": "大约一百五十年来，好球区一直是比赛的核心——球队经理与裁判之间无数次因界限和投球是否进入好球区而发生争论。"
+    },
+    {
+      "id": "s12",
+      "en": "The rules of play have evolved in various stages.",
+      "zh": "比赛规则经历了多个阶段的发展。"
+    },
+    {
+      "id": "s13",
+      "en": "Today, everyone knows that you may scream your disagreement in an umpire's face, but you must never shout personal abuse at them or touch them.",
+      "zh": "如今，大家都知道可以对着裁判大声表达异议，但绝不能对其进行人身侮辱或动手。"
+    },
+    {
+      "id": "s14",
+      "en": "That's a no-no.",
+      "zh": "这是坚决禁止的。"
+    },
+    {
+      "id": "s15",
+      "en": "When the robo-umpires came, however, the arguments stopped.",
+      "zh": "然而，当机器人裁判出现时，争论停止了。"
+    },
+    {
+      "id": "s16",
+      "en": "During the first robo-umpire season, players complained about some strange calls.",
+      "zh": "在第一个机器人裁判赛季，球员们抱怨了一些奇怪的判罚。"
+    },
+    {
+      "id": "s17",
+      "en": "In response, MLB decided to tweak the dimensions of the zone, and the following year the consensus was that ABS is profoundly consistent.",
+      "zh": "对此，大联盟棒球决定调整好球区尺寸，第二年大家普遍认为ABS非常一致。"
+    },
+    {
+      "id": "s18",
+      "en": "MLB says the device is near-perfect, precise to within fractions of an inch.",
+      "zh": "MLB称该设备几乎完美，精确度在几英寸的分数之内。"
+    },
+    {
+      "id": "s19",
+      "en": "'It'll reduce controversy in the game, and be good for the game,' says Rob Manfred, who is Commissioner for MLB.",
+      "zh": "MLB专员罗布·曼弗雷德说：“它会减少比赛中的争议，对比赛有益。”"
+    },
+    {
+      "id": "s20",
+      "en": "But the question is whether controversy is worth reducing, or whether it is the sign of a human hand.",
+      "zh": "但是问题是，是否值得减少争议，或者争议本身是否代表了人的参与。"
+    },
+    {
+      "id": "s21",
+      "en": "A human, at least, yells back.",
+      "zh": "至少，人类会回吼。"
+    },
+    {
+      "id": "s22",
+      "en": "When I spoke with Frank Viola, a coach for a North Carolina team, he said that ABS works as designed, but that it was also unforgiving and pedantic, almost legalistic.",
+      "zh": "我与北卡罗来纳一支球队教练弗兰克·维奥拉交谈时，他说ABS按设计运作，但它也毫不留情且过于拘泥，几乎像法律主义者。"
+    },
+    {
+      "id": "s23",
+      "en": "'Manfred is a lawyer,' Viola noted.",
+      "zh": "维奥拉指出：“曼弗雷德是律师。”"
+    },
+    {
+      "id": "s24",
+      "en": "Some pitchers have complained that, compared with a human's, the robot's strike zone seems too precise.",
+      "zh": "一些投手抱怨说，与人类相比，机器人的好球区似乎过于精确。"
+    },
+    {
+      "id": "s25",
+      "en": "Viola was once a major-league player himself.",
+      "zh": "维奥拉曾是一名大联盟球员。"
+    },
+    {
+      "id": "s26",
+      "en": "When he was pitching, he explained, umpires rewarded skill.",
+      "zh": "他解释说，他投球时，裁判会奖励技巧。"
+    },
+    {
+      "id": "s27",
+      "en": "'Throw it where you aimed, and it would be a strike, even if it was an inch or two outside.",
+      "zh": "'你投球命中瞄准的位置，就算超出一两英寸，也会被判为好球。"
+    },
+    {
+      "id": "s28",
+      "en": "There was a dialogue between pitcher and umpire.'",
+      "zh": "投手和裁判之间会有对话。”"
+    },
+    {
+      "id": "s29",
+      "en": "The executive tasked with running the experiment for MLB is Morgan Sword, who's in charge of baseball operations.",
+      "zh": "负责为MLB进行这项实验的主管是摩根·索德，他负责棒球运营。"
+    },
+    {
+      "id": "s30",
+      "en": "According to Sword, ABS was part of a larger project to make baseball more exciting since executives are terrified of losing younger fans, as has been the case with horse racing and boxing.",
+      "zh": "索德说，ABS是一个更大项目的一部分，目的是让棒球更刺激，因为高层恐惧像赛马和拳击那样失去年轻观众。"
+    },
+    {
+      "id": "s31",
+      "en": "He explains how they began the process by asking fans what version of baseball they found most exciting.",
+      "zh": "他解释说，他们通过询问球迷哪种棒球版本最令人兴奋，来开始这一过程。"
+    },
+    {
+      "id": "s32",
+      "en": "The results showed that everyone wanted more action: more hits, more defense, more baserunning.",
+      "zh": "结果显示，所有人都希望有更多动作：更多的击球、更强的防守和更多的跑垒。"
+    },
+    {
+      "id": "s33",
+      "en": "This type of baseball essentially hasn't existed since the 1960s, when the hundred-mile-an-hour fastball, which is difficult to hit and control, entered the game.",
+      "zh": "这种类型的棒球自1960年代以来基本上不存在，当时每小时百英里的快速球进入比赛，难以击中和控制。"
+    },
+    {
+      "id": "s34",
+      "en": "It flattened the game into strikeouts, walks, and home runs—a type of play lacking much action.",
+      "zh": "它使比赛变得单调，成为三振、四坏和本垒打的游戏——缺乏很多动作的打法。"
+    },
+    {
+      "id": "s35",
+      "en": "Sword's team brainstormed potential fixes.",
+      "zh": "索德的团队集思广益，寻找潜在的解决方案。"
+    },
+    {
+      "id": "s36",
+      "en": "Any rule that existed, they talked about changing—from changing the bats to changing the geometry of the field.",
+      "zh": "他们讨论了改变所有现有规则——从改变球棒到改变球场结构。"
+    },
+    {
+      "id": "s37",
+      "en": "But while all of these were ruled out as potential fixes, ABS was seen as a perfect vehicle for change.",
+      "zh": "但所有这些都被排除为潜在方案，ABS被视为完美的变革工具。"
+    },
+    {
+      "id": "s38",
+      "en": "According to Sword, once you get the technology right, you can load any strike zone you want into the system.",
+      "zh": "索德说，一旦技术实现，就可以将任何想要的好球区设置加载到系统中。"
+    },
+    {
+      "id": "s39",
+      "en": "'It might be a triangle, or a blob, or something shaped like Texas.",
+      "zh": "“它可以是三角形、模糊图形，或者是德克萨斯州形状。"
+    },
+    {
+      "id": "s40",
+      "en": "Over time, as baseball evolves, ABS can allow the zone to change with it.'",
+      "zh": "随着时间推移，棒球的发展，ABS能让好球区随之变化。”"
+    },
+    {
+      "id": "s41",
+      "en": "'In the past twenty years, sports have moved away from judgment calls.",
+      "zh": "“在过去二十年里，体育运动渐渐远离了主观判罚。"
+    },
+    {
+      "id": "s42",
+      "en": "Soccer has Video Assistant Referees (for offside decisions, for example).",
+      "zh": "足球引入了视频助理裁判（例如用来判定越位）。"
+    },
+    {
+      "id": "s43",
+      "en": "Tennis has Hawk-Eye (for line calls, for example).",
+      "zh": "网球采用鹰眼系统（例如用来判定边线球）。"
+    },
+    {
+      "id": "s44",
+      "en": "For almost a decade, baseball has used instant replay on the base paths.",
+      "zh": "近十年来，棒球在垒包判罚上使用了即时回放。"
+    },
+    {
+      "id": "s45",
+      "en": "This is widely liked, even if the precision can sometimes cause problems.",
+      "zh": "这一做法广受欢迎，尽管高精度有时会带来问题。"
+    },
+    {
+      "id": "s46",
+      "en": "But these applications deal with something physical: bases, lines, goals.",
+      "zh": "但这些应用处理的是具体事物：垒包、边线、球门。"
+    },
+    {
+      "id": "s47",
+      "en": "The boundaries of action are precise, delineated like the keys of a piano.",
+      "zh": "行动的界限精确清晰，就像钢琴键一样分明。"
+    },
+    {
+      "id": "s48",
+      "en": "This is not the case with ABS and the strike zone.",
+      "zh": "而ABS和好球区则不同。"
+    },
+    {
+      "id": "s49",
+      "en": "Historically, a certain discretion has been appreciated.'",
+      "zh": "历史上，人们一直欣赏一定程度的自由裁量权。”"
+    },
+    {
+      "id": "s50",
+      "en": "I decided to email Alva Noë, a professor at Berkeley University and a baseball fan, for his opinion.",
+      "zh": "我决定给伯克利大学教授兼棒球迷阿尔瓦·诺发邮件，征求他的意见。"
+    },
+    {
+      "id": "s51",
+      "en": "'Hardly a day goes by that I don't wake up and run through the reasons that this [robo-umpires] is such a terrible idea,' he replied.",
+      "zh": "他回复道：“几乎没有一天我醒来不回想为什么这个（机器人裁判）是个糟糕的主意。”"
+    },
+    {
+      "id": "s52",
+      "en": "He later told me, 'This is part of a movement to use algorithms to take the hard choices of living out of life.'",
+      "zh": "后来他告诉我：“这是一场利用算法将生活中的艰难选择剥离出去的运动的一部分。”"
+    },
+    {
+      "id": "s53",
+      "en": "Perhaps he's right.",
+      "zh": "也许他说得对。"
+    },
+    {
+      "id": "s54",
+      "en": "We watch baseball to kill time, not to maximize it.",
+      "zh": "我们看棒球是为了消磨时间，而不是最大化它。"
+    },
+    {
+      "id": "s55",
+      "en": "Some players I have met take a dissenting stance toward the robots too, believing that accuracy is not the answer.",
+      "zh": "我遇到的一些球员对机器人持反对态度，他们认为精准不是答案。"
+    },
+    {
+      "id": "s56",
+      "en": "According to Joe Russo, who plays for a New Jersey team, 'With technology, people just want everything to be perfect.",
+      "zh": "来自新泽西队的乔·鲁索说：“有了技术，人们只想让一切变得完美。"
+    },
+    {
+      "id": "s57",
+      "en": "That's not reality.",
+      "zh": "那不是现实。"
+    },
+    {
+      "id": "s58",
+      "en": "I think perfect would be weird.",
+      "zh": "我觉得完美会很奇怪。"
+    },
+    {
+      "id": "s59",
+      "en": "Your teams are always winning, work is always just great, there's always money in your pocket, your car never breaks down.",
+      "zh": "你的球队总是赢，工作总是顺利，口袋里永远有钱，汽车永不坏。"
+    },
+    {
+      "id": "s60",
+      "en": "What is there to talk about?'",
+      "zh": "那还有什么好谈的呢？”"
+    },
+    {
+      "id": "s61",
+      "en": "* strike: a strike is when the batter swings at a ball and misses or when the batter does not swing at a ball that passes through the strike zone.",
+      "zh": "* 好球：当击球员挥棒击空，或者没有挥棒而球通过好球区时，均判为好球。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Invasion of the Robot Umpires</span></strong></p><p>A few years ago, Fred DeJesus from Brooklyn, New York became the first umpire in a minor league baseball game to use something called the Automated Ball-Strike System (ABS), often referred to as the 'robo-umpire'. Instead of making any judgments himself about a strike*, DeJesus had decisions fed to him through an earpiece, connected to a modified missile-tracking system. The contraption looked like a large black pizza box with one glowing green eye; it was mounted above the press stand.</p><p><br></p><p>Major League Baseball (MLB), who had commissioned the system, wanted human umpires to announce the calls, just as they would have done in the past. When the first pitch came in, a recorded voice told DeJesus it was a strike. Previously, calling a strike was a judgment call on the part of the umpire. Even if the batter does not hit the ball, a pitch that passes through the 'strike zone' (an imaginary zone about seventeen inches wide, stretching from the batter's knees to the middle of his chest) is considered a strike. During that first game, when DeJesus announced calls, there was no heckling and no shouted disagreement. Nobody said a word.</p><p><br></p><p>For a hundred and fifty years or so, the strike zone has been the game's animating force—countless arguments between a team's manager and the umpire have taken place over its boundaries and whether a ball had crossed through it. The rules of play have evolved in various stages. Today, everyone knows that you may scream your disagreement in an umpire's face, but you must never shout personal abuse at them or touch them. That's a no-no. When the robo-umpires came, however, the arguments stopped.</p><p><br></p><p>During the first robo-umpire season, players complained about some strange calls. In response, MLB decided to tweak the dimensions of the zone, and the following year the consensus was that ABS is profoundly consistent. MLB says the device is near-perfect, precise to within fractions of an inch. 'It'll reduce controversy in the game, and be good for the game,' says Rob Manfred, who is Commissioner for MLB. But the question is whether controversy is worth reducing, or whether it is the sign of a human hand.</p><p><br></p><p>A human, at least, yells back. When I spoke with Frank Viola, a coach for a North Carolina team, he said that ABS works as designed, but that it was also unforgiving and pedantic, almost legalistic. 'Manfred is a lawyer,' Viola noted. Some pitchers have complained that, compared with a human's, the robot's strike zone seems too precise. Viola was once a major-league player himself. When he was pitching, he explained, umpires rewarded skill. 'Throw it where you aimed, and it would be a strike, even if it was an inch or two outside. There was a dialogue between pitcher and umpire.'</p><p><br></p><p>The executive tasked with running the experiment for MLB is Morgan Sword, who's in charge of baseball operations. According to Sword, ABS was part of a larger project to make baseball more exciting since executives are terrified of losing younger fans, as has been the case with horse racing and boxing. He explains how they began the process by asking fans what version of baseball they found most exciting. The results showed that everyone wanted more action: more hits, more defense, more baserunning. This type of baseball essentially hasn't existed since the 1960s, when the hundred-mile-an-hour fastball, which is difficult to hit and control, entered the game. It flattened the game into strikeouts, walks, and home runs—a type of play lacking much action.</p><p><br></p><p>Sword's team brainstormed potential fixes. Any rule that existed, they talked about changing—from changing the bats to changing the geometry of the field. But while all of these were ruled out as potential fixes, ABS was seen as a perfect vehicle for change. According to Sword, once you get the technology right, you can load any strike zone you want into the system. 'It might be a triangle, or a blob, or something shaped like Texas. Over time, as baseball evolves, ABS can allow the zone to change with it.'</p><p><br></p><p>'In the past twenty years, sports have moved away from judgment calls. Soccer has Video Assistant Referees (for offside decisions, for example). Tennis has Hawk-Eye (for line calls, for example). For almost a decade, baseball has used instant replay on the base paths. This is widely liked, even if the precision can sometimes cause problems. But these applications deal with something physical: bases, lines, goals. The boundaries of action are precise, delineated like the keys of a piano. This is not the case with ABS and the strike zone. Historically, a certain discretion has been appreciated.'</p><p><br></p><p>I decided to email Alva Noë, a professor at Berkeley University and a baseball fan, for his opinion. 'Hardly a day goes by that I don't wake up and run through the reasons that this [robo-umpires] is such a terrible idea,' he replied. He later told me, 'This is part of a movement to use algorithms to take the hard choices of living out of life.' Perhaps he's right. We watch baseball to kill time, not to maximize it. Some players I have met take a dissenting stance toward the robots too, believing that accuracy is not the answer. According to Joe Russo, who plays for a New Jersey team, 'With technology, people just want everything to be perfect.</p><p><br></p><p>That's not reality. I think perfect would be weird. Your teams are always winning, work is always just great, there's always money in your pocket, your car never breaks down. What is there to talk about?'</p><p><br></p><p>* strike: a strike is when the batter swings at a ball and misses or when the batter does not swing at a ball that passes through the strike zone.</p><p><br></p>

@@ -1276,5 +1276,203 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Roman tunnels",
+      "zh": "罗马隧道"
+    },
+    {
+      "id": "s2",
+      "en": "The Romans, who once controlled areas of Europe, North Africa and Asia Minor, adopted the construction techniques of other civilizations to build tunnels in their territories",
+      "zh": "曾经控制欧洲、北非和小亚细亚地区的罗马人，采用了其他文明的建筑技术在他们的领土上建造隧道。"
+    },
+    {
+      "id": "s3",
+      "en": "The Persians, who lived in present-day Iran, were one of the first civilizations to build tunnels that provided a relia ble supply of water to human settlements in dry areas.",
+      "zh": "波斯人，生活在现今的伊朗，是最早建造隧道以向干旱地区的人类聚落提供可靠水源的文明之一。"
+    },
+    {
+      "id": "s4",
+      "en": "In the early first millennium BCE, they introduce d the qanat method of tunnel construction, which consisted of placing posts over a hill in a straight line, to ensure that the tunnel kept to its route, and then digging vertical shafts down into the ground at regular intervals.",
+      "zh": "公元前一千年初期，他们引入了坎井（qanat）隧道建设方法，即沿山丘直线放置标杆，确保隧道保持路线，然后定期挖掘垂直竖井。"
+    },
+    {
+      "id": "s5",
+      "en": "Underground, workers removed the earth from between the ends of the shafts, creating a tunnel.",
+      "zh": "地下工人从竖井两端之间挖出土壤，形成隧道。"
+    },
+    {
+      "id": "s6",
+      "en": "The excavated soil was taken up to the surface using the shafts, which also provided ventilation during the work.",
+      "zh": "挖出的土壤通过竖井被运送至地面，竖井在施工期间还起到了通风作用。"
+    },
+    {
+      "id": "s7",
+      "en": "Once the tunnel was completed, it allowed water to flow from the top of a hillside down towards a canal, which supplied water for human use.",
+      "zh": "隧道建成后，水从山坡顶流向运河，为人类使用提供水源。"
+    },
+    {
+      "id": "s8",
+      "en": "Remarkably, some qanats built by the Persians 2,700 years ago are still in use today.",
+      "zh": "令人惊讶的是，一些由波斯人在2700年前建造的坎井至今仍在使用。"
+    },
+    {
+      "id": "s9",
+      "en": "They later passed on their knowledge to the Romans, who also used the qanat method to construct water-supply tunnels for agriculture.",
+      "zh": "他们后来将知识传授给罗马人，罗马人也采用坎井方法建造农业用供水隧道。"
+    },
+    {
+      "id": "s10",
+      "en": "Roman qanat tunnels were constructed with vertical shafts dug at intervals of between 30 and 60 meters.",
+      "zh": "罗马的坎井隧道沿线每隔30至60米开挖一个垂直竖井。"
+    },
+    {
+      "id": "s11",
+      "en": "The shafts were equipped with handholds and footholds to help those climbing in and out of them and were covered with a wooden or stone lid.",
+      "zh": "竖井配有手把和脚踏，以帮助人们上下，并盖有木质或石质盖板。"
+    },
+    {
+      "id": "s12",
+      "en": "To ensure that the shafts were vertical, Romans hung a plumb line from a rod placed across the top of each shaft and made sure that the weight at the end of it hung in the center of the shaft.",
+      "zh": "为确保竖井垂直，罗马人从竖井顶部横杆挂下铅垂线，确保线末端的重物悬挂在竖井中央。"
+    },
+    {
+      "id": "s13",
+      "en": "Plumb lines were also used to measure the depth of the shaft and to determine the slope of the tunnel.",
+      "zh": "铅垂线还用于测量竖井深度和确定隧道坡度。"
+    },
+    {
+      "id": "s14",
+      "en": "The 5.6-kilometer-long Claudius tunnel, built in 41 CE to drain the Fucine Lake in central Italy, had shafts that were up to 122 meters deep, took 11 years to build and involved approximately 30,000 workers.",
+      "zh": "克劳狄隧道长5.6公里，于公元41年建成，用于排干意大利中部的福奇内湖，竖井深达122米，耗时11年，约有3万名工人参与。"
+    },
+    {
+      "id": "s15",
+      "en": "By the 6th century BCE, a second method of tunnel construction appeared called the counter-excavation method, in which the tunnel was constructed from both ends.",
+      "zh": "到公元前6世纪，出现了第二种隧道建造方法——对掘法，即从隧道两端同时开挖。"
+    },
+    {
+      "id": "s16",
+      "en": "It was used to cut through high mountains when the qanat method was not a practical alternative.",
+      "zh": "当坎井法不适用时，对掘法用于穿越高山。"
+    },
+    {
+      "id": "s17",
+      "en": "This method required greater planning and advanced knowledge of surveying, mathematics and geometry as both ends of a tunnel had to meet correctly at the center of the mountain.",
+      "zh": "此方法需要更周密的计划以及测量、数学和几何学的高级知识，以确保隧道两端能准确在山体中心会合。"
+    },
+    {
+      "id": "s18",
+      "en": "Adjustments to the direction of the tunnel also had to be made whenever builders encountered geological problems or when it deviated from its set path.",
+      "zh": "每当遇到地质问题或隧道偏离预定路线时，施工人员需调整隧道方向。"
+    },
+    {
+      "id": "s19",
+      "en": "They constantly checked the tunnel's advancing direction, for example, by looking back at the light that penetrated through the tunnel mouth, and made corrections whenever necessary.",
+      "zh": "他们不断检查隧道前进方向，例如通过观察从隧道口透入的光线，必要时进行修正。"
+    },
+    {
+      "id": "s20",
+      "en": "Large deviations could happen, and they could result in one end of the tunnel not being usable.",
+      "zh": "较大偏差可能发生，导致隧道一端无法使用。"
+    },
+    {
+      "id": "s21",
+      "en": "An inscription written on the side of a 428-meter tunnel, built by the Romans as part of the Saldae aqueduct system in modern-day Algeria, describes how the two teams of builders missed each other in the mountain and how the later construction of a lateral link between both corridors corrected the initial error.",
+      "zh": "在现代阿尔及利亚的萨尔代水渠系统中，一段长428米的罗马隧道侧面刻有铭文，描述了两组施工队在山中未能对接的情况，以及后来修建横向连接通道纠正了这一初期错误。"
+    },
+    {
+      "id": "s22",
+      "en": "The Romans dug tunnels for their roads using the counter-excavation method, whenever they encountered obstacles such as hills or mountains that were too high for roads to pass over.",
+      "zh": "每当道路遇到如山丘或高山等障碍，罗马人便采用对掘法挖掘隧道以通行。"
+    },
+    {
+      "id": "s23",
+      "en": "An example is the 37-meter-long, 6-meter-high, Furlo Pass Tunnel built in Italy in 69-79 CE.",
+      "zh": "例如意大利建于公元69至79年的弗尔洛隘口隧道，长37米，高6米。"
+    },
+    {
+      "id": "s24",
+      "en": "Remarkably, a modern road still uses this tunnel today.",
+      "zh": "令人惊讶的是，现代道路至今仍沿用此隧道。"
+    },
+    {
+      "id": "s25",
+      "en": "Tunnels were also built for mineral extraction.",
+      "zh": "隧道还用于矿产开采。"
+    },
+    {
+      "id": "s26",
+      "en": "Miners would locate a mineral vein and then pursue it with shafts and tunnels underground.",
+      "zh": "矿工会找到矿脉，并通过竖井和地下隧道开采。"
+    },
+    {
+      "id": "s27",
+      "en": "Traces of such tunnels used to mine gold can still be found at the Dolaucothi mines in Wales.",
+      "zh": "在威尔士的多劳科锡金矿遗址仍能发现曾用于采金的隧道痕迹。"
+    },
+    {
+      "id": "s28",
+      "en": "When the sole purpose of a tunnel was mineral extraction, construction required less planning, as the tunnel route was determined by the mineral vein.",
+      "zh": "当隧道唯一目的是矿产开采时，建设计划较少，因为隧道路线由矿脉决定。"
+    },
+    {
+      "id": "s29",
+      "en": "Roman tunnel projects were carefully planned and carried out.",
+      "zh": "罗马隧道项目规划周密，执行严谨。"
+    },
+    {
+      "id": "s30",
+      "en": "The length of time it took to construct a tunnel depended on the method being used and the type of rock being excavated.",
+      "zh": "隧道建设所需时间取决于所用方法和所挖掘的岩石类型。"
+    },
+    {
+      "id": "s31",
+      "en": "The qanat construction method was usually faster than the counter-excavation method as it was more straightforward.",
+      "zh": "坎井法通常比对掘法更快，因为它较为直接。"
+    },
+    {
+      "id": "s32",
+      "en": "This was because the mountain could be excavated not only from the tunnel mouths but also from shafts.",
+      "zh": "这是因为山体不仅可从隧道口，还能从竖井处挖掘。"
+    },
+    {
+      "id": "s33",
+      "en": "The type of rock could also influence construction times.",
+      "zh": "岩石类型也会影响施工时间。"
+    },
+    {
+      "id": "s34",
+      "en": "When the rock was hard, the Romans employed a technique called fire quenching which consisted of heating the rock with fire, and then suddenly cooling it with cold water so that it would crack.",
+      "zh": "当岩石坚硬时，罗马人使用一种称为火熄法的技术，即先用火加热岩石，再用冷水急冷使其开裂。"
+    },
+    {
+      "id": "s35",
+      "en": "Progress through hard rock could be very slow, and it was not uncommon for tunnels to take years, if not decades, to be built.",
+      "zh": "穿透坚硬岩石的进度可能非常缓慢，隧道建设花费数年甚至数十年并不罕见。"
+    },
+    {
+      "id": "s36",
+      "en": "Construction marks left on a Roman tunnel in Bologna show that the rate of advance through solid rock was 30 centimeters per day.",
+      "zh": "意大利博洛尼亚一条罗马隧道上的施工痕迹显示，穿越坚硬岩石的进度为每天30厘米。"
+    },
+    {
+      "id": "s37",
+      "en": "In contrast, the rate of advance of the Claudius tunnel can be calculated at 1.4 meters per day.",
+      "zh": "相比之下，克劳狄隧道的推进速度可计算为每天1.4米。"
+    },
+    {
+      "id": "s38",
+      "en": "Most tunnels had inscriptions showing the names of patrons who ordered construction and sometimes the name of the architect.",
+      "zh": "大多数隧道刻有订建者的姓名，有时还有建筑师的名字。"
+    },
+    {
+      "id": "s39",
+      "en": "For example, the 1.4-kilometer Cevlik tunnel in Turkey, built to divert the floodwater threatening the harbor of the ancient city of Seleuceia Pieria, had inscriptions on the entrance, still visible today, that also indicate that the tunnel was started in 69 CE and was completed in 81 CE.",
+      "zh": "例如，位于土耳其、长1.4公里的切夫利克隧道为分流威胁古城塞琉西亚皮里亚港口的洪水而建，隧道入口处仍可见铭文，显示该隧道始建于公元69年，完工于81年。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Roman tunnels</strong></span></p><p style="text-align:center;"><i>The Romans, who once controlled areas of Europe, North Africa and Asia Minor, adopted the construction techniques of other civilizations to build tunnels in their territories</i></p><p style="text-align:center;">&nbsp;</p><p style="text-align:left;">The Persians, who lived in present-day Iran, were one of the first civilizations to build tunnels that provided a relia<span style="font-size:16px;">ble supply of water to human settlements in dry areas. In the early first millennium BCE, they introduce</span>d the <i>qanat</i> method of tunnel construction, which consisted of placing posts over a hill in a straight line, to ensure that the tunnel kept to its route, and then digging vertical shafts down into the ground at regular intervals. Underground, workers removed the earth from between the ends of the shafts, creating a tunnel. The excavated soil was taken up to the surface using the shafts, which also provided ventilation during the work. Once the tunnel was completed, it allowed water to flow from the top of a hillside down towards a canal, which supplied water for human use. Remarkably, some <i>qanats</i> built by the Persians 2,700 years ago are still in use today.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">They later passed on their knowledge to the Romans, who also used the <i>qanat</i> method to construct water-supply tunnels for agriculture. Roman <i>qanat</i> tunnels were constructed with vertical shafts dug at intervals of between 30 and 60 meters. The shafts were equipped with handholds and footholds to help those climbing in and out of them and were covered with a wooden or stone lid. To ensure that the shafts were vertical, Romans hung a plumb line from a rod placed across the top of each shaft and made sure that the weight at the end of it hung in the center of the shaft. Plumb lines were also used to measure the depth of the shaft and to determine the slope of the tunnel. The 5.6-kilometer-long Claudius tunnel, built in 41 CE to drain the Fucine Lake in central Italy, had shafts that were up to 122 meters deep, took 11 years to build and involved approximately 30,000 workers.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">By the 6th century BCE, a second method of tunnel construction appeared called the <i>counter-excavation</i> method, in which the tunnel was constructed from both ends. It was used to cut through high mountains when the <i>qanat</i> method was not a practical alternative. This method required greater planning and advanced knowledge of surveying, mathematics and geometry as both ends of a tunnel had to meet correctly at the center of the mountain. Adjustments to the direction of the tunnel also had to be made whenever builders encountered geological problems or when it deviated from its set path. They constantly checked the tunnel's advancing direction, for example, by looking back at the light that penetrated through the tunnel mouth, and made corrections whenever necessary. Large deviations could happen, and they could result in one end of the tunnel not being usable. An inscription written on the side of a 428-meter tunnel, built by the Romans as part of the Saldae aqueduct system in modern-day Algeria, describes how the two teams of builders missed each other in the mountain and how the later construction of a lateral link between both corridors corrected the initial error.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The Romans dug tunnels for their roads using the <i>counter-excavation</i> method, whenever they encountered obstacles such as hills or mountains that were too high for roads to pass over. An example is the 37-meter-long, 6-meter-high, Furlo Pass Tunnel built in Italy in 69-79 CE. Remarkably, a modern road still uses this tunnel today. Tunnels were also built for mineral extraction. Miners would locate a mineral vein and then pursue it with shafts and tunnels underground. Traces of such tunnels used to mine gold can still be found at the Dolaucothi mines in Wales. When the sole purpose of a tunnel was mineral extraction, construction required less planning, as the tunnel route was determined by the mineral vein.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Roman tunnel projects were carefully planned and carried out. The length of time it took to construct a tunnel depended on the method being used and the type of rock being excavated. The <i>qanat</i> construction method was usually faster than the <i>counter-excavation</i> method as it was more straightforward. This was because the mountain could be excavated not only from the tunnel mouths but also from shafts. The type of rock could also influence construction times. When the rock was hard, the Romans employed a technique called fire quenching which consisted of heating the rock with fire, and then suddenly cooling it with cold water so that it would crack. Progress through hard rock could be very slow, and it was not uncommon for tunnels to take years, if not decades, to be built. Construction marks left on a Roman tunnel in Bologna show that the rate of advance through solid rock was 30 centimeters per day. In contrast, the rate of advance of the Claudius tunnel can be calculated at 1.4 meters per day. Most tunnels had inscriptions showing the names of patrons who ordered construction and sometimes the name of the architect. For example, the 1.4-kilometer Cevlik tunnel in Turkey, built to divert the floodwater threatening the harbor of the ancient city of Seleuceia Pieria, had inscriptions on the entrance, still visible today, that also indicate that the tunnel was started in 69 CE and was completed in 81 CE.</p>

@@ -1053,5 +1053,183 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The Dead Sea Scrolls",
+      "zh": "死海古卷"
+    },
+    {
+      "id": "s2",
+      "en": "In late 1946 or early 1947, three Bedouin teenagers were tending their goats and sheep near the ancient settlement of Qumran, located on the northwest shore of the Dead Sea in what is now known as the West Bank.",
+      "zh": "1946年底或1947年初，三名贝都因少年在靠近古代聚居地库姆兰的地方放牧山羊和绵羊，库姆兰位于现今被称为约旦河西岸的死海西北岸。"
+    },
+    {
+      "id": "s3",
+      "en": "One of these young shepherds tossed a rock into an opening on the side of a cliff and was surprised to hear a shattering sound.",
+      "zh": "其中一名年轻牧羊人向悬崖旁的一个洞口扔了一块石头，惊讶地听到碎裂声。"
+    },
+    {
+      "id": "s4",
+      "en": "He and his companions later entered the cave and stumbled across a collection of large clay jars, seven of which contained scrolls with writing on them.",
+      "zh": "他和他的同伴随后进入洞穴，偶然发现了一批大型陶罐，其中七个陶罐里装有书写文字的卷轴。"
+    },
+    {
+      "id": "s5",
+      "en": "The teenagers took the seven scrolls to a nearby town where they were sold for a small sum to a local antiquities dealer.",
+      "zh": "这些少年将这七卷卷轴带到附近的城镇，以很低的价格卖给了一位当地的古董商。"
+    },
+    {
+      "id": "s6",
+      "en": "Word of the find spread, and Bedouins and archaeologists eventually unearthed tens of thousands of additional scroll fragments from 10 nearby caves; together they make up between 800 and 900 manuscripts.",
+      "zh": "这一发现的消息传开后，贝都因人和考古学家最终在10个附近的洞穴中发掘出数万卷轴碎片，这些碎片合计约组成800至900份手稿。"
+    },
+    {
+      "id": "s7",
+      "en": "It soon became clear that this was one of the greatest archaeological discoveries ever made.",
+      "zh": "很快人们就意识到，这是有史以来最伟大的考古发现之一。"
+    },
+    {
+      "id": "s8",
+      "en": "The origin of the Dead Sea Scrolls, which were written around 2,000 years ago between 150 BCE and 70 CE, is still the subject of scholarly debate even today.",
+      "zh": "死海古卷的起源距今约2000年，写于公元前150年至公元70年之间，即使在今天，学界对此仍存在争议。"
+    },
+    {
+      "id": "s9",
+      "en": "According to the prevailing theory, they are the work of a population that inhabited the area until Roman troops destroyed the settlement around 70 CE.",
+      "zh": "根据现行主流理论，这些卷轴是居住在该地区的一群人所写，直到公元约70年罗马军队摧毁该聚居地。"
+    },
+    {
+      "id": "s10",
+      "en": "The area was known as Judea at that time, and the people are thought to have belonged to a group called the Essenes, a devout Jewish sect.",
+      "zh": "当时该地区被称为犹太地区，人们普遍认为这些人属于一个名为艾赛尼派的虔诚犹太教派。"
+    },
+    {
+      "id": "s11",
+      "en": "The majority of the texts on the Dead Sea Scrolls are in Hebrew, with some fragments written in an ancient version of its alphabet thought to have fallen out of use in the fifth century BCE.",
+      "zh": "死海古卷上的大部分文字是用希伯来语写成的，一些碎片使用的是一种古老的希伯来字母版本，据推测这种字母在公元前五世纪已经停止使用。"
+    },
+    {
+      "id": "s12",
+      "en": "But there are other languages as well.",
+      "zh": "但也有其他语言。"
+    },
+    {
+      "id": "s13",
+      "en": "Some scrolls are in Aramaic, the language spoken by many inhabitants of the region from the sixth century BCE to the siege of Jerusalem in 70 CE.",
+      "zh": "一些卷轴是用亚拉姆语书写的，这种语言在公元前六世纪到公元70年耶路撒冷围困期间，是该地区许多居民使用的语言。"
+    },
+    {
+      "id": "s14",
+      "en": "In addition, several texts feature translations of the Hebrew Bible into Greek.",
+      "zh": "此外，还有几份文本包含希伯来圣经的希腊文翻译。"
+    },
+    {
+      "id": "s15",
+      "en": "The Dead Sea Scrolls include fragments from every book of the Old Testament of the Bible except for the Book of Esther.",
+      "zh": "死海古卷包括旧约圣经中除以斯帖记外所有书卷的碎片。"
+    },
+    {
+      "id": "s16",
+      "en": "The only entire book of the Hebrew Bible preserved among the manuscripts from Qumran is Isaiah; this copy, dated to the first century BCE, is considered the earliest biblical manuscript still in existence.",
+      "zh": "在库姆兰出土的手稿中，唯一保存完整的希伯来圣经书卷是以赛亚书；这份手稿大约可追溯到公元前一世纪，被认为是迄今存在最早的圣经手稿。"
+    },
+    {
+      "id": "s17",
+      "en": "Along with biblical texts, the scrolls include documents about sectarian regulations and religious writings that do not appear in the Old Testament.",
+      "zh": "除了圣经文本外，古卷还包括关于教派规章的文件和旧约中未出现的宗教著作。"
+    },
+    {
+      "id": "s18",
+      "en": "The writing on the Dead Sea Scrolls is mostly in black or occasionally red ink, and the scrolls themselves are nearly all made of either parchment (animal skin) or an early form of paper called ‘papyrus’.",
+      "zh": "死海古卷上的文字大多用黑色墨水书写，偶尔也使用红色墨水，卷轴本身几乎全是用羊皮纸（动物皮）或一种称为“纸草纸”的早期纸张制成。"
+    },
+    {
+      "id": "s19",
+      "en": "The only exception is the scroll numbered 3Q15, which was created out of a combination of copper and tin.",
+      "zh": "唯一的例外是编号为3Q15的卷轴，它是由铜和锡合金制成的。"
+    },
+    {
+      "id": "s20",
+      "en": "Known as the Copper Scroll, this curious document features letters chiselled onto metal – perhaps, as some have theorized, to better withstand the passage of time.",
+      "zh": "这份被称为铜卷轴的奇特文献，其文字是刻在金属上的——有人推测这样做是为了更好地抵抗时间的侵蚀。"
+    },
+    {
+      "id": "s21",
+      "en": "One of the most intriguing manuscripts from Qumran, this is a sort of ancient treasure map that lists dozens of gold and silver caches.",
+      "zh": "这是库姆兰出土最引人注目的手稿之一，类似一张古代藏宝图，列出了数十处黄金和白银的藏匿地。"
+    },
+    {
+      "id": "s22",
+      "en": "Using an unconventional vocabulary and odd spelling, it describes 64 underground hiding places that supposedly contain riches buried for safekeeping.",
+      "zh": "该文使用了不寻常的词汇和奇怪的拼写，描述了64个地下藏匿处，据称这些地方藏有为了安全起见而埋藏的财富。"
+    },
+    {
+      "id": "s23",
+      "en": "None of these hoards have been recovered, possibly because the Romans pillaged Judea during the first century CE.",
+      "zh": "这些财宝至今未被发现，可能是因为公元一世纪罗马人掠夺了犹太地区。"
+    },
+    {
+      "id": "s24",
+      "en": "According to various hypotheses, the treasure belonged to local people, or was rescued from the Second Temple before its destruction or never existed to begin with.",
+      "zh": "根据各种假设，这些财宝可能属于当地人，或是在第二圣殿被毁前被救出，亦有可能根本不存在。"
+    },
+    {
+      "id": "s25",
+      "en": "Some of the Dead Sea Scrolls have been on interesting journeys.",
+      "zh": "部分死海古卷经历了有趣的旅程。"
+    },
+    {
+      "id": "s26",
+      "en": "In 1948, a Syrian Orthodox archbishop known as Mar Samuel acquired four of the original seven scrolls from a Jerusalem shoemaker and part-time antiquity dealer, paying less than $100 for them.",
+      "zh": "1948年，一位被称为马尔·塞缪尔的叙利亚东正教大主教从一位耶路撒冷的制鞋匠兼兼职古董商那里购得了最初的七卷中四卷，支付价格不足100美元。"
+    },
+    {
+      "id": "s27",
+      "en": "He then travelled to the United States and unsuccessfully offered them to a number of universities, including Yale.",
+      "zh": "随后他前往美国，将卷轴提供给包括耶鲁大学在内的多所大学，但均未成功出售。"
+    },
+    {
+      "id": "s28",
+      "en": "Finally, in 1954, he placed an advertisement in the business newspaper The Wall Street Journal – under the category ‘Miscellaneous Items for Sale’ – that read: ‘Biblical Manuscripts dating back to at least 200 B.C. are for sale.",
+      "zh": "最终，在1954年，他在商业报纸《华尔街日报》的“杂项待售物品”栏目中刊登广告，内容写道：“至少可追溯到公元前200年的圣经手稿现已出售。"
+    },
+    {
+      "id": "s29",
+      "en": "This would be an ideal gift to an educational or religious institution by an individual or group.’",
+      "zh": "这将是个人或团体赠予教育或宗教机构的理想礼物。”"
+    },
+    {
+      "id": "s30",
+      "en": "Fortunately, Israeli archaeologist and statesman Yigael Yadin negotiated their purchase and brought the scrolls back to Jerusalem, where they remain to this day.",
+      "zh": "幸运的是，以色列考古学家兼政治家伊盖尔·亚丁促成了这笔交易，并将这些卷轴带回耶路撒冷，至今仍存放于此。"
+    },
+    {
+      "id": "s31",
+      "en": "In 2017, researchers from the University of Haifa restored and deciphered one of the last untranslated scrolls.",
+      "zh": "2017年，海法大学的研究人员修复并破译了最后几卷未解读的古卷之一。"
+    },
+    {
+      "id": "s32",
+      "en": "The university’s Eshbal Ratson and Jonathan Ben-Dov spent one year reassembling the 60 fragments that make up the scroll.",
+      "zh": "该校的埃什巴尔·拉特森和乔纳森·本-多夫花了一年时间重新拼接构成该卷轴的60个碎片。"
+    },
+    {
+      "id": "s33",
+      "en": "Deciphered from a band of coded text on parchment, the find provides insight into the community of people who wrote it and the 364-day calendar they would have used.",
+      "zh": "通过破译一段写在羊皮纸上的编码文字，该发现为我们了解写作者社区和他们所使用的364天历法提供了线索。"
+    },
+    {
+      "id": "s34",
+      "en": "The scroll names celebrations that indicate shifts in seasons and details two yearly religious events known from another Dead Sea Scroll.",
+      "zh": "该卷轴列举了反映季节变化的庆典，并详细介绍了死海古卷中另一份文本所记载的两项每年宗教活动。"
+    },
+    {
+      "id": "s35",
+      "en": "Only one more known scroll remains untranslated.",
+      "zh": "现在仅剩一卷已知的古卷尚未被译读。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>The Dead Sea Scrolls</strong>&nbsp;&nbsp;</span></p><p style="text-align:center;">&nbsp;</p><p style="text-align:center;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">In late 1946 or early 1947, three Bedouin teenagers were tending their goats and sheep&nbsp;near the ancient settlement of Qumran, located on the northwest shore of the Dead&nbsp;Sea in what is now known as the West Bank. One of these young shepherds tossed a&nbsp;rock into an opening on the side of a cliff and was surprised to hear a shattering sound.&nbsp;He and his companions later entered the cave and stumbled across a collection of&nbsp;large clay jars, seven of which contained scrolls with writing on them. The teenagers&nbsp;took the seven scrolls to a nearby town where they were sold for a small sum to a local&nbsp;antiquities dealer. Word of the find spread, and Bedouins and archaeologists eventually&nbsp;unearthed tens of thousands of additional scroll fragments from 10 nearby caves;&nbsp;together they make up between 800 and 900 manuscripts. It soon became clear that this&nbsp;was one of the greatest archaeological discoveries ever made.</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">The origin of the Dead Sea Scrolls, which were written around 2,000 years ago between&nbsp;150 BCE and 70 CE, is still the subject of scholarly debate even today. According to the&nbsp;prevailing theory, they are the work of a population that inhabited the area until Roman&nbsp;troops destroyed the settlement around 70 CE. The area was known as Judea at that&nbsp;time, and the people are thought to have belonged to a group called the Essenes, a&nbsp;devout Jewish sect.</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">The majority of the texts on the Dead Sea Scrolls are in Hebrew, with some fragments&nbsp;written in an ancient version of its alphabet thought to have fallen out of use in the fifth&nbsp;century BCE. But there are other languages as well. Some scrolls are in Aramaic, the&nbsp;language spoken by many inhabitants of the region from the sixth century BCE to the&nbsp;siege of Jerusalem in 70 CE. In addition, several texts feature translations of the Hebrew&nbsp;Bible into Greek.</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">The Dead Sea Scrolls include fragments from every book of the Old Testament of the&nbsp;Bible except for the Book of Esther. The only entire book of the Hebrew Bible preserved&nbsp;among the manuscripts from Qumran is Isaiah; this copy, dated to the first century BCE,&nbsp;is considered the earliest biblical manuscript still in existence. Along with biblical texts,&nbsp;the scrolls include documents about sectarian regulations and religious writings that do&nbsp;not appear in the Old Testament.</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">The writing on the Dead Sea Scrolls is mostly in black or occasionally red ink, and&nbsp;the scrolls themselves are nearly all made of either parchment (animal skin) or an&nbsp;early form of paper called ‘papyrus’. The only exception is the scroll numbered 3Q15,&nbsp;which was created out of a combination of copper and tin. Known as the Copper&nbsp;Scroll, this curious document features letters chiselled onto metal – perhaps, as some&nbsp;have theorized, to better withstand the passage of time. One of the most intriguing&nbsp;manuscripts from Qumran, this is a sort of ancient treasure map that lists dozens of gold&nbsp;and silver caches. Using an unconventional vocabulary and odd spelling, it describes 64&nbsp;underground hiding places that supposedly contain riches buried for safekeeping. None&nbsp;of these hoards have been recovered, possibly because the Romans pillaged Judea&nbsp;during the first century CE. According to various hypotheses, the treasure belonged to&nbsp;local people, or was rescued from the Second Temple before its destruction or never&nbsp;existed to begin with.</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">Some of the Dead Sea Scrolls have been on interesting journeys. In 1948, a Syrian&nbsp;Orthodox archbishop known as Mar Samuel acquired four of the original seven scrolls&nbsp;from a Jerusalem shoemaker and part-time antiquity dealer, paying less than $100&nbsp;for them. He then travelled to the United States and unsuccessfully offered them to a&nbsp;number of universities, including Yale. Finally, in 1954, he placed an advertisement in&nbsp;the business newspaper </span><i><span style="color:rgb(35,31,32);font-family:Arial-ItalicMT;">The Wall Street Journal</span></i><span style="color:rgb(35,31,32);font-family:Arial;">&nbsp;– under the category ‘Miscellaneous&nbsp;Items for Sale’ – that read: ‘Biblical Manuscripts dating back to at least 200 B.C. are for&nbsp;sale. This would be an ideal gift to an educational or religious institution by an individual&nbsp;or group.’ Fortunately, Israeli archaeologist and statesman Yigael Yadin negotiated their&nbsp;purchase and brought the scrolls back to Jerusalem, where they remain to this day.&nbsp;</span></span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">In 2017, researchers from the University of Haifa restored and deciphered one of the last&nbsp;untranslated scrolls. The university’s Eshbal Ratson and Jonathan Ben-Dov spent one&nbsp;year reassembling the 60 fragments that make up the scroll. Deciphered from a band&nbsp;of coded text on parchment, the find provides insight into the community of people who&nbsp;wrote it and the 364-day calendar they would have used. The scroll names celebrations&nbsp;that indicate shifts in seasons and details two yearly religious events known from&nbsp;another Dead Sea Scroll. Only one more known scroll remains untranslated.</span></span>&nbsp;</p>

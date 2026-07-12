@@ -1641,5 +1641,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The problems of getting around the city of Dar es Salaam",
+      "zh": "达累斯萨拉姆市交通出行的问题"
+    },
+    {
+      "id": "s2",
+      "en": "Dar es Salaam in Tanzania is one of the fastest growing cities in Africa.",
+      "zh": "坦桑尼亚的达累斯萨拉姆是非洲发展最快的城市之一。"
+    },
+    {
+      "id": "s3",
+      "en": "Its population has increased eightfold since 1980 and swells by half a million people every year.",
+      "zh": "自1980年以来，人口增长了八倍，每年增加五十万人。"
+    },
+    {
+      "id": "s4",
+      "en": "United Nations projections anticipate it will become a megacity within seven years as its population passes 10 million, reaching 13.4 million by 2035.",
+      "zh": "联合国预测，随着人口超过一千万，达累斯萨拉姆将在七年内成为一个特大城市，到2035年人口将达到1340万。"
+    },
+    {
+      "id": "s5",
+      "en": "Daniel Hoornweg for the Global Cities Institute forecasts the city could be home to an incredible 73.7 million people by 2100.",
+      "zh": "全球城市研究所的丹尼尔·霍恩韦格预测，到2100年，这座城市的人口可能达到惊人的7370万。"
+    },
+    {
+      "id": "s6",
+      "en": "Today, four out of five of its people live in single-storey informal settlements on the spreading edges of the city, where the journey to and from the centre regularly takes over two hours.",
+      "zh": "如今，五分之四的居民住在城市扩展边缘的单层非正规定居点，往返市中心经常需要两个多小时。"
+    },
+    {
+      "id": "s7",
+      "en": "It can be longer if rain turns the dirt roads to mud.",
+      "zh": "如果下雨导致泥土路变成泥泞，行程时间会更长。"
+    },
+    {
+      "id": "s8",
+      "en": "Even in the middle of the day, traffic frequently slows to a stop without warning.",
+      "zh": "即使在白天中午，交通也常常毫无预警地减缓甚至停滞。"
+    },
+    {
+      "id": "s9",
+      "en": "It is not unusual for cars and minibuses to queue for 20 minutes at a key intersection.",
+      "zh": "汽车和小巴在重要路口排队20分钟并不罕见。"
+    },
+    {
+      "id": "s10",
+      "en": "A single suburban rail line serves residents in a few areas to the south but is tiny in the context of the wider city.",
+      "zh": "仅有一条郊区铁路线路服务于南部少数地区居民，但在整个城市范围内规模非常小。"
+    },
+    {
+      "id": "s11",
+      "en": "Outside the centre many rely on boda boda (motorbike taxis) to navigate the narrow side streets and potholed mud roads that make up much of the metropolis.",
+      "zh": "在市中心以外，许多人依靠摩托车出租车（boda boda）穿行于狭窄的街道和布满坑洞的泥泞路，这些构成了大部分城市区域。"
+    },
+    {
+      "id": "s12",
+      "en": "Their safety record is scandalous.",
+      "zh": "它们的安全记录非常糟糕。"
+    },
+    {
+      "id": "s13",
+      "en": "Dar es Salaam's reliance on four arterial roads into the city is a legacy of the colonial government that planned the city at the start of the 20th century to cater for a population of 35,000.",
+      "zh": "达累斯萨拉姆依赖四条主干道进入城市，这是殖民政府的遗产，20世纪初规划这座城市时，人口只预估为3.5万。"
+    },
+    {
+      "id": "s14",
+      "en": "Most of the current growth is made up of young people arriving from the countryside to find work, and as the population has exploded, Dar es Salaam has grown around those four highways.",
+      "zh": "目前的大部分增长来自来自农村的年轻人寻找工作，随着人口爆炸式增长，达累斯萨拉姆也围绕这四条高速公路扩展。"
+    },
+    {
+      "id": "s15",
+      "en": "Nearly all the expansion is happening on the periphery, and nearly all takes place informally without any agreed strategy.",
+      "zh": "几乎所有扩张都发生在城市边缘，且几乎全是非正式的，缺乏统一规划。"
+    },
+    {
+      "id": "s16",
+      "en": "But Dar es Salaam is pinning its hopes on a solution that could offer a different model for Africa's megacities, giving them an alternative to a future controlled by the private car.",
+      "zh": "但达累斯萨拉姆寄希望于一种解决方案，可为非洲特大城市提供不同模式，避免未来被私家车主导。"
+    },
+    {
+      "id": "s17",
+      "en": "Unlike many cities on the continent, Dar es Salaam isn't trying to build a metro.",
+      "zh": "与非洲许多城市不同，达累斯萨拉姆没有尝试建设地铁。"
+    },
+    {
+      "id": "s18",
+      "en": "It has chosen a less exciting but cheaper and more achievable method: the bus.",
+      "zh": "它选择了一种不那么激动人心但更便宜且更可行的方式：公交车。"
+    },
+    {
+      "id": "s19",
+      "en": "The DART bus rapid transit (BRT) system runs on bus lanes separated from other traffic, mostly in the middle of the road to reduce stoppages.",
+      "zh": "达累斯萨拉姆快速公交系统（DART BRT）在专用公交车道上运行，这些车道与其他交通分隔，多数设在路中以减少停车。"
+    },
+    {
+      "id": "s20",
+      "en": "Ticket purchase and control takes place at stations prior to boarding and the buses are step-free, which means the entire route is accessible to people using wheelchairs or who are travelling with baby buggies.",
+      "zh": "车票购买和检票均在站台完成，公交车无台阶，整条线路对轮椅使用者或推婴儿车的乘客都很便利。"
+    },
+    {
+      "id": "s21",
+      "en": "'The new buses are much, much better,' says Paulas George, a young IT worker.",
+      "zh": "年轻IT工作者保拉斯·乔治说：“新公交车好太多了。”"
+    },
+    {
+      "id": "s22",
+      "en": "He takes the bus every day and it has cut his journey time by two-thirds.",
+      "zh": "他每天乘坐公交车，行程时间减少了三分之二。"
+    },
+    {
+      "id": "s23",
+      "en": "He says it is not perfect, though, complaining that drivers often refuse to turn on the air conditioning to save fuel.",
+      "zh": "不过他说这并不完美，他抱怨司机为了省油常不开空调。"
+    },
+    {
+      "id": "s24",
+      "en": "That is not the only problem.",
+      "zh": "这还不是唯一的问题。"
+    },
+    {
+      "id": "s25",
+      "en": "A shortage of buses after a serious flood at the main depot during the rainy season means the system is carrying 200,000 people a day – half the expected capacity.",
+      "zh": "雨季主停车场严重洪水造成公交车短缺，系统每日运载量为20万人次，仅为预期容量的一半。"
+    },
+    {
+      "id": "s26",
+      "en": "Smartcards can't be used as the mechanical readers aren't working either, forcing passengers to buy individual paper tickets for every journey.",
+      "zh": "因机械读卡器故障，智能卡无法使用，乘客被迫为每次乘车购买纸质单程票。"
+    },
+    {
+      "id": "s27",
+      "en": "Each is printed with a scannable QR code, but there are no scanners.",
+      "zh": "每张票都有可扫描的二维码，但没有扫描仪。"
+    },
+    {
+      "id": "s28",
+      "en": "Staff stand by the gates and tear tickets as people enter.",
+      "zh": "工作人员站在闸口处人工撕票。"
+    },
+    {
+      "id": "s29",
+      "en": "As a result, queues are considerable at peak times.",
+      "zh": "因此，高峰时段排队非常长。"
+    },
+    {
+      "id": "s30",
+      "en": "Morogoro Road to the north-west of the city was phase I of the BRT project.",
+      "zh": "位于城市西北的莫洛戈罗路是快速公交系统的第一阶段。"
+    },
+    {
+      "id": "s31",
+      "en": "Phases II and III will install bus lanes along Nyerere Road to the south-west and Kilwa Road to the south.",
+      "zh": "第二和第三阶段将在西南的尼雷尔路和南部的基尔瓦路铺设公交专用道。"
+    },
+    {
+      "id": "s32",
+      "en": "Construction on both routes is due to start imminently.",
+      "zh": "这两条线路的建设即将启动。"
+    },
+    {
+      "id": "s33",
+      "en": "Phase IV, towards Bagamoyo in the north, is in the preliminary design stage.",
+      "zh": "第四阶段通往北部巴加莫约，目前处于初步设计阶段。"
+    },
+    {
+      "id": "s34",
+      "en": "'Much of the city will have access to a world-class transport system within the space of a few years,' says Chris Kost, the Africa director of ITDP (the Institute for Transportation and Development Policy).",
+      "zh": "交通与发展政策研究所（ITDP）非洲区主管克里斯·科斯特表示，“几年内，城市的大部分地区将拥有世界级的交通系统。”"
+    },
+    {
+      "id": "s35",
+      "en": "All phases are being planned to high standards and, once complete, a third of city residents will be within a short walk of the BRT network.",
+      "zh": "所有阶段都按照高标准规划，完成后，三分之一的市民将能步行即可到达快速公交网络。"
+    },
+    {
+      "id": "s36",
+      "en": "The ITDP regrets Africa's obsession with metros.",
+      "zh": "ITDP对非洲痴迷地铁感到遗憾。"
+    },
+    {
+      "id": "s37",
+      "en": "'With a metro, an international firm will often just parachute in its own system,' says Kost.",
+      "zh": "科斯特说：“地铁项目往往由国际公司直接引入其系统。”"
+    },
+    {
+      "id": "s38",
+      "en": "'Bus rapid transit allows existing stakeholders to get involved.",
+      "zh": "而快速公交允许现有利益相关者参与其中。"
+    },
+    {
+      "id": "s39",
+      "en": "That's what we did in Dar es Salaam and what we're planning in Nairobi, where the bus bodies will be built in the city and local operators will look after tickets, fare collection and IT …Bus rapid transit has been transformational for Dar es Salaam.",
+      "zh": "“这正是我们在达累斯萨拉姆所做的，也是我们在内罗毕计划的，那里的公交车车身将在本地生产，票务、收费和信息技术由本地运营商负责……快速公交已经为达累斯萨拉姆带来了变革。”"
+    },
+    {
+      "id": "s40",
+      "en": "For millions of people in African cities, this is their best hope of ever being connected.'",
+      "zh": "对于数百万非洲城市居民来说，这可能是他们获得连接的最佳希望。”"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>The problems of getting around the city of Dar es Salaam</strong></span></div><p><br>Dar es Salaam in Tanzania is one of the fastest growing cities in Africa. Its population has increased eightfold since 1980 and swells by half a million people every year. United Nations projections anticipate it will become a megacity within seven years as its population passes 10 million, reaching 13.4 million by 2035. Daniel Hoornweg for the Global Cities Institute forecasts the city could be home to an incredible 73.7 million people by 2100.&nbsp;<br><br>Today, four out of five of its people live in single-storey informal settlements on the spreading edges of the city, where the journey to and from the centre regularly takes over two hours. It can be longer if rain turns the dirt roads to mud.&nbsp;<br><br>Even in the middle of the day, traffic frequently slows to a stop without warning. It is not unusual for cars and minibuses to queue for 20 minutes at a key intersection. A single suburban rail line serves residents in a few areas to the south but is tiny in the context of the wider city. Outside the centre many rely on boda boda (motorbike taxis) to navigate the narrow side streets and potholed mud roads that make up much of the metropolis. Their safety record is scandalous.&nbsp;<br><br>Dar es Salaam's reliance on four arterial roads into the city is a legacy of the colonial government that planned the city at the start of the 20th century to cater for a population of 35,000. Most of the current growth is made up of young people arriving from the countryside to find work, and as the population has exploded, Dar es Salaam has grown around those four highways. Nearly all the expansion is happening on the periphery, and nearly all takes place informally without any agreed strategy.&nbsp;<br><br>But Dar es Salaam is pinning its hopes on a solution that could offer a different model for Africa's megacities, giving them an alternative to a future controlled by the private car. Unlike many cities on the continent, Dar es Salaam isn't trying to build a metro. It has chosen a less exciting but cheaper and more achievable method: the bus.&nbsp;<br><br>The DART bus rapid transit (BRT) system runs on bus lanes separated from other traffic, mostly in the middle of the road to reduce stoppages. Ticket purchase and control takes place at stations prior to boarding and the buses are step-free, which means the entire route is accessible to people using wheelchairs or who are travelling with baby buggies.&nbsp;<br><br>'The new buses are much, much better,' says Paulas George, a young IT worker. He takes the bus every day and it has cut his journey time by two-thirds. He says it is not perfect, though, complaining that drivers often refuse to turn on the air conditioning to save fuel.&nbsp;<br><br>That is not the only problem. A shortage of buses after a serious flood at the main depot during the rainy season means the system is carrying 200,000 people a day – half the expected capacity. Smartcards can't be used as the mechanical readers aren't working either, forcing passengers to buy individual paper tickets for every journey. Each is printed with a scannable QR code, but there are no scanners. Staff stand by the gates and tear tickets as people enter. As a result, queues are considerable at peak times.&nbsp;<br><br>Morogoro Road to the north-west of the city was phase I of the BRT project. Phases II and III will install bus lanes along Nyerere Road to the south-west and Kilwa Road to the south. Construction on both routes is due to start imminently. Phase IV, towards Bagamoyo in the north, is in the preliminary design stage. 'Much of the city will have access to a world-class transport system within the space of a few years,' says Chris Kost, the Africa director of ITDP (the Institute for Transportation and Development Policy). All phases are being planned to high standards and, once complete, a third of city residents will be within a short walk of the BRT network.&nbsp;<br><br>The ITDP regrets Africa's obsession with metros. 'With a metro, an international firm will often just parachute in its own system,' says Kost. 'Bus rapid transit allows existing stakeholders to get involved. That's what we did in Dar es Salaam and what we're planning in Nairobi, where the bus bodies will be built in the city and local operators will look after tickets, fare collection and IT …Bus rapid transit has been transformational for Dar es Salaam. For millions of people in African cities, this is their best hope of ever being connected.'</p>

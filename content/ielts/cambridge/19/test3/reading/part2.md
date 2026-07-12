@@ -1346,5 +1346,248 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The global importance of wetlands",
+      "zh": "湿地的全球重要性"
+    },
+    {
+      "id": "s2",
+      "en": "Wetlands are areas where water covers the soil, or is present either at or near the surface of the soil, for all or part of the year.",
+      "zh": "湿地是指水覆盖土壤，或水存在于土壤表面或接近表面的区域，时间可以是全年或部分时间。"
+    },
+    {
+      "id": "s3",
+      "en": "These are complex ecosystems, rich in unique plant and animal life.",
+      "zh": "这些是复杂的生态系统，拥有丰富独特的动植物生命。"
+    },
+    {
+      "id": "s4",
+      "en": "But according to the World Wide Fund for Nature (WWF), half of the world's wetlands have disappeared since 1990 - converted or destroyed for commercial development, drainage schemes and the extraction of minerals and peat*.",
+      "zh": "但据世界自然基金会（WWF）称，自1990年以来，世界一半的湿地消失了——被转变或破坏用于商业开发、排水工程以及矿物和泥炭*的开采。"
+    },
+    {
+      "id": "s5",
+      "en": "Many of those that remain have been damaged by agricultural pesticides and fertilisers, industrial pollutants, and construction works.",
+      "zh": "许多残存的湿地受到农业杀虫剂和化肥、工业污染物以及建设工程的破坏。"
+    },
+    {
+      "id": "s6",
+      "en": "Throughout history, humans have gathered around wetlands, and their fertile ecosystems have played an important part in human development.",
+      "zh": "纵观历史，人类一直聚集在湿地周围，其肥沃的生态系统在人类发展中发挥了重要作用。"
+    },
+    {
+      "id": "s7",
+      "en": "Consequently, they are of considerable religious, historical and archaeological value to many communities around the world.",
+      "zh": "因此，湿地对世界许多社区具有相当的宗教、历史和考古价值。"
+    },
+    {
+      "id": "s8",
+      "en": "'Wetlands directly support the livelihoods and well-being of millions of people,' says Dr Matthew McCartney, principal researcher and hydrologist at the International Water Management Institute (IWMI).",
+      "zh": "“湿地直接支持着数百万人的生计和福祉，”国际水资源管理研究所（IWMI）首席研究员兼水文学家马修·麦卡特尼博士说。"
+    },
+    {
+      "id": "s9",
+      "en": "'In many developing countries, large numbers of people are dependent on wetland agriculture for their livelihoods.'",
+      "zh": "“在许多发展中国家，大量人口依赖湿地农业谋生。”"
+    },
+    {
+      "id": "s10",
+      "en": "They also serve a crucial environmental purpose.",
+      "zh": "湿地还具有重要的环境功能。"
+    },
+    {
+      "id": "s11",
+      "en": "'Wetlands are one of the key tools in mitigating climate change across the planet,' says Pieter van Eijk, head of Climate Adaptation at Wetlands International (WI), pointing to their use as buffers that protect coastal areas from sea-level rise and extreme weather events such as hurricanes and flooding.",
+      "zh": "湿地国际（WI）气候适应负责人皮特·范·埃伊克说：“湿地是全球缓解气候变化的关键手段之一。”他指出，湿地作为缓冲区，保护沿海地区免受海平面上升和飓风、洪水等极端天气的影响。"
+    },
+    {
+      "id": "s12",
+      "en": "Wetland coastal forests provide food and water, as well as shelter from storms, and WI and other agencies are working to restore those forests which have been lost.",
+      "zh": "湿地沿海森林提供食物和水源，还能为风暴提供庇护，WI和其他机构正在努力恢复那些已经消失的森林。"
+    },
+    {
+      "id": "s13",
+      "en": "'It can be as simple as planting a few trees per hectare to create shade and substantially change a microclimate,' he says.",
+      "zh": "他说：“这可以简单到每公顷种植几棵树，以形成阴凉并显著改变小气候。”"
+    },
+    {
+      "id": "s14",
+      "en": "'Implementing climate change projects isn't so much about money.'",
+      "zh": "“实施气候变化项目并不完全是关于资金的问题。”"
+    },
+    {
+      "id": "s15",
+      "en": "The world's wetlands are, unfortunately, rich sources for in-demand commodities, such as palm oil and pulpwood.",
+      "zh": "不幸的是，世界湿地富含需求量大的商品资源，如棕榈油和制浆木材。"
+    },
+    {
+      "id": "s16",
+      "en": "Peatlands - wetlands with a waterlogged organic soil layer - are particularly targeted.",
+      "zh": "泥炭地——具有水浸有机土壤层的湿地——尤为成为目标。"
+    },
+    {
+      "id": "s17",
+      "en": "When peatlands are drained for cultivation, they become net carbon emitters instead of active carbon stores, and, according to Marcel Silvius, head of Climate-smart Land-use at WI, this practice causes six per cent of all global carbon emissions.",
+      "zh": "当泥炭地被排水用于耕作时，它们从活跃的碳储存体变成了碳的净排放源。据WI气候智能型土地利用负责人马塞尔·西尔维乌斯称，这一做法导致了全球6%的碳排放。"
+    },
+    {
+      "id": "s18",
+      "en": "The clearance of peatlands for planting also increases the risk of forest fires, which release huge amounts of CO 2 .",
+      "zh": "清理泥炭地进行种植还增加了森林火灾的风险，火灾释放大量二氧化碳。"
+    },
+    {
+      "id": "s19",
+      "en": "'We're seeing huge peatland forests with extremely high biodiversity value being lost for a few decades of oil palm revenues,' says Silvius.",
+      "zh": "西尔维乌斯说：“我们正在看到那些具有极高生物多样性价值的大型泥炭地森林，因几年棕榈油收入而被毁灭。”"
+    },
+    {
+      "id": "s20",
+      "en": "The damage starts when logging companies arrive to clear the trees.",
+      "zh": "破坏从伐木公司进场砍伐树木开始。"
+    },
+    {
+      "id": "s21",
+      "en": "They dig ditches to enter the peat swamps by boat and then float the logs out the same way.",
+      "zh": "他们挖掘沟渠以便用船进入泥炭沼泽，然后用同样的方式将木材漂出。"
+    },
+    {
+      "id": "s22",
+      "en": "These are then used to drain water out of the peatlands to allow for the planting of corn, oil palms or pulpwood trees.",
+      "zh": "这些沟渠用来排出泥炭地的水分，以便种植玉米、棕榈油树或制浆木。"
+    },
+    {
+      "id": "s23",
+      "en": "Once the water has drained away, bacteria and fungi then break down the carbon in the peat and turn it into CO 2 and methane.",
+      "zh": "一旦水排干，细菌和真菌便开始分解泥炭中的碳，将其转化为二氧化碳和甲烷。"
+    },
+    {
+      "id": "s24",
+      "en": "Meanwhile, the remainder of the solid matter in the peat starts to move downwards, in a process known as subsidence**.",
+      "zh": "与此同时，泥炭中剩余的固体物质开始下沉，这一过程称为地面沉降**。"
+    },
+    {
+      "id": "s25",
+      "en": "Peat comprises 90 per cent water, so this is one of the most alarming consequences of peatland clearances.",
+      "zh": "泥炭含有90%的水分，因此这是泥炭地清理最令人担忧的后果之一。"
+    },
+    {
+      "id": "s26",
+      "en": "'In the tropics, peat subsides at about four centimetres a year, so within half a century, very large landscapes on Sumatra and Borneo will become flooded as the peat drops below water level,' says Silvius.",
+      "zh": "西尔维乌斯说：“在热带地区，泥炭每年下沉约四厘米，因此在半个世纪内，苏门答腊和婆罗洲的大面积土地将因泥炭低于水位而被淹没。”"
+    },
+    {
+      "id": "s27",
+      "en": "'It's a huge catastrophe that's in preparation.",
+      "zh": "“这是一场正在酝酿中的巨大灾难。"
+    },
+    {
+      "id": "s28",
+      "en": "Some provinces will lose 40 per cent of their landmass.'",
+      "zh": "一些省份将失去40%的土地面积。”"
+    },
+    {
+      "id": "s29",
+      "en": "And while these industries affect wetlands in ways that can easily be documented, Dr Dave Tickner of the WWF believes that more subtle impacts can be even more devastating.",
+      "zh": "尽管这些产业对湿地的影响很容易被记录下，WWF的戴夫·蒂克纳博士认为，更微妙的影响可能更具破坏性。"
+    },
+    {
+      "id": "s30",
+      "en": "'Sediment run-off and fertilisers can be pretty invisible,' says Tickner.",
+      "zh": "蒂克纳说：“泥沙流失和化肥污染往往不易被察觉。”"
+    },
+    {
+      "id": "s31",
+      "en": "'Over-extraction of water is equally invisible.",
+      "zh": "“过度抽取水资源同样难以察觉。"
+    },
+    {
+      "id": "s32",
+      "en": "You do get shock stories about rivers running red, or even catching fire, but there's seldom one big impact that really hurts a wetland.'",
+      "zh": "虽然确实有河流变红甚至着火的震惊报道，但很少有一次性大灾害能真正严重伤害湿地。”"
+    },
+    {
+      "id": "s33",
+      "en": "Tickner does not blame anyone for deliberate damage, however.",
+      "zh": "不过，蒂克纳并不责怪任何人故意破坏湿地。"
+    },
+    {
+      "id": "s34",
+      "en": "'I've worked on wetland issues for 20 years and have never met anybody who wanted to damage a wetland,' he says.",
+      "zh": "他说：“我从事湿地相关工作已有20年，从未遇到过想要破坏湿地的人。”"
+    },
+    {
+      "id": "s35",
+      "en": "'It isn't something that people generally set out to do.",
+      "zh": "“这并不是人们通常故意去做的事情。"
+    },
+    {
+      "id": "s36",
+      "en": "Quite often, the effects simply come from people trying to make a living.'",
+      "zh": "很多时候，影响只是人们为了生计而导致的。”"
+    },
+    {
+      "id": "s37",
+      "en": "Silvius also acknowledges the importance of income generation.",
+      "zh": "西尔维乌斯也承认收入产生的重要性。"
+    },
+    {
+      "id": "s38",
+      "en": "'It's not that we just want to restore the biodiversity of wetlands - which we do - but we recognise there's a need to provide an income for local people.'",
+      "zh": "他说：“我们不仅仅是想恢复湿地的生物多样性——这确实是我们的目标——我们也认识到需要为当地居民提供收入。”"
+    },
+    {
+      "id": "s39",
+      "en": "This approach is supported by IWMI.",
+      "zh": "这一方法得到了国际水资源管理研究所的支持。"
+    },
+    {
+      "id": "s40",
+      "en": "'The idea is that people in a developing country will only protect wetlands if they value and profit from them,' says McCartney.",
+      "zh": "麦卡特尼说：“想法是，发展中国家的人们只有在重视并从湿地获益时才会保护它们。”"
+    },
+    {
+      "id": "s41",
+      "en": "'For sustainability, it's essential that local people are involved in wetland planning and decision making and have clear rights to use wetlands.'",
+      "zh": "“为了可持续发展，必须让当地居民参与湿地规划和决策，并拥有明确的湿地使用权利。”"
+    },
+    {
+      "id": "s42",
+      "en": "The fortunes of wetlands would be improved, Silvius suggests, if more governments recognised their long-term value.",
+      "zh": "西尔维乌斯建议，如果更多政府认识到湿地的长期价值，湿地的状况将得到改善。"
+    },
+    {
+      "id": "s43",
+      "en": "'Different governments have different attitudes,' he says, and goes on to explain that some countries place a high priority on restoring wetlands, while others still deny the issue.",
+      "zh": "他说：“不同政府态度不同。”他接着解释，有些国家高度重视湿地恢复，而另一些国家仍然否认这一问题。"
+    },
+    {
+      "id": "s44",
+      "en": "McCartney is cautiously optimistic, however.",
+      "zh": "不过，麦卡特尼持谨慎乐观态度。"
+    },
+    {
+      "id": "s45",
+      "en": "'Awareness of the importance of wetlands is growing,' he says.",
+      "zh": "他说：“人们对湿地重要性的认识正在提高。”"
+    },
+    {
+      "id": "s46",
+      "en": "'It's true that wetland degradation still continues at a rapid pace, but my impression is that things are slowly changing.'",
+      "zh": "“湿地退化确实依然快速发生，但我的印象是情况正在慢慢改变。”"
+    },
+    {
+      "id": "s47",
+      "en": "*peat: a brown deposit formed by the partial decomposition of vegetation in wet acidic conditions, often cut out and dried for use as fuel",
+      "zh": "*泥炭：一种棕色沉积物，由植物在湿润且酸性环境中部分分解形成，通常被挖出并晾干作为燃料使用。"
+    },
+    {
+      "id": "s48",
+      "en": "**subsidence: the sinking of the Earth's surface, most often caused by the removal of resources from the ground",
+      "zh": "**地面沉降：地球表面下沉，通常由地下资源开采引起。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The global importance of wetlands</span></strong></p><p><strong>A</strong></p><p>Wetlands are areas where water covers the soil, or is present either at or near the surface of the soil, for all or part of the year. These are complex ecosystems, rich in unique plant and animal life. But according to the World Wide Fund for Nature (WWF), half of the world's wetlands have disappeared since 1990 - converted or destroyed for commercial development, drainage schemes and the extraction of minerals and peat*. Many of those that remain have been damaged by agricultural pesticides and fertilisers, industrial pollutants, and construction works.</p><p><br></p><p><strong>B</strong></p><p>Throughout history, humans have gathered around wetlands, and their fertile ecosystems have played an important part in human development. Consequently, they are of considerable religious, historical and archaeological value to many communities around the world. 'Wetlands directly support the livelihoods and well-being of millions of people,' says Dr Matthew McCartney, principal researcher and hydrologist at the International Water Management Institute (IWMI). 'In many developing countries, large numbers of people are dependent on wetland agriculture for their livelihoods.'</p><p><br></p><p><strong>C</strong></p><p>They also serve a crucial environmental purpose. 'Wetlands are one of the key tools in mitigating climate change across the planet,' says Pieter van Eijk, head of Climate Adaptation at Wetlands International (WI), pointing to their use as buffers that protect coastal areas from sea-level rise and extreme weather events such as hurricanes and flooding. Wetland coastal forests provide food and water, as well as shelter from storms, and WI and other agencies are working to restore those forests which have been lost. 'It can be as simple as planting a few trees per hectare to create shade and substantially change a microclimate,' he says. 'Implementing climate change projects isn't so much about money.'</p><p><br></p><p><strong>D</strong></p><p>The world's wetlands are, unfortunately, rich sources for in-demand commodities, such as palm oil and pulpwood. Peatlands - wetlands with a waterlogged organic soil layer - are particularly targeted. When peatlands are drained for cultivation, they become net carbon emitters instead of active carbon stores, and, according to Marcel Silvius, head of Climate-smart Land-use at WI, this practice causes six per cent of all global carbon emissions. The clearance of peatlands for planting also increases the risk of forest fires, which release huge amounts of CO<sub>2</sub>. 'We're seeing huge peatland forests with extremely high biodiversity value being lost for a few decades of oil palm revenues,' says Silvius.</p><p><br></p><p><strong>E</strong></p><p>The damage starts when logging companies arrive to clear the trees. They dig ditches to enter the peat swamps by boat and then float the logs out the same way. These are then used to drain water out of the peatlands to allow for the planting of corn, oil palms or pulpwood trees. Once the water has drained away, bacteria and fungi then break down the carbon in the peat and turn it into CO<sub>2</sub> and methane. Meanwhile, the remainder of the solid matter in the peat starts to move downwards, in a process known as subsidence**. Peat comprises 90 per cent water, so this is one of the most alarming consequences of peatland clearances. 'In the tropics, peat subsides at about four centimetres a year, so within half a century, very large landscapes on Sumatra and Borneo will become flooded as the peat drops below water level,' says Silvius. 'It's a huge catastrophe that's in preparation. Some provinces will lose 40 per cent of their landmass.'</p><p><br></p><p><strong>F</strong></p><p>And while these industries affect wetlands in ways that can easily be documented, Dr Dave Tickner of the WWF believes that more subtle impacts can be even more devastating. 'Sediment run-off and fertilisers can be pretty invisible,' says Tickner. 'Over-extraction of water is equally invisible. You do get shock stories about rivers running red, or even catching fire, but there's seldom one big impact that really hurts a wetland.' Tickner does not blame anyone for deliberate damage, however. 'I've worked on wetland issues for 20 years and have never met anybody who wanted to damage a wetland,' he says. 'It isn't something that people generally set out to do. Quite often, the effects simply come from people trying to make a living.'</p><p><br></p><p><strong>G</strong></p><p>Silvius also acknowledges the importance of income generation. 'It's not that we just want to restore the biodiversity of wetlands - which we do - but we recognise there's a need to provide an income for local people.' This approach is supported by IWMI. 'The idea is that people in a developing country will only protect wetlands if they value and profit from them,' says McCartney. 'For sustainability, it's essential that local people are involved in wetland planning and decision making and have clear rights to use wetlands.'</p><p><br></p><p><strong>H</strong></p><p>The fortunes of wetlands would be improved, Silvius suggests, if more governments recognised their long-term value. 'Different governments have different attitudes,' he says, and goes on to explain that some countries place a high priority on restoring wetlands, while others still deny the issue. McCartney is cautiously optimistic, however. 'Awareness of the importance of wetlands is growing,' he says. 'It's true that wetland degradation still continues at a rapid pace, but my impression is that things are slowly changing.'</p><p><br></p><p><br></p><p>*peat: a brown deposit formed by the partial decomposition of vegetation in wet acidic conditions, often cut out and dried for use as fuel</p><p>**subsidence: the sinking of the Earth's surface, most often caused by the removal of resources from the ground</p><p><br></p>

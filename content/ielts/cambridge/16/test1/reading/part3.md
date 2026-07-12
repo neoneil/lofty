@@ -1844,5 +1844,223 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The future of work",
+      "zh": "工作的未来"
+    },
+    {
+      "id": "s2",
+      "en": "According to a leading business consultancy, 3-14% of the global workforce will need to switch to a different occupation within the next 10-15 years, and all workers will need to adapt as their occupations evolve alongside increasingly capable machines.",
+      "zh": "据一家顶级商业咨询公司称，全球3%到14%的劳动力将在未来10到15年内需要转行，所有工人都必须随着其职业与日益强大的机器共同演变而进行适应。"
+    },
+    {
+      "id": "s3",
+      "en": "Automation—or 'embodied artificial intelligence' (AI)—is one aspect of the disruptive effects of technology on the labour market.",
+      "zh": "自动化——或称“具身人工智能”（AI）——是技术对劳动力市场造成颠覆性影响的一个方面。"
+    },
+    {
+      "id": "s4",
+      "en": "'Disembodied AI', like the algorithms running in our smartphones, is another.",
+      "zh": "“非具身人工智能”，例如运行在我们智能手机中的算法，是另一个方面。"
+    },
+    {
+      "id": "s5",
+      "en": "Dr Stella Pachidi from Cambridge Judge Business School believes that some of the most fundamental changes are happening as a result of the 'algorithmication' of jobs that are dependent on data rather than on production—the so-called knowledge economy.",
+      "zh": "剑桥贾奇商学院的Stella Pachidi博士认为，一些最根本的变化正在发生，这是由那些依赖数据而非生产的工作的“算法化”——即所谓的知识经济——所引发的。"
+    },
+    {
+      "id": "s6",
+      "en": "Algorithms are capable of learning from data to undertake tasks that previously needed human judgement, such as reading legal contracts, analysing medical scans and gathering market intelligence.",
+      "zh": "算法能够从数据中学习，执行以前需要人类判断的任务，比如阅读法律合同、分析医疗扫描和收集市场情报。"
+    },
+    {
+      "id": "s7",
+      "en": "'In many cases, they can outperform humans,' says Pachidi.",
+      "zh": "Pachidi说：“在许多情况下，它们能胜过人类。”"
+    },
+    {
+      "id": "s8",
+      "en": "'Organisations are attracted to using algorithms because they want to make choices based on what they consider is \"perfect information\", as well as to reduce costs and enhance productivity.'",
+      "zh": "“组织倾向于使用算法，因为他们希望基于他们认为的‘完美信息’做出选择，同时降低成本并提升生产力。”"
+    },
+    {
+      "id": "s9",
+      "en": "'But these enhancements are not without consequences,' says Pachidi.",
+      "zh": "Pachidi说：“但这些提升并非没有后果。”"
+    },
+    {
+      "id": "s10",
+      "en": "'If routine cognitive tasks are taken over by AI, how do professions develop their future experts?'",
+      "zh": "“如果常规认知任务由人工智能接管，那么各行各业如何培养未来的专家呢？”"
+    },
+    {
+      "id": "s11",
+      "en": "she asks.",
+      "zh": "她问道。"
+    },
+    {
+      "id": "s12",
+      "en": "'One way of learning about a job is \"legitimate peripheral participation\"—a novice stands next to experts and learns by observation.",
+      "zh": "“了解一份工作的方式之一是‘合法的边缘参与’——新手站在专家旁，通过观察学习。”"
+    },
+    {
+      "id": "s13",
+      "en": "If this isn't happening, then you need to find new ways to learn.'",
+      "zh": "“如果这种情况未发生，那就需要找到新的学习方式。”"
+    },
+    {
+      "id": "s14",
+      "en": "Another issue is the extent to which the technology influences or even controls the workforce.",
+      "zh": "另一个问题是技术对劳动力的影响程度，甚至控制程度。"
+    },
+    {
+      "id": "s15",
+      "en": "For over two years, Pachidi monitored a telecommunications company.",
+      "zh": "Pachidi监测了一家电信公司超过两年时间。"
+    },
+    {
+      "id": "s16",
+      "en": "'The way telecoms salespeople work is through personal and frequent contact with clients, using the benefit of experience to assess a situation and reach a decision.",
+      "zh": "“电信销售人员的工作方式是通过与客户的个人频繁接触，利用经验判断情况并做出决定。"
+    },
+    {
+      "id": "s17",
+      "en": "However, the company had started using a[n]... algorithm that defined when account managers should contact certain customers about which kinds of campaigns and what to offer them.'",
+      "zh": "然而，该公司开始使用一个算法来规定客户经理何时应该联系某些客户，针对哪种类型的活动以及提供什么服务。”"
+    },
+    {
+      "id": "s18",
+      "en": "The algorithm—usually built by external designers—often becomes the keeper of knowledge, she explains.",
+      "zh": "她解释说，这个算法——通常由外部设计者构建——往往成为知识的守护者。"
+    },
+    {
+      "id": "s19",
+      "en": "In cases like this, Pachidi believes, a short-sighted view begins to creep into working practices whereby workers learn through the 'algorithm's eyes' and become dependent on its instructions.",
+      "zh": "在此类情况下，Pachidi认为，一种目光短浅的观点开始渗入工作实践，工人通过‘算法的视角’学习，变得依赖其指令。"
+    },
+    {
+      "id": "s20",
+      "en": "Alternative explorations—where experimentation and human instinct lead to progress and new ideas—are effectively discouraged.",
+      "zh": "其他探索方式——即通过实验和人类直觉推动进步和新想法——实际上受到抑制。"
+    },
+    {
+      "id": "s21",
+      "en": "Pachidi and colleagues even observed people developing strategies to make the algorithm work to their own advantage.",
+      "zh": "Pachidi和同事们甚至观察到有人制定策略，利用算法为自己谋取利益。"
+    },
+    {
+      "id": "s22",
+      "en": "'We are seeing cases where workers feed the algorithm with false data to reach their targets,' she reports.",
+      "zh": "她报告称：“我们看到有些工人向算法输入虚假数据以达到他们的目标。”"
+    },
+    {
+      "id": "s23",
+      "en": "It's scenarios like these that many researchers are working to avoid.",
+      "zh": "正是这些情形，许多研究人员正在努力避免。"
+    },
+    {
+      "id": "s24",
+      "en": "Their objective is to make AI technologies more trustworthy and transparent, so that organisations and individuals understand how AI decisions are made.",
+      "zh": "他们的目标是让人工智能技术更加可信和透明，使组织和个人理解人工智能决策的过程。"
+    },
+    {
+      "id": "s25",
+      "en": "In the meantime, says Pachidi, 'We need to make sure we fully understand the dilemmas that this new world raises regarding expertise, occupational boundaries and control.'",
+      "zh": "Pachidi说：“与此同时，我们需要确保全面理解这个新世界在专业知识、职业边界和控制方面带来的困境。”"
+    },
+    {
+      "id": "s26",
+      "en": "Economist Professor Hamish Low believes that the future of work will involve major transitions across the whole life course for everyone: 'The traditional trajectory of full-time education followed by full-time work followed by a pensioned retirement is a thing of the past,' says Low.",
+      "zh": "经济学家Hamish Low教授认为，未来的工作将涉及每个人整个生命历程中的重大转变：“传统的全日制教育、全职工作，继而退休领养老金的路线已经成为过去。”Low说。"
+    },
+    {
+      "id": "s27",
+      "en": "Instead, he envisages a multistage employment life: one where retraining happens across the life course, and where multiple jobs and no job happen by choice at different stages.",
+      "zh": "相反，他设想一种多阶段的就业生活：在整个生命过程中不断接受再培训，并且在不同阶段自主选择多份工作或暂时无工作。"
+    },
+    {
+      "id": "s28",
+      "en": "On the subject of job losses, Low believes the predictions are founded on a fallacy: 'It assumes that the number of jobs is fixed.",
+      "zh": "关于失业问题，Low认为这些预测基于一个谬论：“它假设工作岗位数量是固定的。"
+    },
+    {
+      "id": "s29",
+      "en": "If in 30 years, half of 100 jobs are being carried out by robots, that doesn't mean we are left with just 50 jobs for humans.",
+      "zh": "如果30年后，100个工作岗位中有一半由机器人完成，这并不意味着人类只剩50个工作岗位。"
+    },
+    {
+      "id": "s30",
+      "en": "The number of jobs will increase: we would expect there to be 150 jobs.'",
+      "zh": "工作岗位数量会增加：我们可以预期会有150个工作岗位。”"
+    },
+    {
+      "id": "s31",
+      "en": "Dr Ewan McGaughey, at Cambridge's Centre for Business Research and King's College London, agrees that 'apocalyptic' views about the future of work are misguided.",
+      "zh": "剑桥商业研究中心和伦敦国王学院的Ewan McGaughey博士同意，关于未来工作的“末日”观点是错误的。"
+    },
+    {
+      "id": "s32",
+      "en": "'It's the laws that restrict the supply of capital to the job market, not the advent of new technologies that causes unemployment.'",
+      "zh": "“导致失业的原因是限制资本向就业市场供应的法律，而非新技术的出现。”"
+    },
+    {
+      "id": "s33",
+      "en": "His recently published research answers the question of whether automation, AI and robotics will mean a 'jobless future' by looking at the causes of unemployment.",
+      "zh": "他最近发表的研究通过分析失业原因，回答了自动化、人工智能和机器人是否会带来“无工作未来”的问题。"
+    },
+    {
+      "id": "s34",
+      "en": "'History is clear that change can mean redundancies.",
+      "zh": "“历史清楚表明，变化可能意味着裁员。"
+    },
+    {
+      "id": "s35",
+      "en": "But social policies can tackle this through retraining and redeployment.'",
+      "zh": "但社会政策可以通过再培训和重新部署来应对这一问题。”"
+    },
+    {
+      "id": "s36",
+      "en": "He adds: 'If there is going to be change to jobs as a result of AI and robotics then I'd like to see governments seizing the opportunity to improve policy to enforce good job security.",
+      "zh": "他补充道：“如果人工智能和机器人导致工作岗位发生变化，我希望看到各国政府抓住机会，改进政策，保障良好的就业安全。"
+    },
+    {
+      "id": "s37",
+      "en": "We can \"reprogramme\" the law to prepare for a fairer future of work and leisure.'",
+      "zh": "我们可以‘重新编程’法律，为一个更加公平的工作和休闲未来做好准备。”"
+    },
+    {
+      "id": "s38",
+      "en": "McGaughey's findings are a call to arms to leaders of organisations, governments and banks to pre-empt the coming changes with bold new policies that guarantee full employment, fair incomes and a thriving economic democracy.",
+      "zh": "McGaughey的研究结果是一声号召，呼吁组织、政府和银行的领导者通过大胆的新政策抢先应对即将到来的变革，以保障充分就业、公平收入和繁荣的经济民主。"
+    },
+    {
+      "id": "s39",
+      "en": "'The promises of these new technologies are astounding.",
+      "zh": "“这些新技术的承诺令人惊叹。"
+    },
+    {
+      "id": "s40",
+      "en": "They deliver humankind the capacity to live in a way that nobody could have once imagined,' he adds.",
+      "zh": "他补充道：“它们赋予人类一种曾经无法想象的生活能力。”"
+    },
+    {
+      "id": "s41",
+      "en": "'Just as the industrial revolution brought people past subsistence agriculture, and the corporate revolution enabled mass production, a third revolution has been pronounced.",
+      "zh": "“正如工业革命让人们摆脱了自给农业，企业革命实现了大规模生产，第三次革命已经宣告到来。"
+    },
+    {
+      "id": "s42",
+      "en": "But it will not only be one of technology.",
+      "zh": "但这不仅仅是一场技术革命。"
+    },
+    {
+      "id": "s43",
+      "en": "The next revolution will be social.'",
+      "zh": "下一场革命将是社会性的。”"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>The future of work</strong>&nbsp;</span></p><p style="text-align:center;">&nbsp;</p><p>According to a leading business consultancy, 3-14% of the global workforce will need to switch to a different occupation within the next 10-15 years, and all workers will need to adapt as their occupations evolve alongside increasingly capable machines. Automation—or 'embodied artificial intelligence' (AI)—is one aspect of the disruptive effects of technology on the labour market. 'Disembodied AI', like the algorithms running in our smartphones, is another.</p><p>&nbsp;</p><p>Dr Stella Pachidi from Cambridge Judge Business School believes that some of the most fundamental changes are happening as a result of the 'algorithmication' of jobs that are dependent on data rather than on production—the so-called knowledge economy. Algorithms are capable of learning from data to undertake tasks that previously needed human judgement, such as reading legal contracts, analysing medical scans and gathering market intelligence.</p><p>&nbsp;</p><p>'In many cases, they can outperform humans,' says Pachidi. 'Organisations are attracted to using algorithms because they want to make choices based on what they consider is "perfect information", as well as to reduce costs and enhance productivity.'</p><p>&nbsp;</p><p>'But these enhancements are not without consequences,' says Pachidi. 'If routine cognitive tasks are taken over by AI, how do professions develop their future experts?' she asks. 'One way of learning about a job is "legitimate peripheral participation"—a novice stands next to experts and learns by observation. If this isn't happening, then you need to find new ways to learn.'</p><p>&nbsp;</p><p>Another issue is the extent to which the technology influences or even controls the workforce. For over two years, Pachidi monitored a telecommunications company. 'The way telecoms salespeople work is through personal and frequent contact with clients, using the benefit of experience to assess a situation and reach a decision. However, the company had started using a[n]... algorithm that defined when account managers should contact certain customers about which kinds of campaigns and what to offer them.'</p><p>&nbsp;</p><p>The algorithm—usually built by external designers—often becomes the keeper of knowledge, she explains. In cases like this, Pachidi believes, a short-sighted view begins to creep into working practices whereby workers learn through the 'algorithm's eyes' and become dependent on its instructions. Alternative explorations—where experimentation and human instinct lead to progress and new ideas—are effectively discouraged.</p><p>&nbsp;</p><p>Pachidi and colleagues even observed people developing strategies to make the algorithm work to their own advantage. 'We are seeing cases where workers feed the algorithm with false data to reach their targets,' she reports.</p><p>&nbsp;</p><p>It's scenarios like these that many researchers are working to avoid. Their objective is to make AI technologies more trustworthy and transparent, so that organisations and individuals understand how AI decisions are made. In the meantime, says Pachidi, 'We need to make sure we fully understand the dilemmas that this new world raises regarding expertise, occupational boundaries and control.'</p><p>&nbsp;</p><p>Economist Professor Hamish Low believes that the future of work will involve major transitions across the whole life course for everyone: 'The traditional trajectory of full-time education followed by full-time work followed by a pensioned retirement is a thing of the past,' says Low. Instead, he envisages a multistage employment life: one where retraining happens across the life course, and where multiple jobs and no job happen by choice at different stages.</p><p>&nbsp;</p><p>On the subject of job losses, Low believes the predictions are founded on a fallacy: 'It assumes that the number of jobs is fixed. If in 30 years, half of 100 jobs are being carried out by robots, that doesn't mean we are left with just 50 jobs for humans. The number of jobs will increase: we would expect there to be 150 jobs.'</p><p>&nbsp;</p><p>Dr Ewan McGaughey, at Cambridge's Centre for Business Research and King's College London, agrees that 'apocalyptic' views about the future of work are misguided. 'It's the laws that restrict the supply of capital to the job market, not the advent of new technologies that causes unemployment.'</p><p>&nbsp;</p><p>His recently published research answers the question of whether automation, AI and robotics will mean a 'jobless future' by looking at the causes of unemployment. 'History is clear that change can mean redundancies. But social policies can tackle this through retraining and redeployment.'</p><p>&nbsp;</p><p>He adds: 'If there is going to be change to jobs as a result of AI and robotics then I'd like to see governments seizing the opportunity to improve policy to enforce good job security. We can "reprogramme" the law to prepare for a fairer future of work and leisure.' McGaughey's findings are a call to arms to leaders of organisations, governments and banks to pre-empt the coming changes with bold new policies that guarantee full employment, fair incomes and a thriving economic democracy.</p><p>&nbsp;</p><p>'The promises of these new technologies are astounding. They deliver humankind the capacity to live in a way that nobody could have once imagined,' he adds. 'Just as the industrial revolution brought people past subsistence agriculture, and the corporate revolution enabled mass production, a third revolution has been pronounced. But it will not only be one of technology. The next revolution will be social.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;</p>

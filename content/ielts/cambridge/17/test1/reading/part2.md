@@ -1533,5 +1533,188 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Stadiums: past, present and future",
+      "zh": "体育场：过去、现在与未来"
+    },
+    {
+      "id": "s2",
+      "en": "Stadiums are among the oldest forms of urban architecture: vast stadiums where the public could watch sporting events were at the centre of western city life as far back as the ancient Greek and Roman Empires, well before the construction of the great medieval cathedrals and the grand 19th- and 20th-century railway stations which dominated urban skylines in later eras.",
+      "zh": "体育场是最古老的城市建筑形式之一：在古希腊和罗马帝国时期，广大公众可以观看体育赛事的大型体育场就已经是西方城市生活的中心，这远早于中世纪宏伟的大教堂以及19世纪和20世纪主导城市天际线的宏伟火车站的建造。"
+    },
+    {
+      "id": "s3",
+      "en": "Today, however, stadiums are regarded with growing scepticism.",
+      "zh": "然而，如今人们对体育场的态度日益怀疑。"
+    },
+    {
+      "id": "s4",
+      "en": "Construction costs can soar above £1 billion, and stadiums finished for major events such as the Olympic Games or the FIFA World Cup have notably fallen into disuse and disrepair.",
+      "zh": "建设成本可能飙升至超过10亿英镑，而为奥运会或国际足联世界杯等重大赛事建成的体育场显著地陷入废弃和失修状态。"
+    },
+    {
+      "id": "s5",
+      "en": "But this need not be the case.",
+      "zh": "但情况不必如此。"
+    },
+    {
+      "id": "s6",
+      "en": "History shows that stadiums can drive urban development and adapt to the culture of every age.",
+      "zh": "历史表明，体育场可以推动城市发展并适应各个时代的文化。"
+    },
+    {
+      "id": "s7",
+      "en": "Even today, architects and planners are finding new ways to adapt the mono-functional sports arenas which became emblematic of modernisation during the 20th century.",
+      "zh": "即使在今天，建筑师和规划者仍在寻找新的方法来改造那种在20世纪成为现代化象征的单一功能体育场。"
+    },
+    {
+      "id": "s8",
+      "en": "The amphitheatre* of Arles in southwest France, with a capacity of 25,000 spectators, is perhaps the best example of just how versatile stadiums can be.",
+      "zh": "位于法国西南部阿尔勒的圆形剧场*，可容纳25,000名观众，或许是体育场多功能性的最佳范例。"
+    },
+    {
+      "id": "s9",
+      "en": "Built by the Romans in 90 AD, it became a fortress with four towers after the fifth century, and was then transformed into a village containing more than 200 houses.",
+      "zh": "这座圆形剧场由罗马人在公元90年建造，五世纪后变成有四座塔楼的堡垒，随后又被改造成为拥有200多座房屋的村庄。"
+    },
+    {
+      "id": "s10",
+      "en": "With the growing interest in conservation during the 19th century, it was converted back into an arena for the staging of bullfights, thereby returning the structure to its original use as a venue for public spectacles.",
+      "zh": "随着19世纪对保护工作的日益关注，它被改造回用作举办斗牛的竞技场，从而使该建筑恢复了其作为公共表演场所的原始用途。"
+    },
+    {
+      "id": "s11",
+      "en": "Another example is the imposing arena of Verona in northern Italy, with space for 30,000 spectators, which was built 60 years before the Arles amphitheatre and 40 years before Rome’s famous Colosseum.",
+      "zh": "另一个例子是位于意大利北部维罗纳的宏伟竞技场，可容纳30,000名观众，它建于阿尔勒圆形剧场之前60年，罗马著名斗兽场之前40年。"
+    },
+    {
+      "id": "s12",
+      "en": "It has endured the centuries and is currently considered one of the world’s prime sites for opera, thanks to its outstanding acoustics.",
+      "zh": "它历经数世纪依然保存完好，因其卓越的音响效果，目前被认为是世界一流的歌剧演出场所之一。"
+    },
+    {
+      "id": "s13",
+      "en": "The area in the centre of the Italian town of Lucca, known as the Piazza dell’ Anfiteatro, is yet another impressive example of an amphitheatre becoming absorbed into the fabric of the city.",
+      "zh": "意大利卢卡市中心的广场，被称为圆形剧场广场（Piazza dell’ Anfiteatro），是圆形剧场融入城市结构的又一个令人印象深刻的例子。"
+    },
+    {
+      "id": "s14",
+      "en": "The site evolved in a similar way to Arles and was progressively filled with buildings from the Middle Ages until the 19th century, variously used as houses, a salt depot and a prison.",
+      "zh": "该地与阿尔勒的情况类似，逐渐被从中世纪到19世纪的建筑物填满，这些建筑曾被用作住宅、盐库和监狱等用途。"
+    },
+    {
+      "id": "s15",
+      "en": "But rather than reverting to an arena, it became a market square, designed by Romanticist architect Lorenzo Nottolini.",
+      "zh": "但它没有恢复为竞技场，而是变成了一个市场广场，设计者是浪漫主义建筑师洛伦佐·诺托利尼（Lorenzo Nottolini）。"
+    },
+    {
+      "id": "s16",
+      "en": "Today, the ruins of the amphitheatre remain embedded in the various shops and residences surrounding the public square.",
+      "zh": "如今，圆形剧场的遗迹仍然镶嵌在围绕公共广场的各类商铺和住宅中。"
+    },
+    {
+      "id": "s17",
+      "en": "There are many similarities between modern stadiums and the ancient amphitheatres intended for games.",
+      "zh": "现代体育场与古代为竞技而建的圆形剧场之间有许多相似之处。"
+    },
+    {
+      "id": "s18",
+      "en": "But some of the flexibility was lost at the beginning of the 20th century, as stadiums were developed using new products such as steel and reinforced concrete, and made use of bright lights for night-time matches.",
+      "zh": "但20世纪初，随着体育场使用钢铁和钢筋混凝土等新材料建造，并采用明亮灯光进行夜间比赛，柔韧性部分丧失。"
+    },
+    {
+      "id": "s19",
+      "en": "Many such stadiums are situated in suburban areas, designed for sporting use only and surrounded by parking lots.",
+      "zh": "许多此类体育场位于郊区，仅供体育用途，并被停车场包围。"
+    },
+    {
+      "id": "s20",
+      "en": "These factors mean that they may not be as accessible to the general public, require more energy to run and contribute to urban heat.",
+      "zh": "这些因素使得它们对公众的可达性较低，运行时需要更多能源，并加剧城市热岛效应。"
+    },
+    {
+      "id": "s21",
+      "en": "But many of today’s most innovative architects see scope for the stadium to help improve the city.",
+      "zh": "但许多当今最具创新精神的建筑师认为，体育场有潜力帮助改善城市环境。"
+    },
+    {
+      "id": "s22",
+      "en": "Among the current strategies, two seem to be having particular success: the stadium as an urban hub, and as a power plant.",
+      "zh": "在现行策略中，有两个尤其取得了成功：体育场作为城市枢纽，以及作为发电站。"
+    },
+    {
+      "id": "s23",
+      "en": "There’s a growing trend for stadiums to be equipped with public spaces and services that serve a function beyond sport, such as hotels, retail outlets, conference centres, restaurants and bars, children’s playgrounds and green space.",
+      "zh": "体育场越来越多地配备公共空间和服务，具备体育以外的功能，如酒店、零售店、会议中心、餐厅和酒吧、儿童游乐场及绿地。"
+    },
+    {
+      "id": "s24",
+      "en": "Creating mixed-use developments such as this reinforces compactness and multi-functionality, making more efficient use of land and helping to regenerate urban spaces.",
+      "zh": "打造这样的混合用途开发，强化了紧凑性和多功能性，更有效地利用土地并有助于城市空间的再生。"
+    },
+    {
+      "id": "s25",
+      "en": "This opens the space up to families and a wider cross-section of society, instead of catering only to sportspeople and supporters.",
+      "zh": "这让空间对家庭和更广泛的社会群体开放，而不仅仅是满足运动员和支持者的需求。"
+    },
+    {
+      "id": "s26",
+      "en": "There have been many examples of this in the UK: the mixed-use facilities at Wembley and Old Trafford have become a blueprint for many other stadiums in the world.",
+      "zh": "英国有许多此类例子：温布利和老特拉福德的混合用途设施已成为全球许多体育场的蓝本。"
+    },
+    {
+      "id": "s27",
+      "en": "The phenomenon of stadiums as power stations has arisen from the idea that energy problems can be overcome by integrating interconnected buildings by means of a smart grid, which is an electricity supply network that uses digital communications technology to detect and react to local changes in usage, without significant energy losses.",
+      "zh": "体育场作为发电站的概念源自于通过智能电网整合互联建筑来解决能源问题。智能电网是一种电力供应网络，利用数字通信技术感知并响应局部用电变化，且几乎没有显著的能量损失。"
+    },
+    {
+      "id": "s28",
+      "en": "Stadiums are ideal for these purposes, because their canopies have a large surface area for fitting photovoltaic panels and rise high enough (more than 40 metres) to make use of micro wind turbines.",
+      "zh": "体育场非常适合这些用途，因为其顶棚面积大，便于安装光伏板，并且高度足够（超过40米），可以利用微型风力涡轮机。"
+    },
+    {
+      "id": "s29",
+      "en": "Freiburg Mage Solar Stadium in Germany is the first of a new wave of stadiums as power plants, which also includes the Amsterdam Arena and the Kaohsiung Stadium.",
+      "zh": "德国弗莱堡的Mage太阳能体育场是新一波作为发电站的体育场中的首个，此类体育场还包括阿姆斯特丹竞技场和高雄体育场。"
+    },
+    {
+      "id": "s30",
+      "en": "The latter, inaugurated in 2009, has 8,844 photovoltaic panels producing up to 1.14 GWh of electricity annually.",
+      "zh": "后者于2009年启用，拥有8,844块光伏板，年发电量高达1.14吉瓦时。"
+    },
+    {
+      "id": "s31",
+      "en": "This reduces the annual output of carbon dioxide by 660 tons and supplies up to 80 percent of the surrounding area when the stadium is not in use.",
+      "zh": "这减少了每年660吨的二氧化碳排放，在体育场未使用时，能够为周边地区提供多达80%的电力供应。"
+    },
+    {
+      "id": "s32",
+      "en": "This is proof that a stadium can serve its city, and have a decidedly positive impact in terms of reduction of CO2 emissions.",
+      "zh": "这证明体育场可以为城市服务，并在减少二氧化碳排放方面产生显著的积极影响。"
+    },
+    {
+      "id": "s33",
+      "en": "Sporting arenas have always been central to the life and culture of cities.",
+      "zh": "体育竞技场一直是城市生活和文化的中心。"
+    },
+    {
+      "id": "s34",
+      "en": "In every era, the stadium has acquired new value and uses: from military fortress to residential village, public space to theatre and most recently a field for experimentation in advanced engineering.",
+      "zh": "在每个时代，体育场都获得了新的价值和用途：从军事堡垒到居民村庄，从公共空间到剧场，最近则成为先进工程实验的场所。"
+    },
+    {
+      "id": "s35",
+      "en": "The stadium of today now brings together multiple functions, thus helping cities to create a sustainable future.",
+      "zh": "今天的体育场融合了多重功能，从而帮助城市创造可持续的未来。"
+    },
+    {
+      "id": "s36",
+      "en": "* amphitheatre: (especially in Greek and Roman architecture) an open circular or oval building with a central space surrounded by tiers of seats for spectators, for the presentation of dramatic or sporting events",
+      "zh": "*圆形剧场：（尤指希腊和罗马建筑）一种开放的圆形或椭圆形建筑，中间有一空间，周围环绕着多层观众席，用于举办戏剧或体育赛事"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size:24px">Stadiums: past, present and future</span></strong></p><p style="text-align: center;"><strong><br/></strong></p><p style="text-align: center;"><strong style="font-style: italic;"></strong><span style="font-weight: bold; font-size: 16px; font-family: Arial-BoldMT; color: rgb(35, 31, 32);">A.</span></p><p style="text-align: center;"><span style="font-weight: bold; font-size: 16px; font-family: Arial-BoldMT; color: rgb(35, 31, 32);"><br/></span></p><p style="text-align: left;">Stadiums are among the oldest forms of urban architecture: vast stadiums where the public  could watch sporting events were at the centre of western city life as far back as the ancient  Greek and Roman Empires, well before the construction of the great medieval cathedrals and  the grand 19th- and 20th-century railway stations which dominated urban skylines in later eras. </p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"></span>Today, however, stadiums are regarded with growing scepticism. Construction costs can soar  above £1 billion, and stadiums finished for major events such as the Olympic Games or the  FIFA World Cup have notably fallen into disuse and disrepair. <span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"></span></p><p style="text-align: left;">But this need not be the case. History shows that stadiums can drive urban development and  adapt to the culture of every age. Even today, architects and planners are finding new ways  to adapt the mono-functional sports arenas which became emblematic of modernisation  during the 20th century.</p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><br/></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">B.</span></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"> </span></span></p><p style="text-align: left;">The amphitheatre* of Arles in southwest France, with a capacity of 25,000 spectators,  is perhaps the best example of just how versatile stadiums can be. Built by the Romans in  90 AD, it became a fortress with four towers after the fifth century, and was then  transformed into a village containing more than 200 houses. With the growing interest in  conservation during the 19th century, it was converted back into an arena for the staging of  bullfights, thereby returning the structure to its original use as a venue for public spectacles. </p><p style="text-align: left;">Another example is the imposing arena of Verona in northern Italy, with space for 30,000  spectators, which was built 60 years before the Arles amphitheatre and 40 years before  Rome’s famous Colosseum. It has endured the centuries and is currently considered one of  the world’s prime sites for opera, thanks to its outstanding acoustics.</p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"></span><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">C. </span></span></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"><br/></span></span></span></p><p style="text-align: left;">The area in the centre of the Italian town of Lucca, known as the Piazza dell’ Anfiteatro,  is yet another impressive example of an amphitheatre becoming absorbed into the fabric  of the city. The site evolved in a similar way to Arles and was progressively filled with  buildings from the Middle Ages until the 19th century, variously used as houses, a salt depot  and a prison. But rather than reverting to an arena, it became a market square, designed  by Romanticist architect Lorenzo Nottolini. Today, the ruins of the amphitheatre remain  embedded in the various shops and residences surrounding the public square.</p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></span></p><p style="text-align: center;"><span style="font-size: 极6px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"></span><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">D. </span></span></span></span></p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"><br/></span></span></span></span></p><p style="text-align: left;">There are many similarities between modern stadiums and the ancient amphitheatres  intended for games. But some of the flexibility was lost at the beginning of the 20th century,  as stadiums were developed using new products such as steel and reinforced concrete, and  made use of bright lights for night-time matches.</p><p style="text-align: left;">Many such stadiums are situated in suburban areas, designed for sporting use only and  surrounded by parking lots. These factors mean that they may not be as accessible to the  general public, require more energy to run and contribute to urban heat.</p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb极(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></span></span></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">E.</span></span></span></span></span></span></p><p style="text-align: center;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"><br/></span></span></span></span></span></span></p><p style="text-align: left;">But many of today’s most innovative architects see scope for the stadium to help improve the city. Among the current strategies, two seem to be having particular success: the stadium as  an urban hub, and as a power plant.</p><p style="text-align: left;">There’s a growing trend for stadiums to be equipped with public spaces and services that  serve a function beyond sport, such as hotels, retail outlets, conference centres, restaurants and bars, children’s playgrounds and green space. Creating mixed-use developments such as  this reinforces compactness and multi-functionality, making more efficient use of land and  helping to regenerate urban spaces. </p><p style="text-align: left;">This opens the space up to families and a wider cross-section of society, instead of catering  only to sportspeople and supporters. There have been many examples of this in the UK: the  mixed-use facilities at Wembley and Old Trafford have become a blueprint for many other  stadiums in the world.</p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></p><p style="text-align: center;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">F. </span></span></p><p style="text-align: center;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"><br/></span></span></p><p style="text-align: left;">The phenomenon of stadiums as power stations has arisen from the idea that energy  problems can be overcome by integrating interconnected buildings by means of a smart grid,  which is an electricity supply network that uses digital communications technology to detect  and react to local changes in usage, without significant energy losses. Stadiums are ideal  for these purposes, because their canopies have a large surface area for fitting photovoltaic  panels and rise high enough (more than 40 metres) to make use of micro wind turbines.</p><p style="text-align: left;">Freiburg Mage Solar Stadium in Germany is the first of a new wave of stadiums as power plants, which also includes the Amsterdam Arena and the Kaohsiung Stadium. The latter, inaugurated in 2009, has 8,844 photovoltaic panels producing up to 1.14 GWh of electricity annually. This reduces the annual output of carbon dioxide by 660 tons and supplies up  to 80 percent of the surrounding area when the stadium is not in use. This is proof that a  stadium can serve its city, and have a decidedly positive impact in terms of reduction of CO2 emissions.</p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><br/></span></span></span></p><p style="text-align: center;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">G. </span></span></span></span></p><p style="text-align: center;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold"><br/></span></span></span></span></p><p style="text-align: left;">Sporting arenas have always been central to the life and culture of cities. In every era, the stadium has acquired new value and uses: from military fortress to residential village, public space to theatre and most recently a field for experimentation in advanced engineering. The stadium of today now brings together multiple functions, thus helping cities to create a sustainable future.</p><p style="text-align: left;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><br/></span></p><p style="text-align: right;"><span style="font-size: 16px; font-family: "Times New Roman"; color: rgb(35, 31, 32);"><em>* amphitheatre: (especially in Greek and Roman architecture) an open circular or oval building with a central space surrounded by tiers of seats for spectators, for the presentation of dramatic or sporting events</em></span><span style="text-decoration:line-through;"></span></p>

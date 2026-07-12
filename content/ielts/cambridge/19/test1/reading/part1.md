@@ -1089,5 +1089,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "How tennis rackets have changed",
+      "zh": "网球拍如何发生变化"
+    },
+    {
+      "id": "s2",
+      "en": "In 2016, the British professional tennis player Andy Murray was ranked as the world's number one.",
+      "zh": "2016年，英国职业网球选手安迪·穆雷被评为世界第一。"
+    },
+    {
+      "id": "s3",
+      "en": "It was an incredible achievement by any standard—made even more remarkable by the fact that he did this during a period considered to be one of the strongest in the sport's history, competing against the likes of Rafael Nadal, Roger Federer and Novak Djokovic, to name just a few.",
+      "zh": "这无论从哪个角度来看都是一项令人难以置信的成就——更为突出的是，他是在被认为是该运动历史上最强时期之一的阶段实现的，期间他与拉斐尔·纳达尔、罗杰·费德勒和诺瓦克·德约科维奇等众多顶尖选手竞争，仅举几例。"
+    },
+    {
+      "id": "s4",
+      "en": "Yet five years previously, he had been regarded as a talented outsider who entered but never won the major tournaments.",
+      "zh": "然而五年前，他还被视为一名有天赋的局外人，参加大赛却从未获胜。"
+    },
+    {
+      "id": "s5",
+      "en": "Of the changes that account for this transformation, one was visible and widely publicised: in 2011, Murray invited former number one player Ivan Lendl onto his coaching team-a valuable addition that had a visible impact on the player's playing style.",
+      "zh": "导致这一转变的变化中，有一项是显著且广为宣传的：2011年，穆雷邀请了前世界第一选手伊万·伦德尔加入他的教练团队——这一宝贵的补强对他的比赛风格产生了明显影响。"
+    },
+    {
+      "id": "s6",
+      "en": "Another change was so subtle as to pass more or less unnoticed.",
+      "zh": "另一项变化却十分微妙，几乎未被注意到。"
+    },
+    {
+      "id": "s7",
+      "en": "Like many players, Murray has long preferred a racket that consists of two types of string: one for the mains (verticals) and another for the crosses (horizontals).",
+      "zh": "和许多球员一样，穆雷长期以来更喜欢用由两种不同线材组成的球拍：一种用于主线（纵线），另一种用于横线（横线）。"
+    },
+    {
+      "id": "s8",
+      "en": "While he continued to use natural string in the crosses, in 2012 he switched to a synthetic string for the mains.",
+      "zh": "他在横线部分依然使用天然线，但在2012年将主线改用了合成线。"
+    },
+    {
+      "id": "s9",
+      "en": "A small change, perhaps, but its importance should not be underestimated.",
+      "zh": "这看似小的变化，其重要性不可低估。"
+    },
+    {
+      "id": "s10",
+      "en": "The modification that Murray made is just one of a number of options available to players looking to tweak their rackets in order to improve their games.",
+      "zh": "穆雷的这一调整只是球员为提升表现而调整球拍的众多选择之一。"
+    },
+    {
+      "id": "s11",
+      "en": "'Touring professionals have their rackets customised to their specific needs,' says Colin Triplow, a UK-based professional racket stringer.",
+      "zh": "英国职业穿线师科林·特里普洛说：“巡回赛上的职业选手会根据他们的具体需求定制球拍。”"
+    },
+    {
+      "id": "s12",
+      "en": "'It's a highly important part of performance maximisation.'",
+      "zh": "“这是最大化表现的极其重要的一环。”"
+    },
+    {
+      "id": "s13",
+      "en": "Consequently, the specific rackets used by the world's elite are not actually readily available to the public; rather, each racket is individually made to suit the player who uses it.",
+      "zh": "因此，世界顶尖选手使用的特定球拍实际上并不向公众开放；而是每把球拍都根据使用球员的需求单独定制。"
+    },
+    {
+      "id": "s14",
+      "en": "Take the US professional tennis players Mike and Bob Bryan, for example: 'We're very particular with our racket specifications,' they say.",
+      "zh": "以美国职业网球选手迈克和鲍勃·布莱恩为例：“我们对球拍规格非常讲究。”他们表示。"
+    },
+    {
+      "id": "s15",
+      "en": "'All our rackets are sent from our manufacturer to Tampa, Florida, where our frames go through a... thorough customisation process.'",
+      "zh": "“我们所有的球拍都会从制造商处运到佛罗里达州坦帕，我们的球拍框架会经过……彻底的定制过程。”"
+    },
+    {
+      "id": "s16",
+      "en": "They explain how they have adjusted not only racket length, but even experimented with different kinds of paint.",
+      "zh": "他们解释道，他们不仅调整了球拍长度，甚至还尝试了不同类型的油漆。"
+    },
+    {
+      "id": "s17",
+      "en": "The rackets they use now weigh more than the average model and also have a denser string pattern (i.e. more crosses and mains).",
+      "zh": "他们现在使用的球拍比普通型号更重，且拥有更密集的线床（即更多的横线和主线）。"
+    },
+    {
+      "id": "s18",
+      "en": "The primary reason for these modifications is simple: as the line between winning and losing becomes thinner and thinner, even these slight changes become more and more important.",
+      "zh": "这些改动的主要原因很简单：随着胜负分界线越来越微妙，甚至这些微小的变化也变得越来越重要。"
+    },
+    {
+      "id": "s19",
+      "en": "As a result, players and their teams are becoming increasingly creative with the modifications to their rackets as they look to maximise their competitive advantage.",
+      "zh": "因此，球员及其团队在调整球拍方面变得越来越有创意，以期最大限度地提升竞争优势。"
+    },
+    {
+      "id": "s20",
+      "en": "Racket modifications mainly date back to the 1970s, when the amateur German tennis player Werner Fischer started playing with the so-called spaghetti-strung racket.",
+      "zh": "球拍改造主要起源于1970年代，当时业余德国网球选手维尔纳·费舍尔开始使用所谓的意大利面线球拍。"
+    },
+    {
+      "id": "s21",
+      "en": "It created a string bed that generated so much topspin that it was quickly banned by the International Tennis Federation.",
+      "zh": "这种球拍制造的线床产生了大量上旋，因此很快被国际网球联合会禁止。"
+    },
+    {
+      "id": "s22",
+      "en": "However, within a decade or two, racket modification became a regularity.",
+      "zh": "然而，十年或二十年内，球拍改造成为常态。"
+    },
+    {
+      "id": "s23",
+      "en": "Today it is, in many ways, an aspect of the game that is equal in significance to nutrition or training.",
+      "zh": "今天，球拍改造在很多方面已成为和营养或训练同等重要的比赛环节。"
+    },
+    {
+      "id": "s24",
+      "en": "Modifications can be divided into two categories: those to the string bed and those to the racket frame.",
+      "zh": "改造可分为两类：线床改造和球拍框架改造。"
+    },
+    {
+      "id": "s25",
+      "en": "The former is far more common than the latter: the choice of the strings and the tension with which they are installed is something that nearly all professional players experiment with.",
+      "zh": "前者远比后者常见：几乎所有职业选手都会尝试不同的线材选择及张力调节。"
+    },
+    {
+      "id": "s26",
+      "en": "They will continually change it depending on various factors including the court surface, climatic conditions, and game styles.",
+      "zh": "他们会根据球场表面、气候条件以及比赛风格等多种因素不断调整。"
+    },
+    {
+      "id": "s27",
+      "en": "Some will even change it depending on how they feel at the time.",
+      "zh": "有些选手甚至会根据当时的感觉来调整。"
+    },
+    {
+      "id": "s28",
+      "en": "At one time, all tennis rackets were strung with natural gut made from the outer layer of sheep or cow intestines.",
+      "zh": "曾几何时，所有网球拍都使用由羊或牛肠外层制成的天然肠线穿线。"
+    },
+    {
+      "id": "s29",
+      "en": "This all changed in the early 1990s with the development of synthetic strings that were cheaper and more durable.",
+      "zh": "这一切在1990年代初发生了变化，合成线的开发使得线材更加便宜且耐用。"
+    },
+    {
+      "id": "s30",
+      "en": "They are made from three materials: nylon (relatively durable and affordable), Kevlar (too stiff to be used alone) or co-polyester (polyester combined with additives that enhance its performance).",
+      "zh": "合成线由三种材料制成：尼龙（相对耐用且价格适中）、凯夫拉（单独使用过于坚硬）以及共聚聚酯（聚酯加上增强性能的添加剂）。"
+    },
+    {
+      "id": "s31",
+      "en": "Even so, many professional players continue to use a 'hybrid set-up', where a combination of both synthetic and natural strings are used.",
+      "zh": "尽管如此，许多职业选手仍使用“混合配置”，即合成线与天然肠线的组合。"
+    },
+    {
+      "id": "s32",
+      "en": "Of the synthetics, co-polyester is by far the most widely used.",
+      "zh": "在合成线中，共聚聚酯是使用最广泛的一种。"
+    },
+    {
+      "id": "s33",
+      "en": "It's a perfect fit for the style of tennis now played, where players tend to battle it out from the back of the court rather than coming to the net.",
+      "zh": "这非常适合当前的网球打法，选手们倾向于在底线展开激烈对抗，而不是冲击网前。"
+    },
+    {
+      "id": "s34",
+      "en": "Studies indicate that the average spin from a co-polyester string is 25% greater than that from natural string or other synthetics.",
+      "zh": "研究显示，共聚聚酯线产生的平均旋转比天然线或其他合成线高出25%。"
+    },
+    {
+      "id": "s35",
+      "en": "In a sense, the development of co-polyester strings has revolutionised the game.",
+      "zh": "从某种意义上说，共聚聚酯线的发展彻底改变了这项运动。"
+    },
+    {
+      "id": "s36",
+      "en": "However, many players go beyond these basic adjustments to the strings and make changes to the racket frame itself.",
+      "zh": "然而，许多选手不仅调整线材，还对球拍框架本身做出改动。"
+    },
+    {
+      "id": "s37",
+      "en": "For example, much of the serving power of US professional player Pete Sampras was attributed to the addition of four to five lead weights onto his rackets, and today many professionals have the weight adjusted during the manufacturing process.",
+      "zh": "例如，美国职业选手皮特·桑普拉斯的发球威力很大程度上归功于在球拍上加装了四到五块铅块，而如今许多职业选手会在制造过程中调整球拍重量。"
+    },
+    {
+      "id": "s38",
+      "en": "Other changes to the frame involve the handle.",
+      "zh": "对框架的其他改动涉及握把。"
+    },
+    {
+      "id": "s39",
+      "en": "Players have individual preferences for the shape of the handle and some will have the handle of one racket moulded onto the frame of a different racket.",
+      "zh": "球员们对握把形状有各自偏好，有些人会将一把球拍的握把定制到另一把球拍的框架上。"
+    },
+    {
+      "id": "s40",
+      "en": "Other players make different changes.",
+      "zh": "其他选手则做出不同的调整。"
+    },
+    {
+      "id": "s41",
+      "en": "The professional Portuguese player Gonçalo Oliveira replaced the original grips of his rackets with something thinner because they had previously felt uncomfortable to hold.",
+      "zh": "葡萄牙职业选手贡萨洛·奥利维拉将原装握把替换成更细的款式，因为之前握起来感觉不舒适。"
+    },
+    {
+      "id": "s42",
+      "en": "Racket customisation and modification have pushed the standards of the game to greater levels that few could have anticipated in the days of natural strings and heavy, wooden frames, and it's exciting to see what further developments there will be in the future.",
+      "zh": "球拍定制和改造将比赛水平推向了一个很少有人能预料到的高度，这在天然线材和厚重木质框架的时代是难以想象的，未来会有哪些进一步的发展令人期待。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">How tennis rackets have changed</span></strong></p><p>In 2016, the British professional tennis player Andy Murray was ranked as the world's number one. It was an incredible achievement by any standard—made even more remarkable by the fact that he did this during a period considered to be one of the strongest in the sport's history, competing against the likes of Rafael Nadal, Roger Federer and Novak Djokovic, to name just a few. Yet five years previously, he had been regarded as a talented outsider who entered but never won the major tournaments.</p><p><br></p><p></p><p>Of the changes that account for this transformation, one was visible and widely publicised: in 2011, Murray invited former number one player Ivan Lendl onto his coaching team-a valuable addition that had a visible impact on the player's playing style. Another change was so subtle as to pass more or less unnoticed. Like many players, Murray has long preferred a racket that consists of two types of string: one for the mains (verticals) and another for the crosses (horizontals). While he continued to use natural string in the crosses, in 2012 he switched to a synthetic string for the mains. A small change, perhaps, but its importance should not be underestimated.</p><p><br></p><p></p><p>The modification that Murray made is just one of a number of options available to players looking to tweak their rackets in order to improve their games. 'Touring professionals have their rackets customised to their specific needs,' says Colin Triplow, a UK-based professional racket stringer. 'It's a highly important part of performance maximisation.' Consequently, the specific rackets used by the world's elite are not actually readily available to the public; rather, each racket is individually made to suit the player who uses it. Take the US professional tennis players Mike and Bob Bryan, for example: 'We're very particular with our racket specifications,' they say. 'All our rackets are sent from our manufacturer to Tampa, Florida, where our frames go through a... thorough customisation process.' They explain how they have adjusted not only racket length, but even experimented with different kinds of paint. The rackets they use now weigh more than the average model and also have a denser string pattern (i.e. more crosses and mains).</p><p><br></p><p></p><p>The primary reason for these modifications is simple: as the line between winning and losing becomes thinner and thinner, even these slight changes become more and more important. As a result, players and their teams are becoming increasingly creative with the modifications to their rackets as they look to maximise their competitive advantage. Racket modifications mainly date back to the 1970s, when the amateur German tennis player Werner Fischer started playing with the so-called spaghetti-strung racket. It created a string bed that generated so much topspin that it was quickly banned by the International Tennis Federation. However, within a decade or two, racket modification became a regularity. Today it is, in many ways, an aspect of the game that is equal in significance to nutrition or training.</p><p><br></p><p></p><p>Modifications can be divided into two categories: those to the string bed and those to the racket frame. The former is far more common than the latter: the choice of the strings and the tension with which they are installed is something that nearly all professional players experiment with. They will continually change it depending on various factors including the court surface, climatic conditions, and game styles. Some will even change it depending on how they feel at the time. At one time, all tennis rackets were strung with natural gut made from the outer layer of sheep or cow intestines. This all changed in the early 1990s with the development of synthetic strings that were cheaper and more durable. They are made from three materials: nylon (relatively durable and affordable), Kevlar (too stiff to be used alone) or co-polyester (polyester combined with additives that enhance its performance). Even so, many professional players continue to use a 'hybrid set-up', where a combination of both synthetic and natural strings are used.</p><p><br></p><p></p><p>Of the synthetics, co-polyester is by far the most widely used. It's a perfect fit for the style of tennis now played, where players tend to battle it out from the back of the court rather than coming to the net. Studies indicate that the average spin from a co-polyester string is 25% greater than that from natural string or other synthetics. In a sense, the development of co-polyester strings has revolutionised the game.</p><p><br></p><p></p><p>However, many players go beyond these basic adjustments to the strings and make changes to the racket frame itself. For example, much of the serving power of US professional player Pete Sampras was attributed to the addition of four to five lead weights onto his rackets, and today many professionals have the weight adjusted during the manufacturing process. Other changes to the frame involve the handle. Players have individual preferences for the shape of the handle and some will have the handle of one racket moulded onto the frame of a different racket. Other players make different changes. The professional Portuguese player Gonçalo Oliveira replaced the original grips of his rackets with something thinner because they had previously felt uncomfortable to hold. Racket customisation and modification have pushed the standards of the game to greater levels that few could have anticipated in the days of natural strings and heavy, wooden frames, and it's exciting to see what further developments there will be in the future.</p><p></p><p><br></p>

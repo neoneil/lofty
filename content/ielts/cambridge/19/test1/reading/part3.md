@@ -1916,5 +1916,183 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The persistence and peril of misinformation",
+      "zh": "错误信息的持续存在及其危害"
+    },
+    {
+      "id": "s2",
+      "en": "Brian Southwell looks at how human brains verify information and discusses some of the challenges of battling widespread falsehoods",
+      "zh": "Brian Southwell探讨了人类大脑如何验证信息，并讨论了对抗广泛虚假信息所面临的一些挑战。"
+    },
+    {
+      "id": "s3",
+      "en": "Misinformation—both deliberately promoted and accidentally shared—is perhaps an inevitable part of the world in which we live, but it is not a new problem.",
+      "zh": "错误信息——无论是故意传播还是意外分享——也许是我们生活世界中不可避免的一部分，但这并不是一个新问题。"
+    },
+    {
+      "id": "s4",
+      "en": "People likely have lied to one another for roughly as long as verbal communication has existed.",
+      "zh": "人们很可能从言语交流出现以来就相互撒谎。"
+    },
+    {
+      "id": "s5",
+      "en": "Deceiving others can offer an apparent opportunity to gain strategic advantage, to motivate others to action, or even to protect interpersonal bonds.",
+      "zh": "欺骗他人似乎可以带来获得战略优势、激励他人行动，甚至保护人际关系的机会。"
+    },
+    {
+      "id": "s6",
+      "en": "Moreover, people inadvertently have been sharing inaccurate information with one another for thousands of years.",
+      "zh": "此外，人们无意中相互传播不准确的信息已有数千年历史。"
+    },
+    {
+      "id": "s7",
+      "en": "However, we currently live in an era in which technology enables information to reach large audiences distributed across the globe, and thus the potential for immediate and widespread effects from misinformation now looms larger than in the past.",
+      "zh": "然而，我们现在生活在一个技术使信息能够传达到全球广大受众的时代，因此错误信息可能造成的即时且广泛的影响比以往更为严重。"
+    },
+    {
+      "id": "s8",
+      "en": "Yet the means to correct misinformation might, over time, be found in those same patterns of mass communication and of the facilitated spread of information.",
+      "zh": "然而，随着时间推移，纠正错误信息的方法可能恰恰存在于这些大规模传播和信息扩散的模式之中。"
+    },
+    {
+      "id": "s9",
+      "en": "The main worry regarding misinformation is its potential to unduly influence attitudes and behavior, leading people to think and act differently than they would if they were correctly informed, as suggested by the research teams of Stephan Lewandowsky of the University of Bristol and Elizabeth Marsh of Duke University, among others.",
+      "zh": "关于错误信息，主要的担忧在于它可能不当影响人们的态度和行为，导致人们的思想和行动与正确知情时不同，正如布里斯托大学的Stephan Lewandowsky和杜克大学的Elizabeth Marsh等研究团队所指出的。"
+    },
+    {
+      "id": "s10",
+      "en": "In other words, we worry that misinformation might lead people to hold misperceptions (or false beliefs) and that these misperceptions, especially when they occur among large groups of people, may have detrimental, downstream consequences for health, social harmony, and the political climate.",
+      "zh": "换句话说，我们担心错误信息会导致人们产生错误认知（或虚假信念），尤其是在大群体中出现时，这些错误认知可能对健康、社会和谐及政治气候产生有害的连锁反应。"
+    },
+    {
+      "id": "s11",
+      "en": "At least three observations related to misinformation in the contemporary mass-media environment warrant the attention of researchers, policy makers, and really everyone who watches television, listens to the radio, or reads information online.",
+      "zh": "当代大众传媒环境中，至少有三点关于错误信息的观察值得研究人员、政策制定者以及每一个看电视、听广播或在线阅读信息的人关注。"
+    },
+    {
+      "id": "s12",
+      "en": "First of all, people who encounter misinformation tend to believe it, at least initially.",
+      "zh": "首先，遇到错误信息的人往往会相信它，至少最初是如此。"
+    },
+    {
+      "id": "s13",
+      "en": "Secondly, electronic and print media often do not block many types of misinformation before it appears in content available to large audiences.",
+      "zh": "其次，电子和印刷媒体通常不会在错误信息出现在面向广大受众的内容之前加以阻止。"
+    },
+    {
+      "id": "s14",
+      "en": "Thirdly, countering misinformation once it has enjoyed wide exposure can be a resource-intensive effort.",
+      "zh": "第三，一旦错误信息广泛传播，纠正它往往需要大量资源。"
+    },
+    {
+      "id": "s15",
+      "en": "Knowing what happens when people initially encounter misinformation holds tremendous importance for estimating the potential for subsequent problems.",
+      "zh": "了解人们初次接触错误信息时的反应，对于评估随之而来的潜在问题非常重要。"
+    },
+    {
+      "id": "s16",
+      "en": "Although it is fairly routine for individuals to come across information that is false, the question of exactly how—and when—we mentally label information as true or false has garnered philosophical debate.",
+      "zh": "虽然人们经常接触到虚假信息，但我们究竟如何以及何时在心理上给信息贴上真或假的标签，这一问题引发了哲学上的论争。"
+    },
+    {
+      "id": "s17",
+      "en": "The dilemma is neatly summarized by a contrast between how the 17th-century philosophers René Descartes and Baruch Spinoza described human information engagement, with conflicting predictions that only recently have been empirically tested in robust ways.",
+      "zh": "这一难题可通过17世纪哲学家笛卡尔和巴鲁赫·斯宾诺莎关于人类信息处理的描述形成鲜明对比来概括，而这两种相互矛盾的预测直到最近才通过实证研究得到严谨测试。"
+    },
+    {
+      "id": "s18",
+      "en": "Descartes argued that a person only accepts or rejects information after considering its truth or falsehood; Spinoza argued that people accept all encountered information (or misinformation) by default and then subsequently verify or reject it through a separate cognitive process.",
+      "zh": "笛卡尔认为人们只有在考虑信息的真假后才接受或拒绝它；而斯宾诺莎认为人们默认接受所有接触到的信息（或错误信息），随后通过另一种认知过程加以验证或拒绝。"
+    },
+    {
+      "id": "s19",
+      "en": "In recent decades, empirical evidence from the research teams of Erik Asp of the University of Chicago and Daniel Gilbert at Harvard University, among others, has supported Spinoza's account: people appear to encode all new information as if it were true, even if only momentarily, and later tag the information as being either true or false, a pattern that seems consistent with the observation that mental resources for skepticism physically reside in a different part of the brain than the resources used in perceiving and encoding.",
+      "zh": "近几十年来，芝加哥大学Erik Asp和哈佛大学Daniel Gilbert等研究团队的实证证据支持了斯宾诺莎的观点：人们似乎将所有新信息当作真实信息来编码，哪怕只是短暂地，随后再将信息标记为真或假。这种模式与怀疑思维的大脑资源位于感知和编码区域不同部位的观察相一致。"
+    },
+    {
+      "id": "s20",
+      "en": "What about our second observation that misinformation often can appear in electronic or print media without being preemptively blocked?",
+      "zh": "那么我们第二个观察——错误信息常常未经预先阻止便出现在电子或印刷媒体中——如何解释？"
+    },
+    {
+      "id": "s21",
+      "en": "In support of this, one might consider the nature of regulatory structures in the United States: regulatory agencies here tend to focus on post hoc detection of broadcast information.",
+      "zh": "支持这一点的事实是，美国的监管结构通常侧重于对广播信息的事后检测。"
+    },
+    {
+      "id": "s22",
+      "en": "Organizations such as the Food and Drug Administration (FDA) offer considerable monitoring and notification functions, but these roles typically do not involve preemptive censoring.",
+      "zh": "像食品药品管理局（FDA）这样的机构确实承担着大量监控和通知职能，但这些职能通常不包括事先审查。"
+    },
+    {
+      "id": "s23",
+      "en": "The FDA oversees direct-to-consumer prescription drug advertising, for example, and has developed mechanisms such as the 'Bad Ad' program, through which people can report advertising in apparent violation of FDA guidelines on drug risks.",
+      "zh": "例如，FDA监管面对消费者的处方药广告，并建立了诸如“赖广告”项目等机制，公众可通过该项目举报明显违反FDA药品风险指南的广告。"
+    },
+    {
+      "id": "s24",
+      "en": "Such programs, although laudable and useful, do not keep false advertising off the airwaves.",
+      "zh": "尽管这些项目值得赞扬且有用，但它们无法阻止虚假广告在媒体传播。"
+    },
+    {
+      "id": "s25",
+      "en": "In addition, even misinformation that is successfully corrected can continue to affect attitudes.",
+      "zh": "此外，即使是被成功纠正的错误信息，仍可能持续影响人们的态度。"
+    },
+    {
+      "id": "s26",
+      "en": "This leads us to our third observation: a campaign to correct misinformation, even if rhetorically compelling, requires resources and planning to accomplish necessary reach and frequency.",
+      "zh": "这引出了我们的第三点观察：即使纠正错误信息的活动言辞具有说服力，也需要资源和规划才能达到必要的传播范围和频率。"
+    },
+    {
+      "id": "s27",
+      "en": "For corrective campaigns to be persuasive, audiences need to be able to comprehend them, which requires either effort to frame messages in ways that are accessible or effort to educate and sensitize audiences to the possibility of misinformation.",
+      "zh": "要使纠正活动具有说服力，受众必须能够理解信息，这就需要付出努力以用通俗易懂的方式构建信息，或努力教育并提高受众对错误信息可能性的敏感度。"
+    },
+    {
+      "id": "s28",
+      "en": "That some audiences might be unaware of the potential for misinformation also suggests the utility of media literacy efforts as early as elementary school.",
+      "zh": "部分受众可能意识不到错误信息的潜在影响，这也表明从小学阶段就开展媒介素养教育的必要性。"
+    },
+    {
+      "id": "s29",
+      "en": "Even with journalists and scholars pointing to the phenomenon of 'fake news', people do not distinguish between demonstrably false stories and those based in fact when scanning and processing written information.",
+      "zh": "即使记者和学者指出“假新闻”现象，人们在浏览和处理书面信息时，依然难以区分明显虚假的报道和基于事实的报道。"
+    },
+    {
+      "id": "s30",
+      "en": "We live at a time when widespread misinformation is common.",
+      "zh": "我们生活在一个广泛错误信息普遍存在的时代。"
+    },
+    {
+      "id": "s31",
+      "en": "Yet at this time many people also are passionately developing potential solutions and remedies.",
+      "zh": "然而，许多人也正热情地探索可能的解决方案和补救措施。"
+    },
+    {
+      "id": "s32",
+      "en": "The journey forward undoubtedly will be a long and arduous one.",
+      "zh": "未来的道路无疑将漫长而艰辛。"
+    },
+    {
+      "id": "s33",
+      "en": "Future remedies will require not only continued theoretical consideration but also the development and maintenance of consistent monitoring tools—and a recognition among fellow members of society that claims which find prominence in the media that are insufficiently based in scientific consensus and social reality should be countered.",
+      "zh": "未来的解决方案不仅需要持续的理论研究，还需开发和维持一致的监测工具——以及社会成员普遍承认，媒体上那些缺乏科学共识和社会现实基础的说法应当受到反驳。"
+    },
+    {
+      "id": "s34",
+      "en": "Misinformation arises as a result of human fallibility and human information needs.",
+      "zh": "错误信息的产生源于人类的局限性和信息需求。"
+    },
+    {
+      "id": "s35",
+      "en": "To overcome the worst effects of the phenomenon, we will need coordinated efforts over time, rather than any singular one-time panacea we could hope to offer.",
+      "zh": "要克服这一现象带来的最严重影响，我们需要长期协调努力，而非依赖任何一次性的万能良方。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong style=""><span style="font-size: 22px;">The persistence and peril of misinformation</span></strong></p><p style="text-align: center;"><em>Brian Southwell looks at how human brains verify information and discusses some of the challenges of battling widespread falsehoods</em></p><p>Misinformation—both deliberately promoted and accidentally shared—is perhaps an inevitable part of the world in which we live, but it is not a new problem. People likely have lied to one another for roughly as long as verbal communication has existed. Deceiving others can offer an apparent opportunity to gain strategic advantage, to motivate others to action, or even to protect interpersonal bonds. Moreover, people inadvertently have been sharing inaccurate information with one another for thousands of years.</p><p><br></p><p></p><p>However, we currently live in an era in which technology enables information to reach large audiences distributed across the globe, and thus the potential for immediate and widespread effects from misinformation now looms larger than in the past. Yet the means to correct misinformation might, over time, be found in those same patterns of mass communication and of the facilitated spread of information.</p><p><br></p><p></p><p>The main worry regarding misinformation is its potential to unduly influence attitudes and behavior, leading people to think and act differently than they would if they were correctly informed, as suggested by the research teams of Stephan Lewandowsky of the University of Bristol and Elizabeth Marsh of Duke University, among others. In other words, we worry that misinformation might lead people to hold misperceptions (or false beliefs) and that these misperceptions, especially when they occur among large groups of people, may have detrimental, downstream consequences for health, social harmony, and the political climate.</p><p><br></p><p></p><p>At least three observations related to misinformation in the contemporary mass-media environment warrant the attention of researchers, policy makers, and really everyone who watches television, listens to the radio, or reads information online. First of all, people who encounter misinformation tend to believe it, at least initially. Secondly, electronic and print media often do not block many types of misinformation before it appears in content available to large audiences. Thirdly, countering misinformation once it has enjoyed wide exposure can be a resource-intensive effort.</p><p><br></p><p></p><p>Knowing what happens when people initially encounter misinformation holds tremendous importance for estimating the potential for subsequent problems. Although it is fairly routine for individuals to come across information that is false, the question of exactly how—and when—we mentally label information as true or false has garnered philosophical debate. The dilemma is neatly summarized by a contrast between how the 17th-century philosophers René Descartes and Baruch Spinoza described human information engagement, with conflicting predictions that only recently have been empirically tested in robust ways. Descartes argued that a person only accepts or rejects information after considering its truth or falsehood; Spinoza argued that people accept all encountered information (or misinformation) by default and then subsequently verify or reject it through a separate cognitive process. In recent decades, empirical evidence from the research teams of Erik Asp of the University of Chicago and Daniel Gilbert at Harvard University, among others, has supported Spinoza's account: people appear to encode all new information as if it were true, even if only momentarily, and later tag the information as being either true or false, a pattern that seems consistent with the observation that mental resources for skepticism physically reside in a different part of the brain than the resources used in perceiving and encoding.</p><p></p><p><br></p><p>What about our second observation that misinformation often can appear in electronic or print media without being preemptively blocked? In support of this, one might consider the nature of regulatory structures in the United States: regulatory agencies here tend to focus on post hoc detection of broadcast information. Organizations such as the Food and Drug Administration (FDA) offer considerable monitoring and notification functions, but these roles typically do not involve preemptive censoring. The FDA oversees direct-to-consumer prescription drug advertising, for example, and has developed mechanisms such as the 'Bad Ad' program, through which people can report advertising in apparent violation of FDA guidelines on drug risks. Such programs, although laudable and useful, do not keep false advertising off the airwaves. In addition, even misinformation that is successfully corrected can continue to affect attitudes.</p><p><br></p><p></p><p>This leads us to our third observation: a campaign to correct misinformation, even if rhetorically compelling, requires resources and planning to accomplish necessary reach and frequency. For corrective campaigns to be persuasive, audiences need to be able to comprehend them, which requires either effort to frame messages in ways that are accessible or effort to educate and sensitize audiences to the possibility of misinformation. That some audiences might be unaware of the potential for misinformation also suggests the utility of media literacy efforts as early as elementary school. Even with journalists and scholars pointing to the phenomenon of 'fake news', people do not distinguish between demonstrably false stories and those based in fact when scanning and processing written information.</p><p></p><p><br></p><p>We live at a time when widespread misinformation is common. Yet at this time many people also are passionately developing potential solutions and remedies. The journey forward undoubtedly will be a long and arduous one. Future remedies will require not only continued theoretical consideration but also the development and maintenance of consistent monitoring tools—and a recognition among fellow members of society that claims which find prominence in the media that are insufficiently based in scientific consensus and social reality should be countered. Misinformation arises as a result of human fallibility and human information needs. To overcome the worst effects of the phenomenon, we will need coordinated efforts over time, rather than any singular one-time panacea we could hope to offer.</p><p></p><p></p><p><br></p>

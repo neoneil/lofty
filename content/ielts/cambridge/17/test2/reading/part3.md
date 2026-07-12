@@ -1935,5 +1935,233 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Insight or evolution?",
+      "zh": "洞察还是演化？"
+    },
+    {
+      "id": "s2",
+      "en": "Two scientists consider the origins of discoveries and other innovative behavior",
+      "zh": "两位科学家探讨了发现和其他创新行为的起源"
+    },
+    {
+      "id": "s3",
+      "en": "Scientific discovery is popularly believed to result from the sheer genius of such intellectual stars as naturalist Charles Darwin and theoretical physicist Albert Einstein.",
+      "zh": "人们普遍认为科学发现源于自然学家查尔斯·达尔文和理论物理学家阿尔伯特·爱因斯坦等智力巨星的天才。"
+    },
+    {
+      "id": "s4",
+      "en": "Our view of such unique contributions to science often disregards the person’s prior experience and the efforts of their lesser-known predecessors.",
+      "zh": "我们对这些独特科学贡献的看法往往忽略了个人的先前经验以及其鲜为人知的前辈们的努力。"
+    },
+    {
+      "id": "s5",
+      "en": "Conventional wisdom also places great weight on insight in promoting breakthrough scientific achievements, as if ideas spontaneously pop into someone’s head – fully formed and functional.",
+      "zh": "传统观念也非常重视洞察力在推动突破性科学成就中的作用，仿佛想法会自发地完全成形并具备功能地出现在某人脑中。"
+    },
+    {
+      "id": "s6",
+      "en": "There may be some limited truth to this view.",
+      "zh": "这种观点可能有一定的局限性真实性。"
+    },
+    {
+      "id": "s7",
+      "en": "However, we believe that it largely misrepresents the real nature of scientific discovery, as well as that of creativity and innovation in many other realms of human endeavor.",
+      "zh": "然而，我们认为这在很大程度上曲解了科学发现的真实本质，以及人类许多其他领域中创造力和创新的本质。"
+    },
+    {
+      "id": "s8",
+      "en": "Setting aside such greats as Darwin and Einstein – whose monumental contributions are duly celebrated – we suggest that innovation is more a process of trial and error, where two steps forward may sometimes come with one step back, as well as one or more steps to the right or left.",
+      "zh": "撇开达尔文和爱因斯坦这类伟人——他们的巨大贡献理应受到赞誉——我们认为创新更多是一个反复试验的过程，向前迈两步有时会伴随着退后一步，或者向右或向左移动一两步。"
+    },
+    {
+      "id": "s9",
+      "en": "This evolutionary view of human innovation undermines the notion of creative genius and recognizes the cumulative nature of scientific progress.",
+      "zh": "这种关于人类创新的演化观点削弱了创造性天才的概念，并承认科学进步的积累性本质。"
+    },
+    {
+      "id": "s10",
+      "en": "Consider one unheralded scientist: John Nicholson, a mathematical physicist working in the 1910s who postulated the existence of 'proto-elements' in outer space.",
+      "zh": "试想一位鲜为人知的科学家：约翰·尼科尔森，一位在1910年代工作的数学物理学家，他假设了宇宙空间中存在“原始元素”。"
+    },
+    {
+      "id": "s11",
+      "en": "By combining different numbers of weights of these proto-elements' atoms, Nicholson could recover the weights of all the elements in the then-known periodic table.",
+      "zh": "尼科尔森通过组合这些原始元素原子的不同重量数量，能够推算出当时已知元素周期表中所有元素的重量。"
+    },
+    {
+      "id": "s12",
+      "en": "These successes are all the more noteworthy given the fact that Nicholson was wrong about the presence of proto-elements: they do not actually exist.",
+      "zh": "鉴于尼科尔森关于原始元素存在的假设是错误的——它们实际上并不存在——他的这些成就尤为值得注意。"
+    },
+    {
+      "id": "s13",
+      "en": "Yet, amid his often fanciful theories and wild speculations, Nicholson also proposed a novel theory about the structure of atoms.",
+      "zh": "然而，在他那些富于幻想的理论和狂野的猜测中，尼科尔森也提出了一个关于原子结构的新颖理论。"
+    },
+    {
+      "id": "s14",
+      "en": "Niels Bohr, the Nobel prize-winning father of modern atomic theory, jumped off from this interesting idea to conceive his now-famous model of the atom.",
+      "zh": "现代原子理论的奠基人、诺贝尔奖获得者尼尔斯·玻尔正是从这个有趣的思想出发，构想出了如今闻名的原子模型。"
+    },
+    {
+      "id": "s15",
+      "en": "What are we to make of this story?",
+      "zh": "我们应如何看待这个故事？"
+    },
+    {
+      "id": "s16",
+      "en": "One might simply conclude that science is a collective and cumulative enterprise.",
+      "zh": "人们可能会简单地得出结论：科学是一个集体且累积的事业。"
+    },
+    {
+      "id": "s17",
+      "en": "That may be true, but there may be a deeper insight to be gleaned.",
+      "zh": "这或许是真的，但我们还可以获得更深刻的见解。"
+    },
+    {
+      "id": "s18",
+      "en": "We propose that science is constantly evolving, much as species of animals do.",
+      "zh": "我们提出科学不断进化，就像动物物种一样。"
+    },
+    {
+      "id": "s19",
+      "en": "In biological systems, organisms may display new characteristics that result from random genetic mutations.",
+      "zh": "在生物系统中，生物体可能会表现出由随机基因突变产生的新特征。"
+    },
+    {
+      "id": "s20",
+      "en": "In the same way, random, arbitrary or accidental mutations of ideas may help pave the way for advances in science.",
+      "zh": "同样，思想的随机、随意或意外突变可能有助于铺平科学进步的道路。"
+    },
+    {
+      "id": "s21",
+      "en": "If mutations prove beneficial, then the animal or the scientific theory will continue to thrive and perhaps reproduce.",
+      "zh": "如果突变被证明是有益的，那么该动物或科学理论将继续繁荣，甚至可能得以传承。"
+    },
+    {
+      "id": "s22",
+      "en": "Support for this evolutionary view of behavioral innovation comes from many domains.",
+      "zh": "来自多个领域的证据支持这种行为创新的演化观点。"
+    },
+    {
+      "id": "s23",
+      "en": "Consider one example of an influential innovation in US horseracing.",
+      "zh": "举一个美国赛马领域有影响力的创新例子。"
+    },
+    {
+      "id": "s24",
+      "en": "The so-called 'acey-deucy' stirrup placement, in which the rider’s foot in his left stirrup is placed as much as 25 centimeters lower than the right, is believed to confer important speed advantages when turning on oval tracks.",
+      "zh": "所谓“acey-deucy”马镫摆放法指的是骑手左脚马镫比右脚低25厘米左右，据认为这种做法在椭圆形赛道转弯时能带来重要的速度优势。"
+    },
+    {
+      "id": "s25",
+      "en": "It was developed by a relatively unknown jockey named Jackie Westrope.",
+      "zh": "这种方法由一位名不见经传的骑师杰基·韦斯特罗普发明。"
+    },
+    {
+      "id": "s26",
+      "en": "Had Westrope conducted methodical investigations or examined extensive film records in a shrewd plan to outrun his rivals?",
+      "zh": "韦斯特罗普是不是进行了系统调查或仔细研究大量录像，精明地策划超过对手？"
+    },
+    {
+      "id": "s27",
+      "en": "Had he foreseen the speed advantage that would be conferred by riding acey-deucy?",
+      "zh": "他是否预见到采用acey-deucy骑法所带来的速度优势？"
+    },
+    {
+      "id": "s28",
+      "en": "He suffered a leg injury, which left him unable to fully bend his left knee.",
+      "zh": "他曾受过腿伤，导致左膝无法完全弯曲。"
+    },
+    {
+      "id": "s29",
+      "en": "His modification just happened to coincide with enhanced left-hand turning performance.",
+      "zh": "他的这一改变恰好提升了左转弯时的表现。"
+    },
+    {
+      "id": "s30",
+      "en": "This led to the rapid and widespread adoption of riding acey-deucy by many riders, a racing style which continues in today’s thoroughbred racing.",
+      "zh": "这导致许多骑手迅速并广泛采用acey-deucy骑法，这种赛马风格至今仍在纯血马赛事中延续。"
+    },
+    {
+      "id": "s31",
+      "en": "Plenty of other stories show that fresh advances can arise from error, misadventure, and also pure serendipity – a happy accident.",
+      "zh": "许多其他故事表明，新的进展可能来源于错误、意外事件，也可能完全是幸运的巧合——一次意外收获。"
+    },
+    {
+      "id": "s32",
+      "en": "For example, in the early 1970s, two employees of the company 3M each had a problem: Spencer Silver had a product – a glue which was only slightly sticky – and no use for it, while his colleague Art Fry was trying to figure out how to affix temporary bookmarks in his hymn book without damaging its pages.",
+      "zh": "例如，20世纪70年代初，3M公司的两名员工各自有一个问题：斯宾塞·西尔弗发明了一种粘性很弱的胶水却无用武之地，而他的同事阿特·弗莱则试图找出如何在不损坏赞美诗书页的情况下固定临时书签。"
+    },
+    {
+      "id": "s33",
+      "en": "The solution to both these problems was the invention of the brilliantly simple yet phenomenally successful Post-It note.",
+      "zh": "解决这两个问题的方法是发明出了既简单又极其成功的便条纸（Post-It）。"
+    },
+    {
+      "id": "s34",
+      "en": "Such examples give lie to the claim that ingenious, designing minds are responsible for human creativity and invention.",
+      "zh": "这些例子驳斥了人们认为是天才设计思维主导人类创造力和发明的说法。"
+    },
+    {
+      "id": "s35",
+      "en": "Far more banal and mechanical forces may be at work; forces that are fundamentally connected to the laws of science.",
+      "zh": "实际上，更平凡且机械性的力量可能在起作用；这些力量从根本上与科学规律相关。"
+    },
+    {
+      "id": "s36",
+      "en": "The notions of insight, creativity and genius are often invoked, but they remain vague and of doubtful scientific utility, especially when one considers the diverse and enduring contributions of individuals such as Plato, Leonardo da Vinci, Shakespeare, Beethoven, Galileo, Newton, Kepler, Curie, Pasteur and Edison.",
+      "zh": "洞察力、创造力和天才等观念经常被提及，但它们依然模糊，科学效用值得怀疑，尤其当考虑到柏拉图、列奥纳多·达·芬奇、莎士比亚、贝多芬、伽利略、牛顿、开普勒、居里、巴斯德和爱迪生等人的多样且持久贡献时。"
+    },
+    {
+      "id": "s37",
+      "en": "These notions merely label rather than explain the evolution of human innovations.",
+      "zh": "这些观念只是给人类创新的演进贴标签，却没有真正解释其过程。"
+    },
+    {
+      "id": "s38",
+      "en": "We need another approach, and there is a promising candidate.",
+      "zh": "我们需要另一种方法，而且已有一个有希望的候选方案。"
+    },
+    {
+      "id": "s39",
+      "en": "The Law of Effect was advanced by psychologist Edward Thorndike in 1898, some 40 years after Charles Darwin published his groundbreaking work on biological evolution, On the Origin of Species .",
+      "zh": "效果律由心理学家爱德华·桑代克于1898年提出，大约在查尔斯·达尔文发表《物种起源》这一生物进化开创性著作40年之后。"
+    },
+    {
+      "id": "s40",
+      "en": "This simple law holds that organisms tend to repeat successful behaviors and to refrain from performing unsuccessful ones.",
+      "zh": "这条简单法则认为，生物体倾向于重复成功的行为，而避免执行失败的行为。"
+    },
+    {
+      "id": "s41",
+      "en": "Just like Darwin’s Law of Natural Selection, the Law of Effect involves an entirely mechanical process of variation and selection, without any end objective in sight.",
+      "zh": "正如达尔文的自然选择法则，效果律涉及一个完全机械的变异与选择过程，没有任何预设的最终目标。"
+    },
+    {
+      "id": "s42",
+      "en": "Of course, the origin of human innovation demands much further study.",
+      "zh": "当然，人类创新的起源还需要更多研究。"
+    },
+    {
+      "id": "s43",
+      "en": "In particular, the provenance of the raw material on which the Law of Effect operates is not as clearly known as that of the genetic mutations on which the Law of Natural Selection operates.",
+      "zh": "特别是，效果律作用的原材料的来源并不像自然选择法则作用的基因突变那样清楚。"
+    },
+    {
+      "id": "s44",
+      "en": "The generation of novel ideas and behaviors may not be entirely random, but constrained by prior successes and failures – of the current individual (such as Bohr) or of predecessors (such as Nicholson).",
+      "zh": "新思想和新行为的产生可能并非完全随机，而是受到当前个体（如玻尔）或前辈（如尼科尔森）以往成败的限制。"
+    },
+    {
+      "id": "s45",
+      "en": "The time seems right for abandoning the naive notions of intelligent design and genius, and for scientifically exploring the true origins of creative behavior.",
+      "zh": "现在似乎是放弃对智能设计和天才的天真观念，并科学地探究创造性行为真正起源的时候了。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Insight or evolution?</strong></span></p><p style="text-align:center;"><span style="font-size:16px;"><i>Two scientists consider the origins of discoveries and other innovative behavior</i></span></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;">Scientific discovery is popularly believed to result from the sheer genius of such intellectual stars as naturalist Charles Darwin and theoretical physicist Albert Einstein. Our view of such unique contributions to science often disregards the person’s prior experience and the efforts of their lesser-known predecessors. Conventional wisdom also places great weight on insight in promoting breakthrough scientific achievements, as if ideas spontaneously pop into someone’s head – fully formed and functional.</span></p><p style="text-align:left;">&nbsp;</p><p><span style="font-size:16px;">There may be some limited truth to this view. However, we believe that it largely misrepresents the real nature of scientific discovery, as well as that of creativity and innovation in many other realms of human endeavor.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">Setting aside such greats as Darwin and Einstein – whose monumental contributions are duly celebrated – we suggest that innovation is more a process of trial and error, where two steps forward may sometimes come with one step back, as well as one or more steps to the right or left. This evolutionary view of human innovation undermines the notion of creative genius and recognizes the cumulative nature of scientific progress.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">Consider one unheralded scientist: John Nicholson, a mathematical physicist working in the 1910s who postulated the existence of 'proto-elements' in outer space. By combining different numbers of weights of these proto-elements' atoms, Nicholson could recover the weights of all the elements in the then-known periodic table. These successes are all the more noteworthy given the fact that Nicholson was wrong about the presence of proto-elements: they do not actually exist. Yet, amid his often fanciful theories and wild speculations, Nicholson also proposed a novel theory about the structure of atoms. Niels Bohr, the Nobel prize-winning father of modern atomic theory, jumped off from this interesting idea to conceive his now-famous model of the atom.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">What are we to make of this story? One might simply conclude that science is a collective and cumulative enterprise. That may be true, but there may be a deeper insight to be gleaned. We propose that science is constantly evolving, much as species of animals do. In biological systems, organisms may display new characteristics that result from random genetic mutations. In the same way, random, arbitrary or accidental mutations of ideas may help pave the way for advances in science. If mutations prove beneficial, then the animal or the scientific theory will continue to thrive and perhaps reproduce.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">Support for this evolutionary view of behavioral innovation comes from many domains. Consider one example of an influential innovation in US horseracing. The so-called 'acey-deucy' stirrup placement, in which the rider’s foot in his left stirrup is placed as much as 25 centimeters lower than the right, is believed to confer important speed advantages when turning on oval tracks. It was developed by a relatively unknown jockey named Jackie Westrope. Had Westrope conducted methodical investigations or examined extensive film records in a shrewd plan to outrun his rivals? Had he foreseen the speed advantage that would be conferred by riding acey-deucy? No. He suffered a leg injury, which left him unable to fully bend his left knee. His modification just happened to coincide with enhanced left-hand turning performance. This led to the rapid and widespread adoption of riding acey-deucy by many riders, a racing style which continues in today’s thoroughbred racing.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">Plenty of other stories show that fresh advances can arise from error, misadventure, and also pure serendipity – a happy accident. For example, in the early 1970s, two employees of the company 3M each had a problem: Spencer Silver had a product – a glue which was only slightly sticky – and no use for it, while his colleague Art Fry was trying to figure out how to affix temporary bookmarks in his hymn book without damaging its pages. The solution to both these problems was the invention of the brilliantly simple yet phenomenally successful Post-It note. Such examples give lie to the claim that ingenious, designing minds are responsible for human creativity and invention. Far more banal and mechanical forces may be at work; forces that are fundamentally connected to the laws of science.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">The notions of insight, creativity and genius are often invoked, but they remain vague and of doubtful scientific utility, especially when one considers the diverse and enduring contributions of individuals such as Plato, Leonardo da Vinci, Shakespeare, Beethoven, Galileo, Newton, Kepler, Curie, Pasteur and Edison. These notions merely label rather than explain the evolution of human innovations. We need another approach, and there is a promising candidate.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">The Law of Effect was advanced by psychologist Edward Thorndike in 1898, some 40 years after Charles Darwin published his groundbreaking work on biological evolution, <i>On the Origin of Species</i>. This simple law holds that organisms tend to repeat successful behaviors and to refrain from performing unsuccessful ones. Just like Darwin’s Law of Natural Selection, the Law of Effect involves an entirely mechanical process of variation and selection, without any end objective in sight.</span></p><p>&nbsp;</p><p><span style="font-size:16px;">Of course, the origin of human innovation demands much further study. In particular, the provenance of the raw material on which the Law of Effect operates is not as clearly known as that of the genetic mutations on which the Law of Natural Selection operates. The generation of novel ideas and behaviors may not be entirely random, but constrained by prior successes and failures – of the current individual (such as Bohr) or of predecessors (such as Nicholson).</span></p><p>&nbsp;</p><p><span style="font-size:16px;">The time seems right for abandoning the naive notions of intelligent design and genius, and for scientifically exploring the true origins of creative behavior.</span></p><p style="text-align:left;"><span style="font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>

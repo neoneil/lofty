@@ -1070,5 +1070,248 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Manatees, also known as sea cows, are aquatic mammals that belong to a group of animals called Sirenia.",
+      "zh": "海牛，也被称为海洋奶牛，是属于海牛目（Sirenia）的一类水生哺乳动物。"
+    },
+    {
+      "id": "s2",
+      "en": "This group also contains dugongs.",
+      "zh": "这个分类群中还包括儒艮。"
+    },
+    {
+      "id": "s3",
+      "en": "Dugongs and manatees look quite alike - they are similar in size, colour and shape, and both have flexible flippers for forelimbs.",
+      "zh": "儒艮和海牛看起来非常相似——它们的体型、颜色和形状相近，而且前肢都是灵活的鳍状肢。"
+    },
+    {
+      "id": "s4",
+      "en": "However, the manatee has a broad, rounded tail, whereas the dugong's is fluked, like that of a whale.",
+      "zh": "然而，海牛拥有宽大而圆形的尾巴，而儒艮的尾巴分叉，类似鲸鱼的尾鳍。"
+    },
+    {
+      "id": "s5",
+      "en": "There are three species of manatees: the West Indian manatee (Trichechus manatus), the African manatee (Trichechus senegalensis) and the Amazonian manatee (Trichechus inunguis).",
+      "zh": "海牛共有三个物种：西印度海牛（Trichechus manatus）、非洲海牛（Trichechus senegalensis）和亚马逊海牛（Trichechus inunguis）。"
+    },
+    {
+      "id": "s6",
+      "en": "Unlike most mammals, manatees have only six bones in their neck - most others, including humans and giraffes, have seven.",
+      "zh": "与大多数哺乳动物不同，海牛的颈部只有六块骨头，而大多数其他哺乳动物，包括人类和长颈鹿，都是七块。"
+    },
+    {
+      "id": "s7",
+      "en": "This short neck allows a manatee to move its head up and down, but not side to side.",
+      "zh": "这段短颈使海牛能上下摆动头部，但无法左右转动。"
+    },
+    {
+      "id": "s8",
+      "en": "To see something on its left or its right, a manatee must turn its entire body, steering with its flippers.",
+      "zh": "要看到左边或右边的东西，海牛必须转动整个身体，并用鳍状肢来控制方向。"
+    },
+    {
+      "id": "s9",
+      "en": "Manatees have pectoral flippers but no back limbs, only a tail for propulsion.",
+      "zh": "海牛有胸鳍，但没有后肢，只有尾巴用于推进。"
+    },
+    {
+      "id": "s10",
+      "en": "They do have pelvic bones, however - a leftover from their evolution from a four-legged to a fully aquatic animal.",
+      "zh": "不过它们确实有骨盆骨，这是它们从四足动物进化为完全水生动物的遗留特征。"
+    },
+    {
+      "id": "s11",
+      "en": "Manatees share some visual similarities to elephants.",
+      "zh": "海牛在外观上与大象有一些相似之处。"
+    },
+    {
+      "id": "s12",
+      "en": "Like elephants, manatees have thick, wrinkled skin.",
+      "zh": "像大象一样，海牛的皮肤厚且有皱纹。"
+    },
+    {
+      "id": "s13",
+      "en": "They also have some hairs covering their bodies which help them sense vibrations in the water around them.",
+      "zh": "它们的身体上还有一些毛发，帮助感知周围水中的震动。"
+    },
+    {
+      "id": "s14",
+      "en": "Seagrasses and other marine plants make up most of a manatee's diet.",
+      "zh": "海草和其他海洋植物构成了海牛饮食的大部分。"
+    },
+    {
+      "id": "s15",
+      "en": "Manatees spend about eight hours each day grazing and uprooting plants.",
+      "zh": "海牛每天大约花费八个小时觅食和拔除植物。"
+    },
+    {
+      "id": "s16",
+      "en": "They eat up to 15% of their weight in food each day.",
+      "zh": "它们每天摄入的食物可达自身体重的15%。"
+    },
+    {
+      "id": "s17",
+      "en": "African manatees are omnivorous - studies have shown that molluscs and fish make up a small part of their diets.",
+      "zh": "非洲海牛是杂食性动物——研究显示软体动物和鱼类在它们的饮食中占有一小部分。"
+    },
+    {
+      "id": "s18",
+      "en": "West Indian and Amazonian manatees are both herbivores.",
+      "zh": "西印度海牛和亚马逊海牛都是草食性动物。"
+    },
+    {
+      "id": "s19",
+      "en": "Manatees' teeth are all molars - flat, rounded teeth for grinding food.",
+      "zh": "海牛的牙齿全部是臼齿——扁平圆润，用于磨碎食物。"
+    },
+    {
+      "id": "s20",
+      "en": "Due to manatees' abrasive aquatic plant diet, these teeth get worn down and they eventually fall out, so they continually grow new teeth that get pushed forward to replace the ones they lose.",
+      "zh": "由于海牛食用的水生植物具有磨蚀性，它们的牙齿会逐渐磨损并最终脱落，因此它们不断长出新牙，并将新牙推前替代掉落的牙齿。"
+    },
+    {
+      "id": "s21",
+      "en": "Instead of having incisors to grasp their food, manatees have lips which function like a pair of hands to help tear food away from the seafloor.",
+      "zh": "海牛没有门牙来抓取食物，而是用嘴唇，就像一双手一样，有助于从海底撕扯食物。"
+    },
+    {
+      "id": "s22",
+      "en": "Manatees are fully aquatic, but as mammals, they need to come up to the surface to breathe.",
+      "zh": "海牛是完全水生的动物，但作为哺乳动物，它们需要浮到水面呼吸。"
+    },
+    {
+      "id": "s23",
+      "en": "When awake, they typically surface every two to four minutes, but they can hold their breath for much longer.",
+      "zh": "醒着时，它们通常每两到四分钟浮出水面一次，但能屏息更长时间。"
+    },
+    {
+      "id": "s24",
+      "en": "Adult manatees sleep underwater for 10-12 hours a day, but they come up for air every 15-20 minutes.",
+      "zh": "成年海牛每天在水下睡眠10到12小时，但每15到20分钟会上浮换气一次。"
+    },
+    {
+      "id": "s25",
+      "en": "Active manatees need to breathe more frequently.",
+      "zh": "活跃的海牛需要更频繁地呼吸。"
+    },
+    {
+      "id": "s26",
+      "en": "It's thought that manatees use their muscular diaphragm and breathing to adjust their buoyancy.",
+      "zh": "人们认为海牛通过肌肉膈膜和呼吸调节自身的浮力。"
+    },
+    {
+      "id": "s27",
+      "en": "They may use diaphragm contractions to compress and store gas in folds in their large intestine to help them float.",
+      "zh": "它们可能利用膈膜的收缩，将气体压缩存储在大肠的褶皱中，帮助浮起身体。"
+    },
+    {
+      "id": "s28",
+      "en": "The West Indian manatee reaches about 3.5 metres long and weighs on average around 500 kilogrammes.",
+      "zh": "西印度海牛体长约3.5米，平均体重约500公斤。"
+    },
+    {
+      "id": "s29",
+      "en": "It moves between fresh water and salt water, taking advantage of coastal mangroves and coral reefs, rivers, lakes and inland lagoons.",
+      "zh": "它们在淡水和盐水之间活动，利用沿海红树林和珊瑚礁、河流、湖泊以及内陆泻湖。"
+    },
+    {
+      "id": "s30",
+      "en": "There are two subspecies of West Indian manatee: the Antillean manatee is found in waters from the Bahamas to Brazil, whereas the Florida manatee is found in US waters, although some individuals have been recorded in the Bahamas.",
+      "zh": "西印度海牛有两个亚种：安的列斯海牛分布在巴哈马到巴西海域，而佛罗里达海牛则生活在美国水域，尽管有些个体曾被记录出现在巴哈马。"
+    },
+    {
+      "id": "s31",
+      "en": "In winter, the Florida manatee is typically restricted to Florida.",
+      "zh": "冬季，佛罗里达海牛通常只限于佛罗里达。"
+    },
+    {
+      "id": "s32",
+      "en": "When the ambient water temperature drops below 20ºC, it takes refuge in naturally and artificially warmed water, such as at the warm-water outfalls from powerplants.",
+      "zh": "当周围水温降至20摄氏度以下时，它们会躲到自然或人工加热的水域避寒，比如电厂的暖水排放口。"
+    },
+    {
+      "id": "s33",
+      "en": "The African manatee is also about 3.5 metres long and found in the sea along the west coast of Africa, from Mauritania down to Angola.",
+      "zh": "非洲海牛体长也约3.5米，分布在非洲西海岸海域，从毛里塔尼亚一直延伸到安哥拉。"
+    },
+    {
+      "id": "s34",
+      "en": "The species also makes use of rivers, with the mammals seen in landlocked countries such as Mali and Niger.",
+      "zh": "这种物种还会利用河流，曾在马里和尼日尔等内陆国家被发现。"
+    },
+    {
+      "id": "s35",
+      "en": "The Amazonian manatee is the smallest species, though it is still a big animal.",
+      "zh": "亚马逊海牛是体型最小的物种，尽管如此，它仍然是只大型动物。"
+    },
+    {
+      "id": "s36",
+      "en": "It grows to about 2.5 metres long and 350 kilogrammes.",
+      "zh": "它体长约2.5米，体重约350公斤。"
+    },
+    {
+      "id": "s37",
+      "en": "Amazonian manatees favour calm, shallow waters that are above 23ºC.",
+      "zh": "亚马逊海牛偏好23摄氏度以上的平静浅水区。"
+    },
+    {
+      "id": "s38",
+      "en": "This species is found in fresh water in the Amazon Basin in Brazil, as well as in Colombia, Ecuador and Peru.",
+      "zh": "该物种分布于巴西亚马逊盆地的淡水中，也见于哥伦比亚、厄瓜多尔和秘鲁。"
+    },
+    {
+      "id": "s39",
+      "en": "All three manatee species are endangered or at a heightened risk of extinction.",
+      "zh": "所有三种海牛都处于濒危或极度濒临灭绝的风险之中。"
+    },
+    {
+      "id": "s40",
+      "en": "The African manatee and Amazonian manatee are both listed as Vulnerable by the International Union for Conservation of Nature (IUCN).",
+      "zh": "非洲海牛和亚马逊海牛均被国际自然保护联盟（IUCN）列为“易危”级别。"
+    },
+    {
+      "id": "s41",
+      "en": "It is estimated that 140,000 Amazonian manatees were killed between 1935 and 1954 for their meat, fat and skin, with the latter used to make leather.",
+      "zh": "据估计，1935年至1954年间，有14万只亚马逊海牛因其肉、脂肪和皮肤被捕杀，其中皮肤被用来制作皮革。"
+    },
+    {
+      "id": "s42",
+      "en": "In more recent years, African manatee decline has been tied to incidental capture in fishing nets and hunting.",
+      "zh": "近年来，非洲海牛数量减少与被渔网意外捕获和狩猎有关。"
+    },
+    {
+      "id": "s43",
+      "en": "Manatee hunting is now illegal in every country the African species is found in.",
+      "zh": "目前，在非洲海牛分布的所有国家，捕猎海牛都是非法的。"
+    },
+    {
+      "id": "s44",
+      "en": "The two subspecies of West Indian manatee are listed as Endangered by the IUCN.",
+      "zh": "西印度海牛的两个亚种被IUCN列为“濒危”级别。"
+    },
+    {
+      "id": "s45",
+      "en": "Both are also expected to undergo a decline of 20% over the next 40 years.",
+      "zh": "预计这两个亚种在未来40年内均将下降约20%。"
+    },
+    {
+      "id": "s46",
+      "en": "A review of almost 1,800 cases of entanglement in fishing nets and of plastic consumption among marine mammals in US waters from 2009 to 2020 found that at least 700 cases involved manatees.",
+      "zh": "对2009年至2020年间美国海域近1800起海洋哺乳动物被渔网缠绕和误食塑料事件的回顾显示，至少700起涉及海牛。"
+    },
+    {
+      "id": "s47",
+      "en": "The chief cause of death in Florida manatees is boat strikes.",
+      "zh": "佛罗里达海牛死亡的主要原因是船只撞击。"
+    },
+    {
+      "id": "s48",
+      "en": "However, laws in certain parts of Florida now limit boat speeds during winter, allowing slow-moving manatees more time to respond.",
+      "zh": "然而，佛罗里达部分地区现已立法限制冬季船速，为行动缓慢的海牛提供更多反应时间。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Manatees</span></strong></p><p style="text-align: left;">Manatees, also known as sea cows, are aquatic mammals that belong to a group of animals called Sirenia. This group also contains dugongs. Dugongs and manatees look quite alike - they are similar in size, colour and shape, and both have flexible flippers for forelimbs. However, the manatee has a broad, rounded tail, whereas the dugong's is fluked, like that of a whale. There are three species of manatees: the West Indian manatee (Trichechus manatus), the African manatee (Trichechus senegalensis) and the Amazonian manatee (Trichechus inunguis).</p><p style="text-align: left;"><br></p><p style="text-align: left;">Unlike most mammals, manatees have only six bones in their neck - most others, including humans and giraffes, have seven. This short neck allows a manatee to move its head up and down, but not side to side. To see something on its left or its right, a manatee must turn its entire body, steering with its flippers. Manatees have pectoral flippers but no back limbs, only a tail for propulsion. They do have pelvic bones, however - a leftover from their evolution from a four-legged to a fully aquatic animal. Manatees share some visual similarities to elephants. Like elephants, manatees have thick, wrinkled skin. They also have some hairs covering their bodies which help them sense vibrations in the water around them.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Seagrasses and other marine plants make up most of a manatee's diet. Manatees spend about eight hours each day grazing and uprooting plants. They eat up to 15% of their weight in food each day. African manatees are omnivorous - studies have shown that molluscs and fish make up a small part of their diets. West Indian and Amazonian manatees are both herbivores.</p><p style="text-align: left;"><br></p><p>Manatees' teeth are all molars - flat, rounded teeth for grinding food. Due to manatees' abrasive aquatic plant diet, these teeth get worn down and they eventually fall out, so they continually grow new teeth that get pushed forward to replace the ones they lose. Instead of having incisors to grasp their food, manatees have lips which function like a pair of hands to help tear food away from the seafloor.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Manatees are fully aquatic, but as mammals, they need to come up to the surface to breathe. When awake, they typically surface every two to four minutes, but they can hold their breath for much longer. Adult manatees sleep underwater for 10-12 hours a day, but they come up for air every 15-20 minutes. Active manatees need to breathe more frequently. It's thought that manatees use their muscular diaphragm and breathing to adjust their buoyancy. They may use diaphragm contractions to compress and store gas in folds in their large intestine to help them float.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The West Indian manatee reaches about 3.5 metres long and weighs on average around 500 kilogrammes. It moves between fresh water and salt water, taking advantage of coastal mangroves and coral reefs, rivers, lakes and inland lagoons. There are two subspecies of West Indian manatee: the Antillean manatee is found in waters from the Bahamas to Brazil, whereas the Florida manatee is found in US waters, although some individuals have been recorded in the Bahamas. In winter, the Florida manatee is typically restricted to Florida. When the ambient water temperature drops below 20ºC, it takes refuge in naturally and artificially warmed water, such as at the warm-water outfalls from powerplants.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The African manatee is also about 3.5 metres long and found in the sea along the west coast of Africa, from Mauritania down to Angola. The species also makes use of rivers, with the mammals seen in landlocked countries such as Mali and Niger.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The Amazonian manatee is the smallest species, though it is still a big animal. It grows to about 2.5 metres long and 350 kilogrammes. Amazonian manatees favour calm, shallow waters that are above 23ºC. This species is found in fresh water in the Amazon Basin in Brazil, as well as in Colombia, Ecuador and Peru.</p><p style="text-align: left;"><br></p><p style="text-align: left;">All three manatee species are endangered or at a heightened risk of extinction. The African manatee and Amazonian manatee are both listed as Vulnerable by the International Union for Conservation of Nature (IUCN). It is estimated that 140,000 Amazonian manatees were killed between 1935 and 1954 for their meat, fat and skin, with the latter used to make leather. In more recent years, African manatee decline has been tied to incidental capture in fishing nets and hunting. Manatee hunting is now illegal in every country the African species is found in.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The two subspecies of West Indian manatee are listed as Endangered by the IUCN. Both are also expected to undergo a decline of 20% over the next 40 years. A review of almost 1,800 cases of entanglement in fishing nets and of plastic consumption among marine mammals in US waters from 2009 to 2020 found that at least 700 cases involved manatees. The chief cause of death in Florida manatees is boat strikes. However, laws in certain parts of Florida now limit boat speeds during winter, allowing slow-moving manatees more time to respond.</p><p style="text-align: center;"><strong><br></strong></p>

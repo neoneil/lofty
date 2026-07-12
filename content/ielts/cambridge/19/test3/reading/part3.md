@@ -1820,5 +1820,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Is the era of artificial speech translation upon us?",
+      "zh": "人工语音翻译时代来临了吗？"
+    },
+    {
+      "id": "s2",
+      "en": "Once the stuff of science fiction, technology that enables people to talk using different languages is now here.",
+      "zh": "曾经是科幻小说中的内容，如今可以让人们使用不同语言交流的技术已经出现。"
+    },
+    {
+      "id": "s3",
+      "en": "But how effective is it?",
+      "zh": "但它的效果如何？"
+    },
+    {
+      "id": "s4",
+      "en": "Noise, Alex Waibel tells me, is one of the major challenges that artificial speech translation has to meet.",
+      "zh": "亚历克斯·瓦伊贝尔告诉我，噪音是人工语音翻译必须面对的主要挑战之一。"
+    },
+    {
+      "id": "s5",
+      "en": "A device may be able to recognise speech in a laboratory, or a meeting room, but will struggle to cope with the kind of background noise I can hear in my office surrounding Professor Waibel as he speaks to me from Kyoto station in Japan.",
+      "zh": "设备可能能在实验室或会议室识别语音，但在我办公室听到的大量背景噪音下，它就很难应付了——瓦伊贝尔教授当时正从日本京都车站与我通话。"
+    },
+    {
+      "id": "s6",
+      "en": "I'm struggling to follow him in English, on a scratchy line that reminds me we are nearly 10,000 kilometres apart - and that distance is still an obstacle to communication even if you're speaking the same language, as we are.",
+      "zh": "我努力通过一条嘶哑的线路用英语跟上他的讲话，这让我意识到我们相距近一万公里——即使说着同一种语言，这种距离仍然是交流的障碍。"
+    },
+    {
+      "id": "s7",
+      "en": "We haven't reached the future yet.",
+      "zh": "我们还没有到未来的那一天。"
+    },
+    {
+      "id": "s8",
+      "en": "If we had, Waibel would have been able to speak more comfortably in his native German and I would have been able to hear his words in English.",
+      "zh": "如果到那一天，瓦伊贝尔就能用母语德语更自在地说话，而我则能听懂他的英语翻译。"
+    },
+    {
+      "id": "s9",
+      "en": "At Karlsruhe Institute of Technology, where he is a professor of computer science, Waibel and his colleagues already give lectures in German that their students can follow in English via an electronic translator.",
+      "zh": "在卡尔斯鲁厄理工学院，瓦伊贝尔是计算机科学教授，他和同事们已经开始用德语授课，学生们则通过电子翻译器用英语听讲。"
+    },
+    {
+      "id": "s10",
+      "en": "The system generates text that students can read on their laptops or phones, so the process is somewhat similar to subtitling.",
+      "zh": "该系统生成文本，学生可以通过笔记本或手机阅读，过程有点类似字幕翻译。"
+    },
+    {
+      "id": "s11",
+      "en": "It helps that lecturers speak clearly, don't have to compete with background chatter, and say much the same thing each year.",
+      "zh": "讲师说话清晰，没有背景噪音干扰，并且每年内容大致相同，这些都很有帮助。"
+    },
+    {
+      "id": "s12",
+      "en": "The idea of artificial speech translation has been around for a long time.",
+      "zh": "人工语音翻译的想法已经存在很长时间了。"
+    },
+    {
+      "id": "s13",
+      "en": "Douglas Adams' science fiction novel, The Hitchhiker's Guide to the Galaxy, published in 1979, featured a life form called the 'Babel fish' which, when placed in the ear, enabled a listener to understand any language in the universe.",
+      "zh": "道格拉斯·亚当斯1979年出版的科幻小说《银河系漫游指南》中描绘了一种叫“巴别鱼”的生物，只要放入耳中，便能让听者理解宇宙中任何语言。"
+    },
+    {
+      "id": "s14",
+      "en": "It came to represent one of those devices that technology enthusiasts dream of long before they become practically realisable, like TVs flat enough to hang on walls: objects that we once could only dream of having but that are now commonplace.",
+      "zh": "它代表了科技爱好者梦寐以求的设备之一，就像足够薄可挂墙的电视一样：曾经只能梦想拥有的东西现在已成日常。"
+    },
+    {
+      "id": "s15",
+      "en": "Now devices that look like prototype Babel fish have started to appear, riding a wave of advances in artificial translation and voice recognition.",
+      "zh": "现在，类似“巴别鱼”原型的设备开始出现，乘着人工翻译和语音识别技术的浪潮发展。"
+    },
+    {
+      "id": "s16",
+      "en": "At this stage, however, they seem to be regarded as eye-catching novelties rather than steps towards what Waibel calls 'making a language-transparent society'.",
+      "zh": "然而，在目前阶段，这些设备更像是引人注目的新奇产品，而非瓦伊贝尔所说的“构建语言透明社会”的进步。"
+    },
+    {
+      "id": "s17",
+      "en": "They tend to be domestic devices or applications suitable for hotel check-ins, for example, providing a practical alternative to speaking traveller's English.",
+      "zh": "它们往往是适合家庭使用的设备或应用程序，比如酒店办理入住，提供了一种比说“旅游英语”更实用的选择。"
+    },
+    {
+      "id": "s18",
+      "en": "The efficiency of the translator is less important than the social function.",
+      "zh": "翻译的效率不如它的社交功能重要。"
+    },
+    {
+      "id": "s19",
+      "en": "However, 'Professionals are less inclined to be patient in a conversation,' founder and CEO at Waverly Labs, Andrew Ochoa, observes.",
+      "zh": "然而，Waverly Labs的创始人兼CEO安德鲁·奥乔亚观察到，“专业人士在对话中不太愿意耐心等待。”"
+    },
+    {
+      "id": "s20",
+      "en": "To redress this, Waverly is now preparing a new model for professional applications, which entails performance improvements in speech recognition, translation accuracy and the time it takes to deliver the translated speech.",
+      "zh": "为解决这一问题，Waverly正在为专业用途准备一款新型号，旨在提升语音识别、翻译准确性及译语输出速度。"
+    },
+    {
+      "id": "s21",
+      "en": "For a conversation, both speakers need to have devices called Pilots (translator earpieces) in their ears.",
+      "zh": "进行对话时，双方都需要佩戴名为Pilots（翻译耳机）的设备。"
+    },
+    {
+      "id": "s22",
+      "en": "'We find that there's a barrier with sharing one of the earphones with a stranger,' says Ochoa.",
+      "zh": "奥乔亚说：“我们发现与陌生人共享一只耳机存在障碍。”"
+    },
+    {
+      "id": "s23",
+      "en": "That can't have been totally unexpected.",
+      "zh": "这并非完全出乎意料。"
+    },
+    {
+      "id": "s24",
+      "en": "The problem would be solved if earpiece translators became sufficiently prevalent that strangers would be likely to already have their own in their ears.",
+      "zh": "如果翻译耳机变得普及，陌生人也可能都有自己的耳机，这个问题就会得到解决。"
+    },
+    {
+      "id": "s25",
+      "en": "Whether that happens, and how quickly, will probably depend not so much on the earpieces themselves, but on the prevalence of voice-controlled devices and artificial translation in general.",
+      "zh": "这是否会发生以及速度如何，可能更多取决于语音控制设备和人工翻译技术的普及程度，而非耳机设备本身。"
+    },
+    {
+      "id": "s26",
+      "en": "Waibel highlights the significance of certain Asian nations, noting that voice translation has really taken off in countries such as Japan with a range of systems.",
+      "zh": "瓦伊贝尔强调了部分亚洲国家的重要性，指出语音翻译在像日本这样的国家已经真正兴起，并有多种系统。"
+    },
+    {
+      "id": "s27",
+      "en": "There is still a long way to go, though.",
+      "zh": "不过，仍然任重道远。"
+    },
+    {
+      "id": "s28",
+      "en": "A translation system needs to be simultaneous, like the translator's voice speaking over the foreign politician being interviewed on the TV, rather than in sections that oblige speakers to pause after every few remarks and wait for the translation to be delivered.",
+      "zh": "翻译系统需要做到同步翻译，如同电视上采访外国政客时译员的声音一样，而不是分段翻译，迫使发言人在每几句话后暂停，等待翻译完成。"
+    },
+    {
+      "id": "s29",
+      "en": "It needs to work offline, for situations where internet access isn't possible, and to address apprehensions about the amount of private speech data accumulating in the cloud, having been sent to servers for processing.",
+      "zh": "它还需要支持离线工作，适应无法联网的环境，同时缓解人们对大量私人语音数据上传云端服务器处理的担忧。"
+    },
+    {
+      "id": "s30",
+      "en": "Systems not only need to cope with physical challenges such as noise, they will also need to be socially aware by addressing people in the right way.",
+      "zh": "系统不仅要应对噪音等物理挑战，还需要具备社交意识，以合适的方式称呼对方。"
+    },
+    {
+      "id": "s31",
+      "en": "Some cultural traditions demand solemn respect for academic status, for example, and it is only polite to respect this.",
+      "zh": "例如，有些文化传统要求对学术身份表示庄重尊重，尊重这些传统才是礼貌。"
+    },
+    {
+      "id": "s32",
+      "en": "Etiquette-sensitive artificial translators could relieve people of the need to know these differing cultural norms.",
+      "zh": "懂得礼仪的人工翻译器能帮助人们减少了解这些不同文化规范的负担。"
+    },
+    {
+      "id": "s33",
+      "en": "At the same time, they might help to preserve local customs, slowing the spread of habits associated with international English, such as its readiness to get on first-name terms.",
+      "zh": "同时，它们也可能帮助保留本地习俗，减缓与国际英语相关习惯的传播，比如快速使用名字称呼。"
+    },
+    {
+      "id": "s34",
+      "en": "Professors and other professionals will not outsource language awareness to software, though.",
+      "zh": "不过，教授和其他专业人士不会把语言意识完全交给软件。"
+    },
+    {
+      "id": "s35",
+      "en": "If the technology matures into seamless, ubiquitous artificial speech translation, it will actually add value to language skills.",
+      "zh": "如果这项技术发展成熟，成为无缝且普及的人工语音翻译，它实际上会提升语言技能的价值。"
+    },
+    {
+      "id": "s36",
+      "en": "Whether it will help people conduct their family lives or relationships is open to question - though one noteworthy possibility is that it could overcome the language barriers that often arise between generations after migration, leaving children and their grandparents without a shared language.",
+      "zh": "它是否有助于人们处理家庭生活或人际关系尚未可知——但一个值得关注的可能性是，它能跨越移民后常见的代沟语言障碍，使孩子与祖父母之间有共同语言。"
+    },
+    {
+      "id": "s37",
+      "en": "Whatever uses it is put to, though, it will never be as good as the real thing.",
+      "zh": "不过无论怎样使用，它始终无法替代真实的语言交流。"
+    },
+    {
+      "id": "s38",
+      "en": "Even if voice-morphing technology simulates the speaker's voice, their lip movements won't match, and they will look like they are in a dubbed movie.",
+      "zh": "即使声音变形技术能模拟说话者的声音，嘴唇动作仍然无法对齐，看起来像是配音电影中的人。"
+    },
+    {
+      "id": "s39",
+      "en": "The contrast will underline the value of shared languages, and the value of learning them.",
+      "zh": "这种反差凸显了共享语言以及学习语言的价值。"
+    },
+    {
+      "id": "s40",
+      "en": "Sharing a language can promote a sense of belonging and community, as with the international scientists who use English as a lingua franca, where their predecessors used Latin.",
+      "zh": "共享语言能促进归属感和社区意识，就像国际科学家们用英语作为通用语，而他们的前辈则用拉丁语一样。"
+    },
+    {
+      "id": "s41",
+      "en": "Though the practical need for a common language will diminish, the social value of sharing one will persist.",
+      "zh": "尽管对通用语言的实际需求会减少，但共享语言的社会价值将持续存在。"
+    },
+    {
+      "id": "s42",
+      "en": "And software will never be a substitute for the subtle but vital understanding that comes with knowledge of a language.",
+      "zh": "而软件永远无法替代伴随语言知识产生的细微而重要的理解。"
+    }
+  ]
 ---
 <p style="text-wrap: wrap; text-align: center;"><span style="font-weight: 700;"><span style="font-size: 22px;">Is the era of artificial speech translation upon us?</span></span></p><p style="text-wrap: wrap; text-align: center;"><span style="font-size:18px"><span style="font-size: 16px;">Once the stuff of science fiction, technology that enables people to talk using different languages is now here. But how effective is it?</span></span></p><p style="text-wrap: wrap;"><span style="font-size:16px">Noise, Alex Waibel tells me, is one of the major challenges that artificial speech translation has to meet. A device may be able to recognise speech in a laboratory, or a meeting room, but will struggle to cope with the kind of background noise I can hear in my office surrounding Professor Waibel as he speaks to me from Kyoto station in Japan. I'm struggling to follow him in English, on a scratchy line that reminds me we are nearly 10,000 kilometres apart - and that distance is still an obstacle to communication even if you're speaking the same language, as we are. We haven't reached the future yet. If we had, Waibel would have been able to speak more comfortably in his native German and I would have been able to hear his words in English.</span></p><p style="text-wrap: wrap;"><span style="font-size:16px"><br></span></p><p>At Karlsruhe Institute of Technology, where he is a professor of computer science, Waibel and his colleagues already give lectures in German that their students can follow in English via an electronic translator. The system generates text that students can read on their laptops or phones, so the process is somewhat similar to subtitling. It helps that lecturers speak clearly, don't have to compete with background chatter, and say much the same thing each year.</p><p><br></p><p>The idea of artificial speech translation has been around for a long time. Douglas Adams' science fiction novel, The Hitchhiker's Guide to the Galaxy, published in 1979, featured a life form called the 'Babel fish' which, when placed in the ear, enabled a listener to understand any language in the universe. It came to represent one of those devices that technology enthusiasts dream of long before they become practically realisable, like TVs flat enough to hang on walls: objects that we once could only dream of having but that are now commonplace. Now devices that look like prototype Babel fish have started to appear, riding a wave of advances in artificial translation and voice recognition.</p><p><br></p><p>At this stage, however, they seem to be regarded as eye-catching novelties rather than steps towards what Waibel calls 'making a language-transparent society'. They tend to be domestic devices or applications suitable for hotel check-ins, for example, providing a practical alternative to speaking traveller's English. The efficiency of the translator is less important than the social function. However, 'Professionals are less inclined to be patient in a conversation,' founder and CEO at Waverly Labs, Andrew Ochoa, observes. To redress this, Waverly is now preparing a new model for professional applications, which entails performance improvements in speech recognition, translation accuracy and the time it takes to deliver the translated speech.</p><p><br></p><p>For a conversation, both speakers need to have devices called Pilots (translator earpieces) in their ears. 'We find that there's a barrier with sharing one of the earphones with a stranger,' says Ochoa. That can't have been totally unexpected. The problem would be solved if earpiece translators became sufficiently prevalent that strangers would be likely to already have their own in their ears. Whether that happens, and how quickly, will probably depend not so much on the earpieces themselves, but on the prevalence of voice-controlled devices and artificial translation in general.</p><p><br></p><p>Waibel highlights the significance of certain Asian nations, noting that voice translation has really taken off in countries such as Japan with a range of systems. There is still a long way to go, though. A translation system needs to be simultaneous, like the translator's voice speaking over the foreign politician being interviewed on the TV, rather than in sections that oblige speakers to pause after every few remarks and wait for the translation to be delivered. It needs to work offline, for situations where internet access isn't possible, and to address apprehensions about the amount of private speech data accumulating in the cloud, having been sent to servers for processing.</p><p><br></p><p>Systems not only need to cope with physical challenges such as noise, they will also need to be socially aware by addressing people in the right way. Some cultural traditions demand solemn respect for academic status, for example, and it is only polite to respect this. Etiquette-sensitive artificial translators could relieve people of the need to know these differing cultural norms. At the same time, they might help to preserve local customs, slowing the spread of habits associated with international English, such as its readiness to get on first-name terms.</p><p><br></p><p>Professors and other professionals will not outsource language awareness to software, though. If the technology matures into seamless, ubiquitous artificial speech translation, it will actually add value to language skills. Whether it will help people conduct their family lives or relationships is open to question - though one noteworthy possibility is that it could overcome the language barriers that often arise between generations after migration, leaving children and their grandparents without a shared language.</p><p><br></p><p>Whatever uses it is put to, though, it will never be as good as the real thing. Even if voice-morphing technology simulates the speaker's voice, their lip movements won't match, and they will look like they are in a dubbed movie. The contrast will underline the value of shared languages, and the value of learning them. Sharing a language can promote a sense of belonging and community, as with the international scientists who use English as a lingua franca, where their predecessors used Latin. Though the practical need for a common language will diminish, the social value of sharing one will persist. And software will never be a substitute for the subtle but vital understanding that comes with knowledge of a language.</p><p><br></p><p><br></p>

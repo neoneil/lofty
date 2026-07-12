@@ -2004,5 +2004,223 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Do animals dream?",
+      "zh": "动物会做梦吗？"
+    },
+    {
+      "id": "s2",
+      "en": "Studies using electrodes attached to the heads of sleepers have shown that when we sleep, we do so in two ways that alternate throughout the night.",
+      "zh": "通过将电极连接到睡眠者头部的研究表明，我们睡觉时有两种交替出现的睡眠方式。"
+    },
+    {
+      "id": "s3",
+      "en": "The first is rapid eye movement (REM) or active sleep.",
+      "zh": "第一种是快速眼动（REM）或主动睡眠。"
+    },
+    {
+      "id": "s4",
+      "en": "During this stage our eyes move, even though our eyelids are closed.",
+      "zh": "在这个阶段，虽然眼睑闭合，我们的眼睛仍会移动。"
+    },
+    {
+      "id": "s5",
+      "en": "Our muscles also twitch slightly, though they are largely paralysed so we don't hurt ourselves.",
+      "zh": "我们的肌肉也会轻微抽搐，但大多数处于瘫痪状态，以防我们伤害自己。"
+    },
+    {
+      "id": "s6",
+      "en": "In contrast, we also engage in non-REM sleep, during which we barely move at all.",
+      "zh": "相比之下，我们还有非快速眼动睡眠，在此期间几乎不动。"
+    },
+    {
+      "id": "s7",
+      "en": "Most dream states, and certainly those with the most vivid dreams, happen during REM sleep.",
+      "zh": "大多数梦境，尤其是最生动的梦，发生在快速眼动睡眠期间。"
+    },
+    {
+      "id": "s8",
+      "en": "There's some evidence that other mammals may also dream.",
+      "zh": "有一些证据表明其他哺乳动物也可能做梦。"
+    },
+    {
+      "id": "s9",
+      "en": "For example, researchers compared the brain patterns of rats running through a maze when awake with their brain patterns during REM sleep.",
+      "zh": "例如，研究人员比较了清醒时老鼠跑迷宫的脑电图与其快速眼动睡眠时的脑电图。"
+    },
+    {
+      "id": "s10",
+      "en": "They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze.",
+      "zh": "他们发现两者非常相似，得出结论认为沉睡中的老鼠正在梦见穿越迷宫。"
+    },
+    {
+      "id": "s11",
+      "en": "But finding evidence of dreaming in non-mammals has proved more difficult.",
+      "zh": "但在非哺乳动物中找到做梦的证据则更为困难。"
+    },
+    {
+      "id": "s12",
+      "en": "Their brains are very different from those of humans, and it can often be difficult to record their activity while they are sleeping.",
+      "zh": "它们的大脑与人类大不相同，且在它们睡觉时记录脑部活动往往比较困难。"
+    },
+    {
+      "id": "s13",
+      "en": "Recently, however, researchers succeeded in recording brain activity in sleeping pigeons.",
+      "zh": "然而，最近研究人员成功记录了睡眠中鸽子的大脑活动。"
+    },
+    {
+      "id": "s14",
+      "en": "As in mammals, the recordings revealed both REM and non-REM sleep.",
+      "zh": "与哺乳动物一样，记录显示有快速眼动和非快速眼动睡眠。"
+    },
+    {
+      "id": "s15",
+      "en": "Intriguingly, REM sleep activity was high in brain regions involved in processing visual information, especially images related to physical activities such as flying, which suggests that this may possibly be what the pigeons were dreaming about.",
+      "zh": "有趣的是，快速眼动睡眠期间，处理视觉信息的大脑区域活动很高，尤其是与飞行等身体活动相关的图像，这表明鸽子可能在梦见飞行。"
+    },
+    {
+      "id": "s16",
+      "en": "That said, dreaming and REM sleep are unlikely to be universal in the animal kingdom.",
+      "zh": "尽管如此，做梦和快速眼动睡眠在动物界并非普遍存在。"
+    },
+    {
+      "id": "s17",
+      "en": "For example, sponges don't have brains, so they lack the machinery for dreaming.",
+      "zh": "例如，海绵体没有大脑，因此缺乏做梦的机制。"
+    },
+    {
+      "id": "s18",
+      "en": "There are also some animals with unusual sleep patterns.",
+      "zh": "还有一些动物具有异常的睡眠模式。"
+    },
+    {
+      "id": "s19",
+      "en": "These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake.",
+      "zh": "其中包括鲸鱼和海豚，它们睡觉时不会让整个大脑休眠，而是只让一半休息，另一半保持清醒。"
+    },
+    {
+      "id": "s20",
+      "en": "They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid.",
+      "zh": "它们也没有快速眼动睡眠的迹象，表明它们可能只经历非快速眼动梦境，这些梦境较不生动。"
+    },
+    {
+      "id": "s21",
+      "en": "This is surprising because we tend to think of whales and dolphins as having complex inner lives.",
+      "zh": "这令人惊讶，因为我们通常认为鲸鱼和海豚拥有复杂的内心世界。"
+    },
+    {
+      "id": "s22",
+      "en": "It's thought that they don't experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature.",
+      "zh": "人们认为它们不经历快速眼动睡眠是因为在这种睡眠时，动物更容易受到极端温度的影响。"
+    },
+    {
+      "id": "s23",
+      "en": "Nevertheless, in many cases REM sleep does seem to have benefits.",
+      "zh": "尽管如此，快速眼动睡眠在很多情况下确实有益处。"
+    },
+    {
+      "id": "s24",
+      "en": "Growing evidence from birds and mammals suggests that REM sleep and dreaming are important for forming memories and learning.",
+      "zh": "越来越多来自鸟类和哺乳动物的证据表明，快速眼动睡眠和做梦对记忆形成和学习很重要。"
+    },
+    {
+      "id": "s25",
+      "en": "It is believed that when events are replayed in dreams, this helps to integrate memories into longer-term storage.",
+      "zh": "人们相信，在梦中回放事件有助于将记忆整合到长期存储中。"
+    },
+    {
+      "id": "s26",
+      "en": "As soon as animals evolved moderately complex lifestyles, they would have needed to dream in order to manage these lifestyles.",
+      "zh": "一旦动物进化出中等复杂的生活方式，它们就需要做梦来管理这些生活方式。"
+    },
+    {
+      "id": "s27",
+      "en": "However, we still don't understand how this outward behaviour relates to internal experience.",
+      "zh": "然而，我们仍然不清楚这种外在行为与内在体验之间的关系。"
+    },
+    {
+      "id": "s28",
+      "en": "It seems impossible to know what it is like to be a rat or a pigeon, let alone imagine their dreamscapes.",
+      "zh": "似乎不可能知道成为一只老鼠或鸽子是什么感觉，更不用说想象它们的梦境了。"
+    },
+    {
+      "id": "s29",
+      "en": "We are quick to interpret the twitching limbs and quiet barks of sleeping dogs, but the truth is that we don't know if there is an internal experience of chasing rabbits that comes along with that.",
+      "zh": "我们很快就能解读出睡眠中狗狗的肢体抽动和轻声吠叫，但事实是，我们不知道它们是否真有追逐兔子的内心体验。"
+    },
+    {
+      "id": "s30",
+      "en": "Another non-human dreamer offers insight here.",
+      "zh": "另一种非人类做梦者在这里提供了洞见。"
+    },
+    {
+      "id": "s31",
+      "en": "In 2019, while making a documentary, David Scheel of Alaska Pacific University in the USA housed an octopus named Heidi in a tank in his living room.",
+      "zh": "2019年，美国阿拉斯加太平洋大学的David Scheel在拍摄纪录片时将一只名叫Heidi的章鱼放在他客厅的水箱中。"
+    },
+    {
+      "id": "s32",
+      "en": "At one point, in the middle of the night, Heidi seemed to dream: her limbs and head moved, and her skin rapidly changed colour, as though she was pursuing a crab.",
+      "zh": "某个深夜，Heidi似乎在做梦：她的触手和头部移动，皮肤快速变色，仿佛在追逐一只蟹。"
+    },
+    {
+      "id": "s33",
+      "en": "Similarly, a report recently emerged of a sleeping octopus apparently having a nightmare.",
+      "zh": "类似地，最近有报道称一只睡着的章鱼显然做了噩梦。"
+    },
+    {
+      "id": "s34",
+      "en": "Costello, as the octopus was called, thrashed around, extended his mantle as if trying to make himself look bigger, and squirted ink as though he were being attacked by a predator.",
+      "zh": "这只名叫Costello的章鱼挣扎不安，张开软体部分似乎想让自己看起来更大，还喷出墨汁，好像正遭受掠食者攻击。"
+    },
+    {
+      "id": "s35",
+      "en": "The nightmare study is intriguing, says Scheel, but is only based on one animal.",
+      "zh": "Scheel说，这项关于噩梦的研究很有趣，但仅基于一只动物。"
+    },
+    {
+      "id": "s36",
+      "en": "He argues that as well as outward behaviour, brain imaging is needed to show that the octopuses are replaying sequences of activities from their waking lives in dreams.",
+      "zh": "他认为除了外在行为外，还需要脑部成像来证明章鱼在梦中重现它们清醒时的活动序列。"
+    },
+    {
+      "id": "s37",
+      "en": "The trouble is that we will never be able to experience any animal's dreams.",
+      "zh": "问题是我们永远无法体验任何动物的梦境。"
+    },
+    {
+      "id": "s38",
+      "en": "That goes for other humans' dreams too.",
+      "zh": "这对其他人类的梦境也同样适用。"
+    },
+    {
+      "id": "s39",
+      "en": "But we can try to imagine what these dreamscapes are like by meeting animals on their own terms.",
+      "zh": "但我们可以尝试以动物自身的方式去理解，想象它们的梦境是怎样的。"
+    },
+    {
+      "id": "s40",
+      "en": "For example, vision is the dominant sense for many humans, and so our dreams are heavily visual too.",
+      "zh": "例如，视觉是许多人类的主要感官，因此我们的梦境也多以视觉为主。"
+    },
+    {
+      "id": "s41",
+      "en": "Dogs primarily navigate the world using smell while spiders rely much more on vibrations.",
+      "zh": "狗主要通过嗅觉感知世界，而蜘蛛更多依赖振动感受。"
+    },
+    {
+      "id": "s42",
+      "en": "It is likely that dreaming has served multiple purposes since the first complex animals evolved.",
+      "zh": "自第一批复杂动物进化以来，做梦很可能具有多重用途。"
+    },
+    {
+      "id": "s43",
+      "en": "And if this is the case, it is possible that better understanding of these purposes might shed light on the true purpose of our own dreams.",
+      "zh": "如果是这样，更好地理解这些用途可能有助于揭示我们自身梦境的真正目的。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:18px;"><strong>Do animals dream?</strong></span></p> <p><br>Studies using electrodes attached to the heads of sleepers have shown that when we sleep, we do so in two ways that alternate throughout the night. The first is rapid eye movement (REM) or active sleep. During this stage our eyes move, even though our eyelids are closed. Our muscles also twitch slightly, though they are largely paralysed so we don't hurt ourselves. In contrast, we also engage in non-REM sleep, during which we barely move at all. Most dream states, and certainly those with the most vivid dreams, happen during REM sleep.<br><br>There's some evidence that other mammals may also dream. For example, researchers compared the brain patterns of rats running through a maze when awake with their brain patterns during REM sleep. They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze.<br><br>But finding evidence of dreaming in non-mammals has proved more difficult. Their brains are very different from those of humans, and it can often be difficult to record their activity while they are sleeping. Recently, however, researchers succeeded in recording brain activity in sleeping pigeons. As in mammals, the recordings revealed both REM and non-REM sleep. Intriguingly, REM sleep activity was high in brain regions involved in processing visual information, especially images related to physical activities such as flying, which suggests that this may possibly be what the pigeons were dreaming about.<br><br>That said, dreaming and REM sleep are unlikely to be universal in the animal kingdom. For example, sponges don't have brains, so they lack the machinery for dreaming. There are also some animals with unusual sleep patterns. These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake. They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid. This is surprising because we tend to think of whales and dolphins as having complex inner lives. It's thought that they don't experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature.</p> <p><br>Nevertheless, in many cases REM sleep does seem to have benefits. Growing evidence from birds and mammals suggests that REM sleep and dreaming are important for forming memories and learning. It is believed that when events are replayed in dreams, this helps to integrate memories into longer-term storage. As soon as animals evolved moderately complex lifestyles, they would have needed to dream in order to manage these lifestyles.<br><br>However, we still don't understand how this outward behaviour relates to internal experience. It seems impossible to know what it is like to be a rat or a pigeon, let alone imagine their dreamscapes. We are quick to interpret the twitching limbs and quiet barks of sleeping dogs, but the truth is that we don't know if there is an internal experience of chasing rabbits that comes along with that.<br><br>Another non-human dreamer offers insight here. In 2019, while making a documentary, David Scheel of Alaska Pacific University in the USA housed an octopus named Heidi in a tank in his living room. At one point, in the middle of the night, Heidi seemed to dream: her limbs and head moved, and her skin rapidly changed colour, as though she was pursuing a crab.<br><br>Similarly, a report recently emerged of a sleeping octopus apparently having a nightmare. Costello, as the octopus was called, thrashed around, extended his mantle as if trying to make himself look bigger, and squirted ink as though he were being attacked by a predator. The nightmare study is intriguing, says Scheel, but is only based on one animal. He argues that as well as outward behaviour, brain imaging is needed to show that the octopuses are replaying sequences of activities from their waking lives in dreams.<br><br>The trouble is that we will never be able to experience any animal's dreams. That goes for other humans' dreams too. But we can try to imagine what these dreamscapes are like by meeting animals on their own terms. For example, vision is the dominant sense for many humans, and so our dreams are heavily visual too. Dogs primarily navigate the world using smell while spiders rely much more on vibrations.<br><br>It is likely that dreaming has served multiple purposes since the first complex animals evolved. And if this is the case, it is possible that better understanding of these purposes might shed light on the true purpose of our own dreams.</p>

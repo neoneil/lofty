@@ -2297,5 +2297,218 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Artificial Intelligence",
+      "zh": "人工智能"
+    },
+    {
+      "id": "s2",
+      "en": "In many countries in the West, hysteria about the future of artificial intelligence (AI) is everywhere.",
+      "zh": "在许多西方国家，关于人工智能（AI）未来的恐慌无处不在。"
+    },
+    {
+      "id": "s3",
+      "en": "There seems to be no shortage of sensationalist news about how AI could cure diseases, accelerate human innovation and improve human creativity.",
+      "zh": "似乎不缺乏关于人工智能如何治愈疾病、加速人类创新和提升人类创造力的耸人听闻的新闻。"
+    },
+    {
+      "id": "s4",
+      "en": "Just looking at the media headlines, you might think that we are already living in a future where AI has infiltrated every aspect of society.",
+      "zh": "仅凭媒体头条，你可能会认为我们已经生活在一个人工智能渗透社会每一个方面的未来世界。"
+    },
+    {
+      "id": "s5",
+      "en": "While it is undeniable that AI has opened up a wealth of promising opportunities, it has also led to the emergence of a mindset that can be best described as 'AI solutionism'.",
+      "zh": "尽管不可否认人工智能带来了大量有前景的机会，但这也导致了一种可以称作“人工智能解决主义”的思维方式的出现。"
+    },
+    {
+      "id": "s6",
+      "en": "This is the philosophy that, given enough data, machine learning algorithms can solve all of humanity's problems.",
+      "zh": "这种理念认为，只要有足够的数据，机器学习算法就能解决人类的所有问题。"
+    },
+    {
+      "id": "s7",
+      "en": "But, in fact, instead of supporting AI progress, this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles and setting unrealistic expectations about what AI can really do for humanity.",
+      "zh": "但事实上，这种思维方式非但没有支持人工智能的发展，反而通过忽视重要的人工智能安全原则和对人工智能能为人类真正做什么设定不切实际的期望，危害了机器智能的价值。"
+    },
+    {
+      "id": "s8",
+      "en": "In only a few years, AI solutionism has made its way from the technology evangelists' mouths in Silicon Valley in California to the minds of government officials and policymakers around the world.",
+      "zh": "仅仅几年时间，人工智能解决主义便从加利福尼亚硅谷技术传播者的口中传到全球政府官员和决策者的心中。"
+    },
+    {
+      "id": "s9",
+      "en": "The pendulum has swung from the dystopian notion that AI will destroy humanity to the utopian belief that our algorithmic saviour is here.",
+      "zh": "摆钟从反乌托邦式的认为人工智能会毁灭人类的观点，摆动到了乌托邦式的相信我们的算法拯救者已经到来的观点。"
+    },
+    {
+      "id": "s10",
+      "en": "We are now seeing governments pledge support to national AI initiatives and compete in a technological race to dominate the burgeoning machine-learning sector.",
+      "zh": "我们如今看到各国政府承诺支持国家人工智能计划，并在科技竞赛中争夺主导新兴的机器学习领域。"
+    },
+    {
+      "id": "s11",
+      "en": "While many politicians proclaim the transformative effects of the coming 'AI revolution', they fail to realise the complexity around deploying advanced machine learning systems in the real world.",
+      "zh": "虽然许多政治家宣扬即将到来的“人工智能革命”的变革性影响，但他们未能意识到在现实世界中部署先进机器学习系统的复杂性。"
+    },
+    {
+      "id": "s12",
+      "en": "One of the most promising varieties of AI technologies are neural networks.",
+      "zh": "神经网络是人工智能技术中最有前景的类型之一。"
+    },
+    {
+      "id": "s13",
+      "en": "This form of machine learning is loosely modelled on the neuronal structure of the human brain, but on a much smaller scale.",
+      "zh": "这种机器学习形式松散地模仿了人脑的神经结构，但规模要小得多。"
+    },
+    {
+      "id": "s14",
+      "en": "But what many politicians do not understand is that simply adding a neural network to a problem will not automatically mean that you'll find a solution.",
+      "zh": "但许多政治家不了解的是，简单地向一个问题中添加神经网络，并不意味着你就一定能找到解决方案。"
+    },
+    {
+      "id": "s15",
+      "en": "Similarly, adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair.",
+      "zh": "同样，将神经网络加入政府体系并不意味着它会立即变得更加包容或公平。"
+    },
+    {
+      "id": "s16",
+      "en": "AI systems need a lot of data to function, but the public sector typically does not have the appropriate data infrastructure to support advanced machine learning.",
+      "zh": "人工智能系统需要大量数据才能运行，但公共部门通常缺乏支持先进机器学习的适当数据基础设施。"
+    },
+    {
+      "id": "s17",
+      "en": "Most of the data remains stored in offline archives.",
+      "zh": "大多数数据仍然存储在离线档案中。"
+    },
+    {
+      "id": "s18",
+      "en": "The few digitised sources of data that exist tend to be buried in bureaucracy.",
+      "zh": "为数不多的数字化数据源往往埋藏在官僚体制中。"
+    },
+    {
+      "id": "s19",
+      "en": "More often than not, data is spread across different government departments that each require special permissions to be accessed.",
+      "zh": "数据往往分散在不同政府部门，每个部门都需要特别许可才能访问。"
+    },
+    {
+      "id": "s20",
+      "en": "Above all, the public sector typically lacks the human talent with the right technological capabilities to fully reap the benefits of machine intelligence.",
+      "zh": "最重要的是，公共部门通常缺乏具备适当技术能力的人才，无法充分利用机器智能的优势。"
+    },
+    {
+      "id": "s21",
+      "en": "For these reasons, the sensationalism over AI has attracted many critics.",
+      "zh": "基于这些原因，关于人工智能的炒作吸引了很多批评者。"
+    },
+    {
+      "id": "s22",
+      "en": "Stuart Russell, a professor of computer science at the University of California, Berkeley, has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI instead of the hypothetical takeover by super-intelligent robots.",
+      "zh": "加州大学伯克利分校计算机科学教授斯图尔特·拉塞尔长期倡导一种更理性和现实的做法，关注人工智能在日常简单应用上的作用，而非超级智能机器人假设性接管的想法。"
+    },
+    {
+      "id": "s23",
+      "en": "Similarly, Rodney Brooks, professor of robotics at Massachusetts Institute of Technology, writes that 'almost all innovations in robotics and AI take far, far, longer to be really widely deployed than people in the field and outside the field imagine'.",
+      "zh": "同样，麻省理工学院机器人学教授罗德尼·布鲁克斯写道：“几乎所有机器人和人工智能的创新都比领域内外的人们想象的要花更长得多的时间才能真正广泛应用。”"
+    },
+    {
+      "id": "s24",
+      "en": "One of the many difficulties in deploying machine learning systems is that AI is extremely susceptible to adversarial attacks.",
+      "zh": "部署机器学习系统的诸多难题之一是人工智能极易受到对抗性攻击。"
+    },
+    {
+      "id": "s25",
+      "en": "This means that a malicious AI can target another AI to make it behave in a certain way, such as forcing it to make wrong predictions.",
+      "zh": "这意味着恶意的人工智能可以针对另一个人工智能，使其以某种方式行为，比如强迫它做出错误的预测。"
+    },
+    {
+      "id": "s26",
+      "en": "Many researchers have warned against the rolling out of AI without appropriate security standards and defence mechanisms.",
+      "zh": "许多研究人员警告说，在没有适当安全标准和防御机制的情况下推行人工智能是危险的。"
+    },
+    {
+      "id": "s27",
+      "en": "Still, AI security remains an often overlooked topic when machine learning systems are installed.",
+      "zh": "然而，在安装机器学习系统时，人工智能安全仍是一个经常被忽视的话题。"
+    },
+    {
+      "id": "s28",
+      "en": "If we are to reap the benefits and minimise the potential harms of AI, we must start thinking about how machine learning can be meaningfully applied to specific areas of government, business and society.",
+      "zh": "如果我们想获得人工智能的益处并最大限度地减少其潜在危害，就必须开始思考机器学习如何有意义地应用于政府、商业和社会的具体领域。"
+    },
+    {
+      "id": "s29",
+      "en": "This means we need to have a discussion about AI ethics and the distrust that many people have towards machine learning.",
+      "zh": "这意味着我们需要讨论人工智能伦理以及许多人对机器学习的不信任感。"
+    },
+    {
+      "id": "s30",
+      "en": "Most importantly, we need to be aware of the limitations of AI and where people still need to take the lead.",
+      "zh": "最重要的是，我们需要意识到人工智能的局限性以及人类仍需发挥主导作用的领域。"
+    },
+    {
+      "id": "s31",
+      "en": "Instead of painting an unrealistic picture of the power of AI, it is important to take a step back and separate the actual technological capabilities of AI from fantasy.",
+      "zh": "与其描绘人工智能的虚幻力量，不如退一步，将人工智能的实际技术能力与幻想区分开来。"
+    },
+    {
+      "id": "s32",
+      "en": "The medical profession has also recognised the drawbacks to AI.",
+      "zh": "医学界也认识到了人工智能的缺点。"
+    },
+    {
+      "id": "s33",
+      "en": "The IBM Watson for Oncology programme was a piece of AI that was meant to help doctors treat cancer.",
+      "zh": "IBM Watson癌症项目是一个旨在帮助医生治疗癌症的人工智能系统。"
+    },
+    {
+      "id": "s34",
+      "en": "Even though it was developed to deliver the best recommendations, human experts found it hard to trust the machine.",
+      "zh": "尽管它被开发出来以提供最佳建议，但人类专家发现很难信任这台机器。"
+    },
+    {
+      "id": "s35",
+      "en": "As a result, the AI programme was abandoned in most hospitals where it was trialled.",
+      "zh": "因此，这个人工智能项目在大多数试用的医院中被放弃了。"
+    },
+    {
+      "id": "s36",
+      "en": "Similar difficulties arose in the legal domain when algorithms were used in courts in the US to sentence criminals.",
+      "zh": "在法律领域也出现了类似的困难，当算法被用于美国法庭判刑时。"
+    },
+    {
+      "id": "s37",
+      "en": "An algorithm calculated risk assessment scores and advised judges on the sentencing.",
+      "zh": "一个算法计算风险评估分数并为法官提供判刑建议。"
+    },
+    {
+      "id": "s38",
+      "en": "The system was found to amplify structural racial discrimination and was later abandoned.",
+      "zh": "该系统被发现加剧了结构性种族歧视，后来被废弃。"
+    },
+    {
+      "id": "s39",
+      "en": "There are some crucial lessons here for everyone aiming to boost investments in national AI programmes.",
+      "zh": "这为所有希望加强国家人工智能项目投资的人提供了一些重要教训。"
+    },
+    {
+      "id": "s40",
+      "en": "These examples demonstrate that there is no AI solution for everything.",
+      "zh": "这些例子表明，没有万能的人工智能解决方案。"
+    },
+    {
+      "id": "s41",
+      "en": "Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it.",
+      "zh": "仅仅为了使用人工智能而使用它，未必总是高效或有用的，并非每个问题都适合用机器智能来解决。"
+    },
+    {
+      "id": "s42",
+      "en": "All solutions come with a cost and not everything that can be automated should be.",
+      "zh": "所有解决方案都伴随着代价，并非所有可以自动化的事情都应该自动化。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Artificial Intelligence</strong></span></div><p><br>In many countries in the West, hysteria about the future of artificial intelligence (AI) is everywhere. There seems to be no shortage of sensationalist news about how AI could cure diseases, accelerate human innovation and improve human creativity. Just looking at the media headlines, you might think that we are already living in a future where AI has infiltrated every aspect of society.&nbsp;<br><br>While it is undeniable that AI has opened up a wealth of promising opportunities, it has also led to the emergence of a mindset that can be best described as 'AI solutionism'. This is the philosophy that, given enough data, machine learning algorithms can solve all of humanity's problems. But, in fact, instead of supporting AI progress, this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles and setting unrealistic expectations about what AI can really do for humanity.&nbsp;<br><br>In only a few years, AI solutionism has made its way from the technology evangelists' mouths in Silicon Valley in California to the minds of government officials and policymakers around the world. The pendulum has swung from the dystopian notion that AI will destroy humanity to the utopian belief that our algorithmic saviour is here.&nbsp;<br><br>We are now seeing governments pledge support to national AI initiatives and compete in a technological race to dominate the burgeoning machine-learning sector. While many politicians proclaim&nbsp;the transformative effects of the coming 'AI revolution', they fail to realise the complexity around deploying advanced machine learning systems in the real world.&nbsp;<br><br>One of the most promising varieties of AI technologies are neural networks. This form of machine learning is loosely modelled on the neuronal structure of the human brain, but on a much smaller scale. But what many politicians do not understand is that simply adding a neural network to a problem will not automatically mean that you'll find a solution. Similarly, adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair.&nbsp;<br><br>AI systems need a lot of data to function, but the public sector typically does not have the appropriate data infrastructure to support advanced machine learning. Most of the data remains stored in offline archives. The few digitised sources of data that exist tend to be buried in bureaucracy. More often than not, data is spread across different government departments that each require special permissions to be accessed. Above all, the public sector typically lacks the human talent with the right technological capabilities to fully reap the benefits of machine intelligence.&nbsp;<br><br>For these reasons, the sensationalism over AI has attracted many critics. Stuart Russell, a professor of computer science at the University of California, Berkeley, has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI instead of the&nbsp;hypothetical takeover by super-intelligent robots. Similarly, Rodney Brooks, professor of robotics at Massachusetts Institute of Technology, writes that 'almost all innovations in robotics and AI take far, far, longer to be really widely deployed than people in the field and outside the field imagine'.&nbsp;<br><br>One of the many difficulties in deploying machine learning systems is that AI is extremely susceptible to adversarial attacks. This means that a malicious AI can target another AI to make it behave in a certain way, such as forcing it to make wrong predictions. Many researchers have warned against the rolling out of AI without appropriate security standards and defence mechanisms. Still, AI security remains an often overlooked topic when machine learning systems are installed.&nbsp;<br><br>If we are to reap the benefits and minimise the potential harms of AI, we must start thinking about how machine learning can be meaningfully applied to specific areas of government, business and society. This means we need to have a discussion about AI ethics and the distrust that many people have towards machine learning.&nbsp;<br><br>Most importantly, we need to be aware of the limitations of AI and where people still need to take the lead. Instead of painting an unrealistic picture of the power of AI, it is important to take a step back and separate the actual technological capabilities of AI from fantasy.&nbsp;<br><br>The medical profession has also recognised the drawbacks to AI. The IBM Watson for Oncology programme was a piece of AI that was meant to help doctors treat cancer. Even though it was developed to deliver the best recommendations, human experts found it hard to trust the machine. As a result, the AI programme was abandoned in most hospitals where it was trialled.&nbsp;<br><br>Similar difficulties arose in the legal domain when algorithms were used in courts in the US to sentence criminals. An algorithm calculated risk assessment scores and advised judges on the sentencing. The system was found to amplify structural racial discrimination and was later abandoned.&nbsp;<br><br>There are some crucial lessons here for everyone aiming to boost investments in national AI programmes. These examples demonstrate that there is no AI solution for everything. Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it. All solutions come with a cost and not everything that can be automated should be.</p>

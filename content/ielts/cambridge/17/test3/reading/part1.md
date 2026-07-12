@@ -1053,5 +1053,188 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The thylacine",
+      "zh": "袋狼"
+    },
+    {
+      "id": "s2",
+      "en": "The extinct thylacine, also known as the Tasmanian tiger, was a marsupial* that bore a superficial resemblance to a dog.",
+      "zh": "灭绝的袋狼，也被称为塔斯马尼亚虎，是一种有袋类动物*，外形与狗有些相似。"
+    },
+    {
+      "id": "s3",
+      "en": "Its most distinguishing feature was the 13–19 dark brown stripes over its back, beginning at the rear of the body and extending onto the tail.",
+      "zh": "其最明显的特征是背部有13到19条深棕色的条纹，从身体后部延伸到尾巴上。"
+    },
+    {
+      "id": "s4",
+      "en": "The thylacine’s average nose-to-tail length for adult males was 162.6 cm, compared to 153.7 cm for females.",
+      "zh": "成年雄性袋狼的平均鼻到尾长度为162.6厘米，而雌性为153.7厘米。"
+    },
+    {
+      "id": "s5",
+      "en": "The thylacine appeared to occupy most types of terrain except dense rainforest, with open eucalyptus forest thought to be its prime habitat.",
+      "zh": "袋狼几乎栖息于所有类型的地形，除了浓密的雨林，开放的桉树森林被认为是其主要栖息地。"
+    },
+    {
+      "id": "s6",
+      "en": "In terms of feeding, it was exclusively carnivorous, and its stomach was muscular with an ability to distend so that it could eat large amounts of food at one time, probably an adaptation to compensate for long periods when hunting was unsuccessful and food scarce.",
+      "zh": "在饮食方面，它是纯肉食性的，胃部肌肉发达且能扩张，能一次性吃大量食物，这可能是一种适应性，以补偿长时间狩猎不成功和食物短缺的时期。"
+    },
+    {
+      "id": "s7",
+      "en": "The thylacine was not a fast runner and probably caught its prey by exhausting it during a long pursuit.",
+      "zh": "袋狼奔跑速度不快，可能通过长时间追赶使猎物精疲力尽后捕获它。"
+    },
+    {
+      "id": "s8",
+      "en": "During long-distance chases, thylacines were likely to have relied more on scent than any other sense.",
+      "zh": "在长距离追逐中，袋狼可能更多依赖嗅觉而非其他感官。"
+    },
+    {
+      "id": "s9",
+      "en": "They emerged to hunt during the evening, night and early morning and tended to retreat to the hills and forest for shelter during the day.",
+      "zh": "它们在傍晚、夜间和清晨出来觅食，白天则倾向于退避到山丘和森林中避难。"
+    },
+    {
+      "id": "s10",
+      "en": "Despite the common name 'tiger', the thylacine had a shy, nervous temperament.",
+      "zh": "尽管常被称为“虎”，袋狼却性格害羞、紧张。"
+    },
+    {
+      "id": "s11",
+      "en": "Although mainly nocturnal, it was sighted moving during the day and some individuals were even recorded basking in the sun.",
+      "zh": "虽然主要是夜行性，但也有人白天见过它移动，甚至记录到一些个体晒太阳。"
+    },
+    {
+      "id": "s12",
+      "en": "The thylacine had an extended breeding season from winter to spring, with indications that some breeding took place throughout the year.",
+      "zh": "袋狼的繁殖季节较长，从冬季延续到春季，有迹象表明一年四季都有繁殖活动。"
+    },
+    {
+      "id": "s13",
+      "en": "The thylacine, like all marsupials, was tiny and hairless when born.",
+      "zh": "袋狼和所有有袋类动物一样，初生时身体小且无毛。"
+    },
+    {
+      "id": "s14",
+      "en": "Newborns crawled into the pouch on the belly of their mother, and attached themselves to one of the four teats, remaining there for up to three months.",
+      "zh": "新生仔狼会爬入母亲腹部的育儿袋，吸附在四个乳头中的一个上，停留在那里长达三个月。"
+    },
+    {
+      "id": "s15",
+      "en": "When old enough to leave the pouch, the young stayed in a lair such as a deep rocky cave, well-hidden nest or hollow log, whilst the mother hunted.",
+      "zh": "当幼崽足够大可以离开育儿袋时，会呆在巢穴中，如深岩洞、隐蔽的巢穴或空心树干，而母亲则外出狩猎。"
+    },
+    {
+      "id": "s16",
+      "en": "Approximately 4,000 years ago, the thylacine was widespread throughout New Guinea and most of mainland Australia, as well as the island of Tasmania.",
+      "zh": "大约4000年前，袋狼广泛分布于新几内亚、大部分澳大利亚大陆以及塔斯马尼亚岛。"
+    },
+    {
+      "id": "s17",
+      "en": "The most recent, well-dated occurrence of a thylacine on the mainland is a carbon-dated fossil from Murray Cave in Western Australia, which is around 3,100 years old.",
+      "zh": "袋狼在大陆上的最新、准确测定的发现是一块来自澳大利亚西部默里洞穴的碳测定化石，约有3100年历史。"
+    },
+    {
+      "id": "s18",
+      "en": "Its extinction coincided closely with the arrival of wild dogs called dingoes in Australia and a similar predator in New Guinea.",
+      "zh": "袋狼的灭绝与野狗——澳大利亚的土狼——和新几内亚的类似掠食者到来时间非常接近。"
+    },
+    {
+      "id": "s19",
+      "en": "Dingoes never reached Tasmania, and most scientists see this as the main reason for the thylacine’s survival there.",
+      "zh": "土狼从未到达塔斯马尼亚，大多数科学家认为这是袋狼能够在那里存活的主要原因。"
+    },
+    {
+      "id": "s20",
+      "en": "The dramatic decline of the thylacine in Tasmania, which began in the 1830s and continued for a century, is generally attributed to the relentless efforts of sheep farmers and bounty hunters** with shotguns.",
+      "zh": "袋狼在塔斯马尼亚的急剧减少始于1830年代并持续了一个世纪，通常归因于养羊农场主和持枪赏金猎人的不懈猎杀。"
+    },
+    {
+      "id": "s21",
+      "en": "While this determined campaign undoubtedly played a large part, it is likely that various other factors also contributed to the decline and eventual extinction of the species.",
+      "zh": "虽然这场坚决的猎杀行动无疑起了很大作用，但其他多种因素也可能导致该物种的减少和最终灭绝。"
+    },
+    {
+      "id": "s22",
+      "en": "These include competition with wild dogs introduced by European settlers, loss of habitat along with the disappearance of prey species, and a distemper-like disease which may also have affected the thylacine.",
+      "zh": "这些因素包括与欧洲定居者引入的野狗的竞争、生境丧失及猎物种群减少，以及可能影响袋狼的一种类似犬瘟热的疾病。"
+    },
+    {
+      "id": "s23",
+      "en": "There was only one successful attempt to breed a thylacine in captivity, at Melbourne Zoo in 1899.",
+      "zh": "1899年，墨尔本动物园曾有过唯一一次成功的袋狼圈养繁殖尝试。"
+    },
+    {
+      "id": "s24",
+      "en": "This was despite the large numbers that went through some zoos, particularly London Zoo and Tasmania’s Hobart Zoo.",
+      "zh": "尽管许多袋狼曾被送往一些动物园，特别是伦敦动物园和塔斯马尼亚霍巴特动物园，但只有这一次繁殖成功。"
+    },
+    {
+      "id": "s25",
+      "en": "The famous naturalist John Gould foresaw the thylacine’s demise when he published his Mammals of Australia between 1848 and 1863, writing, 'The numbers of this singular animal will speedily diminish, extermination will have its full sway, and it will then, like the wolf of England and Scotland, be recorded as an animal of the past.'",
+      "zh": "著名博物学家约翰·古尔德在1848年至1863年间出版《澳大利亚哺乳动物》时预见了袋狼的灭亡，他写道：“这种奇特动物的数量将迅速减少，灭绝将全面展开，它将像英格兰和苏格兰的狼一样，被记录为过去的动物。”"
+    },
+    {
+      "id": "s26",
+      "en": "However, there seems to have been little public pressure to preserve the thylacine, nor was much concern expressed by scientists at the decline of this species in the decades that followed.",
+      "zh": "然而，公众对保护袋狼的压力似乎很小，科学家们在接下来的几十年里也未对该物种的减少表达过多关切。"
+    },
+    {
+      "id": "s27",
+      "en": "A notable exception was T.T.",
+      "zh": "一个显著的例外是T.T."
+    },
+    {
+      "id": "s28",
+      "en": "Flynn, Professor of Biology at the University of Tasmania.",
+      "zh": "弗林，塔斯马尼亚大学生物学教授。"
+    },
+    {
+      "id": "s29",
+      "en": "In 1914, he was sufficiently concerned about the scarcity of the thylacine to suggest that some should be captured and placed on a small island.",
+      "zh": "1914年，他因袋狼的稀少而深感忧虑，建议捕获部分袋狼并安置在一个小岛上。"
+    },
+    {
+      "id": "s30",
+      "en": "But it was not until 1929, with the species on the very edge of extinction, that Tasmania’s Animals and Birds Protection Board passed a motion protecting thylacines only for the month of December, which was thought to be their prime breeding season.",
+      "zh": "但直到1929年，当该物种濒临灭绝时，塔斯马尼亚动物与鸟类保护委员会才通过一项法案，仅在被认为是主要繁殖季节的12月份保护袋狼。"
+    },
+    {
+      "id": "s31",
+      "en": "The last known wild thylacine to be killed was shot by a farmer in the north-east of Tasmania in 1930, leaving just captive specimens.",
+      "zh": "已知最后一只野生袋狼于1930年在塔斯马尼亚东北部被一位农民射杀，之后只剩下圈养个体。"
+    },
+    {
+      "id": "s32",
+      "en": "Official protection of the species by the Tasmanian government was introduced in July 1936, 59 days before the last known individual died in Hobart Zoo on 7th September, 1936.",
+      "zh": "塔斯马尼亚政府于1936年7月正式保护该物种，距最后一只已知个体于1936年9月7日在霍巴特动物园去世仅59天。"
+    },
+    {
+      "id": "s33",
+      "en": "There have been numerous expeditions and searches for the thylacine over the years, none of which has produced definitive evidence that thylacines still exist.",
+      "zh": "多年来进行了许多寻找袋狼的探险和搜寻，但无一提供确凿证据证明袋狼仍然存在。"
+    },
+    {
+      "id": "s34",
+      "en": "The species was declared extinct by the Tasmanian government in 1986.",
+      "zh": "该物种于1986年被塔斯马尼亚政府正式宣布灭绝。"
+    },
+    {
+      "id": "s35",
+      "en": "* marsupial: a mammal, such as a kangaroo, whose young are born incompletely developed and are typically carried and suckled in a pouch on the mother's belly",
+      "zh": "* 有袋类动物：哺乳动物，如袋鼠，其幼崽出生时发育不完全，通常被母亲放在肚皮的育儿袋中携带和哺乳。"
+    },
+    {
+      "id": "s36",
+      "en": "** bounty hunters: people who are paid a reward for killing a wild animal",
+      "zh": "** 赏金猎人：因猎杀野生动物而获得报酬的人"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The thylacine</span></strong></p><p style="text-align: left;">The extinct thylacine, also known as the Tasmanian tiger, was a marsupial* that bore a superficial resemblance to a dog. Its most distinguishing feature was the 13–19 dark brown stripes over its back, beginning at the rear of the body and extending onto the tail. The thylacine’s average nose-to-tail length for adult males was 162.6 cm, compared to 153.7 cm for females.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The thylacine appeared to occupy most types of terrain except dense rainforest, with open eucalyptus forest thought to be its prime habitat. In terms of feeding, it was exclusively carnivorous, and its stomach was muscular with an ability to distend so that it could eat large amounts of food at one time, probably an adaptation to compensate for long periods when hunting was unsuccessful and food scarce. The thylacine was not a fast runner and probably caught its prey by exhausting it during a long pursuit. During long-distance chases, thylacines were likely to have relied more on scent than any other sense. They emerged to hunt during the evening, night and early morning and tended to retreat to the hills and forest for shelter during the day. Despite the common name 'tiger', the thylacine had a shy, nervous temperament. Although mainly nocturnal, it was sighted moving during the day and some individuals were even recorded basking in the sun.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The thylacine had an extended breeding season from winter to spring, with indications that some breeding took place throughout the year. The thylacine, like all marsupials, was tiny and hairless when born. Newborns crawled into the pouch on the belly of their mother, and attached themselves to one of the four teats, remaining there for up to three months. When old enough to leave the pouch, the young stayed in a lair such as a deep rocky cave, well-hidden nest or hollow log, whilst the mother hunted.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Approximately 4,000 years ago, the thylacine was widespread throughout New Guinea and most of mainland Australia, as well as the island of Tasmania. The most recent, well-dated occurrence of a thylacine on the mainland is a carbon-dated fossil from Murray Cave in Western Australia, which is around 3,100 years old. Its extinction coincided closely with the arrival of wild dogs called dingoes in Australia and a similar predator in New Guinea. Dingoes never reached Tasmania, and most scientists see this as the main reason for the thylacine’s survival there.</p><p style="text-align: left;"><br></p><p style="text-align: left;">The dramatic decline of the thylacine in Tasmania, which began in the 1830s and continued for a century, is generally attributed to the relentless efforts of sheep farmers and bounty hunters** with shotguns. While this determined campaign undoubtedly played a large part, it is likely that various other factors also contributed to the decline and eventual extinction of the species. These include competition with wild dogs introduced by European settlers, loss of habitat along with the disappearance of prey species, and a distemper-like disease which may also have affected the thylacine.</p><p style="text-align: left;"><br></p><p style="text-align: left;">There was only one successful attempt to breed a thylacine in captivity, at Melbourne Zoo in 1899. This was despite the large numbers that went through some zoos, particularly London Zoo and Tasmania’s Hobart Zoo. The famous naturalist John Gould foresaw the thylacine’s demise when he published his <em>Mammals of Australia</em> between 1848 and 1863, writing, 'The numbers of this singular animal will speedily diminish, extermination will have its full sway, and it will then, like the wolf of England and Scotland, be recorded as an animal of the past.'</p><p style="text-align: left;"><br></p><p style="text-align: left;">However, there seems to have been little public pressure to preserve the thylacine, nor was much concern expressed by scientists at the decline of this species in the decades that followed. A notable exception was T.T. Flynn, Professor of Biology at the University of Tasmania. In 1914, he was sufficiently concerned about the scarcity of the thylacine to suggest that some should be captured and placed on a small island. But it was not until 1929, with the species on the very edge of extinction, that Tasmania’s Animals and Birds Protection Board passed a motion protecting thylacines only for the month of December, which was thought to be their prime breeding season. The last known wild thylacine to be killed was shot by a farmer in the north-east of Tasmania in 1930, leaving just captive specimens. Official protection of the species by the Tasmanian government was introduced in July 1936, 59 days before the last known individual died in Hobart Zoo on 7th September, 1936.</p><p style="text-align: left;"><br></p><p style="text-align: left;">There have been numerous expeditions and searches for the thylacine over the years, none of which has produced definitive evidence that thylacines still exist. The species was declared extinct by the Tasmanian government in 1986.</p><p style="text-align: left;"><br></p><p><em>* marsupial: a mammal, such as a kangaroo, whose young are born incompletely developed and are typically carried and suckled in a pouch on the mother's belly</em></p><p><em>** bounty hunters: people who are paid a reward for killing a wild animal</em></p>

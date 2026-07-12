@@ -1559,5 +1559,253 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "I contain multitudes",
+      "zh": "我包含着众多生命"
+    },
+    {
+      "id": "s2",
+      "en": "Wendy Moore reviews Ed Yong's book about microbes",
+      "zh": "温迪·摩尔评论了埃德·永关于微生物的书籍"
+    },
+    {
+      "id": "s3",
+      "en": "Microbes, most of them bacteria, have populated this planet since long before animal life developed and they will outlive us.",
+      "zh": "微生物，大多数是细菌，自动物生命出现很久之前就已经遍布地球，而且它们将比我们活得更久。"
+    },
+    {
+      "id": "s4",
+      "en": "Invisible to the naked eye, they are ubiquitous.",
+      "zh": "这些微生物肉眼看不见，却无处不在。"
+    },
+    {
+      "id": "s5",
+      "en": "They inhabit the soil, air, rocks and water and are present within every form of life, from seaweed and coral to dogs and humans.",
+      "zh": "它们栖息在土壤、空气、岩石和水中，存在于各种生命形式中，从海藻和珊瑚到狗和人类。"
+    },
+    {
+      "id": "s6",
+      "en": "And, as Yong explains in his utterly absorbing and hugely important book, we mess with them at our peril.",
+      "zh": "正如永在他那本极其吸引人且极其重要的书中解释的那样，我们若随意干扰它们，将自取灭亡。"
+    },
+    {
+      "id": "s7",
+      "en": "Every species has its own colony of microbes, called a 'microbiome', and these microbes vary not only between species but also between individuals and within different parts of each individual.",
+      "zh": "每个物种都有其自身的微生物群落，称为“微生物组”，这些微生物不仅在不同物种之间不同，在个体间以及同一个体的不同部位也存在差异。"
+    },
+    {
+      "id": "s8",
+      "en": "What is amazing is that while the number of human cells in the average person is about 30 trillion, the number of microbial ones is higher - about 39 trillion.",
+      "zh": "令人惊讶的是，平均每个人体内的人类细胞约有30万亿个，而微生物细胞数量更多，大约有39万亿个。"
+    },
+    {
+      "id": "s9",
+      "en": "At best, Yong informs us, we are only 50 per cent human.",
+      "zh": "永告诉我们，充其量，我们只有50%是人类细胞。"
+    },
+    {
+      "id": "s10",
+      "en": "Indeed, some scientists even suggest we should think of each species and its microbes as a single unit, dubbed a 'holobiont'.",
+      "zh": "事实上，一些科学家甚至建议我们应将每个物种及其微生物视为一个整体，称为“全联体”。"
+    },
+    {
+      "id": "s11",
+      "en": "In each human there are microbes that live only in the stomach, the mouth or the armpit and by and large they do so peacefully.",
+      "zh": "每个人体内都有只生活在胃、口腔或腋窝中的微生物，而且它们大多和平共处。"
+    },
+    {
+      "id": "s12",
+      "en": "So 'bad' microbes are just microbes out of context.",
+      "zh": "所以，“坏”微生物不过是脱离了正常环境的微生物。"
+    },
+    {
+      "id": "s13",
+      "en": "Microbes that sit contentedly in the human gut (where there are more microbes than there are stars in the galaxy) can become deadly if they find their way into the bloodstream.",
+      "zh": "那些安然无恙地居住在人体肠道（那里微生物数量超过银河系中的恒星数）的微生物，如果进入血液，就可能致命。"
+    },
+    {
+      "id": "s14",
+      "en": "These communities are constantly changing too.",
+      "zh": "这些微生物群落也在不断变化。"
+    },
+    {
+      "id": "s15",
+      "en": "The right hand shares just one sixth of its microbes with the left hand.",
+      "zh": "右手与左手的微生物共享比例仅为六分之一。"
+    },
+    {
+      "id": "s16",
+      "en": "And, of course, we are surrounded by microbes.",
+      "zh": "当然，我们也被微生物包围着。"
+    },
+    {
+      "id": "s17",
+      "en": "Every time we eat, we swallow a million microbes in each gram of food; we are continually swapping microbes with other humans, pets and the world at large.",
+      "zh": "每次进食时，我们每克食物会吞下约一百万个微生物；我们不断与其他人类、宠物及周围环境交换微生物。"
+    },
+    {
+      "id": "s18",
+      "en": "It's a fascinating topic and Yong, a young British science journalist, is an extraordinarily adept guide.",
+      "zh": "这是一个迷人的话题，而永，一位年轻的英国科学记者，是一位极其娴熟的向导。"
+    },
+    {
+      "id": "s19",
+      "en": "Writing with lightness and panache, he has a knack of explaining complex science in terms that are both easy to understand and totally enthralling.",
+      "zh": "他的写作轻松又充满风采，有能力用既易懂又引人入胜的方式解释复杂的科学。"
+    },
+    {
+      "id": "s20",
+      "en": "Yong is on a mission.",
+      "zh": "永有一个使命。"
+    },
+    {
+      "id": "s21",
+      "en": "Leading us gently by the hand, he takes us into the world of microbes—a bizarre, alien planet—in a bid to persuade us to love them as much as he does.",
+      "zh": "他轻轻牵着我们的手，带我们进入微生物的世界——一个奇异、陌生的星球，努力说服我们像他一样爱它们。"
+    },
+    {
+      "id": "s22",
+      "en": "By the end, we do.",
+      "zh": "到最后，我们真的做到了。"
+    },
+    {
+      "id": "s23",
+      "en": "For most of human history we had no idea that microbes existed.",
+      "zh": "在人类大部分历史中，我们根本不知道微生物的存在。"
+    },
+    {
+      "id": "s24",
+      "en": "The first man to see these extraordinarily potent creatures was a Dutch lens-maker called Antony van Leeuwenhoek in the 1670s.",
+      "zh": "第一个见到这些极其强大的生物的人是荷兰镜片制造师安东尼·范·列文虎克，时间是在1670年代。"
+    },
+    {
+      "id": "s25",
+      "en": "Using microscopes of his own design that could magnify up to 270 times, he examined a drop of water from a nearby lake and found it teeming with tiny creatures he called 'animalcules'.",
+      "zh": "他使用自己设计的显微镜，放大倍率可达270倍，观察了附近湖水中的一滴水，发现里面充满了他称之为“微动物”的微小生物。"
+    },
+    {
+      "id": "s26",
+      "en": "It wasn't until nearly two hundred years later that the research of French biologist Louis Pasteur indicated that some microbes caused disease.",
+      "zh": "直到近两百年后，法国生物学家路易·巴斯德的研究表明某些微生物会引起疾病。"
+    },
+    {
+      "id": "s27",
+      "en": "It was Pasteur's 'germ theory' that gave bacteria the poor image that endures today.",
+      "zh": "正是巴斯德的“病菌理论”让细菌得到了至今仍延续的负面形象。"
+    },
+    {
+      "id": "s28",
+      "en": "Yong's book is in many ways a plea for microbial tolerance, pointing out that while fewer than one hundred species of bacteria bring disease, many thousands more play a vital role in maintaining our health.",
+      "zh": "永的书在许多方面呼吁我们对微生物宽容，他指出不到一百种细菌会带来疾病，而成千上万种细菌在维持我们的健康方面起着至关重要的作用。"
+    },
+    {
+      "id": "s29",
+      "en": "The book also acknowledges that our attitude towards bacteria is not a simple one.",
+      "zh": "书中也承认我们对细菌的态度并非简单明了。"
+    },
+    {
+      "id": "s30",
+      "en": "We tend to see the dangers posed by bacteria, yet at the same time we are sold yoghurts and drinks that supposedly nurture 'friendly' bacteria.",
+      "zh": "我们倾向于看到细菌带来的危险，但同时市场上也售卖声称能养护“友好”细菌的酸奶和饮料。"
+    },
+    {
+      "id": "s31",
+      "en": "In reality, says Yong, bacteria should not be viewed as either friends or foes, villains or heroes.",
+      "zh": "永说，实际上，细菌不应被视为朋友或敌人，坏人或英雄。"
+    },
+    {
+      "id": "s32",
+      "en": "Instead we should realise we have a symbiotic relationship, that can be mutually beneficial or mutually destructive.",
+      "zh": "相反，我们应该意识到我们与细菌之间是一种共生关系，这种关系可能互利，也可能互害。"
+    },
+    {
+      "id": "s33",
+      "en": "What then do these millions of organisms do?",
+      "zh": "那么，这数以百万计的生物究竟做什么呢？"
+    },
+    {
+      "id": "s34",
+      "en": "The answer is pretty much everything.",
+      "zh": "答案几乎是所有事情。"
+    },
+    {
+      "id": "s35",
+      "en": "New research is now unravelling the ways in which bacteria aid digestion, regulate our immune systems, eliminate toxins, produce vitamins, affect our behaviour and even combat obesity.",
+      "zh": "新的研究正在揭示细菌如何帮助消化、调节免疫系统、排除毒素、产生维生素、影响我们的行为，甚至对抗肥胖。"
+    },
+    {
+      "id": "s36",
+      "en": "'They actually help us become who we are,' says Yong.",
+      "zh": "永说：“它们实际上帮助我们成为现在的自己。”"
+    },
+    {
+      "id": "s37",
+      "en": "But we are facing a growing problem.",
+      "zh": "但我们正面临一个日益严重的问题。"
+    },
+    {
+      "id": "s38",
+      "en": "Our obsession with hygiene, our overuse of antibiotics and our unhealthy, low-fibre diets are disrupting the bacterial balance and may be responsible for soaring rates of allergies and immune problems, such as inflammatory bowel disease (IBD).",
+      "zh": "我们对卫生的过度关注、抗生素的滥用以及不健康的低纤维饮食正在破坏细菌的平衡，可能导致过敏和免疫问题（如炎症性肠病）急剧上升。"
+    },
+    {
+      "id": "s39",
+      "en": "The most recent research actually turns accepted norms upside down.",
+      "zh": "最新的研究实际上颠覆了公认的常识。"
+    },
+    {
+      "id": "s40",
+      "en": "For example, there are studies indicating that the excessive use of household detergents and antibacterial products actually destroys the microbes that normally keep the more dangerous germs at bay.",
+      "zh": "例如，有研究表明过度使用家用清洁剂和抗菌产品实际上破坏了那些通常能抑制更危险病菌的微生物。"
+    },
+    {
+      "id": "s41",
+      "en": "Other studies show that keeping a dog as a pet gives children early exposure to a diverse range of bacteria, which may help protect them against allergies later.",
+      "zh": "另有研究显示，养狗作为宠物能让儿童早期接触多样化的细菌，可能有助于他们日后防止过敏。"
+    },
+    {
+      "id": "s42",
+      "en": "The readers of Yong's book must be prepared for a decidedly unglamorous world.",
+      "zh": "永的书的读者必须准备好接受一个明显不那么光鲜的世界。"
+    },
+    {
+      "id": "s43",
+      "en": "Among the less appealing case studies is one about a fungus that is wiping out entire populations of frogs and that can be halted by a rare microbial bacterium.",
+      "zh": "其中一个不太吸引人的案例是关于一种真菌，它正在消灭整个青蛙族群，而一种稀有微生物细菌可阻止这种情况。"
+    },
+    {
+      "id": "s44",
+      "en": "Another is about squid that carry luminescent bacteria that protect them against predators.",
+      "zh": "还有一个例子是关于乌贼，它们体内携带发光细菌，用来防御捕食者。"
+    },
+    {
+      "id": "s45",
+      "en": "However, if you can overcome your distaste for some of the investigations, the reasons for Yong's enthusiasm become clear.",
+      "zh": "然而，如果你能克服对部分研究的反感，就会明白永的热情背后的原因。"
+    },
+    {
+      "id": "s46",
+      "en": "The microbial world is a place of wonder.",
+      "zh": "微生物的世界是一个充满奇迹的地方。"
+    },
+    {
+      "id": "s47",
+      "en": "Already, in an attempt to stop mosquitoes spreading dengue fever—a disease that infects 400 million people a year—mosquitoes are being loaded with a bacterium to block the disease.",
+      "zh": "为了阻止蚊子传播每年感染4亿人的登革热，科学家们已经开始向蚊子体内注入一种细菌以阻断该病传播。"
+    },
+    {
+      "id": "s48",
+      "en": "In the future, our ability to manipulate microbes means we could construct buildings with useful microbes built into their walls to fight off infections.",
+      "zh": "未来，我们操控微生物的能力可能让我们建造出墙体内含有有益微生物以抵御感染的建筑。"
+    },
+    {
+      "id": "s49",
+      "en": "Just imagine a neonatal hospital ward coated in a specially mixed cocktail of microbes so that babies get the best start in life.",
+      "zh": "想象一下，一间新生儿病房的墙面涂覆了特制的微生物混合物，帮助婴儿拥有最好的生命开端。"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>I contain multitudes</strong></span></p><p style="text-align:center;"><i>Wendy Moore reviews Ed Yong's book about microbes</i></p><p style="text-align:center;"><br>&nbsp;</p><p style="text-align:left;">Microbes, most of them bacteria, have populated this planet since long before animal life developed and they will outlive us. Invisible to the naked eye, they are ubiquitous. They inhabit the soil, air, rocks and water and are present within every form of life, from seaweed and coral to dogs and humans. And, as Yong explains in his utterly absorbing and hugely important book, we mess with them at our peril.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Every species has its own colony of microbes, called a 'microbiome', and these microbes vary not only between species but also between individuals and within different parts of each individual. What is amazing is that while the number of human cells in the average person is about 30 trillion, the number of microbial ones is higher - about 39 trillion. At best, Yong informs us, we are only 50 per cent human. Indeed, some scientists even suggest we should think of each species and its microbes as a single unit, dubbed a 'holobiont'.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">In each human there are microbes that live only in the stomach, the mouth or the armpit and by and large they do so peacefully. So 'bad' microbes are just microbes out of context. Microbes that sit contentedly in the human gut (where there are more microbes than there are stars in the galaxy) can become deadly if they find their way into the bloodstream. These communities are constantly changing too. The right hand shares just one sixth of its microbes with the left hand. And, of course, we are surrounded by microbes. Every time we eat, we swallow a million microbes in each gram of food; we are continually swapping microbes with other humans, pets and the world at large.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">It's a fascinating topic and Yong, a young British science journalist, is an extraordinarily adept guide. Writing with lightness and panache, he has a knack of explaining complex science in terms that are both easy to understand and totally enthralling. Yong is on a mission. Leading us gently by the hand, he takes us into the world of microbes—a bizarre, alien planet—in a bid to persuade us to love them as much as he does. By the end, we do.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">For most of human history we had no idea that microbes existed. The first man to see these extraordinarily potent creatures was a Dutch lens-maker called Antony van Leeuwenhoek in the 1670s. Using microscopes of his own design that could magnify up to 270 times, he examined a drop of water from a nearby lake and found it teeming with tiny creatures he called 'animalcules'. It wasn't until nearly two hundred years later that the research of French biologist Louis Pasteur indicated that some microbes caused disease. It was Pasteur's 'germ theory' that gave bacteria the poor image that endures today.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Yong's book is in many ways a plea for microbial tolerance, pointing out that while fewer than one hundred species of bacteria bring disease, many thousands more play a vital role in maintaining our health. The book also acknowledges that our attitude towards bacteria is not a simple one. We tend to see the dangers posed by bacteria, yet at the same time we are sold yoghurts and drinks that supposedly nurture 'friendly' bacteria. In reality, says Yong, bacteria should not be viewed as either friends or foes, villains or heroes. Instead we should realise we have a symbiotic relationship, that can be mutually beneficial or mutually destructive.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">What then do these millions of organisms do? The answer is pretty much everything. New research is now unravelling the ways in which bacteria aid digestion, regulate our immune systems, eliminate toxins, produce vitamins, affect our behaviour and even combat obesity. 'They actually help us become who we are,' says Yong. But we are facing a growing problem. Our obsession with hygiene, our overuse of antibiotics and our unhealthy, low-fibre diets are disrupting the bacterial balance and may be responsible for soaring rates of allergies and immune problems, such as inflammatory bowel disease (IBD).</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The most recent research actually turns accepted norms upside down. For example, there are studies indicating that the excessive use of household detergents and antibacterial products actually destroys the microbes that normally keep the more dangerous germs at bay. Other studies show that keeping a dog as a pet gives children early exposure to a diverse range of bacteria, which may help protect them against allergies later.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The readers of Yong's book must be prepared for a decidedly unglamorous world. Among the less appealing case studies is one about a fungus that is wiping out entire populations of frogs and that can be halted by a rare microbial bacterium. Another is about squid that carry luminescent bacteria that protect them against predators. However, if you can overcome your distaste for some of the investigations, the reasons for Yong's enthusiasm become clear. The microbial world is a place of wonder. Already, in an attempt to stop mosquitoes spreading dengue fever—a disease that infects 400 million people a year—mosquitoes are being loaded with a bacterium to block the disease. In the future, our ability to manipulate microbes means we could construct buildings with useful microbes built into their walls to fight off infections. Just imagine a neonatal hospital ward coated in a specially mixed cocktail of microbes so that babies get the best start in life.<strong>&nbsp;</strong></p>

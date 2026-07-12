@@ -1354,5 +1354,298 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Timur Gareyev – blindfold chess champion",
+      "zh": "Timur Gareyev —— 盲棋冠军"
+    },
+    {
+      "id": "s2",
+      "en": "Next month, a chess player named Timur Gareyev will take on nearly 50 opponents at once.",
+      "zh": "下个月，一位名叫Timur Gareyev的国际象棋选手将同时对战近50名对手。"
+    },
+    {
+      "id": "s3",
+      "en": "But that is not the hard part.",
+      "zh": "但这并不是最困难的部分。"
+    },
+    {
+      "id": "s4",
+      "en": "While his challengers will play the games as normal, Gareyev himself will be blindfolded.",
+      "zh": "他的挑战者将正常进行比赛，而Gareyev本人则蒙着眼睛下棋。"
+    },
+    {
+      "id": "s5",
+      "en": "Even by world record standards, it sets a high bar for human performance.",
+      "zh": "即使按世界纪录的标准来看，这对人类表现也是一个很高的要求。"
+    },
+    {
+      "id": "s6",
+      "en": "The 28-year-old already stands out in the rarefied world of blindfold chess.",
+      "zh": "这位28岁的棋手已经在稀有的盲棋界中脱颖而出。"
+    },
+    {
+      "id": "s7",
+      "en": "He has a fondness for bright clothes and unusual hairstyles, and he gets his kicks from the adventure sport of BASE jumping.",
+      "zh": "他喜欢穿鲜艳的衣服和独特的发型，并从极限运动BASE跳伞中获得刺激。"
+    },
+    {
+      "id": "s8",
+      "en": "He has already proved himself a strong chess player, too.",
+      "zh": "他也已经证明自己是一名强大的国际象棋选手。"
+    },
+    {
+      "id": "s9",
+      "en": "In a 10-hour chess marathon in 2013, Gareyev played 33 games in his head simultaneously.",
+      "zh": "在2013年一次持续10小时的国际象棋马拉松比赛中，Gareyev同时在脑海中下了33盘棋。"
+    },
+    {
+      "id": "s10",
+      "en": "He won 29 and lost none.",
+      "zh": "他赢了29盘，未尝一败。"
+    },
+    {
+      "id": "s11",
+      "en": "The skill has become his brand: he calls himself the Blindfold King.",
+      "zh": "这项技能已成为他的标志：他自称为“盲棋之王”。"
+    },
+    {
+      "id": "s12",
+      "en": "But Gareyev’s prowess has drawn interest from beyond the chess-playing community.",
+      "zh": "但Gareyev的高超技艺吸引了国际象棋界以外的关注。"
+    },
+    {
+      "id": "s13",
+      "en": "In the hope of understanding how he and others like him can perform such mental feats, researchers at the University of California in Los Angeles (UCLA) called him in for tests.",
+      "zh": "为了理解他和其他类似人如何完成如此惊人的脑力表演，加州大学洛杉矶分校（UCLA）的研究人员邀请他接受测试。"
+    },
+    {
+      "id": "s14",
+      "en": "They now have their first results.",
+      "zh": "他们现在有了初步的结果。"
+    },
+    {
+      "id": "s15",
+      "en": "‘The ability to play a game of chess with your eyes closed is not a far reach for most accomplished players,’ said Jesse Rissman, who runs a memory lab at UCLA.",
+      "zh": "加州大学洛杉矶分校记忆实验室负责人Jesse Rissman说：“对于大多数出色的棋手来说，闭眼下棋并非难事。”"
+    },
+    {
+      "id": "s16",
+      "en": "‘But the thing that’s so remarkable about Timur and a few other individuals is the number of games they can keep active at once.",
+      "zh": "“但Timur和少数其他人令人惊讶的是，他们能同时记忆并操作多盘棋局的数量。"
+    },
+    {
+      "id": "s17",
+      "en": "To me it is simply astonishing.’",
+      "zh": "对我来说，这简直是不可思议。”"
+    },
+    {
+      "id": "s18",
+      "en": "Gareyev learned to play chess in his native Uzbekistan when he was six years old.",
+      "zh": "Gareyev六岁时在他的祖国乌兹别克斯坦学会了下国际象棋。"
+    },
+    {
+      "id": "s19",
+      "en": "Tutored by his grandfather, he entered his first tournament aged eight and soon became obsessed with competitions.",
+      "zh": "在祖父的指导下，他八岁时参加了第一场比赛，随后很快迷上了竞赛。"
+    },
+    {
+      "id": "s20",
+      "en": "At 16, he was crowned Asia’s youngest ever chess grandmaster.",
+      "zh": "16岁时，他成为亚洲历史上最年轻的国际象棋特级大师。"
+    },
+    {
+      "id": "s21",
+      "en": "He moved to the US soon after, and as a student helped his university win its first national chess championship.",
+      "zh": "随后不久他移居美国，作为学生帮助他的大学赢得了首次全国国际象棋冠军。"
+    },
+    {
+      "id": "s22",
+      "en": "In 2013, Gareyev was ranked the third best chess player in the US.",
+      "zh": "2013年，Gareyev被评为美国排名第三的国际象棋选手。"
+    },
+    {
+      "id": "s23",
+      "en": "To the uninitiated, blindfold chess seems to call for superhuman skill.",
+      "zh": "对外行人来说，盲棋似乎需要超人的技巧。"
+    },
+    {
+      "id": "s24",
+      "en": "But displays of the feat go back centuries.",
+      "zh": "但这种表演可以追溯到数百年前。"
+    },
+    {
+      "id": "s25",
+      "en": "The first recorded game in Europe was played in 13th-century Florence.",
+      "zh": "欧洲有史以来第一场记录下来的盲棋比赛发生在13世纪的佛罗伦萨。"
+    },
+    {
+      "id": "s26",
+      "en": "In 1947, the Argentinian grandmaster Miguel Najdorf played 45 simultaneous games in his mind, winning 39 in the 24-hour session.",
+      "zh": "1947年，阿根廷特级大师Miguel Najdorf在脑海中同时下了45盘棋，在24小时内赢了39盘。"
+    },
+    {
+      "id": "s27",
+      "en": "Accomplished players can develop the skill of playing blind even without realising it.",
+      "zh": "有经验的棋手甚至可能在不自觉中培养出盲棋的能力。"
+    },
+    {
+      "id": "s28",
+      "en": "The nature of the game is to run through possible moves in the mind to see how they play out.",
+      "zh": "这项运动的本质就是在脑中演练可能的走法，预测结果。"
+    },
+    {
+      "id": "s29",
+      "en": "From this, regular players develop a memory for the patterns the pieces make, the defences and attacks.",
+      "zh": "因此，常下棋的人养成了对棋子布局、攻防形势的记忆。"
+    },
+    {
+      "id": "s30",
+      "en": "‘You recreate it in your mind,’ said Gareyev.",
+      "zh": "Gareyev说：“你在脑中重现棋局。”"
+    },
+    {
+      "id": "s31",
+      "en": "‘A lot of players are capable of doing what I’m doing.’",
+      "zh": "“许多棋手都能做到我所做的。”"
+    },
+    {
+      "id": "s32",
+      "en": "The real mental challenge comes from playing multiple games at once in the head.",
+      "zh": "真正的脑力挑战是同时在脑中进行多盘棋局。"
+    },
+    {
+      "id": "s33",
+      "en": "Not only must the positions of each piece on every board be memorised, they must be recalled faithfully when needed, updated with each player’s moves, and then reliably stored again, so the brain can move on to the next board.",
+      "zh": "不仅要记住每盘棋上每枚棋子的位子，还要在需要时准确回忆，随着每一步的变化更新棋局，然后重新储存，以便继续处理下一盘棋。"
+    },
+    {
+      "id": "s34",
+      "en": "First moves can be tough to remember because they are fairly uninteresting.",
+      "zh": "开局的走法比较简单，反而不容易记住。"
+    },
+    {
+      "id": "s35",
+      "en": "But the ends of games are taxing too, as exhaustion sets in.",
+      "zh": "而且局末也很消耗脑力，因为疲劳会产生影响。"
+    },
+    {
+      "id": "s36",
+      "en": "When Gareyev is tired, his recall can get patchy.",
+      "zh": "当Gareyev疲劳时，他的记忆会出现断层。"
+    },
+    {
+      "id": "s37",
+      "en": "He sometimes makes moves based on only a fragmented memory of the pieces’ positions.",
+      "zh": "他有时会依据对棋子位置的零碎记忆来行棋。"
+    },
+    {
+      "id": "s38",
+      "en": "The scientists first had Gareyev perform some standard memory tests.",
+      "zh": "科学家们首先让Gareyev接受了一些标准的记忆测试。"
+    },
+    {
+      "id": "s39",
+      "en": "These assessed his ability to hold numbers, pictures and words in mind.",
+      "zh": "这些测试评估了他记忆数字、图像和文字的能力。"
+    },
+    {
+      "id": "s40",
+      "en": "One classic test measures how many numbers a person can repeat, both forwards and backwards, soon after hearing them.",
+      "zh": "一项经典测试是测量一个人听到数字后，能立刻正着和倒着重复多少个数字。"
+    },
+    {
+      "id": "s41",
+      "en": "Most people manage about seven.",
+      "zh": "大多数人能记住大约七个数字。"
+    },
+    {
+      "id": "s42",
+      "en": "‘He was not exceptional on any of these standard tests,’ said Rissman.",
+      "zh": "Rissman说：“他在这些标准测试中并不出众。”"
+    },
+    {
+      "id": "s43",
+      "en": "‘We didn’t find anything other than playing chess that he seems to be supremely gifted at.’",
+      "zh": "“除了下棋外，我们没发现他在其他方面有特殊天赋。”"
+    },
+    {
+      "id": "s44",
+      "en": "But next came the brain scans.",
+      "zh": "接下来是大脑扫描。"
+    },
+    {
+      "id": "s45",
+      "en": "With Gareyev lying down in the machine, Rissman looked at how well connected the various regions of the chess player’s brain were.",
+      "zh": "当Gareyev躺在扫描仪中时，Rissman观察了他大脑各区域之间的连接强度。"
+    },
+    {
+      "id": "s46",
+      "en": "Though the results are tentative and as yet unpublished, the scans found much greater than average communication between parts of Gareyev’s brain that make up what is called the frontoparietal control network.",
+      "zh": "虽然结果尚属初步且未正式发表，但扫描发现Gareyev大脑中组成“额顶控制网络”的部分间的通信远高于平均水平。"
+    },
+    {
+      "id": "s47",
+      "en": "Of 63 people scanned alongside the chess player, only one or two scored more highly on the measure.",
+      "zh": "在与这位棋手同时扫描的63人中，只有一两人的得分更高。"
+    },
+    {
+      "id": "s48",
+      "en": "‘You use this network in almost any complex task.",
+      "zh": "“几乎所有复杂任务中都会用到这个网络。"
+    },
+    {
+      "id": "s49",
+      "en": "It helps you to allocate attention, keep rules in mind, and work out whether you should be responding or not,’ said Rissman.",
+      "zh": "它帮助你分配注意力、记住规则，并判断是否需要做出反应，”Rissman说。"
+    },
+    {
+      "id": "s50",
+      "en": "It was not the only hint of something special in Gareyev’s brain.",
+      "zh": "这并不是Gareyev大脑特殊之处的唯一线索。"
+    },
+    {
+      "id": "s51",
+      "en": "The scans also suggest that Gareyev’s visual network is more highly connected to other brain parts than usual.",
+      "zh": "扫描还显示，Gareyev的大脑视觉网络与其他区域的连接比普通人更强。"
+    },
+    {
+      "id": "s52",
+      "en": "Initial results suggest that the areas of his brain that process visual images – such as chess boards – may have stronger links to other brain regions, and so be more powerful than normal.",
+      "zh": "初步结果表明，他负责处理视觉图像（如棋盘）的脑区与其他脑区的联系更紧密，因此功能可能更强大。"
+    },
+    {
+      "id": "s53",
+      "en": "While the analyses are not finalised yet, they may hold the first clues to Gareyev’s extraordinary ability.",
+      "zh": "分析虽尚未完成，但可能为揭示Gareyev非凡能力提供了首次线索。"
+    },
+    {
+      "id": "s54",
+      "en": "For the world record attempt, Gareyev hopes to play 47 blindfold games at once in about 16 hours.",
+      "zh": "为了挑战世界纪录，Gareyev希望在约16小时内同时进行47盘盲棋对局。"
+    },
+    {
+      "id": "s55",
+      "en": "He will need to win 80% to claim the title.",
+      "zh": "他需要赢得80%的棋局才能获得头衔。"
+    },
+    {
+      "id": "s56",
+      "en": "‘I don’t worry too much about the winning percentage, that’s never been an issue for me,’ he said.",
+      "zh": "他说：“我不太担心胜率，这对我来说从来不是问题。”"
+    },
+    {
+      "id": "s57",
+      "en": "‘The most important part of blindfold chess for me is that I have found the one thing that I can fully dedicate myself to.",
+      "zh": "“对我来说，盲棋最重要的是我找到了可以全身心投入的事情。"
+    },
+    {
+      "id": "s58",
+      "en": "I miss having an obsession.’",
+      "zh": "我怀念那种狂热的感觉。”"
+    }
+  ]
 ---
 <p style="text-align: center;"><span style="font-size: 22px;"><strong>Timur Gareyev – blindfold chess champion</strong>&nbsp;</span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">A. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">Next month, a chess player named Timur Gareyev will take on nearly 50 opponents &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">at once. But that is not the hard part. While his challengers will play the games as &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">normal, Gareyev himself will be blindfolded. Even by world record standards, it &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">sets a high bar for human performance. The 28-year-old already stands out in the &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">rarefied world of blindfold chess. He has a fondness for bright clothes and unusual &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">hairstyles, and he gets his kicks from the adventure sport of BASE jumping. He has &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">already proved himself a strong chess player, too. In a 10-hour chess marathon in &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">2013, Gareyev played 33 games in his head simultaneously. He won 29 and lost &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">none. The skill has become his brand: he calls himself the Blindfold King.</span>&nbsp;&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">B. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">But Gareyev’s prowess has drawn interest from beyond the chess-playing </span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">community. In the hope of understanding how he and others like him can perform &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">such mental feats, researchers at the University of California in Los Angeles &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">(UCLA) called him in for tests. They now have their first results. ‘The ability to play &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">a game of chess with your eyes closed is not a far reach for most accomplished &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">players,’ said Jesse Rissman, who runs a memory lab at UCLA. ‘But the thing that’s &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">so remarkable about Timur and a few other individuals is the number of games they &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">can keep active at once. To me it is simply astonishing.’&nbsp;</span>&nbsp;&nbsp; &nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">C. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">Gareyev learned to play chess in his native Uzbekistan when he was six years old. &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">Tutored by his grandfather, he entered his first tournament aged eight and soon &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">became obsessed with competitions. At 16, he was crowned Asia’s youngest ever &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">chess grandmaster. He moved to the US soon after, and as a student helped his &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">university win its first national chess championship. In 2013, Gareyev was ranked &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">the third best chess player in the US.</span>&nbsp;&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">D. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">To the uninitiated, blindfold chess seems to call for superhuman skill. But displays &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">of the feat go back centuries. The first recorded game in Europe was played in &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">13th-century Florence. In 1947, the Argentinian grandmaster Miguel Najdorf played &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">45 simultaneous games in his mind, winning 39 in the 24-hour session.</span>&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">E. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">Accomplished players can develop the skill of playing blind even without realising &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">it. The nature of the game is to run through possible moves in the mind to see &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">how they play out. From this, regular players develop a memory for the patterns &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">the pieces make, the defences and attacks. ‘You recreate it in your mind,’ said &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">Gareyev. ‘A lot of players are capable of doing what I’m doing.’ The real mental &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">challenge comes from playing multiple games at once in the head. Not only must &nbsp;</span><span style=";font-size:极16px;font-family:Arial;color:rgb(35,31,32)">the positions of each piece on every board be memorised, they must be recalled&nbsp;<span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">faithfully when needed, updated with each player’s moves, and then reliably stored &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">again, so the brain can move on to the next board. First moves can be tough to &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">remember because they are fairly uninteresting. But the ends of games are taxing &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">too, as exhaustion sets in. When Gareyev is tired, his recall can get patchy. He &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">sometimes makes moves based on only a fragmented memory of the pieces’ &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">positions.</span></span></p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">F. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">The scientists first had Gareyev perform some standard memory tests. These &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb极(35,31,32)">assessed his ability to hold numbers, pictures and words in mind. One classic test &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">measures how many numbers a person can repeat, both forwards and backwards, &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">soon after hearing them. Most people manage about seven. ‘He was not &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">exceptional on any of these standard tests,’ said Rissman. ‘We didn’t find anything &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">other than playing chess that he seems to be supremely gifted at.’ But next came &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">the brain scans. With Gareyev lying down in the machine, Rissman looked at how &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">well connected the various regions of the chess player’s brain were. Though the &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">results are tentative and as yet unpublished, the scans found much greater than &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">average communication between parts of Gareyev’s brain that make up what is &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">called the frontoparietal control network. Of 63 people scanned alongside the chess &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">player, only one or two scored more highly on the measure. ‘You use this network in &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">almost any complex task. It helps you to allocate attention, keep rules in mind, and &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">work out whether you should be responding or not,’ said Rissman.</span>&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">G. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">It was not the only hint of something special in Gareyev’s brain. The scans also &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">suggest that Gareyev’s visual network is more highly connected to other brain parts &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">than usual. Initial results suggest that the areas of his brain that process visual &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">images – such as chess boards – may have stronger links to other brain regions, &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">and so be more powerful than normal. While the analyses are not finalised yet, they &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">may hold the first clues to Gareyev’s extraordinary ability.</span>&nbsp;&nbsp;&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial-BoldMT;color:rgb(35,31,32);font-weight:bold">H. </span></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">For the world record attempt, Gareyev hopes to play 47 blindfold games at once in &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">about 16 hours. He will need to win 80% to claim the title. ‘I don’t worry too much &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">about the winning percentage, that’s never been an issue for me,’ he said. ‘The &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">most important part of blindfold chess for me is that I have found the one thing that &nbsp;</span><span style=";font-size:16px;font-family:Arial;color:rgb(35,31,32)">I can fully dedicate myself to. I miss having an obsession.’</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>

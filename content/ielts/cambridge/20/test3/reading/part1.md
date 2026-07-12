@@ -1088,5 +1088,258 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Frozen Food",
+      "zh": "冷冻食品"
+    },
+    {
+      "id": "s2",
+      "en": "A US perspective on the development of the frozen food industry",
+      "zh": "美国视角下冷冻食品行业的发展"
+    },
+    {
+      "id": "s3",
+      "en": "At some point in history, humans discovered that ice preserved food.",
+      "zh": "在人类历史的某个阶段，人们发现冰能保存食物。"
+    },
+    {
+      "id": "s4",
+      "en": "There is evidence that winter ice was stored to preserve food in the summer as far back as 10,000 years ago.",
+      "zh": "有证据表明，早在一万年前，人们就储存冬季的冰块以保存夏季的食物。"
+    },
+    {
+      "id": "s5",
+      "en": "Two thousand years ago, the inhabitants of South America's Andean mountains had a unique means of conserving potatoes for later consumption.",
+      "zh": "两千年前，南美安第斯山脉的居民有一种独特的方法来保存土豆以备后用。"
+    },
+    {
+      "id": "s6",
+      "en": "They froze them overnight, then trampled them to squeeze out the moisture, then dried them in the sun.",
+      "zh": "他们将土豆过夜冷冻，然后踩碎挤出水分，最后晒干。"
+    },
+    {
+      "id": "s7",
+      "en": "This preserved their nutritional value—if not their aesthetic appeal.",
+      "zh": "这样保存了土豆的营养价值——虽然外观不尽如人意。"
+    },
+    {
+      "id": "s8",
+      "en": "Natural ice remained the main form of refrigeration until late in the 19th century.",
+      "zh": "天然冰块一直是主要的冷藏手段，直到19世纪晚期。"
+    },
+    {
+      "id": "s9",
+      "en": "In the early 1800s, ship owners from Boston, USA, had enormous blocks of Arctic ice towed all over the Atlantic for the purpose of food preservation.",
+      "zh": "19世纪初，来自美国波士顿的船主将巨大的北极冰块拖运到整个大西洋，用于食物保存。"
+    },
+    {
+      "id": "s10",
+      "en": "In 1851, railroads first began putting blocks of ice in insulated rail cars to send butter from Ogdensburg, New York, to Boston.",
+      "zh": "1851年，铁路首次在保温车厢里放置冰块，将纽约奥格登斯堡的黄油运往波士顿。"
+    },
+    {
+      "id": "s11",
+      "en": "Finally, in 1870, Australian inventors found a way to make 'mechanical ice'.",
+      "zh": "最终，在1870年，澳大利亚发明家发明了制造“机械冰”的方法。"
+    },
+    {
+      "id": "s12",
+      "en": "They used a compressor to force a gas—ammonia at first and later Freon—through a condenser.",
+      "zh": "他们使用压缩机将气体——起初是氨气，后来是氟利昂——通过冷凝器。"
+    },
+    {
+      "id": "s13",
+      "en": "The compressed gas gave up some of its heat as it moved through the condenser.",
+      "zh": "压缩气体通过冷凝器时释放出部分热量。"
+    },
+    {
+      "id": "s14",
+      "en": "Then the gas was released quickly into a low-pressure evaporator coil where it became liquid and cold.",
+      "zh": "随后气体迅速释放到低压蒸发器盘管中，变成液态并且降温。"
+    },
+    {
+      "id": "s15",
+      "en": "Air was blown over the evaporator coil and then this cooled air passed into an insulated compartment, lowering its temperature to freezing point.",
+      "zh": "空气被吹过蒸发器盘管，冷空气随后进入隔热舱，温度降至冰点。"
+    },
+    {
+      "id": "s16",
+      "en": "Initially, this process was invented to keep Australian beer cool even in hot weather.",
+      "zh": "最初，这一过程是为了让澳大利亚啤酒在炎热天气下保持凉爽而发明的。"
+    },
+    {
+      "id": "s17",
+      "en": "But Australian cattlemen were quick to realize that, if they could put this new invention on a ship, they could export meat across the oceans.",
+      "zh": "但澳大利亚牧民很快意识到，如果能将这项新发明安装在船上，就能跨洋出口肉类。"
+    },
+    {
+      "id": "s18",
+      "en": "In 1880, a shipment of Australian beef and mutton was sent, frozen, to England.",
+      "zh": "1880年，一批冷冻的澳大利亚牛肉和羊肉被运往英国。"
+    },
+    {
+      "id": "s19",
+      "en": "While the food frozen this way was still palatable, there was some deterioration.",
+      "zh": "虽然这种冷冻食品仍可食用，但质量有所下降。"
+    },
+    {
+      "id": "s20",
+      "en": "During the freezing process, crystals formed within the cells of the food, and when the ice expanded and the cells burst, this spoilt the flavor and texture of the food.",
+      "zh": "在冷冻过程中，食物细胞内形成冰晶，冰晶膨胀导致细胞破裂，从而破坏了食物的风味和质地。"
+    },
+    {
+      "id": "s21",
+      "en": "The modern frozen food industry began with the indigenous Inuit people of Canada.",
+      "zh": "现代冷冻食品行业始于加拿大的因纽特土著居民。"
+    },
+    {
+      "id": "s22",
+      "en": "In 1912, a biology student in Massachusetts, USA, named Clarence Birdseye, ran out of money and went to Labrador in Canada to trap and trade furs.",
+      "zh": "1912年，美国马萨诸塞州的生物学学生克拉伦斯·博德赛没钱了，便前往加拿大拉布拉多捕猎和交易毛皮。"
+    },
+    {
+      "id": "s23",
+      "en": "While he was there, he became fascinated with how the Inuit would quickly freeze fish in the Arctic air.",
+      "zh": "在那里，他对因纽特人如何快速用北极空气冷冻鱼类产生了浓厚兴趣。"
+    },
+    {
+      "id": "s24",
+      "en": "The fish looked and tasted fresh even months later.",
+      "zh": "即使几个月后，这些鱼仍看起来和尝起来都很新鲜。"
+    },
+    {
+      "id": "s25",
+      "en": "Birdseye returned to the USA in 1917 and began developing mechanical freezers capable of quick-freezing food.",
+      "zh": "博德赛于1917年返回美国，开始研发能够快速冷冻食物的机械冰箱。"
+    },
+    {
+      "id": "s26",
+      "en": "Birdseye methodically kept inventing better freezers and gradually built a business selling frozen fish from Gloucester, Massachusetts.",
+      "zh": "博德赛有条不紊地不断发明更好的冰箱，逐渐在马萨诸塞州格洛斯特建立了冷冻鱼类销售业务。"
+    },
+    {
+      "id": "s27",
+      "en": "In 1929, his business was sold and became General Foods, but he stayed with the company as director of research, and his division continued to innovate.",
+      "zh": "1929年，他的业务被出售，成为通用食品公司，但他留任研究总监，他的部门继续创新。"
+    },
+    {
+      "id": "s28",
+      "en": "Birdseye was responsible for several key innovations that made the frozen food industry possible.",
+      "zh": "博德赛负责了多项关键创新，使冷冻食品行业成为可能。"
+    },
+    {
+      "id": "s29",
+      "en": "He developed quick-freezing techniques that reduced the damage that crystals caused, as well as the technique of freezing the product in the package it was to be sold in.",
+      "zh": "他开发了减少冰晶损伤的快速冷冻技术，以及在销售包装内冷冻产品的技术。"
+    },
+    {
+      "id": "s30",
+      "en": "He also introduced the use of cellophane, the first transparent material for food packaging, which allowed consumers to see the quality of the product.",
+      "zh": "他还引入了赛璐珞的使用，这是食品包装的第一种透明材料，使消费者能看到产品质量。"
+    },
+    {
+      "id": "s31",
+      "en": "Birdseye products also came in convenient size packages that could be prepared with a minimum of effort.",
+      "zh": "博德赛的产品还采用方便的包装规格，准备工作极少。"
+    },
+    {
+      "id": "s32",
+      "en": "But there were still obstacles.",
+      "zh": "但仍有障碍。"
+    },
+    {
+      "id": "s33",
+      "en": "In the 1930s, few grocery stores could afford to buy freezers for a market that wasn't established yet.",
+      "zh": "1930年代，食品杂货店很少能负担得起冰柜，因为市场尚未成熟。"
+    },
+    {
+      "id": "s34",
+      "en": "So, Birdseye leased inexpensive freezer cases to them.",
+      "zh": "因此，博德赛向他们租赁价格低廉的冷柜。"
+    },
+    {
+      "id": "s35",
+      "en": "He also leased insulated railroad cars so that he could ship his products nationwide.",
+      "zh": "他还租用隔热铁路车厢，以便将产品运往全国各地。"
+    },
+    {
+      "id": "s36",
+      "en": "However, few consumers had freezers large enough or efficient enough to take advantage of the products.",
+      "zh": "然而，很少有消费者拥有容量足够大、效率足够高的冷冻柜来使用这些产品。"
+    },
+    {
+      "id": "s37",
+      "en": "Sales increased in the early 1940s, when World War II gave a boost to the frozen food industry because tin was being used for munitions.",
+      "zh": "1940年代初，第二次世界大战推动了冷冻食品行业的发展，因为锡被用于制造军火。"
+    },
+    {
+      "id": "s38",
+      "en": "Canned foods were rationed to save tin for the war effort, while frozen foods were abundant and cheap.",
+      "zh": "罐装食品限量供应以节约锡金属用于战争，而冷冻食品充足且价格低廉。"
+    },
+    {
+      "id": "s39",
+      "en": "Finally, by the 1950s, refrigerator technology had developed far enough to make these appliances affordable for the average family.",
+      "zh": "最终到了1950年代，冰箱技术发展成熟，使普通家庭能够负担得起这些家电。"
+    },
+    {
+      "id": "s40",
+      "en": "By 1953, 33 million US families owned a refrigerator, and manufacturers were gradually increasing the size of the freezer compartments in them.",
+      "zh": "到1953年，美国有3300万个家庭拥有冰箱，制造商也逐渐增加冰箱冷冻室的容量。"
+    },
+    {
+      "id": "s41",
+      "en": "1950s families were also looking for convenience at mealtimes, so the moment was right for the arrival of the 'TV Dinner'.",
+      "zh": "1950年代的家庭在用餐时寻求便利，因此“电视晚餐”的出现正当其时。"
+    },
+    {
+      "id": "s42",
+      "en": "Swanson Foods was a large, nationally recognized producer of canned and frozen poultry.",
+      "zh": "斯万森食品公司是大型全国知名的罐装及冷冻家禽生产商。"
+    },
+    {
+      "id": "s43",
+      "en": "In 1954, the company adapted some of Birdseye's freezing techniques, and with the help of a clever name and a huge advertising budget, it launched the first 'TV Dinner'.",
+      "zh": "1954年，公司采纳了部分博德赛的冷冻技术，并凭借巧妙的名称和庞大的广告预算，推出了首个“电视晚餐”。"
+    },
+    {
+      "id": "s44",
+      "en": "This consisted of frozen turkey, potatoes and vegetables served in the same segmented aluminum tray that was used by airlines.",
+      "zh": "这套餐包括冷冻火鸡、土豆和蔬菜，使用与航空公司相同的分隔铝盘盛装。"
+    },
+    {
+      "id": "s45",
+      "en": "The product was an instant success.",
+      "zh": "该产品一经推出即大获成功。"
+    },
+    {
+      "id": "s46",
+      "en": "Within a year, Swanson had sold 13 million TV dinners.",
+      "zh": "一年内，斯万森销售了1300万份电视晚餐。"
+    },
+    {
+      "id": "s47",
+      "en": "American consumers couldn't resist the combination of a trusted brand name, a single-serving package and the convenience of a meal that could be ready after only 25 minutes in a hot oven.",
+      "zh": "美国消费者无法抗拒这一产品：知名品牌、单份包装以及只需在热烤箱中加热25分钟即可享用的便利。"
+    },
+    {
+      "id": "s48",
+      "en": "By 1959, Americans were spending $2.7 billion annually on frozen foods, and half a billion of that was spent on ready-prepared meals such as the TV Dinner.",
+      "zh": "到1959年，美国人在冷冻食品上的年花费达27亿美元，其中5亿美元用于购买诸如电视晚餐这类即食餐。"
+    },
+    {
+      "id": "s49",
+      "en": "Today, the US frozen food industry has a turnover of over $67 billion annually, with $26.6 billion of that sold to consumers for home consumption.",
+      "zh": "如今，美国冷冻食品行业的年营业额超过670亿美元，其中266亿美元销售给消费者用于家庭食用。"
+    },
+    {
+      "id": "s50",
+      "en": "The remaining $40 billion in frozen food sales come through restaurants, cafeterias, hospitals and schools, and that represents a third of the total food service sales.",
+      "zh": "其余400亿美元的冷冻食品销售额来自餐厅、自助餐厅、医院和学校，占食品服务总销售额的三分之一。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Frozen Food</span></strong></p><p style="text-align: center;"><em><span>A US perspective on the development of the frozen food industry</span></em></p><p>At some point in history, humans discovered that ice preserved food. There is evidence that winter ice was stored to preserve food in the summer as far back as 10,000 years ago. Two thousand years ago, the inhabitants of South America's Andean mountains had a unique means of conserving potatoes for later consumption. They froze them overnight, then trampled them to squeeze out the moisture, then dried them in the sun. This preserved their nutritional value—if not their aesthetic appeal.</p><p><br></p><p>Natural ice remained the main form of refrigeration until late in the 19th century. In the early 1800s, ship owners from Boston, USA, had enormous blocks of Arctic ice towed all over the Atlantic for the purpose of food preservation. In 1851, railroads first began putting blocks of ice in insulated rail cars to send butter from Ogdensburg, New York, to Boston.</p><p><br></p><p>Finally, in 1870, Australian inventors found a way to make 'mechanical ice'. They used a compressor to force a gas—ammonia at first and later Freon—through a condenser. The compressed gas gave up some of its heat as it moved through the condenser. Then the gas was released quickly into a low-pressure evaporator coil where it became liquid and cold. Air was blown over the evaporator coil and then this cooled air passed into an insulated compartment, lowering its temperature to freezing point.</p><p><br></p><p>Initially, this process was invented to keep Australian beer cool even in hot weather. But Australian cattlemen were quick to realize that, if they could put this new invention on a ship, they could export meat across the oceans. In 1880, a shipment of Australian beef and mutton was sent, frozen, to England. While the food frozen this way was still palatable, there was some deterioration. During the freezing process, crystals formed within the cells of the food, and when the ice expanded and the cells burst, this spoilt the flavor and texture of the food.</p><p><br></p><p>The modern frozen food industry began with the indigenous Inuit people of Canada. In 1912, a biology student in Massachusetts, USA, named Clarence Birdseye, ran out of money and went to Labrador in Canada to trap and trade furs. While he was there, he became fascinated with how the Inuit would quickly freeze fish in the Arctic air. The fish looked and tasted fresh even months later.</p><p><br></p><p>Birdseye returned to the USA in 1917 and began developing mechanical freezers capable of quick-freezing food. Birdseye methodically kept inventing better freezers and gradually built a business selling frozen fish from Gloucester, Massachusetts. In 1929, his business was sold and became General Foods, but he stayed with the company as director of research, and his division continued to innovate.</p><p><br></p><p>Birdseye was responsible for several key innovations that made the frozen food industry possible. He developed quick-freezing techniques that reduced the damage that crystals caused, as well as the technique of freezing the product in the package it was to be sold in. He also introduced the use of cellophane, the first transparent material for food packaging, which allowed consumers to see the quality of the product. Birdseye products also came in convenient size packages that could be prepared with a minimum of effort.</p><p><br></p><p>But there were still obstacles. In the 1930s, few grocery stores could afford to buy freezers for a market that wasn't established yet. So, Birdseye leased inexpensive freezer cases to them. He also leased insulated railroad cars so that he could ship his products nationwide. However, few consumers had freezers large enough or efficient enough to take advantage of the products.</p><p><br></p><p>Sales increased in the early 1940s, when World War II gave a boost to the frozen food industry because tin was being used for munitions. Canned foods were rationed to save tin for the war effort, while frozen foods were abundant and cheap. Finally, by the 1950s, refrigerator technology had developed far enough to make these appliances affordable for the average family. By 1953, 33 million US families owned a refrigerator, and manufacturers were gradually increasing the size of the freezer compartments in them.</p><p><br></p><p>1950s families were also looking for convenience at mealtimes, so the moment was right for the arrival of the 'TV Dinner'. Swanson Foods was a large, nationally recognized producer of canned and frozen poultry. In 1954, the company adapted some of Birdseye's freezing techniques, and with the help of a clever name and a huge advertising budget, it launched the first 'TV Dinner'. This consisted of frozen turkey, potatoes and vegetables served in the same segmented aluminum tray that was used by airlines. The product was an instant success. Within a year, Swanson had sold 13 million TV dinners. American consumers couldn't resist the combination of a trusted brand name, a single-serving package and the convenience of a meal that could be ready after only 25 minutes in a hot oven. By 1959, Americans were spending $2.7 billion annually on frozen foods, and half a billion of that was spent on ready-prepared meals such as the TV Dinner.</p><p><br></p><p>Today, the US frozen food industry has a turnover of over $67 billion annually, with $26.6 billion of that sold to consumers for home consumption. The remaining $40 billion in frozen food sales come through restaurants, cafeterias, hospitals and schools, and that represents a third of the total food service sales.</p><p><br></p>

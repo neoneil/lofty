@@ -1282,5 +1282,238 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Why we need silence",
+      "zh": "我们为什么需要安静"
+    },
+    {
+      "id": "s2",
+      "en": "A Humans are finely attuned to noise, and for good reason.",
+      "zh": "A 人类对噪音非常敏感，这是有充分理由的。"
+    },
+    {
+      "id": "s3",
+      "en": "From an evolutionary perspective, sounds give us vital information, helping us navigate the world and avoid danger.",
+      "zh": "从进化的角度来看，声音为我们提供了重要的信息，帮助我们在世界中导航并避免危险。"
+    },
+    {
+      "id": "s4",
+      "en": "To help ensure loud or unexpected noises get the attention they deserve, our internal chemistry alters in response to them.",
+      "zh": "为了确保响亮或意外的声音能够引起我们的注意，我们的体内化学反应会随之改变。"
+    },
+    {
+      "id": "s5",
+      "en": "Our blood pressure goes up, muscles tense and glands release hormones that prepare us for fight or flight.",
+      "zh": "我们的血压升高，肌肉绷紧，腺体释放激素，为战斗或逃跑做好准备。"
+    },
+    {
+      "id": "s6",
+      "en": "In the short term, this is a good thing.",
+      "zh": "从短期来看，这是好事。"
+    },
+    {
+      "id": "s7",
+      "en": "When we are exposed to too much noise over the long term, however, those responses can lead to a multitude of health issues, from sleep disturbance to even cardiovascular disease.",
+      "zh": "然而，长期暴露于过多噪音中，这些反应可能导致多种健康问题，从睡眠障碍到心血管疾病。"
+    },
+    {
+      "id": "s8",
+      "en": "B The World Health Organization has recently designated excessive noise as an 'underestimated threat' to public health, and has said that people living in cities such as Mumbai, Tokyo and Buenos Aires are being exposed to far more than the recommended 40 decibels of noise at night.",
+      "zh": "B 世界卫生组织最近将过度噪音列为公共健康的“被低估的威胁”，并指出生活在孟买、东京和布宜诺斯艾利斯等城市的人们夜间暴露的噪音远远超过了建议的40分贝。"
+    },
+    {
+      "id": "s9",
+      "en": "A report from the European Environment Agency concluded that noise was an ongoing and widespread issue in Europe, with at least 1 in 5 people consistently exposed to levels considered harmful to health.",
+      "zh": "欧洲环境署的一份报告得出结论，噪音在欧洲是一个持续且广泛存在的问题，至少五分之一的人长期暴露于被认为有害健康的噪音水平。"
+    },
+    {
+      "id": "s10",
+      "en": "'There are no \"earlids\" that can protect your brain from noise,' says Nick Antonio, an acoustic consultant who has contributed to the British and international standards for noise.",
+      "zh": "曾为英国和国际噪声标准做出贡献的声学顾问尼克·安东尼奥说：“没有‘耳睑’能保护你的大脑免受噪音影响。”"
+    },
+    {
+      "id": "s11",
+      "en": "C The good news is that several cities have been working to turn the volume down.",
+      "zh": "C 好消息是，几个城市一直在努力降低噪音水平。"
+    },
+    {
+      "id": "s12",
+      "en": "One of the first to do so was London.",
+      "zh": "伦敦是最早采取行动的城市之一。"
+    },
+    {
+      "id": "s13",
+      "en": "'By providing recommendations for quieter buses, reducing noise from roads and also controlling noise from aircraft, they were able to make the city quieter,' says Antonio.",
+      "zh": "安东尼奥说：“通过对更安静的公交车提出建议，减少道路噪音以及控制飞机噪音，他们成功使这座城市变得更安静。”"
+    },
+    {
+      "id": "s14",
+      "en": "Other cities have introduced noise-reducing road coatings, for instance, alongside greenery that muffles sound.",
+      "zh": "其他城市则引进了降噪道路涂层，并种植绿植来减弱声音。"
+    },
+    {
+      "id": "s15",
+      "en": "Some solutions are more specific: Washington DC's ban on petrol-powered leaf blowers came into effect recently, while in New York City, legislation has been approved to fine people who modify their vehicles to make them noisier.",
+      "zh": "有些解决方案更为具体：华盛顿特区最近开始禁止使用汽油动力的吹叶机，而纽约市也通过了立法，对改装车辆使其变得更吵的人进行罚款。"
+    },
+    {
+      "id": "s16",
+      "en": "'People are seeing the benefits of these more quiet environments in their cities,' Antonio says.",
+      "zh": "安东尼奥说：“人们正在感受到他们城市中更安静环境带来的好处。”"
+    },
+    {
+      "id": "s17",
+      "en": "'I expect we will see much more of this in the future.'",
+      "zh": "“我预计未来我们将看到更多这样的举措。”"
+    },
+    {
+      "id": "s18",
+      "en": "D Researchers are also seeking to understand what aspects of silent experiences are most beneficial to our health.",
+      "zh": "D 研究人员还在努力了解安静体验中哪些方面对我们的健康最有益。"
+    },
+    {
+      "id": "s19",
+      "en": "One of the best-researched is the flotation tank: a lightproof, soundproof tank of salt water in which a person floats as a form of deep relaxation.",
+      "zh": "研究最充分的之一是漂浮舱：一个遮光、隔音的盐水箱，人可以漂浮其中，进行深度放松。"
+    },
+    {
+      "id": "s20",
+      "en": "While some people experience altered perception in the tanks, involving subtle humming sounds and visual effects, these effects are benign and do not detract from the benefits of the experience, says Justin Feinstein, a clinical neuropsychologist.",
+      "zh": "临床神经心理学家贾斯汀·费因斯坦说，尽管有些人在漂浮舱中会感受到改变的感知，包括细微的嗡嗡声和视觉效果，但这些影响是无害的，并不会削弱体验的益处。"
+    },
+    {
+      "id": "s21",
+      "en": "'When you don't have external sensory stimuli coming in, the brain tries to fill the void to make sense of this dark and silent world,' he explains.",
+      "zh": "他解释道：“当你没有外部感官刺激传入时，大脑会试图填补空白，以理解这个黑暗而寂静的世界。”"
+    },
+    {
+      "id": "s22",
+      "en": "'In these tanks, some people can even hear the sound of their eyes blinking,' says Feinstein.",
+      "zh": "费因斯坦说：“在这些舱内，有些人甚至能听到自己眨眼的声音。”"
+    },
+    {
+      "id": "s23",
+      "en": "'But it is the ability to focus on the breath that helps people reach a relaxed or meditative state.'",
+      "zh": "“但正是专注于呼吸的能力，帮助人们达到放松或冥想的状态。”"
+    },
+    {
+      "id": "s24",
+      "en": "E To further explore flotation tanks as a therapeutic tool, Feinstein and his colleagues recruited 50 people with a variety of conditions related to stress and had them answer a questionnaire prior to and following a flotation session.",
+      "zh": "E 为了进一步探索漂浮舱作为治疗工具的效果，费因斯坦和他的同事招募了50名有各种压力相关状况的人，要求他们在漂浮前后填写问卷。"
+    },
+    {
+      "id": "s25",
+      "en": "Participants reported decreases in muscle tension, pain and symptoms of their conditions after a single, 1-hour float, alongside an increase in feelings of relaxation and overall wellbeing.",
+      "zh": "参与者报告称，经历一次一小时的漂浮后，肌肉紧张、疼痛及病症相关症状有所减轻，同时放松感和整体幸福感增加。"
+    },
+    {
+      "id": "s26",
+      "en": "Less is known about what effects sensory deprivation can have on the brain.",
+      "zh": "对于感官剥夺对大脑可能产生的影响，人们知之甚少。"
+    },
+    {
+      "id": "s27",
+      "en": "To investigate, Feinstein's team had 48 people participate in either three 90-minute float sessions or three 90-minute periods of relaxing on a chair which reclined.",
+      "zh": "为此，费因斯坦团队让48人参加了三次90分钟的漂浮体验，或三次90分钟的躺椅放松体验。"
+    },
+    {
+      "id": "s28",
+      "en": "Participants had their brains scanned using functional magnetic resonance imaging at the beginning and end of the trial.",
+      "zh": "参与者在试验开始和结束时接受功能性磁共振成像（fMRI）扫描。"
+    },
+    {
+      "id": "s29",
+      "en": "Float sessions uniquely decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression.",
+      "zh": "漂浮体验独特地减少了默认模式网络（DMN）的活跃度，DMN是一组通常与抑郁相关的大脑区域。"
+    },
+    {
+      "id": "s30",
+      "en": "Feinstein says it is an exciting finding, because flotation tanks seem to offer a way of 'resetting' our nervous system to prevent it from getting out of balance.",
+      "zh": "费因斯坦表示，这是一项令人兴奋的发现，因为漂浮舱似乎提供了一种“重置”我们神经系统的方法，以防止其失衡。"
+    },
+    {
+      "id": "s31",
+      "en": "F Neurobiologist Tal Dotan Ben-Soussan is also an advocate of silence as a therapy.",
+      "zh": "F 神经生物学家塔尔·多坦·本-苏桑也倡导将安静作为一种疗法。"
+    },
+    {
+      "id": "s32",
+      "en": "'When we find ways to be quiet, we are not only quiet in our environment, but quiet in our inner selves,' she explains.",
+      "zh": "她解释道：“当我们找到安静的方法时，我们不仅是外在环境的安静，更是内心的宁静。”"
+    },
+    {
+      "id": "s33",
+      "en": "'This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response.'",
+      "zh": "“这让我们更清楚周围发生的事情及情境对我们的需求，从而作出更恰当的反应。”"
+    },
+    {
+      "id": "s34",
+      "en": "Not everyone will benefit from silence to the same extent, but Ben-Soussan says one characteristic is key: the person must need to want to engage in the experience.",
+      "zh": "不是每个人都能从安静中获得同样的益处，但本-苏桑说有一个关键特征：个人必须真正愿意体验这份安静。"
+    },
+    {
+      "id": "s35",
+      "en": "'We see from animal models and human studies that volition and intentionality is important,' she says.",
+      "zh": "“动物模型和人体研究均显示，意愿和主动性非常重要，”她说。"
+    },
+    {
+      "id": "s36",
+      "en": "'When people do not want silence, it can be very distressing.'",
+      "zh": "“当人们不想要安静时，安静可能会让他们感到非常痛苦。”"
+    },
+    {
+      "id": "s37",
+      "en": "G Eric Pfeifer, a psychotherapy researcher, also concedes that some people may not benefit from silence, particularly those who are in a heightened state of stress.",
+      "zh": "G 心理治疗研究员埃里克·普法弗也承认，有些人可能无法从安静中受益，尤其是处于高度压力状态的人。"
+    },
+    {
+      "id": "s38",
+      "en": "'People in these states may not be able to relax or calm down in a silent condition,' he says.",
+      "zh": "他说：“处于这些状态中的人可能无法在安静环境下放松或平静下来。”"
+    },
+    {
+      "id": "s39",
+      "en": "Professional guidance can be useful, he adds, allowing people to approach silence slowly so that they can gradually enjoy the benefits.",
+      "zh": "他补充说，专业指导很有帮助，可以让人们慢慢接触安静，从而逐渐享受其益处。"
+    },
+    {
+      "id": "s40",
+      "en": "And Pfeifer is convinced that silence is more attainable in everyday life than people think.",
+      "zh": "普法弗坚信，安静在日常生活中比人们想象的更容易获得。"
+    },
+    {
+      "id": "s41",
+      "en": "First, complete silence isn't necessary.",
+      "zh": "首先，完全的安静并非必要。"
+    },
+    {
+      "id": "s42",
+      "en": "In a recent study, he found that participants reported more relaxation and less boredom when they sat quietly in an outdoor garden compared with a completely silent room.",
+      "zh": "在一项近期研究中，他发现参与者在户外花园安静坐着时，比起在完全安静的房间里，感到更放松且更不无聊。"
+    },
+    {
+      "id": "s43",
+      "en": "Second, Pfeifer believes we don't need a lot of silence to gain benefits.",
+      "zh": "其次，普法弗认为我们不需要大量的安静就能获得益处。"
+    },
+    {
+      "id": "s44",
+      "en": "'You don't need to spend hours in silence,' he says.",
+      "zh": "他说：“你不需要花几个小时保持安静。”"
+    },
+    {
+      "id": "s45",
+      "en": "'It is likely better to have more frequency of silence for a few minutes at a time than a longer period of silence only once a week.",
+      "zh": "“相比于每周只有一次长时间的安静，可能更好的是更频繁地每次保持几分钟的安静。”"
+    },
+    {
+      "id": "s46",
+      "en": "Just finding those places in your daily life where you can find some silence … can make a big difference.'",
+      "zh": "“只要在日常生活中找到可以享受片刻安静的地方……就能带来很大变化。”"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Why we need silence</strong></span></div><p><br><strong>A</strong> Humans are finely attuned to noise, and for good reason. From an evolutionary&nbsp;perspective, sounds give us vital information, helping us navigate the world and avoid danger. To help ensure loud or unexpected noises get the attention they deserve, our internal chemistry alters in response to them. Our blood pressure goes up, muscles&nbsp;tense and glands release hormones that prepare us for fight or flight. In the short term, this is a good thing. When we are exposed to too much noise over the long term, however, those responses can lead to a multitude of health issues, from sleep disturbance to even cardiovascular disease.&nbsp;<br><br><strong>B</strong> The World Health Organization has recently designated excessive noise as an 'underestimated threat' to public health, and has said that people living in cities such as Mumbai, Tokyo and Buenos Aires are being exposed to far more than the recommended 40 decibels of noise at night. A report from the European Environment Agency concluded that noise was an ongoing and widespread issue in Europe, with at least 1 in 5 people consistently exposed to levels considered harmful to health. 'There are no "earlids" that can protect your brain from noise,' says Nick Antonio, an acoustic consultant who has contributed to the British and international standards for noise.&nbsp;<br><br><strong>C</strong> The good news is that several cities have been working to turn the volume down. One of the first to do so was London. 'By providing recommendations for quieter buses, reducing noise from roads and also controlling noise from aircraft, they were able to make the city quieter,' says Antonio. Other cities have introduced noise-reducing road coatings, for instance, alongside greenery that muffles sound. Some solutions are more specific: Washington DC's ban on petrol-powered leaf blowers came into effect recently, while in New York City, legislation has been approved to fine people who modify their vehicles to make them noisier. 'People are seeing the benefits of these more quiet environments in their cities,' Antonio says. 'I expect we will see much more of this in the future.'&nbsp;<br><br><strong>D</strong> Researchers are also seeking to understand what aspects of silent experiences are most beneficial to our health. One of the best-researched is the flotation tank: a lightproof, soundproof tank of salt water in which a person floats as a form of deep relaxation. While some people experience altered perception in the tanks, involving subtle humming sounds and visual effects, these effects are benign and do not detract from the benefits of the experience, says Justin Feinstein, a clinical neuropsychologist. 'When you don't have external sensory stimuli coming in, the brain tries to fill the void to make sense of this dark and silent world,' he explains. 'In these tanks, some people can even hear the sound of their eyes blinking,' says Feinstein. 'But it is the ability to focus on the breath that helps people reach a relaxed or meditative state.'&nbsp;<br><br><strong>E </strong>To further explore flotation tanks as a therapeutic tool, Feinstein and his colleagues recruited 50 people with a variety of conditions related to stress and had them answer a questionnaire prior to and following a flotation session. Participants reported decreases in muscle tension, pain and symptoms of their conditions after a single, 1-hour float, alongside an increase in feelings of relaxation and overall wellbeing.&nbsp;<br><br>Less is known about what effects sensory deprivation can have on the brain. To investigate, Feinstein's team had 48 people participate in either three 90-minute float sessions or three 90-minute periods of relaxing on a chair which reclined. Participants had their brains scanned using functional magnetic resonance imaging at the beginning and end of the trial. Float sessions uniquely decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression. Feinstein says it is an exciting finding, because flotation tanks seem to offer a way of 'resetting' our nervous system to prevent it from getting out of balance.&nbsp;<br><br><strong>F </strong>Neurobiologist Tal Dotan Ben-Soussan is also an advocate of silence as a therapy. 'When we find ways to be quiet, we are not only quiet in our environment, but quiet in our inner selves,' she explains. 'This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response.'&nbsp;<br><br>Not everyone will benefit from silence to the same extent, but Ben-Soussan says one characteristic is key: the person must need to want to engage in the experience. 'We see from animal models and human studies that volition and intentionality is important,' she says. 'When people do not want silence, it can be very distressing.'&nbsp;<br><br><strong>G&nbsp;</strong>Eric Pfeifer, a psychotherapy researcher, also concedes that some people may not benefit from silence, particularly those who are in a heightened state of stress. 'People in these states may not be able to relax or calm down in a silent condition,' he says. Professional guidance can be useful, he adds, allowing people to approach silence slowly so that they can gradually enjoy the benefits. And Pfeifer is convinced that silence is more attainable in everyday life than people think. First, complete silence isn't necessary. In a recent study, he found that participants reported more relaxation and less boredom when they sat quietly in an outdoor garden compared with a completely silent room. Second, Pfeifer believes we don't need a lot of silence to gain benefits. 'You don't need to spend hours in silence,' he says. 'It is likely better to have more frequency of silence for a few minutes at a time than a longer period of silence only once a week. Just finding those places in your daily life where you can find some silence … can make a big difference.'</p>

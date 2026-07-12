@@ -2079,5 +2079,203 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "To catch a king",
+      "zh": "抓捕一位国王"
+    },
+    {
+      "id": "s2",
+      "en": "Anna Keay reviews Charles Spencer’s book about the hunt for King Charles II during the English Civil War of the seventeenth century",
+      "zh": "安娜·基伊评论了查尔斯·斯宾塞关于十七世纪英国内战期间追捕查理二世国王的书籍。"
+    },
+    {
+      "id": "s3",
+      "en": "Charles Spencer’s latest book, To Catch a King, tells us the story of the hunt for King Charles II in the six weeks after his resounding defeat at the Battle of Worcester in September 1651.",
+      "zh": "查尔斯·斯宾塞的新书《抓捕一位国王》讲述了在1651年9月沃斯特战役中彻底失败后，查理二世国王被追捕的六周故事。"
+    },
+    {
+      "id": "s4",
+      "en": "And what a story it is.",
+      "zh": "这真是一个精彩的故事。"
+    },
+    {
+      "id": "s5",
+      "en": "After his father was executed by the Parliamentarians in 1649, the young Charles II sacrificed one of the very principles his father had died for and did a deal with the Scots, thereby accepting Presbyterianism* as the national religion in return for being crowned King of Scots.",
+      "zh": "1649年，他的父亲被议会派处决后，年轻的查理二世牺牲了父亲为之而死的其中一项原则，与苏格兰人达成协议，接受长老会教*作为国教，以换取加冕为苏格兰国王。"
+    },
+    {
+      "id": "s6",
+      "en": "His arrival in Edinburgh prompted the English Parliamentary army to invade Scotland in a pre-emptive strike.",
+      "zh": "他抵达爱丁堡促使英格兰议会军发动先发制人的进攻入侵苏格兰。"
+    },
+    {
+      "id": "s7",
+      "en": "This was followed by a Scottish invasion of England.",
+      "zh": "随后是苏格兰军队入侵英格兰。"
+    },
+    {
+      "id": "s8",
+      "en": "The two sides finally faced one another at Worcester in the west of England in 1651.",
+      "zh": "双方最终于1651年在英格兰西部的沃斯特交锋。"
+    },
+    {
+      "id": "s9",
+      "en": "After being comprehensively defeated on the meadows outside the city by the Parliamentarian army, the 21-year-old king found himself the subject of a national manhunt, with a huge sum offered for his capture.",
+      "zh": "这位21岁的国王在城外的草地上被议会军彻底击败后，成为全国通缉的对象，并悬赏重金捉拿他。"
+    },
+    {
+      "id": "s10",
+      "en": "Over the following six weeks he managed, through a series of heart-poundingly close escapes, to evade the Parliamentarians before seeking refuge in France.",
+      "zh": "在接下来的六周里，他通过一系列惊心动魄的逃脱，成功躲避了议会军，最终逃往法国寻求庇护。"
+    },
+    {
+      "id": "s11",
+      "en": "For the next nine years, the penniless and defeated Charles wandered around Europe with only a small group of loyal supporters.",
+      "zh": "在接下来的九年里，贫困且失败的查理只带着一小群忠实支持者在欧洲流浪。"
+    },
+    {
+      "id": "s12",
+      "en": "Years later, after his restoration as king, the 50-year-old Charles II requested a meeting with the writer and diarist Samuel Pepys.",
+      "zh": "多年后，查理二世复位为国王时已50岁，他请求与作家兼日记作家塞缪尔·佩皮斯会面。"
+    },
+    {
+      "id": "s13",
+      "en": "His intention when asking Pepys to commit his story to paper was to ensure that this most extraordinary episode was never forgotten.",
+      "zh": "他请求佩皮斯将他的故事写下来，目的是确保这段非凡的经历永远不会被遗忘。"
+    },
+    {
+      "id": "s14",
+      "en": "Over two three-hour sittings, the king related to him in great detail his personal recollections of the six weeks he had spent as a fugitive.",
+      "zh": "在两次各三小时的会面中，国王详细地向他讲述了自己作为逃亡者度过的六周个人回忆。"
+    },
+    {
+      "id": "s15",
+      "en": "As the king and secretary settled down (a scene that is surely a gift for a future scriptwriter), Charles commenced his story: ‘ After the battle was so absolutely lost as to be beyond hope of recovery, I began to think of the best way of saving myself.’",
+      "zh": "当国王和秘书坐下来（这场景无疑是未来剧作家的宝贵素材）时，查理开始讲述：“战斗彻底失败，已无可挽回之时，我开始思考救自己的最佳方式。”"
+    },
+    {
+      "id": "s16",
+      "en": "One of the joys of Spencer’s book, a result not least of its use of Charles II’s own narrative as well as those of his supporters, is just how close the reader gets to the action.",
+      "zh": "斯宾塞的书的一大乐趣，部分原因在于它采用了查理二世本人及其支持者的叙述，使读者能近距离感受整个事件的进展。"
+    },
+    {
+      "id": "s17",
+      "en": "The day-by-day retelling of the fugitives’ doings provides delicious details: the cutting of the king’s long hair with agricultural shears, the use of walnut leaves to dye his pale skin, and the day Charles spent lying on a branch of the great oak tree in Boscobel Wood as the Parliamentary soldiers scoured the forest floor below.",
+      "zh": "逐日重述逃亡者的行动带来了精彩细节：用农用剪刀剪断国王的长发，用核桃叶染他的苍白皮肤，以及查理躺在博斯科贝尔树林一棵大橡树的树枝上，当议会军士兵在林下搜寻的那一天。"
+    },
+    {
+      "id": "s18",
+      "en": "Spencer draws out both the humour – such as the preposterous refusal of Charles’s friend Henry Wilmot to adopt disguise on the grounds that it was beneath his dignity – and the emotional tension when the secret of the king’s presence was cautiously revealed to his supporters.",
+      "zh": "斯宾塞描绘了幽默场景——比如查理的朋友亨利·威尔莫特荒谬地拒绝伪装，理由是这有失尊严——以及当国王身份秘密谨慎告知支持者时的情感紧张。"
+    },
+    {
+      "id": "s19",
+      "en": "Charles’s adventures after losing the Battle of Worcester hide the uncomfortable truth that whilst almost everyone in England had been appalled by the execution of his father, they had not welcomed the arrival of his son with the Scots army, but had instead firmly bolted their doors.",
+      "zh": "查理在沃斯特战败后的冒险掩盖了一个令人不安的事实：尽管几乎所有英格兰人都对其父亲被处决感到震惊，他们并未欢迎他携苏格兰军队而来的儿子，反而紧闭门户。"
+    },
+    {
+      "id": "s20",
+      "en": "This was partly because he rode at the head of what looked like a foreign invasion force and partly because, after almost a decade of civil war, people were desperate to avoid it beginning again.",
+      "zh": "原因部分在于他率领看似外国入侵的军队，部分因为经过近十年的内战，人们极力避免战争再度爆发。"
+    },
+    {
+      "id": "s21",
+      "en": "This makes it all the more interesting that Charles II himself loved the story so much ever after.",
+      "zh": "这让人更感兴趣的是，查理二世本人此后一直非常喜爱这个故事。"
+    },
+    {
+      "id": "s22",
+      "en": "As well as retelling it to anyone who would listen, causing eye-rolling among courtiers, he set in train a series of initiatives to memorialise it.",
+      "zh": "除了向愿意听的人复述，惹得宫廷侍臣翻白眼外，他还启动了一系列纪念这段经历的举措。"
+    },
+    {
+      "id": "s23",
+      "en": "There was to be a new order of chivalry, the Knights of the Royal Oak.",
+      "zh": "将设立一个新的骑士团，即皇家橡树骑士团。"
+    },
+    {
+      "id": "s24",
+      "en": "A series of enormous oil paintings depicting the episode were produced, including a two-metre-wide canvas of Boscobel Wood and a set of six similarly enormous paintings of the king on the run.",
+      "zh": "制作了一系列巨大的油画描绘这一片段，包括一幅长达两米的博斯科贝尔树林画作及六幅同样巨大的国王逃亡主题画。"
+    },
+    {
+      "id": "s25",
+      "en": "In 1660, Charles II commissioned the artist John Michael Wright to paint a flying squadron of cherubs* carrying an oak tree to the heavens on the ceiling of his bedchamber.",
+      "zh": "1660年，查理二世委托艺术家约翰·迈克尔·赖特在他的卧室天花板上绘制一队小天使*飞翔，托着一棵橡树升向天堂的画作。"
+    },
+    {
+      "id": "s26",
+      "en": "It is hard to imagine many other kings marking the lowest point in their life so enthusiastically, or indeed pulling off such an escape in the first place.",
+      "zh": "很难想象其他许多国王会如此热情地纪念自己人生中的最低谷，或者甚至完成这样一次成功的逃脱。"
+    },
+    {
+      "id": "s27",
+      "en": "Charles Spencer is the perfect person to pass the story on to a new generation.",
+      "zh": "查尔斯·斯宾塞是将这个故事传给新一代的最佳人选。"
+    },
+    {
+      "id": "s28",
+      "en": "His pacey, readable prose steers deftly clear of modern idioms and elegantly brings to life the details of the great tale.",
+      "zh": "他节奏明快、易读的文笔巧妙避开现代俚语，优雅地生动展现了这一伟大传奇的细节。"
+    },
+    {
+      "id": "s29",
+      "en": "He has even-handed sympathy for both the fugitive king and the fierce republican regime that hunted him, and he succeeds in his desire to explore far more of the background of the story than previous books on the subject have done.",
+      "zh": "他对逃亡国王和追捕他的激烈共和政权都持公平同情态度，并且成功地比以往有关该主题的书籍更深入探索了故事的背景。"
+    },
+    {
+      "id": "s30",
+      "en": "Indeed, the opening third of the book is about how Charles II found himself at Worcester in the first place, which for some will be reason alone to read To Catch a King.",
+      "zh": "实际上，书的前三分之一内容讲述了查理二世如何首先来到沃斯特，对某些人来说，这已是阅读《抓捕一位国王》的理由。"
+    },
+    {
+      "id": "s31",
+      "en": "The tantalising question left, in the end, is that of what it all meant.",
+      "zh": "最终留下令人着迷的问题是，这一切意味着什么。"
+    },
+    {
+      "id": "s32",
+      "en": "Would Charles II have been a different king had these six weeks never happened?",
+      "zh": "如果这六周没有发生，查理二世会是一个不同的国王吗？"
+    },
+    {
+      "id": "s33",
+      "en": "The days and nights spent in hiding must have affected him in some way.",
+      "zh": "那些躲藏的日夜一定在某种程度上影响了他。"
+    },
+    {
+      "id": "s34",
+      "en": "Did the need to assume disguises, to survive on wit and charm alone, to use trickery and subterfuge to escape from tight corners help form him?",
+      "zh": "假扮身份、仅靠机智和魅力生存，用欺骗和诡计逃脱困境的经历，会不会塑造了他？"
+    },
+    {
+      "id": "s35",
+      "en": "This is the one area where the book doesn’t quite hit the mark.",
+      "zh": "这是这本书唯一没有完全做到的地方。"
+    },
+    {
+      "id": "s36",
+      "en": "Instead its depiction of Charles II in his final years as an ineffective, pleasure-loving monarch doesn’t do justice to the man (neither is it accurate), or to the complexity of his character.",
+      "zh": "书中将查理二世晚年描绘成一个无能、喜欢享乐的君主，这既不公正（也不准确），也未能体现他性格的复杂性。"
+    },
+    {
+      "id": "s37",
+      "en": "But this one niggle aside, To Catch a King is an excellent read, and those who come to it knowing little of the famous tale will find they have a treat in store.",
+      "zh": "不过撇开这点小小的不足，《抓捕一位国王》是一本极佳的读物，几乎不熟悉这个著名故事的人读了会大为受益。"
+    },
+    {
+      "id": "s38",
+      "en": "* Presbyterianism: part of the reformed Protestant religion",
+      "zh": "* 长老会教：改革宗新教的一部分"
+    },
+    {
+      "id": "s39",
+      "en": "* cherub: an image of angelic children used in paintings",
+      "zh": "* 小天使：绘画中常用的天使儿童形象"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size:24px">To catch a king</span></strong></p><p style="text-align: center;"><span style="font-size:18px"><em><span style="font-family: TimesNewRomanPS-Italic; color: rgb(35, 31, 32);"></span>Anna Keay reviews Charles Spencer’s book about the hunt for King Charles II during the English Civil War of the seventeenth century </em></span></p><p style="text-align: center;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>Charles Spencer’s latest book, To Catch a King, tells us the story of the hunt for King Charles II in the six weeks after his resounding defeat at the Battle of Worcester in September 1651. And what a story it is. After his father was executed by the Parliamentarians in 1649, the young Charles II sacrificed one of the very principles his father had died for and did a deal with the Scots, thereby accepting Presbyterianism* as the national religion in return for being crowned King of Scots. His arrival in Edinburgh prompted the English Parliamentary army to invade Scotland in a pre-emptive strike. This was followed by a Scottish invasion of England. The two sides finally faced one another at Worcester in the west of England in 1651. After being comprehensively defeated on the meadows outside the city by the Parliamentarian army, the 21-year-old king found himself the subject of a national manhunt, with a huge sum offered for his capture. Over the following six weeks he managed, through a series of heart-poundingly close escapes, to evade the Parliamentarians before seeking refuge in France. For the next nine years, the penniless and defeated Charles wandered around Europe with only a small group of loyal supporters.</p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>Years later, after his restoration as king, the 50-year-old Charles II requested a meeting with the writer and diarist Samuel Pepys. His intention when asking Pepys to commit his story to paper was to ensure that this most extraordinary episode was never forgotten. Over two three-hour sittings, the king related to him in great detail his personal recollections of the six weeks he had spent as a fugitive. As the king and secretary settled down (a scene that is surely a gift for a future scriptwriter), Charles commenced his story: ‘ After the battle was so absolutely lost as to be beyond hope of recovery, I began to think of the best way of saving myself.’<span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></span></p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>One of the joys of Spencer’s book, a result not least of its use of Charles II’s own narrative as well as those of his supporters, is just how close the reader gets to the action. The day-by-day retelling of the fugitives’ doings provides delicious details: the cutting of the king’s long hair with agricultural shears, the use of walnut leaves to dye his pale skin, and the day Charles spent lying on a branch of the great oak tree in Boscobel Wood as the Parliamentary soldiers scoured the forest floor below. Spencer draws out both the humour – such as the preposterous refusal of Charles’s friend Henry Wilmot to adopt disguise on the grounds that it was beneath his dignity – and the emotional tension when the secret of the king’s presence was cautiously revealed to his supporters.<span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>Charles’s adventures after losing the Battle of Worcester hide the uncomfortable truth that whilst almost everyone in England had been appalled by the execution of his father, they had not welcomed the arrival of his son with the Scots army, but had instead firmly bolted their doors. This was partly because he rode at the head of what looked like a foreign invasion force and partly because, after almost a decade of civil war, people were desperate to avoid it beginning again. This makes it all the more interesting that Charles II himself loved the story so much ever after. As well as retelling it to anyone who would listen, causing eye-rolling among courtiers, he set in train a series of initiatives to memorialise it. There was to be a new order of chivalry, the Knights of the Royal Oak. A series of enormous oil paintings depicting the episode were produced, including a two-metre-wide canvas of Boscobel Wood and a set of six similarly enormous paintings of the king on the run. In 1660, Charles II commissioned the artist John Michael Wright to paint a flying squadron of cherubs* carrying an oak tree to the heavens on the ceiling of his bedchamber. It is hard to imagine many other kings marking the lowest point in their life so enthusiastically, or indeed pulling off such an escape in the first place.<span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>Charles Spencer is the perfect person to pass the story on to a new generation. His pacey, readable prose steers deftly clear of modern idioms and elegantly brings to life the details of the great tale. He has even-handed sympathy for both the fugitive king and the fierce republican regime that hunted him, and he succeeds in his desire to explore far more of the background of the story than previous books on the subject have done. Indeed, the opening third of the book is about how Charles II found himself at Worcester in the first place, which for some will be reason alone to read <em>To Catch a King.</em><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></span></p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span>The tantalising question left, in the end, is that of what it all meant. Would Charles II have been a different king had these six weeks never happened? The days and nights spent in hiding must have affected him in some way. Did the need to assume disguises, to survive on wit and charm alone, to use trickery and subterfuge to escape from tight corners help form him? This is the one area where the book doesn’t quite hit the mark. Instead its depiction of Charles II in his final years as an ineffective, pleasure-loving monarch doesn’t do justice to the man (neither is it accurate), or to the complexity of his character. But this one niggle aside, <em>To Catch a King</em> is an excellent read, and those who come to it knowing little of the famous tale will find they have a treat in store. </p><p style="text-align: left;"><br/></p><p style="text-align: left;"><span style=";font-size:16px;font-family:Times New Roman;color:rgb(35,31,32)"></span></p><p><em>* Presbyterianism: part of the reformed Protestant religion</em></p><p><em>* cherub: an image of angelic children used in paintings </em></p>

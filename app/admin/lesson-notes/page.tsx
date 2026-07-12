@@ -33,6 +33,7 @@ function formatSegment(value: string) {
 
 type LessonNotesPageProps = {
   searchParams: Promise<{
+    exam?: string | string[];
     mode?: string | string[];
   }>;
 };
@@ -83,9 +84,12 @@ function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课
 
 export default async function LessonNotesPage({ searchParams }: LessonNotesPageProps) {
   await requireAdminOrEditor("/admin/lesson-notes");
-  const { mode } = await searchParams;
+  const { exam, mode } = await searchParams;
   const selectedMode = mode === "article" ? "article" : "slides";
+  const selectedExam = exam === "ielts" ? "ielts" : "pte";
+  const selectedExamMeta = exams.find((item) => item.key === selectedExam) ?? exams[0];
   const lessons = await getAdminLessonCatalog();
+  const visibleLessons = lessons.filter((lesson) => lesson.exam === selectedExam);
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-6 text-[var(--text)] sm:px-6 sm:py-8 lg:px-8">
@@ -96,54 +100,54 @@ export default async function LessonNotesPage({ searchParams }: LessonNotesPageP
         </Link>
 
         <header className="mt-5 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-7">
-          <Badge variant="secondary">Teaching Notes</Badge>
-          <h1 className="mt-3 text-2xl font-semibold text-[var(--text)] sm:text-3xl">授课笔记</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">这里会自动读取 Admin 目录下的 PTE 与 IELTS Markdown 文件。新增课程文件后，刷新页面即可看到。</p>
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <Badge variant="secondary">Teaching Notes</Badge>
+              <h1 className="mt-3 text-2xl font-semibold text-[var(--text)] sm:text-3xl">授课笔记</h1>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">这里会自动读取 Admin 目录下的 PTE 与 IELTS Markdown 文件。新增课程文件后，刷新页面即可看到。</p>
+            </div>
+            <div className="flex w-fit rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-1 shadow-[var(--shadow-xs)]">
+              {exams.map((item) => (
+                <Link key={item.key} href={`/admin/lesson-notes?exam=${item.key}&mode=${selectedMode}`} className={`inline-flex h-9 items-center rounded-[var(--radius-sm)] px-4 text-sm font-semibold transition-colors ${selectedExam === item.key ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:bg-[var(--card)] hover:text-[var(--text)]"}`}>
+                  {item.key.toUpperCase()}
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <nav className="mt-5 flex flex-wrap gap-2" aria-label="课程类型">
-            {exams.map((exam) => (
-              <Link key={exam.key} href={`#${exam.key}`} className="inline-flex h-10 items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)] hover:text-[var(--primary)]">
-                {exam.label}
-              </Link>
-            ))}
             <Link href="/admin/markdown-memo" className="inline-flex h-10 items-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">Markdown 语法备忘录</Link>
-            <CourseModeSwitcher activeMode={selectedMode} basePath="/admin/lesson-notes" />
+            <CourseModeSwitcher activeMode={selectedMode} basePath={`/admin/lesson-notes?exam=${selectedExam}`} />
           </nav>
         </header>
 
         <div className="mt-6 space-y-8">
-          {exams.map((exam) => {
-            const examLessons = lessons.filter((lesson) => lesson.exam === exam.key);
+          <section className="scroll-mt-24">
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase text-[var(--primary)]">{selectedExamMeta.key}</p>
+                <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{selectedExamMeta.label}</h2>
+              </div>
+              <Badge variant="outline">{visibleLessons.length} lessons</Badge>
+            </div>
 
-            return (
-              <section key={exam.key} id={exam.key} className="scroll-mt-24">
-                <div className="mb-4 flex items-end justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase text-[var(--primary)]">{exam.key}</p>
-                    <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{exam.label}</h2>
-                  </div>
-                  <Badge variant="outline">{examLessons.length} lessons</Badge>
-                </div>
-
-                {exam.key === "pte" ? (
-                  <div className="space-y-7">
-                    {pteCategories.map((category) => {
-                      const categoryLessons = examLessons.filter((lesson) => lesson.lessonPath[0].toLowerCase() === category.key);
-                      return (
-                        <section key={category.key} className="scroll-mt-24">
-                          <div className="mb-3 flex items-center justify-between gap-3">
-                            <div><h3 className="text-base font-semibold text-[var(--text)] sm:text-lg">{category.label}</h3><p className="mt-0.5 text-xs uppercase text-[var(--text-faint)]">{category.english}</p></div>
-                            <Badge variant="secondary">{categoryLessons.length > 0 ? `${categoryLessons.length} lessons` : "待生成"}</Badge>
-                          </div>
-                          <LessonGrid lessons={categoryLessons} selectedMode={selectedMode} emptyText="待生成" />
-                        </section>
-                      );
-                    })}
-                  </div>
-                ) : <LessonGrid lessons={examLessons} selectedMode={selectedMode} />}
-              </section>
-            );
-          })}
+            {selectedExam === "pte" ? (
+              <div className="space-y-7">
+                {pteCategories.map((category) => {
+                  const categoryLessons = visibleLessons.filter((lesson) => lesson.lessonPath[0].toLowerCase() === category.key);
+                  return (
+                    <section key={category.key} className="scroll-mt-24">
+                      <div className="mb-3 flex items-center justify-between gap-3">
+                        <div><h3 className="text-base font-semibold text-[var(--text)] sm:text-lg">{category.label}</h3><p className="mt-0.5 text-xs uppercase text-[var(--text-faint)]">{category.english}</p></div>
+                        <Badge variant="secondary">{categoryLessons.length > 0 ? `${categoryLessons.length} lessons` : "待生成"}</Badge>
+                      </div>
+                      <LessonGrid lessons={categoryLessons} selectedMode={selectedMode} emptyText="待生成" />
+                    </section>
+                  );
+                })}
+              </div>
+            ) : <LessonGrid lessons={visibleLessons} selectedMode={selectedMode} />}
+          </section>
         </div>
       </section>
     </main>

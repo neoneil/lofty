@@ -2311,5 +2311,183 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The Globemakers: The Curious Story of an Ancient Craft",
+      "zh": "制球匠：一门古老工艺的奇异故事"
+    },
+    {
+      "id": "s2",
+      "en": "A review of Peter Bellerby's book The Globemakers",
+      "zh": "彼得·贝勒比《制球匠》一书的书评"
+    },
+    {
+      "id": "s3",
+      "en": "In 2008, Peter Bellerby, who lived in London, wanted to give his father a model globe for his eightieth birthday.",
+      "zh": "2008年，住在伦敦的彼得·贝勒比想给父亲送上一只地球仪模型，作为他八十岁生日的礼物。"
+    },
+    {
+      "id": "s4",
+      "en": "What seemed simple enough to start with triggered an almost obsessive, decade-long journey, marked by a series of obstacles that would have deterred anyone less determined.",
+      "zh": "一开始看似简单的事情，引发了一场近乎痴迷的十年旅程，期间遇到了无数障碍，令任何意志稍弱者都难以为继。"
+    },
+    {
+      "id": "s5",
+      "en": "It ended with his establishing the world's only bespoke globemaking company.",
+      "zh": "最终，他创办了全球唯一的定制地球仪制作公司。"
+    },
+    {
+      "id": "s6",
+      "en": "The first surprise in The Globemakers , Bellerby's account of this impulsive enterprise, is that obtaining such a globe was not simply a matter of a quick online order and a repressed sigh at the shipping costs.",
+      "zh": "《制球匠》一书，贝勒比对这次冲动之举的记录，首先让人惊讶的是，买到这样一只地球仪，并不是简单地在网上下单、然后无奈叹气支付运费那么容易。"
+    },
+    {
+      "id": "s7",
+      "en": "After all, contrary to stubbornly held popular views of our ancestors' geographical ignorance, we have known that the world is spherical since at least the 6th century BCE.",
+      "zh": "毕竟，与普遍固执认为祖先地理无知的看法相反，我们早在公元前6世纪就知道地球是球形的。"
+    },
+    {
+      "id": "s8",
+      "en": "The ancient Greek philosopher Plato in his work Phaedo likened it to a leather ball, while the accolade of producing the first recorded globe goes to the ancient Greek philosopher Crates of Mallus, who is said to have made one in around 150 BCE.",
+      "zh": "古希腊哲学家柏拉图在其著作《斐多篇》中将地球比作皮球，而第一只有记载的地球仪则归功于古希腊哲学家马洛斯的克拉泰斯，据说他在公元前约150年制作了地球仪。"
+    },
+    {
+      "id": "s9",
+      "en": "Surely, Bellerby reasoned, a good-quality globe wouldn't be difficult to find.",
+      "zh": "贝勒比理所当然地认为，找到一只高质量的地球仪应该不难。"
+    },
+    {
+      "id": "s10",
+      "en": "Nearly two millennia later, however, it seemed that the art of globemaking had been largely forgotten.",
+      "zh": "然而，近两千年后，地球仪制作的艺术似乎已基本被遗忘。"
+    },
+    {
+      "id": "s11",
+      "en": "Bellerby came across shoddy commercial versions designed for school classrooms and genuine antiques in auction houses that would have bust his budget.",
+      "zh": "贝勒比遇到了一些为学校课堂设计的劣质商业版本，也看到拍卖行的真品古董，但价格都超出了他的预算。"
+    },
+    {
+      "id": "s12",
+      "en": "Even his trips to Morocco and India, where surely the knowledge of artisan cartographers* had been preserved, drew a blank.",
+      "zh": "即使他去了摩洛哥和印度，这些地方理应保留有手工制图师*的知识，也一无所获。"
+    },
+    {
+      "id": "s13",
+      "en": "Not one to be easily thwarted, Bellerby decided to make his own good-quality globe.",
+      "zh": "贝勒比不轻易气馁，决定自己制作一只高质量地球仪。"
+    },
+    {
+      "id": "s14",
+      "en": "In the process, almost everything that could possibly go wrong did so.",
+      "zh": "在这个过程中，几乎所有可能出错的事情都发生了。"
+    },
+    {
+      "id": "s15",
+      "en": "Even the shape of the Earth posed a problem, as it is not quite a perfect sphere, but oblate (slightly flattened at the poles).",
+      "zh": "甚至地球的形状也是一个问题，因为它并非完美的球体，而是扁球体（两极略微扁平）。"
+    },
+    {
+      "id": "s16",
+      "en": "Having decided to compromise and opt for two half-spherical pieces that could be fitted together, he was unable to discover anyone capable of casting moulds with sufficient accuracy to ensure that he would not be left with two half-spheres that were not quite the same circumference.",
+      "zh": "他决定妥协，选择用两个半球形零件组装，但找不到能够精确铸模的人，确保两个半球的周长完全一致。"
+    },
+    {
+      "id": "s17",
+      "en": "Even after he eventually resolved this issue, extracting these from the moulds resulted in piles of cracked plaster of Paris** and clouds of choking dust in the workshop he had set up at the rear of his house.",
+      "zh": "即使最终解决了这个问题，从模具中取出地球仪时，仍在他家后面的作坊里产生了一堆裂开的巴黎石膏**和呛人的尘土。"
+    },
+    {
+      "id": "s18",
+      "en": "This series of abortive experiments taught Bellerby a lot about the challenges of making globes, which he communicates here to the reader.",
+      "zh": "这系列失败的实验让贝勒比学到了许多制作地球仪的挑战，他在这里与读者分享了这些经验。"
+    },
+    {
+      "id": "s19",
+      "en": "Finding just the right way to prise the globes from the mould – a high-end air compressor finally did the trick – and locating the right paper and inks with which to make the gores (the sections of flat sheet mapping that are pasted onto the spherical globe) without the ink seeping out to create a mushy, unreadable mess took months and an alarming chunk out of his bank balance.",
+      "zh": "找到正确的方法将地球仪从模具中撬出——最终是一台高端空气压缩机解决了问题——以及找到合适的纸张和墨水制作经纬度带（贴到球形地球仪上的平面地图库段），且墨水不会渗透造成模糊难辨的混乱，这花费了数月时间并让他的银行账户大幅缩水。"
+    },
+    {
+      "id": "s20",
+      "en": "Bellerby's frustration at the painstaking process of attaching the gores to the globe surface – after having found a glue with precisely the right adhesive qualities – is palpable.",
+      "zh": "贝勒比在将经纬度带粘贴到地球仪表面这项极为细致工作上的挫败感——即使他已找到具有恰当粘性的胶水——令人感同身受。"
+    },
+    {
+      "id": "s21",
+      "en": "Right at the end of the process, he learnt that the paper had stretched slightly and so the final one overlapped the first by a centimetre (which may not seem a great deal, but when that represents 2 per cent of the Earth's diameter, it's equivalent to obliterating the Himalayas or wiping out Chile).",
+      "zh": "在过程快结束时，他发现纸张稍有伸长，导致最后一片经纬度带比第一片多重叠了1厘米（看似不多，但占地球直径的2%，相当于抹去喜马拉雅山脉或消灭智利）。"
+    },
+    {
+      "id": "s22",
+      "en": "Bellerby's account of the technical challenges of globe production is interspersed with a series of interludes on great globemakers of the past and cartographic history in general.",
+      "zh": "贝勒比描写地球仪制作技术难题时，穿插了多段关于过去伟大制球匠及制图史的插曲。"
+    },
+    {
+      "id": "s23",
+      "en": "Purists might wish for more map-making details, but Bellerby clearly found a kindred spirit in Martin Behaim.",
+      "zh": "严格派或许希望看到更多制图细节，但贝勒比显然在马丁·贝海姆身上找到了一位志同道合者。"
+    },
+    {
+      "id": "s24",
+      "en": "He was the Nuremberg entrepreneur who in 1492 created the Erdapfel, the world's oldest surviving globe, beautifully finished by a workshop of painters and other craftsmen, only to find that the explorer Christopher Columbus had stumbled upon the Americas the very same year, rendering his masterpiece instantly out of date.",
+      "zh": "贝海姆是纽伦堡的企业家，1492年制造了“地球苹果”——世界上保存至今最古老的地球仪，由绘画师和工匠精美完成，但同年探险家哥伦布发现了美洲，使他的杰作瞬间过时。"
+    },
+    {
+      "id": "s25",
+      "en": "Something of Bellerby's unflinching ambition is reflected in the even more heroic efforts of the Italian cartographer Vincenzo Coronelli, who, in the seventeenth century, created two globes for Louis XIV of France.",
+      "zh": "贝勒比不屈不挠的雄心也体现在意大利制图师文森佐·科罗内利——17世纪为法国路易十四制作了两个地球仪，堪称更加英勇的努力。"
+    },
+    {
+      "id": "s26",
+      "en": "It took him twenty years to complete the monstrous pair, whose vast bulk – each with a diameter of around four metres – can still be admired in the National Library of France in Paris.",
+      "zh": "他花了20年时间完成这对庞然大物，每个直径约4米，如今仍可在巴黎的法国国家图书馆欣赏。"
+    },
+    {
+      "id": "s27",
+      "en": "Although a celebration of the revival of an ancient craft, Bellerby's book is also a lament for the fading away of centuries-old traditions.",
+      "zh": "贝勒比的书虽然庆祝了古老工艺的复兴，也为数百年传统的消逝感到惋惜。"
+    },
+    {
+      "id": "s28",
+      "en": "When he embarked on his globemaking odyssey, he struggled to find artisans with the skills to make the right moulds for the globes or foundries that could shape the meridians (the metal frames which girdle globes) in just the right way.",
+      "zh": "当他开始地球仪制作的漫长征程时，难以找到能制作合适模具的工匠，或能准确塑造经线（金属框架）的铸造厂。"
+    },
+    {
+      "id": "s29",
+      "en": "Although he finally located the right craftsmen, some simply dropping in, serendipitously, to his workshop (by now in more suitable premises than his back room), many of these have now retired or passed away.",
+      "zh": "他虽最终找到了合适的工匠，有些甚至是偶然走进他的作坊（此时已搬到比后屋更合适的场所），但这些人中许多已退休或去世。"
+    },
+    {
+      "id": "s30",
+      "en": "Bellerby's father finally did receive his eightieth birthday present, albeit two years late.",
+      "zh": "贝勒比的父亲最终收到了他的八十大寿礼物，虽然晚了两年。"
+    },
+    {
+      "id": "s31",
+      "en": "Bellerby went on to found a company which now turns out over six hundred globes a year for customers who can have their own tiny village marked or more unusual requests fulfilled.",
+      "zh": "贝勒比随后创立了一家公司，每年生产600多个地球仪，满足客户标注自己的小村庄或其他特殊需求。"
+    },
+    {
+      "id": "s32",
+      "en": "His book, beautifully illustrated with photographs of the various stages of his venture and a few illustrations of historic globes and maps, is hardly a blueprint for commercial success.",
+      "zh": "他的书配有精美的照片，展示他整个项目的不同阶段以及一些历史地球仪和地图的插图，不过这本书并非商业成功的蓝图。"
+    },
+    {
+      "id": "s33",
+      "en": "But it is more than enough to stir up admiration for the craftsmanship of the great mapmakers of the past and the obsessive determination of a modern successor who revived their almost moribund art.",
+      "zh": "但它足以激发对过去伟大地图制作者精湛技艺的敬佩，以及对现代继承者执着决心让这门几乎消亡工艺复活的崇敬。"
+    },
+    {
+      "id": "s34",
+      "en": "* cartographer: someone involved in the science or practice of drawing maps",
+      "zh": "* 制图师：从事制图科学或制图实践的人"
+    },
+    {
+      "id": "s35",
+      "en": "** plaster of Paris: a quick-setting plaster consisting of a fine white powder that hardens when moistened and allowed to dry",
+      "zh": "** 巴黎石膏：一种速凝石膏，由细白粉末组成，遇湿后硬化干燥"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>The Globemakers: The Curious Story of an Ancient Craft</strong></span></div><div style="text-align:center;"><i>A review of Peter Bellerby's book The Globemakers</i></div><p><br>In 2008, Peter Bellerby, who lived in London, wanted to give his father a model globe for his eightieth birthday. What seemed simple enough to start with triggered an almost obsessive, decade-long journey, marked by a series of obstacles that would have deterred anyone less determined. It ended with his establishing the world's only bespoke globemaking company.&nbsp;<br><br>The first surprise in <i>The Globemakers</i>, Bellerby's account of this impulsive enterprise, is that obtaining such a globe was not simply a matter of a quick online order and a repressed sigh at the shipping costs. After all, contrary to stubbornly held popular views of our ancestors' geographical ignorance, we have known that the world is spherical since at least the 6th century BCE. The ancient Greek philosopher Plato in his work <i>Phaedo</i> likened it to a leather ball, while the accolade of producing the first recorded globe goes to the ancient Greek philosopher Crates of Mallus, who is said to have made one in around 150 BCE. Surely, Bellerby reasoned, a good-quality globe wouldn't be difficult to find.&nbsp;<br><br>Nearly two millennia later, however, it seemed that the art of globemaking had been largely forgotten. Bellerby came across shoddy commercial versions designed for school classrooms and genuine antiques in auction houses that would have bust his budget. Even his trips to Morocco and India, where surely the knowledge of artisan cartographers* had been preserved, drew a blank.&nbsp;<br><br>Not one to be easily thwarted, Bellerby decided to make his own good-quality globe. In the process, almost everything that could possibly go wrong did so. Even the shape of the Earth posed a problem, as it is not quite a perfect sphere, but oblate (slightly flattened at the poles). Having decided to compromise and opt for two half-spherical pieces that could be fitted together, he was unable to discover anyone capable of casting moulds with sufficient accuracy to ensure that he would not be left with two half-spheres that were not quite the same circumference. Even after he eventually resolved this issue, extracting these from the moulds resulted in piles of cracked plaster of Paris** and clouds of choking dust in the workshop he had set up at the rear of his house.&nbsp;<br><br>This series of abortive experiments taught Bellerby a lot about the challenges of making globes, which he communicates here to the reader. Finding just the right way to prise the globes from the mould – a high-end air compressor finally did the trick – and locating the right paper and inks with which to make the gores (the sections of flat sheet mapping that are pasted onto the spherical globe) without the ink seeping out to create a mushy, unreadable mess took months and an alarming chunk out of his bank balance. Bellerby's frustration at the painstaking process of attaching the gores to the globe surface – after having found a glue with precisely the right adhesive qualities – is palpable. Right at the end of the process, he learnt that the paper had stretched slightly and so the final one overlapped the first by a centimetre (which may not seem a great deal, but when that represents 2 per cent of the Earth's diameter, it's equivalent to obliterating the Himalayas or wiping out Chile).&nbsp;<br><br>Bellerby's account of the technical challenges of globe production is interspersed with a series of interludes on great globemakers of the past and cartographic history in general. Purists might wish for more map-making details, but Bellerby clearly found a kindred spirit in Martin Behaim. He was the Nuremberg entrepreneur who in 1492 created the Erdapfel, the world's oldest surviving globe, beautifully finished by a workshop of painters and other craftsmen, only to find that the explorer Christopher Columbus had stumbled upon the Americas the very same year, rendering his masterpiece instantly out of date. Something of Bellerby's unflinching ambition is reflected in the even more heroic efforts of the Italian cartographer Vincenzo Coronelli, who, in the seventeenth century, created two globes for Louis XIV of France. It took him twenty years to complete the monstrous pair, whose vast bulk – each with a diameter of around four metres – can still be admired in the National Library of France in Paris.&nbsp;<br><br>Although a celebration of the revival of an ancient craft, Bellerby's book is also a lament for the fading away of centuries-old traditions. When he embarked on his globemaking odyssey, he struggled to find artisans with the skills to make the right moulds for the globes or foundries that could shape the meridians (the metal frames which girdle globes) in just the right way. Although he finally located the right craftsmen, some simply dropping in, serendipitously, to his workshop (by now in more suitable premises than his back room), many of these have now retired or passed away.&nbsp;<br><br>Bellerby's father finally did receive his eightieth birthday present, albeit two years late. Bellerby went on to found a company which now turns out over six hundred globes a year for customers who can have their own tiny village marked or more unusual requests fulfilled. His book, beautifully illustrated with photographs of the various stages of his venture and a few illustrations of historic globes and maps, is hardly a blueprint for commercial success. But it is more than enough to stir up admiration for the craftsmanship of the great mapmakers of the past and the obsessive determination of a modern successor who revived their almost moribund art.&nbsp;<br><br><span style="font-size:12px;">* cartographer: someone involved in the science or practice of drawing maps</span><br><span style="font-size:12px;">** plaster of Paris: a quick-setting plaster consisting of a fine white powder that hardens when moistened and allowed to dry</span></p>

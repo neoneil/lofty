@@ -1298,5 +1298,208 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Forest management in Pennsylvania, USA",
+      "zh": "美国宾夕法尼亚州的森林管理"
+    },
+    {
+      "id": "s2",
+      "en": "How managing low-quality wood (also known as low-use wood) for bioenergy can encourage sustainable forest management",
+      "zh": "如何利用低质量木材（也称为低利用木材）进行生物能源管理来促进可持续森林管理"
+    },
+    {
+      "id": "s3",
+      "en": "A tree's 'value' depends on several factors including its species, size, form, condition, quality, function, and accessibility, and depends on the management goals for a given forest.",
+      "zh": "树木的“价值”取决于多个因素，包括其种类、大小、形状、状况、质量、功能和可及性，并取决于特定森林的管理目标。"
+    },
+    {
+      "id": "s4",
+      "en": "The same tree can be valued very differently by each person who looks at it.",
+      "zh": "同一棵树，被不同人看待时，其价值可能大相径庭。"
+    },
+    {
+      "id": "s5",
+      "en": "A large, straight black cherry tree has high value as timber to be cut into logs or made into furniture, but for a landowner more interested in wildlife habitat, the real value of that stem (or trunk) may be the food it provides to animals.",
+      "zh": "一棵粗壮笔直的黑樱桃树作为原木切割或制作家具具有很高的木材价值，但对于更关注野生动物栖息地的土地所有者来说，该树干（或主干）的真正价值可能在于它为动物提供的食物。"
+    },
+    {
+      "id": "s6",
+      "en": "Likewise, if the tree suffers from black knot disease, its value for timber decreases, but to a woodworker interested in making bowls, it brings an opportunity for a unique and beautiful piece of art.",
+      "zh": "同样，如果树木患有黑瘤病，其作为木材的价值会降低，但对于制作碗的木匠来说，这反而带来了创造独特美丽艺术品的机会。"
+    },
+    {
+      "id": "s7",
+      "en": "In the past, Pennsylvania landowners were solely interested in the value of their trees as high-quality timber.",
+      "zh": "过去，宾夕法尼亚的土地所有者仅关注树木作为高质量木材的价值。"
+    },
+    {
+      "id": "s8",
+      "en": "The norm was to remove the stems of highest quality and leave behind poorly formed trees that were not as well suited to the site where they grew.",
+      "zh": "当时的常规做法是砍伐最高质量的树干，留下形状较差且不太适合生长环境的树木。"
+    },
+    {
+      "id": "s9",
+      "en": "This practice, called 'high-grading', has left a legacy of 'low-use wood' in the forests.",
+      "zh": "这种做法称为“高等级砍伐”，导致森林中遗留了大量“低利用木材”。"
+    },
+    {
+      "id": "s10",
+      "en": "Some people even call these 'junk trees', and they are abundant in Pennsylvania.",
+      "zh": "有人甚至称这些为“杂木”，在宾夕法尼亚十分常见。"
+    },
+    {
+      "id": "s11",
+      "en": "These trees have lower economic value for traditional timber markets, compete for growth with higher-value trees, shade out desirable regeneration and decrease the health of a stand* leaving it more vulnerable to poor weather and disease.",
+      "zh": "这些树木在传统木材市场上的经济价值较低，与高价值树木竞争生长空间，遮挡理想的自然更新，降低树群的健康状况，使其更易受到恶劣天气和疾病的影响。"
+    },
+    {
+      "id": "s12",
+      "en": "Management that specifically targets low-use wood can help landowners manage these forest health issues, and wood energy markets help promote this.",
+      "zh": "专门针对低利用木材的管理可以帮助土地所有者解决这些森林健康问题，而木材能源市场则促进了这一点。"
+    },
+    {
+      "id": "s13",
+      "en": "Wood energy markets can accept less expensive wood material of lower quality than would be suitable for traditional timber markets.",
+      "zh": "木材能源市场可以接受价格更低、质量较差的木材，这些木材不适合传统木材市场。"
+    },
+    {
+      "id": "s14",
+      "en": "Most wood used for energy in Pennsylvania is used to produce heat or electricity through combustion.",
+      "zh": "宾夕法尼亚大部分用于能源的木材通过燃烧来产生热能或电力。"
+    },
+    {
+      "id": "s15",
+      "en": "Many schools and hospitals use wood boiler systems to heat and power their facilities, many homes are primarily heated with wood, and some coal plants incorporate wood into their coal streams to produce electricity.",
+      "zh": "许多学校和医院使用木质锅炉系统为设施供暖和发电，许多家庭主要用木材取暖，一些煤电厂将木材掺入煤炭中发电。"
+    },
+    {
+      "id": "s16",
+      "en": "Wood can also be gasified for electrical generation and can even be made into liquid fuels like ethanol and gasoline for lorries and cars.",
+      "zh": "木材还可以气化用于发电，甚至可以制成乙醇和汽油等液体燃料，用于卡车和汽车。"
+    },
+    {
+      "id": "s17",
+      "en": "All these products are made primarily from low-use wood.",
+      "zh": "所有这些产品主要由低利用木材制成。"
+    },
+    {
+      "id": "s18",
+      "en": "Several tree- and plant-cutting approaches, which could greatly improve the long-term quality of a forest, focus strongly or solely on the use of wood for those markets.",
+      "zh": "几种树木和植物砍伐方法可以极大改善森林的长期质量，这些方法主要或完全针对为这些市场利用木材。"
+    },
+    {
+      "id": "s19",
+      "en": "One such approach is called a Timber Stand Improvement (TSI) Cut.",
+      "zh": "其中一种方法称为林分改良砍伐（Timber Stand Improvement, TSI）。"
+    },
+    {
+      "id": "s20",
+      "en": "In a TSI Cut, really poor-quality tree and plant material is cut down to allow more space, light, and other resources to the highest-valued stems that remain.",
+      "zh": "在TSI砍伐中，会砍伐质量极差的树木和植物材料，以为留下的高价值树干提供更多空间、光照和其他资源。"
+    },
+    {
+      "id": "s21",
+      "en": "Removing invasive plants might be another primary goal of a TSI Cut.",
+      "zh": "清除入侵植物也可能是TSI砍伐的主要目标之一。"
+    },
+    {
+      "id": "s22",
+      "en": "The stems that are left behind might then grow in size and develop more foliage and larger crowns or tops that produce more coverage for wildlife; they have a better chance to regenerate in a less crowded environment.",
+      "zh": "留下的树干可能会长得更大，发展出更多叶子和更大的树冠，为野生动物提供更多遮蔽；它们在较不拥挤的环境中有更好的再生机会。"
+    },
+    {
+      "id": "s23",
+      "en": "TSI Cuts can be tailored to one farmer's specific management goals for his or her land.",
+      "zh": "TSI砍伐可以根据农户对其土地的具体管理目标进行定制。"
+    },
+    {
+      "id": "s24",
+      "en": "Another approach that might yield a high amount of low-use wood is a Salvage Cut.",
+      "zh": "另一种可能产生大量低利用木材的方法是清理砍伐（Salvage Cut）。"
+    },
+    {
+      "id": "s25",
+      "en": "With the many pests and pathogens visiting forests including hemlock wooly adelgid, Asian longhorned beetle, emerald ash borer, and gypsy moth, to name just a few, it is important to remember that those working in the forests can help ease these issues through cutting procedures.",
+      "zh": "众多森林害虫和病原体——如铁杉绒羽蚧、亚洲长角甲虫、绿斑翅灰芒果甲虫和游蛾等——不断威胁森林，需要记住的是，森林工作人员可以通过砍伐措施来缓解这些问题。"
+    },
+    {
+      "id": "s26",
+      "en": "These types of cut reduce the number of sick trees and seek to manage the future spread of a pest problem.",
+      "zh": "这些砍伐方法能减少病树数量，并努力控制害虫未来的传播。"
+    },
+    {
+      "id": "s27",
+      "en": "They leave vigorous trees that have stayed healthy enough to survive the outbreak.",
+      "zh": "它们保留了健康而有活力、足以在爆发中存活下来的树木。"
+    },
+    {
+      "id": "s28",
+      "en": "A Shelterwood Cut, which only takes place in a mature forest that has already been thinned several times, involves removing all the mature trees when other seedlings have become established.",
+      "zh": "遮蔽林砍伐（Shelterwood Cut）只在已经多次进行疏伐的成熟森林中实施，待新苗生长稳定后，移除所有成熟树木。"
+    },
+    {
+      "id": "s29",
+      "en": "This then allows the forester to decide which tree species are regenerated.",
+      "zh": "这使得林务员能够决定哪些树种得以再生。"
+    },
+    {
+      "id": "s30",
+      "en": "It leaves a young forest where all trees are at a similar point in their growth.",
+      "zh": "这样留下一片所有树木生长阶段相近的幼龄森林。"
+    },
+    {
+      "id": "s31",
+      "en": "It can also be used to develop a two-tier forest so that there are two harvests and the money that comes in is spread out over a decade or more.",
+      "zh": "它还可以用于发展双层森林，从而实现两次采伐，收入可分布在十年以上。"
+    },
+    {
+      "id": "s32",
+      "en": "Thinnings and dense and dead wood removal for fire prevention also center on the production of low-use wood.",
+      "zh": "疏伐及为防火目的清除密集和枯死木材，也主要涉及低利用木材的生产。"
+    },
+    {
+      "id": "s33",
+      "en": "However, it is important to remember that some retention of what many would classify as low-use wood is very important.",
+      "zh": "然而，重要的是要记住，保留一些许多人认为是低利用木材的树木非常重要。"
+    },
+    {
+      "id": "s34",
+      "en": "The tops of trees that have been cut down should be left on the site so that their nutrients cycle back into the soil.",
+      "zh": "被砍树木的树梢应留在原地，以便其养分回归土壤循环。"
+    },
+    {
+      "id": "s35",
+      "en": "In addition, trees with many cavities are extremely important habitats for insect predators like woodpeckers, bats and small mammals.",
+      "zh": "此外，有许多树洞的树木是啄木鸟、蝙蝠和小型哺乳动物等捕食性昆虫的重要栖息地。"
+    },
+    {
+      "id": "s36",
+      "en": "They help control problem insects and increase the health and resilience of the forest.",
+      "zh": "它们有助于控制有害昆虫，提升森林的健康和抗逆性。"
+    },
+    {
+      "id": "s37",
+      "en": "It is also important to remember that not all small trees are low-use.",
+      "zh": "同样重要的是要记住，并非所有小树都是低利用木材。"
+    },
+    {
+      "id": "s38",
+      "en": "For example, many species like hawthorn provide food for wildlife.",
+      "zh": "例如，许多物种如山楂为野生动物提供食物。"
+    },
+    {
+      "id": "s39",
+      "en": "Finally, rare species of trees in a forest should also stay behind as they add to its structural diversity.",
+      "zh": "最后，森林中稀有树种也应保留，因为它们增加了森林的结构多样性。"
+    },
+    {
+      "id": "s40",
+      "en": "*Stand : An area covered with trees that have common features (e.g. size)",
+      "zh": "*林分：指一片具有共同特征（如大小）的树木覆盖区。"
+    }
+  ]
 ---
 <p style="text-align: center;"><span style="font-weight: 700;"><span style="font-size: 22px;">Forest management in Pennsylvania, USA</span></span></p><p style="text-align: center;"><em>How managing low-quality wood (also known as low-use wood) for bioenergy can encourage sustainable forest management</em></p><p><span style="font-weight: 700;">A.&nbsp;</span></p><p>A tree's 'value' depends on several factors including its species, size, form, condition, quality, function, and accessibility, and depends on the management goals for a given forest. The same tree can be valued very differently by each person who looks at it. A large, straight black cherry tree has high value as timber to be cut into logs or made into furniture, but for a landowner more interested in wildlife habitat, the real value of that stem (or trunk) may be the food it provides to animals. Likewise, if the tree suffers from black knot disease, its value for timber decreases, but to a woodworker interested in making bowls, it brings an opportunity for a unique and beautiful piece of art.</p><p><br></p><p><span style="font-weight: 700;">B.&nbsp;</span></p><p>In the past, Pennsylvania landowners were solely interested in the value of their trees as high-quality timber. The norm was to remove the stems of highest quality and leave behind poorly formed trees that were not as well suited to the site where they grew. This practice, called 'high-grading', has left a legacy of 'low-use wood' in the forests. Some people even call these 'junk trees', and they are abundant in Pennsylvania. These trees have lower economic value for traditional timber markets, compete for growth with higher-value trees, shade out desirable regeneration and decrease the health of a stand* leaving it more vulnerable to poor weather and disease. Management that specifically targets low-use wood can help landowners manage these forest health issues, and wood energy markets help promote this.</p><p><br></p><p><span style="font-weight: 700;">C. </span></p><p>Wood energy markets can accept less expensive wood material of lower quality than would be suitable for traditional timber markets. Most wood used for energy in Pennsylvania is used to produce heat or electricity through combustion. Many schools and hospitals use wood boiler systems to heat and power their facilities, many homes are primarily heated with wood, and some coal plants incorporate wood into their coal streams to produce electricity. Wood can also be gasified for electrical generation and can even be made into liquid fuels like ethanol and gasoline for lorries and cars. All these products are made primarily from low-use wood. Several tree- and plant-cutting approaches, which could greatly improve the long-term quality of a forest, focus strongly or solely on the use of wood for those markets.</p><p><br></p><p><strong>D. </strong></p><p>One such approach is called a Timber Stand Improvement (TSI) Cut. In a TSI Cut, really poor-quality tree and plant material is cut down to allow more space, light, and other resources to the highest-valued stems that remain. Removing invasive plants might be another primary goal of a TSI Cut. The stems that are left behind might then grow in size and develop more foliage and larger crowns or tops that produce more coverage for wildlife; they have a better chance to regenerate in a less crowded environment. TSI Cuts can be tailored to one farmer's specific management goals for his or her land.</p><p><br></p><p><span style="font-weight: 700;">E.&nbsp;</span></p><p>Another approach that might yield a high amount of low-use wood is a Salvage Cut. With the many pests and pathogens visiting forests including hemlock wooly adelgid, Asian longhorned beetle, emerald ash borer, and gypsy moth, to name just a few, it is important to remember that those working in the forests can help ease these issues through cutting procedures. These types of cut reduce the number of sick trees and seek to manage the future spread of a pest problem. They leave vigorous trees that have stayed healthy enough to survive the outbreak.</p><p><br></p><p><span style="font-weight: 700;">F. </span></p><p>A Shelterwood Cut, which only takes place in a mature forest that has already been thinned several times, involves removing all the mature trees when other seedlings have become established. This then allows the forester to decide which tree species are regenerated. It leaves a young forest where all trees are at a similar point in their growth. It can also be used to develop a two-tier forest so that there are two harvests and the money that comes in is spread out over a decade or more.</p><p><br></p><p><span style="font-weight: 700;">G. </span></p><p>Thinnings and dense and dead wood removal for fire prevention also center on the production of low-use wood. However, it is important to remember that some retention of what many would classify as low-use wood is very important. The tops of trees that have been cut down should be left on the site so that their nutrients cycle back into the soil. In addition, trees with many cavities are extremely important habitats for insect predators like woodpeckers, bats and small mammals. They help control problem insects and increase the health and resilience of the forest. It is also important to remember that not all small trees are low-use. For example, many species like hawthorn provide food for wildlife. Finally, rare species of trees in a forest should also stay behind as they add to its structural diversity.</p><p><br></p><p>*Stand : An area covered with trees that have common features (e.g. size)</p>

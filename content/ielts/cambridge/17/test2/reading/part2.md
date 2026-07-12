@@ -1256,5 +1256,213 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "A second attempt at domesticating the tomato",
+      "zh": "番茄驯化的第二次尝试"
+    },
+    {
+      "id": "s2",
+      "en": "It took at least 3,000 years for humans to learn how to domesticate the wild tomato and cultivate it for food.",
+      "zh": "人类花费了至少3000年才学会驯化野生番茄并将其栽培作为食物。"
+    },
+    {
+      "id": "s3",
+      "en": "Now two separate teams in Brazil and China have done it all over again in less than three years.",
+      "zh": "现在，巴西和中国的两个独立团队在不到三年的时间里重新完成了这一过程。"
+    },
+    {
+      "id": "s4",
+      "en": "And they have done it better in some ways, as the re-domesticated tomatoes are more nutritious than the ones we eat at present.",
+      "zh": "而且在某些方面他们做得更好，因为重新驯化的番茄比我们现在食用的更加营养。"
+    },
+    {
+      "id": "s5",
+      "en": "This approach relies on the revolutionary CRISPR genome editing technique, in which changes are deliberately made to the DNA of a living cell, allowing genetic material to be added, removed or altered.",
+      "zh": "这种方法依赖于革命性的CRISPR基因组编辑技术，该技术通过对活细胞的DNA进行有意修改，实现基因物质的添加、删除或改变。"
+    },
+    {
+      "id": "s6",
+      "en": "The technique could not only improve existing crops, but could also be used to turn thousands of wild plants into useful and appealing foods.",
+      "zh": "该技术不仅可以改良现有作物，还可以将数千种野生植物转变为有用且吸引人的食物。"
+    },
+    {
+      "id": "s7",
+      "en": "In fact, a third team in the US has already begun to do this with a relative of the tomato called the groundcherry.",
+      "zh": "事实上，美国的第三个团队已经开始用一种叫做地樱桃的番茄亲缘植物进行这种操作。"
+    },
+    {
+      "id": "s8",
+      "en": "This fast-track domestication could help make the world’s food supply healthier and far more resistant to diseases, such as the rust fungus devastating wheat crops.",
+      "zh": "这种快速驯化有助于使全球粮食供应更加健康，并对锈菌等危害小麦作物的疾病具有更强的抵抗力。"
+    },
+    {
+      "id": "s9",
+      "en": "‘This could transform what we eat,’ says Jorg Kudla at the University of Munster in Germany, a member of the Brazilian team.",
+      "zh": "巴西团队成员、德国明斯特大学的约格·库德拉说：“这可能会改变我们的饮食。”"
+    },
+    {
+      "id": "s10",
+      "en": "‘There are 50,000 edible plants in the world, but 90 percent of our energy comes from just 15 crops.’",
+      "zh": "“世界上有五万种可食用植物，但我们90%的能量仅来自15种作物。”"
+    },
+    {
+      "id": "s11",
+      "en": "‘We can now mimic the known domestication course of major crops like rice, maize, sorghum or others,’ says Caixia Gao of the Chinese Academy of Sciences in Beijing.",
+      "zh": "中国科学院北京分院的高彩霞说：“我们现在可以模拟水稻、玉米、高粱等主要作物的已知驯化过程。”"
+    },
+    {
+      "id": "s12",
+      "en": "‘Then we might try to domesticate plants that have never been domesticated.’",
+      "zh": "“然后我们可能尝试驯化那些从未被驯化过的植物。”"
+    },
+    {
+      "id": "s13",
+      "en": "Wild tomatoes, which are native to the Andes region in South America, produce pea-sized fruits.",
+      "zh": "野生番茄原产于南美安第斯地区，结出豆粒大小的果实。"
+    },
+    {
+      "id": "s14",
+      "en": "Over many generations, peoples such as the Aztecs and Incas transformed the plant by selecting and breeding plants with mutations* in their genetic structure, which resulted in desirable traits such as larger fruit.",
+      "zh": "经过多代繁殖，阿兹特克人和印加人等民族通过选择和培育基因结构中带有突变的植物，使番茄获得了如果实更大等理想特性。"
+    },
+    {
+      "id": "s15",
+      "en": "But every time a single plant with a mutation is taken from a larger population for breeding, much genetic diversity is lost.",
+      "zh": "但每次从大量群体中选取带有突变的单株植物进行繁殖，都会损失大量基因多样性。"
+    },
+    {
+      "id": "s16",
+      "en": "And sometimes the desirable mutations come with less desirable traits.",
+      "zh": "而且有时候，理想的突变会伴随一些不太理想的性状。"
+    },
+    {
+      "id": "s17",
+      "en": "For instance, the tomato strains grown for supermarkets have lost much of their flavour.",
+      "zh": "例如，为超市种植的番茄品种已经失去了很多风味。"
+    },
+    {
+      "id": "s18",
+      "en": "By comparing the genomes of modern plants to those of their wild relatives, biologists have been working out what genetic changes occurred as plants were domesticated.",
+      "zh": "通过比较现代植物与其野生亲缘种的基因组，生物学家们一直在研究植物驯化过程中发生的基因变化。"
+    },
+    {
+      "id": "s19",
+      "en": "The teams in Brazil and China have now used this knowledge to reintroduce these changes from scratch while maintaining or even enhancing the desirable traits of wild strains.",
+      "zh": "巴西和中国的团队现在利用这些知识，从零开始重新引入这些基因变化，同时保持甚至增强野生品种的理想特性。"
+    },
+    {
+      "id": "s20",
+      "en": "Kudla’s team made six changes altogether.",
+      "zh": "库德拉的团队一共进行了六处基因修改。"
+    },
+    {
+      "id": "s21",
+      "en": "For instance, they tripled the size of fruit by editing a gene called FRUIT WEIGHT, and increased the number of tomatoes per truss by editing another called MULTIFLORA.",
+      "zh": "例如，他们通过编辑名为“FRUIT WEIGHT”的基因使果实大小增大了三倍，通过编辑另一个名为“MULTIFLORA”的基因增加了每串番茄的数量。"
+    },
+    {
+      "id": "s22",
+      "en": "While the historical domestication of tomatoes reduced levels of the red pigment lycopene – thought to have potential health benefits – the team in Brazil managed to boost it instead.",
+      "zh": "历史上的番茄驯化过程减少了红色素番茄红素的含量，这种色素被认为具有潜在的健康益处，而巴西团队则成功提升了它的含量。"
+    },
+    {
+      "id": "s23",
+      "en": "The wild tomato has twice as much lycopene as cultivated ones; the newly domesticated one has five times as much.",
+      "zh": "野生番茄的番茄红素含量是栽培品种的两倍；而新驯化的番茄则达到其五倍。"
+    },
+    {
+      "id": "s24",
+      "en": "‘They are quite tasty,’ says Kudla.",
+      "zh": "库德拉说：“它们相当美味。”"
+    },
+    {
+      "id": "s25",
+      "en": "‘A little bit strong.",
+      "zh": "“味道有点浓烈。"
+    },
+    {
+      "id": "s26",
+      "en": "And very aromatic.’",
+      "zh": "而且非常芳香。”"
+    },
+    {
+      "id": "s27",
+      "en": "The team in China re-domesticated several strains of wild tomatoes with desirable traits lost in domesticated tomatoes.",
+      "zh": "中国团队重新驯化了几种在驯化番茄中丧失了理想特性的野生番茄品系。"
+    },
+    {
+      "id": "s28",
+      "en": "In this way they managed to create a strain resistant to a common disease called bacterial spot race, which can devastate yields.",
+      "zh": "通过这种方式，他们成功培育出一种抗一种常见病害——细菌斑点病菌株的品系，该病害会严重破坏产量。"
+    },
+    {
+      "id": "s29",
+      "en": "They also created another strain that is more salt tolerant – and has higher levels of vitamin C.",
+      "zh": "他们还培育出另一种盐碱耐受性更强且富含维生素C的品种。"
+    },
+    {
+      "id": "s30",
+      "en": "Meanwhile, Joyce Van Eck at the Boyce Thompson Institute in New York state decided to use the same approach to domesticate the groundcherry or goldenberry ( Physalis pruinosa ) for the first time.",
+      "zh": "与此同时，纽约州博伊斯·汤普森研究所的乔伊斯·范·埃克决定首次利用同样的方法驯化地樱桃或称金莓（Physalis pruinosa）。"
+    },
+    {
+      "id": "s31",
+      "en": "This fruit looks similar to the closely related Cape gooseberry(Physalis peruviana).",
+      "zh": "这种果实看起来和近亲开普醋栗（Physalis peruviana）相似。"
+    },
+    {
+      "id": "s32",
+      "en": "Groundcherries are already sold to a limited extent in the US but they are hard to produce because the plant has a sprawling growth habit and the small fruits fall off the branches when ripe.",
+      "zh": "地樱桃已在美国有限销售，但因其蔓生生长习性及果实成熟时易落枝，生产难度较大。"
+    },
+    {
+      "id": "s33",
+      "en": "Van Eck's team has edited the plants to increase fruit size, make their growth more compact and to stop fruits dropping.",
+      "zh": "范·埃克的团队对植物进行了基因编辑，增加果实大小，使植物生长更紧凑，并防止果实脱落。"
+    },
+    {
+      "id": "s34",
+      "en": "'There's potential for this to be a commercial crop,’ says Van Eck.",
+      "zh": "范·埃克说：“这有成为商业作物的潜力。”"
+    },
+    {
+      "id": "s35",
+      "en": "But she adds that taking the work further would be expensive because of the need to pay for a licence for the CRISPR technology and get regulatory approval.",
+      "zh": "但她补充说，进一步推进这项工作将很昂贵，因为需要支付CRISPR技术的许可费并获得监管批准。"
+    },
+    {
+      "id": "s36",
+      "en": "This approach could boost the use of many obscure plants, says Jonathan Jones of the Sainsbury Lab in the UK.",
+      "zh": "英国圣斯伯里实验室的乔纳森·琼斯说，这种方法可以促进许多不为人知植物的利用。"
+    },
+    {
+      "id": "s37",
+      "en": "But it will be hard for new foods to grow so popular with farmers and consumers that they become new staple crops, he thinks.",
+      "zh": "但他认为新食物要想受到农民和消费者的广泛欢迎，成为新的主食作物将很困难。"
+    },
+    {
+      "id": "s38",
+      "en": "The three teams already have their eye on other plants that could be 'catapulted into the mainstream’, including foxtail, oat-grass and cowpea.",
+      "zh": "这三个团队已经关注其他一些可以“迅速进入主流”的植物，包括狐尾草、燕麦草和豆角。"
+    },
+    {
+      "id": "s39",
+      "en": "By choosing wild plants that are drought or heat tolerant, says Gao, we could create crops that will thrive even as the planet warms.",
+      "zh": "高彩霞说，通过选择耐旱或耐热的野生植物，我们可以培育出即使在地球变暖的环境下也能茁壮生长的作物。"
+    },
+    {
+      "id": "s40",
+      "en": "But Kudla didn't want to reveal which species were in his team's sights, because CRISPR has made the process so easy.",
+      "zh": "但库德拉不愿透露他的团队关注的是哪些物种，因为CRISPR让这一过程变得非常容易。"
+    },
+    {
+      "id": "s41",
+      "en": "'Any one with the right skills could go to their lab and do this.'",
+      "zh": "“任何具备相应技能的人都可以去他们的实验室完成这项工作。”"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>A second attempt at domesticating the tomato</strong></span></p><p style="text-align:left;"><strong>A</strong></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">It took at least 3,000 years for humans to learn how to domesticate the wild tomato and cultivate it for food. Now two separate teams in Brazil and China have done it all over again in less than three years. And they have done it better in some ways, as the re-domesticated tomatoes are more nutritious than the ones we eat at present.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">This approach relies on the revolutionary CRISPR genome editing technique, in&nbsp;which changes are deliberately made to the DNA of a living cell, allowing genetic material to be added, removed or altered. The technique could not only improve existing crops, but could also be used to turn thousands of wild plants into useful and appealing foods. In fact, a third team in the US has already begun to do this &nbsp;with a relative of the tomato called the groundcherry.</span></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p style="text-align:left;"><span style="color:rgb(35, 31, 32);font-family:Arial;">This fast-track domestication could help make the world’s food supply healthier and far more resistant to diseases, such as the rust fungus devastating wheat crops.</span>&nbsp;&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">‘This could transform what we eat,’ says Jorg Kudla at the University of Munster in Germany, a member of the Brazilian team. ‘There are 50,000 edible plants in the world, but 90 percent of our energy comes from just 15 crops.’</span></span>&nbsp;&nbsp;</p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">‘We can now mimic the known domestication course of major crops like rice, maize, sorghum or others,’ says Caixia Gao of the Chinese Academy of Sciences in Beijing. ‘Then we might try to domesticate plants that have never been domesticated.’</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;"><strong>B</strong></span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">Wild tomatoes, which are native to the Andes region in South America, produce &nbsp;pea-sized fruits. Over many generations, peoples such as the Aztecs and Incas &nbsp;transformed the plant by selecting and breeding plants with mutations* in their &nbsp;genetic structure, which resulted in desirable traits such as larger fruit.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">But every time a single plant with a mutation is taken from a larger population for&nbsp;breeding, much genetic diversity is lost. And sometimes the desirable mutations&nbsp;come with less desirable traits. For instance, the tomato strains grown for&nbsp;supermarkets have lost much of their flavour.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">By comparing the genomes of modern plants to those of their wild relatives, biologists have been working out what genetic changes occurred as plants were &nbsp;domesticated. The teams in Brazil and China have now used this knowledge to &nbsp;reintroduce these changes from scratch while maintaining or even enhancing the &nbsp;desirable traits of wild strains.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial-BoldMT;"><strong>C</strong></span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">Kudla’s team made six changes altogether. For instance, they tripled the size &nbsp;of fruit by editing a gene called FRUIT WEIGHT, and increased the number of &nbsp;tomatoes per truss by editing another called MULTIFLORA.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">While the historical domestication of tomatoes reduced levels of the red pigment&nbsp;lycopene – thought to have potential health benefits – the team in Brazil managed &nbsp;to boost it instead. The wild tomato has twice as much lycopene as cultivated ones; &nbsp;</span><span style="color:rgb(35,31,32);font-family:Arial;font-size:极px;">the newly domesticated one has five times as much.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">‘They are quite tasty,’ says Kudla. ‘A little bit strong. And very aromatic.’&nbsp;</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35,31,32);font-family:Arial;">The team in China re-domesticated several strains of wild tomatoes with desirable&nbsp;traits lost in domesticated tomatoes. In this way they managed to create a strain&nbsp;resistant to a common disease called bacterial spot race, which can devastate &nbsp;yields. They also created another strain that is more salt tolerant – and has higher levels of vitamin C.</span></span></p><p style="text-align:left;"><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial-BoldMT;"><strong>D&nbsp;</strong></span></span></p><p><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial;">Meanwhile, Joyce Van Eck at the Boyce Thompson Institute in New York state decided to use the same approach to domesticate the groundcherry or goldenberry (</span><i><span style="color:rgb(35, 31, 32);font-family:Arial;">Physalis pruinosa</span></i><span style="color:rgb(35, 31, 32);font-family:Arial;">) for the first time. This fruit looks similar to the closely related Cape gooseberry(Physalis peruviana).</span></span></p><p><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial;">Groundcherries are already sold to a limited extent in the US but they are hard to produce because the plant has a sprawling growth habit and the small fruits fall off the branches when ripe. Van Eck's team has edited the plants to increase fruit size, make their growth more compact and to stop fruits dropping. 'There's potential for this to be a commercial crop,’ says Van Eck. But she adds that taking the work further would be expensive because of the need to pay for a licence for the CRISPR technology and get regulatory approval.</span></span></p><p><strong>E</strong></p><p><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial;">This approach could boost the use of many obscure plants, says Jonathan Jones of the Sainsbury Lab in the UK. But it will be hard for new foods to grow so popular with farmers and consumers that they become new staple crops, he thinks.</span></span></p><p><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial;">The three teams already have their eye on other plants that could be 'catapulted into the mainstream’, including foxtail, oat-grass and cowpea. By choosing wild plants that are drought or heat tolerant, says Gao, we could create crops that will thrive even as the planet warms.</span></span></p><p><span style="font-size:16px;"><span style="color:rgb(35, 31, 32);font-family:Arial;">But Kudla didn't want to reveal which species were in his team's sights, because CRISPR has made the process so easy. 'Any one with the right skills could go to their lab and do this.'</span></span></p>

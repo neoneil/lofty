@@ -1390,5 +1390,203 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Plant's 'thermometer' triggers springtime growth by measuring night-time heat",
+      "zh": "植物的“温度计”通过测量夜间温度来触发春季生长。"
+    },
+    {
+      "id": "s2",
+      "en": "A photoreceptor molecule in plant cells has been found to have a second job as a thermometer after dark - allowing plants to read seasonal temperature changes.",
+      "zh": "研究发现，植物细胞中的一种光受体分子在夜晚还有第二个功能——作为温度计，使植物能够感知季节性温度变化。"
+    },
+    {
+      "id": "s3",
+      "en": "Scientists say the discovery could help breed crops that are more resilient to the temperatures expected to result from climate change",
+      "zh": "科学家表示，这一发现可能有助于培育对气候变化带来的温度更具适应性的农作物。"
+    },
+    {
+      "id": "s4",
+      "en": "An international team of scientists led by the University of Cambridge has discovered that the 'thermometer' molecule in plants enables them to develop according to seasonal temperature changes.",
+      "zh": "由剑桥大学领导的一个国际科学家团队发现，植物体内的“温度计”分子使其能够根据季节性温度变化进行生长发育。"
+    },
+    {
+      "id": "s5",
+      "en": "Researchers have revealed that molecules called phytochromes - used by plants to detect light during the day - actually change their function in darkness to become cellular temperature gauges that measure the heat of the night.",
+      "zh": "研究人员揭示，称为植物光敏素的分子在白天用于感知光线，实际上在黑暗中会改变功能，变成细胞温度计来测量夜间的温度。"
+    },
+    {
+      "id": "s6",
+      "en": "The new findings, published in the journal Science , show that phytochromes control genetic switches in response to temperature as well as light to dictate plant development.",
+      "zh": "发表在《科学》杂志上的新发现显示，植物光敏素能够响应温度和光线，控制基因开关，从而决定植物的生长发育。"
+    },
+    {
+      "id": "s7",
+      "en": "At night, these molecules change states, and the pace at which they change is 'directly proportional to temperature', say scientists, who compare phytochromes to mercury in a thermometer.",
+      "zh": "科学家们表示，夜间这些分子会改变状态，且变化速度“与温度成正比”，他们将植物光敏素比作温度计中的水银。"
+    },
+    {
+      "id": "s8",
+      "en": "The warmer it is, the faster the molecular change — stimulating plant growth.",
+      "zh": "温度越高，分子变化越快——从而促进植物生长。"
+    },
+    {
+      "id": "s9",
+      "en": "Farmers and gardeners have known for hundreds of years how responsive plants are to temperature: warm winters cause many trees and flowers to bud early, something humans have long used to predict weather and harvest times for the coming year.",
+      "zh": "数百年来，农民和园艺师都知道植物对温度非常敏感：温暖的冬天会导致许多树木和花卉提早萌芽，人们长期以来一直用此来预测来年的气候和收获时间。"
+    },
+    {
+      "id": "s10",
+      "en": "The latest research pinpoints for the first time a molecular mechanism in plants that reacts to temperature - often triggering the buds of spring we long to see at the end of winter.",
+      "zh": "最新研究首次明确指出植物中一种对温度敏感的分子机制——它常常触发我们渴望在冬末看到的春芽。"
+    },
+    {
+      "id": "s11",
+      "en": "With weather and temperatures set to become ever more unpredictable due to climate change, researchers say the discovery that this light-sensing molecule also functions as the internal thermometer in plant cells could help us breed tougher crops.",
+      "zh": "由于气候变化，天气和温度将变得愈发不可预测，研究人员表示，发现这种感光分子也作为植物细胞内的温度计功能，可能有助于我们培育更具抗性的农作物。"
+    },
+    {
+      "id": "s12",
+      "en": "'It is estimated that agricultural yields will need to double by 2050, but climate change is a major threat to achieving this.",
+      "zh": "“据估计，农业产量到2050年需要翻一番，但气候变化是实现这一目标的重大威胁。"
+    },
+    {
+      "id": "s13",
+      "en": "Key crops such as wheat and rice are sensitive to high temperatures.",
+      "zh": "关键农作物如小麦和水稻对高温非常敏感。"
+    },
+    {
+      "id": "s14",
+      "en": "Thermal stress reduces crop yields by around 10% for every one degree increase in temperature,' says lead researcher Dr Philip Wigge from Cambridge's Sainsbury Laboratory.",
+      "zh": "剑桥大学塞恩斯伯里实验室的首席研究员菲利普·维格博士表示：“每升高一度温度，热应激会使农作物产量降低约10%。"
+    },
+    {
+      "id": "s15",
+      "en": "'Discovering the molecules that allow plants to sense temperature has the potential to accelerate the breeding of crops resilient to thermal stress and climate change.'",
+      "zh": "“发现让植物感知温度的分子，有望加速培育耐热胁迫和气候变化的农作物。”"
+    },
+    {
+      "id": "s16",
+      "en": "In their active state, phytochrome molecules bind themselves to DNA to restrict plant growth.",
+      "zh": "在活跃状态下，植物光敏素分子会结合DNA，从而限制植物生长。"
+    },
+    {
+      "id": "s17",
+      "en": "During the day, sunlight activates the molecules, slowing down growth.",
+      "zh": "白天，阳光激活这些分子，减缓生长速度。"
+    },
+    {
+      "id": "s18",
+      "en": "If a plant finds itself in shade, phytochromes are quickly inactivated - enabling it to grow faster to find sunlight again.",
+      "zh": "如果植物处于阴影中，植物光敏素会迅速失活——使植物加快生长，以重新获得阳光。"
+    },
+    {
+      "id": "s19",
+      "en": "This is how plants compete to escape each other's shade.",
+      "zh": "这就是植物相互竞争，争取摆脱彼此阴影的方式。"
+    },
+    {
+      "id": "s20",
+      "en": "'Light-driven changes to phytochrome activity occur very fast, in less than a second,' says Wigge.",
+      "zh": "维格说：“由光线驱动的植物光敏素活性变化非常快，少于一秒钟。”"
+    },
+    {
+      "id": "s21",
+      "en": "At night, however, it's a different story.",
+      "zh": "然而在夜晚，情况则不同。"
+    },
+    {
+      "id": "s22",
+      "en": "Instead of a rapid deactivation following sundown, the molecules gradually change from their active to inactive state.",
+      "zh": "分子不会在日落后迅速失活，而是逐渐从活跃状态转变为失活状态。"
+    },
+    {
+      "id": "s23",
+      "en": "This is called 'dark reversion'.",
+      "zh": "这被称为“暗转变”。"
+    },
+    {
+      "id": "s24",
+      "en": "'Just as mercury rises in a thermometer, the rate at which phytochromes revert to their inactive state during the night is a direct measure of temperature,' says Wigge.",
+      "zh": "维格说：“正如水银温度计中水银上升一样，植物光敏素在夜间恢复到失活状态的速度是温度的直接体现。”"
+    },
+    {
+      "id": "s25",
+      "en": "'The lower the temperature, the slower the rate at which phytochromes revert to inactivity, so the molecules spend more time in their active, growth-suppressing state.",
+      "zh": "“温度越低，植物光敏素恢复失活的速度越慢，因此分子在其活跃、抑制生长的状态下停留时间越长。"
+    },
+    {
+      "id": "s26",
+      "en": "This is why plants are slower to grow in winter.",
+      "zh": "这也是植物在冬季生长缓慢的原因。"
+    },
+    {
+      "id": "s27",
+      "en": "Warm temperatures accelerate dark reversion, so that phytochromes rapidly reach an inactive state and detach themselves from the plant's DNA - allowing genes to be expressed and plant growth to resume.'",
+      "zh": "温暖的温度加速暗转变，使植物光敏素迅速达到失活状态并从植物DNA上脱离——允许基因表达，植物生长得以恢复。”"
+    },
+    {
+      "id": "s28",
+      "en": "Wigge believes phytochrome thermo-sensing evolved at a later stage, and co-opted the biological network already used for light-based growth during the downtime of night.",
+      "zh": "维格认为植物光敏素的温度感应功能是在后期进化的，它利用了夜晚休眠时已经存在的基于光的生长生物网络。"
+    },
+    {
+      "id": "s29",
+      "en": "Some plants mainly use day length as an indicator of the season.",
+      "zh": "有些植物主要通过昼长来判断季节。"
+    },
+    {
+      "id": "s30",
+      "en": "Other species, such as daffodils, have considerable temperature sensitivity, and can flower months in advance during a warm winter.",
+      "zh": "其他物种，如水仙花，对温度极为敏感，温暖的冬季能使它们提前数月开花。"
+    },
+    {
+      "id": "s31",
+      "en": "In fact, the discovery of the dual role of phytochromes provides the science behind a well-known rhyme long used to predict the coming season: 'oak before ash we'll have a splash, ash before oak we're in for a soak'.",
+      "zh": "事实上，发现植物光敏素的双重作用揭示了一句长期用来预测季节的著名谚语背后的科学道理：“橡树先开，必定大雨；梣树先开，必定干燥。”"
+    },
+    {
+      "id": "s32",
+      "en": "Wigge explains: 'Oak trees rely much more on temperature, likely using phytochromes as thermometers to dictate development, whereas ash trees rely on measuring day length to determine their seasonal timing.",
+      "zh": "维格解释说：“橡树更多依赖温度，可能使用植物光敏素作为温度计来调控生长，而梣树则依靠测量昼长确定季节时机。"
+    },
+    {
+      "id": "s33",
+      "en": "A warmer spring, and consequently a higher likeliness of a hot summer, will result in oak leafing before ash.",
+      "zh": "一个较暖的春天，以及随之而来的炎热夏季，会导致橡树先于梣树嫩叶萌发。"
+    },
+    {
+      "id": "s34",
+      "en": "A cold spring will see the opposite.",
+      "zh": "寒冷的春天则会出现相反的情况。"
+    },
+    {
+      "id": "s35",
+      "en": "As the British know only too well, a colder summer is likely to be a rain-soaked one.'",
+      "zh": "正如英国人深知的那样，较冷的夏季很可能伴随多雨。"
+    },
+    {
+      "id": "s36",
+      "en": "The new findings are the culmination of twelve years of research involving scientists from Germany, Argentina and the US, as well as the Cambridge team.",
+      "zh": "这项新发现是12年研究的成果，参与者包括来自德国、阿根廷、美国及剑桥的科学家团队。"
+    },
+    {
+      "id": "s37",
+      "en": "The work was done in a model system, using a mustard plant called Arabidopsis , but Wigge says the phytochrome genes necessary for temperature sensing are found in crop plants as well.",
+      "zh": "研究在一种名为拟南芥的芥菜模型植物中进行，但维格表示，温度感应所需的植物光敏素基因也存在于农作物中。"
+    },
+    {
+      "id": "s38",
+      "en": "'Recent advances in plant genetics now mean that scientists are able to rapidly identify the genes controlling these processes in crop plants, and even alter their activity using precise molecular \"scalpels\",' adds Wigge.",
+      "zh": "维格补充说：“植物遗传学的最新进展使科学家能够迅速识别控制这些过程的农作物基因，甚至利用精准的分子‘手术刀’调节基因活性。”"
+    },
+    {
+      "id": "s39",
+      "en": "'Cambridge is uniquely well-positioned to do this kind of research as we have outstanding collaborators nearby who work on more applied aspects of plant biology, and can help us transfer this new knowledge into the field.'",
+      "zh": "“剑桥在这类研究中具有独特优势，我们拥有杰出的合作者，他们专注于植物生物学的应用领域，能帮助我们将新知识推广应用于田间。”"
+    }
+  ]
 ---
 <p style="text-align:center;white-space:normal;"><span style="font-size:22px;"><span><strong>Plant's 'thermometer' triggers springtime growth by measuring night-time heat</strong></span></span></p><p style="text-align:center;white-space:normal;"><i>A photoreceptor molecule in plant cells has been found to have a second job as a thermometer after dark - allowing plants to read seasonal temperature changes. Scientists say the discovery could help breed crops that are more resilient to the temperatures expected to result from climate change</i></p><p style="text-align:center;white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>A.</strong></span></p><p style="white-space:normal;">An international team of scientists led by the University of Cambridge has discovered that the 'thermometer' molecule in plants enables them to develop according to seasonal temperature changes. Researchers have revealed that molecules called phytochromes - used by plants to detect light during the day - actually change their function in darkness to become cellular temperature gauges that measure the heat of the night.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;">The new findings, published in the journal <i>Science</i>, show that phytochromes control genetic switches in response to temperature as well as light to dictate plant development.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>B.</strong></span></p><p style="white-space:normal;">At night, these molecules change states, and the pace at which they change is 'directly proportional to temperature', say scientists, who compare phytochromes to mercury in a thermometer. The warmer it is, the faster the molecular change — stimulating plant growth.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>C.</strong></span></p><p style="white-space:normal;">Farmers and gardeners have known for hundreds of years how responsive plants are to temperature: warm winters cause many trees and flowers to bud early, something humans have long used to predict weather and harvest times for the coming year. The latest research pinpoints for the first time a molecular mechanism in plants that reacts to temperature - often triggering the buds of spring we long to see at the end of winter.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>D.</strong></span></p><p style="white-space:normal;">With weather and temperatures set to become ever more unpredictable due to climate change, researchers say the discovery that this light-sensing molecule also functions as the internal thermometer in plant cells could help us breed tougher crops. 'It is estimated that agricultural yields will need to double by 2050, but climate change is a major threat to achieving this. Key crops such as wheat and rice are sensitive to high temperatures. Thermal stress reduces crop yields by around 10% for every one degree increase in temperature,' says lead researcher Dr Philip Wigge from Cambridge's Sainsbury Laboratory. 'Discovering the molecules that allow plants to sense temperature has the potential to accelerate the breeding of crops resilient to thermal stress and climate change.'</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>E.</strong></span></p><p style="white-space:normal;">In their active state, phytochrome molecules bind themselves to DNA to restrict plant growth. During the day, sunlight activates the molecules, slowing down growth. If a plant finds itself in shade, phytochromes are quickly inactivated - enabling it to grow faster to find sunlight again. This is how plants compete to escape each other's shade. 'Light-driven changes to phytochrome activity occur very fast, in less than a second,' says Wigge.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;">At night, however, it's a different story. Instead of a rapid deactivation following sundown, the molecules gradually change from their active to inactive state. This is called 'dark reversion'. 'Just as mercury rises in a thermometer, the rate at which phytochromes revert to their inactive state during the night is a direct measure of temperature,' says Wigge.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>F.</strong></span></p><p style="white-space:normal;">'The lower the temperature, the slower the rate at which phytochromes revert to inactivity, so the molecules spend more time in their active, growth-suppressing state. This is why plants are slower to grow in winter. Warm temperatures accelerate dark reversion, so that phytochromes rapidly reach an inactive state and detach themselves from the plant's DNA - allowing genes to be expressed and plant growth to resume.' Wigge believes phytochrome thermo-sensing evolved at a later stage, and co-opted the biological network already used for light-based growth during the downtime of night.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>G.</strong></span></p><p style="white-space:normal;">Some plants mainly use day length as an indicator of the season. Other species, such as daffodils, have considerable temperature sensitivity, and can flower months in advance during a warm winter. In fact, the discovery of the dual role of phytochromes provides the science behind a well-known rhyme long used to predict the coming season: 'oak before ash we'll have a splash, ash before oak we're in for a soak'.</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;">Wigge explains: 'Oak trees rely much more on temperature, likely using phytochromes as thermometers to dictate development, whereas ash trees rely on measuring day length to determine their seasonal timing. A warmer spring, and consequently a higher likeliness of a hot summer, will result in oak leafing before ash. A cold spring will see the opposite. As the British know only too well, a colder summer is likely to be a rain-soaked one.'</p><p style="white-space:normal;">&nbsp;</p><p style="white-space:normal;"><span><strong>H.</strong></span></p><p style="white-space:normal;">The new findings are the culmination of twelve years of research involving scientists from Germany, Argentina and the US, as well as the Cambridge team. The work was done in a model system, using a mustard plant called <i>Arabidopsis</i>, but Wigge says the phytochrome genes necessary for temperature sensing are found in crop plants as well. 'Recent advances in plant genetics now mean that scientists are able to rapidly identify the genes controlling these processes in crop plants, and even alter their activity using precise molecular "scalpels",' adds Wigge. 'Cambridge is uniquely well-positioned to do this kind of research as we have outstanding collaborators nearby who work on more applied aspects of plant biology, and can help us transfer this new knowledge into the field.'<span style="text-align:center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>&nbsp;</p>

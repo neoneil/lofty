@@ -2503,5 +2503,258 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Rethinking the Past",
+      "zh": "重新思考过去"
+    },
+    {
+      "id": "s2",
+      "en": "It is by now a truism that the story of human evolution is being rethought.",
+      "zh": "如今，人类进化的故事正在被重新审视，这已是一句老生常谈。"
+    },
+    {
+      "id": "s3",
+      "en": "Discoveries have come thick and fast over the last decade or so, and these have forced us to rethink many crucial points, such as how old our species is – about 300,000 years old as opposed to 200,000 – and what extinct hominins, such as our cousins the Neanderthals, were really like.",
+      "zh": "在过去十年左右，发现层出不穷，这迫使我们重新思考许多关键问题，比如我们物种的历史有多久——大约30万年，而非20万年——以及那些灭绝的古人类，比如我们的“亲戚”尼安德特人，到底是怎样的。"
+    },
+    {
+      "id": "s4",
+      "en": "But because there are so many species and eras involved, it's hard to discern the common threads linking them.",
+      "zh": "但由于涉及的物种和时代众多，难以分辨出将它们联系在一起的共同线索。"
+    },
+    {
+      "id": "s5",
+      "en": "However, I do think it's possible to draw out some overall messages from the blizzard of archaeological finds in recent years.",
+      "zh": "然而，我认为还是有可能从近年来如雪片般涌现的考古发现中总结出一些总体的讯息。"
+    },
+    {
+      "id": "s6",
+      "en": "Two things stand out to me.",
+      "zh": "有两点给我留下了深刻印象。"
+    },
+    {
+      "id": "s7",
+      "en": "One is the growing evidence that many supposedly 'advanced' behaviours, such as architecture and art, can be traced much further back in time than we thought, often to hominin species that existed before modern humans.",
+      "zh": "其一是越来越多的证据表明，许多被认为是“高级”的行为，如建筑和艺术，实际上可以追溯到比我们想象更久远的时期，通常是在现代人类之前存在的古人类物种。"
+    },
+    {
+      "id": "s8",
+      "en": "And the other is that we have badly misunderstood gender roles in prehistoric societies, imposing patriarchal values onto cultures that had very different ideas about how women should behave.",
+      "zh": "其二是，我们对史前社会中的性别角色存在严重误解，把父权制的价值观强加于那些对女性行为有着截然不同看法的文化。"
+    },
+    {
+      "id": "s9",
+      "en": "Let's start with architecture.",
+      "zh": "我们先从建筑说起。"
+    },
+    {
+      "id": "s10",
+      "en": "At Kalambo Falls in Zambia, researchers found buried logs that had been shaped with stone tools so that they interlocked.",
+      "zh": "在赞比亚的卡兰博瀑布，研究人员发现了被石器加工成能够相互咬合的埋藏原木。"
+    },
+    {
+      "id": "s11",
+      "en": "They seem to have once been part of a larger structure, perhaps a building.",
+      "zh": "它们似乎曾是一个更大结构的一部分，可能是一栋建筑。"
+    },
+    {
+      "id": "s12",
+      "en": "This would be unsurprising if they weren't 476,000 years old.",
+      "zh": "如果它们的年代不是47.6万年，这并不会令人惊讶。"
+    },
+    {
+      "id": "s13",
+      "en": "That's almost 200,000 years before our species, Homo sapiens , evolved.",
+      "zh": "这比我们物种——智人——出现的时间早了近20万年。"
+    },
+    {
+      "id": "s14",
+      "en": "Extinct hominins also managed to settle in extreme places.",
+      "zh": "灭绝的古人类也能够在极端环境中定居。"
+    },
+    {
+      "id": "s15",
+      "en": "For instance, we now know that extinct hominins such as the Denisovans lived on the frozen heights of high-altitude regions 200,000 years ago – upending the old notion that such environments were only settled by modern humans around 3,600 years ago.",
+      "zh": "例如，我们现在知道，丹尼索瓦人等灭绝的古人类在20万年前就生活在高海拔的冰冻高地，这颠覆了旧有观点——即这些环境直到约3600年前才被现代人类定居。"
+    },
+    {
+      "id": "s16",
+      "en": "Art also seems to have been invented by older hominins.",
+      "zh": "艺术似乎也是由更古老的古人类创造的。"
+    },
+    {
+      "id": "s17",
+      "en": "We have had evidence for a long time now that Neanderthals painted on cave walls.",
+      "zh": "长期以来我们已有证据表明，尼安德特人在洞穴墙壁上作画。"
+    },
+    {
+      "id": "s18",
+      "en": "Even earlier species, such as Homo erectus , may also have made art, for example by engraving patterns on shells.",
+      "zh": "甚至更早的物种，如直立人，也可能创造过艺术，比如在贝壳上刻画图案。"
+    },
+    {
+      "id": "s19",
+      "en": "By far the most contentious claim in this area is that Homo naledi made art.",
+      "zh": "在这方面，最具争议的说法是纳雷迪人创造了艺术。"
+    },
+    {
+      "id": "s20",
+      "en": "H. naledi lived around 250,000 years ago, making it a contemporary of our species.",
+      "zh": "纳雷迪人大约生活在25万年前，与我们物种同时代。"
+    },
+    {
+      "id": "s21",
+      "en": "However, it had quite a small brain, typical of older hominins – and was therefore, according to palaeoanthropological dogma, incapable of complex behaviours.",
+      "zh": "然而，它的大脑相当小，这在古人类中很常见，因此，根据古人类学的传统观念，它不可能具备复杂行为。"
+    },
+    {
+      "id": "s22",
+      "en": "Nevertheless, in the Rising Star cave system in South Africa where the H. naledi remains were found, researchers have found what seem to be etchings – resembling rudimentary artwork – on the cave walls, though these have yet to be firmly dated.",
+      "zh": "尽管如此，在南非升星洞穴系统里发现纳雷迪人遗骸的地方，研究人员发现在洞穴墙壁上似乎有刻痕——类似于原始艺术——但这些还未被准确测定年代。"
+    },
+    {
+      "id": "s23",
+      "en": "To say these claims about H. naledi are controversial is to understate the situation.",
+      "zh": "说关于纳雷迪人的这些说法有争议，还是偏轻了。"
+    },
+    {
+      "id": "s24",
+      "en": "Many experts say the evidence presented so far is completely inadequate to support them.",
+      "zh": "许多专家认为，到目前为止提供的证据完全不足以支持这些说法。"
+    },
+    {
+      "id": "s25",
+      "en": "The dispute has only been heightened by the way the results were released, in a non-traditional journal that publishes peer reviews publicly alongside the paper.",
+      "zh": "这场争议因研究成果发布的方式更加激烈，论文发表在一家非传统期刊上，这家期刊公开同时发布同行评审。"
+    },
+    {
+      "id": "s26",
+      "en": "My views on the H. naledi controversy are complicated.",
+      "zh": "我对纳雷迪人争议的看法比较复杂。"
+    },
+    {
+      "id": "s27",
+      "en": "I do think more evidence is needed: in particular with regard to the dating of the etchings.",
+      "zh": "我确实认为需要更多证据，特别是关于这些刻痕的年代测定。"
+    },
+    {
+      "id": "s28",
+      "en": "At the same time, I think the species' small brains are a distraction.",
+      "zh": "同时，我觉得这个物种小脑容量的问题让人分心。"
+    },
+    {
+      "id": "s29",
+      "en": "Palaeoanthropologists got fixated on brain size because it was what they could see: if what you have is skeletons, then all you know about brains are their shapes and sizes.",
+      "zh": "古人类学家之所以过于关注脑容量，是因为这是他们可见的：手头只有骨骼，那么关于大脑他们所知仅限于形状和大小。"
+    },
+    {
+      "id": "s30",
+      "en": "But other properties, such as the brain's internal wiring, are surely equally important and may explain how a species like H. naledi might have been capable of complex behaviours, despite their small brains.",
+      "zh": "但其它特性，比如大脑的内部连接，显然同样重要，这或许能解释纳雷迪人为何尽管大脑较小，却能够表现出复杂的行为。"
+    },
+    {
+      "id": "s31",
+      "en": "In a sense, we shouldn't be surprised that so many of these behaviours had their origins in older, extinct hominins.",
+      "zh": "从某种意义上说，我们不应对这么多行为起源于更古老的灭绝古人类感到惊讶。"
+    },
+    {
+      "id": "s32",
+      "en": "Evolution usually works by incremental steps and so does technology.",
+      "zh": "进化通常是通过渐进的步骤进行，技术也是如此。"
+    },
+    {
+      "id": "s33",
+      "en": "The first birds weren't great at flying, and the first mobile phones weren't great at, well, anything really.",
+      "zh": "最早的鸟类飞行能力并不强，而第一批手机其实什么都做得不好。"
+    },
+    {
+      "id": "s34",
+      "en": "The idea that there was a sudden explosion of intelligence and creativity at some point in our evolution isn't inherently ridiculous: sometimes a system hits a tipping point and undergoes runaway change.",
+      "zh": "认为我们的进化史上曾出现智能和创造力的突然爆发，这一观点本身并非荒谬：有时系统会达到临界点并发生快速变化。"
+    },
+    {
+      "id": "s35",
+      "en": "But there was never that much evidence that human evolution worked this way.",
+      "zh": "但一直没有太多证据表明人类进化真是这样发生的。"
+    },
+    {
+      "id": "s36",
+      "en": "Instead, it seems the Neanderthals and many others all walked so we could run.",
+      "zh": "相反，似乎是尼安德特人和许多其他古人类铺好了道路，才有了我们今天的“奔跑”。"
+    },
+    {
+      "id": "s37",
+      "en": "One way or another, the H. naledi story is going to be an example of letting our preconceptions get in the way of the evidence.",
+      "zh": "无论如何，纳雷迪人的故事将成为让我们先入为主的观念阻碍理解证据的一个例子。"
+    },
+    {
+      "id": "s38",
+      "en": "The same is true for our ideas about gender in prehistory.",
+      "zh": "同样的情况也适用于我们对史前性别观念的理解。"
+    },
+    {
+      "id": "s39",
+      "en": "Archaeology was invented by individuals with now unfashionably patriarchal views about gender, and those notions fed into their research.",
+      "zh": "考古学由持有如今已经过时的男性主导性别观念者创立，这些观念也渗透到了他们的研究中。"
+    },
+    {
+      "id": "s40",
+      "en": "Today's researchers are trying to unpick this stuff, and there have been some significant steps in recent years.",
+      "zh": "当今研究者正努力剖析这些问题，近年来已取得了一些重要进展。"
+    },
+    {
+      "id": "s41",
+      "en": "Perhaps the most dramatic was the demolition of 'Man the Hunter'.",
+      "zh": "也许最为戏剧性的是“猎人男性”理论的被推翻。"
+    },
+    {
+      "id": "s42",
+      "en": "This was the idea, promoted for decades, that in most prehistoric societies the men went out to hunt and the women looked after the home.",
+      "zh": "这个观点流传数十年，认为在大多数史前社会中，男性外出狩猎，女性则照料家务。"
+    },
+    {
+      "id": "s43",
+      "en": "However, a meta-analysis published in June 2023 compiled data on several dozen foraging societies and found women hunted in 80 per cent of them.",
+      "zh": "然而，2023年6月发表的一项荟萃分析汇总了数十个采集狩猎社会的数据，发现其中80%的社会中女性参与狩猎。"
+    },
+    {
+      "id": "s44",
+      "en": "In line with this, it emerged that an ancient spear-throwing tool called an atlatl enables women to launch projectiles at the same speed as men.",
+      "zh": "与此相符的是，一种古老的投矛器——阿特拉特——使女性能够以与男性相同的速度投掷标枪。"
+    },
+    {
+      "id": "s45",
+      "en": "We have also seen growing evidence of women occupying positions of authority in ancient societies.",
+      "zh": "我们还看到越来越多证据表明，女性在古代社会中担任权威职位。"
+    },
+    {
+      "id": "s46",
+      "en": "The Viking queen Thyra may have helped unify Denmark in the 900s.",
+      "zh": "维京女王蒂拉可能在10世纪帮助统一了丹麦。"
+    },
+    {
+      "id": "s47",
+      "en": "Going further back, an Iberian leader from around 4000 years ago turned out to be female, not male as many had assumed, when proteins in her teeth were analysed.",
+      "zh": "更早以前，一位约有4000年历史的伊比利亚领导人，其牙齿中的蛋白质分析显示她是女性，而非许多人曾假设的男性。"
+    },
+    {
+      "id": "s48",
+      "en": "It seems that the more we find out about past societies, the more our preconceptions about the ways society 'has to be' turn out to be wrong.",
+      "zh": "看来，我们对过去社会了解得越多，越能发现我们关于社会“理应如此”的先入为主观念是错误的。"
+    },
+    {
+      "id": "s49",
+      "en": "Inequality, authoritarianism and patriarchy aren't inevitable.",
+      "zh": "不平等、威权主义和父权制并非不可避免。"
+    },
+    {
+      "id": "s50",
+      "en": "They're choices, and prehistory shows us that we can choose differently.",
+      "zh": "它们是选择，而史前史告诉我们，我们完全可以做出不同的选择。"
+    }
+  ]
 ---
 <div style="text-align:center;"><span style="font-size:18px;"><strong>Rethinking the Past</strong></span></div><p><br>It is by now a truism that the story of human evolution is being rethought. Discoveries have come thick and fast over the last decade or so, and these have forced us to rethink many crucial points, such as how old our species is – about 300,000 years old as opposed to 200,000 – and what extinct hominins, such as our cousins the Neanderthals, were really like. But because there are so many species and eras involved, it's hard to discern the common threads linking them.&nbsp;<br><br>However, I do think it's possible to draw out some overall messages from the blizzard of archaeological finds in recent years. Two things stand out to me. One is the growing evidence that many supposedly 'advanced' behaviours, such as architecture and art, can be traced much further back in time than we thought, often to hominin species that existed before modern humans. And the other is that we have badly misunderstood gender roles in prehistoric societies, imposing patriarchal values onto cultures that had very different ideas about how women should behave.&nbsp;<br><br>Let's start with architecture. At Kalambo Falls in Zambia, researchers found buried logs that had been shaped with stone tools so that they interlocked. They seem to have once been part of a larger structure, perhaps a building. This would be unsurprising if they weren't 476,000 years old. That's almost 200,000 years before our species, <i>Homo sapiens</i>, evolved. Extinct hominins also managed to settle in extreme places. For instance, we now know that extinct hominins such as the Denisovans lived on the frozen heights of high-altitude regions 200,000 years ago – upending the old notion that such environments were only settled by modern humans around 3,600 years ago.&nbsp;<br><br>Art also seems to have been invented by older hominins. We have had evidence for a long time now that Neanderthals painted on cave walls. Even earlier species, such as <i>Homo erectus</i>, may also have made art, for example by engraving patterns on shells. By far the most contentious claim in this area is that <i>Homo naledi </i>made art. <i>H. naledi</i> lived around 250,000 years ago, making it a contemporary of our species. However, it had quite a small brain, typical of older hominins – and was therefore, according to palaeoanthropological dogma, incapable of complex behaviours. Nevertheless, in the Rising Star cave system in South Africa where the <i>H. naledi</i> remains were found, researchers have found what seem to be etchings – resembling rudimentary artwork – on the cave walls, though these have yet to be firmly dated.&nbsp;<br><br>To say these claims about <i>H. naledi</i> are controversial is to understate the situation. Many experts say the evidence presented so far is completely inadequate to support them. The dispute has only been heightened by the way the results were released, in a non-traditional&nbsp;journal that publishes peer reviews publicly alongside the paper. My views on the <i>H. naledi</i> controversy are complicated. I do think more evidence is needed: in particular with regard to the dating of the etchings. At the same time, I think the species' small brains are a distraction. Palaeoanthropologists got fixated on brain size because it was what they could see: if what you have is skeletons, then all you know about brains are their shapes and sizes. But other properties, such as the brain's internal wiring, are surely equally important and may explain how a species like <i>H. naledi</i> might have been capable of complex behaviours, despite their small brains.&nbsp;<br><br>In a sense, we shouldn't be surprised that so many of these behaviours had their origins in older, extinct hominins. Evolution usually works by incremental steps and so does technology. The first birds weren't great at flying, and the first mobile phones weren't great at, well, anything really. The idea that there was a sudden explosion of intelligence and creativity at some point in our evolution isn't inherently ridiculous: sometimes a system hits a tipping point and undergoes runaway change. But there was never that much evidence that human evolution worked this way. Instead, it seems the Neanderthals and many others all walked so we could run.&nbsp;<br><br>One way or another, the <i>H. naledi</i> story is going to be an example of letting our preconceptions get in the way of the evidence. The same is true for our ideas about gender in prehistory. Archaeology was invented by individuals with now unfashionably patriarchal views about gender, and those notions fed into their research. Today's researchers are trying to unpick this stuff, and there have been some significant steps in recent years.&nbsp;<br><br>Perhaps the most dramatic was the demolition of 'Man the Hunter'. This was the idea, promoted for decades, that in most prehistoric societies the men went out to hunt and the women looked after the home. However, a meta-analysis published in June 2023 compiled data on several dozen foraging societies and found women hunted in 80 per cent of them. In line with this, it emerged that an ancient spear-throwing tool called an atlatl enables women to launch projectiles at the same speed as men. We have also seen growing evidence of women occupying positions of authority in ancient societies. The Viking queen Thyra may have helped unify Denmark in the 900s. Going further back, an Iberian leader from around 4000 years ago turned out to be female, not male as many had assumed, when proteins in her teeth were analysed.&nbsp;<br><br>It seems that the more we find out about past societies, the more our preconceptions about the ways society 'has to be' turn out to be wrong. Inequality, authoritarianism and patriarchy aren't inevitable. They're choices, and prehistory shows us that we can choose differently.</p>

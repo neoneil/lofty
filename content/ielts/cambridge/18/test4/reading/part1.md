@@ -1477,5 +1477,168 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Green roofs",
+      "zh": "绿色屋顶"
+    },
+    {
+      "id": "s2",
+      "en": "Rooftops covered with grass, vegetable gardens and lush foliage are now a common sight in many cities around the world.",
+      "zh": "如今，许多城市的屋顶覆盖着草坪、蔬菜园和茂盛的绿叶，已成为常见景象。"
+    },
+    {
+      "id": "s3",
+      "en": "More and more private companies and city authorities are investing in green roofs, drawn to their wide-ranging benefits.",
+      "zh": "越来越多的私营公司和城市政府开始投资绿色屋顶，吸引他们的是其广泛的益处。"
+    },
+    {
+      "id": "s4",
+      "en": "Among the benefits are saving on energy costs, mitigating the risk of floods, making habitats for urban wildlife, tackling air pollution and even growing food.",
+      "zh": "其好处包括节省能源成本、减轻洪水风险、为城市野生动物创造栖息地、治理空气污染，甚至种植食物。"
+    },
+    {
+      "id": "s5",
+      "en": "These increasingly radical urban designs can help cities adapt to the monumental problems they face, such as access to resources and a lack of green space due to development.",
+      "zh": "这些日益创新的城市设计可以帮助城市应对所面临的巨大问题，如资源获取困难和因开发而导致的绿地不足。"
+    },
+    {
+      "id": "s6",
+      "en": "But the involvement of city authorities, businesses and other institutions is crucial to ensuring their success — as is research investigating different options to suit the variety of rooftop spaces found in cities.",
+      "zh": "但城市政府、企业及其他机构的参与对确保其成功至关重要，研究不同方案以适应城市中多样的屋顶空间同样重要。"
+    },
+    {
+      "id": "s7",
+      "en": "The UK is relatively new to developing green roofs, and local governments and institutions are playing a major role in spreading the practice.",
+      "zh": "英国在发展绿色屋顶方面相对较新，当地政府和机构在推广这一做法中发挥着重要作用。"
+    },
+    {
+      "id": "s8",
+      "en": "London is home to much of the UK's green roof market, mainly due to forward-thinking policies such as the London Plan, which has paved the way to more than doubling the area of green roofs in the capital.",
+      "zh": "伦敦是英国绿色屋顶市场的主要集中地，这主要得益于如《伦敦规划》等前瞻性政策，为首都绿色屋顶面积翻番铺平了道路。"
+    },
+    {
+      "id": "s9",
+      "en": "Ongoing research is showcasing how green roofs in cities can integrate with 'living walls': environmentally friendly walls which are partially or completely covered with greenery, including a growing medium, such as soil or water.",
+      "zh": "正在进行的研究展示了城市绿色屋顶如何与“活墙”结合：这种环保墙体部分或完全覆盖植被，并包含生长介质，如土壤或水。"
+    },
+    {
+      "id": "s10",
+      "en": "Research also indicates that green roofs can be integrated with drainage systems on the ground, such as street trees, so that the water is managed better and the built environment is made more sustainable.",
+      "zh": "研究还表明，绿色屋顶可以与地面排水系统如行道树相结合，实现更好的水分管理，使建筑环境更可持续。"
+    },
+    {
+      "id": "s11",
+      "en": "There is also evidence to demonstrate the social value of green roofs.",
+      "zh": "还有证据显示绿色屋顶的社会价值。"
+    },
+    {
+      "id": "s12",
+      "en": "Doctors are increasingly prescribing time spent gardening outdoors for patients dealing with anxiety and depression.",
+      "zh": "医生越来越多地建议焦虑和抑郁患者花时间在户外园艺活动中。"
+    },
+    {
+      "id": "s13",
+      "en": "And research has found that access to even the most basic green spaces can provide a better quality of life for dementia sufferers and help people avoid obesity.",
+      "zh": "研究发现，即使是最基本的绿地也能改善痴呆症患者的生活质量，并帮助人们避免肥胖。"
+    },
+    {
+      "id": "s14",
+      "en": "In North America, green roofs have become mainstream, with a wide array of expansive, accessible and food-producing roofs installed in buildings.",
+      "zh": "在北美，绿色屋顶已成为主流，建筑物上装设了各种宽敞、可进入且能生产食物的屋顶。"
+    },
+    {
+      "id": "s15",
+      "en": "Again, city leaders and authorities have helped push the movement forward — only recently, San Francisco, USA, created a policy requiring new buildings to have green roofs.",
+      "zh": "同样，城市领导者和政府推动了这一运动——最近，美国旧金山制定了要求新建筑必须设绿色屋顶的政策。"
+    },
+    {
+      "id": "s16",
+      "en": "Toronto, Canada, has policies dating from the 1990s, encouraging the development of urban farms on rooftops.",
+      "zh": "加拿大多伦多自1990年代起就有政策鼓励在屋顶发展城市农场。"
+    },
+    {
+      "id": "s17",
+      "en": "These countries also benefit from having newer buildings than in many parts of the world, which makes it easier to install green roofs.",
+      "zh": "这些国家还因拥有比世界许多地区更新的建筑而受益，这使得安装绿色屋顶更为容易。"
+    },
+    {
+      "id": "s18",
+      "en": "Being able to keep enough water at roof height and distribute it right across the rooftop is crucial to maintaining the plants on any green roof — especially on 'edible roofs' where fruit and vegetables are farmed.",
+      "zh": "能够在屋顶高度储存足够的水分并将其均匀分布于屋顶，对维护任何绿色屋顶的植物至关重要——尤其是在种植水果和蔬菜的“食用屋顶”上。"
+    },
+    {
+      "id": "s19",
+      "en": "And it's much easier to do this in newer buildings, which can typically hold greater weight, than to retro-fit old ones.",
+      "zh": "在能承重更大的新建筑中实现这一点要远比改造老建筑容易得多。"
+    },
+    {
+      "id": "s20",
+      "en": "Having a stronger roof also makes it easier to grow a greater variety of plants, since the soil can be deeper.",
+      "zh": "屋顶结构更坚固也更容易种植更多样的植物，因为土壤层可以更厚。"
+    },
+    {
+      "id": "s21",
+      "en": "For green roofs to become the norm for new developments, there needs to be support from public authorities and private investors.",
+      "zh": "要让绿色屋顶成为新开发项目的常态，必须得到公共机构和私人投资者的支持。"
+    },
+    {
+      "id": "s22",
+      "en": "Those responsible for maintaining buildings may have to acquire new skills, such as landscaping, and in some cases, volunteers may be needed to help out.",
+      "zh": "建筑维护人员可能需要掌握新技能，如园林绿化，在某些情况下，还可能需要志愿者协助。"
+    },
+    {
+      "id": "s23",
+      "en": "Other considerations include installing drainage paths, meeting health and safety requirements and perhaps allowing access for the public, as well as planning restrictions and disruption from regular activities in and around the buildings during installation.",
+      "zh": "其他需要考虑的事项包括安装排水通道、满足健康与安全要求、或许允许公众进入，以及规划限制和安装期间建筑内外的日常活动干扰。"
+    },
+    {
+      "id": "s24",
+      "en": "To convince investors and developers that installing green roofs is worthwhile, economic arguments are still the most important.",
+      "zh": "为了说服投资者和开发商安装绿色屋顶是值得的，经济论证仍然是最重要的。"
+    },
+    {
+      "id": "s25",
+      "en": "The term 'natural capital' has been developed to explain the economic value of nature; for example, measuring the money saved by installing natural solutions to protect against flood damage, adapt to climate change or help people lead healthier and happier lives.",
+      "zh": "“自然资本”一词被用来解释自然的经济价值；例如，通过安装自然解决方案来防洪、适应气候变化或帮助人们拥有更健康、更快乐的生活，从而节省的资金。"
+    },
+    {
+      "id": "s26",
+      "en": "As the expertise about green roofs grows, official standards have been developed to ensure that they are designed, constructed and maintained properly, and function well.",
+      "zh": "随着绿色屋顶专业知识的增长，制定了官方标准以确保其设计、施工和维护得当，并能良好运作。"
+    },
+    {
+      "id": "s27",
+      "en": "Improvements in the science and technology underpinning green roof development have also led to new variations in the concept.",
+      "zh": "支持绿色屋顶发展的科学和技术的进步也促使了该概念的新变种出现。"
+    },
+    {
+      "id": "s28",
+      "en": "For example, 'blue roofs' enable buildings to hold water over longer periods of time, rather than draining it away quickly — crucial in times of heavier rainfall.",
+      "zh": "例如，“蓝色屋顶”使建筑能够长时间储存雨水，而不是快速排出——这在降雨量较大时尤为重要。"
+    },
+    {
+      "id": "s29",
+      "en": "There are also combinations of green roofs with solar panels, and 'brown roofs' which are wilder in nature and maximise biodiversity.",
+      "zh": "还有结合太阳能板的绿色屋顶，以及更为自然、最大化生物多样性的“棕色屋顶”。"
+    },
+    {
+      "id": "s30",
+      "en": "If the trend continues, it could create new jobs and a more vibrant and sustainable local food economy — alongside many other benefits.",
+      "zh": "如果这一趋势持续下去，可能创造新的就业机会，打造更有活力和可持续的地方食品经济——以及其他多种益处。"
+    },
+    {
+      "id": "s31",
+      "en": "There are still barriers to overcome, but the evidence so far indicates that green roofs have the potential to transform cities and help them function sustainably long into the future.",
+      "zh": "虽然仍有障碍需克服，但目前的证据表明，绿色屋顶有潜力改变城市，帮助其长期可持续运作。"
+    },
+    {
+      "id": "s32",
+      "en": "The success stories need to be studied and replicated elsewhere, to make green, blue, brown and food-producing roofs the norm in cities around the world.",
+      "zh": "成功案例需要被研究并在其他地方推广，使绿色、蓝色、棕色及食物生产屋顶成为全球城市的常态。"
+    }
+  ]
 ---
 <h3 style="text-align: center;"><strong><span style="font-size: 22px;">Green roofs</span></strong></h3><p style="text-align: center;"><strong></strong></p><p><strong>A. </strong></p><p>Rooftops covered with grass, vegetable gardens and lush foliage are now a common sight in many cities around the world. More and more private companies and city authorities are investing in green roofs, drawn to their wide-ranging benefits. Among the benefits are saving on energy costs, mitigating the risk of floods, making habitats for urban wildlife, tackling air pollution and even growing food. These increasingly radical urban designs can help cities adapt to the monumental problems they face, such as access to resources and a lack of green space due to development. But the involvement of city authorities, businesses and other institutions is crucial to ensuring their success — as is research investigating different options to suit the variety of rooftop spaces found in cities. The UK is relatively new to developing green roofs, and local governments and institutions are playing a major role in spreading the practice. London is home to much of the UK's green roof market, mainly due to forward-thinking policies such as the London Plan, which has paved the way to more than doubling the area of green roofs in the capital.</p><p><br></p><p><strong>B. </strong></p><p>Ongoing research is showcasing how green roofs in cities can integrate with 'living walls': environmentally friendly walls which are partially or completely covered with greenery, including a growing medium, such as soil or water. Research also indicates that green roofs can be integrated with drainage systems on the ground, such as street trees, so that the water is managed better and the built environment is made more sustainable. There is also evidence to demonstrate the social value of green roofs. Doctors are increasingly prescribing time spent gardening outdoors for patients dealing with anxiety and depression. And research has found that access to even the most basic green spaces can provide a better quality of life for dementia sufferers and help people avoid obesity.</p><p><br></p><p><strong>C. </strong></p><p>In North America, green roofs have become mainstream, with a wide array of expansive, accessible and food-producing roofs installed in buildings. Again, city leaders and authorities have helped push the movement forward — only recently, San Francisco, USA, created a policy requiring new buildings to have green roofs. Toronto, Canada, has policies dating from the 1990s, encouraging the development of urban farms on rooftops. These countries also benefit from having newer buildings than in many parts of the world, which makes it easier to install green roofs. Being able to keep enough water at roof height and distribute it right across the rooftop is crucial to maintaining the plants on any green roof — especially on 'edible roofs' where fruit and vegetables are farmed. And it's much easier to do this in newer buildings, which can typically hold greater weight, than to retro-fit old ones. Having a stronger roof also makes it easier to grow a greater variety of plants, since the soil can be deeper.</p><p><br></p><p><strong>D. </strong></p><p>For green roofs to become the norm for new developments, there needs to be support from public authorities and private investors. Those responsible for maintaining buildings may have to acquire new skills, such as landscaping, and in some cases, volunteers may be needed to help out. Other considerations include installing drainage paths, meeting health and safety requirements and perhaps allowing access for the public, as well as planning restrictions and disruption from regular activities in and around the buildings during installation. To convince investors and developers that installing green roofs is worthwhile, economic arguments are still the most important. The term 'natural capital' has been developed to explain the economic value of nature; for example, measuring the money saved by installing natural solutions to protect against flood damage, adapt to climate change or help people lead healthier and happier lives.</p><p><br></p><p><strong>E. </strong></p><p>As the expertise about green roofs grows, official standards have been developed to ensure that they are designed, constructed and maintained properly, and function well. Improvements in the science and technology underpinning green roof development have also led to new variations in the concept. For example, 'blue roofs' enable buildings to hold water over longer periods of time, rather than draining it away quickly — crucial in times of heavier rainfall. There are also combinations of green roofs with solar panels, and 'brown roofs' which are wilder in nature and maximise biodiversity. If the trend continues, it could create new jobs and a more vibrant and sustainable local food economy — alongside many other benefits. There are still barriers to overcome, but the evidence so far indicates that green roofs have the potential to transform cities and help them function sustainably long into the future. The success stories need to be studied and replicated elsewhere, to make green, blue, brown and food-producing roofs the norm in cities around the world.</p><p><br></p>

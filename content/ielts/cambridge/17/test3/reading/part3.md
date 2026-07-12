@@ -2079,5 +2079,228 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Building the Skyline: The Birth and Growth of Manhattan’s Skyscrapers",
+      "zh": "《构建天际线：曼哈顿摩天大楼的诞生与成长》"
+    },
+    {
+      "id": "s2",
+      "en": "Katharine L.",
+      "zh": "凯瑟琳·L."
+    },
+    {
+      "id": "s3",
+      "en": "Shester reviews a book by Jason Barr about the development of New York City",
+      "zh": "谢斯特评论了杰森·巴尔关于纽约市发展的书籍"
+    },
+    {
+      "id": "s4",
+      "en": "In Building the Skyline , Jason Barr takes the reader through a detailed history of New York City.",
+      "zh": "在《构建天际线》中，杰森·巴尔带领读者详细了解纽约市的历史。"
+    },
+    {
+      "id": "s5",
+      "en": "The book combines geology, history, economics, and a lot of data to explain why business clusters developed where they did and how the early decisions of workers and firms shaped the skyline we see today.",
+      "zh": "该书结合了地质学、历史、经济学和大量数据，解释了商业集群为何在特定地点发展，以及工人和企业早期的决定如何塑造了我们今天所见的天际线。"
+    },
+    {
+      "id": "s6",
+      "en": "Building the Skyline is organized into two distinct parts.",
+      "zh": "《构建天际线》分为两个不同的部分。"
+    },
+    {
+      "id": "s7",
+      "en": "The first is primarily historical and addresses New York’s settlement and growth from 1609 to 1900; the second deals primarily with the 20th century and is a compilation of chapters commenting on different aspects of New York’s urban development.",
+      "zh": "第一部分主要是历史内容，讲述1609年至1900年纽约的定居和发展；第二部分主要涵盖20世纪，是关于纽约城市发展的不同方面的章节合集。"
+    },
+    {
+      "id": "s8",
+      "en": "The tone and organization of the book changes somewhat between the first and second parts, as the latter chapters incorporate aspects of Barr’s related research papers.",
+      "zh": "书中第一部分和第二部分的语气与结构略有不同，后者章节融入了巴尔相关研究论文的内容。"
+    },
+    {
+      "id": "s9",
+      "en": "Barr begins chapter one by taking the reader on a ‘helicopter time-machine’ ride – giving a fascinating account of how the New York landscape in 1609 might have looked from the sky.",
+      "zh": "巴尔在第一章开始时带领读者乘坐“直升机时光机”——生动地描述了1609年纽约的景观从空中看起来可能的样子。"
+    },
+    {
+      "id": "s10",
+      "en": "He then moves on to a subterranean walking tour of the city, indicating the location of rock and water below the subsoil, before taking the reader back to the surface.",
+      "zh": "随后，他带领读者进行一场地下漫步，指出土壤下岩石和水的位置，然后再带读者回到地表。"
+    },
+    {
+      "id": "s11",
+      "en": "His love of the city comes through as he describes various fun facts about the location of the New York residence of early 19th-century vice-president Aaron Burr as well as a number of legends about the city.",
+      "zh": "他对这座城市的热爱展露无遗，描述了19世纪早期副总统亚伦·伯尔的纽约住宅位置及多个有关这座城市的传说。"
+    },
+    {
+      "id": "s12",
+      "en": "Chapters two and three take the reader up to the Civil War (1861–1865), with chapter two focusing on the early development of land and the implementation of a grid system in 1811.",
+      "zh": "第二章和第三章带领读者了解内战时期（1861-1865年），第二章重点讲述1811年土地早期开发和网格系统的实施。"
+    },
+    {
+      "id": "s13",
+      "en": "Chapter three focuses on land use before the Civil War.",
+      "zh": "第三章关注内战前的土地使用情况。"
+    },
+    {
+      "id": "s14",
+      "en": "Both chapters are informative and well researched and set the stage for the economic analysis that comes later in the book.",
+      "zh": "这两章内容丰富且研究详实，为书中后续的经济分析奠定了基础。"
+    },
+    {
+      "id": "s15",
+      "en": "I would have liked Barr to expand upon his claim that existing tenements* prevented skyscrapers in certain neighborhoods because ‘likely no skyscraper developer was interested in performing the necessary “slum clearance”’.",
+      "zh": "我希望巴尔能进一步阐述他的观点，即现有的廉租房*阻碍了某些社区摩天大楼的建设，因为“可能没有摩天楼开发商愿意进行必要的‘贫民窟清理’”。"
+    },
+    {
+      "id": "s16",
+      "en": "Later in the book, Barr makes the claim that the depth of bedrock** was not a limiting factor for developers, as foundation costs were a small fraction of the cost of development.",
+      "zh": "书中后面，巴尔提出基岩**的深度并非限制开发商的因素，因为地基成本仅占开发总成本的一小部分。"
+    },
+    {
+      "id": "s17",
+      "en": "At first glance, it is not obvious why slum clearance would be limiting, while more expensive foundations would not.",
+      "zh": "乍一看，贫民窟清理为何成为限制因素，而更昂贵的地基却不是，这一点并不明显。"
+    },
+    {
+      "id": "s18",
+      "en": "Chapter four focuses on immigration and the location of neighborhoods and tenements in the late 19th century.",
+      "zh": "第四章关注19世纪晚期的移民以及社区和廉租房的位置。"
+    },
+    {
+      "id": "s19",
+      "en": "Barr identifies four primary immigrant enclaves and analyzes their locations in terms of the amenities available in the area.",
+      "zh": "巴尔确定了四个主要的移民聚居区，并分析了它们位置与该地区可用设施之间的关系。"
+    },
+    {
+      "id": "s20",
+      "en": "Most of these enclaves were located on the least valuable land, between the industries located on the waterfront and the wealthy neighborhoods bordering Central Park.",
+      "zh": "这些聚居区大多位于价值最低的土地上，介于滨水工业区和邻近中央公园的富裕社区之间。"
+    },
+    {
+      "id": "s21",
+      "en": "Part two of the book begins with a discussion of the economics of skyscraper height.",
+      "zh": "书的第二部分一开始讨论了摩天大楼高度的经济学。"
+    },
+    {
+      "id": "s22",
+      "en": "In chapter five, Barr distinguishes between engineering height, economic height, and developer height — where engineering height is the tallest building that can be safely made at a given time, economic height is the height that is most efficient from society’s point of view, and developer height is the actual height chosen by the developer, who is attempting to maximize return on investment.",
+      "zh": "在第五章中，巴尔区分了工程高度、经济高度和开发商高度——工程高度是当时可安全建造的最高建筑高度，经济高度是从社会角度看最有效率的高度，开发商高度则是开发者基于投资回报最大化而选择的实际高度。"
+    },
+    {
+      "id": "s23",
+      "en": "Chapter five also has an interesting discussion of the technological advances that led to the construction of skyscrapers.",
+      "zh": "第五章还对促成摩天大楼建设的技术进步进行了有趣的讨论。"
+    },
+    {
+      "id": "s24",
+      "en": "For example, the introduction of iron and steel skeletal frames made thick, load-bearing walls unnecessary, expanding the usable square footage of buildings and increasing the use of windows and availability of natural light.",
+      "zh": "例如，铁骨和钢骨架的引入使得厚重的承重墙不再必要，扩大了建筑的可用面积，并增加了窗户使用和自然光的采光。"
+    },
+    {
+      "id": "s25",
+      "en": "Chapter six then presents data on building height throughout the 20th century and uses regression analysis to ‘predict’ building construction.",
+      "zh": "第六章展示了20世纪建筑高度的数据，并使用回归分析来“预测”建筑建设。"
+    },
+    {
+      "id": "s26",
+      "en": "While less technical than the research paper on which the chapter is based, it is probably more technical than would be preferred by a general audience.",
+      "zh": "虽然比章节所依据的研究论文技术含量较低，但对于普通读者来说，可能仍显得较为专业。"
+    },
+    {
+      "id": "s27",
+      "en": "Chapter seven tackles the ‘bedrock myth’, the assumption that the absence of bedrock close to the surface between Downtown and Midtown New York is the reason for skyscrapers not being built between the two urban centers.",
+      "zh": "第七章探讨了“基岩神话”，即认为纽约市中心区和中城之间缺乏浅层基岩是两地之间未建摩天大楼的原因这一假设。"
+    },
+    {
+      "id": "s28",
+      "en": "Rather, Barr argues that while deeper bedrock does increase foundation costs, these costs were neither prohibitively high nor were they large compared to the overall cost of building a skyscraper.",
+      "zh": "巴尔认为，尽管较深的基岩会增加地基成本，但这些成本既不高得令人望而却步，也不占建造摩天大楼总成本的较大比例。"
+    },
+    {
+      "id": "s29",
+      "en": "What I enjoyed the most about this chapter was Barr’s discussion of how foundations are actually built.",
+      "zh": "我最喜欢这一章的是巴尔对地基实际建造过程的讨论。"
+    },
+    {
+      "id": "s30",
+      "en": "He describes the use of caissons, which enable workers to dig down for considerable distances, often below the water table, until they reach bedrock.",
+      "zh": "他描述了沉箱的使用，这种方法使工人们能够挖掘相当深的距离，常常低于地下水位，直到达到基岩。"
+    },
+    {
+      "id": "s31",
+      "en": "Barr’s thorough technological history discusses not only how caissons work, but also the dangers involved.",
+      "zh": "巴尔详尽的技术历史不仅讨论了沉箱的工作原理，也涉及其中的危险。"
+    },
+    {
+      "id": "s32",
+      "en": "While this chapter references empirical research papers, it is a relatively easy read.",
+      "zh": "虽然本章引用了实证研究论文，但整体阅读起来相对容易。"
+    },
+    {
+      "id": "s33",
+      "en": "Chapters eight and nine focus on the birth of Midtown and the building boom of the 1920s.",
+      "zh": "第八章和第九章重点讲述了中城的诞生和1920年代的建筑热潮。"
+    },
+    {
+      "id": "s34",
+      "en": "Chapter eight contains lengthy discussions of urban economic theory that may serve as a distraction to readers primarily interested in New York.",
+      "zh": "第八章包含了大量城市经济理论的讨论，可能会分散那些主要对纽约感兴趣的读者注意力。"
+    },
+    {
+      "id": "s35",
+      "en": "However, they would be well-suited for undergraduates learning about the economics of cities.",
+      "zh": "然而，这些内容非常适合学习城市经济学的本科生。"
+    },
+    {
+      "id": "s36",
+      "en": "In the next chapter, Barr considers two of the primary explanations for the building boom of the 1920s — the first being exuberance, and the second being financing.",
+      "zh": "在下一章，巴尔考虑了1920年代建筑繁荣的两个主要解释——一是兴奋情绪，二是资金筹措。"
+    },
+    {
+      "id": "s37",
+      "en": "He uses data to assess the viability of these two explanations and finds that supply and demand factors explain much of the development of the 1920s; though it enabled the boom, cheap credit was not, he argues, the primary cause.",
+      "zh": "他用数据评估这两种解释的可行性，发现在很大程度上供需因素解释了1920年代的发展；尽管廉价信贷促成了热潮，但他认为这并非主要原因。"
+    },
+    {
+      "id": "s38",
+      "en": "In the final chapter (chapter 10), Barr discusses another of his empirical papers that estimates Manhattan land values from the mid-19th century to the present day.",
+      "zh": "在最后一章（第十章），巴尔讨论了他的另一篇实证论文，该论文估算了从19世纪中叶至今曼哈顿的土地价值。"
+    },
+    {
+      "id": "s39",
+      "en": "The data work that went into these estimations is particularly impressive.",
+      "zh": "这些估算所涉及的数据工作尤为令人印象深刻。"
+    },
+    {
+      "id": "s40",
+      "en": "Toward the end of the chapter, Barr assesses ‘whether skyscrapers are a cause or an effect of high land values’.",
+      "zh": "在章节末尾，巴尔评估了“摩天大楼是高土地价值的原因还是结果”。"
+    },
+    {
+      "id": "s41",
+      "en": "He finds that changes in land values predict future building height, but the reverse is not true.",
+      "zh": "他发现土地价值变化可以预测未来建筑高度，但反之则不成立。"
+    },
+    {
+      "id": "s42",
+      "en": "The book ends with an epilogue, in which Barr discusses the impact of climate change on the city and makes policy suggestions for New York going forward.",
+      "zh": "本书以尾声结束，巴尔讨论了气候变化对城市的影响，并就纽约未来的发展提出政策建议。"
+    },
+    {
+      "id": "s43",
+      "en": "* a tenement: a multi-occupancy building of any sort, but particularly a run-down apartment building or slum building",
+      "zh": "* 廉租房：任何类型的多户居住建筑，尤指破旧的公寓楼或贫民窟建筑。"
+    },
+    {
+      "id": "s44",
+      "en": "** bedrock: the solid, hard rock in the ground that lies under a loose layer of soil",
+      "zh": "** 基岩：地下松散土层下的坚硬致密岩石。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Building the Skyline: The Birth and Growth of Manhattan’s Skyscrapers</span></strong></p><p style="text-align: center;"><em>Katharine L. Shester reviews a book by Jason Barr about the development of New York City</em></p><p style="text-align: left;">In <em>Building the Skyline</em>, Jason Barr takes the reader through a detailed history of New York City. The book combines geology, history, economics, and a lot of data to explain why business clusters developed where they did and how the early decisions of workers and firms shaped the skyline we see today. <em>Building the Skyline</em> is organized into two distinct parts. The first is primarily historical and addresses New York’s settlement and growth from 1609 to 1900; the second deals primarily with the 20th century and is a compilation of chapters commenting on different aspects of New York’s urban development. The tone and organization of the book changes somewhat between the first and second parts, as the latter chapters incorporate aspects of Barr’s related research papers.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Barr begins chapter one by taking the reader on a ‘helicopter time-machine’ ride – giving a fascinating account of how the New York landscape in 1609 might have looked from the sky. He then moves on to a subterranean walking tour of the city, indicating the location of rock and water below the subsoil, before taking the reader back to the surface. His love of the city comes through as he describes various fun facts about the location of the New York residence of early 19th-century vice-president Aaron Burr as well as a number of legends about the city.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Chapters two and three take the reader up to the Civil War (1861–1865), with chapter two focusing on the early development of land and the implementation of a grid system in 1811. Chapter three focuses on land use before the Civil War. Both chapters are informative and well researched and set the stage for the economic analysis that comes later in the book. I would have liked Barr to expand upon his claim that existing tenements* prevented skyscrapers in certain neighborhoods because ‘likely no skyscraper developer was interested in performing the necessary “slum clearance”’. Later in the book, Barr makes the claim that the depth of bedrock** was not a limiting factor for developers, as foundation costs were a small fraction of the cost of development. At first glance, it is not obvious why slum clearance would be limiting, while more expensive foundations would not.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Chapter four focuses on immigration and the location of neighborhoods and tenements in the late 19th century. Barr identifies four primary immigrant enclaves and analyzes their locations in terms of the amenities available in the area. Most of these enclaves were located on the least valuable land, between the industries located on the waterfront and the wealthy neighborhoods bordering Central Park.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Part two of the book begins with a discussion of the economics of skyscraper height. In chapter five, Barr distinguishes between engineering height, economic height, and developer height — where engineering height is the tallest building that can be safely made at a given time, economic height is the height that is most efficient from society’s point of view, and developer height is the actual height chosen by the developer, who is attempting to maximize return on investment.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Chapter five also has an interesting discussion of the technological advances that led to the construction of skyscrapers. For example, the introduction of iron and steel skeletal frames made thick, load-bearing walls unnecessary, expanding the usable square footage of buildings and increasing the use of windows and availability of natural light. Chapter six then presents data on building height throughout the 20th century and uses regression analysis to ‘predict’ building construction. While less technical than the research paper on which the chapter is based, it is probably more technical than would be preferred by a general audience.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Chapter seven tackles the ‘bedrock myth’, the assumption that the absence of bedrock close to the surface between Downtown and Midtown New York is the reason for skyscrapers not being built between the two urban centers. Rather, Barr argues that while deeper bedrock does increase foundation costs, these costs were neither prohibitively high nor were they large compared to the overall cost of building a skyscraper. What I enjoyed the most about this chapter was Barr’s discussion of how foundations are actually built. He describes the use of caissons, which enable workers to dig down for considerable distances, often below the water table, until they reach bedrock. Barr’s thorough technological history discusses not only how caissons work, but also the dangers involved. While this chapter references empirical research papers, it is a relatively easy read.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Chapters eight and nine focus on the birth of Midtown and the building boom of the 1920s. Chapter eight contains lengthy discussions of urban economic theory that may serve as a distraction to readers primarily interested in New York. However, they would be well-suited for undergraduates learning about the economics of cities. In the next chapter, Barr considers two of the primary explanations for the building boom of the 1920s — the first being exuberance, and the second being financing. He uses data to assess the viability of these two explanations and finds that supply and demand factors explain much of the development of the 1920s; though it enabled the boom, cheap credit was not, he argues, the primary cause.</p><p style="text-align: left;"><br></p><p style="text-align: left;">In the final chapter (chapter 10), Barr discusses another of his empirical papers that estimates Manhattan land values from the mid-19th century to the present day. The data work that went into these estimations is particularly impressive. Toward the end of the chapter, Barr assesses ‘whether skyscrapers are a cause or an effect of high land values’. He finds that changes in land values predict future building height, but the reverse is not true. The book ends with an epilogue, in which Barr discusses the impact of climate change on the city and makes policy suggestions for New York going forward.</p><p style="text-align: left;"><br></p><p><em>* a tenement: a multi-occupancy building of any sort, but particularly a run-down apartment building or slum building</em></p><p><em>** bedrock: the solid, hard rock in the ground that lies under a loose layer of soil</em></p>

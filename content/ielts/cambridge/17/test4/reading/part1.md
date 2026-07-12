@@ -1089,5 +1089,213 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Bats to the rescue",
+      "zh": "蝙蝠来帮忙"
+    },
+    {
+      "id": "s2",
+      "en": "How Madagascar's bats are helping to save the rainforest",
+      "zh": "马达加斯加的蝙蝠如何帮助拯救雨林"
+    },
+    {
+      "id": "s3",
+      "en": "There are few places in the world where relations between agriculture and conservation are more strained.",
+      "zh": "世界上很少有地方像这里一样，农业与生态保护之间的关系如此紧张。"
+    },
+    {
+      "id": "s4",
+      "en": "Madagascar's forests are being converted to agricultural land at a rate of one percent every year.",
+      "zh": "马达加斯加的森林每年以1%的速度被转换为农田。"
+    },
+    {
+      "id": "s5",
+      "en": "Much of this destruction is fuelled by the cultivation of the country's main staple crop: rice.",
+      "zh": "这种破坏很大程度上是由于种植该国的主要粮食作物——稻米所引发的。"
+    },
+    {
+      "id": "s6",
+      "en": "And a key reason for this destruction is that insect pests are destroying vast quantities of what is grown by local subsistence farmers, leading them to clear forest to create new paddy fields.",
+      "zh": "破坏的一个重要原因是害虫摧毁了当地自给农民种植的大量作物，迫使他们砍伐森林来开辟新的稻田。"
+    },
+    {
+      "id": "s7",
+      "en": "The result is devastating habitat and biodiversity loss on the island, but not all species are suffering.",
+      "zh": "结果是岛上栖息地和生物多样性遭受严重损失，但并非所有物种都在受苦。"
+    },
+    {
+      "id": "s8",
+      "en": "In fact, some of the island's insectivorous bats are currently thriving and this has important implications for farmers and conservationists alike.",
+      "zh": "事实上，岛上一些食虫蝙蝠目前正处于繁荣状态，这对农民和生态保护者都有重要意义。"
+    },
+    {
+      "id": "s9",
+      "en": "Enter University of Cambridge zoologist Ricardo Rocha.",
+      "zh": "剑桥大学动物学家里卡多·罗查登场。"
+    },
+    {
+      "id": "s10",
+      "en": "He's passionate about conservation, and bats.",
+      "zh": "他对生态保护和蝙蝠充满热情。"
+    },
+    {
+      "id": "s11",
+      "en": "More specifically, he's interested in how bats are responding to human activity and deforestation in particular.",
+      "zh": "更具体地说，他关注蝙蝠如何应对人类活动，尤其是森林砍伐。"
+    },
+    {
+      "id": "s12",
+      "en": "Rocha's new study shows that several species of bats are giving Madagascar's rice farmers a vital pest control service by feasting on plagues of insects.",
+      "zh": "罗查的新研究显示，几种蝙蝠通过捕食大量害虫，为马达加斯加的稻农提供了重要的害虫控制服务。"
+    },
+    {
+      "id": "s13",
+      "en": "And this, he believes, can ease the financial pressure on farmers to turn forest into fields.",
+      "zh": "他认为，这能减轻农民将森林开垦成农田的经济压力。"
+    },
+    {
+      "id": "s14",
+      "en": "Bats comprise roughly one-fifth of all mammal species in Madagascar and thirty-six recorded bat species are native to the island, making it one of the most important regions for conservation of this animal group anywhere in the world.",
+      "zh": "蝙蝠约占马达加斯加所有哺乳动物物种的五分之一，岛上记录在案的蝙蝠物种有三十六种，使这里成为全球该动物群保护最重要的地区之一。"
+    },
+    {
+      "id": "s15",
+      "en": "Co-leading an international team of scientists, Rocha found that several species of indigenous bats are taking advantage of habitat modification to hunt insects swarming above the country's rice fields.",
+      "zh": "作为国际科学家团队的共同领导者，罗查发现几种本土蝙蝠利用栖息地变化，在该国稻田上方捕食成群的昆虫。"
+    },
+    {
+      "id": "s16",
+      "en": "They include the Malagasy mouse-eared bat, Major's long-fingered bat, the Malagasy white-bellied free-tailed bat and Peters' wrinkle-lipped bat.",
+      "zh": "这些蝙蝠包括马达加斯加鼠耳蝠、梅杰长指蝠、马达加斯加白腹自由尾蝠以及彼得斯皱唇蝠。"
+    },
+    {
+      "id": "s17",
+      "en": "‘These winner species are providing a valuable free service to Madagascar as biological pest suppressors,’ says Rocha.",
+      "zh": "“这些‘赢家’物种作为生物害虫抑制者，为马达加斯加提供了宝贵的免费服务，”罗查说道。"
+    },
+    {
+      "id": "s18",
+      "en": "‘We found that six species of bat are preying on rice pests, including the paddy swarming caterpillar and grass webworm.",
+      "zh": "“我们发现六种蝙蝠捕食稻田害虫，包括稻田成群毛虫和草螟。"
+    },
+    {
+      "id": "s19",
+      "en": "The damage which these insects cause puts the island's farmers under huge financial pressure and that encourages deforestation.’",
+      "zh": "这些昆虫造成的破坏使岛上的农民承受巨大经济压力，进而促使他们砍伐森林。”"
+    },
+    {
+      "id": "s20",
+      "en": "The study, now published in the journal Agriculture, Ecosystems and Environment , set out to investigate the feeding activity of insectivorous bats in the farmland bordering the Ranomafana National Park in the southeast of the country.",
+      "zh": "这项发表在《农业、生态系统与环境》期刊上的研究，旨在调查该国东南部拉诺马法纳国家公园边缘农田中食虫蝙蝠的觅食活动。"
+    },
+    {
+      "id": "s21",
+      "en": "Rocha and his team used state-of-the-art ultrasonic recorders to record over a thousand bat ‘feeding buzzes’ (echolocation sequences used by bats to target their prey) at 54 sites, in order to identify the favourite feeding spots of the bats.",
+      "zh": "罗查及其团队使用先进的超声波录音设备，在54个地点记录了超过一千次蝙蝠“觅食嗡声”（蝙蝠用来定位猎物的回声定位序列），以确定蝙蝠的喜爱觅食地点。"
+    },
+    {
+      "id": "s22",
+      "en": "They next used DNA barcoding techniques to analyse droppings collected from bats at the different sites.",
+      "zh": "接着，他们使用DNA条码技术分析了在不同地点收集的蝙蝠粪便样本。"
+    },
+    {
+      "id": "s23",
+      "en": "The recordings revealed that bat activity over rice fields was much higher than it was in continuous forest – seven times higher over rice fields which were on flat ground, and sixteen times higher over fields on the sides of hills – leaving no doubt that the animals are preferentially foraging in these man-made ecosystems.",
+      "zh": "录音显示，蝙蝠在稻田上的活动远高于连续森林：平坦地面的稻田蝙蝠活动量高出七倍，丘陵地的稻田则高出十六倍，这无疑表明它们更偏好在这些人造生态系统中觅食。"
+    },
+    {
+      "id": "s24",
+      "en": "The researchers suggest that the bats favour these fields because lack of water and nutrient run-off make these crops more susceptible to insect pest infestations.",
+      "zh": "研究人员认为，蝙蝠偏好这些田地，是因为缺乏水源和养分流失使这些作物更容易受到害虫侵扰。"
+    },
+    {
+      "id": "s25",
+      "en": "DNA analysis showed that all six species of bat had fed on economically important insect pests.",
+      "zh": "DNA分析表明，六种蝙蝠都捕食了对经济影响重大的害虫。"
+    },
+    {
+      "id": "s26",
+      "en": "While the findings indicated that rice farming benefits most from the bats, the scientists also found indications that the bats were consuming pests of other crops, including the black twig borer (which infests coffee plants), the sugarcane cicada, the macadamia nut-borer, and the sober tabby (a pest of citrus fruits).",
+      "zh": "虽然研究结果表明蝙蝠主要有益于稻米种植，科学家们还发现它们也捕食其他作物害虫，包括侵害咖啡树的黑枝蛀虫、甘蔗蝉、澳洲坚果蛀虫以及柑橘类害虫清醒斑蝽。"
+    },
+    {
+      "id": "s27",
+      "en": "‘The effectiveness of bats as pest controllers has already been proven in the USA and Catalonia,’ said co-author James Kemp, from the University of Lisbon.",
+      "zh": "合著者、里斯本大学的詹姆斯·肯普说：“蝙蝠作为害虫控制者的有效性已在美国和加泰罗尼亚得到证明。”"
+    },
+    {
+      "id": "s28",
+      "en": "‘But our study is the first to show this happening in Madagascar, where the stakes for both farmers and conservationists are so high.’",
+      "zh": "“但我们的研究首次在马达加斯加展示了这一现象，这里对于农民和保护者来说利害攸关。”"
+    },
+    {
+      "id": "s29",
+      "en": "Local people may have a further reason to be grateful to their bats.",
+      "zh": "当地人或许还有更多理由感激蝙蝠。"
+    },
+    {
+      "id": "s30",
+      "en": "While the animal is often associated with spreading disease, Rocha and his team found evidence that Malagasy bats feed not just on crop pests but also on mosquitoes – carriers of malaria, Rift Valley fever virus and elephantiasis – as well as blackflies, which spread river blindness.",
+      "zh": "虽然蝙蝠经常被认为传播疾病，罗查和他的团队发现马达加斯加蝙蝠不仅捕食农作物害虫，还捕食携带疟疾、裂谷热病毒和象皮病的蚊子，以及传播河盲症的黑蝇。"
+    },
+    {
+      "id": "s31",
+      "en": "Rocha points out that the relationship is complicated.",
+      "zh": "罗查指出，这种关系很复杂。"
+    },
+    {
+      "id": "s32",
+      "en": "When food is scarce, bats become a crucial source of protein for local people.",
+      "zh": "当食物短缺时，蝙蝠成为当地人重要的蛋白质来源。"
+    },
+    {
+      "id": "s33",
+      "en": "Even the children will hunt them.",
+      "zh": "甚至连孩子们也会捕猎蝙蝠。"
+    },
+    {
+      "id": "s34",
+      "en": "And as well as roosting in trees, the bats sometimes roost in buildings, but are not welcomed there because they make them unclean.",
+      "zh": "蝙蝠不仅栖息在树上，有时也在建筑物内落脚，但由于它们使环境不洁，常不被欢迎。"
+    },
+    {
+      "id": "s35",
+      "en": "At the same time, however, they are associated with sacred caves and the ancestors, so they can be viewed as beings between worlds, which makes them very significant in the culture of the people.",
+      "zh": "然而，它们同时与神圣的洞穴及祖先相关，被视为连接两个世界的存在，因此在当地文化中极具意义。"
+    },
+    {
+      "id": "s36",
+      "en": "And one potential problem is that while these bats are benefiting from farming, at the same time deforestation is reducing the places where they can roost, which could have long-term effects on their numbers.",
+      "zh": "一个潜在的问题是，尽管这些蝙蝠从农业中受益，但砍伐森林同时减少了它们的栖息地，可能对其数量产生长期影响。"
+    },
+    {
+      "id": "s37",
+      "en": "Rocha says, ‘With the right help, we hope that farmers can promote this mutually beneficial relationship by installing bat houses.’",
+      "zh": "罗查说：“有了适当的帮助，我们希望农民能够通过安装蝙蝠屋来促进这种互利关系。”"
+    },
+    {
+      "id": "s38",
+      "en": "Rocha and his colleagues believe that maximising bat populations can help to boost crop yields and promote sustainable livelihoods.",
+      "zh": "罗查和他的同事们认为，最大化蝙蝠数量有助于提高作物产量并促进可持续生计。"
+    },
+    {
+      "id": "s39",
+      "en": "The team is now calling for further research to quantify this contribution.",
+      "zh": "团队目前呼吁进行更多研究，以量化这一贡献。"
+    },
+    {
+      "id": "s40",
+      "en": "‘I’m very optimistic,’ says Rocha.",
+      "zh": "罗查说：“我非常乐观。”"
+    },
+    {
+      "id": "s41",
+      "en": "‘If we give nature a hand, we can speed up the process of regeneration.’",
+      "zh": "“如果我们帮助自然，我们可以加快生态恢复的进程。”"
+    }
+  ]
 ---
 <p style="text-align:center;"><span style="font-size:22px;"><strong>Bats to the rescue</strong></span></p><p style="text-align:center;"><i>How Madagascar's bats are helping to save the rainforest</i></p><p style="text-align:left;">There are few places in the world where relations between agriculture and conservation are more&nbsp; strained. Madagascar's forests are being converted to agricultural land at a rate of one percent&nbsp; every year. Much of this destruction is fuelled by the cultivation of the country's main staple&nbsp; crop: rice. And a key reason for this destruction is that insect pests are destroying vast quantities&nbsp; of what is grown by local subsistence farmers, leading them to clear forest to create new paddy&nbsp; fields. The result is devastating habitat and biodiversity loss on the island, but not all species&nbsp; are suffering. In fact, some of the island's insectivorous bats are currently thriving and this has&nbsp; important implications for farmers and conservationists alike.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Enter University of Cambridge zoologist Ricardo Rocha. He's passionate about conservation,&nbsp; and bats. More specifically, he's interested in how bats are responding to human activity and&nbsp; deforestation in particular. Rocha's new study shows that several species of bats are giving&nbsp; Madagascar's rice farmers a vital pest control service by feasting on plagues of insects. And this,&nbsp; he believes, can ease the financial pressure on farmers to turn forest into fields.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Bats comprise roughly one-fifth of all mammal species in Madagascar and thirty-six recorded bat&nbsp; species are native to the island, making it one of the most important regions for conservation of&nbsp; this animal group anywhere in the world.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Co-leading an international team of scientists, Rocha found that several species of indigenous&nbsp; bats are taking advantage of habitat modification to hunt insects swarming above the country's&nbsp; rice fields. They include the Malagasy mouse-eared bat, Major's long-fingered bat, the Malagasy&nbsp; white-bellied free-tailed bat and Peters' wrinkle-lipped bat.&nbsp; &nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">‘These winner species are providing a valuable free service to Madagascar as biological pest&nbsp; suppressors,’ says Rocha. ‘We found that six species of bat are preying on rice pests, including the&nbsp; paddy swarming caterpillar and grass webworm. The damage which these insects cause puts the&nbsp; island's farmers under huge financial pressure and that encourages deforestation.’&nbsp; &nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The study, now published in the journal <i>Agriculture, Ecosystems and Environment</i>, set out to&nbsp; investigate the feeding activity of insectivorous bats in the farmland bordering the Ranomafana&nbsp; National Park in the southeast of the country.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Rocha and his team used state-of-the-art ultrasonic recorders to record over a thousand bat&nbsp; ‘feeding buzzes’ (echolocation sequences used by bats to target their prey) at 54 sites, in order&nbsp; to identify the favourite feeding spots of the bats. They next used DNA barcoding techniques to&nbsp; analyse droppings collected from bats at the different sites.&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">The recordings revealed that bat activity over rice fields was much higher than it was in&nbsp; continuous forest – seven times higher over rice fields which were on flat ground, and sixteen&nbsp; times higher over fields on the sides of hills – leaving no doubt that the animals are preferentially&nbsp; foraging in these man-made ecosystems. The researchers suggest that the bats favour these fields&nbsp; because lack of water and nutrient run-off make these crops more susceptible to insect pest&nbsp; infestations. DNA analysis showed that all six species of bat had fed on economically important&nbsp; insect pests. While the findings indicated that rice farming benefits most from the bats, the&nbsp; scientists also found indications that the bats were consuming pests of other crops, including the&nbsp; black twig borer (which infests coffee plants), the sugarcane cicada, the macadamia nut-borer, and&nbsp; the sober tabby (a pest of citrus fruits).&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">‘The effectiveness of bats as pest controllers has already been proven in the USA and Catalonia,’&nbsp; said co-author James Kemp, from the University of Lisbon. ‘But our study is the first to show this&nbsp; happening in Madagascar, where the stakes for both farmers and conservationists are so high.’&nbsp;&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Local people may have a further reason to be grateful to their bats. While the animal is often&nbsp; associated with spreading disease, Rocha and his team found evidence that Malagasy bats feed&nbsp; not just on crop pests but also on mosquitoes – carriers of malaria, Rift Valley fever virus and&nbsp; elephantiasis – as well as blackflies, which spread river blindness.</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Rocha points out that the relationship is complicated. When food is scarce, bats become a crucial&nbsp; source of protein for local people. Even the children will hunt them. And as well as roosting in&nbsp; trees, the bats sometimes roost in buildings, but are not welcomed there because they make them&nbsp; unclean. At the same time, however, they are associated with sacred caves and the ancestors, so&nbsp; they can be viewed as beings between worlds, which makes them very significant in the culture of&nbsp; the people. And one potential problem is that while these bats are benefiting from farming, at the&nbsp; same time deforestation is reducing the places where they can roost, which could have long-term&nbsp; effects on their numbers. Rocha says, ‘With the right help, we hope that farmers can promote this&nbsp; mutually beneficial relationship by installing bat houses.’&nbsp;</p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;">Rocha and his colleagues believe that maximising bat populations can help to boost crop yields&nbsp; and promote sustainable livelihoods. The team is now calling for further research to quantify this&nbsp; contribution. ‘I’m very optimistic,’ says Rocha. ‘If we give nature a hand, we can speed up the&nbsp; process of regeneration.’&nbsp;<br>&nbsp;</p>

@@ -1088,5 +1088,268 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "The kākāpō",
+      "zh": "鸮鹦鹉"
+    },
+    {
+      "id": "s2",
+      "en": "The kākāpō is a nocturnal, flightless parrot that is critically endangered and one of New Zealand's unique treasures",
+      "zh": "鸮鹦鹉是一种夜行性、不会飞的鹦鹉，处于极度濒危状态，是新西兰的独特珍宝之一。"
+    },
+    {
+      "id": "s3",
+      "en": "The kākāpō, also known as the owl parrot, is a large, forest-dwelling bird, with a pale owl-like face.",
+      "zh": "鸮鹦鹉，也被称为猫头鹰鹦鹉，是一种体型较大的森林鸟类，面部呈苍白色，酷似猫头鹰。"
+    },
+    {
+      "id": "s4",
+      "en": "Up to 64 cm in length, it has predominantly yellow-green feathers, forward-facing eyes, a large grey beak, large blue feet, and relatively short wings and tail.",
+      "zh": "它体长可达64厘米，羽毛主要为黄绿色，眼睛朝前，大灰色喙，大型蓝色脚掌，翅膀和尾巴相对较短。"
+    },
+    {
+      "id": "s5",
+      "en": "It is the world's only flightless parrot, and is also possibly one of the world's longest-living birds, with a reported lifespan of up to 100 years.",
+      "zh": "它是世界上唯一不会飞的鹦鹉，也可能是世界上寿命最长的鸟类之一，据报道寿命可达100年。"
+    },
+    {
+      "id": "s6",
+      "en": "Kākāpō are solitary birds and tend to occupy the same home range for many years.",
+      "zh": "鸮鹦鹉是独居的鸟类，通常多年占据同一活动范围。"
+    },
+    {
+      "id": "s7",
+      "en": "They forage on the ground and climb high into trees.",
+      "zh": "它们在地面觅食，也会爬到高高的树上。"
+    },
+    {
+      "id": "s8",
+      "en": "They often leap from trees and flap their wings, but at best manage a controlled descent to the ground.",
+      "zh": "它们常从树上跳下并拍打翅膀，但最多只能实现受控地降落到地面。"
+    },
+    {
+      "id": "s9",
+      "en": "They are entirely vegetarian, with their diet including the leaves, roots and bark of trees as well as bulbs, and fern fronds.",
+      "zh": "它们完全以植物为食，饮食包括树叶、根、树皮以及球茎和蕨类植物的叶片。"
+    },
+    {
+      "id": "s10",
+      "en": "Kākāpō breed in summer and autumn, but only in years when food is plentiful.",
+      "zh": "鸮鹦鹉在夏季和秋季繁殖，但只在食物丰富的年份。"
+    },
+    {
+      "id": "s11",
+      "en": "Males play no part in incubation or chick-rearing - females alone incubate eggs and feed the chicks.",
+      "zh": "雄鸟不参与孵蛋或养育幼鸟——只有雌鸟负责孵蛋和喂养幼鸟。"
+    },
+    {
+      "id": "s12",
+      "en": "The 1-4 eggs are laid in soil, which is repeatedly turned over before and during incubation.",
+      "zh": "它们会在土壤中产下1至4枚卵，孵化前和孵化期间，土壤会被反复翻动。"
+    },
+    {
+      "id": "s13",
+      "en": "The female kākāpō has to spend long periods away from the nest searching for food, which leaves the unattended eggs and chicks particularly vulnerable to predators.",
+      "zh": "雌性鸮鹦鹉必须长时间离开巢穴寻找食物，这使得无人照看的卵和幼鸟尤为容易受到捕食者的威胁。"
+    },
+    {
+      "id": "s14",
+      "en": "Before humans arrived, kākāpō were common throughout New Zealand's forests.",
+      "zh": "在人类到来之前，鸮鹦鹉曾在新西兰的森林中广泛分布。"
+    },
+    {
+      "id": "s15",
+      "en": "However, this all changed with the arrival of the first Polynesian settlers about 700 years ago.",
+      "zh": "然而，约700年前第一批波利尼西亚定居者的到来改变了一切。"
+    },
+    {
+      "id": "s16",
+      "en": "For the early settlers, the flightless kākāpō was easy prey.",
+      "zh": "对早期定居者来说，不会飞的鸮鹦鹉是容易捕捉的猎物。"
+    },
+    {
+      "id": "s17",
+      "en": "They ate its meat and used its feathers to make soft cloaks.",
+      "zh": "他们食用它的肉，用其羽毛制作柔软的披风。"
+    },
+    {
+      "id": "s18",
+      "en": "With them came the Polynesian dog and rat, which also preyed on kākāpō.",
+      "zh": "他们带来了波利尼西亚犬和老鼠，这些动物也捕食鸮鹦鹉。"
+    },
+    {
+      "id": "s19",
+      "en": "By the time European colonisers arrived in the early 1800s, kākāpō had become confined to the central North Island and forested parts of the South Island.",
+      "zh": "到19世纪初欧洲殖民者到来时，鸮鹦鹉已经只分布在北岛中部和南岛部分森林地区。"
+    },
+    {
+      "id": "s20",
+      "en": "The fall in kākāpō numbers was accelerated by European colonisation.",
+      "zh": "欧洲殖民加速了鸮鹦鹉数量的下降。"
+    },
+    {
+      "id": "s21",
+      "en": "A great deal of habitat was lost through forest clearance, and introduced species such as deer depleted the remaining forests of food.",
+      "zh": "大量栖息地因砍伐森林而丧失，引进的物种如鹿也使剩余森林中的食物资源枯竭。"
+    },
+    {
+      "id": "s22",
+      "en": "Other predators such as cats, stoats and two more species of rat were also introduced.",
+      "zh": "其他捕食者如猫、貂和另外两种老鼠也被引入。"
+    },
+    {
+      "id": "s23",
+      "en": "The kākāpō were in serious trouble.",
+      "zh": "鸮鹦鹉面临严重困境。"
+    },
+    {
+      "id": "s24",
+      "en": "In 1894, the New Zealand government launched its first attempt to save the kākāpō.",
+      "zh": "1894年，新西兰政府发起了首次拯救鸮鹦鹉的行动。"
+    },
+    {
+      "id": "s25",
+      "en": "Conservationist Richard Henry led an effort to relocate several hundred of the birds to predator-free Resolution Island in Fiordland.",
+      "zh": "保护主义者理查德·亨利领导了一项行动，将数百只鸮鹦鹉迁移到峡湾地区的无捕食者的解决岛。"
+    },
+    {
+      "id": "s26",
+      "en": "Unfortunately, the island didn't remain predator free - stoats arrived within six years, eventually destroying the kākāpō population.",
+      "zh": "遗憾的是，该岛未能保持无捕食者——貂在六年内入侵，最终摧毁了鸮鹦鹉种群。"
+    },
+    {
+      "id": "s27",
+      "en": "By the mid-1900s, the kākāpō was practically a lost species.",
+      "zh": "到了20世纪中叶，鸮鹦鹉几乎成为灭绝物种。"
+    },
+    {
+      "id": "s28",
+      "en": "Only a few clung to life in the most isolated parts of New Zealand.",
+      "zh": "只有少数鸮鹦鹉在新西兰最偏远的地区苟延残喘。"
+    },
+    {
+      "id": "s29",
+      "en": "From 1949 to 1973, the newly formed New Zealand Wildlife Service made over 60 expeditions to find kākāpō, focusing mainly on Fiordland.",
+      "zh": "1949年至1973年，新成立的新西兰野生动物服务部门进行了60多次寻找鸮鹦鹉的考察，主要集中在峡湾地区。"
+    },
+    {
+      "id": "s30",
+      "en": "Six were caught, but there were no females amongst them and all but one died within a few months of captivity.",
+      "zh": "捕获了六只鸮鹦鹉，但其中没有雌性，且除一只外其余在囚禁数月内全部死亡。"
+    },
+    {
+      "id": "s31",
+      "en": "In 1974, a new initiative was launched, and by 1977, 18 more kākāpō were found in Fiordland.",
+      "zh": "1974年发起了新计划，到了1977年，在峡湾地区发现了18只新的鸮鹦鹉。"
+    },
+    {
+      "id": "s32",
+      "en": "However, there were still no females.",
+      "zh": "然而，仍未发现雌鸟。"
+    },
+    {
+      "id": "s33",
+      "en": "In 1977, a large population of males was spotted in Rakiura - a large island free from stoats, ferrets and weasels.",
+      "zh": "1977年，在拉基乌拉看到一大群雄性鸮鹦鹉——这是一个没有貂、白鼬和鼬鼠的大岛。"
+    },
+    {
+      "id": "s34",
+      "en": "There were about 200 individuals, and in 1980 it was confirmed females were also present.",
+      "zh": "该岛约有200只鸮鹦鹉，1980年证实也有雌性存在。"
+    },
+    {
+      "id": "s35",
+      "en": "These birds have been the foundation of all subsequent work in managing the species.",
+      "zh": "这些鸟成为了后续所有鸮鹦鹉保护管理工作的基础。"
+    },
+    {
+      "id": "s36",
+      "en": "Unfortunately, predation by feral cats on Rakiura Island led to a rapid decline in kākāpō numbers.",
+      "zh": "不幸的是，拉基乌拉岛上的野猫捕食导致鸮鹦鹉数量迅速下降。"
+    },
+    {
+      "id": "s37",
+      "en": "As a result, during 1980-97, the surviving population was evacuated to three island sanctuaries: Codfish Island, Maud Island and Little Barrier Island.",
+      "zh": "因此，1980年至1997年间，幸存鸮鹦鹉被迁移到三个岛屿保护区：鳕鱼岛、莫德岛和小屏障岛。"
+    },
+    {
+      "id": "s38",
+      "en": "However, breeding success was hard to achieve.",
+      "zh": "然而，繁殖成功非常困难。"
+    },
+    {
+      "id": "s39",
+      "en": "Rats were found to be a major predator of kākāpō chicks and an insufficient number of chicks survived to offset adult mortality.",
+      "zh": "发现老鼠是鸮鹦鹉幼鸟的重要捕食者，存活幼鸟数量不足以抵消成年个体的死亡。"
+    },
+    {
+      "id": "s40",
+      "en": "By 1995, although at least 12 chicks had been produced on the islands, only three had survived.",
+      "zh": "到1995年，虽然岛上至少孵育出12只幼鸟，但只有三只存活。"
+    },
+    {
+      "id": "s41",
+      "en": "The kākāpō population had dropped to 51 birds.",
+      "zh": "鸮鹦鹉数量下降至51只。"
+    },
+    {
+      "id": "s42",
+      "en": "The critical situation prompted an urgent review of kākāpō management in New Zealand.",
+      "zh": "这一危急状况促使新西兰紧急审查鸮鹦鹉的管理策略。"
+    },
+    {
+      "id": "s43",
+      "en": "In 1996, a new Recovery Plan was launched, together with a specialist advisory group called the Kākāpō Scientific and Technical Advisory Committee and a higher amount of funding.",
+      "zh": "1996年，启动了新的恢复计划，同时成立了名为鸮鹦鹉科学与技术咨询委员会的专家顾问组，并增加了资金投入。"
+    },
+    {
+      "id": "s44",
+      "en": "Renewed steps were taken to control predators on the three islands.",
+      "zh": "对三个岛屿上的捕食者采取了新的控制措施。"
+    },
+    {
+      "id": "s45",
+      "en": "Cats were eradicated from Little Barrier Island in 1980, and possums were eradicated from Codfish Island by 1986.",
+      "zh": "1980年，小屏障岛上的猫被消灭，1986年前鳕鱼岛上的负鼠被清除。"
+    },
+    {
+      "id": "s46",
+      "en": "However, the population did not start to increase until rats were removed from all three islands, and the birds were more intensively managed.",
+      "zh": "但直到三岛上的老鼠都被清除，且对鸟类加强管理后，数量才开始增长。"
+    },
+    {
+      "id": "s47",
+      "en": "This involved moving the birds between islands, supplementary feeding of adults and rescuing and hand-raising any failing chicks.",
+      "zh": "这包括在各岛之间搬迁鸟只，对成年鸟补充饲料，以及救助并手工饲养体弱幼鸟。"
+    },
+    {
+      "id": "s48",
+      "en": "After the first five years of the Recovery Plan, the population was on target.",
+      "zh": "恢复计划实施五年后，鸮鹦鹉种群数量达到预期目标。"
+    },
+    {
+      "id": "s49",
+      "en": "By 2000, five new females had been produced, and the total population had grown to 62 birds.",
+      "zh": "到2000年，孵育出五只新雌鸟，总数量增长到62只。"
+    },
+    {
+      "id": "s50",
+      "en": "For the first time, there was cautious optimism for the future of kākāpō and by June 2020, a total of 210 birds was recorded.",
+      "zh": "首次对鸮鹦鹉的未来充满谨慎乐观，截至2020年6月，总记录数量达到210只。"
+    },
+    {
+      "id": "s51",
+      "en": "Today, kākāpō management continues to be guided by the kākāpō Recovery Plan.",
+      "zh": "如今，鸮鹦鹉的管理仍按照恢复计划指导进行。"
+    },
+    {
+      "id": "s52",
+      "en": "Its key goals are: minimise the loss of genetic diversity in the kākāpō population, restore or maintain sufficient habitat to accommodate the expected increase in the kākāpō population, and ensure stakeholders continue to be fully engaged in the preservation of the species.",
+      "zh": "其主要目标是：最大限度减少鸮鹦鹉种群遗传多样性的流失，恢复或维持足够的栖息地以容纳预期增长的鸮鹦鹉数量，并确保利益相关者持续全面参与该物种的保护工作。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">The kākāpō</span></strong></p><p style="text-align: center;"><em>The kākāpō is a nocturnal, flightless parrot that is critically endangered and one of New Zealand's unique treasures</em></p><p><em><br></em></p><p>The kākāpō, also known as the owl parrot, is a large, forest-dwelling bird, with a pale owl-like face. Up to 64 cm in length, it has predominantly yellow-green feathers, forward-facing eyes, a large grey beak, large blue feet, and relatively short wings and tail. It is the world's only flightless parrot, and is also possibly one of the world's longest-living birds, with a reported lifespan of up to 100 years.</p><p><br></p><p>Kākāpō are solitary birds and tend to occupy the same home range for many years. They forage on the ground and climb high into trees. They often leap from trees and flap their wings, but at best manage a controlled descent to the ground. They are entirely vegetarian, with their diet including the leaves, roots and bark of trees as well as bulbs, and fern fronds.</p><p><br></p><p>Kākāpō breed in summer and autumn, but only in years when food is plentiful. Males play no part in incubation or chick-rearing - females alone incubate eggs and feed the chicks. The 1-4 eggs are laid in soil, which is repeatedly turned over before and during incubation. The female kākāpō has to spend long periods away from the nest searching for food, which leaves the unattended eggs and chicks particularly vulnerable to predators.</p><p><br></p><p>Before humans arrived, kākāpō were common throughout New Zealand's forests. However, this all changed with the arrival of the first Polynesian settlers about 700 years ago. For the early settlers, the flightless kākāpō was easy prey. They ate its meat and used its feathers to make soft cloaks. With them came the Polynesian dog and rat, which also preyed on kākāpō. By the time European colonisers arrived in the early 1800s, kākāpō had become confined to the central North Island and forested parts of the South Island. The fall in kākāpō numbers was accelerated by European colonisation. A great deal of habitat was lost through forest clearance, and introduced species such as deer depleted the remaining forests of food. Other predators such as cats, stoats and two more species of rat were also introduced. The kākāpō were in serious trouble.</p><p><br></p><p>In 1894, the New Zealand government launched its first attempt to save the kākāpō. Conservationist Richard Henry led an effort to relocate several hundred of the birds to predator-free Resolution Island in Fiordland. Unfortunately, the island didn't remain predator free - stoats arrived within six years, eventually destroying the kākāpō population. By the mid-1900s, the kākāpō was practically a lost species. Only a few clung to life in the most isolated parts of New Zealand.</p><p><br></p><p>From 1949 to 1973, the newly formed New Zealand Wildlife Service made over 60 expeditions to find kākāpō, focusing mainly on Fiordland. Six were caught, but there were no females amongst them and all but one died within a few months of captivity. In 1974, a new initiative was launched, and by 1977, 18 more kākāpō were found in Fiordland. However, there were still no females. In 1977, a large population of males was spotted in Rakiura - a large island free from stoats, ferrets and weasels. There were about 200 individuals, and in 1980 it was confirmed females were also present. These birds have been the foundation of all subsequent work in managing the species.</p><p><br></p><p>Unfortunately, predation by feral cats on Rakiura Island led to a rapid decline in kākāpō numbers. As a result, during 1980-97, the surviving population was evacuated to three island sanctuaries: Codfish Island, Maud Island and Little Barrier Island. However, breeding success was hard to achieve. Rats were found to be a major predator of kākāpō chicks and an insufficient number of chicks survived to offset adult mortality. By 1995, although at least 12 chicks had been produced on the islands, only three had survived. The kākāpō population had dropped to 51 birds. The critical situation prompted an urgent review of kākāpō management in New Zealand.</p><p><br></p><p>In 1996, a new Recovery Plan was launched, together with a specialist advisory group called the Kākāpō Scientific and Technical Advisory Committee and a higher amount of funding. Renewed steps were taken to control predators on the three islands. Cats were eradicated from Little Barrier Island in 1980, and possums were eradicated from Codfish Island by 1986. However, the population did not start to increase until rats were removed from all three islands, and the birds were more intensively managed. This involved moving the birds between islands, supplementary feeding of adults and rescuing and hand-raising any failing chicks.</p><p><br></p><p>After the first five years of the Recovery Plan, the population was on target. By 2000, five new females had been produced, and the total population had grown to 62 birds. For the first time, there was cautious optimism for the future of kākāpō and by June 2020, a total of 210 birds was recorded.</p><p><br></p><p>Today, kākāpō management continues to be guided by the kākāpō Recovery Plan. Its key goals are: minimise the loss of genetic diversity in the kākāpō population, restore or maintain sufficient habitat to accommodate the expected increase in the kākāpō population, and ensure stakeholders continue to be fully engaged in the preservation of the species.</p><p><br></p>

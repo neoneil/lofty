@@ -1388,5 +1388,203 @@ assets_json: |
       }
     }
   ]
+passage_translation_json: |
+  [
+    {
+      "id": "s1",
+      "en": "Palm oil is an edible oil derived from the fruit of the African oil palm tree, and is currently the most consumed vegetable oil in the world.",
+      "zh": "棕榈油是一种可食用油，来源于非洲油棕树的果实，目前是全球消费量最大的植物油。"
+    },
+    {
+      "id": "s2",
+      "en": "It's almost certainly in the soap we wash with in the morning, the sandwich we have for lunch, and the biscuits we snack on during the day.",
+      "zh": "它几乎肯定存在于我们早晨洗脸用的肥皂里，午餐吃的三明治里，以及我们白天吃的饼干中。"
+    },
+    {
+      "id": "s3",
+      "en": "Why is palm oil so attractive for manufacturers?",
+      "zh": "为什么棕榈油对制造商如此有吸引力？"
+    },
+    {
+      "id": "s4",
+      "en": "Primarily because its unique properties – such as remaining solid at room temperature – make it an ideal ingredient for long-term preservation, allowing many packaged foods on supermarket shelves to have ‘best before’ dates of months, even years, into the future.",
+      "zh": "主要因为它的独特性质——例如在室温下保持固态——使其成为理想的长期保鲜成分，让许多超市货架上的包装食品的保质期能达到数月甚至数年。"
+    },
+    {
+      "id": "s5",
+      "en": "Many farmers have seized the opportunity to maximise the planting of oil palm trees.",
+      "zh": "许多农民抓住机会，最大化种植油棕树。"
+    },
+    {
+      "id": "s6",
+      "en": "Between 1990 and 2012, the global land area devoted to growing oil palm trees grew from 6 to 17 million hectares, now accounting for around ten percent of total cropland in the entire world.",
+      "zh": "1990年至2012年间，全球种植油棕树的土地面积从600万公顷增加到1700万公顷，现在约占全球耕地总面积的百分之十。"
+    },
+    {
+      "id": "s7",
+      "en": "From a mere two million tonnes of palm oil being produced annually globally 50 years ago, there are now around 60 million tonnes produced every single year, a figure looking likely to double or even triple by the middle of the century.",
+      "zh": "50年前，全球每年仅生产约两百万吨棕榈油，而现在每年生产约六千万吨，预计到本世纪中叶这一数字很可能翻倍甚至增长三倍。"
+    },
+    {
+      "id": "s8",
+      "en": "However, there are multiple reasons why conservationists cite the rapid spread of oil palm plantations as a major concern.",
+      "zh": "然而，保护主义者对油棕种植园快速扩张提出担忧，原因多种多样。"
+    },
+    {
+      "id": "s9",
+      "en": "There are countless news stories of deforestation, habitat destruction and dwindling species populations, all as a direct result of land clearing to establish oil palm tree monoculture on an industrial scale, particularly in Malaysia and Indonesia.",
+      "zh": "有无数新闻报道指出，尤其在马来西亚和印度尼西亚，大规模清理土地以建立油棕树单一农作物种植园，直接导致森林砍伐、栖息地破坏和物种数量减少。"
+    },
+    {
+      "id": "s10",
+      "en": "Endangered species – most famously the Sumatran orangutan, but also rhinos, elephants, tigers, and numerous other fauna – have suffered from the unstoppable spread of oil palm plantations.",
+      "zh": "濒危物种——最著名的是苏门答腊猩猩，还有犀牛、大象、老虎及许多其他动物——都因油棕种植园的不可阻挡扩散而受到伤害。"
+    },
+    {
+      "id": "s11",
+      "en": "‘Palm oil is surely one of the greatest threats to global biodiversity,’ declares Dr Farnon Ellwood of the University of the West of England, Bristol.",
+      "zh": "英国西英格兰大学布里斯托分校的法农·埃尔伍德博士宣称：“棕榈油无疑是全球生物多样性面临的最大威胁之一。”"
+    },
+    {
+      "id": "s12",
+      "en": "‘Palm oil is replacing rainforest, and rainforest is where all the species are.",
+      "zh": "“棕榈油正在取代雨林，而雨林是所有物种的栖息地。"
+    },
+    {
+      "id": "s13",
+      "en": "That's a problem.’",
+      "zh": "这就是问题所在。”"
+    },
+    {
+      "id": "s14",
+      "en": "This has led to some radical questions among environmentalists, such as whether consumers should try to boycott palm oil entirely.",
+      "zh": "这引发了环保人士一些激进的疑问，比如消费者是否应当完全抵制棕榈油。"
+    },
+    {
+      "id": "s15",
+      "en": "Meanwhile Bhavani Shankar, Professor at London's School of Oriental and African Studies, argues, ‘It’s easy to say that palm oil is the enemy and we should be against it.",
+      "zh": "与此同时，伦敦东方与非洲研究学院教授巴瓦尼·尚卡尔则认为：“说棕榈油是敌人，我们应该反对它，这很容易。"
+    },
+    {
+      "id": "s16",
+      "en": "It makes for a more dramatic story, and it's very intuitive.",
+      "zh": "这让故事更具戏剧性，也非常直观。"
+    },
+    {
+      "id": "s17",
+      "en": "But given the complexity of the argument, I think a much more nuanced story is closer to the truth.’",
+      "zh": "但鉴于问题的复杂性，我认为更为细致入微的说法更接近真相。”"
+    },
+    {
+      "id": "s18",
+      "en": "One response to the boycott movement has been the argument for the vital role palm oil plays in lifting many millions of people in the developing world out of poverty.",
+      "zh": "对抵制运动的一种回应是，强调棕榈油在帮助发展中国家数百万人民脱贫中所扮演的重要角色。"
+    },
+    {
+      "id": "s19",
+      "en": "Is it desirable to have palm oil boycotted, replaced, eliminated from the global supply chain, given how many low-income people in developing countries depend on it for their livelihoods?",
+      "zh": "考虑到许多发展中国家的低收入人群依赖棕榈油谋生，我们是否应当抵制、替代或从全球供应链中淘汰棕榈油？"
+    },
+    {
+      "id": "s20",
+      "en": "How best to strike a utilitarian balance between these competing factors has become a serious bone of contention.",
+      "zh": "如何在这些相互竞争的因素之间取得功利主义的平衡，已成为一个严重的争议焦点。"
+    },
+    {
+      "id": "s21",
+      "en": "Even the deforestation argument isn't as straightforward as it seems.",
+      "zh": "甚至连森林砍伐的问题也不像表面看起来那么简单。"
+    },
+    {
+      "id": "s22",
+      "en": "Oil palm plantations produce at least four and potentially up to ten times more oil per hectare than soybean, rapeseed, sunflower or other competing oils.",
+      "zh": "油棕种植园每公顷产油量至少是大豆、油菜籽、向日葵或其他竞争性油料作物的四倍，甚至高达十倍。"
+    },
+    {
+      "id": "s23",
+      "en": "That immensely high yield – which is predominantly what makes it so profitable – is potentially also an ecological benefit.",
+      "zh": "这种极高的产量——主要是其盈利能力的根本——也可能带来生态上的好处。"
+    },
+    {
+      "id": "s24",
+      "en": "If ten times more palm oil can be produced from a patch of land than any competing oil, then ten times more land would need to be cleared in order to produce the same volume of oil from that competitor.",
+      "zh": "如果一块土地能生产十倍于其它油料作物的棕榈油，那么要生产相同数量的其他油，就需要开垦十倍的土地。"
+    },
+    {
+      "id": "s25",
+      "en": "As for the question of carbon emissions, the issue really depends on what oil palm trees are replacing.",
+      "zh": "至于碳排放问题，关键取决于油棕树替代的是什么土地用途。"
+    },
+    {
+      "id": "s26",
+      "en": "Crops vary in the degree to which they sequester carbon – in other words, the amount of carbon they capture from the atmosphere and store within the plant.",
+      "zh": "不同作物在固碳能力上存在差异——换句话说，它们从大气中捕获并储存在植株内的碳的数量不同。"
+    },
+    {
+      "id": "s27",
+      "en": "The more carbon a plant sequesters, the more it reduces the effect of climate change.",
+      "zh": "植物固碳越多，对减缓气候变化的作用就越大。"
+    },
+    {
+      "id": "s28",
+      "en": "As Shankar explains: ‘[Palm oil production] actually sequesters more carbon in some ways than other alternatives.",
+      "zh": "正如尚卡尔解释：“[棕榈油生产]在某些方面实际上固碳量超过其他替代方案。"
+    },
+    {
+      "id": "s29",
+      "en": "[…] Of course, if you're cutting down virgin forest it's terrible – that's what's happening in Indonesia and Malaysia, it's been allowed to get out of hand.",
+      "zh": "[…]当然，如果砍伐原始森林，那是非常糟糕的——这正发生在印度尼西亚和马来西亚，情况已经失控。"
+    },
+    {
+      "id": "s30",
+      "en": "But if it's replacing rice, for example, it might actually sequester more carbon.’",
+      "zh": "但如果用来替代水稻等作物，棕榈油反而可能固存更多碳。”"
+    },
+    {
+      "id": "s31",
+      "en": "The industry is now regulated by a group called the Roundtable on Sustainable Palm Oil (RSPO), consisting of palm growers, retailers, product manufacturers, and other interested parties.",
+      "zh": "该行业目前由一个名为“可持续棕榈油圆桌会议”（RSPO）的组织监管，成员包括棕榈种植者、零售商、产品制造商及其他相关方。"
+    },
+    {
+      "id": "s32",
+      "en": "Over the past decade or so, an agreement has gradually been reached regarding standards that producers of palm oil have to meet in order for their product to be regarded as officially ‘sustainable’.",
+      "zh": "过去十年左右，生产商逐渐达成一致，规定了其产品被官方认定为“可持续”所必须达到的标准。"
+    },
+    {
+      "id": "s33",
+      "en": "The RSPO insists upon no virgin forest clearing, transparency and regular assessment of carbon stocks, among other criteria.",
+      "zh": "RSPO坚持禁止砍伐原始森林，要求透明度和定期评估碳储量，以及其他标准。"
+    },
+    {
+      "id": "s34",
+      "en": "Only once these requirements are fully satisfied is the oil allowed to be sold as certified sustainable palm oil (CSPO).",
+      "zh": "只有在完全满足这些要求后，棕榈油才被允许以认证的可持续棕榈油（CSPO）身份销售。"
+    },
+    {
+      "id": "s35",
+      "en": "Recent figures show that the RSPO now certifies around 12 million tonnes of palm oil annually, equivalent to roughly 21 percent of the world's total palm oil production.",
+      "zh": "最新数据显示，RSPO目前每年认证约1200万吨棕榈油，约占全球棕榈油总产量的21%。"
+    },
+    {
+      "id": "s36",
+      "en": "There is even hope that oil palm plantations might not need to be such sterile monocultures, or ‘green deserts’, as Ellwood describes them.",
+      "zh": "甚至有人希望油棕种植园不必再是如埃尔伍德所称的那样的“绿色荒漠”般的贫瘠单一作物生态。"
+    },
+    {
+      "id": "s37",
+      "en": "New research at Ellwood's lab hints at one plant which might make all the difference.",
+      "zh": "埃尔伍德实验室的新研究暗示，有一种植物可能产生巨大改变。"
+    },
+    {
+      "id": "s38",
+      "en": "The bird's nest fern ( Asplenium nidus ) grows on trees in an epiphytic fashion (meaning it's dependent on the tree only for support, not for nutrients), and is native to many tropical regions, where as a keystone species it performs a vital ecological role.",
+      "zh": "鸟巢蕨（学名：Asplenium nidus）附生在树上（意即仅依靠树木作为支撑，不吸收养分），原产于许多热带地区，作为关键物种，承担着重要的生态功能。"
+    },
+    {
+      "id": "s39",
+      "en": "Ellwood believes that reintroducing the bird's nest fern into oil palm plantations could potentially allow these areas to recover their biodiversity, providing a home for all manner of species, from fungi and bacteria, to invertebrates such as insects, amphibians, reptiles and even mammals.",
+      "zh": "埃尔伍德认为，将鸟巢蕨重新引入油棕种植园，有可能帮助这些地区恢复生物多样性，为各种生物——从真菌和细菌，到无脊椎动物如昆虫、两栖动物、爬行动物甚至哺乳动物——提供栖息地。"
+    }
+  ]
 ---
 <p style="text-align: center;"><strong><span style="font-size: 22px;">Palm oil</span></strong></p><p style="text-align: left;"><strong>A&nbsp;</strong></p><p style="text-align: left;">Palm oil is an edible oil derived from the fruit of the African oil palm tree, and is currently&nbsp; the most consumed vegetable oil in the world. It's almost certainly in the soap we wash with&nbsp; in the morning, the sandwich we have for lunch, and the biscuits we snack on during the&nbsp; day. Why is palm oil so attractive for manufacturers? Primarily because its unique properties&nbsp; – such as remaining solid at room temperature – make it an ideal ingredient for long-term&nbsp; preservation, allowing many packaged foods on supermarket shelves to have ‘best before’&nbsp; dates of months, even years, into the future.&nbsp;&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>B&nbsp;</strong></p><p style="text-align: left;">Many farmers have seized the opportunity to maximise the planting of oil palm trees.&nbsp; Between 1990 and 2012, the global land area devoted to growing oil palm trees grew from&nbsp; 6 to 17 million hectares, now accounting for around ten percent of total cropland in the&nbsp; entire world. From a mere two million tonnes of palm oil being produced annually globally&nbsp; 50 years ago, there are now around 60 million tonnes produced every single year, a figure&nbsp; looking likely to double or even triple by the middle of the century.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>C&nbsp;</strong></p><p style="text-align: left;">However, there are multiple reasons why conservationists cite the rapid spread of oil palm&nbsp; plantations as a major concern. There are countless news stories of deforestation, habitat&nbsp; destruction and dwindling species populations, all as a direct result of land clearing to&nbsp; establish oil palm tree monoculture on an industrial scale, particularly in Malaysia and&nbsp; Indonesia. Endangered species – most famously the Sumatran orangutan, but also rhinos,&nbsp; elephants, tigers, and numerous other fauna – have suffered from the unstoppable spread of&nbsp; oil palm plantations.&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>D</strong></p><p style="text-align: left;">‘Palm oil is surely one of the greatest threats to global biodiversity,’ declares Dr Farnon&nbsp; Ellwood of the University of the West of England, Bristol. ‘Palm oil is replacing rainforest,&nbsp; and rainforest is where all the species are. That's a problem.’ This has led to some radical&nbsp; questions among environmentalists, such as whether consumers should try to boycott palm&nbsp; oil entirely.</p><p style="text-align: left;"><br></p><p style="text-align: left;">Meanwhile Bhavani Shankar, Professor at London's School of Oriental and African Studies,&nbsp; argues, ‘It’s easy to say that palm oil is the enemy and we should be against it. It makes for&nbsp; a more dramatic story, and it's very intuitive. But given the complexity of the argument, I&nbsp; think a much more nuanced story is closer to the truth.’&nbsp;&nbsp;</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>E</strong></p><p style="text-align: left;">One response to the boycott movement has been the argument for the vital role palm&nbsp; oil plays in lifting many millions of people in the developing world out of poverty. Is it&nbsp; desirable to have palm oil boycotted, replaced, eliminated from the global supply chain,&nbsp; given how many low-income people in developing countries depend on it for their&nbsp; livelihoods? How best to strike a utilitarian balance between these competing factors has&nbsp; become a serious bone of contention.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>F</strong>&nbsp;</p><p style="text-align: left;">Even the deforestation argument isn't as straightforward as it seems. Oil palm plantations&nbsp; produce at least four and potentially up to ten times more oil per hectare than soybean,&nbsp; rapeseed, sunflower or other competing oils. That immensely high yield – which is&nbsp; predominantly what makes it so profitable – is potentially also an ecological benefit. If ten&nbsp; times more palm oil can be produced from a patch of land than any competing oil, then ten&nbsp; times more land would need to be cleared in order to produce the same volume of oil from&nbsp; that competitor.</p><p style="text-align: left;"><br></p><p style="text-align: left;">As for the question of carbon emissions, the issue really depends on what oil palm trees are&nbsp; replacing. Crops vary in the degree to which they sequester carbon – in other words, the&nbsp; amount of carbon they capture from the atmosphere and store within the plant. The more&nbsp; carbon a plant sequesters, the more it reduces the effect of climate change. As Shankar&nbsp; explains: ‘[Palm oil production] actually sequesters more carbon in some ways than other&nbsp; alternatives. […] Of course, if you're cutting down virgin forest it's terrible – that's what's&nbsp; happening in Indonesia and Malaysia, it's been allowed to get out of hand. But if it's&nbsp; replacing rice, for example, it might actually sequester more carbon.’</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>G</strong>&nbsp;</p><p style="text-align: left;">The industry is now regulated by a group called the Roundtable on Sustainable Palm Oil&nbsp; (RSPO), consisting of palm growers, retailers, product manufacturers, and other interested&nbsp; parties. Over the past decade or so, an agreement has gradually been reached regarding&nbsp; standards that producers of palm oil have to meet in order for their product to be regarded&nbsp; as officially ‘sustainable’. The RSPO insists upon no virgin forest clearing, transparency and&nbsp; regular assessment of carbon stocks, among other criteria. Only once these requirements are&nbsp; fully satisfied is the oil allowed to be sold as certified sustainable palm oil (CSPO). Recent&nbsp; figures show that the RSPO now certifies around 12 million tonnes of palm oil annually,&nbsp; equivalent to roughly 21 percent of the world's total palm oil production.</p><p style="text-align: left;"><br></p><p style="text-align: left;"><strong>H&nbsp;</strong></p><p style="text-align: left;">There is even hope that oil palm plantations might not need to be such sterile monocultures,&nbsp; or ‘green deserts’, as Ellwood describes them. New research at Ellwood's lab hints at one&nbsp; plant which might make all the difference. The bird's nest fern (<em>Asplenium nidus</em>) grows on&nbsp; trees in an epiphytic fashion (meaning it's dependent on the tree only for support, not for&nbsp; nutrients), and is native to many tropical regions, where as a keystone species it performs a&nbsp; vital ecological role. Ellwood believes that reintroducing the bird's nest fern into oil palm&nbsp; plantations could potentially allow these areas to recover their biodiversity, providing a&nbsp; home for all manner of species, from fungi and bacteria, to invertebrates such as insects,&nbsp; amphibians, reptiles and even mammals.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
