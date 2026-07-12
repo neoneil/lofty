@@ -479,7 +479,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border)] bg-[var(--bg-soft)]">
+      <section id="faq" className="scroll-mt-24 border-t border-[var(--border)] bg-[var(--bg-soft)]">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24">
           <SectionHeading eyebrow="FAQ" title="常见问题" description="关于 PTE、雅思与 AI 学习平台的常见问题。" />
 
