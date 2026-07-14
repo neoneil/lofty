@@ -8,6 +8,7 @@ import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
 import LogoutButton from "@/components/auth/logout-button";
 import { getAchievementSnapshot } from "@/lib/achievements/client";
+import { getPublicR2Url, normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -39,16 +40,13 @@ const AVATAR_FOLDERS = ["avatars", ""];
 const AVATAR_COUNT = 40;
 const MENU_ANIMATION_MS = 180;
 
-function getDefaultAvatarOptions(supabase: ReturnType<typeof createClient>) {
+function getDefaultAvatarOptions() {
   return Array.from({ length: AVATAR_COUNT }, (_, index) => {
     const name = `${String(index + 1).padStart(3, "0")}.png`;
-    const { data } = supabase.storage
-      .from(AVATAR_BUCKET)
-      .getPublicUrl(name);
 
     return {
       name,
-      url: data.publicUrl,
+      url: getPublicR2Url(AVATAR_BUCKET, name),
     };
   });
 }
@@ -105,7 +103,7 @@ export function ProfileMenu({
     getAuthName(user);
 
   const displayAvatar =
-    profile?.avatar_url ||
+    normalizePublicStorageUrl(profile?.avatar_url, "avatars") ||
     getAuthAvatar(user);
 
   const initials =
@@ -282,13 +280,9 @@ export function ProfileMenu({
           .slice(0, 40)
           .map((item) => {
             const path = folder ? `${folder}/${item.name}` : item.name;
-            const { data: publicUrl } = supabase.storage
-              .from(AVATAR_BUCKET)
-              .getPublicUrl(path);
-
             return {
               name: item.name,
-              url: publicUrl.publicUrl,
+              url: getPublicR2Url(AVATAR_BUCKET, path),
             };
           });
 
@@ -299,7 +293,7 @@ export function ProfileMenu({
       }
 
       setAvatars((current) =>
-        current.length > 0 ? current : getDefaultAvatarOptions(supabase),
+        current.length > 0 ? current : getDefaultAvatarOptions(),
       );
       setLoadingAvatars(false);
     }

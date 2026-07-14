@@ -10,6 +10,7 @@ import { canAccessAdmin } from "@/lib/auth/admin-access";
 import { BRAND_NAME_CN } from "@/lib/brand";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { NavbarScrollShell } from "@/components/site/navbar-scroll-shell";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type NavItem = {
   href: string;
@@ -59,7 +60,7 @@ export default async function Navbar() {
   const email = profileEmail || user?.email || "";
 
   const avatar =
-    profileAvatar ||
+    normalizePublicStorageUrl(profileAvatar, "avatars") ||
     user?.user_metadata?.avatar_url ||
     user?.user_metadata?.picture ||
     "/default-avatar.png";

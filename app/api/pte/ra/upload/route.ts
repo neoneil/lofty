@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
+import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 export async function POST(req: Request) {
   try {
@@ -27,24 +28,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "no file" }, { status: 400 });
     }
 
-    const filePath = `students-audio/ra/${user.id}/${Date.now()}.webm`;
-
-    // ===== 上传 =====
-    const { error: uploadError } = await supabase.storage
-      .from("pte-audio")
-      .upload(filePath, file);
-
-    console.log("UPLOAD ERROR:", uploadError);
-
-    if (uploadError) {
-      return NextResponse.json({ error: uploadError.message }, { status: 500 });
-    }
-
-    const { data: publicUrlData } = supabase.storage
-      .from("pte-audio")
-      .getPublicUrl(filePath);
-
-    const audioUrl = publicUrlData.publicUrl;
+    const audioStorageKey = await uploadStudentRecordingToPrivateR2({ file, questionSource: "ra", userId: user.id });
+    const audioUrl = getStudentRecordingPlaybackUrl(audioStorageKey);
 
     // ===== 插入 =====
     const { error: insertError } = await supabase
@@ -53,7 +38,7 @@ export async function POST(req: Request) {
         user_id: user.id,
         question_source: "ra",
         question_id: questionId,
-        audio_url: audioUrl,
+        audio_url: audioStorageKey,
       });
 
     console.log("INSERT ERROR:", insertError);
@@ -75,7 +60,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "stats update failed" }, { status: 500 });
     }
 
-    return NextResponse.json({ audioUrl });
+    return NextResponse.json({ audioUrl, audioStorageKey });
 
   } catch (err) {
     console.error("🔥 API CRASH:", err);

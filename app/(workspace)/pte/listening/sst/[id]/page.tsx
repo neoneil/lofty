@@ -5,6 +5,7 @@ import SstDetailClient from "./sst-detail-client";
 import Tag from "@/components/ui/tag";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui-v2/button";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 type PageProps = {
   params: Promise<{
     id: string;
@@ -94,7 +95,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
 
             {question.audio_url ? (
               <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-                <AudioPlayer url={question.audio_url} autoPlay countdown={10} size="compact" />
+                <AudioPlayer url={normalizePublicStorageUrl(question.audio_url, "pte-audio")} autoPlay countdown={10} size="compact" />
               </div>
             ) : (
               <div className="mt-8 round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">

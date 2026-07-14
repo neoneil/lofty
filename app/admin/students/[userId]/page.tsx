@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/site/container";
 import { requireAdmin } from "@/lib/auth/require-admin";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import StartClassroomButton from "./start-classroom-button";
 type StudentProfile = {
   id: string;
@@ -114,7 +115,7 @@ export default async function AdminStudentDetailPage({
         <div className="flex items-start gap-4">
           {profile?.avatar_url ? (
             <img
-              src={profile.avatar_url}
+              src={normalizePublicStorageUrl(profile.avatar_url, "avatars")}
               alt={displayName}
               referrerPolicy="no-referrer"
               className="h-16 w-16 rounded border object-cover"

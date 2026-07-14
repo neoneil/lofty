@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import {
@@ -53,9 +54,8 @@ type Props = {
 };
 
 function getImageUrl(path: string) {
-  if (path.startsWith("http")) return path;
   if (path.startsWith("/")) return path;
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-images/${path}`;
+  return normalizePublicStorageUrl(path, "pte-audio");
 }
 
 function getTags(question: Question) {

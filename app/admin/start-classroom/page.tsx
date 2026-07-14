@@ -3,6 +3,7 @@ import { requireAdmin } from "@/lib/auth/require-admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import StartClassroomButton from "@/app/admin/students/[userId]/start-classroom-button";
 import { formatDate } from "@/lib/date";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type StudentProfile = {
   id: string;
@@ -84,7 +85,7 @@ export default async function AdminStartClassroomPage() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex min-w-0 items-start gap-4">
                     {student.avatar_url ? (
-                      <img src={student.avatar_url} alt={displayName} referrerPolicy="no-referrer" className="h-14 w-14 rounded-2xl border border-[var(--border)] object-cover" />
+                      <img src={normalizePublicStorageUrl(student.avatar_url, "avatars")} alt={displayName} referrerPolicy="no-referrer" className="h-14 w-14 rounded-2xl border border-[var(--border)] object-cover" />
                     ) : (
                       <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] text-lg font-semibold text-[var(--text-soft)]">
                         {avatarLetter}

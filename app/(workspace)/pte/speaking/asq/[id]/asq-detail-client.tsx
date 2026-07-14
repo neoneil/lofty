@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import {
@@ -48,8 +49,7 @@ function formatDateTime(value: string | null) {
 }
 
 function getAudioUrl(path: string) {
-  if (path.startsWith("http")) return path;
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
+  return normalizePublicStorageUrl(path, "pte-audio");
 }
 
 function subscribeQuestionOrder(onStoreChange: () => void) {

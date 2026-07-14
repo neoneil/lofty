@@ -5,6 +5,7 @@ import Image from "next/image";
 import { CalendarDays, ChevronDown, ChevronUp, Clock3, GraduationCap, Target } from "lucide-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { AnalyticsChart } from "@/components/dashboard-v2/analytics-chart";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type OverviewStats = {
   total_attempts: number;
@@ -453,7 +454,7 @@ export default function AdminDashboardClient({ overview, students }: Props) {
                   >
                     {student.avatar_url ? (
                       <Image
-                        src={student.avatar_url}
+                        src={normalizePublicStorageUrl(student.avatar_url, "avatars")}
                         alt={displayName}
                         referrerPolicy="no-referrer"
                         width={40}

@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import RsAudioClient from "./rs-audio-client";
 
 type RsAudioQuestion = {
@@ -11,11 +12,7 @@ type RsAudioQuestion = {
 };
 
 function getPublicAudioUrl(path: string) {
-  if (/^https?:\/\//i.test(path)) {
-    return path;
-  }
-
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
+  return normalizePublicStorageUrl(path, "pte-audio");
 }
 
 function getWordCount(text: string) {

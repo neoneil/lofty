@@ -5,6 +5,7 @@ import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import { ArrowLeft } from "lucide-react";
 import HiwDetailClient from "./hiw-detail-client";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type PageProps = {
   params: Promise<{
@@ -78,7 +79,7 @@ export default async function HiwQuestionDetailPage({ params }: PageProps) {
 
           {question.audio_url ? (
             <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-              <AudioPlayer url={question.audio_url} autoPlay countdown={10} size="compact" />
+              <AudioPlayer url={normalizePublicStorageUrl(question.audio_url, "pte-audio")} autoPlay countdown={10} size="compact" />
             </div>
           ) : (
             <div className="mt-8 round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">当前题目暂无音频</div>

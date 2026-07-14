@@ -1,0 +1,826 @@
+{
+  "generatedAt": "2026-07-14T23:03:18.135Z",
+  "mode": "dry-run",
+  "privateDestination": true,
+  "onlyPrefix": "pte-audio/students-audio",
+  "includePrivate": false,
+  "force": false,
+  "destination": {
+    "bucket": "loftypte",
+    "keyPattern": "<supabase-bucket>/<object-path>",
+    "publicUrlPattern": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/<supabase-bucket>/<object-path>"
+  },
+  "summary": {
+    "skipped": 7,
+    "planned": 109
+  },
+  "completedCount": 116,
+  "totalCount": 116,
+  "results": [
+    {
+      "source": "pte-audio/students-audio/asq/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/asq/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/di/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/di/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782721432180.webm",
+      "key": "pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782721432180.webm",
+      "status": "planned",
+      "bytes": 643684,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782721432180.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782722542424.wav",
+      "key": "pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782722542424.wav",
+      "status": "planned",
+      "bytes": 1278764,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/di/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782722542424.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/ra/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449084587.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449084587.webm",
+      "status": "planned",
+      "bytes": 95312,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449084587.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449224204.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449224204.webm",
+      "status": "planned",
+      "bytes": 129768,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449224204.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449378869.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449378869.webm",
+      "status": "planned",
+      "bytes": 137468,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449378869.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449403389.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449403389.webm",
+      "status": "planned",
+      "bytes": 45698,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449403389.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449627915.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449627915.webm",
+      "status": "planned",
+      "bytes": 186116,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449627915.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449808292.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449808292.webm",
+      "status": "planned",
+      "bytes": 115250,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449808292.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449954081.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449954081.webm",
+      "status": "planned",
+      "bytes": 113318,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777449954081.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450103876.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450103876.webm",
+      "status": "planned",
+      "bytes": 84338,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450103876.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450179722.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450179722.webm",
+      "status": "planned",
+      "bytes": 643684,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450179722.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450437529.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450437529.webm",
+      "status": "planned",
+      "bytes": 56338,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450437529.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450568934.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450568934.webm",
+      "status": "planned",
+      "bytes": 84672,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450568934.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450729857.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450729857.webm",
+      "status": "planned",
+      "bytes": 166448,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450729857.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450895584.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450895584.webm",
+      "status": "planned",
+      "bytes": 78542,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777450895584.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451132062.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451132062.webm",
+      "status": "planned",
+      "bytes": 355470,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451132062.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451410563.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451410563.webm",
+      "status": "planned",
+      "bytes": 335498,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451410563.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451502392.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451502392.webm",
+      "status": "planned",
+      "bytes": 249524,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451502392.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451583246.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451583246.webm",
+      "status": "planned",
+      "bytes": 151958,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451583246.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451601454.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451601454.webm",
+      "status": "planned",
+      "bytes": 35072,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451601454.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451614489.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451614489.webm",
+      "status": "planned",
+      "bytes": 38936,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451614489.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451832794.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451832794.webm",
+      "status": "planned",
+      "bytes": 67616,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777451832794.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452036295.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452036295.webm",
+      "status": "planned",
+      "bytes": 174828,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452036295.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452261248.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452261248.webm",
+      "status": "planned",
+      "bytes": 229238,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452261248.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452483149.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452483149.webm",
+      "status": "planned",
+      "bytes": 202842,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452483149.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452509218.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452509218.webm",
+      "status": "planned",
+      "bytes": 53426,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452509218.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452824291.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452824291.webm",
+      "status": "planned",
+      "bytes": 65352,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777452824291.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453461616.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453461616.webm",
+      "status": "planned",
+      "bytes": 53760,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453461616.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453597261.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453597261.webm",
+      "status": "planned",
+      "bytes": 93380,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453597261.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453687769.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453687769.webm",
+      "status": "planned",
+      "bytes": 47644,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453687769.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453863660.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453863660.webm",
+      "status": "planned",
+      "bytes": 93366,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777453863660.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454112938.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454112938.webm",
+      "status": "planned",
+      "bytes": 162598,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454112938.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454264496.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454264496.webm",
+      "status": "planned",
+      "bytes": 54726,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454264496.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454284276.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454284276.webm",
+      "status": "planned",
+      "bytes": 35738,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454284276.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454412009.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454412009.webm",
+      "status": "planned",
+      "bytes": 50876,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454412009.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454429895.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454429895.webm",
+      "status": "planned",
+      "bytes": 141018,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777454429895.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464299923.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464299923.webm",
+      "status": "planned",
+      "bytes": 102706,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464299923.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464434593.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464434593.webm",
+      "status": "planned",
+      "bytes": 59236,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777464434593.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465223671.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465223671.webm",
+      "status": "planned",
+      "bytes": 37984,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465223671.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465547573.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465547573.webm",
+      "status": "planned",
+      "bytes": 52794,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777465547573.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466396514.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466396514.webm",
+      "status": "planned",
+      "bytes": 14154,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466396514.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466397133.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466397133.webm",
+      "status": "planned",
+      "bytes": 14154,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466397133.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466409966.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466409966.webm",
+      "status": "planned",
+      "bytes": 42800,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777466409966.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777499852950.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777499852950.webm",
+      "status": "planned",
+      "bytes": 81454,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777499852950.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500021446.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500021446.webm",
+      "status": "planned",
+      "bytes": 132324,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500021446.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500704783.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500704783.webm",
+      "status": "planned",
+      "bytes": 70182,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500704783.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500723036.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500723036.webm",
+      "status": "planned",
+      "bytes": 37018,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500723036.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500761300.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500761300.webm",
+      "status": "planned",
+      "bytes": 64704,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777500761300.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777512230314.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777512230314.webm",
+      "status": "planned",
+      "bytes": 362236,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777512230314.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777544560797.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777544560797.webm",
+      "status": "planned",
+      "bytes": 311034,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1777544560797.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778029830112.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778029830112.webm",
+      "status": "planned",
+      "bytes": 277872,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778029830112.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031377664.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031377664.webm",
+      "status": "planned",
+      "bytes": 99162,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031377664.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031866548.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031866548.webm",
+      "status": "planned",
+      "bytes": 66318,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031866548.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031883356.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031883356.webm",
+      "status": "planned",
+      "bytes": 68882,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778031883356.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778063260598.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778063260598.webm",
+      "status": "planned",
+      "bytes": 84338,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778063260598.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778933978213.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778933978213.webm",
+      "status": "planned",
+      "bytes": 158406,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1778933978213.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780804987893.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780804987893.webm",
+      "status": "planned",
+      "bytes": 163564,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780804987893.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805199902.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805199902.webm",
+      "status": "planned",
+      "bytes": 140366,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805199902.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805270280.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805270280.webm",
+      "status": "planned",
+      "bytes": 643684,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805270280.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805651589.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805651589.webm",
+      "status": "planned",
+      "bytes": 40868,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780805651589.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780809274678.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780809274678.webm",
+      "status": "planned",
+      "bytes": 57304,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780809274678.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912234878.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912234878.webm",
+      "status": "planned",
+      "bytes": 253402,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912234878.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780913846870.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780913846870.webm",
+      "status": "planned",
+      "bytes": 378016,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780913846870.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917387048.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917387048.webm",
+      "status": "planned",
+      "bytes": 392826,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917387048.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917850962.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917850962.webm",
+      "status": "planned",
+      "bytes": 385722,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780917850962.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989301856.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989301856.webm",
+      "status": "planned",
+      "bytes": 362894,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989301856.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989464248.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989464248.webm",
+      "status": "planned",
+      "bytes": 361914,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989464248.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989698571.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989698571.webm",
+      "status": "planned",
+      "bytes": 425670,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989698571.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989921454.webm",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989921454.webm",
+      "status": "planned",
+      "bytes": 258231,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780989921454.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990259103.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990259103.wav",
+      "status": "planned",
+      "bytes": 706604,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990259103.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990316670.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990316670.wav",
+      "status": "planned",
+      "bytes": 662444,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990316670.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990453175.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990453175.wav",
+      "status": "planned",
+      "bytes": 610604,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780990453175.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991190159.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991190159.wav",
+      "status": "planned",
+      "bytes": 885164,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991190159.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991515488.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991515488.wav",
+      "status": "planned",
+      "bytes": 952364,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780991515488.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992093272.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992093272.wav",
+      "status": "planned",
+      "bytes": 672044,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992093272.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992762186.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992762186.wav",
+      "status": "planned",
+      "bytes": 856364,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780992762186.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005201994.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005201994.wav",
+      "status": "planned",
+      "bytes": 601004,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005201994.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005524900.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005524900.wav",
+      "status": "planned",
+      "bytes": 591404,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005524900.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005657492.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005657492.wav",
+      "status": "planned",
+      "bytes": 520366,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781005657492.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781309998970.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781309998970.wav",
+      "status": "planned",
+      "bytes": 681644,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781309998970.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675346205.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675346205.wav",
+      "status": "planned",
+      "bytes": 808364,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675346205.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675719848.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675719848.wav",
+      "status": "planned",
+      "bytes": 193964,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675719848.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675882154.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675882154.wav",
+      "status": "planned",
+      "bytes": 466604,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781675882154.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781676973603.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781676973603.wav",
+      "status": "planned",
+      "bytes": 107564,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781676973603.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028423869.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028423869.wav",
+      "status": "planned",
+      "bytes": 727724,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028423869.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782083859140.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782083859140.wav",
+      "status": "planned",
+      "bytes": 326444,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782083859140.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782085887644.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782085887644.wav",
+      "status": "planned",
+      "bytes": 1278764,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782085887644.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783219459631.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783219459631.wav",
+      "status": "planned",
+      "bytes": 174764,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783219459631.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783816235410.wav",
+      "key": "pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783816235410.wav",
+      "status": "planned",
+      "bytes": 672044,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/ra/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783816235410.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rl/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/rl/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/rl/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782723690606.wav",
+      "key": "pte-audio/students-audio/rl/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782723690606.wav",
+      "status": "planned",
+      "bytes": 1177004,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rl/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782723690606.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/rs/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807249103.webm",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807249103.webm",
+      "status": "planned",
+      "bytes": 113652,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807249103.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807585606.webm",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807585606.webm",
+      "status": "planned",
+      "bytes": 84352,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807585606.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807663450.webm",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807663450.webm",
+      "status": "planned",
+      "bytes": 87570,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780807663450.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677331768.webm",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677331768.webm",
+      "status": "planned",
+      "bytes": 69862,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677331768.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677368767.webm",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677368767.webm",
+      "status": "planned",
+      "bytes": 57290,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781677368767.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679809923.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679809923.wav",
+      "status": "planned",
+      "bytes": 159404,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679809923.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679887944.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679887944.wav",
+      "status": "planned",
+      "bytes": 245804,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781679887944.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028567777.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028567777.wav",
+      "status": "planned",
+      "bytes": 172844,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782028567777.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086878350.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086878350.wav",
+      "status": "planned",
+      "bytes": 67244,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086878350.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086928844.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086928844.wav",
+      "status": "planned",
+      "bytes": 157484,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782086928844.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091857509.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091857509.wav",
+      "status": "planned",
+      "bytes": 182444,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091857509.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091971483.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091971483.wav",
+      "status": "planned",
+      "bytes": 182444,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782091971483.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782092014377.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782092014377.wav",
+      "status": "planned",
+      "bytes": 132524,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782092014377.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782294502364.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782294502364.wav",
+      "status": "planned",
+      "bytes": 122924,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1782294502364.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783220752694.wav",
+      "key": "pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783220752694.wav",
+      "status": "planned",
+      "bytes": 144044,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rs/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1783220752694.wav"
+    },
+    {
+      "source": "pte-audio/students-audio/rts/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/rts/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912095020.webm",
+      "key": "pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912095020.webm",
+      "status": "planned",
+      "bytes": 359662,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912095020.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781674864757.webm",
+      "key": "pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781674864757.webm",
+      "status": "planned",
+      "bytes": 314580,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/rts/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1781674864757.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/sgd/.emptyFolderPlaceholder",
+      "key": "pte-audio/students-audio/sgd/.emptyFolderPlaceholder",
+      "status": "skipped",
+      "reason": "folder-placeholder"
+    },
+    {
+      "source": "pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780911918974.webm",
+      "key": "pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780911918974.webm",
+      "status": "planned",
+      "bytes": 128142,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780911918974.webm"
+    },
+    {
+      "source": "pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912000752.webm",
+      "key": "pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912000752.webm",
+      "status": "planned",
+      "bytes": 192544,
+      "publicUrl": "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev/pte-audio/students-audio/sgd/f54bfb5e-19aa-4317-b678-d6ca6a41f5ce/1780912000752.webm"
+    }
+  ]
+}

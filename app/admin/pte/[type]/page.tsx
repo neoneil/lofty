@@ -3,6 +3,7 @@ import { requireAdmin } from "@/lib/auth/require-admin";
 import { notFound } from "next/navigation";
 import { pteQuestionTypes } from "@/lib/pte/pte-question-config";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 type PageProps = {
     params: Promise<{
         type: string;
@@ -227,7 +228,7 @@ export default async function AdminPteTypePage({ params }: PageProps) {
                                                 <div className="flex items-center gap-3">
                                                     {student.avatar_url ? (
                                                         <img
-                                                            src={student.avatar_url}
+                                                            src={normalizePublicStorageUrl(student.avatar_url, "avatars")}
                                                             alt={displayName}
                                                             referrerPolicy="no-referrer"
                                                             className="h-10 w-10 min-h-10 min-w-10 rounded border object-cover"

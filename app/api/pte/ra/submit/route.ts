@@ -5,17 +5,12 @@ import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation
 import { scoreRA } from "@/lib/pte-speaking/score-ra";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
+import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 const MODULE_TYPE = "RA";
 const QUESTION_SOURCE = "ra";
 const AI_FEATURE = "pte_ra";
 const AI_MODEL = "gpt-4o-transcribe+gpt-4o-mini";
-
-function getAudioExtension(file: File) {
-  if (file.type.includes("wav")) return "wav";
-  if (file.type.includes("ogg")) return "ogg";
-  return "webm";
-}
 
 export async function POST(req: Request) {
   try {
@@ -67,24 +62,8 @@ export async function POST(req: Request) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
     }
 
-    const filePath = `students-audio/ra/${user.id}/${Date.now()}.${getAudioExtension(file)}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from("pte-audio")
-      .upload(filePath, file);
-
-    if (uploadError) {
-      return NextResponse.json(
-        { ok: false, message: uploadError.message },
-        { status: 500 },
-      );
-    }
-
-    const { data: publicUrlData } = supabase.storage
-      .from("pte-audio")
-      .getPublicUrl(filePath);
-
-    const audioUrl = publicUrlData.publicUrl;
+    const audioStorageKey = await uploadStudentRecordingToPrivateR2({ file, questionSource: QUESTION_SOURCE, userId: user.id });
+    const audioUrl = getStudentRecordingPlaybackUrl(audioStorageKey);
 
     const { error: recordingInsertError } = await supabase
       .from("student_recordings")
@@ -92,7 +71,7 @@ export async function POST(req: Request) {
         user_id: user.id,
         question_source: QUESTION_SOURCE,
         question_id: questionId,
-        audio_url: audioUrl,
+        audio_url: audioStorageKey,
         duration_seconds: durationSeconds,
       });
 
@@ -208,7 +187,7 @@ export async function POST(req: Request) {
         user_id: user.id,
         question_type: MODULE_TYPE,
         question_id: questionId,
-        audio_url: audioUrl,
+        audio_url: audioStorageKey,
         transcript: transcriptText,
         overall_score: score,
         content_score: enhancedResult.contentScore,
@@ -322,6 +301,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       ok: true,
       audioUrl,
+      audioStorageKey,
       attemptId: studentAttempt.id,
       isCorrect,
       score,

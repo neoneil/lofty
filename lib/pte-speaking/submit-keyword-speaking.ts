@@ -5,6 +5,7 @@ import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreKeywordContent } from "@/lib/pte-speaking/score-keyword-content";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
+import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 type KeywordSpeakingConfig = {
   questionTable: "di" | "rl" | "rts" | "sgd";
@@ -16,12 +17,6 @@ type KeywordSpeakingConfig = {
 };
 
 const AI_MODEL = "azure-speech-pronunciation";
-
-function getAudioExtension(file: File) {
-  if (file.type.includes("wav")) return "wav";
-  if (file.type.includes("ogg")) return "ogg";
-  return "webm";
-}
 
 function toPteScore(value: number | null) {
   return value === null ? 0 : Math.round(Math.max(0, Math.min(100, value)) * 0.9);
@@ -60,13 +55,9 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
     const usageLimit = await checkAiUsageLimit(user.id, config.aiFeature);
     if (!usageLimit.allowed) return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
 
-    const filePath = `students-audio/${config.storageFolder}/${user.id}/${Date.now()}.${getAudioExtension(file)}`;
-    const { error: uploadError } = await supabase.storage.from("pte-audio").upload(filePath, file);
-    if (uploadError) return NextResponse.json({ ok: false, message: uploadError.message }, { status: 500 });
-
-    const { data: publicUrlData } = supabase.storage.from("pte-audio").getPublicUrl(filePath);
-    const audioUrl = publicUrlData.publicUrl;
-    const { error: recordingInsertError } = await supabase.from("student_recordings").insert({ user_id: user.id, question_source: config.questionSource, question_id: questionId, audio_url: audioUrl, duration_seconds: durationSeconds });
+    const audioStorageKey = await uploadStudentRecordingToPrivateR2({ file, questionSource: config.storageFolder, userId: user.id });
+    const audioUrl = getStudentRecordingPlaybackUrl(audioStorageKey);
+    const { error: recordingInsertError } = await supabase.from("student_recordings").insert({ user_id: user.id, question_source: config.questionSource, question_id: questionId, audio_url: audioStorageKey, duration_seconds: durationSeconds });
     if (recordingInsertError) return NextResponse.json({ ok: false, message: "保存录音记录失败" }, { status: 500 });
 
     let azurePronunciation;
@@ -95,7 +86,7 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
     const { data: studentAttempt, error: studentAttemptError } = await supabase.from("student_attempts").insert({ user_id: user.id, exam_type: "PTE", module_type: config.questionType, question_source: config.questionSource, question_id: questionId, started_at: startedAtIso, submitted_at: nowIso, duration_seconds: durationSeconds, user_answer: transcript, correct_answer: question.ai_keywords || null, is_correct: isCorrect, accuracy: score, score, status: "completed", ai_feedback: feedbackJson }).select("id").single();
     if (studentAttemptError || !studentAttempt) return NextResponse.json({ ok: false, message: "保存练习记录失败" }, { status: 500 });
 
-    const { error: speakingAttemptError } = await supabase.schema("pte").from("speaking_attempts").insert({ user_id: user.id, question_type: config.questionType, question_id: questionId, audio_url: audioUrl, transcript, overall_score: score, content_score: content.score, fluency_score: fluencyScore, pronunciation_score: pronunciationScore, accuracy_score: azurePronunciation.summary.accuracyScore, completeness_score: azurePronunciation.summary.completenessScore, azure_result_json: { summary: azurePronunciation.summary, raw: azurePronunciation.raw }, feedback_json: feedbackJson });
+    const { error: speakingAttemptError } = await supabase.schema("pte").from("speaking_attempts").insert({ user_id: user.id, question_type: config.questionType, question_id: questionId, audio_url: audioStorageKey, transcript, overall_score: score, content_score: content.score, fluency_score: fluencyScore, pronunciation_score: pronunciationScore, accuracy_score: azurePronunciation.summary.accuracyScore, completeness_score: azurePronunciation.summary.completenessScore, azure_result_json: { summary: azurePronunciation.summary, raw: azurePronunciation.raw }, feedback_json: feedbackJson });
     if (speakingAttemptError) return NextResponse.json({ ok: false, message: "保存评分记录失败" }, { status: 500 });
 
     await updateSpeakingRecordingStats({ supabase, userId: user.id, moduleType: config.questionType, questionSource: config.questionSource, questionId, durationSeconds, score });
@@ -108,7 +99,7 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
       await supabase.from("student_wrong_questions").update({ is_resolved: true, resolved_at: nowIso }).eq("user_id", user.id).eq("question_source", config.questionSource).eq("question_id", questionId);
     }
 
-    return NextResponse.json({ ok: true, audioUrl, attemptId: studentAttempt.id, isCorrect, score, aiFeedback: aiResult });
+    return NextResponse.json({ ok: true, audioUrl, audioStorageKey, attemptId: studentAttempt.id, isCorrect, score, aiFeedback: aiResult });
   } catch (error) {
     console.error(`${config.questionType} submit API crash:`, error);
     return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "server error" }, { status: 500 });

@@ -2,6 +2,7 @@ import "server-only";
 
 import { requireUser } from "@/lib/auth/require-user";
 import { loadGrammarAssessmentQuestions } from "@/lib/mock-assessment/load-grammar-questions";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import type { AbilityAssessmentData, ChoiceQuestion, ListeningQuestion, ReadingQuestion, SpeakingAssessment, WritingAssessment } from "@/lib/mock-assessment/types";
 
 type DictionaryRow = {
@@ -97,8 +98,7 @@ function buildReadingQuestions(rows: FibrwRow[]) {
 }
 
 function getPublicAudioUrl(path: string) {
-  if (path.startsWith("http")) return path;
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
+  return normalizePublicStorageUrl(path, "pte-audio");
 }
 
 function buildListeningQuestions(rows: WfdRow[]) {

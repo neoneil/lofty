@@ -5,6 +5,7 @@ import achievementConfig from "@/constants/achievements/lofty-achievements-wuxia
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { Badge } from "@/components/ui-v2/badge";
 import { requireUser } from "@/lib/auth/require-user";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
 import { getRemaining, formatRemainingTime, formatUnlimitedExpiry } from "@/lib/ai/usage-summary";
 import { collectUnlockedAchievements, createAchievementEngineContext, getHighestUnlockedCategoryLevel } from "@/lib/achievements/engine";
@@ -154,7 +155,7 @@ export default async function DashboardPage() {
 
   const displayName = getDisplayName(profile, user.email);
   const email = profile?.email || user.email || "未绑定邮箱";
-  const avatarUrl = profile?.avatar_url || user.user_metadata?.avatar_url || user.user_metadata?.picture || null;
+  const avatarUrl = normalizePublicStorageUrl(profile?.avatar_url, "avatars") || user.user_metadata?.avatar_url || user.user_metadata?.picture || null;
   const modules = getModuleSummaries(achievementStats.questionTypeStats);
   const topQuestionTypes = getTopQuestionTypes(achievementStats.questionTypeStats);
   const weakestModule = getWeakestModule(modules);

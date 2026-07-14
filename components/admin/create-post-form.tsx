@@ -79,22 +79,23 @@ export default function CreatePostForm() {
     let coverUrl = null;
 
     if (cover) {
-      const cleanName = cover.name.replace(/\s+/g, "-");
-      const filename = `${Date.now()}-${cleanName}`;
+      const uploadData = new FormData();
+      uploadData.append("file", cover);
+      uploadData.append("folder", "images");
 
-      const { error } = await supabase.storage
-        .from("images")
-        .upload(filename, cover, {
-          contentType: cover.type,
-        });
+      const uploadResponse = await fetch("/api/admin/storage/public-upload", {
+        method: "POST",
+        body: uploadData,
+      });
+      const uploadJson = await uploadResponse.json() as { ok?: boolean; publicUrl?: string; message?: string };
 
-      if (!error) {
-        const { data } = supabase.storage
-          .from("images")
-          .getPublicUrl(filename);
-
-        coverUrl = data.publicUrl;
+      if (!uploadResponse.ok || !uploadJson.publicUrl) {
+        setMessage(uploadJson.message || "Cover image upload failed.");
+        setLoading(false);
+        return;
       }
+
+      coverUrl = uploadJson.publicUrl;
     }
 
     const { error } = await supabase.from("posts").insert({

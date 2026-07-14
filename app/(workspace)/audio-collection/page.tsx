@@ -1,5 +1,6 @@
 import AudioCollectionClient, { type AudioCollectionGroup, type AudioCollectionItem } from "@/components/audio-collection/audio-collection-client";
 import { requireUser } from "@/lib/auth/require-user";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type AudioQuestionRow = {
   id: string;
@@ -24,8 +25,7 @@ const AUDIO_TYPES = [
 ] as const;
 
 function getPublicAudioUrl(path: string) {
-  if (/^https?:\/\//i.test(path)) return path;
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path.replace(/^\/+/, "")}`;
+  return normalizePublicStorageUrl(path.replace(/^\/+/, ""), "pte-audio");
 }
 
 function getDisplayText(row: AudioQuestionRow) {

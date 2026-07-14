@@ -5,13 +5,14 @@ import WfdDetailClient from "./wfd-detail-client";
 import Tag from "@/components/ui/tag";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui-v2/button";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 type PageProps = {
   params: Promise<{
     id: string;
   }>;
 };
 function getPublicAudioUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pte-audio/${path}`;
+  return normalizePublicStorageUrl(path, "pte-audio");
 }
 export default async function WfdQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { isPrivateStudentAudioKey } from "@/lib/storage/public-url";
+
 export default function AudioPlayer({
   url,
   autoPlay = false,
@@ -29,6 +31,7 @@ export default function AudioPlayer({
   const [duration, setDuration] = useState(0);
 
   const [volume, setVolume] = useState(1);
+  const [resolvedUrl, setResolvedUrl] = useState("");
 
   const [countdownLeft, setCountdownLeft] = useState<number | null>(
     autoPlay && countdown > 0
@@ -46,6 +49,43 @@ export default function AudioPlayer({
   useEffect(() => {
     onEndedRef.current = onEnded;
   }, [onEnded]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function resolveUrl() {
+      setPlaying(false);
+      setProgress(0);
+      setCurrentTime(0);
+      setDuration(0);
+      setWaveform([]);
+
+      if (!isPrivateStudentAudioKey(url)) {
+        setResolvedUrl(url);
+        return;
+      }
+
+      const response = await fetch(`/api/storage/private-url?key=${encodeURIComponent(url)}`, {
+        cache: "no-store",
+      });
+      const data = await response.json() as { ok?: boolean; url?: string; message?: string };
+
+      if (!response.ok || !data.url) {
+        throw new Error(data.message || "私有录音地址获取失败");
+      }
+
+      if (!cancelled) setResolvedUrl(data.url);
+    }
+
+    void resolveUrl().catch((error) => {
+      console.error(error);
+      if (!cancelled) setResolvedUrl("");
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [url]);
 
   const pauseAudio = useCallback(() => {
     const audio = audioRef.current;
@@ -65,7 +105,9 @@ export default function AudioPlayer({
 
   // ===== 初始化 =====
   useEffect(() => {
-    const audio = new Audio(url);
+    if (!resolvedUrl) return;
+
+    const audio = new Audio(resolvedUrl);
     let disposed = false;
 
     audioRef.current = audio;
@@ -105,7 +147,7 @@ export default function AudioPlayer({
       audio.load();
       if (audioRef.current === audio) audioRef.current = null;
     };
-  }, [url]);
+  }, [resolvedUrl]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -133,7 +175,7 @@ export default function AudioPlayer({
   // ===== 自动播放倒计时 =====
   useEffect(() => {
 
-    if (!autoPlay) return;
+    if (!autoPlay || !resolvedUrl) return;
 
     const audio = audioRef.current;
 
@@ -209,10 +251,12 @@ export default function AudioPlayer({
 
     };
 
-  }, [autoPlay, countdown, url]);
+  }, [autoPlay, countdown, resolvedUrl]);
 
   // ===== waveform =====
   useEffect(() => {
+    if (!resolvedUrl) return;
+
     const abortController = new AbortController();
     let cancelled = false;
     let audioContext: AudioContext | null = null;
@@ -222,7 +266,7 @@ export default function AudioPlayer({
         try {
 
           const res =
-            await fetch(url, { signal: abortController.signal });
+            await fetch(resolvedUrl, { signal: abortController.signal });
 
           const buffer =
             await res.arrayBuffer();
@@ -297,7 +341,7 @@ export default function AudioPlayer({
       abortController.abort();
       void audioContext?.close();
     };
-  }, [url]);
+  }, [resolvedUrl]);
 
   // ===== skip =====
   const skipCountdown = () => {

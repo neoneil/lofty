@@ -2,6 +2,7 @@ import "server-only";
 
 import type { ServerSupabaseClient } from "@/lib/auth/server-auth";
 import type { PteMockBlank, PteMockExamData, PteMockQuestion } from "@/lib/mock-assessment/pte-mock-types";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type QueryResult = { data: unknown[] | null; error: { message: string } | null };
 type Row = Record<string, unknown>;
@@ -34,8 +35,8 @@ function text(value: unknown) {
 function resolveStorageUrl(value: unknown, bucket: "pte-audio" | "pte-images") {
   const url = text(value);
   if (!url) return undefined;
-  if (/^https?:\/\//i.test(url) || url.startsWith("/")) return url;
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${bucket}/${url}`;
+  if (url.startsWith("/")) return url;
+  return normalizePublicStorageUrl(url, bucket === "pte-images" ? "pte-audio" : bucket);
 }
 
 function normalizeBlanks(value: unknown): PteMockBlank[] {
