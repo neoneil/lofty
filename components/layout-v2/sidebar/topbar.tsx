@@ -9,6 +9,7 @@ import {
   ChartNoAxesColumn,
   ChevronDown,
   FolderOpen,
+  Gamepad2,
   GraduationCap,
   Headphones,
   LayoutDashboard,
@@ -161,6 +162,13 @@ const utilityItems: NavItem[] = [
     subtitle: "Analytics",
     icon: <ChartNoAxesColumn size={16} />,
     iconTone: "danger",
+  },
+  {
+    href: "/audio-collection",
+    label: "轻松时刻",
+    subtitle: "Game Lab",
+    icon: <Gamepad2 size={16} />,
+    iconTone: "primary",
   },
   {
     href: "/settings",
