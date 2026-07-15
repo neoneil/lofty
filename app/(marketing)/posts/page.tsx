@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { createClient } from "@/lib/supabase/server";
 
 type PostsPageProps = {
@@ -26,6 +27,10 @@ function formatDate(date: string | null) {
     month: "short",
     year: "numeric",
   }).format(new Date(date));
+}
+
+function getPostCoverUrl(value: string | null) {
+  return normalizePublicStorageUrl(value, "images");
 }
 
 export default async function PostsPage({ searchParams }: PostsPageProps) {
@@ -119,9 +124,9 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                     className="group grid gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)]"
                   >
                     <div className="min-h-[260px] bg-[var(--bg-soft)]">
-                      {featuredPost.cover_image ? (
+                      {getPostCoverUrl(featuredPost.cover_image) ? (
                         <img
-                          src={featuredPost.cover_image}
+                          src={getPostCoverUrl(featuredPost.cover_image)}
                           alt={featuredPost.title}
                           className="h-full min-h-[260px] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                         />
@@ -176,9 +181,9 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                       className="group grid gap-0 sm:grid-cols-[180px_1fr]"
                     >
                       <div className="h-44 bg-[var(--bg-soft)] sm:h-full">
-                        {post.cover_image ? (
+                        {getPostCoverUrl(post.cover_image) ? (
                           <img
-                            src={post.cover_image}
+                            src={getPostCoverUrl(post.cover_image)}
                             alt={post.title}
                             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                           />

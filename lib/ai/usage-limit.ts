@@ -84,6 +84,30 @@ async function countSuccessfulUsage(userId: string) {
 export async function checkAiUsageLimit(userId: string, feature: string): Promise<AiUsageLimitResult> {
   const supabase = createAdminClient();
 
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("is_my_student")
+    .eq("id", userId)
+    .maybeSingle();
+
+  if (profileError) {
+    console.error("Failed to check profile AI access:", profileError.message);
+  }
+
+  if (profile?.is_my_student) {
+    return {
+      allowed: true,
+      userId,
+      feature,
+      isUnlimited: true,
+      todayUsed: 0,
+      monthUsed: 0,
+      dailyLimit: 0,
+      monthlyLimit: 0,
+      unlimitedUntil: null,
+    };
+  }
+
   const { data: limit, error } = await supabase
     .from("ai_user_limits")
     .select("daily_limit, monthly_limit, is_unlimited, unlimited_until")

@@ -5,6 +5,7 @@ import { FileAudio2, FileImage, Headphones, Mic, PenTool, Rows3 } from "lucide-r
 import { CollapsibleAnswer } from "@/components/ielts-practice/collapsible-answer";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { cn } from "@/lib/utils";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsModule, IeltsQuestion, IeltsSection, IeltsTest } from "@/lib/ielts/practice";
 
@@ -162,18 +163,22 @@ function PendingModule({ moduleType }: { moduleType: ModuleType }) {
 function AssetAudioList({ items }: { items: AudioItem[] }) {
   return (
     <div className="grid gap-3 lg:grid-cols-2">
-      {items.map((item) => (
-        <div key={item.asset.id} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4">
-          <div className="mb-3 flex items-start gap-2">
-            <FileAudio2 size={17} className="mt-0.5 shrink-0 text-[var(--primary)]" />
-            <div>
-              <div className="text-sm font-semibold text-[var(--text)]">{item.title}</div>
-              <div className="mt-0.5 text-xs text-[var(--text-soft)]">{item.subtitle}</div>
+      {items.map((item) => {
+        const audioUrl = getAssetUrl(item.asset);
+
+        return (
+          <div key={item.asset.id} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4">
+            <div className="mb-3 flex items-start gap-2">
+              <FileAudio2 size={17} className="mt-0.5 shrink-0 text-[var(--primary)]" />
+              <div>
+                <div className="text-sm font-semibold text-[var(--text)]">{item.title}</div>
+                <div className="mt-0.5 text-xs text-[var(--text-soft)]">{item.subtitle}</div>
+              </div>
             </div>
+            {audioUrl ? <audio controls preload="none" src={audioUrl} className="w-full" /> : <p className="text-sm text-[var(--text-soft)]">音频链接暂不可用。</p>}
           </div>
-          {item.asset.public_url ? <audio controls preload="none" src={item.asset.public_url} className="w-full" /> : <p className="text-sm text-[var(--text-soft)]">音频链接暂不可用。</p>}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -181,14 +186,22 @@ function AssetAudioList({ items }: { items: AudioItem[] }) {
 function AssetImageList({ assets }: { assets: IeltsAsset[] }) {
   return (
     <div className="grid gap-3 md:grid-cols-2">
-      {assets.map((asset, index) => (
-        <figure key={asset.id} className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)]">
-          {asset.public_url ? <img src={asset.public_url} alt={`剑桥雅思图片资料 ${index + 1}`} className="h-auto w-full object-contain" /> : <div className="p-4 text-sm text-[var(--text-soft)]">图片链接暂不可用。</div>}
-          <figcaption className="flex items-center gap-2 border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-soft)]"><FileImage size={14} />图片资料 {index + 1}</figcaption>
-        </figure>
-      ))}
+      {assets.map((asset, index) => {
+        const imageUrl = getAssetUrl(asset);
+
+        return (
+          <figure key={asset.id} className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)]">
+            {imageUrl ? <img src={imageUrl} alt={`剑桥雅思图片资料 ${index + 1}`} className="h-auto w-full object-contain" /> : <div className="p-4 text-sm text-[var(--text-soft)]">图片链接暂不可用。</div>}
+            <figcaption className="flex items-center gap-2 border-t border-[var(--border)] px-4 py-2 text-xs text-[var(--text-soft)]"><FileImage size={14} />图片资料 {index + 1}</figcaption>
+          </figure>
+        );
+      })}
     </div>
   );
+}
+
+function getAssetUrl(asset: IeltsAsset) {
+  return normalizePublicStorageUrl(asset.public_url || asset.storage_path, asset.bucket || "ielts");
 }
 
 function SectionBlock({ section, data, moduleType, audioItems }: { section: IeltsSection; data: IeltsBookPracticeData; moduleType: ModuleType; audioItems: AudioItem[] }) {

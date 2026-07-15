@@ -1,0 +1,495 @@
+{
+  "generatedAt": "2026-07-15T07:51:38.123Z",
+  "targetBuckets": [
+    "avatars",
+    "images",
+    "ielts",
+    "pte-audio"
+  ],
+  "keepBuckets": [
+    "quote-images"
+  ],
+  "beforeBuckets": [
+    {
+      "id": "quote-images",
+      "name": "quote-images",
+      "public": false
+    },
+    {
+      "id": "images",
+      "name": "images",
+      "public": false
+    },
+    {
+      "id": "pte-audio",
+      "name": "pte-audio",
+      "public": false
+    },
+    {
+      "id": "avatars",
+      "name": "avatars",
+      "public": false
+    },
+    {
+      "id": "ielts",
+      "name": "ielts",
+      "public": false
+    }
+  ],
+  "beforeDeleteSummary": [
+    {
+      "bucket": "avatars",
+      "exists": true,
+      "objectCount": 40,
+      "totalBytes": 13451287,
+      "sampleObjects": [
+        {
+          "path": "001.png",
+          "size": 316607,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T10:10:06.487Z"
+        },
+        {
+          "path": "002.png",
+          "size": 331188,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T10:10:07.308Z"
+        },
+        {
+          "path": "003.png",
+          "size": 316003,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T10:10:08.110Z"
+        },
+        {
+          "path": "004.png",
+          "size": 346003,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T10:10:08.969Z"
+        },
+        {
+          "path": "005.png",
+          "size": 333392,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T10:10:09.822Z"
+        },
+        {
+          "path": "006.png",
+          "size": 336096,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:32.011Z"
+        },
+        {
+          "path": "007.png",
+          "size": 299487,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:33.009Z"
+        },
+        {
+          "path": "008.png",
+          "size": 357250,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:34.119Z"
+        },
+        {
+          "path": "009.png",
+          "size": 355172,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:35.089Z"
+        },
+        {
+          "path": "010.png",
+          "size": 306701,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:36.086Z"
+        },
+        {
+          "path": "011.png",
+          "size": 362446,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:36.993Z"
+        },
+        {
+          "path": "012.png",
+          "size": 368858,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:38.074Z"
+        },
+        {
+          "path": "013.png",
+          "size": 329506,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:39.141Z"
+        },
+        {
+          "path": "014.png",
+          "size": 328083,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:40.254Z"
+        },
+        {
+          "path": "015.png",
+          "size": 340203,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:41.114Z"
+        },
+        {
+          "path": "016.png",
+          "size": 346476,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:41.972Z"
+        },
+        {
+          "path": "017.png",
+          "size": 322440,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:42.856Z"
+        },
+        {
+          "path": "018.png",
+          "size": 374169,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:43.774Z"
+        },
+        {
+          "path": "019.png",
+          "size": 318666,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:44.631Z"
+        },
+        {
+          "path": "020.png",
+          "size": 339945,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-21T12:13:45.461Z"
+        }
+      ]
+    },
+    {
+      "bucket": "images",
+      "exists": true,
+      "objectCount": 8,
+      "totalBytes": 13163621,
+      "sampleObjects": [
+        {
+          "path": "1773831124521-ielts.png",
+          "size": 11086,
+          "mimeType": "image/png",
+          "updatedAt": "2026-03-18T10:52:06.324Z"
+        },
+        {
+          "path": "1777119640855-Screenshot-2026-04-25-150725.png",
+          "size": 1175212,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-25T12:20:43.571Z"
+        },
+        {
+          "path": "1777174379961-ChatGPT-Image-Apr-26,-2026,-01_32_26-PM.png",
+          "size": 2054019,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T03:33:04.742Z"
+        },
+        {
+          "path": "1777174394232-ChatGPT-Image-Apr-26,-2026,-01_32_26-PM.png",
+          "size": 2054019,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T03:33:18.652Z"
+        },
+        {
+          "path": "1777174899503-ChatGPT-Image-Apr-26,-2026,-01_32_26-PM.png",
+          "size": 2054019,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T03:41:43.957Z"
+        },
+        {
+          "path": "1781309581683-tao.png",
+          "size": 2898261,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-13T00:13:06.243Z"
+        },
+        {
+          "path": "1781319379831-neigongshili.png",
+          "size": 2912017,
+          "mimeType": "image/png",
+          "updatedAt": "2026-06-13T02:56:23.959Z"
+        },
+        {
+          "path": "default-avatar.png",
+          "size": 4988,
+          "mimeType": "image/png",
+          "updatedAt": "2026-03-28T02:03:01.357Z"
+        }
+      ]
+    },
+    {
+      "bucket": "ielts",
+      "exists": true,
+      "objectCount": 984,
+      "totalBytes": 3818172532,
+      "sampleObjects": [
+        {
+          "path": "10/test-1/listening/section-1/audio/2042B3A7AF02413984779CC165F0D0C5.mp3",
+          "size": 3682304,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:56:18.505Z"
+        },
+        {
+          "path": "10/test-1/listening/section-1/audio/BF96A32102DD4194B9E506FCC7674DB2.mp3",
+          "size": 3682304,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:56:08.973Z"
+        },
+        {
+          "path": "10/test-1/listening/section-1/image/07d9b335b7f04c05acd737f48907db45.png",
+          "size": 149873,
+          "mimeType": "image/png",
+          "updatedAt": "2026-07-10T10:56:19.049Z"
+        },
+        {
+          "path": "10/test-1/listening/section-1/other/62EAE50DEB604F5588C28A00C4229CEA",
+          "size": 49839,
+          "mimeType": "image/jpeg",
+          "updatedAt": "2026-07-10T10:56:19.488Z"
+        },
+        {
+          "path": "10/test-1/listening/section-1/raw.json",
+          "size": 18375,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T10:55:59.925Z"
+        },
+        {
+          "path": "10/test-1/listening/section-2/audio/2862E6865E4C40E4875A32974A2D0151.mp3",
+          "size": 3156337,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:56:37.225Z"
+        },
+        {
+          "path": "10/test-1/listening/section-2/audio/308D6864142647DCA6075543BB053307.mp3",
+          "size": 3156337,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:56:28.704Z"
+        },
+        {
+          "path": "10/test-1/listening/section-2/image/839a2e5bae434e14833a9c124eeceb4f.png",
+          "size": 67007,
+          "mimeType": "image/png",
+          "updatedAt": "2026-07-10T10:56:38.049Z"
+        },
+        {
+          "path": "10/test-1/listening/section-2/raw.json",
+          "size": 10286,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T10:56:20.353Z"
+        },
+        {
+          "path": "10/test-1/listening/section-3/audio/7D653253209547E2B83E619F4B27A0B4.mp3",
+          "size": 3267751,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:57:01.704Z"
+        },
+        {
+          "path": "10/test-1/listening/section-3/audio/AB3679B89FA5424DBDD6582E00D3EDCB.mp3",
+          "size": 3267751,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:56:52.146Z"
+        },
+        {
+          "path": "10/test-1/listening/section-3/image/fa0c0742be394fba94596def0b8a23c0.png",
+          "size": 86938,
+          "mimeType": "image/png",
+          "updatedAt": "2026-07-10T10:57:02.814Z"
+        },
+        {
+          "path": "10/test-1/listening/section-3/raw.json",
+          "size": 12021,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T10:56:38.987Z"
+        },
+        {
+          "path": "10/test-1/listening/section-4/audio/48EEC86292EB4DCA96FEE5F82E6FB3F8.mp3",
+          "size": 3303403,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:57:12.059Z"
+        },
+        {
+          "path": "10/test-1/listening/section-4/audio/65FC33EC0F1247C7AB8FC2B4243B6B86.mp3",
+          "size": 3303403,
+          "mimeType": "audio/mpeg",
+          "updatedAt": "2026-07-10T10:57:21.129Z"
+        },
+        {
+          "path": "10/test-1/listening/section-4/raw.json",
+          "size": 14101,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T10:57:03.591Z"
+        },
+        {
+          "path": "10/test-1/reading/section-1/image/4fe49387a8134d76b26a41d3f3f5f59c.jpg",
+          "size": 144203,
+          "mimeType": "image/jpeg",
+          "updatedAt": "2026-07-10T11:01:12.311Z"
+        },
+        {
+          "path": "10/test-1/reading/section-1/raw.json",
+          "size": 25023,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T11:01:10.116Z"
+        },
+        {
+          "path": "10/test-1/reading/section-2/raw.json",
+          "size": 20077,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T11:01:12.949Z"
+        },
+        {
+          "path": "10/test-1/reading/section-3/raw.json",
+          "size": 23129,
+          "mimeType": "application/json",
+          "updatedAt": "2026-07-10T11:01:13.885Z"
+        }
+      ]
+    },
+    {
+      "bucket": "pte-audio",
+      "exists": true,
+      "objectCount": 3064,
+      "totalBytes": 987297851,
+      "sampleObjects": [
+        {
+          "path": "asq/.emptyFolderPlaceholder",
+          "size": 0,
+          "mimeType": "application/octet-stream",
+          "updatedAt": "2026-05-12T12:33:41.421Z"
+        },
+        {
+          "path": "di/.emptyFolderPlaceholder",
+          "size": 0,
+          "mimeType": "application/octet-stream",
+          "updatedAt": "2026-04-26T10:38:10.241Z"
+        },
+        {
+          "path": "di/012642dcbe6a38e6209047eef3c1a358.png",
+          "size": 314227,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:42:43.356Z"
+        },
+        {
+          "path": "di/0174c610b0cbeafa80a217eb754adc03.png",
+          "size": 429579,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:42:51.847Z"
+        },
+        {
+          "path": "di/038276823e1086adacbdde0a898a7a64.png",
+          "size": 141388,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:43:00.234Z"
+        },
+        {
+          "path": "di/03b527007a904e7628eaf9b476b2cb6b.png",
+          "size": 97461,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:42:20.420Z"
+        },
+        {
+          "path": "di/04d354e50c5f9c9db54807c94b057a07.png",
+          "size": 666866,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:48:17.953Z"
+        },
+        {
+          "path": "di/0528e2568035969e421319dd4fc568e1.png",
+          "size": 422386,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:41:43.710Z"
+        },
+        {
+          "path": "di/056e76b2bf1d53bcd868fa4b79a3e355.png",
+          "size": 524825,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:43:02.380Z"
+        },
+        {
+          "path": "di/074044a80363eb8617dc3fb7bf057ab3.png",
+          "size": 246487,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:41:48.021Z"
+        },
+        {
+          "path": "di/079a1c0b6e3f944691a3ea6d54da4668.png",
+          "size": 595035,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:42:50.329Z"
+        },
+        {
+          "path": "di/083da1bf989fe1d1533e744ce13763ac.png",
+          "size": 137769,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:46:59.645Z"
+        },
+        {
+          "path": "di/0856d3b978941b884050f844625f1861.jpg",
+          "size": 15377,
+          "mimeType": "image/jpeg",
+          "updatedAt": "2026-04-26T10:47:19.384Z"
+        },
+        {
+          "path": "di/08bca474b3b7009339f567a82005e164.png",
+          "size": 95517,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:48:30.922Z"
+        },
+        {
+          "path": "di/0936fe5139489533677b0a824b90c3a3.png",
+          "size": 178467,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:45:45.177Z"
+        },
+        {
+          "path": "di/0943ad06190a6bdf1dbb9a2e717bc654.png",
+          "size": 666386,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:43:42.519Z"
+        },
+        {
+          "path": "di/097706e9fdaeb197b6ccd696f0e1b0bd.png",
+          "size": 470966,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:44:41.309Z"
+        },
+        {
+          "path": "di/0a1ab0a96c29c572180e829be18bcbb8.jpg",
+          "size": 1319196,
+          "mimeType": "image/jpeg",
+          "updatedAt": "2026-04-26T10:47:59.744Z"
+        },
+        {
+          "path": "di/0b79f73edf78c0fccb4cdc94ec60272e.jpg",
+          "size": 33812,
+          "mimeType": "image/jpeg",
+          "updatedAt": "2026-04-26T10:49:33.275Z"
+        },
+        {
+          "path": "di/0b8ab36f9d3460718dc75951dd63b945.png",
+          "size": 393316,
+          "mimeType": "image/png",
+          "updatedAt": "2026-04-26T10:48:32.667Z"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "bucket": "avatars",
+      "action": "empty_bucket",
+      "ok": true
+    },
+    {
+      "bucket": "avatars",
+      "action": "delete_bucket",
+      "ok": false,
+      "error": "The bucket you tried to delete is not empty"
+    }
+  ],
+  "afterBuckets": []
+}

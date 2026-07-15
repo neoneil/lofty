@@ -15,6 +15,7 @@ type Props = {
   collapsed?: boolean;
   badge?: string;
   nested?: boolean;
+  disabled?: boolean;
 };
 
 export function SidebarItem({
@@ -26,6 +27,7 @@ export function SidebarItem({
   collapsed,
   badge,
   nested,
+  disabled = false,
 }: Props) {
 
   const iconToneClasses = {
@@ -39,18 +41,25 @@ export function SidebarItem({
     usePathname();
 
   const active =
-    href === "/"
+    disabled
+      ? false
+      : href === "/"
       ? pathname === "/"
       : pathname.startsWith(href);
 
   return (
 
     <Link
-      href={href}
+      href={disabled ? "#" : href}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : undefined}
+      onClick={disabled ? (event) => event.preventDefault() : undefined}
       className={cn(
         "group flex h-12 items-center rounded-[var(--radius-xsm)] transition-all duration-300",
         collapsed ? "justify-center px-0" : "justify-between px-2.5 sm:px-3",
-        active
+        disabled
+          ? "cursor-not-allowed text-[var(--text-faint)] opacity-55"
+          : active
           ? "bg-[var(--primary-soft)] text-[var(--primary)]"
           : "text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]",
         nested && !collapsed && "ml-5 w-[calc(100%-1.25rem)] sm:ml-6 sm:w-[calc(100%-1.5rem)]",
@@ -59,7 +68,7 @@ export function SidebarItem({
 
       <div className={cn("inline-flex min-w-0 items-center", collapsed ? "gap-0" : "gap-2.5 sm:gap-3")}>
 
-        <div className={cn("flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-[7px]", iconToneClasses[iconTone])}>
+        <div className={cn("flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-[7px]", disabled ? "bg-[var(--bg-soft)] text-[var(--text-faint)]" : iconToneClasses[iconTone])}>
 
           {icon}
 

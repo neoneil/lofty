@@ -17,6 +17,7 @@ export type AudioCollectionItem = {
   sourceQuestionId: string | null;
   isPrediction: boolean;
   audioUrl: string;
+  audioUrls?: string[];
   durationSeconds: number | null;
   wordCount: number;
 };
@@ -57,6 +58,7 @@ export default function AudioCollectionClient({ groups }: Props) {
   const [currentRound, setCurrentRound] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
+  const [audioUrlIndex, setAudioUrlIndex] = useState(0);
 
   const activeGroup = useMemo(() => groups.find((group) => group.id === activeType) ?? groups[0], [activeType, groups]);
   const questions = useMemo(() => {
@@ -66,6 +68,8 @@ export default function AudioCollectionClient({ groups }: Props) {
   }, [activeGroup, questionFilter]);
   const safeCurrentIndex = questions.length > 0 ? Math.min(currentIndex, questions.length - 1) : 0;
   const currentQuestion = questions[safeCurrentIndex] ?? null;
+  const currentAudioUrls = currentQuestion?.audioUrls?.length ? currentQuestion.audioUrls : currentQuestion ? [currentQuestion.audioUrl] : [];
+  const currentAudioUrl = currentAudioUrls[Math.min(audioUrlIndex, currentAudioUrls.length - 1)] ?? "";
   const totalQuestions = groups.reduce((total, group) => total + group.items.length, 0);
 
   useEffect(() => {
@@ -74,6 +78,7 @@ export default function AudioCollectionClient({ groups }: Props) {
 
     playRoundRef.current = 1;
     setCurrentRound(1);
+    setAudioUrlIndex(0);
     audio.load();
 
     if (!shouldAutoPlay) return;
@@ -163,6 +168,7 @@ export default function AudioCollectionClient({ groups }: Props) {
     playRoundRef.current = 1;
     setCurrentRound(1);
     setCurrentIndex(index);
+    setAudioUrlIndex(0);
     setShouldAutoPlay(autoPlay);
     setIsPlaying(false);
   };
@@ -194,6 +200,7 @@ export default function AudioCollectionClient({ groups }: Props) {
 
     setActiveType(type);
     setCurrentIndex(0);
+    setAudioUrlIndex(0);
     setCurrentRound(1);
     setIsPlaying(false);
     setShouldAutoPlay(false);
@@ -213,6 +220,7 @@ export default function AudioCollectionClient({ groups }: Props) {
 
     setQuestionFilter(filter);
     setCurrentIndex(0);
+    setAudioUrlIndex(0);
     setCurrentRound(1);
     setIsPlaying(false);
     setShouldAutoPlay(false);
@@ -249,6 +257,16 @@ export default function AudioCollectionClient({ groups }: Props) {
     }
 
     goToNext(true);
+  };
+
+  const handleAudioError = () => {
+    if (audioUrlIndex < currentAudioUrls.length - 1) {
+      setAudioUrlIndex((index) => index + 1);
+      setShouldAutoPlay(true);
+      return;
+    }
+
+    setIsPlaying(false);
   };
 
   return (
@@ -316,7 +334,7 @@ export default function AudioCollectionClient({ groups }: Props) {
                   <p className="text-base font-semibold leading-8 text-[var(--text)]">{currentQuestion.text}</p>
                 </div>
 
-                <audio ref={audioRef} controls className="w-full" src={currentQuestion.audioUrl} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={handleEnded} />
+                <audio ref={audioRef} controls className="w-full" src={currentAudioUrl} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={handleEnded} onError={handleAudioError} />
 
                 <div className="flex flex-wrap items-center gap-3">
                   <Button type="button" variant="secondary" size="sm" onClick={goToPrevious} disabled={safeCurrentIndex === 0} className="gap-1.5"><SkipBack size={15} />上一题</Button>

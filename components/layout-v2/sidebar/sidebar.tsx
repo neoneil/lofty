@@ -251,6 +251,7 @@ export function Sidebar({ userId }: { userId: string | null }) {
                 iconTone="success"
                 collapsed={collapsed}
                 nested
+                disabled
               />
             </div>
           )}

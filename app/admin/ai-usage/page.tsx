@@ -137,14 +137,14 @@ export default async function AdminAiUsagePage() {
         </div>
 
         <div className="grid gap-4">
-          {limits.map((limit) => {
+          {limits.map((limit, index) => {
             const profile = profileMap.get(limit.user_id);
             const todayUsed = todayCounts.get(limit.user_id) ?? 0;
             const monthUsed = monthCounts.get(limit.user_id) ?? 0;
 
             const unlimitedExpired = Boolean(limit.is_unlimited && limit.unlimited_until && new Date(limit.unlimited_until).getTime() <= nowMs);
 
-            return <AdminAiLimitForm key={limit.user_id} action={updateAiLimit} initialState={initialAiLimitActionState} userId={limit.user_id} displayName={profile?.full_name || profile?.email || limit.user_id} email={profile?.email || limit.user_id} dailyLimit={limit.daily_limit} monthlyLimit={limit.monthly_limit} isUnlimited={limit.is_unlimited && !unlimitedExpired} unlimitedUntil={unlimitedExpired ? null : limit.unlimited_until} todayUsed={todayUsed} monthUsed={monthUsed} />;
+            return <AdminAiLimitForm key={limit.user_id} action={updateAiLimit} initialState={initialAiLimitActionState} displayIndex={index + 1} userId={limit.user_id} displayName={profile?.full_name || profile?.email || limit.user_id} email={profile?.email || limit.user_id} dailyLimit={limit.daily_limit} monthlyLimit={limit.monthly_limit} isUnlimited={limit.is_unlimited && !unlimitedExpired} unlimitedUntil={unlimitedExpired ? null : limit.unlimited_until} todayUsed={todayUsed} monthUsed={monthUsed} />;
           })}
         </div>
       </section>

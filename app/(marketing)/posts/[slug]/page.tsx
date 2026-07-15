@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { createClient } from "@/lib/supabase/server";
 
 type PostPageProps = {
@@ -30,6 +31,10 @@ function formatDate(date: string | null) {
 
 function normalizeSlug(rawSlug: string) {
   return decodeURIComponent(rawSlug).trim();
+}
+
+function getPostCoverUrl(value: string | null) {
+  return normalizePublicStorageUrl(value, "images");
 }
 
 const getCachedPostBySlug = cache(async (slug: string) => {
@@ -143,10 +148,10 @@ export default async function PostDetailPage({ params }: PostPageProps) {
           ) : null}
         </header>
 
-        {post.cover_image ? (
+        {getPostCoverUrl(post.cover_image) ? (
           <div className="mt-6 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card-soft)] shadow-[var(--shadow-sm)]">
             <img
-              src={post.cover_image}
+              src={getPostCoverUrl(post.cover_image)}
               alt={post.title}
               className="aspect-video w-full object-cover"
             />

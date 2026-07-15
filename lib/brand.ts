@@ -1,6 +1,6 @@
 const configuredBrandName = process.env.NEXT_PUBLIC_BRAND_NAME_CN?.trim();
 
-export const BRAND_NAME_CN = configuredBrandName || "麦芽";
+export const BRAND_NAME_CN = configuredBrandName || "小马哥";
 export const BRAND_EDUCATION_CN = `${BRAND_NAME_CN}教育`;
 export const BRAND_ENGLISH_CN = `${BRAND_NAME_CN}英语`;
 export const BRAND_TEACHER_CN = `${BRAND_NAME_CN}老师`;

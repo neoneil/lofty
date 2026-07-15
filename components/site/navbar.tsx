@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
-import { BookOpenCheck, ChevronDown, ChevronRight, GraduationCap } from "lucide-react";
+import { BookOpenCheck, ChevronDown, ChevronRight, Crown, GraduationCap } from "lucide-react";
 import Container from "./container";
 import NavbarMobileClient from "./navbar-mobile-client";
 import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
@@ -218,16 +218,16 @@ export default async function Navbar() {
               <div className="flex shrink-0 items-center gap-1.5 border-l border-[var(--border)] py-0 pl-3 pr-1">
                 {user ? (
                   <>
-                    <div className="group flex h-11 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)]">
-                      <div className="relative h-9 w-9 shrink-0">
+                    <div className="group relative flex h-12 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)]">
+                      <div className="relative h-11 w-11 shrink-0">
                         <Image
                           src={avatar}
                           alt={name}
-                          width={36}
-                          height={36}
-                          className="h-9 w-9 rounded-full border border-transparent object-cover shadow-none"
+                          width={44}
+                          height={44}
+                          className="h-11 w-11 rounded-full border border-transparent object-cover shadow-none"
                         />
-                        <span className="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-[var(--card)] bg-[var(--success)]" />
+                        <span className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[var(--card)] bg-[var(--success)]" />
                       </div>
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">
@@ -238,6 +238,19 @@ export default async function Navbar() {
                         <span className="mt-0.5 max-w-[150px] truncate text-[10px] font-medium text-[var(--text-soft)]">
                           {email}
                         </span>
+                      </div>
+
+                      <div className="pointer-events-none absolute right-0 top-[calc(100%+10px)] z-50 w-[260px] translate-y-1 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 text-left opacity-0 shadow-[var(--shadow-lg)] backdrop-blur-xl transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                        <div className="mb-3">
+                          <div className="text-sm font-bold text-[var(--text)]">账户状态说明</div>
+                          <div className="mt-1 text-xs leading-5 text-[var(--text-soft)]">头像右下角颜色代表当前账号状态。</div>
+                        </div>
+                        <div className="space-y-2.5">
+                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--success)]" /><span className="text-xs font-semibold text-[var(--text)]">绿色 = 已登录</span></div>
+                          <div className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--warning-soft)] text-[var(--warning)]"><Crown size={13} /></span><span className="text-xs font-semibold text-[var(--text)]">金色 = 内部学生</span></div>
+                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--primary)]" /><span className="text-xs font-semibold text-[var(--text)]">蓝色 = 临时无限 AI</span></div>
+                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--text-faint)]" /><span className="text-xs font-semibold text-[var(--text)]">灰色 = 普通用户</span></div>
+                        </div>
                       </div>
                     </div>
 

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui-v2/button";
 import { BRAND_NAME_CN } from "@/lib/brand";
 import { buildIeltsSubmitResult } from "@/lib/ielts/answer-scoring";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsQuestion, IeltsSection } from "@/lib/ielts/practice";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { cn } from "@/lib/utils";
 
 type Answers = Record<string, string>;
@@ -242,6 +243,7 @@ function ListeningQuestionPart({ part, answers, onAnswerChange, isAdmin, audioRe
 function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { audio?: IeltsAsset; partNumber: number; audioRef: React.RefObject<HTMLAudioElement | null>; onTimeChange: (value: number) => void }) {
   const [playbackRate, setPlaybackRate] = useState(1);
   const playbackRates = [0.8, 1, 1.2, 1.5];
+  const audioUrl = audio ? getListeningAssetUrl(audio) : "";
 
   function changePlaybackRate(nextRate: number) {
     setPlaybackRate(nextRate);
@@ -258,7 +260,7 @@ function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { a
           ))}
         </div>
       </div>
-      {audio?.public_url ? <audio ref={audioRef} key={audio.public_url} controls controlsList="nodownload" preload="metadata" src={audio.public_url} onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onContextMenu={(event) => event.preventDefault()} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} className="w-full accent-[var(--primary)]" /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
+      {audioUrl ? <audio ref={audioRef} key={audioUrl} controls controlsList="nodownload" preload="metadata" src={audioUrl} onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onContextMenu={(event) => event.preventDefault()} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} className="w-full accent-[var(--primary)]" /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
     </div>
   );
 }
@@ -525,10 +527,14 @@ function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }:
 }
 
 function selectSectionAudios(assets: IeltsAsset[], sections: IeltsSection[]) {
-  const audioAssets = dedupeAssets(assets.filter((asset) => asset.asset_type === "audio" && asset.public_url));
+  const audioAssets = dedupeAssets(assets.filter((asset) => asset.asset_type === "audio" && getListeningAssetUrl(asset)));
   if (audioAssets.length <= 4) return audioAssets;
   const fullAudio = audioAssets.find((asset) => assetMatchesRawSectionAudio(asset, sections)) ?? [...audioAssets].sort((a, b) => metadataBytes(b) - metadataBytes(a))[0];
   return audioAssets.filter((asset) => asset.id !== fullAudio.id).slice(0, 4);
+}
+
+function getListeningAssetUrl(asset: IeltsAsset) {
+  return normalizePublicStorageUrl(asset.public_url || asset.storage_path, asset.bucket || "ielts");
 }
 
 function assetMatchesRawSectionAudio(asset: IeltsAsset, sections: IeltsSection[]) {

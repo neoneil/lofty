@@ -8,6 +8,7 @@ import type { AiLimitActionState } from "./page";
 type AdminAiLimitFormProps = {
   action: (state: AiLimitActionState, formData: FormData) => Promise<AiLimitActionState>;
   initialState: AiLimitActionState;
+  displayIndex: number;
   userId: string;
   displayName: string;
   email: string;
@@ -35,6 +36,30 @@ function toIsoValue(value: string) {
   return Number.isNaN(date.getTime()) ? "" : date.toISOString();
 }
 
+function formatRemainingUntil(value: string | null) {
+  if (!value) return null;
+  const remainingMs = new Date(value).getTime() - Date.now();
+  if (!Number.isFinite(remainingMs) || remainingMs <= 0) return "已到期";
+  const totalMinutes = Math.ceil(remainingMs / 60_000);
+  const days = Math.floor(totalMinutes / 1_440);
+  const hours = Math.floor((totalMinutes % 1_440) / 60);
+  const minutes = totalMinutes % 60;
+  if (days > 0) return `${days} 天 ${hours} 小时后到期`;
+  if (hours > 0) return `${hours} 小时 ${minutes} 分钟后到期`;
+  return `${minutes} 分钟后到期`;
+}
+
+function formatExpiryDate(value: string | null) {
+  if (!value) return null;
+  return new Intl.DateTimeFormat("zh-CN", { timeZone: "Australia/Sydney", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date(value));
+}
+
+function getIndexBadgeClassName(mode: AccessMode) {
+  if (mode === "permanent") return "border-[color:var(--danger)]/30 bg-[var(--danger-soft)] text-[var(--danger)]";
+  if (mode === "temporary") return "border-[color:var(--warning)]/35 bg-[var(--warning-soft)] text-[var(--warning)]";
+  return "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-faint)]";
+}
+
 function SaveButton({ saved }: { saved: boolean }) {
   const { pending } = useFormStatus();
 
@@ -43,11 +68,13 @@ function SaveButton({ saved }: { saved: boolean }) {
   );
 }
 
-export function AdminAiLimitForm({ action, initialState, userId, displayName, email, dailyLimit, monthlyLimit, isUnlimited, unlimitedUntil, todayUsed, monthUsed }: AdminAiLimitFormProps) {
+export function AdminAiLimitForm({ action, initialState, displayIndex, userId, displayName, email, dailyLimit, monthlyLimit, isUnlimited, unlimitedUntil, todayUsed, monthUsed }: AdminAiLimitFormProps) {
   const [state, formAction] = useActionState(action, initialState);
   const initialMode: AccessMode = isUnlimited ? unlimitedUntil ? "temporary" : "permanent" : "limited";
   const [accessMode, setAccessMode] = useState<AccessMode>(initialMode);
   const [expiryValue, setExpiryValue] = useState(() => toLocalDateTimeValue(unlimitedUntil));
+  const remainingLabel = initialMode === "temporary" ? formatRemainingUntil(unlimitedUntil) : null;
+  const expiryLabel = initialMode === "temporary" ? formatExpiryDate(unlimitedUntil) : null;
 
   function selectDuration(days: number) {
     const expiry = new Date();
@@ -61,10 +88,14 @@ export function AdminAiLimitForm({ action, initialState, userId, displayName, em
       <input type="hidden" name="user_id" value={userId} />
       <input type="hidden" name="unlimited_until" value={accessMode === "temporary" ? toIsoValue(expiryValue) : ""} />
       <div className="grid gap-5 lg:grid-cols-[1.5fr_1fr_1fr_1fr_auto] lg:items-end">
-        <div>
-          <p className="font-semibold text-[var(--text)]">{displayName}</p>
-          <p className="mt-1 break-all text-xs text-[var(--text-soft)]">{email}</p>
-          {state.message ? <p className={`mt-2 text-xs font-medium ${state.status === "error" ? "text-[var(--danger)]" : "text-[var(--primary)]"}`}>{state.message}</p> : null}
+        <div className="flex items-start gap-3">
+          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border text-sm font-black tabular-nums shadow-[var(--shadow-sm)] ${getIndexBadgeClassName(initialMode)}`}>{displayIndex}</span>
+          <div className="min-w-0">
+            <p className="font-semibold text-[var(--text)]">{displayName}</p>
+            <p className="mt-1 break-all text-xs text-[var(--text-soft)]">{email}</p>
+            {remainingLabel ? <div className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-full border border-[var(--primary)]/25 bg-[var(--primary-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--primary)]"><span>临时无限</span><span className="text-[var(--text)]">{remainingLabel}</span>{expiryLabel ? <span className="font-medium text-[var(--text-soft)]">有效至 {expiryLabel}</span> : null}</div> : null}
+            {state.message ? <p className={`mt-2 text-xs font-medium ${state.status === "error" ? "text-[var(--danger)]" : "text-[var(--primary)]"}`}>{state.message}</p> : null}
+          </div>
         </div>
         <div>
           <label className="mb-2 block text-xs font-medium text-[var(--text-faint)]">今日 / Daily</label>

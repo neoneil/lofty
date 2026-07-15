@@ -19,6 +19,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { getRandomSlogan } from "@/lib/slogan/slogan";
 import { BRAND_EDUCATION_CN } from "@/lib/brand";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 const features = [
   {
@@ -42,6 +43,10 @@ const features = [
     icon: ClipboardCheck,
   },
 ];
+
+function getPostCoverUrl(value: string | null) {
+  return normalizePublicStorageUrl(value, "images");
+}
 
 const heroHighlights = [
   {
@@ -435,8 +440,8 @@ export default async function HomePage() {
             {latestPosts.map((post, index) => (
               <Link key={post.slug} href={`/posts/${post.slug}`} className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
                 <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-soft)] md:aspect-[16/11]">
-                  {post.cover_image ? (
-                    <img src={post.cover_image} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+                  {getPostCoverUrl(post.cover_image) ? (
+                    <img src={getPostCoverUrl(post.cover_image)} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
                   ) : (
                     <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">Lofty Article</div>
                   )}

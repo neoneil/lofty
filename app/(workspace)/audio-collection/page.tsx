@@ -32,8 +32,18 @@ function getDisplayText(row: AudioQuestionRow) {
   return row.question_text || row.question_title || row.title || row.original_text || "Audio question";
 }
 
-function getAudioPath(row: AudioQuestionRow) {
-  return row.audio_url || row.storage_path || row.source_audio_url || null;
+function getAudioPaths(row: AudioQuestionRow) {
+  return [row.storage_path, row.audio_url, row.source_audio_url].filter((value): value is string => Boolean(value?.trim()));
+}
+
+function getUniqueAudioUrls(row: AudioQuestionRow) {
+  const seen = new Set<string>();
+  return getAudioPaths(row).flatMap((path) => {
+    const url = getPublicAudioUrl(path);
+    if (!url || seen.has(url)) return [];
+    seen.add(url);
+    return [url];
+  });
 }
 
 function getWordCount(text: string) {
@@ -55,8 +65,8 @@ export default async function AudioCollectionPage() {
 
       const items: AudioCollectionItem[] = ((data ?? []) as AudioQuestionRow[])
         .flatMap((row) => {
-          const audioPath = getAudioPath(row);
-          if (!audioPath) return [];
+          const audioUrls = getUniqueAudioUrls(row);
+          if (audioUrls.length === 0) return [];
           const text = getDisplayText(row);
 
           const item: AudioCollectionItem = {
@@ -66,7 +76,8 @@ export default async function AudioCollectionPage() {
             text,
             sourceQuestionId: row.source_question_id ?? null,
             isPrediction: row.is_prediction ?? false,
-            audioUrl: getPublicAudioUrl(audioPath),
+            audioUrl: audioUrls[0],
+            audioUrls,
             durationSeconds: row.audio_duration_seconds ?? null,
             wordCount: getWordCount(text),
           };
