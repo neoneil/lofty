@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_FIBRW_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 
 import Tag from "@/components/ui/tag";
 
@@ -40,7 +41,7 @@ export default async function FibrwQuestionDetailPage({
     .from(
       "v_pte_fibrw_with_user_status",
     )
-    .select("*")
+    .select(PTE_FIBRW_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -180,26 +181,6 @@ export default async function FibrwQuestionDetailPage({
                 次
               </span>
 
-              {typeof question.latest_score ===
-              "number" ? (
-                <span>
-                  最近分数：
-                  {
-                    question.latest_score
-                  }
-                </span>
-              ) : null}
-
-              {typeof question.best_score ===
-              "number" ? (
-                <span>
-                  最佳分数：
-                  {
-                    question.best_score
-                  }
-                </span>
-              ) : null}
-
             </div>
 
             {/* Title */}
@@ -218,7 +199,7 @@ export default async function FibrwQuestionDetailPage({
 
             <FibrwDetailClient
               question={
-                question
+                { ...question, latest_score: null, best_score: null }
               }
               attempts={
                 attempts ?? []

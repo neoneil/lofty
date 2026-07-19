@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_HIW_QUESTION_SELECT } from "@/lib/pte/select-fields";
 import HiwPracticeList from "./hiw-practice-list";
 
 type HiwIncorrectWord = {
@@ -41,7 +42,7 @@ export default async function PteListeningHiwPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("pte")
     .from("hiw")
-    .select("*")
+    .select(PTE_HIW_QUESTION_SELECT)
     .eq("question_type", "HIW")
     .eq("is_prediction", true)
     .order("created_at", { ascending: false })

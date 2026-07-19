@@ -44,6 +44,13 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - This confirmation requirement includes `supabase db push`, table or column changes, indexes, RLS policies, functions, triggers, views, bulk updates, deletes, backfills, and migration repairs.
 - Store every approved schema change as a timestamped SQL file in `supabase/migrations/`. Run `db:push:dry-run` before any approved `db:push`.
 - Never run `supabase db push`, migration repair, reset, destructive SQL, or bulk data mutation merely because migration tooling is configured.
+- PTE feature work must not use Supabase `select("*")`; select only the fields the page, component, or API actually needs. Before changing an existing PTE query, read the consuming code and keep required fields explicit.
+
+## WeChat Login Prep
+
+- Before implementing WeChat login or WeChat account binding, read `docs/auth/wechat-login-prep.md`.
+- WeChat Open Platform login should be treated as server-side OAuth2 work using `openid` and `unionid`; never expose the WeChat AppSecret to client components.
+- Prefer starting with WeChat account binding for existing logged-in Lofty users before enabling full WeChat login for new users.
 
 ## PTE Essay Sample Generation
 

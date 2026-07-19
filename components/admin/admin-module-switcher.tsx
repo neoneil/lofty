@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Bot, BookOpenCheck, BookOpenText, BrainCircuit, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
+import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
@@ -15,11 +15,15 @@ const adminModules = [
   { title: "PTE 题库下载管理", desc: "管理 WFD、SST、HIW 等题型与音频资源。", href: "/downloads", tag: "PTE", icon: Download },
   { title: "IELTS 题库下载管理", desc: "管理写作、口语、阅读、听力相关题目内容。", href: "/admin/ielts", tag: "IELTS", icon: Languages },
   { title: "雅思听力阅读题型技巧", desc: "根据 content JSON 渲染听力与阅读题型、技巧、陷阱和教学要点。", href: "/admin/ielts-question-types", tag: "IELTS Skills", icon: Headphones },
+  { title: "IELTS 一对一课程概要", desc: "查看雅思一对一课程方案、分层课时、四项训练内容，并下载 PDF。", href: "/admin/ielts-one-on-one-course", tag: "IELTS Course", icon: BookOpenCheck },
+  { title: "PTE 一对一课程概要", desc: "查看 PTE 一对一课程方案、题型训练节奏、免费测试说明，并下载 PDF。", href: "/admin/pte-one-on-one-course", tag: "PTE Course", icon: BookOpenCheck },
   { title: "留言 / 评论", desc: "查看用户留言、评论和网站互动内容。", href: "/admin/chat", tag: "Messages", icon: MessageSquareText },
   { title: "下载中心", desc: "导出 PDF、题库资料和学生学习材料。", href: "/downloads", tag: "Export", icon: Download },
   { title: "selective", desc: "selective history。", href: "/admin/selective/history", tag: "selective", icon: History },
   { title: "上课明细", desc: "各学生上课次数。", href: "/admin/start-classroom", tag: "Zoom 会议", icon: Video },
   { title: "学生作文AI批改", desc: "AI - PTE - IELTS writing", href: "/admin/analyze_answer", tag: "AI response", icon: Bot },
+  { title: "AI Demo", desc: "试听 OpenAI 人声样本，管理课程和练习中的语音模型选择。", href: "/admin/ai-demo", tag: "OpenAI Voice", icon: AudioLines },
+  { title: "PTE 音频生成", desc: "为 RS / WFD 生成 Marin、Cedar、Alloy、Ash 四音色题库音频。", href: "/admin/pte-ai-audio", tag: "PTE Audio", icon: AudioLines },
   { title: "生成PTE 作文答案与句子库", desc: "AI 反馈", href: "/admin/generate_essay_answer", tag: "AI response", icon: BrainCircuit },
   { title: "PTE大作文范文", desc: "查看 WE 范文与逐句中文翻译，并自动补齐缺失范文。", href: "/admin/pte-essay-samples", tag: "PTE Essay", icon: ScrollText },
   { title: "PTE SWT 范文", desc: "查看 SWT 一句话范文、原文翻译、答案翻译与句子合并拆解。", href: "/admin/pte-swt-samples", tag: "PTE SWT", icon: FileText },

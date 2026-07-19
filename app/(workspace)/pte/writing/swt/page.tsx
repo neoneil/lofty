@@ -1,5 +1,6 @@
 
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_SWT_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import SwtPageClient from "./swt-page-client";
 type SwtQuestionWithStatus = {
   id: string;
@@ -32,7 +33,7 @@ export default async function PteWritingPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_swt_with_user_status")
-    .select("*")
+    .select(PTE_SWT_WITH_STATUS_SELECT)
     .eq("question_type", "SWT")
     .order("created_at", { ascending: false })
     .limit(1500);
@@ -51,7 +52,7 @@ export default async function PteWritingPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "SWT")
     .single();
 

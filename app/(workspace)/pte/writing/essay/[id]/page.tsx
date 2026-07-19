@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_WE_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import EssayDetailClient from "./essay-detail-client";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
@@ -43,7 +44,7 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_we_with_user_status")
-    .select("*")
+    .select(PTE_WE_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -111,10 +112,6 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
               <div className="flex flex-wrap items-center justify-end gap-2">
                 <Tag tone="theme">Essay</Tag>
 
-                {question.source_question_id ? (
-                  <Tag tone="neutral">{question.source_question_id}</Tag>
-                ) : null}
-
                 <Tag tone="yellow">考试原题</Tag>
 
                 {question.is_prediction ? <Tag tone="purple">活跃</Tag> : null}
@@ -140,7 +137,7 @@ export default async function EssayQuestionDetailPage({ params }: PageProps) {
             </div>
 
             <EssayDetailClient
-              question={question}
+              question={{ ...question, answer: essayAnswers[0]?.answer_text ?? "" }}
               attempts={attempts ?? []}
               essayAnswers={essayAnswers}
               essaySentences={essaySentences}

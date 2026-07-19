@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_SGD_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import SgdDetailClient from "./sgd-detail-client";
@@ -18,7 +19,7 @@ export default async function SgdQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_sgd_with_user_status")
-    .select("*")
+    .select(PTE_SGD_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 

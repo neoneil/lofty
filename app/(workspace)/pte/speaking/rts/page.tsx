@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_RTS_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import RtsPageClient from "./rts-page-client";
 
 export type RtsQuestion = {
@@ -22,7 +23,7 @@ export type RtsQuestion = {
   is_active: boolean | null;
   created_at: string;
   updated_at: string;
-  search_text: string | null;
+  search_text?: string | null;
   is_practiced: boolean;
   attempt_count: number;
   correct_count: number;
@@ -39,16 +40,16 @@ export default async function PteSpeakingRtsPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_rts_with_user_status")
-    .select("*")
+    .select(PTE_RTS_WITH_STATUS_SELECT)
     .eq("question_type", "RTS")
     .order("created_at", { ascending: false })
     .limit(1500);
 
-  const questions = (questionsData ?? []) as RtsQuestion[];
+  const questions = (questionsData ?? []).map((question) => ({ ...question, search_text: null })) as RtsQuestion[];
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "RTS")
     .single();
 

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { STUDENT_QUESTION_STAT_SELECT } from "@/lib/pte/select-fields";
 
 const EXAM_TYPE = "PTE";
 const MODULE_TYPE = "HIW";
@@ -140,7 +141,7 @@ export async function POST(req: Request) {
 
     const { data: existingStat, error: existingStatError } = await supabase
       .from("student_question_stats")
-      .select("*")
+      .select(STUDENT_QUESTION_STAT_SELECT)
       .eq("user_id", user.id)
       .eq("question_source", QUESTION_SOURCE)
       .eq("question_id", String(question.id))

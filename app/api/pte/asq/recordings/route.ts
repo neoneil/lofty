@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireUser } from "@/lib/auth/require-user";
+import { getStudentRecordingPlaybackUrl } from "@/lib/storage/student-recordings";
 
 export async function GET(req: NextRequest) {
   const { supabase, user } = await requireUser("/pte/speaking/asq");
@@ -31,6 +32,10 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    recordings: data ?? [],
+    recordings:
+      data?.map((recording) => ({
+        ...recording,
+        audio_url: getStudentRecordingPlaybackUrl(recording.audio_url),
+      })) ?? [],
   });
 }

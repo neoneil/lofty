@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_HIW_QUESTION_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import { ArrowLeft } from "lucide-react";
@@ -26,7 +27,7 @@ export default async function HiwQuestionDetailPage({ params }: PageProps) {
     );
   }
 
-  const { data: question, error } = await supabase.schema("pte").from("hiw").select("*").eq("id", parsedId).single();
+  const { data: question, error } = await supabase.schema("pte").from("hiw").select(PTE_HIW_QUESTION_SELECT).eq("id", parsedId).single();
 
   if (error || !question) {
     return (

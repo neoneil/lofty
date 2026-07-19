@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_RS_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import RsDetailClient from "./rs-detail-client";
@@ -18,7 +19,7 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_rs_with_user_status")
-    .select("*")
+    .select(PTE_RS_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -31,6 +32,13 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const { data: audioMeta } = await supabase
+    .schema("pte")
+    .from("rs")
+    .select("audio_status")
+    .eq("id", id)
+    .maybeSingle();
 
   return (
     <div className="mt-1">
@@ -79,7 +87,7 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
             ) : null}
           </div>
 
-          <RsDetailClient question={question} />
+          <RsDetailClient question={question} aiAudioReady={audioMeta?.audio_status === "ready"} />
         </section>
       </section>
     </div>

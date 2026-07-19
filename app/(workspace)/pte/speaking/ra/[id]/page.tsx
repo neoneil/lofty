@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_RA_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import RaDetailClient from "./ra-detail-client";
@@ -18,7 +19,7 @@ export default async function RaQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_ra_with_user_status")
-    .select("*")
+    .select(PTE_RA_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -67,7 +68,6 @@ export default async function RaQuestionDetailPage({ params }: PageProps) {
 
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm text-[var(--text-soft)]">
             <span>曾经练习：{question.attempt_count ?? 0} 次</span>
-            <span>完成：{question.completed_count ?? 0}</span>
             <span>答对：{question.correct_count ?? 0}</span>
             <span>答错：{question.wrong_count ?? 0}</span>
 

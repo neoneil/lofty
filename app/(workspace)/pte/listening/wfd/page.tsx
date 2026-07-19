@@ -1,5 +1,6 @@
 
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_WFD_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import WfdPageClient from "./wfd-page-client";
 type WfdQuestionWithStatus = {
   id: string;
@@ -35,7 +36,7 @@ export default async function PteListeningPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_wfd_with_user_status")
-    .select("*")
+    .select(PTE_WFD_WITH_STATUS_SELECT)
     .eq("question_type", "WFD")
     // .eq("is_prediction", true)
     .order("created_at", { ascending: false })
@@ -47,6 +48,7 @@ export default async function PteListeningPage() {
     attempt_count: q.attempt_count ?? 0,
     correct_count: q.correct_count ?? 0,
     wrong_count: q.wrong_count ?? 0,
+    completed_count: 0,
     last_attempt_at: q.last_attempt_at ?? null,
     latest_score: q.latest_score ?? null,
     best_score: q.best_score ?? null,
@@ -55,7 +57,7 @@ export default async function PteListeningPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "WFD")
     .single();
 

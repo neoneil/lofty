@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useMemo, useState } from "react";
 
-import { ChevronLeft, ChevronRight, Move, RotateCcw } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 
 import {
   DndContext,
@@ -21,6 +21,8 @@ import {
 } from "@dnd-kit/core";
 
 import { getQuestionOrder } from "@/lib/question-order";
+
+import DictionaryText from "@/components/dictionary/dictionary-text";
 
 import Tag from "@/components/ui/tag";
 
@@ -408,7 +410,11 @@ function FibrDetailClient({ question, attempts }: Props) {
                   ? part.replace(/^\s*\S+/, "")
                   : part;
 
-                return <span key={index}>{cleanedPart}</span>;
+                return (
+                  <span key={index}>
+                    <DictionaryText text={cleanedPart} />
+                  </span>
+                );
               })}
             </div>
           </div>

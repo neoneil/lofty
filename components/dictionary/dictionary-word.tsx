@@ -5,9 +5,11 @@ import {
 } from "./dictionary-context";
 
 export default function DictionaryWord({
-  word
+  word,
+  showPteExamples = true
 }: {
   word: string;
+  showPteExamples?: boolean;
 }) {
 
   const {
@@ -17,7 +19,9 @@ export default function DictionaryWord({
   return (
     <span
       onClick={() =>
-        openDictionary(word)
+        openDictionary(word, {
+          showPteExamples
+        })
       }
       className="
         cursor-pointer

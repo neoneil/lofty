@@ -510,8 +510,8 @@ export default function RecordingPanel({
                     <Button type="button" onClick={openDialog} disabled={isUploading} variant="primary" className={`min-w-40 ${isUploading ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100" : ""}`}>
                       {isUploading ? (
                         <span className="inline-flex items-center justify-center gap-3">
-                          <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
-                            <Lottie animationData={aiAnimation} loop autoplay />
+                          <span className="relative -ml-2 flex h-14 w-14 items-center justify-center overflow-visible">
+                            <Lottie animationData={aiAnimation} loop autoplay className="h-full w-full" />
                           </span>
                           <span className="text-sm font-semibold tracking-wide text-white">上传AI分析中</span>
                         </span>
@@ -525,8 +525,8 @@ export default function RecordingPanel({
                 <Button type="button" onClick={uploadRecording} disabled={isUploading} variant="primary" className={`min-w-40 ${isUploading ? "h-14 min-w-56 overflow-hidden rounded-full bg-[linear-gradient(90deg,var(--primary)_0%,var(--primary-hover)_56%,var(--primary)_100%)] px-5 shadow-[0_12px_34px_color-mix(in_srgb,var(--primary)_28%,transparent)] disabled:opacity-100" : ""}`}>
                   {isUploading ? (
                     <span className="inline-flex items-center justify-center gap-3">
-                      <span className="relative -ml-1 flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
-                        <Lottie animationData={aiAnimation} loop autoplay />
+                      <span className="relative -ml-2 flex h-14 w-14 items-center justify-center overflow-visible">
+                        <Lottie animationData={aiAnimation} loop autoplay className="h-full w-full" />
                       </span>
                       <span className="text-sm font-semibold tracking-wide text-white">上传AI分析中</span>
                     </span>

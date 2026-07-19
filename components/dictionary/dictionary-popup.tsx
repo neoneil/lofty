@@ -78,6 +78,7 @@ export default function DictionaryPopup() {
   const {
     word,
     isOpen,
+    showPteExamples,
     closeDictionary
   } = useDictionary();
 
@@ -114,6 +115,13 @@ export default function DictionaryPopup() {
           if (result.found) {
 
             setData(result.data);
+
+            if (!showPteExamples) {
+
+              setExamples([]);
+
+              return;
+            }
 
             try {
 
@@ -163,7 +171,7 @@ export default function DictionaryPopup() {
 
     fetchDictionary();
 
-  }, [word, isOpen]);
+  }, [word, isOpen, showPteExamples]);
 
   if (!isOpen) {
     return null;
@@ -357,7 +365,7 @@ export default function DictionaryPopup() {
                 </div>
               )}
 
-              {examples.length > 0 && (
+              {showPteExamples && examples.length > 0 && (
 
                 <div>
 

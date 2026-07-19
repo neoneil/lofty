@@ -30,6 +30,7 @@ type ExportConfig = {
   title: string;
   schema: string;
   table: string;
+  select: string;
   sortColumns?: { column: string; ascending?: boolean }[];
   formatter: (item: ExportRow, index: number) => string[];
 };
@@ -39,6 +40,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE WFD",
     schema: "pte",
     table: "wfd",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -52,6 +54,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE RA",
     schema: "pte",
     table: "ra",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -65,6 +68,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE RS",
     schema: "pte",
     table: "rs",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -78,6 +82,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE DI",
     schema: "pte",
     table: "di",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || item.prompt_text || ""}`,
@@ -91,6 +96,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE RL",
     schema: "pte",
     table: "rl",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || item.prompt_text || ""}`,
@@ -104,6 +110,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE ASQ",
     schema: "pte",
     table: "asq",
+    select: "id, question_text, answer_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -118,6 +125,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE SST",
     schema: "pte",
     table: "sst",
+    select: "id, question_text, transcript_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || item.prompt_text || item.title || ""}`,
@@ -134,6 +142,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE FIB-RW",
     schema: "pte",
     table: "fib_rw",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -147,6 +156,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE FIB-R",
     schema: "pte",
     table: "fib_r",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -160,6 +170,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE RO",
     schema: "pte",
     table: "ro",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -173,6 +184,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE HIW",
     schema: "pte",
     table: "hiw",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -186,6 +198,7 @@ const EXPORT_CONFIG: Record<string, ExportConfig> = {
     title: "PTE SMW",
     schema: "pte",
     table: "smw",
+    select: "id, question_text, created_at",
     sortColumns: [{ column: "created_at", ascending: false }],
     formatter: (item, index) => [
       `${index + 1}. ${item.question_text || ""}`,
@@ -307,7 +320,7 @@ export async function POST(req: NextRequest) {
 
     const supabase = createAdminClient();
 
-    let query = supabase.schema(config.schema).from(config.table).select("*");
+    let query = supabase.schema(config.schema).from(config.table).select(config.select);
 
     if (config.sortColumns?.length) {
       for (const item of config.sortColumns) {
@@ -333,7 +346,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const items = data ?? [];
+    const items = (data ?? []) as unknown as ExportRow[];
 
     const pdfDoc = await PDFDocument.create();
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_SWT_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import SwtDetailClient from "./swt-detail-client";
 import Tag from "@/components/ui/tag";
 import { ArrowLeft } from "lucide-react";
@@ -18,7 +19,7 @@ export default async function SwtQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_swt_with_user_status")
-    .select("*")
+    .select(PTE_SWT_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 

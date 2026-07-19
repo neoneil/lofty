@@ -4,6 +4,7 @@ import { memo, type CSSProperties, useEffect, useMemo, useRef, useState } from "
 import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, Languages, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
 
+import { useDictionary } from "@/components/dictionary/dictionary-context";
 import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
 import { BrandMark } from "@/components/site/brand-mark";
 import { Badge } from "@/components/ui-v2/badge";
@@ -400,7 +401,7 @@ const ReadingPassage = memo(function ReadingPassage({ section, partNumber }: { s
         {section.instruction && <ReadingRichText html={section.instruction} compact />}
       </div>
       <h3 className="mb-4 text-center text-2xl font-bold tracking-tight text-[var(--text)]">{stripHtml(title)}</h3>
-      <ReadingRichText html={section.passage_text || stringValue(section.raw_data, "content")} />
+      <ReadingRichText html={section.passage_text || stringValue(section.raw_data, "content")} dictionary />
     </article>
   );
 });
@@ -553,9 +554,11 @@ function OptionQuestion({ questionNumber, options, value, onChange }: { question
   );
 }
 
-const ReadingRichText = memo(function ReadingRichText({ html, compact = false }: { html?: string | null; compact?: boolean }) {
+const ReadingRichText = memo(function ReadingRichText({ html, compact = false, dictionary = false }: { html?: string | null; compact?: boolean; dictionary?: boolean }) {
+  const { openDictionary } = useDictionary();
   if (!html) return null;
-  return <div className={cn("reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:p-2.5 [&_th]:border [&_th]:p-2.5", compact && "text-sm leading-7")} dangerouslySetInnerHTML={{ __html: normalizeQuestionBlanks(html) }} />;
+  const markup = dictionary ? decorateDictionaryWords(normalizeQuestionBlanks(html)) : normalizeQuestionBlanks(html);
+  return <div className={cn("reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_span[data-dictionary-word]]:cursor-pointer [&_span[data-dictionary-word]]:transition [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:p-2.5 [&_th]:border [&_th]:p-2.5", compact && "text-sm leading-7")} onClick={dictionary ? (event) => { const target = event.target as HTMLElement; const word = target.closest<HTMLElement>("[data-dictionary-word]")?.dataset.dictionaryWord; if (word) openDictionary(word, { showPteExamples: false }); } : undefined} dangerouslySetInnerHTML={{ __html: markup }} />;
 });
 
 const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, onAnswerChange }: { html: string; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void }) {
@@ -1018,6 +1021,29 @@ function isMatchingOptionBank(question: IeltsQuestion, sectionDesc: string, page
 
 function isEmptyLetterOption(value: string) {
   return /^[A-Z][.)]?$/i.test(stripHtml(value));
+}
+
+function decorateDictionaryWords(html: string) {
+  const skipTags = new Set(["script", "style", "svg", "code", "pre", "textarea", "select", "option", "button", "input", "audio", "video"]);
+  const openSkipTags: string[] = [];
+  return html.split(/(<[^>]+>)/g).map((part) => {
+    if (!part) return "";
+    if (part.startsWith("<")) {
+      const tagName = part.match(/^<\/?\s*([a-zA-Z0-9:-]+)/)?.[1]?.toLowerCase();
+      if (tagName && skipTags.has(tagName)) {
+        const closing = /^<\//.test(part);
+        const selfClosing = /\/\s*>$/.test(part) || /^<\s*(input|img|br|hr|meta|link)\b/i.test(part);
+        if (closing) openSkipTags.pop();
+        if (!closing && !selfClosing) openSkipTags.push(tagName);
+      }
+      return part;
+    }
+    if (openSkipTags.length > 0) return part;
+    return part.replace(/&[a-zA-Z0-9#]+;|[A-Za-z][A-Za-z'-]*|[^&A-Za-z]+|&/g, (token) => {
+      if (!/^[A-Za-z]/.test(token)) return token;
+      return `<span data-dictionary-word="${escapeHtmlAttribute(token)}">${token}</span>`;
+    });
+  }).join("");
 }
 
 function stripHtml(value: string) {

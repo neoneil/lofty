@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_ASQ_WITH_STATUS_SELECT, PTE_QUESTION_INFO_SELECT } from "@/lib/pte/select-fields";
 import AsqPageClient from "./asq-page-client";
 
 type ASQQuestionWithStatus = {
@@ -31,7 +32,7 @@ export default async function PteAsqPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_asq_with_user_status")
-    .select("*")
+    .select(PTE_ASQ_WITH_STATUS_SELECT)
     .eq("question_type", "ASQ")
     .order("created_at", { ascending: false })
     .limit(1500);
@@ -40,8 +41,11 @@ export default async function PteAsqPage() {
     ...q,
     question_text: q.question_text ?? null,
     answer_text: q.answer_text ?? null,
-    audio_url: q.audio_url ?? null,
-    audio_duration_seconds: q.audio_duration_seconds ?? null,
+    source_question_id: null,
+    difficulty_level: null,
+    audio_url: null,
+    audio_duration_seconds: null,
+    is_real_exam: null,
     is_practiced: q.is_practiced ?? false,
     attempt_count: q.attempt_count ?? 0,
     correct_count: q.correct_count ?? 0,
@@ -54,7 +58,7 @@ export default async function PteAsqPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "ASQ")
     .single();
 

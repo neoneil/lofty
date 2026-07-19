@@ -1,11 +1,12 @@
 import Link from "next/link";
-import AudioPlayer from "@/components/site/AudioPlayer";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_SST_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import SstDetailClient from "./sst-detail-client";
 import Tag from "@/components/ui/tag";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui-v2/button";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+import { PteLectureAudioPlayer } from "@/components/pte-ai-audio/pte-lecture-audio-player";
 type PageProps = {
   params: Promise<{
     id: string;
@@ -20,7 +21,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_sst_with_user_status")
-    .select("*")
+    .select(PTE_SST_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -33,6 +34,18 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const { data: transcriptRow } = await supabase
+    .schema("pte")
+    .from("sst")
+    .select("transcript")
+    .eq("id", question.id)
+    .maybeSingle();
+
+  const questionWithTranscript = {
+    ...question,
+    transcript: transcriptRow?.transcript ?? null,
+  };
 
   const { data: attempts } = await supabase
     .from("student_attempts")
@@ -94,8 +107,8 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
             </div>
 
             {question.audio_url ? (
-              <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-                <AudioPlayer url={normalizePublicStorageUrl(question.audio_url, "pte-audio")} autoPlay countdown={10} size="compact" />
+              <div className="mx-auto mt-8 w-full max-w-5xl max-sm:max-w-full">
+                <PteLectureAudioPlayer questionType="sst" questionId={question.id} fallbackUrl={normalizePublicStorageUrl(question.audio_url, "pte-audio")} lectureAudioReady={question.audio_url === `PTE/listening/SST/${question.id}/marin.mp3`} autoPlay countdown={10} />
               </div>
             ) : (
               <div className="mt-8 round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">
@@ -103,7 +116,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
               </div>
             )}
 
-            <SstDetailClient question={question} attempts={attempts ?? []} />
+            <SstDetailClient question={questionWithTranscript} attempts={attempts ?? []} />
           </section>
         </section>
       </div>

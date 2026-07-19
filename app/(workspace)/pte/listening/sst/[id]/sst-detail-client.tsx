@@ -40,6 +40,8 @@ type Props = {
     id: string;
 
     transcript_text: string;
+
+    transcript: string | null;
   };
 
   attempts: {
@@ -76,6 +78,7 @@ function getServerQuestionOrderSnapshot() {
 
 export default function SstDetailClient({ question, attempts }: Props) {
   const startedAtRef = useRef<number | null>(null);
+  const referenceText = question.transcript?.trim() || question.transcript_text;
 
   const [answer, setAnswer] = useState("");
 
@@ -607,7 +610,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
                                 transition
                             "
             >
-              <DictionaryText text={question.transcript_text} />
+              <DictionaryText text={referenceText} />
             </div>
           </div>
         </div>

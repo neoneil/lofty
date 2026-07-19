@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+import { PteVoiceAudioPlayer } from "@/components/pte-ai-audio/pte-voice-audio-player";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import {
@@ -63,6 +64,7 @@ type RSScoreResult = {
 
 type Props = {
   question: Question;
+  aiAudioReady?: boolean;
 };
 
 function getWordCount(text: string) {
@@ -98,7 +100,7 @@ function getServerQuestionOrderSnapshot() {
   return "[]";
 }
 
-export default function RsDetailClient({ question }: Props) {
+export default function RsDetailClient({ question, aiAudioReady = false }: Props) {
   const router = useRouter();
   const questionOrderSnapshot = useSyncExternalStore(
     subscribeQuestionOrder,
@@ -205,11 +207,13 @@ export default function RsDetailClient({ question }: Props) {
 
       {question.audio_url ? (
         <div className="mx-auto w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-          <AudioPlayer
-            url={getAudioUrl(question.audio_url)}
+          <PteVoiceAudioPlayer
+            questionType="rs"
+            questionId={question.id}
+            fallbackUrl={getAudioUrl(question.audio_url)}
+            aiAudioReady={aiAudioReady}
             autoPlay
             countdown={3}
-            size="compact"
             onEnded={() => setAudioFinished(true)}
           />
         </div>

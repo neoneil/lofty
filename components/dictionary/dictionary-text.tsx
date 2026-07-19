@@ -5,10 +5,12 @@ from "./dictionary-word";
 
 type Props = {
   text: string;
+  showPteExamples?: boolean;
 };
 
 export default function DictionaryText({
-  text
+  text,
+  showPteExamples = true
 }: Props) {
 
   const tokens = text.match(
@@ -33,6 +35,7 @@ export default function DictionaryText({
               <DictionaryWord
                 key={`${token}-${index}`}
                 word={token}
+                showPteExamples={showPteExamples}
               />
             );
           }

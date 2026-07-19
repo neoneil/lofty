@@ -1,5 +1,6 @@
-import AudioCollectionClient, { type AudioCollectionGroup, type AudioCollectionItem } from "@/components/audio-collection/audio-collection-client";
+import AudioCollectionClient, { type AudioCollectionGroup, type AudioCollectionItem, type AudioCollectionType } from "@/components/audio-collection/audio-collection-client";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_RL_WITH_STATUS_SELECT, PTE_RS_WITH_STATUS_SELECT, PTE_SST_WITH_STATUS_SELECT, PTE_WFD_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 
 type AudioQuestionRow = {
@@ -17,12 +18,22 @@ type AudioQuestionRow = {
   created_at?: string | null;
 };
 
-const AUDIO_TYPES = [
-  { id: "sst", label: "SST", title: "Summarize Spoken Text", view: "v_pte_sst_with_user_status", questionType: "SST", href: "/pte/listening/sst" },
-  { id: "rl", label: "RL", title: "Retell Lecture", view: "v_pte_rl_with_user_status", questionType: "RL", href: "/pte/speaking/rl" },
-  { id: "wfd", label: "WFD", title: "Write From Dictation", view: "v_pte_wfd_with_user_status", questionType: "WFD", href: "/pte/listening/wfd" },
-  { id: "rs", label: "RS", title: "Repeat Sentence", view: "v_pte_rs_with_user_status", questionType: "RS", href: "/pte/speaking/rs" },
-] as const;
+type AudioTypeConfig = {
+  id: AudioCollectionType;
+  label: string;
+  title: string;
+  view: string;
+  questionType: string;
+  href: string;
+  select: string;
+};
+
+const AUDIO_TYPES: AudioTypeConfig[] = [
+  { id: "sst", label: "SST", title: "Summarize Spoken Text", view: "v_pte_sst_with_user_status", questionType: "SST", href: "/pte/listening/sst", select: PTE_SST_WITH_STATUS_SELECT },
+  { id: "rl", label: "RL", title: "Retell Lecture", view: "v_pte_rl_with_user_status", questionType: "RL", href: "/pte/speaking/rl", select: PTE_RL_WITH_STATUS_SELECT },
+  { id: "wfd", label: "WFD", title: "Write From Dictation", view: "v_pte_wfd_with_user_status", questionType: "WFD", href: "/pte/listening/wfd", select: PTE_WFD_WITH_STATUS_SELECT },
+  { id: "rs", label: "RS", title: "Repeat Sentence", view: "v_pte_rs_with_user_status", questionType: "RS", href: "/pte/speaking/rs", select: PTE_RS_WITH_STATUS_SELECT },
+];
 
 function getPublicAudioUrl(path: string) {
   return normalizePublicStorageUrl(path.replace(/^\/+/, ""), "pte-audio");
@@ -58,12 +69,12 @@ export default async function AudioCollectionPage() {
       const { data, error } = await supabase
         .schema("views")
         .from(type.view)
-        .select("*")
+        .select(type.select)
         .eq("question_type", type.questionType)
         .order("created_at", { ascending: false })
         .limit(1500);
 
-      const items: AudioCollectionItem[] = ((data ?? []) as AudioQuestionRow[])
+      const items: AudioCollectionItem[] = ((data ?? []) as unknown as AudioQuestionRow[])
         .flatMap((row) => {
           const audioUrls = getUniqueAudioUrls(row);
           if (audioUrls.length === 0) return [];

@@ -18,7 +18,7 @@ type Props = {
 
     question_text: string;
 
-    answer: string;
+    answer?: string;
   };
 
   attempts: {

@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_RS_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import RsPageClient from "./rs-page-client";
 
 type RSQuestionWithStatus = {
@@ -30,7 +31,7 @@ export default async function PteSpeakingPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_rs_with_user_status")
-    .select("*")
+    .select(PTE_RS_WITH_STATUS_SELECT)
     .eq("question_type", "RS")
     .order("created_at", { ascending: false })
     .limit(1500);
@@ -49,7 +50,7 @@ export default async function PteSpeakingPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "RS")
     .single();
 

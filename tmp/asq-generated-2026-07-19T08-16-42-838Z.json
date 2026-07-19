@@ -1,0 +1,208 @@
+{
+  "created_at": "2026-07-19T08:16:42.843Z",
+  "skipped_duplicates": 0,
+  "inserted": [
+    {
+      "id": "7b714228-bf33-40e5-830a-22e7118b55b3",
+      "question_text": "What do we call a small device used to unlock a door?",
+      "answer_text": "key",
+      "is_prediction": true
+    },
+    {
+      "id": "1bd6b368-a6d0-4d32-a1ec-890d2dc223ab",
+      "question_text": "What do people usually use to dry themselves after a shower?",
+      "answer_text": "towel",
+      "is_prediction": true
+    },
+    {
+      "id": "2e4ed7ff-aa99-4d6d-9fb3-0e3339858a16",
+      "question_text": "How many months are there in a year?",
+      "answer_text": "twelve",
+      "is_prediction": true
+    },
+    {
+      "id": "bdd5c20f-ba71-4fa0-ad44-04b2eb2ff015",
+      "question_text": "What unit do we use to measure temperature?",
+      "answer_text": "degrees",
+      "is_prediction": true
+    },
+    {
+      "id": "5c448504-43f7-4720-9cd6-e232be8edcc7",
+      "question_text": "What do we call a person who repairs water pipes?",
+      "answer_text": "plumber",
+      "is_prediction": true
+    },
+    {
+      "id": "afbb1fb8-6577-408a-bcc4-da60a4e8b1cd",
+      "question_text": "Who is responsible for looking after passengers on an airplane?",
+      "answer_text": "flight attendant",
+      "is_prediction": true
+    },
+    {
+      "id": "ae6b89c5-512e-4f5d-ba88-9e247d59165f",
+      "question_text": "What do students usually borrow books from on campus?",
+      "answer_text": "library",
+      "is_prediction": true
+    },
+    {
+      "id": "49ec4277-a75a-49fd-b95d-15ba00175499",
+      "question_text": "What is the person who teaches students at a university called?",
+      "answer_text": "lecturer",
+      "is_prediction": true
+    },
+    {
+      "id": "aa5bdad2-92c9-4e0d-9610-be1e650b5b6e",
+      "question_text": "Which organ pumps blood around the body?",
+      "answer_text": "heart",
+      "is_prediction": true
+    },
+    {
+      "id": "6e907532-742f-4723-bd8d-a1e7c7bf6990",
+      "question_text": "What do we call a doctor who takes care of teeth?",
+      "answer_text": "dentist",
+      "is_prediction": true
+    },
+    {
+      "id": "7992d799-7004-4d5a-8d4a-2606bbd76ea0",
+      "question_text": "What do we call water that falls from clouds?",
+      "answer_text": "rain",
+      "is_prediction": true
+    },
+    {
+      "id": "d0bdf549-7e63-4a74-bb76-1c211e720599",
+      "question_text": "What is the large body of salt water that covers most of the Earth called?",
+      "answer_text": "ocean",
+      "is_prediction": true
+    },
+    {
+      "id": "37bc7336-d07a-43e5-bcd4-cc61c8e89bc8",
+      "question_text": "What vehicle runs on rails and carries many passengers?",
+      "answer_text": "train",
+      "is_prediction": true
+    },
+    {
+      "id": "41b6d28b-bd55-43af-8db7-9c5ee287701c",
+      "question_text": "Which direction is opposite to north?",
+      "answer_text": "south",
+      "is_prediction": true
+    },
+    {
+      "id": "b9bf4876-2211-4fc4-aa05-69906a9b5f33",
+      "question_text": "What do people pay to the government from their income?",
+      "answer_text": "tax",
+      "is_prediction": true
+    },
+    {
+      "id": "c910a8fc-3206-4441-8541-b579765499e2",
+      "question_text": "What document allows a person to travel to another country?",
+      "answer_text": "passport",
+      "is_prediction": true
+    },
+    {
+      "id": "569a36aa-67ae-4602-9565-85b1f3c68751",
+      "question_text": "What gas do humans need to breathe to stay alive?",
+      "answer_text": "oxygen",
+      "is_prediction": true
+    },
+    {
+      "id": "c961f7fe-cb51-4d97-aa63-f907e8c6ecad",
+      "question_text": "What force pulls objects toward the ground?",
+      "answer_text": "gravity",
+      "is_prediction": true
+    },
+    {
+      "id": "3e533492-04a4-4083-979b-26c094f4efb2",
+      "question_text": "What do we call a message sent by electronic mail?",
+      "answer_text": "email",
+      "is_prediction": true
+    },
+    {
+      "id": "a10d9c88-12bf-4d0e-ad78-3c5b2bcf1a8f",
+      "question_text": "What device do people use to make phone calls and access the internet?",
+      "answer_text": "smartphone",
+      "is_prediction": true
+    }
+  ],
+  "categories": [
+    {
+      "category": "Everyday life / objects",
+      "question_text": "What do we call a small device used to unlock a door?"
+    },
+    {
+      "category": "Everyday life / objects",
+      "question_text": "What do people usually use to dry themselves after a shower?"
+    },
+    {
+      "category": "Time / numbers / units",
+      "question_text": "How many months are there in a year?"
+    },
+    {
+      "category": "Time / numbers / units",
+      "question_text": "What unit do we use to measure temperature?"
+    },
+    {
+      "category": "People / jobs / roles",
+      "question_text": "What do we call a person who repairs water pipes?"
+    },
+    {
+      "category": "People / jobs / roles",
+      "question_text": "Who is responsible for looking after passengers on an airplane?"
+    },
+    {
+      "category": "Education / campus",
+      "question_text": "What do students usually borrow books from on campus?"
+    },
+    {
+      "category": "Education / campus",
+      "question_text": "What is the person who teaches students at a university called?"
+    },
+    {
+      "category": "Health / body",
+      "question_text": "Which organ pumps blood around the body?"
+    },
+    {
+      "category": "Health / body",
+      "question_text": "What do we call a doctor who takes care of teeth?"
+    },
+    {
+      "category": "Nature / weather / geography",
+      "question_text": "What do we call water that falls from clouds?"
+    },
+    {
+      "category": "Nature / weather / geography",
+      "question_text": "What is the large body of salt water that covers most of the Earth called?"
+    },
+    {
+      "category": "Transport / directions",
+      "question_text": "What vehicle runs on rails and carries many passengers?"
+    },
+    {
+      "category": "Transport / directions",
+      "question_text": "Which direction is opposite to north?"
+    },
+    {
+      "category": "Government / law / business",
+      "question_text": "What do people pay to the government from their income?"
+    },
+    {
+      "category": "Government / law / business",
+      "question_text": "What document allows a person to travel to another country?"
+    },
+    {
+      "category": "Science / basic knowledge",
+      "question_text": "What gas do humans need to breathe to stay alive?"
+    },
+    {
+      "category": "Science / basic knowledge",
+      "question_text": "What force pulls objects toward the ground?"
+    },
+    {
+      "category": "Communication / technology",
+      "question_text": "What do we call a message sent by electronic mail?"
+    },
+    {
+      "category": "Communication / technology",
+      "question_text": "What device do people use to make phone calls and access the internet?"
+    }
+  ]
+}

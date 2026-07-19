@@ -1,0 +1,76 @@
+{
+  "created_at": "2026-07-19T06:34:50.415Z",
+  "prediction_only": true,
+  "rows": [
+    {
+      "table": "rl",
+      "id": "3981a926-b3a8-4d69-9552-6793af212494",
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/rl/f8050e8ae5aeaba6a939581cbb85c4eb.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/old/uploadVideo/20190912_ea109ac2-a086-43e2-9c65-075aaf906b4b.mp3",
+      "storage_path": "rl/f8050e8ae5aeaba6a939581cbb85c4eb.mp3"
+    },
+    {
+      "table": "rl",
+      "id": "29cde332-852a-4104-b5ac-1ab6967aad04",
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/rl/f888e8bedbf31b20c3515a8fd4a7be83.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/SRL/r/3edd6ffadda7a30faf89073af321025f.mp3",
+      "storage_path": "rl/f888e8bedbf31b20c3515a8fd4a7be83.mp3"
+    },
+    {
+      "table": "rl",
+      "id": "bd405672-33fc-447a-a723-2f36f25ddf69",
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/rl/6fe1ffac793434d776f57afe6f00996c.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/SRL/r/818ff380749f9ae0fede77d06199c391.mp3",
+      "storage_path": "rl/6fe1ffac793434d776f57afe6f00996c.mp3"
+    },
+    {
+      "table": "rl",
+      "id": "265470ea-4b3e-4c06-a4a1-0407a209698e",
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/rl/2c820a5967d3fa3677fbae6a44fdf278.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/old/uploadVideo/20190912_41c8d1d4-2599-4ae6-8248-cb9c046dbe29.mp3",
+      "storage_path": "rl/2c820a5967d3fa3677fbae6a44fdf278.mp3"
+    },
+    {
+      "table": "rl",
+      "id": "1fc3939f-79e5-4565-aa68-bea0514306b8",
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/rl/8fafaa16f0199205a36765caf5a92ecd.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/SRL/r/997f9f4f76d1e9696f04b911c46b2c8f.mp3",
+      "storage_path": "rl/8fafaa16f0199205a36765caf5a92ecd.mp3"
+    },
+    {
+      "table": "sst",
+      "id": 136,
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/sst/111136.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/LSST/r/5ac55c17382b1f2711f805c6b2316690.mp3",
+      "storage_path": "sst/111136.mp3"
+    },
+    {
+      "table": "sst",
+      "id": 184,
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/sst/111184.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/LSST/r/d324e11609682231a86b4556d2d35e78.mp3",
+      "storage_path": "sst/111184.mp3"
+    },
+    {
+      "table": "sst",
+      "id": 54,
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/sst/111054.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/LSST/r/eb3593c8790eadf17583b7e5047d859e.mp3",
+      "storage_path": "sst/111054.mp3"
+    },
+    {
+      "table": "sst",
+      "id": 72,
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/sst/111072.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/LSST/r/9870d8ea56caf0798e560dfd2b7a8704.mp3",
+      "storage_path": "sst/111072.mp3"
+    },
+    {
+      "table": "sst",
+      "id": 131,
+      "audio_url": "https://xnmlzimdpawdqikgbpvw.supabase.co/storage/v1/object/public/pte-audio/sst/111131.mp3",
+      "source_audio_url": "https://upload.fireflyau.com/pte/LSST/r/b5d0825a2280b638bf550d9aa623964f.mp3",
+      "storage_path": "sst/111131.mp3"
+    }
+  ]
+}

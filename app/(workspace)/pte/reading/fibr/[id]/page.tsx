@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_FIBR_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 
 import Tag from "@/components/ui/tag";
 
@@ -39,7 +40,7 @@ export default async function FibrQuestionDetailPage({
     .from(
       "v_pte_fibr_with_user_status",
     )
-    .select("*")
+    .select(PTE_FIBR_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 

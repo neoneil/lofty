@@ -32,6 +32,13 @@ type UserRecording = {
   created_at: string | null;
 };
 
+type AsqScoreResult = {
+  transcript: string;
+  correctAnswer: string;
+  matchedAnswer: string | null;
+  answerVariants: string[];
+};
+
 type Props = {
   question: Question;
 };
@@ -103,6 +110,7 @@ export default function AsqDetailClient({ question }: Props) {
   const [recordingsLoading, setRecordingsLoading] = useState(true);
   const [showAnswer, setShowAnswer] = useState(false);
   const [audioFinished, setAudioFinished] = useState(!question.audio_url);
+  const [scoreResult, setScoreResult] = useState<{ isCorrect: boolean; score: number; feedback: AsqScoreResult } | null>(null);
 
   const questionText = question.question_text?.trim() || "暂无题目文本";
   const answerText = question.answer_text?.trim() || "暂无答案文本";
@@ -207,12 +215,57 @@ export default function AsqDetailClient({ question }: Props) {
             maxDuration={10}
             autoStart
             uploadUrl="/api/pte/asq/upload"
-            onUploadSuccess={(newRecording) => {
+            aiUsageFeature="pte_asq"
+            onUploadSuccess={(newRecording, response) => {
+              const feedback = response?.asqFeedback as AsqScoreResult | undefined;
+              const isCorrect = response?.isCorrect === true;
+              const score = typeof response?.score === "number" ? response.score : isCorrect ? 90 : 0;
+
               setRecordings((prev) => [newRecording, ...prev]);
+              if (feedback) {
+                setScoreResult({ isCorrect, score, feedback });
+              }
               setShowAnswer(true);
               router.refresh();
             }}
           />
+        ) : null}
+
+        {scoreResult ? (
+          <Card>
+            <CardContent className="space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <CardTitle>自动判分结果</CardTitle>
+                  <CardDescription>系统已根据录音转写与标准答案自动比对。</CardDescription>
+                </div>
+                <span className={`rounded px-4 py-1.5 text-sm font-semibold ${scoreResult.isCorrect ? "bg-[var(--success-soft)] text-[var(--success)]" : "bg-[var(--danger-soft)] text-[var(--danger)]"}`}>
+                  {scoreResult.isCorrect ? "Correct" : "Incorrect"} · {scoreResult.score}
+                </span>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">你的转写答案</div>
+                  <p className="mt-2 text-sm leading-7 text-[var(--text)]">{scoreResult.feedback.transcript || "未识别到有效答案"}</p>
+                </div>
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">标准答案</div>
+                  <p className="mt-2 text-sm leading-7 text-[var(--text)]">{scoreResult.feedback.correctAnswer || answerText}</p>
+                </div>
+              </div>
+
+              {scoreResult.feedback.matchedAnswer ? (
+                <div className="rounded border border-[var(--success)]/25 bg-[var(--success-soft)] px-4 py-3 text-sm font-semibold text-[var(--success)]">
+                  匹配到答案：{scoreResult.feedback.matchedAnswer}
+                </div>
+              ) : (
+                <div className="rounded border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-semibold text-[var(--danger)]">
+                  未匹配到标准答案，已记录为答错。
+                </div>
+              )}
+            </CardContent>
+          </Card>
         ) : null}
 
         <Card>

@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_DI_WITH_STATUS_SELECT, PTE_QUESTION_INFO_SELECT } from "@/lib/pte/select-fields";
 import DiPageClient from "./di-page-client";
 
 type DiQuestionWithStatus = {
@@ -41,7 +42,7 @@ export default async function PteSpeakingDiPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_di_with_user_status")
-    .select("*")
+    .select(PTE_DI_WITH_STATUS_SELECT)
     .eq("question_type", "DI")
     .order("created_at", { ascending: false })
     .limit(1500);
@@ -60,7 +61,7 @@ export default async function PteSpeakingDiPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "DI")
     .single();
 

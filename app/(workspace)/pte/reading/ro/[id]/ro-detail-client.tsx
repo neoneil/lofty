@@ -27,6 +27,8 @@ import { ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
 
 import { getQuestionOrder } from "@/lib/question-order";
 
+import DictionaryText from "@/components/dictionary/dictionary-text";
+
 import Tag from "@/components/ui/tag";
 
 import { Button } from "@/components/ui-v2/button";
@@ -190,7 +192,7 @@ function SortableSentence({
           </div>
 
           <p className="text-[15px] leading-6 text-[var(--text-soft)]">
-            {sentence.text}
+            <DictionaryText text={sentence.text} />
           </p>
         </div>
       </div>
@@ -440,7 +442,7 @@ export default function RoDetailClient({ question, attempts }: Props) {
                 </div>
 
                 <p className="text-[15px] leading-6 text-[var(--text-soft)]">
-                  {sentence}
+                  <DictionaryText text={sentence} />
                 </p>
               </div>
             ))}

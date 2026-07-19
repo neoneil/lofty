@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
+import { STUDENT_QUESTION_STAT_SELECT, STUDENT_WRONG_QUESTION_SELECT } from "@/lib/pte/select-fields";
 
 const EXAM_TYPE = "PTE";
 
@@ -302,7 +303,7 @@ export async function POST(
       .from(
         "student_question_stats",
       )
-      .select("*")
+      .select(STUDENT_QUESTION_STAT_SELECT)
       .eq(
         "user_id",
         user.id,
@@ -459,7 +460,7 @@ export async function POST(
         .from(
           "student_wrong_questions",
         )
-        .select("*")
+        .select(STUDENT_WRONG_QUESTION_SELECT)
         .eq(
           "user_id",
           user.id,

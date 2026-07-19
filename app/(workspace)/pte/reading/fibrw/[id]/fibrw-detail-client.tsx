@@ -18,6 +18,8 @@ import {
 
 import { getQuestionOrder } from "@/lib/question-order";
 
+import DictionaryText from "@/components/dictionary/dictionary-text";
+
 import Tag from "@/components/ui/tag";
 
 import { Button } from "@/components/ui-v2/button";
@@ -458,7 +460,7 @@ function FibrwDetailClient({
 
                 return (
                   <span key={index}>
-                    {part}
+                    <DictionaryText text={part} />
                   </span>
                 );
 

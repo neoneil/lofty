@@ -1,11 +1,12 @@
 import Link from "next/link";
-import AudioPlayer from "@/components/site/AudioPlayer";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_WFD_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import WfdDetailClient from "./wfd-detail-client";
 import Tag from "@/components/ui/tag";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui-v2/button";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+import { PteVoiceAudioPlayer } from "@/components/pte-ai-audio/pte-voice-audio-player";
 type PageProps = {
   params: Promise<{
     id: string;
@@ -22,7 +23,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_wfd_with_user_status")
-    .select("*")
+    .select(PTE_WFD_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -35,6 +36,13 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const { data: audioMeta } = await supabase
+    .schema("pte")
+    .from("wfd")
+    .select("audio_status")
+    .eq("id", id)
+    .maybeSingle();
 
   return (
     <>
@@ -95,11 +103,13 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
 
             {question.audio_url ? (
               <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-                <AudioPlayer
-                  url={getPublicAudioUrl(question.audio_url)}
+                <PteVoiceAudioPlayer
+                  questionType="wfd"
+                  questionId={question.id}
+                  fallbackUrl={getPublicAudioUrl(question.audio_url)}
+                  aiAudioReady={audioMeta?.audio_status === "ready"}
                   autoPlay
                   countdown={10}
-                  size="compact"
                 />
               </div>
             ) : (

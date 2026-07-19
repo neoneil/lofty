@@ -32,6 +32,7 @@ type Question = {
   image_url: string | null;
   question_image_url: string | null;
   original_text: string | null;
+  transcript: string | null;
   answer_info: string | null;
   ai_keywords: string | null;
   keywords: string | null;
@@ -64,6 +65,7 @@ function getDisplayTitle(question: Question) {
     question.title ||
     question.question_title ||
     question.question_text ||
+    question.transcript ||
     question.original_text ||
     "RL Question"
   );

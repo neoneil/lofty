@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_FIBR_WITH_STATUS_SELECT, PTE_QUESTION_INFO_SELECT } from "@/lib/pte/select-fields";
 
 import FibrPageClient from "./fibr-page-client";
 
@@ -46,7 +47,7 @@ export default async function PteReadingFibrPage() {
     .from(
       "v_pte_fibr_with_user_status",
     )
-    .select("*")
+    .select(PTE_FIBR_WITH_STATUS_SELECT)
     .eq("question_type", "FIBR")
     .order("created_at", {
       ascending: false,
@@ -89,7 +90,7 @@ export default async function PteReadingFibrPage() {
   const { data: questionInfo } =
     await supabase
       .from("all_question_info")
-      .select("*")
+      .select(PTE_QUESTION_INFO_SELECT)
       .eq("questions", "FIBR")
       .single();
 

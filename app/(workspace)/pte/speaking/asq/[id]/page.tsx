@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_ASQ_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import AsqDetailClient from "./asq-detail-client";
@@ -18,7 +19,7 @@ export default async function AsqQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_asq_with_user_status")
-    .select("*")
+    .select(PTE_ASQ_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -31,6 +32,13 @@ export default async function AsqQuestionDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const { data: audioMeta } = await supabase
+    .schema("pte")
+    .from("asq")
+    .select("audio_url, audio_duration_seconds, ai_voice, audio_status")
+    .eq("id", id)
+    .maybeSingle();
 
   return (
     <div className="mt-1">
@@ -46,12 +54,6 @@ export default async function AsqQuestionDetailPage({ params }: PageProps) {
 
             <div className="flex flex-wrap items-center justify-end gap-2">
               <Tag tone="theme">ASQ</Tag>
-
-              {question.source_question_id ? (
-                <Tag tone="neutral">{question.source_question_id}</Tag>
-              ) : null}
-
-              {question.is_real_exam ? <Tag tone="yellow">考试原题</Tag> : null}
 
               {question.is_prediction ? <Tag tone="purple">活跃</Tag> : null}
 
@@ -79,7 +81,7 @@ export default async function AsqQuestionDetailPage({ params }: PageProps) {
             ) : null}
           </div>
 
-          <AsqDetailClient question={question} />
+          <AsqDetailClient question={{ ...question, audio_url: audioMeta?.audio_status === "ready" ? audioMeta.audio_url : null }} />
         </section>
       </section>
     </div>

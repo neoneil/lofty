@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_RL_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import RlDetailClient from "./rl-detail-client";
@@ -18,7 +19,7 @@ export default async function RlQuestionDetailPage({ params }: PageProps) {
   const { data: question, error } = await supabase
     .schema("views")
     .from("v_pte_rl_with_user_status")
-    .select("*")
+    .select(PTE_RL_WITH_STATUS_SELECT)
     .eq("id", id)
     .single();
 
@@ -31,6 +32,18 @@ export default async function RlQuestionDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const { data: transcriptRow } = await supabase
+    .schema("pte")
+    .from("rl")
+    .select("transcript")
+    .eq("id", question.id)
+    .maybeSingle();
+
+  const questionWithTranscript = {
+    ...question,
+    transcript: transcriptRow?.transcript ?? null,
+  };
 
   return (
     <div className="mt-1">
@@ -79,7 +92,7 @@ export default async function RlQuestionDetailPage({ params }: PageProps) {
             ) : null}
           </div>
 
-          <RlDetailClient question={question} />
+          <RlDetailClient question={questionWithTranscript} />
         </section>
       </section>
     </div>

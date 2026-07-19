@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
+import { STUDENT_QUESTION_STAT_SELECT } from "@/lib/pte/select-fields";
 
 import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 
@@ -199,7 +200,7 @@ export async function POST(req: Request) {
       error: existingStatError,
     } = await supabase
       .from("student_question_stats")
-      .select("*")
+      .select(STUDENT_QUESTION_STAT_SELECT)
       .eq("user_id", user.id)
       .eq(
         "question_source",

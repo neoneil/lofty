@@ -10,12 +10,18 @@ import {
 type DictionaryContextType = {
   word: string;
   isOpen: boolean;
+  showPteExamples: boolean;
 
   openDictionary: (
-    word: string
+    word: string,
+    options?: DictionaryOpenOptions
   ) => void;
 
   closeDictionary: () => void;
+};
+
+type DictionaryOpenOptions = {
+  showPteExamples?: boolean;
 };
 
 const DictionaryContext =
@@ -35,14 +41,22 @@ export function DictionaryProvider({
   const [isOpen, setIsOpen] =
     useState(false);
 
+  const [showPteExamples, setShowPteExamples] =
+    useState(true);
+
   const openDictionary = (
-    newWord: string
+    newWord: string,
+    options?: DictionaryOpenOptions
   ) => {
 
     setWord(
       newWord
         .trim()
         .toLowerCase()
+    );
+
+    setShowPteExamples(
+      options?.showPteExamples ?? true
     );
 
     setIsOpen(true);
@@ -57,10 +71,11 @@ export function DictionaryProvider({
     () => ({
       word,
       isOpen,
+      showPteExamples,
       openDictionary,
       closeDictionary
     }),
-    [word, isOpen]
+    [word, isOpen, showPteExamples]
   );
 
   return (

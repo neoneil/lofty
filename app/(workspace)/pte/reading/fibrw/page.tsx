@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_FIBRW_WITH_STATUS_SELECT, PTE_QUESTION_INFO_SELECT } from "@/lib/pte/select-fields";
 
 import FibrwPageClient from "./fibrw-page-client";
 
@@ -65,7 +66,7 @@ export default async function PteReadingFibrwPage() {
     .from(
       "v_pte_fibrw_with_user_status",
     )
-    .select("*")
+    .select(PTE_FIBRW_WITH_STATUS_SELECT)
     .eq("question_type", "FIBRW")
     .order("created_at", {
       ascending: false,
@@ -96,10 +97,10 @@ export default async function PteReadingFibrwPage() {
       q.last_attempt_at ?? null,
 
     latest_score:
-      q.latest_score ?? null,
+      null,
 
     best_score:
-      q.best_score ?? null,
+      null,
 
     is_wrong_question:
       q.is_wrong_question ?? false,
@@ -108,7 +109,7 @@ export default async function PteReadingFibrwPage() {
   const { data: questionInfo } =
     await supabase
       .from("all_question_info")
-      .select("*")
+      .select(PTE_QUESTION_INFO_SELECT)
       .eq("questions", "FIBRW")
       .single();
 

@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from "next/navigation";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+import { PteLectureAudioPlayer } from "@/components/pte-ai-audio/pte-lecture-audio-player";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
@@ -27,6 +28,7 @@ type Question = {
   source_audio_url: string | null;
   storage_path: string | null;
   original_text: string | null;
+  transcript: string | null;
   answer_info: string | null;
   ai_keywords: string | null;
   keywords: string | null;
@@ -135,7 +137,8 @@ export default function RlDetailClient({ question }: Props) {
   const [scoreResult, setScoreResult] = useState<SpeakingKeywordScoreResult | null>(null);
 
   const audioUrl = getAudioUrl(question);
-  const originalText = question.original_text?.trim();
+  const originalText = question.transcript?.trim() || question.original_text?.trim();
+  const lectureAudioReady = question.audio_url === `PTE/speaking/RL/${question.id}/marin.mp3`;
 
   const loadRecordings = useCallback(async ({ showLoading = true }: { showLoading?: boolean } = {}) => {
     if (showLoading) setRecordingsLoading(true);
@@ -175,14 +178,8 @@ export default function RlDetailClient({ question }: Props) {
       </div>
 
       {audioUrl ? (
-        <div className="mx-auto w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
-          <AudioPlayer
-            url={audioUrl}
-            autoPlay
-            countdown={10}
-            size="compact"
-            onEnded={() => setAudioFinished(true)}
-          />
+        <div className="mx-auto w-full max-w-5xl max-sm:max-w-full">
+          <PteLectureAudioPlayer questionType="rl" questionId={question.id} fallbackUrl={audioUrl} lectureAudioReady={lectureAudioReady} autoPlay countdown={10} onEnded={() => setAudioFinished(true)} />
         </div>
       ) : (
         <div className="mx-auto w-full max-w-[50%] rounded border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)] max-lg:max-w-[72%] max-sm:max-w-full">

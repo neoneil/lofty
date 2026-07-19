@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_RO_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import RoPageClient from "./ro-page-client";
 
 type RoQuestionWithStatus = {
@@ -29,7 +30,7 @@ export default async function PteReadingRoPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_ro_with_user_status")
-    .select("*")
+    .select(PTE_RO_WITH_STATUS_SELECT)
     .order("created_at", { ascending: false })
     .limit(1500);
 
@@ -48,7 +49,7 @@ export default async function PteReadingRoPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "RO")
     .single();
 

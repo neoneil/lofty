@@ -298,10 +298,12 @@ function QuestionBlock({ question, answers, onAnswerChange, suppressInstruction 
 }
 
 function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, onCueClick }: { bookNumber: number; testNumber: number; sectionNumber: number; currentTime: number; onCueClick: (start: number) => void }) {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const cueRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [cues, setCues] = useState<TranscriptCue[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty" | "error">("loading");
   const activeCue = cues.find((cue) => currentTime >= cue.start && currentTime < cue.end);
+  const activeCueId = activeCue?.id ?? null;
 
   useEffect(() => {
     let cancelled = false;
@@ -330,9 +332,22 @@ function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, o
   }, [bookNumber, testNumber, sectionNumber]);
 
   useEffect(() => {
-    if (!activeCue) return;
-    cueRefs.current[activeCue.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [activeCue?.id]);
+    if (!activeCueId) return;
+    const container = scrollContainerRef.current;
+    const activeNode = cueRefs.current[activeCueId];
+    if (!container || !activeNode) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const activeRect = activeNode.getBoundingClientRect();
+    const activeOffsetTop = activeRect.top - containerRect.top + container.scrollTop;
+    const targetTop = activeOffsetTop - container.clientHeight / 2 + activeNode.offsetHeight / 2;
+    const maxScrollTop = Math.max(0, container.scrollHeight - container.clientHeight);
+
+    container.scrollTo({
+      top: Math.min(maxScrollTop, Math.max(0, targetTop)),
+      behavior: "smooth",
+    });
+  }, [activeCueId]);
 
   return (
     <div className="flex h-full flex-col rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)]">
@@ -340,14 +355,14 @@ function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, o
         <div className="text-sm font-semibold text-[var(--text)]">听力原文</div>
         <p className="mt-1 text-xs text-[var(--text-soft)]">Cambridge {bookNumber} · Test {testNumber} · Part {sectionNumber}</p>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto p-4">
+      <div ref={scrollContainerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4">
         {status === "loading" && <p className="text-sm text-[var(--text-soft)]">字幕加载中...</p>}
         {status === "empty" && <p className="text-sm text-[var(--text-soft)]">这个 Part 暂时没有字幕内容。</p>}
         {status === "error" && <p className="text-sm text-[var(--text-soft)]">字幕读取失败，请稍后重试。</p>}
         {status === "ready" && (
           <div className="space-y-3">
             {cues.map((cue) => {
-              const active = cue.id === activeCue?.id;
+              const active = cue.id === activeCueId;
               return (
                 <button key={cue.id} ref={(node) => { cueRefs.current[cue.id] = node; }} type="button" onClick={() => onCueClick(cue.start)} className="grid w-full grid-cols-[3.5rem_1fr] gap-3 rounded-[var(--radius-sm)] px-1 py-1 text-left transition hover:text-[var(--primary)]">
                   <span className={cn("pt-0.5 text-xs tabular-nums text-[var(--text-faint)]", active && "font-semibold text-[var(--primary)]")}>{formatCueTime(cue.start)}</span>

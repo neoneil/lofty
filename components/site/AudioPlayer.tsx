@@ -10,15 +10,20 @@ export default function AudioPlayer({
   countdown = 0,
   size = "default",
   onEnded,
+  onTimeUpdate,
+  seekTo,
 }: {
   url: string;
   autoPlay?: boolean;
   countdown?: number;
   size?: "default" | "compact";
   onEnded?: () => void;
+  onTimeUpdate?: (currentTime: number) => void;
+  seekTo?: number | null;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const onEndedRef = useRef(onEnded);
+  const onTimeUpdateRef = useRef(onTimeUpdate);
 
   const [playing, setPlaying] = useState(false);
 
@@ -49,6 +54,10 @@ export default function AudioPlayer({
   useEffect(() => {
     onEndedRef.current = onEnded;
   }, [onEnded]);
+
+  useEffect(() => {
+    onTimeUpdateRef.current = onTimeUpdate;
+  }, [onTimeUpdate]);
 
   useEffect(() => {
     let cancelled = false;
@@ -129,6 +138,7 @@ export default function AudioPlayer({
       }
 
       setCurrentTime(audio.currentTime);
+      onTimeUpdateRef.current?.(audio.currentTime);
     };
 
     audio.onended = () => {
@@ -148,6 +158,15 @@ export default function AudioPlayer({
       if (audioRef.current === audio) audioRef.current = null;
     };
   }, [resolvedUrl]);
+
+  useEffect(() => {
+    if (seekTo == null || !audioRef.current) return;
+    audioRef.current.currentTime = Math.max(0, seekTo);
+    setCurrentTime(audioRef.current.currentTime);
+    if (audioRef.current.duration) {
+      setProgress(audioRef.current.currentTime / audioRef.current.duration);
+    }
+  }, [seekTo]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {

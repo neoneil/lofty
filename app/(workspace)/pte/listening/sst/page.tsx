@@ -1,5 +1,6 @@
 
 import { requireUser } from "@/lib/auth/require-user";
+import { PTE_QUESTION_INFO_SELECT, PTE_SST_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import SstPageClient from "./sst-page-client";
 type SstQuestionWithStatus = {
   id: string;
@@ -35,17 +36,23 @@ export default async function PteListeningPage() {
   const { data: questionsData, error: questionsError } = await supabase
     .schema("views")
     .from("v_pte_sst_with_user_status")
-    .select("*")
+    .select(PTE_SST_WITH_STATUS_SELECT)
     .eq("question_type", "SST")
     .order("created_at", { ascending: false })
     .limit(1500);
 
   const questions = (questionsData ?? []).map((q) => ({
     ...q,
+    source_platform: null,
+    tags: null,
+    audio_duration_seconds: null,
+    ai_voice: null,
+    usage_count: null,
     is_practiced: q.is_practiced ?? false,
     attempt_count: q.attempt_count ?? 0,
     correct_count: q.correct_count ?? 0,
     wrong_count: q.wrong_count ?? 0,
+    completed_count: 0,
     last_attempt_at: q.last_attempt_at ?? null,
     latest_score: q.latest_score ?? null,
     best_score: q.best_score ?? null,
@@ -54,7 +61,7 @@ export default async function PteListeningPage() {
 
   const { data: questionInfo } = await supabase
     .from("all_question_info")
-    .select("*")
+    .select(PTE_QUESTION_INFO_SELECT)
     .eq("questions", "SST")
     .single();
 

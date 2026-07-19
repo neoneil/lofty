@@ -64,11 +64,10 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+      { url: "/xiaoma-transparent.png", type: "image/png" },
     ],
-    shortcut: "/favicon-32x32.png",
-    apple: "/favicon-32x32.png",
+    shortcut: "/xiaoma-transparent.png",
+    apple: "/xiaoma-transparent.png",
   },
 };
 
