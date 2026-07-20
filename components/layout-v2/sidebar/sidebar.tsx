@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import {
   BookOpen,
@@ -31,7 +31,14 @@ import { BRAND_NAME_CN } from "@/lib/brand";
 
 export function Sidebar({ userId }: { userId: string | null }) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const searchParams = useSearchParams();
+  const shouldStartCollapsed = isIeltsExamRoute(pathname, searchParams);
+  const [collapsed, setCollapsed] = useState(shouldStartCollapsed);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setCollapsed(shouldStartCollapsed), 0);
+    return () => window.clearTimeout(timer);
+  }, [shouldStartCollapsed]);
 
   const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
   const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
@@ -321,5 +328,12 @@ export function Sidebar({ userId }: { userId: string | null }) {
         <SidebarUser collapsed={collapsed} userId={userId} />
       </div>
     </aside>
+  );
+}
+
+function isIeltsExamRoute(pathname: string, searchParams: URLSearchParams) {
+  return (
+    (pathname === "/ielts/listening" || pathname === "/ielts/reading") &&
+    Boolean(searchParams.get("test"))
   );
 }

@@ -1,12 +1,13 @@
 import { Suspense } from "react";
-import LoginForm from "@/components/auth/login-form";
+import AuthV2Form from "@/components/auth/auth-v2-form";
 
 function LoginFallback() {
   return (
-    <div className="min-h-screen bg-transparent px-4 py-8">
-      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl items-center justify-center">
-        <div className="w-full max-w-105 rounded border border-(--border) bg-(--card-soft-bg) p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-10">
-          <p className="text-sm text-(--muted)">Loading...</p>
+    <div className="min-h-[calc(100vh-3.5rem)] bg-[var(--bg)] px-4 py-6 sm:px-6 lg:min-h-[calc(100vh-4rem)] lg:py-10">
+      <div className="mx-auto grid w-full max-w-6xl gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
+        <div className="min-h-80 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] shadow-[var(--shadow-md)]" />
+        <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow-lg)]">
+          <p className="text-sm text-[var(--text-soft)]">加载中...</p>
         </div>
       </div>
     </div>
@@ -15,21 +16,8 @@ function LoginFallback() {
 
 export default function LoginPage() {
   return (
-    <main className="mx-auto max-w-4xl bg-transparent px-6 py-12">
-      <Suspense fallback={<LoginFallback />}>
-        <LoginForm />
-      </Suspense>
-    </main>
+    <Suspense fallback={<LoginFallback />}>
+      <AuthV2Form mode="login" />
+    </Suspense>
   );
 }
-
-// import LoginForm from "@/components/auth/login-form";
-
-// export default function LoginPage() {
-//   return (
-//     <main className="mx-auto max-w-4xl px-6 py-12 bg-transparent">
-//       {/* <h1 className="mb-6 text-3xl font-bold">Login</h1> */}
-//       <LoginForm />
-//     </main>
-//   );
-// }

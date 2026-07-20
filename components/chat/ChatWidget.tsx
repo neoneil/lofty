@@ -460,13 +460,13 @@ export default function ChatWidget() {
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <div className="relative flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--primary)]/15 bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)]">
-                    IB
+                    Lofty
                   </div>
 
                   <div className="relative">
-                    <div className="font-semibold tracking-tight text-[var(--text)]">Ibot</div>
+                    <div className="font-semibold tracking-tight text-[var(--text)]">小马哥</div>
                     <div className="text-xs font-medium text-[var(--text-soft)]">
-                      Lofty AI Coach
+                      AI助手
                     </div>
                   </div>
                 </div>

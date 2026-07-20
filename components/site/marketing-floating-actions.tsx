@@ -52,7 +52,7 @@ function PopupContent({ type }: { type: PanelType }) {
         </div>
 
         <h2 className="mt-4 text-2xl font-black tracking-tight text-[var(--text)] sm:text-3xl">
-          扫码领取
+          扫码加老师好友
         </h2>
 
         <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">
@@ -64,7 +64,7 @@ function PopupContent({ type }: { type: PanelType }) {
             添加老师
           </div>
           <div className="mt-2 text-lg font-black text-[var(--primary)]">
-            雅思/PTE 备考学院
+            澳洲小马哥
           </div>
           <div className="mt-4 grid gap-2 text-sm leading-6 text-[var(--text-soft)]">
             <p>免费试听课程与学习诊断</p>
@@ -121,16 +121,16 @@ export function MarketingFloatingActions() {
           {actions.map((action, index) => {
             const Icon = action.icon;
             return (
-              <button key={action.type} type="button" onClick={() => openPanel(action.type)} className={cn("group flex w-[104px] flex-col items-center gap-2 px-3 py-4 text-center transition hover:bg-[var(--primary-soft)]", index ? "border-t border-[var(--border)]" : "")}>
+              <button key={action.type} type="button" onClick={() => openPanel(action.type)} className={cn("group flex w-[88px] flex-col items-center gap-2 px-2 py-4 text-center transition hover:bg-[var(--primary-soft)]", index ? "border-t border-[var(--border)]" : "")}>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition group-hover:border-[var(--primary)]/35 group-hover:bg-[var(--card)]">
-                  {action.type === "trial" ? <WechatMark className="h-5 w-5" /> : <Icon size={19} />}
+                  {action.type === "trial" ? <WechatMark className="h-7 w-7" /> : <Icon size={19} />}
                 </span>
                 <span className="text-xs font-bold leading-5 text-[var(--text)]">{action.title}</span>
               </button>
             );
           })}
 
-          <Link href="/#faq" className="group flex w-[104px] flex-col items-center gap-2 border-t border-[var(--border)] px-3 py-4 text-center transition hover:bg-[var(--primary-soft)]">
+          <Link href="/#faq" className="group flex w-[88px] flex-col items-center gap-2 border-t border-[var(--border)] px-2 py-4 text-center transition hover:bg-[var(--primary-soft)]">
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition group-hover:border-[var(--primary)]/35 group-hover:bg-[var(--card)]">
               <HelpCircle size={20} />
             </span>
@@ -151,7 +151,7 @@ export function MarketingFloatingActions() {
           {activePanel ? <PopupContent type={activePanel} /> : null}
 
           <div className="mt-5 flex flex-col gap-3 border-t border-[var(--border)] pt-4 text-xs text-[var(--text-faint)] sm:flex-row sm:items-center sm:justify-between">
-            <span>{BRAND_NAME_CN}雅思/PTE 备考学院</span>
+            <span>{BRAND_NAME_CN}雅思/PTE</span>
             <Link href="/contact" className="inline-flex items-center gap-1 font-bold text-[var(--primary)] transition hover:text-[var(--primary-hover)]">
               查看更多咨询方式<ArrowRight size={13} />
             </Link>

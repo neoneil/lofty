@@ -30,7 +30,7 @@ export function Topbar({ user, canAccessAdmin }: Props) {
 
         <button type="button" onClick={openAiCoach} className="hidden h-11 items-center gap-2 rounded-full bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--primary-hover)] xl:flex">
           <Sparkles size={16} />
-          AI Coach
+          小马哥AI
         </button>
 
         <NotificationDropdown />

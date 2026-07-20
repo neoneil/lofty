@@ -6,7 +6,6 @@ import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, Languag
 
 import { useDictionary } from "@/components/dictionary/dictionary-context";
 import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
-import { BrandMark } from "@/components/site/brand-mark";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { BRAND_NAME_CN } from "@/lib/brand";
@@ -295,7 +294,6 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
         <div className="grid min-h-16 gap-3 px-3 py-3 sm:px-5 lg:grid-cols-[minmax(220px,1fr)_auto_minmax(420px,1fr)] lg:items-center">
           <div className="flex items-center gap-3">
             <Link href={`/ielts/reading?book=${data.book.book_number}`} className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] transition hover:text-[var(--primary)]"><ArrowLeft size={17} /></Link>
-            <BrandMark size="sm" />
             <div>
               <div className="text-sm font-semibold text-[var(--text)]">{BRAND_NAME_CN} IELTS Reading</div>
               <div className="text-xs text-[var(--text-soft)]">Cambridge {data.book.book_number} · Test {selectedTestNumber}</div>
