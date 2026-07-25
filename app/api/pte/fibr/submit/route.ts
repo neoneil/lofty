@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { STUDENT_QUESTION_STAT_SELECT, STUDENT_WRONG_QUESTION_SELECT } from "@/lib/pte/select-fields";
+import { recordQuestionOutcome } from "@/lib/pte/record-question-outcome";
 
 const EXAM_TYPE = "PTE";
 const MODULE_TYPE = "FIBR";
@@ -145,101 +145,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { data: existingStat } = await supabase
-      .from("student_question_stats")
-      .select(STUDENT_QUESTION_STAT_SELECT)
-      .eq("user_id", user.id)
-      .eq("question_source", QUESTION_SOURCE)
-      .eq("question_id", questionId)
-      .maybeSingle();
-
-    if (!existingStat) {
-      await supabase.from("student_question_stats").insert({
-        user_id: user.id,
-        exam_type: EXAM_TYPE,
-        module_type: MODULE_TYPE,
-        question_source: QUESTION_SOURCE,
-        question_id: questionId,
-        attempt_count: 1,
-        completed_count: 1,
-        correct_count: isCorrect ? 1 : 0,
-        wrong_count: isCorrect ? 0 : 1,
-        total_duration_seconds: durationSeconds,
-        last_attempt_at: nowIso,
-        last_correct_at: isCorrect ? nowIso : null,
-        last_wrong_at: !isCorrect ? nowIso : null,
-        is_practiced: true,
-        is_in_wrong_book: !isCorrect,
-        best_score: correctCount,
-        latest_score: correctCount,
-      });
-    } else {
-      await supabase
-        .from("student_question_stats")
-        .update({
-          attempt_count: (existingStat.attempt_count ?? 0) + 1,
-          completed_count: (existingStat.completed_count ?? 0) + 1,
-          correct_count:
-            (existingStat.correct_count ?? 0) + (isCorrect ? 1 : 0),
-          wrong_count: (existingStat.wrong_count ?? 0) + (isCorrect ? 0 : 1),
-          total_duration_seconds:
-            (existingStat.total_duration_seconds ?? 0) + durationSeconds,
-          last_attempt_at: nowIso,
-          last_correct_at: isCorrect ? nowIso : existingStat.last_correct_at,
-          last_wrong_at: !isCorrect ? nowIso : existingStat.last_wrong_at,
-          is_practiced: true,
-          best_score:
-            existingStat.best_score == null
-              ? correctCount
-              : Math.max(existingStat.best_score, correctCount),
-          latest_score: correctCount,
-        })
-        .eq("id", existingStat.id);
-    }
-
-    if (!isCorrect) {
-      const { data: existingWrong } = await supabase
-        .from("student_wrong_questions")
-        .select(STUDENT_WRONG_QUESTION_SELECT)
-        .eq("user_id", user.id)
-        .eq("question_source", QUESTION_SOURCE)
-        .eq("question_id", questionId)
-        .maybeSingle();
-
-      if (!existingWrong) {
-        await supabase.from("student_wrong_questions").insert({
-          user_id: user.id,
-          exam_type: EXAM_TYPE,
-          module_type: MODULE_TYPE,
-          question_source: QUESTION_SOURCE,
-          question_id: questionId,
-          first_wrong_at: nowIso,
-          last_wrong_at: nowIso,
-          wrong_count: 1,
-          is_resolved: false,
-        });
-      } else {
-        await supabase
-          .from("student_wrong_questions")
-          .update({
-            last_wrong_at: nowIso,
-            wrong_count: (existingWrong.wrong_count ?? 0) + 1,
-            is_resolved: false,
-            resolved_at: null,
-          })
-          .eq("id", existingWrong.id);
-      }
-    } else {
-      await supabase
-        .from("student_wrong_questions")
-        .update({
-          is_resolved: true,
-          resolved_at: nowIso,
-        })
-        .eq("user_id", user.id)
-        .eq("question_source", QUESTION_SOURCE)
-        .eq("question_id", questionId);
-    }
+    await recordQuestionOutcome({ supabase, userId: user.id, examType: EXAM_TYPE, moduleType: MODULE_TYPE, questionSource: QUESTION_SOURCE, questionId, durationSeconds, isCorrect, score: correctCount });
 
     return NextResponse.json({
       ok: true,

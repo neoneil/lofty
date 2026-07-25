@@ -1,6 +1,6 @@
 const PUBLIC_R2_BASE_URL = (process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL || "https://pub-b96989cc617f460facb9c254b7d2c5db.r2.dev").replace(/\/+$/, "");
 
-const PUBLIC_STORAGE_BUCKETS = new Set(["avatars", "images", "ielts", "pte-audio"]);
+const PUBLIC_STORAGE_BUCKETS = new Set(["avatars", "images", "ielts", "pte-audio", "pte-images"]);
 
 function encodePath(path: string) {
   return path.split("/").map((part) => encodeURIComponent(part)).join("/");

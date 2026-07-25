@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -160,7 +160,7 @@ export async function POST(req: Request) {
       strict: true,
     };
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
     if (!usageLimit.allowed) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
 import { BRAND_EDUCATION_CN } from '@/lib/brand';
 
 const openai = new OpenAI({
@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
     if (!usageLimit.allowed) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

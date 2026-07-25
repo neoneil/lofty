@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { buildPrompt } from "@/lib/math/prompt-templates";
 import { getRandomScenario } from "@/lib/math/scenario-pools";
 import { createClient } from "@/lib/supabase/server";
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { topic, difficulty, count = 1 } = body;
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
     if (!usageLimit.allowed) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createClient } from "@/lib/supabase/server";
 import type {
   IELTSWritingTask2Request,
@@ -359,7 +359,7 @@ export async function POST(req: Request) {
 
     const localWordCount = countWords(body.essayText);
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
     if (!usageLimit.allowed) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

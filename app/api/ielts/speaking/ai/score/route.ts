@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { openai } from "@/lib/pte-speaking/openai-client";
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
     if (mode === "audio" && !file) return NextResponse.json({ ok: false, message: "请上传音频文件" }, { status: 400 });
     if (mode !== "audio" && !textAnswer) return NextResponse.json({ ok: false, message: "请输入口语文字稿" }, { status: 400 });
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
     if (!usageLimit.allowed) return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
 
     let answerText = textAnswer;

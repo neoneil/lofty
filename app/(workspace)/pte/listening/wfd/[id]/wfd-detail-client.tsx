@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
@@ -10,6 +11,7 @@ type Props = {
     id: string;
     question_text: string;
   };
+  aiImageUrl?: string | null;
 };
 
 type Token = {
@@ -38,7 +40,7 @@ function getServerQuestionOrderSnapshot() {
   return "[]";
 }
 
-export default function WfdDetailClient({ question }: Props) {
+export default function WfdDetailClient({ question, aiImageUrl }: Props) {
   const startedAtRef = useRef<number | null>(null);
 
   const [answer, setAnswer] = useState("");
@@ -153,6 +155,12 @@ export default function WfdDetailClient({ question }: Props) {
         >
           <DictionaryText text={question.question_text} />
         </div>
+
+        {showAnswer && aiImageUrl ? (
+          <figure className="mx-auto mt-5 w-full max-w-[520px] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] shadow-[var(--shadow-sm)]">
+            <Image src={aiImageUrl} alt="WFD visual memory aid" width={1024} height={1024} className="aspect-square w-full object-cover" />
+          </figure>
+        ) : null}
       </div>
       {/* RESULT */}
       {result ? (

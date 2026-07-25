@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreRA } from "@/lib/pte-speaking/score-ra";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
-import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
+import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 const MODULE_TYPE = "RA";
 const QUESTION_SOURCE = "ra";
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+    const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
     if (!usageLimit.allowed) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
@@ -228,76 +228,6 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!isCorrect) {
-      const { data: existingWrong } = await supabase
-        .from("student_wrong_questions")
-        .select("id, wrong_count")
-        .eq("user_id", user.id)
-        .eq("question_source", QUESTION_SOURCE)
-        .eq("question_id", questionId)
-        .maybeSingle();
-
-      if (!existingWrong) {
-        const { error: wrongInsertError } = await supabase
-          .from("student_wrong_questions")
-          .insert({
-            user_id: user.id,
-            exam_type: "PTE",
-            module_type: MODULE_TYPE,
-            question_source: QUESTION_SOURCE,
-            question_id: questionId,
-            first_wrong_at: nowIso,
-            last_wrong_at: nowIso,
-            wrong_count: 1,
-            is_resolved: false,
-          });
-
-        if (wrongInsertError) {
-          console.error("student_wrong_questions insert error:", wrongInsertError);
-          return NextResponse.json(
-            { ok: false, message: "更新错题本失败" },
-            { status: 500 },
-          );
-        }
-      } else {
-        const { error: wrongUpdateError } = await supabase
-          .from("student_wrong_questions")
-          .update({
-            last_wrong_at: nowIso,
-            wrong_count: (existingWrong.wrong_count ?? 0) + 1,
-            is_resolved: false,
-            resolved_at: null,
-          })
-          .eq("id", existingWrong.id);
-
-        if (wrongUpdateError) {
-          console.error("student_wrong_questions update error:", wrongUpdateError);
-          return NextResponse.json(
-            { ok: false, message: "更新错题本失败" },
-            { status: 500 },
-          );
-        }
-      }
-    } else {
-      const { error: wrongResolveError } = await supabase
-        .from("student_wrong_questions")
-        .update({
-          is_resolved: true,
-          resolved_at: nowIso,
-        })
-        .eq("user_id", user.id)
-        .eq("question_source", QUESTION_SOURCE)
-        .eq("question_id", questionId);
-
-      if (wrongResolveError) {
-        console.error("student_wrong_questions resolve error:", wrongResolveError);
-        return NextResponse.json(
-          { ok: false, message: "更新错题本失败" },
-          { status: 500 },
-        );
-      }
-    }
-
     return NextResponse.json({
       ok: true,
       audioUrl,
@@ -308,6 +238,13 @@ export async function POST(req: Request) {
       aiFeedback: enhancedResult,
     });
   } catch (error) {
+    if (isStudentRecordingUploadError(error)) {
+      return NextResponse.json(
+        { ok: false, message: error.message },
+        { status: error.status },
+      );
+    }
+
     console.error("RA submit API crash:", error);
     return NextResponse.json(
       { ok: false, message: "server error" },

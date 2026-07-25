@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { IeltsListeningExamClient } from "@/components/ielts-listening/listening-exam-client";
 import { IeltsListeningBookSelector, IeltsListeningTestSelector } from "@/components/ielts-listening/listening-selectors";
@@ -6,6 +6,7 @@ import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 import { getIeltsMarkdownBookPracticeData } from "@/lib/ielts/markdown-practice";
 import { getIeltsBookPracticeData, type IeltsAsset, type IeltsBookPracticeData } from "@/lib/ielts/practice";
+import { hasIeltsTestEntryUsage } from "@/lib/ielts/test-entry-usage";
 
 const LISTENING_BOOKS = [21, 20, 19, 18, 17, 16];
 
@@ -31,6 +32,9 @@ export default async function IeltsListeningPage({ searchParams }: Props) {
   if (!test) return <IeltsListeningTestSelector bookNumber={bookNumber} data={markdownData} />;
 
   const selectedTestNumber = markdownData.tests.some((item) => item.test_number === testNumber) ? testNumber : markdownData.tests[0]?.test_number ?? 1;
+  const hasConfirmedEntry = await hasIeltsTestEntryUsage({ userId: userContext.user.id, moduleType: "listening", bookNumber, testNumber: selectedTestNumber });
+  if (!hasConfirmedEntry) redirect(`/ielts/listening?book=${bookNumber}`);
+
   const databaseData = await getIeltsBookPracticeData(supabase, bookNumber, selectedTestNumber);
   const data = mergeDatabaseAudioAssets(markdownData, databaseData.assets);
 

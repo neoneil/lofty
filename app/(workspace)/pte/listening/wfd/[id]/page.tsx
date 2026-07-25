@@ -37,12 +37,14 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
     );
   }
 
-  const { data: audioMeta } = await supabase
+  const { data: wfdMeta } = await supabase
     .schema("pte")
     .from("wfd")
-    .select("audio_status")
+    .select("audio_status, ai_image")
     .eq("id", id)
     .maybeSingle();
+
+  const aiImageUrl = typeof wfdMeta?.ai_image === "string" && wfdMeta.ai_image.trim() ? normalizePublicStorageUrl(wfdMeta.ai_image, "pte-images") : null;
 
   return (
     <>
@@ -107,7 +109,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
                   questionType="wfd"
                   questionId={question.id}
                   fallbackUrl={getPublicAudioUrl(question.audio_url)}
-                  aiAudioReady={audioMeta?.audio_status === "ready"}
+                  aiAudioReady={wfdMeta?.audio_status === "ready"}
                   autoPlay
                   countdown={10}
                 />
@@ -118,7 +120,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
               </div>
             )}
 
-            <WfdDetailClient question={question} />
+            <WfdDetailClient question={question} aiImageUrl={aiImageUrl} />
           </section>
         </section>
       </div>

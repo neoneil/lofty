@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
+import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
@@ -24,6 +24,7 @@ const adminModules = [
   { title: "学生作文AI批改", desc: "AI - PTE - IELTS writing", href: "/admin/analyze_answer", tag: "AI response", icon: Bot },
   { title: "AI Demo", desc: "试听 OpenAI 人声样本，管理课程和练习中的语音模型选择。", href: "/admin/ai-demo", tag: "OpenAI Voice", icon: AudioLines },
   { title: "PTE 音频生成", desc: "为 RS / WFD 生成 Marin、Cedar、Alloy、Ash 四音色题库音频。", href: "/admin/pte-ai-audio", tag: "PTE Audio", icon: AudioLines },
+  { title: "wfd图片记忆", desc: "查看 191 个 WFD 预测题的 AI 图片记忆卡，有图显示图片，无图显示占位。", href: "/admin/wfd-image-memory", tag: "WFD Images", icon: ImageIcon },
   { title: "生成PTE 作文答案与句子库", desc: "AI 反馈", href: "/admin/generate_essay_answer", tag: "AI response", icon: BrainCircuit },
   { title: "PTE大作文范文", desc: "查看 WE 范文与逐句中文翻译，并自动补齐缺失范文。", href: "/admin/pte-essay-samples", tag: "PTE Essay", icon: ScrollText },
   { title: "PTE SWT 范文", desc: "查看 SWT 一句话范文、原文翻译、答案翻译与句子合并拆解。", href: "/admin/pte-swt-samples", tag: "PTE SWT", icon: FileText },

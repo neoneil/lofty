@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { generatePteEssaySample, PTE_ESSAY_SAMPLE_AI_FEATURE } from "@/lib/admin/pte-essay-samples";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -69,7 +69,7 @@ export async function POST() {
   const auth = await requireApiAdmin();
   if (!auth.ok) return auth.response;
 
-  const usageLimit = await checkAiUsageLimit(auth.user.id, PTE_ESSAY_SAMPLE_AI_FEATURE);
+  const usageLimit = await reserveAiUsage(auth.user.id, PTE_ESSAY_SAMPLE_AI_FEATURE);
   if (!usageLimit.allowed) {
     return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
   }

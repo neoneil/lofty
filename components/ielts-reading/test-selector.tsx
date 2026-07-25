@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Timer } from "lucide-react";
+import { ArrowLeft, Timer } from "lucide-react";
 
 import { buildSourceHref, IeltsReadingDataSourceSwitch, type IeltsReadingDataSource } from "@/components/ielts-reading/data-source-switch";
+import { IeltsTestEntryCard } from "@/components/ielts-practice/ielts-test-entry-card";
 import { Badge } from "@/components/ui-v2/badge";
-import { Card, CardContent } from "@/components/ui-v2/card";
 import type { IeltsBookPracticeData } from "@/lib/ielts/practice";
 
 type Props = {
@@ -39,16 +39,7 @@ export function IeltsReadingTestSelector({ bookNumber, data, basePath = "/ielts/
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {tests.map((test) => (
-          <Link key={test.id} href={buildSourceHref({ basePath, source, bookNumber, testNumber: test.test_number })} className="group block">
-            <Card className="rounded-[var(--radius-lg)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/45 hover:shadow-[var(--shadow-lg)]">
-              <CardContent className="p-5">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-lg font-bold text-[var(--primary)]">{test.test_number}</div>
-                <h2 className="text-lg font-semibold text-[var(--text)]">Test {test.test_number}</h2>
-                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{test.title || `Cambridge IELTS ${bookNumber} Reading Test ${test.test_number}`}</p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">进入机考 <ArrowRight size={16} className="transition group-hover:translate-x-1" /></div>
-              </CardContent>
-            </Card>
-          </Link>
+          <IeltsTestEntryCard key={test.id} moduleType="reading" bookNumber={bookNumber} testNumber={test.test_number} title={test.title || `Cambridge IELTS ${bookNumber} Reading Test ${test.test_number}`} href={buildSourceHref({ basePath, source, bookNumber, testNumber: test.test_number })} />
         ))}
       </section>
     </main>

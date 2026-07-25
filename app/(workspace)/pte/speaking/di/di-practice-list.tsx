@@ -1,5 +1,7 @@
 "use client";
 
+import { getPtePracticeListLayoutClass, PtePracticeViewToggle, type PtePracticeViewMode } from "@/components/pte/pte-practice-view-toggle";
+
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import ScorePercentProgress from "@/components/ui/score-percent-progress";
@@ -52,7 +54,8 @@ type Question = {
   is_wrong_question: boolean;
 };
 
-const PAGE_SIZE = 10;
+const LIST_PAGE_SIZE = 10;
+const GRID_PAGE_SIZE = 15;
 
 function getTags(question: Question) {
   return [formatVisualTypeTag(question.tag1), formatConfidenceTag(question.tag2)]
@@ -98,17 +101,19 @@ export default function DiPracticeList({
 }) {
   const questionIds = initialQuestions.map((q) => q.id);
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewMode, setViewMode] = useState<PtePracticeViewMode>("grid");
+  const pageSize = viewMode === "grid" ? GRID_PAGE_SIZE : LIST_PAGE_SIZE;
 
   const totalPages = Math.max(
     1,
-    Math.ceil(initialQuestions.length / PAGE_SIZE),
+    Math.ceil(initialQuestions.length / pageSize),
   );
   const safeCurrentPage = Math.min(currentPage, totalPages);
 
   const paginatedQuestions = useMemo(() => {
-    const startIndex = (safeCurrentPage - 1) * PAGE_SIZE;
-    return initialQuestions.slice(startIndex, startIndex + PAGE_SIZE);
-  }, [safeCurrentPage, initialQuestions]);
+    const startIndex = (safeCurrentPage - 1) * pageSize;
+    return initialQuestions.slice(startIndex, startIndex + pageSize);
+  }, [safeCurrentPage, pageSize, initialQuestions]);
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -140,11 +145,14 @@ export default function DiPracticeList({
             </div>
           </div>
 
-          <Tag tone="theme">DI</Tag>
+          <div className="flex items-center gap-2">
+            <PtePracticeViewToggle value={viewMode} onChange={setViewMode} />
+            <Tag tone="theme">DI</Tag>
+          </div>
         </div>
       </div>
 
-      <div className="mx-auto w-[97.5%] space-y-1">
+      <div className={getPtePracticeListLayoutClass(viewMode)}>
         {paginatedQuestions.map((item, index) => {
           const tags = getTags(item);
 
@@ -157,16 +165,16 @@ export default function DiPracticeList({
               }}
               className="block"
             >
-              <article className="group rounded-[var(--radius-md)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-md)]">
+              <article data-pte-view={viewMode} className="pte-practice-card group rounded-[var(--radius-md)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-md)]">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/[0.025] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                  <div className="relative flex items-start justify-center gap-5 px-5 py-4 sm:px-6">
-                    <div className="w-full max-w-3xl">
-                      <div className="mb-2.5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-                        <div className="flex flex-wrap items-center gap-2">
+                  <div className="pte-practice-card-body relative flex items-start justify-center gap-5 px-5 py-4 sm:px-6">
+                    <div className="pte-practice-card-content w-full max-w-3xl">
+                      <div className="pte-practice-meta mb-2.5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="pte-practice-badge-cloud flex flex-wrap items-center gap-2">
                           <Badge className="gap-1.5 px-2.5 py-1">
-                            {(safeCurrentPage - 1) * PAGE_SIZE + index + 1}
+                            {(safeCurrentPage - 1) * pageSize + index + 1}
                           </Badge>
 
                           <Badge
@@ -215,7 +223,7 @@ export default function DiPracticeList({
                           ) : null}
                         </div>
 
-                        <div className="mr-2 flex flex-wrap items-center gap-2">
+                        <div className="pte-practice-status-row mr-2 flex flex-wrap items-center gap-2">
                           {item.is_practiced ? (
                             <Badge
                               variant="success"
@@ -236,7 +244,7 @@ export default function DiPracticeList({
                         </div>
                       </div>
 
-                      <p className="text-[15px] font-medium leading-7 tracking-[0.01em] text-[var(--text)] transition-colors duration-300 sm:text-[16px] sm:leading-8">
+                      <p className="pte-practice-title text-[15px] font-medium leading-7 tracking-[0.01em] text-[var(--text)] transition-colors duration-300 sm:text-[16px] sm:leading-8">
                         {getDisplayTitle(item)}
                       </p>
 
@@ -251,7 +259,7 @@ export default function DiPracticeList({
                       ) : null}
                     </div>
 
-                    <div className="hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
+                    <div className="pte-practice-progress hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
                       <ScorePercentProgress score={item.best_score} />
                     </div>
                   </div>

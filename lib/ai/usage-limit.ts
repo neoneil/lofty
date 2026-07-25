@@ -1,5 +1,7 @@
 import "server-only";
 
+import { AsyncLocalStorage } from "node:async_hooks";
+
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export type AiUsageLimitCode =
@@ -18,6 +20,7 @@ export type AiUsageLimitResult =
       dailyLimit: number;
       monthlyLimit: number;
       unlimitedUntil: string | null;
+      usageLogId?: number | null;
     }
   | {
       allowed: false;
@@ -33,7 +36,23 @@ export type AiUsageLimitResult =
       unlimitedUntil: string | null;
     };
 
+type ReserveAiUsageRpcResult = {
+  allowed?: boolean;
+  code?: AiUsageLimitCode;
+  message?: string;
+  userId?: string;
+  feature?: string;
+  isUnlimited?: boolean;
+  todayUsed?: number;
+  monthUsed?: number;
+  dailyLimit?: number | null;
+  monthlyLimit?: number | null;
+  unlimitedUntil?: string | null;
+  usageLogId?: number | string | null;
+};
+
 export type RecordAiUsageParams = {
+  usageLogId?: number | null;
   userId: string;
   feature: string;
   model: string;
@@ -44,6 +63,43 @@ export type RecordAiUsageParams = {
   status?: "success" | "error";
   errorMessage?: string | null;
 };
+
+const aiUsageReservationStorage = new AsyncLocalStorage<{
+  usageLogId: number;
+  userId: string;
+  feature: string;
+}>();
+
+function normalizeReserveResult(data: ReserveAiUsageRpcResult, fallbackUserId: string, fallbackFeature: string): AiUsageLimitResult {
+  if (data.allowed) {
+    return {
+      allowed: true,
+      userId: data.userId ?? fallbackUserId,
+      feature: data.feature ?? fallbackFeature,
+      isUnlimited: Boolean(data.isUnlimited),
+      todayUsed: Number(data.todayUsed ?? 0),
+      monthUsed: Number(data.monthUsed ?? 0),
+      dailyLimit: Number(data.dailyLimit ?? 0),
+      monthlyLimit: Number(data.monthlyLimit ?? 0),
+      unlimitedUntil: data.unlimitedUntil ?? null,
+      usageLogId: data.usageLogId == null ? null : Number(data.usageLogId),
+    };
+  }
+
+  return {
+    allowed: false,
+    code: data.code ?? "AI_LIMIT_RECORD_NOT_FOUND",
+    message: data.message ?? "AI usage limit record was not found for this user.",
+    userId: data.userId ?? fallbackUserId,
+    feature: data.feature ?? fallbackFeature,
+    todayUsed: Number(data.todayUsed ?? 0),
+    monthUsed: Number(data.monthUsed ?? 0),
+    dailyLimit: data.dailyLimit ?? null,
+    monthlyLimit: data.monthlyLimit ?? null,
+    isUnlimited: Boolean(data.isUnlimited),
+    unlimitedUntil: data.unlimitedUntil ?? null,
+  };
+}
 
 function getUsageWindows() {
   const now = new Date();
@@ -200,7 +256,40 @@ export async function checkAiUsageLimit(userId: string, feature: string): Promis
   };
 }
 
+export async function reserveAiUsage(userId: string, feature: string): Promise<AiUsageLimitResult> {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase.rpc("reserve_ai_usage", {
+    p_user_id: userId,
+    p_feature: feature,
+    p_reservation_model: "reserved",
+  });
+
+  if (error) {
+    console.error("Failed to reserve AI usage:", error.message);
+    return checkAiUsageLimit(userId, feature);
+  }
+
+  const result = normalizeReserveResult((data ?? {}) as ReserveAiUsageRpcResult, userId, feature);
+
+  if (result.allowed && result.usageLogId) {
+    aiUsageReservationStorage.enterWith({
+      usageLogId: result.usageLogId,
+      userId: result.userId,
+      feature: result.feature,
+    });
+  } else if (result.allowed) {
+    aiUsageReservationStorage.enterWith({
+      usageLogId: 0,
+      userId: result.userId,
+      feature: result.feature,
+    });
+  }
+
+  return result;
+}
+
 export async function recordAiUsage({
+  usageLogId,
   userId,
   feature,
   model,
@@ -212,6 +301,31 @@ export async function recordAiUsage({
   errorMessage = null,
 }: RecordAiUsageParams) {
   const supabase = createAdminClient();
+  const reservation = aiUsageReservationStorage.getStore();
+  const targetUsageLogId = usageLogId ?? (reservation?.userId === userId && reservation.feature === feature ? reservation.usageLogId : null);
+
+  if (targetUsageLogId) {
+    const { error } = await supabase
+      .from("ai_usage_logs")
+      .update({
+        feature,
+        model,
+        prompt_tokens: promptTokens,
+        completion_tokens: completionTokens,
+        total_tokens: totalTokens,
+        estimated_cost: estimatedCost,
+        status,
+        error_message: errorMessage,
+      })
+      .eq("id", targetUsageLogId)
+      .eq("user_id", userId);
+
+    if (error) {
+      console.error("Failed to update reserved AI usage:", error.message);
+    }
+
+    return;
+  }
 
   const { error } = await supabase.from("ai_usage_logs").insert({
     user_id: userId,

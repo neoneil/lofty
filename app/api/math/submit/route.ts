@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { gradeNumericAnswer } from "@/lib/math/grade-math-answer";
 import { createClient } from "@/lib/supabase/server";
 
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     let aiFeedback = null;
 
     if (!grade.isCorrect) {
-      const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+      const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
       if (!usageLimit.allowed) {
         return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

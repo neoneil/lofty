@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { createClient } from "@/lib/supabase/server";
 
 const AI_FEATURE = "course_translation";
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: `翻译内容不能超过 ${MAX_TEXT_LENGTH} 个字符。` }, { status: 400 });
   }
 
-  const usageLimit = await checkAiUsageLimit(user.id, AI_FEATURE);
+  const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
   if (!usageLimit.allowed) {
     return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

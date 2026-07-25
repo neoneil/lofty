@@ -6,7 +6,7 @@ import {
   degrees,
   PDFFont,
 } from "pdf-lib";
-import { requireUser } from "@/lib/auth/require-user";
+import { requireApiRole } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 const PAGE_WIDTH = 595.28;
@@ -309,7 +309,8 @@ function toPdfResponseBuffer(bytes: Uint8Array) {
 
 export async function POST(req: NextRequest) {
   try {
-    await requireUser("/downloads");
+    const auth = await requireApiRole(["admin", "teacher", "editor"]);
+    if (!auth.ok) return auth.response;
 
     const payload = (await req.json()) as ExportPayload;
     const config = EXPORT_CONFIG[payload.exportKey];

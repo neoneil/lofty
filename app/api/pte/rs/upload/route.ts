@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
+import { ensurePteQuestionExists } from "@/lib/pte/ensure-question-exists";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
-import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
+import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 export async function POST(req: Request) {
   try {
@@ -10,8 +11,6 @@ export async function POST(req: Request) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-
-    console.log("USER:", user);
 
     if (!user) {
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -22,10 +21,13 @@ export async function POST(req: Request) {
     const file = formData.get("file") as File;
     const questionId = formData.get("questionId") as string;
 
-    console.log("QUESTION ID:", questionId);
+    if (!file || !questionId) {
+      return NextResponse.json({ error: "missing file or questionId" }, { status: 400 });
+    }
 
-    if (!file) {
-      return NextResponse.json({ error: "no file" }, { status: 400 });
+    const questionExists = await ensurePteQuestionExists(supabase, "rs", questionId);
+    if (!questionExists) {
+      return NextResponse.json({ error: "question not found" }, { status: 404 });
     }
 
     const audioStorageKey = await uploadStudentRecordingToPrivateR2({ file, questionSource: "rs", userId: user.id });
@@ -40,8 +42,6 @@ export async function POST(req: Request) {
         question_id: questionId,
         audio_url: audioStorageKey,
       });
-
-    console.log("INSERT ERROR:", insertError);
 
     if (insertError) {
       return NextResponse.json({ error: insertError.message }, { status: 500 });
@@ -62,8 +62,12 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ audioUrl, audioStorageKey });
 
-  } catch (err) {
-    console.error("🔥 API CRASH:", err);
+  } catch (error) {
+    if (isStudentRecordingUploadError(error)) {
+      return NextResponse.json({ error: error.message }, { status: error.status });
+    }
+
+    console.error("RS upload API crash:", error);
     return NextResponse.json({ error: "server error" }, { status: 500 });
   }
 }

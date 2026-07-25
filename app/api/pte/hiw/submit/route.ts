@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { STUDENT_QUESTION_STAT_SELECT } from "@/lib/pte/select-fields";
+import { recordQuestionOutcome } from "@/lib/pte/record-question-outcome";
 
 const EXAM_TYPE = "PTE";
 const MODULE_TYPE = "HIW";
@@ -139,101 +139,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { data: existingStat, error: existingStatError } = await supabase
-      .from("student_question_stats")
-      .select(STUDENT_QUESTION_STAT_SELECT)
-      .eq("user_id", user.id)
-      .eq("question_source", QUESTION_SOURCE)
-      .eq("question_id", String(question.id))
-      .maybeSingle();
-
-    if (existingStatError) {
-      console.error("student_question_stats select error:", existingStatError);
-      return NextResponse.json(
-        { ok: false, message: "读取题目统计失败" },
-        { status: 500 }
-      );
-    }
-
-    if (!existingStat) {
-      const { error: insertStatError } = await supabase
-        .from("student_question_stats")
-        .insert({
-          user_id: user.id,
-          exam_type: EXAM_TYPE,
-          module_type: MODULE_TYPE,
-          question_source: QUESTION_SOURCE,
-          question_id: String(question.id),
-
-          attempt_count: 1,
-          completed_count: 1,
-          correct_count: isCorrect ? 1 : 0,
-          wrong_count: isCorrect ? 0 : 1,
-
-          total_duration_seconds: durationSeconds,
-          last_attempt_at: nowIso,
-          last_correct_at: isCorrect ? nowIso : null,
-          last_wrong_at: isCorrect ? null : nowIso,
-
-          is_practiced: true,
-          is_in_wrong_book: !isCorrect,
-
-          best_score: score,
-          latest_score: score,
-        });
-
-      if (insertStatError) {
-        console.error("student_question_stats insert error:", insertStatError);
-        return NextResponse.json(
-          { ok: false, message: "写入题目统计失败" },
-          { status: 500 }
-        );
-      }
-    } else {
-      const oldBestScore =
-        typeof existingStat.best_score === "number"
-          ? existingStat.best_score
-          : null;
-
-      const nextBestScore =
-        oldBestScore === null ? score : Math.max(oldBestScore, score);
-
-      const { error: updateStatError } = await supabase
-        .from("student_question_stats")
-        .update({
-          attempt_count: (existingStat.attempt_count ?? 0) + 1,
-          completed_count: (existingStat.completed_count ?? 0) + 1,
-
-          correct_count: (existingStat.correct_count ?? 0) + (isCorrect ? 1 : 0),
-          wrong_count: (existingStat.wrong_count ?? 0) + (isCorrect ? 0 : 1),
-
-          total_duration_seconds:
-            (existingStat.total_duration_seconds ?? 0) + durationSeconds,
-
-          last_attempt_at: nowIso,
-          last_correct_at: isCorrect
-            ? nowIso
-            : existingStat.last_correct_at ?? null,
-          last_wrong_at: isCorrect
-            ? existingStat.last_wrong_at ?? null
-            : nowIso,
-
-          is_practiced: true,
-          is_in_wrong_book: !isCorrect,
-
-          best_score: nextBestScore,
-          latest_score: score,
-        })
-        .eq("id", existingStat.id);
-
-      if (updateStatError) {
-        console.error("student_question_stats update error:", updateStatError);
-        return NextResponse.json(
-          { ok: false, message: "更新题目统计失败" },
-          { status: 500 }
-        );
-      }
-    }
+    await recordQuestionOutcome({ supabase, userId: user.id, examType: EXAM_TYPE, moduleType: MODULE_TYPE, questionSource: QUESTION_SOURCE, questionId: String(question.id), durationSeconds, isCorrect, score });
 
     return NextResponse.json({
       ok: true,

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { checkAiUsageLimit, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreKeywordContent } from "@/lib/pte-speaking/score-keyword-content";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
-import { getStudentRecordingPlaybackUrl, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
+import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
 type KeywordSpeakingConfig = {
   questionTable: "di" | "rl" | "rts" | "sgd";
@@ -52,7 +52,7 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
     const { data: question, error: questionError } = await supabase.schema("pte").from(config.questionTable).select("id, ai_keywords").eq("id", questionId).single();
     if (questionError || !question) return NextResponse.json({ ok: false, message: "题目不存在" }, { status: 404 });
 
-    const usageLimit = await checkAiUsageLimit(user.id, config.aiFeature);
+    const usageLimit = await reserveAiUsage(user.id, config.aiFeature);
     if (!usageLimit.allowed) return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
 
     const audioStorageKey = await uploadStudentRecordingToPrivateR2({ file, questionSource: config.storageFolder, userId: user.id });
@@ -91,16 +91,12 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
 
     await updateSpeakingRecordingStats({ supabase, userId: user.id, moduleType: config.questionType, questionSource: config.questionSource, questionId, durationSeconds, score });
 
-    if (!isCorrect) {
-      const { data: existingWrong } = await supabase.from("student_wrong_questions").select("id, wrong_count").eq("user_id", user.id).eq("question_source", config.questionSource).eq("question_id", questionId).maybeSingle();
-      if (existingWrong) await supabase.from("student_wrong_questions").update({ last_wrong_at: nowIso, wrong_count: (existingWrong.wrong_count ?? 0) + 1, is_resolved: false, resolved_at: null }).eq("id", existingWrong.id);
-      else await supabase.from("student_wrong_questions").insert({ user_id: user.id, exam_type: "PTE", module_type: config.questionType, question_source: config.questionSource, question_id: questionId, first_wrong_at: nowIso, last_wrong_at: nowIso, wrong_count: 1, is_resolved: false });
-    } else {
-      await supabase.from("student_wrong_questions").update({ is_resolved: true, resolved_at: nowIso }).eq("user_id", user.id).eq("question_source", config.questionSource).eq("question_id", questionId);
-    }
-
     return NextResponse.json({ ok: true, audioUrl, audioStorageKey, attemptId: studentAttempt.id, isCorrect, score, aiFeedback: aiResult });
   } catch (error) {
+    if (isStudentRecordingUploadError(error)) {
+      return NextResponse.json({ ok: false, message: error.message }, { status: error.status });
+    }
+
     console.error(`${config.questionType} submit API crash:`, error);
     return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "server error" }, { status: 500 });
   }

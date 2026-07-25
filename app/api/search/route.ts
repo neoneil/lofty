@@ -1,23 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { createAdminClient } from "@/lib/supabase/admin";
+import { requireApiUser } from "@/lib/auth/require-api-auth";
+
+const DEFAULT_LIMIT = 20;
+const MAX_LIMIT = 50;
+const MIN_QUERY_LENGTH = 2;
 
 export async function GET(request: NextRequest) {
+  const auth = await requireApiUser();
+  if (!auth.ok) return auth.response;
 
   const searchParams = request.nextUrl.searchParams;
 
   const q = searchParams.get("q")?.trim();
 
-  const type = searchParams.get("type");
+  const type = searchParams.get("type")?.trim() || null;
 
-  const limit = Number(
-    searchParams.get("limit") || 50
-  );
+  const rawLimit = Number(searchParams.get("limit") || DEFAULT_LIMIT);
+  const limit = Number.isFinite(rawLimit)
+    ? Math.min(MAX_LIMIT, Math.max(1, Math.floor(rawLimit)))
+    : DEFAULT_LIMIT;
 
-  if (!q) {
+  if (!q || q.length < MIN_QUERY_LENGTH) {
     return NextResponse.json(
       {
-        error: "Missing search query"
+        error: "Search query is too short"
       },
       {
         status: 400
@@ -25,9 +32,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const supabase = createAdminClient();
-
-  const { data, error } = await supabase.rpc(
+  const { data, error } = await auth.supabase.rpc(
     "search_pte_questions",
     {
       search_query: q,

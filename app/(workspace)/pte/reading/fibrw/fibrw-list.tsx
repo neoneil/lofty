@@ -1,5 +1,8 @@
 "use client";
 
+import { getPtePracticeListLayoutClass, PtePracticeViewToggle, type PtePracticeViewMode } from "@/components/pte/pte-practice-view-toggle";
+import { PteEnglishTitle } from "@/components/pte/pte-english-title";
+
 import Link from "next/link";
 
 import {
@@ -76,33 +79,14 @@ type Question = {
   is_wrong_question: boolean;
 };
 
-const PAGE_SIZE = 10;
+const LIST_PAGE_SIZE = 10;
+const GRID_PAGE_SIZE = 15;
 
 function getBlankCount(
   blanks: Question["blanks_json"],
 ) {
 
   return blanks.length;
-
-}
-
-function buildPreview(
-  text: string,
-  blanks: Question["blanks_json"],
-) {
-
-  let result = text;
-
-  blanks.forEach((blank) => {
-
-    result = result.replace(
-      `[[blank_${blank.blank_index}]]`,
-      `[ ${blank.options[0]} ▼ ]`,
-    );
-
-  });
-
-  return result;
 
 }
 
@@ -120,12 +104,15 @@ export default function FibrwList({
   const [currentPage, setCurrentPage] =
     useState(1);
 
+  const [viewMode, setViewMode] = useState<PtePracticeViewMode>("grid");
+  const pageSize = viewMode === "grid" ? GRID_PAGE_SIZE : LIST_PAGE_SIZE;
+
   const totalPages =
     Math.max(
       1,
       Math.ceil(
         initialQuestions.length /
-          PAGE_SIZE,
+          pageSize,
       ),
     );
 
@@ -140,16 +127,17 @@ export default function FibrwList({
 
       const startIndex =
         (safeCurrentPage - 1) *
-        PAGE_SIZE;
+        pageSize;
 
       return initialQuestions.slice(
         startIndex,
         startIndex +
-          PAGE_SIZE,
+          pageSize,
       );
 
     }, [
       safeCurrentPage,
+      pageSize,
       initialQuestions,
     ]);
 
@@ -202,9 +190,12 @@ export default function FibrwList({
 
           </div>
 
-          <Tag tone="theme">
+          <div className="flex items-center gap-2">
+            <PtePracticeViewToggle value={viewMode} onChange={setViewMode} />
+            <Tag tone="theme">
             FIB-RW
           </Tag>
+          </div>
 
         </div>
 
@@ -212,7 +203,7 @@ export default function FibrwList({
 
       {/* List */}
 
-      <div className="mx-auto w-[97.5%] space-y-1">
+      <div className={getPtePracticeListLayoutClass(viewMode)}>
 
         {paginatedQuestions.map(
           (
@@ -224,12 +215,6 @@ export default function FibrwList({
               getBlankCount(
                 item.blanks_json,
               );
-
-            const preview =
-              buildPreview(
-                item.question_body_text,
-                item.blanks_json,
-              ).slice(0, 320);
 
             return (
               <Link
@@ -246,30 +231,30 @@ export default function FibrwList({
                 className="block"
               >
 
-                <article className="group rounded-[var(--radius-md)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-md)]">
+                <article data-pte-view={viewMode} className="pte-practice-card group rounded-[var(--radius-md)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-md)]">
 
                   <div className="relative">
 
                     <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/[0.025] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                    <div className="relative flex items-start justify-center gap-5 px-5 py-4 sm:px-6">
+                    <div className="pte-practice-card-body relative flex items-start justify-center gap-5 px-5 py-4 sm:px-6">
 
                       {/* Left */}
 
-                      <div className="w-full max-w-3xl">
+                      <div className="pte-practice-card-content w-full max-w-3xl">
 
                         {/* Tags */}
 
-                        <div className="mb-2.5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="pte-practice-meta mb-2.5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
 
                           {/* Left */}
 
-                          <div className="flex flex-wrap items-center gap-2">
+                          <div className="pte-practice-badge-cloud flex flex-wrap items-center gap-2">
 
                             <Badge className="gap-1.5 px-2.5 py-1">
                               {(safeCurrentPage -
                                 1) *
-                                PAGE_SIZE +
+                                pageSize +
                                 index +
                                 1}
                             </Badge>
@@ -305,14 +290,6 @@ export default function FibrwList({
                               </Badge>
                             ) : null}
 
-                            <Badge
-                              variant="warning"
-                              className="gap-1.5 px-2.5 py-1"
-                            >
-                              <Sparkles size={12} />
-                              Real Exam
-                            </Badge>
-
                             {item.is_prediction ? (
                               <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                                 <Sparkles size={12} />
@@ -334,7 +311,7 @@ export default function FibrwList({
 
                           {/* Right */}
 
-                          <div className="mr-2 flex flex-wrap items-center gap-2">
+                          <div className="pte-practice-status-row mr-2 flex flex-wrap items-center gap-2">
 
                             {item.is_practiced ? (
                               <Badge
@@ -360,17 +337,13 @@ export default function FibrwList({
 
                         {/* Title */}
 
-                        <p className="mb-3 text-[16px] font-semibold leading-7 tracking-[0.01em] text-[var(--text)] transition-colors duration-300 sm:text-[18px] sm:leading-8">
-                          {
-                            item.question_title
-                          }
-                        </p>
+                        <PteEnglishTitle title={item.question_title} className="pte-practice-title mb-3 text-[16px] font-semibold leading-7 tracking-[0.01em] text-[var(--text)] transition-colors duration-300 sm:text-[18px] sm:leading-8" />
 
                         {/* Preview */}
 
                         {/* <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-4">
 
-                          <div className="line-clamp-4 text-[14px] leading-8 text-[var(--text-soft)]">
+                          <div className="pte-practice-title line-clamp-4 text-[14px] leading-8 text-[var(--text-soft)]">
 
                             {preview}
 
@@ -382,7 +355,7 @@ export default function FibrwList({
 
                       {/* Progress */}
 
-                      <div className="hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
+                      <div className="pte-practice-progress hidden w-[95px] flex-shrink-0 items-center justify-center md:flex">
 
                         <MasteryProgress
                           correct={

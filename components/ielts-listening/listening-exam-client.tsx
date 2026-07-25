@@ -73,7 +73,8 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
 
   useEffect(() => {
     questionPanelRef.current?.scrollTo({ top: 0 });
-    setAudioTime(0);
+    const frame = window.requestAnimationFrame(() => setAudioTime(0));
+    return () => window.cancelAnimationFrame(frame);
   }, [activePart?.section.id]);
 
   useEffect(() => {
@@ -305,8 +306,11 @@ function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, o
 
   useEffect(() => {
     let cancelled = false;
-    setStatus("loading");
-    setCues([]);
+    const loadingTimer = window.setTimeout(() => {
+      if (cancelled) return;
+      setStatus("loading");
+      setCues([]);
+    }, 0);
 
     fetch(`/api/ielts/listening/transcript?book=${bookNumber}&test=${testNumber}&section=${sectionNumber}`, { cache: "force-cache" })
       .then(async (response) => {
@@ -326,6 +330,7 @@ function TranscriptPanel({ bookNumber, testNumber, sectionNumber, currentTime, o
 
     return () => {
       cancelled = true;
+      window.clearTimeout(loadingTimer);
     };
   }, [bookNumber, testNumber, sectionNumber]);
 
