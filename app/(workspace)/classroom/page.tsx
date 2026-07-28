@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { CheckCircle2, ExternalLink, History, Link2, Loader2, Lock, MonitorPlay, Sparkles, UserRound, Video } from "lucide-react";
+import { CalendarClock, CheckCircle2, ExternalLink, History, Link2, Loader2, Lock, MonitorPlay, Sparkles, Trash2, UserRound, Video } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
@@ -21,6 +21,10 @@ type ZoomNotification = {
   message: string;
   meeting_id: string | null;
   meeting_password: string | null;
+  join_url?: string | null;
+  class_number?: number | null;
+  completed_class_count?: number | null;
+  total_class_count?: number | null;
   created_at: string;
 };
 
@@ -62,20 +66,6 @@ function getZoomJoinUrl(meetingNumber: string, password?: string) {
   return `https://zoom.us/j/${cleanMeetingNumber}${suffix}`;
 }
 
-function getEmbeddedZoomUrl(meetingNumber: string, password: string, userName: string) {
-  const params = new URLSearchParams({
-    meetingNumber: meetingNumber.replace(/\s/g, ""),
-    name: userName || "Student",
-    v: String(Date.now()),
-  });
-
-  if (password.trim()) {
-    params.set("password", password.trim());
-  }
-
-  return `/zoom/embedded?${params.toString()}`;
-}
-
 function getMeetingId(notification: ZoomNotification) {
   if (notification.meeting_id) {
     return notification.meeting_id.replace(/\s/g, "");
@@ -103,14 +93,24 @@ function getClassroomTime(classroom: ClassroomRecord) {
   return classroom.started_at ?? classroom.created_at;
 }
 
+function getNotificationJoinUrl(notification: ZoomNotification) {
+  const meetingId = getMeetingId(notification);
+
+  if (!meetingId) {
+    return "";
+  }
+
+  return notification.join_url || getZoomJoinUrl(meetingId, notification.meeting_password ?? "");
+}
+
 export default function ClassroomPage() {
   const adminZoomWindowRef = useRef<Window | null>(null);
 
   const [meetingNumber, setMeetingNumber] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
-  const [shouldJoin, setShouldJoin] = useState(false);
   const [status, setStatus] = useState("");
+  const [showManualJoin, setShowManualJoin] = useState(false);
   const [userProfileLoaded, setUserProfileLoaded] = useState(false);
   const [canManageClassrooms, setCanManageClassrooms] = useState(false);
   const [notifications, setNotifications] = useState<ZoomNotification[]>([]);
@@ -122,11 +122,18 @@ export default function ClassroomPage() {
   const [adminLoading, setAdminLoading] = useState(true);
   const [adminStarting, setAdminStarting] = useState(false);
   const [endingClassroomId, setEndingClassroomId] = useState("");
+  const [deletingClassroomId, setDeletingClassroomId] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
 
   const selectedStudent = adminStudents.find((student) => student.id === selectedStudentId) ?? null;
   const selectedStudentClassrooms = adminClassrooms.filter((classroom) => classroom.student_id === selectedStudentId);
   const selectedStudentClassroomsOldestFirst = [...selectedStudentClassrooms].sort((a, b) => new Date(getClassroomTime(a)).getTime() - new Date(getClassroomTime(b)).getTime());
+  const selectedStudentClassroomList = [...selectedStudentClassroomsOldestFirst]
+    .map((classroom, index) => ({
+      classroom,
+      classNumber: index + 1,
+    }))
+    .reverse();
   const selectedActiveClassroom = selectedStudentClassrooms.find((classroom) => classroom.status === "started" && !classroom.ended_at) ?? null;
   const selectedCompletedClassCount = selectedStudentClassrooms.filter(isClassroomEnded).length;
   const selectedTotalClassCount = selectedStudentClassrooms.length;
@@ -176,10 +183,6 @@ export default function ClassroomPage() {
         if (cleanMeetingNumber) {
           setMeetingNumber(cleanMeetingNumber);
           setPassword(params.get("password") ?? params.get("pwd") ?? "");
-
-          if (params.get("autoJoin") === "1") {
-            setShouldJoin(true);
-          }
         }
 
         setUserProfileLoaded(true);
@@ -289,42 +292,22 @@ export default function ClassroomPage() {
     }
 
     setMeetingNumber(cleanMeetingNumber);
-    setShouldJoin(true);
-  }
-
-  function handleOpenZoomPage() {
-    const cleanMeetingNumber = meetingNumber.replace(/\s/g, "");
-
-    if (!cleanMeetingNumber) {
-      setStatus("请输入 Meeting ID");
-      return;
-    }
-
     window.open(getZoomJoinUrl(cleanMeetingNumber, password), "_blank", "noopener,noreferrer");
+    setStatus("Zoom 课堂已在新页面打开。");
   }
 
-  function joinNotification(notification: ZoomNotification) {
-    const cleanMeetingNumber = getMeetingId(notification);
+  function openNotificationZoom(notification: ZoomNotification) {
+    const zoomUrl = getNotificationJoinUrl(notification);
 
-    if (!cleanMeetingNumber) {
+    if (!zoomUrl) {
       setStatus("课堂链接缺少 Meeting ID");
       return;
     }
 
-    setMeetingNumber(cleanMeetingNumber);
+    setMeetingNumber(getMeetingId(notification));
     setPassword(notification.meeting_password ?? "");
-    setShouldJoin(true);
-  }
-
-  function openNotificationPage(notification: ZoomNotification) {
-    const cleanMeetingNumber = getMeetingId(notification);
-
-    if (!cleanMeetingNumber) {
-      setStatus("课堂链接缺少 Meeting ID");
-      return;
-    }
-
-    window.open(getZoomJoinUrl(cleanMeetingNumber, notification.meeting_password ?? ""), "_blank", "noopener,noreferrer");
+    window.open(zoomUrl, "_blank", "noopener,noreferrer");
+    setStatus("Zoom 课堂已在新页面打开，密码已自动带入。");
   }
 
   async function startAdminClassroom() {
@@ -418,18 +401,33 @@ export default function ClassroomPage() {
     }
   }
 
-  if (shouldJoin) {
-    return (
-      <main className="relative h-[calc(100dvh-var(--topbar-height)-0.5rem)] w-full overflow-hidden bg-black">
-        {status ? (
-          <div className="absolute left-1/2 top-6 z-50 -translate-x-1/2 rounded-full border border-white/15 bg-white/90 px-5 py-2 text-sm font-semibold text-black shadow-lg backdrop-blur-md dark:bg-[var(--card)]/90 dark:text-[var(--text)]">
-            {status}
-          </div>
-        ) : null}
+  async function deleteAdminClassroom(classroomId: string) {
+    const confirmed = window.confirm("确定删除这次课堂记录吗？对应学生通知也会一起删除。");
 
-        <iframe title="Zoom Classroom" src={getEmbeddedZoomUrl(meetingNumber, password, userName)} allow="camera; microphone; fullscreen; display-capture; autoplay" allowFullScreen className="h-full w-full border-0" />
-      </main>
-    );
+    if (!confirmed) {
+      return;
+    }
+
+    setDeletingClassroomId(classroomId);
+    setAdminMessage("");
+
+    try {
+      const response = await fetch(`/api/zoom/classrooms/${classroomId}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Delete classroom failed");
+      }
+
+      setAdminClassrooms((current) => current.filter((classroom) => classroom.id !== classroomId));
+      setAdminMessage("课堂记录已删除，对应学生通知也已删除。");
+    } catch (error) {
+      setAdminMessage(error instanceof Error ? error.message : "Delete classroom failed");
+    } finally {
+      setDeletingClassroomId("");
+    }
   }
 
   return (
@@ -442,28 +440,28 @@ export default function ClassroomPage() {
             <Badge variant="default">Live Classroom</Badge>
 
             <h1 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
-              Join your online classroom
+              小马哥在线课堂
             </h1>
 
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-              选择老师发来的课堂链接直接进入，或者在右侧手动输入 Meeting ID 和密码。
+              老师开启课堂后，你可以直接一键进入课堂房间；手动输入仅作为备用方式。
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <InfoTile
                 icon={<Video size={18} />}
-                title="Zoom SDK"
-                text="Embedded class room"
+                title="Online Classroom"
+                text="One-click entry"
               />
               <InfoTile
                 icon={<MonitorPlay size={18} />}
                 title="Live Lesson"
-                text="Join from browser"
+                text="Teacher-led class"
               />
               <InfoTile
                 icon={<Sparkles size={18} />}
-                title="Teacher Led"
-                text="Real-time support"
+                title="Progress"
+                text="Class count tracked"
               />
             </div>
 
@@ -486,19 +484,33 @@ export default function ClassroomPage() {
                   <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] px-4 py-5 text-sm text-[var(--text-soft)]">没有可发送通知的学生。</div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-                      <select value={selectedStudentId} onChange={(event) => { setSelectedStudentId(event.target.value); setAdminMessage(""); }} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
-                        {adminStudents.map((student) => (
-                          <option key={student.id} value={student.id}>
-                            {student.full_name?.trim() || student.email || student.id}
-                            {student.is_my_student ? " · 内部学生" : ""}
-                          </option>
-                        ))}
-                      </select>
-                      <Button type="button" onClick={startAdminClassroom} disabled={adminStarting || Boolean(selectedActiveClassroom)} className="gap-2">
-                        {adminStarting ? <Loader2 size={16} className="animate-spin" /> : <Video size={16} />}
-                        {selectedActiveClassroom ? "课堂进行中" : "一键开启"}
-                      </Button>
+                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">
+                      <div className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
+                        <label className="block">
+                          <span className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--text-faint)]">
+                            <UserRound size={14} />
+                            选择学生
+                          </span>
+                          <select value={selectedStudentId} onChange={(event) => { setSelectedStudentId(event.target.value); setAdminMessage(""); }} className="h-12 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 text-sm font-bold text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                            {adminStudents.map((student) => (
+                              <option key={student.id} value={student.id}>
+                                {student.full_name?.trim() || student.email || student.id}
+                                {student.is_my_student ? " · 内部学生" : ""}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <Button type="button" onClick={startAdminClassroom} disabled={adminStarting || Boolean(selectedActiveClassroom)} className="h-12 gap-2">
+                          {adminStarting ? <Loader2 size={16} className="animate-spin" /> : <Video size={16} />}
+                          {selectedActiveClassroom ? "课堂进行中" : "一键开启课堂"}
+                        </Button>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-[var(--text-soft)]">
+                        <span className="rounded-full bg-[var(--primary-soft)] px-2 py-1 font-semibold text-[var(--primary)]">{selectedStudent?.full_name?.trim() || selectedStudent?.email || "Selected student"}</span>
+                        {selectedStudent?.email ? <span>{selectedStudent.email}</span> : null}
+                        {selectedStudent?.is_my_student ? <span className="rounded-full border border-[var(--border)] px-2 py-1 font-semibold">内部学生</span> : null}
+                      </div>
                     </div>
 
                     <div className="grid gap-2 sm:grid-cols-3">
@@ -541,6 +553,51 @@ export default function ClassroomPage() {
                         ) : null}
                       </div>
                     </div>
+
+                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">
+                      <div className="mb-3 flex items-center justify-between gap-3">
+                        <div>
+                          <div className="flex items-center gap-2 text-sm font-bold text-[var(--text)]">
+                            <CalendarClock size={15} className="text-[var(--primary)]" />
+                            学生课堂记录
+                          </div>
+                          <p className="mt-1 text-xs text-[var(--text-soft)]">列出当前学生每次课堂时间，可删除单次记录。</p>
+                        </div>
+                        <Badge variant="secondary">{selectedStudentClassroomList.length}</Badge>
+                      </div>
+
+                      {selectedStudentClassroomList.length === 0 ? (
+                        <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-5 text-sm text-[var(--text-soft)]">
+                          该学生暂无课堂记录。
+                        </div>
+                      ) : (
+                        <div className="max-h-72 space-y-2 overflow-y-auto pr-1">
+                          {selectedStudentClassroomList.map(({ classroom, classNumber }) => {
+                            const isDeleting = deletingClassroomId === classroom.id;
+
+                            return (
+                              <div key={classroom.id} className="flex flex-col gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 sm:flex-row sm:items-center sm:justify-between">
+                                <div className="min-w-0">
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <span className="rounded-full bg-[var(--primary-soft)] px-2 py-0.5 text-xs font-bold text-[var(--primary)]">第 {classNumber} 次</span>
+                                    <span className="text-sm font-bold text-[var(--text)]">{formatClassroomDate(getClassroomTime(classroom))}</span>
+                                    <span className="rounded-full border border-[var(--border)] px-2 py-0.5 text-xs font-semibold text-[var(--text-soft)]">{classroom.status || "unknown"}</span>
+                                  </div>
+                                  <div className="mt-1 text-xs text-[var(--text-soft)]">
+                                    Meeting ID: {classroom.zoom_meeting_id}
+                                    {classroom.ended_at ? ` · 结束：${formatClassroomDate(classroom.ended_at)}` : ""}
+                                  </div>
+                                </div>
+                                <button type="button" onClick={() => deleteAdminClassroom(classroom.id)} disabled={isDeleting} className="inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-[var(--radius-sm)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-3 text-xs font-bold text-[var(--danger)] transition hover:border-[var(--danger)]/50 disabled:cursor-not-allowed disabled:opacity-60">
+                                  {isDeleting ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
+                                  删除
+                                </button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -548,40 +605,54 @@ export default function ClassroomPage() {
               </div>
             ) : null}
 
-            <div className="mt-6 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-              <div className="mb-3 flex items-center justify-between gap-3">
+            <div className="mt-6 rounded-[var(--radius-lg)] border border-[var(--primary)]/30 bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+              <div className="mb-4 flex items-start justify-between gap-3">
                 <div>
-                  <div className="flex items-center gap-2 text-sm font-bold text-[var(--text)]">
-                    <Link2 size={16} className="text-[var(--primary)]" />
-                    课堂链接
+                  <div className="flex items-center gap-2 text-base font-bold text-[var(--text)]">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
+                      <Link2 size={17} />
+                    </span>
+                    当前课堂
                   </div>
-                  <p className="mt-1 text-xs text-[var(--text-soft)]">老师开启课堂后，这里会出现可直接进入的链接。</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">老师开启课堂后，这里会显示一键进入入口和课次信息。</p>
                 </div>
                 <Badge variant="secondary">{notifications.length}</Badge>
               </div>
 
               {notificationsLoading ? (
-                <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] px-4 py-5 text-sm text-[var(--text-soft)]">Loading classroom links...</div>
+                <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-5 text-sm text-[var(--text-soft)]">Loading classroom links...</div>
               ) : notifications.length === 0 ? (
-                <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] px-4 py-5 text-sm text-[var(--text-soft)]">暂无课堂链接，也可以用右侧 Meeting ID 加入。</div>
+                <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-5 text-sm text-[var(--text-soft)]">暂无进行中的课堂。老师开启课堂后会自动出现在这里。</div>
               ) : (
                 <div className="space-y-3">
                   {notifications.slice(0, 3).map((notification) => {
                     const notificationMeetingId = getMeetingId(notification);
+                    const classNumber = notification.class_number ?? notification.total_class_count ?? null;
+                    const completedClassCount = notification.completed_class_count ?? 0;
+                    const totalClassCount = notification.total_class_count ?? classNumber ?? 0;
 
                     return (
-                      <div key={notification.id} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div key={notification.id} className="rounded-[var(--radius-md)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] p-4">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                           <div className="min-w-0">
-                            <div className="truncate text-sm font-bold text-[var(--text)]">{notification.title || "Zoom Classroom"}</div>
-                            <div className="mt-1 text-xs text-[var(--text-soft)]">Meeting ID: {notificationMeetingId || "—"} · {formatClassroomDate(notification.created_at)}</div>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <div className="truncate text-base font-bold text-[var(--text)]">{notification.title || "Zoom Classroom"}</div>
+                              {classNumber ? <Badge variant="default">第 {classNumber} 次课堂</Badge> : null}
+                            </div>
+                            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[var(--text-soft)]">
+                              <span>Meeting ID: {notificationMeetingId || "—"}</span>
+                              <span>·</span>
+                              <span>{formatClassroomDate(notification.created_at)}</span>
+                            </div>
+                            <div className="mt-2 flex flex-wrap gap-2">
+                              <span className="rounded-full border border-[var(--border)] bg-[var(--bg-soft)] px-2 py-0.5 text-xs font-semibold text-[var(--text-soft)]">已完成 {completedClassCount} 次</span>
+                              <span className="rounded-full border border-[var(--border)] bg-[var(--bg-soft)] px-2 py-0.5 text-xs font-semibold text-[var(--text-soft)]">累计记录 {totalClassCount} 次</span>
+                            </div>
                           </div>
                           <div className="flex shrink-0 flex-wrap gap-2">
-                            <button type="button" onClick={() => joinNotification(notification)} className="inline-flex h-9 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-3 text-xs font-bold text-white transition hover:bg-[var(--primary-hover)]">
-                              点击进入
-                            </button>
-                            <button type="button" onClick={() => openNotificationPage(notification)} className="inline-flex h-9 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 text-xs font-bold text-[var(--text)] transition hover:border-[var(--primary)]/40">
-                              单页打开
+                            <button type="button" onClick={() => openNotificationZoom(notification)} className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--primary)] px-5 text-sm font-bold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">
+                              <ExternalLink size={14} />
+                              一键进入 Zoom
                             </button>
                           </div>
                         </div>
@@ -590,18 +661,35 @@ export default function ClassroomPage() {
                   })}
                 </div>
               )}
+
+              {status ? (
+                <div className={`mt-3 rounded-[var(--radius-md)] border px-4 py-3 text-sm font-semibold ${status.includes("已打开") ? "border-[var(--success)]/25 bg-[var(--success-soft)] text-[var(--success)]" : "border-[var(--danger)]/25 bg-[var(--danger-soft)] text-[var(--danger)]"}`}>
+                  {status}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
 
-        <Card className="rounded-[var(--radius-lg)]">
-          <CardHeader className="flex-col items-start gap-1">
-            <CardTitle>Meeting Details</CardTitle>
-            <CardDescription>
-              Use the Meeting ID and password from your classroom invitation.
-            </CardDescription>
+        <Card className="rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+          <CardHeader className="flex-col items-start gap-3">
+            <div className="flex w-full items-start justify-between gap-4">
+              <div>
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--bg-soft)] text-[var(--primary)]">
+                  <MonitorPlay size={18} />
+                </div>
+                <CardTitle>备用加入方式</CardTitle>
+                <CardDescription>
+                  通常不需要手动输入，仅在一键进入不可用时展开。
+                </CardDescription>
+              </div>
+              <Button type="button" variant="secondary" onClick={() => setShowManualJoin((current) => !current)} className="shrink-0 whitespace-nowrap px-4">
+                {showManualJoin ? "收起" : "展开"}
+              </Button>
+            </div>
           </CardHeader>
 
+          {showManualJoin ? (
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-5">
               <label className="block">
@@ -640,23 +728,22 @@ export default function ClassroomPage() {
                 />
               </label>
 
-              {status ? (
-                <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">
-                  {status}
-                </div>
-              ) : null}
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Button type="submit" fullWidth size="lg">
-                  Join Meeting
-                </Button>
-                <Button type="button" variant="secondary" fullWidth size="lg" onClick={handleOpenZoomPage} className="gap-2">
+              <div className="grid gap-3">
+                <Button type="submit" fullWidth size="lg" className="gap-2">
                   <ExternalLink size={16} />
-                  Open Page
+                  打开 Zoom
                 </Button>
               </div>
             </form>
           </CardContent>
+          ) : (
+            <CardContent>
+              <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                <div className="text-sm font-semibold text-[var(--text)]">无需手动输入</div>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">请优先使用左侧课堂卡片的一键进入。系统会自动带入固定会议号和密码。</p>
+              </div>
+            </CardContent>
+          )}
         </Card>
       </section>
     </main>
