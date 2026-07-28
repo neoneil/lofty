@@ -18,7 +18,7 @@ export async function GET() {
       adminSupabase
         .schema("zoom")
         .from("teacher_rooms")
-        .select("id, zoom_meeting_id, zoom_password")
+        .select("id, zoom_meeting_id, zoom_password, zoom_join_url")
         .eq("teacher_id", user.id)
         .eq("is_active", true)
         .maybeSingle(),
@@ -31,7 +31,7 @@ export async function GET() {
       adminSupabase
         .schema("zoom")
         .from("classrooms")
-        .select("id, student_id, zoom_meeting_id, zoom_password, status, created_at, started_at, ended_at, title")
+        .select("id, student_id, zoom_meeting_id, zoom_password, zoom_join_url, status, created_at, started_at, ended_at, title")
         .eq("teacher_id", user.id)
         .order("created_at", { ascending: false })
         .limit(500),
@@ -166,7 +166,7 @@ export async function POST(request: NextRequest) {
     const { data: teacherRoom, error: teacherRoomError } = await adminSupabase
       .schema("zoom")
       .from("teacher_rooms")
-      .select("id, zoom_meeting_id, zoom_password")
+      .select("id, zoom_meeting_id, zoom_password, zoom_join_url")
       .eq("teacher_id", user.id)
       .eq("is_active", true)
       .maybeSingle();
@@ -200,13 +200,13 @@ export async function POST(request: NextRequest) {
         title: `${teacherProfile.full_name || "Teacher"} / ${studentProfile.full_name || studentProfile.email || "Student"} Classroom`,
         zoom_meeting_id: teacherRoom.zoom_meeting_id,
         zoom_password: teacherRoom.zoom_password,
-        zoom_join_url: null,
+        zoom_join_url: teacherRoom.zoom_join_url,
         zoom_start_url: null,
         status: "started",
         started_at: now,
         ended_at: null,
       })
-      .select("id, student_id, zoom_meeting_id, zoom_password, status, created_at, started_at, ended_at, title")
+      .select("id, student_id, zoom_meeting_id, zoom_password, zoom_join_url, status, created_at, started_at, ended_at, title")
       .single();
 
     if (classroomError || !classroom) {

@@ -39,6 +39,7 @@ type TeacherRoom = {
   id: string;
   zoom_meeting_id: string;
   zoom_password: string | null;
+  zoom_join_url?: string | null;
 };
 
 type ClassroomRecord = {
@@ -46,6 +47,7 @@ type ClassroomRecord = {
   student_id: string;
   zoom_meeting_id: string;
   zoom_password: string | null;
+  zoom_join_url?: string | null;
   status: string | null;
   created_at: string;
   started_at: string | null;

@@ -54,7 +54,7 @@ export async function GET() {
       ? await adminSupabase
         .schema("zoom")
         .from("classrooms")
-        .select("id, student_id, teacher_id, zoom_meeting_id, zoom_password, status, created_at, started_at, ended_at")
+        .select("id, student_id, teacher_id, zoom_meeting_id, zoom_password, zoom_join_url, status, created_at, started_at, ended_at")
         .in("id", classroomIds)
       : { data: [], error: null };
 
@@ -80,7 +80,7 @@ export async function GET() {
       ? await adminSupabase
         .schema("zoom")
         .from("teacher_rooms")
-        .select("teacher_id, zoom_meeting_id, zoom_password")
+        .select("teacher_id, zoom_meeting_id, zoom_password, zoom_join_url")
         .in("teacher_id", activeTeacherIds)
         .in("zoom_meeting_id", activeMeetingIds)
         .eq("is_active", true)
@@ -100,6 +100,9 @@ export async function GET() {
 
     const teacherRoomPasswordByKey = new Map(
       (teacherRooms ?? []).map((teacherRoom) => [`${teacherRoom.teacher_id}:${teacherRoom.zoom_meeting_id}`, teacherRoom.zoom_password ?? ""]),
+    );
+    const teacherRoomJoinUrlByKey = new Map(
+      (teacherRooms ?? []).map((teacherRoom) => [`${teacherRoom.teacher_id}:${teacherRoom.zoom_meeting_id}`, teacherRoom.zoom_join_url ?? ""]),
     );
     const studentClassroomsByTeacher = new Map<string, typeof classroomList>();
 
@@ -133,7 +136,9 @@ export async function GET() {
     }).map((notification) => {
       const classroom = notification.classroom_id ? activeClassroomById.get(notification.classroom_id) : null;
       const meetingId = notification.meeting_id || classroom?.zoom_meeting_id || "";
-      const teacherRoomPassword = classroom ? teacherRoomPasswordByKey.get(`${classroom.teacher_id}:${classroom.zoom_meeting_id}`) : "";
+      const teacherRoomKey = classroom ? `${classroom.teacher_id}:${classroom.zoom_meeting_id}` : "";
+      const teacherRoomPassword = teacherRoomKey ? teacherRoomPasswordByKey.get(teacherRoomKey) : "";
+      const teacherRoomJoinUrl = teacherRoomKey ? teacherRoomJoinUrlByKey.get(teacherRoomKey) : "";
       const meetingPassword = teacherRoomPassword || classroom?.zoom_password || notification.meeting_password || "";
       const teacherClassrooms = classroom?.teacher_id ? studentClassroomsByTeacher.get(classroom.teacher_id) ?? [] : [];
       const classNumber = classroom ? teacherClassrooms.findIndex((item) => item.id === classroom.id) + 1 : null;
@@ -144,7 +149,8 @@ export async function GET() {
         params.set("pwd", meetingPassword.trim());
       }
 
-      const joinUrl = meetingId ? `https://zoom.us/j/${meetingId.replace(/\s/g, "")}${params.toString() ? `?${params.toString()}` : ""}` : "";
+      const fallbackJoinUrl = meetingId ? `https://zoom.us/j/${meetingId.replace(/\s/g, "")}${params.toString() ? `?${params.toString()}` : ""}` : "";
+      const joinUrl = classroom?.zoom_join_url?.trim() || teacherRoomJoinUrl?.trim() || fallbackJoinUrl;
 
       return {
         ...notification,
