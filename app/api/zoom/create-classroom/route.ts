@@ -13,6 +13,7 @@ export async function GET() {
     const [
       { data: teacherRoom, error: teacherRoomError },
       { data: students, error: studentsError },
+      { data: classrooms, error: classroomsError },
     ] = await Promise.all([
       adminSupabase
         .schema("zoom")
@@ -27,6 +28,13 @@ export async function GET() {
         .eq("role", "user")
         .order("created_at", { ascending: false })
         .limit(200),
+      adminSupabase
+        .schema("zoom")
+        .from("classrooms")
+        .select("id, student_id, zoom_meeting_id, zoom_password, status, created_at, started_at, ended_at, title")
+        .eq("teacher_id", user.id)
+        .order("created_at", { ascending: false })
+        .limit(500),
     ]);
 
     if (teacherRoomError) {
@@ -53,10 +61,23 @@ export async function GET() {
       );
     }
 
+    if (classroomsError) {
+      return Response.json(
+        {
+          ok: false,
+          message: classroomsError.message,
+        },
+        {
+          status: 500,
+        },
+      );
+    }
+
     return Response.json({
       ok: true,
       teacherRoom,
       students: students ?? [],
+      classrooms: classrooms ?? [],
     });
   } catch (error) {
     console.error("GET CLASSROOM ADMIN CONTEXT ERROR", error);
@@ -168,6 +189,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const now = new Date().toISOString();
+
     const { data: classroom, error: classroomError } = await adminSupabase
       .schema("zoom")
       .from("classrooms")
@@ -179,9 +202,11 @@ export async function POST(request: NextRequest) {
         zoom_password: teacherRoom.zoom_password,
         zoom_join_url: null,
         zoom_start_url: null,
-        status: "created",
+        status: "started",
+        started_at: now,
+        ended_at: null,
       })
-      .select("id, zoom_meeting_id, zoom_password")
+      .select("id, student_id, zoom_meeting_id, zoom_password, status, created_at, started_at, ended_at, title")
       .single();
 
     if (classroomError || !classroom) {
@@ -216,11 +241,24 @@ export async function POST(request: NextRequest) {
       console.error("INSERT NOTIFICATION ERROR", notificationError);
     }
 
+    const { count: classNumber, error: classCountError } = await adminSupabase
+      .schema("zoom")
+      .from("classrooms")
+      .select("id", { count: "exact", head: true })
+      .eq("teacher_id", user.id)
+      .eq("student_id", studentProfile.id);
+
+    if (classCountError) {
+      console.error("COUNT CLASSROOM ERROR", classCountError);
+    }
+
     return Response.json({
       ok: true,
       classroomId: classroom.id,
       meetingId: classroom.zoom_meeting_id,
       password: classroom.zoom_password || "",
+      classroom,
+      classNumber,
     });
   } catch (error) {
     console.error("CREATE CLASSROOM ERROR", error);

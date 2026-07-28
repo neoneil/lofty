@@ -26,7 +26,7 @@ export default function StartClassroomButton({
         data,
       });
 
-      if (!response.ok) {
+      if (!response.ok || !data.ok) {
         meetingWindow?.close();
         alert(data.message || "Create classroom failed");
         return;

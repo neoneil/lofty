@@ -19,6 +19,8 @@ type ClassroomRecord = {
   zoom_meeting_id: string;
   status: string | null;
   created_at: string;
+  started_at: string | null;
+  ended_at: string | null;
 };
 
 export const dynamic = "force-dynamic";
@@ -31,7 +33,7 @@ export default async function AdminStartClassroomPage() {
   const [studentsRes, classroomsRes] = await Promise.all([
     supabase.from("profiles").select("id, full_name, email, avatar_url, role").eq("role", "user").order("created_at", { ascending: false }),
 
-    supabase.schema("zoom").from("classrooms").select("id, student_id, zoom_meeting_id, status, created_at").order("created_at", { ascending: false }),
+    supabase.schema("zoom").from("classrooms").select("id, student_id, zoom_meeting_id, status, created_at, started_at, ended_at").order("created_at", { ascending: false }),
   ]);
 
   if (studentsRes.error) {
@@ -79,6 +81,7 @@ export default async function AdminStartClassroomPage() {
             const displayName = student.full_name?.trim() || student.email || "Unnamed Student";
             const avatarLetter = displayName.slice(0, 1).toUpperCase();
             const history = classroomMap.get(student.id) ?? [];
+            const completedCount = history.filter((item) => item.status === "ended" || item.ended_at).length;
 
             return (
               <div key={student.id} className="rounded-2xl border border-[var(--border)] bg-white p-5 shadow-sm transition hover:bg-[var(--card-hover)]">
@@ -103,7 +106,7 @@ export default async function AdminStartClassroomPage() {
 
                       <div className="mt-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">
-                          Class History ({history.length})
+                          Class History ({completedCount} completed / {history.length} total)
                         </p>
 
                         {history.length === 0 ? (
@@ -119,7 +122,7 @@ export default async function AdminStartClassroomPage() {
                                 </span>
 
                                 <span>
-                                  {formatDate(item.created_at)}
+                                  {formatDate(item.started_at ?? item.created_at)}
                                 </span>
 
                                 <span className="text-xs text-[var(--text-faint)]">
@@ -127,8 +130,14 @@ export default async function AdminStartClassroomPage() {
                                 </span>
 
                                 {item.status ? (
-                                  <span className="rounded-full bg-gray-50 px-2 py-0.5 text-xs text-[var(--text-soft)]">
+                                  <span className="rounded-full bg-[var(--bg-soft)] px-2 py-0.5 text-xs text-[var(--text-soft)]">
                                     {item.status}
+                                  </span>
+                                ) : null}
+
+                                {item.ended_at ? (
+                                  <span className="text-xs text-[var(--text-faint)]">
+                                    Ended: {formatDate(item.ended_at)}
                                   </span>
                                 ) : null}
                               </div>

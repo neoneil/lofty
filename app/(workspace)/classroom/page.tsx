@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { ExternalLink, Link2, Loader2, Lock, MonitorPlay, Sparkles, UserRound, Video } from "lucide-react";
+import { CheckCircle2, ExternalLink, History, Link2, Loader2, Lock, MonitorPlay, Sparkles, UserRound, Video } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
@@ -14,9 +14,6 @@ import {
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { createClient } from "@/lib/supabase/client";
-
-type ZoomEmbeddedModule = typeof import("@zoom/meetingsdk/embedded").default;
-type ZoomClient = ReturnType<ZoomEmbeddedModule["createClient"]>;
 
 type ZoomNotification = {
   id: string;
@@ -40,6 +37,18 @@ type TeacherRoom = {
   zoom_password: string | null;
 };
 
+type ClassroomRecord = {
+  id: string;
+  student_id: string;
+  zoom_meeting_id: string;
+  zoom_password: string | null;
+  status: string | null;
+  created_at: string;
+  started_at: string | null;
+  ended_at: string | null;
+  title: string | null;
+};
+
 function getZoomJoinUrl(meetingNumber: string, password?: string) {
   const cleanMeetingNumber = meetingNumber.replace(/\s/g, "");
   const params = new URLSearchParams();
@@ -51,6 +60,19 @@ function getZoomJoinUrl(meetingNumber: string, password?: string) {
   const suffix = params.toString() ? `?${params.toString()}` : "";
 
   return `https://zoom.us/j/${cleanMeetingNumber}${suffix}`;
+}
+
+function getEmbeddedZoomUrl(meetingNumber: string, password: string, userName: string) {
+  const params = new URLSearchParams({
+    meetingNumber: meetingNumber.replace(/\s/g, ""),
+    name: userName || "Student",
+  });
+
+  if (password.trim()) {
+    params.set("password", password.trim());
+  }
+
+  return `/zoom/embedded?${params.toString()}`;
 }
 
 function getMeetingId(notification: ZoomNotification) {
@@ -72,31 +94,43 @@ function formatClassroomDate(value: string) {
   });
 }
 
-function waitForLayout() {
-  return new Promise<void>((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => resolve());
-    });
-  });
+function isClassroomEnded(classroom: ClassroomRecord) {
+  return classroom.status === "ended" || Boolean(classroom.ended_at);
+}
+
+function getClassroomTime(classroom: ClassroomRecord) {
+  return classroom.started_at ?? classroom.created_at;
 }
 
 export default function ClassroomPage() {
-  const clientRef = useRef<ZoomClient | null>(null);
-  const joinedRef = useRef(false);
+  const adminZoomWindowRef = useRef<Window | null>(null);
 
   const [meetingNumber, setMeetingNumber] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [shouldJoin, setShouldJoin] = useState(false);
   const [status, setStatus] = useState("");
+  const [userProfileLoaded, setUserProfileLoaded] = useState(false);
+  const [canManageClassrooms, setCanManageClassrooms] = useState(false);
   const [notifications, setNotifications] = useState<ZoomNotification[]>([]);
   const [notificationsLoading, setNotificationsLoading] = useState(true);
   const [teacherRoom, setTeacherRoom] = useState<TeacherRoom | null>(null);
   const [adminStudents, setAdminStudents] = useState<AdminStudent[]>([]);
+  const [adminClassrooms, setAdminClassrooms] = useState<ClassroomRecord[]>([]);
   const [selectedStudentId, setSelectedStudentId] = useState("");
   const [adminLoading, setAdminLoading] = useState(true);
   const [adminStarting, setAdminStarting] = useState(false);
+  const [endingClassroomId, setEndingClassroomId] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
+
+  const selectedStudent = adminStudents.find((student) => student.id === selectedStudentId) ?? null;
+  const selectedStudentClassrooms = adminClassrooms.filter((classroom) => classroom.student_id === selectedStudentId);
+  const selectedStudentClassroomsOldestFirst = [...selectedStudentClassrooms].sort((a, b) => new Date(getClassroomTime(a)).getTime() - new Date(getClassroomTime(b)).getTime());
+  const selectedActiveClassroom = selectedStudentClassrooms.find((classroom) => classroom.status === "started" && !classroom.ended_at) ?? null;
+  const selectedCompletedClassCount = selectedStudentClassrooms.filter(isClassroomEnded).length;
+  const selectedTotalClassCount = selectedStudentClassrooms.length;
+  const selectedActiveClassNumber = selectedActiveClassroom ? selectedStudentClassroomsOldestFirst.findIndex((classroom) => classroom.id === selectedActiveClassroom.id) + 1 : null;
+  const selectedNextClassNumber = selectedTotalClassCount + 1;
 
   useEffect(() => {
     let cancelled = false;
@@ -108,18 +142,23 @@ export default function ClassroomPage() {
       const cleanMeetingNumber = urlMeetingNumber.replace(/\s/g, "");
       const urlName = params.get("name")?.trim();
       let defaultName = urlName || "Student";
+      let canManage = false;
 
       try {
         const supabase = createClient();
         const { data: authData } = await supabase.auth.getUser();
         const currentUser = authData.user;
 
-        if (!urlName && currentUser) {
-          const { data: profile } = await supabase.from("profiles").select("full_name, email").eq("id", currentUser.id).maybeSingle();
+        if (currentUser) {
+          const { data: profile } = await supabase.from("profiles").select("full_name, email, role").eq("id", currentUser.id).maybeSingle();
           const profileName = profile?.full_name?.trim();
           const profileEmail = profile?.email?.trim() || currentUser.email?.trim() || "";
 
-          defaultName = profileName || profileEmail.split("@")[0] || "Student";
+          if (!urlName) {
+            defaultName = profileName || profileEmail.split("@")[0] || "Student";
+          }
+
+          canManage = ["admin", "teacher", "editor"].includes(profile?.role ?? "");
         }
       } catch (error) {
         console.warn("LOAD CLASSROOM USER NAME ERROR", error);
@@ -131,6 +170,7 @@ export default function ClassroomPage() {
 
       animationFrame = window.requestAnimationFrame(() => {
         setUserName(defaultName);
+        setCanManageClassrooms(canManage);
 
         if (cleanMeetingNumber) {
           setMeetingNumber(cleanMeetingNumber);
@@ -140,6 +180,8 @@ export default function ClassroomPage() {
             setShouldJoin(true);
           }
         }
+
+        setUserProfileLoaded(true);
       });
     }
 
@@ -172,7 +214,8 @@ export default function ClassroomPage() {
           const students = (data.students ?? []) as AdminStudent[];
           setTeacherRoom(data.teacherRoom ?? null);
           setAdminStudents(students);
-          setSelectedStudentId(students[0]?.id ?? "");
+          setAdminClassrooms((data.classrooms ?? []) as ClassroomRecord[]);
+          setSelectedStudentId((current) => current || students[0]?.id || "");
         }
       } catch (error) {
         console.warn("LOAD CLASSROOM ADMIN CONTEXT ERROR", error);
@@ -183,12 +226,24 @@ export default function ClassroomPage() {
       }
     }
 
+    if (!userProfileLoaded) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    if (!canManageClassrooms) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
     void loadAdminContext();
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [canManageClassrooms, userProfileLoaded]);
 
   useEffect(() => {
     let cancelled = false;
@@ -277,6 +332,11 @@ export default function ClassroomPage() {
       return;
     }
 
+    if (selectedActiveClassroom) {
+      setAdminMessage("当前学生正在上课，请先结束后再开启下一次。");
+      return;
+    }
+
     setAdminStarting(true);
     setAdminMessage("");
 
@@ -302,12 +362,18 @@ export default function ClassroomPage() {
       const zoomUrl = getZoomJoinUrl(data.meetingId, data.password);
 
       if (meetingWindow) {
+        adminZoomWindowRef.current = meetingWindow;
         meetingWindow.location.href = zoomUrl;
       } else {
         window.open(zoomUrl, "_blank", "noopener,noreferrer");
       }
 
-      setAdminMessage("课堂记录已创建，学生通知已发送，Zoom 已打开。");
+      if (data.classroom) {
+        setAdminClassrooms((current) => [data.classroom as ClassroomRecord, ...current.filter((classroom) => classroom.id !== data.classroom.id)]);
+      }
+
+      const classNumber = typeof data.classNumber === "number" ? data.classNumber : selectedNextClassNumber;
+      setAdminMessage(`第 ${classNumber} 次课堂已开始，学生通知已发送，Zoom 已打开。`);
     } catch (error) {
       setAdminMessage(error instanceof Error ? error.message : "Create classroom failed");
     } finally {
@@ -315,124 +381,41 @@ export default function ClassroomPage() {
     }
   }
 
-  useEffect(() => {
-    if (!shouldJoin) {
-      return;
-    }
+  async function endAdminClassroom(classroomId: string) {
+    setEndingClassroomId(classroomId);
+    setAdminMessage("");
 
-    let cancelled = false;
+    try {
+      const response = await fetch(`/api/zoom/classrooms/${classroomId}/end`, {
+        method: "POST",
+      });
+      const data = await response.json();
 
-    async function startMeeting() {
-      try {
-        if (joinedRef.current) {
-          return;
-        }
-
-        const cleanMeetingNumber = meetingNumber.replace(/\s/g, "");
-
-        if (!cleanMeetingNumber) {
-          setStatus("请输入 Meeting ID");
-          return;
-        }
-
-        setStatus("正在加载 Zoom SDK...");
-
-        const ZoomMtgEmbedded = (await import("@zoom/meetingsdk/embedded")).default;
-
-        if (cancelled) {
-          return;
-        }
-
-        await waitForLayout();
-
-        if (cancelled) {
-          return;
-        }
-
-        const meetingSDKElement = document.getElementById("meetingSDKElement");
-
-        if (!meetingSDKElement) {
-          setStatus("会议容器不存在");
-          return;
-        }
-
-        const client = ZoomMtgEmbedded.createClient();
-
-        clientRef.current = client;
-
-        setStatus("正在获取会议签名...");
-
-        const response = await fetch("/api/zoom/join-classroom/signature", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            meetingNumber: cleanMeetingNumber,
-            role: 0,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok || !data.signature) {
-          console.warn("SIGNATURE FAILED", data);
-          setStatus("获取 Zoom signature 失败");
-          return;
-        }
-
-        setStatus("正在初始化会议...");
-
-        await client.init({
-          zoomAppRoot: meetingSDKElement,
-          language: "en-US",
-          patchJsMedia: true,
-          customize: {
-            video: {
-              isResizable: true,
-            },
-          },
-        });
-
-        setStatus("正在加入会议...");
-
-        try {
-          await client.join({
-            signature: data.signature,
-            meetingNumber: cleanMeetingNumber,
-            password,
-            userName: userName || "Student",
-          });
-
-          joinedRef.current = true;
-          setStatus("");
-        } catch (joinError) {
-          console.warn("ZOOM JOIN WARNING", joinError);
-          setStatus("加入会议失败，请检查 Meeting ID 或密码");
-        }
-      } catch (error) {
-        console.warn("ZOOM ERROR", error);
-        setStatus("Zoom 加载失败");
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "End classroom failed");
       }
-    }
 
-    startMeeting();
-
-    return () => {
-      cancelled = true;
+      if (data.classroom) {
+        setAdminClassrooms((current) => current.map((classroom) => (classroom.id === data.classroom.id ? (data.classroom as ClassroomRecord) : classroom)));
+      }
 
       try {
-        if (clientRef.current) {
-          clientRef.current.leaveMeeting?.();
-          clientRef.current = null;
+        if (adminZoomWindowRef.current && !adminZoomWindowRef.current.closed) {
+          adminZoomWindowRef.current.close();
         }
-
-        joinedRef.current = false;
-      } catch (error) {
-        console.warn("ZOOM DESTROY WARNING", error);
+      } catch (closeError) {
+        console.warn("CLOSE ADMIN ZOOM WINDOW WARNING", closeError);
+      } finally {
+        adminZoomWindowRef.current = null;
       }
-    };
-  }, [shouldJoin, meetingNumber, password, userName]);
+
+      setAdminMessage("课堂已结束，本次课时已计入完成次数，并已尝试关闭老师的 Zoom 弹窗。");
+    } catch (error) {
+      setAdminMessage(error instanceof Error ? error.message : "End classroom failed");
+    } finally {
+      setEndingClassroomId("");
+    }
+  }
 
   if (shouldJoin) {
     return (
@@ -443,7 +426,7 @@ export default function ClassroomPage() {
           </div>
         ) : null}
 
-        <div id="meetingSDKElement" className="h-full w-full" />
+        <iframe title="Zoom Classroom" src={getEmbeddedZoomUrl(meetingNumber, password, userName)} allow="camera; microphone; fullscreen; display-capture; autoplay" className="h-full w-full border-0" />
       </main>
     );
   }
@@ -501,19 +484,62 @@ export default function ClassroomPage() {
                 ) : adminStudents.length === 0 ? (
                   <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] px-4 py-5 text-sm text-[var(--text-soft)]">没有可发送通知的学生。</div>
                 ) : (
-                  <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-                    <select value={selectedStudentId} onChange={(event) => setSelectedStudentId(event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
-                      {adminStudents.map((student) => (
-                        <option key={student.id} value={student.id}>
-                          {student.full_name?.trim() || student.email || student.id}
-                          {student.is_my_student ? " · 内部学生" : ""}
-                        </option>
-                      ))}
-                    </select>
-                    <Button type="button" onClick={startAdminClassroom} disabled={adminStarting} className="gap-2">
-                      {adminStarting ? <Loader2 size={16} className="animate-spin" /> : <Video size={16} />}
-                      一键开启
-                    </Button>
+                  <div className="space-y-3">
+                    <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+                      <select value={selectedStudentId} onChange={(event) => { setSelectedStudentId(event.target.value); setAdminMessage(""); }} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                        {adminStudents.map((student) => (
+                          <option key={student.id} value={student.id}>
+                            {student.full_name?.trim() || student.email || student.id}
+                            {student.is_my_student ? " · 内部学生" : ""}
+                          </option>
+                        ))}
+                      </select>
+                      <Button type="button" onClick={startAdminClassroom} disabled={adminStarting || Boolean(selectedActiveClassroom)} className="gap-2">
+                        {adminStarting ? <Loader2 size={16} className="animate-spin" /> : <Video size={16} />}
+                        {selectedActiveClassroom ? "课堂进行中" : "一键开启"}
+                      </Button>
+                    </div>
+
+                    <div className="grid gap-2 sm:grid-cols-3">
+                      <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
+                        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">
+                          <CheckCircle2 size={13} />
+                          已完成
+                        </div>
+                        <div className="mt-1 text-xl font-bold text-[var(--text)]">{selectedCompletedClassCount}</div>
+                      </div>
+                      <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
+                        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">
+                          <History size={13} />
+                          课堂记录
+                        </div>
+                        <div className="mt-1 text-xl font-bold text-[var(--text)]">{selectedTotalClassCount}</div>
+                      </div>
+                      <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
+                        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-faint)]">
+                          <Video size={13} />
+                          {selectedActiveClassroom ? "当前第" : "下次第"}
+                        </div>
+                        <div className="mt-1 text-xl font-bold text-[var(--primary)]">{selectedActiveClassNumber ?? selectedNextClassNumber}</div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="min-w-0">
+                          <div className="truncate text-sm font-bold text-[var(--text)]">{selectedStudent?.full_name?.trim() || selectedStudent?.email || "Selected student"}</div>
+                          <div className="mt-1 text-xs text-[var(--text-soft)]">
+                            {selectedActiveClassroom ? `进行中 · ${formatClassroomDate(getClassroomTime(selectedActiveClassroom))}` : selectedStudentClassrooms[0] ? `最近一次 · ${formatClassroomDate(getClassroomTime(selectedStudentClassrooms[0]))}` : "还没有课堂记录"}
+                          </div>
+                        </div>
+                        {selectedActiveClassroom ? (
+                          <Button type="button" variant="secondary" onClick={() => endAdminClassroom(selectedActiveClassroom.id)} disabled={endingClassroomId === selectedActiveClassroom.id} className="gap-2">
+                            {endingClassroomId === selectedActiveClassroom.id ? <Loader2 size={16} className="animate-spin" /> : <CheckCircle2 size={16} />}
+                            结束课堂
+                          </Button>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
                 )}
 
