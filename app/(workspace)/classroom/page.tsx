@@ -409,7 +409,7 @@ export default function ClassroomPage() {
         adminZoomWindowRef.current = null;
       }
 
-      setAdminMessage("课堂已结束，本次课时已计入完成次数，并已尝试关闭老师的 Zoom 弹窗。");
+      setAdminMessage("课堂记录已结束，请在 Zoom 中手动结束会议。");
     } catch (error) {
       setAdminMessage(error instanceof Error ? error.message : "End classroom failed");
     } finally {

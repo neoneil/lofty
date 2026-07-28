@@ -31,7 +31,7 @@ export async function GET() {
       .order("created_at", {
         ascending: false,
       })
-      .limit(20);
+      .limit(50);
 
     if (error) {
       return Response.json(
@@ -45,9 +45,56 @@ export async function GET() {
       );
     }
 
+    const notificationList = data ?? [];
+    const classroomIds = notificationList
+      .map((notification) => notification.classroom_id)
+      .filter((classroomId): classroomId is string => Boolean(classroomId));
+
+    const { data: classrooms, error: classroomsError } = classroomIds.length > 0
+      ? await adminSupabase
+        .schema("zoom")
+        .from("classrooms")
+        .select("id, status, ended_at")
+        .in("id", classroomIds)
+      : { data: [], error: null };
+
+    if (classroomsError) {
+      return Response.json(
+        {
+          ok: false,
+          message: classroomsError.message,
+        },
+        {
+          status: 500,
+        },
+      );
+    }
+
+    const activeClassroomIds = new Set(
+      (classrooms ?? [])
+        .filter((classroom) => classroom.status !== "ended" && !classroom.ended_at)
+        .map((classroom) => classroom.id),
+    );
+    const seenMeetingKeys = new Set<string>();
+    const activeNotifications = notificationList.filter((notification) => {
+      if (notification.classroom_id && !activeClassroomIds.has(notification.classroom_id)) {
+        return false;
+      }
+
+      const meetingKey = notification.meeting_id || notification.classroom_id || notification.id;
+
+      if (seenMeetingKeys.has(meetingKey)) {
+        return false;
+      }
+
+      seenMeetingKeys.add(meetingKey);
+
+      return true;
+    });
+
     return Response.json({
       ok: true,
-      notifications: data ?? [],
+      notifications: activeNotifications,
     });
   } catch (error) {
     console.error("GET STUDENT ZOOM NOTIFICATIONS ERROR", error);

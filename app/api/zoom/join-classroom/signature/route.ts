@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 
 import { createHmac } from "crypto";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 export const runtime = "nodejs";
 
@@ -10,6 +12,42 @@ function base64UrlEncode(value: string) {
     .replace(/=/g, "")
     .replace(/\+/g, "-")
     .replace(/\//g, "_");
+}
+
+function readLocalEnvValue(name: string) {
+  try {
+    const envFile = readFileSync(join(process.cwd(), ".env.local"), "utf8");
+    const line = envFile
+      .split(/\r?\n/)
+      .find((item) => item.startsWith(`${name}=`));
+    const rawValue = line?.slice(name.length + 1).trim();
+
+    if (!rawValue) {
+      return "";
+    }
+
+    return rawValue.replace(/^['"]|['"]$/g, "");
+  } catch {
+    return "";
+  }
+}
+
+function getServerEnvValue(...names: string[]) {
+  for (const name of names) {
+    const processValue = process.env[name]?.trim();
+
+    if (processValue) {
+      return processValue;
+    }
+
+    const localValue = readLocalEnvValue(name);
+
+    if (localValue) {
+      return localValue;
+    }
+  }
+
+  return "";
 }
 
 function createZoomSignature({
@@ -65,13 +103,8 @@ export async function POST(
 
     const cleanMeetingNumber = String(meetingNumber ?? "").replace(/\s/g, "");
     const zoomRole = role === 1 ? 1 : 0;
-    const sdkKey =
-      process.env
-        .ZOOM_CLIENT_ID?.trim();
-
-    const sdkSecret =
-      process.env
-        .ZOOM_CLIENT_SECRET?.trim();
+    const sdkKey = getServerEnvValue("ZOOM_CLIENT_ID", "NEXT_PUBLIC_ZOOM_CLIENT_ID");
+    const sdkSecret = getServerEnvValue("ZOOM_CLIENT_SECRET");
 
     if (!cleanMeetingNumber) {
       return Response.json(
