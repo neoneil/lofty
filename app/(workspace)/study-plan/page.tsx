@@ -4,11 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 
 import {
   Calendar,
-  ChevronDown,
-  ChevronUp,
   CheckCircle2,
   Clock3,
-  ClipboardCheck,
   GraduationCap,
   Loader2,
   Sparkles,
@@ -20,6 +17,7 @@ import { createClient } from "@/lib/supabase/client";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
+import { BusinessDatePicker } from "@/components/ui-v2/business-date-picker";
 import {
   Card,
   CardContent,
@@ -121,8 +119,6 @@ export default function StudyPlanPage() {
 
   const [saving, setSaving] = useState(false);
 
-  const [expanded, setExpanded] = useState(false);
-
   const [hasExistingPlan, setHasExistingPlan] = useState(false);
 
   const [saveMessage, setSaveMessage] = useState("");
@@ -197,8 +193,6 @@ export default function StudyPlanPage() {
 
         setHasExistingPlan(true);
 
-        setExpanded(false);
-
         setForm({
           id: data.id,
 
@@ -230,7 +224,7 @@ export default function StudyPlanPage() {
       } else {
         console.log("No existing study plan found.");
 
-        setExpanded(true);
+        setHasExistingPlan(false);
       }
 
       setLoading(false);
@@ -408,8 +402,6 @@ export default function StudyPlanPage() {
       setSaveMessage("学习计划已创建。");
     }
 
-    setExpanded(false);
-
     setSaving(false);
   }
 
@@ -458,322 +450,8 @@ export default function StudyPlanPage() {
           </Card>
         </section>
 
-        <div className="flex flex-col gap-6 lg:flex-row">
-          {/* LEFT */}
-
-          <div className="w-full lg:w-[460px]">
-            <Card className="overflow-hidden rounded-[var(--radius-lg)]">
-              <CardHeader className="border-b border-[var(--border)] bg-[var(--card-soft)] pb-5">
-                <div className="space-y-4">
-                  <div>
-                    <Badge variant="secondary" className="mb-3">
-                      学习档案
-                    </Badge>
-
-                    <CardTitle>个性化学习计划</CardTitle>
-
-                    <CardDescription>
-                      根据你的目标考试、目标分数和考试时间，建立更清晰的学习路线。
-                    </CardDescription>
-                  </div>
-
-                  <Button
-                    variant="secondary"
-                    onClick={() => setExpanded(!expanded)}
-                    fullWidth
-                  >
-                    {expanded ? (
-                      <span className="flex items-center gap-2">
-                        收起学习档案 <ChevronUp size={16} />
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2">
-                        编辑学习档案 <ChevronDown size={16} />
-                      </span>
-                    )}
-                  </Button>
-                </div>
-
-                {hasExistingPlan && !expanded && (
-                  <div className="mt-5 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
-                      <ClipboardCheck
-                        size={15}
-                        className="text-[var(--primary)]"
-                      />
-                      当前学习摘要
-                    </div>
-
-                    <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
-                      你的 {form.exam_type} 学习路线目前以总分{" "}
-                      <span className="font-semibold text-[var(--text)]">
-                        {form.overall_target || "-"}
-                      </span>
-                      为目标。
-                    </p>
-
-                    <div className="mt-4 space-y-2">
-                      <SnapshotItem label="考试" value={form.exam_type} />
-                      <SnapshotItem
-                        label="考试日期"
-                        value={form.exam_deadline || "-"}
-                      />
-                      <SnapshotItem
-                        label="学习时间"
-                        value={dailyHoursLabels[form.daily_study_hours]}
-                      />
-                    </div>
-                  </div>
-                )}
-              </CardHeader>
-
-              {expanded && (
-                <CardContent className="space-y-6 p-5 sm:p-6">
-                  {/* EXAM TYPE */}
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <GraduationCap
-                        size={16}
-                        className="text-[var(--primary)]"
-                      />
-
-                      <div className="text-sm font-semibold text-[var(--text)]">
-                        考试信息
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      {["PTE", "IELTS"].map((type) => (
-                        <button
-                          key={type}
-                          type="button"
-                          onClick={() => updateField("exam_type", type)}
-                          className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
-                            form.exam_type === type
-                              ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                              : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)]"
-                          }`}
-                        >
-                          {type}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* TARGET SCORES */}
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Target size={16} className="text-[var(--primary)]" />
-
-                      <div className="text-sm font-semibold text-[var(--text)]">
-                        目标分数
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <Input
-                        value={form.listening_target}
-                        onChange={(e) =>
-                          updateField("listening_target", e.target.value)
-                        }
-                        placeholder="听力目标分"
-                      />
-
-                      <Input
-                        value={form.listening_current}
-                        onChange={(e) =>
-                          updateField("listening_current", e.target.value)
-                        }
-                        placeholder="听力当前分"
-                      />
-
-                      <Input
-                        value={form.reading_target}
-                        onChange={(e) =>
-                          updateField("reading_target", e.target.value)
-                        }
-                        placeholder="阅读目标分"
-                      />
-
-                      <Input
-                        value={form.reading_current}
-                        onChange={(e) =>
-                          updateField("reading_current", e.target.value)
-                        }
-                        placeholder="阅读当前分"
-                      />
-
-                      <Input
-                        value={form.writing_target}
-                        onChange={(e) =>
-                          updateField("writing_target", e.target.value)
-                        }
-                        placeholder="写作目标分"
-                      />
-
-                      <Input
-                        value={form.writing_current}
-                        onChange={(e) =>
-                          updateField("writing_current", e.target.value)
-                        }
-                        placeholder="写作当前分"
-                      />
-
-                      <Input
-                        value={form.speaking_target}
-                        onChange={(e) =>
-                          updateField("speaking_target", e.target.value)
-                        }
-                        placeholder="口语目标分"
-                      />
-
-                      <Input
-                        value={form.speaking_current}
-                        onChange={(e) =>
-                          updateField("speaking_current", e.target.value)
-                        }
-                        placeholder="口语当前分"
-                      />
-
-                      <Input
-                        value={form.overall_target}
-                        onChange={(e) =>
-                          updateField("overall_target", e.target.value)
-                        }
-                        placeholder="总分目标"
-                        className="col-span-2"
-                      />
-                    </div>
-                  </div>
-
-                  {/* DEADLINE */}
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={16} className="text-[var(--primary)]" />
-
-                      <div className="text-sm font-semibold text-[var(--text)]">
-                        考试日期
-                      </div>
-                    </div>
-
-                    <Input
-                      type="date"
-                      min={today}
-                      value={form.exam_deadline}
-                      onChange={(e) =>
-                        updateField("exam_deadline", e.target.value)
-                      }
-                    />
-                  </div>
-
-                  {/* GOAL */}
-
-                  <div className="space-y-4">
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      学习目标
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      {[
-                        "485 Work Visa",
-                        "190 State Nomination",
-                        "Employer Sponsorship",
-                        "Skills Assessment",
-                        "University Admission",
-                        "Other",
-                      ].map((goal) => (
-                        <button
-                          key={goal}
-                          type="button"
-                          onClick={() => updateField("study_goal", goal)}
-                          className={`flex min-h-[48px] items-center justify-center rounded-[var(--radius-md)] border px-4 text-center text-sm font-medium transition-all duration-200 ${
-                            form.study_goal === goal
-                              ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                              : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
-                          }`}
-                        >
-                          {studyGoalLabels[goal as StudyGoal]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* DAILY HOURS */}
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Clock3 size={16} className="text-[var(--primary)]" />
-
-                      <div className="text-sm font-semibold text-[var(--text)]">
-                        每日学习时间
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      {["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"].map(
-                        (hour) => (
-                          <button
-                            key={hour}
-                            type="button"
-                            onClick={() =>
-                              updateField("daily_study_hours", hour)
-                            }
-                            className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
-                              form.daily_study_hours === hour
-                                ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
-                                : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
-                            }`}
-                          >
-                            {dailyHoursLabels[hour as DailyHours]}
-                          </button>
-                        ),
-                      )}
-                    </div>
-                  </div>
-
-                  {/* NOTES */}
-
-                  <div className="space-y-4">
-                    <div className="text-sm font-semibold text-[var(--text)]">
-                      补充说明
-                    </div>
-
-                    <Textarea
-                      value={form.additional_notes}
-                      onChange={(e) =>
-                        updateField("additional_notes", e.target.value)
-                      }
-                      placeholder="可以补充你的备考情况、薄弱项、目标或时间安排..."
-                    />
-                  </div>
-
-                  {saveMessage && (
-                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-medium text-[var(--text-soft)]">
-                      {saveMessage}
-                    </div>
-                  )}
-
-                  <Button fullWidth onClick={handleSave} disabled={saving}>
-                    {saving ? (
-                      <div className="flex items-center gap-2">
-                        <Loader2 className="animate-spin" size={16} />
-                        保存中...
-                      </div>
-                    ) : (
-                      "保存学习档案"
-                    )}
-                  </Button>
-                </CardContent>
-              )}
-            </Card>
-          </div>
-
-          {/* RIGHT */}
-
-          <div className="flex-1">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(420px,0.9fr)]">
+          <div className="min-w-0">
             <Card className="h-full min-h-[720px] overflow-hidden rounded-[var(--radius-lg)]">
               <CardHeader className="border-b border-[var(--border)] bg-[var(--card-soft)] pb-5">
                 <div>
@@ -865,6 +543,155 @@ export default function StudyPlanPage() {
               </CardContent>
             </Card>
           </div>
+
+          <div className="min-w-0">
+            <Card className="overflow-hidden rounded-[var(--radius-lg)]">
+              <CardHeader className="border-b border-[var(--border)] bg-[var(--card-soft)] pb-5">
+                <div>
+                  <Badge variant="secondary" className="mb-3">
+                    学习档案
+                  </Badge>
+
+                  <CardTitle>个性化学习计划</CardTitle>
+
+                  <CardDescription>
+                    根据你的目标考试、目标分数和考试时间，建立更清晰的学习路线。
+                  </CardDescription>
+                </div>
+
+                <div className={`mt-5 rounded-[var(--radius-lg)] border p-4 text-sm leading-6 ${hasExistingPlan ? "border-[var(--success)]/25 bg-[var(--success-soft)] text-[var(--text-soft)]" : "border-[var(--warning)]/25 bg-[var(--warning-soft)] text-[var(--text-soft)]"}`}>
+                  {hasExistingPlan ? (
+                    <span>
+                      当前学习计划已保存。你可以直接修改右侧字段，然后点击 <span className="font-bold text-[var(--text)]">Update plan</span>。
+                    </span>
+                  ) : (
+                    <span>
+                      还没有学习计划。请先填写目标分数、考试日期和每日学习时间，系统会生成你的个性化路线。
+                    </span>
+                  )}
+                </div>
+              </CardHeader>
+
+              <CardContent className="space-y-6 p-5 sm:p-6">
+                <div className="space-y-3">
+                  <UpdateSectionTitle icon={<GraduationCap size={16} />} title="考试信息" />
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {["PTE", "IELTS"].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => updateField("exam_type", type)}
+                        className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
+                          form.exam_type === type
+                            ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                            : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)]"
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <UpdateSectionTitle icon={<Target size={16} />} title="目标分数" />
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Input value={form.listening_target} onChange={(e) => updateField("listening_target", e.target.value)} placeholder="听力目标分" />
+                    <Input value={form.listening_current} onChange={(e) => updateField("listening_current", e.target.value)} placeholder="听力当前分" />
+                    <Input value={form.reading_target} onChange={(e) => updateField("reading_target", e.target.value)} placeholder="阅读目标分" />
+                    <Input value={form.reading_current} onChange={(e) => updateField("reading_current", e.target.value)} placeholder="阅读当前分" />
+                    <Input value={form.writing_target} onChange={(e) => updateField("writing_target", e.target.value)} placeholder="写作目标分" />
+                    <Input value={form.writing_current} onChange={(e) => updateField("writing_current", e.target.value)} placeholder="写作当前分" />
+                    <Input value={form.speaking_target} onChange={(e) => updateField("speaking_target", e.target.value)} placeholder="口语目标分" />
+                    <Input value={form.speaking_current} onChange={(e) => updateField("speaking_current", e.target.value)} placeholder="口语当前分" />
+                    <Input value={form.overall_target} onChange={(e) => updateField("overall_target", e.target.value)} placeholder="总分目标" className="col-span-2" />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <UpdateSectionTitle icon={<Calendar size={16} />} title="考试日期" />
+
+                  <BusinessDatePicker min={today} value={form.exam_deadline} onChange={(value) => updateField("exam_deadline", value)} placeholder="选择考试日期" />
+                </div>
+
+                <div className="space-y-4">
+                  <UpdateSectionTitle title="学习目标" />
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      "485 Work Visa",
+                      "190 State Nomination",
+                      "Employer Sponsorship",
+                      "Skills Assessment",
+                      "University Admission",
+                      "Other",
+                    ].map((goal) => (
+                      <button
+                        key={goal}
+                        type="button"
+                        onClick={() => updateField("study_goal", goal)}
+                        className={`flex min-h-[48px] items-center justify-center rounded-[var(--radius-md)] border px-4 text-center text-sm font-medium transition-all duration-200 ${
+                          form.study_goal === goal
+                            ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                            : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
+                        }`}
+                      >
+                        {studyGoalLabels[goal as StudyGoal]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <UpdateSectionTitle icon={<Clock3 size={16} />} title="每日学习时间" />
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"].map((hour) => (
+                      <button
+                        key={hour}
+                        type="button"
+                        onClick={() => updateField("daily_study_hours", hour)}
+                        className={`flex h-11 items-center justify-center rounded-[var(--radius-md)] border text-sm font-medium transition-all duration-200 ${
+                          form.daily_study_hours === hour
+                            ? "border-transparent bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"
+                            : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
+                        }`}
+                      >
+                        {dailyHoursLabels[hour as DailyHours]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <UpdateSectionTitle title="补充说明" />
+
+                  <Textarea value={form.additional_notes} onChange={(e) => updateField("additional_notes", e.target.value)} placeholder="可以补充你的备考情况、薄弱项、目标或时间安排..." />
+                </div>
+
+                {saveMessage && (
+                  <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-medium text-[var(--text-soft)]">
+                    {saveMessage}
+                  </div>
+                )}
+
+                <Button fullWidth onClick={handleSave} disabled={saving}>
+                  {saving ? (
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="animate-spin" size={16} />
+                      保存中...
+                    </div>
+                  ) : hasExistingPlan ? (
+                    "Update plan"
+                  ) : (
+                    "Create plan"
+                  )}
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
@@ -889,6 +716,20 @@ function SummaryLine({ label, value }: { label: string; value: string }) {
     <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2">
       <span className="font-semibold text-[var(--text)]">{label}:</span>{" "}
       <span>{value || "-"}</span>
+    </div>
+  );
+}
+
+function UpdateSectionTitle({ icon, title }: { icon?: React.ReactNode; title: string }) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+        {icon ? <span className="text-[var(--primary)]">{icon}</span> : null}
+        {title}
+      </div>
+      <Badge variant="secondary" className="text-[10px] uppercase tracking-wide">
+        Update
+      </Badge>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
   BookOpen,
@@ -29,12 +29,15 @@ import { SidebarUser } from "./sidebar-user";
 import { SidebarSettings } from "./sidebar-settings";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { BRAND_NAME_CN } from "@/lib/brand";
+import { ConfirmDialog } from "@/components/ui-v2/confirm-dialog";
 
 export function Sidebar({ userId }: { userId: string | null }) {
+  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const shouldStartCollapsed = isIeltsExamRoute(pathname, searchParams);
   const [collapsed, setCollapsed] = useState(shouldStartCollapsed);
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setCollapsed(shouldStartCollapsed), 0);
@@ -47,9 +50,38 @@ export function Sidebar({ userId }: { userId: string | null }) {
   const questionBankOpen = activeQuestionBank === "pte";
   const questionBankOpen2 = activeQuestionBank === "ielts";
   const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
+  const shouldConfirmLeave = isIeltsExamRoute(pathname, searchParams);
+
+  function handleSidebarClickCapture(event: React.MouseEvent<HTMLElement>) {
+    if (!shouldConfirmLeave || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const link = (event.target as Element).closest<HTMLAnchorElement>("a[href]");
+    if (!link || link.getAttribute("aria-disabled") === "true") return;
+
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#")) return;
+
+    const targetUrl = new URL(href, window.location.origin);
+    if (targetUrl.origin !== window.location.origin) return;
+
+    const targetHref = `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
+    const currentHref = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+    if (targetHref === currentHref) return;
+
+    event.preventDefault();
+    setPendingHref(targetHref);
+  }
+
+  function confirmLeave() {
+    if (!pendingHref) return;
+    const href = pendingHref;
+    setPendingHref(null);
+    router.push(href);
+  }
 
   return (
     <aside
+      onClickCapture={handleSidebarClickCapture}
       className={cn(
         "sticky top-0 flex h-screen flex-col overflow-hidden border-r border-[var(--border)] bg-[var(--sidebar)] p-4 transition-all duration-300",
         collapsed ? "w-[84px]" : "w-[230px]",
@@ -338,6 +370,16 @@ export function Sidebar({ userId }: { userId: string | null }) {
       <div className="border-t border-[var(--border)] pt-4">
         <SidebarUser collapsed={collapsed} userId={userId} />
       </div>
+
+      <ConfirmDialog
+        open={Boolean(pendingHref)}
+        title="确认离开当前 Test？"
+        description="你正在进行 IELTS 听力 / 阅读 Test。离开后，当前填写的信息不会保存。"
+        cancelLabel="Cancel"
+        confirmLabel="确认离开"
+        onCancel={() => setPendingHref(null)}
+        onConfirm={confirmLeave}
+      />
     </aside>
   );
 }
@@ -345,6 +387,7 @@ export function Sidebar({ userId }: { userId: string | null }) {
 function isIeltsExamRoute(pathname: string, searchParams: URLSearchParams) {
   return (
     (pathname === "/ielts/listening" || pathname === "/ielts/reading") &&
+    Boolean(searchParams.get("book")) &&
     Boolean(searchParams.get("test"))
   );
 }

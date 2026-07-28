@@ -6,6 +6,7 @@ import { AlertTriangle, CalendarDays, CheckCircle2, Clock3, GraduationCap, Loade
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
+import { BusinessDatePicker } from "@/components/ui-v2/business-date-picker";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
 
@@ -57,6 +58,14 @@ type StudentDeletionPreview = {
     label: string;
     count: number;
   }>;
+};
+
+type StudentDeletionResult = {
+  preview: StudentDeletionPreview;
+  deletedRows: Record<string, number>;
+  authUserDeleted: boolean;
+  deletedR2AudioObjects: number;
+  r2Errors: string[];
 };
 
 type Props = {
@@ -111,6 +120,24 @@ const studyGoalOptions = [
 ];
 
 const dailyHoursOptions = ["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"];
+
+const deletionRowLabels: Record<string, string> = {
+  chat_messages: "聊天消息",
+  selective_writing_reviews: "写作 AI 批改结果",
+  selective_writing_submissions: "写作提交文章",
+  zoom_notifications: "课堂通知",
+  zoom_classrooms: "课堂记录",
+  pte_speaking_attempts: "PTE 口语评分记录",
+  student_recordings: "学生录音索引",
+  student_attempts: "答题 / 提交记录",
+  student_question_stats: "题目练习统计",
+  student_wrong_questions: "错题本记录",
+  study_plans: "学习计划",
+  ai_usage_logs: "AI 使用日志",
+  ai_user_limits: "AI 额度设置",
+  chat_sessions: "聊天会话",
+  profiles: "学生 Profile",
+};
 
 function getDisplayName(row: StudentPlanRow) {
   return row.fullName?.trim() || row.email?.trim() || row.userId;
@@ -172,6 +199,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
   const [previewLoading, setPreviewLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deletePreview, setDeletePreview] = useState<StudentDeletionPreview | null>(null);
+  const [deleteResult, setDeleteResult] = useState<StudentDeletionResult | null>(null);
   const [deleteConfirmation, setDeleteConfirmation] = useState("");
   const [deleteMessage, setDeleteMessage] = useState("");
 
@@ -206,6 +234,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     setForm(planToForm(row.plan));
     setSaveMessage("");
     setDeletePreview(null);
+    setDeleteResult(null);
     setDeleteConfirmation("");
     setDeleteMessage("");
   }
@@ -254,6 +283,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     setPreviewLoading(true);
     setDeleteMessage("");
     setDeletePreview(null);
+    setDeleteResult(null);
 
     try {
       const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}/deletion-preview`);
@@ -298,6 +328,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
       setSelectedUserId(nextRows[0]?.userId ?? "");
       setForm(planToForm(nextRows[0]?.plan ?? null));
       setDeletePreview(null);
+      setDeleteResult(json.result as StudentDeletionResult);
       setDeleteConfirmation("");
       setDeleteMessage("学生与相关数据已删除。");
     } catch (error) {
@@ -409,7 +440,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
               </label>
               <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
                 考试日期
-                <Input type="date" value={form.exam_deadline} onChange={(event) => updateField("exam_deadline", event.target.value)} />
+                <BusinessDatePicker value={form.exam_deadline} onChange={(value) => updateField("exam_deadline", value)} placeholder="选择考试日期" />
               </label>
               <ScoreFields label="Overall" target={form.overall_target} current={form.overall_current} onTargetChange={(value) => updateField("overall_target", value)} onCurrentChange={(value) => updateField("overall_current", value)} />
               <ScoreFields label="Listening" target={form.listening_target} current={form.listening_current} onTargetChange={(value) => updateField("listening_target", value)} onCurrentChange={(value) => updateField("listening_current", value)} />
@@ -443,7 +474,8 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
               <div>
                 <div className="flex items-center gap-2 text-[var(--danger)]">
                   <ShieldAlert size={18} />
-                  <h3 className="text-lg font-bold">删除学生</h3>
+                  <h3 className="text-lg font-bold">Remove</h3>
+                  <Badge variant="danger" className="text-[10px] uppercase tracking-wide">Student</Badge>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">此操作会删除学生账号、学习计划、练习记录、AI 记录、课堂/聊天记录和私有录音对象。</p>
               </div>
@@ -472,9 +504,41 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                   <Input value={deleteConfirmation} onChange={(event) => setDeleteConfirmation(event.target.value)} placeholder={`输入 ${confirmationTarget}`} />
                   <Button type="button" variant="danger" onClick={deleteStudent} disabled={!selectedStudent || deleting || deleteConfirmation !== confirmationTarget} className="gap-2">
                     {deleting ? <Loader2 className="animate-spin" size={16} /> : <Trash2 size={16} />}
-                    确认删除
+                    Remove
                   </Button>
                 </div>
+              </div>
+            ) : null}
+
+            {deleteResult ? (
+              <div className="mt-5 rounded-[var(--radius-md)] border border-[var(--success)]/25 bg-[var(--success-soft)] p-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-[var(--success)]">
+                      <CheckCircle2 size={17} />
+                      <h4 className="font-bold">删除回执</h4>
+                    </div>
+                    <p className="mt-1 text-sm text-[var(--text-soft)]">{deleteResult.preview.displayName} 的学生数据清理已执行完成。</p>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 sm:min-w-[360px]">
+                    <Metric label="DB 删除" value={Object.values(deleteResult.deletedRows).reduce((sum, value) => sum + value, 0)} />
+                    <Metric label="R2 删除" value={deleteResult.deletedR2AudioObjects} />
+                    <Metric label="Auth 删除" value={deleteResult.authUserDeleted ? 1 : 0} />
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                  {Object.entries(deleteResult.deletedRows).map(([key, count]) => (
+                    <div key={key} className="flex items-center justify-between rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs">
+                      <span className="font-semibold text-[var(--text-soft)]">{deletionRowLabels[key] ?? key}</span>
+                      <span className="font-black text-[var(--text)]">{count}</span>
+                    </div>
+                  ))}
+                </div>
+                {deleteResult.r2Errors.length > 0 ? (
+                  <div className="mt-4 rounded-[var(--radius-sm)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] p-3 text-xs font-semibold text-[var(--danger)]">
+                    R2 有 {deleteResult.r2Errors.length} 个对象删除失败：{deleteResult.r2Errors.join("；")}
+                  </div>
+                ) : null}
               </div>
             ) : null}
 
