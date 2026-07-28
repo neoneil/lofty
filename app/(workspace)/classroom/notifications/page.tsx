@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ExternalLink, MonitorPlay } from "lucide-react";
 import { formatDate, formatRelativeTime } from "@/lib/date";
 
 type ZoomNotification = {
@@ -28,15 +29,23 @@ function getMeetingId(notification: ZoomNotification) {
 function openZoomMeeting(meetingId: string, password?: string | null) {
   const cleanMeetingId = meetingId.replace(/\s/g, "");
 
-  const confirmed = window.confirm(`Join Zoom meeting?\n\nMeeting ID: ${cleanMeetingId}`);
-
-  if (!confirmed) {
-    return;
-  }
-
   const zoomUrl = password ? `https://zoom.us/j/${cleanMeetingId}?pwd=${encodeURIComponent(password)}` : `https://zoom.us/j/${cleanMeetingId}`;
 
   window.open(zoomUrl, "_blank", "noopener,noreferrer");
+}
+
+function getEmbeddedClassroomUrl(meetingId: string, password?: string | null) {
+  const cleanMeetingId = meetingId.replace(/\s/g, "");
+  const params = new URLSearchParams({
+    meetingNumber: cleanMeetingId,
+    autoJoin: "1",
+  });
+
+  if (password?.trim()) {
+    params.set("password", password.trim());
+  }
+
+  return `/classroom?${params.toString()}`;
 }
 
 export default function ClassroomNotificationsPage() {
@@ -75,7 +84,7 @@ export default function ClassroomNotificationsPage() {
       <div className="mx-auto w-full max-w-3xl">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-[var(--text)]">Zoom Classroom Notifications</h1>
-          <p className="mt-2 text-sm text-[var(--text-soft)]">Copy your Meeting ID or open Zoom directly.</p>
+          <p className="mt-2 text-sm text-[var(--text-soft)]">在系统内嵌课堂进入，或用独立 Zoom 页面打开。</p>
         </div>
 
         <div className="mb-6">
@@ -85,16 +94,16 @@ export default function ClassroomNotificationsPage() {
         </div>
 
         {loading ? (
-          <div className="rounded-2xl border border-[var(--border)] bg-white p-5 text-sm text-[var(--text-soft)]">Loading...</div>
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)]">Loading...</div>
         ) : notifications.length === 0 ? (
-          <div className="rounded-2xl border border-[var(--border)] bg-white p-5 text-sm text-[var(--text-soft)]">No Zoom classroom notifications yet.</div>
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)]">No Zoom classroom notifications yet.</div>
         ) : (
           <div className="space-y-4">
             {notifications.map((notification) => {
               const meetingId = getMeetingId(notification);
 
               return (
-                <div key={notification.id} className="rounded-2xl border border-[var(--border)] bg-white p-5 shadow-sm">
+                <div key={notification.id} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h2 className="text-base font-semibold text-[var(--text)]">{notification.title}</h2>
@@ -110,17 +119,23 @@ export default function ClassroomNotificationsPage() {
                   {meetingId ? (
                     <div className="mt-4 space-y-3">
                       <div className="flex flex-wrap items-center gap-3">
-                        <div className="rounded-lg bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-900">Meeting ID: {meetingId}</div>
-                        <div className="rounded-lg bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-900">Password: {notification.meeting_password || "No password"}</div>
+                        <div className="rounded-lg bg-[var(--bg-soft)] px-4 py-2 text-sm font-semibold text-[var(--text)]">Meeting ID: {meetingId}</div>
+                        <div className="rounded-lg bg-[var(--bg-soft)] px-4 py-2 text-sm font-semibold text-[var(--text)]">Password: {notification.meeting_password || "No password"}</div>
                       </div>
 
                       <div className="flex flex-wrap items-center gap-3">
-                        <button onClick={() => copyMeetingId(meetingId)} className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:bg-gray-50">
-                          Copy Meeting ID
+                        <Link href={getEmbeddedClassroomUrl(meetingId, notification.meeting_password)} className="inline-flex items-center gap-2 rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-medium text-white transition hover:bg-[var(--primary-hover)]">
+                          <MonitorPlay size={15} />
+                          内嵌进入课堂
+                        </Link>
+
+                        <button onClick={() => openZoomMeeting(meetingId, notification.meeting_password)} className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--bg-soft)]">
+                          <ExternalLink size={15} />
+                          新页面打开
                         </button>
 
-                        <button onClick={() => openZoomMeeting(meetingId, notification.meeting_password)} className="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-medium text-white transition hover:bg-[var(--primary-hover)]">
-                          Join Zoom Class
+                        <button onClick={() => copyMeetingId(meetingId)} className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--bg-soft)]">
+                          Copy Meeting ID
                         </button>
                       </div>
                     </div>

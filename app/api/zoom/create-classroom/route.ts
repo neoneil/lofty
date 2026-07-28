@@ -3,6 +3,76 @@ import { NextRequest } from "next/server";
 import { requireApiRole } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+export async function GET() {
+  try {
+    const auth = await requireApiRole(["admin", "teacher", "editor"]);
+    if (!auth.ok) return auth.response;
+    const { user } = auth;
+    const adminSupabase = createAdminClient();
+
+    const [
+      { data: teacherRoom, error: teacherRoomError },
+      { data: students, error: studentsError },
+    ] = await Promise.all([
+      adminSupabase
+        .schema("zoom")
+        .from("teacher_rooms")
+        .select("id, zoom_meeting_id, zoom_password")
+        .eq("teacher_id", user.id)
+        .eq("is_active", true)
+        .maybeSingle(),
+      adminSupabase
+        .from("profiles")
+        .select("id, full_name, email, avatar_url, is_my_student")
+        .eq("role", "user")
+        .order("created_at", { ascending: false })
+        .limit(200),
+    ]);
+
+    if (teacherRoomError) {
+      return Response.json(
+        {
+          ok: false,
+          message: teacherRoomError.message,
+        },
+        {
+          status: 500,
+        },
+      );
+    }
+
+    if (studentsError) {
+      return Response.json(
+        {
+          ok: false,
+          message: studentsError.message,
+        },
+        {
+          status: 500,
+        },
+      );
+    }
+
+    return Response.json({
+      ok: true,
+      teacherRoom,
+      students: students ?? [],
+    });
+  } catch (error) {
+    console.error("GET CLASSROOM ADMIN CONTEXT ERROR", error);
+
+    return Response.json(
+      {
+        ok: false,
+        message: "Failed to load classroom admin context",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { studentId } = await request.json();
