@@ -33,6 +33,15 @@ export async function GET(request: NextRequest) {
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
+      #meetingSDKElement,
+      #meetingSDKElement > div,
+      #meetingSDKElement iframe {
+        position: relative;
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+      }
+
       .status {
         position: fixed;
         left: 50%;
@@ -52,11 +61,16 @@ export async function GET(request: NextRequest) {
         text-align: center;
       }
 
+      .status.joined {
+        top: 12px;
+        opacity: 0.78;
+      }
+
       .fallback {
-        display: none;
+        display: block;
         position: fixed;
         left: 50%;
-        top: 72px;
+        bottom: 18px;
         z-index: 9999;
         transform: translateX(-50%);
       }
@@ -73,6 +87,10 @@ export async function GET(request: NextRequest) {
         font-weight: 800;
         padding: 0 18px;
         text-decoration: none;
+      }
+
+      .fallback.subtle {
+        opacity: 0.72;
       }
     </style>
     <script src="https://source.zoom.us/${ZOOM_SDK_VERSION}/lib/vendor/react.min.js"></script>
@@ -94,6 +112,22 @@ export async function GET(request: NextRequest) {
       function setStatus(message) {
         const status = document.getElementById("status");
         if (status) status.textContent = message;
+      }
+
+      function markJoined() {
+        const status = document.getElementById("status");
+        const fallback = document.getElementById("fallback");
+
+        if (fallback) {
+          fallback.classList.add("subtle");
+        }
+
+        if (!status) return;
+        status.textContent = "已加入课堂，正在渲染 Zoom 画面...";
+        status.classList.add("joined");
+        window.setTimeout(() => {
+          status.style.display = "none";
+        }, 10000);
       }
 
       function getZoomJoinUrl() {
@@ -132,6 +166,8 @@ export async function GET(request: NextRequest) {
           showFallback();
           return;
         }
+
+        showFallback();
 
         if (!window.ZoomMtgEmbedded) {
           throw new Error("Zoom Embedded SDK CDN 加载失败");
@@ -181,7 +217,7 @@ export async function GET(request: NextRequest) {
           userName
         });
 
-        document.getElementById("status")?.remove();
+        markJoined();
       }
 
       joinMeeting().catch((error) => {

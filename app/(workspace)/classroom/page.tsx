@@ -66,6 +66,7 @@ function getEmbeddedZoomUrl(meetingNumber: string, password: string, userName: s
   const params = new URLSearchParams({
     meetingNumber: meetingNumber.replace(/\s/g, ""),
     name: userName || "Student",
+    v: String(Date.now()),
   });
 
   if (password.trim()) {
@@ -426,7 +427,7 @@ export default function ClassroomPage() {
           </div>
         ) : null}
 
-        <iframe title="Zoom Classroom" src={getEmbeddedZoomUrl(meetingNumber, password, userName)} allow="camera; microphone; fullscreen; display-capture; autoplay" className="h-full w-full border-0" />
+        <iframe title="Zoom Classroom" src={getEmbeddedZoomUrl(meetingNumber, password, userName)} allow="camera; microphone; fullscreen; display-capture; autoplay" allowFullScreen className="h-full w-full border-0" />
       </main>
     );
   }
