@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
+import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, PenLine, ScrollText, Users, Video } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
 
 const adminModules = [
   { title: "学生练习管理", desc: "查看学生练习记录、分数趋势、听说读写进步情况。", href: "/admin/dashboard", tag: "Students", icon: Users },
+  { title: "学生计划管理", desc: "查看所有学生学习计划，支持编辑、更新与受保护的学生数据删除。", href: "/admin/student-plans", tag: "Student Plans", icon: CalendarCheck2 },
   { title: "文章管理", desc: "创建、编辑和管理 IELTS / PTE 文章。", href: "/admin/posts", tag: "Posts", icon: FileText },
   { title: "授课笔记", desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。", href: "/admin/lesson-notes", tag: "PTE / IELTS", icon: BookOpenText },
   { title: "Markdown 备忘录", desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。", href: "/admin/markdown-memo", tag: "Course Design", icon: BookOpenCheck },

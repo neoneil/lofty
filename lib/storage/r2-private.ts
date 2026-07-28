@@ -42,7 +42,7 @@ function getR2PrivateConfig() {
   };
 }
 
-export function createPrivateR2PresignedUrl({ method, key, expiresInSeconds = 900 }: { method: "GET" | "HEAD" | "PUT"; key: string; expiresInSeconds?: number }) {
+export function createPrivateR2PresignedUrl({ method, key, expiresInSeconds = 900 }: { method: "GET" | "HEAD" | "PUT" | "DELETE"; key: string; expiresInSeconds?: number }) {
   const { endpoint, accessKeyId, secretAccessKey, bucket } = getR2PrivateConfig();
   const endpointUrl = new URL(endpoint);
   const now = new Date();
@@ -89,4 +89,20 @@ export async function uploadPrivateR2Object({ key, file, contentType }: { key: s
 
 export function createPrivateR2PlaybackUrl(key: string) {
   return createPrivateR2PresignedUrl({ method: "GET", key, expiresInSeconds: 900 });
+}
+
+export async function deletePrivateR2Object(key: string) {
+  const deleteUrl = createPrivateR2PresignedUrl({
+    method: "DELETE",
+    key,
+    expiresInSeconds: 900,
+  });
+
+  const response = await fetch(deleteUrl, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Private R2 delete failed: ${response.status} ${response.statusText}`);
+  }
 }

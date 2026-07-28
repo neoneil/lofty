@@ -40,5 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#public/cambridge_ielts/*.pdf
-#public/cambridge_ielts/**/*.mp3
+public/cambridge_ielts/

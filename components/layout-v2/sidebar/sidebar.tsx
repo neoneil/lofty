@@ -7,6 +7,7 @@ import {
   BookOpen,
   ChartNoAxesColumn,
   ChevronDown,
+  Download,
   FolderOpen,
   Gamepad2,
   GraduationCap,
@@ -259,6 +260,16 @@ export function Sidebar({ userId }: { userId: string | null }) {
                 collapsed={collapsed}
                 nested
                 disabled
+              />
+
+              <SidebarItem
+                href="/ielts/cambridge-downloads"
+                label="剑桥雅思下载"
+                subtitle="Cambridge Downloads"
+                icon={<Download size={16} />}
+                iconTone="primary"
+                collapsed={collapsed}
+                nested
               />
             </div>
           )}

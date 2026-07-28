@@ -1,0 +1,529 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Image from "next/image";
+import { AlertTriangle, CalendarDays, CheckCircle2, Clock3, GraduationCap, Loader2, Save, Search, ShieldAlert, Target, Trash2 } from "lucide-react";
+
+import { Badge } from "@/components/ui-v2/badge";
+import { Button } from "@/components/ui-v2/button";
+import { Input } from "@/components/ui-v2/input";
+import { Textarea } from "@/components/ui-v2/textarea";
+
+type StudyPlanRecord = {
+  id: string;
+  user_id: string;
+  exam_type: "PTE" | "IELTS" | string;
+  overall_target: number | null;
+  overall_current: number | null;
+  listening_target: number | null;
+  listening_current: number | null;
+  reading_target: number | null;
+  reading_current: number | null;
+  writing_target: number | null;
+  writing_current: number | null;
+  speaking_target: number | null;
+  speaking_current: number | null;
+  exam_deadline: string | null;
+  study_goal: string | null;
+  daily_study_hours: string | null;
+  additional_notes: string | null;
+  created_at: string | null;
+  updated_at: string | null;
+};
+
+type StudentPlanRow = {
+  userId: string;
+  email: string | null;
+  fullName: string | null;
+  avatarUrl: string | null;
+  role: string | null;
+  isMyStudent: boolean | null;
+  authCreatedAt: string | null;
+  profileCreatedAt: string | null;
+  lastSignInAt: string | null;
+  plan: StudyPlanRecord | null;
+};
+
+type StudentDeletionPreview = {
+  userId: string;
+  email: string | null;
+  displayName: string;
+  authUserExists: boolean;
+  r2AudioObjects: number;
+  totalDatabaseRows: number;
+  tables: Array<{
+    schema: string;
+    table: string;
+    label: string;
+    count: number;
+  }>;
+};
+
+type Props = {
+  initialRows: StudentPlanRow[];
+};
+
+type FormState = {
+  id: string | null;
+  exam_type: "PTE" | "IELTS";
+  overall_target: string;
+  overall_current: string;
+  listening_target: string;
+  listening_current: string;
+  reading_target: string;
+  reading_current: string;
+  writing_target: string;
+  writing_current: string;
+  speaking_target: string;
+  speaking_current: string;
+  exam_deadline: string;
+  study_goal: string;
+  daily_study_hours: string;
+  additional_notes: string;
+};
+
+const emptyForm: FormState = {
+  id: null,
+  exam_type: "PTE",
+  overall_target: "",
+  overall_current: "",
+  listening_target: "",
+  listening_current: "",
+  reading_target: "",
+  reading_current: "",
+  writing_target: "",
+  writing_current: "",
+  speaking_target: "",
+  speaking_current: "",
+  exam_deadline: "",
+  study_goal: "485 Work Visa",
+  daily_study_hours: "1-2 Hours",
+  additional_notes: "",
+};
+
+const studyGoalOptions = [
+  "485 Work Visa",
+  "190 State Nomination",
+  "Employer Sponsorship",
+  "Skills Assessment",
+  "University Admission",
+  "Other",
+];
+
+const dailyHoursOptions = ["0-1 Hours", "1-2 Hours", "2-4 Hours", "4+ Hours"];
+
+function getDisplayName(row: StudentPlanRow) {
+  return row.fullName?.trim() || row.email?.trim() || row.userId;
+}
+
+function planToForm(plan: StudyPlanRecord | null): FormState {
+  if (!plan) return emptyForm;
+
+  return {
+    id: plan.id,
+    exam_type: plan.exam_type === "IELTS" ? "IELTS" : "PTE",
+    overall_target: plan.overall_target?.toString() ?? "",
+    overall_current: plan.overall_current?.toString() ?? "",
+    listening_target: plan.listening_target?.toString() ?? "",
+    listening_current: plan.listening_current?.toString() ?? "",
+    reading_target: plan.reading_target?.toString() ?? "",
+    reading_current: plan.reading_current?.toString() ?? "",
+    writing_target: plan.writing_target?.toString() ?? "",
+    writing_current: plan.writing_current?.toString() ?? "",
+    speaking_target: plan.speaking_target?.toString() ?? "",
+    speaking_current: plan.speaking_current?.toString() ?? "",
+    exam_deadline: plan.exam_deadline ?? "",
+    study_goal: plan.study_goal ?? "485 Work Visa",
+    daily_study_hours: plan.daily_study_hours ?? "1-2 Hours",
+    additional_notes: plan.additional_notes ?? "",
+  };
+}
+
+function formatDate(value: string | null) {
+  if (!value) return "—";
+  return new Date(value).toLocaleDateString("zh-CN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+}
+
+function getDaysLeft(value: string) {
+  if (!value) return "—";
+  const diff = new Date(value).getTime() - Date.now();
+  if (!Number.isFinite(diff)) return "—";
+  return `${Math.max(0, Math.ceil(diff / 86_400_000))} 天`;
+}
+
+function scoreProgress(current: string, target: string) {
+  const currentNumber = Number(current);
+  const targetNumber = Number(target);
+  if (!Number.isFinite(currentNumber) || !Number.isFinite(targetNumber) || targetNumber <= 0) return 0;
+  return Math.max(0, Math.min(100, Math.round((currentNumber / targetNumber) * 100)));
+}
+
+export function StudentPlanManagementClient({ initialRows }: Props) {
+  const [rows, setRows] = useState(initialRows);
+  const [selectedUserId, setSelectedUserId] = useState(initialRows[0]?.userId ?? "");
+  const [search, setSearch] = useState("");
+  const [form, setForm] = useState<FormState>(() => planToForm(initialRows[0]?.plan ?? null));
+  const [saving, setSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deletePreview, setDeletePreview] = useState<StudentDeletionPreview | null>(null);
+  const [deleteConfirmation, setDeleteConfirmation] = useState("");
+  const [deleteMessage, setDeleteMessage] = useState("");
+
+  const selectedStudent = useMemo(() => rows.find((row) => row.userId === selectedUserId) ?? rows[0] ?? null, [rows, selectedUserId]);
+
+  const filteredRows = useMemo(() => {
+    const keyword = search.trim().toLowerCase();
+    if (!keyword) return rows;
+
+    return rows.filter((row) => {
+      const haystack = [row.userId, row.email, row.fullName, row.plan?.exam_type, row.plan?.study_goal].filter(Boolean).join(" ").toLowerCase();
+      return haystack.includes(keyword);
+    });
+  }, [rows, search]);
+
+  const stats = useMemo(() => {
+    const withPlans = rows.filter((row) => row.plan).length;
+    const ptePlans = rows.filter((row) => row.plan?.exam_type === "PTE").length;
+    const ieltsPlans = rows.filter((row) => row.plan?.exam_type === "IELTS").length;
+
+    return {
+      total: rows.length,
+      withPlans,
+      withoutPlans: rows.length - withPlans,
+      ptePlans,
+      ieltsPlans,
+    };
+  }, [rows]);
+
+  function selectStudent(row: StudentPlanRow) {
+    setSelectedUserId(row.userId);
+    setForm(planToForm(row.plan));
+    setSaveMessage("");
+    setDeletePreview(null);
+    setDeleteConfirmation("");
+    setDeleteMessage("");
+  }
+
+  function updateField(key: keyof FormState, value: string) {
+    setForm((current) => ({
+      ...current,
+      [key]: value,
+    }));
+  }
+
+  async function savePlan() {
+    if (!selectedStudent) return;
+
+    setSaving(true);
+    setSaveMessage("");
+
+    try {
+      const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      const json = await response.json();
+
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message ?? "保存失败。");
+      }
+
+      const savedPlan = json.plan as StudyPlanRecord;
+      setRows((current) => current.map((row) => (row.userId === selectedStudent.userId ? { ...row, plan: savedPlan } : row)));
+      setForm(planToForm(savedPlan));
+      setSaveMessage("学习计划已保存。");
+    } catch (error) {
+      setSaveMessage(error instanceof Error ? error.message : "保存失败。");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function loadDeletePreview() {
+    if (!selectedStudent) return;
+
+    setPreviewLoading(true);
+    setDeleteMessage("");
+    setDeletePreview(null);
+
+    try {
+      const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}/deletion-preview`);
+      const json = await response.json();
+
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message ?? "读取删除预览失败。");
+      }
+
+      setDeletePreview(json.preview as StudentDeletionPreview);
+    } catch (error) {
+      setDeleteMessage(error instanceof Error ? error.message : "读取删除预览失败。");
+    } finally {
+      setPreviewLoading(false);
+    }
+  }
+
+  async function deleteStudent() {
+    if (!selectedStudent) return;
+
+    setDeleting(true);
+    setDeleteMessage("");
+
+    try {
+      const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          confirmation: deleteConfirmation,
+        }),
+      });
+      const json = await response.json();
+
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message ?? "删除失败。");
+      }
+
+      const nextRows = rows.filter((row) => row.userId !== selectedStudent.userId);
+      setRows(nextRows);
+      setSelectedUserId(nextRows[0]?.userId ?? "");
+      setForm(planToForm(nextRows[0]?.plan ?? null));
+      setDeletePreview(null);
+      setDeleteConfirmation("");
+      setDeleteMessage("学生与相关数据已删除。");
+    } catch (error) {
+      setDeleteMessage(error instanceof Error ? error.message : "删除失败。");
+    } finally {
+      setDeleting(false);
+    }
+  }
+
+  const selectedDisplayName = selectedStudent ? getDisplayName(selectedStudent) : "未选择学生";
+  const confirmationTarget = selectedStudent?.email || selectedStudent?.userId || "";
+  const completion = scoreProgress(form.overall_current, form.overall_target);
+
+  return (
+    <div className="space-y-6">
+      <section className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+        <div className="grid gap-0 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="p-5 sm:p-7">
+            <Badge variant="default">Admin Operations</Badge>
+            <h1 className="mt-4 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">学生计划管理</h1>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">集中查看、编辑和维护学生学习计划。删除学生前会显示数据库与私有音频影响范围。</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 border-t border-[var(--border)] bg-[var(--bg-soft)] p-5 lg:border-l lg:border-t-0">
+            <Metric label="学生" value={stats.total} />
+            <Metric label="已有计划" value={stats.withPlans} />
+            <Metric label="PTE" value={stats.ptePlans} />
+            <Metric label="IELTS" value={stats.ieltsPlans} />
+          </div>
+        </div>
+      </section>
+
+      <div className="grid gap-6 xl:grid-cols-[390px_1fr]">
+        <section className="min-w-0 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+          <div className="border-b border-[var(--border)] p-4">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-faint)]" size={17} />
+              <Input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search students..." className="pl-10" />
+            </div>
+          </div>
+
+          <div className="max-h-[72vh] space-y-2 overflow-y-auto p-3">
+            {filteredRows.length === 0 ? (
+              <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm text-[var(--text-soft)]">没有匹配的学生。</div>
+            ) : (
+              filteredRows.map((row) => {
+                const active = row.userId === selectedStudent?.userId;
+                const displayName = getDisplayName(row);
+
+                return (
+                  <button key={row.userId} type="button" onClick={() => selectStudent(row)} className={`flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-3 text-left transition ${active ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--bg-soft)] hover:border-[var(--primary)]/40 hover:bg-[var(--card-hover)]"}`}>
+                    {row.avatarUrl ? <Image src={row.avatarUrl} alt={displayName} referrerPolicy="no-referrer" width={40} height={40} unoptimized className="h-10 w-10 shrink-0 rounded-[var(--radius-md)] border border-[var(--border)] object-cover" /> : <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] text-sm font-black text-[var(--primary)]">{displayName.slice(0, 1).toUpperCase()}</span>}
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-bold text-[var(--text)]">{displayName}</span>
+                      <span className="mt-1 block truncate text-xs text-[var(--text-soft)]">{row.email || row.userId}</span>
+                    </span>
+                    <span className="shrink-0 text-right">
+                      <Badge variant={row.plan ? "success" : "secondary"} className="text-[10px]">{row.plan ? row.plan.exam_type : "No Plan"}</Badge>
+                      <span className="mt-1 block text-[10px] text-[var(--text-faint)]">{formatDate(row.plan?.updated_at ?? row.lastSignInAt)}</span>
+                    </span>
+                  </button>
+                );
+              })
+            )}
+          </div>
+        </section>
+
+        <section className="min-w-0 space-y-5">
+          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge variant="outline">Selected Student</Badge>
+                  {selectedStudent?.isMyStudent ? <Badge variant="success">内部学生</Badge> : null}
+                </div>
+                <h2 className="mt-3 truncate text-xl font-bold text-[var(--text)]">{selectedDisplayName}</h2>
+                <p className="mt-1 truncate text-sm text-[var(--text-soft)]">{selectedStudent?.email || selectedStudent?.userId || "—"}</p>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[440px]">
+                <SummaryPill icon={GraduationCap} label="考试" value={form.exam_type} />
+                <SummaryPill icon={Target} label="目标" value={form.overall_target || "—"} />
+                <SummaryPill icon={Clock3} label="剩余" value={getDaysLeft(form.exam_deadline)} />
+              </div>
+            </div>
+
+            <div className="mt-5 h-2 overflow-hidden rounded-full bg-[var(--bg-soft)]">
+              <div className="h-full rounded-full bg-[var(--primary)] transition-all" style={{ width: `${completion}%` }} />
+            </div>
+          </div>
+
+          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text)]">学习计划</h3>
+                <p className="mt-1 text-sm text-[var(--text-soft)]">{form.id ? "编辑现有计划" : "为该学生创建计划"}</p>
+              </div>
+              <Button type="button" onClick={savePlan} disabled={!selectedStudent || saving} className="gap-2">
+                {saving ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
+                保存
+              </Button>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
+                考试类型
+                <select value={form.exam_type} onChange={(event) => updateField("exam_type", event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                  <option value="PTE">PTE</option>
+                  <option value="IELTS">IELTS</option>
+                </select>
+              </label>
+              <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
+                考试日期
+                <Input type="date" value={form.exam_deadline} onChange={(event) => updateField("exam_deadline", event.target.value)} />
+              </label>
+              <ScoreFields label="Overall" target={form.overall_target} current={form.overall_current} onTargetChange={(value) => updateField("overall_target", value)} onCurrentChange={(value) => updateField("overall_current", value)} />
+              <ScoreFields label="Listening" target={form.listening_target} current={form.listening_current} onTargetChange={(value) => updateField("listening_target", value)} onCurrentChange={(value) => updateField("listening_current", value)} />
+              <ScoreFields label="Reading" target={form.reading_target} current={form.reading_current} onTargetChange={(value) => updateField("reading_target", value)} onCurrentChange={(value) => updateField("reading_current", value)} />
+              <ScoreFields label="Writing" target={form.writing_target} current={form.writing_current} onTargetChange={(value) => updateField("writing_target", value)} onCurrentChange={(value) => updateField("writing_current", value)} />
+              <ScoreFields label="Speaking" target={form.speaking_target} current={form.speaking_current} onTargetChange={(value) => updateField("speaking_target", value)} onCurrentChange={(value) => updateField("speaking_current", value)} />
+              <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
+                学习目标
+                <select value={form.study_goal} onChange={(event) => updateField("study_goal", event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                  {studyGoalOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+              </label>
+              <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
+                每日学习时间
+                <select value={form.daily_study_hours} onChange={(event) => updateField("daily_study_hours", event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                  {dailyHoursOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>
+
+            <label className="mt-4 block space-y-2 text-sm font-semibold text-[var(--text)]">
+              补充说明
+              <Textarea value={form.additional_notes} onChange={(event) => updateField("additional_notes", event.target.value)} placeholder="Teacher notes..." />
+            </label>
+
+            {saveMessage ? <div className={`mt-4 rounded-[var(--radius-md)] border px-4 py-3 text-sm font-semibold ${saveMessage.includes("已") ? "border-[var(--success)]/20 bg-[var(--success-soft)] text-[var(--success)]" : "border-[var(--danger)]/20 bg-[var(--danger-soft)] text-[var(--danger)]"}`}>{saveMessage}</div> : null}
+          </div>
+
+          <div className="rounded-[var(--radius-lg)] border border-[var(--danger)]/25 bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[var(--danger)]">
+                  <ShieldAlert size={18} />
+                  <h3 className="text-lg font-bold">删除学生</h3>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">此操作会删除学生账号、学习计划、练习记录、AI 记录、课堂/聊天记录和私有录音对象。</p>
+              </div>
+              <Button type="button" variant="secondary" onClick={loadDeletePreview} disabled={!selectedStudent || previewLoading} className="gap-2">
+                {previewLoading ? <Loader2 className="animate-spin" size={16} /> : <AlertTriangle size={16} />}
+                预览影响
+              </Button>
+            </div>
+
+            {deletePreview ? (
+              <div className="mt-5 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <Metric label="数据库行" value={deletePreview.totalDatabaseRows} />
+                  <Metric label="R2 音频" value={deletePreview.r2AudioObjects} />
+                  <Metric label="Auth 账号" value={deletePreview.authUserExists ? 1 : 0} />
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                  {deletePreview.tables.map((item) => (
+                    <div key={`${item.schema}.${item.table}`} className="flex items-center justify-between rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs">
+                      <span className="font-semibold text-[var(--text-soft)]">{item.label}</span>
+                      <span className="font-black text-[var(--text)]">{item.count}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto]">
+                  <Input value={deleteConfirmation} onChange={(event) => setDeleteConfirmation(event.target.value)} placeholder={`输入 ${confirmationTarget}`} />
+                  <Button type="button" variant="danger" onClick={deleteStudent} disabled={!selectedStudent || deleting || deleteConfirmation !== confirmationTarget} className="gap-2">
+                    {deleting ? <Loader2 className="animate-spin" size={16} /> : <Trash2 size={16} />}
+                    确认删除
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+
+            {deleteMessage ? <div className={`mt-4 rounded-[var(--radius-md)] border px-4 py-3 text-sm font-semibold ${deleteMessage.includes("已") ? "border-[var(--success)]/20 bg-[var(--success-soft)] text-[var(--success)]" : "border-[var(--danger)]/20 bg-[var(--danger-soft)] text-[var(--danger)]"}`}>{deleteMessage}</div> : null}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3">
+      <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">{label}</div>
+      <div className="mt-1 text-2xl font-black text-[var(--primary)]">{value}</div>
+    </div>
+  );
+}
+
+function SummaryPill({ icon: Icon, label, value }: { icon: typeof CalendarDays; label: string; value: string | number }) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+      <div className="flex items-center gap-2 text-xs font-semibold text-[var(--text-faint)]">
+        <Icon size={14} className="text-[var(--primary)]" />
+        {label}
+      </div>
+      <div className="mt-1 truncate text-base font-black text-[var(--text)]">{value}</div>
+    </div>
+  );
+}
+
+function ScoreFields({ label, target, current, onTargetChange, onCurrentChange }: { label: string; target: string; current: string; onTargetChange: (value: string) => void; onCurrentChange: (value: string) => void }) {
+  return (
+    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="text-sm font-bold text-[var(--text)]">{label}</div>
+        {current && target ? <Badge variant="secondary" className="text-[10px]"><CheckCircle2 size={12} /> {scoreProgress(current, target)}%</Badge> : null}
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="space-y-2 text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">
+          Target
+          <Input inputMode="numeric" value={target} onChange={(event) => onTargetChange(event.target.value)} placeholder="65" />
+        </label>
+        <label className="space-y-2 text-xs font-semibold uppercase tracking-wide text-[var(--text-faint)]">
+          Current
+          <Input inputMode="numeric" value={current} onChange={(event) => onCurrentChange(event.target.value)} placeholder="Optional" />
+        </label>
+      </div>
+    </div>
+  );
+}

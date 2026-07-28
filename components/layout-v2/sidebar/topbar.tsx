@@ -8,6 +8,7 @@ import {
   BookOpen,
   ChartNoAxesColumn,
   ChevronDown,
+  Download,
   FolderOpen,
   Gamepad2,
   GraduationCap,
@@ -124,6 +125,13 @@ const ieltsItems: NavItem[] = [
     subtitle: "Listening",
     icon: <Headphones size={15} />,
     iconTone: "warning",
+  },
+  {
+    href: "/ielts/cambridge-downloads",
+    label: "剑桥雅思下载",
+    subtitle: "Downloads",
+    icon: <Download size={15} />,
+    iconTone: "primary",
   },
 ];
 
