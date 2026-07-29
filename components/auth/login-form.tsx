@@ -5,7 +5,6 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -34,14 +33,7 @@ function GoogleIcon() {
   );
 }
 
-function setAuthNextCookie(next: string) {
-  document.cookie = `auth_next=${encodeURIComponent(
-    next
-  )}; path=/; max-age=600; SameSite=Lax`;
-}
-
 export default function CommercialLoginForm() {
-  const supabase = createClient();
   const searchParams = useSearchParams();
 
   const [email, setEmail] = useState("");
@@ -81,26 +73,7 @@ export default function CommercialLoginForm() {
   async function handleGoogleLogin() {
     setLoading(true);
     setMessage("");
-
-    // const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;传的 redirectTo 一旦带上 ?next=...，Supabase 这边这次没有按你预期接受它，结果就 fallback 到了 Site URL。
-
-    const redirectTo = `${window.location.origin}/auth/callback`;
-    setAuthNextCookie(next);
-
-    // alert(`redirectTo = ${redirectTo}`);
-
-
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo,
-      },
-    });
-
-    if (error) {
-      setMessage(error.message);
-      setLoading(false);
-    }
+    window.location.href = `/api/auth/google?mode=login&next=${encodeURIComponent(next)}`;
   }
 
   const loginCardClassName =

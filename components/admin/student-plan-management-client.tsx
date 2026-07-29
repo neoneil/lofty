@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { AlertTriangle, CalendarDays, CheckCircle2, Clock3, GraduationCap, Loader2, Save, Search, ShieldAlert, Target, Trash2 } from "lucide-react";
+import { AlertTriangle, CalendarDays, CheckCircle2, Clock3, GraduationCap, Laptop, Loader2, MapPin, Save, Search, ShieldAlert, Smartphone, Target, Trash2, X } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
@@ -42,7 +42,63 @@ type StudentPlanRow = {
   authCreatedAt: string | null;
   profileCreatedAt: string | null;
   lastSignInAt: string | null;
+  deviceCount: number;
+  latestDevice: StudentLoginDeviceSummary | null;
   plan: StudyPlanRecord | null;
+};
+
+type StudentLoginDeviceSummary = {
+  deviceLabel: string | null;
+  deviceType: string | null;
+  browserName: string | null;
+  osName: string | null;
+  country: string | null;
+  city: string | null;
+  lastSeenAt: string | null;
+  lastLoginAt: string | null;
+  isTrusted: boolean | null;
+  isBlocked: boolean | null;
+};
+
+type StudentLoginDeviceDetail = StudentLoginDeviceSummary & {
+  id: string;
+  deviceId: string;
+  ipAddress: string | null;
+  firstSeenAt: string | null;
+  revokedAt: string | null;
+};
+
+type StudentLoginEventDetail = {
+  id: string;
+  userDeviceId: string | null;
+  deviceId: string | null;
+  eventType: string | null;
+  loginMethod: string | null;
+  result: string | null;
+  isNewDevice: boolean | null;
+  attemptedEmail: string | null;
+  ipAddress: string | null;
+  country: string | null;
+  region: string | null;
+  city: string | null;
+  timezone: string | null;
+  userAgent: string | null;
+  createdAt: string | null;
+};
+
+type StudentLoginAuditDetail = {
+  userId: string;
+  email: string | null;
+  deviceCount: number;
+  recentLoginCount: number;
+  activeDeviceCount30d: number;
+  countryCount30d: number;
+  failedLoginCount24h: number;
+  hasBlockedDevice: boolean;
+  isAbnormal: boolean;
+  abnormalReasons: string[];
+  devices: StudentLoginDeviceDetail[];
+  recentEvents: StudentLoginEventDetail[];
 };
 
 type StudentDeletionPreview = {
@@ -135,6 +191,8 @@ const deletionRowLabels: Record<string, string> = {
   study_plans: "学习计划",
   ai_usage_logs: "AI 使用日志",
   ai_user_limits: "AI 额度设置",
+  login_events: "登录事件",
+  user_devices: "登录设备",
   chat_sessions: "聊天会话",
   profiles: "学生 Profile",
 };
@@ -175,6 +233,17 @@ function formatDate(value: string | null) {
   });
 }
 
+function formatDateTime(value: string | null) {
+  if (!value) return "—";
+  return new Date(value).toLocaleString("zh-CN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 function getDaysLeft(value: string) {
   if (!value) return "—";
   const diff = new Date(value).getTime() - Date.now();
@@ -202,6 +271,10 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
   const [deleteResult, setDeleteResult] = useState<StudentDeletionResult | null>(null);
   const [deleteConfirmation, setDeleteConfirmation] = useState("");
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [deviceDialogOpen, setDeviceDialogOpen] = useState(false);
+  const [deviceAudit, setDeviceAudit] = useState<StudentLoginAuditDetail | null>(null);
+  const [deviceAuditLoading, setDeviceAuditLoading] = useState(false);
+  const [deviceAuditMessage, setDeviceAuditMessage] = useState("");
 
   const selectedStudent = useMemo(() => rows.find((row) => row.userId === selectedUserId) ?? rows[0] ?? null, [rows, selectedUserId]);
 
@@ -237,6 +310,9 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     setDeleteResult(null);
     setDeleteConfirmation("");
     setDeleteMessage("");
+    setDeviceDialogOpen(false);
+    setDeviceAudit(null);
+    setDeviceAuditMessage("");
   }
 
   function updateField(key: keyof FormState, value: string) {
@@ -338,9 +414,33 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     }
   }
 
+  async function openDeviceAudit() {
+    if (!selectedStudent) return;
+
+    setDeviceDialogOpen(true);
+    setDeviceAuditLoading(true);
+    setDeviceAuditMessage("");
+
+    try {
+      const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}/login-audit`);
+      const json = await response.json();
+
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message ?? "读取登录设备详情失败。");
+      }
+
+      setDeviceAudit(json.audit as StudentLoginAuditDetail);
+    } catch (error) {
+      setDeviceAuditMessage(error instanceof Error ? error.message : "读取登录设备详情失败。");
+    } finally {
+      setDeviceAuditLoading(false);
+    }
+  }
+
   const selectedDisplayName = selectedStudent ? getDisplayName(selectedStudent) : "未选择学生";
   const confirmationTarget = selectedStudent?.email || selectedStudent?.userId || "";
   const completion = scoreProgress(form.overall_current, form.overall_target);
+  const latestDevice = selectedStudent?.latestDevice ?? null;
 
   return (
     <div className="space-y-6">
@@ -417,6 +517,35 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
               <div className="h-full rounded-full bg-[var(--primary)] transition-all" style={{ width: `${completion}%` }} />
             </div>
           </div>
+
+          <button type="button" onClick={openDeviceAudit} disabled={!selectedStudent} className="w-full rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 text-left shadow-[var(--shadow-sm)] transition hover:border-[var(--primary)]/35 hover:bg-[var(--card-hover)] disabled:cursor-not-allowed disabled:opacity-70">
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[var(--text)]">
+                  <Laptop size={18} className="text-[var(--primary)]" />
+                  <h3 className="text-lg font-bold">登录设备</h3>
+                </div>
+                <p className="mt-1 text-sm text-[var(--text-soft)]">根据服务端登录记录识别常用设备和最近活跃。</p>
+              </div>
+              <Badge variant={selectedStudent?.deviceCount ? "success" : "secondary"}>{selectedStudent?.deviceCount ?? 0} 台设备</Badge>
+            </div>
+
+            {latestDevice ? (
+              <div className="grid gap-3 lg:grid-cols-3">
+                <SummaryPill icon={Laptop} label="最近设备" value={latestDevice.deviceLabel || latestDevice.deviceType || "Unknown"} />
+                <SummaryPill icon={Clock3} label="最后活跃" value={formatDate(latestDevice.lastSeenAt ?? latestDevice.lastLoginAt)} />
+                <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[var(--text-faint)]">
+                    <MapPin size={14} className="text-[var(--primary)]" />
+                    位置
+                  </div>
+                  <div className="mt-1 truncate text-base font-black text-[var(--text)]">{[latestDevice.city, latestDevice.country].filter(Boolean).join(", ") || "—"}</div>
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-5 text-sm text-[var(--text-soft)]">该学生还没有新的设备审计记录。下一次登录或邮箱确认后会自动生成。</div>
+            )}
+          </button>
 
           <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
             <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -546,6 +675,104 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
           </div>
         </section>
       </div>
+
+      {deviceDialogOpen ? (
+        <div className="fixed inset-0 z-[170] flex items-end bg-black/50 px-0 backdrop-blur-sm sm:items-center sm:px-4">
+          <div className="max-h-[92dvh] w-full overflow-hidden rounded-t-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)] sm:mx-auto sm:max-w-5xl sm:rounded-[var(--radius-xl)]">
+            <div className="flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4 sm:px-6">
+              <div>
+                <Badge variant={deviceAudit?.isAbnormal ? "danger" : "success"}>{deviceAudit?.isAbnormal ? "需要关注" : "正常"}</Badge>
+                <h3 className="mt-3 text-xl font-black text-[var(--text)]">设备管理详情</h3>
+                <p className="mt-1 text-sm text-[var(--text-soft)]">{selectedDisplayName} · {selectedStudent?.email || selectedStudent?.userId}</p>
+              </div>
+              <button type="button" onClick={() => setDeviceDialogOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--text)]">
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="max-h-[calc(92dvh-92px)] overflow-y-auto p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sm:p-6">
+              {deviceAuditLoading ? (
+                <div className="flex min-h-[320px] items-center justify-center rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] text-sm font-semibold text-[var(--text-soft)]">
+                  <Loader2 className="mr-2 animate-spin" size={18} />
+                  正在读取登录设备...
+                </div>
+              ) : deviceAuditMessage ? (
+                <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-semibold text-[var(--danger)]">{deviceAuditMessage}</div>
+              ) : deviceAudit ? (
+                <div className="space-y-5">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <Metric label="全部设备" value={deviceAudit.deviceCount} />
+                    <Metric label="30天活跃" value={deviceAudit.activeDeviceCount30d} />
+                    <Metric label="国家/地区" value={deviceAudit.countryCount30d} />
+                    <Metric label="24h失败" value={deviceAudit.failedLoginCount24h} />
+                  </div>
+
+                  <div className={`rounded-[var(--radius-lg)] border p-4 ${deviceAudit.isAbnormal ? "border-[var(--danger)]/25 bg-[var(--danger-soft)]" : "border-[var(--success)]/25 bg-[var(--success-soft)]"}`}>
+                    <div className={`flex items-center gap-2 text-sm font-black ${deviceAudit.isAbnormal ? "text-[var(--danger)]" : "text-[var(--success)]"}`}>
+                      {deviceAudit.isAbnormal ? <ShieldAlert size={17} /> : <CheckCircle2 size={17} />}
+                      {deviceAudit.isAbnormal ? "发现异常信号" : "暂无明显异常"}
+                    </div>
+                    <div className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
+                      {deviceAudit.isAbnormal ? deviceAudit.abnormalReasons.join("；") : "设备数量、地区分布和失败登录次数都在正常范围内。"}
+                    </div>
+                  </div>
+
+                  <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                    <div className="mb-3 flex items-center justify-between gap-3">
+                      <h4 className="font-black text-[var(--text)]">所有设备</h4>
+                      <Badge variant="secondary">{deviceAudit.devices.length} devices</Badge>
+                    </div>
+                    <div className="grid gap-3 lg:grid-cols-2">
+                      {deviceAudit.devices.length === 0 ? (
+                        <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] p-4 text-sm text-[var(--text-soft)]">暂无设备记录。</div>
+                      ) : deviceAudit.devices.map((device) => (
+                        <div key={device.id || device.deviceId} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2 font-black text-[var(--text)]">
+                                {device.deviceType === "mobile" ? <Smartphone size={16} className="text-[var(--primary)]" /> : <Laptop size={16} className="text-[var(--primary)]" />}
+                                <span className="truncate">{device.deviceLabel || device.browserName || device.osName || "Unknown device"}</span>
+                              </div>
+                              <div className="mt-1 truncate text-xs text-[var(--text-soft)]">{[device.city, device.country, device.ipAddress].filter(Boolean).join(" · ") || "位置未知"}</div>
+                            </div>
+                            <Badge variant={device.isBlocked ? "danger" : device.isTrusted ? "success" : "secondary"}>{device.isBlocked ? "Blocked" : device.isTrusted ? "Trusted" : "Observed"}</Badge>
+                          </div>
+                          <div className="mt-3 grid gap-2 text-xs text-[var(--text-soft)] sm:grid-cols-2">
+                            <span>首次：{formatDateTime(device.firstSeenAt)}</span>
+                            <span>最后：{formatDateTime(device.lastSeenAt ?? device.lastLoginAt)}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                    <div className="mb-3 flex items-center justify-between gap-3">
+                      <h4 className="font-black text-[var(--text)]">最近 10 次登录</h4>
+                      <Badge variant="secondary">{deviceAudit.recentEvents.length} events</Badge>
+                    </div>
+                    <div className="space-y-2">
+                      {deviceAudit.recentEvents.length === 0 ? (
+                        <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--card)] p-4 text-sm text-[var(--text-soft)]">暂无登录事件。</div>
+                      ) : deviceAudit.recentEvents.map((event) => (
+                        <div key={event.id} className="grid gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3 text-sm sm:grid-cols-[1.1fr_0.8fr_0.8fr_auto] sm:items-center">
+                          <div>
+                            <div className="font-bold text-[var(--text)]">{formatDateTime(event.createdAt)}</div>
+                            <div className="mt-0.5 text-xs text-[var(--text-soft)]">{event.attemptedEmail || deviceAudit.email || "—"}</div>
+                          </div>
+                          <div className="text-xs text-[var(--text-soft)]">{[event.city, event.country, event.ipAddress].filter(Boolean).join(" · ") || "位置未知"}</div>
+                          <div className="text-xs font-semibold text-[var(--text-soft)]">{event.loginMethod || "unknown"}{event.isNewDevice ? " · 新设备" : ""}</div>
+                          <Badge variant={event.result === "success" ? "success" : event.result === "blocked" ? "danger" : "secondary"}>{event.result || "unknown"}</Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

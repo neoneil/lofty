@@ -108,7 +108,7 @@ export default function IELTSWritingPage() {
                     <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Target Band</span>
                     <Input type="number" min="0" max="9" step="0.5" value={targetBand} onChange={(e) => setTargetBand(e.target.value)} placeholder="e.g. 6.5" />
                   </label>
-                  <AiUsageConfirmDialog feature="ielts_writing_review" title="确认使用雅思写作 AI 评分" description="本次作文批改会消耗 1 次 AI 评分反馈机会。" onConfirm={handleSubmit}>{(openDialog) => <Button type="button" disabled={loading} fullWidth onClick={() => { if (!promptQuestion.trim() || !essayText.trim()) { setError("请先填写题目和作文。"); return; } openDialog(); }}>{loading ? <AiLoadingLabel text="正在批改，通常 30-90 秒..." /> : "Check Essay"}</Button>}</AiUsageConfirmDialog>
+                  <div className="sticky bottom-0 -mx-5 bg-[var(--card)] px-5 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-2 sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0"><AiUsageConfirmDialog feature="ielts_writing_review" title="确认使用雅思写作 AI 评分" description="本次作文批改会消耗 1 次 AI 评分反馈机会。" onConfirm={handleSubmit}>{(openDialog) => <Button type="button" disabled={loading} fullWidth onClick={() => { if (!promptQuestion.trim() || !essayText.trim()) { setError("请先填写题目和作文。"); return; } openDialog(); }}>{loading ? <AiLoadingLabel text="正在批改，通常 30-90 秒..." /> : "Check Essay"}</Button>}</AiUsageConfirmDialog></div>
                 </div>
                 {error ? <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">{error}</div> : null}
               </form>

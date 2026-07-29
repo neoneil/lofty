@@ -186,9 +186,9 @@ export default function IeltsSpeakingAiScoring({ context, buttonLabel = "AI评�
     <>
       <Button type="button" size="sm" variant="secondary" className="gap-2" onClick={() => setOpen(true)}><Sparkles size={15} />{buttonLabel}</Button>
       {open ? (
-        <div className="fixed inset-0 z-[90] bg-black/45 px-3 py-3 backdrop-blur-sm sm:px-5 sm:py-5">
-          <div className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] text-[var(--text)] shadow-[var(--shadow-lg)]">
-            <div className="shrink-0 border-b border-[var(--border)] bg-[linear-gradient(135deg,var(--primary-soft),var(--card))] p-5 sm:p-6">
+        <div className="fixed inset-0 z-[90] bg-black/45 px-0 py-0 backdrop-blur-sm sm:px-5 sm:py-5">
+          <div className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-none border border-[var(--border)] bg-[var(--card)] text-[var(--text)] shadow-[var(--shadow-lg)] sm:rounded-[var(--radius-xl)]">
+            <div className="shrink-0 border-b border-[var(--border)] bg-[linear-gradient(135deg,var(--primary-soft),var(--card))] p-4 sm:p-6">
               <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2"><Badge>IELTS Speaking AI</Badge><Badge variant="secondary">{getPartLabel(selectedPart)} · {recordingDuration}s</Badge></div>
@@ -204,7 +204,7 @@ export default function IeltsSpeakingAiScoring({ context, buttonLabel = "AI评�
               <button type="button" onClick={() => setActiveMode("score")} className={`rounded-[var(--radius-md)] px-4 py-3 text-sm font-semibold transition ${activeMode === "score" ? "bg-[var(--card)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:text-[var(--text)]"}`}>回答评分</button>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
+            <div className="min-h-0 flex-1 overflow-y-auto p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:p-6">
               {error ? <div className="mb-4 rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">{error}</div> : null}
 
               {activeMode === "sample" ? (

@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { BRAND_NAME_CN, BRAND_TEACHER_CN } from "@/lib/brand";
 import { AuthV2CharacterScene, type AuthV2CharacterFocus } from "@/components/auth/auth-v2-character-scene";
@@ -39,10 +38,6 @@ function GoogleIcon() {
   );
 }
 
-function setAuthNextCookie(next: string) {
-  document.cookie = `auth_next=${encodeURIComponent(next)}; path=/; max-age=600; SameSite=Lax`;
-}
-
 function FieldShell({
   icon,
   children,
@@ -61,7 +56,6 @@ function FieldShell({
 }
 
 export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
-  const supabase = createClient();
   const searchParams = useSearchParams();
   const isSignup = mode === "signup";
 
@@ -146,24 +140,7 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
 
     setLoading(true);
     setMessage("");
-    setAuthNextCookie(next);
-
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        queryParams: isSignup
-          ? {
-              prompt: "select_account",
-            }
-          : undefined,
-      },
-    });
-
-    if (error) {
-      setMessage(error.message);
-      setLoading(false);
-    }
+    window.location.href = `/api/auth/google?mode=${isSignup ? "signup" : "login"}&next=${encodeURIComponent(next)}`;
   }
 
   const inputClassName =

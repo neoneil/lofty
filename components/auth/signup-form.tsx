@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { BRAND_NAME_CN, BRAND_TEACHER_CN } from "@/lib/brand";
 
@@ -35,14 +34,7 @@ function GoogleIcon() {
   );
 }
 
-function setAuthNextCookie(next: string) {
-  document.cookie = `auth_next=${encodeURIComponent(
-    next
-  )}; path=/; max-age=600; SameSite=Lax`;
-}
-
 export default function SignupForm() {
-  const supabase = createClient();
   const searchParams = useSearchParams();
 
   const [email, setEmail] = useState("");
@@ -95,22 +87,7 @@ export default function SignupForm() {
 
     setLoading(true);
     setMessage("");
-    setAuthNextCookie(next);
-
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        queryParams: {
-          prompt: "select_account",
-        },
-      },
-    });
-
-    if (error) {
-      setMessage(error.message);
-      setLoading(false);
-    }
+    window.location.href = `/api/auth/google?mode=signup&next=${encodeURIComponent(next)}`;
   }
 
   const inputClassName =

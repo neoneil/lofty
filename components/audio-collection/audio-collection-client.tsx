@@ -312,7 +312,7 @@ export default function AudioCollectionClient({ groups }: Props) {
   };
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-5 pb-10 pt-4 sm:pb-14 sm:pt-6">
+    <main className="mx-auto w-full max-w-7xl space-y-5 pb-32 pt-4 sm:pb-14 sm:pt-6">
       <Card className="overflow-hidden border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)]">
         <CardContent className="relative grid gap-5 p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div className="absolute right-[-8%] top-[-55%] h-64 w-64 rounded-full bg-[var(--primary-soft)] blur-3xl" />
@@ -461,6 +461,20 @@ export default function AudioCollectionClient({ groups }: Props) {
           </CardContent>
         </Card>
       </section>
+
+      {currentQuestion ? (
+        <div className="fixed inset-x-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-40 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]/95 p-3 shadow-[var(--shadow-lg)] backdrop-blur lg:hidden">
+          <div className="flex items-center gap-3">
+            <button type="button" onClick={goToPrevious} disabled={safeCurrentIndex === 0} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] disabled:opacity-40"><SkipBack size={16} /></button>
+            <button type="button" onClick={isPlaying ? pause : play} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]">{isPlaying ? <Pause size={18} /> : <Play size={18} />}</button>
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-sm font-semibold text-[var(--text)]">{currentQuestion.text}</div>
+              <div className="mt-0.5 flex items-center gap-1.5 text-xs text-[var(--text-soft)]"><span>{safeCurrentIndex + 1}/{questions.length}</span><span>·</span><span>{currentQuestion.label}</span><span>·</span><span>{currentRound}/{repeatCount} 次</span></div>
+            </div>
+            <button type="button" onClick={() => goToNext(false)} disabled={safeCurrentIndex >= questions.length - 1} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] disabled:opacity-40"><SkipForward size={16} /></button>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

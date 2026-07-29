@@ -7,6 +7,8 @@
 
 .pte-practice-card[data-pte-view="grid"] {
   height: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 11rem;
 }
 
 .pte-practice-card[data-pte-view="grid"] .pte-practice-card-body {
@@ -102,6 +104,34 @@
 
 .pte-practice-card[data-pte-view="grid"] .pte-practice-title + div {
   display: none;
+}
+
+@media (max-width: 639px) {
+  .pte-practice-card[data-pte-view="grid"] {
+    height: auto;
+    contain-intrinsic-size: 8.5rem;
+  }
+
+  .pte-practice-card[data-pte-view="grid"] .pte-practice-card-body {
+    display: flex;
+    min-height: 0;
+    padding: 0.875rem;
+  }
+
+  .pte-practice-card[data-pte-view="grid"] .pte-practice-card-content,
+  .pte-practice-card[data-pte-view="grid"] .pte-practice-meta {
+    display: block;
+  }
+
+  .pte-practice-card[data-pte-view="grid"] .pte-practice-badge-cloud {
+    max-height: 3.2rem;
+  }
+
+  .pte-practice-card[data-pte-view="grid"] .pte-practice-title {
+    margin-top: 0.55rem;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
 }
 
 :root {

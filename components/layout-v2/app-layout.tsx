@@ -42,7 +42,7 @@ export function AppLayout({
 
         <Topbar user={user} canAccessAdmin={canAccessAdmin} />
 
-        <main className="flex min-h-0 flex-1 flex-col overflow-y-auto p-1">
+        <main className="flex min-h-0 flex-1 flex-col overflow-y-auto p-1 pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-1">
 
           {children}
 

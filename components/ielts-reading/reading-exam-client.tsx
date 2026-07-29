@@ -2,7 +2,7 @@
 
 import { memo, type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, Languages, ListChecks, PanelRightOpen, SendHorizontal, X } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, Expand, Languages, ListChecks, MoreHorizontal, PanelRightOpen, SendHorizontal, X } from "lucide-react";
 
 import { useDictionary } from "@/components/dictionary/dictionary-context";
 import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
@@ -291,7 +291,30 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   return (
     <div ref={examRef} onPointerDownCapture={closeNotesFromOutside} onMouseUp={showSelectionToolbar} onTouchEnd={showSelectionToolbar} onKeyUp={showSelectionToolbar} className={cn("min-h-screen bg-[var(--bg)] text-[var(--text)] transition-[padding] duration-300 ease-out", notesOpen && "lg:pr-[28rem]")}>
       <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[var(--card)]/95 shadow-[var(--shadow-sm)] backdrop-blur">
-        <div className="grid min-h-16 gap-3 px-3 py-3 sm:px-5 lg:grid-cols-[minmax(220px,1fr)_auto_minmax(420px,1fr)] lg:items-center">
+        <div className="px-3 py-2 lg:hidden">
+          <div className="flex items-center gap-2">
+            <Link href={`/ielts/reading?book=${data.book.book_number}`} className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] transition hover:text-[var(--primary)]"><ArrowLeft size={17} /></Link>
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-sm font-semibold text-[var(--text)]">Cambridge {data.book.book_number} · Test {selectedTestNumber}</div>
+              <div className="truncate text-xs text-[var(--text-soft)]">Part {activePart?.displayNumber ?? 1} · Q{activePart?.numbers[0] ?? ""}-{activePart?.numbers.at(-1) ?? ""}</div>
+            </div>
+            <div className={cn("flex h-9 shrink-0 items-center justify-center gap-1 rounded-full border px-2.5 text-xs", isOvertime ? "border-red-400/45 bg-red-500/10 text-red-500" : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--success)]")}>
+              <span>◷</span><span className="font-bold tabular-nums">{isOvertime ? `+${formatTimer(overtimeSeconds)}` : formatTimer(remainingSeconds)}</span>
+            </div>
+            <Button type="button" size="sm" onClick={handleSubmit} className="h-9 shrink-0 rounded-full px-3">Submit</Button>
+          </div>
+          <details className="group mt-2">
+            <summary className="flex h-9 cursor-pointer list-none items-center justify-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-xs font-semibold text-[var(--text-soft)]"><MoreHorizontal size={16} />工具</summary>
+            <div className="mt-2 grid grid-cols-4 gap-2 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-2">
+              <span data-notes-toggle><MobileExamTool label="笔记" onClick={() => setNotesOpen(true)}><ClipboardPenLine size={17} /></MobileExamTool></span>
+              <MobileExamTool label="翻译" active={translationOpen} onClick={() => setTranslationOpen((value) => !value)}><Languages size={17} /></MobileExamTool>
+              <MobileExamTool label="Review" onClick={() => setReviewOpen(true)}><ListChecks size={17} /></MobileExamTool>
+              <MobileExamTool label="全屏" onClick={() => void toggleFullscreen()}><Expand size={17} /></MobileExamTool>
+            </div>
+          </details>
+        </div>
+
+        <div className="hidden min-h-16 gap-3 px-3 py-3 sm:px-5 lg:grid lg:grid-cols-[minmax(220px,1fr)_auto_minmax(420px,1fr)] lg:items-center">
           <div className="flex items-center gap-3">
             <Link href={`/ielts/reading?book=${data.book.book_number}`} className="inline-flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] transition hover:text-[var(--primary)]"><ArrowLeft size={17} /></Link>
             <div>
@@ -360,6 +383,10 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
 
 function ExamIconButton({ label, onClick, active = false, children }: { label: string; onClick: () => void; active?: boolean; children: React.ReactNode }) {
   return <button type="button" onClick={onClick} title={label} aria-label={label} className={cn("inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]", active && "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]")}>{children}</button>;
+}
+
+function MobileExamTool({ label, onClick, active = false, children }: { label: string; onClick: () => void; active?: boolean; children: React.ReactNode }) {
+  return <button type="button" onClick={onClick} className={cn("flex h-14 w-full flex-col items-center justify-center gap-1 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-[11px] font-semibold text-[var(--text-soft)] transition hover:text-[var(--primary)]", active && "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]")}><span>{children}</span><span>{label}</span></button>;
 }
 
 function TimeNoticePopup({ type, seconds, onClose }: { type: "warning" | "time-up"; seconds: number; onClose: () => void }) {

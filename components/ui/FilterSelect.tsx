@@ -60,10 +60,7 @@ export default function FilterSelect({
     return (
         <div
             ref={wrapperRef}
-            className="
-                relative
-                min-w-[180px]
-            "
+            className="relative w-full lg:min-w-[180px]"
         >
             {/* BUTTON */}
             <button

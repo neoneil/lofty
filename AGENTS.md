@@ -37,6 +37,9 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Server-side Supabase access should use `lib/supabase/server.ts`.
 - Service-role/admin Supabase access must use `lib/supabase/admin.ts` and stay server-only.
 - Browser/client components should use `lib/supabase/client.ts` only.
+- Because mainland China access must not depend on direct browser-to-Supabase connectivity, do not add new client-side Supabase database, storage, or realtime requests for user-facing features.
+- For new user-facing data, auth-adjacent, storage, audit, or learning features, route browser requests through Lofty Next.js API/server actions first, then access Supabase from the server using the approved helpers.
+- Existing client-side Supabase usage should be treated as migration debt unless it is an explicitly accepted exception such as Google OAuth.
 - Do not create new Supabase clients, auth checks, admin role checks, cookie handling, or service-key logic inline unless the user explicitly asks for a new shared helper.
 - Never expose `SUPABASE_SECRET_KEY` or service-role behavior to client components.
 - Treat the hosted Supabase project as a mature, non-empty production database.

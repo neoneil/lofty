@@ -77,9 +77,9 @@ export default function AiUsageConfirmDialog({
       {children(openDialog)}
 
       {open ? (
-        <div className="fixed inset-0 z-[140] flex items-center justify-center bg-black/45 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-strong)] bg-[var(--card)] text-[var(--text)] shadow-[var(--shadow-lg)]">
-            <div className="border-b border-[var(--border)] bg-[linear-gradient(135deg,var(--primary-soft),var(--card))] px-5 py-5 sm:px-6">
+        <div className="fixed inset-0 z-[140] flex items-end justify-center bg-black/45 px-0 backdrop-blur-sm sm:items-center sm:px-4">
+          <div className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-[var(--radius-xl)] border border-[var(--border-strong)] bg-[var(--card)] text-[var(--text)] shadow-[var(--shadow-lg)] sm:rounded-[var(--radius-xl)]">
+            <div className="shrink-0 border-b border-[var(--border)] bg-[linear-gradient(135deg,var(--primary-soft),var(--card))] px-5 py-5 sm:px-6">
               <div className="flex items-start gap-4">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]"><Sparkles size={20} /></span>
                 <div className="min-w-0">
@@ -90,7 +90,7 @@ export default function AiUsageConfirmDialog({
               </div>
             </div>
 
-            <div className="p-5 sm:p-6">
+            <div className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
               {loadingUsage ? (
                 <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm text-[var(--text-soft)]">正在读取用户状态与剩余额度...</div>
               ) : usage ? (
@@ -157,7 +157,7 @@ export default function AiUsageConfirmDialog({
                 <div className="rounded-[var(--radius-lg)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] p-4 text-sm text-[var(--danger)]">无法读取 AI 使用额度。</div>
               )}
 
-              <div className="mt-5 flex flex-col-reverse gap-2 border-t border-[var(--border)] pt-5 sm:flex-row sm:justify-end">
+              <div className="sticky bottom-0 -mx-5 mt-5 flex flex-col-reverse gap-2 border-t border-[var(--border)] bg-[var(--card)] px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-5 sm:-mx-6 sm:flex-row sm:justify-end sm:px-6 sm:pb-0">
                 <Button type="button" variant="secondary" onClick={() => setOpen(false)} className="sm:min-w-24">取消</Button>
                 <Button type="button" onClick={handleConfirm} disabled={loadingUsage || !canContinue} className="sm:min-w-40">{usage?.is_unlimited ? "确认使用" : "确认消耗 1 张 AI 券"}</Button>
               </div>

@@ -1,6 +1,7 @@
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { applyLoginAuditCookie, recordFailedLogin, recordSuccessfulLogin, type LoginAuditResult } from "@/lib/auth/login-audit";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 const AUTH_NEXT_COOKIE = "auth_next";
 
@@ -25,12 +26,13 @@ function redirectAndClearAuthNext(url: string) {
   return response;
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = getSafeNextPath(
     searchParams.get("next") ?? getCookieValue(request, AUTH_NEXT_COOKIE)
   );
+  let audit: LoginAuditResult | null = null;
 
   console.log("=== AUTH CALLBACK DEBUG START ===");
   console.log("request.url =", request.url);
@@ -44,6 +46,7 @@ export async function GET(request: Request) {
     console.log("exchangeCodeForSession error =", error);
 
     if (error) {
+      await recordFailedLogin(request, null, "google", error.message);
       return redirectAndClearAuthNext(
         `${origin}/login?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
       );
@@ -53,6 +56,7 @@ export async function GET(request: Request) {
 
     if (!user) {
       await supabase.auth.signOut();
+      await recordFailedLogin(request, null, "google", "missing_user");
       return redirectAndClearAuthNext(
         `${origin}/sign-up?error=${encodeURIComponent("profile_required")}&next=${encodeURIComponent(next)}`
       );
@@ -67,17 +71,21 @@ export async function GET(request: Request) {
     if (profileError || !profile) {
       console.log("profile check failed =", profileError);
       await supabase.auth.signOut();
+      await recordFailedLogin(request, user.email ?? null, "google", "profile_required");
       return redirectAndClearAuthNext(
         `${origin}/sign-up?error=${encodeURIComponent("profile_required")}&next=${encodeURIComponent(next)}`
       );
     }
 
+    audit = await recordSuccessfulLogin(request, user, "google");
   }
 
   console.log("redirecting to =", `${origin}${next}`);
   console.log("=== AUTH CALLBACK DEBUG END ===");
 
-  return redirectAndClearAuthNext(`${origin}${next}`);
+  const response = redirectAndClearAuthNext(`${origin}${next}`);
+  applyLoginAuditCookie(response, audit);
+  return response;
 }
 
 // import { NextResponse } from "next/server";

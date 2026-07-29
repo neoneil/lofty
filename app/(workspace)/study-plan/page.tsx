@@ -509,7 +509,7 @@ export default function StudyPlanPage() {
                 <div className="space-y-4">
                   <UpdateSectionTitle icon={<Target size={16} />} title="目标分数" />
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid gap-3 sm:grid-cols-2">
                     <Input value={form.listening_target} onChange={(e) => updateField("listening_target", e.target.value)} placeholder="听力目标分" />
                     <Input value={form.listening_current} onChange={(e) => updateField("listening_current", e.target.value)} placeholder="听力当前分" />
                     <Input value={form.reading_target} onChange={(e) => updateField("reading_target", e.target.value)} placeholder="阅读目标分" />
@@ -518,7 +518,7 @@ export default function StudyPlanPage() {
                     <Input value={form.writing_current} onChange={(e) => updateField("writing_current", e.target.value)} placeholder="写作当前分" />
                     <Input value={form.speaking_target} onChange={(e) => updateField("speaking_target", e.target.value)} placeholder="口语目标分" />
                     <Input value={form.speaking_current} onChange={(e) => updateField("speaking_current", e.target.value)} placeholder="口语当前分" />
-                    <Input value={form.overall_target} onChange={(e) => updateField("overall_target", e.target.value)} placeholder="总分目标" className="col-span-2" />
+                    <Input value={form.overall_target} onChange={(e) => updateField("overall_target", e.target.value)} placeholder="总分目标" className="sm:col-span-2" />
                   </div>
                 </div>
 
@@ -589,6 +589,7 @@ export default function StudyPlanPage() {
                   </div>
                 )}
 
+                <div className="sticky bottom-0 -mx-5 bg-[var(--card)] px-5 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-2 sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
                 <Button fullWidth onClick={handleSave} disabled={saving}>
                   {saving ? (
                     <div className="flex items-center gap-2">
@@ -601,6 +602,7 @@ export default function StudyPlanPage() {
                     "Create plan"
                   )}
                 </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

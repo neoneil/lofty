@@ -1,6 +1,7 @@
 import { type EmailOtpType } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { applyLoginAuditCookie, recordSuccessfulLogin } from "@/lib/auth/login-audit";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 
 export const dynamic = "force-dynamic";
@@ -15,13 +16,16 @@ export async function GET(request: NextRequest) {
   if (token_hash && type) {
     const supabase = await createClient();
 
-    const { error } = await supabase.auth.verifyOtp({
+    const { data, error } = await supabase.auth.verifyOtp({
       type,
       token_hash,
     });
 
     if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
+      const audit = data.user ? await recordSuccessfulLogin(request, data.user, "magic_link") : null;
+      const response = NextResponse.redirect(`${origin}${next}`);
+      applyLoginAuditCookie(response, audit);
+      return response;
     }
 
     console.error("verifyOtp error:", error);

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import {
@@ -186,6 +186,44 @@ const utilityItems: NavItem[] = [
   },
 ];
 
+const bottomNavItems: NavItem[] = [
+  {
+    href: "/dashboard-v2",
+    label: "总览",
+    subtitle: "Dashboard",
+    icon: <LayoutDashboard size={18} />,
+    iconTone: "primary",
+  },
+  {
+    href: "/pte",
+    label: "PTE",
+    subtitle: "Question Bank",
+    icon: <Mic size={18} />,
+    iconTone: "danger",
+  },
+  {
+    href: "/ielts",
+    label: "IELTS",
+    subtitle: "Question Bank",
+    icon: <BookOpen size={18} />,
+    iconTone: "success",
+  },
+  {
+    href: "/audio-collection",
+    label: "音频",
+    subtitle: "Audio",
+    icon: <Headphones size={18} />,
+    iconTone: "primary",
+  },
+  {
+    href: "/settings",
+    label: "我的",
+    subtitle: "Profile",
+    icon: <Settings size={18} />,
+    iconTone: "warning",
+  },
+];
+
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
@@ -220,6 +258,23 @@ function TopbarItem({ item, pathname }: { item: NavItem; pathname: string }) {
           {item.badge}
         </span>
       ) : null}
+    </Link>
+  );
+}
+
+function BottomNavItem({ item, pathname }: { item: NavItem; pathname: string }) {
+  const active = isActive(pathname, item.href);
+  const iconToneClasses = {
+    primary: "bg-[var(--primary-soft)] text-[var(--primary)]",
+    success: "bg-[var(--success-soft)] text-[var(--success)]",
+    warning: "bg-[var(--warning-soft)] text-[var(--warning)]",
+    danger: "bg-[var(--danger-soft)] text-[var(--danger)]",
+  };
+
+  return (
+    <Link href={item.href} className={cn("flex min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-[var(--radius-md)] px-1 py-1.5 text-[10px] font-semibold transition", active ? "bg-[var(--primary-soft)] text-[var(--primary)]" : "text-[var(--text-soft)]")}>
+      <span className={cn("flex h-8 w-8 items-center justify-center rounded-[8px]", active ? "bg-[var(--primary)] text-white" : iconToneClasses[item.iconTone])}>{item.icon}</span>
+      <span className="truncate">{item.label}</span>
     </Link>
   );
 }
@@ -262,12 +317,14 @@ function BankToggle({
 
 export function SidebarTopbar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
   const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
   const activeQuestionBank = questionBankOverride?.pathname === pathname ? questionBankOverride.value : routeQuestionBank;
   const questionBankOpen = activeQuestionBank === "pte";
   const questionBankOpen2 = activeQuestionBank === "ielts";
   const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
+  const hideBottomNav = isIeltsExamRoute(pathname, searchParams);
 
   return (
     <div className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--sidebar)]/95 px-3 py-3 backdrop-blur-xl">
@@ -316,6 +373,20 @@ export function SidebarTopbar() {
           ))}
         </div>
       ) : null}
+
+      {!hideBottomNav ? <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[var(--sidebar)]/95 px-2 pb-[calc(0.35rem+env(safe-area-inset-bottom))] pt-1.5 shadow-[0_-12px_30px_rgba(15,23,42,0.10)] backdrop-blur-xl lg:hidden" aria-label="移动端主导航">
+        <div className="mx-auto flex max-w-xl gap-1">
+          {bottomNavItems.map((item) => <BottomNavItem key={item.href} item={item} pathname={pathname} />)}
+        </div>
+      </nav> : null}
     </div>
+  );
+}
+
+function isIeltsExamRoute(pathname: string, searchParams: URLSearchParams) {
+  return (
+    (pathname === "/ielts/listening" || pathname === "/ielts/reading") &&
+    Boolean(searchParams.get("book")) &&
+    Boolean(searchParams.get("test"))
   );
 }

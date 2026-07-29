@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { applyLoginAuditCookie, recordFailedLogin, recordSuccessfulLogin } from "@/lib/auth/login-audit";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { createClient } from "@/lib/supabase/server";
 
@@ -25,19 +26,24 @@ export async function POST(request: NextRequest) {
     }
 
     const supabase = await createClient();
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
+      await recordFailedLogin(request, email, "email", error.message);
       return NextResponse.json({ ok: false, message: error.message }, { status: 401 });
     }
 
-    return NextResponse.json({
+    const audit = data.user ? await recordSuccessfulLogin(request, data.user, "email") : null;
+    const response = NextResponse.json({
       ok: true,
       next,
     });
+    applyLoginAuditCookie(response, audit);
+
+    return response;
   } catch (error) {
     return NextResponse.json(
       {

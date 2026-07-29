@@ -67,7 +67,7 @@ export function WfdImageMemoryGrid({ items }: { items: WfdImageMemoryItem[] }) {
                 const displayIndex = start + itemIndex;
 
                 return (
-                  <Link key={item.id} href={`/pte/listening/wfd/${item.id}`} className="group overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)]">
+                  <Link key={item.id} href={`/pte/listening/wfd/${item.id}`} className="group overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] [content-visibility:auto] [contain-intrinsic-size:26rem] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)]">
                     <div className="relative aspect-square bg-[var(--bg-soft)]">
                       {imageUrl ? (
                         <Image src={imageUrl} alt={item.question_text} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover transition duration-300 group-hover:scale-[1.02]" />
