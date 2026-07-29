@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
-import { createClient } from "@/lib/supabase/client";
+import { apiGet } from "@/lib/api/client";
 
 type ZoomNotification = {
   id: string;
@@ -155,20 +155,22 @@ export default function ClassroomPage() {
       let canManage = false;
 
       try {
-        const supabase = createClient();
-        const { data: authData } = await supabase.auth.getUser();
-        const currentUser = authData.user;
+        const data = await apiGet<{
+          user: { email?: string; fullName?: string; role?: string | null };
+          profile: { full_name?: string | null; email?: string | null; role?: string | null } | null;
+        }>("/api/profile/me");
+        const profile = data.profile;
+        const currentUser = data.user;
 
         if (currentUser) {
-          const { data: profile } = await supabase.from("profiles").select("full_name, email, role").eq("id", currentUser.id).maybeSingle();
-          const profileName = profile?.full_name?.trim();
+          const profileName = profile?.full_name?.trim() || currentUser.fullName?.trim();
           const profileEmail = profile?.email?.trim() || currentUser.email?.trim() || "";
 
           if (!urlName) {
             defaultName = profileName || profileEmail.split("@")[0] || "Student";
           }
 
-          canManage = ["admin", "teacher", "editor"].includes(profile?.role ?? "");
+          canManage = ["admin", "teacher", "editor"].includes(profile?.role ?? currentUser.role ?? "");
         }
       } catch (error) {
         console.warn("LOAD CLASSROOM USER NAME ERROR", error);

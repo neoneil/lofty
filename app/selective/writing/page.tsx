@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { apiGet } from "@/lib/api/client";
 type WritingType = "mixed" | "creative" | "persuasive";
 type Difficulty = "easy" | "medium" | "hard";
 
@@ -57,8 +57,6 @@ type AuthUser = {
   fullName: string;
 };
 
-const supabase = createClient();
-
 export default function WritingPage() {
   const [type, setType] = useState<WritingType>("mixed");
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
@@ -78,39 +76,16 @@ export default function WritingPage() {
     let mounted = true;
 
     async function loadUser() {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
+      try {
+        const response = await apiGet<{ user: AuthUser }>("/api/selective/me");
 
-      if (error) {
-        console.error("Failed to get current user:", error);
+        if (!mounted) return;
+
+        setUser(response.user);
+      } catch (error) {
+        console.error("Failed to load selective user:", error);
         if (mounted) setUser(null);
-        return;
       }
-
-      if (!user) {
-        if (mounted) setUser(null);
-        return;
-      }
-
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("full_name")
-        .eq("id", user.id)
-        .single();
-
-      if (profileError) {
-        console.error("Failed to load profile:", profileError);
-      }
-
-      if (!mounted) return;
-
-      setUser({
-        id: user.id,
-        email: user.email,
-        fullName: profile?.full_name || "Student",
-      });
     }
 
     loadUser();

@@ -2,14 +2,14 @@
 
 import type { User } from "@supabase/supabase-js";
 import { Check, ChevronDown, Loader2, UserCircle2, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
 import LogoutButton from "@/components/auth/logout-button";
 import { getAchievementSnapshot } from "@/lib/achievements/client";
+import { apiGet, apiPatch } from "@/lib/api/client";
 import { getPublicR2Url, normalizePublicStorageUrl } from "@/lib/storage/public-url";
-import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 type Profile = {
@@ -36,7 +36,6 @@ type Props = {
 const AVATAR_BUCKET =
   process.env.NEXT_PUBLIC_AVATAR_BUCKET || "avatars";
 
-const AVATAR_FOLDERS = ["avatars", ""];
 const AVATAR_COUNT = 40;
 const MENU_ANIMATION_MS = 180;
 
@@ -73,7 +72,6 @@ function getAuthName(user: User | null) {
 export function ProfileMenu({
   user,
 }: Props) {
-  const supabase = useMemo(() => createClient(), []);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   const [open, setOpen] = useState(false);
@@ -177,25 +175,29 @@ export function ProfileMenu({
         setStatus(null);
       }
 
-      const [{ data, error }, { data: studyPlanData, error: studyPlanError }] = await Promise.all([
-        supabase.from("profiles").select("full_name, email, avatar_url").eq("id", currentUser.id).maybeSingle(),
-        supabase.from("study_plans").select("exam_type, overall_target, exam_deadline").eq("user_id", currentUser.id).maybeSingle(),
-      ]);
+      let response: {
+        profile: Profile | null;
+        studyPlan: StudyPlanSummary | null;
+      };
 
-      if (cancelled) {
+      try {
+        response = await apiGet<{ profile: Profile | null; studyPlan: StudyPlanSummary | null }>("/api/profile/me");
+      } catch (error) {
+        if (cancelled) {
+          return;
+        }
+
+        if (open) {
+          setStatus("个人资料加载失败。");
+          setLoadingProfile(false);
+        }
+        console.error("Profile query failed:", error);
         return;
       }
 
-      if (error) {
-        if (open) {
-          setStatus("个人资料加载失败。");
-        }
-      }
+      if (cancelled) return;
 
-      if (studyPlanError) {
-        console.error("Study plan summary query failed:", studyPlanError);
-      }
-
+      const data = response.profile;
       const nextProfile = data ?? {
         full_name: getAuthName(currentUser),
         email: currentUser.email ?? null,
@@ -203,7 +205,7 @@ export function ProfileMenu({
       };
 
       setProfile(nextProfile);
-      setStudyPlan(studyPlanData ?? null);
+      setStudyPlan(response.studyPlan ?? null);
       setFullName(nextProfile.full_name?.trim() || getAuthName(currentUser));
       setSelectedAvatarUrl(nextProfile.avatar_url || getAuthAvatar(currentUser));
       if (open) {
@@ -216,7 +218,7 @@ export function ProfileMenu({
     return () => {
       cancelled = true;
     };
-  }, [open, supabase, user]);
+  }, [open, user]);
 
   useEffect(() => {
     if (!user) return;
@@ -256,40 +258,14 @@ export function ProfileMenu({
     async function loadAvatars() {
       setLoadingAvatars(true);
 
-      for (const folder of AVATAR_FOLDERS) {
-        const { data, error } = await supabase.storage
-          .from(AVATAR_BUCKET)
-          .list(folder, {
-            limit: 80,
-            sortBy: {
-              column: "name",
-              order: "asc",
-            },
-          });
+      try {
+        const response = await apiGet<{ avatars: AvatarOption[] }>("/api/profile/me?includeAvatars=1");
 
-        if (cancelled) {
-          return;
+        if (!cancelled && response.avatars?.length) {
+          setAvatars(response.avatars);
         }
-
-        if (error || !data?.length) {
-          continue;
-        }
-
-        const options = data
-          .filter((item) => /\.(png|jpe?g|webp|gif)$/i.test(item.name))
-          .slice(0, 40)
-          .map((item) => {
-            const path = folder ? `${folder}/${item.name}` : item.name;
-            return {
-              name: item.name,
-              url: getPublicR2Url(AVATAR_BUCKET, path),
-            };
-          });
-
-        if (options.length > 0) {
-          setAvatars(options);
-          break;
-        }
+      } catch (error) {
+        console.error("Avatar list query failed:", error);
       }
 
       setAvatars((current) =>
@@ -303,7 +279,7 @@ export function ProfileMenu({
     return () => {
       cancelled = true;
     };
-  }, [avatars.length, open, supabase]);
+  }, [avatars.length, open]);
 
   async function handleSave() {
     if (!user || saving) {
@@ -326,15 +302,13 @@ export function ProfileMenu({
       avatar_url: selectedAvatarUrl,
     };
 
-    const { data, error } = await supabase
-      .from("profiles")
-      .update(payload)
-      .eq("id", user.id)
-      .select("full_name, email, avatar_url")
-      .maybeSingle();
+    let data: Profile;
 
-    if (error || !data) {
-      setStatus("保存失败，请稍后再试。");
+    try {
+      const response = await apiPatch<{ profile: Profile }>("/api/profile/me", payload);
+      data = response.profile;
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "保存失败，请稍后再试。");
       setSaving(false);
       return;
     }

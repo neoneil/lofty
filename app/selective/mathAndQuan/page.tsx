@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { apiGet, apiPost } from "@/lib/api/client";
 import { mathematicsBlueprint } from "@/lib/selective/blueprints";
 
 type Difficulty = "easy" | "medium" | "hard";
@@ -27,8 +27,6 @@ type MathQuestion = {
   solutionSteps: string[];
   hints: string[];
 };
-
-const supabase = createClient();
 
 function normalizeAnswer(value: string) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
@@ -67,46 +65,16 @@ export default function SelectiveMathPage() {
     async function loadUser() {
       setLoadingUser(true);
 
-      const {
-        data: { user },
-        error: authError,
-      } = await supabase.auth.getUser();
+      try {
+        const response = await apiGet<{ user: AuthUser }>("/api/selective/me");
 
-      if (authError) {
-        console.error("Failed to get current user:", authError);
-        if (mounted) {
-          setUser(null);
-          setLoadingUser(false);
-        }
-        return;
+        if (!mounted) return;
+
+        setUser(response.user);
+      } catch (error) {
+        console.error("Failed to load selective user:", error);
+        if (mounted) setUser(null);
       }
-
-      if (!user) {
-        if (mounted) {
-          setUser(null);
-          setLoadingUser(false);
-        }
-        return;
-      }
-
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("full_name, selective_access")
-        .eq("id", user.id)
-        .single();
-
-      if (profileError) {
-        console.error("Failed to load profile:", profileError);
-      }
-
-      if (!mounted) return;
-
-      setUser({
-        id: user.id,
-        email: user.email,
-        fullName: profile?.full_name || "Student",
-        selectiveAccess: profile?.selective_access ?? false,
-      });
       setLoadingUser(false);
     }
 
@@ -214,30 +182,18 @@ export default function SelectiveMathPage() {
       const score = isCorrect ? 1 : 0;
       const maxScore = 1;
 
-      const { error: insertError } = await supabase
-        .schema("selective")
-        .from("student_attempts")
-        .insert({
-          user_id: user.id,
-          student_name: user.fullName,
-          question_table: "math_questions",
-          question_id: question.id,
-          question_type: question.questionType,
-          submitted_answer_text: answer,
-          submitted_answer_json: {
-            topicCategory: question.topicCategory,
-            subtopic: question.subtopic,
-            finalAnswer: question.finalAnswer,
-          },
-          score,
-          max_score: maxScore,
-          is_correct: isCorrect,
-        });
-
-      if (insertError) {
-        console.error("Failed to save math attempt:", insertError);
-        throw new Error("Failed to save your answer.");
-      }
+      await apiPost("/api/selective/math-attempts", {
+        studentName: user.fullName,
+        questionId: question.id,
+        questionType: question.questionType,
+        answer,
+        topicCategory: question.topicCategory,
+        subtopic: question.subtopic,
+        finalAnswer: question.finalAnswer,
+        score,
+        maxScore,
+        isCorrect,
+      });
 
       setSubmittedResult({
         isCorrect,

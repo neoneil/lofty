@@ -6,7 +6,7 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 
 - At the start of the first task each day, confirm the current git branch before making any changes.
 - If the current branch is not the expected Lofty working branch, stop and ask before editing files.
-- The primary working branch for this project is `lofty-v3` unless the user explicitly says otherwise.
+- The primary working branch for this project is `lofty-v4` unless the user explicitly says otherwise.
 
 ## Change Scope
 

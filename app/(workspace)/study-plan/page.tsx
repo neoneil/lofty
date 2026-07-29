@@ -13,8 +13,6 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
-
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { BusinessDatePicker } from "@/components/ui-v2/business-date-picker";
@@ -27,6 +25,7 @@ import {
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
+import { apiGet, apiPut } from "@/lib/api/client";
 
 type ExamType = "PTE" | "IELTS";
 
@@ -113,8 +112,6 @@ const dailyHoursLabels: Record<DailyHours, string> = {
 };
 
 export default function StudyPlanPage() {
-  const supabase = useMemo(() => createClient(), []);
-
   const [loading, setLoading] = useState(true);
 
   const [saving, setSaving] = useState(false);
@@ -151,44 +148,13 @@ export default function StudyPlanPage() {
 
       setLoading(true);
 
-      const { data: authData, error: authError } =
-        await supabase.auth.getUser();
+      try {
+        const response = await apiGet<{ plan: StudyPlan | null }>("/api/study-plan");
+        const data = response.plan;
 
-      console.log("Auth user:", authData.user);
-      console.log("Current auth user id:", authData.user?.id);
+        console.log("Fetched study plan:", data);
 
-      if (authError) {
-        console.error("Auth error:", authError);
-
-        setLoading(false);
-
-        return;
-      }
-
-      const user = authData.user;
-
-      if (!user) {
-        console.log("No authenticated user found.");
-
-        setLoading(false);
-
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("study_plans")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      console.log("Fetched study plan:", data);
-      console.log("Fetched study plan user_id:", data?.user_id);
-
-      if (error) {
-        console.error("Study plan fetch error:", error);
-      }
-
-      if (data) {
+        if (data) {
         console.log("Existing study plan found.");
 
         setHasExistingPlan(true);
@@ -221,10 +187,13 @@ export default function StudyPlanPage() {
 
           additional_notes: data.additional_notes || "",
         });
-      } else {
+        } else {
         console.log("No existing study plan found.");
 
         setHasExistingPlan(false);
+        }
+      } catch (error) {
+        console.error("Study plan fetch error:", error);
       }
 
       setLoading(false);
@@ -233,7 +202,7 @@ export default function StudyPlanPage() {
     }
 
     loadStudyPlan();
-  }, [supabase]);
+  }, []);
 
   function updateField(key: keyof StudyPlan, value: string) {
     setForm((prev) => ({
@@ -287,29 +256,7 @@ export default function StudyPlanPage() {
 
     setSaveMessage("");
 
-    const { data: authData, error: authError } = await supabase.auth.getUser();
-
-    if (authError) {
-      console.error("Auth error:", authError);
-
-      setSaving(false);
-
-      return;
-    }
-
-    const user = authData.user;
-
-    if (!user) {
-      console.error("No authenticated user.");
-
-      setSaving(false);
-
-      return;
-    }
-
     const payload = {
-      user_id: user.id,
-
       exam_type: form.exam_type,
 
       overall_target: Number(form.overall_target),
@@ -348,49 +295,11 @@ export default function StudyPlanPage() {
 
     console.log("Payload:", payload);
 
-    if (hasExistingPlan && form.id) {
-      console.log("Updating existing study plan...");
+    try {
+      const response = await apiPut<{ plan: StudyPlan; created: boolean }>("/api/study-plan", payload);
+      const data = response.plan;
 
-      const { error } = await supabase
-        .from("study_plans")
-        .update(payload)
-        .eq("id", form.id);
-
-      if (error) {
-        console.error("Update error:", error);
-
-        setSaveMessage("学习计划更新失败。");
-
-        setSaving(false);
-
-        return;
-      }
-
-      console.log("Study plan updated successfully.");
-
-      setSaveMessage("学习计划已更新。");
-    } else {
-      console.log("Creating new study plan...");
-
-      const { data, error } = await supabase
-        .from("study_plans")
-        .insert(payload)
-        .select()
-        .single();
-
-      if (error) {
-        console.error("Insert error:", error);
-
-        setSaveMessage("学习计划创建失败。");
-
-        setSaving(false);
-
-        return;
-      }
-
-      console.log("Study plan created:", data);
-
-      if (data) {
+      if (data?.id) {
         setHasExistingPlan(true);
 
         setForm((prev) => ({
@@ -399,7 +308,10 @@ export default function StudyPlanPage() {
         }));
       }
 
-      setSaveMessage("学习计划已创建。");
+      setSaveMessage(response.created ? "学习计划已创建。" : "学习计划已更新。");
+    } catch (error) {
+      console.error("Study plan save error:", error);
+      setSaveMessage(error instanceof Error ? error.message : "学习计划保存失败。");
     }
 
     setSaving(false);

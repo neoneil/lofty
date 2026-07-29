@@ -15,12 +15,9 @@ import { Badge } from '@/components/ui-v2/badge';
 import { Button } from '@/components/ui-v2/button';
 import { Card, CardContent } from '@/components/ui-v2/card';
 import { Textarea } from '@/components/ui-v2/textarea';
-import { createClient } from '@/lib/supabase/client';
 import type { ChatMessage, ChatSessionWithProfile } from '@/types/chat';
 
 export default function AdminChatPage() {
-  const supabase = createClient();
-
   const [sessions, setSessions] = useState<ChatSessionWithProfile[]>([]);
   const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -139,46 +136,54 @@ export default function AdminChatPage() {
   useEffect(() => {
     if (!selectedSessionId) return;
 
-    const channel = supabase
-      .channel(`admin-chat-${selectedSessionId}`)
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'chat_messages',
-          filter: `session_id=eq.${selectedSessionId}`,
-        },
-        (payload) => {
-          const newMessage = payload.new as ChatMessage;
+    let cancelled = false;
 
-          setMessages((prev) => {
-            const exists = prev.some((m) => m.id === newMessage.id);
-            if (exists) return prev;
-            return [...prev, newMessage];
-          });
+    const pollMessages = async () => {
+      try {
+        const res = await fetch(`/api/admin/chat/messages?sessionId=${selectedSessionId}`, {
+          cache: 'no-store',
+        });
+        const data = await res.json();
 
+        if (!res.ok || cancelled) return;
+
+        const nextMessages = (data.messages ?? []) as ChatMessage[];
+        setMessages((prev) => {
+          if (prev.length === nextMessages.length && prev.at(-1)?.id === nextMessages.at(-1)?.id) {
+            return prev;
+          }
+          return nextMessages;
+        });
+
+        const lastMessage = nextMessages.at(-1) ?? null;
+        if (lastMessage) {
           setSessions((prev) =>
-            prev.map((session) => {
-              if (session.id !== selectedSessionId) return session;
-
-              return {
-                ...session,
-                updated_at: newMessage.created_at,
-                last_message: newMessage,
-                unread_count:
-                  newMessage.sender === 'user' ? 0 : session.unread_count,
-              };
-            })
+            prev.map((session) =>
+              session.id === selectedSessionId
+                ? {
+                    ...session,
+                    updated_at: lastMessage.created_at,
+                    last_message: lastMessage,
+                    unread_count: 0,
+                  }
+                : session
+            )
           );
         }
-      )
-      .subscribe();
+      } catch (error) {
+        console.error('Admin chat polling failed:', error);
+      }
+    };
+
+    const timer = window.setInterval(() => {
+      void pollMessages();
+    }, 5000);
 
     return () => {
-      void supabase.removeChannel(channel);
+      cancelled = true;
+      window.clearInterval(timer);
     };
-  }, [selectedSessionId, supabase]);
+  }, [selectedSessionId]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });

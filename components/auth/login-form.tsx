@@ -56,18 +56,26 @@ export default function CommercialLoginForm() {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        next,
+      }),
     });
+    const json = (await response.json()) as { ok?: boolean; message?: string; next?: string };
 
-    if (error) {
-      setMessage(error.message);
+    if (!response.ok || !json.ok) {
+      setMessage(json.message ?? "登录失败，请稍后再试。");
       setLoading(false);
       return;
     }
 
-    window.location.href = next;
+    window.location.href = json.next ?? next;
   }
 
   async function handleGoogleLogin() {
@@ -279,227 +287,3 @@ export default function CommercialLoginForm() {
 
 
 }
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { useSearchParams } from "next/navigation";
-// import { createClient } from "@/lib/supabase/client";
-
-// export default function LoginForm() {
-//   const supabase = createClient();
-//   const searchParams = useSearchParams();
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [message, setMessage] = useState("");
-//   const [loading, setLoading] = useState(false);
-
-//   const next = searchParams.get("next") || "/";
-
-//   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-//     e.preventDefault();
-//     setLoading(true);
-//     setMessage("");
-
-//     const { error } = await supabase.auth.signInWithPassword({
-//       email,
-//       password,
-//     });
-
-//     if (error) {
-//       setMessage(error.message);
-//       setLoading(false);
-//       return;
-//     }
-
-//     window.location.href = next;
-//   }
-
-//   async function handleGoogleLogin() {
-//     setLoading(true);
-//     setMessage("");
-
-//     const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
-//       next
-//     )}`;
-
-//     const { error } = await supabase.auth.signInWithOAuth({
-//       provider: "google",
-//       options: {
-//         redirectTo,
-//       },
-//     });
-
-//     if (error) {
-//       setMessage(error.message);
-//       setLoading(false);
-//     }
-//   }
-
-//   return (
-//     <div className="min-h-[80vh] flex items-center justify-center px-4">
-//       <div className="w-full max-w-md rounded border border-gray-200 bg-white shadow-sm p-8 sm:p-10">
-//         <div className="mb-8 text-center">
-//           <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase">
-//             Lofty Education
-//           </p>
-
-//           <h1 className="mt-2 text-3xl font-bold tracking-tight">
-//             Welcome Back
-//           </h1>
-
-//           <p className="mt-2 text-sm text-gray-500">
-//             Sign in to continue your IELTS learning journey
-//           </p>
-//         </div>
-
-//         <form onSubmit={handleLogin} className="space-y-4">
-//           <div>
-//             <label className="mb-2 block text-sm font-medium text-gray-700">
-//               Email
-//             </label>
-//             <input
-//               className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
-//               type="email"
-//               placeholder="Enter your email"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//             />
-//           </div>
-
-//           <div>
-//             <label className="mb-2 block text-sm font-medium text-gray-700">
-//               Password
-//             </label>
-//             <input
-//               className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
-//               type="password"
-//               placeholder="Enter your password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-//           </div>
-
-//           <button
-//             type="submit"
-//             disabled={loading}
-//             className="w-full rounded bg-black px-4 py-3 text-white font-medium transition hover:opacity-90 disabled:opacity-50"
-//           >
-//             {loading ? "Signing in..." : "Login"}
-//           </button>
-
-//           <button
-//             type="button"
-//             disabled={loading}
-//             onClick={handleGoogleLogin}
-//             className="w-full rounded border border-gray-300 px-4 py-3 font-medium transition hover:bg-gray-50 disabled:opacity-50"
-//           >
-//             Continue with Google
-//           </button>
-
-//           {message && (
-//             <p className="rounded bg-red-50 px-4 py-3 text-sm text-red-600">
-//               {message}
-//             </p>
-//           )}
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { createClient } from "@/lib/supabase/client";
-
-// export default function LoginForm() {
-//   const supabase = createClient();
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [message, setMessage] = useState("");
-//   const [loading, setLoading] = useState(false);
-
-//   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-//     e.preventDefault();
-//     setLoading(true);
-//     setMessage("");
-
-//     const { error } = await supabase.auth.signInWithPassword({
-//       email,
-//       password,
-//     });
-
-//     if (error) {
-//       setMessage(error.message);
-//       setLoading(false);
-//       return;
-//     }
-
-//     window.location.href = "/";
-//   }
-
-//   async function handleGoogleLogin() {
-//     setLoading(true);
-//     setMessage("");
-
-//     const { error } = await supabase.auth.signInWithOAuth({
-//       provider: "google",
-//       options: {
-//         redirectTo: `${window.location.origin}/auth/callback`,
-//       },
-//     });
-
-//     if (error) {
-//       setMessage(error.message);
-//       setLoading(false);
-//     }
-//   }
-
-//   return (
-//     <form onSubmit={handleLogin} className="space-y-4 max-w-md">
-//       <input
-//         className="w-full rounded border px-3 py-2"
-//         type="email"
-//         placeholder="Email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-//       <input
-//         className="w-full rounded border px-3 py-2"
-//         type="password"
-//         placeholder="Password"
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//       />
-
-//       <button
-//         type="submit"
-//         disabled={loading}
-//         className="rounded border px-4 py-2"
-//       >
-//         {loading ? "Loading..." : "Login"}
-//       </button>
-
-//       <button
-//         type="button"
-//         disabled={loading}
-//         onClick={handleGoogleLogin}
-//         className="ml-2 rounded border px-4 py-2"
-//       >
-//         Continue with Google
-//       </button>
-
-//       {message && <p className="text-sm">{message}</p>}
-//     </form>
-//   );
-// }

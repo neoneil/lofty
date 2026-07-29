@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { createClient } from "@/lib/supabase/client";
+import { apiGet } from "@/lib/api/client";
 
 export default function AuthDebug() {
   useEffect(() => {
@@ -10,83 +10,23 @@ export default function AuthDebug() {
       return;
     }
 
-    const supabase = createClient();
-
     console.log(
       "%c[AUTH DEBUG] Started",
       "color:#6d5dfc;font-weight:bold;"
     );
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.group(
-          `%c[AUTH EVENT] ${event}`,
-          "color:#6d5dfc;font-weight:bold;"
-        );
-
-        console.log(
-          "User:",
-          session?.user?.email ?? "No User"
-        );
-
-        console.log(
-          "User ID:",
-          session?.user?.id ?? "No ID"
-        );
-
-        console.log(
-          "Session Exists:",
-          !!session
-        );
-
-        console.log(
-          "Access Token Exists:",
-          !!session?.access_token
-        );
-
-        console.log(
-          "Refresh Token Exists:",
-          !!session?.refresh_token
-        );
-
-        console.log(
-          "Expires At (raw):",
-          session?.expires_at
-        );
-
-        if (session?.expires_at) {
-          const expireDate = new Date(
-            session.expires_at * 1000
-          );
-
-          const now = new Date();
-
-          const diffMinutes = Math.floor(
-            (expireDate.getTime() - now.getTime()) /
-              1000 /
-              60
-          );
-
-          console.log(
-            "Readable Expire Time:",
-            expireDate.toLocaleString()
-          );
-
-          console.log(
-            "Minutes Until Expire:",
-            diffMinutes
-          );
-        }
-
+    void apiGet<{ user: { id: string; email?: string } }>("/api/profile/me")
+      .then((data) => {
+        console.group("%c[AUTH DEBUG] Backend session", "color:#6d5dfc;font-weight:bold;");
+        console.log("User:", data.user.email ?? "No Email");
+        console.log("User ID:", data.user.id);
         console.groupEnd();
-      }
-    );
+      })
+      .catch((error) => {
+        console.warn("[AUTH DEBUG] No backend session", error);
+      });
 
     return () => {
-      subscription.unsubscribe();
-
       console.log(
         "%c[AUTH DEBUG] Stopped",
         "color:#ef4444;font-weight:bold;"

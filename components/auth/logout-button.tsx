@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Loader2, LogOut } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { apiPost } from "@/lib/api/client";
 import { cn } from "@/lib/utils";
 
 type LogoutButtonProps = {
@@ -14,15 +14,15 @@ type LogoutButtonProps = {
 };
 
 export default function LogoutButton({ className, label = "退出", onError, showIcon = false }: LogoutButtonProps) {
-  const supabase = useMemo(() => createClient(), []);
   const [loggingOut, setLoggingOut] = useState(false);
 
   async function handleLogout() {
     if (loggingOut) return;
     setLoggingOut(true);
 
-    const { error } = await supabase.auth.signOut();
-    if (error) {
+    try {
+      await apiPost("/api/auth/logout");
+    } catch {
       onError?.("退出失败，请稍后重试。");
       setLoggingOut(false);
       return;

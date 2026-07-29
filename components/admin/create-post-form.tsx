@@ -13,7 +13,7 @@ import {
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
-import { createClient } from "@/lib/supabase/client";
+import { apiPost } from "@/lib/api/client";
 
 type Category = "PTE" | "雅思" | "词汇" | "语法";
 
@@ -29,8 +29,6 @@ function slugify(text: string) {
 }
 
 export default function CreatePostForm() {
-  const supabase = useMemo(() => createClient(), []);
-
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
@@ -50,17 +48,6 @@ export default function CreatePostForm() {
     e.preventDefault();
     setLoading(true);
     setMessage("");
-
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser();
-
-    if (userError || !user) {
-      setMessage("Please sign in first.");
-      setLoading(false);
-      return;
-    }
 
     if (!category) {
       setMessage("Please select a category.");
@@ -98,20 +85,17 @@ export default function CreatePostForm() {
       coverUrl = uploadJson.publicUrl;
     }
 
-    const { error } = await supabase.from("posts").insert({
+    try {
+      await apiPost("/api/admin/posts", {
       title,
-      slug,
       excerpt: excerpt || null,
       content,
       status,
-      author_id: user.id,
-      cover_image: coverUrl,
-      published_at: status === "published" ? new Date().toISOString() : null,
+        coverImage: coverUrl,
       category,
-    });
-
-    if (error) {
-      setMessage(error.message);
+      });
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Post creation failed.");
       setLoading(false);
       return;
     }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { apiGet } from "@/lib/api/client";
 
 type WritingHistoryRow = {
   submission_id: string;
@@ -37,42 +37,6 @@ type WritingHistoryRow = {
   corrected_sample_zh: string | null;
   errors_json: unknown[] | null;
   reviewed_at: string | null;
-};
-
-type StudentAttemptRow = {
-  id: string;
-  user_id: string;
-  student_name: string | null;
-  question_table: string;
-  question_id: string;
-  question_type: string | null;
-  submitted_answer_text: string | null;
-  submitted_answer_json: {
-    topicCategory?: string;
-    subtopic?: string;
-    finalAnswer?: string;
-  } | null;
-  score: number | null;
-  max_score: number | null;
-  is_correct: boolean | null;
-  submitted_at: string | null;
-  submitted_on: string | null;
-};
-
-type MathQuestionRow = {
-  id: string;
-  title: string | null;
-  question_type: string | null;
-  instruction_text: string | null;
-  question_body_text: string;
-  difficulty_level: string | null;
-  topic_category: string | null;
-  subtopic: string | null;
-  metadata_json: {
-    finalAnswer?: string;
-    solutionSteps?: string[];
-    hints?: string[];
-  } | null;
 };
 
 type MathHistoryRow = {
@@ -117,7 +81,6 @@ type DayGroup = {
   students: StudentGroup[];
 };
 
-const supabase = createClient();
 
 function formatDayLabel(day: string) {
   const date = new Date(`${day}T00:00:00`);
@@ -172,112 +135,26 @@ export default function AdminSelectiveHistoryPage() {
       setLoading(true);
       setError("");
 
-      const { data: writingData, error: writingError } = await supabase
-        .schema("selective")
-        .from("v_writing_history")
-        .select("*")
-        .order("submitted_at", { ascending: false });
+      try {
+        const data = await apiGet<{
+          writingRows: WritingHistoryRow[];
+          mathRows: MathHistoryRow[];
+        }>("/api/admin/selective/history");
 
-      if (writingError) {
-        console.error("Failed to load writing history:", writingError);
+        if (!mounted) return;
+
+        setWritingRows(data.writingRows ?? []);
+        setMathRows(data.mathRows ?? []);
+      } catch (error) {
+        console.error("Failed to load admin selective history:", error);
         if (mounted) {
-          setError("Failed to load writing history.");
-          setLoading(false);
+          setWritingRows([]);
+          setMathRows([]);
+          setError(error instanceof Error ? error.message : "Failed to load history.");
         }
-        return;
+      } finally {
+        if (mounted) setLoading(false);
       }
-
-      const { data: attemptData, error: attemptError } = await supabase
-        .schema("selective")
-        .from("student_attempts")
-        .select("*")
-        .eq("question_table", "math_questions")
-        .order("submitted_at", { ascending: false });
-
-      if (attemptError) {
-        console.error("Failed to load math attempts:", attemptError);
-        if (mounted) {
-          setWritingRows((writingData as WritingHistoryRow[]) ?? []);
-          setError("Failed to load math attempts.");
-          setLoading(false);
-        }
-        return;
-      }
-
-      const mathAttemptRows = (attemptData as StudentAttemptRow[]) ?? [];
-      const mathQuestionIds = Array.from(
-        new Set(mathAttemptRows.map((row) => row.question_id).filter(Boolean))
-      );
-
-      let mathQuestionMap = new Map<string, MathQuestionRow>();
-
-      if (mathQuestionIds.length > 0) {
-        const { data: mathQuestionData, error: mathQuestionError } = await supabase
-          .schema("selective")
-          .from("math_questions")
-          .select(
-            "id, title, question_type, instruction_text, question_body_text, difficulty_level, topic_category, subtopic, metadata_json"
-          )
-          .in("id", mathQuestionIds);
-
-        if (mathQuestionError) {
-          console.error("Failed to load math questions:", mathQuestionError);
-          if (mounted) {
-            setWritingRows((writingData as WritingHistoryRow[]) ?? []);
-            setError("Failed to load math question details.");
-            setLoading(false);
-          }
-          return;
-        }
-
-        mathQuestionMap = new Map(
-          ((mathQuestionData as MathQuestionRow[]) ?? []).map((row) => [row.id, row])
-        );
-      }
-
-      const mergedMathRows: MathHistoryRow[] = mathAttemptRows.map((attempt) => {
-        const question = mathQuestionMap.get(attempt.question_id);
-
-        return {
-          attempt_id: attempt.id,
-          user_id: attempt.user_id,
-          student_name: attempt.student_name,
-          question_id: attempt.question_id,
-          question_type: attempt.question_type ?? question?.question_type ?? null,
-          submitted_answer_text: attempt.submitted_answer_text,
-          submitted_answer_json: attempt.submitted_answer_json,
-          score: attempt.score,
-          max_score: attempt.max_score,
-          is_correct: attempt.is_correct,
-          submitted_at: attempt.submitted_at,
-          submitted_on: attempt.submitted_on,
-
-          title: question?.title ?? null,
-          instruction_text: question?.instruction_text ?? null,
-          question_body_text: question?.question_body_text ?? null,
-          difficulty_level: question?.difficulty_level ?? null,
-          topic_category:
-            question?.topic_category ??
-            attempt.submitted_answer_json?.topicCategory ??
-            null,
-          subtopic:
-            question?.subtopic ??
-            attempt.submitted_answer_json?.subtopic ??
-            null,
-          final_answer:
-            question?.metadata_json?.finalAnswer ??
-            attempt.submitted_answer_json?.finalAnswer ??
-            null,
-          solution_steps: question?.metadata_json?.solutionSteps ?? [],
-          hints: question?.metadata_json?.hints ?? [],
-        };
-      });
-
-      if (!mounted) return;
-
-      setWritingRows((writingData as WritingHistoryRow[]) ?? []);
-      setMathRows(mergedMathRows);
-      setLoading(false);
     }
 
     loadPage();

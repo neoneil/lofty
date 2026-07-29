@@ -14,7 +14,7 @@ import {
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
-import { createClient } from "@/lib/supabase/client";
+import { apiPatch } from "@/lib/api/client";
 
 type Post = {
   id: string;
@@ -28,7 +28,6 @@ type Post = {
 };
 
 export default function EditPostForm({ post }: { post: Post }) {
-  const supabase = useMemo(() => createClient(), []);
   const router = useRouter();
 
   const [title, setTitle] = useState(post.title);
@@ -48,19 +47,15 @@ export default function EditPostForm({ post }: { post: Post }) {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase
-      .from("posts")
-      .update({
+    try {
+      await apiPatch(`/api/admin/posts/${post.id}`, {
         title,
         excerpt: excerpt || null,
         content,
         status,
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", post.id);
-
-    if (error) {
-      setMessage(error.message);
+      });
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Post update failed.");
       setLoading(false);
       return;
     }

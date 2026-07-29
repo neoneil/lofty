@@ -81,18 +81,26 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        next,
+      }),
     });
+    const json = (await response.json()) as { ok?: boolean; message?: string; next?: string };
 
-    if (error) {
-      setMessage(error.message);
+    if (!response.ok || !json.ok) {
+      setMessage(json.message ?? "登录失败，请稍后再试。");
       setLoading(false);
       return;
     }
 
-    window.location.href = next;
+    window.location.href = json.next ?? next;
   }
 
   async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
@@ -106,24 +114,27 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-        emailRedirectTo: `${window.location.origin}/auth/confirm?next=${encodeURIComponent(next)}`,
+    const response = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        email,
+        password,
+        fullName,
+        next,
+      }),
     });
+    const json = (await response.json()) as { ok?: boolean; message?: string };
 
-    if (error) {
-      setMessage(error.message);
+    if (!response.ok || !json.ok) {
+      setMessage(json.message ?? "注册失败，请稍后再试。");
       setLoading(false);
       return;
     }
 
-    setMessage("注册成功，请检查邮箱并完成验证。");
+    setMessage(json.message ?? "注册成功，请检查邮箱并完成验证。");
     setLoading(false);
   }
 
