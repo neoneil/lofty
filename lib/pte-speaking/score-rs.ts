@@ -15,7 +15,7 @@ export async function scoreRS({
     messages: [
       {
         role: "user",
-        content: buildRSScoringPrompt({
+        content: await buildRSScoringPrompt({
           questionText,
           transcript,
         }),

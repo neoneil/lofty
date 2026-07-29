@@ -162,6 +162,19 @@ async function countRows(query: PromiseLike<{ count: number | null; error: { mes
   return count ?? 0;
 }
 
+function isMissingTableError(error: unknown) {
+  return typeof error === "object" && error !== null && "code" in error && (error as { code?: string }).code === "42P01";
+}
+
+async function countOptionalRows(query: PromiseLike<{ count: number | null; error: { message: string; code?: string } | null }>) {
+  const { count, error } = await query;
+  if (error) {
+    if (isMissingTableError(error)) return 0;
+    throw new Error(error.message);
+  }
+  return count ?? 0;
+}
+
 async function getChatSessionIds(supabase: SupabaseClient, userId: string) {
   const { data, error } = await supabase.from("chat_sessions").select("id").eq("user_id", userId);
   if (error) throw error;
@@ -175,17 +188,19 @@ async function getSelectiveWritingSubmissionIds(supabase: SupabaseClient, userId
 }
 
 async function getStudentAudioKeys(supabase: SupabaseClient, userId: string) {
-  const [{ data: recordings, error: recordingsError }, { data: speakingAttempts, error: speakingError }] = await Promise.all([
+  const [{ data: recordings, error: recordingsError }, { data: speakingAttempts, error: speakingError }, { data: ieltsSpeakingAttempts, error: ieltsSpeakingError }] = await Promise.all([
     supabase.from("student_recordings").select("audio_url").eq("user_id", userId),
     supabase.schema("pte").from("speaking_attempts").select("audio_url").eq("user_id", userId),
+    supabase.schema("ielts").from("speaking_attempts").select("audio_url").eq("user_id", userId),
   ]);
 
   if (recordingsError) throw recordingsError;
   if (speakingError) throw speakingError;
+  if (ieltsSpeakingError && !isMissingTableError(ieltsSpeakingError)) throw ieltsSpeakingError;
 
   const keys = new Set<string>();
 
-  for (const row of [...(recordings ?? []), ...(speakingAttempts ?? [])] as Array<{ audio_url: string | null }>) {
+  for (const row of [...(recordings ?? []), ...(speakingAttempts ?? []), ...(ieltsSpeakingAttempts ?? [])] as Array<{ audio_url: string | null }>) {
     if (!row.audio_url) continue;
     const key = getStudentAudioPrivateKey(row.audio_url);
     if (key) keys.add(key);
@@ -210,6 +225,7 @@ export async function getStudentDeletionPreview(supabase: SupabaseClient, userId
     countRows(supabase.from("student_attempts").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.from("student_recordings").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.schema("pte").from("speaking_attempts").select("id", { count: "exact", head: true }).eq("user_id", userId)),
+    countOptionalRows(supabase.schema("ielts").from("speaking_attempts").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.from("student_question_stats").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.from("student_wrong_questions").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.schema("selective").from("writing_submissions").select("id", { count: "exact", head: true }).eq("user_id", userId)),
@@ -228,6 +244,7 @@ export async function getStudentDeletionPreview(supabase: SupabaseClient, userId
     ["public", "student_attempts", "答题 / 提交记录"],
     ["public", "student_recordings", "学生录音索引"],
     ["pte", "speaking_attempts", "PTE 口语评分记录"],
+    ["ielts", "speaking_attempts", "IELTS 口语评分记录"],
     ["public", "student_question_stats", "题目练习统计"],
     ["public", "student_wrong_questions", "错题本记录"],
     ["selective", "writing_submissions", "写作提交文章"],
@@ -287,6 +304,7 @@ export async function deleteStudentAndRelatedData(supabase: SupabaseClient, user
   deletedRows.zoom_notifications = await deleteRows(supabase.schema("zoom").from("notifications").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.zoom_classrooms = await deleteRows(supabase.schema("zoom").from("classrooms").delete({ count: "exact" }).eq("student_id", userId));
   deletedRows.pte_speaking_attempts = await deleteRows(supabase.schema("pte").from("speaking_attempts").delete({ count: "exact" }).eq("user_id", userId));
+  deletedRows.ielts_speaking_attempts = await countOptionalRows(supabase.schema("ielts").from("speaking_attempts").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.student_recordings = await deleteRows(supabase.from("student_recordings").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.student_attempts = await deleteRows(supabase.from("student_attempts").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.student_question_stats = await deleteRows(supabase.from("student_question_stats").delete({ count: "exact" }).eq("user_id", userId));

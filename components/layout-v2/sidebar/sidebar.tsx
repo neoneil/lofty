@@ -9,7 +9,6 @@ import {
   ChevronDown,
   Download,
   FolderOpen,
-  Gamepad2,
   GraduationCap,
   Headphones,
   LayoutDashboard,
@@ -354,9 +353,9 @@ export function Sidebar({ userId }: { userId: string | null }) {
 
           <SidebarItem
             href="/audio-collection"
-            label="轻松时刻"
-            subtitle="Game Lab"
-            icon={<Gamepad2 size={18} />}
+            label="音频合集"
+            subtitle="Audio Collection"
+            icon={<Headphones size={18} />}
             iconTone="primary"
             collapsed={collapsed}
           />

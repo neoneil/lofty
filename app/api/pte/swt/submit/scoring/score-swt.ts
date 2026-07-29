@@ -22,7 +22,7 @@ export async function scoreSWT({
         );
 
     const prompt =
-        buildSWTPrompt({
+        await buildSWTPrompt({
              question_text: englishText,
             userAnswer,
         });

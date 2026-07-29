@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 
 const openai = new OpenAI({
@@ -360,6 +361,21 @@ export async function POST(req: Request) {
     let completion;
 
     try {
+      const [systemPrompt, userPrompt] = await Promise.all([
+        getAiPromptContent("admin.analyze-answer.system").catch(() => "You are a professional PTE and IELTS writing examiner. Return only valid JSON. All feedback content must be in Simplified Chinese unless preserving the student's original text or rewriting an English sentence."),
+        renderAiPrompt("admin.analyze-answer.user", {
+          exam_type: examType,
+          task_type: taskType,
+          question,
+          answer,
+        }).catch(() => buildPrompt({
+          exam_type: examType,
+          task_type: taskType,
+          question,
+          answer,
+        })),
+      ]);
+
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
         temperature: 0.2,
@@ -367,17 +383,11 @@ export async function POST(req: Request) {
         messages: [
           {
             role: "system",
-            content:
-              "You are a professional PTE and IELTS writing examiner. Return only valid JSON. All feedback content must be in Simplified Chinese unless preserving the student's original text or rewriting an English sentence.",
+            content: systemPrompt,
           },
           {
             role: "user",
-            content: buildPrompt({
-              exam_type: examType,
-              task_type: taskType,
-              question,
-              answer,
-            }),
+            content: userPrompt,
           },
         ],
       });

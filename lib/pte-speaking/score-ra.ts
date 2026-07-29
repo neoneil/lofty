@@ -15,7 +15,7 @@ export async function scoreRA({
     messages: [
       {
         role: "user",
-        content: buildRAScoringPrompt({
+        content: await buildRAScoringPrompt({
           questionText,
           transcript,
         }),

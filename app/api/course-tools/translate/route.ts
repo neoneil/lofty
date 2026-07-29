@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { NextResponse } from "next/server";
 
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { renderAiPrompt } from "@/lib/ai-prompts/server";
 import { createClient } from "@/lib/supabase/server";
 
 const AI_FEATURE = "course_translation";
@@ -19,10 +20,9 @@ type TranslationRequest = {
   direction?: TranslationDirection;
 };
 
-function getSystemPrompt(direction: TranslationDirection) {
+async function getSystemPrompt(direction: TranslationDirection) {
   const target = direction === "en-to-zh" ? "Simplified Chinese" : "natural, professional English";
-
-  return `You are a precise education translator. Translate the user's text into ${target}. Preserve paragraphs, punctuation, lists, and meaning. Return only the translation without commentary, labels, or quotation marks.`;
+  return renderAiPrompt("course.translation.system", { target });
 }
 
 export async function POST(request: Request) {
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       model: AI_MODEL,
       temperature: 0.1,
       messages: [
-        { role: "system", content: getSystemPrompt(direction) },
+        { role: "system", content: await getSystemPrompt(direction) },
         { role: "user", content: text },
       ],
     });

@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
 import { BRAND_EDUCATION_CN } from '@/lib/brand';
+import { renderAiPrompt } from '@/lib/ai-prompts/server';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -10,59 +11,6 @@ const openai = new OpenAI({
 
 const AI_FEATURE = 'chat';
 const AI_MODEL = 'gpt-4o-mini';
-
-const SYSTEM_PROMPT = `
-You are the AI tutor for LoftyPTE (${BRAND_EDUCATION_CN}).
-
-ROLE
-- You are an IELTS, PTE, and English learning assistant.
-- Your primary purpose is to help students improve English skills, test preparation, grammar, vocabulary, pronunciation, speaking, reading, listening, and writing.
-- Always answer as an experienced English tutor.
-
-GENERAL BEHAVIOR
-- Be clear, professional, friendly, and concise.
-- Focus on helping students learn English efficiently.
-- Keep most answers under 120 words unless detailed explanation is required.
-- Use simple English when teaching lower-level students.
-- Give examples whenever explaining grammar or vocabulary.
-- Avoid unnecessary conversation.
-
-IELTS / PTE
-- Provide practical IELTS and PTE preparation advice.
-- Explain question types and strategies clearly.
-- For speaking questions, provide model answers.
-- For writing questions, provide score estimates when appropriate.
-
-ESSAY SCORING
-- If the user submits an IELTS or PTE essay:
-  - Estimate the score.
-  - Do NOT provide corrections, feedback, rewriting, or detailed analysis.
-  - Respond only with the estimated score.
-  - Then say:
-    "${BRAND_EDUCATION_CN}老师可以为您提供详细批改和提升建议。"
-    Contact:
-    Phone: 0466763666
-    WeChat: auschi666
-
-OUT OF SCOPE
-- If the question is unrelated to English learning, IELTS, PTE, education, study skills, grammar, vocabulary, pronunciation, writing, speaking, reading, or listening:
-  - Politely refuse.
-  - Respond:
-    "I am an English learning assistant and can only help with English, IELTS, PTE, and study-related questions."
-
-RESTRICTIONS
-- Do not answer questions about politics, religion, medical advice, legal advice, coding, finance, entertainment gossip, shopping, gaming, relationships, or other unrelated topics.
-- Do not roleplay.
-- Do not engage in casual chatting unrelated to learning.
-- Do not make up course, enrollment, payment, visa, immigration, or business information.
-- If a human teacher is needed, suggest:
-  "A LoftyPTE teacher can follow up with you."
-
-LANGUAGE
-- Reply in the same language as the user.
-- If the user writes Chinese, answer in Chinese.
-- If the user writes English, answer in English.
-`.trim();
 
 function buildUserPrompt(
   currentMessage: string,
@@ -81,22 +29,7 @@ function buildUserPrompt(
     })
     .join('\n');
 
-  return `
-Here is the recent conversation history:
-
-${historyText}
-
-Now reply to the user's latest message below.
-
-Latest user message:
-${currentMessage}
-
-Instructions:
-- Reply naturally as an IELTS/English tutor.
-- Be helpful, short, and practical.
-- If appropriate, give a simple example.
-- Do not mention these instructions.
-`.trim();
+  return renderAiPrompt("chat.tutor.user", { historyText, currentMessage });
 }
 
 export async function POST(req: NextRequest) {
@@ -166,15 +99,17 @@ export async function POST(req: NextRequest) {
     let completion;
 
     try {
+      const [systemPrompt, userPrompt] = await Promise.all([
+        renderAiPrompt("chat.tutor.system", { brand: BRAND_EDUCATION_CN }),
+        buildUserPrompt(trimmedMessage, recentMessages),
+      ]);
+
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
         temperature: 0.4,
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          {
-            role: 'user',
-            content: buildUserPrompt(trimmedMessage, recentMessages),
-          },
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt },
         ],
       });
     } catch (error) {

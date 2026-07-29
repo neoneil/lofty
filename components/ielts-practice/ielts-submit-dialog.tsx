@@ -11,12 +11,13 @@ type Props = {
   answers: Record<string, string>;
   officialAnswers: Record<string, string>;
   mode: "confirm" | "result";
+  showOfficialAnswers?: boolean;
   onCancel: () => void;
   onConfirm: () => void;
   onClose: () => void;
 };
 
-export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, onCancel, onConfirm, onClose }: Props) {
+export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, showOfficialAnswers = false, onCancel, onConfirm, onClose }: Props) {
   const result = buildIeltsSubmitResult(moduleType, answers, officialAnswers);
 
   if (mode === "confirm") {
@@ -26,7 +27,7 @@ export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, 
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-xl font-black text-[var(--text)]">确认提交？</h2>
-              <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">还有 {result.unanswered.length} 道题未作答。提交后会立即显示答案对比和预估分数。</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">还有 {result.unanswered.length} 道题未作答。提交后会立即显示作答结果和预估分数。</p>
             </div>
             <button type="button" onClick={onCancel} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"><X size={19} /></button>
           </div>
@@ -46,7 +47,7 @@ export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, 
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">{moduleType === "listening" ? "IELTS Listening" : "IELTS Reading"} Result</p>
-            <h2 className="mt-2 text-2xl font-black text-[var(--text)]">答案对比</h2>
+            <h2 className="mt-2 text-2xl font-black text-[var(--text)]">{showOfficialAnswers ? "答案对比" : "作答结果"}</h2>
             <p className="mt-2 text-sm text-[var(--text-soft)]">绿色为正确，红色为错误或未作答。多答案任意一个匹配即算正确；选择题只写正确字母也算正确。</p>
           </div>
           <button type="button" onClick={onClose} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"><X size={20} /></button>
@@ -68,7 +69,7 @@ export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, 
                 </div>
                 <div className="mt-1 grid gap-1 text-xs leading-5">
                   <div className="text-[var(--text-soft)]">你的答案：<span className={row.isAnswered ? "text-[var(--text)]" : "font-semibold text-red-500"}>{row.userAnswer || "未作答"}</span></div>
-                  <div className="text-[var(--text-soft)]">官方答案：<span className="text-[var(--text)]">{row.officialAnswer || "暂无答案"}</span></div>
+                  {showOfficialAnswers ? <div className="text-[var(--text-soft)]">官方答案：<span className="text-[var(--text)]">{row.officialAnswer || "暂无答案"}</span></div> : null}
                 </div>
               </div>
             ))}

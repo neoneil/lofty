@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { IeltsReadingBookCoverSelector } from "@/components/ielts-reading/book-cover-selector";
 import { IeltsReadingExamClient } from "@/components/ielts-reading/reading-exam-client";
 import { IeltsReadingTestSelector } from "@/components/ielts-reading/test-selector";
+import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 import { getIeltsMarkdownBookPracticeData } from "@/lib/ielts/markdown-practice";
 
@@ -22,7 +23,8 @@ export default async function IeltsReadingMarkdownPage({ searchParams }: Props) 
   if (!READING_BOOKS.includes(bookNumber)) notFound();
 
   const nextPath = test ? `${BASE_PATH}?book=${bookNumber}&test=${encodeURIComponent(test)}` : `${BASE_PATH}?book=${bookNumber}`;
-  await requireUser(nextPath);
+  const userContext = await requireUser(nextPath);
+  const isAdmin = await getAdminAccess(userContext);
 
   const data = await getIeltsMarkdownBookPracticeData(bookNumber, Number.isFinite(testNumber) ? testNumber : undefined);
 
@@ -30,5 +32,5 @@ export default async function IeltsReadingMarkdownPage({ searchParams }: Props) 
   if (!test) return <IeltsReadingTestSelector bookNumber={bookNumber} data={data} basePath={BASE_PATH} />;
 
   const selectedTestNumber = data.tests.some((item) => item.test_number === testNumber) ? testNumber : data.tests[0]?.test_number ?? 1;
-  return <IeltsReadingExamClient data={data} selectedTestNumber={selectedTestNumber} />;
+  return <IeltsReadingExamClient data={data} selectedTestNumber={selectedTestNumber} isAdmin={isAdmin} />;
 }

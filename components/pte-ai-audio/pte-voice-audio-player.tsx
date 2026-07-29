@@ -23,9 +23,17 @@ function pickRandomVoice() {
   return PTE_AI_AUDIO_VOICES[Math.floor(Math.random() * PTE_AI_AUDIO_VOICES.length)].id;
 }
 
+function pickStableVoice(seed: string) {
+  let hash = 0;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = (hash * 31 + seed.charCodeAt(index)) >>> 0;
+  }
+  return PTE_AI_AUDIO_VOICES[hash % PTE_AI_AUDIO_VOICES.length].id;
+}
+
 export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiAudioReady, countdown = 0, autoPlay = true, onEnded }: Props) {
   const [choice, setChoice] = useState<VoiceChoice>("random");
-  const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(() => pickRandomVoice());
+  const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(() => pickStableVoice(`${questionType}:${questionId}`));
 
   const activeVoice = choice === "random" ? randomVoice : choice;
   const activeUrl = aiAudioReady ? getPteAiAudioPublicUrl(questionType, questionId, activeVoice) : fallbackUrl;

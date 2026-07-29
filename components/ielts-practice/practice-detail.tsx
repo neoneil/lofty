@@ -5,6 +5,7 @@ import { FileAudio2, FileImage, Headphones, Mic, PenTool, Rows3 } from "lucide-r
 import { CollapsibleAnswer } from "@/components/ielts-practice/collapsible-answer";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { cn } from "@/lib/utils";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsModule, IeltsQuestion, IeltsSection, IeltsTest } from "@/lib/ielts/practice";
@@ -21,6 +22,7 @@ type ModuleType = (typeof MODULES)[number]["type"];
 type Props = {
   data: IeltsBookPracticeData;
   selectedTestNumber?: number;
+  isAdmin?: boolean;
 };
 
 type AudioItem = {
@@ -30,7 +32,7 @@ type AudioItem = {
   sectionId?: string;
 };
 
-export function IeltsPracticeDetail({ data, selectedTestNumber }: Props) {
+export function IeltsPracticeDetail({ data, selectedTestNumber, isAdmin = false }: Props) {
   if (!data.book) {
     return (
       <Card>
@@ -79,13 +81,13 @@ export function IeltsPracticeDetail({ data, selectedTestNumber }: Props) {
       </div>
 
       {visibleTests.map((test) => (
-        <TestBlock key={test.id} test={test} data={data} />
+        <TestBlock key={test.id} test={test} data={data} isAdmin={isAdmin} />
       ))}
     </div>
   );
 }
 
-function TestBlock({ test, data }: { test: IeltsTest; data: IeltsBookPracticeData }) {
+function TestBlock({ test, data, isAdmin }: { test: IeltsTest; data: IeltsBookPracticeData; isAdmin: boolean }) {
   const modules = data.modules.filter((module) => module.test_id === test.id);
 
   return (
@@ -107,7 +109,7 @@ function TestBlock({ test, data }: { test: IeltsTest; data: IeltsBookPracticeDat
         <div className="space-y-4">
           {MODULES.map((moduleInfo) => {
             const ieltsModule = modules.find((item) => item.module_type === moduleInfo.type);
-            return <ModuleBlock key={moduleInfo.type} moduleInfo={moduleInfo} ieltsModule={ieltsModule} data={data} testNumber={test.test_number} />;
+            return <ModuleBlock key={moduleInfo.type} moduleInfo={moduleInfo} ieltsModule={ieltsModule} data={data} testNumber={test.test_number} isAdmin={isAdmin} />;
           })}
         </div>
       </CardContent>
@@ -115,7 +117,7 @@ function TestBlock({ test, data }: { test: IeltsTest; data: IeltsBookPracticeDat
   );
 }
 
-function ModuleBlock({ moduleInfo, ieltsModule, data, testNumber }: { moduleInfo: (typeof MODULES)[number]; ieltsModule?: IeltsModule; data: IeltsBookPracticeData; testNumber: number }) {
+function ModuleBlock({ moduleInfo, ieltsModule, data, testNumber, isAdmin }: { moduleInfo: (typeof MODULES)[number]; ieltsModule?: IeltsModule; data: IeltsBookPracticeData; testNumber: number; isAdmin: boolean }) {
   const Icon = moduleInfo.icon;
   const sections = ieltsModule ? data.sections.filter((section) => section.module_id === ieltsModule.id) : [];
   const assets = ieltsModule ? data.assets.filter((asset) => asset.module_id === ieltsModule.id) : [];
@@ -147,7 +149,7 @@ function ModuleBlock({ moduleInfo, ieltsModule, data, testNumber }: { moduleInfo
         <div className="space-y-3">
           {fullAudioItems.length > 0 && <AssetAudioList items={fullAudioItems} />}
           {moduleInfo.type !== "reading" && imageAssets.length > 0 && <AssetImageList assets={imageAssets} />}
-          {sections.map((section) => <SectionBlock key={section.id} section={section} data={data} moduleType={moduleInfo.type} audioItems={moduleInfo.type === "reading" ? [] : audioItems.filter((item) => item.sectionId === section.id)} />)}
+          {sections.map((section) => <SectionBlock key={section.id} section={section} data={data} moduleType={moduleInfo.type} audioItems={moduleInfo.type === "reading" ? [] : audioItems.filter((item) => item.sectionId === section.id)} isAdmin={isAdmin} />)}
         </div>
       )}
     </section>
@@ -175,7 +177,7 @@ function AssetAudioList({ items }: { items: AudioItem[] }) {
                 <div className="mt-0.5 text-xs text-[var(--text-soft)]">{item.subtitle}</div>
               </div>
             </div>
-            {audioUrl ? <audio controls preload="none" src={audioUrl} className="w-full" /> : <p className="text-sm text-[var(--text-soft)]">音频链接暂不可用。</p>}
+            {audioUrl ? <SecureAudioPlayer src={audioUrl} preload="none" title={item.title} description={item.subtitle} compact /> : <p className="text-sm text-[var(--text-soft)]">音频链接暂不可用。</p>}
           </div>
         );
       })}
@@ -204,7 +206,7 @@ function getAssetUrl(asset: IeltsAsset) {
   return normalizePublicStorageUrl(asset.public_url || asset.storage_path, asset.bucket || "ielts");
 }
 
-function SectionBlock({ section, data, moduleType, audioItems }: { section: IeltsSection; data: IeltsBookPracticeData; moduleType: ModuleType; audioItems: AudioItem[] }) {
+function SectionBlock({ section, data, moduleType, audioItems, isAdmin }: { section: IeltsSection; data: IeltsBookPracticeData; moduleType: ModuleType; audioItems: AudioItem[]; isAdmin: boolean }) {
   const questions = data.questions.filter((question) => question.section_id === section.id);
   const raw = section.raw_data;
 
@@ -225,14 +227,14 @@ function SectionBlock({ section, data, moduleType, audioItems }: { section: Ielt
 
       <div className="mt-4 space-y-4">
         {questions.map((question) => (
-          <QuestionBlock key={question.id} question={question} answer={data.answers.find((item) => item.question_id === question.id)} moduleType={moduleType} sectionTitle={section.passage_title || section.title || ""} sectionPassage={section.passage_text || stringValue(raw, "content")} />
+          <QuestionBlock key={question.id} question={question} answer={data.answers.find((item) => item.question_id === question.id)} moduleType={moduleType} sectionTitle={section.passage_title || section.title || ""} sectionPassage={section.passage_text || stringValue(raw, "content")} isAdmin={isAdmin} />
         ))}
       </div>
     </div>
   );
 }
 
-function QuestionBlock({ question, answer, moduleType, sectionTitle, sectionPassage }: { question: IeltsQuestion; answer?: IeltsAnswer; moduleType: ModuleType; sectionTitle: string; sectionPassage: string }) {
+function QuestionBlock({ question, answer, moduleType, sectionTitle, sectionPassage, isAdmin }: { question: IeltsQuestion; answer?: IeltsAnswer; moduleType: ModuleType; sectionTitle: string; sectionPassage: string; isAdmin: boolean }) {
   const questionRange = question.question_number_end && question.question_number_end !== question.question_number_start ? `${question.question_number_start}-${question.question_number_end}` : `${question.question_number_start}`;
   const sourceQuestions = arrayValue(question.content, "questions");
   const pageContent = stringValue(question.content, "page_content") || stringValue(question.content, "part_content");
@@ -257,7 +259,7 @@ function QuestionBlock({ question, answer, moduleType, sectionTitle, sectionPass
       {sourceQuestions.length > 0 && <QuestionList questions={sourceQuestions} />}
       {isAnswerBank && <CollapsibleAnswer label="查看备选答案"><OptionList options={question.options} /></CollapsibleAnswer>}
       {shouldShowOptions && <OptionList options={question.options} />}
-      {answer && <AnswerBlock answer={answer} />}
+      {isAdmin && answer && <AnswerBlock answer={answer} />}
     </article>
   );
 }

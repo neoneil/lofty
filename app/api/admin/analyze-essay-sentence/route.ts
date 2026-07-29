@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 
 const openai = new OpenAI({
@@ -147,9 +148,30 @@ export async function POST(req: Request) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
     }
 
+    const promptValues = {
+      question_text: body.question_text,
+      essay_text: body.essay_text,
+      sentence_text: body.sentence_text,
+    } as { question_text: string; essay_text: string; sentence_text: string };
+
     let completion;
 
     try {
+      const [systemPrompt, userPrompt] = await Promise.all([
+        getAiPromptContent("admin.pte.essay-sentence.system").catch(() => "You are an expert PTE Write Essay teacher. Return only valid JSON using the allowed enum values."),
+        renderAiPrompt("admin.pte.essay-sentence.user", {
+          question_text: promptValues.question_text,
+          essay_text: promptValues.essay_text,
+          sentence_text: promptValues.sentence_text,
+          tagOptions: TAG_OPTIONS.join(", "),
+          sentenceTypeOptions: SENTENCE_TYPE_OPTIONS.join(", "),
+          sourceTypeOptions: SOURCE_TYPE_OPTIONS.join(", "),
+          positionTypeOptions: POSITION_TYPE_OPTIONS.join(", "),
+          argumentPatternOptions: ARGUMENT_PATTERN_OPTIONS.join(", "),
+          peelRoleOptions: PEEL_ROLE_OPTIONS.join(", "),
+        }).catch(() => buildUserPrompt(promptValues)),
+      ]);
+
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
         temperature: 0.2,
@@ -157,16 +179,11 @@ export async function POST(req: Request) {
         messages: [
           {
             role: "system",
-            content:
-              "You are an expert PTE Write Essay teacher. Return only valid JSON using the allowed enum values.",
+            content: systemPrompt,
           },
           {
             role: "user",
-            content: buildUserPrompt({
-              question_text: body.question_text,
-              essay_text: body.essay_text,
-              sentence_text: body.sentence_text,
-            }),
+            content: userPrompt,
           },
         ],
       });

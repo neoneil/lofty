@@ -348,11 +348,11 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
       <TranslationDrawer open={translationOpen} title={`Part ${activePart?.displayNumber ?? 1} 中文翻译`} translations={activeTranslations} activeId={activeTranslationId} onClose={() => setTranslationOpen(false)} />
-      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} onClose={() => setReviewOpen(false)} />}
+      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} showOfficialToggle={isAdmin} onClose={() => setReviewOpen(false)} />}
       {selectionToolbar && <SelectionFormatToolbar top={selectionToolbar.top} left={selectionToolbar.left} canUndo={canUndoFormat} onFormat={applySelectionFormat} onUndo={undoLastSelectionFormat} />}
       {timeNotice === "five-minutes" && <TimeNoticePopup type="warning" seconds={remainingSeconds} onClose={() => setTimeNotice(null)} />}
       {timeNotice === "time-up" && <TimeNoticePopup type="time-up" seconds={overtimeSeconds} onClose={() => setTimeNotice(null)} />}
-      {submitDialogMode && <IeltsSubmitDialog moduleType="reading" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
+      {submitDialogMode && <IeltsSubmitDialog moduleType="reading" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} showOfficialAnswers={isAdmin} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
   );
@@ -655,7 +655,7 @@ function TranslationDrawer({ open, title, translations, activeId, onClose }: { o
   );
 }
 
-function ReviewDialog({ answers, officialAnswers, onClose }: { answers: Answers; officialAnswers: Record<string, string>; onClose: () => void }) {
+function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }: { answers: Answers; officialAnswers: Record<string, string>; showOfficialToggle: boolean; onClose: () => void }) {
   const [showOfficialAnswers, setShowOfficialAnswers] = useState(false);
 
   return (
@@ -667,7 +667,7 @@ function ReviewDialog({ answers, officialAnswers, onClose }: { answers: Answers;
             <p className="mt-2 text-sm text-[var(--text-soft)]">这个窗口只用于检查作答情况，不能在这里修改答案。</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button>
+            {showOfficialToggle ? <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button> : null}
             <button type="button" onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"><X size={20} /></button>
           </div>
         </div>

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
+import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 
 type WfdAudioQuestion = {
   id: string;
@@ -270,11 +271,11 @@ export default function WfdAudioClient({ questions }: Props) {
                 </p>
               </div>
 
-              <audio
+              <SecureAudioPlayer
                 ref={audioRef}
-                controls
-                className="w-full"
                 src={currentQuestion.audio_url}
+                title={currentQuestion.question_text}
+                description="WFD audio practice"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={handleEnded}

@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Download,
   FolderOpen,
-  Gamepad2,
   GraduationCap,
   Headphones,
   LayoutDashboard,
@@ -173,9 +172,9 @@ const utilityItems: NavItem[] = [
   },
   {
     href: "/audio-collection",
-    label: "轻松时刻",
-    subtitle: "Game Lab",
-    icon: <Gamepad2 size={16} />,
+    label: "音频合集",
+    subtitle: "Audio Collection",
+    icon: <Headphones size={16} />,
     iconTone: "primary",
   },
   {

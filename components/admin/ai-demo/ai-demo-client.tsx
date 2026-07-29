@@ -6,11 +6,14 @@ import { useRef, useState } from "react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
+import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 import { AI_DEMO_VOICE_MODEL, AI_DEMO_VOICES, type AiDemoVoiceId } from "@/lib/ai-demo/voices";
 
 export function AiDemoClient() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [activeVoice, setActiveVoice] = useState<AiDemoVoiceId | null>(null);
+  const [audioUrl, setAudioUrl] = useState("");
+  const [autoPlayKey, setAutoPlayKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState("");
 
@@ -26,16 +29,8 @@ export function AiDemoClient() {
     }
 
     setActiveVoice(voiceId);
-    audio.src = `/api/admin/ai-demo/audio?voice=${voiceId}`;
-    audio.load();
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-    } catch {
-      setIsPlaying(false);
-      setError("音频播放失败，请稍后重试或检查 R2 文件是否存在。");
-    }
+    setAudioUrl(`/api/admin/ai-demo/audio?voice=${voiceId}`);
+    setAutoPlayKey((value) => value + 1);
   };
 
   return (
@@ -72,9 +67,7 @@ export function AiDemoClient() {
             </div>
             {activeVoice ? <Badge variant="default">正在预览 {AI_DEMO_VOICES.find((voice) => voice.id === activeVoice)?.name}</Badge> : <Badge variant="outline">请选择声音</Badge>}
           </div>
-          <audio ref={audioRef} controls controlsList="nodownload" className="w-full accent-[var(--primary)]" onEnded={() => setIsPlaying(false)} onPause={() => setIsPlaying(false)} onPlay={() => setIsPlaying(true)}>
-            <track kind="captions" />
-          </audio>
+          <SecureAudioPlayer ref={audioRef} src={audioUrl} autoPlay={Boolean(audioUrl)} autoPlayKey={autoPlayKey} title={activeVoice ? `${AI_DEMO_VOICES.find((voice) => voice.id === activeVoice)?.name ?? "Voice"} 试听` : "请选择声音"} description={`Model: ${AI_DEMO_VOICE_MODEL}`} onEnded={() => setIsPlaying(false)} onPause={() => setIsPlaying(false)} onPlay={() => setIsPlaying(true)} onPlayError={() => { setIsPlaying(false); setError("音频播放失败，请稍后重试或检查 R2 文件是否存在。"); }} />
           {error ? <p className="text-sm font-semibold text-[var(--danger)]">{error}</p> : null}
         </CardContent>
       </Card>

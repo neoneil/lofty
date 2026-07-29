@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -169,6 +170,16 @@ export async function POST(req: Request) {
     let response;
 
     try {
+      const [systemPrompt, userPrompt] = await Promise.all([
+        getAiPromptContent("selective.writing.review.system"),
+        renderAiPrompt("selective.writing.review.user", {
+          writingType,
+          difficulty,
+          prompt: prompt || "No prompt provided.",
+          essay,
+        }),
+      ]);
+
       response = await client.responses.create({
       model: AI_MODEL,
       input: [
@@ -177,33 +188,7 @@ export async function POST(req: Request) {
           content: [
             {
               type: "input_text",
-              text: `
-You are a careful writing tutor for an Australian selective school practice website.
-
-Your job:
-- Review the student's writing fairly and clearly.
-- Focus on relevance to the prompt, structure, vocabulary, grammar, and punctuation.
-- Be encouraging but honest.
-- Use simple, direct English suitable for a parent and school-aged student.
-- Keep correctedSample short and improved, but do not rewrite the whole essay.
-- If the response is very short, reflect that in the scores.
-- Identify as many genuine issues as possible when they are present, especially:
-  - inaccurate word choice
-  - grammar mistakes
-  - punctuation mistakes
-- If there are many real mistakes, list them as fully as possible.
-- Do not invent errors that are not really there.
-- For each error, provide:
-  - the original problematic part
-  - a better correction
-  - a short explanation in English
-  - the same explanation in Chinese
-- First provide all main feedback in English.
-- Then provide a full Chinese version that closely matches the English feedback.
-- correctedSampleEn should be a short improved sample in English.
-- correctedSampleZh should be a Chinese translation of that improved sample.
-- Return only the required JSON structure.
-              `.trim(),
+              text: systemPrompt,
             },
           ],
         },
@@ -212,28 +197,7 @@ Your job:
           content: [
             {
               type: "input_text",
-              text: `
-Writing type: ${writingType}
-Difficulty: ${difficulty}
-
-Prompt:
-${prompt || "No prompt provided."}
-
-Student response:
-${essay}
-
-Please review this writing carefully.
-Identify as many real issues as possible, especially:
-- inaccurate word choice
-- grammar mistakes
-- punctuation mistakes
-
-If the writing contains many real mistakes, list them clearly.
-If there are no clear mistakes in some areas, do not invent them.
-
-All main feedback should first be given in English, then fully translated into Chinese.
-The Chinese should match the English closely.
-              `.trim(),
+              text: userPrompt,
             },
           ],
         },

@@ -22,7 +22,7 @@ export async function scoreSST({
         );
 
     const prompt =
-        buildSSTPrompt({
+        await buildSSTPrompt({
             transcript: englishTranscript,
             userAnswer,
         });

@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { renderAiPrompt } from "@/lib/ai-prompts/server";
 import { AIFeedbackResult } from "@/types/math";
 
 const client = new OpenAI({
@@ -10,27 +11,7 @@ export async function generateAIFeedback(
   correctAnswer: number,
   studentAnswer: string
 ): Promise<AIFeedbackResult> {
-  const prompt = `
-Student answered a math problem.
-
-Question:
-${question}
-
-Correct answer: ${correctAnswer}
-Student answer: ${studentAnswer}
-
-Give feedback.
-
-Return JSON:
-{
-  "isCorrect": boolean,
-  "errorType": "none | arithmetic_error | misunderstanding | unit_error | setup_error | unknown",
-  "feedbackEnglish": "string",
-  "feedbackChinese": "string",
-  "hintEnglish": "string",
-  "hintChinese": "string"
-}
-`;
+  const prompt = await renderAiPrompt("math.feedback.user", { question, correctAnswer, studentAnswer });
 
   const res = await client.chat.completions.create({
     model: "gpt-5.3",

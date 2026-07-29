@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { createClient } from "@/lib/supabase/server";
 import type {
   IELTSWritingTask2Request,
@@ -371,13 +372,24 @@ export async function POST(req: Request) {
     const timeout = setTimeout(() => abortController.abort(), AI_REQUEST_TIMEOUT_MS);
 
     try {
+      const paragraphs = buildParagraphsFromEssay(body.essayText);
+      const essayMap = buildEssayMap(paragraphs);
+      const [systemPrompt, userPrompt] = await Promise.all([
+        getAiPromptContent("ielts.writing.task2.system").catch(() => SYSTEM_PROMPT),
+        renderAiPrompt("ielts.writing.task2.user", {
+          promptQuestion: body.promptQuestion,
+          essayMap,
+          targetBandText: body.targetBand ? `Target Band: ${body.targetBand}` : "",
+        }).catch(() => buildUserPrompt(body)),
+      ]);
+
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
         temperature: 0.2,
         response_format: { type: "json_object" },
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: buildUserPrompt(body) },
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
         ],
       }, {
         signal: abortController.signal,

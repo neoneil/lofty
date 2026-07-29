@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle2, Download, FileText, Loader2, PenLine, Sparkles } from "lucide-react";
+import { CheckCircle2, Download, FileText, PenLine, Sparkles } from "lucide-react";
+import { AiLoadingLabel } from "@/components/ai/ai-loading-label";
 import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
@@ -107,7 +108,7 @@ export default function IELTSWritingPage() {
                     <span className="mb-2 block text-sm font-semibold text-[var(--text)]">Target Band</span>
                     <Input type="number" min="0" max="9" step="0.5" value={targetBand} onChange={(e) => setTargetBand(e.target.value)} placeholder="e.g. 6.5" />
                   </label>
-                  <AiUsageConfirmDialog feature="ielts_writing_review" title="确认使用雅思写作 AI 评分" description="本次作文批改会消耗 1 次 AI 评分反馈机会。" onConfirm={handleSubmit}>{(openDialog) => <Button type="button" disabled={loading} fullWidth onClick={() => { if (!promptQuestion.trim() || !essayText.trim()) { setError("请先填写题目和作文。"); return; } openDialog(); }}>{loading ? <span className="inline-flex items-center gap-2"><Loader2 size={16} className="animate-spin" />正在批改，通常 30-90 秒...</span> : "Check Essay"}</Button>}</AiUsageConfirmDialog>
+                  <AiUsageConfirmDialog feature="ielts_writing_review" title="确认使用雅思写作 AI 评分" description="本次作文批改会消耗 1 次 AI 评分反馈机会。" onConfirm={handleSubmit}>{(openDialog) => <Button type="button" disabled={loading} fullWidth onClick={() => { if (!promptQuestion.trim() || !essayText.trim()) { setError("请先填写题目和作文。"); return; } openDialog(); }}>{loading ? <AiLoadingLabel text="正在批改，通常 30-90 秒..." /> : "Check Essay"}</Button>}</AiUsageConfirmDialog>
                 </div>
                 {error ? <div className="rounded-[var(--radius-md)] border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]">{error}</div> : null}
               </form>

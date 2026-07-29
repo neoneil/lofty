@@ -81,6 +81,15 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - If a batch fails midway, keep already saved samples and resume later by finding the remaining missing questions.
 - Do not run bulk SWT generation against the remote database without explicit user confirmation because it writes database rows and consumes OpenAI tokens.
 
+## AI Prompt Management
+
+- Any new runtime AI prompt must be registered in `lib/ai-prompts/defaults.ts` with a stable id, title, category, scope, variables, default content, and `usedBy` file references.
+- Runtime AI code should read prompt content through `lib/ai-prompts/server.ts` helpers such as `getAiPromptContent` or `renderAiPrompt`, so `/admin/ai-prompts` database edits can take effect without code changes.
+- Keep a safe code default for every prompt. If the Supabase `ai_prompts` table is missing or a row is inactive/empty, AI routes should fall back to the default prompt instead of failing.
+- Admin prompt editing belongs in `/admin/ai-prompts`; do not add separate prompt editors to feature pages unless the user explicitly asks.
+- Do not add prompt deletion flows by default. Prefer update, restore default, or add a new prompt id.
+- Before changing the `ai_prompts` database schema or seeding prompt data remotely, show the SQL and get explicit user confirmation.
+
 ## UI And Styling
 
 - Reuse the existing Lofty UI system and design tokens first.
@@ -90,6 +99,8 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - All new or changed UI must be mobile first. Start with the mobile layout, then add responsive enhancements with `sm:`, `md:`, `lg:`, and larger breakpoints as needed.
 - Use existing CSS variables such as `var(--bg)`, `var(--bg-soft)`, `var(--card)`, `var(--text)`, `var(--text-soft)`, `var(--text-faint)`, `var(--border)`, `var(--primary)`, and shadow/radius tokens.
 - Avoid hard-coded light-only classes such as `bg-white`, `text-gray-*`, and `border-gray-*` unless there is a specific reason and dark mode remains correct.
+- New app routes or route groups that may suspend, fetch data, or show noticeable navigation delay should include a `loading.tsx` that reuses `components/ui/page-loading.tsx`, which uses `public/lottie/loading.json`.
+- AI analysis or AI scoring buttons should show `components/ai/ai-loading-label.tsx` during the active analysis state, reusing `public/lottie/AI.json` for consistent IELTS, PTE, and writing workflows.
 - Write `className` values on one line whenever practical.
 
 ## Verification

@@ -7,6 +7,7 @@ import { ArrowLeft, ChevronLeft, ChevronRight, ClipboardPenLine, FileText, Headp
 import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dialog";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
+import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 import { BRAND_NAME_CN } from "@/lib/brand";
 import { buildIeltsSubmitResult } from "@/lib/ielts/answer-scoring";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsQuestion, IeltsSection } from "@/lib/ielts/practice";
@@ -203,7 +204,7 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
       {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} showOfficialToggle={isAdmin} onClose={() => setReviewOpen(false)} />}
-      {submitDialogMode && <IeltsSubmitDialog moduleType="listening" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
+      {submitDialogMode && <IeltsSubmitDialog moduleType="listening" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} showOfficialAnswers={isAdmin} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
   );
@@ -259,7 +260,7 @@ function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { a
           ))}
         </div>
       </div>
-      {audioUrl ? <audio ref={audioRef} key={audioUrl} controls controlsList="nodownload" preload="metadata" src={audioUrl} onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onContextMenu={(event) => event.preventDefault()} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} className="w-full accent-[var(--primary)]" /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
+      {audioUrl ? <SecureAudioPlayer ref={audioRef} key={audioUrl} src={audioUrl} preload="metadata" title={`Part ${partNumber} Audio`} description="IELTS Listening" compact onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
     </div>
   );
 }

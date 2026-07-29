@@ -22,7 +22,7 @@ export async function scoreEssay({
         );
 
     const prompt =
-        buildEssayPrompt({
+        await buildEssayPrompt({
              question_text: englishText,
             userAnswer,
         });

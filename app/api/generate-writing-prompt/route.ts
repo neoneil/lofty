@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -83,6 +84,14 @@ export async function POST(req: Request) {
     let response;
 
     try {
+      const [systemPrompt, userPrompt] = await Promise.all([
+        getAiPromptContent("selective.writing.prompt.system"),
+        renderAiPrompt("selective.writing.prompt.user", {
+          writingType: requestedTypeForPrompt,
+          difficulty,
+        }),
+      ]);
+
       response = await client.responses.create({
       model: AI_MODEL,
       input: [
@@ -91,19 +100,7 @@ export async function POST(req: Request) {
           content: [
             {
               type: "input_text",
-              text: `
-You are an expert prompt writer for an Australian selective school writing practice website.
-
-Your task:
-- Generate one high-quality writing prompt for a school-aged student.
-- The prompt should be suitable for selective school practice.
-- Supported writing types: narrative, persuasive, and mixed.
-- Supported difficulty: easy, medium, hard.
-- If writingType is mixed, choose either narrative or persuasive.
-- Return the final chosen type as actualQuestionType.
-- Keep the prompt age-appropriate, clear, and engaging.
-- Return only valid JSON.
-              `.trim(),
+              text: systemPrompt,
             },
           ],
         },
@@ -112,10 +109,7 @@ Your task:
           content: [
             {
               type: "input_text",
-              text: `
-Writing type: ${requestedTypeForPrompt}
-Difficulty: ${difficulty}
-              `.trim(),
+              text: userPrompt,
             },
           ],
         },

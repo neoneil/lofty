@@ -1,6 +1,7 @@
 import "server-only";
 
 import OpenAI from "openai";
+import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 
 const AI_MODEL = "gpt-4o-mini";
 
@@ -31,57 +32,6 @@ const SENTENCE_TYPE_OPTIONS = ["argument", "example", "result", "solution", "ope
 const POSITION_TYPE_OPTIONS = ["opening", "topic_sentence", "body", "conclusion"] as const;
 const ARGUMENT_PATTERN_OPTIONS = ["example", "explanation", "cause_effect", "comparison", "concession", "classification", "statistics", "expert_opinion", "problem_solution", "consequence", "analogy"] as const;
 const PEEL_ROLE_OPTIONS = ["point", "explanation", "example", "link"] as const;
-
-function buildPrompt(questionText: string) {
-  return `
-Generate a high-scoring PTE Write Essay sample answer and sentence-level Chinese translation for this question.
-
-Question:
-${questionText}
-
-Return ONLY valid JSON with this exact shape:
-{
-  "thesis": "one concise thesis sentence",
-  "answer_text": "a complete PTE essay with exactly 4 paragraphs separated by \\n\\n",
-  "sentences": [
-    {
-      "sentence_text": "exact sentence from answer_text",
-      "chinese_explanation": "natural Simplified Chinese translation of this sentence, plus a very short note on its writing function if useful",
-      "tag1": "education",
-      "tag2": "society",
-      "sentence_type": "opening",
-      "source_type": "essay",
-      "position_type": "opening",
-      "argument_pattern": "classification",
-      "peel_role": "point",
-      "difficulty_level": 2,
-      "is_featured": true
-    }
-  ]
-}
-
-Requirements:
-- Target PTE score: 90.
-- Write approximately 230–280 words.
-- Exactly 4 paragraphs: introduction, body paragraph 1, body paragraph 2, conclusion.
-- Do not label paragraphs.
-- Use formal academic English.
-- Avoid "I think", "I believe", "In my opinion", and personal anecdotes.
-- Use objective examples and balanced reasoning.
-- Every sentence in answer_text must appear once in sentences.
-- sentence_text must exactly match the sentence in answer_text.
-- chinese_explanation must be mainly a Chinese translation; keep any writing note concise.
-- source_type must always be "essay".
-
-Allowed values:
-- tag1/tag2: ${TAG_OPTIONS.join(", ")}
-- sentence_type: ${SENTENCE_TYPE_OPTIONS.join(", ")}
-- position_type: ${POSITION_TYPE_OPTIONS.join(", ")}
-- argument_pattern: ${ARGUMENT_PATTERN_OPTIONS.join(", ")}
-- peel_role: ${PEEL_ROLE_OPTIONS.join(", ")}
-- difficulty_level: 1, 2, 3
-`;
-}
 
 function isAllowed<T extends readonly string[]>(options: T, value: unknown): value is T[number] {
   return typeof value === "string" && options.includes(value as T[number]);
@@ -144,13 +94,24 @@ function normalizeGeneratedSample(value: unknown): GeneratedEssaySample {
 
 export async function generatePteEssaySample(questionText: string) {
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  const [systemPrompt, userPrompt] = await Promise.all([
+    getAiPromptContent("admin.pte-essay-samples.system"),
+    renderAiPrompt("admin.pte-essay-samples.user", {
+      questionText,
+      tagOptions: TAG_OPTIONS.join(", "),
+      sentenceTypeOptions: SENTENCE_TYPE_OPTIONS.join(", "),
+      positionTypeOptions: POSITION_TYPE_OPTIONS.join(", "),
+      argumentPatternOptions: ARGUMENT_PATTERN_OPTIONS.join(", "),
+      peelRoleOptions: PEEL_ROLE_OPTIONS.join(", "),
+    }),
+  ]);
   const completion = await openai.chat.completions.create({
     model: AI_MODEL,
     temperature: 0.35,
     response_format: { type: "json_object" },
     messages: [
-      { role: "system", content: "You are an expert PTE Write Essay teacher. Return only valid JSON." },
-      { role: "user", content: buildPrompt(questionText) },
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
     ],
   });
 

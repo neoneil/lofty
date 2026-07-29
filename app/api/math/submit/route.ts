@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { renderAiPrompt } from "@/lib/ai-prompts/server";
 import { gradeNumericAnswer } from "@/lib/math/grade-math-answer";
 import { createClient } from "@/lib/supabase/server";
 
@@ -37,25 +38,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
       }
 
-      const prompt = `
-You are a math tutor reviewing a student's response.
-
-Question:
-${question}
-
-Correct answer: ${correctAnswer}
-Student answer: ${studentAnswer}
-
-Return JSON only:
-{
-  "isCorrect": false,
-  "errorType": "none | arithmetic_error | misunderstanding | unit_error | setup_error | unknown",
-  "feedbackEnglish": "string",
-  "feedbackChinese": "string",
-  "hintEnglish": "string",
-  "hintChinese": "string"
-}
-`;
+      const prompt = await renderAiPrompt("math.feedback.user", { question, correctAnswer, studentAnswer });
 
       let response;
 

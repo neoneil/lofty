@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { IeltsBookSelector } from "@/components/ielts-practice/book-selector";
 import { IeltsPracticeDetail } from "@/components/ielts-practice/practice-detail";
 import { Badge } from "@/components/ui-v2/badge";
+import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 import { isSupportedIeltsPracticeBook } from "@/lib/ielts/books";
 import { getIeltsBookPracticeData, getIeltsPracticeSummaries } from "@/lib/ielts/practice";
@@ -22,7 +23,9 @@ export default async function IeltsPracticeBookPage({ params, searchParams }: Pr
   const requestedTestNumber = Number(test);
 
   const nextPath = test ? `/ielts/practice/${bookNumber}?test=${encodeURIComponent(test)}` : `/ielts/practice/${bookNumber}`;
-  const { supabase } = await requireUser(nextPath);
+  const userContext = await requireUser(nextPath);
+  const { supabase } = userContext;
+  const isAdmin = await getAdminAccess(userContext);
   const [summaries, data] = await Promise.all([
     getIeltsPracticeSummaries(supabase),
     getIeltsBookPracticeData(supabase, parsedBookNumber, requestedTestNumber),
@@ -56,7 +59,7 @@ export default async function IeltsPracticeBookPage({ params, searchParams }: Pr
 
       <IeltsBookSelector summaries={summaries} activeBookNumber={parsedBookNumber} />
 
-      <IeltsPracticeDetail data={data} selectedTestNumber={selectedTestNumber} />
+      <IeltsPracticeDetail data={data} selectedTestNumber={selectedTestNumber} isAdmin={isAdmin} />
     </main>
   );
 }

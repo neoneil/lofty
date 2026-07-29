@@ -23,6 +23,7 @@ const adminModules = [
   { title: "selective", desc: "selective history。", href: "/admin/selective/history", tag: "selective", icon: History },
   { title: "上课明细", desc: "各学生上课次数。", href: "/admin/start-classroom", tag: "Zoom 会议", icon: Video },
   { title: "学生作文AI批改", desc: "AI - PTE - IELTS writing", href: "/admin/analyze_answer", tag: "AI response", icon: Bot },
+  { title: "AI Prompt", desc: "统一查看、编辑和新增 IELTS / PTE / Selective 的 AI prompt，线上请求优先读取数据库版本。", href: "/admin/ai-prompts", tag: "AI Prompt", icon: BrainCircuit },
   { title: "AI Demo", desc: "试听 OpenAI 人声样本，管理课程和练习中的语音模型选择。", href: "/admin/ai-demo", tag: "OpenAI Voice", icon: AudioLines },
   { title: "PTE 音频生成", desc: "为 RS / WFD 生成 Marin、Cedar、Alloy、Ash 四音色题库音频。", href: "/admin/pte-ai-audio", tag: "PTE Audio", icon: AudioLines },
   { title: "wfd图片记忆", desc: "查看 191 个 WFD 预测题的 AI 图片记忆卡，有图显示图片，无图显示占位。", href: "/admin/wfd-image-memory", tag: "WFD Images", icon: ImageIcon },
