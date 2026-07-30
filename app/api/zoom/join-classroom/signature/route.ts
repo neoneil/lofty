@@ -1,10 +1,12 @@
 import { NextRequest } from "next/server";
 
 import { createHmac } from "crypto";
-import { readFileSync } from "fs";
-import { join } from "path";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { requireApiUser } from "@/lib/auth/require-api-auth";
 
 export const runtime = "nodejs";
+
+const STAFF_ROLES = new Set(["admin", "teacher", "editor"]);
 
 function base64UrlEncode(value: string) {
   return Buffer.from(value)
@@ -14,36 +16,12 @@ function base64UrlEncode(value: string) {
     .replace(/\//g, "_");
 }
 
-function readLocalEnvValue(name: string) {
-  try {
-    const envFile = readFileSync(join(process.cwd(), ".env.local"), "utf8");
-    const line = envFile
-      .split(/\r?\n/)
-      .find((item) => item.startsWith(`${name}=`));
-    const rawValue = line?.slice(name.length + 1).trim();
-
-    if (!rawValue) {
-      return "";
-    }
-
-    return rawValue.replace(/^['"]|['"]$/g, "");
-  } catch {
-    return "";
-  }
-}
-
 function getServerEnvValue(...names: string[]) {
   for (const name of names) {
     const processValue = process.env[name]?.trim();
 
     if (processValue) {
       return processValue;
-    }
-
-    const localValue = readLocalEnvValue(name);
-
-    if (localValue) {
-      return localValue;
     }
   }
 
@@ -89,11 +67,70 @@ function createZoomSignature({
   return `${data}.${signature}`;
 }
 
+async function getUserRole(userId: string) {
+  const adminSupabase = createAdminClient();
+  const { data, error } = await adminSupabase.from("profiles").select("role").eq("id", userId).maybeSingle();
+  if (error) throw error;
+  return data?.role ?? null;
+}
+
+async function getAuthorizedZoomRole({ userId, requestedRole, meetingNumber }: { userId: string; requestedRole: 0 | 1; meetingNumber: string }) {
+  const adminSupabase = createAdminClient();
+
+  if (requestedRole === 1) {
+    const role = await getUserRole(userId);
+
+    if (!role || !STAFF_ROLES.has(role)) {
+      return null;
+    }
+
+    const { data, error } = await adminSupabase
+      .schema("zoom")
+      .from("teacher_rooms")
+      .select("id")
+      .eq("teacher_id", userId)
+      .eq("zoom_meeting_id", meetingNumber)
+      .eq("is_active", true)
+      .maybeSingle();
+
+    if (error) throw error;
+    return data ? 1 : null;
+  }
+
+  const { data: classroom, error: classroomError } = await adminSupabase
+    .schema("zoom")
+    .from("classrooms")
+    .select("id")
+    .eq("student_id", userId)
+    .eq("zoom_meeting_id", meetingNumber)
+    .neq("status", "ended")
+    .is("ended_at", null)
+    .limit(1)
+    .maybeSingle();
+
+  if (classroomError) throw classroomError;
+  if (classroom) return 0;
+
+  const { data: teacherRoom, error: teacherRoomError } = await adminSupabase
+    .schema("zoom")
+    .from("teacher_rooms")
+    .select("id")
+    .eq("zoom_meeting_id", meetingNumber)
+    .eq("is_active", true)
+    .limit(1)
+    .maybeSingle();
+
+  if (teacherRoomError) throw teacherRoomError;
+  return teacherRoom ? 0 : null;
+}
+
 export async function POST(
   request: NextRequest,
 ) {
 
   try {
+    const auth = await requireApiUser();
+    if (!auth.ok) return auth.response;
 
     const {
       meetingNumber,
@@ -102,7 +139,7 @@ export async function POST(
       await request.json();
 
     const cleanMeetingNumber = String(meetingNumber ?? "").replace(/\s/g, "");
-    const zoomRole = role === 1 ? 1 : 0;
+    const requestedZoomRole = role === 1 ? 1 : 0;
     const sdkKey = getServerEnvValue("ZOOM_CLIENT_ID", "NEXT_PUBLIC_ZOOM_CLIENT_ID");
     const sdkSecret = getServerEnvValue("ZOOM_CLIENT_SECRET");
 
@@ -126,6 +163,24 @@ export async function POST(
         },
         {
           status: 500,
+        },
+      );
+    }
+
+    const zoomRole = await getAuthorizedZoomRole({
+      userId: auth.user.id,
+      requestedRole: requestedZoomRole,
+      meetingNumber: cleanMeetingNumber,
+    });
+
+    if (zoomRole === null) {
+      return Response.json(
+        {
+          ok: false,
+          message: "Forbidden",
+        },
+        {
+          status: 403,
         },
       );
     }

@@ -93,6 +93,14 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Do not add prompt deletion flows by default. Prefer update, restore default, or add a new prompt id.
 - Before changing the `ai_prompts` database schema or seeding prompt data remotely, show the SQL and get explicit user confirmation.
 
+## Risk Remediation Backlog
+
+- IELTS/PTE rich HTML rendering should use a shared sanitizer before `dangerouslySetInnerHTML`.
+- API responses should avoid returning raw internal `error.message` values to users when those messages may expose database, RLS, third-party, or server details.
+- Remaining `select("*")` queries should be replaced with explicit field lists, especially on user-facing API routes.
+- Public or high-frequency APIs such as dictionary lookup should validate query shape/length and have lightweight rate limiting.
+- Auth, AI, search, dictionary, and upload API routes should eventually share a BFF rate-limit layer in addition to AI usage limits.
+
 ## UI And Styling
 
 - Reuse the existing Lofty UI system and design tokens first.

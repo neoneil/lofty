@@ -1,9 +1,9 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import "server-only";
 
-type SupabaseRpcClient = Pick<SupabaseClient, "rpc">;
+import { createAdminClient } from "@/lib/supabase/admin";
 
 type Args = {
-  supabase: SupabaseRpcClient;
+  supabase?: unknown;
   userId: string;
   examType?: string;
   moduleType: string;
@@ -16,7 +16,6 @@ type Args = {
 };
 
 export async function recordQuestionOutcome({
-  supabase,
   userId,
   examType = "PTE",
   moduleType,
@@ -28,7 +27,8 @@ export async function recordQuestionOutcome({
   updateWrongBook = true,
 }: Args) {
   const safeDuration = Math.max(0, Math.floor(durationSeconds ?? 0));
-  const { error } = await supabase.rpc("record_student_question_outcome", {
+  const adminSupabase = createAdminClient();
+  const { error } = await adminSupabase.rpc("record_student_question_outcome", {
     p_user_id: userId,
     p_exam_type: examType,
     p_module_type: moduleType,
