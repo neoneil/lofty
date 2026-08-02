@@ -15,12 +15,13 @@ export async function GET(req: NextRequest) {
 
     const { data: messages, error: messagesError } = await supabase
       .from('chat_messages')
-      .select('*')
+      .select('id, session_id, sender, content, is_read, created_at')
       .eq('session_id', sessionId)
       .order('created_at', { ascending: true });
 
     if (messagesError) {
-      return NextResponse.json({ error: messagesError.message }, { status: 500 });
+      console.error('Admin messages load error:', messagesError);
+      return NextResponse.json({ error: 'Failed to load chat messages.' }, { status: 500 });
     }
 
     await supabase

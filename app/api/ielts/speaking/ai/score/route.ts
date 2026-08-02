@@ -153,6 +153,6 @@ export async function POST(req: Request) {
     }
   } catch (error) {
     console.error("IELTS speaking score API error:", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "server error" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "server error" }, { status: 500 });
   }
 }

@@ -23,6 +23,45 @@ const rarityVariants = {
   mythic: "danger",
 } as const;
 
+const galleryCopy = {
+  pte: {
+    badge: "成就图鉴",
+    title: "练习有迹，成就可循",
+    description: "成就状态根据你的真实练习统计实时计算，继续学习即可逐步解锁。",
+    globalTitle: "江湖里程碑",
+    globalDescription: "记录练习总量与综合准确率的重要节点。",
+    streakTitle: "连续修行",
+    streakDescription: "按悉尼时区计算历史最长连续学习天数。",
+    scoreTitle: "高分试炼",
+    scoreDescription: "根据带有 AI 反馈的历史提交最高分判断。",
+    hiddenTitle: "隐藏奇遇",
+    hiddenDescription: "隐藏成就只会在真实达成后出现。",
+    ruleTitle: "题型称号晋级规则",
+    ruleDescription: "每个题型按完成量与正确率逐步晋级，共五重境界。",
+    typeTitle: "题型专属称号",
+  },
+  ielts: {
+    badge: "IELTS 成就图鉴",
+    title: "剑桥训练有轨迹，Band 进步看得见",
+    description: "IELTS 成就根据阅读、听力、口语、写作的真实练习记录计算，适合长期追踪高分稳定性。",
+    globalTitle: "剑桥里程碑",
+    globalDescription: "记录 IELTS 练习总量、正确率和关键高分节点。",
+    streakTitle: "备考连续性",
+    streakDescription: "按悉尼时区计算 IELTS 历史最长连续学习天数。",
+    scoreTitle: "Band 突破",
+    scoreDescription: "根据 IELTS AI 反馈或自动评分的历史最高分判断。",
+    hiddenTitle: "隐藏节点",
+    hiddenDescription: "隐藏成就只会在真实达成后出现。",
+    ruleTitle: "题型称号晋级规则",
+    ruleDescription: "IELTS 题型按完成量与正确率逐步晋级，共五个阶段。",
+    typeTitle: "IELTS 题型称号",
+  },
+} as const;
+
+function getGalleryCopy(config: AchievementConfig) {
+  return config.appName.toLowerCase().includes("ielts") ? galleryCopy.ielts : galleryCopy.pte;
+}
+
 function formatNumber(value: number, unit?: string) {
   const displayed = Number.isInteger(value) ? value.toString() : value.toFixed(1);
   return `${displayed}${unit ?? ""}`;
@@ -100,8 +139,9 @@ function AchievementCollection({ title, description, achievements, rarityLabels,
   );
 }
 
-export function AchievementGallery({ config, overview, questionTypeStats }: { config: AchievementConfig; overview: AchievementOverview; questionTypeStats: QuestionTypeStat[] }) {
+export function AchievementGallery({ config, overview, questionTypeStats, showHero = true }: { config: AchievementConfig; overview: AchievementOverview; questionTypeStats: QuestionTypeStat[]; showHero?: boolean }) {
   const context = createAchievementEngineContext(config, overview, questionTypeStats);
+  const copy = getGalleryCopy(config);
   const categoryEvaluations = config.categories.flatMap((category) => category.levels.map((level) => evaluateAchievementCondition(level.condition, context)));
   const standaloneAchievements = [...config.globalAchievements, ...config.streakAchievements, ...config.scoreAchievements, ...config.hiddenAchievements];
   const standaloneEvaluations = standaloneAchievements.map((achievement) => evaluateStandaloneAchievement(achievement, context));
@@ -112,23 +152,25 @@ export function AchievementGallery({ config, overview, questionTypeStats }: { co
 
   return (
     <div className="space-y-8">
-      <Card className="overflow-hidden border-[var(--border-strong)]">
-        <CardContent className="relative p-5 sm:p-7 lg:p-8">
-          <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[var(--primary-soft)] blur-3xl" />
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />{BRAND_NAME_CN}成就图鉴</Badge>
-              <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">练习有迹，成就可循</h1>
-              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">成就状态根据你的真实练习统计实时计算，继续学习即可逐步解锁。</p>
+      {showHero ? (
+        <Card className="overflow-hidden border-[var(--border-strong)]">
+          <CardContent className="relative p-5 sm:p-7 lg:p-8">
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[var(--primary-soft)] blur-3xl" />
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl">
+                <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />{BRAND_NAME_CN}{copy.badge}</Badge>
+                <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">{copy.title}</h1>
+                <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">{copy.description}</p>
+              </div>
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{overview.total_completed}</div><div className="mt-1 text-xs text-[var(--text-faint)]">累计完成</div></div>
+                <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{formatNumber(overview.overall_accuracy, "%")}</div><div className="mt-1 text-xs text-[var(--text-faint)]">综合正确率</div></div>
+                <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{unlockedCount}/{supportedCount}</div><div className="mt-1 text-xs text-[var(--text-faint)]">已解锁</div></div>
+              </div>
             </div>
-            <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{overview.total_completed}</div><div className="mt-1 text-xs text-[var(--text-faint)]">累计完成</div></div>
-              <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{formatNumber(overview.overall_accuracy, "%")}</div><div className="mt-1 text-xs text-[var(--text-faint)]">综合正确率</div></div>
-              <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-3 text-center sm:px-5"><div className="text-xl font-semibold text-[var(--text)]">{unlockedCount}/{supportedCount}</div><div className="mt-1 text-xs text-[var(--text-faint)]">已解锁</div></div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      ) : null}
 
       {config.categories.map((category) => {
         const Icon = categoryIcons[category.id as keyof typeof categoryIcons] ?? Medal;
@@ -159,7 +201,7 @@ export function AchievementGallery({ config, overview, questionTypeStats }: { co
 
                 {category.questionTypes && category.questionTypes.length > 0 && (
                   <div>
-                    <div className="mb-3 flex items-center gap-2"><ShieldCheck size={17} className="text-[var(--primary)]" /><h3 className="text-sm font-semibold text-[var(--text)]">题型专属称号</h3></div>
+                    <div className="mb-3 flex items-center gap-2"><ShieldCheck size={17} className="text-[var(--primary)]" /><h3 className="text-sm font-semibold text-[var(--text)]">{copy.typeTitle}</h3></div>
                     <div className="grid gap-3 lg:grid-cols-2">
                       {category.questionTypes.map((questionType) => {
                         const stat = context.questionTypeMap.get(questionType.id);
@@ -184,13 +226,13 @@ export function AchievementGallery({ config, overview, questionTypeStats }: { co
         );
       })}
 
-      <AchievementCollection title="江湖里程碑" description="记录练习总量与综合准确率的重要节点。" achievements={config.globalAchievements} rarityLabels={config.rarityLabels} icon={Trophy} context={context} />
-      <AchievementCollection title="连续修行" description="按悉尼时区计算历史最长连续学习天数。" achievements={config.streakAchievements} rarityLabels={config.rarityLabels} icon={Flame} context={context} />
-      <AchievementCollection title="高分试炼" description="根据带有 AI 反馈的历史提交最高分判断。" achievements={config.scoreAchievements} rarityLabels={config.rarityLabels} icon={Star} context={context} />
-      <AchievementCollection title="隐藏奇遇" description="隐藏成就只会在真实达成后出现。" achievements={config.hiddenAchievements} rarityLabels={config.rarityLabels} icon={Sparkles} context={context} />
+      <AchievementCollection title={copy.globalTitle} description={copy.globalDescription} achievements={config.globalAchievements} rarityLabels={config.rarityLabels} icon={Trophy} context={context} />
+      <AchievementCollection title={copy.streakTitle} description={copy.streakDescription} achievements={config.streakAchievements} rarityLabels={config.rarityLabels} icon={Flame} context={context} />
+      <AchievementCollection title={copy.scoreTitle} description={copy.scoreDescription} achievements={config.scoreAchievements} rarityLabels={config.rarityLabels} icon={Star} context={context} />
+      <AchievementCollection title={copy.hiddenTitle} description={copy.hiddenDescription} achievements={config.hiddenAchievements} rarityLabels={config.rarityLabels} icon={Sparkles} context={context} />
 
       <Card>
-        <CardHeader><div><CardTitle>题型称号晋级规则</CardTitle><p className="mt-1 text-sm text-[var(--text-soft)]">每个题型按完成量与正确率逐步晋级，共五重境界。</p></div></CardHeader>
+        <CardHeader><div><CardTitle>{copy.ruleTitle}</CardTitle><p className="mt-1 text-sm text-[var(--text-soft)]">{copy.ruleDescription}</p></div></CardHeader>
         <CardContent className="grid gap-2 p-5 sm:grid-cols-2 sm:p-6 lg:grid-cols-5">
           {config.typeLevelRule.levels.map((rule) => <div key={rule.index} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="flex items-center gap-2 text-xs font-semibold text-[var(--primary)]"><Target size={14} />第 {rule.index + 1} 重</div><div className="mt-2 text-sm leading-6 text-[var(--text-soft)]">完成 {rule.condition.completed?.gte ?? 0} 道题{rule.condition.accuracy?.gte ? `，正确率达到 ${rule.condition.accuracy.gte * 100}%` : ""}</div></div>)}
         </CardContent>

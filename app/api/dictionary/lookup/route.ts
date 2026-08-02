@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { checkRateLimit, getClientIp } from "@/lib/api/rate-limit";
+import { apiBadRequest, apiRateLimited, apiServerError } from "@/lib/api/responses";
 import {
   createClient
 } from "@/lib/supabase/server";
@@ -76,18 +78,18 @@ export async function GET(
     new URL(request.url);
 
   const rawWord =
-    searchParams.get("word");
+    searchParams.get("word")?.trim();
+
+  const limited = checkRateLimit({ key: `dictionary:${getClientIp(request)}:${rawWord?.toLowerCase() ?? ""}`, limit: 90, windowMs: 60_000 });
+  if (!limited.ok) return apiRateLimited();
 
   if (!rawWord) {
 
-    return NextResponse.json(
-      {
-        found: false
-      },
-      {
-        status: 400
-      }
-    );
+    return apiBadRequest("请输入要查询的单词。");
+  }
+
+  if (rawWord.length < 2 || rawWord.length > 64 || !/^[A-Za-z][A-Za-z' -]*$/.test(rawWord)) {
+    return apiBadRequest("单词格式无效。");
   }
 
   const supabase =
@@ -120,6 +122,11 @@ export async function GET(
         found: true,
         data
       });
+    }
+
+    if (error && error.code !== "PGRST116") {
+      console.error("dictionary lookup error", error);
+      return apiServerError("词典暂时不可用，请稍后再试。");
     }
   }
 

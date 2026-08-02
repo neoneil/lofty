@@ -207,7 +207,7 @@ export async function POST(
     return Response.json(
       {
         ok: false,
-        message: error instanceof Error ? error.message : "Failed to create Zoom signature",
+        message: "Failed to create Zoom signature",
       },
       {
         status: 500,

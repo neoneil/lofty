@@ -42,7 +42,8 @@ export async function POST(req: Request) {
       });
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error("DI recording insert error:", insertError);
+      return NextResponse.json({ error: "recording save failed" }, { status: 500 });
     }
 
     try {
@@ -61,7 +62,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ audioUrl, audioStorageKey });
   } catch (error) {
     if (isStudentRecordingUploadError(error)) {
-      return NextResponse.json({ error: error.message }, { status: error.status });
+      console.error("DI recording upload error:", error);
+      return NextResponse.json({ error: "upload failed" }, { status: error.status });
     }
 
     console.error("DI upload API crash:", error);

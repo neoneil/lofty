@@ -20,6 +20,7 @@ type ExportPayload = {
   questionType: string;
 };
 
+const WRITING_TOPIC_COLUMNS = "id, year, month, day, question_en, question_zh, question_type, topic_category, created_at, updated_at";
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
 const MARGIN_X = 50;
@@ -187,7 +188,7 @@ export async function POST(req: NextRequest) {
     let query = supabase
       .schema("ielts")
       .from("ielts_writing_topics")
-      .select("*")
+      .select(WRITING_TOPIC_COLUMNS)
       .order("year", { ascending: false })
       .order("month", { ascending: false })
       .order("day", { ascending: false });
@@ -203,7 +204,8 @@ export async function POST(req: NextRequest) {
     const { data, error } = await query;
 
     if (error) {
-      return new Response(`Failed to load Writing data: ${error.message}`, {
+      console.error("IELTS writing export error:", error);
+      return new Response("Failed to load Writing data.", {
         status: 500,
       });
     }

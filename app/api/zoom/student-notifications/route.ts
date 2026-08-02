@@ -34,10 +34,11 @@ export async function GET() {
       .limit(50);
 
     if (error) {
+      console.error("zoom student notifications error:", error);
       return Response.json(
         {
           ok: false,
-          message: error.message,
+          message: "课堂通知加载失败。",
         },
         {
           status: 500,

@@ -111,7 +111,8 @@ export async function PATCH(request: NextRequest) {
     .maybeSingle();
 
   if (error || !data) {
-    return NextResponse.json({ ok: false, message: error?.message || "保存失败，请稍后再试。" }, { status: 400 });
+    console.error("profile update error", error);
+    return NextResponse.json({ ok: false, message: "保存失败，请稍后再试。" }, { status: 400 });
   }
 
   return NextResponse.json({ ok: true, profile: data });

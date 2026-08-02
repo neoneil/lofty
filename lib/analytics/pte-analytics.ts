@@ -28,6 +28,8 @@ export const QUESTION_TYPE_LABELS: Record<string, string> = {
   sst: "SST",
   swt: "SWT",
   wfd: "WFD",
+  ielts_reading: "IELTS Reading",
+  ielts_listening: "IELTS Listening",
 };
 
 const PREDICTION_QUESTION_TYPES = [
@@ -46,6 +48,11 @@ const PREDICTION_QUESTION_TYPES = [
   { table: "sst", statType: "sst", label: "SST" },
   { table: "hiw", statType: "hiw", label: "HIW" },
   { table: "wfd", statType: "wfd", label: "WFD" },
+] as const;
+
+const IELTS_QUESTION_SETS = [
+  { statType: "ielts_reading", label: "IELTS Reading", total: 15 * 4 * 40 },
+  { statType: "ielts_listening", label: "IELTS Listening", total: 6 * 4 * 40 },
 ] as const;
 
 type RawQuestionStatRow = {
@@ -128,13 +135,14 @@ async function getPredictionQuestionSets(supabase: ServerSupabaseClient) {
   return new Map<string, (typeof entries)[number][1]>(entries);
 }
 
-async function getQuestionTypeCompletionData(supabase: ServerSupabaseClient, userId: string) {
+async function getPteQuestionTypeCompletionData(supabase: ServerSupabaseClient, userId: string) {
   const [predictionSets, { data: rawStats, error }] = await Promise.all([
     getPredictionQuestionSets(supabase),
     supabase
       .from("student_question_stats")
       .select("question_source, question_id, completed_count, is_practiced")
       .eq("user_id", userId)
+      .eq("exam_type", "PTE")
       .returns<RawQuestionStatRow[]>(),
   ]);
 
@@ -165,7 +173,38 @@ async function getQuestionTypeCompletionData(supabase: ServerSupabaseClient, use
   }).filter((item) => item.total > 0 || item.completed > 0);
 }
 
-async function getRecentStudyTimeData(supabase: ServerSupabaseClient, userId: string) {
+async function getIeltsQuestionTypeCompletionData(supabase: ServerSupabaseClient, userId: string) {
+  const { data: rawStats, error } = await supabase
+    .from("student_question_stats")
+    .select("question_source, question_id, completed_count, is_practiced")
+    .eq("user_id", userId)
+    .eq("exam_type", "IELTS")
+    .in("question_source", IELTS_QUESTION_SETS.map((item) => item.statType))
+    .returns<RawQuestionStatRow[]>();
+
+  if (error) throw new Error(`读取 IELTS 完成度失败：${error.message}`);
+
+  const practicedByType = new Map<string, Set<string>>();
+  for (const row of rawStats ?? []) {
+    if (!row.question_id || (!row.is_practiced && (row.completed_count ?? 0) <= 0)) continue;
+    const type = normalizeQuestionType(row.question_source);
+    const current = practicedByType.get(type) ?? new Set<string>();
+    current.add(String(row.question_id));
+    practicedByType.set(type, current);
+  }
+
+  return IELTS_QUESTION_SETS.map((item) => {
+    const completed = practicedByType.get(item.statType)?.size ?? 0;
+    return {
+      type: item.label,
+      completed,
+      total: item.total,
+      completion: item.total > 0 ? round((completed / item.total) * 100) : 0,
+    };
+  });
+}
+
+async function getRecentStudyTimeData(supabase: ServerSupabaseClient, userId: string, examType: "PTE" | "IELTS") {
   const dayKeys = getRecentSevenDayKeys();
   const start = new Date();
   start.setDate(start.getDate() - 6);
@@ -175,6 +214,7 @@ async function getRecentStudyTimeData(supabase: ServerSupabaseClient, userId: st
     .from("student_attempts")
     .select("submitted_at, duration_seconds")
     .eq("user_id", userId)
+    .eq("exam_type", examType)
     .in("status", ["completed", "submitted"])
     .gte("submitted_at", start.toISOString())
     .not("submitted_at", "is", null)
@@ -198,10 +238,14 @@ async function getRecentStudyTimeData(supabase: ServerSupabaseClient, userId: st
 }
 
 export async function getPteAnalyticsForUser(supabase: ServerSupabaseClient, userId: string) {
+  return getLearningAnalyticsForUser(supabase, userId, "PTE");
+}
+
+export async function getLearningAnalyticsForUser(supabase: ServerSupabaseClient, userId: string, examType: "PTE" | "IELTS") {
   const [{ overview, questionTypeStats }, questionTypeCompletionData, recentStudyTimeData] = await Promise.all([
-    getAchievementStatsForUser(supabase, userId),
-    getQuestionTypeCompletionData(supabase, userId),
-    getRecentStudyTimeData(supabase, userId),
+    getAchievementStatsForUser(supabase, userId, { examType }),
+    examType === "PTE" ? getPteQuestionTypeCompletionData(supabase, userId) : getIeltsQuestionTypeCompletionData(supabase, userId),
+    getRecentStudyTimeData(supabase, userId, examType),
   ]);
   const moduleData = aggregateModules(questionTypeStats);
   const practicedQuestionTypes = questionTypeStats.filter((stat) => stat.completed > 0);

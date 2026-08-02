@@ -13,7 +13,8 @@ export async function GET() {
     .single();
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("selective profile load error", error);
+    return NextResponse.json({ ok: false, message: "用户信息加载失败。" }, { status: 400 });
   }
 
   return NextResponse.json({

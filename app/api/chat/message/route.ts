@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
 
     let query = supabase
       .from('chat_messages')
-      .select('*')
+      .select('id, session_id, sender, content, is_read, created_at')
       .eq('session_id', sessionId)
       .order('created_at', { ascending: false })
       .order('id', { ascending: false })
@@ -76,8 +76,9 @@ export async function GET(req: NextRequest) {
     const { data, error: messagesError } = await query;
 
     if (messagesError) {
+      console.error('Chat messages load error:', messagesError);
       return NextResponse.json(
-        { error: messagesError.message },
+        { error: 'Failed to load chat messages.' },
         { status: 500 }
       );
     }
@@ -107,8 +108,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : 'Internal server error',
+        error: 'Internal server error',
       },
       { status: 500 }
     );
@@ -157,11 +157,12 @@ export async function POST(req: NextRequest) {
         sender: 'user',
         content: trimmedContent,
       })
-      .select()
+      .select('id, session_id, sender, content, is_read, created_at')
       .single();
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error('Chat message insert error:', insertError);
+      return NextResponse.json({ error: 'Failed to save chat message.' }, { status: 500 });
     }
 
     await supabase
@@ -177,8 +178,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : 'Internal server error',
+        error: 'Internal server error',
       },
       { status: 500 }
     );

@@ -1,0 +1,247 @@
+{
+  "version": "1.0.0",
+  "theme": "ielts-academic",
+  "appName": "LoftyIELTS",
+  "description": "Lofty IELTS academic achievement configuration. Designed for Cambridge IELTS practice, band progress, and IELTS-style learning milestones.",
+  "display": {
+    "defaultLanguage": "zh-CN",
+    "showEnglishSubtitle": true,
+    "badgeStyle": "academic-medal",
+    "iconStyle": "line-icon"
+  },
+  "categories": [
+    {
+      "id": "overall",
+      "name": "九分航线",
+      "englishName": "Band 9 Route",
+      "description": "根据 IELTS 总练习量、连续学习、综合正确率和 AI 分数计算整体称号。",
+      "icon": "compass",
+      "colorToken": "achievement.ielts.overall",
+      "levels": [
+        {
+          "level": 1,
+          "title": "剑桥启航",
+          "englishTitle": "Cambridge Starter",
+          "subtitle": "完成第一道 IELTS 练习，正式开启九分路线。",
+          "condition": { "type": "total_completed_questions", "gte": 1 }
+        },
+        {
+          "level": 2,
+          "title": "航线稳定",
+          "englishTitle": "Steady Navigator",
+          "subtitle": "累计完成 80 道 IELTS 练习，学习节奏已经成形。",
+          "condition": { "type": "total_completed_questions", "gte": 80 }
+        },
+        {
+          "level": 3,
+          "title": "高分领航员",
+          "englishTitle": "High-Band Navigator",
+          "subtitle": "累计完成 240 道 IELTS 练习，对剑桥题型更熟悉。",
+          "condition": { "type": "total_completed_questions", "gte": 240 }
+        },
+        {
+          "level": 4,
+          "title": "九分候选人",
+          "englishTitle": "Band 9 Candidate",
+          "subtitle": "综合正确率达到 85%，且至少完成 400 道练习。",
+          "condition": { "type": "overall_accuracy", "gte": 0.85, "minCompletedQuestions": 400 }
+        }
+      ]
+    },
+    {
+      "id": "speaking",
+      "name": "口语面试厅",
+      "englishName": "Speaking Interview Room",
+      "description": "IELTS Speaking 模块。关注流利度、发音、词汇和临场表达。",
+      "icon": "mic",
+      "colorToken": "achievement.ielts.speaking",
+      "levels": [
+        { "level": 1, "title": "开口试讲", "englishTitle": "First Response", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 5 } },
+        { "level": 2, "title": "回答成型", "englishTitle": "Structured Speaker", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 20 } },
+        { "level": 3, "title": "面试节奏官", "englishTitle": "Interview Pacer", "condition": { "type": "module_completed_questions", "module": "speaking", "gte": 60 } },
+        { "level": 4, "title": "流利候选人", "englishTitle": "Fluent Candidate", "condition": { "type": "module_accuracy", "module": "speaking", "gte": 0.8, "minCompletedQuestions": 80 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "ielts_speaking",
+          "name": "IELTS Speaking",
+          "wuxiaName": "现场口语回答",
+          "icon": "mic",
+          "levels": ["开口者", "话题回答者", "结构表达者", "高分面试者", "九分表达者"]
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "name": "学术写作局",
+      "englishName": "Academic Writing Desk",
+      "description": "IELTS Writing 模块。关注任务回应、结构、词汇和语法控制。",
+      "icon": "pen-tool",
+      "colorToken": "achievement.ielts.writing",
+      "levels": [
+        { "level": 1, "title": "写作起稿", "englishTitle": "First Draft", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 3 } },
+        { "level": 2, "title": "段落建筑师", "englishTitle": "Paragraph Builder", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 12 } },
+        { "level": 3, "title": "论证规划师", "englishTitle": "Argument Planner", "condition": { "type": "module_completed_questions", "module": "writing", "gte": 35 } },
+        { "level": 4, "title": "学术写作官", "englishTitle": "Academic Writer", "condition": { "type": "module_accuracy", "module": "writing", "gte": 0.8, "minCompletedQuestions": 50 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "ielts_writing",
+          "name": "IELTS Writing",
+          "wuxiaName": "学术写作任务",
+          "icon": "file-pen-line",
+          "levels": ["起稿者", "段落整理者", "论证推进者", "高分写作者", "九分写作者"]
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "name": "剑桥阅读院",
+      "englishName": "Cambridge Reading Lab",
+      "description": "IELTS Reading 模块。关注定位、同义替换、结构理解和题组稳定性。",
+      "icon": "book-open",
+      "colorToken": "achievement.ielts.reading",
+      "levels": [
+        { "level": 1, "title": "定位新手", "englishTitle": "Locator", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 20 } },
+        { "level": 2, "title": "同替侦察员", "englishTitle": "Paraphrase Scout", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 80 } },
+        { "level": 3, "title": "篇章分析师", "englishTitle": "Passage Analyst", "condition": { "type": "module_completed_questions", "module": "reading", "gte": 180 } },
+        { "level": 4, "title": "阅读高分官", "englishTitle": "High-Band Reader", "condition": { "type": "module_accuracy", "module": "reading", "gte": 0.85, "minCompletedQuestions": 240 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "ielts_reading",
+          "name": "Cambridge Reading Tests",
+          "wuxiaName": "剑桥阅读题组",
+          "icon": "book-open-check",
+          "levels": ["题组入门", "定位稳定", "同替熟练", "篇章掌控", "阅读九分"]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "name": "听力信号台",
+      "englishName": "Listening Signal Desk",
+      "description": "IELTS Listening 模块。关注预测、抓词、跟听和连续题组稳定性。",
+      "icon": "headphones",
+      "colorToken": "achievement.ielts.listening",
+      "levels": [
+        { "level": 1, "title": "信号接收", "englishTitle": "Signal Catcher", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 20 } },
+        { "level": 2, "title": "答案捕手", "englishTitle": "Answer Catcher", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 80 } },
+        { "level": 3, "title": "场景监听员", "englishTitle": "Context Listener", "condition": { "type": "module_completed_questions", "module": "listening", "gte": 180 } },
+        { "level": 4, "title": "听力高分官", "englishTitle": "High-Band Listener", "condition": { "type": "module_accuracy", "module": "listening", "gte": 0.85, "minCompletedQuestions": 240 } }
+      ],
+      "questionTypes": [
+        {
+          "id": "ielts_listening",
+          "name": "Cambridge Listening Tests",
+          "wuxiaName": "剑桥听力题组",
+          "icon": "headphones",
+          "levels": ["听题入门", "抓词稳定", "场景熟悉", "信号掌控", "听力九分"]
+        }
+      ]
+    }
+  ],
+  "globalAchievements": [
+    {
+      "id": "ielts_first_practice",
+      "title": "第一份剑桥记录",
+      "englishTitle": "First Cambridge Record",
+      "description": "完成第一道 IELTS 练习。",
+      "icon": "footprints",
+      "rarity": "common",
+      "condition": { "type": "total_completed_questions", "gte": 1 }
+    },
+    {
+      "id": "ielts_practice_200",
+      "title": "题组进入状态",
+      "englishTitle": "Test Set Momentum",
+      "description": "累计完成 200 道 IELTS 练习。",
+      "icon": "medal",
+      "rarity": "uncommon",
+      "condition": { "type": "total_completed_questions", "gte": 200 }
+    },
+    {
+      "id": "ielts_accuracy_85",
+      "title": "高分稳定线",
+      "englishTitle": "High-Band Stability",
+      "description": "综合正确率达到 85%，且至少完成 240 道练习。",
+      "icon": "target",
+      "rarity": "rare",
+      "condition": { "type": "overall_accuracy", "gte": 0.85, "minCompletedQuestions": 240 }
+    },
+    {
+      "id": "ielts_perfect_section",
+      "title": "连续满分片段",
+      "englishTitle": "Perfect Answer Chain",
+      "description": "历史最高连续答对达到 20 道。",
+      "icon": "shield-check",
+      "rarity": "epic",
+      "condition": { "type": "correct_streak", "gte": 20 }
+    }
+  ],
+  "streakAchievements": [
+    { "id": "ielts_streak_1", "title": "今日打卡", "englishTitle": "First IELTS Day", "days": 1, "icon": "flame", "rarity": "common" },
+    { "id": "ielts_streak_7", "title": "七日训练周", "englishTitle": "Seven-Day IELTS Week", "days": 7, "icon": "flame", "rarity": "uncommon" },
+    { "id": "ielts_streak_30", "title": "月度冲刺线", "englishTitle": "Thirty-Day Sprint", "days": 30, "icon": "flame", "rarity": "rare" }
+  ],
+  "scoreAchievements": [
+    {
+      "id": "ielts_score_7",
+      "title": "Band 7 触达",
+      "englishTitle": "Band 7 Reached",
+      "description": "任意 IELTS AI 评分达到 7.0+。",
+      "icon": "star",
+      "rarity": "rare",
+      "condition": { "type": "any_ai_score", "gte": 7 }
+    },
+    {
+      "id": "ielts_score_8",
+      "title": "Band 8 冲线",
+      "englishTitle": "Band 8 Breakthrough",
+      "description": "任意 IELTS AI 评分达到 8.0+。",
+      "icon": "badge-check",
+      "rarity": "epic",
+      "condition": { "type": "any_ai_score", "gte": 8 }
+    }
+  ],
+  "hiddenAchievements": [
+    {
+      "id": "ielts_midnight_review",
+      "title": "深夜复盘",
+      "englishTitle": "Midnight Review",
+      "description": "凌晨 12 点后完成一次 IELTS 练习。",
+      "icon": "moon",
+      "rarity": "rare",
+      "hidden": true,
+      "condition": { "type": "practice_time_window", "from": "00:00", "to": "04:00" }
+    },
+    {
+      "id": "ielts_reading_listening_started",
+      "title": "双核心启动",
+      "englishTitle": "Core Skills Started",
+      "description": "Reading 与 Listening 都至少完成 1 道题。",
+      "icon": "layout-grid",
+      "rarity": "uncommon",
+      "hidden": true,
+      "condition": { "type": "all_modules_completed_at_least", "gte": 1 }
+    }
+  ],
+  "typeLevelRule": {
+    "description": "For IELTS questionTypes.levels array. Use completed count and accuracy to map a user to one of five academic titles.",
+    "levels": [
+      { "index": 0, "condition": { "completed": { "gte": 1 } } },
+      { "index": 1, "condition": { "completed": { "gte": 20 } } },
+      { "index": 2, "condition": { "completed": { "gte": 60 } } },
+      { "index": 3, "condition": { "completed": { "gte": 120 }, "accuracy": { "gte": 0.8 } } },
+      { "index": 4, "condition": { "completed": { "gte": 240 }, "accuracy": { "gte": 0.9 } } }
+    ]
+  },
+  "rarityLabels": {
+    "common": "基础",
+    "uncommon": "进阶",
+    "rare": "高分",
+    "epic": "卓越",
+    "legendary": "九分",
+    "mythic": "旗舰"
+  }
+}

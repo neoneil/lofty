@@ -208,7 +208,7 @@ export async function GET(
 
   if (error) {
     return NextResponse.json(
-      { ok: false, message: error.message },
+      { ok: false, message: "练习记录加载失败。" },
       { status: 500 },
     );
   }

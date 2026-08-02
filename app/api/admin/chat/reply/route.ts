@@ -28,11 +28,12 @@ export async function POST(req: NextRequest) {
         content: trimmedContent,
         is_read: true,
       })
-      .select()
+      .select('id, session_id, sender, content, is_read, created_at')
       .single();
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error('Admin reply insert error:', insertError);
+      return NextResponse.json({ error: 'Failed to send reply.' }, { status: 500 });
     }
 
     await supabase

@@ -26,7 +26,8 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     .eq("id", id);
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("post update error", error);
+    return NextResponse.json({ ok: false, message: "文章更新失败，请稍后再试。" }, { status: 400 });
   }
 
   return NextResponse.json({ ok: true });
@@ -40,7 +41,8 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
   const { error } = await context.supabase.from("posts").delete().eq("id", id);
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("post delete error", error);
+    return NextResponse.json({ ok: false, message: "文章删除失败，请稍后再试。" }, { status: 400 });
   }
 
   return NextResponse.json({ ok: true });

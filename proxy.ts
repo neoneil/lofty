@@ -64,10 +64,24 @@ export async function proxy(
   // protected routes only
 
   const protectedRoutes = [
-    "/workspace",
-    "/admin",
-    "/dashboard",
     "/account",
+    "/achievements",
+    "/admin",
+    "/analytics",
+    "/audio-collection",
+    "/classroom",
+    "/dashboard",
+    "/downloads",
+    "/homework",
+    "/ielts",
+    "/learning-video",
+    "/mock-test",
+    "/my-courses",
+    "/pte",
+    "/pte-templates",
+    "/settings",
+    "/study-plan",
+    "/workspace",
   ];
 
   const isProtectedRoute =

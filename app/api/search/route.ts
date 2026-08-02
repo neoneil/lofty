@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { checkRateLimit, getClientIp } from "@/lib/api/rate-limit";
+import { apiBadRequest, apiRateLimited, apiServerError } from "@/lib/api/responses";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 
 const DEFAULT_LIMIT = 20;
@@ -11,6 +13,8 @@ export async function GET(request: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const searchParams = request.nextUrl.searchParams;
+  const limited = checkRateLimit({ key: `search:${auth.user.id}:${getClientIp(request)}`, limit: 60, windowMs: 60_000 });
+  if (!limited.ok) return apiRateLimited();
 
   const q = searchParams.get("q")?.trim();
 
@@ -22,14 +26,11 @@ export async function GET(request: NextRequest) {
     : DEFAULT_LIMIT;
 
   if (!q || q.length < MIN_QUERY_LENGTH) {
-    return NextResponse.json(
-      {
-        error: "Search query is too short"
-      },
-      {
-        status: 400
-      }
-    );
+    return apiBadRequest("搜索词至少需要 2 个字符。");
+  }
+
+  if (q.length > 120) {
+    return apiBadRequest("搜索词过长。");
   }
 
   const { data, error } = await auth.supabase.rpc(
@@ -45,14 +46,7 @@ export async function GET(request: NextRequest) {
 
     console.error("search api error", error);
 
-    return NextResponse.json(
-      {
-        error: error.message
-      },
-      {
-        status: 500
-      }
-    );
+    return apiServerError("搜索暂时不可用，请稍后再试。");
   }
 
   return NextResponse.json({

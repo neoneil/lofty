@@ -37,7 +37,8 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ ok: true, recordings: [], migrationRequired: true });
     }
 
-    return NextResponse.json({ ok: false, message: error.message }, { status: 500 });
+    console.error("IELTS speaking recordings load error:", error);
+    return NextResponse.json({ ok: false, message: "历史录音加载失败。" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, recordings: data ?? [] });

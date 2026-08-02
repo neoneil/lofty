@@ -18,6 +18,7 @@ export async function GET() {
     const history = await getSelectiveHistoryRows(context.supabase);
     return NextResponse.json({ ok: true, ...history });
   } catch (error) {
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "历史记录加载失败。" }, { status: 400 });
+    console.error("admin selective history load error", error);
+    return NextResponse.json({ ok: false, message: "历史记录加载失败。" }, { status: 400 });
   }
 }

@@ -36,6 +36,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, ...presigned });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "创建上传地址失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "创建上传地址失败" }, { status: 500 });
   }
 }

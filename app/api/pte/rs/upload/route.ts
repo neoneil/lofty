@@ -44,7 +44,8 @@ export async function POST(req: Request) {
       });
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error("RS recording insert error:", insertError);
+      return NextResponse.json({ error: "recording save failed" }, { status: 500 });
     }
 
     try {
@@ -64,7 +65,8 @@ export async function POST(req: Request) {
 
   } catch (error) {
     if (isStudentRecordingUploadError(error)) {
-      return NextResponse.json({ error: error.message }, { status: error.status });
+      console.error("RS recording upload error:", error);
+      return NextResponse.json({ error: "upload failed" }, { status: error.status });
     }
 
     console.error("RS upload API crash:", error);

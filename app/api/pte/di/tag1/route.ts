@@ -29,7 +29,8 @@ export async function PATCH(req: Request) {
     .eq("id", body.questionId);
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 500 });
+    console.error("DI tag update error:", error);
+    return NextResponse.json({ ok: false, message: "保存标签失败。" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, tag1 });

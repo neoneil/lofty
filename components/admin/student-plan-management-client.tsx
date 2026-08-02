@@ -66,6 +66,10 @@ type StudentLoginDeviceDetail = StudentLoginDeviceSummary & {
   ipAddress: string | null;
   firstSeenAt: string | null;
   revokedAt: string | null;
+  currentPath: string | null;
+  currentTitle: string | null;
+  currentPathSeenAt: string | null;
+  isOnline: boolean;
 };
 
 type StudentLoginEventDetail = {
@@ -92,6 +96,8 @@ type StudentLoginAuditDetail = {
   deviceCount: number;
   recentLoginCount: number;
   activeDeviceCount30d: number;
+  onlineDeviceCount: number;
+  todayActiveSeconds: number;
   countryCount30d: number;
   failedLoginCount24h: number;
   hasBlockedDevice: boolean;
@@ -191,6 +197,7 @@ const deletionRowLabels: Record<string, string> = {
   study_plans: "学习计划",
   ai_usage_logs: "AI 使用日志",
   ai_user_limits: "AI 额度设置",
+  user_activity_daily: "每日活跃统计",
   login_events: "登录事件",
   user_devices: "登录设备",
   chat_sessions: "聊天会话",
@@ -242,6 +249,14 @@ function formatDateTime(value: string | null) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function formatActiveDuration(seconds: number | null | undefined) {
+  const totalSeconds = Math.max(0, Math.floor(Number(seconds ?? 0)));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  return `${minutes}m`;
 }
 
 function getDaysLeft(value: string) {
@@ -702,9 +717,9 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                 <div className="space-y-5">
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     <Metric label="全部设备" value={deviceAudit.deviceCount} />
+                    <Metric label="当前在线" value={deviceAudit.onlineDeviceCount} />
+                    <Metric label="今日活跃" value={formatActiveDuration(deviceAudit.todayActiveSeconds)} />
                     <Metric label="30天活跃" value={deviceAudit.activeDeviceCount30d} />
-                    <Metric label="国家/地区" value={deviceAudit.countryCount30d} />
-                    <Metric label="24h失败" value={deviceAudit.failedLoginCount24h} />
                   </div>
 
                   <div className={`rounded-[var(--radius-lg)] border p-4 ${deviceAudit.isAbnormal ? "border-[var(--danger)]/25 bg-[var(--danger-soft)]" : "border-[var(--success)]/25 bg-[var(--success-soft)]"}`}>
@@ -735,7 +750,15 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                               </div>
                               <div className="mt-1 truncate text-xs text-[var(--text-soft)]">{[device.city, device.country, device.ipAddress].filter(Boolean).join(" · ") || "位置未知"}</div>
                             </div>
-                            <Badge variant={device.isBlocked ? "danger" : device.isTrusted ? "success" : "secondary"}>{device.isBlocked ? "Blocked" : device.isTrusted ? "Trusted" : "Observed"}</Badge>
+                            <div className="flex shrink-0 flex-col items-end gap-1.5">
+                              <Badge variant={device.isOnline ? "success" : device.isBlocked ? "danger" : device.isTrusted ? "success" : "secondary"}>{device.isOnline ? "Online" : device.isBlocked ? "Blocked" : device.isTrusted ? "Trusted" : "Observed"}</Badge>
+                              {device.currentPathSeenAt ? <span className="text-[10px] text-[var(--text-faint)]">{formatDateTime(device.currentPathSeenAt)}</span> : null}
+                            </div>
+                          </div>
+                          <div className="mt-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2">
+                            <div className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-faint)]">当前页面</div>
+                            <div className="mt-1 truncate text-xs font-semibold text-[var(--text)]">{device.currentTitle || device.currentPath || "暂无页面心跳"}</div>
+                            {device.currentPath ? <div className="mt-0.5 truncate font-mono text-[10px] text-[var(--text-faint)]">{device.currentPath}</div> : null}
                           </div>
                           <div className="mt-3 grid gap-2 text-xs text-[var(--text-soft)] sm:grid-cols-2">
                             <span>首次：{formatDateTime(device.firstSeenAt)}</span>

@@ -150,11 +150,12 @@ export async function POST(req: NextRequest) {
         sender: 'ai',
         content: reply,
       })
-      .select()
+      .select('id, session_id, sender, content, is_read, created_at')
       .single();
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error('Chat AI insert error:', insertError);
+      return NextResponse.json({ error: 'Failed to save AI reply.' }, { status: 500 });
     }
 
     await supabase

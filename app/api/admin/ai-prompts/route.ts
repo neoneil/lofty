@@ -16,7 +16,7 @@ export async function GET() {
     return NextResponse.json({ ok: true, ...result });
   } catch (error) {
     console.error("admin ai prompts list error:", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "AI prompt 加载失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "AI prompt 加载失败" }, { status: 500 });
   }
 }
 
@@ -63,6 +63,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, prompt });
   } catch (error) {
     console.error("admin ai prompts save error:", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "AI prompt 保存失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "AI prompt 保存失败" }, { status: 500 });
   }
 }

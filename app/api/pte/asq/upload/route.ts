@@ -110,7 +110,8 @@ export async function POST(req: Request) {
       .single();
 
     if (insertError || !recording) {
-      return NextResponse.json({ error: insertError?.message ?? "recording insert failed" }, { status: 500 });
+      console.error("ASQ recording insert error:", insertError);
+      return NextResponse.json({ error: "recording save failed" }, { status: 500 });
     }
 
     let transcript = "";
@@ -200,7 +201,8 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     if (isStudentRecordingUploadError(error)) {
-      return NextResponse.json({ ok: false, message: error.message }, { status: error.status });
+      console.error("ASQ upload error:", error);
+      return NextResponse.json({ ok: false, message: "音频上传失败，请稍后再试。" }, { status: error.status });
     }
 
     console.error("ASQ upload API crash:", error);

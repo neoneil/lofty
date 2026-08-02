@@ -6,6 +6,7 @@ import { CollapsibleAnswer } from "@/components/ielts-practice/collapsible-answe
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
+import { sanitizeRichHtml } from "@/lib/html/sanitize";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { cn } from "@/lib/utils";
 import type { IeltsAnswer, IeltsAsset, IeltsBookPracticeData, IeltsModule, IeltsQuestion, IeltsSection, IeltsTest } from "@/lib/ielts/practice";
@@ -324,7 +325,7 @@ function AnswerBlock({ answer }: { answer: IeltsAnswer }) {
 
 function RichHtml({ html, compact = false }: { html?: string | null; compact?: boolean }) {
   if (!html) return null;
-  return <div className={cn("max-w-none text-[15px] leading-8 text-[var(--text-soft)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text-soft)] [&_a]:!text-[var(--primary)] [&_em]:!text-[var(--text)] [&_img]:my-3 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-2.5 [&_strong]:!font-semibold [&_strong]:!text-[var(--text)] [&_table]:my-3 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-[var(--border)] [&_td]:p-2.5 [&_th]:border [&_th]:border-[var(--border)] [&_th]:p-2.5 [&_u]:!text-[var(--text)]", compact && "text-sm leading-7")} dangerouslySetInnerHTML={{ __html: normalizeQuestionBlanks(html) }} />;
+  return <div className={cn("max-w-none text-[15px] leading-8 text-[var(--text-soft)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text-soft)] [&_a]:!text-[var(--primary)] [&_em]:!text-[var(--text)] [&_img]:my-3 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-2.5 [&_strong]:!font-semibold [&_strong]:!text-[var(--text)] [&_table]:my-3 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-[var(--border)] [&_td]:p-2.5 [&_th]:border [&_th]:border-[var(--border)] [&_th]:p-2.5 [&_u]:!text-[var(--text)]", compact && "text-sm leading-7")} dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(normalizeQuestionBlanks(html)) }} />;
 }
 
 function arrayValue(record: Record<string, unknown>, key: string) {

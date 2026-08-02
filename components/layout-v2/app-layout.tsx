@@ -8,6 +8,7 @@ import { SidebarTopbar } from "@/components/layout-v2/sidebar/topbar";
 import type { User } from "@supabase/supabase-js";
 import { Topbar } from "@/components/layout-v2/topbar/topbar";
 import { AchievementUnlockNotifier } from "@/components/achievements/achievement-unlock-notifier";
+import { AppActivityHeartbeat } from "@/components/activity/app-activity-heartbeat";
 
 type Props = {
   children: ReactNode;
@@ -51,6 +52,7 @@ export function AppLayout({
       </div>
 
       <AchievementUnlockNotifier userId={user?.id ?? null} />
+      <AppActivityHeartbeat enabled={Boolean(user?.id)} />
 
     </div>
   );

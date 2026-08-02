@@ -25,7 +25,8 @@ export async function POST() {
       .maybeSingle();
 
     if (existingError) {
-      return NextResponse.json({ error: existingError.message }, { status: 500 });
+      console.error('Chat session lookup error:', existingError);
+      return NextResponse.json({ error: 'Failed to load chat session.' }, { status: 500 });
     }
 
     if (existing) {
@@ -42,7 +43,8 @@ export async function POST() {
       .single();
 
     if (createError) {
-      return NextResponse.json({ error: createError.message }, { status: 500 });
+      console.error('Chat session create error:', createError);
+      return NextResponse.json({ error: 'Failed to create chat session.' }, { status: 500 });
     }
 
     return NextResponse.json({ session: created });
@@ -51,8 +53,7 @@ export async function POST() {
 
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : 'Internal server error',
+        error: 'Internal server error',
       },
       { status: 500 }
     );

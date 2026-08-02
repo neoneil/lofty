@@ -9,11 +9,12 @@ export async function GET() {
 
     const { data: sessions, error: sessionsError } = await supabase
       .from('chat_sessions')
-      .select('*')
+      .select('id, user_id, status, created_at, updated_at')
       .order('updated_at', { ascending: false });
 
     if (sessionsError) {
-      return NextResponse.json({ error: sessionsError.message }, { status: 500 });
+      console.error('Admin sessions load error:', sessionsError);
+      return NextResponse.json({ error: 'Failed to load admin chat sessions.' }, { status: 500 });
     }
 
     const userIds = [...new Set((sessions ?? []).map((s) => s.user_id))];
@@ -26,7 +27,8 @@ export async function GET() {
       : { data: [], error: null };
 
     if (profilesError) {
-      return NextResponse.json({ error: profilesError.message }, { status: 500 });
+      console.error('Admin chat profiles load error:', profilesError);
+      return NextResponse.json({ error: 'Failed to load admin chat sessions.' }, { status: 500 });
     }
 
     const sessionIds = (sessions ?? []).map((s) => s.id);
@@ -34,13 +36,14 @@ export async function GET() {
     const { data: messages, error: messagesError } = sessionIds.length
       ? await supabase
           .from('chat_messages')
-          .select('*')
+          .select('id, session_id, sender, content, is_read, created_at')
           .in('session_id', sessionIds)
           .order('created_at', { ascending: true })
       : { data: [], error: null };
 
     if (messagesError) {
-      return NextResponse.json({ error: messagesError.message }, { status: 500 });
+      console.error('Admin session messages load error:', messagesError);
+      return NextResponse.json({ error: 'Failed to load admin chat sessions.' }, { status: 500 });
     }
 
     const profileMap = new Map((profiles ?? []).map((p) => [p.id, p]));

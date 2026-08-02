@@ -239,8 +239,9 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     if (isStudentRecordingUploadError(error)) {
+      console.error("RS submit upload error:", error);
       return NextResponse.json(
-        { ok: false, message: error.message },
+        { ok: false, message: "音频上传失败，请稍后再试。" },
         { status: error.status },
       );
     }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 import { Button } from "@/components/ui-v2/button";
@@ -12,13 +13,38 @@ type Props = {
   officialAnswers: Record<string, string>;
   mode: "confirm" | "result";
   showOfficialAnswers?: boolean;
+  bookNumber?: number;
+  testNumber?: number;
+  durationSeconds?: number;
   onCancel: () => void;
   onConfirm: () => void;
   onClose: () => void;
 };
 
-export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, showOfficialAnswers = false, onCancel, onConfirm, onClose }: Props) {
-  const result = buildIeltsSubmitResult(moduleType, answers, officialAnswers);
+export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, showOfficialAnswers = false, bookNumber, testNumber, durationSeconds, onCancel, onConfirm, onClose }: Props) {
+  const result = useMemo(() => buildIeltsSubmitResult(moduleType, answers, officialAnswers), [answers, moduleType, officialAnswers]);
+  const submittedRef = useRef(false);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed">("idle");
+
+  useEffect(() => {
+    if (mode !== "result" || submittedRef.current || !bookNumber || !testNumber) return;
+    submittedRef.current = true;
+    setSaveState("saving");
+
+    void fetch("/api/ielts/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ moduleType, bookNumber, testNumber, durationSeconds, answers }),
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(await response.text());
+        setSaveState("saved");
+      })
+      .catch((error) => {
+        console.error("IELTS submit save failed:", error);
+        setSaveState("failed");
+      });
+  }, [answers, bookNumber, durationSeconds, mode, moduleType, testNumber]);
 
   if (mode === "confirm") {
     return (
@@ -57,6 +83,13 @@ export function IeltsSubmitDialog({ moduleType, answers, officialAnswers, mode, 
           <ScoreTile label="答对题数" value={`${result.correctCount}/${result.totalQuestions}`} tone="success" />
           <ScoreTile label="预估分数" value={result.bandScore.toFixed(result.bandScore % 1 === 0 ? 0 : 1)} tone="primary" />
           <ScoreTile label="未作答" value={`${result.unanswered.length}`} tone={result.unanswered.length > 0 ? "danger" : "success"} />
+        </div>
+
+        <div className="mt-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2 text-xs font-semibold text-[var(--text-soft)]">
+          {saveState === "saving" && "正在保存到学习统计..."}
+          {saveState === "saved" && "已保存到学习统计"}
+          {saveState === "failed" && "统计保存失败，不影响本次结果查看"}
+          {saveState === "idle" && "提交后会自动记录到学习统计"}
         </div>
 
         <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_17rem]">

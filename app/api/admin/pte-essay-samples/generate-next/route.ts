@@ -153,6 +153,6 @@ export async function POST() {
     });
 
     console.error("Generate PTE essay sample error:", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "生成失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "生成失败" }, { status: 500 });
   }
 }

@@ -9,6 +9,7 @@ import { IeltsSubmitDialog } from "@/components/ielts-practice/ielts-submit-dial
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { BRAND_NAME_CN } from "@/lib/brand";
+import { sanitizeRichHtml } from "@/lib/html/sanitize";
 import { buildIeltsSubmitResult } from "@/lib/ielts/answer-scoring";
 import type { IeltsAnswer, IeltsBookPracticeData, IeltsQuestion, IeltsSection } from "@/lib/ielts/practice";
 import { cn } from "@/lib/utils";
@@ -375,7 +376,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
       {selectionToolbar && <SelectionFormatToolbar top={selectionToolbar.top} left={selectionToolbar.left} canUndo={canUndoFormat} onFormat={applySelectionFormat} onUndo={undoLastSelectionFormat} />}
       {timeNotice === "five-minutes" && <TimeNoticePopup type="warning" seconds={remainingSeconds} onClose={() => setTimeNotice(null)} />}
       {timeNotice === "time-up" && <TimeNoticePopup type="time-up" seconds={overtimeSeconds} onClose={() => setTimeNotice(null)} />}
-      {submitDialogMode && <IeltsSubmitDialog moduleType="reading" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} showOfficialAnswers={isAdmin} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
+      {submitDialogMode && <IeltsSubmitDialog moduleType="reading" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} showOfficialAnswers={isAdmin} bookNumber={data.book.book_number} testNumber={selectedTestNumber} durationSeconds={elapsedSeconds} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
   );
@@ -582,12 +583,12 @@ function OptionQuestion({ questionNumber, options, value, onChange }: { question
 const ReadingRichText = memo(function ReadingRichText({ html, compact = false, dictionary = false }: { html?: string | null; compact?: boolean; dictionary?: boolean }) {
   const { openDictionary } = useDictionary();
   if (!html) return null;
-  const markup = dictionary ? decorateDictionaryWords(normalizeQuestionBlanks(html)) : normalizeQuestionBlanks(html);
+  const markup = sanitizeRichHtml(dictionary ? decorateDictionaryWords(normalizeQuestionBlanks(html)) : normalizeQuestionBlanks(html));
   return <div className={cn("reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_span[data-dictionary-word]]:cursor-pointer [&_span[data-dictionary-word]]:transition [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:p-2.5 [&_th]:border [&_th]:p-2.5", compact && "text-sm leading-7")} onClick={dictionary ? (event) => { const target = event.target as HTMLElement; const word = target.closest<HTMLElement>("[data-dictionary-word]")?.dataset.dictionaryWord; if (word) openDictionary(word, { showPteExamples: false }); } : undefined} dangerouslySetInnerHTML={{ __html: markup }} />;
 });
 
 const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, onAnswerChange }: { html: string; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void }) {
-  const [markup] = useState(() => injectAnswerInputs(formatQuestionContent(html), answers));
+  const [markup] = useState(() => sanitizeRichHtml(injectAnswerInputs(formatQuestionContent(html), answers)));
   return <div className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold" onInputCapture={(event) => { const target = event.target as HTMLInputElement; const number = target.dataset.questionNumber; if (number) onAnswerChange(number, target.value); }} dangerouslySetInnerHTML={{ __html: markup }} />;
 }, (previous, next) => previous.html === next.html);
 

@@ -48,6 +48,8 @@ type ExportPayload =
         category: string;
     };
 
+const PART1_COLUMNS = "id, topic_title, question_number, question_text, answer_text";
+const PART2_COLUMNS = "id, chinese_title, english_title, part2_question, cue_card_1, cue_card_2, cue_card_3, cue_card_4, part3_q1, part3_q2, part3_q3, part3_q4, part3_q5, part3_q6, part3_q7, part3_q8, part3_q9, part3_q10, category, difficulty, status, sort_order";
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
 const MARGIN_X = 50;
@@ -254,23 +256,25 @@ export async function POST(req: NextRequest) {
                 supabase
                     .schema("ielts")
                     .from("ielts_speaking_part1_questions")
-                    .select("*")
+                    .select(PART1_COLUMNS)
                     .order("topic_title", { ascending: true })
                     .order("question_number", { ascending: true }),
                 supabase
                     .schema("ielts")
                     .from("ielts_speaking_part2_3")
-                    .select("*")
+                    .select(PART2_COLUMNS)
                     .eq("status", "published")
                     .order("sort_order", { ascending: true }),
             ]);
 
             if (part1Result.error) {
-                return new Response(`Failed to load Part 1 data: ${part1Result.error.message}`, { status: 500 });
+                console.error("IELTS speaking export Part 1 error:", part1Result.error);
+                return new Response("Failed to load Part 1 data.", { status: 500 });
             }
 
             if (part2Result.error) {
-                return new Response(`Failed to load Part 2/3 data: ${part2Result.error.message}`, { status: 500 });
+                console.error("IELTS speaking export Part 2/3 error:", part2Result.error);
+                return new Response("Failed to load Part 2/3 data.", { status: 500 });
             }
 
             const part1Items = (part1Result.data ?? []) as SpeakingPart1Question[];
@@ -362,7 +366,7 @@ export async function POST(req: NextRequest) {
             let query = supabase
                 .schema("ielts")
                 .from("ielts_speaking_part1_questions")
-                .select("*")
+                .select(PART1_COLUMNS)
                 .order("topic_title", { ascending: true })
                 .order("question_number", { ascending: true });
 
@@ -373,7 +377,8 @@ export async function POST(req: NextRequest) {
             const { data, error } = await query;
 
             if (error) {
-                return new Response(`Failed to load Part 1 data: ${error.message}`, {
+                console.error("IELTS speaking export Part 1 error:", error);
+                return new Response("Failed to load Part 1 data.", {
                     status: 500,
                 });
             }
@@ -432,7 +437,7 @@ export async function POST(req: NextRequest) {
         let query = supabase
             .schema("ielts")
             .from("ielts_speaking_part2_3")
-            .select("*")
+            .select(PART2_COLUMNS)
             .eq("status", "published")
             .order("sort_order", { ascending: true });
 
@@ -443,7 +448,8 @@ export async function POST(req: NextRequest) {
         const { data, error } = await query;
 
         if (error) {
-            return new Response(`Failed to load Part 2/3 data: ${error.message}`, {
+            console.error("IELTS speaking export Part 2/3 error:", error);
+            return new Response("Failed to load Part 2/3 data.", {
                 status: 500,
             });
         }

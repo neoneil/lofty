@@ -10,6 +10,7 @@ import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import { SpeakingKeywordScoreCard, type SpeakingKeywordScoreResult } from "@/components/pte-speaking/keyword-score-card";
+import { sanitizeRichHtml } from "@/lib/html/sanitize";
 import {
   Card,
   CardContent,
@@ -82,16 +83,12 @@ function getServerQuestionOrderSnapshot() {
   return "[]";
 }
 
-function sanitizeRichText(html: string) {
+function normalizeRichText(html: string) {
   const normalizedHtml = /<\/?[a-z][\s\S]*>/i.test(html)
     ? html
     : html.replace(/\n/g, "<br />");
 
-  return normalizedHtml
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/\sstyle="[^"]*"/gi, "")
-    .replace(/\sclass="[^"]*"/gi, "")
-    .replace(/\sfont-family="[^"]*"/gi, "");
+  return sanitizeRichHtml(normalizedHtml);
 }
 
 export default function SgdDetailClient({ question }: Props) {
@@ -138,8 +135,8 @@ export default function SgdDetailClient({ question }: Props) {
   const audioUrl = getAudioUrl(question);
   const originalText = question.original_text?.trim();
   const answerInfo = question.answer_info?.trim();
-  const originalTextHtml = originalText ? sanitizeRichText(originalText) : "";
-  const answerInfoHtml = answerInfo ? sanitizeRichText(answerInfo) : "";
+  const originalTextHtml = originalText ? normalizeRichText(originalText) : "";
+  const answerInfoHtml = answerInfo ? normalizeRichText(answerInfo) : "";
 
   const loadRecordings = useCallback(async ({ showLoading = true }: { showLoading?: boolean } = {}) => {
     if (showLoading) setRecordingsLoading(true);

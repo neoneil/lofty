@@ -14,6 +14,6 @@ export async function GET() {
     return NextResponse.json(questionTypeStats);
   } catch (error) {
     console.error("GET QUESTION TYPE STATS ERROR", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "读取题型统计失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "读取题型统计失败" }, { status: 500 });
   }
 }

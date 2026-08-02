@@ -42,7 +42,7 @@ export default async function IeltsSpeakingPage() {
     supabase
       .schema("ielts")
       .from("ielts_speaking_part1_questions")
-      .select("*")
+      .select("id, topic_title, question_number, question_text, answer_text")
       .order("topic_title", { ascending: true })
       .order("question_number", { ascending: true })
       .limit(500),
@@ -50,7 +50,7 @@ export default async function IeltsSpeakingPage() {
     supabase
       .schema("ielts")
       .from("ielts_speaking_part2_3")
-      .select("*")
+      .select("id, chinese_title, english_title, part2_question, cue_card_1, cue_card_2, cue_card_3, cue_card_4, part3_q1, part3_q2, part3_q3, part3_q4, part3_q5, part3_q6, part3_q7, part3_q8, part3_q9, part3_q10, category, difficulty, status, sort_order")
       .eq("status", "published")
       .order("sort_order", { ascending: true })
       .limit(300),
@@ -81,13 +81,13 @@ export default async function IeltsSpeakingPage() {
 
         {part1Error ? (
           <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-            Part 1 加载失败：{part1Error.message}
+            Part 1 加载失败，请稍后再试。
           </p>
         ) : null}
 
         {part2Error ? (
           <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-            Part 2 加载失败：{part2Error.message}
+            Part 2 加载失败，请稍后再试。
           </p>
         ) : null}
 

@@ -18,10 +18,11 @@ export async function GET(_: Request, { params }: { params: Promise<{ userId: st
       audit,
     });
   } catch (error) {
+    console.error("student login audit detail error:", error);
     return NextResponse.json(
       {
         ok: false,
-        message: error instanceof Error ? error.message : "读取登录设备详情失败。",
+        message: "读取登录设备详情失败。",
       },
       { status: 500 },
     );

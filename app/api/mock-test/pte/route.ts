@@ -12,6 +12,6 @@ export async function GET() {
     return NextResponse.json({ ok: true, exam });
   } catch (error) {
     console.error("LOAD PTE MOCK EXAM ERROR", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "PTE 模考组卷失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "PTE 模考组卷失败" }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import achievementConfig from "@/constants/achievements/lofty-achievements-wuxia.json";
+import { getAllAchievementConfigs } from "@/lib/achievements/configs";
 import type { AchievementOverview, QuestionTypeStat } from "@/lib/achievements/types";
 
 type ServerSupabaseClient = Awaited<ReturnType<typeof createClient>>;
@@ -21,6 +21,10 @@ type StudentAttemptRow = {
   is_correct: boolean | null;
 };
 
+type AchievementStatsOptions = {
+  examType?: string;
+};
+
 const PAGE_SIZE = 1000;
 const ACHIEVEMENT_TIME_ZONE = "Australia/Sydney";
 const DAY_IN_MS = 86_400_000;
@@ -32,8 +36,10 @@ const QUESTION_TYPE_ALIASES: Record<string, string> = {
   fib_rw: "fibrw",
 };
 const QUESTION_TYPE_MODULES = new Map(
-  achievementConfig.categories.flatMap((category) =>
-    (category.questionTypes ?? []).map((questionType) => [questionType.id, category.id] as const),
+  getAllAchievementConfigs().flatMap((config) =>
+    config.categories.flatMap((category) =>
+      (category.questionTypes ?? []).map((questionType) => [questionType.id, category.id] as const),
+    ),
   ),
 );
 
@@ -60,16 +66,19 @@ function resolveModuleType(moduleType: string, questionType: string) {
   return QUESTION_TYPE_MODULES.get(questionType) ?? QUESTION_TYPE_MODULES.get(canonicalModuleQuestionType) ?? normalizedModule;
 }
 
-async function readAllQuestionStats(supabase: ServerSupabaseClient, userId: string) {
+async function readAllQuestionStats(supabase: ServerSupabaseClient, userId: string, examType?: string) {
   const rows: StudentQuestionStatRow[] = [];
 
   for (let from = 0; ; from += PAGE_SIZE) {
-    const { data, error } = await supabase
+    let query = supabase
       .from("student_question_stats")
       .select("module_type, question_source, completed_count, correct_count, wrong_count, total_duration_seconds, best_score, latest_score, is_practiced")
       .eq("user_id", userId)
-      .order("id", { ascending: true })
-      .range(from, from + PAGE_SIZE - 1);
+      .order("id", { ascending: true });
+
+    if (examType) query = query.eq("exam_type", examType);
+
+    const { data, error } = await query.range(from, from + PAGE_SIZE - 1);
 
     if (error) throw new Error(`读取学习统计失败：${error.message}`);
 
@@ -81,19 +90,22 @@ async function readAllQuestionStats(supabase: ServerSupabaseClient, userId: stri
   return rows;
 }
 
-async function readAllCompletedAttempts(supabase: ServerSupabaseClient, userId: string) {
+async function readAllCompletedAttempts(supabase: ServerSupabaseClient, userId: string, examType?: string) {
   const rows: StudentAttemptRow[] = [];
 
   for (let from = 0; ; from += PAGE_SIZE) {
-    const { data, error } = await supabase
+    let query = supabase
       .from("student_attempts")
       .select("submitted_at, is_correct")
       .eq("user_id", userId)
       .eq("status", "completed")
       .not("submitted_at", "is", null)
       .order("submitted_at", { ascending: true })
-      .order("id", { ascending: true })
-      .range(from, from + PAGE_SIZE - 1);
+      .order("id", { ascending: true });
+
+    if (examType) query = query.eq("exam_type", examType);
+
+    const { data, error } = await query.range(from, from + PAGE_SIZE - 1);
 
     if (error) throw new Error(`读取练习记录失败：${error.message}`);
 
@@ -105,8 +117,8 @@ async function readAllCompletedAttempts(supabase: ServerSupabaseClient, userId: 
   return rows;
 }
 
-async function readHighestAiScore(supabase: ServerSupabaseClient, userId: string) {
-  const { data, error } = await supabase
+async function readHighestAiScore(supabase: ServerSupabaseClient, userId: string, examType?: string) {
+  let query = supabase
     .from("student_attempts")
     .select("score")
     .eq("user_id", userId)
@@ -114,8 +126,11 @@ async function readHighestAiScore(supabase: ServerSupabaseClient, userId: string
     .not("ai_feedback", "is", null)
     .not("score", "is", null)
     .order("score", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+    .limit(1);
+
+  if (examType) query = query.eq("exam_type", examType);
+
+  const { data, error } = await query.maybeSingle();
 
   if (error) throw new Error(`读取 AI 评分失败：${error.message}`);
   return round(toNumber(data?.score));
@@ -277,11 +292,11 @@ export function aggregateAchievementStats(rows: StudentQuestionStatRow[]) {
   return { overview, questionTypeStats };
 }
 
-export async function getAchievementStatsForUser(supabase: ServerSupabaseClient, userId: string) {
+export async function getAchievementStatsForUser(supabase: ServerSupabaseClient, userId: string, options: AchievementStatsOptions = {}) {
   const [questionStatsRows, attemptRows, highestAiScore] = await Promise.all([
-    readAllQuestionStats(supabase, userId),
-    readAllCompletedAttempts(supabase, userId),
-    readHighestAiScore(supabase, userId),
+    readAllQuestionStats(supabase, userId, options.examType),
+    readAllCompletedAttempts(supabase, userId, options.examType),
+    readHighestAiScore(supabase, userId, options.examType),
   ]);
   const { overview, questionTypeStats } = aggregateAchievementStats(questionStatsRows);
   const attemptStats = aggregateAttemptAchievementStats(attemptRows);

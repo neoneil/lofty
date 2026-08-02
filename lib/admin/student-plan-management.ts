@@ -76,6 +76,10 @@ export type StudentLoginDeviceDetail = StudentLoginDeviceSummary & {
   ipAddress: string | null;
   firstSeenAt: string | null;
   revokedAt: string | null;
+  currentPath: string | null;
+  currentTitle: string | null;
+  currentPathSeenAt: string | null;
+  isOnline: boolean;
 };
 
 export type StudentLoginEventDetail = {
@@ -102,6 +106,8 @@ export type StudentLoginAuditDetail = {
   deviceCount: number;
   recentLoginCount: number;
   activeDeviceCount30d: number;
+  onlineDeviceCount: number;
+  todayActiveSeconds: number;
   countryCount30d: number;
   failedLoginCount24h: number;
   hasBlockedDevice: boolean;
@@ -140,6 +146,14 @@ type UserDeviceRow = {
   is_trusted: boolean | null;
   is_blocked: boolean | null;
   revoked_at?: string | null;
+  current_path?: string | null;
+  current_title?: string | null;
+  current_path_seen_at?: string | null;
+};
+
+type UserActivityDailyRow = {
+  active_seconds: number | null;
+  last_seen_at: string | null;
 };
 
 type LoginEventRow = {
@@ -276,18 +290,31 @@ export async function getStudentPlanManagementRows(supabase: SupabaseClient) {
 }
 
 export async function getStudentLoginAuditDetail(supabase: SupabaseClient, userId: string): Promise<StudentLoginAuditDetail> {
-  const [profileRes, authRes, devicesRes] = await Promise.all([
+  const todaySydney = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Australia/Sydney",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+  const [profileRes, authRes, devicesRes, activityRes] = await Promise.all([
     supabase.from("profiles").select("id, email").eq("id", userId).maybeSingle(),
     supabase.auth.admin.getUserById(userId),
     supabase
       .from("user_devices")
-      .select("id, user_id, device_id, device_label, device_type, browser_name, os_name, ip_address, country, city, first_seen_at, last_seen_at, last_login_at, is_trusted, is_blocked, revoked_at")
+      .select("id, user_id, device_id, device_label, device_type, browser_name, os_name, ip_address, country, city, first_seen_at, last_seen_at, last_login_at, is_trusted, is_blocked, revoked_at, current_path, current_title, current_path_seen_at")
       .eq("user_id", userId)
       .order("last_seen_at", { ascending: false }),
+    supabase
+      .from("user_activity_daily")
+      .select("active_seconds, last_seen_at")
+      .eq("user_id", userId)
+      .eq("activity_date", todaySydney)
+      .maybeSingle(),
   ]);
 
   if (profileRes.error) throw profileRes.error;
   if (devicesRes.error && !isMissingTableError(devicesRes.error)) throw devicesRes.error;
+  if (activityRes.error && !isMissingTableError(activityRes.error) && activityRes.error.code !== "PGRST116") throw activityRes.error;
 
   const email = (profileRes.data as { email: string | null } | null)?.email ?? authRes.data?.user?.email ?? null;
   const eventQueries = [
@@ -349,6 +376,13 @@ export async function getStudentLoginAuditDetail(supabase: SupabaseClient, userI
     const time = new Date(event.created_at ?? "").getTime();
     return event.result === "failed" && Number.isFinite(time) && time >= oneDayAgo;
   }).length;
+  const onlineCutoff = now - 2 * 60_000;
+  const onlineDeviceCount = deviceRows.filter((device) => {
+    const time = new Date(device.current_path_seen_at ?? device.last_seen_at ?? "").getTime();
+    return Number.isFinite(time) && time >= onlineCutoff;
+  }).length;
+  const todayActivity = activityRes.error ? null : activityRes.data as UserActivityDailyRow | null;
+  const todayActiveSeconds = Math.max(0, Number(todayActivity?.active_seconds ?? 0));
   const hasBlockedDevice = deviceRows.some((device) => device.is_blocked);
   const abnormalReasons: string[] = [];
 
@@ -363,6 +397,8 @@ export async function getStudentLoginAuditDetail(supabase: SupabaseClient, userI
     deviceCount: deviceRows.length,
     recentLoginCount: recentEventRows.length,
     activeDeviceCount30d,
+    onlineDeviceCount,
+    todayActiveSeconds,
     countryCount30d: countries30d.size,
     failedLoginCount24h,
     hasBlockedDevice,
@@ -384,6 +420,13 @@ export async function getStudentLoginAuditDetail(supabase: SupabaseClient, userI
       isTrusted: device.is_trusted,
       isBlocked: device.is_blocked,
       revokedAt: device.revoked_at ?? null,
+      currentPath: device.current_path ?? null,
+      currentTitle: device.current_title ?? null,
+      currentPathSeenAt: device.current_path_seen_at ?? null,
+      isOnline: (() => {
+        const time = new Date(device.current_path_seen_at ?? device.last_seen_at ?? "").getTime();
+        return Number.isFinite(time) && time >= onlineCutoff;
+      })(),
     })),
     recentEvents: recentEventRows.map((event) => ({
       id: event.id,
@@ -481,6 +524,7 @@ export async function getStudentDeletionPreview(supabase: SupabaseClient, userId
     selectiveWritingSubmissionIds.length > 0 ? countRows(supabase.schema("selective").from("writing_reviews").select("id", { count: "exact", head: true }).in("writing_submission_id", selectiveWritingSubmissionIds)) : Promise.resolve(0),
     countRows(supabase.from("ai_usage_logs").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.from("ai_user_limits").select("user_id", { count: "exact", head: true }).eq("user_id", userId)),
+    countOptionalRows(supabase.from("user_activity_daily").select("user_id", { count: "exact", head: true }).eq("user_id", userId)),
     countOptionalRows(supabase.from("login_events").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countOptionalRows(supabase.from("user_devices").select("id", { count: "exact", head: true }).eq("user_id", userId)),
     countRows(supabase.from("chat_sessions").select("id", { count: "exact", head: true }).eq("user_id", userId)),
@@ -502,6 +546,7 @@ export async function getStudentDeletionPreview(supabase: SupabaseClient, userId
     ["selective", "writing_reviews", "写作 AI 批改结果"],
     ["public", "ai_usage_logs", "AI 使用日志"],
     ["public", "ai_user_limits", "AI 额度设置"],
+    ["public", "user_activity_daily", "每日活跃统计"],
     ["public", "login_events", "登录事件"],
     ["public", "user_devices", "登录设备"],
     ["public", "chat_sessions", "聊天会话"],
@@ -565,6 +610,7 @@ export async function deleteStudentAndRelatedData(supabase: SupabaseClient, user
   deletedRows.study_plans = await deleteRows(supabase.from("study_plans").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.ai_usage_logs = await deleteRows(supabase.from("ai_usage_logs").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.ai_user_limits = await deleteRows(supabase.from("ai_user_limits").delete({ count: "exact" }).eq("user_id", userId));
+  deletedRows.user_activity_daily = await countOptionalRows(supabase.from("user_activity_daily").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.login_events = await countOptionalRows(supabase.from("login_events").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.user_devices = await countOptionalRows(supabase.from("user_devices").delete({ count: "exact" }).eq("user_id", userId));
   deletedRows.chat_sessions = await deleteRows(supabase.from("chat_sessions").delete({ count: "exact" }).eq("user_id", userId));

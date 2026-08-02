@@ -14,6 +14,7 @@ import {
   LayoutDashboard,
   LibraryBig,
   Mic,
+  NotebookPen,
   PenTool,
   Trophy,
   Video,
@@ -312,6 +313,15 @@ export function Sidebar({ userId }: { userId: string | null }) {
             subtitle="My Courses"
             icon={<Mic size={18} />}
             iconTone="primary"
+            collapsed={collapsed}
+          />
+
+          <SidebarItem
+            href="/homework"
+            label="我的作业"
+            subtitle="Homework"
+            icon={<NotebookPen size={18} />}
+            iconTone="success"
             collapsed={collapsed}
           />
 

@@ -86,7 +86,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
       : await supabase.from("study_plans").insert(payload).select(STUDY_PLAN_SELECT).single();
 
     if (result.error) {
-      return NextResponse.json({ ok: false, message: result.error.message }, { status: 500 });
+      console.error("admin student plan save error:", result.error);
+      return NextResponse.json({ ok: false, message: "保存学习计划失败。" }, { status: 500 });
     }
 
     return NextResponse.json({
@@ -94,10 +95,11 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
       plan: result.data as StudyPlanRecord,
     });
   } catch (error) {
+    console.error("admin student plan save crash:", error);
     return NextResponse.json(
       {
         ok: false,
-        message: error instanceof Error ? error.message : "保存学习计划失败。",
+        message: "保存学习计划失败。",
       },
       { status: 400 },
     );
@@ -137,10 +139,11 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ u
       result,
     });
   } catch (error) {
+    console.error("admin student delete error:", error);
     return NextResponse.json(
       {
         ok: false,
-        message: error instanceof Error ? error.message : "删除学生失败。",
+        message: "删除学生失败。",
       },
       { status: 500 },
     );

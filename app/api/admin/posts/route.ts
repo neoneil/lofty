@@ -47,7 +47,8 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("post create error", error);
+    return NextResponse.json({ ok: false, message: "文章创建失败，请稍后再试。" }, { status: 400 });
   }
 
   return NextResponse.json({ ok: true });

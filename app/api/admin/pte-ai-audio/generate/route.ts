@@ -30,6 +30,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, result });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "生成音频失败" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "生成音频失败" }, { status: 500 });
   }
 }

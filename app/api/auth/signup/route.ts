@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { checkRateLimit, getClientIp } from "@/lib/api/rate-limit";
+import { apiRateLimited } from "@/lib/api/responses";
 import { getAppOrigin } from "@/lib/auth/app-origin";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { createClient } from "@/lib/supabase/server";
@@ -19,6 +21,8 @@ export async function POST(request: NextRequest) {
     const fullName = String(body.fullName ?? "").trim();
     const next = getSafeNextPath(body.next);
     const origin = getAppOrigin(request);
+    const limited = checkRateLimit({ key: `auth-signup:${getClientIp(request)}:${email || "unknown"}`, limit: 5, windowMs: 60_000 });
+    if (!limited.ok) return apiRateLimited("注册尝试过于频繁，请稍后再试。");
 
     if (!email) {
       return NextResponse.json({ ok: false, message: "请输入邮箱。" }, { status: 400 });
@@ -41,7 +45,8 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+      console.error("signup error", error);
+      return NextResponse.json({ ok: false, message: "注册失败，请检查邮箱和密码后重试。" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -49,10 +54,11 @@ export async function POST(request: NextRequest) {
       message: "注册成功，请检查邮箱并完成验证。",
     });
   } catch (error) {
+    console.error("signup route error", error);
     return NextResponse.json(
       {
         ok: false,
-        message: error instanceof Error ? error.message : "注册失败，请稍后再试。",
+        message: "注册失败，请稍后再试。",
       },
       { status: 500 },
     );

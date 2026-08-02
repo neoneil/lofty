@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { apiServerError } from "@/lib/api/responses";
 import { apiUnauthorized, getApiUser } from "@/lib/auth/api-auth";
+
+const STUDY_PLAN_COLUMNS = "id, user_id, exam_type, overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours, additional_notes, created_at, updated_at";
 
 function nullableNumber(value: unknown) {
   if (value === "" || value === null || value === undefined) return null;
@@ -19,12 +22,13 @@ export async function GET() {
 
   const { data, error } = await context.supabase
     .from("study_plans")
-    .select("*")
+    .select(STUDY_PLAN_COLUMNS)
     .eq("user_id", context.user.id)
     .maybeSingle();
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("study plan load error", error);
+    return apiServerError("学习计划加载失败，请稍后再试。");
   }
 
   return NextResponse.json({ ok: true, plan: data ?? null });
@@ -66,17 +70,19 @@ export async function PUT(request: NextRequest) {
     .maybeSingle();
 
   if (existingError) {
-    return NextResponse.json({ ok: false, message: existingError.message }, { status: 400 });
+    console.error("study plan existing lookup error", existingError);
+    return apiServerError("学习计划保存失败，请稍后再试。");
   }
 
   const query = existing?.id
-    ? context.supabase.from("study_plans").update(payload).eq("id", existing.id).select("*").single()
-    : context.supabase.from("study_plans").insert(payload).select("*").single();
+    ? context.supabase.from("study_plans").update(payload).eq("id", existing.id).select(STUDY_PLAN_COLUMNS).single()
+    : context.supabase.from("study_plans").insert(payload).select(STUDY_PLAN_COLUMNS).single();
 
   const { data, error } = await query;
 
   if (error) {
-    return NextResponse.json({ ok: false, message: error.message }, { status: 400 });
+    console.error("study plan save error", error);
+    return apiServerError("学习计划保存失败，请稍后再试。");
   }
 
   return NextResponse.json({ ok: true, plan: data, created: !existing?.id });

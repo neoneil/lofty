@@ -10,6 +10,7 @@ import { X } from "lucide-react";
 import {
   useDictionary
 } from "./dictionary-context";
+import { sanitizeRichHtml } from "@/lib/html/sanitize";
 
 type DictionaryData = {
   word: string;
@@ -448,8 +449,7 @@ export default function DictionaryPopup() {
                           "
                           dangerouslySetInnerHTML={{
                             __html:
-                              item.highlight ||
-                              item.preview
+                              sanitizeRichHtml(item.highlight || item.preview)
                           }}
                         />
 

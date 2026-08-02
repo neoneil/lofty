@@ -41,10 +41,11 @@ export async function POST(
       .maybeSingle();
 
     if (error) {
+      console.error("zoom classroom end error:", error);
       return Response.json(
         {
           ok: false,
-          message: error.message,
+          message: "课堂结束失败，请稍后再试。",
         },
         {
           status: 500,

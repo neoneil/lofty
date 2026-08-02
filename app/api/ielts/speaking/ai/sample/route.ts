@@ -67,6 +67,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, result: JSON.parse(content) });
   } catch (error) {
     console.error("IELTS speaking sample API error:", error);
-    return NextResponse.json({ ok: false, message: error instanceof Error ? error.message : "server error" }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "server error" }, { status: 500 });
   }
 }

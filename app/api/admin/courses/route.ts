@@ -66,7 +66,8 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ ok: false, message: error.message }, { status: 500 });
+      console.error("course create error:", error);
+      return NextResponse.json({ ok: false, message: "创建课程失败" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true, course: data });

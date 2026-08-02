@@ -21,7 +21,7 @@ export default async function IeltsWritingPage() {
   const { data, error } = await supabase
     .schema("ielts")
     .from("ielts_writing_topics")
-    .select("*")
+    .select("id, year, month, day, question_en, question_zh, question_type, topic_category, created_at, updated_at")
     .order("year", { ascending: false })
     .order("month", { ascending: false })
     .order("day", { ascending: false })
@@ -48,7 +48,7 @@ export default async function IeltsWritingPage() {
 
         {error ? (
           <p className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-            Writing 加载失败：{error.message}
+            Writing 加载失败，请稍后再试。
           </p>
         ) : topics.length === 0 ? (
           <p className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm text-[var(--text-soft)]">

@@ -23,8 +23,9 @@ export async function GET(req: NextRequest) {
     .order("created_at", { ascending: false });
 
   if (error) {
+    console.error("RS recordings load error:", error);
     return NextResponse.json(
-      { ok: false, message: error.message },
+      { ok: false, message: "录音记录加载失败。" },
       { status: 500 }
     );
   }

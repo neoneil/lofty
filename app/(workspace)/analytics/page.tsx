@@ -4,26 +4,43 @@ import { AnalyticsChart } from "@/components/dashboard-v2/analytics-chart";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { requireUser } from "@/lib/auth/require-user";
-import { getPteAnalyticsForUser, round } from "@/lib/analytics/pte-analytics";
+import { getServerUserWithRole } from "@/lib/auth/server-auth";
+import { getLearningAnalyticsForUser, round } from "@/lib/analytics/pte-analytics";
+
+type ExamType = "PTE" | "IELTS";
+
+type StudyPlanRow = {
+  exam_type: string | null;
+};
 
 function ChartEmptyState({ message }: { message: string }) {
   return <div className="flex h-full min-h-[260px] items-center justify-center rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-6 text-center text-sm text-[var(--text-faint)]">{message}</div>;
 }
 
-export default async function AnalyticsPage() {
-  const { supabase, user } = await requireUser("/analytics");
-  const analytics = await getPteAnalyticsForUser(supabase, user.id);
+function normalizePreferredExamType(value: string | null | undefined): ExamType {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  return normalized.includes("ielts") || normalized.includes("雅思") ? "IELTS" : "PTE";
+}
+
+function AnalyticsExamPanel({ examType, analytics, defaultOpen }: { examType: ExamType; analytics: Awaited<ReturnType<typeof getLearningAnalyticsForUser>>; defaultOpen: boolean }) {
   const { overview, moduleData, questionTypeCompletionData, recentStudyTimeData, questionAccuracyData, weakestQuestionType, hasQuestionCompletionData, hasRecentStudyTime, hasStudyTime } = analytics;
+  const isIelts = examType === "IELTS";
 
   return (
-    <div className="min-h-screen bg-[var(--bg)]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 py-4 sm:px-4 sm:py-6 lg:px-6">
-        <header>
-          <Badge className="mb-3">Learning Analytics</Badge>
-          <h1 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">学习数据分析</h1>
-          <p className="mt-2 text-sm text-[var(--text-soft)]">根据你的真实练习记录汇总完成量、正确率、学习时间和 AI 评分。</p>
-        </header>
+    <details open={defaultOpen} className="group rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-md)]">
+      <summary className="flex cursor-pointer list-none flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div>
+          <Badge className="mb-2">{examType}</Badge>
+          <h2 className="text-xl font-bold text-[var(--text)]">{isIelts ? "IELTS 学习数据" : "PTE 学习数据"}</h2>
+          <p className="mt-1 text-sm text-[var(--text-soft)]">{isIelts ? "阅读、听力 Test 提交后自动进入统计。" : "根据 PTE 预测题与提交记录汇总。"}</p>
+        </div>
+        <div className="flex items-center gap-3 text-sm font-semibold text-[var(--primary)]">
+          <span className="rounded-full bg-[var(--primary-soft)] px-3 py-1 group-open:hidden">展开</span>
+          <span className="hidden rounded-full bg-[var(--primary-soft)] px-3 py-1 group-open:inline">收起</span>
+        </div>
+      </summary>
 
+      <div className="space-y-6 border-t border-[var(--border)] px-4 py-5 sm:px-6">
         <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-5 xl:grid-cols-4">
           <Card>
             <CardContent className="flex items-center justify-between gap-4 p-5 sm:p-6">
@@ -48,7 +65,7 @@ export default async function AnalyticsPage() {
 
           <Card>
             <CardContent className="flex items-center justify-between gap-4 p-5 sm:p-6">
-              <div><div className="text-sm text-[var(--text-soft)]">最高 AI 评分</div><div className="mt-2 text-3xl font-semibold text-[var(--text)]">{round(overview.highest_ai_score)}</div><div className="mt-2 text-sm text-[var(--text-faint)]">历史最高分</div></div>
+              <div><div className="text-sm text-[var(--text-soft)]">{isIelts ? "最高预估分" : "最高 AI 评分"}</div><div className="mt-2 text-3xl font-semibold text-[var(--text)]">{round(isIelts ? overview.highest_score : overview.highest_ai_score)}</div><div className="mt-2 text-sm text-[var(--text-faint)]">历史最高分</div></div>
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]"><Brain size={22} /></div>
             </CardContent>
           </Card>
@@ -56,8 +73,8 @@ export default async function AnalyticsPage() {
 
         <section className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-6">
           <Card>
-            <CardHeader><div><Badge variant="secondary" className="mb-3">Completion</Badge><CardTitle>题型完成度</CardTitle><CardDescription>已练预测题 / 当前预测题总量，按活跃题目计算</CardDescription></div></CardHeader>
-            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasQuestionCompletionData ? <AnalyticsChart variant="horizontalBar" data={questionTypeCompletionData} xKey="type" yKey="completion" height={420} /> : <ChartEmptyState message="暂无可计算的预测题完成度。" />}</CardContent>
+            <CardHeader><div><Badge variant="secondary" className="mb-3">Completion</Badge><CardTitle>题型完成度</CardTitle><CardDescription>{isIelts ? "已练 IELTS 小题 / 当前支持的小题总量" : "已练预测题 / 当前预测题总量，按活跃题目计算"}</CardDescription></div></CardHeader>
+            <CardContent className="p-4 pt-2 sm:p-6 sm:pt-2">{hasQuestionCompletionData ? <AnalyticsChart variant="horizontalBar" data={questionTypeCompletionData} xKey="type" yKey="completion" height={420} /> : <ChartEmptyState message="暂无可计算的题型完成度。" />}</CardContent>
           </Card>
 
           <Card>
@@ -83,6 +100,34 @@ export default async function AnalyticsPage() {
             <div className="flex items-center gap-3"><Target size={18} className="text-[var(--primary)]" /><div><div className="text-xs text-[var(--text-faint)]">历史最高连续答对</div><div className="mt-1 font-semibold text-[var(--text)]">{overview.max_correct_streak} 道</div></div></div>
           </CardContent>
         </Card>
+      </div>
+    </details>
+  );
+}
+
+export default async function AnalyticsPage() {
+  const userContext = await requireUser("/analytics");
+  const { supabase, user } = userContext;
+  const [{ data: studyPlan }, adminContext, pteAnalytics, ieltsAnalytics] = await Promise.all([
+    supabase.from("study_plans").select("exam_type").eq("user_id", user.id).maybeSingle<StudyPlanRow>(),
+    getServerUserWithRole(["admin"], userContext),
+    getLearningAnalyticsForUser(supabase, user.id, "PTE"),
+    getLearningAnalyticsForUser(supabase, user.id, "IELTS"),
+  ]);
+  const preferredExamType = normalizePreferredExamType(studyPlan?.exam_type);
+  const isAdmin = Boolean(adminContext);
+
+  return (
+    <div className="min-h-screen bg-[var(--bg)]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 py-4 sm:px-4 sm:py-6 lg:px-6">
+        <header>
+          <Badge className="mb-3">Learning Analytics</Badge>
+          <h1 className="text-2xl font-semibold text-[var(--text)] sm:text-3xl">学习数据分析</h1>
+          <p className="mt-2 text-sm text-[var(--text-soft)]">根据你的真实练习记录汇总完成量、正确率、学习时间和 AI 评分。</p>
+        </header>
+
+        <AnalyticsExamPanel examType="IELTS" analytics={ieltsAnalytics} defaultOpen={isAdmin || preferredExamType === "IELTS"} />
+        <AnalyticsExamPanel examType="PTE" analytics={pteAnalytics} defaultOpen={isAdmin || preferredExamType === "PTE"} />
       </div>
     </div>
   );

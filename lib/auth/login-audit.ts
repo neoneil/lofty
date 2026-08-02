@@ -49,6 +49,10 @@ export function applyLoginAuditCookie(response: NextResponse, audit: LoginAuditR
   response.cookies.set(audit.cookie.name, audit.cookie.value, audit.cookie.options);
 }
 
+export function getLoginDeviceId(request: NextRequest) {
+  return request.cookies.get(DEVICE_COOKIE_NAME)?.value ?? null;
+}
+
 export async function recordSuccessfulLogin(request: NextRequest, user: User, method: LoginMethod): Promise<LoginAuditResult | null> {
   const context = buildDeviceContext(request);
   const admin = createAdminClient();

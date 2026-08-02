@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { sanitizeRichHtml } from "@/lib/html/sanitize";
 
 type Props = {
   open: boolean;
@@ -247,8 +248,7 @@ export default function SearchModal({
                   "
                   dangerouslySetInnerHTML={{
                     __html:
-                      item.highlight ||
-                      item.preview,
+                      sanitizeRichHtml(item.highlight || item.preview),
                   }}
                 />
 

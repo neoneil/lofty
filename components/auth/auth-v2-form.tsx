@@ -15,6 +15,12 @@ const REGISTRATION_CLOSED = false;
 
 type AuthV2Mode = "login" | "signup";
 
+const authErrorMessages: Record<string, string> = {
+  google_login_failed: "Google 登录没有完成，请重新选择账号后再试。",
+  google_profile_failed: "Google 账号资料同步失败，请稍后重试，或先使用邮箱登录。",
+  profile_required: "账号资料还没有准备好，请重新登录一次。",
+};
+
 function GoogleIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -58,11 +64,15 @@ function FieldShell({
 export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
   const searchParams = useSearchParams();
   const isSignup = mode === "signup";
+  const initialMessage = useMemo(() => {
+    const error = searchParams.get("error");
+    return error ? authErrorMessages[error] ?? "登录没有完成，请重新尝试。" : "";
+  }, [searchParams]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [focusedField, setFocusedField] = useState<AuthV2CharacterFocus>(null);

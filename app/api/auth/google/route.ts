@@ -5,6 +5,7 @@ import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { createClient } from "@/lib/supabase/server";
 
 const AUTH_NEXT_COOKIE = "auth_next";
+const AUTH_MODE_COOKIE = "auth_mode";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -23,12 +24,20 @@ export async function GET(request: NextRequest) {
   });
 
   if (error || !data.url) {
+    console.error("google oauth start error", error);
     const target = mode === "signup" ? "/sign-up-v2" : "/login-v2";
-    return NextResponse.redirect(`${origin}${target}?error=${encodeURIComponent(error?.message ?? "google_login_failed")}&next=${encodeURIComponent(next)}`);
+    return NextResponse.redirect(`${origin}${target}?error=google_login_failed&next=${encodeURIComponent(next)}`);
   }
 
   const response = NextResponse.redirect(data.url);
   response.cookies.set(AUTH_NEXT_COOKIE, encodeURIComponent(next), {
+    path: "/",
+    maxAge: 600,
+    sameSite: "lax",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  });
+  response.cookies.set(AUTH_MODE_COOKIE, mode, {
     path: "/",
     maxAge: 600,
     sameSite: "lax",

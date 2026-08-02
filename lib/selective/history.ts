@@ -40,13 +40,13 @@ export async function getSelectiveHistoryRows(supabase: SupabaseClient, userId?:
   let writingQuery = supabase
     .schema("selective")
     .from("v_writing_history")
-    .select("*")
+    .select("id, user_id, student_name, question_table, question_id, question_type, submitted_answer_text, submitted_answer_json, score, max_score, is_correct, submitted_at, submitted_on")
     .order("submitted_at", { ascending: false });
 
   let attemptsQuery = supabase
     .schema("selective")
     .from("student_attempts")
-    .select("*")
+    .select("id, user_id, student_name, question_table, question_id, question_type, submitted_answer_text, submitted_answer_json, score, max_score, is_correct, submitted_at, submitted_on")
     .eq("question_table", "math_questions")
     .order("submitted_at", { ascending: false });
 
