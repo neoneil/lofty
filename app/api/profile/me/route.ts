@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
 import { apiUnauthorized, getApiUser } from "@/lib/auth/api-auth";
 import type { ServerSupabaseClient } from "@/lib/auth/server-auth";
 import { getPublicR2Url } from "@/lib/storage/public-url";
@@ -53,9 +54,10 @@ export async function GET(request: NextRequest) {
   const { supabase, user } = context;
   const includeAvatars = request.nextUrl.searchParams.get("includeAvatars") === "1";
 
-  const [{ data: profile, error: profileError }, { data: studyPlan, error: studyPlanError }, avatars] = await Promise.all([
-    supabase.from("profiles").select("full_name, email, avatar_url, role, selective_access").eq("id", user.id).maybeSingle(),
+  const [{ data: profile, error: profileError }, { data: studyPlan, error: studyPlanError }, aiAccess, avatars] = await Promise.all([
+    supabase.from("profiles").select("full_name, email, avatar_url, role, selective_access, is_my_student").eq("id", user.id).maybeSingle(),
     supabase.from("study_plans").select("exam_type, overall_target, exam_deadline").eq("user_id", user.id).maybeSingle(),
+    checkAiUsageLimit(user.id, "ai_feedback"),
     includeAvatars ? listAvatarOptions(supabase) : Promise.resolve([]),
   ]);
 
@@ -82,8 +84,19 @@ export async function GET(request: NextRequest) {
       avatar_url: authAvatar(user),
       role: null,
       selective_access: false,
+      is_my_student: false,
     },
     studyPlan: studyPlan ?? null,
+    aiAccess: {
+      isUnlimited: aiAccess.isUnlimited,
+      unlimitedUntil: aiAccess.unlimitedUntil,
+      isPermanentUnlimited: aiAccess.isUnlimited && !aiAccess.unlimitedUntil,
+      todayUsed: aiAccess.todayUsed,
+      dailyLimit: aiAccess.dailyLimit,
+      monthUsed: aiAccess.monthUsed,
+      monthlyLimit: aiAccess.monthlyLimit,
+      isMyStudent: Boolean(profile?.is_my_student),
+    },
     avatars,
   });
 }

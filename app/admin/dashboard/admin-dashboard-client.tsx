@@ -21,7 +21,7 @@ type ActiveStudent = {
   avatar_url: string | null;
   latest_question_source: string | null;
   attempts: number;
-  last_submitted_at: string;
+  last_submitted_at: string | null;
 };
 
 type TypeSummary = {
@@ -37,6 +37,7 @@ type Practice = {
   sourceKind: string;
   questionSource: string;
   questionId: string;
+  questionPrompt?: string | null;
   submittedAt: string | null;
   audioUrl?: string | null;
   score?: number | null;
@@ -107,6 +108,8 @@ const TYPE_LABEL_MAP: Record<string, string> = {
   asq: "ASQ",
   rts: "RTS",
   sgd: "SGD",
+  ielts_speaking_ai: "IELTS Speaking AI",
+  ielts_writing_ai: "IELTS Writing AI",
   swt: "SWT",
   essay: "Essay",
   rfib: "RFIB",
@@ -708,6 +711,17 @@ export default function AdminDashboardClient({ overview, students }: Props) {
                                 </div>
                               ))}
                             </div>
+
+                            {practice.questionPrompt ? (
+                              <div>
+                                <div className="text-sm font-bold text-[var(--text)]">
+                                  Question
+                                </div>
+                                <p className="mt-2 whitespace-pre-wrap rounded border border-[var(--border)] bg-[var(--card)] p-3 text-sm leading-7 text-[var(--text)]">
+                                  {practice.questionPrompt}
+                                </p>
+                              </div>
+                            ) : null}
 
                             {practice.feedback ? (
                               <div>

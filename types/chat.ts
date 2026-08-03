@@ -26,4 +26,5 @@ export type ChatSessionWithProfile = ChatSession & {
   } | null;
   last_message: ChatMessage | null;
   unread_count: number;
+  has_session?: boolean;
 };

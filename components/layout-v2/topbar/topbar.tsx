@@ -39,7 +39,7 @@ export function Topbar({ user, canAccessAdmin }: Props) {
 
         <TopbarUser user={user} />
 
-        {canAccessAdmin ? <Link href="/admin" aria-label="进入管理员后台" title="管理员" className="flex h-10 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]"><ShieldCheck size={17} /><span className="hidden xl:inline">管理员</span></Link> : null}
+        {canAccessAdmin ? <Link href="/admin" aria-label="进入管理员后台" title="管理员" className="ml-1 flex h-11 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]"><ShieldCheck size={17} /><span className="hidden xl:inline">管理员</span></Link> : null}
       </div>
     </header>
   );

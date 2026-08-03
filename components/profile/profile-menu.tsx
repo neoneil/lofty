@@ -16,6 +16,8 @@ type Profile = {
   full_name: string | null;
   email: string | null;
   avatar_url: string | null;
+  role?: string | null;
+  is_my_student?: boolean | null;
 };
 
 type StudyPlanSummary = {
@@ -27,6 +29,17 @@ type StudyPlanSummary = {
 type AvatarOption = {
   name: string;
   url: string;
+};
+
+type AiAccess = {
+  isUnlimited: boolean;
+  unlimitedUntil: string | null;
+  isPermanentUnlimited: boolean;
+  todayUsed: number;
+  dailyLimit: number | null;
+  monthUsed: number;
+  monthlyLimit: number | null;
+  isMyStudent: boolean;
 };
 
 type Props = {
@@ -69,6 +82,34 @@ function getAuthName(user: User | null) {
   );
 }
 
+function formatDate(value: string | null) {
+  if (!value) return "";
+
+  return new Intl.DateTimeFormat("zh-CN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(value));
+}
+
+function getRoleLabel(role: string | null | undefined) {
+  if (role === "admin") return "Admin 管理员";
+  if (role === "editor") return "Editor";
+  return "普通用户";
+}
+
+function getAiTokenLabel(aiAccess: AiAccess | null) {
+  if (!aiAccess) return "AI token 加载中";
+  if (aiAccess.isPermanentUnlimited) return "AI token 永久无限";
+  if (aiAccess.isUnlimited && aiAccess.unlimitedUntil) return `AI token 无限 - 到期日 ${formatDate(aiAccess.unlimitedUntil)}`;
+
+  if (typeof aiAccess.monthlyLimit === "number") {
+    return `AI token ${aiAccess.monthUsed}/${aiAccess.monthlyLimit}`;
+  }
+
+  return "AI token 未配置";
+}
+
 export function ProfileMenu({
   user,
 }: Props) {
@@ -84,6 +125,7 @@ export function ProfileMenu({
   const [status, setStatus] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [studyPlan, setStudyPlan] = useState<StudyPlanSummary | null>(null);
+  const [aiAccess, setAiAccess] = useState<AiAccess | null>(null);
   const [avatars, setAvatars] = useState<AvatarOption[]>([]);
   const [fullName, setFullName] = useState("");
   const [selectedAvatarUrl, setSelectedAvatarUrl] = useState<string | null>(
@@ -178,10 +220,11 @@ export function ProfileMenu({
       let response: {
         profile: Profile | null;
         studyPlan: StudyPlanSummary | null;
+        aiAccess: AiAccess | null;
       };
 
       try {
-        response = await apiGet<{ profile: Profile | null; studyPlan: StudyPlanSummary | null }>("/api/profile/me");
+        response = await apiGet<{ profile: Profile | null; studyPlan: StudyPlanSummary | null; aiAccess: AiAccess | null }>("/api/profile/me");
       } catch (error) {
         if (cancelled) {
           return;
@@ -206,6 +249,7 @@ export function ProfileMenu({
 
       setProfile(nextProfile);
       setStudyPlan(response.studyPlan ?? null);
+      setAiAccess(response.aiAccess ?? null);
       setFullName(nextProfile.full_name?.trim() || getAuthName(currentUser));
       setSelectedAvatarUrl(nextProfile.avatar_url || getAuthAvatar(currentUser));
       if (open) {
@@ -328,7 +372,7 @@ export function ProfileMenu({
   return (
     <div
       ref={menuRef}
-      className="relative"
+      className="group relative"
     >
       <button
         type="button"
@@ -371,6 +415,32 @@ export function ProfileMenu({
           )}
         />
       </button>
+
+      {!open ? (
+        <div className="pointer-events-none absolute right-0 top-[calc(100%+0.5rem)] z-50 w-72 translate-y-1 opacity-0 transition duration-150 group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-3 text-left shadow-[var(--shadow-lg)]">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-sm font-bold text-[var(--primary)]">
+                {displayAvatar ? <img src={displayAvatar} alt="" referrerPolicy="no-referrer" className="h-full w-full object-cover" /> : initials}
+              </div>
+              <div className="min-w-0">
+                <div className="truncate text-sm font-bold text-[var(--text)]">{displayName}</div>
+                <div className="truncate text-xs text-[var(--text-soft)]">{email}</div>
+              </div>
+            </div>
+
+            <div className="mt-3 grid gap-2">
+              <div className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2">
+                <span className="text-xs font-semibold text-[var(--text-faint)]">账户状态</span>
+                <span className="text-xs font-bold text-[var(--text)]">{getRoleLabel(profile?.role)}</span>
+              </div>
+              <div className="rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">
+                {getAiTokenLabel(aiAccess)}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {renderMenu ? (
         <div

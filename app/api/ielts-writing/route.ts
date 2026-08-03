@@ -337,6 +337,10 @@ function normalizeReviewResult(
   };
 }
 
+function isMissingTableError(error: unknown) {
+  return typeof error === "object" && error !== null && "code" in error && ["42P01", "PGRST205"].includes(String((error as { code?: unknown }).code));
+}
+
 export async function POST(req: Request) {
   try {
     const supabase = await createClient();
@@ -450,6 +454,25 @@ export async function POST(req: Request) {
     }
 
     const normalized = normalizeReviewResult(parsed, body.essayText, localWordCount);
+
+    const { error: saveError } = await supabase
+      .schema("ielts")
+      .from("writing_attempts")
+      .insert({
+        user_id: user.id,
+        task_type: "task2",
+        prompt_question: body.promptQuestion,
+        essay_text: body.essayText,
+        target_band: body.targetBand ?? null,
+        overall_band: normalized.estimated_overall_band,
+        word_count: normalized.word_count,
+        scores_json: normalized.scores,
+        feedback_json: normalized,
+      });
+
+    if (saveError && !isMissingTableError(saveError)) {
+      console.error("IELTS writing attempt save error:", saveError);
+    }
 
     return NextResponse.json(normalized);
   } catch (error) {

@@ -213,6 +213,7 @@ export default function AdminChatPage() {
 
       if (data.message) {
         const insertedMessage = data.message as ChatMessage;
+        const nextSessionId = typeof data.sessionId === 'string' ? data.sessionId : selectedSessionId;
 
         setMessages((prev) => {
           const exists = prev.some((m) => m.id === insertedMessage.id);
@@ -225,12 +226,18 @@ export default function AdminChatPage() {
             session.id === selectedSessionId
               ? {
                   ...session,
+                  id: nextSessionId,
+                  has_session: true,
                   updated_at: insertedMessage.created_at,
                   last_message: insertedMessage,
                 }
               : session
           )
         );
+
+        if (nextSessionId !== selectedSessionId) {
+          setSelectedSessionId(nextSessionId);
+        }
       }
     } catch {
       setInput(content);

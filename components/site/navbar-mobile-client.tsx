@@ -17,6 +17,8 @@ type MobileUser = {
   name: string;
   email: string;
   avatar: string;
+  roleLabel: string;
+  aiTokenLabel: string;
 } | null;
 
 export default function NavbarMobileClient({
@@ -76,7 +78,7 @@ export default function NavbarMobileClient({
                     alt={user.name}
                     width={28}
                     height={28}
-                    className="h-7 w-7 rounded-full border border-[var(--border)] object-cover"
+                    className="h-7 w-7 rounded-[var(--radius-sm)] border border-[var(--border)] object-cover"
                   />
 
                   <div className="min-w-0 leading-tight">
@@ -85,6 +87,9 @@ export default function NavbarMobileClient({
                     </span>
                     <span className="block max-w-32.5 truncate text-[10px] text-[var(--text-soft)]">
                       {user.email}
+                    </span>
+                    <span className="mt-0.5 block max-w-32.5 truncate text-[10px] font-semibold text-[var(--primary)]">
+                      {user.roleLabel} · {user.aiTokenLabel}
                     </span>
                   </div>
                 </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
-import { BookOpenCheck, ChevronDown, ChevronRight, Crown, GraduationCap } from "lucide-react";
+import { BookOpenCheck, ChevronDown, ChevronRight, GraduationCap, ShieldCheck } from "lucide-react";
 import Container from "./container";
 import NavbarMobileClient from "./navbar-mobile-client";
 import { ThemeToggle } from "@/components/layout-v2/topbar/theme-toggle";
@@ -11,12 +11,32 @@ import { BRAND_NAME_CN } from "@/lib/brand";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { NavbarScrollShell } from "@/components/site/navbar-scroll-shell";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
 
 type NavItem = {
   href: string;
   label: string;
   tooltip: string;
 };
+
+function formatDate(value: string | null) {
+  if (!value) return "";
+  return new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(value));
+}
+
+function getRoleLabel(role: string | null | undefined) {
+  if (role === "admin") return "Admin 管理员";
+  if (role === "editor") return "Editor";
+  return "普通用户";
+}
+
+function getAiTokenLabel(aiAccess: Awaited<ReturnType<typeof checkAiUsageLimit>> | null) {
+  if (!aiAccess) return "AI token 加载中";
+  if (aiAccess.isUnlimited && !aiAccess.unlimitedUntil) return "AI token 永久无限";
+  if (aiAccess.isUnlimited && aiAccess.unlimitedUntil) return `AI token 无限 - 到期日 ${formatDate(aiAccess.unlimitedUntil)}`;
+  if (typeof aiAccess.monthlyLimit === "number") return `AI token ${aiAccess.monthUsed}/${aiAccess.monthlyLimit}`;
+  return "AI token 未配置";
+}
 
 export default async function Navbar() {
   const supabase = await createClient();
@@ -30,18 +50,23 @@ export default async function Navbar() {
   let profileName: string | null = null;
   let profileEmail: string | null = null;
   let profileAvatar: string | null = null;
+  let aiAccess: Awaited<ReturnType<typeof checkAiUsageLimit>> | null = null;
 
   if (user) {
-    const { data: profile, error: profileError } = await supabase
-      .from("profiles")
-      .select("role, selective_access, full_name, email, avatar_url")
-      .eq("id", user.id)
-      .single();
+    const [{ data: profile, error: profileError }, aiAccessResult] = await Promise.all([
+      supabase
+        .from("profiles")
+        .select("role, selective_access, full_name, email, avatar_url")
+        .eq("id", user.id)
+        .single(),
+      checkAiUsageLimit(user.id, "ai_feedback"),
+    ]);
 
     if (profileError) {
       console.error("Navbar profile query failed:", profileError);
     }
 
+    aiAccess = aiAccessResult;
     role = profile?.role ?? null;
     selectiveAccess = profile?.selective_access ?? false;
     profileName = profile?.full_name ?? null;
@@ -58,6 +83,8 @@ export default async function Navbar() {
     "User";
 
   const email = profileEmail || user?.email || "";
+  const roleLabel = getRoleLabel(role);
+  const aiTokenLabel = getAiTokenLabel(aiAccess);
 
   const avatar =
     normalizePublicStorageUrl(profileAvatar, "avatars") ||
@@ -144,6 +171,8 @@ export default async function Navbar() {
                         name,
                         email,
                         avatar,
+                        roleLabel,
+                        aiTokenLabel,
                       }
                     : null
                 }
@@ -219,15 +248,14 @@ export default async function Navbar() {
                 {user ? (
                   <>
                     <div className="group relative flex h-12 items-center gap-2.5 rounded-[var(--radius-md)] border border-transparent bg-transparent px-1.5 pr-2 shadow-none transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)]">
-                      <div className="relative h-11 w-11 shrink-0">
+                      <div className="h-11 w-11 shrink-0 overflow-hidden rounded-[var(--radius-md)] bg-[var(--primary-soft)]">
                         <Image
                           src={avatar}
                           alt={name}
                           width={44}
                           height={44}
-                          className="h-11 w-11 rounded-full border border-transparent object-cover shadow-none"
+                          className="h-11 w-11 object-cover shadow-none"
                         />
-                        <span className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[var(--card)] bg-[var(--success)]" />
                       </div>
 
                       <div className="hidden min-w-0 flex-col leading-tight xl:flex">
@@ -240,19 +268,29 @@ export default async function Navbar() {
                         </span>
                       </div>
 
-                      <div className="pointer-events-none absolute right-0 top-[calc(100%+10px)] z-50 w-[260px] translate-y-1 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 text-left opacity-0 shadow-[var(--shadow-lg)] backdrop-blur-xl transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
-                        <div className="mb-3">
-                          <div className="text-sm font-bold text-[var(--text)]">账户状态说明</div>
-                          <div className="mt-1 text-xs leading-5 text-[var(--text-soft)]">头像右下角颜色代表当前账号状态。</div>
+                      <div className="pointer-events-none absolute right-0 top-[calc(100%+10px)] z-50 w-72 translate-y-1 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-3 text-left opacity-0 shadow-[var(--shadow-lg)] backdrop-blur-xl transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                        <div className="flex items-center gap-3">
+                          <div className="h-10 w-10 shrink-0 overflow-hidden rounded-[var(--radius-md)] bg-[var(--primary-soft)]">
+                            <Image src={avatar} alt="" width={40} height={40} className="h-10 w-10 object-cover" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="truncate text-sm font-bold text-[var(--text)]">{name}</div>
+                            <div className="truncate text-xs text-[var(--text-soft)]">{email}</div>
+                          </div>
                         </div>
-                        <div className="space-y-2.5">
-                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--success)]" /><span className="text-xs font-semibold text-[var(--text)]">绿色 = 已登录</span></div>
-                          <div className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--warning-soft)] text-[var(--warning)]"><Crown size={13} /></span><span className="text-xs font-semibold text-[var(--text)]">金色 = 内部学生</span></div>
-                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--primary)]" /><span className="text-xs font-semibold text-[var(--text)]">蓝色 = 临时无限 AI</span></div>
-                          <div className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-[var(--text-faint)]" /><span className="text-xs font-semibold text-[var(--text)]">灰色 = 普通用户</span></div>
+                        <div className="mt-3 grid gap-2">
+                          <div className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2">
+                            <span className="text-xs font-semibold text-[var(--text-faint)]">账户状态</span>
+                            <span className="text-xs font-bold text-[var(--text)]">{roleLabel}</span>
+                          </div>
+                          <div className="rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">
+                            {aiTokenLabel}
+                          </div>
                         </div>
                       </div>
                     </div>
+
+                    {ChiMa ? <Link href="/admin" aria-label="进入管理员后台" title="管理员" className="ml-1 flex h-11 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]"><ShieldCheck size={17} /><span className="hidden xl:inline">管理员</span></Link> : null}
 
                     <LogoutButton showIcon className="flex h-10 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-semibold text-[var(--primary)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--primary-soft)]" />
                   </>
