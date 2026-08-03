@@ -7,7 +7,7 @@ type SpeakingPart1Question = {
   topic_title: string;
   question_number: number;
   question_text: string;
-  answer_text: string;
+  answer_text?: string | null;
 };
 
 type SpeakingPart2Topic = {
@@ -42,7 +42,7 @@ export default async function IeltsSpeakingPage() {
     supabase
       .schema("ielts")
       .from("ielts_speaking_part1_questions")
-      .select("id, topic_title, question_number, question_text, answer_text")
+      .select("id, topic_title, question_number, question_text")
       .order("topic_title", { ascending: true })
       .order("question_number", { ascending: true })
       .limit(500),

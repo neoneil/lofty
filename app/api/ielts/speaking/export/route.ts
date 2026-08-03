@@ -7,7 +7,7 @@ type SpeakingPart1Question = {
     topic_title: string;
     question_number: number;
     question_text: string;
-    answer_text: string;
+    answer_text?: string | null;
 };
 
 type SpeakingPart2Topic = {
@@ -48,7 +48,7 @@ type ExportPayload =
         category: string;
     };
 
-const PART1_COLUMNS = "id, topic_title, question_number, question_text, answer_text";
+const PART1_COLUMNS = "id, topic_title, question_number, question_text";
 const PART2_COLUMNS = "id, chinese_title, english_title, part2_question, cue_card_1, cue_card_2, cue_card_3, cue_card_4, part3_q1, part3_q2, part3_q3, part3_q4, part3_q5, part3_q6, part3_q7, part3_q8, part3_q9, part3_q10, category, difficulty, status, sort_order";
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
@@ -302,8 +302,10 @@ export async function POST(req: NextRequest) {
 
                 drawLine(`Question ${item.question_number}`, { size: SMALL_SIZE, bold: true, color: [0.35, 0.35, 0.35] });
                 drawLine(item.question_text || "", { bold: true });
-                addGap(1);
-                drawLine(item.answer_text || "");
+                if (item.answer_text) {
+                    addGap(1);
+                    drawLine(item.answer_text);
+                }
                 addGap(8);
             }
 
@@ -414,8 +416,10 @@ export async function POST(req: NextRequest) {
                 });
 
                 drawLine(item.question_text || "", { bold: true });
-                addGap(1);
-                drawLine(item.answer_text || "");
+                if (item.answer_text) {
+                    addGap(1);
+                    drawLine(item.answer_text);
+                }
                 addGap(8);
             }
 

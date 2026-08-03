@@ -13,7 +13,7 @@ type SpeakingPart1Question = {
   topic_title: string;
   question_number: number;
   question_text: string;
-  answer_text: string;
+  answer_text?: string | null;
 };
 
 type SpeakingPart2Topic = {
