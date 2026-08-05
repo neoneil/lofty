@@ -1128,6 +1128,59 @@ Return JSON only:
   "hintChinese": "string"
 }`,
   },
+  {
+    id: "content.vocabulary.extract.user",
+    title: "文档词汇自动整理",
+    category: "Content Ingest",
+    scope: "user",
+    description: "Admin 上传 PDF/Word/PPT 后，将提取文本整理成可渲染的词汇 JSON。",
+    usedBy: ["lib/content-ingest/ai.ts", "app/api/admin/content-ingest/route.ts"],
+    variables: [
+      { name: "title", description: "Generated document title" },
+      { name: "category", description: "Content category" },
+      { name: "sourceFileNames", description: "Uploaded source file names" },
+      { name: "rawText", description: "Extracted source text" },
+      { name: "maxItems", description: "Maximum vocabulary entries" },
+    ],
+    defaultContent: `You are an IELTS/PTE academic vocabulary editor for Lofty Education.
+
+Task:
+Extract high-value vocabulary and phrases from the provided document text. Prioritize IELTS/PTE useful academic words, topic words, collocations, and expressions. Avoid trivial words, names, page numbers, headings with no learning value, and duplicates.
+
+Document title: {{title}}
+Category: {{category}}
+Source files: {{sourceFileNames}}
+Maximum vocabulary entries: {{maxItems}}
+
+Document text:
+{{rawText}}
+
+Return ONLY valid JSON. Do not use markdown. The JSON shape must be:
+{
+  "summary": "A concise Simplified Chinese summary of what the document is about.",
+  "vocabulary": [
+    {
+      "term": "word or phrase",
+      "partOfSpeech": "noun | verb | adjective | adverb | phrase | collocation | other",
+      "chineseMeaning": "简体中文释义",
+      "englishDefinition": "Clear learner-friendly English definition",
+      "example": "A natural English example sentence related to IELTS/PTE or the document topic",
+      "collocations": ["2-5 useful collocations or phrase patterns"],
+      "difficulty": "basic | intermediate | advanced",
+      "examUse": ["IELTS Reading", "IELTS Listening", "IELTS Writing", "IELTS Speaking", "PTE"],
+      "sourceContext": "Short excerpt or paraphrased context from the document",
+      "frequency": 1
+    }
+  ]
+}
+
+Rules:
+- Keep term unique after lowercasing.
+- Prefer English terms; include phrases when more useful than a single word.
+- Use Simplified Chinese only in chineseMeaning and summary.
+- If the document text is short, still return useful vocabulary from it.
+- frequency should estimate how often the term appears in the document text.`,
+  },
 ];
 
 export function getDefaultAiPromptDefinition(id: string) {

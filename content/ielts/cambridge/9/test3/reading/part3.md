@@ -15,7 +15,7 @@ section_id: "7f43071a-4f90-4f74-836d-18fe31c885b3"
 section_number: 3
 section_title: " Passage3"
 section_instruction: "Reading Passage 3 has six paragraphs, <b>A-F</b>.<br/>Which paragraph contains the following information?<br/>Write the correct letter <b>A-E</b> in boxes 27-32 on your answer sheet. "
-passage_title: "C9-T3-S3"
+passage_title: "Information Theory - The Big Idea"
 section_sort_order: 3
 module_raw_data_json: |
   {
@@ -314,7 +314,7 @@ questions_json: |
               "D"
             ],
             "serial": "27",
-            "content": "27 an explanation of the factors affecting the transmission of information[blank][/blank]",
+            "content": "27 an explanation of the factors affecting the transmission of information",
             "answerExplain": "27. 参考译文：影响信息传递的因素的解释。<br/>定位词： explanation of the factors, transmission of information <br/>对应原文：D 段 第 四 句 This rate depends on the relative strengths of the signal and noise travelling down the communication channel, and on its capacity (its ‘bandwidth’). <br/>解析：文章中的 communication channel 就是信息传递的通道，而 relative strengths of the signal and noise 就是会影响传递效果的因素，即 factors。 答案为 D。"
           },
           {
@@ -324,7 +324,7 @@ questions_json: |
               "F"
             ],
             "serial": "28",
-            "content": "28 an example of how unnecessary information can be omitted[blank][/blank]",
+            "content": "28 an example of how unnecessary information can be omitted",
             "answerExplain": "28. 参考译文：如何忽略不必要的信息的例子。<br/>定位词： example, unnecessary information, omitted<br/>对应原文：F 段第一句和第二句 Shannon also laid the foundations of more efficient ways of storing information, by stripping out superfluous (‘redundant’) bits from data which contributed little real information. As mobile phone text messages like ‘I CN C U’ show, it is often possible to leave out a lot of data without losing much meaning. <br/>解析： 原文中 superfluous bits 和 contributed little real information 对应题目中的 unnecessary information，手机短信的例子对应了题目中的 example，leave out 对应题目中的 omitted。 答案为 F。"
           },
           {
@@ -334,7 +334,7 @@ questions_json: |
               "B"
             ],
             "serial": "29",
-            "content": "29 a reference to Shannon`s attitude to fame[blank][/blank]",
+            "content": "29 a reference to Shannon`s attitude to fame",
             "answerExplain": "29. 参考译文：Shannon对于名誉的态度。 <br/>定位词： Shannon’s attitude, fame  <br/>对应原文：B 段第四句 While at Bell Laboratories, Shannon developed information theory, but shunned the resulting acclaim. <br/>解析：原文中 shunned the resulting acclaim 意思是“回避了最后的称赞”，也就是说他对于名誉的态度很淡薄。 答案为 B。"
           },
           {
@@ -344,7 +344,7 @@ questions_json: |
               "E"
             ],
             "serial": "30",
-            "content": "30 details of a machine capable of interpreting incomplete information[blank][/blank]",
+            "content": "30 details of a machine capable of interpreting incomplete information",
             "answerExplain": "30. 参考译文：一个机器能够解读不完整信息的细节。<br/>定位词： a machine, interpreting incomplete information<br/> 对应原文：E 段第三句 Other codes have become part of everyday life — such as the Universal Product Code, or bar code, which uses a simple error-detecting system that ensures supermarket check-out lasers can read the price even on, say, a crumpled bag of crisps. <br/>解析： 题干中 machine 对应原文中 supermarket check-out lasers, incomplete information 对应原文中的 a crumpled bag of crisps， 就是举例中的破碎的薯片袋子，也就是说即便袋子破损，条形码依旧可以被准确读出。 答案为 E。"
           },
           {
@@ -354,7 +354,7 @@ questions_json: |
               "A"
             ],
             "serial": "31",
-            "content": "31 a detailed account of an incident involving information theory[blank][/blank]",
+            "content": "31 a detailed account of an incident involving information theory",
             "answerExplain": "31. 参考译文：一个涉及到信息理论的事件的详细说明。<br/>定位词： detailed account of an incident  <br/>对应原文：A 段 第 一 句和第二句 In April 2002 an event took place which demonstrated one of the many applications of information theory. The space probe, Voyager I, launched in 1977，had sent back spectacular images of Jupiter and Saturn and then soared out of the Solar System on a one-way mission to the stars.<br/>解析：此段开头句就直接指明 2002 年 4 月发生的事件展示了信息理论的应用，后面又详细地介绍了这一事件的过程。答案为 A。"
           },
           {
@@ -364,7 +364,7 @@ questions_json: |
               "C"
             ],
             "serial": "32",
-            "content": "32 a reference to what Shannon initially intended to achieve in his research[blank][/blank]",
+            "content": "32 a reference to what Shannon initially intended to achieve in his research",
             "answerExplain": "32. 参考译文：最初，Shannon想要从他的研究中获得什么。<br/>定位词： Shannon initially intended to achieve  <br/>对应原文：C段第一句和第二句 This all seems light years away from the down-to-earth uses Shannon originally had for his work, which began when he was a 22-yearold graduate engineering student at the prestigious Massachusetts Institute of Technology in 1939. He set out with an apparently simple aim: to pin down the precise meaning of the concept of ‘information’. <br/>解析：原文中的 Shannon originally had for his work 对应题目中的 Shannon initially intended to achieve。下一句话解释了他最初的目的是想确定信息概念的精准信息。答案为 C。"
           }
         ],
@@ -374,7 +374,44 @@ questions_json: |
         "section_title": "段落信息配对题",
         "source_category_section_id": 721
       },
-      "options": [],
+      "options": [
+        {
+          "id": 933270,
+          "title": "A",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 933271,
+          "title": "B",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 933272,
+          "title": "C",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 933273,
+          "title": "D",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 933274,
+          "title": "E",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 933275,
+          "title": "F",
+          "legend": 0,
+          "sortOrder": 5
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -518,7 +555,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 721
       },
-      "options": [],
+      "options": [
+        {
+          "id": 933380,
+          "title": "TRUE &nbsp;&nbsp;if the statement agrees with the information",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 933381,
+          "title": "FALSE &nbsp;&nbsp;if the statement contradicts the information",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 933382,
+          "title": "NOT GIVEN &nbsp;&nbsp;if there is no information on this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 3
     }
   ]
@@ -1041,3 +1097,4 @@ assets_json: |
   ]
 ---
 
+<i>Information theory lies at the heart of everything - from DVD players and the genetic code of DNA to the physics of the universe at its most fundamental. it has been central to the development of the science of communication, which enables data to be sent electronically and has therefore had a major impact on our lives </i><br/><br/><b>A</b> In April 2002 an event took place which demonstrated one of the many applications of information theory. The space probe, Voyager I, launched in 1977, had sent back spectacular images of Jupiter and Satum and then soared out of the Solar System on a one-way mission to the stars. After 25 years of exposure to the freezing temperatures of deep space, the probe was beginning to show its age, Sensors and circuits were on the brink of failing and NASA experts realized that they had to do something or lose contact with their probe forever. The solution was to get a message to Voyager I to instruct it to use spares to change the failing parts. With the probe 12 billion kilometers from Earth, this was not an easy task. By means of a radio dish belonging to NASA’s Deep Space Network, the message was sent out into the depths of space. Even travelling at the speed of light, it took over II hours to reach its target, far beyond the orbit of Pluto. Yet, incredibly, the little probe managed to hear the faint call from its home planet, and successfully made the switchover.<br/><br/><b>B</b> It was the I0ngest·distance repair job in history, and a triumph for the NASA engineers. But it also highlighted the astonishing power of the techniques developed by American communications engineer Claude Shannon, who had died just a year earlier. Born in 1916 in Petoskey, Michigart. Shannon showed an early talent for maths and for building gadgets, and made breakthroughs in the foundations of computer technology when still a student. While at Bell laboratories, Shannon developed information theory, but shunned the resulting acclaim. In the 1940s.he singlehandedly created an entire science of communication which has since inveigled its way into a host of applications, from DVDs to satellite communication to bar codes - any area, in short, where data has to be conveyed rapidly yet accurately.<br/><br/><b>C</b>  This all seems light years away from the down to-earth uses Shannon originally had for his work, which began when he was a 22-year—old graduate engineering student at the prestigious Massachusetts  Institute of Technology in 1939. He set out with an apparently simple aim: to pin down the precise meaning of the concept of ‘information'. The most basic form of information, Shannon argued, is whether something is true or false - which can be captured in the binary unit, or 'bit', of the form 1 or 0. Having identified this fundamental unit, Shannon set about defining otherwise vague ideas about information and how to transmit it from place to place. ln the process he discovered something surprising: it is always possible to guarantee information will get through random interference - ‘noise' — intact.<br/><br/><b>D</b> Noise usually means unwanted sounds which interfere with genuine information. information theory generalizes this idea via theorems that capture the effects of noise with mathematical precision. In particular, Shannon showed that noise sets a limit on the rate at which information can pass along communication channels while remaining error-free. This rate depends on the relative strengths of the signal and noise travelling down the communication channel, and on its capacity  (its' bandwidth'). The resulting limit, given in units of bits per second, is the absolute maximum rate of error-free communication given signal strength and noise level. The trick, Shannon showed, is to find ways of packaging up - ‘coding' - information to cope with the ravages of noise, while staying within the information carrying capacity ‘bandwidth' - of the communication system being used.<br/><br/><b>E</b>  Over the years scientists have devised many such coding methods, and they have proved crucial in many technological feats. The Voyager spacecraft transmitted data using codes which added one extra bit for every single bit of information; the result was an error rate of just one bit in 10,000 — and stunningly clear pictures of the planets. Other codes have become part of everyday life - such as the Universal Product Code, or bar code, which uses a simple error-detecting system that ensures supermarket check-out lasers can read the price even on. say, a crumpled bag of crisps. As recently as 1993, engineers made a major breakthrough by discovering so-called turbo codes - which come very close to Shannon’s ultimate limit for the maximum rate that data can be transmitted reliably, and now play a key role in the mobile videophone revolution.<br/><br/><b>F</b> Shannon also laid the foundations of more efficient ways of storing information, by stripping out superfluous (‘redundant') bits from data which contributed little real information. As mobile phone text messages like 'l CN C U' show, it is often possible to leave out a lot of data without losing much meaning, As with error correction, however, there's a limit beyond which messages become too ambiguous. Shannon showed how to calculate this limit, opening the way to the design of compression methods that cram maximum information into the minimum space.<br/>

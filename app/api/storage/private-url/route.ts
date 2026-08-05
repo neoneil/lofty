@@ -12,28 +12,40 @@ function getOwnerIdFromStudentAudioKey(key: string) {
   return parts[3] || null;
 }
 
+function getPrivateLearningAudioKey(value: string) {
+  const trimmed = value.trim().replace(/^\/+/, "");
+  if (trimmed.includes("..")) return null;
+  if (!trimmed.startsWith("ielts/listening-vocabulary/audio/")) return null;
+  if (!/\.(mp3|m4a|wav|aac|ogg)$/i.test(trimmed)) return null;
+  return trimmed;
+}
+
 export async function GET(req: Request) {
   const auth = await requireApiUser();
   if (!auth.ok) return auth.response;
 
   const { searchParams } = new URL(req.url);
   const rawKey = searchParams.get("key") ?? "";
-  const key = getStudentAudioPrivateKey(rawKey);
+  const studentAudioKey = getStudentAudioPrivateKey(rawKey);
+  const learningAudioKey = getPrivateLearningAudioKey(rawKey);
+  const key = studentAudioKey ?? learningAudioKey;
 
   if (!key) {
     return NextResponse.json({ ok: false, message: "Invalid private storage key" }, { status: 400 });
   }
 
-  const ownerId = getOwnerIdFromStudentAudioKey(key);
+  if (studentAudioKey) {
+    const ownerId = getOwnerIdFromStudentAudioKey(studentAudioKey);
 
-  if (!ownerId) {
-    return NextResponse.json({ ok: false, message: "Invalid student recording key" }, { status: 400 });
-  }
+    if (!ownerId) {
+      return NextResponse.json({ ok: false, message: "Invalid student recording key" }, { status: 400 });
+    }
 
-  const isAdmin = await getAdminAccess({ supabase: auth.supabase, user: auth.user });
+    const isAdmin = await getAdminAccess({ supabase: auth.supabase, user: auth.user });
 
-  if (!isAdmin && ownerId !== auth.user.id) {
-    return NextResponse.json({ ok: false, message: "Forbidden" }, { status: 403 });
+    if (!isAdmin && ownerId !== auth.user.id) {
+      return NextResponse.json({ ok: false, message: "Forbidden" }, { status: 403 });
+    }
   }
 
   return NextResponse.json({

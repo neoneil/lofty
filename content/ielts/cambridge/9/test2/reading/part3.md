@@ -15,7 +15,7 @@ section_id: "fce6d39e-d44b-4ab9-9c81-9a1e84dd3bb0"
 section_number: 3
 section_title: " Passage3"
 section_instruction: "Choose the correct letter <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.<br/>Write the correct letter in boxes 27-31 on your answer sheet. "
-passage_title: "C9-T2-S3"
+passage_title: "A Neuroscientist Reveals How to Think Differently"
 section_sort_order: 3
 module_raw_data_json: |
   {
@@ -586,7 +586,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 714
       },
-      "options": [],
+      "options": [
+        {
+          "id": 923320,
+          "title": "NO &nbsp;&nbsp;if the statement contradicts the claims of the writer",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 923321,
+          "title": "YES &nbsp;&nbsp;if the statement agrees with the claims of the writer",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 923322,
+          "title": "NOT GIVEN &nbsp;&nbsp;if is impossible to say what the writer thinks about this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 2
     },
     {
@@ -608,7 +627,7 @@ questions_json: |
               "A"
             ],
             "serial": "38",
-            "content": "38 Thinking like a successful iconoclast is demanding because it<br/>[blank][/blank]",
+            "content": "38 Thinking like a successful iconoclast is demanding because it",
             "answerExplain": "38. 定位词： successful iconoclasts <br/>对应原文：第七段第一句和第二句 Finally, to be successful iconoclasts, individuals must sell their ideas to other people. This is where social intelligence come in. <br/>解析：定位词 successful iconoclast 在原文原词重现，A选项的关键词 social intelligence 也是原文原词。答案为 A。"
           },
           {
@@ -618,7 +637,7 @@ questions_json: |
               "B"
             ],
             "serial": "39",
-            "content": "39 The concept of the social brain is useful to iconoclasts because it<br/>[blank][/blank]",
+            "content": "39 The concept of the social brain is useful to iconoclasts because it",
             "answerExplain": "39. 定位词： social brain, iconoclasts <br/>对应原文：第七段第四句 In the last decade there has been an explosion of knowledge about the social brain and how the brain works when groups coordinate decision making. <br/>解析：定位词 social brain 在原文原词重现，B 选项中的关键词 groups decide on an action 对应原文中的 groups coordinate decision making。 答案为 B。"
           },
           {
@@ -628,7 +647,7 @@ questions_json: |
               "C"
             ],
             "serial": "40",
-            "content": "40 Iconoclasts are generally an asset because their way of thinking<br/>[blank][/blank]",
+            "content": "40 Iconoclasts are generally an asset because their way of thinking",
             "answerExplain": "40. 定位词： iconoclasts, asset \r<br/>对应原文：第八段第一句和第四句  Iconoclasts create new opportunities in every area from artistic expression to technology to business. Iconoclasts face alienation and failure, but can also be a major asset to any organization. \r<br/>解析：定位词 iconoclasts 和 asset 在原文原词重现。C 选项中的 artistic 是第一句中的原文原词，scientific 对应原文中 technology。 答案为 C。"
           }
         ],
@@ -638,7 +657,38 @@ questions_json: |
         "section_title": "句尾配对题",
         "source_category_section_id": 714
       },
-      "options": [],
+      "options": [
+        {
+          "id": 923380,
+          "title": "A requires both perceptual and social intelligence skills.",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 923381,
+          "title": "B focuses on how groups decide on an action.",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 923382,
+          "title": "C works in many fields, both artistic and scientific.",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 923383,
+          "title": "D leaves one open to criticism and rejection.",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 923384,
+          "title": "E involves understanding how organizations manage people.",
+          "legend": 0,
+          "sortOrder": 4
+        }
+      ],
       "sort_order": 3
     }
   ]
@@ -1127,3 +1177,4 @@ assets_json: |
   ]
 ---
 
+In the last decade a revolution has occurred in the way that scientists think about the brain. We now know that the decisions humans make can be traced to the firing patterns of neurons in specific parts of the brain. These discoveries have led to the field known as <i>neuroeconomics</i>, which studies the brains secrets to success in an economic environment that demands innovation and being able to do things differently from competitors. A brain that can do this is an iconoclastic one. Briefly, an iconociost is a person who does something that others say can't he done.<br/><br/>This definition implies that iconoclasts are different from other people, but more precisely, it is their brains that are different in three distinct ways: perception, fear response, and social intelligence. Each of these three functions utilizes a different circuit in the brain. Naysayers might suggest that the brain is irrelevant, that thinking in an original, even revolutionary. way is more a matter of personality than brain function. But the held of neuroeconomics was born out of the realization that the physical workings of the brain place limitations on the way we make decisions. By understanding these constraints, we begin to understand why some people march to a different drumbeat.<br/><br/>The first thing to realize is that the brain suffers from limited resources. It has a fixed energy budget, about the same as a 40 watt light bulb, so it has evolved to work as efficiently as possible. This is where most people are impeded from being an iconoclast. For example, when confronted with information streaming from the eyes, the brain will interpret this information in the quickest way possible. Thus it will draw on both past experience and any other source of information, such as what other people say, to make sense of what it is seeing. This happens all the time. The brain takes shortcuts that work so well we are hardly ever aware of them. We think our perceptions of the world are real, but they are only biological and electrical rumblings. Perception is not simply a product of what your eyes or ears transmit to your brain. More than the physical reality of photons or sound waves, perception is a product of the brain.<br/><br/>Perception is central to iconoclasm. Iconoclasts see things differently to other people. Their brains do not fall into efficiency pitfalls as much as the average person’s brain. iconoclasts, either because they were born that way or through learning, have found ways to work around the perceptual shortcuts that plague most people. Perception is not something that is hardwired into the brain. It is a learned process, which is both a curse and an opportunity for change. The brain faces the fundamental problem of interpreting physical stimuli from the senses. Everything the brain sees, hears, or touches has multiple interpretations. The one that is ultimately chosen is simply the brain's best theory. ln technical terms, these conjectures have their basis in the statistical likelihood of one interpretation over another and are heavily influenced by past experience and, importantly for potential iconoclasts what other people say.<br/><br/>The best way to see things differently to other people is to bombard the brain with things it has never encountered before. Novelty releases the perceptual process from the chains of past experience and forces the brain to make new judgments. Successful iconoclasts have an extraordinary willingness to be exposed to what is fresh and different. Observation of iconoclasts shows that they embrace novelty while most people avoid things that are different.<br/><br/>The problem with novelty, however, is that lt tends to trigger the brain's fear system. Fear is a major impediment to thinking like an iconoclast and stops the average person in his tracks. There are many types of fear, but the two that inhibit iconoclastic thinking and people generally find difficult to deal with are fear of uncertainty and fear of public ridicule. These may seem like trivial phobias. But fear ol public speaking, which everyone must do from time to time, afflicts one third of the population. This makes it too common to be considered a mental disorder. It is simply a common variant of human nature, one which iconoclasts do not let inhibit their reactions.<br/><br/>Finally, to be successful iconoclasts, individuals must sell their ideas to other people. This is where social intelligence comes in. Social intelligence is the ability to understand and manage people in a business setting. ln the last decade there has been an explosion of knowledge about the social brain and how the braln works when groups coordinate decision making. Neuroscience has revealed which brain circuits are responsible for functions like understanding what other people think, empathy, fairness, and social identity. These brain regions play key roles in whether people convince others of their ideas. Perception is important in social cognition too. The perception of someone's enthusiasm, or reputation, can make or break a deal. Understanding how perception becomes intertwined with social decision making shows why successful iconoclasts are so rare.<br/><br/>Iconoclasts create new opportunities in every area from artistic expression to technology to business They supply creativity and innovation not easily accomplished by committees. Rules aren't important to them. Iconoclasts face alienation and failure, but can also be a major asset to any organization. It is crucial for success in any field to understand how the iconoclastic mind works.<br/>

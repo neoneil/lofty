@@ -15,7 +15,7 @@ section_id: "058edf33-ac29-4131-89da-c3f6a753cf74"
 section_number: 2
 section_title: " Passage2"
 section_instruction: "Reading Passage 2 has six paragraphs, <b>A-F</b>.<br/>Which paragraph contains the following information?<br/>Write the correct letter, <b>A-F</b> in boxes 14-17 on your answer sheet.<br/><b>NB</b> &nbsp;&nbsp;You may use any letter more than once. "
-passage_title: "C9-T3-S2"
+passage_title: "Tidal Power"
 section_sort_order: 2
 module_raw_data_json: |
   {
@@ -256,7 +256,7 @@ questions_json: |
               "C"
             ],
             "serial": "14",
-            "content": "14 the location of the first test site[blank][/blank]",
+            "content": "14 the location of the first test site",
             "answerExplain": "14. 参考译文：第一个测试站的位置。<br/>定位词： location, the first test site<br/>对应原文：C 段 第 二 句 The first station is expected to be installed off Lynmouth in Devon shortly to test the technology in a venture jointly funded by the department of Trade and Industry and the European Union.? <br/>解析：根据location 推断答案是地名， first 表示第一个，很难替换，用first回原文定位，题目中 the first test site 对应原文的  The first station。答案为 C。"
           },
           {
@@ -266,7 +266,7 @@ questions_json: |
               "E"
             ],
             "serial": "15",
-            "content": "15 a way of bringing the power produced on one site back into Britain[blank][/blank]",
+            "content": "15 a way of bringing the power produced on one site back into Britain",
             "answerExplain": "15. 参考译文：把在一个地方产生的电能输送回到英国的一种方式。<br/>定位词： one site, back into Britain<br/>对应原文：E 段 Dr Bahaj has done most work on the Alderney site, where there are powerful currents. The single undersea turbine farm would produce far more power than needed for the Channel Islands and most would be fed into the French Grid and be re-imported into Britain via the cable under the Channel. <br/>解析：用one site 和 Britain 回原文定位，因为这两个都是地名。one site 对应原文中的 Alderney site，back into Britain 对应原文中的 re-imported into Britain。 答案为 E。"
           },
           {
@@ -276,7 +276,7 @@ questions_json: |
               "A"
             ],
             "serial": "16",
-            "content": "16 a reference to a previous attempt by Britain to find an alternative source of energy[blank][/blank]",
+            "content": "16 a reference to a previous attempt by Britain to find an alternative source of energy",
             "answerExplain": "16. 参考译文：以前英国人为发现可替代能源所做的尝试。<br/>定位词： previous attempt by Britain, alternative source of energy  <br/>对应原文：A 段最后一句 Unlike wind power, which Britain originally developed and then abandoned for 20 years allowing the Dutch to make it a major industry undersea turbines could become a big export earner to island nations such as Japan and New Zealand. <br/>解析：由此句可知，英国曾经试图发展风能但最终还是放弃了，也就是对应了英国曾经做过 previous attempt，而那个 alternative source of energy 就是风能。 答案为 A。"
           },
           {
@@ -286,7 +286,7 @@ questions_json: |
               "C"
             ],
             "serial": "17",
-            "content": "17 mention of the possibility of applying technology from another industry[blank][/blank]",
+            "content": "17 mention of the possibility of applying technology from another industry",
             "answerExplain": "17. 参考译文：提到运用另外一种工业的技术的可能性。 <br/>定位词： applying technology, another industry <br/>对应原文：C 段第四句 The technology for dealing with the hostile saline environment under the sea has been developed in the North Sea oil industry and much is already known about turbine blade design, because of wind power and ship propellers. <br/>解析：题目中的 another industry 就是文章中的 oil industry，而 applying technology 被转换为 the technology...has been developed in...oil industry。 答案为C。"
           }
         ],
@@ -296,7 +296,44 @@ questions_json: |
         "section_title": "段落信息配对题",
         "source_category_section_id": 720
       },
-      "options": [],
+      "options": [
+        {
+          "id": 932140,
+          "title": "A",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 932141,
+          "title": "B",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 932142,
+          "title": "C",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 932143,
+          "title": "D",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 932144,
+          "title": "E",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 932145,
+          "title": "F",
+          "legend": 0,
+          "sortOrder": 5
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -858,3 +895,4 @@ assets_json: |
   ]
 ---
 
+<i>Undersea turbines which produce electricity from the tides are set to become an important source of renewable energy for Dritain. It is still too early to predict the extent of the impact they may have. but all the signs are that they will play a significant role in the future </i><br/><br/><b>A</b> Operating on the same principle as wind turbines, the power in sea turbines comes from tidal currents which turn blades similar to ships' propellers, but. unlike wind, the tides are predictable and the power input is constant. The technology raises the prospect of Britain becoming self-sufficient in renewable energy and drastically reducing its carbon dioxide emissions. lf  tide, wind and wave power are all developed. Britain would be able to close gas, coal and nuclear power plants and export renewable power to other parts of Europe. Unlike wind power which Britain originally developed and than abandoned for 20 years allowing the Dutch to make it a major industry. undersea turbines could become a big export earner to island nations such as Japan and New Zealand.<br/><br/><b>B</b>  Tidal sites have already been identified that will produce one sixth or more of the UK’s power - and at prices competitive with modern gas turbines and undercutting those of the already ailing nuclear industry. One site alone, the Pendand Firth. between Orkney and mainland Scotland, could produce 10% of the country's electricity with banks of turbines under the sea, and another at Alderney in the Channel islands three times the 1.200 megawatts of Britain's largest and newest nuclear plant, Sizewell B, in Suffolk. Other sites identified include the Bristol Channel and the west coast of Scotland, particularly the channel between Campbeltown and Northern Ireland.<br/><br/><b>C</b> Work on designs for the new turbine blades and sites are well advanced at the University of Southampton‘s sustainable energy research group. The first station is expected to be installed off Lynmouth in Devon shortly to test the technology in a venture jointly funded by the department of Trade and Industry and the European Union. AbuBakrBahaj, in charge of the Southampton research. said: The prospects for energy from tidal currents are far better than from wind because the flows of water are predictable and constant. The technology for dealing with the hostile saline environment under the sea has been developed in the North Sea oil industry and much is already known about turbine blade design, because of wind power and ship propellers. There are a few technical difficulties, but I believe in the next live to ten years we will be installing commercial marine turbine farms.' Southampton has been awarded ￡2’l5.U.`D over three years to develop the turbines and is working with Marine Current Turbines. a subsidiary of IT power; on the Lynmouth project. EU research has now identified 1GB potential sites for tidal powen BG% round the coasts of Britain. The best sites are between islands or around heavily indented coasts where there are strong tidal currents.<br/><b>D</b> A marine turbine blade needs to be only one third of the size of a wind generator to produce three times as much power. The blades will be about 20 metres in diameter so around 30 metres of water is required. Unlike wind power there are unlikely to be environmental objections. Fish and other creatures are thought unlikely to be at risk from the relatively slow turning blades. Each turbine will be mounted on a tower which will connect to the national power supply grid via underwater cables. The towers will stick out of the water and be lit. to warn shipping, and also be designed to be lifted out of the water for maintenance and to clean seaweed from the blades.<br/><br/><b>E</b> Dr Baha has done most work on the Alderrney site, where there are powerful currents. The single undersea turbine farm would produce far more power than needed for the Channel Islands and most would be fed into the French Grid and be re-imported into Britain via the cable under the Channel.<br/><br/><b>F</b> One technical difficulty is cavitations, where low pressure behind a turning blade causes air bubbles. These can cause vibration and damage the blades of the turbines. DrBahaj said: 'We have to lest a number of blade types to avoid this happening or at least make sure it does not damage the turbines or reduce performance. Another slight concern is submerged debris floating into the blades. So far we do not know how much of a problem it might be. We will have to make the turbines robust because the sea is a hostile environment. but all the signs that we can do it are good.<br/>

@@ -15,7 +15,7 @@ section_id: "1667df6f-d50b-44e4-8af2-7686b48b4c17"
 section_number: 1
 section_title: " Passage1"
 section_instruction: "Do the following statements agree with the claims of the writer in Reading Passage 1?<br/>In boxes 1-8 in your answer sheet, write "
-passage_title: "C9-T3-S1"
+passage_title: "Attitudes to Language"
 section_sort_order: 1
 module_raw_data_json: |
   {
@@ -373,7 +373,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 719
       },
-      "options": [],
+      "options": [
+        {
+          "id": 931010,
+          "title": "YES &nbsp;&nbsp;if the statement agrees with the claims of the writer",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 931011,
+          "title": "NO &nbsp;&nbsp; if the statement contradicts the claims ol the writer",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 931012,
+          "title": "NOT GIVEN &nbsp;&nbsp; if it is impossible to say what the writer thinks about this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -435,7 +454,62 @@ questions_json: |
         "section_title": "匹配题",
         "source_category_section_id": 719
       },
-      "options": [],
+      "options": [
+        {
+          "id": 931090,
+          "title": "A descriptivists",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 931091,
+          "title": "B language experts",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 931092,
+          "title": "C popular speech",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 931093,
+          "title": "D formal language",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 931094,
+          "title": "E evaluation",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 931095,
+          "title": "F rules",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 931096,
+          "title": "G modern linguists",
+          "legend": 0,
+          "sortOrder": 6
+        },
+        {
+          "id": 931097,
+          "title": "H prescriptivists",
+          "legend": 0,
+          "sortOrder": 7
+        },
+        {
+          "id": 931098,
+          "title": "I change",
+          "legend": 0,
+          "sortOrder": 8
+        }
+      ],
       "sort_order": 2
     },
     {
@@ -966,3 +1040,4 @@ assets_json: |
   ]
 ---
 
+It is not easy to be systematic and objective about language study. Popular linguistic debate regularly deteriorates into invective and polemic. Language belongs to everyone, so most people feel they have a right to hold an opinion about it And when opinions differ, emotions can run high. Arguments can start as easily over minor points of usage as over major policies of linguistic education.<br/><br/>Language, more oven is a very public behavior so it is easy for different usages to be noted and criticized No part of society or social behavior is exempt: linguistic factors influence how we judge personality, intelligence, social status, educational standards, job aptitude, and many other areas of identity and social survival. As a result, it is easy to hurt, and to be hurt, when language use is unfeelingly attacked.<br/><br/>ln its most general sense. prescriptivism is the view that one variety of language has an inherently higher value than others, and that this ought to be imposed on the whole of the speech community. The view is propounded especially in relation to grammar and vocabulary, and frequently with reference to pronunciation. The variety which is favoured, in this account, is usually a version of the ‘standard’ written language, especially as encountered in literature, or in the formal spoken language which most closely reflects this style. Adherents to this variety are said to speak or write ‘correctly'; deviations from lt are said to be 'incorrect'.<br/><br/>All the main languages have been studied prescriptively, especially in the 18th century approach to the writing of grammars and dictionaries. The aims of these early grammarians were threefold: (a) they wanted to codify the principles of their languages, to show that there was a system beneath the apparent chaos of usage. (b) they wanted a means of settling disputes over usage, and (c) they wanted to point out what they felt to be common errors, in order to ‘improve' the language. The authoritarian nature of the approach is best characterized by its reliance on 'rules' of grammar Some usages are prescribed; to be learnt and followed accurately; others are proscribed to be avoided. ln this early period, there were no half-measures: usage was either right or wrong. and it was the task of the grammarian not simply to record alliterative  but to pronounce judgement upon them.<br/><br/>These attitudes are still with us, and they motivate a widespread concern that linguistic standards should be maintained. Nevertheless, there is an alternative point of view that is concerned less with standards than with the facts of linguistic usage. This approach ls summarized in the statement that it is the task of the grammarian to describe not prescribe to record the facts of linguistic diversity, and not to attempt the impossible tasks evaluating language variation or halting language change. In the second half of the 18th century, we already find advocates of this view, such as Joseph Priestley, whose <i>Rudiments of English Grammar</i> (1761) insists that ‘the custom of speaking is the original and only just standard of any language. 'Linguistic issues, it is argued, cannot be solved by logic and legislation. And this view has become the tenet of the modem linguistic approach to grammatical analysis.<br/><br/>In our own time, the opposition between ‘descriptivists' and 'prescriptivists' has often become extreme. with both sides painting unreal pictures of the other. Descriptive grammarians have been presented as people who do not care about standards, because of the way they see all forms of usage as equally valid. Prescriptive grammarians have been presented as blind adherents to a historical tradition. The opposition has even been presented in quasi-political terms - of radical liberalism vs elitist conservatism.<br/>

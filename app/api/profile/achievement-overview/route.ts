@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { getAchievementConfig, normalizeAchievementExamType } from "@/lib/achievements/configs";
 import { collectUnlockedAchievements, createAchievementEngineContext, getHighestUnlockedCategoryLevel } from "@/lib/achievements/engine";
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 type StudyPlan = {
   exam_type: string | null;
@@ -11,14 +12,13 @@ type StudyPlan = {
 
 export async function GET() {
   try {
-    const supabase = await createClient();
-    const { data: { user }, error } = await supabase.auth.getUser();
+    const auth = await requireApiUser();
+    if (!auth.ok) return auth.response;
 
-    if (error || !user) return NextResponse.json({ ok: false, message: "未登录" }, { status: 401 });
-
-    const { data: studyPlan } = await supabase.from("study_plans").select("exam_type").eq("user_id", user.id).maybeSingle<StudyPlan>();
+    const supabase = createAdminClient();
+    const { data: studyPlan } = await supabase.from("study_plans").select("exam_type").eq("user_id", auth.user.id).maybeSingle<StudyPlan>();
     const examType = normalizeAchievementExamType(studyPlan?.exam_type);
-    const { overview, questionTypeStats } = await getAchievementStatsForUser(supabase, user.id, { examType });
+    const { overview, questionTypeStats } = await getAchievementStatsForUser(supabase, auth.user.id, { examType });
     const config = getAchievementConfig(examType);
     const context = createAchievementEngineContext(config, overview, questionTypeStats);
     const overallLevel = getHighestUnlockedCategoryLevel(config, "overall", context);

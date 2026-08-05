@@ -1,13 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { BookOpen, Layers3, Network, Search, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Layers3, Network, Search, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
 import { Pagination } from "@/components/ui-v2/pagination";
-import type { ResembleEntry, WordRootEntry } from "@/lib/vocabulary/content";
+import type { ResembleEntry, WordRootEntry } from "@/lib/vocabulary/content-types";
+import type { IeltsReadingVocabularyIndexItem } from "@/lib/vocabulary/ielts-reading-types";
 
 type Collection = "resemble" | "wordRoots";
 type AffixType = "prefix" | "suffix";
@@ -15,6 +17,7 @@ type AffixType = "prefix" | "suffix";
 type Props = {
   resemble: ResembleEntry[];
   wordRoots: WordRootEntry[];
+  ieltsReadingDocuments: IeltsReadingVocabularyIndexItem[];
 };
 
 const PAGE_SIZE = 12;
@@ -118,7 +121,36 @@ function WordRootCard({ entry, keyword }: { entry: WordRootEntry; keyword: strin
   );
 }
 
-export default function VocabularyClient({ resemble, wordRoots }: Props) {
+function IeltsReadingVocabularyCard({ entry }: { entry: IeltsReadingVocabularyIndexItem }) {
+  return (
+    <Link href={`/vocabulary/ielts-reading/${entry.slug}`} className="group block h-full">
+      <Card className="h-full border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition group-hover:-translate-y-0.5 group-hover:border-[var(--primary)]/40 group-hover:shadow-[var(--shadow-md)]">
+        <CardContent className="flex h-full flex-col p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]"><BookOpen size={17} /></span>
+            <div className="flex flex-wrap justify-end gap-2">
+              <Badge>{entry.wordCount} words</Badge>
+              <Badge variant="secondary">{entry.listCount} lists</Badge>
+            </div>
+          </div>
+          <h2 className="mt-4 text-lg font-semibold leading-7 text-[var(--text)]">{entry.title}</h2>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">{entry.subtitle}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Badge variant="secondary">{entry.exam}</Badge>
+            <Badge variant="outline">{entry.skill}</Badge>
+            {entry.chapterTitles.slice(0, 2).map((chapter) => <Badge key={chapter} variant="outline">{chapter}</Badge>)}
+          </div>
+          <div className="mt-auto flex items-center justify-between border-t border-[var(--border)] pt-4 text-sm font-semibold text-[var(--primary)]">
+            查看样式化词库
+            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+}
+
+export default function VocabularyClient({ resemble, wordRoots, ieltsReadingDocuments }: Props) {
   const [activeCollection, setActiveCollection] = useState<Collection>("resemble");
   const [activeAffixType, setActiveAffixType] = useState<AffixType>("prefix");
   const [searchTerm, setSearchTerm] = useState("");
@@ -195,6 +227,21 @@ export default function VocabularyClient({ resemble, wordRoots }: Props) {
             </button>
           ))}
         </section>
+
+        {ieltsReadingDocuments.length > 0 ? (
+          <section className="space-y-3">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <div className="text-lg font-semibold text-[var(--text)]">IELTS 阅读词汇</div>
+                <p className="mt-1 text-sm text-[var(--text-soft)]">从 PDF 转成 Lofty 静态词库，页面可搜索、可按 List 浏览。</p>
+              </div>
+              <Badge variant="secondary">{ieltsReadingDocuments.length} documents</Badge>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {ieltsReadingDocuments.map((entry) => <IeltsReadingVocabularyCard key={entry.id} entry={entry} />)}
+            </div>
+          </section>
+        ) : null}
 
         {activeCollection === "wordRoots" ? (
           <Card className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">

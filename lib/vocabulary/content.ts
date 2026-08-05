@@ -3,34 +3,9 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 
-export type ResembleEntry = {
-  id: string;
-  title: string;
-  terms: string[];
-  summary: string;
-  notes: string[];
-  definitions: {
-    term: string;
-    explanation: string;
-  }[];
-};
+import type { ResembleEntry, VocabularyContent, WordRootEntry } from "@/lib/vocabulary/content-types";
 
-export type WordRootEntry = {
-  id: string;
-  root: string;
-  meaning: string;
-  wordClass: string;
-  origin: string;
-  functionText: string;
-  examples: string[];
-  synonyms: string;
-  antonyms: string;
-};
-
-export type VocabularyContent = {
-  resemble: ResembleEntry[];
-  wordRoots: WordRootEntry[];
-};
+export type { ResembleEntry, VocabularyContent, WordRootEntry } from "@/lib/vocabulary/content-types";
 
 type RawWordRoot = {
   root?: unknown;
@@ -152,6 +127,14 @@ export async function getVocabularyContent(): Promise<VocabularyContent> {
     resemble: parseResemble(resembleContent),
     wordRoots: parseWordRoots(wordRootContent),
   };
+}
+
+export async function getResembleContent(): Promise<ResembleEntry[]> {
+  return parseResemble(await readContentFile("resemble.txt"));
+}
+
+export async function getWordRootContent(): Promise<WordRootEntry[]> {
+  return parseWordRoots(await readContentFile("wordroot.txt"));
 }
 
 export async function searchResembleEntries(query: string, limit = 6) {

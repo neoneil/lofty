@@ -15,7 +15,7 @@ section_id: "1df6f899-7a82-49af-99f9-7f7022a25acc"
 section_number: 1
 section_title: " Passage1"
 section_instruction: "Reading Passage 1 has nine sections, <b>A-I</b>.<br/>Which section contains the following information?<br/>Write the correct letter <b>A-l</b>, in boxes 1-6 on your answer sheet. "
-passage_title: "C9-T2-S1"
+passage_title: "Hearing Impairment"
 section_sort_order: 1
 module_raw_data_json: |
   {
@@ -305,7 +305,7 @@ questions_json: |
               "H"
             ],
             "serial": "1",
-            "content": "1 an account of a national policy initiative[blank][/blank]",
+            "content": "1 an account of a national policy initiative",
             "answerExplain": "1. 参考译文：一项国家性的政策运动描述。<br/>定位词： a national policy initiative <br/>对应原文：H 段第一句 The New Zealand Government has developed a New Zealand team Strategy and has embarked on a wide-ranging consultation process. <br/>解析：根据 H 段第一句及后文对该策略的具体介绍，可知题干中的 a national policy initiative 对应原文中的 a New Zealand Disability Strategy。 答案为 H。"
           },
           {
@@ -315,7 +315,7 @@ questions_json: |
               "C"
             ],
             "serial": "2",
-            "content": "2 a description of a global team effort[blank][/blank]",
+            "content": "2 a description of a global team effort",
             "answerExplain": "2. 参考译文：全球性团队努力的描述。\r<br/>定位词： a global team effort \r<br/>对应原文： C 段第三句 The International Institute of Noise Control Engineering (I-INCE), on the advice of the World Health Organization, has established an international working party, which includes New Zealand, to evaluate noise and reverberation control for school rooms. \r<br/>解析：an international working party 对应题干中的 a global team effort。 答案为 C。"
           },
           {
@@ -325,7 +325,7 @@ questions_json: |
               "B"
             ],
             "serial": "3",
-            "content": "3 a hypothesis as to one reason behind the growth in classroom noise[blank][/blank]",
+            "content": "3 a hypothesis as to one reason behind the growth in classroom noise",
             "answerExplain": "3. 参考译文：一个关于教室噪声的增长背后原因的假设。<br/>定位词：one reason, growth in classroom noise <br/>对应原文：B 段第三句和第四句 Education researchers Nelson and Soli have also suggested that recent trends in learning often involve collaborative interaction of multiple minds and tools as much as individual possession of information. This all amounts to heightened activity and noise levels, which have the potential to be particularly serious for children experiencing auditory function deficit.<br/>解析：用classroom noise 定位，很快定位到B段。one reason对应原文中的collaborative interaction of multiple minds and tools, growth in classroom noise对应原文中的 heightened activity and noise levels。答案为 B。"
           },
           {
@@ -335,7 +335,7 @@ questions_json: |
               "I"
             ],
             "serial": "4",
-            "content": "4 a demand for suitable worldwide regulations[blank][/blank]",
+            "content": "4 a demand for suitable worldwide regulations",
             "answerExplain": "4. 参考译文：适用全球性标准的需求。 <br/>定位词： worldwide regulations<br/> 对应原文：I 段最后一句 It is imperative that the needs of these children are taken into account in the setting of appropriate international standards to be promulgated in future. <br/>解析：题目中的 worldwide regulations 对应原文中的 international standards。答案为 I。"
           },
           {
@@ -345,7 +345,7 @@ questions_json: |
               "D"
             ],
             "serial": "5",
-            "content": "5 a list of medical conditions which place some children more at risk from noise than others[blank][/blank]",
+            "content": "5 a list of medical conditions which place some children more at risk from noise than others",
             "answerExplain": "5. 参考译文：在噪音下，一些身体条件使一些孩子的处境比其他孩子更加危险。<br/>定位词： a list of medical conditions<br/>对应原文：整个D 段 while the detrimental effects of noise in classroom situations are not limited to children experiencing disability, those with a disability that affects their processing of speech and verbal communication could be extremely vulnerable. The auditory function deficits in question include hearing impairment, autistic <br/>spectrum disorders (ASD) and attention deficit disorders (ADD / ADHD). <br/>解析： 题目中的 more at risk 对应原文中的 extremely vulnerable，a list of medical conditions 原文中的 hearing impairment, ASD 和 ADD / ADHD。 答案为 D。"
           },
           {
@@ -355,7 +355,7 @@ questions_json: |
               "A"
             ],
             "serial": "6",
-            "content": "6 the estimated proportion of children in New Zealand with auditory problems[blank][/blank]",
+            "content": "6 the estimated proportion of children in New Zealand with auditory problems",
             "answerExplain": "6. 参考译文：在新西兰，患有听力障碍的孩子的比例。\r<br/>定位词： the estimated proportion\r<br/>对应原文：A 段最后一句 The New Zealand Ministry of Health has found from research carried out over two decades that 6—10% of children in that country are affected by hearing loss. \r<br/>解析：原文中百分比 6%-10% 对应题目中所提到的 the estimated proportion。 答案为 A。"
           }
         ],
@@ -365,7 +365,62 @@ questions_json: |
         "section_title": "段落信息配对题",
         "source_category_section_id": 712
       },
-      "options": [],
+      "options": [
+        {
+          "id": 921010,
+          "title": "A",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 921011,
+          "title": "B",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 921012,
+          "title": "C",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 921013,
+          "title": "D",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 921014,
+          "title": "E",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 921015,
+          "title": "F",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 921016,
+          "title": "G",
+          "legend": 0,
+          "sortOrder": 6
+        },
+        {
+          "id": 921017,
+          "title": "H",
+          "legend": 0,
+          "sortOrder": 7
+        },
+        {
+          "id": 921018,
+          "title": "I",
+          "legend": 0,
+          "sortOrder": 8
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -1026,3 +1081,4 @@ assets_json: |
   ]
 ---
 
+<b>A</b> Hearing impairment or other auditory function deficit in young children can have a major impact on their development of speech and communication, resulting in a detrimental effect on their ability to learn at school. This is likely to have major consequences for the individual and the population as a whole. The New Zealand Ministry of Health has found from research carried out over two decades that 6-10% of children in that country are affected by hearing loss.<br/><br/><b>B</b> A preliminary study in New Zealand has shown that classroom noise presents a major concern for teachers and pupils. Modem treading practices, the organization of desks in the classroom. poor classroom acoustics, and mechanical means of ventilation such as air-conditioning units all contribute to the number of children unable to comprehend the teachers voice. Education researchers Nelson and Soli have also suggested that recent trends in learning often involve collaborative interaction of multiple minds and tools as much as individual possession of information. This all amounts to heightened activity and noise levels, which have the potential to be particularly serious for children experiencing auditory function deficit. Noise in classrooms can only exacerbate their difficulty in comprehending and processing verbal communication with other children and instructions from the teacher.<br/><br/><b>C</b> Children with auditory function deficit are potentially failing to learn to their maximum potential because of noise levels generated in classrooms. The effects of noise on the ability of children to team effectively in typical classroom environments are now the subject of increasing concern. The International Institute of Noise Control Engineering(I-INCE), on the advice of the World Health Organization, has established an international working party, which includes New Zealand, to evaluate noise and reverberation control for school rooms.<br/><br/><b>D</b> While the detrimental effects of noise in classroom situations are not limited to children experiencing disability, those with a disability that affects their processing of speech and verbal communication could be extremely vulnerable. The auditory function deficits in question include hearing impairment, autistic spectrum disorders (ASD) and attention deficit disorders (ADD/ADHD).<br/><br/><b>E</b> Autism is considered a neurological and genetic life-long disorder that causes discrepancies in the way information is processed. This disorder is characterized by interlinking problems with social imaginations, social communication and social interaction. According to Jenzen, this affects the ability to understand and relate in typical ways to people, understand events and objects in the environment, and understand or respond to sensory stimuli. Autism does not allow learning or thinking in the same ways as in children who are developing normally.<br/><br/>Autistic spectrum disorders often result in major difficulties in comprehending verbal information and speech processing. Those experiencing these disorders often find sounds such as crowd noise and the noise generated by machinery painful and distressing. This is difficult to scientifically quantify as such extra-sensory stimuli vary greatly from one autistic individual to another. But a child who finds any type of noise in their classroom or learning space intrusive is likely to be adversely affected in their ability to process information.<br/><br/><b>F</b> The attention deficit disorders are indicative of neurological and genetic disorders and are characterized by difficulties with sustaining attention, effort and persistence, organization skills and disinhibition. Children experiencing these disorders find it difficult to screen out unimportant information, and focus on everything in the environment rather than attending to a single activity. Background noise in the classroom becomes a major distraction, which can affect their ability to concentrate.<br/><br/><b>G</b> Children experiencing an auditory function deficit can often End speech and communication very difficult to isolate and process when set against high levels of background noise. These levels come from outside activities that penetrate the classroom structure, from teaching activities, and other noise generated inside, which can be exacerbated by room reverberation. Strategies are needed to obtain the optimum classroom construction and perhaps a change in classroom culture and methods of teaching. ln particular, the effects of noisy classrooms and activities on those experiencing disabilities in the form of auditory function deficit need thorough investigation. It is probable that many undiagnosed children exist in the education system with 'invisible' disabilities. Their needs are less likely to be met than those of children with known disabilities.<br/><br/><b>H</b> The New Zealand Government has developed a New Zealand Disability Strategy and has embarked on a wide-ranging consultation process. The strategy recognizes that people experiencing disability face significant barriers in achieving a full quality of life in areas such as attitude, education, employment and access to services. Objective 3 of the New Zealand Disability Strategy is to ’Provide the Best Education for Disabled People' by improving education so that all children, youth learners and adult learners will have equal opportunities to learn and develop within their already existing local school. For a successful education, the learning environment is vitally significant, so any effort to improve this is likely to be of great benefit to all children, but especially to those with auditory function disabilities.<br/><br/><b>I</b> A number of countries are already in the process of formulating their own standards for the control and reduction of classroom noise. New Zealand will probably follow their example. The literature to date on noise in school rooms appears to focus on the effects on schoolchildren in general, their teachers and the hearing impaired. Only limited attention appears to have been given to those students experiencing the other disabilities involving auditory function deficit. lt is imperative that the needs of these children are taken into account in the setting of appropriate international standards to be promulgated in future.<br/>

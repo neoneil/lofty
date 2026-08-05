@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@source not "../content";
+@source not "../public/cambridge_ielts";
+@source not "../.next";
 @plugin "@tailwindcss/typography";
 
 @theme {

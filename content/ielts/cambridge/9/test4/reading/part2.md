@@ -15,7 +15,7 @@ section_id: "eea8b495-c388-4363-8a36-4531eb5cfb1b"
 section_number: 2
 section_title: " Passage2"
 section_instruction: "Reading Passage 2 has eight paragraphs, <b>A-H</b>.<br/>Which paragraph contains the following information?<br/>Write the correct letter <b>A-H</b>, in boxes 14-19 on your answer sheet.<br/><b>NB</b> &nbsp;&nbsp;You may use any letter more than once. "
-passage_title: "C9-T4-S2"
+passage_title: "Young Children's Sense of Identity"
 section_sort_order: 2
 module_raw_data_json: |
   {
@@ -283,7 +283,7 @@ questions_json: |
               "G"
             ],
             "serial": "14",
-            "content": "14 An account of the method used by researchers in a particular study[blank][/blank]",
+            "content": "14 An account of the method used by researchers in a particular study",
             "answerExplain": "14. 参考译文：对研究者在一项具体的研究中使用方法的描述。<br/>定位词： account, method, researchers, a particular study <br/>对应原文：G 段第三句开始到本段结尾 In one experiment, Lewis and Brooks-Gunn...unless other cues such as movement are present. <br/>解析：原文描述了一个 experiment，研究人员通过在小孩的鼻子上涂抹红色的粉末来观察小孩的反应。原文中对整个实验的细节描述对应了题干中的 account（记述），涂粉末这个方法对应题干中的 method， experiment 对应题干中的 study， 人名 Lewis and Brooks-Gunn 对应题干中的 researchers。 答案 G。"
           },
           {
@@ -293,7 +293,7 @@ questions_json: |
               "C"
             ],
             "serial": "15",
-            "content": "15 The role of imitation in developing a sense of identity[blank][/blank]",
+            "content": "15 The role of imitation in developing a sense of identity",
             "answerExplain": "?<br/><br/>15. 参考译文：模仿在发展自我认知的角色。<br/>定位词： imitation  <br/>对应原文：C 段第一句 Another powerful source of information for infants about the effects they can have on the world around them is provided when others mimic them. <br/>解析：原文中的 mimic 对应题目中的 imitation。 答案为 C。"
           },
           {
@@ -303,7 +303,7 @@ questions_json: |
               "G"
             ],
             "serial": "16",
-            "content": "16 The age at which children can usually Identity a static image of themselves[blank][/blank]",
+            "content": "16 The age at which children can usually Identity a static image of themselves",
             "answerExplain": "16. 参考译文：孩子们通常能够辨认自己静态形象的年龄。<br/>定位词： age, identify, static image <br/>对应原文：G段第一句和第二句 Lewis and Brooks-Gunn argued that an important developmental milestone is reached when children become able to recognize themselves visually without the support of seeing contingent movement. This recognition occurs around their second birthday. <br/>解析：原文中的 recognize 对应题目中 的 identify， without the support of seeing contingent movement 对应题目中的 static。 答案为 G。"
           },
           {
@@ -313,7 +313,7 @@ questions_json: |
               "D"
             ],
             "serial": "17",
-            "content": "17 A reason for the limitations of scientific research into ‘self-as subject.[blank][/blank]",
+            "content": "17 A reason for the limitations of scientific research into ‘self-as subject.",
             "answerExplain": "17. 参考译文：关于主体自我的科学研究是有限的原因。<br/>定位词： reason, limitations, scientific research, self-as-subject  <br/>对应原文：D 段最后一句 Empirical investigations of the self-as-subject in young children are, however, rather scarce because of difficulties of communication: even if young infants can reflect on their experience, they certainly cannot express this aspect of the self directly. <br/>解析：用合成词 self-as-subject 回原文定位，原文中的 investigation 对应题目中的 scientific research，scarce 对应题目中的 limitation， because of 对应题目中的 reason。答案为 D。"
           },
           {
@@ -323,7 +323,7 @@ questions_json: |
               "H"
             ],
             "serial": "18",
-            "content": "18 Reference to a possible link between culture and a particular form of behavior[blank][/blank]",
+            "content": "18 Reference to a possible link between culture and a particular form of behavior",
             "answerExplain": "18. 参考译文：文化和行为的具体形式的可能的联系。<br/>定位词： possible link, culture, a particular form of behaviour <br/>对应原文： H 段最后一句 Although it may be less marked in other societies, the link between the sense of ‘self’and of ‘ownership’ is a notable feature of childhood in Western societies. <br/>解析：原文中提到 the link between the sense of ‘self’and ‘ownership’ 在其他社会不那么明显，但是在西方社会，它是童年时期的一个显著特征。所以这样的行为是因文化或社会而不同的。答案为 H。"
           },
           {
@@ -333,7 +333,7 @@ questions_json: |
               "E"
             ],
             "serial": "19",
-            "content": "19 Examples of the wide range of features that contribute to the sense of ‘self-as-object'.[blank][/blank]",
+            "content": "19 Examples of the wide range of features that contribute to the sense of ‘self-as-object'.",
             "answerExplain": "19. 参考译文：促使主体自我的意识形成的特点的例子。<br/>定位词： examples, features,  sense of ‘self-as-object’  <br/>对应原文： E 段最后一句 This has been seen by many to be the aspect of the self which is most influenced by social elements, since it is made up of social roles (such as student, brother, colleague) and characteristics which derive their meaning from comparison or interaction with other people (such as trustworthiness, shyness, sporting ability).<br/>解析：原文中括号里的举例对应了题目中的 examples，characteristics 对应了题目中的 features。 答案为 E。"
           }
         ],
@@ -343,7 +343,56 @@ questions_json: |
         "section_title": "段落信息配对题",
         "source_category_section_id": 727
       },
-      "options": [],
+      "options": [
+        {
+          "id": 942140,
+          "title": "A",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 942141,
+          "title": "B",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 942142,
+          "title": "C",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 942143,
+          "title": "D",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 942144,
+          "title": "E",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 942145,
+          "title": "F",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 942146,
+          "title": "G",
+          "legend": 0,
+          "sortOrder": 6
+        },
+        {
+          "id": 942147,
+          "title": "H",
+          "legend": 0,
+          "sortOrder": 7
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -365,7 +414,7 @@ questions_json: |
               "D"
             ],
             "serial": "20",
-            "content": "20 A sense of identity can never be formed without relationships with other people.[blank][/blank]",
+            "content": "20 A sense of identity can never be formed without relationships with other people.",
             "answerExplain": "20. 定位词： relationships with other people <br/>对应原文： F 段 最 后 一 句 Mead (1934) went even further, and saw the self and the social world as inextricably bound together: ‘The self is essentially a social structure, and it arises in social experience...it is impossible to conceive of a self arising outside of social experience.’ <br/>解析：用人名回原文定位，原文中的 social world, social structure 和 social experience 对应题目中的 relationships with other people，impossible......outside......对应题目中 never....without......。 答案为 D。"
           },
           {
@@ -375,7 +424,7 @@ questions_json: |
               "B"
             ],
             "serial": "21",
-            "content": "21 A child’s awareness of self is related to a sense of mastery over things and people.[blank][/blank]",
+            "content": "21 A child’s awareness of self is related to a sense of mastery over things and people.",
             "answerExplain": "21. 定位词： child’s awareness of self, mastery over things and people <br/>对应原文： B 段 第 五 句 到 最 后 一 句 Cooley (1902) suggested that a sense of the selfas-subject was primarily concerned with being able to exercise power. He proposed that the earliest examples of this are an infant’s attempts to control physical objects, such as toys or his or her own limbs. This is followed by attempts to affect the behaviour of other people. For example, infants learn that when they cry or smile someone responds to them. <br/>解析：用人名回原文定位， 原文中的 infant 对应题干中的 child， sense 对应题目中的 awareness，control physical objects 和 affect the behaviour of other people 对应题目中的 mastery over things and people。答案为 B。"
           },
           {
@@ -385,7 +434,7 @@ questions_json: |
               "E"
             ],
             "serial": "22",
-            "content": "22 At a certain age, children’s sense of identity leads to aggressive behavior.[blank][/blank]",
+            "content": "22 At a certain age, children’s sense of identity leads to aggressive behavior.",
             "answerExplain": "22. 定位词： a certain age, aggressive behaviour <br/>对应原文： H 段第二句和第三句 In a longitudinal study of groups of three or four children, Bronson (1975) found that the intensity of the frustration and anger in their disagreements increased sharply between the ages of 1 and 2 years. Often, the children’s disagreements involved a struggle over a toy that none of them had played with before or after the tug-of-war: the children seemed to be disputing ownership rather than wanting to play with it. <br/>解析：用人名回原文定位，原文中的 the intensity of the frustration and anger in their disagreements increased <br/>sharply 和 disputing ownership 与 对应题目中的 aggressive behaviour，between the ages of 1 and 2 years 对应题目中的 at a certain age。 答案为 E。"
           },
           {
@@ -395,7 +444,7 @@ questions_json: |
               "C"
             ],
             "serial": "23",
-            "content": "23 Observing their own reflection contributes to children‘s self awareness.[blank][/blank]",
+            "content": "23 Observing their own reflection contributes to children‘s self awareness.",
             "answerExplain": "23. 定位词： observing, reflection, contributes <br/>对应原文：C段最后两句 However, Lewis and Brooks-Gunn (1979) suggest that infants’ developing understanding that the movements they see in the mirror are contingent on their own, leads to a growing awareness that they are distinct from other people. This is because they, and only they, can change the reflection in the mirror. <br/>解析：用人名回原文定位，原文中的 understanding that the movements they see in the mirror are contingent on their own 和 the reflection in the mirror 对应题目中的 reflection，lead to 对应题目中的 contribute to。答案为 C。"
           }
         ],
@@ -405,7 +454,38 @@ questions_json: |
         "section_title": "属性配对题",
         "source_category_section_id": 727
       },
-      "options": [],
+      "options": [
+        {
+          "id": 942200,
+          "title": "A James",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 942201,
+          "title": "B Cooley",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 942202,
+          "title": "C Lewis and Brooks-Gunn",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 942203,
+          "title": "D Mead",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 942204,
+          "title": "E Bronson",
+          "legend": 0,
+          "sortOrder": 4
+        }
+      ],
       "sort_order": 2
     },
     {
@@ -924,3 +1004,4 @@ assets_json: |
   ]
 ---
 
+<b>A</b> A sense of self develops in young children by degrees. The process can usefully be thought of in terms of the gradual emergence of two somewhat separate features: the self as a subject, and the self as an object. William James introduced the distinction in 1892, and contemporaries of his, such as Charles Cooley, added to the developing debate. Ever since then psychologists have continued building on the theory.<br/><br/><b>B</b> According to James, a child's first step on the road to self-understanding can be seen as the recognition that he or she exists. This is an aspect of the self that he labeled 'self-as-subject', and he gave it various elements. These included an awareness of one’s own agency (i.e. one’s power to act), and an awareness of one’s distinctiveness from other people. These features gradually emerge as infants explore their world and interact with caregivers. Cooley (1902) suggested that a of the self-as-subject was primarily concerned with being able to exercise power. He proposed that the earliest examples of this are an infants attempts to control physical objects, such as toys or his or her own limbs. This is followed by attempts to affect the behavior of other people. For example, infants learn that when they cry or smile someone responds to them.<br/><br/><b>C</b> Another powerful source of information for infants about the effects they can have on the world around them is provided when others mimic them. Many parents spend a lot of time, particularly in the early months, copying their infant's vocalizations and expressions in addition, young children enjoy looking in mirrors, where the movements they can see are dependent upon their own movements. This is not to say that infants recognize the reflection as their own image (a later development). However, Lewis and Brooks-Gunn (1979) suggest that infants' developing understanding that the movements they see in the mirror are contingent on their own, leads to a growing awareness that they are distinct from other people. This is because they, and only they can change the reflection in the mirror.<br/><br/><b>D</b> This understanding that children gain of themselves as active agents continues to develop in their attempts to co-operate with others in play. Drum (1988) points out that it is in such day-to-day relationships and interactions that the child's understanding of his- or herself emerges. Empirical investigations of the self-as- subject in young children are, however, rather scarce because of difficulties of communication: even if young infants can reflect on their experience, they certainly cannot express this aspect of the self directly.<br/><br/><b>E</b> Once Children have acquired a certain level of self-awareness, they begin to place themselves in a whole series of categories, which together play such an important part in defining them uniquely as 'themselves'. This second step in the development of a full sense of self is what lames called the 'self-as-object'. This has been seen by many to be the aspect of the self which is most influenced by social elements, since it is made up of social roles (such as student, brother; colleague) and characteristics which derive their meaning from comparison or interaction with other people (such as trust worthiness, shyness, sporting ability).<br/><br/><b>F</b> Cooley and other researchers suggested a close connection between a person’s own understanding of their identity and other people's understanding of it. Cooley believed that people build up their sense of identity from the reactions of others to them, and from the view they believe others have of them He called the self- as-object the ’looking-glass self', since people come to see themselves as they are reflected in others. Mead (1934) went even further, and saw the self and the social world as inextricably bound together: 'The self is essentially a social structure, and it arises in social experience ... it is impossible to conceive of a self arising outside of social experience.'<br/><br/><b>G</b> Lewis and Brooks-Gunn argued that an important developmental milestone is reached when children become able to recognize themselves visually without the support of seeing contingent movement. This recognition occurs around their second birthday. In one experiment, Lewis and Brooks-Gunn (1979) dabbed some red powder on the noses of children who were playing in front of a mirror, and then observed how often they touched their noses. The psychologists reasoned that if the children knew what they usually looked like, they would be surprised by the unusual red mark and would start touching it. On the other hand, they found that children of 15 to 18 months are generally not able to recognize themselves unless other cues such as movement are present.<br/><br/><b>H</b> Finally perhaps the most graphic expressions of self-awareness in general can be seen in the displays of rage which are most common from 18 months to 3 years of age. In a longitudinal study of groups of three or four children, Bronson (1975) found that the intensity of the frustration and anger in their disagreements increased sharply between the ages of 1 and 2 years. Often, the children's disagreements involved a struggle over a toy that none of them had played with before or after the tug-of-war: the children seemed to be disputing ownership rather than wanting to play with it. Although it may be less marked in other societies, the link between the sense of ’self' and of 'ownership’ is a notable feature of childhood in Western societies.

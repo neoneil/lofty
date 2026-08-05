@@ -1,0 +1,122 @@
+{
+  "execute": true,
+  "force": true,
+  "generatedAt": "2026-08-05T01:21:48.010Z",
+  "bucket": "loftypte",
+  "files": [
+    {
+      "fileName": "1-1 房屋住宿.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/1-1-accommodation.mp3",
+      "status": "uploaded",
+      "bytes": 8113535
+    },
+    {
+      "fileName": "1-2 旅游度假.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/1-2-travel-holiday.mp3",
+      "status": "uploaded",
+      "bytes": 7171891
+    },
+    {
+      "fileName": "1-3 健康营养.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/1-3-health-nutrition.mp3",
+      "status": "uploaded",
+      "bytes": 7090371
+    },
+    {
+      "fileName": "1-4 学生银行.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/1-4-student-banking.mp3",
+      "status": "uploaded",
+      "bytes": 2133793
+    },
+    {
+      "fileName": "1-5 用餐饮食.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/1-5-dining-food.mp3",
+      "status": "uploaded",
+      "bytes": 3807111
+    },
+    {
+      "fileName": "2-1 学术教育.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-1-academic-education.mp3",
+      "status": "uploaded",
+      "bytes": 10509068
+    },
+    {
+      "fileName": "2-2 课程选择.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-2-course-selection.mp3",
+      "status": "uploaded",
+      "bytes": 3318708
+    },
+    {
+      "fileName": "2-3 图书馆.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-3-library.mp3",
+      "status": "uploaded",
+      "bytes": 3873548
+    },
+    {
+      "fileName": "2-4 电脑机房.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-4-computer-lab.mp3",
+      "status": "uploaded",
+      "bytes": 2129405
+    },
+    {
+      "fileName": "2-5 课程研究调查.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-5-course-research-survey.mp3",
+      "status": "uploaded",
+      "bytes": 1554502
+    },
+    {
+      "fileName": "2-6 具体授课.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/2-6-lecture-teaching.mp3",
+      "status": "uploaded",
+      "bytes": 4756278
+    },
+    {
+      "fileName": "3-1 文艺演出.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-1-arts-performance.mp3",
+      "status": "uploaded",
+      "bytes": 1117544
+    },
+    {
+      "fileName": "3-2 人物描述.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-2-people-description.mp3",
+      "status": "uploaded",
+      "bytes": 4310543
+    },
+    {
+      "fileName": "3-3 交通工具.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-3-transport.mp3",
+      "status": "uploaded",
+      "bytes": 1536339
+    },
+    {
+      "fileName": "3-4-5-6气候语言机场.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-4-5-6-climate-language-airport.mp3",
+      "status": "uploaded",
+      "bytes": 2562010
+    },
+    {
+      "fileName": "3-7 新闻.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-7-news.mp3",
+      "status": "uploaded",
+      "bytes": 1772695
+    },
+    {
+      "fileName": "3-8 求职面试.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-8-job-interview.mp3",
+      "status": "uploaded",
+      "bytes": 1203434
+    },
+    {
+      "fileName": "3-9 指路方向.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-9-directions.mp3",
+      "status": "uploaded",
+      "bytes": 4219638
+    },
+    {
+      "fileName": "3-10 地名.mp3",
+      "r2Key": "ielts/listening-vocabulary/audio/3-10-place-names.mp3",
+      "status": "uploaded",
+      "bytes": 3102433
+    }
+  ]
+}

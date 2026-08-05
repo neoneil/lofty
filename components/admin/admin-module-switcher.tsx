@@ -12,6 +12,7 @@ const adminModules = [
   { title: "学生作业管理", desc: "给学生布置 IELTS / PTE 作业，发送站内通知和邮件，并保留学生历史作业。", href: "/admin/homework", tag: "Homework", icon: NotebookPen },
   { title: "文章管理", desc: "创建、编辑和管理 IELTS / PTE 文章。", href: "/admin/posts", tag: "Posts", icon: FileText },
   { title: "授课笔记", desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。", href: "/admin/lesson-notes", tag: "PTE / IELTS", icon: BookOpenText },
+  { title: "文档词汇自动化", desc: "上传 PDF、Word、PPT，提取文字并生成可在词汇中心展示的静态词汇文件。", href: "/admin/content-ingest", tag: "Content", icon: CloudUpload },
   { title: "Markdown 备忘录", desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。", href: "/admin/markdown-memo", tag: "Course Design", icon: BookOpenCheck },
   { title: "作文批改", desc: "批改学生作文。", href: "/ielts-writing", tag: "PTE / IELTS", icon: PenLine },
   { title: "PTE 题库下载管理", desc: "管理 WFD、SST、HIW 等题型与音频资源。", href: "/downloads", tag: "PTE", icon: Download },

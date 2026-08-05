@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpenText, Clock3 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpenCheck, BookOpenText, Clock3, Headphones, Mic, PenLine } from "lucide-react";
 
 import CourseModeSwitcher from "@/components/course-markdown/CourseModeSwitcher";
 import { Badge } from "@/components/ui-v2/badge";
@@ -15,16 +15,15 @@ export const metadata: Metadata = {
 };
 
 const exams = [
-  { key: "pte", label: "PTE 授课笔记" },
-  { key: "ielts", label: "IELTS 授课笔记" },
+  { key: "pte", label: "PTE" },
+  { key: "ielts", label: "IELTS" },
 ];
 
-const pteCategories = [
-  { key: "listening", label: "听力", english: "Listening" },
-  { key: "speaking", label: "口语", english: "Speaking" },
-  { key: "reading", label: "阅读", english: "Reading" },
-  { key: "writing", label: "写作", english: "Writing" },
-  { key: "strategies", label: "答题策略", english: "Strategies" },
+const skills = [
+  { key: "listening", label: "听力", english: "Listening", icon: Headphones },
+  { key: "speaking", label: "口语", english: "Speaking", icon: Mic },
+  { key: "reading", label: "阅读", english: "Reading", icon: BookOpenCheck },
+  { key: "writing", label: "写作", english: "Writing", icon: PenLine },
 ];
 
 function formatSegment(value: string) {
@@ -33,10 +32,23 @@ function formatSegment(value: string) {
 
 type LessonNotesPageProps = {
   searchParams: Promise<{
-    exam?: string | string[];
+    module?: string | string[];
     mode?: string | string[];
   }>;
 };
+
+function getSingleSearchParam(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function getSelectedSkill(value: string | string[] | undefined) {
+  const normalized = getSingleSearchParam(value)?.toLowerCase();
+  return skills.some((item) => item.key === normalized) ? normalized! : "writing";
+}
+
+function getGroupLabel(value: string) {
+  return value.replaceAll("-", " ").replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
 function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课笔记" }: { lessons: AdminLessonSummary[]; selectedMode: "article" | "slides"; emptyText?: string }) {
   if (lessons.length === 0) {
@@ -44,7 +56,7 @@ function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-4 2xl:grid-cols-2">
       {lessons.map((lesson) => {
         const moduleName = lesson.module || lesson.lessonPath[0];
         const questionType = lesson.questionType || lesson.lessonPath[1];
@@ -53,15 +65,15 @@ function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课
           <Link key={lesson.href} href={`${lesson.href}?mode=${selectedMode}`} className="group block h-full">
             <Card className="h-full rounded-[var(--radius-md)] transition group-hover:-translate-y-0.5 group-hover:border-[var(--primary)] group-hover:shadow-[var(--shadow-md)]">
               <CardContent className="flex h-full flex-col p-5">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <BookOpenText size={18} className="text-[var(--primary)]" aria-hidden="true" />
-                    <span className="text-xs font-semibold uppercase text-[var(--text-faint)]">{formatSegment(moduleName)}</span>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <BookOpenText size={18} className="shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                    <span className="truncate text-xs font-semibold uppercase text-[var(--text-faint)]">{formatSegment(moduleName)}</span>
                   </div>
-                  <Badge variant="secondary">{formatSegment(questionType)}</Badge>
+                  <Badge variant="secondary" className="max-w-full shrink-0 truncate">{formatSegment(questionType)}</Badge>
                 </div>
 
-                <h3 className="mt-4 text-base font-semibold leading-6 text-[var(--text)]">{lesson.title}</h3>
+                <h3 className="mt-4 break-words text-base font-semibold leading-6 text-[var(--text)]">{lesson.title}</h3>
                 {lesson.subtitle ? <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">{lesson.subtitle}</p> : null}
 
                 <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-[var(--text-faint)]">
@@ -84,12 +96,12 @@ function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课
 
 export default async function LessonNotesPage({ searchParams }: LessonNotesPageProps) {
   await requireAdminOrEditor("/admin/lesson-notes");
-  const { exam, mode } = await searchParams;
+  const { module, mode } = await searchParams;
   const selectedMode = mode === "article" ? "article" : "slides";
-  const selectedExam = exam === "ielts" ? "ielts" : "pte";
-  const selectedExamMeta = exams.find((item) => item.key === selectedExam) ?? exams[0];
+  const selectedSkill = getSelectedSkill(module);
+  const selectedSkillMeta = skills.find((item) => item.key === selectedSkill) ?? skills[3];
   const lessons = await getAdminLessonCatalog();
-  const visibleLessons = lessons.filter((lesson) => lesson.exam === selectedExam);
+  const skillCounts = new Map(skills.map((skill) => [skill.key, lessons.filter((lesson) => lesson.lessonPath[0] === skill.key).length]));
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-6 text-[var(--text)] sm:px-6 sm:py-8 lg:px-8">
@@ -106,47 +118,79 @@ export default async function LessonNotesPage({ searchParams }: LessonNotesPageP
               <h1 className="mt-3 text-2xl font-semibold text-[var(--text)] sm:text-3xl">授课笔记</h1>
               <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">这里会自动读取 Admin 目录下的 PTE 与 IELTS Markdown 文件。新增课程文件后，刷新页面即可看到。</p>
             </div>
-            <div className="flex w-fit rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-1 shadow-[var(--shadow-xs)]">
-              {exams.map((item) => (
-                <Link key={item.key} href={`/admin/lesson-notes?exam=${item.key}&mode=${selectedMode}`} className={`inline-flex h-9 items-center rounded-[var(--radius-sm)] px-4 text-sm font-semibold transition-colors ${selectedExam === item.key ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]" : "text-[var(--text-soft)] hover:bg-[var(--card)] hover:text-[var(--text)]"}`}>
-                  {item.key.toUpperCase()}
-                </Link>
-              ))}
-            </div>
+            <Badge variant="outline">{lessons.length} lessons</Badge>
           </div>
 
           <nav className="mt-5 flex flex-wrap gap-2" aria-label="课程类型">
             <Link href="/admin/markdown-memo" className="inline-flex h-10 items-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">Markdown 语法备忘录</Link>
-            <CourseModeSwitcher activeMode={selectedMode} basePath={`/admin/lesson-notes?exam=${selectedExam}`} />
+            <CourseModeSwitcher activeMode={selectedMode} basePath={`/admin/lesson-notes?module=${selectedSkill}`} />
           </nav>
         </header>
 
-        <div className="mt-6 space-y-8">
-          <section className="scroll-mt-24">
-            <div className="mb-4 flex items-end justify-between gap-4">
+        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((skill) => {
+            const Icon = skill.icon;
+            const active = selectedSkill === skill.key;
+            return (
+              <Link key={skill.key} href={`/admin/lesson-notes?module=${skill.key}&mode=${selectedMode}`} className={`group rounded-[var(--radius-lg)] border p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)] ${active ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--card)]"}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] ${active ? "bg-[var(--primary)] text-white" : "bg-[var(--bg-soft)] text-[var(--primary)]"}`}><Icon size={18} /></span>
+                  <Badge variant={active ? "default" : "secondary"}>{skillCounts.get(skill.key) ?? 0}</Badge>
+                </div>
+                <h2 className="mt-4 text-lg font-bold text-[var(--text)]">{skill.label}</h2>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-faint)]">{skill.english}</p>
+              </Link>
+            );
+          })}
+        </section>
+
+        <div className="mt-6 space-y-7">
+          <section className="scroll-mt-24 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
+            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase text-[var(--primary)]">{selectedExamMeta.key}</p>
-                <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{selectedExamMeta.label}</h2>
+                <p className="text-xs font-semibold uppercase text-[var(--primary)]">{selectedSkillMeta.english}</p>
+                <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{selectedSkillMeta.label}授课笔记</h2>
               </div>
-              <Badge variant="outline">{visibleLessons.length} lessons</Badge>
+              <Badge variant="outline">{skillCounts.get(selectedSkill) ?? 0} lessons</Badge>
             </div>
 
-            {selectedExam === "pte" ? (
-              <div className="space-y-7">
-                {pteCategories.map((category) => {
-                  const categoryLessons = visibleLessons.filter((lesson) => lesson.lessonPath[0].toLowerCase() === category.key);
-                  return (
-                    <section key={category.key} className="scroll-mt-24">
-                      <div className="mb-3 flex items-center justify-between gap-3">
-                        <div><h3 className="text-base font-semibold text-[var(--text)] sm:text-lg">{category.label}</h3><p className="mt-0.5 text-xs uppercase text-[var(--text-faint)]">{category.english}</p></div>
-                        <Badge variant="secondary">{categoryLessons.length > 0 ? `${categoryLessons.length} lessons` : "待生成"}</Badge>
+            <div className="grid gap-5 xl:grid-cols-2">
+              {exams.map((exam) => {
+                const examLessons = lessons.filter((lesson) => lesson.lessonPath[0] === selectedSkill && lesson.exam === exam.key);
+                const groups = [...new Set(examLessons.map((lesson) => lesson.lessonPath[1] ?? "general"))].sort();
+
+                return (
+                  <section key={exam.key} className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <div>
+                        <h3 className="text-base font-bold text-[var(--text)]">{exam.label}</h3>
+                        <p className="mt-0.5 text-xs uppercase tracking-[0.12em] text-[var(--text-faint)]">{selectedSkillMeta.english}</p>
                       </div>
-                      <LessonGrid lessons={categoryLessons} selectedMode={selectedMode} emptyText="待生成" />
-                    </section>
-                  );
-                })}
-              </div>
-            ) : <LessonGrid lessons={visibleLessons} selectedMode={selectedMode} />}
+                      <Badge variant="secondary">{examLessons.length > 0 ? `${examLessons.length} lessons` : "待生成"}</Badge>
+                    </div>
+
+                    {groups.length > 0 ? (
+                      <div className="space-y-5">
+                        {groups.map((group) => {
+                          const groupLessons = examLessons.filter((lesson) => (lesson.lessonPath[1] ?? "general") === group);
+                          return (
+                            <div key={`${exam.key}-${group}`}>
+                              <div className="mb-3 flex items-center justify-between gap-3">
+                                <div><h4 className="text-sm font-semibold text-[var(--text)]">{getGroupLabel(group)}</h4><p className="mt-0.5 text-[11px] uppercase tracking-[0.12em] text-[var(--text-faint)]">{exam.label} / {selectedSkillMeta.english}</p></div>
+                                <Badge variant="outline">{groupLessons.length}</Badge>
+                              </div>
+                              <LessonGrid lessons={groupLessons} selectedMode={selectedMode} emptyText="待生成" />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <LessonGrid lessons={[]} selectedMode={selectedMode} emptyText={`${exam.label} ${selectedSkillMeta.label}课程待生成`} />
+                    )}
+                  </section>
+                );
+              })}
+            </div>
           </section>
         </div>
       </section>

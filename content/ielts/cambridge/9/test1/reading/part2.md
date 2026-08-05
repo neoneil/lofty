@@ -15,7 +15,7 @@ section_id: "b8214749-d2be-42d9-8a30-837c6560ccac"
 section_number: 2
 section_title: " Passage2"
 section_instruction: "Reading Passage 2 has five paragraphs, <b>A-E</b>.<br/>Choose the correct heading for paragraphs <b>B-E</b> from the headings below.<br/>Write the correct number, <b>i-vii</b>, in boxes 14—17 on your answer sheet. "
-passage_title: "C9-T1-S2"
+passage_title: "Is There Anybody Out There?"
 section_sort_order: 2
 module_raw_data_json: |
   {
@@ -276,10 +276,10 @@ questions_json: |
       "question_number_end": 17,
       "question_type": "小标题",
       "prompt": "Questions 14-17",
-      "instruction": "Reading Passage 2 has five paragraphs, <b>A-E</b>.<br/>Choose the correct heading for paragraphs <b>B-E</b> from the headings below.<br/>Write the correct number, <b>i-vii</b>, in boxes 14—17 on your answer sheet. ",
+      "instruction": "Reading Passage 2 has five paragraphs, <b>A-E</b>.<br/>Choose the correct heading for paragraphs <b>B-E</b> from the headings below.<br/>Write the correct number, <b>i-vii</b>, in boxes 14—17 on your answer sheet. <br/><br/><b>List of Headings</b>",
       "content": {
         "image_url": null,
-        "page_desc": "Reading Passage 2 has five paragraphs, <b>A-E</b>.<br/>Choose the correct heading for paragraphs <b>B-E</b> from the headings below.<br/>Write the correct number, <b>i-vii</b>, in boxes 14—17 on your answer sheet. ",
+        "page_desc": "Reading Passage 2 has five paragraphs, <b>A-E</b>.<br/>Choose the correct heading for paragraphs <b>B-E</b> from the headings below.<br/>Write the correct number, <b>i-vii</b>, in boxes 14—17 on your answer sheet. <br/><br/><b>List of Headings</b>",
         "questions": [
           {
             "id": 7916,
@@ -288,7 +288,7 @@ questions_json: |
               "iv"
             ],
             "serial": "14",
-            "content": "14 Paragraph B[blank][/blank]",
+            "content": "14 Paragraph B",
             "answerExplain": "14. 主旨句：段落首句： In discussing whether we are alone, most SETI scientists adopt two ground rules. <br/>解析：ground rules 对应选项iv中的 Assumptions underlying。 答案为 iv。"
           },
           {
@@ -298,7 +298,7 @@ questions_json: |
               "vii"
             ],
             "serial": "15",
-            "content": "15 Paragraph C[blank][/blank]",
+            "content": "15 Paragraph C",
             "answerExplain": "15. 主旨句：However, when we look at the 100 billion stars in our galaxy (the Milky Way), and 100 billion galaxies in the observable Universe, it seems inconceivable that at least one of these planets does not have a life form on it; in fact, the best educated guess we can make, using the little that we do know about the conditions for carbon-based life, leads us to estimate that perhaps one in 100,000 stars might have a life-bearing planet orbiting it.<br/>解析：seems，guess，estimate 及 might have a life-bearing planet 对应了选项vii中的 Likelihood of life。答案为 vii。"
           },
           {
@@ -308,7 +308,7 @@ questions_json: |
               "i"
             ],
             "serial": "16",
-            "content": "16 Paragraph D[blank][/blank]",
+            "content": "16 Paragraph D",
             "answerExplain": "16. 主旨句：It turns out that, for a given amount of transmitted power, radio waves in the frequency range 1,000 to 3,000 MHz travel the greatest distance, and so all searches to date have concentrated on looking for radio waves in this frequency range. <br/>解析：looking for radio waves 对应选项 i 中的 Seeking the transmission of radio signals。 答案为 i。"
           },
           {
@@ -318,7 +318,7 @@ questions_json: |
               "ii"
             ],
             "serial": "17",
-            "content": "17 Paragraph E[blank][/blank]",
+            "content": "17 Paragraph E",
             "answerExplain": "17. 主旨句：There is considerable debate over how we should react if we detect a signal from an alien civilisation.<br/>解析：react对应选项 ii 中的 responses，a signal from alien civilisation对应选项 ii 中的signals from other civilisations。答案为 ii。"
           }
         ],
@@ -328,7 +328,50 @@ questions_json: |
         "section_title": "小标题",
         "source_category_section_id": 706
       },
-      "options": [],
+      "options": [
+        {
+          "id": 901400,
+          "title": "i. Seeking the transmission of radio signals from planets",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 901401,
+          "title": "ii. Appropriate responses to signals from other civilisations",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 901402,
+          "title": "iii. Vast distances to Earth’s closest neighbours",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 901403,
+          "title": "iv. Assumptions underlying the search for extra-terrestrial intelligence",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 901404,
+          "title": "v. Reasons for the search for extra-terrestrial intelligence",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 901405,
+          "title": "vi. Knowledge of extra-terrestrial life forms",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 901406,
+          "title": "vii. Likelihood of life on other planets",
+          "legend": 0,
+          "sortOrder": 6
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -465,7 +508,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 706
       },
-      "options": [],
+      "options": [
+        {
+          "id": 912210,
+          "title": "YES &nbsp;&nbsp;if the statement agrees with the views of the writer",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 912211,
+          "title": "NO &nbsp;&nbsp;if the statement contradicts the views of the writer",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 912212,
+          "title": "NOT GIVEN &nbsp;&nbsp;if it is impossible to say what the writer thinks about this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 3
     }
   ]
@@ -935,3 +997,4 @@ assets_json: |
   ]
 ---
 
+<i>The question of whether we are alone in the Universe has haunted humanity for centuries, but we may now stand poised on the brink of the answer to that question, as we search for radio signals from other intelligent civilizations. This search often known by the acronym SETI [search for extraterrestrial intelligence], is a difficult one. Although groups around the world have been searching intermittently for three decades, it is only now that we have reached the level of technology where we can make a determined attempt to search all nearby stars for any sign of life.</i><br/><br/><b>A</b><br/>The primary reason for the search is basic curiosity - the same curiosity about the natural world that drives all pure science. We want to know whether we are alone in the Universe. We want to know whether life evolves naturally if given the right conditions, or whether there is something very special about the Earth to have fostered the variety of life forms that we see around us on the planet. The simple detection of a radio signal will be sufficient to answer this most basic of all questions. In this sense, SETI is another cog in the machinery of pure science which is continually pushing out the horizon of our knowledge. However, there are other reasons for being interested in whether life exists elsewhere. For example, we have had civilization on Earth for perhaps only a few thousand years, and the threats of nuclear war and pollution over the last few decades have told us that our survival may be tenuous. Will we last another two thousand years or will we wipe ourselves out? Since the lifetime of a planet like ours is several billion years, we can expect that if other civilizations do survive in our galaxy, their ages will range from zero to several billion years. Thus any other civilization that we hear from is likely to be far older on average than ourselves. The mere existence of such a civilization will tell of that long term survival is possible, and gives us some cause for optimism. It is even possible that the older civilization may pass on the benefits of their experience in dealing with threats to survival such as nuclear war and global pollution, and other threats that we haven't yet discovered.<br/><br/><b>B</b><br/>In discussing whether we are alone, most SETI scientists adopt two ground rules. First. UFOs [Unidentified Flying objects] are generally ignored since most scientists don`t consider the evidence for them to be strong enough to bear serious consideration (although it is also important to keep an open mind in casa any really convincing evidence emerges in the future). Second, we make a very conservative assumption that we are looking for a life form that is pretty well like us, since if it differs radically from us we may well not recognize it as e life form, quite apart from whether we are able to communicate with it. In other words, the life form we are looking for may well have two green heads and seven fingers, but it will nevertheless resemble us in that it should communicate with its fellows. Be interested in the Universe, Live on a planet orbiting a star like our Sun, and perhaps most restrictively have chemistry, like us, based on carbon and water.<br/><br/><b>C</b><br/>Even when we make these assumptions. our understanding of other life forms is still severely limited. We do not even know. for example, how many stars have planets, and we certainly do not know how likely it is that life will arise naturally, given the right conditions. However, when we look at the 100 billion stars in our galaxy [the Milky Way], and 100 billion galaxies. In the observable Universe, It seems inconceivable that at least one of these planets does not have a life form on it; in fact, the best educated guess we can make using the little that we do know about the conditions for carbon-based life, leads us to estimate that perhaps one in 100,000 stars might have a life-bearing planet orbiting it. That means that our nearest neighbors are perhaps 1000 light years away. which is almost next door in astronomical terms.<br/><br/><b>D</b><br/>An alien civilization could choose many different ways of sending information across the galaxy, but many of these either require too much energy. or else are severely attenuated while traversing the vast distances across the galaxy. lt bums out that. for a given amount of transmitted power: radio waves in the frequency range 1000 to 3000 MHz travel the greatest distance, and so all searches to date have concentrated on looking for radio waves in this frequency range. So far there have been a number of searches by various groups around the world, including Australian searches using the radio telescope at Parkes, New South Wales. Until now there have not been any detections from the few hundred stars which have been searched. The scale of the searches has been increased dramatically since 1992, when the US Congress voted NASA $10 million per year for ten years to conduct a thorough search for extra-terrestrial life. Much of the money in this project is being spent on developing the special hardware needed to search many frequencies et once. The project has two parts. One part is a targeted search using the world's largest radio telescopes. The American-operated telescope in Arecibo. Puerto Rico and the French telescope in Nancy in France. This part of the project is searching the nearest 1000 likely stars with high sensibility for signals in the frequency range 1000 to 3000 MHz. The other part of the project is an undirected search which is monitoring all of space with a lower sensitivity, using the smaller antennas of NASA`s Deep Space Network.<br/><br/><b>E</b><br/>There is considerable debate over how we should react if we detect a signal from an alien civilization. Everybody agrees that we should not reply immediately. Quite apart from the impracticality of sending e reply over such large distances at short notice, it raises a host of ethical questions that would have to be addressed by the global community before any reply could be sent. Would the human race face the culture shock if faced with a superior and much older civilization? Luckily, there is no urgency about this. The stars being searched are hundreds of light years away. so it takes hundreds of years for their signal to reach us, and a further few hundred years for our reply to reach them. lt's not important, then, if there`s a delay of a few years, or decades, while the human race debates the question of whether to reply and perhaps carefully drafts a reply.<br/>

@@ -15,7 +15,7 @@ section_id: "23a20fc0-af81-470c-9a6c-8a84c556adcc"
 section_number: 3
 section_title: " Passage3"
 section_instruction: "Do the following statements agree with the information given in Reading Passage 3?<br/>In boxes 31-33 on your answer sheet, write "
-passage_title: "C9-T1-S3"
+passage_title: "The History of the Tortoise"
 section_sort_order: 3
 module_raw_data_json: |
   {
@@ -284,6 +284,69 @@ section_raw_data_json: |
 questions_json: |
   [
     {
+      "id": "bc8015da-59e5-45af-bb23-fe51e6e98292",
+      "section_id": "23a20fc0-af81-470c-9a6c-8a84c556adcc",
+      "question_number_start": 27,
+      "question_number_end": 30,
+      "question_type": "填空题",
+      "prompt": "Questions 27-30",
+      "instruction": "Answer the questions below.\nChoose NO MORE THAN TWO WORDS from the passage for each answer.\nWrite your answers in boxes 27-30 on your answer sheet.",
+      "content": {
+        "image_url": null,
+        "page_desc": "Answer the questions below.\nChoose NO MORE THAN TWO WORDS from the passage for each answer.\nWrite your answers in boxes 27-30 on your answer sheet.",
+        "questions": [
+          {
+            "id": 16095,
+            "fid": 3494,
+            "answer": [
+              "plants"
+            ],
+            "serial": "27",
+            "content": "27 What had to transfer from sea to land before any animals could migrates?[blank][/blank]",
+            "answerExplain": "原文定位：第1段末尾：\"... And we mustn't forget the plants, without whose prior invasion of the land none of the other migrations could have happened.\"\n\n题干问的是\"在动物迁徙之前，什么东西必须先从海洋转移到陆地\"。原文明确指出，没有植物对陆地的入侵，其他所有迁徙都不可能发生。因此正确答案是\"plants\"。"
+          },
+          {
+            "id": 16096,
+            "fid": 3494,
+            "answer": [
+              "breathing",
+              "reproduction"
+            ],
+            "serial": "28",
+            "content": "28 Which TWO processes are mentioned as those in which animals had to make big changes as they moved onto land?[blank][/blank]",
+            "answerExplain": "原文定位：第2段开头：\"Moving from water to land involved a major redesign of every aspect of life, including breathing and reproduction.\"\n\n解析：题干中的\"big changes\"与原文中的\"major redesign\"对应。原文明确指出动物从水中迁移到陆地时，涉及的两个重大改变过程是呼吸（breathing）和繁殖（reproduction）。注意：题目要求答案不超过两个词，因此不要在breathing和reproduction之间加上\"and\"。"
+          },
+          {
+            "id": 16097,
+            "fid": 3494,
+            "answer": [
+              "gills"
+            ],
+            "serial": "29",
+            "content": "29 Which physical feature, possessed by their ancestors, do whale lack?[blank][/blank]",
+            "answerExplain": "原文定位：第2段关于鲸鱼的描述：\"They do, however, still breathe air, having never developed anything equivalent to the gills of their earlier marine incarnation.\"\n\n解析：题干问的是\"祖先拥有而鲸鱼没有的身体特征\"。原文指出，鲸鱼从未进化出类似早期海洋生物（祖先）的鳃（gills）。因此答案为\"gills\"。"
+          },
+          {
+            "id": 16098,
+            "fid": 3494,
+            "answer": [
+              "dolphins"
+            ],
+            "serial": "30",
+            "content": "30 Which animals might ichthyosaurs have resembled?[blank][/blank]",
+            "answerExplain": "原文定位：第3段：\"Ichthyosaurs were reptilian contemporaries of the dinosaurs, with fins and streamlined bodies. The fossils look like dolphins and they surely lived like dolphins, in the water.\"\n\n解析：题干中的\"resemble\"与原文中的\"look like\"对应。鱼龙在形态上与海豚相似。因此答案为\"dolphins\"（加上定冠词\"the\"也可以）。"
+          }
+        ],
+        "page_title": "Questions 27-30",
+        "part_title": "C9-T1-S3",
+        "page_content": null,
+        "section_title": "填空题",
+        "source_category_section_id": 707
+      },
+      "options": [],
+      "sort_order": 1
+    },
+    {
       "id": "6fa49da4-0d03-41c0-9dc6-8965f552fcb3",
       "section_id": "23a20fc0-af81-470c-9a6c-8a84c556adcc",
       "question_number_start": 31,
@@ -332,8 +395,27 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 707
       },
-      "options": [],
-      "sort_order": 1
+      "options": [
+        {
+          "id": 913310,
+          "title": "TRUE &nbsp;&nbsp;if the statement agrees with the information",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 913311,
+          "title": "FALSE &nbsp;&nbsp;if the statement contradicts the information",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 913312,
+          "title": "NOT GIVEN &nbsp;&nbsp;if there is no information on this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
+      "sort_order": 2
     },
     {
       "id": "2d2d9b9c-d023-4752-a1cc-c53795c70ca9",
@@ -416,7 +498,7 @@ questions_json: |
         "source_category_section_id": 707
       },
       "options": [],
-      "sort_order": 2
+      "sort_order": 3
     },
     {
       "id": "4cca05b4-a41a-437a-876f-b4c439edf522",
@@ -475,69 +557,6 @@ questions_json: |
           "question_no": "40"
         }
       ],
-      "sort_order": 3
-    },
-    {
-      "id": "bc8015da-59e5-45af-bb23-fe51e6e98292",
-      "section_id": "23a20fc0-af81-470c-9a6c-8a84c556adcc",
-      "question_number_start": 27,
-      "question_number_end": 30,
-      "question_type": "填空题",
-      "prompt": "Questions 27-30",
-      "instruction": "Answer the questions below.\nChoose NO MORE THAN TWO WORDS from the passage for each answer.\nWrite your answers in boxes 27-30 on your answer sheet.",
-      "content": {
-        "image_url": null,
-        "page_desc": "Answer the questions below.\nChoose NO MORE THAN TWO WORDS from the passage for each answer.\nWrite your answers in boxes 27-30 on your answer sheet.",
-        "questions": [
-          {
-            "id": 16095,
-            "fid": 3494,
-            "answer": [
-              "plants"
-            ],
-            "serial": "27",
-            "content": "27 What had to transfer from sea to land before any animals could migrates?[blank][/blank]",
-            "answerExplain": "原文定位：第1段末尾：\"... And we mustn't forget the plants, without whose prior invasion of the land none of the other migrations could have happened.\"\n\n题干问的是\"在动物迁徙之前，什么东西必须先从海洋转移到陆地\"。原文明确指出，没有植物对陆地的入侵，其他所有迁徙都不可能发生。因此正确答案是\"plants\"。"
-          },
-          {
-            "id": 16096,
-            "fid": 3494,
-            "answer": [
-              "breathing",
-              "reproduction"
-            ],
-            "serial": "28",
-            "content": "28 Which TWO processes are mentioned as those in which animals had to make big changes as they moved onto land?[blank][/blank]",
-            "answerExplain": "原文定位：第2段开头：\"Moving from water to land involved a major redesign of every aspect of life, including breathing and reproduction.\"\n\n解析：题干中的\"big changes\"与原文中的\"major redesign\"对应。原文明确指出动物从水中迁移到陆地时，涉及的两个重大改变过程是呼吸（breathing）和繁殖（reproduction）。注意：题目要求答案不超过两个词，因此不要在breathing和reproduction之间加上\"and\"。"
-          },
-          {
-            "id": 16097,
-            "fid": 3494,
-            "answer": [
-              "gills"
-            ],
-            "serial": "29",
-            "content": "29 Which physical feature, possessed by their ancestors, do whale lack?[blank][/blank]",
-            "answerExplain": "原文定位：第2段关于鲸鱼的描述：\"They do, however, still breathe air, having never developed anything equivalent to the gills of their earlier marine incarnation.\"\n\n解析：题干问的是\"祖先拥有而鲸鱼没有的身体特征\"。原文指出，鲸鱼从未进化出类似早期海洋生物（祖先）的鳃（gills）。因此答案为\"gills\"。"
-          },
-          {
-            "id": 16098,
-            "fid": 3494,
-            "answer": [
-              "dolphins"
-            ],
-            "serial": "30",
-            "content": "30 Which animals might ichthyosaurs have resembled?[blank][/blank]",
-            "answerExplain": "原文定位：第3段：\"Ichthyosaurs were reptilian contemporaries of the dinosaurs, with fins and streamlined bodies. The fossils look like dolphins and they surely lived like dolphins, in the water.\"\n\n解析：题干中的\"resemble\"与原文中的\"look like\"对应。鱼龙在形态上与海豚相似。因此答案为\"dolphins\"（加上定冠词\"the\"也可以）。"
-          }
-        ],
-        "page_title": "Questions 27-30",
-        "part_title": "C9-T1-S3",
-        "page_content": null,
-        "section_title": "填空题",
-        "source_category_section_id": 707
-      },
-      "options": [],
       "sort_order": 4
     }
   ]
@@ -1040,3 +1059,4 @@ assets_json: |
   ]
 ---
 
+If you go back far enough, everything lived in the sea. At various points in evolutionary history, enterprising individuals within many different animal groups moved out onto the land, sometimes even to the most parched deserts, taking their own private seawater with them in blood and cellular fluids. In addition to the reptiles, birds, mammals and insects which we see all around us, other groups that have succeeded out of water include scorpions, snails, crustaceans such as woodlice and land crabs, millipedes and centipedes, spiders and various worms. And we mustn’t forget the plants, without whose prior invasion of the land none of the other migrations could have happened.<br/><br/>Moving from water to land involved a major redesign of every aspect of life, including breathing and reproduction. Nevertheless, a good number of thoroughgoing land animals later turned around, abandoned their hard-earned terrestrial re-tooling, and returned to the Water Seals have only gone part way back. They show us what the intermediates might have been like, on the way to extreme cases such as whales and dugongs. Whales (including the small whales we call dolphins) and dugongs, with their close cousins the manatees, ceased to be land creatures altogether and reverted to the full marine habits of their remote ancestors. They don‘t even come ashore to breed. They do, however, still breathe air, having never developed anything equivalent to the gills of their earlier marine incarnation. Turtles went back to the sea a very long time ago and, like all vertebrate returnees to the water, they breathe air. However, they are, in one respect, less fully given back to the water than whales or dugongs, for turtles still lay their eggs on beaches.<br/><br/>There is evidence that all modem turtles are descended from a terrestrial ancestor which lived before most of the dinosaurs. There are two key fossils called <i>Progaochelys quenstedti</i> and Palaeochersis talampayensis dating from early dinosaur times, which appear to be close to the ancestry of all modem turtles and tortoises. You might wonder how we can tell whether fossil animals lived on land or in water, especially if only fragments are found. Sometimes it`s obvious. Ichthyosarus were reptilian contemporaries of the dinosaurs, with fins and streamlined bodies. The fossils look like dolphins and they surely lived like dolphins, in the water. With turtles it is a little less obvious. One way to tell is by measuring the bones of their forelimbs.<br/><br/>Walter Joyce and Jacques Gauthier, at Yale University, obtained three measurements in these particular bones of 71 species of living turtles and tortoises. They used a kind of triangular graph paper to plot the three measurements against one another. All the land tortoise species formed a tight cluster of points in the upper part of the triangle; all the water turtles cluster in the lower part of the triangular graph. There was no overlap, except when they added some species that spend time both in water and on land. Sure enough, these amphibious species show up on the triangular graph approximately half way between the ‘wet cluster' of sea turtles and the ‘dry cluster' of land tortoises. 'The next step was to determine where the fossil fell. The bones of P. <i>quenstedti</i> and P. <i>talampayensis</i> leave us in no doubt. Their points on the graph are right in the thick of the dry cluster. Both these fossils were dry-land tortoises. They come from the era before our turtles returned to the water.<br/><br/>You might think, therefore, that modem land tortoises have probably stayed on land ever since those early terrestrial times, as most mammals did after a few of them went back to the sea. But apparently not. If you draw out the family tree of all modern turtles and tortoises, nearly all the branches are aquatic. Today’s land tortoises constitute a single branch, deeply nested among branches consisting of aquatic turtles. This suggests that modern land tortoises have not stayed on land continuously since the time of P. <i>quenstedti</i> and P. <i>talampayensis.</i> Rather, their ancestors were among those who went back to the water, and they then re-emerged back onto the land in (relatively) more recent times.<br/><br/>Tortoises therefore represent a remarkable double return. In common with all mammals, reptiles and binds, their remote ancestors were marine fish and before that various more or less worm-like creatures stretching back, still in the sea, to the primeval bacteria. Later ancestors lived on land and stayed there for a very large number of generations. Later ancestors still evolved back into the water and became sea turtles. And finally they returned yet again to the land as tortoises, some of which now live in the driest of deserts.<br/>

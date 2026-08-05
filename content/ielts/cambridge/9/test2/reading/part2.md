@@ -15,7 +15,7 @@ section_id: "6eb9d376-add2-404a-9096-4fbe0cdddb46"
 section_number: 2
 section_title: " Passage2"
 section_instruction: "Reading Passage 2 has seven paragraphs, <b>A-G</b>.<br/>Which paragraph contains the following information?<br/>Write the correct letter <b>A-G</b>, in boxes 14-17 on your answer sheet. "
-passage_title: "C9-T2-S2"
+passage_title: "Venus in Transit"
 section_sort_order: 2
 module_raw_data_json: |
   {
@@ -287,7 +287,7 @@ questions_json: |
               "F"
             ],
             "serial": "14",
-            "content": "14 examples of different ways in which the parallax principle has been applied[blank][/blank]",
+            "content": "14 examples of different ways in which the parallax principle has been applied",
             "answerExplain": "14. 参考译文：视差原理被应用到其他方面的例子。<br/>定位词： the parallax principle <br/>对应原文：F 段第五句 The parallax principle can be extended to measure the distances to the stars. <br/>解析：parallax principle 的提出及其在其他领域的运用只出现在 F 段。 答案为 F。"
           },
           {
@@ -297,7 +297,7 @@ questions_json: |
               "D"
             ],
             "serial": "15",
-            "content": "15 a description of an event which prevented a transit observation[blank][/blank]",
+            "content": "15 a description of an event which prevented a transit observation",
             "answerExplain": "15. 参考译文：对于阻止金星凌日观察事件的描述。 <br/>定位词： an event, prevented a transit observation<br/>对应原文：D 段第五句Fleeing on a French warship crossing the Indian Ocean, Le Gentil saw a wonderful transit -  but the ship’s pitching and rolling ruled out any attempt at making accurate observations。以及 D 段最后一句 Ironically after travelling nearly 50,000 kilometres, his view was clouded out at the last moment, a very dispiriting experience. <br/>解析： 题目中的 prevented 对应原文中的 ruled out 及 clouded out。 答案为 D。"
           },
           {
@@ -307,7 +307,7 @@ questions_json: |
               "G"
             ],
             "serial": "16",
-            "content": "16 a statement about potential future discoveries leading on from transit observations[blank][/blank]",
+            "content": "16 a statement about potential future discoveries leading on from transit observations",
             "answerExplain": "16. 参考译文：从金星凌日观察引导出的潜在未来的发现。<br/>定位词： potential future discoveries <br/>对应原文：G 段 第 二 句 But such transits have paved the way for what might prove to be one of the most vital breakthroughs in the cosmos—detecting Earth-sized planets orbiting other stars. <br/>解析：根据 future discoveries预测应该会出现在文章的后面， 题目中的 potential future 对应原文中的 have paved the way for... 答案为 G。"
           },
           {
@@ -317,7 +317,7 @@ questions_json: |
               "E"
             ],
             "serial": "17",
-            "content": "17 a description of physical states connected with Venus which early astronomical instruments failed to overcome[blank][/blank]",
+            "content": "17 a description of physical states connected with Venus which early astronomical instruments failed to overcome",
             "answerExplain": "17. 参考译文：与金星相关的早期天文学设备不能克服的物理状态。\r<br/>定位词： physical states, early astronomical instruments \r<br/>对应原文：E 段第一句While the early transit timings were as precise as instruments would allow, the measurements were dogged by the ‘black drop’ effect. \r<br/>解析：题目中的early astronomical instruments 对应原文中early transit timings, physical states对应原文中的'black drop' effect。 答案为 E。"
           }
         ],
@@ -327,7 +327,50 @@ questions_json: |
         "section_title": "段落信息配对题",
         "source_category_section_id": 713
       },
-      "options": [],
+      "options": [
+        {
+          "id": 922140,
+          "title": "A",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 922141,
+          "title": "B",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 922142,
+          "title": "C",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 922143,
+          "title": "D",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 922144,
+          "title": "E",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 922145,
+          "title": "F",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 922146,
+          "title": "G",
+          "legend": 0,
+          "sortOrder": 6
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -349,7 +392,7 @@ questions_json: |
               "D"
             ],
             "serial": "18",
-            "content": "18 He calculated the distance of the Sun from the Earth based on observations of Venus with a fair degree of accuracy.[blank][/blank]",
+            "content": "18 He calculated the distance of the Sun from the Earth based on observations of Venus with a fair degree of accuracy.",
             "answerExplain": "18. 参考译文：他基于金星观测相当精确地计算出了从地球到太阳的距离。<br/>定位词： the distance of the Sun from the Earth, fair degree of accuracy<br/> 对应原文：F 段第二句和第三句 Johann Franz Encke, Director of the Berlin Observatory, finally determined a value for the AU based on all these parallax measurements: 153,340,000 km. Reasonably accurate for the time, that is quite close to today’s value of 149,597,870 km, determined by radar, which has now superseded transits and all other methods in accuracy. <br/>解析：这类题用人名回原位定位，题目中的the distance of the Sun from the Earth 对应原文中的AU(此概念在B段的倒数第二句和最后一句），fair degree of accuracy 对应原文中 Reasonably accurate。答案 D。"
           },
           {
@@ -359,7 +402,7 @@ questions_json: |
               "A"
             ],
             "serial": "19",
-            "content": "19 He understood that the distance of the Sun from the Earth could be worked out by comparing observations of a transit.[blank][/blank]",
+            "content": "19 He understood that the distance of the Sun from the Earth could be worked out by comparing observations of a transit.",
             "answerExplain": "19. 参考原文：他认识到通过观测凌日现象可以计算出地球到太阳的距离。<br/>定位词： the distance of the Sun from the Earth, observations of a transit <br/>对应原文：B段倒数第二句 Calculating this angle would allow astronomers to measure what was then the ultimate goal: the distance of the Earth from the Sun. <br/>解析：用人名回原文定位，the distance of the Earth from the Sun首先出现在B段。答案为 A。"
           },
           {
@@ -369,7 +412,7 @@ questions_json: |
               "B"
             ],
             "serial": "20",
-            "content": "20 He realized that the time taken by a planet to go round the Sun depends on its distance from the Sun.[blank][/blank]",
+            "content": "20 He realized that the time taken by a planet to go round the Sun depends on its distance from the Sun.",
             "answerExplain": "20. 参考译文：他认识到行星绕太阳运行的时间取决于它离太阳的距离。<br/>定位词 ：the time taken by a planet to go round the Sun, its distance from the Sun <br/>对应原文：C 段第二句 Johannes Kepler, in the early 17th century, had shown that the distance of the planets from the Sun governed their orbital speeds, which were easily measurable.?<br/>解析：用人名回原文定位，题目中的its distance from the Sun对应原文的the distance of the planets from the Sun，depends on 对应原文的 governed, the time taken by a planet to go round the Sun对应原文中orbital speeds（因为速度决定时间长短）。 答案为 B。"
           },
           {
@@ -379,7 +422,7 @@ questions_json: |
               "C"
             ],
             "serial": "21",
-            "content": "21 He witnessed a Venus transit but was unable to make any calculations.[blank][/blank]",
+            "content": "21 He witnessed a Venus transit but was unable to make any calculations.",
             "answerExplain": "21. 参考译文：他目睹的一次金星凌日奇观但是没能做任何的计算。<br/>定位词： witnessed a Venus transit, unable to make any calculations<br/>对应原文：D 段第五句 Fleeing on a French warship crossing the Indian Ocean, Le Gentil saw a wonderful transit —but the ship’s pitching and rolling ruled out any attempt at making accurate observations. <br/>解析： 用人名回原文定位，题目中的 witnessed 对应原文中的 saw， 题目中的 unable to make any calculations 对应原文中 的 ruled out any attempt at making accurate observations。答案为 C。"
           }
         ],
@@ -389,7 +432,32 @@ questions_json: |
         "section_title": "属性配对题",
         "source_category_section_id": 713
       },
-      "options": [],
+      "options": [
+        {
+          "id": 922180,
+          "title": "A Edmond Halley",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 922181,
+          "title": "B Johannes Kepler",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 922182,
+          "title": "C Guillaume Le Gentil",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 922183,
+          "title": "D Johann Franz Encke",
+          "legend": 0,
+          "sortOrder": 3
+        }
+      ],
       "sort_order": 2
     },
     {
@@ -461,7 +529,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 713
       },
-      "options": [],
+      "options": [
+        {
+          "id": 922220,
+          "title": "TRUE &nbsp;&nbsp; if the statement agrees with the information",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 922221,
+          "title": "FALSE &nbsp;&nbsp; if the statement contradicts the information",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 922222,
+          "title": "NOT GIVEN &nbsp;&nbsp; if there is no information on this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 3
     }
   ]
@@ -909,3 +996,4 @@ assets_json: |
   ]
 ---
 
+<i>June 2004 saw the first passage. known as a 'transit', of the planet Venus across the face of the Sun in 122 years. Transits have helped shape our view of the whole Universe, as Heather Cooper and Nigel Henbest explain </i><br/><br/><b>A</b> On 8 June 2004, more than half the population of the world were treated to a rare astronomical event. For over six hours, the planet Venus steadily inched its way over the surface of the Sun. This 'transit' of Venus was the first since 6 December l882. On that occasion, the American astronomer Professor Simon Newcomb led a party to South Africa to observe the event. They were based at a girls' school, where - if is alleged – the combined forces of three schoolmistresses outperformed the professionals with the accuracy of their observations.<br/><br/><b>B</b> For centuries, transits of Venus have drawn explorers and astronomers alike to the four corners of the globe. And you can put it all down to the extraordinary polymath Edmond Halley. In November 1677, Halley observed a transit of the innermost planet, Mercury, from the desolate island of St Helena in the South Pacific. He realized that from different latitudes, the passage of the planet across the Suns disc would appear to differ. By timing the transit from two widely-separated locations, teams of astronomers could calculate the parallax angle - the apparent difference in position of an astronomical body due to a difference in the observers position. Calculating this angle would allow astronomers to measure what was then the ultimate goal; the distance of the Earth from the Sun. This distance is known as the 'astronomical unit' or AU.<br/><br/><b>C</b> Halley was aware that the AU was one of the most fundamental of all astronomical measurements. Johannes Kepler, in the early 17th century, had shown that the distances of the planets from the Sun governed their orbital speeds, which were easily measurable. But no-one had found a way to calculate accurate distances to the planets from the Earth. The goal was to measure the AU; then, knowing the orbital speeds of all the other planets round the Sun, the scale of the Solar System would fall into place. However, Halley realized that Mercury was so far away that its parallax angle would be very difficult to determine. As Venus was closer to the Earth, its parallax angle would be larger and Halley worked out that by using Venus it would be possible to measure the Sun's distance to 1 part in 500. But there was as problem: transits of Venus, unlike those of Mercury; are rare. occurring in pairs roughly eight years apart every hundred or so years. Nevertheless, he accurately predicted that Venus would cross the face of the Sun in both 1761 and 1769 - though he didn't survive to see either.<br/><br/><b>D</b> Inspired by Halley's suggestion of a way to pin down the scale of the Solar System, teams of British and French astronomers set out on expeditions to places as diverse as India and Siberia. But things weren’t helped by Britain and France being at war. The person who deserves most sympathy is the French astronomer Guillaume Le Gentil. He was thwarted by the fact that the British were besieging his observation site at Pondicherry in India. Fleeing on a French warship crossing the Indian Ocean, Le Gentil saw a wonderful transit - but the ship's pitching and rolling ruled out any attempt at making accurate observations. Undaunted, he remained south of the equator, keeping himself busy by studying the islands of Mauritius and Madagascar before setting off to observe the next transit in the Philippines. Ironically after travelling nearly 50,000 kilometres, his view was clouded out at the last moment, a very dispiriting experience.<br/><br/><b>E</b> While the early transit timings were as precise as instruments would allow the measurements were dogged by the 'black drop' effect. When Venus begins to cross the Sun's disc, it looks smeared not circular - which makes it difficult to establish timings. This is due to diffraction of light. The second problem is that Venus exhibits a halo of light when it is seen just outside the Sun's disc. While this showed astronomers that Venus was surrounded by a thick layer of gases refracting sunlight around it, both effects made it impossible to obtain accurate timings.<br/><br/><b>F</b> But astronomers labored hard to analyze the results of these expeditions to observe Venus transits. Jonathan Franz Encke, Director of the Belin Observatory, finally determined a value for the AU based on all these parallax measurements: 153340,000 km. Reasonably accurate for the time, that is quite close to todays value of 149,597,870 km, determined by radar, which has now superseded transits and all other methods in accuracy. The AU is a cosmic measuring rod, and the basis of how we scale the Universe today The parallax principle can be extended to measure the distances to the stars. If we look at a star in January - when Earth is at one point in its orbit - it will seem to be in a different position from where it appears six months later. Knowing the width of Earth's orbit, the parallax shift lets astronomers calculate the distance.<br/><br/><b>G</b> June 2004’s transit of Venus was thus more of an astronomical spectacle than a scientifically important event. But such transits have paved the way for what might prove to be one of the most vital breakthroughs in the cosmos - detecting Earth-sized planets orbiting other stars.<br/>

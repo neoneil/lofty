@@ -29,6 +29,32 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - If a feature is likely to be reused, place it in an appropriate shared location such as `components/`, `components/site/`, `components/layout-v2/`, or another existing project pattern.
 - Keep changes small and aligned with the current codebase structure.
 
+## Teaching Notes
+
+- When the user says "授课笔记", treat it as Lofty lesson Markdown work unless they clearly mean something else.
+- Lesson Markdown files belong under `app/admin/{skill}/{exam}/...`, with skill first and exam second.
+- The supported top-level skill folders are `listening`, `speaking`, `reading`, and `writing`.
+- The supported exam folders under each skill are `pte` and `ielts`.
+- Examples:
+  - `app/admin/writing/ielts/task1/line.md`
+  - `app/admin/writing/pte/essay/lesson02.md`
+  - `app/admin/speaking/pte/ra/lesson01.md`
+- `/admin/lesson-notes` should show the four skills first, then split each selected skill into PTE and IELTS sections.
+- The dynamic lesson route should remain `/admin/lessons/{exam}/{skill}/...`; do not break existing lesson URLs when reorganizing files.
+- Lesson reading is handled by `lib/admin/lesson-content.ts`; update this helper if the folder convention changes.
+- New lesson content should follow `content/markdownguide.md` and `content/mardowndesignguide.md`, including front matter, `mode: slides` where appropriate, `<!-- slide -->`, admonition cards, highlights, badges, and footers.
+- For generated IELTS/PTE teaching notes, prefer concise slide lessons with clear learning goals, key points, examples, common mistakes, summary, and homework.
+- Keep lesson card layout in `/admin/lesson-notes` responsive. Badges such as section labels must stay inside cards on desktop and mobile.
+
+## IELTS Writing Task 1 Bank
+
+- Cambridge IELTS Academic Writing Task 1 screenshots are stored under `public/ielts/writing/task1/`.
+- The static index for the frontend is `content/ielts/writing-task1-bank.json`.
+- The extraction helper is `scripts/extract-ielts-task1-images.py`; it uses a manually verified page map for Cambridge IELTS 5-21 because scanned PDFs and contents pages can make automatic text search unreliable.
+- Screenshots should include the full Task 1 prompt and chart/map/process/table image. Prefer preserving extra page margin over cropping out prompt or visual information.
+- The student-facing route is `/ielts/writing/task1-bank`, with the entry card on `/ielts/writing`.
+- This feature uses static local files and server-side JSON loading only; do not add browser-side Supabase or R2 requests for this task bank unless explicitly requested.
+
 ## Backend Auth And Supabase
 
 - All backend authentication and authorization must use the existing project helpers.
@@ -48,6 +74,13 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Store every approved schema change as a timestamped SQL file in `supabase/migrations/`. Run `db:push:dry-run` before any approved `db:push`.
 - Never run `supabase db push`, migration repair, reset, destructive SQL, or bulk data mutation merely because migration tooling is configured.
 - PTE feature work must not use Supabase `select("*")`; select only the fields the page, component, or API actually needs. Before changing an existing PTE query, read the consuming code and keep required fields explicit.
+
+## IELTS Answer Visibility
+
+- IELTS reading and listening detail pages currently hide "答案" and "答案与解析" UI behind admin-only rendering.
+- IELTS reading and listening Review dialogs may be opened by normal students, but the official-answer toggle and official-answer column must remain admin-only.
+- Remember the distinction between UI hiding and data exposure: if `data.answers` or an official answer map is sent to a client component, a determined student could still inspect it in the browser even when the UI hides it.
+- Future stricter IELTS reading/listening answer security should avoid sending official answers to non-admin clients. Non-admin submissions should be scored by a Lofty server API, returning score/correctness only and not returning official answer text.
 
 ## WeChat Login Prep
 

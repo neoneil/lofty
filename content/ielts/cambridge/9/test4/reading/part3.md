@@ -15,7 +15,7 @@ section_id: "8b409d17-69eb-4859-a8df-a8b454057c08"
 section_number: 3
 section_title: " Passage3"
 section_instruction: "Reading Passage 3 has six paragraphs, <b>A-F</b>.<br/><br/>Choose the correct heading for paragraphs <b>B-E</b> from the list of headings below.<br/><br/>Write the correct number, <b>i-vii</b>, in boxes 27-30 on your answer sheet."
-passage_title: "C9-T4-S3"
+passage_title: "The Development of Museums"
 section_sort_order: 3
 module_raw_data_json: |
   {
@@ -331,7 +331,7 @@ questions_json: |
               "ii"
             ],
             "serial": "27",
-            "content": "27 Paragraph B[blank][/blank]",
+            "content": "27 Paragraph B",
             "answerExplain": "27. 主旨句： 第一句和最后一句 Recently, however, attitudes towards history and the way it should be presented have altered. Such developments have been criticised as an intolerable vulgarisation, but the success of many historical theme parks and similar locations suggests that the majority of the public does not share this opinion. <br/>解析： 首句开始就说明博物馆的变化，alter 对应选项 ii 中的 changes。最后一句是主旨句，对这些变化进行了评价，有人提出了批评， 但是大多数公众却不赞同这样的批评。这就对应了选项 ii 的 mixed views。 答案为 ii。"
           },
           {
@@ -341,7 +341,7 @@ questions_json: |
               "vi"
             ],
             "serial": "28",
-            "content": "28 Paragraph C[blank][/blank]",
+            "content": "28 Paragraph C",
             "answerExplain": "28. 主旨句：第一句 In a related development, the sharp distinction between museum and heritage sites on the one hand, and theme parks on the other, is gradually evaporating. <br/>解析：distinction 对应选项 vi 中的 differences，gradually evaporating （逐渐消失）对应选项 vi 中的 fewer， museums and heritage sites 和 theme parks 对应选项 vi 中的 public attractions。 答案为 vi。"
           },
           {
@@ -351,7 +351,7 @@ questions_json: |
               "i"
             ],
             "serial": "29",
-            "content": "29 Paragraph D[blank][/blank]",
+            "content": "29 Paragraph D",
             "answerExplain": "29. 主旨句：最后一句 Those who are professionally engaged in the art of interpreting history are thus in a difficult position, as they must steer a narrow course between the demands of ‘evidence’ and ‘attractiveness’, especially given the increasing need in the heritage industry for income-generating activities. <br/>解析： those who are professionally engaged 对应 i 选项中的 people in charge，increasing need in the heritage industry for income-generating activities 对应 i 选项中的 commercial pressure。答案为 i。"
           },
           {
@@ -361,7 +361,7 @@ questions_json: |
               "iii"
             ],
             "serial": "30",
-            "content": "30 Paragraph E[blank][/blank]",
+            "content": "30 Paragraph E",
             "answerExplain": "30. 主旨句：第一句 It could be claimed that in order to make everything in heritage more ‘real’, historical accuracy must be increasingly altered. \r<br/>解析：主旨句意思是，为了使文物的一切看起来更加真实，历史精确性都会受到影响。这句话比较抽象、概括性强，不易选出选项。但是后面的两个举例和扩展可以有效地帮助考生清晰理解什么是 meet visitor expectations。本 \r<br/>段中第一个举例后面说明了原因 this corresponds to public perceptions，第二个举例提到 such presentations tell us more about contemporary perceptions of the world than about our ancestors。答案为 iii。"
           }
         ],
@@ -371,7 +371,50 @@ questions_json: |
         "section_title": "小标题",
         "source_category_section_id": 728
       },
-      "options": [],
+      "options": [
+        {
+          "id": 943270,
+          "title": "i. Commercial pressures on people in charge",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 943271,
+          "title": "ii. Mixed views on current changes to museums",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 943272,
+          "title": "iii. Interpreting the facts to meet visitor expectations",
+          "legend": 0,
+          "sortOrder": 2
+        },
+        {
+          "id": 943273,
+          "title": "iv. The international dimension",
+          "legend": 0,
+          "sortOrder": 3
+        },
+        {
+          "id": 943274,
+          "title": "v. Collections of factual evidence",
+          "legend": 0,
+          "sortOrder": 4
+        },
+        {
+          "id": 943275,
+          "title": "vi. Fewer differences between public attractions",
+          "legend": 0,
+          "sortOrder": 5
+        },
+        {
+          "id": 943276,
+          "title": "vii. Current reviews and suggestions",
+          "legend": 0,
+          "sortOrder": 6
+        }
+      ],
       "sort_order": 1
     },
     {
@@ -672,7 +715,26 @@ questions_json: |
         "section_title": "判断题",
         "source_category_section_id": 728
       },
-      "options": [],
+      "options": [
+        {
+          "id": 943370,
+          "title": "TRUE &nbsp;&nbsp;if the statement agrees with the information",
+          "legend": 0,
+          "sortOrder": 0
+        },
+        {
+          "id": 943371,
+          "title": "FALSE &nbsp;&nbsp;if the statement contradicts the information",
+          "legend": 0,
+          "sortOrder": 1
+        },
+        {
+          "id": 943372,
+          "title": "NOT GIVEN &nbsp;&nbsp;if there is no information on this",
+          "legend": 0,
+          "sortOrder": 2
+        }
+      ],
       "sort_order": 3
     }
   ]
@@ -1192,3 +1254,4 @@ assets_json: |
   ]
 ---
 
+<b>A</b> The conviction that historical relics provide infallible testimony about the past is rooted in the nineteenth and early twentieth centuries, when science was regarded as objective and value free. As one writer observes: 'Although it is now evident that artifacts are as easily altered as chronicles, public faith in their veracity endures: a tangible relic seems ipso facto real.' Such conviction was, until recently, reflected in museum displays. Museums used to look — and some still do — much like storage rooms of objects packed together in showcases: good for scholars who wanted to study the subtle differences in design, but not for the ordinary visitor. to whom lt all looked alike. Similarly, the information accompanying the objects often made little sense to the lay visitor. The content and format of explanations dated back to a time when the museum was the exclusive domain of the scientific researcher.<br/><br/><b>B</b> Recently, however, attitudes towards history and the way lt should be presented have altered. The key word in heritage display is now 'experience', the more exciting the better and, if possible, involving all the senses. Good examples of this approach ln the UK are the Jorvik Centre in York; the National Museum of Photography, Elm and Television in Bradford; and the imperial War Museum in London. In the US the trend emerged much earlier. Williamsburg has been a prototype for many heritage developments in other parts of the world. No one can predict where the process will end. On so called heritage sites the re-enactment of historical events is increasingly popular, and computers will soon provide virtual reality experiences, which will present visitors with a vivid image of the period of their choice, in which they themselves can act as if part of the historical environment. Such developments have been criticised as an intolerable vulgarisation. but the success of many historical theme parks and similar locations suggests that the majority of the public does not share this opinion.<br/><br/><b>C</b> In a related development, the sharp distinction between museum and heritage sites on the one hand, and theme parks on the other. is gradually evaporating. They already borrow ideas and concepts from one another. For example, museums have adopted storylines for exhibitions, sites have accepted 'theming’ as a relevant tool, and theme parks are moving towards more authenticity and research-based presentations in zoos, animals are no longer kept in cages, but in great spaces, either ln the open air or in enormous greenhouses, such as the jungle and desert environments .In Burgers' Zoo In Holland. This particular trend is regarded as one of the major developments in the presentation of natural history in the twentieth century.<br/><br/><b>D</b> Theme parks are undergoing other changes, too, as they try to present more serious social and cultural issues, and move away from fantasy. This development is a response to market forces and, although museums and heritage sites have a special. rather distinct, role to fullfil, they are also operating in a very competitive environment, where visitors make choices on how and where to spend their free time. Heritage and museum experts do not have to invent stories and recreate historical environments to attract their visitors: their assets are already in place. However, exhibits must be both based on artefacts and facts as we know them, and attractively presented. Those who are professionally engaged in the art of interpreting history are thus ln a difficult position, as they must steer a narrow course between the demands of ’evidence' and ‘attractiveness especially given the increasing need in the heritage industry for income generating activities.<br/><br/><b>E</b> It could be claimed that in order to make everything in heritage more 'real' historical accuracy must be increasingly altered. For example, Pithecanthropus erectus is depicted in an Indonesian museum with Malay facial features, because this corresponds to public perceptions. Similarly, in the Museum of Natural History in Washington, Neanderthal man is shown making a dominant gesture to his wife. Such presentations tell us more about contemporary perceptions of the world than about our ancestors. There is one compensation, however, for the professionals who make these interpretations: If they did not provide the interpretation, visitors would do it for themselves. based on their own ideas. misconceptions and prejudices. And no matter how exciting the result, it would contain a lot more bias than the presentations provided by experts.<br/><br/><b>F</b> Human bias is inevitable, but another source of bias in the representation of history has to do with the transitory nature of the materials themselves. The simple fact is that not everything from history survives the historical process. Castles, palaces and cathedrals have a longer lifespan than the dwellings of ordinary people. The same applies to the famishing and other contents of the premises. In a town like Leyden in Holland, which in the seventeenth century was occupied by approximately the same number of inhabitants as today, people lived within the walled town, an area more than five times smaller than modern Leyden. In most of the houses several families lived together in circumstances beyond our imagination. Yet In museums, line period rooms give only an image of the lifestyle of the upper class of that era. No wonder that people who stroll around exhibitions are filled with nostalgia; the evidence in museums indicates that life was so much better in the past. This notion is induced by the bias in its representation in museums and heritage centers.<br/>
