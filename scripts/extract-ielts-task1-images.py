@@ -20,17 +20,18 @@ TASK1_PAGE_MAP = {
     13: [30, 52, 72, 93],
     14: [29, 50, 72, 94],
     15: [30, 51, 73, 95],
-    16: [31, 64, 75, 97],
+    16: [31, 54, 75, 97],
     17: [21, 43, 65, 86],
-    18: [31, 64, 77, 98],
+    18: [31, 54, 77, 98],
     19: [29, 51, 74, 95],
     20: [28, 64, 103, 138],
-    21: [30, 62, 73, 95],
+    21: [30, 52, 73, 95],
 }
 BOOKS = sorted(TASK1_PAGE_MAP)
 SOURCE_ROOT = Path("/mnt/c/Users/adela/Downloads/剑桥雅思")
 PUBLIC_ROOT = Path("public/ielts/writing/task1")
 CONTENT_PATH = Path("content/ielts/writing-task1-bank.json")
+FULL_PAGE_ITEMS = {(14, 4)}
 
 
 def normalize_text(value: str) -> str:
@@ -85,6 +86,11 @@ def crop_task1(page: fitz.Page) -> fitz.Rect:
     return fitz.Rect(rect.x0, top, rect.x1, min(rect.y1 - 24, bottom))
 
 
+def crop_full_page(page: fitz.Page) -> fitz.Rect:
+    rect = page.rect
+    return fitz.Rect(rect.x0, rect.y0 + 12, rect.x1, rect.y1 - 12)
+
+
 def extract_prompt(page: fitz.Page, crop: fitz.Rect) -> str:
     words = page.get_text("words", clip=crop)
     words.sort(key=lambda item: (round(item[1] / 3) * 3, item[0]))
@@ -129,7 +135,8 @@ def main() -> int:
         for index, page_index in enumerate(task_pages[:4], start=1):
             page = doc[page_index]
             test_number = index
-            crop = crop_task1(page)
+            use_full_page = (book, index) in FULL_PAGE_ITEMS
+            crop = crop_full_page(page) if use_full_page else crop_task1(page)
             image_rel = f"/ielts/writing/task1/cambridge-{book:02d}-test-{test_number}-task-1.png"
             image_path = Path("public") / image_rel.lstrip("/")
             render_crop(page, crop, image_path)
@@ -143,7 +150,7 @@ def main() -> int:
                     "sourcePdf": f"Cambridge-IELTS-{book:02d}.pdf",
                     "sourcePage": page_index + 1,
                     "image": image_rel,
-                    "promptPreview": extract_prompt(page, crop),
+                    "promptPreview": "" if use_full_page else extract_prompt(page, crop),
                     "sortOrder": book * 10 + test_number,
                 }
             )
