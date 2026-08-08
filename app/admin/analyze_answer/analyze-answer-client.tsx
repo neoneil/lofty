@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import {
@@ -12,8 +12,11 @@ import {
 } from "@/components/ui-v2/card";
 import { Textarea } from "@/components/ui-v2/textarea";
 
-type ExamType = "pte" | "ielts";
-type TaskType = "we" | "swt" | "ielts_task2" | "ielts_task1";
+type StudentOption = {
+  user_id: string;
+  display_name: string;
+  email: string | null;
+};
 
 type OverallFeedback = {
   summary: string;
@@ -67,15 +70,71 @@ type SentenceFeedback = {
 };
 
 type AnalyzeAnswerResult = {
+  full_report_cn: string;
   overall_feedback: OverallFeedback;
   paragraphs: ParagraphFeedback[];
   sentences: SentenceFeedback[];
+};
+
+type AnalyzeHistoryItem = {
+  id: string;
+  prompt_question: string;
+  essay_text: string;
+  overall_band: number | null;
+  word_count: number | null;
+  feedback_json: AnalyzeAnswerResult;
+  created_at: string | null;
 };
 
 type Selection =
   | { type: "paragraph"; id: string }
   | { type: "sentence"; id: string }
   | null;
+
+const ANALYZE_TIMEOUT_MS = 180_000;
+
+function formatDateTime(value: string | null) {
+  if (!value) return "—";
+
+  return new Date(value).toLocaleString("zh-CN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function normalizeResultForClient(value: unknown): AnalyzeAnswerResult {
+  const record = typeof value === "object" && value ? value as Partial<AnalyzeAnswerResult> : {};
+
+  return {
+    full_report_cn: typeof record.full_report_cn === "string" ? record.full_report_cn : "",
+    overall_feedback: record.overall_feedback ?? {
+      summary: "",
+      estimated_score: "",
+      strengths: [],
+      main_problems: [],
+      improvement_priority: [],
+      pte_feedback: {
+        content: "",
+        form: "",
+        grammar: "",
+        vocabulary: "",
+        spelling: "",
+        development_structure_coherence: "",
+      },
+      ielts_feedback: {
+        task_response: "",
+        coherence_cohesion: "",
+        lexical_resource: "",
+        grammar_range_accuracy: "",
+      },
+    },
+    paragraphs: Array.isArray(record.paragraphs) ? record.paragraphs : [],
+    sentences: Array.isArray(record.sentences) ? record.sentences : [],
+  };
+}
 
 function ListBlock({ title, items }: { title: string; items: string[] }) {
   return (
@@ -111,33 +170,18 @@ function TextBlock({ title, text }: { title: string; text: string }) {
 
 function OverallPanel({
   feedback,
-  examType,
 }: {
   feedback: OverallFeedback;
-  examType: ExamType;
 }) {
-  const rubric =
-    examType === "pte"
-      ? [
-          ["内容", feedback.pte_feedback.content],
-          ["格式", feedback.pte_feedback.form],
-          ["语法", feedback.pte_feedback.grammar],
-          ["词汇", feedback.pte_feedback.vocabulary],
-          ["拼写", feedback.pte_feedback.spelling],
-          [
-            "发展、结构与连贯",
-            feedback.pte_feedback.development_structure_coherence,
-          ],
-        ]
-      : [
-          ["任务回应", feedback.ielts_feedback.task_response],
-          ["连贯与衔接", feedback.ielts_feedback.coherence_cohesion],
-          ["词汇资源", feedback.ielts_feedback.lexical_resource],
-          [
-            "语法多样性与准确性",
-            feedback.ielts_feedback.grammar_range_accuracy,
-          ],
-        ];
+  const rubric = [
+    ["任务回应", feedback.ielts_feedback.task_response],
+    ["连贯与衔接", feedback.ielts_feedback.coherence_cohesion],
+    ["词汇资源", feedback.ielts_feedback.lexical_resource],
+    [
+      "语法多样性与准确性",
+      feedback.ielts_feedback.grammar_range_accuracy,
+    ],
+  ];
 
   return (
     <Card>
@@ -157,7 +201,7 @@ function OverallPanel({
 
         <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
           <h3 className="text-sm font-semibold text-[var(--text)]">
-            {examType === "pte" ? "PTE 评分反馈" : "IELTS 评分反馈"}
+            IELTS 评分反馈
           </h3>
           <div className="mt-3 space-y-3">
             {rubric.map(([label, value]) => (
@@ -170,14 +214,30 @@ function OverallPanel({
   );
 }
 
+function FullReportPanel({ text }: { text: string }) {
+  if (!text.trim()) return null;
+
+  return (
+    <Card>
+      <CardHeader className="px-4 pt-4">
+        <CardTitle>完整批改报告</CardTitle>
+        <CardDescription>像 ChatGPT 一样的整体文字反馈，同时保留下面的逐句交互。</CardDescription>
+      </CardHeader>
+      <CardContent className="p-4">
+        <div className="max-h-[680px] overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text)] whitespace-pre-wrap">
+          {text}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 function FeedbackConsole({
   result,
   selection,
-  examType,
 }: {
   result: AnalyzeAnswerResult | null;
   selection: Selection;
-  examType: ExamType;
 }) {
   if (!result) {
     return (
@@ -279,15 +339,16 @@ function FeedbackConsole({
 
   return (
     <aside className="space-y-4">
-      <FeedbackConsole result={null} selection={null} examType={examType} />
-      <OverallPanel feedback={result.overall_feedback} examType={examType} />
+      <FeedbackConsole result={null} selection={null} />
+      <OverallPanel feedback={result.overall_feedback} />
     </aside>
   );
 }
 
-export default function AnalyzeAnswerClient() {
-  const [examType, setExamType] = useState<ExamType>("pte");
-  const [taskType, setTaskType] = useState<TaskType>("we");
+export default function AnalyzeAnswerClient({ students }: { students: StudentOption[] }) {
+  const [selectedStudentId, setSelectedStudentId] = useState(
+    students[0]?.user_id ?? "",
+  );
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<AnalyzeAnswerResult | null>(null);
@@ -296,7 +357,52 @@ export default function AnalyzeAnswerClient() {
     null
   );
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [history, setHistory] = useState<AnalyzeHistoryItem[]>([]);
+  const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadHistory() {
+      if (!selectedStudentId) return;
+
+      setHistoryLoading(true);
+      setHistoryError(null);
+
+      try {
+        const response = await fetch(
+          `/api/admin/analyze-answer/history?student_user_id=${encodeURIComponent(selectedStudentId)}`,
+          { signal: controller.signal },
+        );
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error ?? "历史记录加载失败。");
+        }
+
+        setHistory(((data.history ?? []) as AnalyzeHistoryItem[]).map((item) => ({
+          ...item,
+          feedback_json: normalizeResultForClient(item.feedback_json),
+        })));
+      } catch (apiError) {
+        if (!controller.signal.aborted) {
+          setHistoryError(apiError instanceof Error ? apiError.message : "历史记录加载失败。");
+          setHistory([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setHistoryLoading(false);
+        }
+      }
+    }
+
+    void loadHistory();
+
+    return () => controller.abort();
+  }, [selectedStudentId]);
 
   const sentencesByParagraph = useMemo(() => {
     const map = new Map<string, SentenceFeedback[]>();
@@ -310,7 +416,21 @@ export default function AnalyzeAnswerClient() {
     return map;
   }, [result]);
 
+  const loadHistoryItem = (item: AnalyzeHistoryItem) => {
+    setSelectedHistoryId(item.id);
+    setQuestion(item.prompt_question);
+    setAnswer(item.essay_text);
+    setResult(normalizeResultForClient(item.feedback_json));
+    setSelection(null);
+    setError(null);
+  };
+
   async function analyzeAnswer() {
+    if (!selectedStudentId) {
+      setError("请先选择学生。");
+      return;
+    }
+
     if (!question.trim() || !answer.trim()) {
       setError("请输入作文题目和学生答案。");
       return;
@@ -320,14 +440,18 @@ export default function AnalyzeAnswerClient() {
     setError(null);
     setResult(null);
     setSelection(null);
+    const abortController = new AbortController();
+    const timeout = window.setTimeout(() => abortController.abort(), ANALYZE_TIMEOUT_MS);
 
     try {
       const response = await fetch("/api/admin/analyze-answer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: abortController.signal,
         body: JSON.stringify({
-          exam_type: examType,
-          task_type: taskType,
+          student_user_id: selectedStudentId,
+          exam_type: "ielts",
+          task_type: "ielts_task2",
           question,
           answer,
         }),
@@ -339,14 +463,34 @@ export default function AnalyzeAnswerClient() {
         throw new Error(data.error ?? "分析失败。");
       }
 
-      setResult(data as AnalyzeAnswerResult);
+      const normalizedData = normalizeResultForClient(data);
+      setResult(normalizedData);
+      setSelectedHistoryId(data.attempt_id ?? null);
+      setHistory((prev) => [
+        {
+          id: data.attempt_id,
+          prompt_question: question,
+          essay_text: answer,
+          overall_band: null,
+          word_count: answer.trim().split(/\s+/).filter(Boolean).length,
+          feedback_json: normalizedData,
+          created_at: new Date().toISOString(),
+        },
+        ...prev.filter((item) => item.id !== data.attempt_id),
+      ]);
     } catch (apiError) {
+      if (apiError instanceof DOMException && apiError.name === "AbortError") {
+        setError("分析超时了。GPT-5.6 Sol 生成完整精批会比较慢，请缩短作文或稍后重试。");
+        return;
+      }
+
       setError(
         apiError instanceof Error
           ? apiError.message
           : "分析失败。"
       );
     } finally {
+      window.clearTimeout(timeout);
       setIsAnalyzing(false);
     }
   }
@@ -359,7 +503,7 @@ export default function AnalyzeAnswerClient() {
             <div>
               <CardTitle className="text-2xl">作文答案分析</CardTitle>
               <CardDescription>
-                从整体结构、段落和句子层面分析学生作文答案。
+                IELTS Writing Task 2 逐句精批，结果会保存到学生作文记录。
               </CardDescription>
             </div>
           </CardHeader>
@@ -374,37 +518,33 @@ export default function AnalyzeAnswerClient() {
             <CardContent className="space-y-4 p-4">
               <label className="block">
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
-                  考试类型
+                  学生
                 </span>
                 <select
-                  value={examType}
-                  onChange={(event) =>
-                    setExamType(event.target.value as ExamType)
-                  }
+                  value={selectedStudentId}
+                  onChange={(event) => setSelectedStudentId(event.target.value)}
                   className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition-all duration-200 hover:border-[var(--border-strong)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]"
                 >
-                  <option value="pte">pte</option>
-                  <option value="ielts">ielts</option>
+                  {students.length === 0 ? (
+                    <option value="">暂无学生</option>
+                  ) : null}
+                  {students.map((student) => (
+                    <option key={student.user_id} value={student.user_id}>
+                      {student.display_name}
+                      {student.email ? ` · ${student.email}` : ""}
+                    </option>
+                  ))}
                 </select>
               </label>
 
-              <label className="block">
-                <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
-                  题型
-                </span>
-                <select
-                  value={taskType}
-                  onChange={(event) =>
-                    setTaskType(event.target.value as TaskType)
-                  }
-                  className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition-all duration-200 hover:border-[var(--border-strong)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]"
-                >
-                  <option value="we">we</option>
-                  <option value="swt">swt</option>
-                  <option value="ielts_task2">ielts_task2</option>
-                  <option value="ielts_task1">ielts_task1</option>
-                </select>
-              </label>
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
+                  批改类型
+                </div>
+                <div className="mt-1 text-sm font-bold text-[var(--text)]">
+                  IELTS Writing Task 2
+                </div>
+              </div>
 
               <label className="block">
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
@@ -444,15 +584,61 @@ export default function AnalyzeAnswerClient() {
                   {error}
                 </div>
               ) : null}
+
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-sm font-bold text-[var(--text)]">历史记录</h3>
+                    <p className="mt-1 text-xs text-[var(--text-soft)]">点击即可 100% 回放当时保存的报告和逐句互动。</p>
+                  </div>
+                  <Badge>{history.length}</Badge>
+                </div>
+
+                {historyLoading ? (
+                  <p className="mt-3 text-sm text-[var(--text-soft)]">加载中...</p>
+                ) : historyError ? (
+                  <div className="mt-3 rounded-[var(--radius-sm)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-3 py-2 text-sm text-[var(--danger)]">
+                    {historyError}
+                  </div>
+                ) : history.length === 0 ? (
+                  <p className="mt-3 text-sm text-[var(--text-soft)]">这个学生还没有作文 AI 批改历史。</p>
+                ) : (
+                  <div className="mt-3 max-h-[360px] space-y-2 overflow-y-auto pr-1">
+                    {history.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => loadHistoryItem(item)}
+                        className={`w-full rounded-[var(--radius-sm)] border p-3 text-left transition ${
+                          selectedHistoryId === item.id
+                            ? "border-[var(--primary)] bg-[var(--primary-soft)]"
+                            : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/40"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs font-semibold text-[var(--text-soft)]">{formatDateTime(item.created_at)}</span>
+                          <span className="shrink-0 text-xs font-bold text-[var(--primary)]">{item.overall_band ? `Band ${item.overall_band}` : item.feedback_json?.overall_feedback?.estimated_score || "—"}</span>
+                        </div>
+                        <div className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-[var(--text)]">
+                          {item.prompt_question}
+                        </div>
+                        <div className="mt-1 text-xs text-[var(--text-soft)]">
+                          {item.word_count ?? item.essay_text.trim().split(/\s+/).filter(Boolean).length} words
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </CardContent>
           </Card>
 
           <section className="space-y-4">
             {result ? (
-              <OverallPanel
-                feedback={result.overall_feedback}
-                examType={examType}
-              />
+              <>
+                <FullReportPanel text={result.full_report_cn} />
+                <OverallPanel feedback={result.overall_feedback} />
+              </>
             ) : null}
 
             <Card>
@@ -547,7 +733,6 @@ export default function AnalyzeAnswerClient() {
             <FeedbackConsole
               result={result}
               selection={selection}
-              examType={examType}
             />
           </div>
         </div>

@@ -86,7 +86,9 @@ type IeltsWritingAttempt = {
   feedback_json: {
     overall_feedback?: {
       summary_cn?: string;
+      summary?: string;
       priority_actions?: string[];
+      improvement_priority?: string[];
     };
     band8_model_essay?: {
       band8_essay?: string;
@@ -308,8 +310,8 @@ export async function GET(
       isCorrect: null,
       userAnswer: `${attempt.prompt_question}\n\n${attempt.essay_text}`,
       correctAnswer: attempt.feedback_json?.band8_model_essay?.band8_essay ?? null,
-      feedback: attempt.feedback_json?.overall_feedback?.summary_cn ?? "",
-      suggestions: attempt.feedback_json?.overall_feedback?.priority_actions ?? [],
+      feedback: attempt.feedback_json?.overall_feedback?.summary_cn ?? attempt.feedback_json?.overall_feedback?.summary ?? "",
+      suggestions: attempt.feedback_json?.overall_feedback?.priority_actions ?? attempt.feedback_json?.overall_feedback?.improvement_priority ?? [],
     }));
 
     return NextResponse.json({

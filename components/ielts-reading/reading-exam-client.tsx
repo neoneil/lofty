@@ -135,7 +135,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   }, [submitNotice]);
 
   function setAnswer(questionNumber: string, value: string) {
-    setAnswers((current) => ({ ...current, [questionNumber]: value }));
+    setAnswers((current) => current[questionNumber] === value ? current : { ...current, [questionNumber]: value });
   }
 
   async function toggleFullscreen() {
@@ -462,23 +462,29 @@ function QuestionBlock({ question, answers, officialAnswers, isAdmin, onAnswerCh
   const hasSourceQuestions = sourceQuestions.length > 0;
   const pageContentHasBlanks = hasQuestionBlanks(pageContent);
   const visibleOptions = question.options.filter((option) => !isEmptyLetterOption(optionText(option)));
-  const judgementOptions = isJudgementOptions(visibleOptions) ? visibleOptions.map((option) => stripOptionLabel(optionText(option))) : [];
-  const sourceQuestionsWithOptions = judgementOptions.length > 0 ? sourceQuestions.map((sourceQuestion) => ({ ...sourceQuestion, option: judgementOptions })) : sourceQuestions;
-  const shouldRenderOptionBank = hasSourceQuestions && visibleOptions.length > 0 && judgementOptions.length === 0;
+  const optionBankIsAnswerKey = isFillInBlankAnswerBank(question, pageContent, sectionDesc);
+  const studentOptions = optionBankIsAnswerKey ? [] : visibleOptions;
+  const judgementOptions = isJudgementOptions(studentOptions) ? studentOptions.map((option) => stripOptionLabel(optionText(option))) : [];
+  const inferredOptions = inferQuestionOptions(question, sectionDesc, pageContent);
+  const sourceQuestionOptions = judgementOptions.length > 0 ? judgementOptions : inferredOptions;
+  const sourceQuestionsWithOptions = sourceQuestionOptions.length > 0 ? sourceQuestions.map((sourceQuestion) => ({ ...sourceQuestion, option: sourceQuestionOptions })) : sourceQuestions;
+  const shouldRenderOptionBank = hasSourceQuestions && studentOptions.length > 0 && judgementOptions.length === 0;
   const shouldShowOptionsBeforeQuestions = shouldRenderOptionBank && isMatchingOptionBank(question, sectionDesc, pageContent || "");
   const promptText = question.prompt ? stripHtml(question.prompt) : "";
   const shouldShowPrompt = Boolean(promptText && !isQuestionRangeHeading(promptText));
   const officialAnswer = officialAnswers.find((answer) => answer.question_id === question.id);
+  const blankSelectOptions = getBlankSelectOptions(pageContent, studentOptions, inferredOptions);
+  const shouldRenderSourceQuestions = hasSourceQuestions && !(pageContentHasBlanks && Object.keys(blankSelectOptions).length > 0);
 
   return (
     <article id={hasSourceQuestions ? `reading-question-group-${numbers[0]}` : `reading-question-${numbers[0]}`} data-reading-question={hasSourceQuestions ? undefined : true} className="scroll-mt-24 border-b border-[var(--border)] pb-7 last:border-b-0">
       {shouldShowPrompt && <p className="mb-3 text-base font-semibold text-[var(--text)]">{promptText}</p>}
       {sectionDesc && <ReadingRichText html={sectionDesc} compact />}
-      {pageContent && <ReadingAnswerHtml html={pageContent} answers={answers} onAnswerChange={onAnswerChange} />}
-      {shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={visibleOptions} />}
-      {hasSourceQuestions && <SourceQuestionList questions={sourceQuestionsWithOptions} fallbackNumbers={numbers} answers={answers} onAnswerChange={onAnswerChange} hideTextInputs={pageContentHasBlanks} />}
-      {shouldRenderOptionBank && !shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={visibleOptions} />}
-      {!hasSourceQuestions && visibleOptions.length > 0 && <OptionQuestion questionNumber={`${numbers[0]}`} options={visibleOptions} value={answers[`${numbers[0]}`] ?? ""} onChange={onAnswerChange} />}
+      {pageContent && <ReadingAnswerHtml html={pageContent} answers={answers} optionsByNumber={blankSelectOptions} onAnswerChange={onAnswerChange} />}
+      {shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={studentOptions} />}
+      {shouldRenderSourceQuestions && <SourceQuestionList questions={sourceQuestionsWithOptions} fallbackNumbers={numbers} answers={answers} onAnswerChange={onAnswerChange} hideTextInputs={pageContentHasBlanks} />}
+      {shouldRenderOptionBank && !shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={studentOptions} />}
+      {!hasSourceQuestions && studentOptions.length > 0 && <OptionQuestion questionNumber={`${numbers[0]}`} options={studentOptions} value={answers[`${numbers[0]}`] ?? ""} onChange={onAnswerChange} />}
       {isAdmin && officialAnswer && <AdminAnswerPanel question={question} answer={officialAnswer} />}
     </article>
   );
@@ -587,10 +593,61 @@ const ReadingRichText = memo(function ReadingRichText({ html, compact = false, d
   return <div className={cn("reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_span[data-dictionary-word]]:cursor-pointer [&_span[data-dictionary-word]]:transition [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:p-2.5 [&_th]:border [&_th]:p-2.5", compact && "text-sm leading-7")} onClick={dictionary ? (event) => { const target = event.target as HTMLElement; const word = target.closest<HTMLElement>("[data-dictionary-word]")?.dataset.dictionaryWord; if (word) openDictionary(word, { showPteExamples: false }); } : undefined} dangerouslySetInnerHTML={{ __html: markup }} />;
 });
 
-const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, onAnswerChange }: { html: string; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void }) {
-  const [markup] = useState(() => sanitizeRichHtml(injectAnswerInputs(formatQuestionContent(html), answers)));
-  return <div className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold" onInputCapture={(event) => { const target = event.target as HTMLInputElement; const number = target.dataset.questionNumber; if (number) onAnswerChange(number, target.value); }} dangerouslySetInnerHTML={{ __html: markup }} />;
-}, (previous, next) => previous.html === next.html);
+const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optionsByNumber, onAnswerChange }: { html: string; answers: Answers; optionsByNumber: Record<string, string[]>; onAnswerChange: (questionNumber: string, value: string) => void }) {
+  const [markup] = useState(() => sanitizeRichHtml(injectAnswerInputs(formatQuestionContent(html), answers, optionsByNumber)));
+  const [openSelect, setOpenSelect] = useState<{ number: string; options: string[]; top: number; left: number; width: number } | null>(null);
+  function handleInputEvent(event: React.FormEvent<HTMLDivElement>) {
+    const target = event.target as HTMLInputElement;
+    if (target.tagName !== "INPUT") return;
+    const number = target.dataset.questionNumber;
+    if (number) onAnswerChange(number, target.value);
+  }
+
+  function handleSelectButtonClick(event: React.MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement;
+    const button = target.closest<HTMLButtonElement>("[data-answer-select='true']");
+    if (!button) return;
+
+    const number = button.dataset.questionNumber;
+    const options = number ? optionsByNumber[number] ?? [] : [];
+    if (!number || options.length === 0) return;
+
+    const rect = button.getBoundingClientRect();
+    setOpenSelect((current) => current?.number === number ? null : {
+      number,
+      options,
+      top: rect.bottom + 6,
+      left: rect.left,
+      width: Math.max(220, rect.width),
+    });
+  }
+
+  function chooseSelectOption(option: string) {
+    if (!openSelect) return;
+    const button = document.querySelector<HTMLButtonElement>(`[data-answer-select='true'][data-question-number='${openSelect.number}']`);
+    if (button) {
+      button.textContent = option;
+      button.dataset.selected = "true";
+    }
+    onAnswerChange(openSelect.number, option);
+    setOpenSelect(null);
+  }
+
+  return (
+    <>
+      <div className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold" onInputCapture={handleInputEvent} onClick={handleSelectButtonClick} dangerouslySetInnerHTML={{ __html: markup }} />
+      {openSelect && (
+        <div className="fixed z-50 max-h-72 overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-1 shadow-[var(--shadow-lg)]" style={{ top: openSelect.top, left: openSelect.left, width: openSelect.width }}>
+          {openSelect.options.map((option) => (
+            <button key={option} type="button" onClick={() => chooseSelectOption(option)} className="block w-full rounded-[var(--radius-sm)] px-3 py-2 text-left text-sm leading-6 text-[var(--text)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]">
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}, (previous, next) => previous.html === next.html && previous.optionsByNumber === next.optionsByNumber);
 
 function PartNavigator({ part, active, answers, onPartClick, onQuestionClick }: { part: PartModel; active: boolean; answers: Answers; onPartClick: () => void; onQuestionClick: (questionNumber: number) => void }) {
   const answered = part.numbers.filter((number) => answers[`${number}`]).length;
@@ -729,9 +786,14 @@ function formatTimer(seconds: number) {
   return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
-function injectAnswerInputs(html: string, answers: Answers) {
+function injectAnswerInputs(html: string, answers: Answers, optionsByNumber: Record<string, string[]> = {}) {
   return normalizeQuestionBlanks(html).replace(/_____(\d{1,3})______/g, (_, number: string) => {
     const value = escapeHtmlAttribute(answers[number] ?? "");
+    const options = optionsByNumber[number] ?? [];
+    if (options.length > 0) {
+      const label = value || number;
+      return `<span class="mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
+    }
     return `<span class="mx-1 inline-flex items-baseline align-baseline"><input data-question-number="${number}" value="${value}" placeholder="${number}" class="h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
   });
 }
@@ -1006,6 +1068,48 @@ function optionText(option: Record<string, unknown>) {
   return stringValue(option, "title") || stringValue(option, "content") || stringValue(option, "value") || stringValue(option, "label") || stringValue(option, "text") || stringValue(option, "name");
 }
 
+function getBlankSelectOptions(pageContent: string, options: Record<string, unknown>[], inferredOptions: string[]) {
+  const blankNumbers = questionBlankNumbers(pageContent);
+  const selectOptions = options.length > 0 ? options.map((option) => stripHtml(optionText(option))).filter(Boolean) : inferredOptions;
+  if (blankNumbers.length === 0 || selectOptions.length === 0) return {};
+  return Object.fromEntries(blankNumbers.map((number) => [`${number}`, selectOptions]));
+}
+
+function inferQuestionOptions(question: IeltsQuestion, sectionDesc: string, pageContent: string) {
+  const text = stripHtml(`${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`);
+  const upperText = text.toUpperCase();
+  if (upperText.includes("TRUE") && upperText.includes("FALSE") && upperText.includes("NOT GIVEN")) return ["TRUE", "FALSE", "NOT GIVEN"];
+  if (upperText.includes("YES") && upperText.includes("NO") && upperText.includes("NOT GIVEN")) return ["YES", "NO", "NOT GIVEN"];
+  return inferLetterOptions(text);
+}
+
+function inferLetterOptions(text: string) {
+  const rangeMatch = text.match(/\b([A-Z])\s*[–-]\s*([A-Zl])\b/);
+  if (rangeMatch) {
+    const start = rangeMatch[1].toUpperCase();
+    const rawEnd = rangeMatch[2];
+    const end = rawEnd === "l" ? "I" : rawEnd.toUpperCase();
+    const options = letterRange(start, end);
+    if (options.length >= 2 && options.length <= 12) return options;
+  }
+
+  const commaMatch = text.match(/\b([A-Z](?:\s*,\s*[A-Z])+(?:\s*,?\s*or\s*[A-Z])?)\b/i);
+  if (!commaMatch) return [];
+  const options = commaMatch[1].split(/\s*,\s*|\s+or\s+/i).map((value) => value.trim().toUpperCase()).filter((value) => /^[A-Z]$/.test(value));
+  return [...new Set(options)];
+}
+
+function letterRange(start: string, end: string) {
+  const startCode = start.charCodeAt(0);
+  const endCode = end.charCodeAt(0);
+  if (startCode > endCode) return [];
+  return Array.from({ length: endCode - startCode + 1 }, (_, index) => String.fromCharCode(startCode + index));
+}
+
+function questionBlankNumbers(value: string) {
+  return [...normalizeQuestionBlanks(value).matchAll(/_____(\d{1,3})______/g)].map((match) => Number(match[1])).filter(Number.isFinite);
+}
+
 function questionInstructionKey(question: IeltsQuestion) {
   const instruction = stringValue(question.content, "section_desc") || question.instruction || "";
   const normalized = stripHtml(instruction).toLowerCase();
@@ -1042,7 +1146,16 @@ function stripOptionLabel(value: string) {
 
 function isMatchingOptionBank(question: IeltsQuestion, sectionDesc: string, pageContent: string) {
   const text = `${question.question_type} ${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`.toLowerCase();
-  return text.includes("list of people") || text.includes("list of headings") || text.includes("list of researchers") || text.includes("match each") || text.includes("matching");
+  return text.includes("list of people") || text.includes("list of headings") || text.includes("list of researchers") || text.includes("answers from the box") || text.includes("from the box") || text.includes("match each") || text.includes("matching");
+}
+
+function isFillInBlankAnswerBank(question: IeltsQuestion, pageContent: string, sectionDesc: string) {
+  const text = `${question.question_type} ${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`.toLowerCase();
+  if (hasQuestionBlanks(pageContent)) {
+    return text.includes("one word") || text.includes("two words") || text.includes("three words") || text.includes("word and/or a number") || text.includes("no more than");
+  }
+  if (question.question_type === "11") return true;
+  return text.includes("complete the") && !text.includes("choose");
 }
 
 function isEmptyLetterOption(value: string) {

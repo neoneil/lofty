@@ -1,7 +1,7 @@
 import "server-only";
 
 import { createAdminClient } from "@/lib/supabase/admin";
-import { AI_PROMPT_DEFINITIONS, getDefaultAiPromptDefinition } from "@/lib/ai-prompts/defaults";
+import { AI_PROMPT_DEFINITIONS, DEPRECATED_AI_PROMPT_IDS, getDefaultAiPromptDefinition } from "@/lib/ai-prompts/defaults";
 import { renderPromptTemplate } from "@/lib/ai-prompts/render";
 import type { AiPromptDefinition, AiPromptRecord } from "@/lib/ai-prompts/types";
 
@@ -21,6 +21,35 @@ type AiPromptRow = {
   updated_by: string | null;
 };
 
+function getEffectivePromptContent(row: Pick<AiPromptRow, "id" | "content">, fallback?: AiPromptDefinition | null) {
+  if (!fallback) return row.content;
+
+  if (
+    row.id === "admin.analyze-answer.system" &&
+    row.content.includes("professional PTE and IELTS writing examiner")
+  ) {
+    return fallback.defaultContent;
+  }
+
+  if (
+    row.id === "admin.analyze-answer.user" &&
+    (
+      (
+        row.content.includes("exam_type: {{exam_type}}") &&
+        row.content.includes("task_type: {{task_type}}")
+      ) ||
+      (
+        row.content.includes("Required JSON shape") &&
+        !row.content.includes("full_report_cn")
+      )
+    )
+  ) {
+    return fallback.defaultContent;
+  }
+
+  return row.content;
+}
+
 function rowToRecord(row: AiPromptRow, fallback?: AiPromptDefinition | null): AiPromptRecord {
   const defaultContent = row.default_content ?? fallback?.defaultContent ?? row.content;
   return {
@@ -32,7 +61,7 @@ function rowToRecord(row: AiPromptRow, fallback?: AiPromptDefinition | null): Ai
     usedBy: row.used_by ?? fallback?.usedBy ?? [],
     variables: row.variables ?? fallback?.variables ?? [],
     defaultContent,
-    content: row.content,
+    content: getEffectivePromptContent(row, fallback),
     source: "database",
     isActive: row.is_active ?? true,
     isCustom: row.is_custom ?? !fallback,
@@ -72,7 +101,7 @@ export async function getAiPromptContent(id: string) {
       throw error;
     }
     if (!data || data.is_active === false || typeof data.content !== "string" || !data.content.trim()) return fallback.defaultContent;
-    return data.content;
+    return getEffectivePromptContent({ id, content: data.content }, fallback);
   } catch (error) {
     if (isMissingPromptTableError(error)) return fallback.defaultContent;
     console.error(`AI prompt ${id} load failed, using default prompt:`, error);
@@ -97,6 +126,7 @@ export async function listAiPromptsForAdmin() {
 
     const records = new Map<string, AiPromptRecord>();
     for (const row of (data ?? []) as AiPromptRow[]) {
+      if (DEPRECATED_AI_PROMPT_IDS.has(row.id)) continue;
       records.set(row.id, rowToRecord(row, defaults.get(row.id)));
     }
     for (const prompt of AI_PROMPT_DEFINITIONS) {
@@ -174,4 +204,5 @@ export async function seedDefaultAiPrompts(updatedBy: string) {
 
   const { error } = await supabase.from("ai_prompts").upsert(rows, { onConflict: "id" });
   if (error) throw error;
+  await supabase.from("ai_prompts").delete().in("id", [...DEPRECATED_AI_PROMPT_IDS]);
 }

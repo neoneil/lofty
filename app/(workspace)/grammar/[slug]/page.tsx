@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
-import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
 
 import { getGrammar } from "@/lib/grammar/get-grammar";
@@ -68,15 +67,6 @@ export default async function GrammarDetailPage({
                   {grammar.summary.zh}
                 </div>
 
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <Button className="rounded-2xl px-5">
-                    开始学习
-                  </Button>
-
-                  <Button variant="secondary" className="rounded-2xl px-5">
-                    AI 练习模式
-                  </Button>
-                </div>
               </div>
 
               {/* Right */}

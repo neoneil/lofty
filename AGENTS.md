@@ -18,6 +18,8 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 
 ## Tooling
 
+- Project shell commands must be written and run as WSL/Linux commands.
+- Do not write PowerShell project commands for this repository.
 - Prefer WSL commands for this project whenever possible.
 - If a task can be done through WSL, use WSL instead of PowerShell.
 - Avoid using PowerShell for project commands when the same work can be done directly through WSL, especially for shell pipes, quoting, globbing, and path-sensitive operations.

@@ -127,6 +127,11 @@ const TYPE_LABEL_MAP: Record<string, string> = {
   wfd: "WFD",
 };
 
+const SUMMARY_WITHOUT_CORRECTNESS = new Set([
+  "ielts_speaking_ai",
+  "ielts_writing_ai",
+]);
+
 function formatDateTime(value: string | null) {
   if (!value) return "—";
 
@@ -591,6 +596,9 @@ export default function AdminDashboardClient({ overview, students }: Props) {
               <div className="flex flex-wrap gap-2">
                 {summaries.map((summary) => {
                   const active = selectedType === summary.questionSource;
+                  const showCorrectness = !SUMMARY_WITHOUT_CORRECTNESS.has(
+                    summary.questionSource,
+                  );
 
                   return (
                     <button
@@ -611,9 +619,10 @@ export default function AdminDashboardClient({ overview, students }: Props) {
                           active ? "text-white/80" : "text-[var(--text-soft)]"
                         }`}
                       >
-                        {summary.attempts} attempts · {summary.correctCount} correct ·{" "}
-                        {summary.wrongCount}
-                        {" wrong"}
+                        {summary.attempts} attempts
+                        {showCorrectness
+                          ? ` · ${summary.correctCount} correct · ${summary.wrongCount} wrong`
+                          : ""}
                       </div>
                     </button>
                   );

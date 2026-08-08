@@ -3,34 +3,22 @@ import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 const AI_FEATURE = "admin_analyze_answer";
-const AI_MODEL = "gpt-4o-mini";
-
-const EXAM_TYPES = ["pte", "ielts"] as const;
-const TASK_TYPES = ["we", "swt", "ielts_task2", "ielts_task1"] as const;
-
-type ExamType = (typeof EXAM_TYPES)[number];
-type TaskType = (typeof TASK_TYPES)[number];
+const AI_MODEL = "gpt-5.6-sol";
 
 type AnalyzeAnswerRequest = {
+  student_user_id?: string;
   exam_type?: string;
   task_type?: string;
   question?: string;
   answer?: string;
 };
-
-function isExamType(value: string): value is ExamType {
-  return EXAM_TYPES.includes(value as ExamType);
-}
-
-function isTaskType(value: string): value is TaskType {
-  return TASK_TYPES.includes(value as TaskType);
-}
 
 function emptyOverallFeedback() {
   return {
@@ -78,6 +66,8 @@ function normalizeResult(value: unknown) {
       ? (rawOverall.ielts_feedback as Record<string, unknown>)
       : {};
   const fallbackOverall = emptyOverallFeedback();
+  const full_report_cn =
+    typeof record.full_report_cn === "string" ? record.full_report_cn : "";
 
   const overall_feedback = {
     summary:
@@ -223,21 +213,14 @@ function normalizeResult(value: unknown) {
       })
     : [];
 
-  return { overall_feedback, paragraphs, sentences };
+  return { full_report_cn, overall_feedback, paragraphs, sentences };
 }
 
 function buildPrompt(data: {
-  exam_type: ExamType;
-  task_type: TaskType;
   question: string;
   answer: string;
 }) {
   return `
-Analyze this student writing answer.
-
-exam_type: ${data.exam_type}
-task_type: ${data.task_type}
-
 Question:
 ${data.question}
 
@@ -246,18 +229,14 @@ ${data.answer}
 
 Return ONLY strict JSON. Do not use markdown. Do not add any text outside JSON.
 
-Language rules:
-- All feedback, explanations, problems, strengths, suggestions, summaries, scoring comments, paragraph functions, sentence functions, and error descriptions MUST be written in Simplified Chinese.
-- Keep paragraph_text and sentence_text exactly in the student's original language.
-- improved_sentence should be a corrected rewrite in the same language as the original sentence.
-- estimated_score may use the exam scoring format, but any explanation around it must be Chinese.
-- Do not output English feedback labels or English explanatory sentences inside JSON values.
+The system message contains the teaching and IELTS marking rules. Apply those rules inside these JSON fields.
 
 Required JSON shape:
 {
+  "full_report_cn": "",
   "overall_feedback": {
     "summary": "",
-    "estimated_score": "",
+    "estimated_score": "Band 0.0",
     "strengths": [],
     "main_problems": [],
     "improvement_priority": [],
@@ -309,21 +288,49 @@ Required JSON shape:
   ]
 }
 
-Analysis requirements:
-- If exam_type is pte, focus on Content, Form, Grammar, Vocabulary, Spelling, and Development, Structure and Coherence.
-- If exam_type is ielts, focus on Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy.
-- Still populate both pte_feedback and ielts_feedback objects. The non-primary exam system can be shorter.
-- Preserve the student's original paragraph order.
+Output requirements:
+- full_report_cn must be a complete ChatGPT-style Chinese marking report for the whole essay. It should include the question, original student essay, task understanding check, IELTS four-criterion scoring, detailed paragraph/sentence comments, useful sentence patterns, score table, and next-step priorities. It may use headings and bullet-style plain text inside the JSON string.
+- Preserve the student's paragraph order.
+- paragraph_text and sentence_text must preserve the student's original wording as closely as possible.
 - paragraph_id values must be p1, p2, p3, etc.
 - sentence_id values must be s1, s2, s3, etc.
 - Each sentence must reference its paragraph_id.
-- sentence_text must match the original answer sentence as closely as possible.
-- Do not rewrite sentence_text. Put rewrites only in improved_sentence.
-- Paragraph feedback must check paragraph function, topic sentence clarity, supporting ideas, examples, logic, and relevance to the task.
-- Sentence feedback must check grammar, vocabulary, spelling, punctuation, cohesion, and logic.
-- Every item in strengths, main_problems, improvement_priority, paragraph problems, paragraph strengths, and all sentence error arrays must be Simplified Chinese.
-- explanation_cn must be concise Simplified Chinese.
+- Put the IELTS four-criterion analysis in ielts_feedback.
+- Put sentence-level issues in the matching arrays so the frontend can show them when a sentence is clicked.
+- improved_sentence should be a natural IELTS 6.5-7 style rewrite.
+- Every explanation and feedback item must be Simplified Chinese, except English original sentences, corrected sentences, and necessary grammar terms.
 `;
+}
+
+function countWords(text: string) {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function estimateOverallBand(value: string) {
+  const matches = value.match(/\b(?:[0-8](?:\.[05])?|9(?:\.0)?)\b/g);
+  if (!matches?.length) return null;
+  const scores = matches.map(Number).filter((score) => Number.isFinite(score) && score >= 0 && score <= 9);
+  if (!scores.length) return null;
+  const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+  return Math.round(average * 2) / 2;
+}
+
+function buildScoresJson(result: ReturnType<typeof normalizeResult>) {
+  return {
+    estimated_score: result.overall_feedback.estimated_score,
+    ielts_feedback: result.overall_feedback.ielts_feedback,
+    strengths: result.overall_feedback.strengths,
+    main_problems: result.overall_feedback.main_problems,
+    improvement_priority: result.overall_feedback.improvement_priority,
+  };
+}
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "object" && error && "message" in error) {
+    return String((error as { message?: unknown }).message);
+  }
+  return "OpenAI request failed";
 }
 
 export async function POST(req: Request) {
@@ -331,16 +338,25 @@ export async function POST(req: Request) {
     const auth = await requireApiAdmin();
     if (!auth.ok) return auth.response;
     const { user } = auth;
+    const adminSupabase = createAdminClient();
 
     const body = (await req.json()) as AnalyzeAnswerRequest;
-    const examType = body.exam_type ?? "";
-    const taskType = body.task_type ?? "";
+    const studentUserId = body.student_user_id?.trim() ?? "";
+    const examType = body.exam_type?.trim().toLowerCase() ?? "";
+    const taskType = body.task_type?.trim().toLowerCase() ?? "";
     const question = body.question?.trim() ?? "";
     const answer = body.answer?.trim() ?? "";
 
-    if (!isExamType(examType) || !isTaskType(taskType)) {
+    if (!studentUserId) {
       return NextResponse.json(
-        { error: "Invalid exam_type or task_type" },
+        { error: "请选择学生。" },
+        { status: 400 }
+      );
+    }
+
+    if (examType !== "ielts" || taskType !== "ielts_task2") {
+      return NextResponse.json(
+        { error: "只支持 IELTS Writing Task 2 批改。" },
         { status: 400 }
       );
     }
@@ -348,6 +364,19 @@ export async function POST(req: Request) {
     if (!question || !answer) {
       return NextResponse.json(
         { error: "Missing question or answer" },
+        { status: 400 }
+      );
+    }
+
+    const { data: targetProfile, error: targetProfileError } = await adminSupabase
+      .from("profiles")
+      .select("id, role")
+      .eq("id", studentUserId)
+      .maybeSingle();
+
+    if (targetProfileError || !targetProfile || targetProfile.role === "admin" || targetProfile.role === "editor") {
+      return NextResponse.json(
+        { error: "学生不存在或不可保存到该账号。" },
         { status: 400 }
       );
     }
@@ -362,15 +391,11 @@ export async function POST(req: Request) {
 
     try {
       const [systemPrompt, userPrompt] = await Promise.all([
-        getAiPromptContent("admin.analyze-answer.system").catch(() => "You are a professional PTE and IELTS writing examiner. Return only valid JSON. All feedback content must be in Simplified Chinese unless preserving the student's original text or rewriting an English sentence."),
+        getAiPromptContent("admin.analyze-answer.system").catch(() => "你是一名专业的 IELTS Writing Task 2 写作老师和考官。请使用中文解释，并返回严格 JSON。"),
         renderAiPrompt("admin.analyze-answer.user", {
-          exam_type: examType,
-          task_type: taskType,
           question,
           answer,
         }).catch(() => buildPrompt({
-          exam_type: examType,
-          task_type: taskType,
           question,
           answer,
         })),
@@ -378,7 +403,7 @@ export async function POST(req: Request) {
 
       completion = await openai.chat.completions.create({
         model: AI_MODEL,
-        temperature: 0.2,
+        max_completion_tokens: 12000,
         response_format: { type: "json_object" },
         messages: [
           {
@@ -397,10 +422,14 @@ export async function POST(req: Request) {
         feature: AI_FEATURE,
         model: AI_MODEL,
         status: "error",
-        errorMessage: error instanceof Error ? error.message : "OpenAI request failed",
+        errorMessage: getErrorMessage(error),
       });
 
-      throw error;
+      console.error("Analyze answer OpenAI error:", error);
+      return NextResponse.json(
+        { error: getErrorMessage(error) },
+        { status: 502 }
+      );
     }
 
     await recordAiUsage({
@@ -434,7 +463,33 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json(normalizeResult(parsed));
+    const normalized = normalizeResult(parsed);
+    const { data: savedAttempt, error: saveError } = await adminSupabase
+      .schema("ielts")
+      .from("writing_attempts")
+      .insert({
+        user_id: studentUserId,
+        task_type: "task2",
+        prompt_question: question,
+        essay_text: answer,
+        target_band: null,
+        overall_band: estimateOverallBand(normalized.overall_feedback.estimated_score),
+        word_count: countWords(answer),
+        scores_json: buildScoresJson(normalized),
+        feedback_json: normalized,
+      })
+      .select("id")
+      .single();
+
+    if (saveError || !savedAttempt) {
+      console.error("Admin analyze answer save error:", saveError);
+      return NextResponse.json(
+        { error: "分析完成，但保存学生作文记录失败。" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ ...normalized, attempt_id: savedAttempt.id });
   } catch (error) {
     console.error("Analyze answer API error:", error);
     return NextResponse.json(

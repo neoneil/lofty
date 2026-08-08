@@ -153,13 +153,13 @@ section_raw_data_json: |
               {
                 "id": "12259",
                 "desc": "",
-                "sort": "24",
+                "sort": "23",
                 "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
                 "answerId": "",
                 "optionId": "",
                 "optionIds": "5499|5501",
                 "sectionId": "1206",
-                "questionNo": 24,
+                "questionNo": 23,
                 "answerValue": "",
                 "answerExplain": "BD，通过future of work定位。题干中的doubtful与原文中can’t see how以及not so sure意思一致，对应的内容分别为have more leisure time和lower unemployment，与选项BD一致，故答案为BD。对应原文：—Bit too optimistic, don't you think? For example, I can't see how people are about to have more leisure time, when all the evidence shows people are spending longer than ever at work. —No, that's true. And what about lower unemployment? I'm not so sure about that.\n通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
                 "firstQuestion": false
@@ -167,13 +167,13 @@ section_raw_data_json: |
               {
                 "id": "12260",
                 "desc": "",
-                "sort": "25",
+                "sort": "24",
                 "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
                 "answerId": "",
                 "optionId": "",
                 "optionIds": "5499|5501",
                 "sectionId": "1206",
-                "questionNo": 25,
+                "questionNo": 24,
                 "answerValue": "",
                 "answerExplain": "通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
                 "firstQuestion": false
@@ -435,8 +435,8 @@ questions_json: |
     {
       "id": "020c4b7f-2a41-4f10-b7f7-d5776144d58a",
       "section_id": "69783ea7-076b-42cc-8bb0-9c4ecc623905",
-      "question_number_start": 24,
-      "question_number_end": 25,
+      "question_number_start": 23,
+      "question_number_end": 24,
       "question_type": "10",
       "prompt": "Questions 21-24",
       "instruction": "<p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>",
@@ -446,13 +446,13 @@ questions_json: |
           {
             "id": "12259",
             "desc": "",
-            "sort": "24",
+            "sort": "23",
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answerId": "",
             "optionId": "",
             "optionIds": "5499|5501",
             "sectionId": "1206",
-            "questionNo": 24,
+            "questionNo": 23,
             "answerValue": "",
             "answerExplain": "BD，通过future of work定位。题干中的doubtful与原文中can’t see how以及not so sure意思一致，对应的内容分别为have more leisure time和lower unemployment，与选项BD一致，故答案为BD。对应原文：—Bit too optimistic, don't you think? For example, I can't see how people are about to have more leisure time, when all the evidence shows people are spending longer than ever at work. —No, that's true. And what about lower unemployment? I'm not so sure about that.\n通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
             "firstQuestion": false
@@ -460,13 +460,13 @@ questions_json: |
           {
             "id": "12260",
             "desc": "",
-            "sort": "25",
+            "sort": "24",
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answerId": "",
             "optionId": "",
             "optionIds": "5499|5501",
             "sectionId": "1206",
-            "questionNo": 25,
+            "questionNo": 24,
             "answerValue": "",
             "answerExplain": "通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
             "firstQuestion": false
@@ -807,7 +807,7 @@ answers_json: |
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answer_id": null,
             "option_ids": "5499|5501",
-            "question_no": 24,
+            "question_no": 23,
             "answer_value": null,
             "answer_explain": "BD，通过future of work定位。题干中的doubtful与原文中can’t see how以及not so sure意思一致，对应的内容分别为have more leisure time和lower unemployment，与选项BD一致，故答案为BD。对应原文：—Bit too optimistic, don't you think? For example, I can't see how people are about to have more leisure time, when all the evidence shows people are spending longer than ever at work. —No, that's true. And what about lower unemployment? I'm not so sure about that.\n通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient."
           },
@@ -815,7 +815,7 @@ answers_json: |
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answer_id": null,
             "option_ids": "5499|5501",
-            "question_no": 25,
+            "question_no": 24,
             "answer_value": null,
             "answer_explain": "通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient."
           }
@@ -901,13 +901,13 @@ answers_json: |
           {
             "id": "12259",
             "desc": "",
-            "sort": "24",
+            "sort": "23",
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answerId": "",
             "optionId": "",
             "optionIds": "5499|5501",
             "sectionId": "1206",
-            "questionNo": 24,
+            "questionNo": 23,
             "answerValue": "",
             "answerExplain": "BD，通过future of work定位。题干中的doubtful与原文中can’t see how以及not so sure意思一致，对应的内容分别为have more leisure time和lower unemployment，与选项BD一致，故答案为BD。对应原文：—Bit too optimistic, don't you think? For example, I can't see how people are about to have more leisure time, when all the evidence shows people are spending longer than ever at work. —No, that's true. And what about lower unemployment? I'm not so sure about that.\n通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
             "firstQuestion": false
@@ -915,13 +915,13 @@ answers_json: |
           {
             "id": "12260",
             "desc": "",
-            "sort": "25",
+            "sort": "24",
             "title": "23-24. Which TWO predictions about the future of work are the students doubtful about?",
             "answerId": "",
             "optionId": "",
             "optionIds": "5499|5501",
             "sectionId": "1206",
-            "questionNo": 25,
+            "questionNo": 24,
             "answerValue": "",
             "answerExplain": "通过Accountants原词重现定位。从but转折开始，后面提到的more of them以及really in demand都反映出了employment上升，后续又提到far more efficient，与选项中的productivity对应。对应原文：Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They're still really in demand and have become far more efficient.",
             "firstQuestion": false
@@ -1302,4 +1302,3 @@ assets_json: |
     }
   ]
 ---
-

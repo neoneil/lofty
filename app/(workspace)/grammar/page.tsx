@@ -1,299 +1,27 @@
-// app/grammar/page.tsx
-
 "use client";
 
 import Link from "next/link";
 
 import {
-  AlertTriangle,
+  ArrowRight,
   BookOpen,
-  CheckCircle2,
-  FileText,
-  GraduationCap,
   Layers3,
   Search,
-  Sparkles,
 } from "lucide-react";
-
-import { usePathname } from "next/navigation";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
-
-const grammarSections = [
-  {
-    titleZh: "时态",
-    titleEn: "Tenses",
-
-    topics: [
-      {
-        slug: "simple-present",
-        zh: "一般现在时",
-        en: "Simple Present Tense",
-      },
-
-      {
-        slug: "simple-past",
-        zh: "一般过去时",
-        en: "Simple Past Tense",
-      },
-
-      {
-        slug: "present-perfect",
-        zh: "现在完成时",
-        en: "Present Perfect Tense",
-      },
-
-      {
-        slug: "past-perfect",
-        zh: "过去完成时",
-        en: "Past Perfect Tense",
-      },
-
-      {
-        slug: "future-tense",
-        zh: "一般将来时",
-        en: "Simple Future Tense",
-      },
-
-      {
-        slug: "present-continuous",
-        zh: "现在进行时",
-        en: "Present Continuous Tense",
-      },
-
-      {
-        slug: "past-continuous",
-        zh: "过去进行时",
-        en: "Past Continuous Tense",
-      },
-
-      {
-        slug: "future-continuous",
-        zh: "将来进行时",
-        en: "Future Continuous Tense",
-      },
-
-      {
-        slug: "present-perfect-continuous",
-        zh: "现在完成进行时",
-        en: "Present Perfect Continuous Tense",
-      },
-    ],
-  },
-
-  {
-    titleZh: "从句",
-    titleEn: "Clauses",
-
-    topics: [
-      {
-        slug: "relative-clauses",
-        zh: "定语从句",
-        en: "Relative Clauses",
-      },
-
-      {
-        slug: "noun-clauses",
-        zh: "名词性从句",
-        en: "Noun Clauses",
-      },
-
-      {
-        slug: "adverbial-clauses",
-        zh: "状语从句",
-        en: "Adverbial Clauses",
-      },
-
-      {
-        slug: "object-clauses",
-        zh: "宾语从句",
-        en: "Object Clauses",
-      },
-
-      {
-        slug: "subject-clauses",
-        zh: "主语从句",
-        en: "Subject Clauses",
-      },
-
-      {
-        slug: "appositive-clauses",
-        zh: "同位语从句",
-        en: "Appositive Clauses",
-      },
-
-      {
-        slug: "conditional-clauses",
-        zh: "条件状语从句",
-        en: "Conditional Clauses",
-      },
-    ],
-  },
-
-  {
-    titleZh: "非谓语动词",
-    titleEn: "Non-finite Verbs",
-
-    topics: [
-      {
-        slug: "gerunds",
-        zh: "动名词",
-        en: "Gerunds",
-      },
-
-      {
-        slug: "infinitives",
-        zh: "不定式",
-        en: "Infinitives",
-      },
-
-      {
-        slug: "present-participles",
-        zh: "现在分词",
-        en: "Present Participles",
-      },
-
-      {
-        slug: "past-participles",
-        zh: "过去分词",
-        en: "Past Participles",
-      },
-
-      {
-        slug: "non-finite-as-subject",
-        zh: "非谓语作主语",
-        en: "Non-finite as Subject",
-      },
-
-      {
-        slug: "non-finite-as-adverbial",
-        zh: "非谓语作状语",
-        en: "Non-finite as Adverbial",
-      },
-    ],
-  },
-
-  {
-    titleZh: "句子结构",
-    titleEn: "Sentence Structures",
-
-    topics: [
-      {
-        slug: "svo-structure",
-        zh: "主谓宾结构",
-        en: "SVO Structure",
-      },
-
-      {
-        slug: "compound-sentences",
-        zh: "并列句",
-        en: "Compound Sentences",
-      },
-
-      {
-        slug: "complex-sentences",
-        zh: "复合句",
-        en: "Complex Sentences",
-      },
-
-      {
-        slug: "parallel-structures",
-        zh: "平行结构",
-        en: "Parallel Structures",
-      },
-    ],
-  },
-
-  {
-    titleZh: "学术写作",
-    titleEn: "Academic Writing",
-
-    topics: [
-      {
-        slug: "formal-tone",
-        zh: "正式语气",
-        en: "Formal Tone",
-      },
-
-      {
-        slug: "avoiding-informal-language",
-        zh: "避免口语化",
-        en: "Avoiding Informal Language",
-      },
-
-      {
-        slug: "academic-sentence-patterns",
-        zh: "学术句型",
-        en: "Academic Sentence Patterns",
-      },
-
-      {
-        slug: "paragraph-structure",
-        zh: "段落结构",
-        en: "Paragraph Structure",
-      },
-
-      {
-        slug: "argumentative-structures",
-        zh: "论证表达",
-        en: "Argumentative Structures",
-      },
-    ],
-  },
-
-  {
-    titleZh: "PTE 高频语法",
-    titleEn: "PTE Grammar Patterns",
-
-    topics: [
-      {
-        slug: "essay-structures",
-        zh: "Essay 高频句型",
-        en: "Essay Structures",
-      },
-
-      {
-        slug: "sst-academic-structures",
-        zh: "SST 学术句型",
-        en: "SST Academic Structures",
-      },
-
-      {
-        slug: "wfd-sentence-patterns",
-        zh: "WFD 高频结构",
-        en: "WFD Sentence Patterns",
-      },
-
-      {
-        slug: "speaking-structures",
-        zh: "Speaking 常用表达",
-        en: "Speaking Structures",
-      },
-    ],
-  },
-];
+import { firstGrammarTopic, grammarSections } from "@/lib/grammar/topics";
 
 export default function GrammarPage() {
-
-  const pathname =
-    usePathname();
-
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-
       <div className="mx-auto flex w-full max-w-[1850px] gap-6 px-4 py-6 lg:px-6">
-
-        {/* Main */}
-
         <main className="min-w-0 flex-1">
-
           <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-
             <div>
-
               <div className="mb-1 text-3xl font-bold tracking-tight text-[var(--text)]">
                 Grammar Knowledge Base
               </div>
@@ -301,38 +29,28 @@ export default function GrammarPage() {
               <div className="text-sm text-[var(--text-soft)]">
                 Master English grammar for PTE & IELTS with AI explanations
               </div>
-
             </div>
 
             <div className="flex w-full gap-3 lg:w-auto">
-
               <div className="relative flex-1 lg:w-[360px]">
-
                 <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-soft)]" />
 
                 <Input
                   placeholder="Search grammar topic..."
                   className="h-11 rounded-2xl border-[var(--border)] bg-[var(--card)] pl-11"
                 />
-
               </div>
 
               <Button className="h-11 rounded-2xl px-5">
                 Search
               </Button>
-
             </div>
-
           </div>
 
           <Card className="overflow-hidden border-[var(--border)] bg-gradient-to-br from-[var(--primary-soft)] via-[var(--card)] to-[var(--card)] shadow-[var(--shadow-sm)]">
-
             <CardContent className="p-6">
-
               <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-
                 <div>
-
                   <Badge className="mb-4 rounded-full">
                     AI Grammar Assistant
                   </Badge>
@@ -349,38 +67,29 @@ export default function GrammarPage() {
                     Learn grammar structures, academic writing, sentence patterns, and PTE-focused English through AI-generated explanations and intelligent practice systems.
                   </div>
 
-                  <div className="flex flex-wrap gap-3">
-
-                    <Button className="rounded-2xl px-5">
-                      开始学习
-                    </Button>
-
-                    <Button variant="secondary" className="rounded-2xl px-5">
-                      AI 练习模式
-                    </Button>
-
-                  </div>
-
+                  <Link
+                    href={`/grammar/${firstGrammarTopic.slug}`}
+                    className="inline-flex h-11 items-center gap-2 rounded-2xl bg-[var(--primary)] px-5 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--primary-hover)]"
+                  >
+                    <BookOpen size={16} />
+                    开始学习
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
 
                 <div className="rounded-[28px] border border-[var(--border)] bg-[var(--card)]/80 p-6 backdrop-blur">
-
                   <div className="mb-5">
-
                     <div className="mb-1 text-sm font-medium text-[var(--text)]">
                       Grammar Statistics
                     </div>
 
                     <div className="text-xs text-[var(--text-soft)]">
-                      AI Knowledge Overview
+                      Knowledge Overview
                     </div>
-
                   </div>
 
                   <div className="space-y-3">
-
                     <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
                       <span className="text-sm text-[var(--text)]">
                         Grammar Topics
                       </span>
@@ -388,11 +97,9 @@ export default function GrammarPage() {
                       <Badge>
                         120+
                       </Badge>
-
                     </div>
 
                     <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
                       <span className="text-sm text-[var(--text)]">
                         Academic Structures
                       </span>
@@ -400,11 +107,9 @@ export default function GrammarPage() {
                       <Badge variant="secondary">
                         500+
                       </Badge>
-
                     </div>
 
                     <div className="flex items-center justify-between rounded-2xl bg-[var(--bg-soft)] px-4 py-3">
-
                       <span className="text-sm text-[var(--text)]">
                         PTE Grammar Coverage
                       </span>
@@ -412,24 +117,60 @@ export default function GrammarPage() {
                       <Badge variant="secondary">
                         Full
                       </Badge>
-
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
-
             </CardContent>
-
           </Card>
 
+          <div className="mt-6 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+            {grammarSections.map((section) => (
+              <Card key={section.titleEn} className="border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
+                <CardContent className="p-5">
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <div>
+                      <div className="text-base font-semibold text-[var(--text)]">
+                        {section.titleZh}
+                      </div>
+
+                      <div className="text-sm text-[var(--text-soft)]">
+                        {section.titleEn}
+                      </div>
+                    </div>
+
+                    <Badge variant="secondary">
+                      {section.topics.length}
+                    </Badge>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    {section.topics.map((topic) => (
+                      <Link
+                        key={topic.slug}
+                        href={`/grammar/${topic.slug}`}
+                        className="flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl px-4 py-3 text-left transition-all hover:bg-[var(--bg-soft)]"
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-[var(--text)]">
+                            {topic.zh}
+                          </span>
+
+                          <span className="mt-0.5 block text-xs text-[var(--text-soft)]">
+                            {topic.en}
+                          </span>
+                        </span>
+
+                        <Layers3 size={15} className="shrink-0 text-[var(--text-soft)]" />
+                      </Link>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </main>
-
       </div>
-
     </div>
   );
-
 }

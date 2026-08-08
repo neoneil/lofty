@@ -1,40 +1,91 @@
 "use client";
 
 import Link from "next/link";
-import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, PenLine, ScrollText, Users, Video } from "lucide-react";
+import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, CloudUpload, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, ScrollText, Users, Video, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
 
-const adminModules = [
-  { title: "学生练习管理", desc: "查看学生练习记录、分数趋势、听说读写进步情况。", href: "/admin/dashboard", tag: "Students", icon: Users },
-  { title: "学生计划管理", desc: "查看所有学生学习计划，支持编辑、更新与受保护的学生数据删除。", href: "/admin/student-plans", tag: "Student Plans", icon: CalendarCheck2 },
-  { title: "学生作业管理", desc: "给学生布置 IELTS / PTE 作业，发送站内通知和邮件，并保留学生历史作业。", href: "/admin/homework", tag: "Homework", icon: NotebookPen },
-  { title: "文章管理", desc: "创建、编辑和管理 IELTS / PTE 文章。", href: "/admin/posts", tag: "Posts", icon: FileText },
-  { title: "授课笔记", desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。", href: "/admin/lesson-notes", tag: "PTE / IELTS", icon: BookOpenText },
-  { title: "文档词汇自动化", desc: "上传 PDF、Word、PPT，提取文字并生成可在词汇中心展示的静态词汇文件。", href: "/admin/content-ingest", tag: "Content", icon: CloudUpload },
-  { title: "Markdown 备忘录", desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。", href: "/admin/markdown-memo", tag: "Course Design", icon: BookOpenCheck },
-  { title: "作文批改", desc: "批改学生作文。", href: "/ielts-writing", tag: "PTE / IELTS", icon: PenLine },
-  { title: "PTE 题库下载管理", desc: "管理 WFD、SST、HIW 等题型与音频资源。", href: "/downloads", tag: "PTE", icon: Download },
-  { title: "IELTS 题库下载管理", desc: "管理写作、口语、阅读、听力相关题目内容。", href: "/admin/ielts", tag: "IELTS", icon: Languages },
-  { title: "雅思听力阅读题型技巧", desc: "根据 content JSON 渲染听力与阅读题型、技巧、陷阱和教学要点。", href: "/admin/ielts-question-types", tag: "IELTS Skills", icon: Headphones },
-  { title: "IELTS 一对一课程概要", desc: "查看雅思一对一课程方案、分层课时、四项训练内容，并下载 PDF。", href: "/admin/ielts-one-on-one-course", tag: "IELTS Course", icon: BookOpenCheck },
-  { title: "PTE 一对一课程概要", desc: "查看 PTE 一对一课程方案、题型训练节奏、免费测试说明，并下载 PDF。", href: "/admin/pte-one-on-one-course", tag: "PTE Course", icon: BookOpenCheck },
-  { title: "留言 / 评论", desc: "查看用户留言、评论和网站互动内容。", href: "/admin/chat", tag: "Messages", icon: MessageSquareText },
-  { title: "下载中心", desc: "导出 PDF、题库资料和学生学习材料。", href: "/downloads", tag: "Export", icon: Download },
-  { title: "selective", desc: "selective history。", href: "/admin/selective/history", tag: "selective", icon: History },
-  { title: "上课明细", desc: "各学生上课次数。", href: "/admin/start-classroom", tag: "Zoom 会议", icon: Video },
-  { title: "学生作文AI批改", desc: "AI - PTE - IELTS writing", href: "/admin/analyze_answer", tag: "AI response", icon: Bot },
-  { title: "AI Prompt", desc: "统一查看、编辑和新增 IELTS / PTE / Selective 的 AI prompt，线上请求优先读取数据库版本。", href: "/admin/ai-prompts", tag: "AI Prompt", icon: BrainCircuit },
-  { title: "AI Demo", desc: "试听 OpenAI 人声样本，管理课程和练习中的语音模型选择。", href: "/admin/ai-demo", tag: "OpenAI Voice", icon: AudioLines },
-  { title: "PTE 音频生成", desc: "为 RS / WFD 生成 Marin、Cedar、Alloy、Ash 四音色题库音频。", href: "/admin/pte-ai-audio", tag: "PTE Audio", icon: AudioLines },
-  { title: "wfd图片记忆", desc: "查看 191 个 WFD 预测题的 AI 图片记忆卡，有图显示图片，无图显示占位。", href: "/admin/wfd-image-memory", tag: "WFD Images", icon: ImageIcon },
-  { title: "生成PTE 作文答案与句子库", desc: "AI 反馈", href: "/admin/generate_essay_answer", tag: "AI response", icon: BrainCircuit },
-  { title: "PTE大作文范文", desc: "查看 WE 范文与逐句中文翻译，并自动补齐缺失范文。", href: "/admin/pte-essay-samples", tag: "PTE Essay", icon: ScrollText },
-  { title: "PTE SWT 范文", desc: "查看 SWT 一句话范文、原文翻译、答案翻译与句子合并拆解。", href: "/admin/pte-swt-samples", tag: "PTE SWT", icon: FileText },
-  { title: "AI 使用额度管理", desc: "查看用户 AI 使用量，调整每日/月度额度和无限额度。", href: "/admin/ai-usage", tag: "AI Usage", icon: Gauge },
-  { title: "课程上传", desc: "上传 TED 或 LoftyPTE 视频、缩略图和字幕到 R2，并创建课程记录。", href: "/admin/course-upload", tag: "Courses", icon: CloudUpload },
-  { title: "WFD操作", desc: "活跃题目待定", href: "/admin/db-playground", tag: "WFD", icon: Database },
+type AdminModule = {
+  title: string;
+  desc: string;
+  href: string;
+  tag: string;
+  icon: LucideIcon;
+};
+
+type AdminModuleGroup = {
+  title: string;
+  desc: string;
+  modules: AdminModule[];
+  includeUiSkin?: boolean;
+};
+
+const adminModuleGroups: AdminModuleGroup[] = [
+  {
+    title: "学生与教学管理",
+    desc: "学生进度、计划、作业和上课记录。",
+    modules: [
+      { title: "学生练习管理", desc: "查看学生练习记录、分数趋势、听说读写进步情况。", href: "/admin/dashboard", tag: "Students", icon: Users },
+      { title: "学生计划管理", desc: "查看所有学生学习计划，支持编辑、更新与受保护的学生数据删除。", href: "/admin/student-plans", tag: "Student Plans", icon: CalendarCheck2 },
+      { title: "学生作业管理", desc: "给学生布置 IELTS / PTE 作业，发送站内通知和邮件，并保留学生历史作业。", href: "/admin/homework", tag: "Homework", icon: NotebookPen },
+      { title: "上课明细", desc: "各学生上课次数。", href: "/admin/start-classroom", tag: "Zoom 会议", icon: Video },
+    ],
+  },
+  {
+    title: "IELTS 管理",
+    desc: "雅思题库、题型技巧、课程概要和写作精批。",
+    modules: [
+      { title: "IELTS 题库下载管理", desc: "管理写作、口语、阅读、听力相关题目内容。", href: "/admin/ielts", tag: "IELTS", icon: Languages },
+      { title: "雅思听力阅读题型技巧", desc: "根据 content JSON 渲染听力与阅读题型、技巧、陷阱和教学要点。", href: "/admin/ielts-question-types", tag: "IELTS Skills", icon: Headphones },
+      { title: "IELTS 一对一课程概要", desc: "查看雅思一对一课程方案、分层课时、四项训练内容，并下载 PDF。", href: "/admin/ielts-one-on-one-course", tag: "IELTS Course", icon: BookOpenCheck },
+      { title: "学生作文AI批改", desc: "IELTS Writing Task 2 逐句精批，并保存到学生作文记录。", href: "/admin/analyze_answer", tag: "IELTS Writing", icon: Bot },
+    ],
+  },
+  {
+    title: "PTE 管理",
+    desc: "PTE 题库、音频、WFD 和作文范文工具。",
+    modules: [
+      { title: "PTE 题库下载管理", desc: "管理 WFD、SST、HIW 等题型与音频资源。", href: "/downloads", tag: "PTE", icon: Download },
+      { title: "PTE 一对一课程概要", desc: "查看 PTE 一对一课程方案、题型训练节奏、免费测试说明，并下载 PDF。", href: "/admin/pte-one-on-one-course", tag: "PTE Course", icon: BookOpenCheck },
+      { title: "PTE 音频生成", desc: "为 RS / WFD 生成 Marin、Cedar、Alloy、Ash 四音色题库音频。", href: "/admin/pte-ai-audio", tag: "PTE Audio", icon: AudioLines },
+      { title: "WFD操作", desc: "活跃题目待定", href: "/admin/db-playground", tag: "WFD", icon: Database },
+      { title: "wfd图片记忆", desc: "查看 191 个 WFD 预测题的 AI 图片记忆卡，有图显示图片，无图显示占位。", href: "/admin/wfd-image-memory", tag: "WFD Images", icon: ImageIcon },
+      { title: "PTE大作文范文", desc: "查看 WE 范文与逐句中文翻译，并自动补齐缺失范文。", href: "/admin/pte-essay-samples", tag: "PTE Essay", icon: ScrollText },
+      { title: "PTE SWT 范文", desc: "查看 SWT 一句话范文、原文翻译、答案翻译与句子合并拆解。", href: "/admin/pte-swt-samples", tag: "PTE SWT", icon: FileText },
+      { title: "生成PTE 作文答案与句子库", desc: "AI 反馈", href: "/admin/generate_essay_answer", tag: "AI response", icon: BrainCircuit },
+    ],
+  },
+  {
+    title: "内容与课程资料",
+    desc: "文章、课程笔记、词汇自动化和导出资料。",
+    modules: [
+      { title: "文章管理", desc: "创建、编辑和管理 IELTS / PTE 文章。", href: "/admin/posts", tag: "Posts", icon: FileText },
+      { title: "授课笔记", desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。", href: "/admin/lesson-notes", tag: "PTE / IELTS", icon: BookOpenText },
+      { title: "文档词汇自动化", desc: "上传 PDF、Word、PPT，提取文字并生成可在词汇中心展示的静态词汇文件。", href: "/admin/content-ingest", tag: "Content", icon: CloudUpload },
+      { title: "Markdown 备忘录", desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。", href: "/admin/markdown-memo", tag: "Course Design", icon: BookOpenCheck },
+      { title: "课程上传", desc: "上传 TED 或 LoftyPTE 视频、缩略图和字幕到 R2，并创建课程记录。", href: "/admin/course-upload", tag: "Courses", icon: CloudUpload },
+      { title: "下载中心", desc: "导出 PDF、题库资料和学生学习材料。", href: "/downloads", tag: "Export", icon: Download },
+    ],
+  },
+  {
+    title: "AI 与系统配置",
+    desc: "Prompt、AI 演示、额度和后台界面设置。",
+    includeUiSkin: true,
+    modules: [
+      { title: "AI Prompt", desc: "统一查看、编辑和新增 IELTS / PTE / Selective 的 AI prompt，线上请求优先读取数据库版本。", href: "/admin/ai-prompts", tag: "AI Prompt", icon: BrainCircuit },
+      { title: "AI Demo", desc: "试听 OpenAI 人声样本，管理课程和练习中的语音模型选择。", href: "/admin/ai-demo", tag: "OpenAI Voice", icon: AudioLines },
+      { title: "AI 使用额度管理", desc: "查看用户 AI 使用量，调整每日/月度额度和无限额度。", href: "/admin/ai-usage", tag: "AI Usage", icon: Gauge },
+    ],
+  },
+  {
+    title: "沟通与记录",
+    desc: "用户互动信息和 selective 历史记录。",
+    modules: [
+      { title: "留言 / 评论", desc: "查看用户留言、评论和网站互动内容。", href: "/admin/chat", tag: "Messages", icon: MessageSquareText },
+      { title: "selective", desc: "selective history。", href: "/admin/selective/history", tag: "selective", icon: History },
+    ],
+  },
 ];
 
 type ViewMode = "grid" | "list";
@@ -55,22 +106,38 @@ export function AdminModuleSwitcher() {
         </div>
       </div>
 
-      {viewMode === "grid" ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <UiSkinCard />
-          {adminModules.map((item) => <AdminModuleGridCard key={item.title} item={item} />)}
-        </div>
-      ) : (
-        <div className="space-y-3">
-          <UiSkinCard variant="list" />
-          {adminModules.map((item) => <AdminModuleListCard key={item.title} item={item} />)}
-        </div>
-      )}
+      <div className="space-y-8">
+        {adminModuleGroups.map((group) => (
+          <section key={group.title} className="space-y-3">
+            <div className="flex flex-col gap-2 px-1 sm:ml-5 sm:flex-row sm:items-end sm:justify-between sm:px-0">
+              <div>
+                <h3 className="text-lg font-bold tracking-tight text-[var(--text)]">{group.title}</h3>
+                <p className="mt-1 text-sm text-[var(--text-soft)]">{group.desc}</p>
+              </div>
+              <span className="w-fit rounded-full border border-[var(--border)] bg-[var(--bg-soft)] px-2.5 py-1 text-xs font-semibold text-[var(--text-soft)]">
+                {group.modules.length + (group.includeUiSkin ? 1 : 0)} 个模块
+              </span>
+            </div>
+
+            {viewMode === "grid" ? (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {group.includeUiSkin ? <UiSkinCard /> : null}
+                {group.modules.map((item) => <AdminModuleGridCard key={item.title} item={item} />)}
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {group.includeUiSkin ? <UiSkinCard variant="list" /> : null}
+                {group.modules.map((item) => <AdminModuleListCard key={item.title} item={item} />)}
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
 
-function AdminModuleGridCard({ item }: { item: (typeof adminModules)[number] }) {
+function AdminModuleGridCard({ item }: { item: AdminModule }) {
   const Icon = item.icon;
   return (
     <Link href={item.href} className="group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)]">
@@ -85,7 +152,7 @@ function AdminModuleGridCard({ item }: { item: (typeof adminModules)[number] }) 
   );
 }
 
-function AdminModuleListCard({ item }: { item: (typeof adminModules)[number] }) {
+function AdminModuleListCard({ item }: { item: AdminModule }) {
   const Icon = item.icon;
   return (
     <Link href={item.href} className="group flex flex-col gap-3 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] transition-all duration-300 hover:border-[var(--primary)]/40 hover:bg-[var(--card-hover)] hover:shadow-[var(--shadow-md)] sm:flex-row sm:items-center">
