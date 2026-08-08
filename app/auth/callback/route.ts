@@ -1,13 +1,19 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import type { User } from "@supabase/supabase-js";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
-import { createClient } from "@/lib/supabase/server";
 import { applyLoginAuditCookie, recordFailedLogin, recordSuccessfulLogin, type LoginAuditResult } from "@/lib/auth/login-audit";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { createAdminClient } from "@/lib/supabase/admin";
 const AUTH_NEXT_COOKIE = "auth_next";
 const AUTH_MODE_COOKIE = "auth_mode";
+
+type SupabaseCookie = {
+  name: string;
+  value: string;
+  options: CookieOptions;
+};
 
 function getUserFullName(user: User) {
   const metadata = user.user_metadata ?? {};
@@ -31,13 +37,36 @@ function getCookieValue(request: Request, name: string) {
   return decodeURIComponent(match.slice(name.length + 1));
 }
 
-function redirectAndClearAuthNext(url: string) {
+function redirectAndClearAuthNext(url: string, supabaseCookies: SupabaseCookie[] = []) {
   const response = NextResponse.redirect(url);
 
+  supabaseCookies.forEach((cookie) => {
+    response.cookies.set(cookie.name, cookie.value, cookie.options);
+  });
   response.cookies.set(AUTH_NEXT_COOKIE, "", { path: "/", maxAge: 0 });
   response.cookies.set(AUTH_MODE_COOKIE, "", { path: "/", maxAge: 0 });
 
   return response;
+}
+
+function createOAuthCallbackClient(request: NextRequest, supabaseCookies: SupabaseCookie[]) {
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll().map((cookie) => ({
+            name: cookie.name,
+            value: cookie.value,
+          }));
+        },
+        setAll(cookiesToSet) {
+          supabaseCookies.push(...cookiesToSet);
+        },
+      },
+    }
+  );
 }
 
 async function ensureProfileForAuthUser(user: User) {
@@ -81,55 +110,63 @@ export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const oauthError = searchParams.get("error");
-  const mode = getCookieValue(request, AUTH_MODE_COOKIE) === "signup" ? "signup" : "login";
+  const mode = searchParams.get("mode") === "signup" || getCookieValue(request, AUTH_MODE_COOKIE) === "signup" ? "signup" : "login";
   const next = getSafeNextPath(
     searchParams.get("next") ?? getCookieValue(request, AUTH_NEXT_COOKIE)
   );
   let audit: LoginAuditResult | null = null;
+  const supabaseCookies: SupabaseCookie[] = [];
 
   if (oauthError) {
     await recordFailedLogin(request, null, "google", oauthError);
     return redirectAndClearAuthNext(
-      `${origin}/${mode === "signup" ? "sign-up" : "login"}?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
+      `${origin}/${mode === "signup" ? "sign-up-v2" : "login-v2"}?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
     );
   }
 
-  if (code) {
-    const supabase = await createClient();
-    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-
-    if (error) {
-      await recordFailedLogin(request, null, "google", error.message);
-      return redirectAndClearAuthNext(
-        `${origin}/login?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
-      );
-    }
-
-    const user = data.user ?? data.session?.user;
-
-    if (!user) {
-      await supabase.auth.signOut();
-      await recordFailedLogin(request, null, "google", "missing_user");
-      return redirectAndClearAuthNext(
-        `${origin}/${mode === "signup" ? "sign-up" : "login"}?error=${encodeURIComponent("google_profile_failed")}&next=${encodeURIComponent(next)}`
-      );
-    }
-
-    try {
-      await ensureProfileForAuthUser(user);
-    } catch (profileError) {
-      console.error("google profile ensure failed", profileError);
-      await supabase.auth.signOut();
-      await recordFailedLogin(request, user.email ?? null, "google", "profile_ensure_failed");
-      return redirectAndClearAuthNext(
-        `${origin}/${mode === "signup" ? "sign-up" : "login"}?error=${encodeURIComponent("google_profile_failed")}&next=${encodeURIComponent(next)}`
-      );
-    }
-
-    audit = await recordSuccessfulLogin(request, user, "google");
+  if (!code) {
+    await recordFailedLogin(request, null, "google", "missing_oauth_code");
+    return redirectAndClearAuthNext(
+      `${origin}/${mode === "signup" ? "sign-up-v2" : "login-v2"}?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
+    );
   }
 
-  const response = redirectAndClearAuthNext(`${origin}${next}`);
+  const supabase = createOAuthCallbackClient(request, supabaseCookies);
+  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
+  if (error) {
+    await recordFailedLogin(request, null, "google", error.message);
+    return redirectAndClearAuthNext(
+      `${origin}/${mode === "signup" ? "sign-up-v2" : "login-v2"}?error=${encodeURIComponent("google_login_failed")}&next=${encodeURIComponent(next)}`
+    );
+  }
+
+  const user = data.user ?? data.session?.user;
+
+  if (!user) {
+    await supabase.auth.signOut();
+    await recordFailedLogin(request, null, "google", "missing_user");
+    return redirectAndClearAuthNext(
+      `${origin}/${mode === "signup" ? "sign-up-v2" : "login-v2"}?error=${encodeURIComponent("google_profile_failed")}&next=${encodeURIComponent(next)}`,
+      supabaseCookies
+    );
+  }
+
+  try {
+    await ensureProfileForAuthUser(user);
+  } catch (profileError) {
+    console.error("google profile ensure failed", profileError);
+    await supabase.auth.signOut();
+    await recordFailedLogin(request, user.email ?? null, "google", "profile_ensure_failed");
+    return redirectAndClearAuthNext(
+      `${origin}/${mode === "signup" ? "sign-up-v2" : "login-v2"}?error=${encodeURIComponent("google_profile_failed")}&next=${encodeURIComponent(next)}`,
+      supabaseCookies
+    );
+  }
+
+  audit = await recordSuccessfulLogin(request, user, "google");
+
+  const response = redirectAndClearAuthNext(`${origin}${next}`, supabaseCookies);
   applyLoginAuditCookie(response, audit);
   return response;
 }

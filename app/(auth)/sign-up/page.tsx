@@ -1,23 +1,20 @@
-import { Suspense } from "react";
-import AuthV2Form from "@/components/auth/auth-v2-form";
+import { redirect } from "next/navigation";
 
-function SignUpFallback() {
-  return (
-    <div className="min-h-[calc(100vh-3.5rem)] bg-[var(--bg)] px-4 py-6 sm:px-6 lg:min-h-[calc(100vh-4rem)] lg:py-10">
-      <div className="mx-auto grid w-full max-w-6xl gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
-        <div className="min-h-80 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] shadow-[var(--shadow-md)]" />
-        <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow-lg)]">
-          <p className="text-sm text-[var(--text-soft)]">加载中...</p>
-        </div>
-      </div>
-    </div>
-  );
+type Props = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
 }
 
-export default function SignUpPage() {
-  return (
-    <Suspense fallback={<SignUpFallback />}>
-      <AuthV2Form mode="signup" />
-    </Suspense>
-  );
+export default async function SignUpPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const next = firstValue(params?.next);
+  const error = firstValue(params?.error);
+  const query = new URLSearchParams();
+  if (next) query.set("next", next);
+  if (error) query.set("error", error);
+
+  redirect(`/sign-up-v2${query.size ? `?${query.toString()}` : ""}`);
 }

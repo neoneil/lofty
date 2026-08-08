@@ -101,7 +101,7 @@ export default function NavbarMobileClient({
             ) : (
               <div className="flex items-center justify-center gap-2">
                 <Link
-                  href="/login"
+                href="/login-v2"
                   onClick={() => setOpen(false)}
                   className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
                 >
@@ -109,7 +109,7 @@ export default function NavbarMobileClient({
                 </Link>
 
                 <Link
-                  href="/sign-up"
+                href="/sign-up-v2"
                   onClick={() => setOpen(false)}
                   className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--primary-hover)]"
                 >

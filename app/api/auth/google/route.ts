@@ -1,25 +1,52 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 import { getAppOrigin } from "@/lib/auth/app-origin";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
-import { createClient } from "@/lib/supabase/server";
 
 const AUTH_NEXT_COOKIE = "auth_next";
 const AUTH_MODE_COOKIE = "auth_mode";
+
+type SupabaseCookie = {
+  name: string;
+  value: string;
+  options: CookieOptions;
+};
+
+function createOAuthStartClient(request: NextRequest, supabaseCookies: SupabaseCookie[]) {
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll().map((cookie) => ({
+            name: cookie.name,
+            value: cookie.value,
+          }));
+        },
+        setAll(cookiesToSet) {
+          supabaseCookies.push(...cookiesToSet);
+        },
+      },
+    }
+  );
+}
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const next = getSafeNextPath(searchParams.get("next"));
   const mode = searchParams.get("mode") === "signup" ? "signup" : "login";
   const appOrigin = getAppOrigin(request);
-  const supabase = await createClient();
+  const supabaseCookies: SupabaseCookie[] = [];
+  const supabase = createOAuthStartClient(request, supabaseCookies);
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
       redirectTo: `${appOrigin}/auth/callback`,
       skipBrowserRedirect: true,
-      queryParams: mode === "signup" ? { prompt: "select_account" } : undefined,
+      queryParams: { prompt: "select_account" },
     },
   });
 
@@ -30,7 +57,10 @@ export async function GET(request: NextRequest) {
   }
 
   const response = NextResponse.redirect(data.url);
-  response.cookies.set(AUTH_NEXT_COOKIE, encodeURIComponent(next), {
+  supabaseCookies.forEach((cookie) => {
+    response.cookies.set(cookie.name, cookie.value, cookie.options);
+  });
+  response.cookies.set(AUTH_NEXT_COOKIE, next, {
     path: "/",
     maxAge: 600,
     sameSite: "lax",

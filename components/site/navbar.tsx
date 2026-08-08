@@ -297,7 +297,7 @@ export default async function Navbar() {
                 ) : (
                   <>
                     <Link
-                      href="/login"
+                  href="/login-v2"
                       aria-label="Log in"
                       className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-all duration-200 hover:border-[var(--primary)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary)]"
                     >
@@ -305,7 +305,7 @@ export default async function Navbar() {
                     </Link>
 
                     <Link
-                      href="/sign-up"
+                  href="/sign-up-v2"
                       aria-label="Sign up"
                       className="flex h-8 min-w-[84px] items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]"
                     >
