@@ -6,15 +6,16 @@ import { ArrowDown, ArrowUp, GripVertical, RotateCcw } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
-import type { PteMockBlank, PteMockQuestion } from "@/lib/mock-assessment/pte-mock-types";
+import type { PteMockBlank, PteMockQuestion, PteMockQuestionResponse } from "@/lib/mock-assessment/pte-mock-types";
 
-function ReorderQuestion({ question }: { question: PteMockQuestion }) {
+function ReorderQuestion({ question, onResponseChange }: { question: PteMockQuestion; onResponseChange?: (response: PteMockQuestionResponse) => void }) {
   const [sentences, setSentences] = useState(() => [...(question.sentences ?? [])].sort(() => Math.random() - 0.5));
   const move = (index: number, direction: -1 | 1) => setSentences((current) => {
     const target = index + direction;
     if (target < 0 || target >= current.length) return current;
     const next = [...current];
     [next[index], next[target]] = [next[target], next[index]];
+    onResponseChange?.({ orderedItems: next });
     return next;
   });
 
@@ -25,7 +26,11 @@ function DropdownBlank({ blank, value, onChange }: { blank: PteMockBlank; value:
   return <select value={value} onChange={(event) => onChange(event.target.value)} className="mx-1 h-10 min-w-36 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm font-medium text-[var(--text)] outline-none focus:border-[var(--primary)]"><option value="">Select</option>{blank.options.map((option, index) => <option key={`${option}-${index}`} value={option}>{option}</option>)}</select>;
 }
 
-function DropdownQuestion({ question }: { question: PteMockQuestion }) {
+function answerValues(answers: Record<number, string>) {
+  return Object.fromEntries(Object.entries(answers).map(([key, item]) => [key, item])) as Record<string, string>;
+}
+
+function DropdownQuestion({ question, onResponseChange }: { question: PteMockQuestion; onResponseChange?: (response: PteMockQuestionResponse) => void }) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const parts = question.prompt.split(/(\[\[blank_\d+\]\])/g);
   return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-[15px] leading-[3] text-[var(--text)] sm:p-5">{parts.map((part, partIndex) => {
@@ -33,7 +38,11 @@ function DropdownQuestion({ question }: { question: PteMockQuestion }) {
     if (!match) return <span key={`text-${partIndex}`}>{part}</span>;
     const blank = question.blanks?.find((item) => item.index === Number(match[1]));
     if (!blank) return null;
-    return <DropdownBlank key={`blank-${partIndex}`} blank={blank} value={answers[blank.index] ?? ""} onChange={(value) => setAnswers((current) => ({ ...current, [blank.index]: value }))} />;
+    return <DropdownBlank key={`blank-${partIndex}`} blank={blank} value={answers[blank.index] ?? ""} onChange={(value) => setAnswers((current) => {
+      const next = { ...current, [blank.index]: value };
+      onResponseChange?.({ values: answerValues(next) });
+      return next;
+    })} />;
   })}</div>;
 }
 
@@ -47,7 +56,7 @@ function BlankTarget({ blank, value }: { blank: PteMockBlank; value?: string }) 
   return <span ref={setNodeRef} className={`mx-1 inline-flex min-h-10 min-w-28 items-center justify-center rounded-[var(--radius-sm)] border px-2 align-middle ${isOver ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-dashed border-[var(--border-strong)] bg-[var(--card)]"}`}>{value || "Drop here"}</span>;
 }
 
-function DragQuestion({ question }: { question: PteMockQuestion }) {
+function DragQuestion({ question, onResponseChange }: { question: PteMockQuestion; onResponseChange?: (response: PteMockQuestionResponse) => void }) {
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }));
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const parts = question.prompt.split(/(\[\[blank_\d+\]\])/g);
@@ -59,12 +68,16 @@ function DragQuestion({ question }: { question: PteMockQuestion }) {
     const target = String(event.over?.id ?? "");
     if (!word || !target.startsWith("blank:")) return;
     const index = Number(target.slice(6));
-    setAnswers((current) => ({ ...Object.fromEntries(Object.entries(current).filter(([, value]) => value !== word)), [index]: word }));
+    setAnswers((current) => {
+      const next = { ...Object.fromEntries(Object.entries(current).filter(([, value]) => value !== word)), [index]: word };
+      onResponseChange?.({ values: answerValues(next) });
+      return next;
+    });
   };
 
-  return <DndContext sensors={sensors} onDragEnd={handleDragEnd}><div className="flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">{available.map((word) => <DraggableWord key={word} word={word} />)}<Button type="button" variant="ghost" size="sm" onClick={() => setAnswers({})} className="ml-auto gap-2"><RotateCcw size={14} />重置</Button></div><div className="mt-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-[15px] leading-[3] text-[var(--text)] sm:p-5">{parts.map((part, partIndex) => { const match = part.match(/\[\[blank_(\d+)\]\]/); if (!match) return <span key={`text-${partIndex}`}>{part}</span>; const blank = question.blanks?.find((item) => item.index === Number(match[1])); return blank ? <BlankTarget key={`blank-${partIndex}`} blank={blank} value={answers[blank.index]} /> : null; })}</div></DndContext>;
+  return <DndContext sensors={sensors} onDragEnd={handleDragEnd}><div className="flex flex-wrap gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3">{available.map((word) => <DraggableWord key={word} word={word} />)}<Button type="button" variant="ghost" size="sm" onClick={() => { setAnswers({}); onResponseChange?.({ values: {} }); }} className="ml-auto gap-2"><RotateCcw size={14} />重置</Button></div><div className="mt-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-[15px] leading-[3] text-[var(--text)] sm:p-5">{parts.map((part, partIndex) => { const match = part.match(/\[\[blank_(\d+)\]\]/); if (!match) return <span key={`text-${partIndex}`}>{part}</span>; const blank = question.blanks?.find((item) => item.index === Number(match[1])); return blank ? <BlankTarget key={`blank-${partIndex}`} blank={blank} value={answers[blank.index]} /> : null; })}</div></DndContext>;
 }
 
-export function PteMockReadingQuestion({ question }: { question: PteMockQuestion }) {
-  return <div className="space-y-5"><div className="flex flex-wrap items-center gap-2"><Badge>{question.type}</Badge><Badge variant="secondary">Reading</Badge></div><div><h2 className="text-xl font-semibold text-[var(--text)] sm:text-2xl">{question.title}</h2><p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{question.type === "RO" ? "调整段落顺序。" : question.type === "FIBRW" ? "根据上下文从下拉列表选择答案。" : "将备选词拖入对应空格。"}</p></div>{question.type === "RO" ? <ReorderQuestion question={question} /> : question.type === "FIBRW" ? <DropdownQuestion question={question} /> : <DragQuestion question={question} />}</div>;
+export function PteMockReadingQuestion({ question, onResponseChange }: { question: PteMockQuestion; onResponseChange?: (response: PteMockQuestionResponse) => void }) {
+  return <div className="space-y-5"><div className="flex flex-wrap items-center gap-2"><Badge>{question.type}</Badge><Badge variant="secondary">Reading</Badge></div><div><h2 className="text-xl font-semibold text-[var(--text)] sm:text-2xl">{question.title}</h2><p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{question.type === "RO" ? "调整段落顺序。" : question.type === "FIBRW" ? "根据上下文从下拉列表选择答案。" : "将备选词拖入对应空格。"}</p></div>{question.type === "RO" ? <ReorderQuestion question={question} onResponseChange={onResponseChange} /> : question.type === "FIBRW" ? <DropdownQuestion question={question} onResponseChange={onResponseChange} /> : <DragQuestion question={question} onResponseChange={onResponseChange} />}</div>;
 }

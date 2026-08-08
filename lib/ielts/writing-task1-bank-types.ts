@@ -9,6 +9,8 @@ export type IeltsWritingTask1Item = {
   image: string;
   promptPreview: string;
   sortOrder: number;
+  modelAnswer?: string;
+  modelAnswerUpdatedAt?: string;
 };
 
 export type IeltsWritingTask1Bank = {
@@ -18,4 +20,15 @@ export type IeltsWritingTask1Bank = {
   count: number;
   items: IeltsWritingTask1Item[];
   missing: Array<Record<string, unknown>>;
+};
+
+export type IeltsWritingTask1ModelAnswer = {
+  id: string;
+  modelAnswer: string;
+  updatedAt: string;
+};
+
+export type IeltsWritingTask1ModelAnswerBank = {
+  updatedAt: string;
+  items: Record<string, IeltsWritingTask1ModelAnswer>;
 };

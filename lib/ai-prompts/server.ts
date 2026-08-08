@@ -26,7 +26,10 @@ function getEffectivePromptContent(row: Pick<AiPromptRow, "id" | "content">, fal
 
   if (
     row.id === "admin.analyze-answer.system" &&
-    row.content.includes("professional PTE and IELTS writing examiner")
+    (
+      row.content.includes("professional PTE and IELTS writing examiner") ||
+      row.content.includes("10-20 个核心句型")
+    )
   ) {
     return fallback.defaultContent;
   }

@@ -8,7 +8,7 @@ import { LocalRecordingPanel } from "@/components/mock-assessment/local-recordin
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
-import type { PteMockQuestion } from "@/lib/mock-assessment/pte-mock-types";
+import type { PteMockQuestion, PteMockQuestionResponse } from "@/lib/mock-assessment/pte-mock-types";
 
 const recordingDurations: Partial<Record<PteMockQuestion["type"], number>> = { RA: 40, RS: 15, DI: 40, RL: 40, ASQ: 10, SGD: 120, RTS: 40 };
 const instructions: Partial<Record<PteMockQuestion["type"], string>> = {
@@ -21,7 +21,7 @@ const instructions: Partial<Record<PteMockQuestion["type"], string>> = {
   RTS: "听取场景内容后，按照要求作出完整回应。",
 };
 
-export function PteMockSpeakingQuestion({ question }: { question: PteMockQuestion }) {
+export function PteMockSpeakingQuestion({ question, onResponseChange }: { question: PteMockQuestion; onResponseChange?: (response: PteMockQuestionResponse) => void }) {
   useEffect(() => () => window.speechSynthesis.cancel(), []);
 
   const speakPrompt = () => {
@@ -43,7 +43,7 @@ export function PteMockSpeakingQuestion({ question }: { question: PteMockQuestio
       {shouldShowPrompt && question.prompt ? <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-base leading-8 text-[var(--text)] sm:p-5 sm:text-lg">{question.prompt}</div> : null}
       {question.audioUrl ? <div className="mx-auto w-full max-w-xl"><AudioPlayer url={question.audioUrl} countdown={3} size="compact" /></div> : question.type === "ASQ" && question.prompt ? <div className="flex justify-center"><Button type="button" variant="secondary" onClick={speakPrompt} className="gap-2"><Volume2 size={16} />播放问题</Button></div> : null}
 
-      <LocalRecordingPanel maxDuration={recordingDurations[question.type] ?? 40} />
+      <LocalRecordingPanel maxDuration={recordingDurations[question.type] ?? 40} onRecordingReady={(recording) => onResponseChange?.(recording ? { recording } : {})} />
     </div>
   );
 }

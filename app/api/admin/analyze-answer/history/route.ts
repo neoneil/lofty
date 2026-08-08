@@ -55,3 +55,41 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({ ok: true, history });
 }
+
+export async function DELETE(req: NextRequest) {
+  const auth = await requireApiAdmin();
+  if (!auth.ok) return auth.response;
+
+  const body = await req.json().catch(() => ({})) as {
+    student_user_id?: string;
+    attempt_id?: string;
+  };
+  const studentUserId = body.student_user_id?.trim() ?? "";
+  const attemptId = body.attempt_id?.trim() ?? "";
+
+  if (!studentUserId || !attemptId) {
+    return NextResponse.json(
+      { ok: false, error: "Missing student_user_id or attempt_id." },
+      { status: 400 },
+    );
+  }
+
+  const supabase = createAdminClient();
+  const { error } = await supabase
+    .schema("ielts")
+    .from("writing_attempts")
+    .delete()
+    .eq("id", attemptId)
+    .eq("user_id", studentUserId)
+    .eq("task_type", "task2");
+
+  if (error) {
+    console.error("Admin analyze answer history delete error:", error);
+    return NextResponse.json(
+      { ok: false, error: "历史记录删除失败。" },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ ok: true });
+}

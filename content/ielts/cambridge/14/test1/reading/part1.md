@@ -15,7 +15,7 @@ section_id: "e5458694-1825-4cd9-a4bf-8ae8f29fb2b5"
 section_number: 1
 section_title: " Passage1"
 section_instruction: "Complete the notes below.\nChoose ONE WORD ONLY from the passage for each answer.\nWrite your answers in boxes 1-8 on your answer sheet."
-passage_title: "C14-T1-S1"
+passage_title: "THE IMPORTANCE OF CHILDREN'S PLAY"
 section_sort_order: 1
 module_raw_data_json: |
   {
@@ -864,3 +864,34 @@ assets_json: |
   ]
 ---
 
+THE IMPORTANCE OF CHILDREN'S PLAY
+Brick by brick, six-year-old Alice is building a magical kingdom. Imagining fairy-tale turrets and fire-breathing dragons, wicked sorcerers and gallant heroes, she’s creating an enchanting world. Although she isn’t aware of it, this fantasy will have important repercussions in her adult life: it is helping her take her first steps towards her capacity for abstract thought and creativity.
+
+Minutes later, Alice has abandoned the kingdom in favour of wrestling with her brother – or, according to educational psychologists, developing her capacity for strong emotional attachments. When she bosses him around as ‘his teacher’, she’s practising how to regulate her emotions through pretence. When they settle down with a board game, she’s learning about rules and turn-taking.
+
+“Play in all its rich variety is one of the highest achievements of the human species,” says Dr David Whitebread from Cambridge’s Faculty of Education. “It underpins how we develop as intellectual, problem-solving, emotional adults and is crucial to our success as a highly adaptable species.”
+
+Recognising the importance of play is not new: over two millennia ago, Plato extolled its virtues as a means of developing skills for adult life, and ideas about play-based learning have been developing since the 19th century.
+
+But we live in changing times, and Whitebread is mindful of a worldwide decline in play. “Over half the world’s population live in cities. Play is curtailed by perceptions of risk to do with traffic, crime, abduction and germs, and by the emphasis on ‘earlier is better’ in academic learning and competitive testing in schools. “The opportunities for free play, which I experienced almost every day of my childhood, are becoming increasingly scarce. Today, play is often a scheduled and supervised activity.”
+
+International bodies like the United Nations and the European Union have begun to develop policies concerned with children’s right to play, and to consider implications for leisure facilities and educational programmes. But what they often lack is the evidence to base policies on, as Whitebread explains: “Those of us who are involved in early childhood education know that children learn best through play and that this has long-lasting consequences for achievement and well being. But the kind of hard quantifiable evidence that is understood by policy makers is difficult to obtain. Researching play is inherently tricky.”
+
+“The type of play we are interested in is child-initiated, spontaneous and unpredictable – but, as soon as you ask a five-year-old ‘to play’, then you as the researcher have intervened,” explains Dr Sara Baker. “And we want to know what the impact of play is years, even decades, later. It’s a real challenge.”
+
+Dr Jenny Gibson agrees: “Although some of the steps in the puzzle of how and why play is important have been looked at, there is very little, high-quality evidence that takes you from the amount and type of play a child experiences through to its impact on the rest of its life.”
+
+Now, thanks to the new Centre for Research on Play in Education, Development and Learning (PEDAL), Whitebread, Baker, Gibson and a team of researchers hope to provide evidence on the role played by play in how a child develops.
+
+“A strong possibility is that play supports the early development of children’s self-control,” explains Baker.“These are our abilities to develop awareness of our own thinking processes – it influences how effectively we go about undertaking challenging activities.”
+
+In a study carried out by Baker with toddlers and young pre-schoolers, she found that children with greater self-control solved problems quicker when exploring an unfamiliar set-up requiring scientific reasoning, regardless of their IQ. “This sort of evidence makes us think that giving children the chance to play will make them more successful and creative problem-solvers in the long run.”
+
+If playful experiences do facilitate this aspect of development, say the researchers, it could be extremely significant for educational practices because the ability to self-regulate has been shown to be a key predictor of academic performance.
+
+Gibson adds: “Playful behaviour is also an important indicator of healthy social and emotional development. In my previous research, I investigated how observing children at play can give us important clues about their well being and can even be useful in the diagnosis of neurodevelopmental disorders like autism.”
+
+Whitebread’s recent research has involved developing a playful approach to supporting children’s writing. “Many primary school children find writing difficult, but we showed in a previous study that a playful stimulus was far more effective than an instructional one.” Children wrote longer and better structured stories when they first played with dolls representing characters in the story. In the latest study, children first built their story with LEGO, with similar results. “Many teachers commented that they had always previously had children saying they didn’t know what to write about. With the LEGO building, however, not a single child said this through the whole year of the project.”
+Whitebread, who directs PEDAL, trained as a primary school teacher in the early 1970s, when, as he describes, “the teaching of young children was largely a quiet backwater, untroubled by any serious intellectual debate or controversy.” Now, the landscape is very different, with hotly debated topics such as school starting age and the introduction of baseline assessment to those starting school in September 2015.
+
+“Somehow the importance of play has been lost in recent decades. It’s regarded as something trivial, or even as something negative that contrasts with ‘work’. Let’s not lose sight of its benefits, and the fundamental contributions it makes to human achievements in the arts, sciences and technology. Let’s make sure children have a rich diet of play experiences.”

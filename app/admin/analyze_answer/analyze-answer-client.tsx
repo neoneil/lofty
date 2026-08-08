@@ -91,7 +91,33 @@ type Selection =
   | { type: "sentence"; id: string }
   | null;
 
+type AnalyzeModelChoice = "standard" | "sol";
+
 const ANALYZE_TIMEOUT_MS = 180_000;
+const ANALYZE_MODEL_OPTIONS: Array<{
+  value: AnalyzeModelChoice;
+  label: string;
+  note: string;
+}> = [
+  {
+    value: "standard",
+    label: "GPT-5.4",
+    note: "推荐，稳定返回",
+  },
+  {
+    value: "sol",
+    label: "GPT-5.6 Sol",
+    note: "更慢，高质量测试",
+  },
+];
+const ANALYZE_PROGRESS_STEPS = [
+  { at: 0, label: "准备请求", detail: "正在整理题目、学生作文和学生账号信息。" },
+  { at: 4, label: "连接模型", detail: "正在把作文发送给所选模型。" },
+  { at: 15, label: "审题与评分", detail: "模型正在判断审题、四项评分和核心问题。" },
+  { at: 35, label: "生成逐句反馈", detail: "正在组织段落、句子问题和推荐修改。" },
+  { at: 70, label: "整理完整报告", detail: "正在生成前端可回放的完整批改报告。" },
+  { at: 105, label: "等待模型返回", detail: "高质量模型输出较慢时会停在这里；结果返回后会自动保存。" },
+];
 
 function formatDateTime(value: string | null) {
   if (!value) return "—";
@@ -105,30 +131,62 @@ function formatDateTime(value: string | null) {
   });
 }
 
+function formatDuration(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const rest = seconds % 60;
+  return minutes > 0 ? `${minutes}:${String(rest).padStart(2, "0")}` : `${rest}s`;
+}
+
+function getAnalyzeProgress(elapsedSeconds: number) {
+  const stepIndex = ANALYZE_PROGRESS_STEPS.findLastIndex((step) => elapsedSeconds >= step.at);
+  const safeStepIndex = Math.max(0, stepIndex);
+  const step = ANALYZE_PROGRESS_STEPS[safeStepIndex];
+  const percent = Math.min(94, Math.max(8, Math.round((elapsedSeconds / 120) * 100)));
+
+  return { step, stepIndex: safeStepIndex, percent };
+}
+
+function getAnalyzeModelOption(value: AnalyzeModelChoice) {
+  return ANALYZE_MODEL_OPTIONS.find((option) => option.value === value) ?? ANALYZE_MODEL_OPTIONS[0];
+}
+
 function normalizeResultForClient(value: unknown): AnalyzeAnswerResult {
   const record = typeof value === "object" && value ? value as Partial<AnalyzeAnswerResult> : {};
+  const rawOverall = typeof record.overall_feedback === "object" && record.overall_feedback ? record.overall_feedback as Partial<OverallFeedback> : {};
+  const fallbackOverall: OverallFeedback = {
+    summary: "",
+    estimated_score: "",
+    strengths: [],
+    main_problems: [],
+    improvement_priority: [],
+    pte_feedback: {
+      content: "",
+      form: "",
+      grammar: "",
+      vocabulary: "",
+      spelling: "",
+      development_structure_coherence: "",
+    },
+    ielts_feedback: {
+      task_response: "",
+      coherence_cohesion: "",
+      lexical_resource: "",
+      grammar_range_accuracy: "",
+    },
+  };
 
   return {
     full_report_cn: typeof record.full_report_cn === "string" ? record.full_report_cn : "",
-    overall_feedback: record.overall_feedback ?? {
-      summary: "",
-      estimated_score: "",
-      strengths: [],
-      main_problems: [],
-      improvement_priority: [],
+    overall_feedback: {
+      ...fallbackOverall,
+      ...rawOverall,
       pte_feedback: {
-        content: "",
-        form: "",
-        grammar: "",
-        vocabulary: "",
-        spelling: "",
-        development_structure_coherence: "",
+        ...fallbackOverall.pte_feedback,
+        ...(typeof rawOverall.pte_feedback === "object" && rawOverall.pte_feedback ? rawOverall.pte_feedback : {}),
       },
       ielts_feedback: {
-        task_response: "",
-        coherence_cohesion: "",
-        lexical_resource: "",
-        grammar_range_accuracy: "",
+        ...fallbackOverall.ielts_feedback,
+        ...(typeof rawOverall.ielts_feedback === "object" && rawOverall.ielts_feedback ? rawOverall.ielts_feedback : {}),
       },
     },
     paragraphs: Array.isArray(record.paragraphs) ? record.paragraphs : [],
@@ -229,6 +287,52 @@ function FullReportPanel({ text }: { text: string }) {
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+function AnalyzeProgressPanel({ elapsedSeconds, modelLabel }: { elapsedSeconds: number; modelLabel: string }) {
+  const progress = getAnalyzeProgress(elapsedSeconds);
+
+  return (
+    <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div className="text-sm font-bold text-[var(--text)]">
+            正在分析作文
+          </div>
+          <div className="mt-1 text-sm text-[var(--text-soft)]">
+            {modelLabel} · {progress.step.label}：{progress.step.detail}
+          </div>
+        </div>
+        <Badge>{formatDuration(elapsedSeconds)}</Badge>
+      </div>
+
+      <div className="mt-4 h-2 overflow-hidden rounded-full bg-[var(--border)]">
+        <div
+          className="h-full rounded-full bg-[var(--primary)] transition-all duration-500"
+          style={{ width: `${progress.percent}%` }}
+        />
+      </div>
+
+      <div className="mt-3 grid gap-2 sm:grid-cols-3">
+        {ANALYZE_PROGRESS_STEPS.slice(0, 6).map((step, index) => (
+          <div
+            key={step.label}
+            className={`rounded-[var(--radius-sm)] border px-3 py-2 text-xs ${
+              index <= progress.stepIndex
+                ? "border-[var(--primary)]/35 bg-[var(--primary-soft)] text-[var(--primary)]"
+                : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)]"
+            }`}
+          >
+            {step.label}
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-3 text-xs leading-5 text-[var(--text-soft)]">
+        当前不是流式输出，所以这里显示的是请求阶段和等待时间。结果返回后会自动保存并恢复完整报告、逐句点击反馈和历史记录。
+      </p>
+    </div>
   );
 }
 
@@ -351,15 +455,18 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
   );
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [analyzeModel, setAnalyzeModel] = useState<AnalyzeModelChoice>("standard");
   const [result, setResult] = useState<AnalyzeAnswerResult | null>(null);
   const [selection, setSelection] = useState<Selection>(null);
   const [hoveredParagraphId, setHoveredParagraphId] = useState<string | null>(
     null
   );
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [history, setHistory] = useState<AnalyzeHistoryItem[]>([]);
   const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
   const [historyLoading, setHistoryLoading] = useState(false);
+  const [deletingHistoryId, setDeletingHistoryId] = useState<string | null>(null);
   const [historyError, setHistoryError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -404,6 +511,16 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     return () => controller.abort();
   }, [selectedStudentId]);
 
+  useEffect(() => {
+    if (!isAnalyzing) return;
+
+    const timer = window.setInterval(() => {
+      setElapsedSeconds((value) => value + 1);
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [isAnalyzing]);
+
   const sentencesByParagraph = useMemo(() => {
     const map = new Map<string, SentenceFeedback[]>();
 
@@ -415,6 +532,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
 
     return map;
   }, [result]);
+  const selectedAnalyzeModelOption = getAnalyzeModelOption(analyzeModel);
 
   const loadHistoryItem = (item: AnalyzeHistoryItem) => {
     setSelectedHistoryId(item.id);
@@ -423,6 +541,44 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     setResult(normalizeResultForClient(item.feedback_json));
     setSelection(null);
     setError(null);
+  };
+
+  const deleteHistoryItem = async (item: AnalyzeHistoryItem) => {
+    const confirmed = window.confirm("确定删除这条作文 AI 批改历史吗？删除后不能恢复。");
+    if (!confirmed) return;
+
+    setDeletingHistoryId(item.id);
+    setHistoryError(null);
+
+    try {
+      const response = await fetch("/api/admin/analyze-answer/history", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          student_user_id: selectedStudentId,
+          attempt_id: item.id,
+        }),
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error ?? "历史记录删除失败。");
+      }
+
+      setHistory((prev) => prev.filter((historyItem) => historyItem.id !== item.id));
+
+      if (selectedHistoryId === item.id) {
+        setSelectedHistoryId(null);
+        setResult(null);
+        setSelection(null);
+        setQuestion("");
+        setAnswer("");
+      }
+    } catch (apiError) {
+      setHistoryError(apiError instanceof Error ? apiError.message : "历史记录删除失败。");
+    } finally {
+      setDeletingHistoryId(null);
+    }
   };
 
   async function analyzeAnswer() {
@@ -437,8 +593,8 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     }
 
     setIsAnalyzing(true);
+    setElapsedSeconds(0);
     setError(null);
-    setResult(null);
     setSelection(null);
     const abortController = new AbortController();
     const timeout = window.setTimeout(() => abortController.abort(), ANALYZE_TIMEOUT_MS);
@@ -452,23 +608,36 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
           student_user_id: selectedStudentId,
           exam_type: "ielts",
           task_type: "ielts_task2",
+          model_choice: analyzeModel,
           question,
           answer,
         }),
       });
 
-      const data = await response.json();
+      const rawText = await response.text();
+      let data: Record<string, unknown>;
+
+      try {
+        data = rawText ? JSON.parse(rawText) as Record<string, unknown> : {};
+      } catch {
+        throw new Error(rawText || "服务器返回了无法解析的内容。");
+      }
 
       if (!response.ok) {
-        throw new Error(data.error ?? "分析失败。");
+        throw new Error(typeof data.error === "string" ? data.error : "分析失败。");
       }
 
       const normalizedData = normalizeResultForClient(data);
+      if (!normalizedData.full_report_cn.trim() && normalizedData.paragraphs.length === 0 && normalizedData.sentences.length === 0) {
+        throw new Error("AI 返回了空结果，没有可展示的批改内容。");
+      }
+
       setResult(normalizedData);
-      setSelectedHistoryId(data.attempt_id ?? null);
+      const attemptId = typeof data.attempt_id === "string" ? data.attempt_id : null;
+      setSelectedHistoryId(attemptId);
       setHistory((prev) => [
         {
-          id: data.attempt_id,
+          id: attemptId ?? `local-${Date.now()}`,
           prompt_question: question,
           essay_text: answer,
           overall_band: null,
@@ -476,11 +645,11 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
           feedback_json: normalizedData,
           created_at: new Date().toISOString(),
         },
-        ...prev.filter((item) => item.id !== data.attempt_id),
+        ...prev.filter((item) => item.id !== attemptId),
       ]);
     } catch (apiError) {
       if (apiError instanceof DOMException && apiError.name === "AbortError") {
-        setError("分析超时了。GPT-5.6 Sol 生成完整精批会比较慢，请缩短作文或稍后重试。");
+        setError(`分析超时了。${selectedAnalyzeModelOption.label} 生成完整精批耗时较长，请稍后重试，或切换到 GPT-5.4。`);
         return;
       }
 
@@ -508,6 +677,16 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
             </div>
           </CardHeader>
         </Card>
+
+        {isAnalyzing ? <AnalyzeProgressPanel elapsedSeconds={elapsedSeconds} modelLabel={selectedAnalyzeModelOption.label} /> : null}
+
+        {error ? (
+          <div
+            className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]"
+          >
+            {error}
+          </div>
+        ) : null}
 
         <div className="grid gap-4 xl:grid-cols-[360px_minmax(0,1fr)_420px]">
           <Card>
@@ -545,6 +724,27 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
                   IELTS Writing Task 2
                 </div>
               </div>
+
+              <label className="block">
+                <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
+                  模型
+                </span>
+                <select
+                  value={analyzeModel}
+                  onChange={(event) => setAnalyzeModel(event.target.value as AnalyzeModelChoice)}
+                  disabled={isAnalyzing}
+                  className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition-all duration-200 hover:border-[var(--border-strong)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)] disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {ANALYZE_MODEL_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label} · {option.note}
+                    </option>
+                  ))}
+                </select>
+                <p className="mt-2 text-xs leading-5 text-[var(--text-soft)]">
+                  默认 GPT-5.4 更适合前端实时等待；GPT-5.6 Sol 质量更高但容易超时。
+                </p>
+              </label>
 
               <label className="block">
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
@@ -605,27 +805,42 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
                 ) : (
                   <div className="mt-3 max-h-[360px] space-y-2 overflow-y-auto pr-1">
                     {history.map((item) => (
-                      <button
+                      <div
                         key={item.id}
-                        type="button"
-                        onClick={() => loadHistoryItem(item)}
                         className={`w-full rounded-[var(--radius-sm)] border p-3 text-left transition ${
                           selectedHistoryId === item.id
                             ? "border-[var(--primary)] bg-[var(--primary-soft)]"
                             : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/40"
                         }`}
                       >
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-xs font-semibold text-[var(--text-soft)]">{formatDateTime(item.created_at)}</span>
-                          <span className="shrink-0 text-xs font-bold text-[var(--primary)]">{item.overall_band ? `Band ${item.overall_band}` : item.feedback_json?.overall_feedback?.estimated_score || "—"}</span>
+                        <button
+                          type="button"
+                          onClick={() => loadHistoryItem(item)}
+                          className="block w-full text-left"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-xs font-semibold text-[var(--text-soft)]">{formatDateTime(item.created_at)}</span>
+                            <span className="shrink-0 text-xs font-bold text-[var(--primary)]">{item.overall_band ? `Band ${item.overall_band}` : item.feedback_json?.overall_feedback?.estimated_score || "—"}</span>
+                          </div>
+                          <div className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-[var(--text)]">
+                            {item.prompt_question}
+                          </div>
+                          <div className="mt-1 text-xs text-[var(--text-soft)]">
+                            {item.word_count ?? item.essay_text.trim().split(/\s+/).filter(Boolean).length} words
+                          </div>
+                        </button>
+
+                        <div className="mt-3 flex justify-end border-t border-[var(--border)] pt-2">
+                          <button
+                            type="button"
+                            disabled={deletingHistoryId === item.id}
+                            onClick={() => void deleteHistoryItem(item)}
+                            className="rounded-[var(--radius-sm)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-2.5 py-1 text-xs font-semibold text-[var(--danger)] transition hover:border-[color:var(--danger)]/50 disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            {deletingHistoryId === item.id ? "删除中..." : "删除"}
+                          </button>
                         </div>
-                        <div className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-[var(--text)]">
-                          {item.prompt_question}
-                        </div>
-                        <div className="mt-1 text-xs text-[var(--text-soft)]">
-                          {item.word_count ?? item.essay_text.trim().split(/\s+/).filter(Boolean).length} words
-                        </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 )}

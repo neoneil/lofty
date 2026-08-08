@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { BookOpen, ChevronRight, Grid3X3, Images, Search, X } from "lucide-react";
+import { BookOpen, ChevronRight, Grid3X3, Images, Loader2, Pencil, Save, Search, X } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
@@ -10,16 +10,22 @@ import type { IeltsWritingTask1Item } from "@/lib/ielts/writing-task1-bank-types
 
 type Props = {
   items: IeltsWritingTask1Item[];
+  isAdmin?: boolean;
 };
 
 function taskLabel(item: IeltsWritingTask1Item) {
   return `剑桥雅思 ${item.bookNumber} · Test ${item.testNumber}`;
 }
 
-export default function Task1BankClient({ items }: Props) {
+export default function Task1BankClient({ items, isAdmin = false }: Props) {
   const [activeBook, setActiveBook] = useState<number | "all">("all");
   const [query, setQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<IeltsWritingTask1Item | null>(null);
+  const [modelAnswerOverrides, setModelAnswerOverrides] = useState<Record<string, string>>({});
+  const [draftModelAnswer, setDraftModelAnswer] = useState("");
+  const [isEditingModelAnswer, setIsEditingModelAnswer] = useState(false);
+  const [isSavingModelAnswer, setIsSavingModelAnswer] = useState(false);
+  const [saveError, setSaveError] = useState("");
 
   const books = useMemo(() => Array.from(new Set(items.map((item) => item.bookNumber))).sort((a, b) => b - a), [items]);
   const visibleItems = useMemo(() => {
@@ -30,6 +36,42 @@ export default function Task1BankClient({ items }: Props) {
       return bookMatches && keywordMatches;
     });
   }, [activeBook, items, query]);
+  const selectedModelAnswer = selectedItem ? modelAnswerOverrides[selectedItem.id] ?? selectedItem.modelAnswer ?? "" : "";
+
+  function openItem(item: IeltsWritingTask1Item) {
+    const modelAnswer = modelAnswerOverrides[item.id] ?? item.modelAnswer ?? "";
+    setSelectedItem(item);
+    setDraftModelAnswer(modelAnswer);
+    setIsEditingModelAnswer(false);
+    setSaveError("");
+  }
+
+  async function saveModelAnswer() {
+    if (!selectedItem || !isAdmin || isSavingModelAnswer) return;
+    const nextAnswer = draftModelAnswer.trim();
+    if (!nextAnswer) {
+      setSaveError("范文不能为空。");
+      return;
+    }
+
+    setIsSavingModelAnswer(true);
+    setSaveError("");
+    try {
+      const response = await fetch("/api/admin/ielts-writing-task1-model-answer", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: selectedItem.id, modelAnswer: nextAnswer }),
+      });
+      const payload = await response.json().catch(() => null) as { ok?: boolean; error?: string } | null;
+      if (!response.ok || !payload?.ok) throw new Error(payload?.error || "保存失败。");
+      setModelAnswerOverrides((current) => ({ ...current, [selectedItem.id]: nextAnswer }));
+      setIsEditingModelAnswer(false);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : "保存失败。");
+    } finally {
+      setIsSavingModelAnswer(false);
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -67,7 +109,7 @@ export default function Task1BankClient({ items }: Props) {
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {visibleItems.map((item) => (
-          <button key={item.id} type="button" onClick={() => setSelectedItem(item)} className="group h-full text-left">
+          <button key={item.id} type="button" onClick={() => openItem(item)} className="group h-full text-left">
             <Card className="h-full overflow-hidden rounded-[var(--radius-md)] transition group-hover:-translate-y-0.5 group-hover:border-[var(--primary)] group-hover:shadow-[var(--shadow-md)]">
               <CardContent className="flex h-full flex-col p-0">
                 <div className="aspect-[4/3] overflow-hidden border-b border-[var(--border)] bg-[var(--bg-soft)]">
@@ -80,9 +122,9 @@ export default function Task1BankClient({ items }: Props) {
                     <Badge variant="outline">Task 1</Badge>
                   </div>
                   <h3 className="mt-3 text-sm font-semibold leading-6 text-[var(--text)]">{taskLabel(item)}</h3>
-                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-soft)]">{item.promptPreview || "点击查看完整题目截图。"}</p>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-soft)]">点击查看图片与高分范文</p>
                   <div className="mt-auto flex items-center justify-between pt-4 text-xs font-semibold text-[var(--primary)]">
-                    <span className="inline-flex items-center gap-1"><Images size={14} />查看截图</span>
+                    <span className="inline-flex items-center gap-1"><Images size={14} />点击查看图片与高分范文</span>
                     <ChevronRight size={15} />
                   </div>
                 </div>
@@ -98,7 +140,7 @@ export default function Task1BankClient({ items }: Props) {
 
       {selectedItem ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-3 backdrop-blur-sm sm:p-5" role="dialog" aria-modal="true">
-          <div className="flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)]">
+          <div className="flex max-h-[92vh] w-full max-w-7xl flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)]">
             <div className="flex items-start justify-between gap-4 border-b border-[var(--border)] p-4 sm:p-5">
               <div className="flex items-start gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]">
@@ -113,8 +155,51 @@ export default function Task1BankClient({ items }: Props) {
                 <X size={17} />
               </button>
             </div>
-            <div className="overflow-auto bg-[var(--bg-soft)] p-3 sm:p-5">
-              <img src={selectedItem.image} alt={selectedItem.title} className="mx-auto max-h-[78vh] w-auto max-w-full rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)]" />
+            <div className="grid min-h-0 flex-1 gap-0 overflow-hidden lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)]">
+              <div className="overflow-auto bg-[var(--bg-soft)] p-3 sm:p-5">
+                <img src={selectedItem.image} alt={selectedItem.title} className="mx-auto max-h-[78vh] w-auto max-w-full rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-sm)]" />
+              </div>
+              <aside className="flex min-h-[320px] flex-col border-t border-[var(--border)] bg-[var(--card)] lg:border-l lg:border-t-0">
+                <div className="flex items-center justify-between gap-3 border-b border-[var(--border)] px-4 py-3 sm:px-5">
+                  <div>
+                    <h3 className="text-sm font-semibold text-[var(--text)]">Band 9 范文</h3>
+                    {selectedItem.modelAnswerUpdatedAt ? <p className="mt-1 text-xs text-[var(--text-faint)]">Updated {new Date(selectedItem.modelAnswerUpdatedAt).toLocaleString()}</p> : null}
+                  </div>
+                  {isAdmin ? (
+                    <div className="flex shrink-0 items-center gap-2">
+                      {isEditingModelAnswer ? (
+                        <Button type="button" size="sm" onClick={saveModelAnswer} disabled={isSavingModelAnswer}>
+                          {isSavingModelAnswer ? <Loader2 className="animate-spin" size={15} /> : <Save size={15} />}
+                          保存
+                        </Button>
+                      ) : (
+                        <Button type="button" size="sm" variant="secondary" onClick={() => { setDraftModelAnswer(selectedModelAnswer); setIsEditingModelAnswer(true); setSaveError(""); }}>
+                          <Pencil size={15} />
+                          编辑
+                        </Button>
+                      )}
+                    </div>
+                  ) : null}
+                </div>
+                <div className="min-h-0 flex-1 overflow-auto p-4 sm:p-5">
+                  {isAdmin && isEditingModelAnswer ? (
+                    <textarea
+                      value={draftModelAnswer}
+                      onChange={(event) => setDraftModelAnswer(event.target.value)}
+                      className="min-h-[56vh] w-full resize-y rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg)] p-4 text-sm leading-7 text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]"
+                    />
+                  ) : selectedModelAnswer ? (
+                    <div className="space-y-4 text-sm leading-7 text-[var(--text)]">
+                      {selectedModelAnswer.split(/\n{2,}/).map((paragraph, index) => (
+                        <p key={`${selectedItem.id}-model-answer-${index}`} className="whitespace-pre-line">{paragraph.trim()}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-5 text-sm leading-6 text-[var(--text-soft)]">暂无范文。</p>
+                  )}
+                  {saveError ? <p className="mt-3 text-sm text-red-600">{saveError}</p> : null}
+                </div>
+              </aside>
             </div>
           </div>
         </div>

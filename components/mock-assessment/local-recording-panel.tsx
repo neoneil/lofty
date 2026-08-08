@@ -11,7 +11,7 @@ function getPreferredMimeType() {
   return ["audio/webm;codecs=opus", "audio/ogg;codecs=opus", "audio/webm"].find((mimeType) => MediaRecorder.isTypeSupported(mimeType));
 }
 
-export function LocalRecordingPanel({ maxDuration, onReadyChange }: { maxDuration: number; onReadyChange?: (ready: boolean) => void }) {
+export function LocalRecordingPanel({ maxDuration, onReadyChange, onRecordingReady }: { maxDuration: number; onReadyChange?: (ready: boolean) => void; onRecordingReady?: (recording: { blob: Blob; mimeType: string; durationSeconds?: number } | null) => void }) {
   const [phase, setPhase] = useState<"idle" | "recording" | "ready" | "error">("idle");
   const [timeLeft, setTimeLeft] = useState(maxDuration);
   const [playbackUrl, setPlaybackUrl] = useState<string | null>(null);
@@ -50,6 +50,7 @@ export function LocalRecordingPanel({ maxDuration, onReadyChange }: { maxDuratio
     if (playbackUrlRef.current) URL.revokeObjectURL(playbackUrlRef.current);
     playbackUrlRef.current = null;
     setPlaybackUrl(null);
+    onRecordingReady?.(null);
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -67,6 +68,7 @@ export function LocalRecordingPanel({ maxDuration, onReadyChange }: { maxDuratio
         setPhase("ready");
         stopTracks();
         onReadyChange?.(true);
+        onRecordingReady?.({ blob, mimeType: blob.type || "audio/webm", durationSeconds: maxDuration - timeLeft });
       };
       recorder.start();
       setPhase("recording");
@@ -97,6 +99,7 @@ export function LocalRecordingPanel({ maxDuration, onReadyChange }: { maxDuratio
     setTimeLeft(maxDuration);
     setError(null);
     onReadyChange?.(false);
+    onRecordingReady?.(null);
   };
 
   return (

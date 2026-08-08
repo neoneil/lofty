@@ -1,10 +1,12 @@
 import Container from "@/components/site/container";
 import Task1BankClient from "@/components/ielts-writing/task1-bank-client";
+import { getAdminAccess } from "@/lib/auth/admin-access";
 import { requireUser } from "@/lib/auth/require-user";
 import { getIeltsWritingTask1Bank } from "@/lib/ielts/writing-task1-bank";
 
 export default async function IeltsWritingTask1BankPage() {
-  await requireUser("/ielts/writing/task1-bank");
+  const userContext = await requireUser("/ielts/writing/task1-bank");
+  const isAdmin = await getAdminAccess(userContext);
   const bank = await getIeltsWritingTask1Bank();
   const books = new Set(bank.items.map((item) => item.bookNumber));
 
@@ -35,7 +37,7 @@ export default async function IeltsWritingTask1BankPage() {
           </div>
         </section>
 
-        <Task1BankClient items={bank.items} />
+        <Task1BankClient items={bank.items} isAdmin={isAdmin} />
       </Container>
     </main>
   );

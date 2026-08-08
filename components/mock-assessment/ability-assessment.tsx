@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation";
 
 import { ChoiceAssessmentSection } from "@/components/mock-assessment/choice-assessment-section";
 import { ListeningAssessmentSection } from "@/components/mock-assessment/listening-assessment-section";
-import { MockExamSelector } from "@/components/mock-assessment/mock-exam-selector";
-import { PteMockExamExperience } from "@/components/mock-assessment/pte-mock-exam";
 import { SpeakingAssessmentSection, WritingAssessmentSection } from "@/components/mock-assessment/productive-assessment-sections";
 import { ReadingAssessmentSection } from "@/components/mock-assessment/reading-assessment-section";
 import { Badge } from "@/components/ui-v2/badge";
@@ -29,16 +27,11 @@ const sections = [
 export default function AbilityAssessment({ data }: { data: AbilityAssessmentData }) {
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<SectionId>("vocabulary");
-  const [activeExperience, setActiveExperience] = useState<"assessment" | "pte-mock">("assessment");
-
-  if (activeExperience === "pte-mock") return <PteMockExamExperience onExit={() => setActiveExperience("assessment")} />;
 
   return <div className="space-y-6">
     <Card className="overflow-hidden"><CardContent className="p-5 sm:p-7"><div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"><div><div className="flex items-center gap-2"><Badge><Sparkles size={13} className="mr-1" />Lofty Assessment</Badge><Badge variant="secondary">约 45-60 分钟</Badge></div><h1 className="mt-4 text-2xl font-bold text-[var(--text)] sm:text-3xl">英语综合能力评估</h1><p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">不区分 IELTS 或 PTE，通过单词、语法和听说读写六项快速观察当前能力。第一版仅在本地页面作答，不保存结果。</p></div><Button type="button" variant="secondary" onClick={() => router.refresh()} className="w-full gap-2 lg:w-auto"><RefreshCw size={16} />重新随机组卷</Button></div></CardContent></Card>
 
     {data.warnings.length ? <div className="rounded-[var(--radius-md)] border border-[var(--warning)]/30 bg-[var(--warning-soft)] px-4 py-3 text-sm text-[var(--warning)]">{data.warnings.join("；")}</div> : null}
-
-    <MockExamSelector onStartPte={() => setActiveExperience("pte-mock")} />
 
     <nav aria-label="能力评估模块" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">{sections.map((section) => { const Icon = section.icon; const active = activeSection === section.id; return <button key={section.id} type="button" onClick={() => setActiveSection(section.id)} className={`flex min-h-20 items-center gap-3 rounded-[var(--radius-md)] border p-3 text-left transition ${active ? "border-[var(--primary)] bg-[var(--card)] shadow-[var(--shadow-md)]" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/40 hover:bg-[var(--bg-soft)]"}`}><span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] ${section.bg} ${section.color}`}><Icon size={20} /></span><span><span className="block text-sm font-semibold text-[var(--text)]">{section.label}</span><span className="mt-0.5 block text-[10px] uppercase tracking-wide text-[var(--text-faint)]">{section.english}</span></span></button>; })}</nav>
 

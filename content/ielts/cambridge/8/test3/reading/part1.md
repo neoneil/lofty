@@ -15,7 +15,7 @@ section_id: "8fee45a4-645e-45f1-8eb7-b1de09e99883"
 section_number: 1
 section_title: " Passage1"
 section_instruction: "Choose the correct letter, <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>. <br/>Write the correct letter in boxes 1-3 on your answer sheet. "
-passage_title: "C8-T3-S1"
+passage_title: "Striking Back at Lightning with Lasers"
 section_sort_order: 1
 module_raw_data_json: |
   {
@@ -1088,3 +1088,30 @@ assets_json: |
   ]
 ---
 
+Seldom is the weather more dramatic than when thunderstorms strike. Their electrical fury inflicts death or serious injury on around 500 people each year in the United States alone. As the clouds roll in, a leisurely round of golf can become a terrifying dice with death - out in the open, a lone golfer may be a lightning bolt's most inviting target. And there is damage to property too. Lightning damage costs American power companies more than $100 million a year.
+
+But researchers in the United States and Japan are planning to hit back. Already in laboratory trials they have tested strategies for neutralising the power of thunderstorms, and this winter they will brave real storms, equipped with an armoury of lasers that they will be pointing towards the heavens to discharge thunderclouds before lightning can strike.
+
+The idea of forcing storm clouds to discharge their lightning on command is not new. In the early 1960s, researchers tried firing rockets trailing wires into thunderclouds to set up an easy discharge path for the huge electric charges that these clouds generate. The technique survives to this day at a test site in Florida run by the University of Florida, with support from the Electrical Power Research Institute (EPRI), based in California. EPRI, which is funded by power companies, is looking at ways to protect the United States' power grid from lightning strikes. 'We can cause the lightning to strike where we want it to using rockets, ' says Ralph Bernstein, manager of lightning projects at EPRI. The rocket site is providing precise measurements of lightning voltages and allowing engineers to check how electrical equipment bears up.
+
+
+　　Bad behaviour
+
+
+But while rockets are fine for research, they cannot provide the protection from lightning strikes that everyone is looking for. The rockets cost around $1, 200 each, can only be fired at a limited frequency and their failure rate is about 40 per cent. And even when they do trigger lightning, things still do not always go according to plan. 'Lightning is not perfectly well behaved, ' says Bernstein. 'Occasionally, it will take a branch and go someplace it wasn't supposed to go. '
+
+And anyway, who would want to fire streams of rockets in a populated area? 'What goes up must come down, ' points out Jean-Claude Diels of the University of New Mexico. Diels is leading a project, which is backed by EPRI, to try to use lasers to discharge lightning safely - and safety is a basic requirement since no one wants to put themselves or their expensive equipment at risk. With around $500, 000 invested so far, a promising system is just emerging from the laboratory.
+
+The idea began some 20 years ago, when high-powered lasers were revealing their ability to extract electrons out of atoms and create ions. If a laser could generate a line of ionisation in the air all the way up to a storm cloud, this conducting path could be used to guide lightning to Earth, before the electric field becomes strong enough to break down the air in an uncontrollable surge. To stop the laser itself being struck, it would not be pointed straight at the clouds. Instead it would be directed at a mirror, and from there into the sky. The mirror would be protected by placing lightning conductors close by. Ideally, the cloud-zapper (gun)would be cheap enough to be installed around all key power installations, and portable enough to be taken to international sporting events to beam up at brewing storm clouds.
+
+
+　　A stumbling block
+
+
+However, there is still a big stumbling block. The laser is no nifty portable: it's a monster that takes up a whole room. Diels is trying to cut down the size and says that a laser around the size of a small table is in the offing. He plans to test this more manageable system on live thunderclouds next summer.
+
+Bernstein says that Diels's system is attracting lots of interest from the power companies. But they have not yet come up with the $5 million that EPRI says will be needed to develop a commercial system, by making the lasers yet smaller and cheaper. 'I cannot say I have money yet, but I'm working on it, ' says Bernstein. He reckons that the forthcoming field tests will be the turning point - and he's hoping for good news. Bernstein predicts 'an avalanche of interest and support' if all goes well. He expects to see cloud-zappers eventually costing $50, 000 to $100, 000 each.
+
+Other scientists could also benefit. With a lightning 'switch' at their fingertips, materials scientists could find out what happens when mighty currents meet matter. Diels also hopes to see the birth of 'interactive meteorology' - not just forecasting the weather but controlling it. 'If we could discharge clouds, we might affect the weather, ' he says.
+
+And perhaps, says Diels, we'll be able to confront some other meteorological menaces. 'We think we could prevent hail by inducing lightning, ' he says. Thunder, the shock wave that comes from a lightning flash, is thought to be the trigger for the torrential rain that is typical of storms. A laser thunder factory could shake the moisture out of clouds, perhaps preventing the formation of the giant hailstones that threaten crops. With luck, as the storm clouds gather this winter, laser-toting researchers could, for the first time, strike back.

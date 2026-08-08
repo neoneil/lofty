@@ -10,12 +10,135 @@ const openai = new OpenAI({
 });
 
 const AI_FEATURE = "admin_analyze_answer";
-const AI_MODEL = "gpt-5.6-sol";
+const ANALYZE_MODEL_CONFIG = {
+  standard: {
+    label: "GPT-5.4",
+    model: "gpt-5.4",
+    maxOutputTokens: 10000,
+    timeoutMs: 120_000,
+  },
+  sol: {
+    label: "GPT-5.6 Sol",
+    model: "gpt-5.6-sol",
+    maxOutputTokens: 8000,
+    timeoutMs: 180_000,
+  },
+} as const;
+
+function getAnalyzeModelConfig(value: unknown) {
+  return value === "sol"
+    ? ANALYZE_MODEL_CONFIG.sol
+    : ANALYZE_MODEL_CONFIG.standard;
+}
+
+const ANALYZE_ANSWER_RESPONSE_FORMAT = {
+  type: "json_schema" as const,
+  name: "admin_analyze_answer_result",
+  strict: true,
+  schema: {
+    type: "object",
+    additionalProperties: false,
+    properties: {
+      full_report_cn: { type: "string" },
+      overall_feedback: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          summary: { type: "string" },
+          estimated_score: { type: "string" },
+          strengths: { type: "array", items: { type: "string" } },
+          main_problems: { type: "array", items: { type: "string" } },
+          improvement_priority: { type: "array", items: { type: "string" } },
+          pte_feedback: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              content: { type: "string" },
+              form: { type: "string" },
+              grammar: { type: "string" },
+              vocabulary: { type: "string" },
+              spelling: { type: "string" },
+              development_structure_coherence: { type: "string" },
+            },
+            required: ["content", "form", "grammar", "vocabulary", "spelling", "development_structure_coherence"],
+          },
+          ielts_feedback: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              task_response: { type: "string" },
+              coherence_cohesion: { type: "string" },
+              lexical_resource: { type: "string" },
+              grammar_range_accuracy: { type: "string" },
+            },
+            required: ["task_response", "coherence_cohesion", "lexical_resource", "grammar_range_accuracy"],
+          },
+        },
+        required: ["summary", "estimated_score", "strengths", "main_problems", "improvement_priority", "pte_feedback", "ielts_feedback"],
+      },
+      paragraphs: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            paragraph_id: { type: "string" },
+            paragraph_text: { type: "string" },
+            feedback: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                main_function: { type: "string" },
+                strengths: { type: "array", items: { type: "string" } },
+                problems: { type: "array", items: { type: "string" } },
+                coherence_feedback: { type: "string" },
+                suggestion: { type: "string" },
+              },
+              required: ["main_function", "strengths", "problems", "coherence_feedback", "suggestion"],
+            },
+          },
+          required: ["paragraph_id", "paragraph_text", "feedback"],
+        },
+      },
+      sentences: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            sentence_id: { type: "string" },
+            paragraph_id: { type: "string" },
+            sentence_text: { type: "string" },
+            feedback: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                sentence_function: { type: "string" },
+                grammar_errors: { type: "array", items: { type: "string" } },
+                vocabulary_errors: { type: "array", items: { type: "string" } },
+                spelling_errors: { type: "array", items: { type: "string" } },
+                punctuation_errors: { type: "array", items: { type: "string" } },
+                cohesion_errors: { type: "array", items: { type: "string" } },
+                logic_errors: { type: "array", items: { type: "string" } },
+                improved_sentence: { type: "string" },
+                explanation_cn: { type: "string" },
+              },
+              required: ["sentence_function", "grammar_errors", "vocabulary_errors", "spelling_errors", "punctuation_errors", "cohesion_errors", "logic_errors", "improved_sentence", "explanation_cn"],
+            },
+          },
+          required: ["sentence_id", "paragraph_id", "sentence_text", "feedback"],
+        },
+      },
+    },
+    required: ["full_report_cn", "overall_feedback", "paragraphs", "sentences"],
+  },
+};
 
 type AnalyzeAnswerRequest = {
   student_user_id?: string;
   exam_type?: string;
   task_type?: string;
+  model_choice?: string;
   question?: string;
   answer?: string;
 };
@@ -289,7 +412,8 @@ Required JSON shape:
 }
 
 Output requirements:
-- full_report_cn must be a complete ChatGPT-style Chinese marking report for the whole essay. It should include the question, original student essay, task understanding check, IELTS four-criterion scoring, detailed paragraph/sentence comments, useful sentence patterns, score table, and next-step priorities. It may use headings and bullet-style plain text inside the JSON string.
+- full_report_cn must be a concise ChatGPT-style Chinese marking report for the whole essay: about 800-1200 Chinese characters. It should include task understanding, IELTS four-criterion scoring, the most important paragraph/sentence comments, 3-5 useful sentence patterns, a compact score table, and next-step priorities.
+- Do not make full_report_cn exhaustive. Prioritize the issues that most affect IELTS score.
 - Preserve the student's paragraph order.
 - paragraph_text and sentence_text must preserve the student's original wording as closely as possible.
 - paragraph_id values must be p1, p2, p3, etc.
@@ -298,6 +422,7 @@ Output requirements:
 - Put the IELTS four-criterion analysis in ielts_feedback.
 - Put sentence-level issues in the matching arrays so the frontend can show them when a sentence is clicked.
 - improved_sentence should be a natural IELTS 6.5-7 style rewrite.
+- Keep sentence-level feedback concise: each issue array should contain at most 2 high-value items, and explanation_cn should be 1-2 Chinese sentences.
 - Every explanation and feedback item must be Simplified Chinese, except English original sentences, corrected sentences, and necessary grammar terms.
 `;
 }
@@ -344,6 +469,7 @@ export async function POST(req: Request) {
     const studentUserId = body.student_user_id?.trim() ?? "";
     const examType = body.exam_type?.trim().toLowerCase() ?? "";
     const taskType = body.task_type?.trim().toLowerCase() ?? "";
+    const modelConfig = getAnalyzeModelConfig(body.model_choice);
     const question = body.question?.trim() ?? "";
     const answer = body.answer?.trim() ?? "";
 
@@ -387,7 +513,7 @@ export async function POST(req: Request) {
       return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
     }
 
-    let completion;
+    let response;
 
     try {
       const [systemPrompt, userPrompt] = await Promise.all([
@@ -401,26 +527,41 @@ export async function POST(req: Request) {
         })),
       ]);
 
-      completion = await openai.chat.completions.create({
-        model: AI_MODEL,
-        max_completion_tokens: 12000,
-        response_format: { type: "json_object" },
-        messages: [
-          {
-            role: "system",
-            content: systemPrompt,
+      response = await openai.responses.create(
+        {
+          model: modelConfig.model,
+          max_output_tokens: modelConfig.maxOutputTokens,
+          input: [
+            {
+              role: "system",
+              content: [
+                {
+                  type: "input_text",
+                  text: systemPrompt,
+                },
+              ],
+            },
+            {
+              role: "user",
+              content: [
+                {
+                  type: "input_text",
+                  text: userPrompt,
+                },
+              ],
+            },
+          ],
+          text: {
+            format: ANALYZE_ANSWER_RESPONSE_FORMAT,
           },
-          {
-            role: "user",
-            content: userPrompt,
-          },
-        ],
-      });
+        },
+        { timeout: modelConfig.timeoutMs },
+      );
     } catch (error) {
       await recordAiUsage({
         userId: user.id,
         feature: AI_FEATURE,
-        model: AI_MODEL,
+        model: modelConfig.model,
         status: "error",
         errorMessage: getErrorMessage(error),
       });
@@ -432,19 +573,32 @@ export async function POST(req: Request) {
       );
     }
 
+    const usage = response.usage as { input_tokens?: number; output_tokens?: number; total_tokens?: number } | undefined;
+
     await recordAiUsage({
       userId: user.id,
       feature: AI_FEATURE,
-      model: AI_MODEL,
-      promptTokens: completion.usage?.prompt_tokens ?? 0,
-      completionTokens: completion.usage?.completion_tokens ?? 0,
-      totalTokens: completion.usage?.total_tokens ?? 0,
+      model: modelConfig.model,
+      promptTokens: usage?.input_tokens ?? 0,
+      completionTokens: usage?.output_tokens ?? 0,
+      totalTokens: usage?.total_tokens ?? 0,
       status: "success",
     });
 
-    const content = completion.choices[0]?.message?.content;
+    const responseStatus = response as { status?: string; incomplete_details?: { reason?: string } | null };
+    if (responseStatus.status === "incomplete") {
+      const reason = responseStatus.incomplete_details?.reason ?? "unknown";
+      console.error("Analyze answer AI response incomplete:", reason);
+      return NextResponse.json(
+        { error: `AI 输出被截断或未完成：${reason}。请重试，或缩短作文。` },
+        { status: 502 }
+      );
+    }
+
+    const content = response.output_text?.trim();
 
     if (!content) {
+      console.error("Analyze answer AI empty Responses output:", response);
       return NextResponse.json(
         { error: "Empty response from AI" },
         { status: 500 }
@@ -464,6 +618,13 @@ export async function POST(req: Request) {
     }
 
     const normalized = normalizeResult(parsed);
+    if (!normalized.full_report_cn.trim() && normalized.paragraphs.length === 0 && normalized.sentences.length === 0) {
+      return NextResponse.json(
+        { error: "AI 返回了空结果，没有可展示的批改内容。" },
+        { status: 502 }
+      );
+    }
+
     const { data: savedAttempt, error: saveError } = await adminSupabase
       .schema("ielts")
       .from("writing_attempts")
@@ -489,7 +650,7 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json({ ...normalized, attempt_id: savedAttempt.id });
+    return NextResponse.json({ ...normalized, attempt_id: savedAttempt.id, model: modelConfig.model, model_label: modelConfig.label });
   } catch (error) {
     console.error("Analyze answer API error:", error);
     return NextResponse.json(

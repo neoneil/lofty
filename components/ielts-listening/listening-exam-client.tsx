@@ -265,7 +265,43 @@ function ListeningQuestionPart({ part, answers, onAnswerChange, isAdmin, audioRe
   );
 }
 
-function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { audio?: IeltsAsset; partNumber: number; audioRef: React.RefObject<HTMLAudioElement | null>; onTimeChange: (value: number) => void }) {
+export function IeltsListeningMockPanel({ data, answers, onAnswerChange, isAdmin = false, onAudioPlayingChange }: { data: IeltsBookPracticeData; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void; isAdmin?: boolean; onAudioPlayingChange?: (value: boolean) => void }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const listeningModule = data.modules.find((module) => module.module_type === "listening");
+  const sections = useMemo(() => listeningModule ? data.sections.filter((section) => section.module_id === listeningModule.id).sort((a, b) => a.sort_order - b.sort_order) : [], [data.sections, listeningModule]);
+  const sectionAudios = useMemo(() => selectSectionAudios(data.assets, sections), [data.assets, sections]);
+  const parts = useMemo<ListeningPart[]>(() => sections.map((section, index) => {
+    const questions = data.questions.filter((question) => question.section_id === section.id).sort((a, b) => a.sort_order - b.sort_order);
+    const fallbackStart = index * 10 + 1;
+    const numbers = [...new Set(questions.flatMap(questionNumbers))].sort((a, b) => a - b);
+    return { section, displayNumber: index + 1, questions, numbers: numbers.length > 0 ? numbers : Array.from({ length: 10 }, (_, offset) => fallbackStart + offset), audio: sectionAudios[index] };
+  }), [data.questions, sections, sectionAudios]);
+
+  if (!listeningModule || parts.length === 0) {
+    return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)]">这套模考没有听力静态题目。</div>;
+  }
+
+  return (
+    <div className="space-y-6">
+      {parts.map((part) => (
+        <section key={part.section.id} className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+          <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <Badge className="mb-2 w-fit">Listening Part {part.displayNumber}</Badge>
+              {part.section.instruction ? <ReadingRichText html={part.section.instruction} compact /> : null}
+            </div>
+            <ListeningAudioPlayer audio={part.audio} partNumber={part.displayNumber} audioRef={audioRef} onTimeChange={() => undefined} onPlayingChange={onAudioPlayingChange} />
+          </div>
+          <div className="space-y-8">
+            {part.questions.map((question) => <QuestionBlock key={question.id} question={question} answers={answers} onAnswerChange={onAnswerChange} isAdmin={isAdmin} />)}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange, onPlayingChange }: { audio?: IeltsAsset; partNumber: number; audioRef: React.RefObject<HTMLAudioElement | null>; onTimeChange: (value: number) => void; onPlayingChange?: (value: boolean) => void }) {
   const [playbackRate, setPlaybackRate] = useState(1);
   const playbackRates = [0.8, 1, 1.2, 1.5];
   const audioUrl = audio ? getListeningAssetUrl(audio) : "";
@@ -285,7 +321,7 @@ function ListeningAudioPlayer({ audio, partNumber, audioRef, onTimeChange }: { a
           ))}
         </div>
       </div>
-      {audioUrl ? <SecureAudioPlayer ref={audioRef} key={audioUrl} src={audioUrl} preload="metadata" title={`Part ${partNumber} Audio`} description="IELTS Listening" compact onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
+      {audioUrl ? <SecureAudioPlayer ref={audioRef} key={audioUrl} src={audioUrl} preload="metadata" title={`Part ${partNumber} Audio`} description="IELTS Listening" compact onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate; }} onTimeUpdate={(event) => onTimeChange(event.currentTarget.currentTime)} onPlay={() => onPlayingChange?.(true)} onPause={() => onPlayingChange?.(false)} onEnded={() => onPlayingChange?.(false)} /> : <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] px-3 py-4 text-sm text-[var(--text-soft)]">这个 Part 暂时没有音频。</div>}
     </div>
   );
 }

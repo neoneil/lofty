@@ -1,13 +1,13 @@
 "use client";
 
-import { BookOpenCheck, CheckSquare, GraduationCap, Mail, Search, Send, Square, Users } from "lucide-react";
-import { useMemo, useState } from "react";
+import { BookOpenCheck, CheckSquare, ChevronDown, GraduationCap, History, Mail, Search, Send, Square, Users } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
-import type { HomeworkExamType, HomeworkStudent } from "@/lib/homework/types";
+import type { HomeworkAssignmentHistoryItem, HomeworkExamType, HomeworkStudent } from "@/lib/homework/types";
 import { cn } from "@/lib/utils";
 
 const ieltsBooks = Array.from({ length: 12 }, (_, index) => 21 - index);
@@ -38,8 +38,26 @@ type SendState = {
   emailFailedCount?: number;
 };
 
+type HomeworkHistoryResponse = {
+  ok?: boolean;
+  message?: string;
+  history?: HomeworkAssignmentHistoryItem[];
+};
+
 function getStudentName(student: HomeworkStudent) {
   return student.fullName?.trim() || student.email || student.id;
+}
+
+function formatDateTime(value: string | null) {
+  if (!value) return "-";
+
+  return new Date(value).toLocaleString("zh-CN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 
 function appendLine(current: string, line: string) {
@@ -54,6 +72,11 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
   const [content, setContent] = useState("");
   const [sending, setSending] = useState(false);
   const [sendState, setSendState] = useState<SendState | null>(null);
+  const [activeStudentId, setActiveStudentId] = useState("");
+  const [historyByStudent, setHistoryByStudent] = useState<Record<string, HomeworkAssignmentHistoryItem[]>>({});
+  const [historyLoadingId, setHistoryLoadingId] = useState("");
+  const [historyError, setHistoryError] = useState("");
+  const [expandedHistoryIds, setExpandedHistoryIds] = useState<string[]>([]);
 
   const filteredStudents = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -63,9 +86,45 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
 
   const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds]);
   const allFilteredSelected = filteredStudents.length > 0 && filteredStudents.every((student) => selectedSet.has(student.id));
+  const activeStudent = useMemo(() => activeStudentId ? students.find((student) => student.id === activeStudentId) ?? null : null, [activeStudentId, students]);
+  const activeHistory = activeStudent ? historyByStudent[activeStudent.id] ?? [] : [];
+
+  const loadStudentHistory = useCallback(async (studentId: string, force = false) => {
+    if (!studentId) return;
+    if (!force && historyByStudent[studentId]) return;
+
+    setHistoryLoadingId(studentId);
+    setHistoryError("");
+
+    try {
+      const response = await fetch(`/api/admin/homework/history?student_id=${encodeURIComponent(studentId)}`);
+      const data = (await response.json().catch(() => ({}))) as HomeworkHistoryResponse;
+
+      if (!response.ok || !data.ok) {
+        setHistoryError(data.message ?? "作业历史加载失败。");
+        return;
+      }
+
+      setHistoryByStudent((current) => ({ ...current, [studentId]: data.history ?? [] }));
+    } catch {
+      setHistoryError("作业历史加载失败。");
+    } finally {
+      setHistoryLoadingId("");
+    }
+  }, [historyByStudent]);
+
+  function viewStudentHistory(studentId: string) {
+    setActiveStudentId(studentId);
+    void loadStudentHistory(studentId);
+  }
 
   function toggleStudent(studentId: string) {
+    viewStudentHistory(studentId);
     setSelectedIds((current) => current.includes(studentId) ? current.filter((id) => id !== studentId) : [...current, studentId]);
+  }
+
+  function toggleHistoryItem(homeworkId: string) {
+    setExpandedHistoryIds((current) => current.includes(homeworkId) ? current.filter((id) => id !== homeworkId) : [...current, homeworkId]);
   }
 
   function toggleAllFiltered() {
@@ -103,6 +162,9 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
     }
 
     setSendState({ ok: true, message: `已发送给 ${data.assignedCount ?? selectedIds.length} 名学生。`, emailSentCount: data.emailSentCount, emailFailedCount: data.emailFailedCount });
+    if (activeStudentId && selectedIds.includes(activeStudentId)) {
+      await loadStudentHistory(activeStudentId, true);
+    }
     setSending(false);
   }
 
@@ -129,19 +191,76 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
             <div className="rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-center text-sm text-[var(--text-soft)]">没有匹配的学生。</div>
           ) : filteredStudents.map((student) => {
             const selected = selectedSet.has(student.id);
+            const active = activeStudent?.id === student.id;
             const name = getStudentName(student);
             return (
-              <button key={student.id} type="button" onClick={() => toggleStudent(student.id)} className={cn("flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-3 text-left transition", selected ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--card)] hover:bg-[var(--bg-soft)]")}>
-                <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border bg-cover bg-center text-xs font-black", selected ? "border-[var(--primary)] bg-[var(--primary)] text-white" : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)]")} style={student.avatarUrl ? { backgroundImage: `url(${student.avatarUrl})` } : undefined} aria-label={name}>{student.avatarUrl ? null : name.slice(0, 1).toUpperCase()}</span>
-                <span className="min-w-0 flex-1"><span className="block truncate text-sm font-bold text-[var(--text)]">{name}</span><span className="mt-0.5 block truncate text-xs text-[var(--text-soft)]">{student.email || student.id}</span></span>
-                {selected ? <CheckSquare size={18} className="text-[var(--primary)]" /> : <Square size={18} className="text-[var(--text-faint)]" />}
-              </button>
+              <div key={student.id} className={cn("flex w-full items-stretch rounded-[var(--radius-md)] border text-left transition", selected ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--card)] hover:bg-[var(--bg-soft)]", active ? "shadow-[inset_3px_0_0_var(--primary)]" : "")}>
+                <button type="button" onClick={() => viewStudentHistory(student.id)} className="flex min-w-0 flex-1 items-center gap-3 p-3 text-left">
+                  <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border bg-cover bg-center text-xs font-black", selected ? "border-[var(--primary)] bg-[var(--primary)] text-white" : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)]")} style={student.avatarUrl ? { backgroundImage: `url(${student.avatarUrl})` } : undefined} aria-label={name}>{student.avatarUrl ? null : name.slice(0, 1).toUpperCase()}</span>
+                  <span className="min-w-0 flex-1"><span className="block truncate text-sm font-bold text-[var(--text)]">{name}</span><span className="mt-0.5 block truncate text-xs text-[var(--text-soft)]">{student.email || student.id}</span><span className="mt-1 block text-[11px] font-semibold text-[var(--primary)]">{active ? "正在查看历史" : "点击查看历史"}</span></span>
+                </button>
+                <button type="button" onClick={() => toggleStudent(student.id)} className="flex w-11 shrink-0 items-center justify-center border-l border-[var(--border)] text-[var(--text-faint)] transition hover:bg-[var(--card)] hover:text-[var(--primary)]" aria-label={selected ? "取消选择学生" : "选择学生"}>
+                  {selected ? <CheckSquare size={18} className="text-[var(--primary)]" /> : <Square size={18} />}
+                </button>
+              </div>
             );
           })}
         </div>
       </section>
 
       <section className="space-y-5">
+        <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+          <div className="flex flex-col gap-3 border-b border-[var(--border)] pb-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <div className="flex items-center gap-2"><History size={18} className="text-[var(--primary)]" /><h2 className="font-bold text-[var(--text)]">学生作业历史</h2></div>
+              <p className="mt-1 text-sm text-[var(--text-soft)]">{activeStudent ? `当前查看：${getStudentName(activeStudent)}` : "点击左侧学生后查看历史作业。"}</p>
+            </div>
+            {activeStudent ? <Badge variant="secondary">{historyLoadingId === activeStudent.id ? "加载中" : `${activeHistory.length} records`}</Badge> : null}
+          </div>
+
+          {!activeStudent ? (
+            <div className="mt-4 rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-center text-sm text-[var(--text-soft)]">暂无学生可查看。</div>
+          ) : historyError ? (
+            <div className="mt-4 rounded-[var(--radius-md)] border border-[var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm font-semibold text-[var(--danger)]">{historyError}</div>
+          ) : historyLoadingId === activeStudent.id && !historyByStudent[activeStudent.id] ? (
+            <div className="mt-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-5 text-sm text-[var(--text-soft)]">正在加载历史作业...</div>
+          ) : activeHistory.length === 0 ? (
+            <div className="mt-4 rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-5 text-center text-sm text-[var(--text-soft)]">这个学生还没有历史作业。</div>
+          ) : (
+            <div className="mt-4 max-h-[420px] space-y-2 overflow-y-auto pr-1">
+              {activeHistory.map((item, index) => {
+                const expanded = expandedHistoryIds.includes(item.id);
+                return (
+                  <article key={item.id} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)]">
+                    <button type="button" onClick={() => toggleHistoryItem(item.id)} className="flex w-full items-start justify-between gap-3 p-3 text-left transition hover:bg-[var(--card)]">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <Badge variant={item.examType === "IELTS" ? "success" : item.examType === "PTE" ? "default" : "secondary"}>{item.examType}</Badge>
+                          <span className="text-xs font-semibold text-[var(--text-faint)]">#{activeHistory.length - index}</span>
+                          <span className="text-xs text-[var(--text-faint)]">{formatDateTime(item.createdAt)}</span>
+                        </div>
+                        <p className="mt-2 line-clamp-2 text-sm font-semibold leading-6 text-[var(--text)]">{item.content}</p>
+                      </div>
+                      <ChevronDown size={18} className={cn("mt-1 shrink-0 text-[var(--text-soft)] transition", expanded ? "rotate-180 text-[var(--primary)]" : "")} />
+                    </button>
+                    {expanded ? (
+                      <div className="border-t border-[var(--border)] bg-[var(--card)] p-3">
+                        <div className="grid gap-2 text-xs text-[var(--text-soft)] sm:grid-cols-3">
+                          <div><span className="font-semibold text-[var(--text)]">状态：</span>{item.status}</div>
+                          <div><span className="font-semibold text-[var(--text)]">邮件：</span>{item.emailSentAt ? "已发送" : item.emailError ? "发送失败" : "未记录"}</div>
+                          <div><span className="font-semibold text-[var(--text)]">时间：</span>{formatDateTime(item.emailSentAt ?? item.createdAt)}</div>
+                        </div>
+                        {item.emailError ? <div className="mt-2 rounded-[var(--radius-sm)] border border-[var(--danger)]/30 bg-[var(--danger-soft)] px-3 py-2 text-xs text-[var(--danger)]">{item.emailError}</div> : null}
+                        <div className="mt-3 whitespace-pre-wrap rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-7 text-[var(--text)]">{item.content}</div>
+                      </div>
+                    ) : null}
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
         <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>

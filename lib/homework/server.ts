@@ -106,6 +106,18 @@ export async function listStudentHomework(supabase: SupabaseClient, userId: stri
   return ((data ?? []) as HomeworkRow[]).map(mapHomeworkAssignment);
 }
 
+export async function listAdminStudentHomeworkHistory(supabase: SupabaseClient, studentId: string) {
+  const { data, error } = await supabase
+    .from("student_homework_assignments")
+    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, created_at")
+    .eq("student_id", studentId)
+    .order("created_at", { ascending: false })
+    .limit(100);
+
+  if (error) throw error;
+  return ((data ?? []) as HomeworkRow[]).map(mapHomeworkAssignment);
+}
+
 export async function listStudentNotifications(supabase: SupabaseClient, userId: string) {
   const { data, error } = await supabase
     .from("student_notifications")

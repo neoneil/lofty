@@ -21,6 +21,18 @@ export type PteMockQuestion = {
   blanks?: PteMockBlank[];
 };
 
+export type PteMockQuestionResponse = {
+  text?: string;
+  values?: Record<string, string | number | string[]>;
+  orderedItems?: string[];
+  selectedIndexes?: number[];
+  recording?: {
+    blob: Blob;
+    mimeType: string;
+    durationSeconds?: number;
+  };
+};
+
 export type PteMockExamData = {
   speaking: PteMockQuestion[];
   writing: PteMockQuestion[];

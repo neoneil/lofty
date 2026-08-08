@@ -320,7 +320,7 @@ lead to + noun / V-ing
 
 cause + sb + to do sth.
 
-根据学生实际作文，整理最值得学习的 10-20 个核心句型。
+根据学生实际作文，整理最值得学习的 5-8 个核心句型。优先选择最影响分数、最容易复用的句型，不要为了凑数量而扩写。
 
 每个句型提供：
 
@@ -1203,7 +1203,8 @@ Required JSON shape:
 }
 
 Analysis requirements:
-- full_report_cn must be a complete ChatGPT-style Chinese marking report for the whole essay. It should include the question, original student essay, task understanding check, IELTS four-criterion scoring, detailed paragraph/sentence comments, useful sentence patterns, score table, and next-step priorities. It may use headings and bullet-style plain text inside the JSON string.
+- full_report_cn must be a concise ChatGPT-style Chinese marking report for the whole essay: about 800-1200 Chinese characters. It should include task understanding, IELTS four-criterion scoring, the most important paragraph/sentence comments, 3-5 useful sentence patterns, a compact score table, and next-step priorities.
+- Do not make full_report_cn exhaustive. Prioritize the issues that most affect IELTS score.
 - Focus on IELTS Writing Task 2: Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy.
 - Populate ielts_feedback with detailed criterion feedback. Leave pte_feedback fields empty.
 - Preserve the student's original paragraph order.
@@ -1214,6 +1215,7 @@ Analysis requirements:
 - Do not rewrite sentence_text. Put rewrites only in improved_sentence.
 - Paragraph feedback must check paragraph function, topic sentence clarity, supporting ideas, examples, logic, and relevance to the task.
 - Sentence feedback must check grammar, vocabulary, spelling, punctuation, cohesion, and logic.
+- Keep sentence-level feedback concise: each issue array should contain at most 2 high-value items, and explanation_cn should be 1-2 Chinese sentences.
 - Every item in strengths, main_problems, improvement_priority, paragraph problems, paragraph strengths, and all sentence error arrays must be Simplified Chinese.
 - explanation_cn must be concise Simplified Chinese.`,
   },

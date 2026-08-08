@@ -453,6 +453,37 @@ function ReadingQuestionPart({ part, answers, officialAnswers, isAdmin, onAnswer
   );
 }
 
+export function IeltsReadingMockPanel({ data, answers, onAnswerChange, isAdmin = false }: { data: IeltsBookPracticeData; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void; isAdmin?: boolean }) {
+  const readingModule = data.modules.find((module) => module.module_type === "reading");
+  const sections = useMemo(() => readingModule ? data.sections.filter((section) => section.module_id === readingModule.id).sort((a, b) => a.sort_order - b.sort_order) : [], [data.sections, readingModule]);
+  const parts = useMemo<PartModel[]>(() => sections.map((section, index) => {
+    const questions = data.questions.filter((question) => question.section_id === section.id).sort((a, b) => a.sort_order - b.sort_order);
+    const numbers = [...new Set(questions.flatMap(questionNumbers))].sort((a, b) => a - b);
+    return { section, displayNumber: index + 1, questions, numbers };
+  }), [data.questions, sections]);
+
+  if (!readingModule || parts.length === 0) {
+    return <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-5 text-sm text-[var(--text-soft)]">这套模考没有阅读静态题目。</div>;
+  }
+
+  return (
+    <div className="space-y-6">
+      {parts.map((part) => (
+        <section key={part.section.id} className="grid gap-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <article id={`reading-passage-${part.displayNumber}`} className="max-h-[78vh] overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
+            <Badge className="mb-3 w-fit">Reading Passage {part.displayNumber}</Badge>
+            {part.section.passage_title ? <h2 className="mb-3 text-xl font-bold text-[var(--text)]">{part.section.passage_title}</h2> : null}
+            {part.section.passage_text ? <ReadingRichText html={part.section.passage_text} /> : null}
+          </article>
+          <div className="max-h-[78vh] overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4">
+            <ReadingQuestionPart part={part} answers={answers} officialAnswers={data.answers} isAdmin={isAdmin} onAnswerChange={onAnswerChange} />
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function QuestionBlock({ question, answers, officialAnswers, isAdmin, onAnswerChange, suppressInstruction = false }: { question: IeltsQuestion; answers: Answers; officialAnswers: IeltsAnswer[]; isAdmin: boolean; onAnswerChange: (questionNumber: string, value: string) => void; suppressInstruction?: boolean }) {
   const numbers = questionNumbers(question);
   const range = numbers.length > 1 ? `${numbers[0]}-${numbers.at(-1)}` : `${numbers[0]}`;
@@ -499,12 +530,12 @@ function AdminAnswerPanel({ question, answer }: { question: IeltsQuestion; answe
     <div className="mt-5 space-y-2">
       <AdminAnswerDetails title="答案">
         <div className="grid gap-2">
-          {rows.length > 0 ? rows.map((row) => <div key={`answer-${row.questionNumber}`} className="flex gap-2 px-1 py-1 text-sm text-[var(--text)]"><span className="font-semibold text-[var(--primary)]">Q{row.questionNumber}</span><span className="break-words">{row.answerText}</span></div>) : <p className="text-sm text-[var(--text-soft)]">暂无答案数据。</p>}
+          {rows.length > 0 ? rows.map((row) => <div key={`answer-${row.rowKey}`} className="flex gap-2 px-1 py-1 text-sm text-[var(--text)]"><span className="font-semibold text-[var(--primary)]">Q{row.questionNumber}</span><span className="break-words">{row.answerText}</span></div>) : <p className="text-sm text-[var(--text-soft)]">暂无答案数据。</p>}
         </div>
       </AdminAnswerDetails>
       <AdminAnswerDetails title="答案与解析">
         <div className="space-y-3">
-          {rows.length > 0 ? rows.map((row) => <div key={`explain-${row.questionNumber}`} className="px-1 py-1 text-sm leading-6 text-[var(--text)]"><div className="font-semibold text-[var(--primary)]">Q{row.questionNumber}: {row.answerText}</div><p className="mt-1 whitespace-pre-line text-[var(--text-soft)]">{row.explanation || "暂无解析"}</p></div>) : null}
+          {rows.length > 0 ? rows.map((row) => <div key={`explain-${row.rowKey}`} className="px-1 py-1 text-sm leading-6 text-[var(--text)]"><div className="font-semibold text-[var(--primary)]">Q{row.questionNumber}: {row.answerText}</div><p className="mt-1 whitespace-pre-line text-[var(--text-soft)]">{row.explanation || "暂无解析"}</p></div>) : null}
           {answer.explanation && <p className="whitespace-pre-line px-1 py-1 text-sm leading-6 text-[var(--text-soft)]">{stripHtml(answer.explanation)}</p>}
         </div>
       </AdminAnswerDetails>
@@ -594,13 +625,71 @@ const ReadingRichText = memo(function ReadingRichText({ html, compact = false, d
 });
 
 const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optionsByNumber, onAnswerChange }: { html: string; answers: Answers; optionsByNumber: Record<string, string[]>; onAnswerChange: (questionNumber: string, value: string) => void }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const commitTimersRef = useRef<Record<string, number>>({});
   const [markup] = useState(() => sanitizeRichHtml(injectAnswerInputs(formatQuestionContent(html), answers, optionsByNumber)));
   const [openSelect, setOpenSelect] = useState<{ number: string; options: string[]; top: number; left: number; width: number } | null>(null);
-  function handleInputEvent(event: React.FormEvent<HTMLDivElement>) {
-    const target = event.target as HTMLInputElement;
-    if (target.tagName !== "INPUT") return;
-    const number = target.dataset.questionNumber;
-    if (number) onAnswerChange(number, target.value);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const protectAnswerControl = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      const control = target.closest<HTMLElement>("input[data-question-number], button[data-answer-select='true']");
+      if (!control || !container.contains(control)) return;
+      event.stopPropagation();
+      if (control instanceof HTMLInputElement && (event.type === "mousedown" || event.type === "pointerdown" || event.type === "click")) {
+        window.setTimeout(() => control.focus(), 0);
+      }
+    };
+
+    const scheduleInputAnswer = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      const number = target.dataset.questionNumber;
+      if (!number) return;
+      if (commitTimersRef.current[number]) window.clearTimeout(commitTimersRef.current[number]);
+      commitTimersRef.current[number] = window.setTimeout(() => {
+        onAnswerChange(number, target.value);
+        delete commitTimersRef.current[number];
+      }, 500);
+    };
+
+    const commitInputAnswer = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      const number = target.dataset.questionNumber;
+      if (!number) return;
+      if (commitTimersRef.current[number]) {
+        window.clearTimeout(commitTimersRef.current[number]);
+        delete commitTimersRef.current[number];
+      }
+      onAnswerChange(number, target.value);
+    };
+
+    const protectedEvents = ["pointerdown", "mousedown", "mouseup", "click", "touchstart", "touchend", "keyup", "selectionchange"];
+    protectedEvents.forEach((eventName) => container.addEventListener(eventName, protectAnswerControl, true));
+    container.addEventListener("input", scheduleInputAnswer, true);
+    container.addEventListener("change", commitInputAnswer, true);
+    container.addEventListener("blur", commitInputAnswer, true);
+
+    return () => {
+      protectedEvents.forEach((eventName) => container.removeEventListener(eventName, protectAnswerControl, true));
+      container.removeEventListener("input", scheduleInputAnswer, true);
+      container.removeEventListener("change", commitInputAnswer, true);
+      container.removeEventListener("blur", commitInputAnswer, true);
+      Object.values(commitTimersRef.current).forEach((timer) => window.clearTimeout(timer));
+      commitTimersRef.current = {};
+    };
+  }, [onAnswerChange]);
+
+  function keepAnswerControlEventInside(event: React.SyntheticEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement;
+    if (target.closest("input, textarea, select, button, [data-answer-control='true']")) {
+      event.stopPropagation();
+    }
   }
 
   function handleSelectButtonClick(event: React.MouseEvent<HTMLDivElement>) {
@@ -635,7 +724,20 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
 
   return (
     <>
-      <div className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold" onInputCapture={handleInputEvent} onClick={handleSelectButtonClick} dangerouslySetInnerHTML={{ __html: markup }} />
+      <div
+        ref={containerRef}
+        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
+        onPointerDown={keepAnswerControlEventInside}
+        onMouseDown={keepAnswerControlEventInside}
+        onTouchStart={keepAnswerControlEventInside}
+        onMouseUp={keepAnswerControlEventInside}
+        onKeyUp={keepAnswerControlEventInside}
+        onClick={(event) => {
+          keepAnswerControlEventInside(event);
+          handleSelectButtonClick(event);
+        }}
+        dangerouslySetInnerHTML={{ __html: markup }}
+      />
       {openSelect && (
         <div className="fixed z-50 max-h-72 overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-1 shadow-[var(--shadow-lg)]" style={{ top: openSelect.top, left: openSelect.left, width: openSelect.width }}>
           {openSelect.options.map((option) => (
@@ -647,7 +749,14 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
       )}
     </>
   );
-}, (previous, next) => previous.html === next.html && previous.optionsByNumber === next.optionsByNumber);
+}, (previous, next) => previous.html === next.html && optionMapSignature(previous.optionsByNumber) === optionMapSignature(next.optionsByNumber));
+
+function optionMapSignature(optionsByNumber: Record<string, string[]>) {
+  return Object.keys(optionsByNumber)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((number) => `${number}:${(optionsByNumber[number] ?? []).join("\u0001")}`)
+    .join("\u0002");
+}
 
 function PartNavigator({ part, active, answers, onPartClick, onQuestionClick }: { part: PartModel; active: boolean; answers: Answers; onPartClick: () => void; onQuestionClick: (questionNumber: number) => void }) {
   const answered = part.numbers.filter((number) => answers[`${number}`]).length;
@@ -792,9 +901,9 @@ function injectAnswerInputs(html: string, answers: Answers, optionsByNumber: Rec
     const options = optionsByNumber[number] ?? [];
     if (options.length > 0) {
       const label = value || number;
-      return `<span class="mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
+      return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-control="true" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="relative z-10 min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
     }
-    return `<span class="mx-1 inline-flex items-baseline align-baseline"><input data-question-number="${number}" value="${value}" placeholder="${number}" class="h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
+    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" class="relative z-10 h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
   });
 }
 
@@ -986,6 +1095,7 @@ function getOfficialAnswerRows(question: IeltsQuestion, answer: IeltsAnswer) {
   return items.map((item, index) => {
     const questionNumber = stringValue(item, "question_no") || stringValue(item, "questionNo") || `${question.question_number_start + index}`;
     return {
+      rowKey: `${question.id}-${questionNumber}-${index}`,
       questionNumber,
       answerText: resolveOfficialAnswerText(question, answer, item),
       explanation: stripHtml(stringValue(item, "answer_explain") || stringValue(item, "answerExplain") || stringValue(item, "explanation")),
