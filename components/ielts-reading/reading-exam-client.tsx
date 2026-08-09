@@ -372,7 +372,7 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
       <TranslationDrawer open={translationOpen} title={`Part ${activePart?.displayNumber ?? 1} 中文翻译`} translations={activeTranslations} activeId={activeTranslationId} onClose={() => setTranslationOpen(false)} />
-      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} showOfficialToggle={isAdmin} onClose={() => setReviewOpen(false)} />}
+      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} onClose={() => setReviewOpen(false)} />}
       {selectionToolbar && <SelectionFormatToolbar top={selectionToolbar.top} left={selectionToolbar.left} canUndo={canUndoFormat} onFormat={applySelectionFormat} onUndo={undoLastSelectionFormat} />}
       {timeNotice === "five-minutes" && <TimeNoticePopup type="warning" seconds={remainingSeconds} onClose={() => setTimeNotice(null)} />}
       {timeNotice === "time-up" && <TimeNoticePopup type="time-up" seconds={overtimeSeconds} onClose={() => setTimeNotice(null)} />}
@@ -849,8 +849,17 @@ function TranslationDrawer({ open, title, translations, activeId, onClose }: { o
   );
 }
 
-function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }: { answers: Answers; officialAnswers: Record<string, string>; showOfficialToggle: boolean; onClose: () => void }) {
+function ReviewDialog({ answers, officialAnswers, onClose }: { answers: Answers; officialAnswers: Record<string, string>; onClose: () => void }) {
   const [showOfficialAnswers, setShowOfficialAnswers] = useState(false);
+  const [tooltip, setTooltip] = useState<{ value: string; top: number; left: number } | null>(null);
+
+  function showTooltip(value: string, rect: DOMRect) {
+    setTooltip({
+      value,
+      top: Math.min(window.innerHeight - 96, rect.bottom + 8),
+      left: Math.min(window.innerWidth - 272, Math.max(12, rect.left)),
+    });
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
@@ -861,25 +870,53 @@ function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }:
             <p className="mt-2 text-sm text-[var(--text-soft)]">这个窗口只用于检查作答情况，不能在这里修改答案。</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            {showOfficialToggle ? <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button> : null}
+            <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button>
             <button type="button" onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"><X size={20} /></button>
           </div>
         </div>
         <div className="grid grid-cols-2 border border-[var(--border)] sm:grid-cols-4">
-          {Array.from({ length: 40 }, (_, index) => index + 1).map((number) => (
-            <div key={number} className="min-h-16 overflow-hidden border-b border-r border-[var(--border)] px-3 py-2 text-sm text-[var(--text-soft)]">
-              <div className="font-semibold text-[var(--primary)]">Q{number}</div>
-              <div className="mt-1 flex items-start gap-1.5 text-xs leading-5">
-                <span className={cn("line-clamp-2 min-w-0 flex-1 break-words", answers[`${number}`] ? "text-[var(--text)]" : "font-semibold text-red-500")}>{answers[`${number}`] || "未作答"}</span>
-                {showOfficialAnswers && <><span className="text-[var(--text-faint)]">|</span><span className="line-clamp-2 min-w-0 flex-1 break-words text-[var(--text)]">{officialAnswers[`${number}`] || "暂无答案"}</span></>}
+          {Array.from({ length: 40 }, (_, index) => index + 1).map((number) => {
+            const studentAnswer = answers[`${number}`] || "未作答";
+            const officialAnswer = officialAnswers[`${number}`] || "暂无答案";
+            return (
+              <div key={number} className="min-h-16 overflow-hidden border-b border-r border-[var(--border)] px-3 py-2 text-sm text-[var(--text-soft)]">
+                <div className="font-semibold text-[var(--primary)]">Q{number}</div>
+                <div className="mt-1 flex items-start gap-1.5 text-xs leading-5">
+                  <ReviewAnswerText value={studentAnswer} className={answers[`${number}`] ? "text-[var(--text)]" : "font-semibold text-red-500"} onShowTooltip={showTooltip} onHideTooltip={() => setTooltip(null)} />
+                  {showOfficialAnswers && <><span className="text-[var(--text-faint)]">|</span><ReviewAnswerText value={officialAnswer} className="text-[var(--text)]" onShowTooltip={showTooltip} onHideTooltip={() => setTooltip(null)} /></>}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        {tooltip && <ReviewTooltip value={tooltip.value} top={tooltip.top} left={tooltip.left} />}
         <div className="mt-6 flex justify-center">
           <Button type="button" onClick={onClose} className="min-w-44 rounded-full">Close</Button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ReviewAnswerText({ value, className, onShowTooltip, onHideTooltip }: { value: string; className?: string; onShowTooltip: (value: string, rect: DOMRect) => void; onHideTooltip: () => void }) {
+  return (
+    <span
+      className="min-w-0 flex-1"
+      onMouseEnter={(event) => onShowTooltip(value, event.currentTarget.getBoundingClientRect())}
+      onMouseLeave={onHideTooltip}
+      onFocus={(event) => onShowTooltip(value, event.currentTarget.getBoundingClientRect())}
+      onBlur={onHideTooltip}
+      tabIndex={0}
+    >
+      <span className={cn("line-clamp-2 break-words", className)}>{value}</span>
+    </span>
+  );
+}
+
+function ReviewTooltip({ value, top, left }: { value: string; top: number; left: number }) {
+  return (
+    <div className="pointer-events-none fixed z-[70] max-w-64 whitespace-normal rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs leading-5 text-[var(--text)] shadow-[var(--shadow-lg)]" style={{ top, left }}>
+      {value}
     </div>
   );
 }

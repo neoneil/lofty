@@ -224,7 +224,7 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
       </footer>
 
       <NotesDrawer open={notesOpen} onClose={() => setNotesOpen(false)} />
-      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} showOfficialToggle={isAdmin} onClose={() => setReviewOpen(false)} />}
+      {reviewOpen && <ReviewDialog answers={answers} officialAnswers={officialAnswerByNumber} onClose={() => setReviewOpen(false)} />}
       {submitDialogMode && <IeltsSubmitDialog moduleType="listening" answers={answers} officialAnswers={officialAnswerByNumber} mode={submitDialogMode} showOfficialAnswers={isAdmin} bookNumber={data.book.book_number} testNumber={selectedTestNumber} durationSeconds={elapsedSeconds} onCancel={() => setSubmitDialogMode(null)} onConfirm={() => setSubmitDialogMode("result")} onClose={() => setSubmitDialogMode(null)} />}
       {submitNotice && <div className="fixed right-5 top-24 z-50 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--text)] shadow-[var(--shadow-lg)]">{submitNotice}</div>}
     </div>
@@ -541,13 +541,71 @@ const ReadingRichText = memo(function ReadingRichText({ html, compact = false }:
 });
 
 const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optionsByNumber, onAnswerChange }: { html: string; answers: Answers; optionsByNumber: Record<string, string[]>; onAnswerChange: (questionNumber: string, value: string) => void }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const commitTimersRef = useRef<Record<string, number>>({});
   const [markup] = useState(() => sanitizeRichHtml(injectAnswerInputs(formatQuestionContent(html), answers, optionsByNumber)));
   const [openSelect, setOpenSelect] = useState<{ number: string; options: string[]; top: number; left: number; width: number } | null>(null);
-  function handleInputEvent(event: React.FormEvent<HTMLDivElement>) {
-    const target = event.target as HTMLInputElement;
-    if (target.tagName !== "INPUT") return;
-    const number = target.dataset.questionNumber;
-    if (number) onAnswerChange(number, target.value);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const protectAnswerControl = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      const control = target.closest<HTMLElement>("input[data-question-number], button[data-answer-select='true']");
+      if (!control || !container.contains(control)) return;
+      event.stopPropagation();
+      if (control instanceof HTMLInputElement && (event.type === "mousedown" || event.type === "pointerdown" || event.type === "click")) {
+        window.setTimeout(() => control.focus(), 0);
+      }
+    };
+
+    const scheduleInputAnswer = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      const number = target.dataset.questionNumber;
+      if (!number) return;
+      if (commitTimersRef.current[number]) window.clearTimeout(commitTimersRef.current[number]);
+      commitTimersRef.current[number] = window.setTimeout(() => {
+        onAnswerChange(number, target.value);
+        delete commitTimersRef.current[number];
+      }, 500);
+    };
+
+    const commitInputAnswer = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      const number = target.dataset.questionNumber;
+      if (!number) return;
+      if (commitTimersRef.current[number]) {
+        window.clearTimeout(commitTimersRef.current[number]);
+        delete commitTimersRef.current[number];
+      }
+      onAnswerChange(number, target.value);
+    };
+
+    const protectedEvents = ["pointerdown", "mousedown", "mouseup", "click", "touchstart", "touchend", "keyup", "selectionchange"];
+    protectedEvents.forEach((eventName) => container.addEventListener(eventName, protectAnswerControl, true));
+    container.addEventListener("input", scheduleInputAnswer, true);
+    container.addEventListener("change", commitInputAnswer, true);
+    container.addEventListener("blur", commitInputAnswer, true);
+
+    return () => {
+      protectedEvents.forEach((eventName) => container.removeEventListener(eventName, protectAnswerControl, true));
+      container.removeEventListener("input", scheduleInputAnswer, true);
+      container.removeEventListener("change", commitInputAnswer, true);
+      container.removeEventListener("blur", commitInputAnswer, true);
+      Object.values(commitTimersRef.current).forEach((timer) => window.clearTimeout(timer));
+      commitTimersRef.current = {};
+    };
+  }, [onAnswerChange]);
+
+  function keepAnswerControlEventInside(event: React.SyntheticEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement;
+    if (target.closest("input, textarea, select, button, [data-answer-control='true']")) {
+      event.stopPropagation();
+    }
   }
 
   function handleSelectButtonClick(event: React.MouseEvent<HTMLDivElement>) {
@@ -582,7 +640,20 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
 
   return (
     <>
-      <div className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold" onInputCapture={handleInputEvent} onClick={handleSelectButtonClick} dangerouslySetInnerHTML={{ __html: markup }} />
+      <div
+        ref={containerRef}
+        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
+        onPointerDown={keepAnswerControlEventInside}
+        onMouseDown={keepAnswerControlEventInside}
+        onTouchStart={keepAnswerControlEventInside}
+        onMouseUp={keepAnswerControlEventInside}
+        onKeyUp={keepAnswerControlEventInside}
+        onClick={(event) => {
+          keepAnswerControlEventInside(event);
+          handleSelectButtonClick(event);
+        }}
+        dangerouslySetInnerHTML={{ __html: markup }}
+      />
       {openSelect && (
         <div className="fixed z-50 max-h-72 overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-1 shadow-[var(--shadow-lg)]" style={{ top: openSelect.top, left: openSelect.left, width: openSelect.width }}>
           {openSelect.options.map((option) => (
@@ -594,7 +665,14 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
       )}
     </>
   );
-}, (previous, next) => previous.html === next.html && previous.optionsByNumber === next.optionsByNumber);
+}, (previous, next) => previous.html === next.html && optionMapSignature(previous.optionsByNumber) === optionMapSignature(next.optionsByNumber));
+
+function optionMapSignature(optionsByNumber: Record<string, string[]>) {
+  return Object.keys(optionsByNumber)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((number) => `${number}:${(optionsByNumber[number] ?? []).join("\u0001")}`)
+    .join("\u0002");
+}
 
 function PartNavigator({ part, active, answers, onPartClick, onQuestionClick }: { part: ListeningPart; active: boolean; answers: Answers; onPartClick: () => void; onQuestionClick: (questionNumber: number) => void }) {
   const answered = part.numbers.filter((number) => answers[`${number}`]).length;
@@ -626,8 +704,17 @@ function NotesDrawer({ open, onClose }: { open: boolean; onClose: () => void }) 
   );
 }
 
-function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }: { answers: Answers; officialAnswers: Record<string, string>; showOfficialToggle: boolean; onClose: () => void }) {
+function ReviewDialog({ answers, officialAnswers, onClose }: { answers: Answers; officialAnswers: Record<string, string>; onClose: () => void }) {
   const [showOfficialAnswers, setShowOfficialAnswers] = useState(false);
+  const [tooltip, setTooltip] = useState<{ value: string; top: number; left: number } | null>(null);
+
+  function showTooltip(value: string, rect: DOMRect) {
+    setTooltip({
+      value,
+      top: Math.min(window.innerHeight - 96, rect.bottom + 8),
+      left: Math.min(window.innerWidth - 272, Math.max(12, rect.left)),
+    });
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
@@ -638,25 +725,53 @@ function ReviewDialog({ answers, officialAnswers, showOfficialToggle, onClose }:
             <p className="mt-2 text-sm text-[var(--text-soft)]">这个窗口只用于检查作答情况，不能在这里修改答案。</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            {showOfficialToggle && <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button>}
+            <Button type="button" size="sm" variant={showOfficialAnswers ? "primary" : "secondary"} onClick={() => setShowOfficialAnswers((value) => !value)} className="rounded-full">显示答案</Button>
             <button type="button" onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-soft)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"><X size={20} /></button>
           </div>
         </div>
         <div className="grid grid-cols-2 border border-[var(--border)] sm:grid-cols-4">
-          {Array.from({ length: 40 }, (_, index) => index + 1).map((number) => (
-            <div key={number} className="min-h-16 overflow-hidden border-b border-r border-[var(--border)] px-3 py-2 text-sm text-[var(--text-soft)]">
-              <div className="font-semibold text-[var(--primary)]">Q{number}</div>
-              <div className="mt-1 flex items-start gap-1.5 text-xs leading-5">
-                <span className={cn("line-clamp-2 min-w-0 flex-1 break-words", answers[`${number}`] ? "text-[var(--text)]" : "font-semibold text-red-500")}>{answers[`${number}`] || "未作答"}</span>
-                {showOfficialAnswers && <><span className="text-[var(--text-faint)]">|</span><span className="line-clamp-2 min-w-0 flex-1 break-words text-[var(--text)]">{officialAnswers[`${number}`] || "暂无答案"}</span></>}
+          {Array.from({ length: 40 }, (_, index) => index + 1).map((number) => {
+            const studentAnswer = answers[`${number}`] || "未作答";
+            const officialAnswer = officialAnswers[`${number}`] || "暂无答案";
+            return (
+              <div key={number} className="min-h-16 overflow-hidden border-b border-r border-[var(--border)] px-3 py-2 text-sm text-[var(--text-soft)]">
+                <div className="font-semibold text-[var(--primary)]">Q{number}</div>
+                <div className="mt-1 flex items-start gap-1.5 text-xs leading-5">
+                  <ReviewAnswerText value={studentAnswer} className={answers[`${number}`] ? "text-[var(--text)]" : "font-semibold text-red-500"} onShowTooltip={showTooltip} onHideTooltip={() => setTooltip(null)} />
+                  {showOfficialAnswers && <><span className="text-[var(--text-faint)]">|</span><ReviewAnswerText value={officialAnswer} className="text-[var(--text)]" onShowTooltip={showTooltip} onHideTooltip={() => setTooltip(null)} /></>}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        {tooltip && <ReviewTooltip value={tooltip.value} top={tooltip.top} left={tooltip.left} />}
         <div className="mt-6 flex justify-center">
           <Button type="button" onClick={onClose} className="min-w-44 rounded-full">Close</Button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ReviewAnswerText({ value, className, onShowTooltip, onHideTooltip }: { value: string; className?: string; onShowTooltip: (value: string, rect: DOMRect) => void; onHideTooltip: () => void }) {
+  return (
+    <span
+      className="min-w-0 flex-1"
+      onMouseEnter={(event) => onShowTooltip(value, event.currentTarget.getBoundingClientRect())}
+      onMouseLeave={onHideTooltip}
+      onFocus={(event) => onShowTooltip(value, event.currentTarget.getBoundingClientRect())}
+      onBlur={onHideTooltip}
+      tabIndex={0}
+    >
+      <span className={cn("line-clamp-2 break-words", className)}>{value}</span>
+    </span>
+  );
+}
+
+function ReviewTooltip({ value, top, left }: { value: string; top: number; left: number }) {
+  return (
+    <div className="pointer-events-none fixed z-[70] max-w-64 whitespace-normal rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs leading-5 text-[var(--text)] shadow-[var(--shadow-lg)]" style={{ top, left }}>
+      {value}
     </div>
   );
 }
@@ -746,9 +861,9 @@ function injectAnswerInputs(html: string, answers: Answers, optionsByNumber: Rec
     const options = optionsByNumber[number] ?? [];
     if (options.length > 0) {
       const label = value || number;
-      return `<span class="mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
+      return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-control="true" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="relative z-10 min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
     }
-    return `<span class="mx-1 inline-flex items-baseline align-baseline"><input data-question-number="${number}" value="${value}" placeholder="${number}" class="h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
+    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" class="relative z-10 h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
   });
 }
 
