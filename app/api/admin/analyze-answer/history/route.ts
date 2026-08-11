@@ -5,11 +5,14 @@ import { createAdminClient } from "@/lib/supabase/admin";
 type IeltsWritingHistoryRow = {
   id: string;
   prompt_question: string;
-  essay_text: string;
   overall_band: number | null;
   word_count: number | null;
-  feedback_json: unknown;
   created_at: string | null;
+};
+
+type IeltsWritingHistoryDetailRow = IeltsWritingHistoryRow & {
+  essay_text: string;
+  feedback_json: unknown;
 };
 
 export async function GET(req: NextRequest) {
@@ -17,6 +20,7 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const studentUserId = req.nextUrl.searchParams.get("student_user_id")?.trim() ?? "";
+  const attemptId = req.nextUrl.searchParams.get("attempt_id")?.trim() ?? "";
 
   if (!studentUserId) {
     return NextResponse.json(
@@ -26,10 +30,51 @@ export async function GET(req: NextRequest) {
   }
 
   const supabase = createAdminClient();
+
+  if (attemptId) {
+    const { data, error } = await supabase
+      .schema("ielts")
+      .from("writing_attempts")
+      .select("id, prompt_question, essay_text, overall_band, word_count, feedback_json, created_at")
+      .eq("id", attemptId)
+      .eq("user_id", studentUserId)
+      .eq("task_type", "task2")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Admin analyze answer history detail load error:", error);
+      return NextResponse.json(
+        { ok: false, error: "历史详情加载失败。" },
+        { status: 500 },
+      );
+    }
+
+    if (!data) {
+      return NextResponse.json(
+        { ok: false, error: "历史记录不存在。" },
+        { status: 404 },
+      );
+    }
+
+    const item = data as IeltsWritingHistoryDetailRow;
+    return NextResponse.json({
+      ok: true,
+      item: {
+        id: item.id,
+        prompt_question: item.prompt_question,
+        essay_text: item.essay_text,
+        overall_band: item.overall_band,
+        word_count: item.word_count,
+        feedback_json: item.feedback_json,
+        created_at: item.created_at,
+      },
+    });
+  }
+
   const { data, error } = await supabase
     .schema("ielts")
     .from("writing_attempts")
-    .select("id, prompt_question, essay_text, overall_band, word_count, feedback_json, created_at")
+    .select("id, prompt_question, overall_band, word_count, created_at")
     .eq("user_id", studentUserId)
     .eq("task_type", "task2")
     .order("created_at", { ascending: false })
@@ -46,10 +91,8 @@ export async function GET(req: NextRequest) {
   const history = ((data ?? []) as IeltsWritingHistoryRow[]).map((item) => ({
     id: item.id,
     prompt_question: item.prompt_question,
-    essay_text: item.essay_text,
     overall_band: item.overall_band,
     word_count: item.word_count,
-    feedback_json: item.feedback_json,
     created_at: item.created_at,
   }));
 

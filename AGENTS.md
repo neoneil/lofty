@@ -6,7 +6,8 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 
 - At the start of the first task each day, confirm the current git branch before making any changes.
 - If the current branch is not the expected Lofty working branch, stop and ask before editing files.
-- The primary working branch for this project is `lofty-v4` unless the user explicitly says otherwise.
+- The primary working branch for this project is `lofty-v5` unless the user explicitly says otherwise.
+- `lofty-v5` is the active branch for the database optimization phase. Future code changes should be made on `lofty-v5` by default.
 
 ## Change Scope
 
@@ -77,6 +78,43 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Never run `supabase db push`, migration repair, reset, destructive SQL, or bulk data mutation merely because migration tooling is configured.
 - PTE feature work must not use Supabase `select("*")`; select only the fields the page, component, or API actually needs. Before changing an existing PTE query, read the consuming code and keep required fields explicit.
 
+## Database Optimization Phase
+
+- The project is now in the database optimization phase on branch `lofty-v5`.
+- Prefer improving query shape, data loading boundaries, indexes, views, and server-side aggregation over broad UI rewrites.
+- The default goal for new or changed database-backed work is to reduce database IO, network payload size, repeated requests, and unnecessary loading of large fields.
+- When implementing future components, pages, server actions, or API routes, default to the optimized data-loading design described in this section. Do not ask the user again whether low-IO query design should be used; it is the project default.
+- Treat the following four areas as the main optimization areas unless the user explicitly changes priority:
+  - Admin dashboards and student detail pages.
+  - IELTS practice, attempts, speaking/writing records, and mock-test result surfaces.
+  - PTE practice, attempts, scoring, prediction pages, and mock-test result surfaces.
+  - Homework, AI writing feedback, AI analysis history, and mock-test reports.
+- Before optimizing a query, identify the exact route/API/component, current selected columns, filters, joins, ordering, pagination, and consuming fields.
+- Avoid `select("*")` in new or changed Supabase queries. Select only fields consumed by the route, component, or API response.
+- For list pages, load summary fields first and fetch large text/blob-like fields only on detail expansion or detail pages.
+- Treat AI feedback, essays, reports, raw responses, transcripts, full question/answer payloads, score details, answer snapshots, recordings metadata, chart/task prompt bodies, and generated explanations as large fields. Do not include them in dashboard, table, card, or history summary queries unless the visible UI immediately needs the full value.
+- Summary queries should usually return only IDs, ownership fields, display names, status, type/category, score/band numbers, timestamps, short titles, short previews, counts, and publication/review flags.
+- Detail queries should be separated behind click-to-expand, detail page navigation, modal opening, selected record changes, or explicit refresh actions.
+- Cache already-loaded detail records in client state or server response state where appropriate so expanding the same record repeatedly does not refetch the same large payload.
+- Avoid loading hidden tab content up front when the tab contains large fields. Load the active tab first and fetch other tab content lazily.
+- Avoid fetching official answers, correct-answer maps, detailed AI feedback, transcript bodies, or report bodies for normal list screens. Fetch them only for scoring, review, admin detail views, or published student report views that actually display them.
+- Prefer server-side routes or server components for data access. Do not add new browser-side Supabase reads for user-facing data unless explicitly approved as an exception.
+- Avoid N+1 loops such as fetching one profile, attempt count, score, answer, or feedback record per row. Use grouped queries, `in (...)`, joins through existing views, database views, or RPCs instead.
+- Prefer single aggregate queries, views, or RPCs for admin dashboard counts instead of N+1 per-student or per-attempt loops.
+- Add or propose indexes based on observed query filters and sort order. Do not add indexes blindly.
+- Before remote index, view, function, RLS, or schema changes, show SQL and get explicit user confirmation under the Backend Auth And Supabase rules above.
+- Keep static IELTS/PTE content static where already implemented. Use the database for attempts, answers, scores, reports, publication state, audit, and user-owned records.
+- Do not move existing static IELTS reading/listening assets or static writing-task-bank content into Supabase during optimization work unless the user explicitly requests a data-source change.
+- For IELTS reading/listening, prefer reusing static-file renderers and local/static question data. Database access should be limited to user attempts, saved answers, scores, reports, publication state, and admin audit data.
+- For IELTS speaking and writing, list/history pages must not pull full transcript, essay body, raw scoring JSON, or feedback JSON by default. Use summary-first loading and detail-on-demand.
+- For PTE practice pages, avoid duplicate page-load queries for question lists and user status when the same information can be returned by one narrowed query, existing view, optimized view, or server-side aggregator.
+- For PTE detail pages, question content required to answer the item may load immediately, but previous attempts, AI feedback, score details, and raw scoring data should load only when the UI displays history, feedback, or admin detail.
+- For mock tests, keep exam-taking flows resilient by saving answers incrementally, but keep result/report screens summary-first. Admin can open full answers, correct answers, original question text, recording links, score details, and AI feedback on demand.
+- For homework and AI writing feedback history, never load complete assignment content, essay text, or full AI feedback JSON in the first history list query. Fetch the full payload only after the user selects or expands a record.
+- For admin student detail pages, first show counts, recent activity, statuses, and compact score summaries. Load full practice answers, transcripts, essays, correct answers, and AI feedback only for the selected record.
+- When adding a new query, include pagination or an explicit reasonable limit for potentially growing tables such as attempts, answers, events, homework, AI feedback, and reports.
+- When changing an existing query, preserve behavior first, then reduce columns and split large payloads. If a field is removed from an initial query, confirm the consuming component receives it from the new detail query before finishing.
+
 ## IELTS Answer Visibility
 
 - IELTS reading and listening detail pages currently hide "答案" and "答案与解析" UI behind admin-only rendering.
@@ -118,6 +156,16 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - Record AI usage for successful and failed SWT generation attempts using the existing AI usage logging flow.
 - If a batch fails midway, keep already saved samples and resume later by finding the remaining missing questions.
 - Do not run bulk SWT generation against the remote database without explicit user confirmation because it writes database rows and consumes OpenAI tokens.
+
+## PTE Question Bank Loading
+
+- New and migrated PTE question-bank list pages must use server-side pagination by default.
+- Do not load the full question table and paginate in the browser. The default list query should fetch only the current page, currently 15 rows.
+- Student practice status should be joined/merged only for the current page of question ids whenever possible.
+- Use `lib/pte/question-bank-page.ts`, `lib/pte/question-bank-server.ts`, `lib/pte/question-bank-pagination.ts`, and `lib/pte/question-bank-presets.ts` as the default pattern for PTE list pages.
+- URL query params should drive PTE list search, question status, practice status, activity status, and page number, so refresh/back navigation preserves the current list state.
+- If a new PTE table has incomplete columns or no data yet, still scaffold it with the same current-page loading pattern instead of reintroducing `.limit(1500)` or full-table browser filtering.
+- Future PTE database optimization target: replace the current multi-query list flow with a single RPC per question-bank page that returns the current page of questions, current-user status for those questions, and `all_question_info` together. Do this later with explicit SQL planning; until then keep the current server-side pagination pattern.
 
 ## AI Prompt Management
 

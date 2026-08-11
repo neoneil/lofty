@@ -97,6 +97,11 @@ type IeltsWritingAttempt = {
   created_at: string | null;
 };
 
+type AttemptTimeSummary = {
+  id: string;
+  created_at: string | null;
+};
+
 function isMissingTableError(error: unknown) {
   return typeof error === "object" && error !== null && "code" in error && ["42P01", "PGRST205"].includes(String((error as { code?: unknown }).code));
 }
@@ -127,8 +132,8 @@ export async function GET(
   const [
     { data: allAttempts, error: attemptsError },
     { data: studyPlan, error: studyPlanError },
-    { data: ieltsSpeakingAttempts, error: ieltsSpeakingError },
-    ieltsWritingResult,
+    { data: ieltsSpeakingAttemptSummaries, error: ieltsSpeakingError },
+    ieltsWritingSummaryResult,
     analytics,
   ] = await Promise.all([
     supabase
@@ -143,19 +148,19 @@ export async function GET(
     supabase
       .schema("ielts")
       .from("speaking_attempts")
-      .select("id, question_id, part, question_context, audio_url, transcript, overall_band, fluency_score, lexical_score, grammar_score, pronunciation_score, feedback_json, created_at")
+      .select("id, created_at")
       .eq("user_id", userId)
       .order("created_at", { ascending: false }),
     supabase
       .schema("ielts")
       .from("writing_attempts")
-      .select("id, task_type, prompt_question, essay_text, target_band, overall_band, word_count, feedback_json, created_at")
+      .select("id, created_at")
       .eq("user_id", userId)
       .order("created_at", { ascending: false }),
     getPteAnalyticsForUser(supabase, userId),
   ]);
 
-  const ieltsWritingError = ieltsWritingResult.error;
+  const ieltsWritingError = ieltsWritingSummaryResult.error;
 
   if (
     attemptsError ||
@@ -209,7 +214,7 @@ export async function GET(
     summaryMap.set(source, existing);
   }
 
-  for (const attempt of (ieltsSpeakingAttempts ?? []) as IeltsSpeakingAttempt[]) {
+  for (const attempt of (ieltsSpeakingAttemptSummaries ?? []) as AttemptTimeSummary[]) {
     const source = "ielts_speaking_ai";
     const existing = summaryMap.get(source) ?? {
       questionSource: source,
@@ -226,7 +231,7 @@ export async function GET(
     summaryMap.set(source, existing);
   }
 
-  for (const attempt of (ieltsWritingResult.data ?? []) as IeltsWritingAttempt[]) {
+  for (const attempt of (ieltsWritingSummaryResult.data ?? []) as AttemptTimeSummary[]) {
     const source = "ielts_writing_ai";
     const existing = summaryMap.get(source) ?? {
       questionSource: source,
@@ -260,6 +265,21 @@ export async function GET(
   const upperType = type.toUpperCase();
 
   if (type === "ielts_speaking_ai") {
+    const { data: ieltsSpeakingAttempts, error: ieltsSpeakingDetailError } = await supabase
+      .schema("ielts")
+      .from("speaking_attempts")
+      .select("id, question_id, part, question_context, audio_url, transcript, overall_band, fluency_score, lexical_score, grammar_score, pronunciation_score, feedback_json, created_at")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false })
+      .limit(80);
+
+    if (ieltsSpeakingDetailError) {
+      return NextResponse.json(
+        { ok: false, message: ieltsSpeakingDetailError.message },
+        { status: 500 },
+      );
+    }
+
     const practices = ((ieltsSpeakingAttempts ?? []) as IeltsSpeakingAttempt[]).map((attempt) => {
       const context = attempt.question_context ?? {};
       const questionText = context.questionText ?? context.part2Question ?? context.topicTitle ?? attempt.question_id;
@@ -297,7 +317,22 @@ export async function GET(
   }
 
   if (type === "ielts_writing_ai") {
-    const practices = ((ieltsWritingResult.data ?? []) as IeltsWritingAttempt[]).map((attempt) => ({
+    const ieltsWritingDetailResult = await supabase
+      .schema("ielts")
+      .from("writing_attempts")
+      .select("id, task_type, prompt_question, essay_text, target_band, overall_band, word_count, feedback_json, created_at")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false })
+      .limit(80);
+
+    if (ieltsWritingDetailResult.error && !isMissingTableError(ieltsWritingDetailResult.error)) {
+      return NextResponse.json(
+        { ok: false, message: ieltsWritingDetailResult.error.message },
+        { status: 500 },
+      );
+    }
+
+    const practices = ((ieltsWritingDetailResult.data ?? []) as IeltsWritingAttempt[]).map((attempt) => ({
       id: attempt.id,
       sourceKind: "ielts_writing_attempts",
       questionSource: type,

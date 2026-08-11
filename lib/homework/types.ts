@@ -21,7 +21,9 @@ export type HomeworkAssignment = {
   createdAt: string;
 };
 
-export type HomeworkAssignmentHistoryItem = HomeworkAssignment;
+export type HomeworkAssignmentHistoryItem = Omit<HomeworkAssignment, "content"> & {
+  content?: string;
+};
 
 export type StudentNotification = {
   id: string;

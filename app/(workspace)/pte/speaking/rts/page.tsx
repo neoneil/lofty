@@ -1,5 +1,5 @@
-import { requireUser } from "@/lib/auth/require-user";
-import { PTE_QUESTION_INFO_SELECT, PTE_RTS_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
+import { loadPteQuestionBankPage, type PteQuestionBankPageProps } from "@/lib/pte/question-bank-page";
+import { PTE_RTS_BANK_CONFIG } from "@/lib/pte/question-bank-presets";
 import RtsPageClient from "./rts-page-client";
 
 export type RtsQuestion = {
@@ -13,7 +13,7 @@ export type RtsQuestion = {
   question_text: string | null;
   question_info: string | null;
   question_info_2: string | null;
-   audio_url: string | null;
+  audio_url: string | null;
   answer_info: string | null;
   ai_keywords: string | null;
   tag_topic: string | null;
@@ -34,32 +34,21 @@ export type RtsQuestion = {
   is_wrong_question: boolean;
 };
 
-export default async function PteSpeakingRtsPage() {
-  const { supabase } = await requireUser("/pte/speaking/rts");
+export default async function PteSpeakingRtsPage({ searchParams }: PteQuestionBankPageProps) {
+  const { questionBank, questionInfo, filters, pagination } = await loadPteQuestionBankPage({
+    route: "/pte/speaking/rts",
+    questionInfoKey: "RTS",
+    config: PTE_RTS_BANK_CONFIG,
+    searchParams,
+  });
 
-  const { data: questionsData, error: questionsError } = await supabase
-    .schema("views")
-    .from("v_pte_rts_with_user_status")
-    .select(PTE_RTS_WITH_STATUS_SELECT)
-    .eq("question_type", "RTS")
-    .order("created_at", { ascending: false })
-    .limit(1500);
-
-  const questions = (questionsData ?? []).map((question) => ({ ...question, search_text: null })) as RtsQuestion[];
-
-  const { data: questionInfo } = await supabase
-    .from("all_question_info")
-    .select(PTE_QUESTION_INFO_SELECT)
-    .eq("questions", "RTS")
-    .single();
-
-  return questionsError ? (
+  return questionBank.error ? (
     <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
-      RTS 加载失败：{questionsError.message}
+      RTS 加载失败：{questionBank.error.message}
     </section>
   ) : (
     <div className="mt-1">
-      <RtsPageClient questions={questions} questionInfo={questionInfo} />
+      <RtsPageClient questions={questionBank.questions as unknown as RtsQuestion[]} questionInfo={questionInfo} filters={filters} pagination={pagination} />
     </div>
   );
 }

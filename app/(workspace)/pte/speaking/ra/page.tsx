@@ -1,5 +1,11 @@
 import { requireUser } from "@/lib/auth/require-user";
-import { PTE_QUESTION_INFO_SELECT, PTE_RA_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
+import { PTE_QUESTION_INFO_SELECT, PTE_RA_BASE_SELECT } from "@/lib/pte/select-fields";
+import {
+  PTE_QUESTION_BANK_PAGE_SIZE,
+  loadPaginatedPteQuestionBank,
+} from "@/lib/pte/question-bank-server";
+import { parsePteQuestionBankFilters } from "@/lib/pte/question-bank-pagination";
+import { createAdminClient } from "@/lib/supabase/admin";
 import RaPageClient from "./ra-page-client";
 
 type RaQuestionWithStatus = {
@@ -30,46 +36,63 @@ type RaQuestionWithStatus = {
   is_wrong_question: boolean;
 };
 
-export default async function PteSpeakingPage() {
-  const { supabase } = await requireUser("/pte/speaking/ra");
+type PageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
 
-  const { data: questionsData, error: questionsError } = await supabase
-    .schema("views")
-    .from("v_pte_ra_with_user_status")
-    .select(PTE_RA_WITH_STATUS_SELECT)
-    .eq("question_type", "RA")
-    .order("created_at", { ascending: false })
-    .limit(1500);
+export default async function PteSpeakingPage({ searchParams }: PageProps) {
+  const { supabase, user } = await requireUser("/pte/speaking/ra");
+  const admin = createAdminClient();
+  const filters = parsePteQuestionBankFilters(await searchParams);
 
-  const questions = (questionsData ?? []).map((q) => ({
-    ...q,
-    is_practiced: q.is_practiced ?? false,
-    attempt_count: q.attempt_count ?? 0,
-    correct_count: q.correct_count ?? 0,
-    wrong_count: q.wrong_count ?? 0,
-    usage_count: null,
-    completed_count: 0,
-    last_attempt_at: q.last_attempt_at ?? null,
-    latest_score: q.latest_score ?? null,
-    best_score: q.best_score ?? null,
-    is_wrong_question: q.is_wrong_question ?? false,
-  })) as RaQuestionWithStatus[];
-
-  const { data: questionInfo } = await supabase
-    .from("all_question_info")
-    .select(PTE_QUESTION_INFO_SELECT)
-    .eq("questions", "RA")
-    .single();
+  const [questionBank, { data: questionInfo }] = await Promise.all([
+    loadPaginatedPteQuestionBank({
+      supabase,
+      admin,
+      userId: user.id,
+      filters,
+      config: {
+        table: "ra",
+        questionSource: "ra",
+        questionType: "RA",
+        select: PTE_RA_BASE_SELECT,
+        searchColumn: "question_body_text",
+        normalizeQuestion: (q) => ({
+          ...q,
+          question_text: String(q.question_body_text ?? ""),
+          audio_url: null,
+          audio_duration_seconds: null,
+          ai_voice: null,
+          usage_count: null,
+        }) as RaQuestionWithStatus,
+      },
+    }),
+    supabase
+      .from("all_question_info")
+      .select(PTE_QUESTION_INFO_SELECT)
+      .eq("questions", "RA")
+      .single(),
+  ]);
 
   return (
     <>
-      {questionsError ? (
+      {questionBank.error ? (
         <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
-          RA 加载失败：{questionsError.message}
+          RA 加载失败：{questionBank.error.message}
         </section>
       ) : (
         <div className="mt-1">
-          <RaPageClient questions={questions} questionInfo={questionInfo} />
+          <RaPageClient
+            questions={questionBank.questions as RaQuestionWithStatus[]}
+            questionInfo={questionInfo}
+            filters={filters}
+            pagination={{
+              currentPage: questionBank.currentPage,
+              pageSize: PTE_QUESTION_BANK_PAGE_SIZE,
+              totalCount: questionBank.totalCount,
+              totalPages: questionBank.totalPages,
+            }}
+          />
         </div>
       )}
     </>

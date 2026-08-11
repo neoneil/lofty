@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { requireApiAdminOrEditor } from "@/lib/auth/require-api-auth";
-import { listAdminStudentHomeworkHistory } from "@/lib/homework/server";
+import { getAdminStudentHomeworkDetail, listAdminStudentHomeworkHistory } from "@/lib/homework/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function GET(request: NextRequest) {
@@ -10,11 +10,21 @@ export async function GET(request: NextRequest) {
     if (!auth.ok) return auth.response;
 
     const studentId = request.nextUrl.searchParams.get("student_id")?.trim() ?? "";
+    const homeworkId = request.nextUrl.searchParams.get("homework_id")?.trim() ?? "";
     if (!studentId) {
       return NextResponse.json({ ok: false, message: "Missing student_id." }, { status: 400 });
     }
 
-    const history = await listAdminStudentHomeworkHistory(createAdminClient(), studentId);
+    const supabase = createAdminClient();
+    if (homeworkId) {
+      const item = await getAdminStudentHomeworkDetail(supabase, studentId, homeworkId);
+      if (!item) {
+        return NextResponse.json({ ok: false, message: "作业记录不存在。" }, { status: 404 });
+      }
+      return NextResponse.json({ ok: true, item });
+    }
+
+    const history = await listAdminStudentHomeworkHistory(supabase, studentId);
     return NextResponse.json({ ok: true, history });
   } catch (error) {
     console.error("ADMIN HOMEWORK HISTORY ERROR", error);

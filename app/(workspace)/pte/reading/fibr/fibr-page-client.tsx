@@ -1,314 +1,39 @@
 "use client";
 
-import {
-  type ComponentProps,
-  useMemo,
-  useState,
-} from "react";
-
+import type { ComponentProps } from "react";
 import { QuestionInfoCard } from "@/components/site/QuestionInfoCard";
-
 import QuestionToolbar from "@/components/site/question-toolbar";
-
+import { usePteQuestionBankUrlState } from "@/components/pte/use-pte-question-bank-url-state";
+import type { PteQuestionBankFilters, PteQuestionBankPagination } from "@/lib/pte/question-bank-pagination";
 import FibrList from "./fibr-list";
 
-type Question = {
-  id: string;
-  question_title: string;
-  question_body_text: string;
-  question_type: string;
-  source_platform: string;
-
-  difficulty_level: number | null;
-
-  tags: string[];
-
-  is_prediction: boolean;
-
-  is_real_exam: boolean;
-
-  blanks_json: {
-    answer: string;
-    options: string[];
-    blank_index: number;
-  }[];
-
-  created_at: string;
-  updated_at: string;
-
-  is_practiced: boolean;
-  attempt_count: number;
-  correct_count: number;
-  wrong_count: number;
-  completed_count: number;
-  last_attempt_at: string | null;
-  latest_score: number | null;
-  best_score: number | null;
-  is_wrong_question: boolean;
-};
-
 type Props = {
-  questions: Question[];
+  questions: ComponentProps<typeof FibrList>["initialQuestions"];
   questionInfo: ComponentProps<typeof QuestionInfoCard>["questionInfo"];
+  filters: PteQuestionBankFilters;
+  pagination: PteQuestionBankPagination;
 };
 
-function getBlankCount(
-  blanks: Question["blanks_json"],
-) {
-  return blanks.length;
-}
-
-export default function FibrPageClient({
-  questions,
-  questionInfo,
-}: Props) {
-  const [nowMs] =
-    useState(() => Date.now());
-
-  const [searchTerm, setSearchTerm] =
-    useState("");
-
-  const [
-    questionStatus,
-    setQuestionStatus,
-  ] = useState("is_prediction");
-
-  const [
-    practiceStatus,
-    setPracticeStatus,
-  ] = useState("all");
-
-  const [
-    activityStatus,
-    setActivityStatus,
-  ] = useState("all");
-
-  const filteredQuestions =
-    useMemo(() => {
-      let result = [...questions];
-
-      // SEARCH
-
-      if (searchTerm.trim()) {
-        const keyword =
-          searchTerm
-            .trim()
-            .toLowerCase();
-
-        result = result.filter(
-          (q) =>
-            q.question_title
-              .toLowerCase()
-              .includes(keyword) ||
-            q.question_body_text
-              .toLowerCase()
-              .includes(keyword),
-        );
-      }
-
-      // QUESTION STATUS
-
-      if (
-        questionStatus ===
-        "is_prediction"
-      ) {
-        result = result.filter(
-          (q) => q.is_prediction,
-        );
-      }
-
-      if (
-        questionStatus === "new"
-      ) {
-        result = result.filter(
-          (q) => {
-            const created =
-              new Date(
-                q.created_at,
-              ).getTime();
-
-            const days =
-              (nowMs - created) /
-              (1000 *
-                60 *
-                60 *
-                24);
-
-            return days <= 14;
-          },
-        );
-      }
-
-      // PRACTICE STATUS
-
-      if (
-        practiceStatus ===
-        "practiced"
-      ) {
-        result = result.filter(
-          (q) => q.is_practiced,
-        );
-      }
-
-      if (
-        practiceStatus ===
-        "unpracticed"
-      ) {
-        result = result.filter(
-          (q) =>
-            !q.is_practiced,
-        );
-      }
-
-      if (
-        practiceStatus === "wrong"
-      ) {
-        result = result.filter(
-          (q) =>
-            q.is_wrong_question,
-        );
-      }
-
-      if (
-        practiceStatus ===
-        "mastered"
-      ) {
-        result = result.filter(
-          (q) =>
-            (q.correct_count ??
-              0) >= 1,
-        );
-      }
-
-      if (
-        practiceStatus === "weak"
-      ) {
-        result = result.filter(
-          (q) =>
-            (q.wrong_count ??
-              0) >=
-              (q.correct_count ??
-                0) &&
-            (q.attempt_count ??
-              0) > 0,
-        );
-      }
-
-      // ACTIVITY STATUS
-
-      if (
-        activityStatus ===
-        "most_practiced"
-      ) {
-        result.sort(
-          (a, b) =>
-            (b.attempt_count ??
-              0) -
-            (a.attempt_count ??
-              0),
-        );
-      }
-
-      if (
-        activityStatus ===
-        "recently_practiced"
-      ) {
-        result.sort(
-          (a, b) =>
-            new Date(
-              b.last_attempt_at ??
-                0,
-            ).getTime() -
-            new Date(
-              a.last_attempt_at ??
-                0,
-            ).getTime(),
-        );
-      }
-
-      if (
-        activityStatus ===
-        "highest_score"
-      ) {
-        result.sort(
-          (a, b) =>
-            (b.best_score ??
-              0) -
-            (a.best_score ??
-              0),
-        );
-      }
-
-      // DEFAULT SORT
-
-      if (
-        activityStatus ===
-        "all"
-      ) {
-        result.sort(
-          (a, b) =>
-            getBlankCount(
-              a.blanks_json,
-            ) -
-            getBlankCount(
-              b.blanks_json,
-            ),
-        );
-      }
-
-      return result;
-    }, [
-      questions,
-      searchTerm,
-      questionStatus,
-      practiceStatus,
-      activityStatus,
-      nowMs,
-    ]);
+export default function FibrPageClient({ questions, questionInfo, filters, pagination }: Props) {
+  const questionBank = usePteQuestionBankUrlState(filters);
 
   return (
-    <section className="w-full space-y-2">
-      <QuestionInfoCard
-        questionInfo={
-          questionInfo
-        }
-      />
-
+    <section className={`w-full space-y-2 transition-opacity ${questionBank.isPending ? "opacity-70" : ""}`}>
+      <QuestionInfoCard questionInfo={questionInfo} />
       <div className="relative z-50">
         <QuestionToolbar
           questionType="FIBR"
-          searchTerm={
-            searchTerm
-          }
-          onSearchTermChange={
-            setSearchTerm
-          }
-          questionStatus={
-            questionStatus
-          }
-          onQuestionStatusChange={
-            setQuestionStatus
-          }
-          practiceStatus={
-            practiceStatus
-          }
-          onPracticeStatusChange={
-            setPracticeStatus
-          }
-          activityStatus={
-            activityStatus
-          }
-          onActivityStatusChange={
-            setActivityStatus
-          }
+          searchTerm={questionBank.searchTerm}
+          onSearchTermChange={questionBank.setSearchTerm}
+          questionStatus={questionBank.questionStatus}
+          onQuestionStatusChange={questionBank.setQuestionStatus}
+          practiceStatus={questionBank.practiceStatus}
+          onPracticeStatusChange={questionBank.setPracticeStatus}
+          activityStatus={questionBank.activityStatus}
+          onActivityStatusChange={questionBank.setActivityStatus}
         />
       </div>
-
-      <FibrList
-        initialQuestions={
-          filteredQuestions
-        }
-      />
+      <FibrList initialQuestions={questions} pagination={pagination} onPageChange={questionBank.goToPage} />
     </section>
   );
 }

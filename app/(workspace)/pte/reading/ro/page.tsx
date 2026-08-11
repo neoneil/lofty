@@ -1,5 +1,5 @@
-import { requireUser } from "@/lib/auth/require-user";
-import { PTE_QUESTION_INFO_SELECT, PTE_RO_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
+import { loadPteQuestionBankPage, type PteQuestionBankPageProps } from "@/lib/pte/question-bank-page";
+import { PTE_RO_BANK_CONFIG } from "@/lib/pte/question-bank-presets";
 import RoPageClient from "./ro-page-client";
 
 type RoQuestionWithStatus = {
@@ -12,7 +12,6 @@ type RoQuestionWithStatus = {
   question_body_text: string[];
   created_at: string;
   updated_at: string;
-
   is_practiced: boolean;
   attempt_count: number;
   correct_count: number;
@@ -24,49 +23,21 @@ type RoQuestionWithStatus = {
   is_wrong_question: boolean;
 };
 
-export default async function PteReadingRoPage() {
-  const { supabase } = await requireUser("/pte/reading/ro");
+export default async function PteReadingRoPage({ searchParams }: PteQuestionBankPageProps) {
+  const { questionBank, questionInfo, filters, pagination } = await loadPteQuestionBankPage({
+    route: "/pte/reading/ro",
+    questionInfoKey: "RO",
+    config: PTE_RO_BANK_CONFIG,
+    searchParams,
+  });
 
-  const { data: questionsData, error: questionsError } = await supabase
-    .schema("views")
-    .from("v_pte_ro_with_user_status")
-    .select(PTE_RO_WITH_STATUS_SELECT)
-    .order("created_at", { ascending: false })
-    .limit(1500);
-
-  const questions = (questionsData ?? []).map((q) => ({
-    ...q,
-    is_practiced: q.is_practiced ?? false,
-    attempt_count: q.attempt_count ?? 0,
-    correct_count: q.correct_count ?? 0,
-    wrong_count: q.wrong_count ?? 0,
-    completed_count: q.completed_count ?? 0,
-    last_attempt_at: q.last_attempt_at ?? null,
-    latest_score: q.latest_score ?? null,
-    best_score: q.best_score ?? null,
-    is_wrong_question: q.is_wrong_question ?? false,
-  })) as RoQuestionWithStatus[];
-
-  const { data: questionInfo } = await supabase
-    .from("all_question_info")
-    .select(PTE_QUESTION_INFO_SELECT)
-    .eq("questions", "RO")
-    .single();
-
-  return (
-    <>
-      {questionsError ? (
-        <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
-          RO 加载失败：{questionsError.message}
-        </section>
-      ) : (
-        <div className="">
-          <RoPageClient
-            questions={questions}
-            questionInfo={questionInfo}
-          />
-        </div>
-      )}
-    </>
+  return questionBank.error ? (
+    <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
+      RO 加载失败：{questionBank.error.message}
+    </section>
+  ) : (
+    <div className="">
+      <RoPageClient questions={questionBank.questions as unknown as RoQuestionWithStatus[]} questionInfo={questionInfo} filters={filters} pagination={pagination} />
+    </div>
   );
 }

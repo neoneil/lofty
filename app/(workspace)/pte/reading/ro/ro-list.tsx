@@ -4,7 +4,7 @@ import { getPtePracticeListLayoutClass, PtePracticeViewToggle, type PtePracticeV
 import { PteEnglishTitle } from "@/components/pte/pte-english-title";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import {
   AlertTriangle,
@@ -47,53 +47,29 @@ type Question = {
   is_wrong_question: boolean;
 };
 
-const LIST_PAGE_SIZE = 10;
-const GRID_PAGE_SIZE = 15;
-
 export default function RoList({
   initialQuestions,
+  pagination,
+  onPageChange,
 }: {
   initialQuestions: Question[];
+  pagination: {
+    currentPage: number;
+    pageSize: number;
+    totalCount: number;
+    totalPages: number;
+  };
+  onPageChange: (page: number) => void;
 }) {
   const questionIds =
     initialQuestions.map((q) => q.id);
 
-  const [currentPage, setCurrentPage] =
-    useState(1);
-
   const [viewMode, setViewMode] = useState<PtePracticeViewMode>("grid");
-  const pageSize = viewMode === "grid" ? GRID_PAGE_SIZE : LIST_PAGE_SIZE;
-
-  const totalPages = Math.max(
-    1,
-    Math.ceil(
-      initialQuestions.length / pageSize,
-    ),
-  );
 
   const safeCurrentPage = Math.min(
-    currentPage,
-    totalPages,
+    pagination.currentPage,
+    pagination.totalPages,
   );
-
-  const paginatedQuestions = useMemo(() => {
-    const startIndex =
-      (safeCurrentPage - 1) * pageSize;
-
-    return initialQuestions.slice(
-      startIndex,
-      startIndex + pageSize,
-    );
-  }, [safeCurrentPage, pageSize, initialQuestions]);
-
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
@@ -116,7 +92,7 @@ export default function RoList({
               <div className="text-sm text-[var(--text-soft)]">
                 当前题目数量：
                 <span className="ml-1 font-semibold text-[var(--primary)]">
-                  {initialQuestions.length}
+                  {pagination.totalCount}
                 </span>
               </div>
             </div>
@@ -134,7 +110,7 @@ export default function RoList({
       {/* List */}
 
       <div className={getPtePracticeListLayoutClass(viewMode)}>
-        {paginatedQuestions.map(
+        {initialQuestions.map(
           (item, index) => {
             return (
               <Link
@@ -162,7 +138,7 @@ export default function RoList({
                           <div className="pte-practice-badge-cloud flex flex-wrap items-center gap-2">
                             <Badge className="gap-1.5 px-2.5 py-1">
                               {(safeCurrentPage - 1) *
-                                pageSize +
+                                pagination.pageSize +
                                 index +
                                 1}
                             </Badge>
@@ -295,8 +271,8 @@ export default function RoList({
 
       <Pagination
         currentPage={safeCurrentPage}
-        totalPages={totalPages}
-        onPageChange={goToPage}
+        totalPages={pagination.totalPages}
+        onPageChange={onPageChange}
       />
     </section>
   );

@@ -85,6 +85,11 @@ type AttemptRow = {
   updated_at: string;
 };
 
+type AttemptSummaryRow = AttemptRow & {
+  student_name: string | null;
+  student_email: string | null;
+};
+
 type ProfileRow = {
   id: string;
   full_name: string | null;
@@ -126,16 +131,14 @@ function schema(client: SupabaseClient) {
 }
 
 export async function listAdminMockAttempts(client: SupabaseClient): Promise<AdminMockAttemptListItem[]> {
-  const { data, error } = await schema(client)
-    .from("attempts")
-    .select("id, user_id, exam_type, title, status, question_count, answered_count, correct_count, overall_band, pte_overall_score, submitted_at, score_email_sent_at, student_report_published_at, created_at, updated_at")
+  const { data, error } = await client
+    .from("lofty_mock_attempt_report_summary_v1")
+    .select("id, user_id, student_name, student_email, exam_type, title, status, question_count, answered_count, correct_count, overall_band, pte_overall_score, submitted_at, score_email_sent_at, student_report_published_at, created_at, updated_at")
     .order("created_at", { ascending: false })
     .limit(200);
 
   if (error) throw error;
-  const attempts = (data ?? []) as AttemptRow[];
-  const profiles = await loadProfiles(client, [...new Set(attempts.map((attempt) => attempt.user_id))]);
-  return attempts.map((attempt) => mapListItem(attempt, profiles.get(attempt.user_id)));
+  return ((data ?? []) as AttemptSummaryRow[]).map(mapSummaryListItem);
 }
 
 export async function getAdminMockAttemptDetail(client: SupabaseClient, attemptId: string): Promise<AdminMockAttemptDetail> {
@@ -292,6 +295,28 @@ function mapListItem(attempt: AttemptRow, profile?: ProfileRow): AdminMockAttemp
     userId: attempt.user_id,
     studentName: profile?.full_name?.trim() || profile?.email || attempt.user_id,
     studentEmail: profile?.email ?? null,
+    examType: attempt.exam_type,
+    title: attempt.title,
+    status: attempt.status,
+    questionCount: attempt.question_count,
+    answeredCount: attempt.answered_count,
+    correctCount: attempt.correct_count,
+    overallBand: attempt.overall_band,
+    pteOverallScore: attempt.pte_overall_score,
+    submittedAt: attempt.submitted_at,
+    scoreEmailSentAt: attempt.score_email_sent_at,
+    studentReportPublishedAt: attempt.student_report_published_at,
+    createdAt: attempt.created_at,
+    updatedAt: attempt.updated_at,
+  };
+}
+
+function mapSummaryListItem(attempt: AttemptSummaryRow): AdminMockAttemptListItem {
+  return {
+    id: attempt.id,
+    userId: attempt.user_id,
+    studentName: attempt.student_name?.trim() || attempt.student_email || attempt.user_id,
+    studentEmail: attempt.student_email ?? null,
     examType: attempt.exam_type,
     title: attempt.title,
     status: attempt.status,

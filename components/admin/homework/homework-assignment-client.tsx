@@ -42,6 +42,7 @@ type HomeworkHistoryResponse = {
   ok?: boolean;
   message?: string;
   history?: HomeworkAssignmentHistoryItem[];
+  item?: HomeworkAssignmentHistoryItem;
 };
 
 function getStudentName(student: HomeworkStudent) {
@@ -75,6 +76,7 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
   const [activeStudentId, setActiveStudentId] = useState("");
   const [historyByStudent, setHistoryByStudent] = useState<Record<string, HomeworkAssignmentHistoryItem[]>>({});
   const [historyLoadingId, setHistoryLoadingId] = useState("");
+  const [historyDetailLoadingId, setHistoryDetailLoadingId] = useState("");
   const [historyError, setHistoryError] = useState("");
   const [expandedHistoryIds, setExpandedHistoryIds] = useState<string[]>([]);
 
@@ -123,8 +125,39 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
     setSelectedIds((current) => current.includes(studentId) ? current.filter((id) => id !== studentId) : [...current, studentId]);
   }
 
+  async function loadHomeworkDetail(studentId: string, homeworkId: string) {
+    const cached = historyByStudent[studentId]?.find((item) => item.id === homeworkId);
+    if (cached?.content !== undefined) return;
+
+    setHistoryDetailLoadingId(homeworkId);
+    setHistoryError("");
+
+    try {
+      const response = await fetch(`/api/admin/homework/history?student_id=${encodeURIComponent(studentId)}&homework_id=${encodeURIComponent(homeworkId)}`);
+      const data = (await response.json().catch(() => ({}))) as HomeworkHistoryResponse;
+
+      if (!response.ok || !data.ok || !data.item) {
+        setHistoryError(data.message ?? "作业详情加载失败。");
+        return;
+      }
+
+      setHistoryByStudent((current) => ({
+        ...current,
+        [studentId]: (current[studentId] ?? []).map((item) => item.id === homeworkId ? { ...item, ...data.item } : item),
+      }));
+    } catch {
+      setHistoryError("作业详情加载失败。");
+    } finally {
+      setHistoryDetailLoadingId("");
+    }
+  }
+
   function toggleHistoryItem(homeworkId: string) {
-    setExpandedHistoryIds((current) => current.includes(homeworkId) ? current.filter((id) => id !== homeworkId) : [...current, homeworkId]);
+    const isExpanded = expandedHistoryIds.includes(homeworkId);
+    setExpandedHistoryIds((current) => isExpanded ? current.filter((id) => id !== homeworkId) : [...current, homeworkId]);
+    if (!isExpanded && activeStudent?.id) {
+      void loadHomeworkDetail(activeStudent.id, homeworkId);
+    }
   }
 
   function toggleAllFiltered() {
@@ -239,7 +272,7 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
                           <span className="text-xs font-semibold text-[var(--text-faint)]">#{activeHistory.length - index}</span>
                           <span className="text-xs text-[var(--text-faint)]">{formatDateTime(item.createdAt)}</span>
                         </div>
-                        <p className="mt-2 line-clamp-2 text-sm font-semibold leading-6 text-[var(--text)]">{item.content}</p>
+                        <p className="mt-2 line-clamp-2 text-sm font-semibold leading-6 text-[var(--text)]">{item.content ?? "点击展开查看作业内容"}</p>
                       </div>
                       <ChevronDown size={18} className={cn("mt-1 shrink-0 text-[var(--text-soft)] transition", expanded ? "rotate-180 text-[var(--primary)]" : "")} />
                     </button>
@@ -251,7 +284,9 @@ export function HomeworkAssignmentClient({ students, tableReady }: { students: H
                           <div><span className="font-semibold text-[var(--text)]">时间：</span>{formatDateTime(item.emailSentAt ?? item.createdAt)}</div>
                         </div>
                         {item.emailError ? <div className="mt-2 rounded-[var(--radius-sm)] border border-[var(--danger)]/30 bg-[var(--danger-soft)] px-3 py-2 text-xs text-[var(--danger)]">{item.emailError}</div> : null}
-                        <div className="mt-3 whitespace-pre-wrap rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-7 text-[var(--text)]">{item.content}</div>
+                        <div className="mt-3 whitespace-pre-wrap rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-sm leading-7 text-[var(--text)]">
+                          {historyDetailLoadingId === item.id ? "正在加载作业内容..." : item.content ?? "暂无作业内容。"}
+                        </div>
                       </div>
                     ) : null}
                   </article>

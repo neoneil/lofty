@@ -4,7 +4,7 @@ import { getPtePracticeListLayoutClass, PtePracticeViewToggle, type PtePracticeV
 import { PteEnglishTitle } from "@/components/pte/pte-english-title";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Pagination } from "@/components/ui-v2/pagination";
 import { Badge } from "@/components/ui-v2/badge";
 import Tag from "@/components/ui/tag";
@@ -21,9 +21,6 @@ import {
 } from "lucide-react";
 import type { RtsQuestion } from "./page";
 
-const LIST_PAGE_SIZE = 10;
-const GRID_PAGE_SIZE = 15;
-
 function getDisplayTitle(question: RtsQuestion) {
   return (
     question.title ||
@@ -36,26 +33,21 @@ function getDisplayTitle(question: RtsQuestion) {
 
 export default function RtsPracticeList({
   initialQuestions,
+  pagination,
+  onPageChange,
 }: {
   initialQuestions: RtsQuestion[];
+  pagination: {
+    currentPage: number;
+    pageSize: number;
+    totalCount: number;
+    totalPages: number;
+  };
+  onPageChange: (page: number) => void;
 }) {
   const questionIds = initialQuestions.map((q) => q.id);
-  const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<PtePracticeViewMode>("grid");
-  const pageSize = viewMode === "grid" ? GRID_PAGE_SIZE : LIST_PAGE_SIZE;
-
-  const totalPages = Math.max(1, Math.ceil(initialQuestions.length / pageSize));
-  const safeCurrentPage = Math.min(currentPage, totalPages);
-
-  const paginatedQuestions = useMemo(() => {
-    const startIndex = (safeCurrentPage - 1) * pageSize;
-    return initialQuestions.slice(startIndex, startIndex + pageSize);
-  }, [initialQuestions, pageSize, safeCurrentPage]);
-
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const safeCurrentPage = Math.min(pagination.currentPage, pagination.totalPages);
 
   return (
     <section className="mx-auto block w-full max-w-7xl px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
@@ -73,7 +65,7 @@ export default function RtsPracticeList({
               <div className="text-sm text-[var(--text-soft)]">
                 当前题目数量：
                 <span className="ml-1 font-semibold text-[var(--primary)]">
-                  {initialQuestions.length}
+                  {pagination.totalCount}
                 </span>
               </div>
             </div>
@@ -86,7 +78,7 @@ export default function RtsPracticeList({
       </div>
 
       <div className={getPtePracticeListLayoutClass(viewMode)}>
-        {paginatedQuestions.map((item, index) => (
+        {initialQuestions.map((item, index) => (
           <Link
             key={item.id}
             href={`/pte/speaking/rts/${item.id}`}
@@ -101,7 +93,7 @@ export default function RtsPracticeList({
                     <div className="pte-practice-meta mb-2.5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="pte-practice-badge-cloud flex flex-wrap items-center gap-2">
                         <Badge className="gap-1.5 px-2.5 py-1">
-                          {(safeCurrentPage - 1) * pageSize + index + 1}
+                          {(safeCurrentPage - 1) * pagination.pageSize + index + 1}
                         </Badge>
                         <Badge variant="default" className="gap-1.5 px-2.5 py-1">
                           <Mic size={12} />
@@ -163,8 +155,8 @@ export default function RtsPracticeList({
 
       <Pagination
         currentPage={safeCurrentPage}
-        totalPages={totalPages}
-        onPageChange={goToPage}
+        totalPages={pagination.totalPages}
+        onPageChange={onPageChange}
       />
     </section>
   );

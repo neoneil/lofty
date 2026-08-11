@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { QuestionInfoCard } from "@/components/site/QuestionInfoCard";
 import QuestionToolbar from "@/components/site/question-toolbar";
+import type { PteQuestionBankFilters } from "@/lib/pte/question-bank-pagination";
 import RaPracticeList from "./ra-practice-list";
 
 type Question = {
@@ -49,127 +51,96 @@ type QuestionInfo = {
 type Props = {
   questions: Question[];
   questionInfo: QuestionInfo | null;
+  filters: PteQuestionBankFilters;
+  pagination: {
+    currentPage: number;
+    pageSize: number;
+    totalCount: number;
+    totalPages: number;
+  };
 };
 
-function getWordCount(text: string) {
-  return text.trim().split(/\s+/).filter(Boolean).length;
-}
+const FILTER_DEFAULTS: Record<string, string> = {
+  q: "",
+  questionStatus: "is_prediction",
+  practiceStatus: "all",
+  activityStatus: "all",
+};
 
-export default function RaPageClient({ questions, questionInfo }: Props) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [questionStatus, setQuestionStatus] = useState("is_prediction");
-  const [practiceStatus, setPracticeStatus] = useState("all");
-  const [activityStatus, setActivityStatus] = useState("all");
-  const [now] = useState(() => Date.now());
+export default function RaPageClient({
+  questions,
+  questionInfo,
+  filters,
+  pagination,
+}: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
+  const [searchTerm, setSearchTerm] = useState(filters.searchTerm);
 
-  const filteredQuestions = useMemo(() => {
-    let result = [...questions];
+  const updateQuery = useCallback((updates: Record<string, string | number>) => {
+    const params = new URLSearchParams(searchParams.toString());
 
-    if (searchTerm.trim()) {
-      const keyword = searchTerm.trim().toLowerCase();
-      result = result.filter((q) =>
-        q.question_text.toLowerCase().includes(keyword),
-      );
+    Object.entries(updates).forEach(([key, value]) => {
+      const stringValue = String(value).trim();
+      const defaultValue = FILTER_DEFAULTS[key];
+
+      if (!stringValue || stringValue === defaultValue) {
+        params.delete(key);
+      } else {
+        params.set(key, stringValue);
+      }
+    });
+
+    if (!Object.prototype.hasOwnProperty.call(updates, "page")) {
+      params.delete("page");
     }
 
-    if (questionStatus === "is_prediction") {
-      result = result.filter((q) => q.is_prediction);
-    }
-
-    if (questionStatus === "new") {
-      result = result.filter((q) => {
-        const created = new Date(q.created_at).getTime();
-        const days = (now - created) / (1000 * 60 * 60 * 24);
-        return days <= 14;
+    const queryString = params.toString();
+    startTransition(() => {
+      router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
+        scroll: false,
       });
-    }
+    });
+  }, [pathname, router, searchParams]);
 
-    if (questionStatus === "newest") {
-      result.sort(
-        (a, b) =>
-          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-      );
-    }
+  useEffect(() => {
+    if (searchTerm === filters.searchTerm) return;
 
-    if (questionStatus === "re_is_prediction") {
-      result = result.filter(
-        (q) => q.is_prediction && (q.usage_count ?? 0) > 30,
-      );
-    }
+    const timer = window.setTimeout(() => {
+      updateQuery({ q: searchTerm });
+    }, 400);
 
-    if (practiceStatus === "practiced") {
-      result = result.filter((q) => q.is_practiced);
-    }
+    return () => window.clearTimeout(timer);
+  }, [filters.searchTerm, searchTerm, updateQuery]);
 
-    if (practiceStatus === "unpracticed") {
-      result = result.filter((q) => !q.is_practiced);
-    }
-
-    if (practiceStatus === "wrong") {
-      result = result.filter((q) => q.is_wrong_question);
-    }
-
-    if (practiceStatus === "mastered") {
-      result = result.filter((q) => (q.correct_count ?? 0) >= 1);
-    }
-
-    if (practiceStatus === "weak") {
-      result = result.filter(
-        (q) =>
-          (q.wrong_count ?? 0) >= (q.correct_count ?? 0) &&
-          (q.attempt_count ?? 0) > 0,
-      );
-    }
-
-    if (activityStatus === "most_practiced") {
-      result.sort((a, b) => (b.attempt_count ?? 0) - (a.attempt_count ?? 0));
-    }
-
-    if (activityStatus === "recently_practiced") {
-      result.sort(
-        (a, b) =>
-          new Date(b.last_attempt_at ?? 0).getTime() -
-          new Date(a.last_attempt_at ?? 0).getTime(),
-      );
-    }
-
-    if (activityStatus === "highest_score") {
-      result.sort((a, b) => (b.best_score ?? 0) - (a.best_score ?? 0));
-    }
-
-    if (activityStatus === "all" && questionStatus !== "newest") {
-      result.sort(
-        (a, b) => getWordCount(a.question_text) - getWordCount(b.question_text),
-      );
-    }
-
-    return result;
-  }, [
-    questions,
-    searchTerm,
-    questionStatus,
-    practiceStatus,
-    activityStatus,
-    now,
-  ]);
+  const goToPage = useCallback((page: number) => {
+    updateQuery({ page });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [updateQuery]);
 
   return (
-    <section className="w-full space-y-2">
+    <section className={`w-full space-y-2 transition-opacity ${isPending ? "opacity-70" : ""}`}>
       <QuestionInfoCard questionInfo={questionInfo} />
       <div className="relative z-50">
         <QuestionToolbar
           questionType="RA"
           searchTerm={searchTerm}
           onSearchTermChange={setSearchTerm}
-          questionStatus={questionStatus}
-          onQuestionStatusChange={setQuestionStatus}
-          practiceStatus={practiceStatus}
-          onPracticeStatusChange={setPracticeStatus}
-          activityStatus={activityStatus}
-          onActivityStatusChange={setActivityStatus}
+          questionStatus={filters.questionStatus}
+          onQuestionStatusChange={(value) => updateQuery({ questionStatus: value })}
+          practiceStatus={filters.practiceStatus}
+          onPracticeStatusChange={(value) => updateQuery({ practiceStatus: value })}
+          activityStatus={filters.activityStatus}
+          onActivityStatusChange={(value) => updateQuery({ activityStatus: value })}
         />
       </div>
-      <RaPracticeList initialQuestions={filteredQuestions} />
+      <RaPracticeList
+        initialQuestions={questions}
+        pagination={pagination}
+        onPageChange={goToPage}
+      />
     </section>
   );
 }

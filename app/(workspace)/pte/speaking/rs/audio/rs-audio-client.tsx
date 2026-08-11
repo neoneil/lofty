@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   ArrowLeft,
   Headphones,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
+import { Pagination } from "@/components/ui-v2/pagination";
 import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 
 type RsAudioQuestion = {
@@ -29,6 +31,13 @@ type FilterMode = "all" | "prediction";
 
 type Props = {
   questions: RsAudioQuestion[];
+  filterMode: FilterMode;
+  pagination: {
+    currentPage: number;
+    pageSize: number;
+    totalCount: number;
+    totalPages: number;
+  };
 };
 
 function getWordCount(text: string) {
@@ -46,28 +55,47 @@ function formatDuration(seconds: number | null) {
   return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 }
 
-export default function RsAudioClient({ questions }: Props) {
+export default function RsAudioClient({ questions, filterMode, pagination }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
-  const [filterMode, setFilterMode] = useState<FilterMode>("prediction");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoContinue, setAutoContinue] = useState(true);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
 
-  const filteredQuestions = useMemo(() => {
-    if (filterMode === "prediction") {
-      return questions.filter((question) => question.is_prediction);
+  const safeCurrentIndex =
+    questions.length > 0
+      ? Math.min(currentIndex, questions.length - 1)
+      : 0;
+  const currentQuestion = questions[safeCurrentIndex] ?? null;
+
+  const updateQuery = (updates: Record<string, string | number>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      const stringValue = String(value);
+      if ((key === "mode" && stringValue === "prediction") || (key === "page" && stringValue === "1")) {
+        params.delete(key);
+      } else {
+        params.set(key, stringValue);
+      }
+    });
+
+    if (!Object.prototype.hasOwnProperty.call(updates, "page")) {
+      params.delete("page");
     }
 
-    return questions;
-  }, [filterMode, questions]);
-
-  const safeCurrentIndex =
-    filteredQuestions.length > 0
-      ? Math.min(currentIndex, filteredQuestions.length - 1)
-      : 0;
-  const currentQuestion = filteredQuestions[safeCurrentIndex] ?? null;
+    const queryString = params.toString();
+    startTransition(() => {
+      router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
+        scroll: false,
+      });
+    });
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -138,14 +166,14 @@ export default function RsAudioClient({ questions }: Props) {
       audio.currentTime = 0;
     }
 
-    setFilterMode(mode);
     setCurrentIndex(0);
     setIsPlaying(false);
     setShouldAutoPlay(false);
+    updateQuery({ mode });
   };
 
   const goToQuestion = (index: number, autoPlay = false) => {
-    if (!filteredQuestions[index]) {
+    if (!questions[index]) {
       return;
     }
 
@@ -161,7 +189,7 @@ export default function RsAudioClient({ questions }: Props) {
   const goToNext = (autoPlay = isPlaying || shouldAutoPlay) => {
     const nextIndex = safeCurrentIndex + 1;
 
-    if (nextIndex >= filteredQuestions.length) {
+    if (nextIndex >= questions.length) {
       stop();
       return;
     }
@@ -178,7 +206,7 @@ export default function RsAudioClient({ questions }: Props) {
   };
 
   return (
-    <section className="mx-auto w-full max-w-7xl space-y-5 px-4 sm:px-6 lg:max-w-[84%] lg:px-0">
+    <section className={`mx-auto w-full max-w-7xl space-y-5 px-4 transition-opacity sm:px-6 lg:max-w-[84%] lg:px-0 ${isPending ? "opacity-70" : ""}`}>
       <div className="rounded-[var(--radius-lg)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
@@ -188,7 +216,7 @@ export default function RsAudioClient({ questions }: Props) {
                 RS Audio
               </Badge>
               <Badge variant="secondary" className="px-2.5 py-1">
-                {filteredQuestions.length} / {questions.length}
+                {questions.length} / {pagination.totalCount}
               </Badge>
             </div>
 
@@ -319,7 +347,7 @@ export default function RsAudioClient({ questions }: Props) {
                   type="button"
                   variant="secondary"
                   onClick={() => goToNext(false)}
-                  disabled={safeCurrentIndex >= filteredQuestions.length - 1}
+                  disabled={safeCurrentIndex >= questions.length - 1}
                   className="gap-2"
                 >
                   下一题
@@ -345,7 +373,7 @@ export default function RsAudioClient({ questions }: Props) {
           </div>
 
           <div className="max-h-[650px] overflow-y-auto p-2">
-            {filteredQuestions.map((question, index) => {
+            {questions.map((question, index) => {
               const active = index === safeCurrentIndex;
 
               return (
@@ -361,7 +389,7 @@ export default function RsAudioClient({ questions }: Props) {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-xs font-semibold">
-                      {index + 1}
+                      {(pagination.currentPage - 1) * pagination.pageSize + index + 1}
                     </span>
                     <span className="text-xs text-[var(--text-soft)]">
                       {formatDuration(question.audio_duration_seconds)}
@@ -373,6 +401,17 @@ export default function RsAudioClient({ questions }: Props) {
                 </button>
               );
             })}
+          </div>
+          <div className="border-t border-[var(--border)] px-3 pb-3">
+            <Pagination
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+              onPageChange={(page) => {
+                stop();
+                setCurrentIndex(0);
+                updateQuery({ page });
+              }}
+            />
           </div>
         </div>
       </div>

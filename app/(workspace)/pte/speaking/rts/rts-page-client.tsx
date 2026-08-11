@@ -1,127 +1,39 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import type { ComponentProps } from "react";
 import { QuestionInfoCard } from "@/components/site/QuestionInfoCard";
 import QuestionToolbar from "@/components/site/question-toolbar";
+import { usePteQuestionBankUrlState } from "@/components/pte/use-pte-question-bank-url-state";
+import type { PteQuestionBankFilters, PteQuestionBankPagination } from "@/lib/pte/question-bank-pagination";
 import RtsPracticeList from "./rts-practice-list";
-import type { RtsQuestion } from "./page";
-
-type QuestionInfo = {
-  info: string | null;
-  questions: string | null;
-  contributing: string | null;
-  examiner: string | null;
-  suggestion: string | null;
-  screen_instruction: string | null;
-  official_requirements: string | null;
-  hitting_rate: number | null;
-  stability: number | null;
-  importance: number | null;
-};
 
 type Props = {
-  questions: RtsQuestion[];
-  questionInfo: QuestionInfo | null;
+  questions: ComponentProps<typeof RtsPracticeList>["initialQuestions"];
+  questionInfo: ComponentProps<typeof QuestionInfoCard>["questionInfo"];
+  filters: PteQuestionBankFilters;
+  pagination: PteQuestionBankPagination;
 };
 
-function getSearchText(question: RtsQuestion) {
-  return [
-    question.title,
-    question.question_title,
-    question.question_text,
-    question.question_info,
-    question.question_info_2,
-    question.answer_info,
-    question.ai_keywords,
-    question.tag_topic,
-    question.search_text,
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
-export default function RtsPageClient({ questions, questionInfo }: Props) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [questionStatus, setQuestionStatus] = useState("is_prediction");
-  const [practiceStatus, setPracticeStatus] = useState("all");
-  const [activityStatus, setActivityStatus] = useState("all");
-  const [now] = useState(() => Date.now());
-
-  const filteredQuestions = useMemo(() => {
-    let result = [...questions];
-
-    if (searchTerm.trim()) {
-      const keyword = searchTerm.trim().toLowerCase();
-      result = result.filter((q) => getSearchText(q).includes(keyword));
-    }
-
-    if (questionStatus === "is_prediction") {
-      result = result.filter((q) => q.is_prediction);
-    }
-
-    if (questionStatus === "new") {
-      result = result.filter((q) => {
-        const created = new Date(q.created_at).getTime();
-        const days = (now - created) / (1000 * 60 * 60 * 24);
-        return days <= 14;
-      });
-    }
-
-    if (questionStatus === "newest") {
-      result.sort(
-        (a, b) =>
-          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-      );
-    }
-
-    if (practiceStatus === "practiced") {
-      result = result.filter((q) => q.is_practiced);
-    }
-
-    if (practiceStatus === "unpracticed") {
-      result = result.filter((q) => !q.is_practiced);
-    }
-
-    if (activityStatus === "recently_practiced") {
-      result.sort(
-        (a, b) =>
-          new Date(b.last_attempt_at ?? 0).getTime() -
-          new Date(a.last_attempt_at ?? 0).getTime(),
-      );
-    }
-
-    if (activityStatus === "highest_score") {
-      result.sort((a, b) => (b.best_score ?? 0) - (a.best_score ?? 0));
-    }
-
-    if (activityStatus === "all" && questionStatus !== "newest") {
-      result.sort(
-        (a, b) =>
-          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-      );
-    }
-
-    return result;
-  }, [activityStatus, now, practiceStatus, questionStatus, questions, searchTerm]);
+export default function RtsPageClient({ questions, questionInfo, filters, pagination }: Props) {
+  const questionBank = usePteQuestionBankUrlState(filters);
 
   return (
-    <section className="w-full space-y-2">
+    <section className={`w-full space-y-2 transition-opacity ${questionBank.isPending ? "opacity-70" : ""}`}>
       <QuestionInfoCard questionInfo={questionInfo} />
       <div className="relative z-50">
         <QuestionToolbar
           questionType="RTS"
-          searchTerm={searchTerm}
-          onSearchTermChange={setSearchTerm}
-          questionStatus={questionStatus}
-          onQuestionStatusChange={setQuestionStatus}
-          practiceStatus={practiceStatus}
-          onPracticeStatusChange={setPracticeStatus}
-          activityStatus={activityStatus}
-          onActivityStatusChange={setActivityStatus}
+          searchTerm={questionBank.searchTerm}
+          onSearchTermChange={questionBank.setSearchTerm}
+          questionStatus={questionBank.questionStatus}
+          onQuestionStatusChange={questionBank.setQuestionStatus}
+          practiceStatus={questionBank.practiceStatus}
+          onPracticeStatusChange={questionBank.setPracticeStatus}
+          activityStatus={questionBank.activityStatus}
+          onActivityStatusChange={questionBank.setActivityStatus}
         />
       </div>
-      <RtsPracticeList initialQuestions={filteredQuestions} />
+      <RtsPracticeList initialQuestions={questions} pagination={pagination} onPageChange={questionBank.goToPage} />
     </section>
   );
 }

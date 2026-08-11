@@ -16,6 +16,10 @@ const ALLOWED_AUDIO_TYPES = new Set([
   "audio/x-m4a",
 ]);
 
+function normalizeAudioContentType(contentType: string) {
+  return contentType.split(";")[0]?.trim().toLowerCase() ?? "";
+}
+
 export class StudentRecordingUploadError extends Error {
   status: number;
 
@@ -31,9 +35,10 @@ export function isStudentRecordingUploadError(error: unknown): error is StudentR
 }
 
 export function getAudioExtension(file: File) {
-  if (file.type.includes("wav")) return "wav";
-  if (file.type.includes("ogg")) return "ogg";
-  if (file.type.includes("mpeg") || file.type.includes("mp3")) return "mp3";
+  const contentType = normalizeAudioContentType(file.type);
+  if (contentType.includes("wav")) return "wav";
+  if (contentType.includes("ogg")) return "ogg";
+  if (contentType.includes("mpeg") || contentType.includes("mp3")) return "mp3";
   return "webm";
 }
 
@@ -42,7 +47,9 @@ export function createStudentRecordingKey({ questionSource, userId, extension }:
 }
 
 export function validateStudentRecordingFile(file: File) {
-  if (!ALLOWED_AUDIO_TYPES.has(file.type)) {
+  const contentType = normalizeAudioContentType(file.type);
+
+  if (!ALLOWED_AUDIO_TYPES.has(contentType)) {
     throw new StudentRecordingUploadError("录音文件格式不支持，请上传 webm、wav、ogg、mp3 或 m4a 音频。");
   }
 
@@ -67,7 +74,7 @@ export async function uploadStudentRecordingToPrivateR2({ file, questionSource, 
   await uploadPrivateR2Object({
     key,
     file,
-    contentType: file.type || "audio/webm",
+    contentType: normalizeAudioContentType(file.type) || "audio/webm",
   });
 
   return key;

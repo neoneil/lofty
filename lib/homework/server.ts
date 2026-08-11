@@ -28,6 +28,10 @@ type HomeworkRow = {
   created_at: string;
 };
 
+type HomeworkHistoryRow = Omit<HomeworkRow, "content"> & {
+  content?: string;
+};
+
 type NotificationRow = {
   id: string;
   type: string;
@@ -57,6 +61,20 @@ export function mapHomeworkStudent(row: ProfileRow): HomeworkStudent {
 }
 
 export function mapHomeworkAssignment(row: HomeworkRow): HomeworkAssignment {
+  return {
+    id: row.id,
+    studentId: row.student_id,
+    teacherId: row.teacher_id,
+    examType: row.exam_type,
+    content: row.content,
+    status: row.status,
+    emailSentAt: row.email_sent_at,
+    emailError: row.email_error,
+    createdAt: row.created_at,
+  };
+}
+
+export function mapHomeworkHistoryItem(row: HomeworkHistoryRow) {
   return {
     id: row.id,
     studentId: row.student_id,
@@ -109,13 +127,25 @@ export async function listStudentHomework(supabase: SupabaseClient, userId: stri
 export async function listAdminStudentHomeworkHistory(supabase: SupabaseClient, studentId: string) {
   const { data, error } = await supabase
     .from("student_homework_assignments")
-    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, created_at")
+    .select("id, student_id, teacher_id, exam_type, status, email_sent_at, email_error, created_at")
     .eq("student_id", studentId)
     .order("created_at", { ascending: false })
     .limit(100);
 
   if (error) throw error;
-  return ((data ?? []) as HomeworkRow[]).map(mapHomeworkAssignment);
+  return ((data ?? []) as HomeworkHistoryRow[]).map(mapHomeworkHistoryItem);
+}
+
+export async function getAdminStudentHomeworkDetail(supabase: SupabaseClient, studentId: string, homeworkId: string) {
+  const { data, error } = await supabase
+    .from("student_homework_assignments")
+    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, created_at")
+    .eq("id", homeworkId)
+    .eq("student_id", studentId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data ? mapHomeworkHistoryItem(data as HomeworkRow) : null;
 }
 
 export async function listStudentNotifications(supabase: SupabaseClient, userId: string) {
@@ -155,11 +185,14 @@ export async function assignHomeworkToStudents({ supabase, request, teacherId, t
       content: content.trim(),
       metadata: { source: "admin_homework" },
     })))
-    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, created_at");
+    .select("id, student_id, teacher_id, exam_type, status, email_sent_at, email_error, created_at");
 
   if (insertError) throw insertError;
 
-  const assignments = ((insertedAssignments ?? []) as HomeworkRow[]).map(mapHomeworkAssignment);
+  const assignments = ((insertedAssignments ?? []) as HomeworkHistoryRow[]).map((assignment) => mapHomeworkAssignment({
+    ...assignment,
+    content: content.trim(),
+  }));
   const homeworkByStudent = new Map(assignments.map((assignment) => [assignment.studentId, assignment]));
   const origin = getAppOrigin(request);
   const homeworkUrl = `${origin}/homework`;

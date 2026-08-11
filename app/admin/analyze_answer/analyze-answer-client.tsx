@@ -79,11 +79,17 @@ type AnalyzeAnswerResult = {
 type AnalyzeHistoryItem = {
   id: string;
   prompt_question: string;
-  essay_text: string;
+  essay_text?: string;
   overall_band: number | null;
   word_count: number | null;
-  feedback_json: AnalyzeAnswerResult;
+  feedback_json?: AnalyzeAnswerResult;
   created_at: string | null;
+};
+
+type AnalyzeHistoryDetailResponse = {
+  ok?: boolean;
+  error?: string;
+  item?: AnalyzeHistoryItem;
 };
 
 type Selection =
@@ -466,6 +472,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
   const [history, setHistory] = useState<AnalyzeHistoryItem[]>([]);
   const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
   const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyDetailLoadingId, setHistoryDetailLoadingId] = useState<string | null>(null);
   const [deletingHistoryId, setDeletingHistoryId] = useState<string | null>(null);
   const [historyError, setHistoryError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -490,10 +497,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
           throw new Error(data.error ?? "历史记录加载失败。");
         }
 
-        setHistory(((data.history ?? []) as AnalyzeHistoryItem[]).map((item) => ({
-          ...item,
-          feedback_json: normalizeResultForClient(item.feedback_json),
-        })));
+        setHistory((data.history ?? []) as AnalyzeHistoryItem[]);
       } catch (apiError) {
         if (!controller.signal.aborted) {
           setHistoryError(apiError instanceof Error ? apiError.message : "历史记录加载失败。");
@@ -534,13 +538,42 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
   }, [result]);
   const selectedAnalyzeModelOption = getAnalyzeModelOption(analyzeModel);
 
-  const loadHistoryItem = (item: AnalyzeHistoryItem) => {
+  const loadHistoryItem = async (item: AnalyzeHistoryItem) => {
     setSelectedHistoryId(item.id);
-    setQuestion(item.prompt_question);
-    setAnswer(item.essay_text);
-    setResult(normalizeResultForClient(item.feedback_json));
     setSelection(null);
     setError(null);
+
+    if (item.essay_text !== undefined && item.feedback_json !== undefined) {
+      setQuestion(item.prompt_question);
+      setAnswer(item.essay_text);
+      setResult(normalizeResultForClient(item.feedback_json));
+      return;
+    }
+
+    setHistoryDetailLoadingId(item.id);
+    try {
+      const response = await fetch(
+        `/api/admin/analyze-answer/history?student_user_id=${encodeURIComponent(selectedStudentId)}&attempt_id=${encodeURIComponent(item.id)}`,
+      );
+      const data = (await response.json().catch(() => ({}))) as AnalyzeHistoryDetailResponse;
+
+      if (!response.ok || !data.ok || !data.item) {
+        throw new Error(data.error ?? "历史详情加载失败。");
+      }
+
+      const detail = {
+        ...data.item,
+        feedback_json: normalizeResultForClient(data.item.feedback_json),
+      };
+      setHistory((current) => current.map((historyItem) => historyItem.id === item.id ? detail : historyItem));
+      setQuestion(detail.prompt_question);
+      setAnswer(detail.essay_text ?? "");
+      setResult(detail.feedback_json ?? null);
+    } catch (apiError) {
+      setHistoryError(apiError instanceof Error ? apiError.message : "历史详情加载失败。");
+    } finally {
+      setHistoryDetailLoadingId(null);
+    }
   };
 
   const deleteHistoryItem = async (item: AnalyzeHistoryItem) => {
@@ -815,18 +848,18 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
                       >
                         <button
                           type="button"
-                          onClick={() => loadHistoryItem(item)}
+                          onClick={() => void loadHistoryItem(item)}
                           className="block w-full text-left"
                         >
                           <div className="flex items-center justify-between gap-2">
                             <span className="text-xs font-semibold text-[var(--text-soft)]">{formatDateTime(item.created_at)}</span>
-                            <span className="shrink-0 text-xs font-bold text-[var(--primary)]">{item.overall_band ? `Band ${item.overall_band}` : item.feedback_json?.overall_feedback?.estimated_score || "—"}</span>
+                            <span className="shrink-0 text-xs font-bold text-[var(--primary)]">{historyDetailLoadingId === item.id ? "加载中" : item.overall_band ? `Band ${item.overall_band}` : item.feedback_json?.overall_feedback?.estimated_score || "—"}</span>
                           </div>
                           <div className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-[var(--text)]">
                             {item.prompt_question}
                           </div>
                           <div className="mt-1 text-xs text-[var(--text-soft)]">
-                            {item.word_count ?? item.essay_text.trim().split(/\s+/).filter(Boolean).length} words
+                            {item.word_count ?? "—"} words
                           </div>
                         </button>
 

@@ -1,5 +1,5 @@
-import { requireUser } from "@/lib/auth/require-user";
-import { PTE_QUESTION_INFO_SELECT, PTE_SGD_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
+import { loadPteQuestionBankPage, type PteQuestionBankPageProps } from "@/lib/pte/question-bank-page";
+import { PTE_SGD_BANK_CONFIG } from "@/lib/pte/question-bank-presets";
 import SgdPageClient from "./sgd-page-client";
 
 export type SgdQuestion = {
@@ -38,32 +38,21 @@ export type SgdQuestion = {
   is_wrong_question: boolean;
 };
 
-export default async function PteSpeakingSgdPage() {
-  const { supabase } = await requireUser("/pte/speaking/sgd");
+export default async function PteSpeakingSgdPage({ searchParams }: PteQuestionBankPageProps) {
+  const { questionBank, questionInfo, filters, pagination } = await loadPteQuestionBankPage({
+    route: "/pte/speaking/sgd",
+    questionInfoKey: "SGD",
+    config: PTE_SGD_BANK_CONFIG,
+    searchParams,
+  });
 
-  const { data: questionsData, error: questionsError } = await supabase
-    .schema("views")
-    .from("v_pte_sgd_with_user_status")
-    .select(PTE_SGD_WITH_STATUS_SELECT)
-    .eq("question_type", "SGD")
-    .order("created_at", { ascending: false })
-    .limit(1500);
-
-  const questions = (questionsData ?? []).map((question) => ({ ...question, search_text: null })) as SgdQuestion[];
-
-  const { data: questionInfo } = await supabase
-    .from("all_question_info")
-    .select(PTE_QUESTION_INFO_SELECT)
-    .eq("questions", "SGD")
-    .single();
-
-  return questionsError ? (
+  return questionBank.error ? (
     <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
-      SGD 加载失败：{questionsError.message}
+      SGD 加载失败：{questionBank.error.message}
     </section>
   ) : (
     <div className="mt-1">
-      <SgdPageClient questions={questions} questionInfo={questionInfo} />
+      <SgdPageClient questions={questionBank.questions as unknown as SgdQuestion[]} questionInfo={questionInfo} filters={filters} pagination={pagination} />
     </div>
   );
 }

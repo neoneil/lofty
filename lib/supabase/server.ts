@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { createServerDbQueryDebugFetch } from "@/lib/db-query-debug/server-fetch";
 
 export async function createClient() {
   const cookieStore = await cookies();
@@ -21,6 +22,9 @@ export async function createClient() {
             // 在某些 Server Component 场景里可能不能直接 set，先忽略
           }
         },
+      },
+      global: {
+        fetch: createServerDbQueryDebugFetch("server"),
       },
     }
   );
