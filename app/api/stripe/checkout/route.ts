@@ -86,6 +86,19 @@ async function buildCheckoutSession(req: Request, context: ServerUserContext, pa
 
   let stripeCustomerId = billingProfile?.stripe_customer_id ?? null;
 
+  if (stripeCustomerId) {
+    try {
+      const existingCustomer = await stripe.customers.retrieve(stripeCustomerId);
+      if (existingCustomer.deleted) {
+        console.warn("Stored Stripe customer was deleted; creating a new customer:", stripeCustomerId);
+        stripeCustomerId = null;
+      }
+    } catch (error) {
+      console.warn("Stored Stripe customer is not usable for the current Stripe key; creating a new customer:", stripeCustomerId, error);
+      stripeCustomerId = null;
+    }
+  }
+
   if (!stripeCustomerId) {
     const customer = await stripe.customers.create({
       email: userEmail,
