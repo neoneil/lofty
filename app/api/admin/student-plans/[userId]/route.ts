@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { deleteStudentAndRelatedData, STUDY_PLAN_SELECT, type StudyPlanRecord } from "@/lib/admin/student-plan-management";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
+import { displayExamTypeToProfile, profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 type StudyPlanPayload = {
   id?: string | null;
+  exam_type_only?: boolean;
   exam_type?: string;
   overall_target?: string | number | null;
   overall_current?: string | number | null;
@@ -42,8 +44,13 @@ function parseScore(value: unknown, label: string, required = false) {
 }
 
 function normalizePayload(userId: string, body: StudyPlanPayload) {
-  const examType = body.exam_type === "IELTS" ? "IELTS" : "PTE";
+  const profileExamType = displayExamTypeToProfile(body.exam_type);
+  const examType = profileExamTypeToDisplay(profileExamType) ?? "PTE";
   const examDeadline = String(body.exam_deadline ?? "").trim();
+
+  if (!profileExamType) {
+    throw new Error("考试类型无效。");
+  }
 
   if (!examDeadline) {
     throw new Error("考试日期不能为空。");
@@ -66,6 +73,7 @@ function normalizePayload(userId: string, body: StudyPlanPayload) {
     study_goal: String(body.study_goal ?? "485 Work Visa").trim() || "485 Work Visa",
     daily_study_hours: String(body.daily_study_hours ?? "1-2 Hours").trim() || "1-2 Hours",
     additional_notes: String(body.additional_notes ?? "").trim(),
+    profile_exam_type: profileExamType,
   };
 }
 
@@ -78,8 +86,42 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
 
   try {
     const body = (await req.json()) as StudyPlanPayload;
-    const payload = normalizePayload(userId, body);
+    const examTypeOnly = body.exam_type_only === true;
+    const requestedProfileExamType = displayExamTypeToProfile(body.exam_type);
+
+    if (examTypeOnly) {
+      if (!requestedProfileExamType) {
+        return NextResponse.json({ ok: false, message: "考试类型无效。" }, { status: 400 });
+      }
+
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update({ exam_type: requestedProfileExamType })
+        .eq("id", userId);
+
+      if (profileError) {
+        console.error("admin student profile exam type quick save error:", profileError);
+        return NextResponse.json({ ok: false, message: "保存学生考试类型失败。" }, { status: 500 });
+      }
+
+      return NextResponse.json({
+        ok: true,
+        examType: profileExamTypeToDisplay(requestedProfileExamType),
+      });
+    }
+
+    const { profile_exam_type: profileExamType, ...payload } = normalizePayload(userId, body);
     const existingPlanId = String(body.id ?? "").trim();
+
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({ exam_type: profileExamType })
+      .eq("id", userId);
+
+    if (profileError) {
+      console.error("admin student profile exam type save error:", profileError);
+      return NextResponse.json({ ok: false, message: "保存学生考试类型失败。" }, { status: 500 });
+    }
 
     const result = existingPlanId
       ? await supabase.from("study_plans").update(payload).eq("id", existingPlanId).eq("user_id", userId).select(STUDY_PLAN_SELECT).single()
@@ -92,7 +134,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
 
     return NextResponse.json({
       ok: true,
-      plan: result.data as StudyPlanRecord,
+      examType: profileExamTypeToDisplay(profileExamType),
+      plan: { ...(result.data as StudyPlanRecord), exam_type: profileExamTypeToDisplay(profileExamType) ?? result.data.exam_type },
     });
   } catch (error) {
     console.error("admin student plan save crash:", error);

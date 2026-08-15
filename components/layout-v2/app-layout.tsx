@@ -9,17 +9,20 @@ import type { User } from "@supabase/supabase-js";
 import { Topbar } from "@/components/layout-v2/topbar/topbar";
 import { AchievementUnlockNotifier } from "@/components/achievements/achievement-unlock-notifier";
 import { AppActivityHeartbeat } from "@/components/activity/app-activity-heartbeat";
+import type { ProfileExamType } from "@/lib/profile/exam-type";
 
 type Props = {
   children: ReactNode;
   user: User | null;
   canAccessAdmin: boolean;
+  examType: ProfileExamType | null;
 };
 
 export function AppLayout({
   children,
   user,
   canAccessAdmin,
+  examType,
 }: Props) {
   const searchParams = useSearchParams();
   const isCourseEmbed = searchParams.get("embed") === "course";
@@ -32,11 +35,11 @@ export function AppLayout({
     <div className="flex h-screen min-h-0 flex-col bg-[var(--bg)] lg:flex-row">
 
       <div className="lg:hidden">
-        <SidebarTopbar />
+        <SidebarTopbar examType={examType} canAccessAdmin={canAccessAdmin} />
       </div>
 
       <div className="hidden lg:block">
-        <Sidebar userId={user?.id ?? null} />
+        <Sidebar userId={user?.id ?? null} examType={examType} canAccessAdmin={canAccessAdmin} />
       </div>
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">

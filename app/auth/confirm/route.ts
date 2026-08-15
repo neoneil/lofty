@@ -1,6 +1,7 @@
 import { type EmailOtpType } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { ensureProfileForAuthUser } from "@/lib/auth/ensure-profile";
 import { applyLoginAuditCookie, recordSuccessfulLogin } from "@/lib/auth/login-audit";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 
@@ -22,6 +23,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (!error) {
+      if (data.user) await ensureProfileForAuthUser(data.user);
       const audit = data.user ? await recordSuccessfulLogin(request, data.user, "magic_link") : null;
       const response = NextResponse.redirect(`${origin}${next}`);
       applyLoginAuditCookie(response, audit);

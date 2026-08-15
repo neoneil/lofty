@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
 import { apiUnauthorized, getApiUser } from "@/lib/auth/api-auth";
+import { profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 import type { ServerSupabaseClient } from "@/lib/auth/server-auth";
 import { getPublicR2Url } from "@/lib/storage/public-url";
 
@@ -55,8 +56,8 @@ export async function GET(request: NextRequest) {
   const includeAvatars = request.nextUrl.searchParams.get("includeAvatars") === "1";
 
   const [{ data: profile, error: profileError }, { data: studyPlan, error: studyPlanError }, aiAccess, avatars] = await Promise.all([
-    supabase.from("profiles").select("full_name, email, avatar_url, role, selective_access, is_my_student").eq("id", user.id).maybeSingle(),
-    supabase.from("study_plans").select("exam_type, overall_target, exam_deadline").eq("user_id", user.id).maybeSingle(),
+    supabase.from("profiles").select("full_name, email, avatar_url, role, selective_access, is_my_student, exam_type").eq("id", user.id).maybeSingle(),
+    supabase.from("study_plans").select("overall_target, exam_deadline").eq("user_id", user.id).maybeSingle(),
     checkAiUsageLimit(user.id, "ai_feedback"),
     includeAvatars ? listAvatarOptions(supabase) : Promise.resolve([]),
   ]);
@@ -68,6 +69,8 @@ export async function GET(request: NextRequest) {
   if (studyPlanError) {
     console.error("Profile study plan summary query failed:", studyPlanError);
   }
+
+  const profileExamType = profileExamTypeToDisplay(profile?.exam_type);
 
   return NextResponse.json({
     ok: true,
@@ -86,7 +89,7 @@ export async function GET(request: NextRequest) {
       selective_access: false,
       is_my_student: false,
     },
-    studyPlan: studyPlan ?? null,
+    studyPlan: studyPlan ? { ...studyPlan, exam_type: profileExamType } : profileExamType ? { exam_type: profileExamType, overall_target: null, exam_deadline: null } : null,
     aiAccess: {
       isUnlimited: aiAccess.isUnlimited,
       unlimitedUntil: aiAccess.unlimitedUntil,

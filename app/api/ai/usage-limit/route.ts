@@ -16,7 +16,8 @@ export async function GET(req: Request) {
 
   const { searchParams } = new URL(req.url);
   const feature = searchParams.get("feature") || "ai_feedback";
-  const limit = await checkAiUsageLimit(user.id, feature);
+  const productScope = searchParams.get("product_scope") ?? searchParams.get("productScope");
+  const limit = await checkAiUsageLimit(user.id, feature, productScope === "ielts" || productScope === "pte" ? productScope : null);
   const serverTime = new Date().toISOString();
 
   return NextResponse.json({
@@ -25,6 +26,7 @@ export async function GET(req: Request) {
     code: limit.allowed ? null : limit.code,
     message: limit.allowed ? null : limit.message,
     is_unlimited: limit.isUnlimited,
+    product_scope: limit.productScope ?? null,
     unlimited_until: limit.unlimitedUntil,
     server_time: serverTime,
     today_used: limit.todayUsed,

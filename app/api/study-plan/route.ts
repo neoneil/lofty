@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { apiServerError } from "@/lib/api/responses";
 import { apiUnauthorized, getApiUser } from "@/lib/auth/api-auth";
+import { displayExamTypeToProfile, profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 
 const STUDY_PLAN_COLUMNS = "id, user_id, exam_type, overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours, additional_notes, created_at, updated_at";
 
@@ -20,18 +21,32 @@ export async function GET() {
   const context = await getApiUser();
   if (!context) return apiUnauthorized();
 
-  const { data, error } = await context.supabase
-    .from("study_plans")
-    .select(STUDY_PLAN_COLUMNS)
-    .eq("user_id", context.user.id)
-    .maybeSingle();
+  const [planResult, profileResult] = await Promise.all([
+    context.supabase
+      .from("study_plans")
+      .select(STUDY_PLAN_COLUMNS)
+      .eq("user_id", context.user.id)
+      .maybeSingle(),
+    context.supabase
+      .from("profiles")
+      .select("exam_type")
+      .eq("id", context.user.id)
+      .maybeSingle(),
+  ]);
 
-  if (error) {
-    console.error("study plan load error", error);
+  if (planResult.error) {
+    console.error("study plan load error", planResult.error);
     return apiServerError("学习计划加载失败，请稍后再试。");
   }
 
-  return NextResponse.json({ ok: true, plan: data ?? null });
+  if (profileResult.error) {
+    console.error("study plan profile load error", profileResult.error);
+  }
+
+  const profileExamType = profileExamTypeToDisplay(profileResult.data?.exam_type);
+  const plan = planResult.data ? { ...planResult.data, exam_type: profileExamType ?? planResult.data.exam_type ?? "PTE" } : null;
+
+  return NextResponse.json({ ok: true, plan, examType: profileExamType });
 }
 
 export async function PUT(request: NextRequest) {
@@ -39,10 +54,17 @@ export async function PUT(request: NextRequest) {
   if (!context) return apiUnauthorized();
 
   const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
+  const profileExamType = displayExamTypeToProfile(body.exam_type);
+
+  if (!profileExamType) {
+    return NextResponse.json({ ok: false, message: "请选择有效的考试类型。" }, { status: 400 });
+  }
+
+  const displayExamType = profileExamTypeToDisplay(profileExamType) ?? "PTE";
 
   const payload = {
     user_id: context.user.id,
-    exam_type: body.exam_type,
+    exam_type: displayExamType,
     overall_target: requiredNumber(body.overall_target),
     overall_current: nullableNumber(body.overall_current),
     listening_target: requiredNumber(body.listening_target),
@@ -74,6 +96,16 @@ export async function PUT(request: NextRequest) {
     return apiServerError("学习计划保存失败，请稍后再试。");
   }
 
+  const { error: profileUpdateError } = await context.supabase
+    .from("profiles")
+    .update({ exam_type: profileExamType })
+    .eq("id", context.user.id);
+
+  if (profileUpdateError) {
+    console.error("study plan profile exam type update error", profileUpdateError);
+    return apiServerError("考试类型保存失败，请稍后再试。");
+  }
+
   const query = existing?.id
     ? context.supabase.from("study_plans").update(payload).eq("id", existing.id).select(STUDY_PLAN_COLUMNS).single()
     : context.supabase.from("study_plans").insert(payload).select(STUDY_PLAN_COLUMNS).single();
@@ -85,5 +117,5 @@ export async function PUT(request: NextRequest) {
     return apiServerError("学习计划保存失败，请稍后再试。");
   }
 
-  return NextResponse.json({ ok: true, plan: data, created: !existing?.id });
+  return NextResponse.json({ ok: true, plan: data ? { ...data, exam_type: displayExamType } : data, examType: displayExamType, created: !existing?.id });
 }

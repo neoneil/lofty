@@ -100,13 +100,8 @@ export default async function Navbar() {
     },
 
     {
-      href: "/courses",
-      label: "课程大纲",
-      tooltip: "",
-    },
-    {
       href: "/dashboard-v2",
-      label: "题型集训",
+      label: "考试题库与AI练习",
       tooltip: "",
     },
     {
@@ -123,14 +118,14 @@ export default async function Navbar() {
 
   const practiceItems: NavItem[] = [
     {
-      href: "/ielts",
-      label: "雅思练习",
-      tooltip: "IELTS Practice",
+      href: "/courses/ielts",
+      label: "雅思课程大纲",
+      tooltip: "IELTS Course Outline",
     },
     {
-      href: "/pte",
-      label: "PTE练习",
-      tooltip: "PTE Practice",
+      href: "/courses/pte",
+      label: "PTE 课程大纲",
+      tooltip: "PTE Course Outline",
     },
   ];
 
@@ -201,19 +196,19 @@ export default async function Navbar() {
                     type="button"
                     className="relative flex h-8 cursor-pointer items-center gap-1.5 rounded-[var(--radius-sm)] border border-transparent px-3.5 text-sm font-semibold text-[var(--text-soft)] transition-all duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]"
                     aria-haspopup="menu"
-                    aria-label="练习模块"
+                    aria-label="课程设置"
                   >
-                    练习模块
+                    课程设置
                     <ChevronDown className="h-4 w-4 text-[var(--text-faint)] transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
                   </button>
 
                   <div className="pointer-events-none absolute left-1/2 top-full z-[60] w-[280px] -translate-x-1/2 translate-y-1 scale-[0.98] pt-3 opacity-0 transition-all duration-200 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100">
-                    <div role="menu" aria-label="练习模块" className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[color:var(--card)]/98 p-1.5 shadow-[var(--shadow-lg)] backdrop-blur-xl">
-                      <div className="border-b border-[var(--border)] px-3 py-2.5"><div className="text-xs font-semibold text-[var(--text)]">考试练习</div><div className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-faint)]">Practice Hub</div></div>
+                    <div role="menu" aria-label="课程设置" className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[color:var(--card)]/98 p-1.5 shadow-[var(--shadow-lg)] backdrop-blur-xl">
+                      <div className="border-b border-[var(--border)] px-3 py-2.5"><div className="text-xs font-semibold text-[var(--text)]">课程大纲</div><div className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-faint)]">Course Outline</div></div>
                       <div className="py-1">
                         {practiceItems.map((item) => {
-                          const PracticeIcon = item.href === "/pte" ? GraduationCap : BookOpenCheck;
-                          const englishLabel = item.href === "/pte" ? "PTE Academic Practice" : "IELTS Practice";
+                          const PracticeIcon = item.href.includes("/pte") ? GraduationCap : BookOpenCheck;
+                          const englishLabel = item.href.includes("/pte") ? "PTE Course Outline" : "IELTS Course Outline";
                           return (
                             <Link key={item.href} href={item.href} role="menuitem" aria-label={item.tooltip} className="group/item flex w-full items-center gap-3 rounded-[var(--radius-sm)] px-3 py-3 text-left transition-colors duration-150 hover:bg-[var(--primary-soft)] focus-visible:bg-[var(--primary-soft)] focus-visible:outline-none">
                               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition-colors group-hover/item:border-[var(--primary)]/30 group-hover/item:bg-[var(--card)]"><PracticeIcon size={17} /></span>

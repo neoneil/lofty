@@ -6,7 +6,7 @@ import { collectUnlockedAchievements, createAchievementEngineContext, getHighest
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-type StudyPlan = {
+type Profile = {
   exam_type: string | null;
 };
 
@@ -31,8 +31,8 @@ export async function GET() {
     if (!auth.ok) return auth.response;
 
     const supabase = createAdminClient();
-    const { data: studyPlan } = await supabase.from("study_plans").select("exam_type").eq("user_id", auth.user.id).maybeSingle<StudyPlan>();
-    const examType = normalizeAchievementExamType(studyPlan?.exam_type);
+    const { data: profile } = await supabase.from("profiles").select("exam_type").eq("id", auth.user.id).maybeSingle<Profile>();
+    const examType = normalizeAchievementExamType(profile?.exam_type);
     const config = getAchievementConfig(examType);
 
     try {

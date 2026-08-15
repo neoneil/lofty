@@ -149,7 +149,7 @@ export default function StudyPlanPage() {
       setLoading(true);
 
       try {
-        const response = await apiGet<{ plan: StudyPlan | null }>("/api/study-plan");
+        const response = await apiGet<{ plan: StudyPlan | null; examType?: ExamType | null }>("/api/study-plan");
         const data = response.plan;
 
         console.log("Fetched study plan:", data);
@@ -191,6 +191,13 @@ export default function StudyPlanPage() {
         console.log("No existing study plan found.");
 
         setHasExistingPlan(false);
+        const examType = response.examType;
+        if (examType) {
+          setForm((prev) => ({
+            ...prev,
+            exam_type: examType,
+          }));
+        }
         }
       } catch (error) {
         console.error("Study plan fetch error:", error);

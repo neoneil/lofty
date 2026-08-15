@@ -10,6 +10,7 @@ import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import type { AbilityAssessmentData } from "@/lib/mock-assessment/types";
 import type { MockTestDashboardData } from "@/lib/mock-test/types";
+import type { ProfileExamType } from "@/lib/profile/exam-type";
 
 type View = "center" | "assessment";
 
@@ -24,9 +25,26 @@ function formatDate(value: string | null) {
   });
 }
 
-export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestDashboardData; assessment: AbilityAssessmentData }) {
+export function MockTestCenter({ dashboard, assessment, examType }: { dashboard: MockTestDashboardData; assessment: AbilityAssessmentData; examType: ProfileExamType | null }) {
   const [view, setView] = useState<View>("center");
   const mockStartDisabled = !dashboard.access.canStartNewAttempt;
+  const showIeltsMock = examType !== "pte";
+  const showPteMock = examType !== "ielts";
+  const visibleInProgressAttempts = dashboard.inProgressAttempts.filter((attempt) => {
+    if (examType === "ielts") return attempt.examType === "ielts";
+    if (examType === "pte") return attempt.examType === "pte";
+    return true;
+  });
+  const visibleReports = dashboard.publishedReports.filter((attempt) => {
+    if (examType === "ielts") return attempt.examType === "ielts";
+    if (examType === "pte") return attempt.examType === "pte";
+    return true;
+  });
+  const summaryDescription = examType === "ielts"
+    ? "选择 IELTS 模考或综合能力评估。正式模考提交后不会立即显示答案，老师发布成绩后，你可以在账户里查看完整报告并打印保存。"
+    : examType === "pte"
+      ? "选择 PTE 模考或综合能力评估。正式模考提交后不会立即显示答案，老师发布成绩后，你可以在账户里查看完整报告并打印保存。"
+      : "选择 IELTS、PTE 或综合能力评估。正式模考提交后不会立即显示答案，老师发布成绩后，你可以在账户里查看完整报告并打印保存。";
 
   if (view === "assessment") {
     return (
@@ -46,13 +64,13 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
               <Badge><ClipboardList size={13} className="mr-1.5" />Mock Test Center</Badge>
               {dashboard.access.isUnlimited ? <Badge variant="success" className="ml-2">无限模考</Badge> : null}
               <h1 className="mt-4 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">模考中心</h1>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">选择 IELTS、PTE 或综合能力评估。正式模考提交后不会立即显示答案，老师发布成绩后，你可以在账户里查看完整报告并打印保存。</p>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">{summaryDescription}</p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-              <Metric icon={<BarChart3 size={15} />} label="总次数" value={dashboard.totalAttempts} />
-              <Metric icon={<BookOpenCheck size={15} />} label="IELTS" value={dashboard.ieltsAttempts} />
-              <Metric icon={<Mic2 size={15} />} label="PTE" value={dashboard.pteAttempts} />
-              <Metric icon={<RotateCcw size={15} />} label="未完成" value={dashboard.inProgressAttempts.length} />
+              <Metric icon={<BarChart3 size={15} />} label="总次数" value={examType === "ielts" ? dashboard.ieltsAttempts : examType === "pte" ? dashboard.pteAttempts : dashboard.totalAttempts} />
+              {showIeltsMock ? <Metric icon={<BookOpenCheck size={15} />} label="IELTS" value={dashboard.ieltsAttempts} /> : null}
+              {showPteMock ? <Metric icon={<Mic2 size={15} />} label="PTE" value={dashboard.pteAttempts} /> : null}
+              <Metric icon={<RotateCcw size={15} />} label="未完成" value={visibleInProgressAttempts.length} />
               <Metric icon={<History size={15} />} label="最近提交" value={formatDate(dashboard.latestSubmittedAt)} wide />
             </div>
           </div>
@@ -71,7 +89,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
         </section>
       ) : null}
 
-      {dashboard.inProgressAttempts.length > 0 ? (
+      {visibleInProgressAttempts.length > 0 ? (
         <section className="rounded-[var(--radius-lg)] border border-[var(--warning)]/30 bg-[var(--warning-soft)] p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -80,7 +98,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
             </div>
           </div>
           <div className="mt-3 grid gap-2 md:grid-cols-2">
-            {dashboard.inProgressAttempts.map((attempt) => {
+            {visibleInProgressAttempts.map((attempt) => {
               const testNumber = typeof attempt.metadata.testNumber === "number" ? attempt.metadata.testNumber : 1;
               const href = attempt.examType === "ielts" ? `/mock-test/ielts?test=${testNumber}` : "/mock-test/pte";
               return (
@@ -100,7 +118,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
       ) : null}
 
       <section className="grid gap-4 lg:grid-cols-3">
-        <ExamEntry
+        {showIeltsMock ? <ExamEntry
           icon={<Headphones size={24} />}
           label="IELTS Mock"
           title="雅思模考"
@@ -108,8 +126,8 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
           footer="静态剑桥题源 · 自动保存 · 成绩邮件发布"
           href="/mock-test/ielts?test=1"
           disabled={mockStartDisabled}
-        />
-        <ExamEntry
+        /> : null}
+        {showPteMock ? <ExamEntry
           icon={<Mic2 size={24} />}
           label="PTE Mock"
           title="PTE 模考"
@@ -117,7 +135,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
           footer="section 间断点 · R2 录音 · 分批评分"
           href="/mock-test/pte"
           disabled={mockStartDisabled}
-        />
+        /> : null}
         <button type="button" onClick={() => setView("assessment")} className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-5 text-left shadow-[var(--shadow-sm)] transition hover:border-[var(--primary)]/40 hover:bg-[var(--card-hover)]">
           <span className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--warning-soft)] text-[var(--warning)]"><FileText size={24} /></span>
           <Badge variant="secondary" className="mt-5">Assessment</Badge>
@@ -127,7 +145,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
         </button>
       </section>
 
-      {dashboard.publishedReports.length > 0 ? (
+      {visibleReports.length > 0 ? (
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between gap-3">
             <div>
@@ -137,7 +155,7 @@ export function MockTestCenter({ dashboard, assessment }: { dashboard: MockTestD
             <Printer size={18} className="text-[var(--text-soft)]" />
           </div>
           <div className="mt-3 space-y-2">
-            {dashboard.publishedReports.map((attempt) => (
+            {visibleReports.map((attempt) => (
               <Link key={attempt.id} href={`/mock-test/report/${attempt.id}`} className="flex items-center justify-between gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 transition hover:border-[var(--primary)]/40">
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-bold text-[var(--text)]">{attempt.title}</span>

@@ -3,7 +3,7 @@ import type Stripe from "stripe";
 
 import { getAppOrigin } from "@/lib/auth/app-origin";
 import { getServerUser } from "@/lib/auth/server-auth";
-import { AI_ACCESS_PACKAGES, getAiAccessPackage } from "@/lib/billing/ai-access-packages";
+import { AI_ACCESS_PACKAGES, getAiAccessPackage, getAiAccessProductScopeConfig, getScopedStripePriceEnvVar, normalizeAiAccessProductScope, type AiAccessProductScope } from "@/lib/billing/ai-access-packages";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeClient } from "@/lib/stripe/server";
 
@@ -13,8 +13,13 @@ function getConfiguredPriceId(priceEnvVar: string) {
   return process.env[priceEnvVar]?.trim() || null;
 }
 
-function createLineItem(pkg: (typeof AI_ACCESS_PACKAGES)[number]): Stripe.Checkout.SessionCreateParams.LineItem {
-  const configuredPriceId = getConfiguredPriceId(pkg.priceEnvVar);
+function getConfiguredScopedPriceId(pkg: (typeof AI_ACCESS_PACKAGES)[number], productScope: AiAccessProductScope) {
+  return getConfiguredPriceId(getScopedStripePriceEnvVar(pkg, productScope)) ?? getConfiguredPriceId(pkg.priceEnvVar);
+}
+
+function createLineItem(pkg: (typeof AI_ACCESS_PACKAGES)[number], productScope: AiAccessProductScope): Stripe.Checkout.SessionCreateParams.LineItem {
+  const configuredPriceId = getConfiguredScopedPriceId(pkg, productScope);
+  const scopeConfig = getAiAccessProductScopeConfig(productScope);
 
   if (configuredPriceId) {
     return {
@@ -29,9 +34,10 @@ function createLineItem(pkg: (typeof AI_ACCESS_PACKAGES)[number]): Stripe.Checko
       currency: "aud",
       unit_amount: pkg.amountAudCents,
       product_data: {
-        name: pkg.label,
+        name: `${scopeConfig?.label ?? productScope.toUpperCase()} ${pkg.days} 天权限`,
         description: "LoftyPTE AI 学习助手一次性时间包",
         metadata: {
+          product_scope: productScope,
           package_code: pkg.code,
           access_days: String(pkg.days),
         },
@@ -48,10 +54,12 @@ export async function POST(req: Request) {
   }
 
   let packageCode = "";
+  let productScope: AiAccessProductScope | null = null;
 
   try {
-    const body = await req.json() as { packageCode?: string };
+    const body = await req.json() as { packageCode?: string; productScope?: string; product_scope?: string };
     packageCode = body.packageCode ?? "";
+    productScope = normalizeAiAccessProductScope(body.productScope ?? body.product_scope);
   } catch {
     return NextResponse.json({ ok: false, message: "请求格式不正确。" }, { status: 400 });
   }
@@ -60,6 +68,10 @@ export async function POST(req: Request) {
 
   if (!pkg) {
     return NextResponse.json({ ok: false, message: "请选择有效的 AI 时间包。" }, { status: 400 });
+  }
+
+  if (!productScope) {
+    return NextResponse.json({ ok: false, message: "请选择 IELTS AI 或 PTE AI。" }, { status: 400 });
   }
 
   const stripe = getStripeClient();
@@ -108,17 +120,19 @@ export async function POST(req: Request) {
     mode: "payment",
     customer: stripeCustomerId,
     client_reference_id: context.user.id,
-    line_items: [createLineItem(pkg)],
+    line_items: [createLineItem(pkg, productScope)],
     success_url: `${origin}/settings/ai-usage?payment=success&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/settings/ai-usage?payment=cancelled`,
     metadata: {
       user_id: context.user.id,
+      product_scope: productScope,
       package_code: pkg.code,
       access_days: String(pkg.days),
     },
     payment_intent_data: {
       metadata: {
         user_id: context.user.id,
+        product_scope: productScope,
         package_code: pkg.code,
         access_days: String(pkg.days),
       },
@@ -129,6 +143,7 @@ export async function POST(req: Request) {
     .from("ai_access_purchases")
     .insert({
       user_id: context.user.id,
+      product_scope: productScope,
       package_code: pkg.code,
       access_days: pkg.days,
       status: "pending",
@@ -140,7 +155,8 @@ export async function POST(req: Request) {
       metadata: {
         checkout_created_by: "app",
         price_env_var: pkg.priceEnvVar,
-        configured_price_id: getConfiguredPriceId(pkg.priceEnvVar),
+        scoped_price_env_var: getScopedStripePriceEnvVar(pkg, productScope),
+        configured_price_id: getConfiguredScopedPriceId(pkg, productScope),
       },
     });
 

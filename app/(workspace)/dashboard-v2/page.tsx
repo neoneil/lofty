@@ -12,16 +12,17 @@ import { getRemaining, formatRemainingTime, formatUnlimitedExpiry } from "@/lib/
 import { collectUnlockedAchievements, createAchievementEngineContext, getHighestUnlockedCategoryLevel } from "@/lib/achievements/engine";
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
 import type { QuestionTypeStat } from "@/lib/achievements/types";
+import { profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 import { cn } from "@/lib/utils";
 
 type Profile = {
   full_name: string | null;
   email: string | null;
   avatar_url: string | null;
+  exam_type: string | null;
 };
 
 type StudyPlan = {
-  exam_type: string | null;
   overall_target: number | null;
   overall_current: number | null;
   listening_target: number | null;
@@ -173,15 +174,16 @@ export default async function DashboardPage() {
   const userContext = await requireUser("/dashboard-v2");
   const { supabase, user } = userContext;
   const [{ data: profile }, { data: studyPlan }, pteAchievementStats, ieltsAchievementStats, adminContext, aiLimit, { data: recentAttempts }] = await Promise.all([
-    supabase.from("profiles").select("full_name, email, avatar_url").eq("id", user.id).maybeSingle<Profile>(),
-    supabase.from("study_plans").select("exam_type, overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours").eq("user_id", user.id).maybeSingle<StudyPlan>(),
+    supabase.from("profiles").select("full_name, email, avatar_url, exam_type").eq("id", user.id).maybeSingle<Profile>(),
+    supabase.from("study_plans").select("overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours").eq("user_id", user.id).maybeSingle<StudyPlan>(),
     getAchievementStatsForUser(supabase, user.id, { examType: "PTE" }),
     getAchievementStatsForUser(supabase, user.id, { examType: "IELTS" }),
     getServerUserWithRole(["admin"], userContext),
     checkAiUsageLimit(user.id, "dashboard"),
     supabase.from("student_attempts").select("module_type, question_source, submitted_at, score, accuracy, is_correct, status").eq("user_id", user.id).order("submitted_at", { ascending: false, nullsFirst: false }).limit(5).returns<RecentAttempt[]>(),
   ]);
-  const preferredExamType = normalizeAchievementExamType(studyPlan?.exam_type);
+  const preferredExamType = normalizeAchievementExamType(profile?.exam_type);
+  const displayExamType = profileExamTypeToDisplay(profile?.exam_type);
   const isAdmin = Boolean(adminContext);
   const achievementStats = preferredExamType === "IELTS" ? ieltsAchievementStats : pteAchievementStats;
 
@@ -225,7 +227,7 @@ export default async function DashboardPage() {
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-2">
-                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-faint)]">考试</p><p className="mt-1 truncate text-sm font-bold text-[var(--text)]">{studyPlan?.exam_type || "未设置"}</p></div>
+                <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-faint)]">考试</p><p className="mt-1 truncate text-sm font-bold text-[var(--text)]">{displayExamType || "未设置"}</p></div>
                 <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-faint)]">目标</p><p className="mt-1 text-sm font-bold text-[var(--primary)]">{studyPlan?.overall_target ?? "-"}</p></div>
                 <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-faint)]">日期</p><p className="mt-1 text-sm font-bold text-[var(--text)]">{formatDate(studyPlan?.exam_deadline)}</p></div>
               </div>

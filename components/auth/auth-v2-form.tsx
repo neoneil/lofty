@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
 import { BRAND_NAME_CN, BRAND_TEACHER_CN } from "@/lib/brand";
 import { AuthV2CharacterScene, type AuthV2CharacterFocus } from "@/components/auth/auth-v2-character-scene";
+import type { ProfileExamType } from "@/lib/profile/exam-type";
 
 const REGISTRATION_CLOSED = false;
 
@@ -18,6 +19,7 @@ type AuthV2Mode = "login" | "signup";
 const authErrorMessages: Record<string, string> = {
   google_login_failed: "Google 登录没有完成，请重新选择账号后再试。",
   google_profile_failed: "Google 账号资料同步失败，请稍后重试，或先使用邮箱登录。",
+  exam_type_required: "请选择你的考试类型后再继续注册。",
   profile_required: "账号资料还没有准备好，请重新登录一次。",
 };
 
@@ -72,6 +74,7 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [examType, setExamType] = useState<ProfileExamType | "">("");
   const [message, setMessage] = useState(initialMessage);
   const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -115,6 +118,11 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
       return;
     }
 
+    if (!examType) {
+      setMessage("请选择你的考试类型：IELTS 或 PTE。");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
 
@@ -127,6 +135,7 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
         email,
         password,
         fullName,
+        examType,
         next,
       }),
     });
@@ -148,9 +157,19 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
       return;
     }
 
+    if (isSignup && !examType) {
+      setMessage("请选择你的考试类型：IELTS 或 PTE。");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
-    window.location.href = `/api/auth/google?mode=${isSignup ? "signup" : "login"}&next=${encodeURIComponent(next)}`;
+    const params = new URLSearchParams({
+      mode: isSignup ? "signup" : "login",
+      next,
+    });
+    if (isSignup && examType) params.set("exam_type", examType);
+    window.location.href = `/api/auth/google?${params.toString()}`;
   }
 
   const inputClassName =
@@ -200,6 +219,35 @@ export default function AuthV2Form({ mode }: { mode: AuthV2Mode }) {
                     className={inputClassName}
                   />
                 </FieldShell>
+              )}
+
+              {isSignup && (
+                <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
+                  <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                    <BookOpenCheck className="size-4 text-[var(--primary)]" />
+                    选择考试类型
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {(["ielts", "pte"] as const).map((item) => {
+                      const active = examType === item;
+                      return (
+                        <button
+                          key={item}
+                          type="button"
+                          onClick={() => setExamType(item)}
+                          className={cn(
+                            "h-11 rounded-[var(--radius-md)] border text-sm font-bold transition",
+                            active
+                              ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]"
+                              : "border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] hover:border-[var(--primary)]/40 hover:text-[var(--text)]",
+                          )}
+                        >
+                          {item === "ielts" ? "IELTS" : "PTE"}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               )}
 
               <FieldShell icon={<Mail className="size-4" />}>

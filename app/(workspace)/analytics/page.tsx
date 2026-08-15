@@ -9,7 +9,7 @@ import { getLearningAnalyticsForUser, round } from "@/lib/analytics/pte-analytic
 
 type ExamType = "PTE" | "IELTS";
 
-type StudyPlanRow = {
+type ProfileRow = {
   exam_type: string | null;
 };
 
@@ -108,13 +108,13 @@ function AnalyticsExamPanel({ examType, analytics, defaultOpen }: { examType: Ex
 export default async function AnalyticsPage() {
   const userContext = await requireUser("/analytics");
   const { supabase, user } = userContext;
-  const [{ data: studyPlan }, adminContext, pteAnalytics, ieltsAnalytics] = await Promise.all([
-    supabase.from("study_plans").select("exam_type").eq("user_id", user.id).maybeSingle<StudyPlanRow>(),
+  const [{ data: profile }, adminContext, pteAnalytics, ieltsAnalytics] = await Promise.all([
+    supabase.from("profiles").select("exam_type").eq("id", user.id).maybeSingle<ProfileRow>(),
     getServerUserWithRole(["admin"], userContext),
     getLearningAnalyticsForUser(supabase, user.id, "PTE"),
     getLearningAnalyticsForUser(supabase, user.id, "IELTS"),
   ]);
-  const preferredExamType = normalizePreferredExamType(studyPlan?.exam_type);
+  const preferredExamType = normalizePreferredExamType(profile?.exam_type);
   const isAdmin = Boolean(adminContext);
 
   return (

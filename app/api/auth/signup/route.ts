@@ -4,12 +4,15 @@ import { checkRateLimit, getClientIp } from "@/lib/api/rate-limit";
 import { apiRateLimited } from "@/lib/api/responses";
 import { getAppOrigin } from "@/lib/auth/app-origin";
 import { getSafeNextPath } from "@/lib/auth/safe-next-path";
+import { normalizeProfileExamType } from "@/lib/profile/exam-type";
 import { createClient } from "@/lib/supabase/server";
 
 type SignupPayload = {
   email?: string;
   password?: string;
   fullName?: string;
+  examType?: string;
+  exam_type?: string;
   next?: string;
 };
 
@@ -19,6 +22,7 @@ export async function POST(request: NextRequest) {
     const email = String(body.email ?? "").trim().toLowerCase();
     const password = String(body.password ?? "");
     const fullName = String(body.fullName ?? "").trim();
+    const examType = normalizeProfileExamType(body.examType ?? body.exam_type);
     const next = getSafeNextPath(body.next);
     const origin = getAppOrigin(request);
     const limited = checkRateLimit({ key: `auth-signup:${getClientIp(request)}:${email || "unknown"}`, limit: 5, windowMs: 60_000 });
@@ -32,6 +36,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, message: "请输入密码。" }, { status: 400 });
     }
 
+    if (!examType) {
+      return NextResponse.json({ ok: false, message: "请选择你的考试类型：IELTS 或 PTE。" }, { status: 400 });
+    }
+
     const supabase = await createClient();
     const { error } = await supabase.auth.signUp({
       email,
@@ -39,6 +47,7 @@ export async function POST(request: NextRequest) {
       options: {
         data: {
           full_name: fullName,
+          exam_type: examType,
         },
         emailRedirectTo: `${origin}/auth/confirm?next=${encodeURIComponent(next)}`,
       },

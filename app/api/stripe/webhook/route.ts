@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 
+import { normalizeAiAccessProductScope } from "@/lib/billing/ai-access-packages";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeClient, getStripeWebhookSecret } from "@/lib/stripe/server";
 
@@ -15,11 +16,13 @@ function getSessionMetadata(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.user_id || session.client_reference_id || "";
   const packageCode = session.metadata?.package_code || "";
   const accessDays = Number(session.metadata?.access_days);
+  const productScope = normalizeAiAccessProductScope(session.metadata?.product_scope);
 
   return {
     userId,
     packageCode,
     accessDays,
+    productScope,
   };
 }
 
@@ -53,9 +56,9 @@ async function recordWebhookEvent(event: Stripe.Event, payload: string) {
 }
 
 async function fulfillCheckoutSession(session: Stripe.Checkout.Session) {
-  const { userId, packageCode, accessDays } = getSessionMetadata(session);
+  const { userId, packageCode, accessDays, productScope } = getSessionMetadata(session);
 
-  if (!userId || !packageCode || !Number.isFinite(accessDays)) {
+  if (!userId || !productScope || !packageCode || !Number.isFinite(accessDays)) {
     throw new Error(`Missing checkout metadata for session ${session.id}.`);
   }
 
@@ -85,8 +88,9 @@ async function fulfillCheckoutSession(session: Stripe.Checkout.Session) {
     }
   }
 
-  const { data, error } = await supabase.rpc("fulfill_ai_access_purchase", {
+  const { data, error } = await supabase.rpc("fulfill_ai_access_purchase_scoped", {
     p_user_id: userId,
+    p_product_scope: productScope,
     p_package_code: packageCode,
     p_access_days: accessDays,
     p_stripe_checkout_session_id: session.id,
@@ -98,6 +102,7 @@ async function fulfillCheckoutSession(session: Stripe.Checkout.Session) {
     p_payment_status: session.payment_status,
     p_metadata: {
       checkout_session_id: session.id,
+      product_scope: productScope,
       payment_method_collection: session.payment_method_collection,
       customer_email: session.customer_details?.email ?? session.customer_email ?? null,
     },

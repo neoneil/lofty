@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getPteAnalyticsForUser } from "@/lib/analytics/pte-analytics";
+import { profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 
 const SPEAKING_AI_TYPES = new Set(["RA", "DI", "RL", "SGD"]);
 
@@ -132,6 +133,7 @@ export async function GET(
   const [
     { data: allAttempts, error: attemptsError },
     { data: studyPlan, error: studyPlanError },
+    { data: profile, error: profileError },
     { data: ieltsSpeakingAttemptSummaries, error: ieltsSpeakingError },
     ieltsWritingSummaryResult,
     analytics,
@@ -142,8 +144,13 @@ export async function GET(
       .eq("user_id", userId),
     supabase
       .from("study_plans")
-      .select("exam_type, overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours, additional_notes")
+      .select("overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours, additional_notes")
       .eq("user_id", userId)
+      .maybeSingle(),
+    supabase
+      .from("profiles")
+      .select("exam_type")
+      .eq("id", userId)
       .maybeSingle(),
     supabase
       .schema("ielts")
@@ -165,13 +172,14 @@ export async function GET(
   if (
     attemptsError ||
     studyPlanError ||
+    profileError ||
     ieltsSpeakingError ||
     (ieltsWritingError && !isMissingTableError(ieltsWritingError))
   ) {
     return NextResponse.json(
       {
         ok: false,
-        message: attemptsError?.message ?? studyPlanError?.message ?? ieltsSpeakingError?.message ?? ieltsWritingError?.message,
+        message: attemptsError?.message ?? studyPlanError?.message ?? profileError?.message ?? ieltsSpeakingError?.message ?? ieltsWritingError?.message,
       },
       { status: 500 },
     );
@@ -251,12 +259,14 @@ export async function GET(
   const summaries = Array.from(summaryMap.values()).sort(
     (a, b) => b.attempts - a.attempts,
   );
+  const profileExamType = profileExamTypeToDisplay(profile?.exam_type);
+  const mergedStudyPlan = studyPlan ? { ...studyPlan, exam_type: profileExamType } : null;
 
   if (!type) {
     return NextResponse.json({
       ok: true,
       summaries,
-      studyPlan,
+      studyPlan: mergedStudyPlan,
       analytics,
       practices: [],
     });
@@ -309,7 +319,7 @@ export async function GET(
     return NextResponse.json({
       ok: true,
       summaries,
-      studyPlan,
+      studyPlan: mergedStudyPlan,
       analytics,
       practices,
       ieltsWritingHistoryReady: !ieltsWritingError,
@@ -352,7 +362,7 @@ export async function GET(
     return NextResponse.json({
       ok: true,
       summaries,
-      studyPlan,
+      studyPlan: mergedStudyPlan,
       analytics,
       practices,
       ieltsWritingHistoryReady: !ieltsWritingError,
@@ -399,7 +409,7 @@ export async function GET(
     return NextResponse.json({
       ok: true,
       summaries,
-      studyPlan,
+      studyPlan: mergedStudyPlan,
       analytics,
       practices,
     });
@@ -439,7 +449,7 @@ export async function GET(
   return NextResponse.json({
     ok: true,
     summaries,
-    studyPlan,
+    studyPlan: mergedStudyPlan,
     analytics,
     practices,
   });

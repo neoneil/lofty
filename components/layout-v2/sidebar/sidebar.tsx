@@ -30,11 +30,14 @@ import { SidebarSettings } from "./sidebar-settings";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { BRAND_NAME_CN } from "@/lib/brand";
 import { ConfirmDialog } from "@/components/ui-v2/confirm-dialog";
+import { getProfileExamTypeLabel, type ProfileExamType } from "@/lib/profile/exam-type";
 
-export function Sidebar({ userId }: { userId: string | null }) {
+export function Sidebar({ userId, examType, canAccessAdmin }: { userId: string | null; examType: ProfileExamType | null; canAccessAdmin: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const showPte = canAccessAdmin || examType !== "ielts";
+  const showIelts = canAccessAdmin || examType !== "pte";
   const shouldStartCollapsed = isIeltsExamRoute(pathname, searchParams);
   const [collapsed, setCollapsed] = useState(shouldStartCollapsed);
   const [pendingHref, setPendingHref] = useState<string | null>(null);
@@ -44,12 +47,16 @@ export function Sidebar({ userId }: { userId: string | null }) {
     return () => window.clearTimeout(timer);
   }, [shouldStartCollapsed]);
 
-  const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
+  const routeQuestionBank = pathname.startsWith("/pte") && showPte ? "pte" : pathname.startsWith("/ielts") && showIelts ? "ielts" : null;
   const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
-  const activeQuestionBank = questionBankOverride?.pathname === pathname ? questionBankOverride.value : routeQuestionBank;
+  const overrideValue =
+    questionBankOverride?.value === "pte" && showPte ? "pte"
+      : questionBankOverride?.value === "ielts" && showIelts ? "ielts"
+        : null;
+  const activeQuestionBank = questionBankOverride?.pathname === pathname ? overrideValue : routeQuestionBank;
   const questionBankOpen = activeQuestionBank === "pte";
   const questionBankOpen2 = activeQuestionBank === "ielts";
-  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
+  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : getProfileExamTypeLabel(examType)}`;
   const shouldConfirmLeave = isIeltsExamRoute(pathname, searchParams);
 
   function handleSidebarClickCapture(event: React.MouseEvent<HTMLElement>) {
@@ -115,11 +122,11 @@ export function Sidebar({ userId }: { userId: string | null }) {
           />
 
           <SidebarItem
-            href="/achievements"
-            label="成就"
-            subtitle="Achievements"
-            icon={<Trophy size={18} />}
-            iconTone="warning"
+            href="/study-plan"
+            label="学习计划"
+            subtitle="Study Plan"
+            icon={<GraduationCap size={18} />}
+            iconTone="success"
             collapsed={collapsed}
           />
 
@@ -132,18 +139,9 @@ export function Sidebar({ userId }: { userId: string | null }) {
             collapsed={collapsed}
             badge="直播"
           />
-
-          <SidebarItem
-            href="/study-plan"
-            label="学习计划"
-            subtitle="Study Plan"
-            icon={<GraduationCap size={18} />}
-            iconTone="success"
-            collapsed={collapsed}
-          />
         </SidebarGroup>
 
-        <SidebarGroup title="PTE 题库" subtitle="PTE Question Bank" collapsed={collapsed}>
+        {showPte ? <SidebarGroup title="PTE 题库" subtitle="PTE Question Bank" collapsed={collapsed}>
           <button
             onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen ? null : "pte" })}
             className={cn(
@@ -213,8 +211,8 @@ export function Sidebar({ userId }: { userId: string | null }) {
               />
             </div>
           )}
-        </SidebarGroup>
-        <SidebarGroup title="IELTS 题库" subtitle="IELTS Question Bank" collapsed={collapsed}>
+        </SidebarGroup> : null}
+        {showIelts ? <SidebarGroup title="IELTS 题库" subtitle="IELTS Question Bank" collapsed={collapsed}>
           <button
             onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen2 ? null : "ielts" })}
             className={cn(
@@ -305,7 +303,7 @@ export function Sidebar({ userId }: { userId: string | null }) {
               />
             </div>
           )}
-        </SidebarGroup>
+        </SidebarGroup> : null}
         <SidebarGroup collapsed={collapsed}>
           <SidebarItem
             href="/my-courses"
@@ -367,6 +365,15 @@ export function Sidebar({ userId }: { userId: string | null }) {
             subtitle="Audio Collection"
             icon={<Headphones size={18} />}
             iconTone="primary"
+            collapsed={collapsed}
+          />
+
+          <SidebarItem
+            href="/achievements"
+            label="成就"
+            subtitle="Achievements"
+            icon={<Trophy size={18} />}
+            iconTone="warning"
             collapsed={collapsed}
           />
         </SidebarGroup>

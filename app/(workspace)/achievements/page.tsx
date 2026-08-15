@@ -8,7 +8,7 @@ import { requireUser } from "@/lib/auth/require-user";
 import { getServerUserWithRole } from "@/lib/auth/server-auth";
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
 
-type StudyPlan = {
+type Profile = {
   exam_type: string | null;
 };
 
@@ -35,13 +35,13 @@ function getExamMeta(examType: AchievementExamType) {
 export default async function AchievementsPage() {
   const userContext = await requireUser("/achievements");
   const { supabase, user } = userContext;
-  const [{ data: studyPlan }, pteStats, ieltsStats, adminContext] = await Promise.all([
-    supabase.from("study_plans").select("exam_type").eq("user_id", user.id).maybeSingle<StudyPlan>(),
+  const [{ data: profile }, pteStats, ieltsStats, adminContext] = await Promise.all([
+    supabase.from("profiles").select("exam_type").eq("id", user.id).maybeSingle<Profile>(),
     getAchievementStatsForUser(supabase, user.id, { examType: "PTE" }),
     getAchievementStatsForUser(supabase, user.id, { examType: "IELTS" }),
     getServerUserWithRole(["admin"], userContext),
   ]);
-  const preferredExamType = normalizeAchievementExamType(studyPlan?.exam_type);
+  const preferredExamType = normalizeAchievementExamType(profile?.exam_type);
   const isAdmin = Boolean(adminContext);
   const sections = [
     { examType: "PTE" as const, stats: pteStats },
@@ -61,7 +61,7 @@ export default async function AchievementsPage() {
             <div className="max-w-2xl">
               <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />成就中心</Badge>
               <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">PTE 与 IELTS 成就分开计算</h1>
-              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">默认展开会跟随你的 study plan 考试类型；管理员会同时展开两套，方便检查。</p>
+              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">默认展开会跟随你的 Profile 考试类型；管理员会同时展开两套，方便检查。</p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-center"><div className="text-xl font-semibold text-[var(--text)]">{formatNumber(pteStats.overview.total_completed)}</div><div className="mt-1 text-xs text-[var(--text-faint)]">PTE 完成</div></div>
@@ -83,7 +83,7 @@ export default async function AchievementsPage() {
               <div className="flex min-w-0 items-start gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-[var(--primary)]"><Icon size={20} /></span>
                 <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2"><h2 className="text-lg font-bold text-[var(--text)]">{meta.title}</h2><Badge variant={preferredExamType === examType ? "default" : "secondary"}>{preferredExamType === examType ? "Study Plan 默认" : examType}</Badge></div>
+                  <div className="flex flex-wrap items-center gap-2"><h2 className="text-lg font-bold text-[var(--text)]">{meta.title}</h2><Badge variant={preferredExamType === examType ? "default" : "secondary"}>{preferredExamType === examType ? "Profile 默认" : examType}</Badge></div>
                   <p className="mt-1 text-sm leading-6 text-[var(--text-soft)]">{meta.description}</p>
                 </div>
               </div>

@@ -44,6 +44,7 @@ type StudentPlanRow = {
   lastSignInAt: string | null;
   deviceCount: number;
   latestDevice: StudentLoginDeviceSummary | null;
+  examType: "PTE" | "IELTS" | null;
   plan: StudyPlanRecord | null;
 };
 
@@ -136,7 +137,7 @@ type Props = {
 
 type FormState = {
   id: string | null;
-  exam_type: "PTE" | "IELTS";
+  exam_type: "PTE" | "IELTS" | "";
   overall_target: string;
   overall_current: string;
   listening_target: string;
@@ -155,7 +156,7 @@ type FormState = {
 
 const emptyForm: FormState = {
   id: null,
-  exam_type: "PTE",
+  exam_type: "",
   overall_target: "",
   overall_current: "",
   listening_target: "",
@@ -208,12 +209,12 @@ function getDisplayName(row: StudentPlanRow) {
   return row.fullName?.trim() || row.email?.trim() || row.userId;
 }
 
-function planToForm(plan: StudyPlanRecord | null): FormState {
-  if (!plan) return emptyForm;
+function planToForm(plan: StudyPlanRecord | null, examType?: "PTE" | "IELTS" | null): FormState {
+  if (!plan) return { ...emptyForm, exam_type: examType ?? "" };
 
   return {
     id: plan.id,
-    exam_type: plan.exam_type === "IELTS" ? "IELTS" : "PTE",
+    exam_type: examType ?? (plan.exam_type === "IELTS" ? "IELTS" : plan.exam_type === "PTE" ? "PTE" : ""),
     overall_target: plan.overall_target?.toString() ?? "",
     overall_current: plan.overall_current?.toString() ?? "",
     listening_target: plan.listening_target?.toString() ?? "",
@@ -277,8 +278,9 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
   const [rows, setRows] = useState(initialRows);
   const [selectedUserId, setSelectedUserId] = useState(initialRows[0]?.userId ?? "");
   const [search, setSearch] = useState("");
-  const [form, setForm] = useState<FormState>(() => planToForm(initialRows[0]?.plan ?? null));
+  const [form, setForm] = useState<FormState>(() => planToForm(initialRows[0]?.plan ?? null, initialRows[0]?.examType ?? null));
   const [saving, setSaving] = useState(false);
+  const [examTypeSaving, setExamTypeSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [previewLoading, setPreviewLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -298,15 +300,15 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     if (!keyword) return rows;
 
     return rows.filter((row) => {
-      const haystack = [row.userId, row.email, row.fullName, row.plan?.exam_type, row.plan?.study_goal].filter(Boolean).join(" ").toLowerCase();
+      const haystack = [row.userId, row.email, row.fullName, row.examType, row.plan?.study_goal].filter(Boolean).join(" ").toLowerCase();
       return haystack.includes(keyword);
     });
   }, [rows, search]);
 
   const stats = useMemo(() => {
     const withPlans = rows.filter((row) => row.plan).length;
-    const ptePlans = rows.filter((row) => row.plan?.exam_type === "PTE").length;
-    const ieltsPlans = rows.filter((row) => row.plan?.exam_type === "IELTS").length;
+    const ptePlans = rows.filter((row) => row.examType === "PTE").length;
+    const ieltsPlans = rows.filter((row) => row.examType === "IELTS").length;
 
     return {
       total: rows.length,
@@ -319,7 +321,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
 
   function selectStudent(row: StudentPlanRow) {
     setSelectedUserId(row.userId);
-    setForm(planToForm(row.plan));
+    setForm(planToForm(row.plan, row.examType));
     setSaveMessage("");
     setDeletePreview(null);
     setDeleteResult(null);
@@ -337,8 +339,64 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
     }));
   }
 
+  async function updateExamType(nextExamType: string) {
+    if (!selectedStudent) return;
+    if (nextExamType !== "IELTS" && nextExamType !== "PTE") return;
+
+    const normalizedExamType = nextExamType;
+    const previousExamType = form.exam_type;
+    setForm((current) => ({ ...current, exam_type: normalizedExamType }));
+    setExamTypeSaving(true);
+    setSaveMessage("");
+
+    try {
+      const response = await fetch(`/api/admin/student-plans/${selectedStudent.userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          exam_type_only: true,
+          exam_type: normalizedExamType,
+        }),
+      });
+      const json = await response.json();
+
+      if (!response.ok || !json.ok) {
+        throw new Error(json.message ?? "考试类型保存失败。");
+      }
+
+      const savedExamType = json.examType === "IELTS" ? "IELTS" : "PTE";
+      setRows((current) => current.map((row) => {
+        if (row.userId !== selectedStudent.userId) return row;
+        return {
+          ...row,
+          examType: savedExamType,
+          plan: row.plan ? { ...row.plan, exam_type: savedExamType } : row.plan,
+        };
+      }));
+      setForm((current) => ({ ...current, exam_type: savedExamType }));
+      setSaveMessage(`考试类型已保存到 Profile：${savedExamType}`);
+    } catch (error) {
+      setForm((current) => ({ ...current, exam_type: previousExamType }));
+      setSaveMessage(error instanceof Error ? error.message : "考试类型保存失败。");
+    } finally {
+      setExamTypeSaving(false);
+    }
+  }
+
   async function savePlan() {
     if (!selectedStudent) return;
+
+    if (!form.exam_type) {
+      setSaveMessage("请先选择考试类型。");
+      return;
+    }
+
+    if (!form.overall_target || !form.listening_target || !form.reading_target || !form.writing_target || !form.speaking_target || !form.exam_deadline) {
+      setSaveMessage("考试类型已保存到 Profile；学习计划需要填写目标分和考试日期后再保存。");
+      return;
+    }
 
     setSaving(true);
     setSaveMessage("");
@@ -358,8 +416,9 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
       }
 
       const savedPlan = json.plan as StudyPlanRecord;
-      setRows((current) => current.map((row) => (row.userId === selectedStudent.userId ? { ...row, plan: savedPlan } : row)));
-      setForm(planToForm(savedPlan));
+      const savedExamType = json.examType === "IELTS" ? "IELTS" : "PTE";
+      setRows((current) => current.map((row) => (row.userId === selectedStudent.userId ? { ...row, examType: savedExamType, plan: savedPlan } : row)));
+      setForm(planToForm(savedPlan, savedExamType));
       setSaveMessage("学习计划已保存。");
     } catch (error) {
       setSaveMessage(error instanceof Error ? error.message : "保存失败。");
@@ -417,7 +476,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
       const nextRows = rows.filter((row) => row.userId !== selectedStudent.userId);
       setRows(nextRows);
       setSelectedUserId(nextRows[0]?.userId ?? "");
-      setForm(planToForm(nextRows[0]?.plan ?? null));
+      setForm(planToForm(nextRows[0]?.plan ?? null, nextRows[0]?.examType ?? null));
       setDeletePreview(null);
       setDeleteResult(json.result as StudentDeletionResult);
       setDeleteConfirmation("");
@@ -500,7 +559,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                       <span className="mt-1 block truncate text-xs text-[var(--text-soft)]">{row.email || row.userId}</span>
                     </span>
                     <span className="shrink-0 text-right">
-                      <Badge variant={row.plan ? "success" : "secondary"} className="text-[10px]">{row.plan ? row.plan.exam_type : "No Plan"}</Badge>
+                      <Badge variant={row.examType ? "success" : "secondary"} className="text-[10px]">{row.examType ?? "null"}</Badge>
                       <span className="mt-1 block text-[10px] text-[var(--text-faint)]">{formatDate(row.plan?.updated_at ?? row.lastSignInAt)}</span>
                     </span>
                   </button>
@@ -522,7 +581,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                 <p className="mt-1 truncate text-sm text-[var(--text-soft)]">{selectedStudent?.email || selectedStudent?.userId || "—"}</p>
               </div>
               <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[440px]">
-                <SummaryPill icon={GraduationCap} label="考试" value={form.exam_type} />
+                <SummaryPill icon={GraduationCap} label="考试" value={form.exam_type || "null"} />
                 <SummaryPill icon={Target} label="目标" value={form.overall_target || "—"} />
                 <SummaryPill icon={Clock3} label="剩余" value={getDaysLeft(form.exam_deadline)} />
               </div>
@@ -568,7 +627,7 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
                 <h3 className="text-lg font-bold text-[var(--text)]">学习计划</h3>
                 <p className="mt-1 text-sm text-[var(--text-soft)]">{form.id ? "编辑现有计划" : "为该学生创建计划"}</p>
               </div>
-              <Button type="button" onClick={savePlan} disabled={!selectedStudent || saving} className="gap-2">
+              <Button type="button" onClick={savePlan} disabled={!selectedStudent || saving || examTypeSaving} className="gap-2">
                 {saving ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
                 保存
               </Button>
@@ -577,10 +636,12 @@ export function StudentPlanManagementClient({ initialRows }: Props) {
             <div className="grid gap-4 lg:grid-cols-2">
               <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
                 考试类型
-                <select value={form.exam_type} onChange={(event) => updateField("exam_type", event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)]">
+                <select value={form.exam_type} disabled={!selectedStudent || examTypeSaving} onChange={(event) => updateExamType(event.target.value)} className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-4 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-soft)] disabled:cursor-not-allowed disabled:opacity-65">
+                  <option value="">null / 未设置</option>
                   <option value="PTE">PTE</option>
                   <option value="IELTS">IELTS</option>
                 </select>
+                {examTypeSaving ? <span className="text-xs font-medium text-[var(--primary)]">正在保存到 Profile...</span> : null}
               </label>
               <label className="space-y-2 text-sm font-semibold text-[var(--text)]">
                 考试日期

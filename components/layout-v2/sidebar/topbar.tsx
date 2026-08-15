@@ -23,6 +23,7 @@ import {
 import { cn } from "@/lib/utils";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { BRAND_NAME_CN } from "@/lib/brand";
+import { getProfileExamTypeLabel, type ProfileExamType } from "@/lib/profile/exam-type";
 
 type NavItem = {
   href: string;
@@ -42,11 +43,11 @@ const primaryItems: NavItem[] = [
     iconTone: "primary",
   },
   {
-    href: "/achievements",
-    label: "成就",
-    subtitle: "Achievements",
-    icon: <Trophy size={16} />,
-    iconTone: "warning",
+    href: "/study-plan",
+    label: "学习计划",
+    subtitle: "Study Plan",
+    icon: <GraduationCap size={16} />,
+    iconTone: "success",
   },
   {
     href: "/classroom",
@@ -55,13 +56,6 @@ const primaryItems: NavItem[] = [
     icon: <Video size={16} />,
     iconTone: "danger",
     badge: "直播",
-  },
-  {
-    href: "/study-plan",
-    label: "学习计划",
-    subtitle: "Study Plan",
-    icon: <GraduationCap size={16} />,
-    iconTone: "success",
   },
 ];
 
@@ -176,6 +170,13 @@ const utilityItems: NavItem[] = [
     subtitle: "Audio Collection",
     icon: <Headphones size={16} />,
     iconTone: "primary",
+  },
+  {
+    href: "/achievements",
+    label: "成就",
+    subtitle: "Achievements",
+    icon: <Trophy size={16} />,
+    iconTone: "warning",
   },
   {
     href: "/settings",
@@ -315,16 +316,27 @@ function BankToggle({
   );
 }
 
-export function SidebarTopbar() {
+export function SidebarTopbar({ examType, canAccessAdmin }: { examType: ProfileExamType | null; canAccessAdmin: boolean }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const routeQuestionBank = pathname.startsWith("/pte") ? "pte" : pathname.startsWith("/ielts") ? "ielts" : null;
+  const showPte = canAccessAdmin || examType !== "ielts";
+  const showIelts = canAccessAdmin || examType !== "pte";
+  const routeQuestionBank = pathname.startsWith("/pte") && showPte ? "pte" : pathname.startsWith("/ielts") && showIelts ? "ielts" : null;
   const [questionBankOverride, setQuestionBankOverride] = useState<{ pathname: string; value: "pte" | "ielts" | null } | null>(null);
-  const activeQuestionBank = questionBankOverride?.pathname === pathname ? questionBankOverride.value : routeQuestionBank;
+  const overrideValue =
+    questionBankOverride?.value === "pte" && showPte ? "pte"
+      : questionBankOverride?.value === "ielts" && showIelts ? "ielts"
+        : null;
+  const activeQuestionBank = questionBankOverride?.pathname === pathname ? overrideValue : routeQuestionBank;
   const questionBankOpen = activeQuestionBank === "pte";
   const questionBankOpen2 = activeQuestionBank === "ielts";
-  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : "雅思PTE"}`;
+  const brandLabel = `${BRAND_NAME_CN}${questionBankOpen ? "PTE" : questionBankOpen2 ? "IELTS" : getProfileExamTypeLabel(examType)}`;
   const hideBottomNav = isIeltsExamRoute(pathname, searchParams);
+  const visibleBottomNavItems = bottomNavItems.filter((item) => {
+    if (item.href === "/pte") return showPte;
+    if (item.href === "/ielts") return showIelts;
+    return true;
+  });
 
   return (
     <div className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--sidebar)]/95 px-3 py-3 backdrop-blur-xl">
@@ -337,28 +349,28 @@ export function SidebarTopbar() {
           <TopbarItem key={item.href} item={item} pathname={pathname} />
         ))}
 
-        <BankToggle
+        {showPte ? <BankToggle
           label="PTE 题库"
           subtitle="Question Bank"
           tone="primary"
           open={questionBankOpen}
           onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen ? null : "pte" })}
-        />
+        /> : null}
 
-        <BankToggle
+        {showIelts ? <BankToggle
           label="IELTS 题库"
           subtitle="Question Bank"
           tone="success"
           open={questionBankOpen2}
           onClick={() => setQuestionBankOverride({ pathname, value: questionBankOpen2 ? null : "ielts" })}
-        />
+        /> : null}
 
         {utilityItems.map((item) => (
           <TopbarItem key={item.href} item={item} pathname={pathname} />
         ))}
       </div>
 
-      {questionBankOpen ? (
+      {questionBankOpen && showPte ? (
         <div className="scrollbar-hide mt-2 flex gap-2 overflow-x-auto pb-1">
           {pteItems.map((item) => (
             <TopbarItem key={item.href} item={item} pathname={pathname} />
@@ -366,7 +378,7 @@ export function SidebarTopbar() {
         </div>
       ) : null}
 
-      {questionBankOpen2 ? (
+      {questionBankOpen2 && showIelts ? (
         <div className="scrollbar-hide mt-2 flex gap-2 overflow-x-auto pb-1">
           {ieltsItems.map((item) => (
             <TopbarItem key={item.href} item={item} pathname={pathname} />
@@ -376,7 +388,7 @@ export function SidebarTopbar() {
 
       {!hideBottomNav ? <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[var(--sidebar)]/95 px-2 pb-[calc(0.35rem+env(safe-area-inset-bottom))] pt-1.5 shadow-[0_-12px_30px_rgba(15,23,42,0.10)] backdrop-blur-xl lg:hidden" aria-label="移动端主导航">
         <div className="mx-auto flex max-w-xl gap-1">
-          {bottomNavItems.map((item) => <BottomNavItem key={item.href} item={item} pathname={pathname} />)}
+          {visibleBottomNavItems.map((item) => <BottomNavItem key={item.href} item={item} pathname={pathname} />)}
         </div>
       </nav> : null}
     </div>

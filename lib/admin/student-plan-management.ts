@@ -2,6 +2,7 @@ import "server-only";
 
 import type { SupabaseClient, User } from "@supabase/supabase-js";
 
+import { profileExamTypeToDisplay, type DisplayExamType } from "@/lib/profile/exam-type";
 import { getStudentAudioPrivateKey } from "@/lib/storage/public-url";
 import { deletePrivateR2Object } from "@/lib/storage/r2-private";
 
@@ -39,6 +40,7 @@ export type StudentPlanManagementRow = {
   lastSignInAt: string | null;
   deviceCount: number;
   latestDevice: StudentLoginDeviceSummary | null;
+  examType: DisplayExamType | null;
   plan: StudyPlanRecord | null;
 };
 
@@ -126,6 +128,7 @@ type ProfileRow = {
   avatar_url: string | null;
   role: string | null;
   is_my_student: boolean | null;
+  exam_type: string | null;
   created_at: string | null;
 };
 
@@ -204,7 +207,7 @@ async function listAllAuthUsers(supabase: SupabaseClient) {
 export async function getStudentPlanManagementRows(supabase: SupabaseClient) {
   const [authUsers, profilesRes, plansRes, devicesRes] = await Promise.all([
     listAllAuthUsers(supabase),
-    supabase.from("profiles").select("id, email, full_name, avatar_url, role, is_my_student, created_at").order("created_at", { ascending: false }),
+    supabase.from("profiles").select("id, email, full_name, avatar_url, role, is_my_student, exam_type, created_at").order("created_at", { ascending: false }),
     supabase.from("study_plans").select(STUDY_PLAN_SELECT).order("updated_at", { ascending: false }),
     supabase.from("user_devices").select("user_id, device_label, device_type, browser_name, os_name, country, city, last_seen_at, last_login_at, is_trusted, is_blocked").order("last_seen_at", { ascending: false }),
   ]);
@@ -265,6 +268,8 @@ export async function getStudentPlanManagementRows(supabase: SupabaseClient) {
       const profile = profileMap.get(userId);
       const authUser = authUserMap.get(userId);
       const plan = planMap.get(userId) ?? null;
+      const examType = profileExamTypeToDisplay(profile?.exam_type) ?? (plan?.exam_type === "IELTS" ? "IELTS" : plan?.exam_type === "PTE" ? "PTE" : null);
+      const displayPlan = plan ? { ...plan, exam_type: examType ?? plan.exam_type } : null;
       const deviceSummary = deviceSummaryMap.get(userId);
 
       return {
@@ -279,7 +284,8 @@ export async function getStudentPlanManagementRows(supabase: SupabaseClient) {
         lastSignInAt: authUser?.last_sign_in_at ?? null,
         deviceCount: deviceSummary?.count ?? 0,
         latestDevice: deviceSummary?.latest ?? null,
-        plan,
+        examType,
+        plan: displayPlan,
       };
     })
     .sort((a, b) => {
