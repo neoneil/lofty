@@ -2,12 +2,16 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 
 import { getAppOrigin } from "@/lib/auth/app-origin";
-import { getServerUser } from "@/lib/auth/server-auth";
+import { getServerUser, type ServerUserContext } from "@/lib/auth/server-auth";
 import { AI_ACCESS_PACKAGES, getAiAccessPackage, getAiAccessProductScopeConfig, getScopedStripePriceEnvVar, normalizeAiAccessProductScope, type AiAccessProductScope } from "@/lib/billing/ai-access-packages";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeClient } from "@/lib/stripe/server";
 
 export const runtime = "nodejs";
+
+type CheckoutBuildResult =
+  | { ok: true; session: Stripe.Checkout.Session }
+  | { ok: false; status: number; message: string };
 
 function getConfiguredPriceId(priceEnvVar: string) {
   return process.env[priceEnvVar]?.trim() || null;
@@ -47,72 +51,21 @@ function createLineItem(pkg: (typeof AI_ACCESS_PACKAGES)[number], productScope: 
 }
 
 function buildCheckoutUrlErrorRedirect(origin: string, nextPath: string, reason: string) {
-  const safePath = nextPath.startsWith('/') && !nextPath.startsWith('//') ? nextPath : '/membership';
-  const separator = safePath.includes('?') ? '&' : '?';
-  return origin + safePath + separator + 'payment=error&reason=' + encodeURIComponent(reason);
+  const safePath = nextPath.startsWith("/") && !nextPath.startsWith("//") ? nextPath : "/membership";
+  const separator = safePath.includes("?") ? "&" : "?";
+  return origin + safePath + separator + "payment=error&reason=" + encodeURIComponent(reason);
 }
 
-export async function GET(req: Request) {
-  const origin = getAppOrigin(req);
-  const url = new URL(req.url);
-  const nextPath = url.searchParams.get('next') ?? '/membership';
-  const packageCode = url.searchParams.get('packageCode') ?? '';
-  const productScope = url.searchParams.get('productScope') ?? url.searchParams.get('product_scope') ?? '';
-
-  const response = await POST(new Request(req.url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ packageCode, productScope }),
-  }));
-
-  let data: { ok?: boolean; url?: string; message?: string } | null = null;
-
-  try {
-    data = await response.json() as { ok?: boolean; url?: string; message?: string };
-  } catch {
-    data = null;
-  }
-
-  if (response.status === 401) {
-    return NextResponse.redirect(origin + '/login-v2?next=' + encodeURIComponent(nextPath));
-  }
-
-  if (!response.ok || !data?.ok || !data.url) {
-    console.error('Stripe checkout redirect failed:', data?.message ?? response.statusText);
-    return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, data?.message ?? 'checkout_failed'));
-  }
-
-  return NextResponse.redirect(data.url);
-}
-
-export async function POST(req: Request) {
-  const context = await getServerUser();
-
-  if (!context) {
-    return NextResponse.json({ ok: false, message: "请先登录后再购买。" }, { status: 401 });
-  }
-
-  let packageCode = "";
-  let productScope: AiAccessProductScope | null = null;
-
-  try {
-    const body = await req.json() as { packageCode?: string; productScope?: string; product_scope?: string };
-    packageCode = body.packageCode ?? "";
-    productScope = normalizeAiAccessProductScope(body.productScope ?? body.product_scope);
-  } catch {
-    return NextResponse.json({ ok: false, message: "请求格式不正确。" }, { status: 400 });
-  }
-
+async function buildCheckoutSession(req: Request, context: ServerUserContext, packageCode: string, rawProductScope: string | null | undefined): Promise<CheckoutBuildResult> {
   const pkg = getAiAccessPackage(packageCode);
+  const productScope = normalizeAiAccessProductScope(rawProductScope);
 
   if (!pkg) {
-    return NextResponse.json({ ok: false, message: "请选择有效的 AI 时间包。" }, { status: 400 });
+    return { ok: false, status: 400, message: "请选择有效的 AI 时间包。" };
   }
 
   if (!productScope) {
-    return NextResponse.json({ ok: false, message: "请选择 IELTS AI 或 PTE AI。" }, { status: 400 });
+    return { ok: false, status: 400, message: "请选择 IELTS AI 或 PTE AI。" };
   }
 
   const stripe = getStripeClient();
@@ -128,7 +81,7 @@ export async function POST(req: Request) {
 
   if (profileLoadError) {
     console.error("Stripe billing profile load error:", profileLoadError);
-    return NextResponse.json({ ok: false, message: "读取支付资料失败，请稍后再试。" }, { status: 500 });
+    return { ok: false, status: 500, message: "读取支付资料失败，请稍后再试。" };
   }
 
   let stripeCustomerId = billingProfile?.stripe_customer_id ?? null;
@@ -153,7 +106,7 @@ export async function POST(req: Request) {
 
     if (profileSaveError) {
       console.error("Stripe billing profile save error:", profileSaveError);
-      return NextResponse.json({ ok: false, message: "保存支付资料失败，请稍后再试。" }, { status: 500 });
+      return { ok: false, status: 500, message: "保存支付资料失败，请稍后再试。" };
     }
   }
 
@@ -180,6 +133,11 @@ export async function POST(req: Request) {
     },
   });
 
+  if (!session.url) {
+    console.error("Stripe checkout session missing url:", session.id);
+    return { ok: false, status: 500, message: "Stripe 支付页面创建失败，请稍后再试。" };
+  }
+
   const { error: purchaseError } = await adminSupabase
     .from("ai_access_purchases")
     .insert({
@@ -203,12 +161,75 @@ export async function POST(req: Request) {
 
   if (purchaseError) {
     console.error("Stripe purchase pending insert error:", purchaseError);
-    return NextResponse.json({ ok: false, message: "创建订单失败，请稍后再试。" }, { status: 500 });
+    return { ok: false, status: 500, message: "创建订单失败，请稍后再试。" };
   }
 
-  return NextResponse.json({
-    ok: true,
-    url: session.url,
-    sessionId: session.id,
-  });
+  return { ok: true, session };
+}
+
+export async function GET(req: Request) {
+  const origin = getAppOrigin(req);
+  const url = new URL(req.url);
+  const nextPath = url.searchParams.get("next") ?? "/membership";
+
+  try {
+    const context = await getServerUser();
+
+    if (!context) {
+      return NextResponse.redirect(origin + "/login-v2?next=" + encodeURIComponent(nextPath));
+    }
+
+    const result = await buildCheckoutSession(
+      req,
+      context,
+      url.searchParams.get("packageCode") ?? "",
+      url.searchParams.get("productScope") ?? url.searchParams.get("product_scope"),
+    );
+
+    if (!result.ok) {
+      console.error("Stripe checkout redirect failed:", result.message);
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message));
+    }
+
+    return NextResponse.redirect(result.session.url as string);
+  } catch (error) {
+    console.error("Stripe checkout GET error:", error);
+    return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, "checkout_failed"));
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const context = await getServerUser();
+
+    if (!context) {
+      return NextResponse.json({ ok: false, message: "请先登录后再购买。" }, { status: 401 });
+    }
+
+    let packageCode = "";
+    let productScope: string | null = null;
+
+    try {
+      const body = await req.json() as { packageCode?: string; productScope?: string; product_scope?: string };
+      packageCode = body.packageCode ?? "";
+      productScope = body.productScope ?? body.product_scope ?? null;
+    } catch {
+      return NextResponse.json({ ok: false, message: "请求格式不正确。" }, { status: 400 });
+    }
+
+    const result = await buildCheckoutSession(req, context, packageCode, productScope);
+
+    if (!result.ok) {
+      return NextResponse.json({ ok: false, message: result.message }, { status: result.status });
+    }
+
+    return NextResponse.json({
+      ok: true,
+      url: result.session.url,
+      sessionId: result.session.id,
+    });
+  } catch (error) {
+    console.error("Stripe checkout POST error:", error);
+    return NextResponse.json({ ok: false, message: "创建支付页面失败，请稍后再试。" }, { status: 500 });
+  }
 }
