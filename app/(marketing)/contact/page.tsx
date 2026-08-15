@@ -10,6 +10,7 @@ import {
 } from "@/components/ui-v2/card";
 
 import ContactForm from "./contact-form";
+import { ContactLanguageToggle } from "@/components/site/contact-language-toggle";
 import { BRAND_EDUCATION_CN, BRAND_NAME_CN } from "@/lib/brand";
 
 export const metadata: Metadata = {
@@ -57,6 +58,8 @@ export default function ContactPage() {
                 总部位于澳大利亚墨尔本，专注于 PTE、IELTS
                 等英语考试培训与语言能力提升。我们相信，真正有效的学习，不只是技巧，而是理解语言背后的逻辑。
               </p>
+
+              <ContactLanguageToggle />
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <a

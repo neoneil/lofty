@@ -110,6 +110,11 @@ export default async function Navbar() {
       tooltip: "Articles & Resources",
     },
     {
+      href: "/membership",
+      label: "成为会员",
+      tooltip: "AI Membership",
+    },
+    {
       href: "/contact",
       label: "联系老师",
       tooltip: "About Lofty",
