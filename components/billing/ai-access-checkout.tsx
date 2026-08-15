@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { CreditCard, ShieldCheck, Sparkles } from 'lucide-react';
 
-import { AI_ACCESS_PRODUCT_SCOPES, formatAudAmount, type AiAccessPackageCode, type AiAccessProductScope } from '@/lib/billing/ai-access-packages';
+import { AI_ACCESS_PRODUCT_SCOPES, formatAudAmount, type AiAccessPackageCode } from '@/lib/billing/ai-access-packages';
 import { cn } from '@/lib/utils';
 
 type CheckoutPackage = {
@@ -24,15 +24,6 @@ type Props = {
 export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref = '/login-v2?next=/membership' }: Props) {
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
 
-  function getCheckoutHref(productScope: AiAccessProductScope, packageCode: AiAccessPackageCode) {
-    const params = new URLSearchParams({
-      packageCode,
-      productScope,
-      next: '/membership',
-    });
-
-    return '/api/stripe/checkout?' + params.toString();
-  }
 
   return (
     <section className='rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6'>
@@ -87,7 +78,6 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
             <div className='mt-4 grid gap-2 sm:grid-cols-2'>
               {packages.map((item) => {
                 const checkoutKey = scopeConfig.scope + ':' + item.code;
-                const checkoutHref = isAuthenticated ? getCheckoutHref(scopeConfig.scope, item.code) : loginHref;
                 const loading = loadingKey === checkoutKey;
 
                 return (
@@ -102,9 +92,20 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
                     <div className='mt-1 text-xs font-medium text-[var(--text-soft)]'>
                       约 {formatAudAmount(Math.round(item.amountAudCents / Math.max(1, item.days / 30)))} / 月
                     </div>
-                    <Link href={checkoutHref} aria-disabled={Boolean(loadingKey)} onClick={() => setLoadingKey(checkoutKey)} className={cn('mt-4 inline-flex h-9 w-full items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--primary-hover)]', loadingKey ? 'pointer-events-none opacity-70' : '')}>
-                      {loading ? '正在前往 Stripe...' : '立即开通'}
-                    </Link>
+                    {isAuthenticated ? (
+                      <form action='/api/stripe/checkout' method='get' onSubmit={() => setLoadingKey(checkoutKey)}>
+                        <input type='hidden' name='packageCode' value={item.code} />
+                        <input type='hidden' name='productScope' value={scopeConfig.scope} />
+                        <input type='hidden' name='next' value='/membership' />
+                        <button type='submit' disabled={Boolean(loadingKey)} className={cn('mt-4 inline-flex h-9 w-full items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--primary-hover)]', loadingKey ? 'opacity-70' : '')}>
+                          {loading ? '正在前往 Stripe...' : '立即开通'}
+                        </button>
+                      </form>
+                    ) : (
+                      <a href={loginHref} onClick={() => setLoadingKey(checkoutKey)} className={cn('mt-4 inline-flex h-9 w-full items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--primary-hover)]', loadingKey ? 'pointer-events-none opacity-70' : '')}>
+                        {loading ? '正在前往登录...' : '立即开通'}
+                      </a>
+                    )}
                   </div>
                 );
               })}
