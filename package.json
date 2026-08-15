@@ -51,6 +51,7 @@
     "remark-directive": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "resend": "^6.9.4",
+    "stripe": "^22.5.0",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
