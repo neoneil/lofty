@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { CreditCard, ShieldCheck, Sparkles } from 'lucide-react';
 
 import { AI_ACCESS_PRODUCT_SCOPES, formatAudAmount, type AiAccessPackageCode, type AiAccessProductScope } from '@/lib/billing/ai-access-packages';
-import { Button } from '@/components/ui-v2/button';
+import { cn } from '@/lib/utils';
 
 type CheckoutPackage = {
   code: AiAccessPackageCode;
@@ -23,42 +23,15 @@ type Props = {
 
 export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref = '/login-v2?next=/membership' }: Props) {
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
-  async function startCheckout(productScope: AiAccessProductScope, packageCode: AiAccessPackageCode) {
-    setError(null);
+  function getCheckoutHref(productScope: AiAccessProductScope, packageCode: AiAccessPackageCode) {
+    const params = new URLSearchParams({
+      packageCode,
+      productScope,
+      next: '/membership',
+    });
 
-    if (!isAuthenticated) {
-      window.location.href = loginHref;
-      return;
-    }
-
-    setLoadingKey(productScope + ':' + packageCode);
-
-    try {
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ packageCode, productScope }),
-      });
-      const data = await response.json() as { ok?: boolean; url?: string; message?: string };
-
-      if (response.status === 401) {
-        window.location.href = loginHref;
-        return;
-      }
-
-      if (!response.ok || !data.ok || !data.url) {
-        throw new Error(data.message || '创建支付页面失败，请稍后再试。');
-      }
-
-      window.location.href = data.url;
-    } catch (checkoutError) {
-      setError(checkoutError instanceof Error ? checkoutError.message : '创建支付页面失败，请稍后再试。');
-      setLoadingKey(null);
-    }
+    return '/api/stripe/checkout?' + params.toString();
   }
 
   return (
@@ -113,7 +86,9 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
             </div>
             <div className='mt-4 grid gap-2 sm:grid-cols-2'>
               {packages.map((item) => {
-                const loading = loadingKey === scopeConfig.scope + ':' + item.code;
+                const checkoutKey = scopeConfig.scope + ':' + item.code;
+                const checkoutHref = isAuthenticated ? getCheckoutHref(scopeConfig.scope, item.code) : loginHref;
+                const loading = loadingKey === checkoutKey;
 
                 return (
                   <div key={scopeConfig.scope + ':' + item.code} className='relative rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-3 shadow-[var(--shadow-xs)]'>
@@ -127,9 +102,9 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
                     <div className='mt-1 text-xs font-medium text-[var(--text-soft)]'>
                       约 {formatAudAmount(Math.round(item.amountAudCents / Math.max(1, item.days / 30)))} / 月
                     </div>
-                    <Button type='button' onClick={() => startCheckout(scopeConfig.scope, item.code)} disabled={Boolean(loadingKey)} className='mt-4 h-9 w-full text-sm'>
-                      {loading ? '正在打开...' : '立即开通'}
-                    </Button>
+                    <Link href={checkoutHref} aria-disabled={Boolean(loadingKey)} onClick={() => setLoadingKey(checkoutKey)} className={cn('mt-4 inline-flex h-9 w-full items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--primary-hover)]', loadingKey ? 'pointer-events-none opacity-70' : '')}>
+                      {loading ? '正在前往 Stripe...' : '立即开通'}
+                    </Link>
                   </div>
                 );
               })}
@@ -137,12 +112,6 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
           </div>
         ))}
       </div>
-
-      {error ? (
-        <div className='mt-4 rounded border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-4 py-3 text-sm font-medium text-[var(--danger)]'>
-          {error}
-        </div>
-      ) : null}
 
       <div className='mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
         <div className='text-sm leading-6 text-[var(--text-soft)]'>

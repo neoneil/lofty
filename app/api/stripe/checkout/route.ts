@@ -46,6 +46,47 @@ function createLineItem(pkg: (typeof AI_ACCESS_PACKAGES)[number], productScope: 
   };
 }
 
+function buildCheckoutUrlErrorRedirect(origin: string, nextPath: string, reason: string) {
+  const safePath = nextPath.startsWith('/') && !nextPath.startsWith('//') ? nextPath : '/membership';
+  const separator = safePath.includes('?') ? '&' : '?';
+  return origin + safePath + separator + 'payment=error&reason=' + encodeURIComponent(reason);
+}
+
+export async function GET(req: Request) {
+  const origin = getAppOrigin(req);
+  const url = new URL(req.url);
+  const nextPath = url.searchParams.get('next') ?? '/membership';
+  const packageCode = url.searchParams.get('packageCode') ?? '';
+  const productScope = url.searchParams.get('productScope') ?? url.searchParams.get('product_scope') ?? '';
+
+  const response = await POST(new Request(req.url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ packageCode, productScope }),
+  }));
+
+  let data: { ok?: boolean; url?: string; message?: string } | null = null;
+
+  try {
+    data = await response.json() as { ok?: boolean; url?: string; message?: string };
+  } catch {
+    data = null;
+  }
+
+  if (response.status === 401) {
+    return NextResponse.redirect(origin + '/login-v2?next=' + encodeURIComponent(nextPath));
+  }
+
+  if (!response.ok || !data?.ok || !data.url) {
+    console.error('Stripe checkout redirect failed:', data?.message ?? response.statusText);
+    return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, data?.message ?? 'checkout_failed'));
+  }
+
+  return NextResponse.redirect(data.url);
+}
+
 export async function POST(req: Request) {
   const context = await getServerUser();
 

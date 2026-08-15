@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileText, HelpCircle, MessageCircle, X } from "lucide-react";
@@ -83,9 +84,12 @@ function PopupContent({ type }: { type: PanelType }) {
 }
 
 export function MarketingFloatingActions() {
+  const pathname = usePathname();
   const [activePanel, setActivePanel] = useState<PanelType | null>(null);
+  const hiddenOnThisPage = pathname === "/membership" || pathname === "/privacy-policy" || pathname === "/terms-of-service" || pathname === "/refund-policy";
 
   useEffect(() => {
+    if (hiddenOnThisPage) return;
     if (!activePanel) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -94,9 +98,11 @@ export function MarketingFloatingActions() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [activePanel]);
+  }, [activePanel, hiddenOnThisPage]);
 
   const openPanel = (type: PanelType) => setActivePanel(type);
+
+  if (hiddenOnThisPage) return null;
 
   return (
     <>
