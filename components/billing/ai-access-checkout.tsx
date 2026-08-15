@@ -93,7 +93,7 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
                       约 {formatAudAmount(Math.round(item.amountAudCents / Math.max(1, item.days / 30)))} / 月
                     </div>
                     {isAuthenticated ? (
-                      <form action='/api/stripe/checkout' method='get' onSubmit={() => setLoadingKey(checkoutKey)}>
+                      <form action='/api/stripe/checkout' method='post' onSubmit={() => setLoadingKey(checkoutKey)}>
                         <input type='hidden' name='packageCode' value={item.code} />
                         <input type='hidden' name='productScope' value={scopeConfig.scope} />
                         <input type='hidden' name='next' value='/membership' />

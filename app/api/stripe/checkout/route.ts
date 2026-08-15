@@ -199,28 +199,53 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const origin = getAppOrigin(req);
+  const contentType = req.headers.get("content-type") ?? "";
+  const isFormPost = contentType.includes("application/x-www-form-urlencoded") || contentType.includes("multipart/form-data");
+  let nextPath = "/membership";
+
   try {
     const context = await getServerUser();
 
     if (!context) {
+      if (isFormPost) {
+        return NextResponse.redirect(origin + "/login-v2?next=" + encodeURIComponent(nextPath), 303);
+      }
+
       return NextResponse.json({ ok: false, message: "请先登录后再购买。" }, { status: 401 });
     }
 
     let packageCode = "";
     let productScope: string | null = null;
 
-    try {
-      const body = await req.json() as { packageCode?: string; productScope?: string; product_scope?: string };
-      packageCode = body.packageCode ?? "";
-      productScope = body.productScope ?? body.product_scope ?? null;
-    } catch {
-      return NextResponse.json({ ok: false, message: "请求格式不正确。" }, { status: 400 });
+    if (isFormPost) {
+      const formData = await req.formData();
+      packageCode = String(formData.get("packageCode") ?? "");
+      productScope = String(formData.get("productScope") ?? formData.get("product_scope") ?? "");
+      nextPath = String(formData.get("next") ?? "/membership");
+    } else {
+      try {
+        const body = await req.json() as { packageCode?: string; productScope?: string; product_scope?: string };
+        packageCode = body.packageCode ?? "";
+        productScope = body.productScope ?? body.product_scope ?? null;
+      } catch {
+        return NextResponse.json({ ok: false, message: "请求格式不正确。" }, { status: 400 });
+      }
     }
 
     const result = await buildCheckoutSession(req, context, packageCode, productScope);
 
     if (!result.ok) {
+      if (isFormPost) {
+        console.error("Stripe checkout form redirect failed:", result.message);
+        return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message), 303);
+      }
+
       return NextResponse.json({ ok: false, message: result.message }, { status: result.status });
+    }
+
+    if (isFormPost) {
+      return NextResponse.redirect(result.session.url as string, 303);
     }
 
     return NextResponse.json({
@@ -230,6 +255,11 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error("Stripe checkout POST error:", error);
+
+    if (isFormPost) {
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, error instanceof Error ? error.message : "checkout_failed"), 303);
+    }
+
     return NextResponse.json({ ok: false, message: "创建支付页面失败，请稍后再试。" }, { status: 500 });
   }
 }

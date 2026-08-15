@@ -18,6 +18,7 @@ export default async function MembershipPage({ searchParams }: Props) {
   const context = await getServerUser();
   const resolvedSearchParams = searchParams ? await searchParams : null;
   const paymentError = resolvedSearchParams?.payment === 'error';
+  const paymentErrorReason = typeof resolvedSearchParams?.reason === 'string' ? resolvedSearchParams.reason : '';
   const checkoutPackages = AI_ACCESS_PACKAGES.map((item) => ({
     code: item.code,
     days: item.days,
@@ -45,7 +46,7 @@ export default async function MembershipPage({ searchParams }: Props) {
 
         {paymentError ? (
           <div className='rounded-[var(--radius-md)] border border-[var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm font-semibold leading-6 text-[var(--danger)]'>
-            支付页面打开失败，请刷新后重试。若仍然失败，请联系管理员处理。
+            支付页面打开失败，请刷新后重试。若仍然失败，请联系管理员处理。{paymentErrorReason ? ` 错误：${paymentErrorReason}` : ''}
           </div>
         ) : null}
 
