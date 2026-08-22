@@ -1,16 +1,16 @@
 import { requireUser } from "@/lib/auth/require-user";
+import { canAccessAdmin } from "@/lib/auth/admin-access";
 import { AiAccessCheckout } from "@/components/billing/ai-access-checkout";
+import { FREE_AI_DAILY_LIMIT } from "@/lib/ai/usage-limit";
 import { AI_ACCESS_PACKAGES, AI_ACCESS_PRODUCT_SCOPES, formatAudAmount, normalizeAiAccessProductScope } from "@/lib/billing/ai-access-packages";
 
 function getUsageWindows() {
   const now = new Date();
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
   return {
     nowMs: now.getTime(),
     todayStart: todayStart.toISOString(),
-    monthStart: monthStart.toISOString(),
   };
 }
 
@@ -48,6 +48,19 @@ function formatPurchaseDate(value: string | null) {
   }).format(new Date(value));
 }
 
+function formatAccessDate(value: string | null) {
+  if (!value) return "-";
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Australia/Sydney",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(value));
+}
+
 function getStatusLabel(status: string) {
   if (status === "fulfilled") return "已付款";
   if (status === "paid") return "已付款";
@@ -73,12 +86,6 @@ function formatPurchaseAccessUntil(value: string | null, createdAt: string | nul
   return "-";
 }
 
-function getCurrentAiAccessLabel(isUnlimitedActive: boolean, unlimitedUntil: Date | null) {
-  if (!isUnlimitedActive) return "否";
-  if (!unlimitedUntil) return "否";
-  return "是";
-}
-
 function getProductScopeLabel(value: unknown) {
   const scope = normalizeAiAccessProductScope(value);
   if (scope === "ielts") return "IELTS AI";
@@ -88,11 +95,16 @@ function getProductScopeLabel(value: unknown) {
 
 export default async function AiUsageSettingsPage({ searchParams }: { searchParams?: Promise<Record<string, string | string[] | undefined>> }) {
   const { supabase, user } = await requireUser("/settings/ai-usage");
-  const { nowMs, todayStart, monthStart } = getUsageWindows();
+  const { nowMs, todayStart } = getUsageWindows();
   const resolvedSearchParams = searchParams ? await searchParams : {};
   const paymentMessage = getPaymentMessage(resolvedSearchParams.payment);
 
-  const [limitsResult, todayResult, monthResult, logsResult, purchasesResult] = await Promise.all([
+  const [profileResult, limitsResult, todayResult, logsResult, purchasesResult] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("role, email, is_my_student")
+      .eq("id", user.id)
+      .maybeSingle(),
     supabase
       .from("ai_user_product_limits")
       .select("product_scope, daily_limit, monthly_limit, is_unlimited, unlimited_until")
@@ -103,13 +115,6 @@ export default async function AiUsageSettingsPage({ searchParams }: { searchPara
       .select("product_scope")
       .eq("user_id", user.id)
       .gte("created_at", todayStart)
-      .eq("status", "success")
-      .in("product_scope", ["ielts", "pte"]),
-    supabase
-      .from("ai_usage_logs")
-      .select("product_scope")
-      .eq("user_id", user.id)
-      .gte("created_at", monthStart)
       .eq("status", "success")
       .in("product_scope", ["ielts", "pte"]),
     supabase
@@ -126,19 +131,16 @@ export default async function AiUsageSettingsPage({ searchParams }: { searchPara
       .limit(8),
   ]);
 
+  const profile = profileResult.data;
+  const isAdmin = canAccessAdmin(profile?.role, profile?.email ?? user.email);
+  const isInternalStudent = Boolean(profile?.is_my_student);
   const limits = limitsResult.data ?? [];
   const limitMap = new Map(limits.map((limit) => [normalizeAiAccessProductScope(limit.product_scope), limit]));
   const todayCounts = new Map<string, number>();
-  const monthCounts = new Map<string, number>();
 
   for (const log of todayResult.data ?? []) {
     const scope = normalizeAiAccessProductScope(log.product_scope);
     if (scope) todayCounts.set(scope, (todayCounts.get(scope) ?? 0) + 1);
-  }
-
-  for (const log of monthResult.data ?? []) {
-    const scope = normalizeAiAccessProductScope(log.product_scope);
-    if (scope) monthCounts.set(scope, (monthCounts.get(scope) ?? 0) + 1);
   }
 
   const logs = logsResult.data ?? [];
@@ -156,8 +158,8 @@ export default async function AiUsageSettingsPage({ searchParams }: { searchPara
       <section className="mx-auto w-full max-w-5xl space-y-6">
         <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
           <p className="text-sm font-semibold text-[var(--text-soft)]">AI Usage</p>
-          <h1 className="mt-2 text-2xl font-bold tracking-tight text-[var(--text)]">AI 使用额度</h1>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">查看你的每日、本月 AI 使用次数和最近记录。</p>
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-[var(--text)]">AI 使用权限</h1>
+          <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">查看你的 IELTS AI / PTE AI 权限、今日免费次数和开通记录。</p>
         </div>
 
         {paymentMessage ? (
@@ -171,11 +173,23 @@ export default async function AiUsageSettingsPage({ searchParams }: { searchPara
           </div>
         ) : null}
 
+        {isAdmin ? (
+          <div className="rounded-[var(--radius-md)] border border-[var(--primary)]/25 bg-[var(--primary-soft)] p-4 text-sm leading-6 text-[var(--primary)]">
+            <div className="font-bold">管理员 AI 权限</div>
+            <p className="mt-1">管理员账号可以无限制使用 AI。下方付款时间权限仍会显示你通过 Stripe 购买的会员有效期，作为付款记录保留。</p>
+          </div>
+        ) : null}
+
         <div className="grid gap-4 lg:grid-cols-2">
           {AI_ACCESS_PRODUCT_SCOPES.map((scopeConfig) => {
             const limit = limitMap.get(scopeConfig.scope);
             const unlimitedUntil = limit?.unlimited_until ? new Date(limit.unlimited_until) : null;
-            const isUnlimitedActive = Boolean(limit?.is_unlimited && unlimitedUntil && unlimitedUntil.getTime() > nowMs);
+            const paidAccessActive = Boolean(limit?.is_unlimited && unlimitedUntil && unlimitedUntil.getTime() > nowMs);
+            const unlimitedAccess = isAdmin || isInternalStudent || paidAccessActive;
+            const statusLabel = isAdmin ? "管理员无限" : isInternalStudent ? "内部无限" : paidAccessActive ? "已开通" : "未开通";
+            const todayUsed = todayCounts.get(scopeConfig.scope) ?? 0;
+            const dailyLimitLabel = unlimitedAccess ? "∞" : String(FREE_AI_DAILY_LIMIT);
+            const accessTitle = paidAccessActive && limit?.unlimited_until ? `有效至 ${formatAccessDate(limit.unlimited_until)}` : unlimitedAccess ? "无限制使用" : "未开通时间包";
 
             return (
               <div key={scopeConfig.scope} className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
@@ -184,26 +198,23 @@ export default async function AiUsageSettingsPage({ searchParams }: { searchPara
                     <p className="text-sm font-semibold text-[var(--primary)]">{scopeConfig.label}</p>
                     <h2 className="mt-1 text-lg font-bold text-[var(--text)]">{scopeConfig.title}</h2>
                   </div>
-                  <span className="rounded-full border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-1 text-xs font-semibold text-[var(--text-soft)]">
-                    {getCurrentAiAccessLabel(isUnlimitedActive, unlimitedUntil) === "是" ? "已开通" : "未开通"}
+                  <span className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary-soft)] px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+                    {statusLabel}
                   </span>
                 </div>
-                {!limit ? (
+                {!limit && !unlimitedAccess ? (
                   <p className="mt-4 rounded border border-[var(--danger)]/25 bg-[var(--danger-soft)] px-3 py-2 text-sm text-[var(--danger)]">没有找到该 AI 权限记录，请联系管理员。</p>
                 ) : (
-                  <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4">
                       <p className="text-xs text-[var(--text-soft)]">今日已用</p>
-                      <div className="mt-2 text-xl font-bold text-[var(--text)]">{todayCounts.get(scopeConfig.scope) ?? 0} / {limit.daily_limit}</div>
+                      <div className="mt-2 text-2xl font-black text-[var(--text)]">{todayUsed} / {dailyLimitLabel}</div>
+                      {!unlimitedAccess ? <p className="mt-2 text-xs leading-5 text-[var(--text-soft)]">免费用户每日可使用 {FREE_AI_DAILY_LIMIT} 次。用完后可开通 AI 权限继续使用。</p> : <p className="mt-2 text-xs leading-5 text-[var(--text-soft)]">当前账号不受每日免费次数限制。</p>}
                     </div>
-                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
-                      <p className="text-xs text-[var(--text-soft)]">本月已用</p>
-                      <div className="mt-2 text-xl font-bold text-[var(--text)]">{monthCounts.get(scopeConfig.scope) ?? 0} / {limit.monthly_limit}</div>
-                    </div>
-                    <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
-                      <p className="text-xs text-[var(--text-soft)]">时间权限</p>
-                      <div className="mt-2 text-xl font-bold text-[var(--text)]">{getCurrentAiAccessLabel(isUnlimitedActive, unlimitedUntil)}</div>
-                      {isUnlimitedActive && unlimitedUntil ? <p className="mt-1 text-xs text-[var(--text-soft)]">有效至 {unlimitedUntil.toLocaleString("zh-CN")}</p> : null}
+                    <div className="rounded-[var(--radius-md)] border border-[var(--primary)]/25 bg-[var(--primary-soft)] p-4">
+                      <p className="text-xs font-semibold text-[var(--primary)]">时间权限</p>
+                      <div className="mt-2 text-2xl font-black leading-tight text-[var(--primary)]">{accessTitle}</div>
+                      {isAdmin ? <p className="mt-2 text-xs leading-5 text-[var(--primary)]/90">管理员可以无限制使用 AI；付款有效期仅代表已购买的时间包记录。</p> : null}
                     </div>
                   </div>
                 )}

@@ -7,8 +7,7 @@ import { getAchievementConfig, normalizeAchievementExamType, type AchievementExa
 import { requireUser } from "@/lib/auth/require-user";
 import { getServerUserWithRole } from "@/lib/auth/server-auth";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
-import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
-import { getRemaining, formatRemainingTime, formatUnlimitedExpiry } from "@/lib/ai/usage-summary";
+import { getAccountStatusLabel, getAiAccessSummaryLabel, type AiAccessStatusItem } from "@/lib/ai/access-status";
 import { collectUnlockedAchievements, createAchievementEngineContext, getHighestUnlockedCategoryLevel } from "@/lib/achievements/engine";
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
 import type { QuestionTypeStat } from "@/lib/achievements/types";
@@ -20,6 +19,8 @@ type Profile = {
   email: string | null;
   avatar_url: string | null;
   exam_type: string | null;
+  role: string | null;
+  is_my_student: boolean | null;
 };
 
 type StudyPlan = {
@@ -125,11 +126,11 @@ function getWeakestModule(modules: ModuleSummary[]) {
   return [...practiced].sort((a, b) => a.accuracy - b.accuracy)[0];
 }
 
-function getAiStatus(limit: Awaited<ReturnType<typeof checkAiUsageLimit>>) {
-  const now = new Date().toISOString();
-  if (limit.isUnlimited && limit.unlimitedUntil) return { title: "内部学生", detail: `临时无限 · 剩余 ${formatRemainingTime(limit.unlimitedUntil, now)}`, meta: `有效至 ${formatUnlimitedExpiry(limit.unlimitedUntil)}` };
-  if (limit.isUnlimited) return { title: "内部学生", detail: "永久无限 AI 评分额度", meta: "可直接使用 AI 反馈功能" };
-  return { title: "普通用户", detail: `今日剩余 ${getRemaining(limit.todayUsed, limit.dailyLimit)} 张 AI 券`, meta: `本月剩余 ${getRemaining(limit.monthUsed, limit.monthlyLimit)} 张` };
+function getAiStatus(profile: Profile | null, productAccess: AiAccessStatusItem[]) {
+  const options = { role: profile?.role, isMyStudent: profile?.is_my_student, productAccess };
+  const title = getAccountStatusLabel(options);
+  const detail = getAiAccessSummaryLabel(options);
+  return { title, detail, meta: detail };
 }
 
 function StatTile({ title, value, helper, icon: Icon, tone = "primary" }: { title: string; value: string; helper: string; icon: typeof Mic; tone?: "primary" | "success" | "warning" | "danger" }) {
@@ -173,13 +174,13 @@ function ExamStatsDetails({ examType, stats, defaultOpen }: { examType: ExamType
 export default async function DashboardPage() {
   const userContext = await requireUser("/dashboard-v2");
   const { supabase, user } = userContext;
-  const [{ data: profile }, { data: studyPlan }, pteAchievementStats, ieltsAchievementStats, adminContext, aiLimit, { data: recentAttempts }] = await Promise.all([
-    supabase.from("profiles").select("full_name, email, avatar_url, exam_type").eq("id", user.id).maybeSingle<Profile>(),
+  const [{ data: profile }, { data: studyPlan }, pteAchievementStats, ieltsAchievementStats, adminContext, { data: aiProductAccess }, { data: recentAttempts }] = await Promise.all([
+    supabase.from("profiles").select("full_name, email, avatar_url, exam_type, role, is_my_student").eq("id", user.id).maybeSingle<Profile>(),
     supabase.from("study_plans").select("overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours").eq("user_id", user.id).maybeSingle<StudyPlan>(),
     getAchievementStatsForUser(supabase, user.id, { examType: "PTE" }),
     getAchievementStatsForUser(supabase, user.id, { examType: "IELTS" }),
     getServerUserWithRole(["admin"], userContext),
-    checkAiUsageLimit(user.id, "dashboard"),
+    supabase.from("ai_user_product_limits").select("product_scope, is_unlimited, unlimited_until").eq("user_id", user.id).in("product_scope", ["ielts", "pte"]),
     supabase.from("student_attempts").select("module_type, question_source, submitted_at, score, accuracy, is_correct, status").eq("user_id", user.id).order("submitted_at", { ascending: false, nullsFirst: false }).limit(5).returns<RecentAttempt[]>(),
   ]);
   const preferredExamType = normalizeAchievementExamType(profile?.exam_type);
@@ -199,7 +200,7 @@ export default async function DashboardPage() {
   const unlockedAchievements = collectUnlockedAchievements(config, achievementContext);
   const latestAchievement = unlockedAchievements.at(-1);
   const daysUntilExam = getDaysUntil(studyPlan?.exam_deadline);
-  const aiStatus = getAiStatus(aiLimit);
+  const aiStatus = getAiStatus(profile, aiProductAccess ?? []);
   const targetProgress = studyPlan?.overall_target ? Math.round((toNumber(studyPlan.overall_current) / toNumber(studyPlan.overall_target)) * 100) : 0;
 
   return (
@@ -211,7 +212,7 @@ export default async function DashboardPage() {
             <div className="min-w-0">
               <Badge>Dashboard</Badge>
               <h1 className="mt-4 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">欢迎回来，{displayName}</h1>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-soft)]">这里汇总你的学习计划、题型完成度、AI 额度与成就状态。今天继续推进一点点，长期看会很可观。</p>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-soft)]">这里汇总你的学习计划、题型完成度、AI 权限与成就状态。今天继续推进一点点，长期看会很可观。</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link href="/study-plan" className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">学习计划<ArrowRight size={16} /></Link>
                 <Link href="/analytics" className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] transition hover:bg-[var(--bg-soft)]">查看分析<LineChart size={16} /></Link>
@@ -251,7 +252,7 @@ export default async function DashboardPage() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><p className="text-xs font-semibold text-[var(--text-faint)]">每日学习</p><p className="mt-2 text-xl font-bold text-[var(--text)]">{studyPlan?.daily_study_hours ?? "-"}h</p></div>
-              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><p className="text-xs font-semibold text-[var(--text-faint)]">AI 额度</p><p className="mt-2 text-sm font-bold leading-6 text-[var(--text)]">{aiStatus.meta}</p></div>
+              <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4"><p className="text-xs font-semibold text-[var(--text-faint)]">AI 权限</p><p className="mt-2 text-sm font-bold leading-6 text-[var(--text)]">{aiStatus.meta}</p></div>
             </div>
           </CardContent>
         </Card>

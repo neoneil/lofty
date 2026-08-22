@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronRight, UserCircle2 } from "lucide-react";
 
+import { getAccountStatusLabel, getAiAccessDetailLabels, getAiAccessSummaryLabel, type AiAccessStatusItem } from "@/lib/ai/access-status";
 import { AI_USAGE_CHANGED_EVENT } from "@/lib/ai/usage-summary";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { cn } from "@/lib/utils";
@@ -19,38 +20,10 @@ type ProfileResponse = {
     email: string | null;
     avatar_url: string | null;
     role: string | null;
+    is_my_student?: boolean | null;
   } | null;
-  aiAccess?: {
-    isUnlimited: boolean;
-    unlimitedUntil: string | null;
-    isPermanentUnlimited: boolean;
-    monthUsed: number;
-    monthlyLimit: number | null;
-  } | null;
+  aiProductAccess?: AiAccessStatusItem[] | null;
 };
-
-function formatDate(value: string | null) {
-  if (!value) return "";
-  return new Intl.DateTimeFormat("zh-CN", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(value));
-}
-
-function getRoleLabel(role: string | null | undefined) {
-  if (role === "admin") return "Admin 管理员";
-  if (role === "editor") return "Editor";
-  return "普通用户";
-}
-
-function getAiTokenLabel(aiAccess: ProfileResponse["aiAccess"] | null | undefined) {
-  if (!aiAccess) return "AI token 加载中";
-  if (aiAccess.isPermanentUnlimited) return "AI token 永久无限";
-  if (aiAccess.isUnlimited && aiAccess.unlimitedUntil) return `AI token 无限 - 到期日 ${formatDate(aiAccess.unlimitedUntil)}`;
-  if (typeof aiAccess.monthlyLimit === "number") return `AI token ${aiAccess.monthUsed}/${aiAccess.monthlyLimit}`;
-  return "AI token 未配置";
-}
 
 export function SidebarUser({ collapsed, userId }: Props) {
   const [profileData, setProfileData] = useState<ProfileResponse | null>(null);
@@ -85,9 +58,10 @@ export function SidebarUser({ collapsed, userId }: Props) {
   const email = profile?.email || "No email";
   const avatarUrl = normalizePublicStorageUrl(profile?.avatar_url, "avatars");
   const initials = displayName.slice(0, 1).toUpperCase() || "U";
-  const roleLabel = loading ? "账户状态" : getRoleLabel(profile?.role);
-  const aiTokenLabel = loading ? "AI token 加载中" : getAiTokenLabel(profileData?.aiAccess);
-  const title = `${roleLabel} · ${aiTokenLabel}`;
+  const accountLabel = loading ? "账户状态" : getAccountStatusLabel({ role: profile?.role, isMyStudent: profile?.is_my_student, productAccess: profileData?.aiProductAccess });
+  const aiAccessLabel = loading ? "AI 权限加载中" : getAiAccessSummaryLabel({ isMyStudent: profile?.is_my_student, productAccess: profileData?.aiProductAccess });
+  const aiAccessDetails = loading ? ["AI 权限加载中"] : getAiAccessDetailLabels({ isMyStudent: profile?.is_my_student, productAccess: profileData?.aiProductAccess });
+  const title = `${accountLabel} · ${aiAccessLabel}`;
 
   return (
     <Link href="/settings/ai-usage" title={title} className={cn("group relative flex w-full cursor-pointer items-center rounded-[var(--radius-lg)] border border-transparent bg-[var(--bg-soft)] p-3 transition-all duration-300 hover:border-[var(--border)] hover:bg-[var(--border-soft)]", collapsed ? "justify-center" : "justify-between")}>
@@ -96,8 +70,8 @@ export function SidebarUser({ collapsed, userId }: Props) {
           {avatarUrl ? <img src={avatarUrl} alt={displayName} referrerPolicy="no-referrer" className="h-full w-full object-cover" /> : userId ? initials : <UserCircle2 size={22} />}
         </div>
         <div className={cn("min-w-0 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-auto opacity-100")}>
-          <div className="truncate text-sm font-bold text-[var(--text)]">{roleLabel}</div>
-          <div className="mt-0.5 truncate text-[10px] font-medium text-[var(--primary)]">{aiTokenLabel}</div>
+          <div className="truncate text-sm font-bold text-[var(--text)]">{accountLabel}</div>
+          <div className="mt-0.5 truncate text-[10px] font-medium text-[var(--primary)]">{aiAccessLabel}</div>
           <div className="mt-0.5 truncate text-[9px] text-[var(--text-faint)]">{email}</div>
         </div>
       </div>
@@ -109,9 +83,9 @@ export function SidebarUser({ collapsed, userId }: Props) {
           <div className="mt-3 grid gap-2">
             <div className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2">
               <span className="text-xs font-semibold text-[var(--text-faint)]">账户状态</span>
-              <span className="text-xs font-bold text-[var(--text)]">{roleLabel}</span>
+              <span className="text-xs font-bold text-[var(--text)]">{accountLabel}</span>
             </div>
-            <div className="rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">{aiTokenLabel}</div>
+            <div className="grid gap-1 rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">{aiAccessDetails.map((item) => <div key={item} className="truncate">{item}</div>)}</div>
           </div>
         </div>
       ) : null}

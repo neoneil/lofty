@@ -121,7 +121,7 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
             银行卡 / Alipay
           </div>
           <p className='mt-1'>
-            支付由 Stripe 安全处理。银行卡按 AUD 收款；支付宝支付页面会显示人民币换算金额。
+            支付由 Stripe 安全处理。银行卡按澳币结算；支付宝支付页面会显示人民币换算金额。
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import {
@@ -11,69 +11,20 @@ import {
   CardTitle,
 } from "@/components/ui-v2/card";
 import { Textarea } from "@/components/ui-v2/textarea";
+import {
+  WritingFeedbackConsole,
+  WritingFeedbackReportContent,
+} from "@/components/writing-feedback/writing-feedback-report";
+import {
+  normalizeWritingFeedbackResult,
+  type WritingFeedbackResult,
+  type WritingFeedbackSelection,
+} from "@/lib/ielts/writing-feedback";
 
 type StudentOption = {
   user_id: string;
   display_name: string;
   email: string | null;
-};
-
-type OverallFeedback = {
-  summary: string;
-  estimated_score: string;
-  strengths: string[];
-  main_problems: string[];
-  improvement_priority: string[];
-  pte_feedback: {
-    content: string;
-    form: string;
-    grammar: string;
-    vocabulary: string;
-    spelling: string;
-    development_structure_coherence: string;
-  };
-  ielts_feedback: {
-    task_response: string;
-    coherence_cohesion: string;
-    lexical_resource: string;
-    grammar_range_accuracy: string;
-  };
-};
-
-type ParagraphFeedback = {
-  paragraph_id: string;
-  paragraph_text: string;
-  feedback: {
-    main_function: string;
-    strengths: string[];
-    problems: string[];
-    coherence_feedback: string;
-    suggestion: string;
-  };
-};
-
-type SentenceFeedback = {
-  sentence_id: string;
-  paragraph_id: string;
-  sentence_text: string;
-  feedback: {
-    sentence_function: string;
-    grammar_errors: string[];
-    vocabulary_errors: string[];
-    spelling_errors: string[];
-    punctuation_errors: string[];
-    cohesion_errors: string[];
-    logic_errors: string[];
-    improved_sentence: string;
-    explanation_cn: string;
-  };
-};
-
-type AnalyzeAnswerResult = {
-  full_report_cn: string;
-  overall_feedback: OverallFeedback;
-  paragraphs: ParagraphFeedback[];
-  sentences: SentenceFeedback[];
 };
 
 type AnalyzeHistoryItem = {
@@ -82,8 +33,9 @@ type AnalyzeHistoryItem = {
   essay_text?: string;
   overall_band: number | null;
   word_count: number | null;
-  feedback_json?: AnalyzeAnswerResult;
+  feedback_json?: WritingFeedbackResult;
   created_at: string | null;
+  published_at?: string | null;
 };
 
 type AnalyzeHistoryDetailResponse = {
@@ -91,11 +43,6 @@ type AnalyzeHistoryDetailResponse = {
   error?: string;
   item?: AnalyzeHistoryItem;
 };
-
-type Selection =
-  | { type: "paragraph"; id: string }
-  | { type: "sentence"; id: string }
-  | null;
 
 type AnalyzeModelChoice = "standard" | "sol";
 
@@ -156,146 +103,6 @@ function getAnalyzeModelOption(value: AnalyzeModelChoice) {
   return ANALYZE_MODEL_OPTIONS.find((option) => option.value === value) ?? ANALYZE_MODEL_OPTIONS[0];
 }
 
-function normalizeResultForClient(value: unknown): AnalyzeAnswerResult {
-  const record = typeof value === "object" && value ? value as Partial<AnalyzeAnswerResult> : {};
-  const rawOverall = typeof record.overall_feedback === "object" && record.overall_feedback ? record.overall_feedback as Partial<OverallFeedback> : {};
-  const fallbackOverall: OverallFeedback = {
-    summary: "",
-    estimated_score: "",
-    strengths: [],
-    main_problems: [],
-    improvement_priority: [],
-    pte_feedback: {
-      content: "",
-      form: "",
-      grammar: "",
-      vocabulary: "",
-      spelling: "",
-      development_structure_coherence: "",
-    },
-    ielts_feedback: {
-      task_response: "",
-      coherence_cohesion: "",
-      lexical_resource: "",
-      grammar_range_accuracy: "",
-    },
-  };
-
-  return {
-    full_report_cn: typeof record.full_report_cn === "string" ? record.full_report_cn : "",
-    overall_feedback: {
-      ...fallbackOverall,
-      ...rawOverall,
-      pte_feedback: {
-        ...fallbackOverall.pte_feedback,
-        ...(typeof rawOverall.pte_feedback === "object" && rawOverall.pte_feedback ? rawOverall.pte_feedback : {}),
-      },
-      ielts_feedback: {
-        ...fallbackOverall.ielts_feedback,
-        ...(typeof rawOverall.ielts_feedback === "object" && rawOverall.ielts_feedback ? rawOverall.ielts_feedback : {}),
-      },
-    },
-    paragraphs: Array.isArray(record.paragraphs) ? record.paragraphs : [],
-    sentences: Array.isArray(record.sentences) ? record.sentences : [],
-  };
-}
-
-function ListBlock({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <h4 className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
-        {title}
-      </h4>
-      {items.length > 0 ? (
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-[var(--text)]">
-          {items.map((item, index) => (
-            <li key={`${title}-${index}`}>{item}</li>
-          ))}
-        </ul>
-      ) : (
-        <p className="mt-2 text-sm text-[var(--text-soft)]">暂无。</p>
-      )}
-    </div>
-  );
-}
-
-function TextBlock({ title, text }: { title: string; text: string }) {
-  return (
-    <div>
-      <h4 className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
-        {title}
-      </h4>
-      <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[var(--text)]">
-        {text || "-"}
-      </p>
-    </div>
-  );
-}
-
-function OverallPanel({
-  feedback,
-}: {
-  feedback: OverallFeedback;
-}) {
-  const rubric = [
-    ["任务回应", feedback.ielts_feedback.task_response],
-    ["连贯与衔接", feedback.ielts_feedback.coherence_cohesion],
-    ["词汇资源", feedback.ielts_feedback.lexical_resource],
-    [
-      "语法多样性与准确性",
-      feedback.ielts_feedback.grammar_range_accuracy,
-    ],
-  ];
-
-  return (
-    <Card>
-      <CardHeader className="px-4 pt-4">
-        <CardTitle>整体反馈</CardTitle>
-        <Badge>{feedback.estimated_score || "暂无分数"}</Badge>
-      </CardHeader>
-
-      <CardContent className="space-y-4 p-4">
-        <TextBlock title="总结" text={feedback.summary} />
-        <ListBlock title="优点" items={feedback.strengths} />
-        <ListBlock title="主要问题" items={feedback.main_problems} />
-        <ListBlock
-          title="优先改进方向"
-          items={feedback.improvement_priority}
-        />
-
-        <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] p-3">
-          <h3 className="text-sm font-semibold text-[var(--text)]">
-            IELTS 评分反馈
-          </h3>
-          <div className="mt-3 space-y-3">
-            {rubric.map(([label, value]) => (
-              <TextBlock key={label} title={label} text={value} />
-            ))}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function FullReportPanel({ text }: { text: string }) {
-  if (!text.trim()) return null;
-
-  return (
-    <Card>
-      <CardHeader className="px-4 pt-4">
-        <CardTitle>完整批改报告</CardTitle>
-        <CardDescription>像 ChatGPT 一样的整体文字反馈，同时保留下面的逐句交互。</CardDescription>
-      </CardHeader>
-      <CardContent className="p-4">
-        <div className="max-h-[680px] overflow-y-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm leading-7 text-[var(--text)] whitespace-pre-wrap">
-          {text}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 function AnalyzeProgressPanel({ elapsedSeconds, modelLabel }: { elapsedSeconds: number; modelLabel: string }) {
   const progress = getAnalyzeProgress(elapsedSeconds);
 
@@ -342,119 +149,6 @@ function AnalyzeProgressPanel({ elapsedSeconds, modelLabel }: { elapsedSeconds: 
   );
 }
 
-function FeedbackConsole({
-  result,
-  selection,
-}: {
-  result: AnalyzeAnswerResult | null;
-  selection: Selection;
-}) {
-  if (!result) {
-    return (
-      <Card>
-        <CardHeader className="px-4 pt-4">
-          <CardTitle>反馈面板</CardTitle>
-          <CardDescription>请先点击分析，查看整体、段落和句子反馈。</CardDescription>
-        </CardHeader>
-      </Card>
-    );
-  }
-
-  if (selection?.type === "paragraph") {
-    const paragraph = result.paragraphs.find(
-      (item) => item.paragraph_id === selection.id
-    );
-
-    if (paragraph) {
-      return (
-        <Card>
-          <CardHeader className="px-4 pt-4">
-            <CardTitle>段落反馈</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 p-4">
-            <TextBlock title="段落编号" text={paragraph.paragraph_id} />
-            <TextBlock title="段落原文" text={paragraph.paragraph_text} />
-            <TextBlock
-              title="段落功能"
-              text={paragraph.feedback.main_function}
-            />
-            <ListBlock title="优点" items={paragraph.feedback.strengths} />
-            <ListBlock title="问题" items={paragraph.feedback.problems} />
-            <TextBlock
-              title="连贯性反馈"
-              text={paragraph.feedback.coherence_feedback}
-            />
-            <TextBlock title="修改建议" text={paragraph.feedback.suggestion} />
-          </CardContent>
-        </Card>
-      );
-    }
-  }
-
-  if (selection?.type === "sentence") {
-    const sentence = result.sentences.find(
-      (item) => item.sentence_id === selection.id
-    );
-
-    if (sentence) {
-      return (
-        <Card>
-          <CardHeader className="px-4 pt-4">
-            <CardTitle>句子反馈</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 p-4">
-            <TextBlock title="句子编号" text={sentence.sentence_id} />
-            <TextBlock title="句子原文" text={sentence.sentence_text} />
-            <TextBlock
-              title="句子功能"
-              text={sentence.feedback.sentence_function}
-            />
-            <ListBlock
-              title="语法问题"
-              items={sentence.feedback.grammar_errors}
-            />
-            <ListBlock
-              title="词汇问题"
-              items={sentence.feedback.vocabulary_errors}
-            />
-            <ListBlock
-              title="拼写问题"
-              items={sentence.feedback.spelling_errors}
-            />
-            <ListBlock
-              title="标点问题"
-              items={sentence.feedback.punctuation_errors}
-            />
-            <ListBlock
-              title="衔接问题"
-              items={sentence.feedback.cohesion_errors}
-            />
-            <ListBlock
-              title="逻辑问题"
-              items={sentence.feedback.logic_errors}
-            />
-            <TextBlock
-              title="建议改写"
-              text={sentence.feedback.improved_sentence}
-            />
-            <TextBlock
-              title="中文解释"
-              text={sentence.feedback.explanation_cn}
-            />
-          </CardContent>
-        </Card>
-      );
-    }
-  }
-
-  return (
-    <aside className="space-y-4">
-      <FeedbackConsole result={null} selection={null} />
-      <OverallPanel feedback={result.overall_feedback} />
-    </aside>
-  );
-}
-
 export default function AnalyzeAnswerClient({ students }: { students: StudentOption[] }) {
   const [selectedStudentId, setSelectedStudentId] = useState(
     students[0]?.user_id ?? "",
@@ -462,19 +156,18 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [analyzeModel, setAnalyzeModel] = useState<AnalyzeModelChoice>("standard");
-  const [result, setResult] = useState<AnalyzeAnswerResult | null>(null);
-  const [selection, setSelection] = useState<Selection>(null);
-  const [hoveredParagraphId, setHoveredParagraphId] = useState<string | null>(
-    null
-  );
+  const [result, setResult] = useState<WritingFeedbackResult | null>(null);
+  const [selection, setSelection] = useState<WritingFeedbackSelection>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [history, setHistory] = useState<AnalyzeHistoryItem[]>([]);
   const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [historyDetailLoadingId, setHistoryDetailLoadingId] = useState<string | null>(null);
+  const [sendingHistoryId, setSendingHistoryId] = useState<string | null>(null);
   const [deletingHistoryId, setDeletingHistoryId] = useState<string | null>(null);
   const [historyError, setHistoryError] = useState<string | null>(null);
+  const [historyNotice, setHistoryNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -485,6 +178,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
 
       setHistoryLoading(true);
       setHistoryError(null);
+      setHistoryNotice(null);
 
       try {
         const response = await fetch(
@@ -525,17 +219,6 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     return () => window.clearInterval(timer);
   }, [isAnalyzing]);
 
-  const sentencesByParagraph = useMemo(() => {
-    const map = new Map<string, SentenceFeedback[]>();
-
-    for (const sentence of result?.sentences ?? []) {
-      const group = map.get(sentence.paragraph_id) ?? [];
-      group.push(sentence);
-      map.set(sentence.paragraph_id, group);
-    }
-
-    return map;
-  }, [result]);
   const selectedAnalyzeModelOption = getAnalyzeModelOption(analyzeModel);
 
   const loadHistoryItem = async (item: AnalyzeHistoryItem) => {
@@ -546,7 +229,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     if (item.essay_text !== undefined && item.feedback_json !== undefined) {
       setQuestion(item.prompt_question);
       setAnswer(item.essay_text);
-      setResult(normalizeResultForClient(item.feedback_json));
+      setResult(normalizeWritingFeedbackResult(item.feedback_json));
       return;
     }
 
@@ -563,7 +246,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
 
       const detail = {
         ...data.item,
-        feedback_json: normalizeResultForClient(data.item.feedback_json),
+        feedback_json: normalizeWritingFeedbackResult(data.item.feedback_json),
       };
       setHistory((current) => current.map((historyItem) => historyItem.id === item.id ? detail : historyItem));
       setQuestion(detail.prompt_question);
@@ -576,12 +259,60 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
     }
   };
 
+  const sendHistoryItem = async (item: AnalyzeHistoryItem) => {
+    if (item.id.startsWith("local-")) {
+      setHistoryError("这条记录还没有保存到数据库，暂时无法发送。");
+      return;
+    }
+
+    setSendingHistoryId(item.id);
+    setHistoryError(null);
+    setHistoryNotice(null);
+
+    try {
+      const response = await fetch("/api/admin/analyze-answer/history", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          student_user_id: selectedStudentId,
+          attempt_id: item.id,
+        }),
+      });
+      const data = (await response.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        published_at?: string;
+      };
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error ?? "作文反馈发送失败。");
+      }
+
+      const publishedAt = data.published_at ?? new Date().toISOString();
+      setHistory((current) =>
+        current.map((historyItem) =>
+          historyItem.id === item.id
+            ? { ...historyItem, published_at: publishedAt }
+            : historyItem,
+        ),
+      );
+      setHistoryNotice("作文完整反馈已发送，学生可以在“我的作业”中查看。");
+    } catch (apiError) {
+      setHistoryError(
+        apiError instanceof Error ? apiError.message : "作文反馈发送失败。",
+      );
+    } finally {
+      setSendingHistoryId(null);
+    }
+  };
+
   const deleteHistoryItem = async (item: AnalyzeHistoryItem) => {
     const confirmed = window.confirm("确定删除这条作文 AI 批改历史吗？删除后不能恢复。");
     if (!confirmed) return;
 
     setDeletingHistoryId(item.id);
     setHistoryError(null);
+    setHistoryNotice(null);
 
     try {
       const response = await fetch("/api/admin/analyze-answer/history", {
@@ -660,7 +391,7 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
         throw new Error(typeof data.error === "string" ? data.error : "分析失败。");
       }
 
-      const normalizedData = normalizeResultForClient(data);
+      const normalizedData = normalizeWritingFeedbackResult(data);
       if (!normalizedData.full_report_cn.trim() && normalizedData.paragraphs.length === 0 && normalizedData.sentences.length === 0) {
         throw new Error("AI 返回了空结果，没有可展示的批改内容。");
       }
@@ -827,6 +558,12 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
                   <Badge>{history.length}</Badge>
                 </div>
 
+                {historyNotice ? (
+                  <div className="mt-3 rounded-[var(--radius-sm)] border border-[color:var(--success)]/30 bg-[var(--success-soft)] px-3 py-2 text-sm font-semibold text-[var(--success)]">
+                    {historyNotice}
+                  </div>
+                ) : null}
+
                 {historyLoading ? (
                   <p className="mt-3 text-sm text-[var(--text-soft)]">加载中...</p>
                 ) : historyError ? (
@@ -863,10 +600,33 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
                           </div>
                         </button>
 
-                        <div className="mt-3 flex justify-end border-t border-[var(--border)] pt-2">
+                        <div className="mt-3 flex items-center justify-between gap-2 border-t border-[var(--border)] pt-2">
                           <button
                             type="button"
-                            disabled={deletingHistoryId === item.id}
+                            disabled={
+                              Boolean(item.published_at) ||
+                              sendingHistoryId === item.id ||
+                              deletingHistoryId === item.id
+                            }
+                            onClick={() => void sendHistoryItem(item)}
+                            className={`rounded-[var(--radius-sm)] border px-2.5 py-1 text-xs font-semibold transition disabled:cursor-not-allowed ${
+                              item.published_at
+                                ? "border-[color:var(--success)]/30 bg-[var(--success-soft)] text-[var(--success)]"
+                                : "border-[var(--primary)]/30 bg-[var(--primary-soft)] text-[var(--primary)] hover:border-[var(--primary)]/50 disabled:opacity-60"
+                            }`}
+                          >
+                            {item.published_at
+                              ? "已发送给学生"
+                              : sendingHistoryId === item.id
+                                ? "发送中..."
+                                : "发送给学生"}
+                          </button>
+                          <button
+                            type="button"
+                            disabled={
+                              deletingHistoryId === item.id ||
+                              sendingHistoryId === item.id
+                            }
                             onClick={() => void deleteHistoryItem(item)}
                             className="rounded-[var(--radius-sm)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-2.5 py-1 text-xs font-semibold text-[var(--danger)] transition hover:border-[color:var(--danger)]/50 disabled:cursor-not-allowed disabled:opacity-60"
                           >
@@ -881,104 +641,27 @@ export default function AnalyzeAnswerClient({ students }: { students: StudentOpt
             </CardContent>
           </Card>
 
-          <section className="space-y-4">
-            {result ? (
-              <>
-                <FullReportPanel text={result.full_report_cn} />
-                <OverallPanel feedback={result.overall_feedback} />
-              </>
-            ) : null}
-
+          {result ? (
+            <WritingFeedbackReportContent
+              result={result}
+              question={question}
+              essayText={answer}
+              selection={selection}
+              onSelectionChange={setSelection}
+            />
+          ) : (
             <Card>
               <CardHeader className="px-4 pt-4">
                 <CardTitle>作文查看器</CardTitle>
               </CardHeader>
-
-              {result ? (
-                <CardContent className="space-y-4 p-4">
-                  {result.paragraphs.map((paragraph) => {
-                    const selected = selection?.id === paragraph.paragraph_id;
-                    const hovered = hoveredParagraphId === paragraph.paragraph_id;
-                    const paragraphSentences =
-                      sentencesByParagraph.get(paragraph.paragraph_id) ?? [];
-
-                    return (
-                      <article
-                        key={paragraph.paragraph_id}
-                        className={`rounded border p-3 transition ${
-                          selected && selection?.type === "paragraph"
-                            ? "border-[color:var(--warning)]/40 bg-[var(--warning-soft)]"
-                            : hovered
-                              ? "border-[color:var(--warning)]/30 bg-[var(--warning-soft)]"
-                              : "border-[var(--border)] bg-[var(--card)]"
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <button
-                            type="button"
-                            onMouseEnter={() =>
-                              setHoveredParagraphId(paragraph.paragraph_id)
-                            }
-                            onMouseLeave={() => setHoveredParagraphId(null)}
-                            onClick={() =>
-                              setSelection({
-                                type: "paragraph",
-                                id: paragraph.paragraph_id,
-                              })
-                            }
-                            className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold transition ${
-                              selected && selection?.type === "paragraph"
-                                ? "border-[color:var(--warning)]/40 bg-[var(--warning-soft)] text-[var(--warning)]"
-                                : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] hover:bg-[var(--warning-soft)]"
-                            }`}
-                          >
-                            {paragraph.paragraph_id.toUpperCase()}
-                          </button>
-
-                          <p className="min-w-0 flex-1 text-sm leading-7 text-[var(--text)]">
-                            {paragraphSentences.length > 0
-                              ? paragraphSentences.map((sentence) => {
-                                  const sentenceSelected =
-                                    selection?.type === "sentence" &&
-                                    selection.id === sentence.sentence_id;
-
-                                  return (
-                                    <button
-                                      key={sentence.sentence_id}
-                                      type="button"
-                                      onClick={() =>
-                                        setSelection({
-                                          type: "sentence",
-                                          id: sentence.sentence_id,
-                                        })
-                                      }
-                                      className={`mx-0.5 rounded px-1 text-left transition hover:bg-[var(--primary-soft)] hover:text-[var(--primary)] ${
-                                        sentenceSelected
-                                          ? "bg-[var(--primary-soft)] text-[var(--primary)]"
-                                          : ""
-                                      }`}
-                                    >
-                                      {sentence.sentence_text}
-                                    </button>
-                                  );
-                                })
-                              : paragraph.paragraph_text}
-                          </p>
-                        </div>
-                      </article>
-                    );
-                  })}
-                </CardContent>
-              ) : (
-                <CardContent className="p-4 pt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  分析完成后，作文会按段落和句子渲染在这里。
-                </CardContent>
-              )}
+              <CardContent className="p-4 pt-3 text-sm leading-6 text-[var(--text-soft)]">
+                分析完成后，作文会按段落和句子渲染在这里。
+              </CardContent>
             </Card>
-          </section>
+          )}
 
           <div className="xl:sticky xl:top-4 xl:self-start">
-            <FeedbackConsole
+            <WritingFeedbackConsole
               result={result}
               selection={selection}
             />

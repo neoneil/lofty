@@ -25,6 +25,7 @@ type HomeworkRow = {
   status: string;
   email_sent_at: string | null;
   email_error: string | null;
+  metadata?: unknown;
   created_at: string;
 };
 
@@ -70,6 +71,10 @@ export function mapHomeworkAssignment(row: HomeworkRow): HomeworkAssignment {
     status: row.status,
     emailSentAt: row.email_sent_at,
     emailError: row.email_error,
+    metadata:
+      row.metadata && typeof row.metadata === "object"
+        ? (row.metadata as Record<string, unknown>)
+        : {},
     createdAt: row.created_at,
   };
 }
@@ -84,6 +89,10 @@ export function mapHomeworkHistoryItem(row: HomeworkHistoryRow) {
     status: row.status,
     emailSentAt: row.email_sent_at,
     emailError: row.email_error,
+    metadata:
+      row.metadata && typeof row.metadata === "object"
+        ? (row.metadata as Record<string, unknown>)
+        : {},
     createdAt: row.created_at,
   };
 }
@@ -115,7 +124,7 @@ export async function listHomeworkStudents(supabase: SupabaseClient) {
 export async function listStudentHomework(supabase: SupabaseClient, userId: string) {
   const { data, error } = await supabase
     .from("student_homework_assignments")
-    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, created_at")
+    .select("id, student_id, teacher_id, exam_type, content, status, email_sent_at, email_error, metadata, created_at")
     .eq("student_id", userId)
     .order("created_at", { ascending: false })
     .limit(100);

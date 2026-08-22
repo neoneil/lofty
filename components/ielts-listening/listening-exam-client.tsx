@@ -339,7 +339,8 @@ function QuestionBlock({ question, answers, onAnswerChange, suppressInstruction 
   const studentOptions = optionBankIsAnswerKey ? [] : visibleOptions;
   const judgementOptions = isJudgementOptions(studentOptions) ? studentOptions.map((option) => stripOptionLabel(optionText(option))) : [];
   const inferredOptions = inferQuestionOptions(question, sectionDesc, pageContent);
-  const sourceQuestionOptions = judgementOptions.length > 0 ? judgementOptions : inferredOptions;
+  const optionLetterValues = getOptionLetterValues(studentOptions);
+  const sourceQuestionOptions = judgementOptions.length > 0 ? judgementOptions : inferredOptions.length > 0 ? inferredOptions : optionLetterValues;
   const sourceQuestionsWithOptions = sourceQuestionOptions.length > 0 ? sourceQuestions.map((sourceQuestion) => ({ ...sourceQuestion, option: sourceQuestionOptions })) : sourceQuestions;
   const shouldRenderOptionBank = hasSourceQuestions && studentOptions.length > 0 && judgementOptions.length === 0;
   const shouldShowOptionsBeforeQuestions = shouldRenderOptionBank && isMatchingOptionBank(question, sectionDesc, pageContent || "");
@@ -1137,7 +1138,11 @@ function stripOptionLabel(value: string) {
 
 function isMatchingOptionBank(question: IeltsQuestion, sectionDesc: string, pageContent: string) {
   const text = `${question.question_type} ${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`.toLowerCase();
-  return text.includes("list of people") || text.includes("list of headings") || text.includes("list of researchers") || text.includes("answers from the box") || text.includes("from the box") || text.includes("match each") || text.includes("matching");
+  return text.includes("list of people") || text.includes("list of headings") || text.includes("list of researchers") || text.includes("answers from the box") || text.includes("from the box") || text.includes("move it into the gap") || text.includes("match each") || text.includes("matching");
+}
+
+function getOptionLetterValues(options: Record<string, unknown>[]) {
+  return options.map((option) => stripHtml(optionText(option)).match(/^([A-Z])\s*[.)]?\s+/)?.[1] ?? "").filter(Boolean);
 }
 
 function isFillInBlankAnswerBank(question: IeltsQuestion, pageContent: string, sectionDesc: string) {

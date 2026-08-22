@@ -17,8 +17,8 @@ type MobileUser = {
   name: string;
   email: string;
   avatar: string;
-  roleLabel: string;
-  aiTokenLabel: string;
+  accountLabel: string;
+  aiAccessLabel: string;
 } | null;
 
 export default function NavbarMobileClient({
@@ -89,7 +89,7 @@ export default function NavbarMobileClient({
                       {user.email}
                     </span>
                     <span className="mt-0.5 block max-w-32.5 truncate text-[10px] font-semibold text-[var(--primary)]">
-                      {user.roleLabel} · {user.aiTokenLabel}
+                      {user.accountLabel} · {user.aiAccessLabel}
                     </span>
                   </div>
                 </div>

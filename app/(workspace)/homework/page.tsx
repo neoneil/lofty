@@ -3,7 +3,6 @@ import { BookOpenCheck, CalendarDays, CheckCircle2, NotebookPen } from "lucide-r
 import {
   WritingFeedbackHistoryClient,
   type WritingFeedbackHistoryItem,
-  type WritingFeedbackResult,
 } from "@/components/homework/writing-feedback-history-client";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
@@ -33,143 +32,75 @@ function getExamBadgeVariant(examType: HomeworkAssignment["examType"]) {
 type IeltsWritingAttemptRow = {
   id: string;
   prompt_question: string | null;
-  essay_text: string | null;
   overall_band: number | null;
   word_count: number | null;
-  feedback_json: unknown;
   created_at: string | null;
 };
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
-}
+type WritingPublicationRow = {
+  created_at: string;
+  metadata: unknown;
+};
 
-function getObject(record: Record<string, unknown>, key: string) {
-  const value = record[key];
-  return isRecord(value) ? value : {};
-}
-
-function getString(record: Record<string, unknown>, key: string) {
-  const value = record[key];
+function getWritingAttemptId(metadata: unknown) {
+  if (!metadata || typeof metadata !== "object") return "";
+  const value = (metadata as Record<string, unknown>).writing_attempt_id;
   return typeof value === "string" ? value : "";
-}
-
-function getStringArray(record: Record<string, unknown>, key: string) {
-  const value = record[key];
-  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
-}
-
-function parseFeedbackJson(value: unknown) {
-  if (typeof value !== "string") return value;
-
-  try {
-    return JSON.parse(value) as unknown;
-  } catch {
-    return {};
-  }
-}
-
-function normalizeWritingFeedback(value: unknown): WritingFeedbackResult {
-  const parsed = parseFeedbackJson(value);
-  const root = isRecord(parsed) ? parsed : {};
-  const overall = getObject(root, "overall_feedback");
-  const pte = getObject(overall, "pte_feedback");
-  const ielts = getObject(overall, "ielts_feedback");
-
-  return {
-    full_report_cn: getString(root, "full_report_cn"),
-    overall_feedback: {
-      summary: getString(overall, "summary"),
-      estimated_score: getString(overall, "estimated_score"),
-      strengths: getStringArray(overall, "strengths"),
-      main_problems: getStringArray(overall, "main_problems"),
-      improvement_priority: getStringArray(overall, "improvement_priority"),
-      pte_feedback: {
-        content: getString(pte, "content"),
-        form: getString(pte, "form"),
-        grammar: getString(pte, "grammar"),
-        vocabulary: getString(pte, "vocabulary"),
-        spelling: getString(pte, "spelling"),
-        development_structure_coherence: getString(pte, "development_structure_coherence"),
-      },
-      ielts_feedback: {
-        task_response: getString(ielts, "task_response"),
-        coherence_cohesion: getString(ielts, "coherence_cohesion"),
-        lexical_resource: getString(ielts, "lexical_resource"),
-        grammar_range_accuracy: getString(ielts, "grammar_range_accuracy"),
-      },
-    },
-    paragraphs: Array.isArray(root.paragraphs)
-      ? root.paragraphs.map((item, index) => {
-          const paragraph = isRecord(item) ? item : {};
-          const feedback = getObject(paragraph, "feedback");
-
-          return {
-            paragraph_id: getString(paragraph, "paragraph_id") || `p${index + 1}`,
-            paragraph_text: getString(paragraph, "paragraph_text"),
-            feedback: {
-              main_function: getString(feedback, "main_function"),
-              strengths: getStringArray(feedback, "strengths"),
-              problems: getStringArray(feedback, "problems"),
-              coherence_feedback: getString(feedback, "coherence_feedback"),
-              suggestion: getString(feedback, "suggestion"),
-            },
-          };
-        })
-      : [],
-    sentences: Array.isArray(root.sentences)
-      ? root.sentences.map((item, index) => {
-          const sentence = isRecord(item) ? item : {};
-          const feedback = getObject(sentence, "feedback");
-
-          return {
-            sentence_id: getString(sentence, "sentence_id") || `s${index + 1}`,
-            paragraph_id: getString(sentence, "paragraph_id"),
-            sentence_text: getString(sentence, "sentence_text"),
-            feedback: {
-              sentence_function: getString(feedback, "sentence_function"),
-              grammar_errors: getStringArray(feedback, "grammar_errors"),
-              vocabulary_errors: getStringArray(feedback, "vocabulary_errors"),
-              spelling_errors: getStringArray(feedback, "spelling_errors"),
-              punctuation_errors: getStringArray(feedback, "punctuation_errors"),
-              cohesion_errors: getStringArray(feedback, "cohesion_errors"),
-              logic_errors: getStringArray(feedback, "logic_errors"),
-              improved_sentence: getString(feedback, "improved_sentence"),
-              explanation_cn: getString(feedback, "explanation_cn"),
-            },
-          };
-        })
-      : [],
-  };
 }
 
 async function listStudentWritingFeedback(
   supabase: ReturnType<typeof createAdminClient>,
   userId: string,
 ): Promise<WritingFeedbackHistoryItem[]> {
+  const { data: publications, error: publicationError } = await supabase
+    .from("student_homework_assignments")
+    .select("created_at, metadata")
+    .eq("student_id", userId)
+    .contains("metadata", { source: "admin_analyze_answer" })
+    .order("created_at", { ascending: false })
+    .limit(50);
+
+  if (publicationError) {
+    console.error("STUDENT WRITING PUBLICATION LOAD ERROR", publicationError);
+    return [];
+  }
+
+  const publishedAtByAttempt = new Map<string, string>();
+  for (const row of (publications ?? []) as WritingPublicationRow[]) {
+    const attemptId = getWritingAttemptId(row.metadata);
+    if (attemptId && !publishedAtByAttempt.has(attemptId)) {
+      publishedAtByAttempt.set(attemptId, row.created_at);
+    }
+  }
+
+  const attemptIds = [...publishedAtByAttempt.keys()];
+  if (attemptIds.length === 0) return [];
+
   const { data, error } = await supabase
     .schema("ielts")
     .from("writing_attempts")
-    .select("id, prompt_question, essay_text, overall_band, word_count, feedback_json, created_at")
+    .select("id, prompt_question, overall_band, word_count, created_at")
     .eq("user_id", userId)
     .eq("task_type", "task2")
-    .order("created_at", { ascending: false })
-    .limit(50);
+    .in("id", attemptIds);
 
   if (error) {
     console.error("STUDENT WRITING FEEDBACK LOAD ERROR", error);
     return [];
   }
 
-  return ((data ?? []) as IeltsWritingAttemptRow[]).map((item) => ({
-    id: item.id,
-    promptQuestion: item.prompt_question ?? "IELTS Writing Task 2",
-    essayText: item.essay_text ?? "",
-    overallBand: item.overall_band,
-    wordCount: item.word_count,
-    feedback: normalizeWritingFeedback(item.feedback_json),
-    createdAt: item.created_at,
-  }));
+  return ((data ?? []) as IeltsWritingAttemptRow[])
+    .map((item) => ({
+      id: item.id,
+      promptQuestion: item.prompt_question ?? "IELTS Writing Task 2",
+      overallBand: item.overall_band,
+      wordCount: item.word_count,
+      createdAt: item.created_at,
+      publishedAt: publishedAtByAttempt.get(item.id) ?? item.created_at,
+    }))
+    .sort((left, right) =>
+      String(right.publishedAt ?? "").localeCompare(String(left.publishedAt ?? "")),
+    );
 }
 
 export default async function HomeworkPage() {
@@ -180,7 +111,9 @@ export default async function HomeworkPage() {
   const supabase = createAdminClient();
 
   try {
-    assignments = await listStudentHomework(supabase, user.id);
+    assignments = (await listStudentHomework(supabase, user.id)).filter(
+      (assignment) => assignment.metadata.source !== "admin_analyze_answer",
+    );
   } catch (error) {
     tableReady = false;
     console.error("STUDENT HOMEWORK PAGE LOAD ERROR", error);

@@ -115,6 +115,18 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - When adding a new query, include pagination or an explicit reasonable limit for potentially growing tables such as attempts, answers, events, homework, AI feedback, and reports.
 - When changing an existing query, preserve behavior first, then reduce columns and split large payloads. If a field is removed from an initial query, confirm the consuming component receives it from the new detail query before finishing.
 
+
+## Test Account Deletion Audit
+
+- `neilmaaustralia@gmail.com` is the user's current test account for IELTS and PTE practice testing.
+- Current known user id: `43e58d1b-2641-4111-8071-50e5e3b79471`.
+- Do not delete this account until the user explicitly asks to run the deletion test.
+- Before deleting this test account, update the admin deletion preview and deletion function so they cover the newer tables introduced after the original delete flow.
+- The deletion preview and delete flow must include at least: `ai_user_product_limits`, `ai_access_purchases`, `user_billing_profiles`, `student_homework_assignments`, `ielts.writing_attempts`, related `stripe_webhook_events` payload records if the user wants payment-event cleanup, and `mock_exam.*` records such as attempts, sections, answers, answer scores, and events.
+- Also keep the existing cleanup for `profiles`, Auth user, `study_plans`, login/activity/device tables, chat tables, Zoom tables, PTE/IELTS speaking attempts, student recordings, and R2 private student audio objects.
+- Current read-only audit before the user continues testing found no `student_recordings`, no PTE/IELTS speaking recordings, no mock attempts, and no matching private R2 student-audio objects for this user.
+- When the user is ready to delete this account, first run a fresh read-only preview, then patch `getStudentDeletionPreview` and `deleteStudentAndRelatedData`, then test deletion with this account and verify database counts plus R2 leftovers afterward.
+
 ## IELTS Answer Visibility
 
 - IELTS reading and listening detail pages currently hide "答案" and "答案与解析" UI behind admin-only rendering.

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AudioLines, Bot, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, ClipboardList, CloudUpload, CreditCard, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, ScrollText, Users, Video, type LucideIcon } from "lucide-react";
+import { AudioLines, Bot, BookCopy, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, ClipboardList, CloudUpload, CreditCard, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, ScrollText, Users, Video, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
@@ -64,6 +64,7 @@ const adminModuleGroups: AdminModuleGroup[] = [
     modules: [
       { title: "文章管理", desc: "创建、编辑和管理 IELTS / PTE 文章。", href: "/admin/posts", tag: "Posts", icon: FileText },
       { title: "授课笔记", desc: "浏览 PTE 与 IELTS Markdown 课程笔记，并预览课程内容。", href: "/admin/lesson-notes", tag: "PTE / IELTS", icon: BookOpenText },
+      { title: "一键成书", desc: "组合 IELTS / PTE 题库与授课笔记，生成学生专属封面、目录和 A4 PDF 书籍。", href: "/admin/book-builder", tag: "Book Studio", icon: BookCopy },
       { title: "文档词汇自动化", desc: "上传 PDF、Word、PPT，提取文字并生成可在词汇中心展示的静态词汇文件。", href: "/admin/content-ingest", tag: "Content", icon: CloudUpload },
       { title: "Markdown 备忘录", desc: "查看课程 front matter、Slides、课程卡片和扩展语法示例。", href: "/admin/markdown-memo", tag: "Course Design", icon: BookOpenCheck },
       { title: "课程上传", desc: "上传 TED 或 LoftyPTE 视频、缩略图和字幕到 R2，并创建课程记录。", href: "/admin/course-upload", tag: "Courses", icon: CloudUpload },

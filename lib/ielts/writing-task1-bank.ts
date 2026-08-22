@@ -8,23 +8,30 @@ import type { IeltsWritingTask1Bank, IeltsWritingTask1ModelAnswerBank } from "@/
 export const IELTS_WRITING_TASK1_BANK_PATH = path.join(process.cwd(), "content", "ielts", "writing-task1-bank.json");
 export const IELTS_WRITING_TASK1_MODEL_ANSWERS_PATH = path.join(process.cwd(), "content", "ielts", "writing-task1-model-answers.json");
 
-export async function getIeltsWritingTask1Bank(): Promise<IeltsWritingTask1Bank> {
+export async function getIeltsWritingTask1BankIndex(): Promise<IeltsWritingTask1Bank> {
   const raw = await fs.readFile(IELTS_WRITING_TASK1_BANK_PATH, "utf8");
   const bank = JSON.parse(raw) as IeltsWritingTask1Bank;
+
+  return {
+    ...bank,
+    items: [...bank.items].sort((a, b) => a.sortOrder - b.sortOrder),
+  };
+}
+
+export async function getIeltsWritingTask1Bank(): Promise<IeltsWritingTask1Bank> {
+  const bank = await getIeltsWritingTask1BankIndex();
   const modelAnswers = await getIeltsWritingTask1ModelAnswerBank();
 
   return {
     ...bank,
-    items: [...bank.items]
-      .map((item) => {
-        const modelAnswer = modelAnswers.items[item.id];
-        return {
-          ...item,
-          modelAnswer: modelAnswer?.modelAnswer ?? "",
-          modelAnswerUpdatedAt: modelAnswer?.updatedAt ?? "",
-        };
-      })
-      .sort((a, b) => a.sortOrder - b.sortOrder),
+    items: bank.items.map((item) => {
+      const modelAnswer = modelAnswers.items[item.id];
+      return {
+        ...item,
+        modelAnswer: modelAnswer?.modelAnswer ?? "",
+        modelAnswerUpdatedAt: modelAnswer?.updatedAt ?? "",
+      };
+    }),
   };
 }
 

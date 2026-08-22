@@ -18,6 +18,7 @@ export type HomeworkAssignment = {
   status: string;
   emailSentAt: string | null;
   emailError: string | null;
+  metadata: Record<string, unknown>;
   createdAt: string;
 };
 

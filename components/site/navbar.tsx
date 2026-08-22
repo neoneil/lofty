@@ -11,32 +11,13 @@ import { BRAND_NAME_CN } from "@/lib/brand";
 import { BrandLockup } from "@/components/site/brand-lockup";
 import { NavbarScrollShell } from "@/components/site/navbar-scroll-shell";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
-import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
+import { getAccountStatusLabel, getAiAccessDetailLabels, getAiAccessSummaryLabel, type AiAccessStatusItem } from "@/lib/ai/access-status";
 
 type NavItem = {
   href: string;
   label: string;
   tooltip: string;
 };
-
-function formatDate(value: string | null) {
-  if (!value) return "";
-  return new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(value));
-}
-
-function getRoleLabel(role: string | null | undefined) {
-  if (role === "admin") return "Admin 管理员";
-  if (role === "editor") return "Editor";
-  return "普通用户";
-}
-
-function getAiTokenLabel(aiAccess: Awaited<ReturnType<typeof checkAiUsageLimit>> | null) {
-  if (!aiAccess) return "AI token 加载中";
-  if (aiAccess.isUnlimited && !aiAccess.unlimitedUntil) return "AI token 永久无限";
-  if (aiAccess.isUnlimited && aiAccess.unlimitedUntil) return `AI token 无限 - 到期日 ${formatDate(aiAccess.unlimitedUntil)}`;
-  if (typeof aiAccess.monthlyLimit === "number") return `AI token ${aiAccess.monthUsed}/${aiAccess.monthlyLimit}`;
-  return "AI token 未配置";
-}
 
 export default async function Navbar() {
   const supabase = await createClient();
@@ -50,24 +31,34 @@ export default async function Navbar() {
   let profileName: string | null = null;
   let profileEmail: string | null = null;
   let profileAvatar: string | null = null;
-  let aiAccess: Awaited<ReturnType<typeof checkAiUsageLimit>> | null = null;
+  let isMyStudent = false;
+  let aiProductAccess: AiAccessStatusItem[] = [];
 
   if (user) {
-    const [{ data: profile, error: profileError }, aiAccessResult] = await Promise.all([
+    const [{ data: profile, error: profileError }, { data: productAccess, error: productAccessError }] = await Promise.all([
       supabase
         .from("profiles")
-        .select("role, selective_access, full_name, email, avatar_url")
+        .select("role, selective_access, full_name, email, avatar_url, is_my_student")
         .eq("id", user.id)
         .single(),
-      checkAiUsageLimit(user.id, "ai_feedback"),
+      supabase
+        .from("ai_user_product_limits")
+        .select("product_scope, is_unlimited, unlimited_until")
+        .eq("user_id", user.id)
+        .in("product_scope", ["ielts", "pte"]),
     ]);
 
     if (profileError) {
       console.error("Navbar profile query failed:", profileError);
     }
 
-    aiAccess = aiAccessResult;
+    if (productAccessError) {
+      console.error("Navbar AI product access query failed:", productAccessError);
+    }
+
+    aiProductAccess = productAccess ?? [];
     role = profile?.role ?? null;
+    isMyStudent = profile?.is_my_student ?? false;
     selectiveAccess = profile?.selective_access ?? false;
     profileName = profile?.full_name ?? null;
     profileEmail = profile?.email ?? null;
@@ -83,8 +74,9 @@ export default async function Navbar() {
     "User";
 
   const email = profileEmail || user?.email || "";
-  const roleLabel = getRoleLabel(role);
-  const aiTokenLabel = getAiTokenLabel(aiAccess);
+  const accountLabel = getAccountStatusLabel({ role, isMyStudent, productAccess: aiProductAccess });
+  const aiAccessLabel = getAiAccessSummaryLabel({ isMyStudent, productAccess: aiProductAccess });
+  const aiAccessDetails = getAiAccessDetailLabels({ isMyStudent, productAccess: aiProductAccess });
 
   const avatar =
     normalizePublicStorageUrl(profileAvatar, "avatars") ||
@@ -171,8 +163,8 @@ export default async function Navbar() {
                         name,
                         email,
                         avatar,
-                        roleLabel,
-                        aiTokenLabel,
+                        accountLabel,
+                        aiAccessLabel,
                       }
                     : null
                 }
@@ -281,10 +273,10 @@ export default async function Navbar() {
                         <div className="mt-3 grid gap-2">
                           <div className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2">
                             <span className="text-xs font-semibold text-[var(--text-faint)]">账户状态</span>
-                            <span className="text-xs font-bold text-[var(--text)]">{roleLabel}</span>
+                            <span className="text-xs font-bold text-[var(--text)]">{accountLabel}</span>
                           </div>
-                          <div className="rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">
-                            {aiTokenLabel}
+                          <div className="grid gap-1 rounded-[var(--radius-sm)] border border-[var(--primary)]/20 bg-[var(--primary-soft)] px-3 py-2 text-xs font-bold text-[var(--primary)]">
+                            {aiAccessDetails.map((item) => <div key={item} className="truncate">{item}</div>)}
                           </div>
                         </div>
                       </div>

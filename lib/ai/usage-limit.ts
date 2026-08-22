@@ -2,6 +2,7 @@ import "server-only";
 
 import { AsyncLocalStorage } from "node:async_hooks";
 
+import { canAccessAdmin } from "@/lib/auth/admin-access";
 import { normalizeProfileExamType, type ProfileExamType } from "@/lib/profile/exam-type";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -78,6 +79,8 @@ const aiUsageReservationStorage = new AsyncLocalStorage<{
   productScope: AiProductScope | null;
 }>();
 
+export const FREE_AI_DAILY_LIMIT = 3;
+
 const IELTS_AI_FEATURES = new Set([
   "admin_analyze_answer",
   "admin_analyze_essay_sentence",
@@ -107,7 +110,7 @@ function normalizeReserveResult(data: ReserveAiUsageRpcResult, fallbackUserId: s
       isUnlimited: Boolean(data.isUnlimited),
       todayUsed: Number(data.todayUsed ?? 0),
       monthUsed: Number(data.monthUsed ?? 0),
-      dailyLimit: Number(data.dailyLimit ?? 0),
+      dailyLimit: productScope && !data.isUnlimited ? FREE_AI_DAILY_LIMIT : Number(data.dailyLimit ?? 0),
       monthlyLimit: Number(data.monthlyLimit ?? 0),
       unlimitedUntil: data.unlimitedUntil ?? null,
       usageLogId: data.usageLogId == null ? null : Number(data.usageLogId),
@@ -183,7 +186,7 @@ export async function checkAiUsageLimit(userId: string, feature: string, product
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("is_my_student")
+    .select("role, email, is_my_student")
     .eq("id", userId)
     .maybeSingle();
 
@@ -191,7 +194,7 @@ export async function checkAiUsageLimit(userId: string, feature: string, product
     console.error("Failed to check profile AI access:", profileError.message);
   }
 
-  if (profile?.is_my_student) {
+  if (profile?.is_my_student || canAccessAdmin(profile?.role, profile?.email)) {
     return {
       allowed: true,
       userId,
@@ -266,33 +269,18 @@ export async function checkAiUsageLimit(userId: string, feature: string, product
 
   const { todayUsed, monthUsed } = await countSuccessfulUsage(userId, resolvedProductScope);
 
-  if (todayUsed >= limit.daily_limit) {
+  const effectiveDailyLimit = resolvedProductScope ? FREE_AI_DAILY_LIMIT : Math.min(Number(limit.daily_limit ?? FREE_AI_DAILY_LIMIT), FREE_AI_DAILY_LIMIT);
+
+  if (todayUsed >= effectiveDailyLimit) {
     return {
       allowed: false,
       code: "AI_DAILY_LIMIT_REACHED",
-      message: "Daily AI usage limit reached.",
+      message: "今日免费 AI 使用次数已用完。开通 AI 权限后可继续使用。",
       userId,
       feature,
       todayUsed,
       monthUsed,
-      dailyLimit: limit.daily_limit,
-      monthlyLimit: limit.monthly_limit,
-      isUnlimited: false,
-      unlimitedUntil: null,
-      productScope: resolvedProductScope,
-    };
-  }
-
-  if (monthUsed >= limit.monthly_limit) {
-    return {
-      allowed: false,
-      code: "AI_MONTHLY_LIMIT_REACHED",
-      message: "Monthly AI usage limit reached.",
-      userId,
-      feature,
-      todayUsed,
-      monthUsed,
-      dailyLimit: limit.daily_limit,
+      dailyLimit: effectiveDailyLimit,
       monthlyLimit: limit.monthly_limit,
       isUnlimited: false,
       unlimitedUntil: null,
@@ -307,7 +295,7 @@ export async function checkAiUsageLimit(userId: string, feature: string, product
     isUnlimited: false,
     todayUsed,
     monthUsed,
-    dailyLimit: limit.daily_limit,
+    dailyLimit: effectiveDailyLimit,
     monthlyLimit: limit.monthly_limit,
     unlimitedUntil: null,
     productScope: resolvedProductScope,
@@ -317,6 +305,20 @@ export async function checkAiUsageLimit(userId: string, feature: string, product
 export async function reserveAiUsage(userId: string, feature: string, productScope?: AiProductScope | null): Promise<AiUsageLimitResult> {
   const supabase = createAdminClient();
   const resolvedProductScope = resolveAiProductScope(feature, productScope);
+  const preflight = await checkAiUsageLimit(userId, feature, resolvedProductScope);
+
+  if (!preflight.allowed) return preflight;
+
+  if (preflight.isUnlimited) {
+    aiUsageReservationStorage.enterWith({
+      usageLogId: 0,
+      userId: preflight.userId,
+      feature: preflight.feature,
+      productScope: preflight.productScope ?? null,
+    });
+    return preflight;
+  }
+
   const rpcName = resolvedProductScope ? "reserve_ai_product_usage" : "reserve_ai_usage";
   const rpcParams = resolvedProductScope
     ? {
@@ -338,6 +340,23 @@ export async function reserveAiUsage(userId: string, feature: string, productSco
   }
 
   const result = normalizeReserveResult((data ?? {}) as ReserveAiUsageRpcResult, userId, feature, resolvedProductScope);
+
+  if (result.allowed && resolvedProductScope && !result.isUnlimited && result.todayUsed > FREE_AI_DAILY_LIMIT) {
+    return {
+      allowed: false,
+      code: "AI_DAILY_LIMIT_REACHED",
+      message: "今日免费 AI 使用次数已用完。开通 AI 权限后可继续使用。",
+      userId,
+      feature,
+      todayUsed: result.todayUsed,
+      monthUsed: result.monthUsed,
+      dailyLimit: FREE_AI_DAILY_LIMIT,
+      monthlyLimit: result.monthlyLimit,
+      isUnlimited: false,
+      unlimitedUntil: null,
+      productScope: resolvedProductScope,
+    };
+  }
 
   if (result.allowed && result.usageLogId) {
     aiUsageReservationStorage.enterWith({

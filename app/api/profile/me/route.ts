@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { checkAiUsageLimit } from "@/lib/ai/usage-limit";
 import { apiUnauthorized, getApiUser } from "@/lib/auth/api-auth";
 import { profileExamTypeToDisplay } from "@/lib/profile/exam-type";
 import type { ServerSupabaseClient } from "@/lib/auth/server-auth";
@@ -55,10 +54,10 @@ export async function GET(request: NextRequest) {
   const { supabase, user } = context;
   const includeAvatars = request.nextUrl.searchParams.get("includeAvatars") === "1";
 
-  const [{ data: profile, error: profileError }, { data: studyPlan, error: studyPlanError }, aiAccess, avatars] = await Promise.all([
+  const [{ data: profile, error: profileError }, { data: studyPlan, error: studyPlanError }, { data: aiProductAccess, error: aiProductAccessError }, avatars] = await Promise.all([
     supabase.from("profiles").select("full_name, email, avatar_url, role, selective_access, is_my_student, exam_type").eq("id", user.id).maybeSingle(),
     supabase.from("study_plans").select("overall_target, exam_deadline").eq("user_id", user.id).maybeSingle(),
-    checkAiUsageLimit(user.id, "ai_feedback"),
+    supabase.from("ai_user_product_limits").select("product_scope, is_unlimited, unlimited_until").eq("user_id", user.id).in("product_scope", ["ielts", "pte"]),
     includeAvatars ? listAvatarOptions(supabase) : Promise.resolve([]),
   ]);
 
@@ -68,6 +67,10 @@ export async function GET(request: NextRequest) {
 
   if (studyPlanError) {
     console.error("Profile study plan summary query failed:", studyPlanError);
+  }
+
+  if (aiProductAccessError) {
+    console.error("Profile AI product access query failed:", aiProductAccessError);
   }
 
   const profileExamType = profileExamTypeToDisplay(profile?.exam_type);
@@ -90,16 +93,7 @@ export async function GET(request: NextRequest) {
       is_my_student: false,
     },
     studyPlan: studyPlan ? { ...studyPlan, exam_type: profileExamType } : profileExamType ? { exam_type: profileExamType, overall_target: null, exam_deadline: null } : null,
-    aiAccess: {
-      isUnlimited: aiAccess.isUnlimited,
-      unlimitedUntil: aiAccess.unlimitedUntil,
-      isPermanentUnlimited: aiAccess.isUnlimited && !aiAccess.unlimitedUntil,
-      todayUsed: aiAccess.todayUsed,
-      dailyLimit: aiAccess.dailyLimit,
-      monthUsed: aiAccess.monthUsed,
-      monthlyLimit: aiAccess.monthlyLimit,
-      isMyStudent: Boolean(profile?.is_my_student),
-    },
+    aiProductAccess: aiProductAccess ?? [],
     avatars,
   });
 }
