@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { Award, Check, Sparkles, X } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
@@ -9,7 +8,6 @@ import { getAchievementSnapshot } from "@/lib/achievements/client";
 import type { UnlockedAchievement } from "@/lib/achievements/types";
 
 const STORAGE_PREFIX = "lofty:seen-achievements:v1";
-const POLL_INTERVAL_MS = 60_000;
 
 function formatValue(value: number, unit?: string) {
   const displayed = Number.isInteger(value) ? value.toString() : value.toFixed(1);
@@ -17,7 +15,6 @@ function formatValue(value: number, unit?: string) {
 }
 
 export function AchievementUnlockNotifier({ userId }: { userId: string | null }) {
-  const pathname = usePathname();
   const checkingRef = useRef(false);
   const memorySeenRef = useRef(new Set<string>());
   const [queue, setQueue] = useState<UnlockedAchievement[]>([]);
@@ -79,16 +76,11 @@ export function AchievementUnlockNotifier({ userId }: { userId: string | null })
 
   useEffect(() => {
     checkForNewAchievements();
-  }, [checkForNewAchievements, pathname]);
+  }, [checkForNewAchievements]);
 
   useEffect(() => {
     if (!userId) return;
 
-    const interval = window.setInterval(() => checkForNewAchievements(true), POLL_INTERVAL_MS);
-    const handleFocus = () => checkForNewAchievements(true);
-    const handleVisibility = () => {
-      if (document.visibilityState === "visible") checkForNewAchievements(true);
-    };
     const handleRequestedCheck = () => checkForNewAchievements(true);
     let submitCheckTimer: number | null = null;
     const resourceObserver = typeof PerformanceObserver === "undefined" ? null : new PerformanceObserver((list) => {
@@ -108,15 +100,10 @@ export function AchievementUnlockNotifier({ userId }: { userId: string | null })
 
     resourceObserver?.observe({ type: "resource", buffered: false });
 
-    window.addEventListener("focus", handleFocus);
     window.addEventListener("lofty:achievement-check", handleRequestedCheck);
-    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
-      window.clearInterval(interval);
-      window.removeEventListener("focus", handleFocus);
       window.removeEventListener("lofty:achievement-check", handleRequestedCheck);
-      document.removeEventListener("visibilitychange", handleVisibility);
       resourceObserver?.disconnect();
       if (submitCheckTimer !== null) window.clearTimeout(submitCheckTimer);
     };

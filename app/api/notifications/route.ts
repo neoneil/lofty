@@ -1,15 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { requireApiUser } from "@/lib/auth/require-api-auth";
-import { listStudentNotifications } from "@/lib/homework/server";
+import { countUnreadStudentNotifications, listStudentNotifications } from "@/lib/homework/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const auth = await requireApiUser();
     if (!auth.ok) return auth.response;
 
-    const notifications = await listStudentNotifications(createAdminClient(), auth.user.id);
+    const admin = createAdminClient();
+    const summaryOnly = request.nextUrl.searchParams.get("summary") === "1";
+
+    if (summaryOnly) {
+      const unreadCount = await countUnreadStudentNotifications(admin, auth.user.id);
+      return NextResponse.json({ ok: true, notifications: [], unreadCount, summaryOnly: true });
+    }
+
+    const notifications = await listStudentNotifications(admin, auth.user.id);
     const unreadCount = notifications.filter((notification) => !notification.isRead).length;
 
     return NextResponse.json({ ok: true, notifications, unreadCount });

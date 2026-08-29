@@ -3,6 +3,9 @@
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
+const HEARTBEAT_INTERVAL_MS = 120_000;
+const MAX_ACTIVE_SECONDS_PER_HEARTBEAT = 120;
+
 function buildCurrentPath(pathname: string, searchParams: URLSearchParams) {
   const query = searchParams.toString();
   return query ? `${pathname}?${query}` : pathname;
@@ -22,7 +25,7 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
       const lastSentAt = lastSentAtRef.current ?? now;
       const elapsedSeconds = Math.round((now - lastSentAt) / 1000);
       const isVisible = document.visibilityState === "visible";
-      const activeSeconds = isVisible ? Math.min(Math.max(elapsedSeconds, 0), 45) : 0;
+      const activeSeconds = isVisible ? Math.min(Math.max(elapsedSeconds, 0), MAX_ACTIVE_SECONDS_PER_HEARTBEAT) : 0;
       const path = buildCurrentPath(pathname, searchParams);
 
       if (!force && activeSeconds <= 0 && path === lastPathRef.current) return;
@@ -45,7 +48,7 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
     void sendHeartbeat(true);
     const interval = window.setInterval(() => {
       void sendHeartbeat();
-    }, 30_000);
+    }, HEARTBEAT_INTERVAL_MS);
 
     const handleVisibilityChange = () => {
       void sendHeartbeat(true);

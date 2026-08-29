@@ -14,6 +14,8 @@ type NotificationResponse = {
   unreadCount?: number;
 };
 
+const NOTIFICATION_SUMMARY_INTERVAL_MS = 180_000;
+
 function formatRelativeTime(value: string) {
   const diff = Date.now() - new Date(value).getTime();
   const minutes = Math.max(0, Math.floor(diff / 60_000));
@@ -34,17 +36,27 @@ export function NotificationDropdown() {
   const hasUnread = unreadCount > 0;
   const visibleNotifications = useMemo(() => notifications.slice(0, 8), [notifications]);
 
-  async function loadNotifications() {
-    setLoading(true);
-    const response = await fetch("/api/notifications", { cache: "no-store" });
+  async function loadNotificationSummary() {
+    const response = await fetch("/api/notifications?summary=1", { cache: "no-store" });
     const data = (await response.json().catch(() => ({}))) as NotificationResponse;
-    setNotifications(data.notifications ?? []);
     setUnreadCount(data.unreadCount ?? 0);
-    setLoading(false);
   }
 
-  async function markAllRead() {
-    if (unreadCount <= 0) return;
+  async function loadNotifications() {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/notifications", { cache: "no-store" });
+      const data = (await response.json().catch(() => ({}))) as NotificationResponse;
+      setNotifications(data.notifications ?? []);
+      setUnreadCount(data.unreadCount ?? 0);
+      return data.unreadCount ?? 0;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function markAllRead(force = false) {
+    if (!force && unreadCount <= 0) return;
     setUnreadCount(0);
     setNotifications((current) => current.map((notification) => ({ ...notification, isRead: true })));
     await fetch("/api/notifications", {
@@ -56,11 +68,11 @@ export function NotificationDropdown() {
 
   useEffect(() => {
     const initialTimer = window.setTimeout(() => {
-      void loadNotifications();
+      void loadNotificationSummary();
     }, 0);
     const timer = window.setInterval(() => {
-      void loadNotifications();
-    }, 60_000);
+      void loadNotificationSummary();
+    }, NOTIFICATION_SUMMARY_INTERVAL_MS);
     return () => {
       window.clearTimeout(initialTimer);
       window.clearInterval(timer);
@@ -68,10 +80,14 @@ export function NotificationDropdown() {
   }, []);
 
   function toggleOpen() {
-    setOpen((value) => {
-      const nextOpen = !value;
-      if (nextOpen) void markAllRead();
-      return nextOpen;
+    if (open) {
+      setOpen(false);
+      return;
+    }
+
+    setOpen(true);
+    void loadNotifications().then((loadedUnreadCount) => {
+      if (loadedUnreadCount > 0) void markAllRead(true);
     });
   }
 

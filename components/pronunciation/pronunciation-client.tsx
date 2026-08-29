@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { CheckCircle2, Headphones, Play, Search, Sparkles, Volume2 } from "lucide-react";
+import { CheckCircle2, Headphones, Maximize2, Play, Search, Sparkles, Volume2, X } from "lucide-react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
@@ -13,6 +13,8 @@ import type { PronunciationAsset, PronunciationCategory } from "@/lib/pronunciat
 import { phonemicChartUrl, pronunciationCategoryLabels } from "@/lib/pronunciation/assets";
 
 const categoryOrder: PronunciationCategory[] = ["short-vowels", "long-vowels", "diphthongs", "consonant-pairs"];
+type ChartOverlayState = "closed" | "open" | "closing";
+const CHART_CLOSE_ANIMATION_MS = 260;
 
 function matchesSearch(item: PronunciationAsset, query: string) {
   if (!query.trim()) return true;
@@ -27,10 +29,12 @@ export default function PronunciationClient({ assets }: { assets: PronunciationA
   const [autoPlayKey, setAutoPlayKey] = useState(0);
   const [search, setSearch] = useState("");
   const [playError, setPlayError] = useState("");
+  const [chartOverlayState, setChartOverlayState] = useState<ChartOverlayState>("closed");
 
   const activeAsset = assets.find((item) => item.id === activeAssetId) ?? assets[0];
   const filteredAssets = useMemo(() => assets.filter((item) => item.category === activeCategory && matchesSearch(item, search)), [activeCategory, assets, search]);
   const categoryCounts = useMemo(() => Object.fromEntries(categoryOrder.map((category) => [category, assets.filter((item) => item.category === category).length])) as Record<PronunciationCategory, number>, [assets]);
+  const chartIsMounted = chartOverlayState !== "closed";
 
   function selectAsset(item: PronunciationAsset) {
     setActiveAssetId(item.id);
@@ -38,6 +42,32 @@ export default function PronunciationClient({ assets }: { assets: PronunciationA
     setPlayError("");
     setAutoPlayKey((value) => value + 1);
   }
+
+  function openChartOverlay() {
+    setChartOverlayState("open");
+  }
+
+  function closeChartOverlay() {
+    setChartOverlayState("closing");
+    window.setTimeout(() => setChartOverlayState("closed"), CHART_CLOSE_ANIMATION_MS);
+  }
+
+  useEffect(() => {
+    if (!chartIsMounted) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeChartOverlay();
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [chartIsMounted]);
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
@@ -67,9 +97,13 @@ export default function PronunciationClient({ assets }: { assets: PronunciationA
               </div>
             </div>
             <div className="bg-[var(--bg-soft)] p-4 sm:p-5">
-              <div className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)]">
+              <button type="button" onClick={openChartOverlay} className="group relative block w-full overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] text-left shadow-[var(--shadow-xs)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:shadow-[var(--shadow-md)]" aria-label="Open phonemic chart">
                 <Image src={phonemicChartUrl} alt="English phonemic chart" width={1000} height={762} className="h-auto w-full object-contain" priority />
-              </div>
+                <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)]/95 px-3 py-2 text-xs font-bold text-[var(--text)] shadow-[var(--shadow-sm)] backdrop-blur transition group-hover:border-[var(--primary)]/40 group-hover:text-[var(--primary)]">
+                  <Maximize2 size={14} />
+                  Phonemic Chart
+                </span>
+              </button>
             </div>
           </div>
         </section>
@@ -166,6 +200,85 @@ export default function PronunciationClient({ assets }: { assets: PronunciationA
           </Card>
         </section>
       </div>
+
+      {chartIsMounted ? (
+        <div className={cn("fixed inset-0 z-[110] flex items-center justify-center bg-black/72 p-3 backdrop-blur-sm sm:p-6", chartOverlayState === "closing" ? "animate-pronunciation-chart-backdrop-out" : "animate-pronunciation-chart-backdrop-in")} role="dialog" aria-modal="true" aria-label="Phonemic Chart">
+          <div className={cn("relative max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-strong)] bg-[var(--card)] shadow-[var(--shadow-lg)] sm:max-h-[calc(100dvh-3rem)]", chartOverlayState === "closing" ? "animate-pronunciation-chart-close" : "animate-pronunciation-chart-open")}>
+            <div className="flex items-center justify-between gap-4 border-b border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 sm:px-5">
+              <div>
+                <div className="text-sm font-bold text-[var(--text)]">Phonemic Chart</div>
+                <p className="mt-0.5 text-xs text-[var(--text-soft)]">点击关闭后会回到右上角预览位置</p>
+              </div>
+              <button type="button" onClick={closeChartOverlay} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-soft)] shadow-[var(--shadow-xs)] transition hover:border-[var(--primary)]/40 hover:bg-[var(--bg-soft)] hover:text-[var(--text)]" aria-label="Close phonemic chart">
+                <X size={19} />
+              </button>
+            </div>
+            <div className="max-h-[calc(100dvh-6.75rem)] overflow-auto bg-[var(--card)] p-3 sm:max-h-[calc(100dvh-8.25rem)] sm:p-5">
+              <Image src={phonemicChartUrl} alt="English phonemic chart full screen" width={1600} height={1220} className="mx-auto h-auto w-full max-w-5xl rounded-[var(--radius-md)] object-contain" priority />
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      <style jsx global>{`
+        @keyframes pronunciation-chart-backdrop-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes pronunciation-chart-backdrop-out {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+
+        @keyframes pronunciation-chart-open {
+          from {
+            opacity: 0;
+            transform: translate(36vw, -36vh) scale(0.22);
+          }
+          to {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+          }
+        }
+
+        @keyframes pronunciation-chart-close {
+          from {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+          }
+          to {
+            opacity: 0;
+            transform: translate(36vw, -36vh) scale(0.22);
+          }
+        }
+
+        .animate-pronunciation-chart-backdrop-in {
+          animation: pronunciation-chart-backdrop-in 220ms ease-out both;
+        }
+
+        .animate-pronunciation-chart-backdrop-out {
+          animation: pronunciation-chart-backdrop-out ${CHART_CLOSE_ANIMATION_MS}ms ease-in both;
+        }
+
+        .animate-pronunciation-chart-open {
+          animation: pronunciation-chart-open 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          transform-origin: top right;
+        }
+
+        .animate-pronunciation-chart-close {
+          animation: pronunciation-chart-close ${CHART_CLOSE_ANIMATION_MS}ms cubic-bezier(0.4, 0, 1, 1) both;
+          transform-origin: top right;
+        }
+      `}</style>
     </div>
   );
 }

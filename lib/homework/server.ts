@@ -169,6 +169,17 @@ export async function listStudentNotifications(supabase: SupabaseClient, userId:
   return ((data ?? []) as NotificationRow[]).map(mapStudentNotification);
 }
 
+export async function countUnreadStudentNotifications(supabase: SupabaseClient, userId: string) {
+  const { count, error } = await supabase
+    .from("student_notifications")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("is_read", false);
+
+  if (error) throw error;
+  return count ?? 0;
+}
+
 export async function assignHomeworkToStudents({ supabase, request, teacherId, teacherEmail, studentIds, examType, content }: { supabase: SupabaseClient; request: Request; teacherId: string; teacherEmail: string | null; studentIds: string[]; examType: HomeworkExamType; content: string }) {
   const uniqueStudentIds = [...new Set(studentIds.map((id) => id.trim()).filter(Boolean))];
   if (uniqueStudentIds.length === 0) throw new Error("请选择至少一名学生。");

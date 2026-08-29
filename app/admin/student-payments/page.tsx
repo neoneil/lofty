@@ -98,6 +98,20 @@ function getPurchaseTotals(purchases: AnyRecord[]) {
   return { paidCount: paid.length, totalAudCents, totalDays };
 }
 
+function getTuitionPaymentTotals(payments: AnyRecord[]) {
+  const paid = payments.filter((payment) => String(payment.status ?? '') === 'paid');
+  const totalAudCents = paid.reduce((sum, payment) => {
+    const currency = typeof payment.currency === 'string' ? payment.currency.toLowerCase() : 'aud';
+    const amount = Number(payment.amount_total ?? 0);
+    return currency === 'aud' && Number.isFinite(amount) ? sum + amount : sum;
+  }, 0);
+  const totalHours = paid.reduce((sum, payment) => {
+    const hours = Number(payment.total_hours ?? 0);
+    return Number.isFinite(hours) ? sum + hours : sum;
+  }, 0);
+  return { paidCount: paid.length, totalAudCents, totalHours };
+}
+
 async function safeQuery<T>(label: string, query: PromiseLike<QueryResult<T>>) {
   const result = await query;
   if (result.error) {
@@ -199,25 +213,27 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
   const activeUserId = activeProfile?.id ?? '';
 
   const empty = { data: [], error: null };
-  const [authResult, productLimitsResult, legacyLimitResult, purchasesResult, usageLogsResult, webhookEventsResult] = activeUserId
+  const [authResult, productLimitsResult, legacyLimitResult, purchasesResult, tuitionPaymentsResult, usageLogsResult, webhookEventsResult] = activeUserId
     ? await Promise.all([
         supabase.auth.admin.getUserById(activeUserId),
         safeQuery<AnyRecord[]>('student payments product limits', supabase.from('ai_user_product_limits').select('*').eq('user_id', activeUserId).order('product_scope', { ascending: true })),
         safeQuery<AnyRecord[]>('student payments legacy limits', supabase.from('ai_user_limits').select('*').eq('user_id', activeUserId)),
         safeQuery<AnyRecord[]>('student payments purchases', supabase.from('ai_access_purchases').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false })),
+        safeQuery<AnyRecord[]>('student tuition payments', supabase.from('tuition_payments').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false })),
         safeQuery<AnyRecord[]>('student payments usage logs', supabase.from('ai_usage_logs').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false }).limit(80)),
         safeQuery<AnyRecord[]>('student payments webhook events', supabase.from('stripe_webhook_events').select('*').order('created_at', { ascending: false }).limit(120)),
       ])
-    : [null, empty, empty, empty, empty, empty];
+    : [null, empty, empty, empty, empty, empty, empty];
 
   const authUser = authResult && 'data' in authResult ? authResult.data.user : null;
   const authError = authResult && 'error' in authResult && authResult.error ? authResult.error.message : null;
   const productLimits = productLimitsResult.data ?? [];
   const legacyLimits = legacyLimitResult.data ?? [];
   const purchases = purchasesResult.data ?? [];
+  const tuitionPayments = tuitionPaymentsResult.data ?? [];
   const usageLogs = usageLogsResult.data ?? [];
   const rawWebhookEvents = webhookEventsResult.data ?? [];
-  const purchaseSessionIds = new Set(purchases.map((purchase) => purchase.stripe_checkout_session_id).filter((value): value is string => typeof value === 'string' && value.length > 0));
+  const purchaseSessionIds = new Set([...purchases, ...tuitionPayments].map((purchase) => purchase.stripe_checkout_session_id).filter((value): value is string => typeof value === 'string' && value.length > 0));
   const webhookEvents = rawWebhookEvents.filter((event) => {
     const serialized = formatValue('', event);
     if (serialized.includes(activeUserId)) return true;
@@ -227,6 +243,7 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
     return false;
   }).slice(0, 30);
   const totals = getPurchaseTotals(purchases);
+  const tuitionTotals = getTuitionPaymentTotals(tuitionPayments);
 
   return (
     <main className='min-h-screen bg-[var(--bg)] px-4 py-8 text-[var(--text)] sm:px-6 lg:px-8'>
@@ -239,10 +256,12 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
               <h1 className='mt-2 flex items-center gap-3 text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl'><ReceiptText size={28} className='text-[var(--primary)]' />学生付款详情</h1>
               <p className='mt-2 text-sm leading-6 text-[var(--text-soft)]'>查看学生 Profile、Auth 账号、AI 权限、Stripe 购买记录、AI 使用日志和 webhook 事件。</p>
             </div>
-            <div className='grid gap-2 text-sm sm:grid-cols-3'>
+            <div className='grid gap-2 text-sm sm:grid-cols-2 xl:grid-cols-5'>
               <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>已付款订单</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{totals.paidCount}</p></div>
-              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>总付款 AUD</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{formatMoney(totals.totalAudCents, 'aud')}</p></div>
-              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>累计购买天数</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{totals.totalDays}</p></div>
+              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>AI 总付款</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{formatMoney(totals.totalAudCents, 'aud')}</p></div>
+              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>AI 天数</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{totals.totalDays}</p></div>
+              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>学费订单</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{tuitionTotals.paidCount}</p></div>
+              <div className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3'><p className='text-xs text-[var(--text-faint)]'>学费总额 / 小时</p><p className='mt-1 text-lg font-black text-[var(--text)]'>{formatMoney(tuitionTotals.totalAudCents, 'aud')} / {tuitionTotals.totalHours}</p></div>
             </div>
           </div>
         </div>
@@ -311,13 +330,14 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
                 <DataTable title='当前 AI 权限 ai_user_product_limits' rows={productLimits} emptyText='没有 ai_user_product_limits 记录。' error={productLimitsResult.error} />
                 <DataTable title='旧 AI 权限 ai_user_limits' rows={legacyLimits} emptyText='没有 ai_user_limits 旧额度记录。' error={legacyLimitResult.error} />
                 <DataTable title='付款 / 购买记录 ai_access_purchases' rows={purchases} emptyText='该学生暂无购买记录。' error={purchasesResult.error} />
+                <DataTable title='学费付款 tuition_payments' rows={tuitionPayments} emptyText='该学生暂无学费付款记录。' error={tuitionPaymentsResult.error} />
                 <DataTable title='最近 AI 使用日志 ai_usage_logs' rows={usageLogs} emptyText='该学生暂无 AI 使用日志。' error={usageLogsResult.error} />
                 <DataTable title='Stripe Webhook 事件 stripe_webhook_events' rows={webhookEvents} emptyText='没有匹配到该学生的 webhook 事件。' error={webhookEventsResult.error} />
 
                 <section className='rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]'>
                   <h2 className='mb-4 flex items-center gap-2 text-lg font-bold text-[var(--text)]'><Database size={20} className='text-[var(--primary)]' />查询范围</h2>
                   <div className='grid gap-3 md:grid-cols-2'>
-                    {['profiles', 'auth.users', 'ai_user_product_limits', 'ai_user_limits', 'ai_access_purchases', 'ai_usage_logs', 'stripe_webhook_events'].map((table) => <div key={table} className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-semibold text-[var(--text-soft)]'>{table}</div>)}
+                    {['profiles', 'auth.users', 'ai_user_product_limits', 'ai_user_limits', 'ai_access_purchases', 'tuition_payments', 'ai_usage_logs', 'stripe_webhook_events'].map((table) => <div key={table} className='rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-semibold text-[var(--text-soft)]'>{table}</div>)}
                   </div>
                 </section>
               </>
