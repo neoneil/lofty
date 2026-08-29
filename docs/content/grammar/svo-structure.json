@@ -1,0 +1,235 @@
+{
+  "slug": "svo-structure",
+  "category": {
+    "zh": "句子结构",
+    "en": "Sentence Structures"
+  },
+  "title": {
+    "zh": "主谓宾结构",
+    "en": "SVO Structure"
+  },
+  "difficulty": "基础到中级",
+  "summary": {
+    "zh": "主谓宾结构，即 SVO Structure，是英语中最核心、最常见的基本句型之一。S 代表 Subject（主语），V 代表 Verb（谓语动词），O 代表 Object（宾语）。这一结构用于表达“某人或某物做了某个动作，并作用于某个对象”。对于准备 PTE Academic 和 IELTS 的中国学习者来说，掌握 SVO 结构能够显著提升句子准确性、写作清晰度和口语表达的流畅度。尤其在 PTE Write Essay、Summarize Written Text、Describe Image、Retell Lecture 以及 IELTS Writing Task 1 和 Task 2 中，清楚稳定的 SVO 句型是构建复杂句和学术表达的基础。"
+  },
+  "structure": {
+    "formula": "Subject + Transitive Verb + Object",
+    "explanation": "SVO 结构由三个核心成分组成：Subject（主语）表示动作的发出者或句子讨论的对象；Transitive Verb（及物动词）表示动作；Object（宾语）表示动作影响或指向的对象。需要注意的是，SVO 结构中的动词必须是及物动词，后面可以直接接宾语。例如，discuss、affect、improve、increase、reduce、support、provide 等都常用于学术英语。中文学习者常受汉语语序影响，忽略宾语、误用不及物动词，或在动词和宾语之间加入不必要的介词。正确掌握 SVO 有助于写出简洁、准确、符合英语逻辑的句子。",
+    "examples": [
+      {
+        "en": "Technology changes people's lifestyles.",
+        "zh": "科技改变人们的生活方式。"
+      },
+      {
+        "en": "Education improves social mobility.",
+        "zh": "教育提升社会流动性。"
+      },
+      {
+        "en": "The government introduced new environmental policies.",
+        "zh": "政府推出了新的环境政策。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "描述事实或现象",
+      "description": "SVO 结构常用于陈述客观事实、社会现象或数据趋势，是学术写作中最基础的表达方式。句子重点在于明确说明“谁或什么产生了什么影响”。",
+      "examples": [
+        {
+          "en": "Urbanization increases the demand for public transport.",
+          "zh": "城市化增加了对公共交通的需求。"
+        },
+        {
+          "en": "Climate change affects agricultural production.",
+          "zh": "气候变化影响农业生产。"
+        }
+      ]
+    },
+    {
+      "title": "表达因果关系",
+      "description": "在 IELTS Writing Task 2 和 PTE essay 中，SVO 结构可以清楚表达原因、结果或影响。使用 cause、create、reduce、generate、influence 等及物动词，可以让论证更直接。",
+      "examples": [
+        {
+          "en": "Excessive screen time reduces students' concentration.",
+          "zh": "过多的屏幕时间会降低学生的注意力。"
+        },
+        {
+          "en": "Government investment creates more employment opportunities.",
+          "zh": "政府投资创造更多就业机会。"
+        }
+      ]
+    },
+    {
+      "title": "总结图表信息",
+      "description": "在 IELTS Writing Task 1 和 PTE Describe Image 中，SVO 结构适合描述数据变化、比较对象和趋势。清楚的主语和宾语能够避免句子含糊。",
+      "examples": [
+        {
+          "en": "The chart compares the energy consumption of five countries.",
+          "zh": "该图表比较了五个国家的能源消耗。"
+        },
+        {
+          "en": "The survey shows a significant increase in online learning.",
+          "zh": "该调查显示在线学习显著增加。"
+        }
+      ]
+    },
+    {
+      "title": "构建学术论点",
+      "description": "在议论文中，SVO 结构可以用于提出观点、支持论证和解释政策影响。清晰的 SVO 句子通常比过度复杂的句子更容易获得语法和表达方面的高分。",
+      "examples": [
+        {
+          "en": "Strict regulations protect consumers from misleading advertisements.",
+          "zh": "严格的监管保护消费者免受误导性广告的影响。"
+        },
+        {
+          "en": "Higher education develops critical thinking skills.",
+          "zh": "高等教育培养批判性思维能力。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Many students discuss about this issue.",
+      "correct": "Many students discuss this issue.",
+      "explanation": "discuss 是及物动词，后面可以直接接宾语，不需要介词 about。中国学习者常把“讨论关于某事”直译为 discuss about，但这是典型错误。"
+    },
+    {
+      "wrong": "The government should support to small businesses.",
+      "correct": "The government should support small businesses.",
+      "explanation": "support 是及物动词，后面直接接宾语 small businesses。不能在 support 和宾语之间加入 to。"
+    },
+    {
+      "wrong": "This problem affects on people's health.",
+      "correct": "This problem affects people's health.",
+      "explanation": "affect 是及物动词，意思是“影响”，后面直接接宾语。affect on 是错误搭配。"
+    },
+    {
+      "wrong": "Technology brings many benefits for society.",
+      "correct": "Technology brings many benefits to society.",
+      "explanation": "bring 后面可以接直接宾语和介词短语，常见结构是 bring something to someone/something。这里 many benefits 是宾语，to society 表示受益对象。"
+    },
+    {
+      "wrong": "People can learn knowledge from the Internet.",
+      "correct": "People can gain knowledge from the Internet.",
+      "explanation": "learn knowledge 不符合自然英语搭配。英语中通常说 gain knowledge、acquire knowledge 或 learn information。写作中应注意动词与宾语的搭配自然度。"
+    },
+    {
+      "wrong": "The policy made the economy improved.",
+      "correct": "The policy improved the economy.",
+      "explanation": "如果使用简单 SVO 结构，improve 可以直接作及物动词，后接宾语 the economy。made the economy improved 结构不自然，也容易造成语法混乱。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "SVO 结构在 PTE Academic 中极其常见，尤其适用于需要快速、准确输出完整句子的题型。PTE 评分重视语法准确性、句子完整性和内容清晰度。考生在口语和写作中使用稳定的 SVO 结构，可以减少语法错误，并帮助机器评分系统识别清楚的句法关系。在 Summarize Written Text 中，SVO 结构可以作为长句压缩的核心框架；在 Write Essay 中，它可以用于主题句、支持句和结论句；在 Retell Lecture 和 Describe Image 中，它有助于快速组织信息。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Describe Image",
+      "Retell Lecture",
+      "Answer Short Question",
+      "Reading and Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "X affects Y significantly.",
+      "translation": "X 显著影响 Y。"
+    },
+    {
+      "pattern": "X increases the likelihood of Y.",
+      "translation": "X 增加 Y 发生的可能性。"
+    },
+    {
+      "pattern": "X reduces the risk of Y.",
+      "translation": "X 降低 Y 的风险。"
+    },
+    {
+      "pattern": "X provides evidence for Y.",
+      "translation": "X 为 Y 提供证据。"
+    },
+    {
+      "pattern": "X supports the argument that + clause.",
+      "translation": "X 支持这样一种观点：……"
+    },
+    {
+      "pattern": "X demonstrates the importance of Y.",
+      "translation": "X 体现了 Y 的重要性。"
+    },
+    {
+      "pattern": "X creates opportunities for Y.",
+      "translation": "X 为 Y 创造机会。"
+    },
+    {
+      "pattern": "X poses a challenge to Y.",
+      "translation": "X 对 Y 构成挑战。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "improve academic performance",
+      "translation": "提高学业表现"
+    },
+    {
+      "phrase": "reduce environmental damage",
+      "translation": "减少环境破坏"
+    },
+    {
+      "phrase": "increase public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "support economic growth",
+      "translation": "支持经济增长"
+    },
+    {
+      "phrase": "address social problems",
+      "translation": "解决社会问题"
+    },
+    {
+      "phrase": "affect human behavior",
+      "translation": "影响人类行为"
+    },
+    {
+      "phrase": "provide practical solutions",
+      "translation": "提供实际解决方案"
+    },
+    {
+      "phrase": "generate employment opportunities",
+      "translation": "创造就业机会"
+    }
+  ],
+  "ai_tips": [
+    "写作时先确定句子的核心三部分：Subject、Verb、Object。只要核心结构清楚，即使后面加入原因、结果或让步成分，句子也不容易混乱。",
+    "遇到学术写作题目时，可以优先选择准确的及物动词，如 affect、improve、reduce、increase、support、provide、address，而不是反复使用 make、do、have。",
+    "检查句子时重点看动词是否需要宾语。例如 discuss、mention、affect、enter、approach 等动词后面通常直接接宾语，不要误加介词。",
+    "在 PTE 口语题中，如果时间紧张，优先使用简洁 SVO 句型表达主要信息，例如 The chart shows a steady increase 或 The speaker discusses climate change。"
+  ],
+  "practice_questions": [
+    {
+      "question": "请将下列中文翻译成英文：政府应该减少空气污染。",
+      "answer": "The government should reduce air pollution."
+    },
+    {
+      "question": "请改正句子：The report discusses about the causes of unemployment.",
+      "answer": "The report discusses the causes of unemployment."
+    },
+    {
+      "question": "请用 SVO 结构造句，表达“教育提高就业机会”。",
+      "answer": "Education improves employment opportunities."
+    },
+    {
+      "question": "请判断句子是否正确，并说明核心结构：Social media influences teenagers' behavior.",
+      "answer": "正确。核心结构是 Social media（Subject）+ influences（Verb）+ teenagers' behavior（Object）。"
+    },
+    {
+      "question": "请改正句子：This policy can help to the local economy.",
+      "answer": "This policy can help the local economy."
+    },
+    {
+      "question": "请用 academic pattern 完成句子：Online learning provides ______ for students in remote areas.",
+      "answer": "Online learning provides educational opportunities for students in remote areas."
+    }
+  ]
+}

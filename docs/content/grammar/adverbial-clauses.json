@@ -1,0 +1,323 @@
+{
+  "slug": "adverbial-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "状语从句",
+    "en": "Adverbial Clauses"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "状语从句（Adverbial Clauses）是在句中充当状语的从句，用来说明主句动作发生的时间、原因、条件、让步、目的、结果、方式、地点或比较关系。它通常由 subordinating conjunctions（从属连词）引导，例如 because, although, if, when, while, since, unless, so that, whereas 等。在 PTE Academic 和 IELTS 写作、口语及阅读中，状语从句能够帮助考生表达复杂逻辑关系，提高句子多样性和语法复杂度，但也容易出现逗号使用错误、时态错误、主从句逻辑不清以及中式直译等问题。"
+  },
+  "structure": {
+    "formula": "Subordinating conjunction + subject + verb, main clause / Main clause + subordinating conjunction + subject + verb",
+    "explanation": "状语从句由从属连词引导，不能单独构成完整句子，必须依附于主句。若状语从句放在句首，通常要在从句后加逗号；若放在句末，通常不需要逗号，除非表示明显对比或补充说明。状语从句的核心功能不是补充名词，而是说明整个主句动作的背景、原因、条件或逻辑关系。例如，在 academic writing 中，考生可以用 although 引导让步从句，用 because 或 since 引导原因从句，用 if 或 unless 引导条件从句，用 so that 引导目的从句，从而构建更清晰的 argument structure。",
+    "examples": [
+      {
+        "en": "Although the policy was controversial, it significantly reduced urban congestion.",
+        "zh": "尽管这项政策存在争议，但它显著减少了城市拥堵。"
+      },
+      {
+        "en": "Many students improve their fluency when they practise speaking under timed conditions.",
+        "zh": "当学生在限时条件下练习口语时，他们的流利度通常会提高。"
+      },
+      {
+        "en": "The government should invest in public transport because private car use is increasing rapidly.",
+        "zh": "政府应该投资公共交通，因为私家车使用正在迅速增加。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "时间状语从句",
+      "description": "时间状语从句说明主句动作发生的时间，常用 when, while, before, after, as soon as, once, until, since 等引导。在学术表达中，它常用于描述趋势、过程、研究步骤或政策实施后的变化。注意：在表示将来时间时，时间状语从句通常使用一般现在时，而不是 will。",
+      "examples": [
+        {
+          "en": "Once the data are collected, researchers can identify long-term patterns.",
+          "zh": "一旦数据被收集，研究人员就可以识别长期规律。"
+        },
+        {
+          "en": "When children are exposed to a second language early, they tend to develop better pronunciation.",
+          "zh": "当儿童较早接触第二语言时，他们往往会形成更好的发音。"
+        }
+      ]
+    },
+    {
+      "title": "原因状语从句",
+      "description": "原因状语从句解释主句发生的原因，常由 because, since, as, now that 引导。在 IELTS Task 2 和 PTE Write Essay 中，原因状语从句常用于支持观点或解释社会现象。because 语气最直接，since 和 as 更偏正式，适合学术写作。",
+      "examples": [
+        {
+          "en": "Since online education offers greater flexibility, it has become increasingly popular among working adults.",
+          "zh": "由于在线教育提供更大的灵活性，它在职场成年人中变得越来越受欢迎。"
+        },
+        {
+          "en": "Public libraries remain important because they provide equal access to information.",
+          "zh": "公共图书馆仍然重要，因为它们提供平等获取信息的机会。"
+        }
+      ]
+    },
+    {
+      "title": "条件状语从句",
+      "description": "条件状语从句表示某事发生的前提，常用 if, unless, provided that, as long as, in case 等引导。考试写作中，条件状语从句常用于提出政策建议、预测结果或讨论解决方案。unless 表示 if not，中文常译为“除非”。",
+      "examples": [
+        {
+          "en": "If governments fail to regulate pollution, public health costs will continue to rise.",
+          "zh": "如果政府未能监管污染，公共健康成本将继续上升。"
+        },
+        {
+          "en": "Students can make steady progress as long as they receive consistent feedback.",
+          "zh": "只要学生获得持续反馈，他们就能取得稳定进步。"
+        }
+      ]
+    },
+    {
+      "title": "让步状语从句",
+      "description": "让步状语从句表示主句内容与预期相反，常由 although, though, even though, while, whereas, despite the fact that 引导。它适合用于 balanced argument，即在承认相反观点后提出自己的立场。注意 although 和 but 通常不要在同一句中同时连接同一组主从关系。",
+      "examples": [
+        {
+          "en": "Although technology has improved workplace efficiency, it has also increased employees' stress levels.",
+          "zh": "尽管科技提高了工作场所的效率，但它也增加了员工的压力水平。"
+        },
+        {
+          "en": "While private schools may offer better facilities, they can widen educational inequality.",
+          "zh": "虽然私立学校可能提供更好的设施，但它们可能扩大教育不平等。"
+        }
+      ]
+    },
+    {
+      "title": "目的状语从句",
+      "description": "目的状语从句说明主句动作的目的，常用 so that, in order that 引导。口语和写作中也常使用 so that，而 in order that 更正式但使用频率较低。目的状语从句中常出现 can, could, may, might 等情态动词。",
+      "examples": [
+        {
+          "en": "Schools should provide career guidance so that students can make informed decisions.",
+          "zh": "学校应该提供职业指导，以便学生能够做出知情决定。"
+        },
+        {
+          "en": "The experiment was repeated in order that the results might be verified.",
+          "zh": "该实验被重复进行，以便结果能够得到验证。"
+        }
+      ]
+    },
+    {
+      "title": "结果状语从句",
+      "description": "结果状语从句说明主句造成的结果，常见结构包括 so...that 和 such...that。so 后通常接形容词或副词，such 后通常接名词短语。在 PTE 写作中，这类结构可用于强化因果关系，但应避免过度夸张。",
+      "examples": [
+        {
+          "en": "The cost of housing has risen so sharply that many young people cannot afford to buy a home.",
+          "zh": "住房成本上涨得如此迅速，以至于许多年轻人买不起房。"
+        },
+        {
+          "en": "It was such a comprehensive report that policymakers used it as a reference.",
+          "zh": "这是一份如此全面的报告，以至于政策制定者将其作为参考。"
+        }
+      ]
+    },
+    {
+      "title": "比较与方式状语从句",
+      "description": "比较状语从句常由 than, as...as 引导，用于比较程度或数量；方式状语从句常由 as, as if, as though 引导，用于说明动作方式。在学术表达中，比较状语从句常用于分析不同群体、国家、方法或趋势之间的差异。",
+      "examples": [
+        {
+          "en": "Urban residents tend to use public services more frequently than rural residents do.",
+          "zh": "城市居民往往比农村居民更频繁地使用公共服务。"
+        },
+        {
+          "en": "The manager responded as if the problem had already been solved.",
+          "zh": "经理的回应好像这个问题已经被解决了一样。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Although public transport is convenient, but many people still prefer driving.",
+      "correct": "Although public transport is convenient, many people still prefer driving.",
+      "explanation": "although 已经表示“虽然”，不能再用 but 连接同一个主句。中文常说“虽然……但是……”，但英文中通常使用 Although + 从句, 主句。"
+    },
+    {
+      "wrong": "When the government will introduce stricter laws, pollution will decrease.",
+      "correct": "When the government introduces stricter laws, pollution will decrease.",
+      "explanation": "在时间状语从句中表示将来，通常用一般现在时，而不是 will。主句可以用 will 表示将来结果。"
+    },
+    {
+      "wrong": "Because many people work from home. Traffic congestion has decreased.",
+      "correct": "Because many people work from home, traffic congestion has decreased.",
+      "explanation": "because 引导的是从属从句，不能单独作为完整句子使用。应与主句连接，形成完整的 complex sentence。"
+    },
+    {
+      "wrong": "Unless the government does not invest in education, inequality will increase.",
+      "correct": "Unless the government invests in education, inequality will increase.",
+      "explanation": "unless 本身表示 if not，因此一般不再加 not。该句意思是“除非政府投资教育，否则不平等会增加”。"
+    },
+    {
+      "wrong": "The policy was effective because reducing unemployment.",
+      "correct": "The policy was effective because it reduced unemployment.",
+      "explanation": "because 后面通常接完整从句，即 subject + verb。如果后面接名词或动名词短语，应使用 because of，例如 because of its impact on unemployment。"
+    },
+    {
+      "wrong": "So many people use smartphones, they communicate less face to face.",
+      "correct": "Because so many people use smartphones, they communicate less face to face.",
+      "explanation": "中文中的“所以”容易被直译为 so 放在句首，但英文中不能用 so many people... 直接表达原因并用逗号连接两个完整句。应使用 because, since 或 as 引导原因状语从句。"
+    },
+    {
+      "wrong": "If students will practise regularly, they will improve their pronunciation.",
+      "correct": "If students practise regularly, they will improve their pronunciation.",
+      "explanation": "真实条件句中，if 条件从句通常用一般现在时表示将来条件，主句使用 will 表示结果。"
+    },
+    {
+      "wrong": "The city is more crowded as before.",
+      "correct": "The city is more crowded than before.",
+      "explanation": "比较级通常与 than 搭配，而不是 as。as...as 用于同级比较，例如 as crowded as before。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "状语从句在 PTE Academic 中属于高频语法点，尤其常见于 Write Essay, Summarize Written Text, Summarize Spoken Text, Re-tell Lecture 和 Reading & Writing: Fill in the Blanks。使用状语从句可以提升句子复杂度和逻辑连贯性，但必须保证主从句结构完整、连接词准确、时态一致。在 PTE 写作评分中，恰当使用原因、让步和条件状语从句有助于提高 grammar range 和 written discourse；在口语任务中，使用 although, because, when, if 等连接词可以让答案更有层次，避免简单句堆砌。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Re-tell Lecture",
+      "Reading & Writing: Fill in the Blanks",
+      "Reading: Re-order Paragraphs",
+      "Listening: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Although + clause, + main clause.",
+      "translation": "尽管……，但是……。用于承认相反观点后提出主要论点。"
+    },
+    {
+      "pattern": "Since + clause, + main clause.",
+      "translation": "由于……，……。用于正式说明原因，适合学术写作。"
+    },
+    {
+      "pattern": "If + clause, + main clause with modal verb.",
+      "translation": "如果……，就可能/应该/将会……。用于提出条件、预测结果或政策建议。"
+    },
+    {
+      "pattern": "Unless + clause, + negative consequence.",
+      "translation": "除非……，否则会产生负面结果。常用于强调必要措施。"
+    },
+    {
+      "pattern": "While + clause, + contrasting main clause.",
+      "translation": "虽然/然而……，……。用于对比两个观点、群体或趋势。"
+    },
+    {
+      "pattern": "So that + subject + can/could/may/might + verb.",
+      "translation": "以便……能够……。用于说明目的。"
+    },
+    {
+      "pattern": "So + adjective/adverb + that + clause.",
+      "translation": "如此……以至于……。用于表达结果或影响程度。"
+    },
+    {
+      "pattern": "As soon as + clause, + main clause.",
+      "translation": "一……就……。用于描述时间顺序或即时反应。"
+    },
+    {
+      "pattern": "Provided that + clause, + main clause.",
+      "translation": "只要/在……条件下，……。用于正式条件表达。"
+    },
+    {
+      "pattern": "Whereas + clause, + contrasting clause.",
+      "translation": "然而/而……。用于正式对比，常见于学术分析。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "because of economic pressure",
+      "translation": "由于经济压力"
+    },
+    {
+      "phrase": "although there is considerable evidence",
+      "translation": "尽管有大量证据"
+    },
+    {
+      "phrase": "if properly implemented",
+      "translation": "如果得到恰当实施"
+    },
+    {
+      "phrase": "unless immediate action is taken",
+      "translation": "除非立即采取行动"
+    },
+    {
+      "phrase": "while this argument is valid",
+      "translation": "虽然这一观点是合理的"
+    },
+    {
+      "phrase": "so that resources can be allocated efficiently",
+      "translation": "以便资源能够被高效分配"
+    },
+    {
+      "phrase": "when compared with traditional methods",
+      "translation": "当与传统方法相比时"
+    },
+    {
+      "phrase": "as long as safety standards are maintained",
+      "translation": "只要安全标准得到维持"
+    },
+    {
+      "phrase": "even though the initial cost is high",
+      "translation": "即使初始成本很高"
+    },
+    {
+      "phrase": "whereas the former focuses on efficiency",
+      "translation": "而前者侧重于效率"
+    }
+  ],
+  "ai_tips": [
+    "写作中优先掌握 although, because, if, when, while, so that 六类高频状语从句，它们覆盖大多数 PTE 和 IELTS 论证场景。",
+    "如果从句放在句首，通常使用逗号分隔；如果从句放在句末，通常不需要逗号。",
+    "检查每个状语从句是否有完整的 subject 和 verb，避免把 because, although, if 后面的内容写成残缺句。",
+    "PTE Write Essay 中不要为了追求复杂句而连续堆叠多个从句；一个主句搭配一个清晰的状语从句通常更安全。",
+    "表达让步时，不要受中文“虽然……但是……”影响写成 although...but；英文一般保留 although，删除 but。",
+    "条件和时间状语从句中表示将来时，优先检查是否误用了 will，例如 if students will learn 应改为 if students learn。",
+    "在 Summarize Written Text 中，状语从句适合压缩原文逻辑，例如用 although 表示转折，用 because 表示原因，用 while 表示对比。"
+  ],
+  "practice_questions": [
+    {
+      "question": "改错：Although online learning is convenient, but it may reduce face-to-face interaction.",
+      "answer": "Although online learning is convenient, it may reduce face-to-face interaction. 解释：although 和 but 不应同时连接同一主从结构。"
+    },
+    {
+      "question": "用 because 合并句子：Many cities are investing in public transport. Traffic congestion has become a serious problem.",
+      "answer": "Many cities are investing in public transport because traffic congestion has become a serious problem."
+    },
+    {
+      "question": "选择正确形式：If the policy (will succeed / succeeds), more people will support it.",
+      "answer": "succeeds。正确句子：If the policy succeeds, more people will support it. 条件状语从句中用一般现在时表示将来条件。"
+    },
+    {
+      "question": "将句子翻译成英文：尽管这项计划成本很高，但它可能带来长期收益。",
+      "answer": "Although the project is costly, it may bring long-term benefits."
+    },
+    {
+      "question": "用 so that 完成句子：Universities should provide academic support ______.",
+      "answer": "Universities should provide academic support so that students can adapt to demanding coursework."
+    },
+    {
+      "question": "改错：Because the population is ageing. Healthcare costs are increasing.",
+      "answer": "Because the population is ageing, healthcare costs are increasing. 解释：because 从句不能单独成句，必须连接主句。"
+    },
+    {
+      "question": "用 unless 改写：If governments do not control emissions, environmental damage will worsen.",
+      "answer": "Unless governments control emissions, environmental damage will worsen."
+    },
+    {
+      "question": "选择合适连接词填空：______ some people believe tourism damages local culture, others argue that it creates jobs. 可选：Because / While / Unless",
+      "answer": "While。正确句子：While some people believe tourism damages local culture, others argue that it creates jobs."
+    },
+    {
+      "question": "用 so...that 翻译：这个问题如此复杂，以至于很难在短时间内解决。",
+      "answer": "The problem is so complex that it is difficult to solve within a short period of time."
+    },
+    {
+      "question": "判断并改正：When students will receive feedback, they will improve faster.",
+      "answer": "错误。应改为：When students receive feedback, they will improve faster. 时间状语从句中表示将来不用 will。"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "slug": "present-participles",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "现在分词",
+    "en": "Present Participles"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "现在分词（Present Participle）通常由动词原形加 -ing 构成，是非谓语动词的一种。它不能单独充当句子的谓语，但可以在句中作定语、状语、补语，或与 be 动词构成进行时态。在 PTE Academic 和 IELTS 写作、阅读、听力中，现在分词常用于压缩信息、表达原因、结果、伴随动作、主动关系和正在进行的状态。掌握现在分词有助于提升句子复杂度、语法准确性和学术表达能力。"
+  },
+  "structure": {
+    "formula": "Verb + -ing；Present Participle Phrase = Verb-ing + object / adverbial / complement",
+    "explanation": "现在分词的基本形式是动词加 -ing，例如 developing、increasing、affecting。它表示主动含义或进行含义，常修饰名词，说明某个动作正在发生，或表示主句动作发生时的伴随、原因、结果、条件等关系。需要注意的是，现在分词本身不是完整谓语，不能直接替代谓语动词。若要表达完整时态，通常需要与助动词 be 搭配，例如 is increasing、were discussing。",
+    "examples": [
+      {
+        "en": "The number of students choosing online courses is increasing rapidly.",
+        "zh": "选择在线课程的学生人数正在迅速增加。"
+      },
+      {
+        "en": "Using renewable energy, many cities have reduced their carbon emissions.",
+        "zh": "通过使用可再生能源，许多城市已经减少了碳排放。"
+      },
+      {
+        "en": "The report highlights several factors contributing to economic inequality.",
+        "zh": "该报告强调了几个导致经济不平等的因素。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "作定语：修饰名词，表示主动或正在进行的动作",
+      "description": "现在分词可以放在名词前或名词后，修饰名词。单个现在分词通常放在名词前；较长的现在分词短语通常放在名词后。在学术英语中，这种结构常用于压缩定语从句，使表达更简洁。",
+      "examples": [
+        {
+          "en": "Rising temperatures pose a serious threat to coastal communities.",
+          "zh": "不断上升的气温对沿海社区构成严重威胁。"
+        },
+        {
+          "en": "Students participating in the survey reported higher levels of stress.",
+          "zh": "参与调查的学生报告了更高水平的压力。"
+        }
+      ]
+    },
+    {
+      "title": "作状语：表示原因、结果、时间或伴随动作",
+      "description": "现在分词短语常用于句首或句尾，说明主句动作发生的背景、原因、结果或伴随情况。该结构在 IELTS Writing Task 2 和 PTE Write Essay 中可以增强句式多样性，但必须确保分词短语的逻辑主语与主句主语一致。",
+      "examples": [
+        {
+          "en": "Facing intense competition, many companies have increased their investment in technology.",
+          "zh": "面对激烈竞争，许多公司增加了对技术的投资。"
+        },
+        {
+          "en": "The government introduced new policies, aiming to improve public health.",
+          "zh": "政府出台了新政策，旨在改善公共健康。"
+        }
+      ]
+    },
+    {
+      "title": "作宾语补足语：描述宾语正在进行的动作",
+      "description": "现在分词可以出现在感官动词或使役类动词后，作宾语补足语，强调某个动作正在进行或被观察到的过程。常见动词包括 see、hear、notice、observe、find、keep、leave 等。",
+      "examples": [
+        {
+          "en": "Researchers observed participants responding to different visual stimuli.",
+          "zh": "研究人员观察参与者对不同视觉刺激作出反应。"
+        },
+        {
+          "en": "The teacher found several students struggling with complex sentence structures.",
+          "zh": "老师发现几名学生在复杂句结构方面遇到困难。"
+        }
+      ]
+    },
+    {
+      "title": "与 be 动词构成进行时态",
+      "description": "现在分词与 be 动词结合可以构成进行时态，如 present continuous、past continuous 和 future continuous。此时现在分词属于谓语结构的一部分，而不是独立的非谓语成分。",
+      "examples": [
+        {
+          "en": "Many universities are offering more flexible learning options.",
+          "zh": "许多大学正在提供更加灵活的学习选择。"
+        },
+        {
+          "en": "Researchers were examining the long-term effects of air pollution.",
+          "zh": "研究人员当时正在研究空气污染的长期影响。"
+        }
+      ]
+    },
+    {
+      "title": "用于独立主格结构：提供附加背景信息",
+      "description": "在较高级的学术写作中，现在分词可以用于独立主格结构，即分词短语有自己的逻辑主语。这类结构通常用于补充说明背景、条件或伴随情况，但在考试写作中应谨慎使用，避免句子过长或逻辑不清。",
+      "examples": [
+        {
+          "en": "The data being incomplete, the researchers decided to conduct a second survey.",
+          "zh": "由于数据不完整，研究人员决定进行第二次调查。"
+        },
+        {
+          "en": "Several factors contributing to the decline, the industry faced growing uncertainty.",
+          "zh": "由于多个因素导致下降，该行业面临日益增加的不确定性。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Many students choosing online courses because they are convenient.",
+      "correct": "Many students choose online courses because they are convenient.",
+      "explanation": "错误句中 choosing 是现在分词，不能单独作谓语。句子缺少真正的谓语动词。若要表达一般事实，应使用谓语动词 choose。"
+    },
+    {
+      "wrong": "Using public transport, pollution can be reduced.",
+      "correct": "Using public transport, people can reduce pollution.",
+      "explanation": "分词短语 Using public transport 的逻辑主语应该是 people，而不是 pollution。中文学习者常受汉语省略主语影响，写出悬垂分词（dangling participle）。"
+    },
+    {
+      "wrong": "The students are interesting in environmental issues.",
+      "correct": "The students are interested in environmental issues.",
+      "explanation": "interesting 表示“令人感兴趣的”，通常修饰事物；interested 表示“感兴趣的”，通常修饰人。现在分词与过去分词在情感类形容词中含义不同。"
+    },
+    {
+      "wrong": "The increasing of population creates pressure on housing.",
+      "correct": "The increase in population creates pressure on housing.",
+      "explanation": "increasing 是现在分词或形容词，不应直接用作名词核心表达“增长”这一概念。学术写作中通常使用名词 increase，搭配介词 in。"
+    },
+    {
+      "wrong": "Students study abroad can gain international experience.",
+      "correct": "Students studying abroad can gain international experience.",
+      "explanation": "当动词短语修饰名词 students 时，应使用现在分词 studying，表示“正在国外学习的学生”。原句中 study abroad 不能直接放在名词后作定语。"
+    },
+    {
+      "wrong": "The government is consider increasing taxes.",
+      "correct": "The government is considering increasing taxes.",
+      "explanation": "进行时态中 be 后面的动词必须使用现在分词形式。consider 应改为 considering。第二个 increasing 是动名词，作 consider 的宾语。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "现在分词在 PTE Academic 中非常常见，尤其出现在 Read Aloud、Summarize Written Text、Write Essay、Reading & Writing: Fill in the Blanks 和 Listening: Fill in the Blanks 中。考生需要识别 -ing 形式到底是现在分词、动名词，还是进行时态的一部分。在写作中，正确使用现在分词短语可以提高句式复杂度，但如果逻辑主语不清，会影响 grammar 和 written discourse 评分。",
+    "sections": [
+      "Read Aloud：现在分词短语常出现在长主语或后置定语中，朗读时应注意意群划分。",
+      "Repeat Sentence：含有 -ing 结构的句子容易因听辨不清而漏掉 be 动词或宾语。",
+      "Summarize Written Text：可用现在分词压缩信息，例如 replacing a relative clause with a participle phrase。",
+      "Write Essay：现在分词状语可用于表达原因、结果和伴随动作，提升 grammatical range。",
+      "Reading & Writing: Fill in the Blanks：常考 -ing 形式与名词、形容词、谓语动词之间的词性判断。",
+      "Listening: Fill in the Blanks：需要准确拼写 -ing 形式，并区分 rising、raising、being、beginning 等易混词。"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Noun + present participle phrase",
+      "translation": "名词 + 现在分词短语，用于替代主动意义的定语从句，例如 factors affecting public health 表示“影响公共健康的因素”。"
+    },
+    {
+      "pattern": "Present participle phrase, main clause",
+      "translation": "现在分词短语位于句首，表示原因、条件或背景，例如 Facing limited resources, governments must prioritize essential services。"
+    },
+    {
+      "pattern": "Main clause, present participle phrase",
+      "translation": "主句后接现在分词短语，表示结果、伴随动作或目的，例如 The policy reduced traffic congestion, improving air quality。"
+    },
+    {
+      "pattern": "by + present participle",
+      "translation": "通过做某事，用于说明方法或手段，例如 by investing in education 表示“通过投资教育”。"
+    },
+    {
+      "pattern": "be + present participle",
+      "translation": "be 动词 + 现在分词，构成进行时态，例如 is becoming、are developing、was increasing。"
+    },
+    {
+      "pattern": "keep / leave / find + object + present participle",
+      "translation": "动词 + 宾语 + 现在分词，用于描述宾语持续进行的动作或状态，例如 keep students working independently。"
+    },
+    {
+      "pattern": "there be + noun + present participle phrase",
+      "translation": "there be 结构后接名词和现在分词短语，用于引入存在的现象，例如 There are several factors contributing to this trend。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "rising temperatures",
+      "translation": "不断上升的气温"
+    },
+    {
+      "phrase": "growing concern",
+      "translation": "日益增长的担忧"
+    },
+    {
+      "phrase": "increasing pressure",
+      "translation": "不断增加的压力"
+    },
+    {
+      "phrase": "developing countries",
+      "translation": "发展中国家"
+    },
+    {
+      "phrase": "emerging technologies",
+      "translation": "新兴技术"
+    },
+    {
+      "phrase": "changing social attitudes",
+      "translation": "不断变化的社会态度"
+    },
+    {
+      "phrase": "contributing factors",
+      "translation": "促成因素；影响因素"
+    },
+    {
+      "phrase": "leading cause",
+      "translation": "主要原因"
+    },
+    {
+      "phrase": "working conditions",
+      "translation": "工作条件"
+    },
+    {
+      "phrase": "learning outcomes",
+      "translation": "学习成果"
+    },
+    {
+      "phrase": "surrounding environment",
+      "translation": "周围环境"
+    },
+    {
+      "phrase": "remaining challenges",
+      "translation": "仍然存在的挑战"
+    }
+  ],
+  "ai_tips": [
+    "判断 -ing 形式时，先看句子是否已有谓语动词；如果已有谓语，-ing 很可能是非谓语结构。",
+    "写作中使用句首现在分词短语时，务必检查它的逻辑主语是否与主句主语一致。",
+    "不要把所有中文的“正在”都机械翻译成 -ing；英语是否使用进行时取决于语境、动词类型和时态。",
+    "学术写作中可用现在分词短语替代部分定语从句，但不要为了复杂而牺牲清晰度。",
+    "遇到情感类词汇时，注意 -ing 通常表示“令人……的”，-ed 通常表示“感到……的”。"
+  ],
+  "practice_questions": [
+    {
+      "question": "改正句子：People living in big cities are facing many problems, and including high housing costs.",
+      "answer": "People living in big cities are facing many problems, including high housing costs. 解释：including 是现在分词形式，可用于补充列举，不需要 and。"
+    },
+    {
+      "question": "将定语从句改写为现在分词短语：The students who study engineering often need strong mathematical skills.",
+      "answer": "The students studying engineering often need strong mathematical skills. 解释：who study engineering 是主动意义，可压缩为 studying engineering。"
+    },
+    {
+      "question": "选择正确形式：The lecture was very interested / interesting, so many students asked questions.",
+      "answer": "interesting。解释：lecture 是事物，表示“令人感兴趣的”，应使用现在分词形容词 interesting。"
+    },
+    {
+      "question": "判断句子是否正确：Using advanced technology, productivity can be improved.",
+      "answer": "不够严谨。更好的表达是：Using advanced technology, companies can improve productivity. 解释：using 的逻辑主语应是 companies，而不是 productivity。"
+    },
+    {
+      "question": "用现在分词短语合并句子：The policy reduced waste. It encouraged people to recycle more.",
+      "answer": "The policy reduced waste, encouraging people to recycle more. 解释：encouraging people to recycle more 表示伴随结果。"
+    },
+    {
+      "question": "填空：There are several factors ________ to the rise in urban unemployment. (contribute)",
+      "answer": "contributing。完整句：There are several factors contributing to the rise in urban unemployment. 解释：factors 与 contribute 是主动关系，用现在分词作后置定语。"
+    },
+    {
+      "question": "改正句子：The government is increase spending on public transport.",
+      "answer": "The government is increasing spending on public transport. 解释：进行时态结构为 be + present participle。"
+    },
+    {
+      "question": "翻译成英文：面对人口老龄化，许多国家正在改革医疗体系。",
+      "answer": "Facing an ageing population, many countries are reforming their healthcare systems. 解释：Facing an ageing population 作原因或背景状语，主句使用 are reforming 表示正在进行的政策变化。"
+    }
+  ]
+}

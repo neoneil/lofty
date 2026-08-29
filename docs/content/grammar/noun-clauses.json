@@ -1,0 +1,275 @@
+{
+  "slug": "noun-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "名词性从句",
+    "en": "Noun Clauses"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "名词性从句（Noun Clauses）是在句中充当名词功能的从句，可作主语、宾语、表语或同位语。常见引导词包括 that, whether, if, what, who, whom, whose, which, when, where, why, how 等。对 PTE Academic 和 IELTS 考生而言，名词性从句非常重要，因为它能帮助考生在口语和写作中表达观点、解释原因、概括研究发现、转述信息以及构建复杂句。掌握名词性从句的关键是：使用陈述语序、判断从句在主句中的语法功能、区分 that 与 what、正确使用 whether 和 if，并避免中式英语中的重复主语或错误疑问语序。"
+  },
+  "structure": {
+    "formula": "Main clause + noun clause / Noun clause + main verb / Subject + linking verb + noun clause",
+    "explanation": "名词性从句本质上相当于一个名词短语，但它包含主语和谓语。它可以出现在名词能出现的位置。例如，作宾语时常跟在 think, believe, argue, suggest, show, explain 等动词后；作主语时可放在句首，也常用形式主语 it 来避免句子头重脚轻；作表语时常跟在 be, seem, remain 等系动词后；作同位语时用来解释 idea, fact, claim, evidence, possibility 等抽象名词。需要特别注意，名词性从句内部通常使用陈述语序，而不是疑问语序。",
+    "examples": [
+      {
+        "en": "Many researchers believe that regular exercise improves cognitive performance.",
+        "zh": "许多研究人员认为，规律运动能提高认知表现。"
+      },
+      {
+        "en": "What the data reveal is highly relevant to public health policy.",
+        "zh": "数据所揭示的内容与公共卫生政策高度相关。"
+      },
+      {
+        "en": "The main concern is whether young people can access reliable information online.",
+        "zh": "主要担忧是年轻人是否能够在网上获取可靠信息。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "作宾语：表达观点、看法和研究发现",
+      "description": "名词性从句最常见的用法是作动词宾语，尤其适用于议论文、学术写作和 PTE Summarize Written Text。常见动词包括 believe, argue, suggest, indicate, demonstrate, assume, claim, acknowledge 等。that 从句常用于引出完整观点，而 wh- 从句则用于引出具体信息。",
+      "examples": [
+        {
+          "en": "The report indicates that air pollution has become a major threat to urban residents.",
+          "zh": "该报告表明，空气污染已经成为城市居民面临的主要威胁。"
+        },
+        {
+          "en": "Experts have not yet determined why the species is disappearing so rapidly.",
+          "zh": "专家尚未确定该物种为何如此迅速地消失。"
+        }
+      ]
+    },
+    {
+      "title": "作主语：突出信息或观点",
+      "description": "名词性从句可以位于句首作主语，常用于强调一个事实、问题或现象。在学术英语中，为了句子更自然，较长的主语从句常改写为 It is + adjective/noun + that/whether... 的结构。",
+      "examples": [
+        {
+          "en": "Whether governments should fund space exploration remains controversial.",
+          "zh": "政府是否应该资助太空探索仍然具有争议。"
+        },
+        {
+          "en": "It is evident that technology has transformed the way people communicate.",
+          "zh": "显而易见，科技已经改变了人们交流的方式。"
+        }
+      ]
+    },
+    {
+      "title": "作表语：解释主语内容",
+      "description": "名词性从句作表语时通常出现在 be 动词或其他 linking verbs 后，用来说明主语的具体含义。这种结构常见于 IELTS Writing Task 2 的中心句以及 PTE Essay 的论点展开。",
+      "examples": [
+        {
+          "en": "The key issue is whether economic growth can be achieved without environmental damage.",
+          "zh": "关键问题是经济增长是否能在不破坏环境的情况下实现。"
+        },
+        {
+          "en": "The reason is that many students lack effective time-management skills.",
+          "zh": "原因是许多学生缺乏有效的时间管理技能。"
+        }
+      ]
+    },
+    {
+      "title": "作同位语：解释抽象名词",
+      "description": "同位语从句常用于解释某个抽象名词的具体内容，例如 fact, idea, belief, assumption, evidence, argument, possibility, concern 等。它是学术写作中提高准确性和逻辑性的高频结构。",
+      "examples": [
+        {
+          "en": "There is strong evidence that early childhood education contributes to long-term academic success.",
+          "zh": "有强有力的证据表明，早期儿童教育有助于长期学业成功。"
+        },
+        {
+          "en": "The idea that everyone should have equal access to healthcare is widely supported.",
+          "zh": "人人都应平等获得医疗服务这一观点得到了广泛支持。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I don't know what is the problem.",
+      "correct": "I don't know what the problem is.",
+      "explanation": "名词性从句内部要使用陈述语序，而不是疑问语序。中文学习者常受“问题是什么”的中文顺序影响，把 be 动词提前。正确结构是 what + subject + verb。"
+    },
+    {
+      "wrong": "That he said is important.",
+      "correct": "What he said is important.",
+      "explanation": "that 只起连接作用，不在从句中充当成分；what 相当于 the thing that，在从句中可作主语、宾语或表语。这里从句缺少宾语，因此必须用 what。"
+    },
+    {
+      "wrong": "I am agree that online learning is useful.",
+      "correct": "I agree that online learning is useful.",
+      "explanation": "agree 是实义动词，不能写成 am agree。后面可接 that 从句表达同意的内容。"
+    },
+    {
+      "wrong": "The reason is because many people prefer convenience.",
+      "correct": "The reason is that many people prefer convenience.",
+      "explanation": "The reason is... 后面正式英语中通常用 that 引导表语从句，不推荐使用 because。because 可用于原因状语从句，例如 Many people choose online shopping because it is convenient。"
+    },
+    {
+      "wrong": "I wonder that whether this policy will work.",
+      "correct": "I wonder whether this policy will work.",
+      "explanation": "whether 本身可以引导宾语从句，不需要再加 that。中文学习者有时会把多个连接词叠加，这是不符合英语语法的。"
+    },
+    {
+      "wrong": "He asked me where did I live.",
+      "correct": "He asked me where I lived.",
+      "explanation": "间接疑问句属于名词性从句，必须使用陈述语序。同时，如果主句是过去时，从句通常需要进行时态回移。"
+    },
+    {
+      "wrong": "It depends on if the government provides enough funding.",
+      "correct": "It depends on whether the government provides enough funding.",
+      "explanation": "介词后通常用 whether，不用 if。depend on, discuss, argue about, be concerned about 等结构后接“是否”时，应优先使用 whether。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "名词性从句在 PTE Academic 中非常常见，尤其出现在 Summarize Written Text, Write Essay, Retell Lecture, Summarize Spoken Text 和 Read Aloud 中。考生需要用它准确转述信息、整合原因结果、表达研究结论，并避免简单句堆砌。在写作中，that 从句可用于概括作者观点，whether 从句可用于讨论争议问题，what 从句可用于突出核心内容。在口语中，使用清晰的名词性从句能提升 grammatical range and accuracy，但必须注意语序稳定，避免因追求复杂句而产生结构错误。",
+    "sections": [
+      "Summarize Written Text",
+      "Write Essay",
+      "Summarize Spoken Text",
+      "Retell Lecture",
+      "Read Aloud",
+      "Repeat Sentence",
+      "Listening Fill in the Blanks",
+      "Reading and Writing Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is widely believed that + clause.",
+      "translation": "人们普遍认为……"
+    },
+    {
+      "pattern": "It is essential that + subject + base verb.",
+      "translation": "……是至关重要的。"
+    },
+    {
+      "pattern": "The evidence suggests that + clause.",
+      "translation": "证据表明……"
+    },
+    {
+      "pattern": "A key question is whether + clause.",
+      "translation": "一个关键问题是是否……"
+    },
+    {
+      "pattern": "What is particularly important is that + clause.",
+      "translation": "尤其重要的是……"
+    },
+    {
+      "pattern": "The argument that + clause + is persuasive/problematic.",
+      "translation": "……这一论点具有说服力/存在问题。"
+    },
+    {
+      "pattern": "There is growing concern that + clause.",
+      "translation": "人们越来越担心……"
+    },
+    {
+      "pattern": "Researchers have found that + clause.",
+      "translation": "研究人员发现……"
+    },
+    {
+      "pattern": "The issue is not whether + clause, but how + clause.",
+      "translation": "问题不在于是否……，而在于如何……"
+    },
+    {
+      "pattern": "This raises the question of whether + clause.",
+      "translation": "这引出了一个问题，即是否……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "believe that",
+      "translation": "认为……"
+    },
+    {
+      "phrase": "argue that",
+      "translation": "主张/论证……"
+    },
+    {
+      "phrase": "suggest that",
+      "translation": "表明/建议……"
+    },
+    {
+      "phrase": "indicate that",
+      "translation": "显示……"
+    },
+    {
+      "phrase": "demonstrate that",
+      "translation": "证明……"
+    },
+    {
+      "phrase": "be aware that",
+      "translation": "意识到……"
+    },
+    {
+      "phrase": "be concerned that",
+      "translation": "担心……"
+    },
+    {
+      "phrase": "the fact that",
+      "translation": "……这一事实"
+    },
+    {
+      "phrase": "the possibility that",
+      "translation": "……的可能性"
+    },
+    {
+      "phrase": "whether or not",
+      "translation": "是否"
+    },
+    {
+      "phrase": "depend on whether",
+      "translation": "取决于是否……"
+    },
+    {
+      "phrase": "explain why",
+      "translation": "解释为什么……"
+    }
+  ],
+  "ai_tips": [
+    "写作中如果句子开头的主语从句过长，可使用 It is clear that, It is likely that, It remains uncertain whether 等结构，使句子更符合学术英语习惯。",
+    "遇到 wh- 引导的名词性从句时，先检查从句内部是否为陈述语序，例如 what the author means, why this trend occurs, how the policy affects citizens。",
+    "在 PTE Summarize Written Text 中，可以用 The passage suggests that... 或 The author argues that... 快速概括原文核心观点。",
+    "区分 that 和 what：that 后面通常是完整句；what 后面的从句往往缺少主语、宾语或表语。",
+    "表达“是否”时，正式写作中优先使用 whether，尤其是在句首、介词后、whether or not 结构中。"
+  ],
+  "practice_questions": [
+    {
+      "question": "改错：I don't understand why does this problem happen.",
+      "answer": "I don't understand why this problem happens. 解释：why 引导的是宾语从句，从句内部要使用陈述语序。"
+    },
+    {
+      "question": "选择正确句子：A. What he believes is controversial. B. That he believes is controversial.",
+      "answer": "A. What he believes is controversial. 解释：从句中 believes 缺少宾语，因此用 what；that 不充当句子成分。"
+    },
+    {
+      "question": "用 that 从句翻译：许多专家认为，人工智能将改变未来的就业市场。",
+      "answer": "Many experts believe that artificial intelligence will transform the future job market."
+    },
+    {
+      "question": "用 whether 从句翻译：这个政策是否有效仍然不清楚。",
+      "answer": "Whether this policy is effective remains unclear. 也可以写作：It remains unclear whether this policy is effective."
+    },
+    {
+      "question": "合并句子：The study shows something. Regular sleep improves memory.",
+      "answer": "The study shows that regular sleep improves memory."
+    },
+    {
+      "question": "改写为形式主语 it：Whether children should use smartphones at school is debatable.",
+      "answer": "It is debatable whether children should use smartphones at school."
+    },
+    {
+      "question": "完成句子：The main reason is ______ many commuters prefer public transport.",
+      "answer": "that。完整句：The main reason is that many commuters prefer public transport."
+    },
+    {
+      "question": "判断正误并修改：The question is that students should pay university fees.",
+      "answer": "错误。可改为：The question is whether students should pay university fees. 解释：这里表达“是否应该”，应使用 whether。"
+    }
+  ]
+}

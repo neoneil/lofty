@@ -1,0 +1,293 @@
+{
+  "slug": "object-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "宾语从句",
+    "en": "Object Clauses"
+  },
+  "difficulty": "中级到高级",
+  "summary": {
+    "zh": "宾语从句是名词性从句的一种，在句中充当动词、介词或某些形容词后的宾语。它常由 that, whether, if, what, why, how, when, where, who 等连接词引导。对于准备 PTE Academic 和 IELTS 的中国考生来说，宾语从句非常重要，因为它可以帮助考生在写作和口语中表达观点、转述信息、解释原因、描述研究发现，并提高句子复杂度。掌握宾语从句时，需要特别注意陈述语序、时态一致、连接词选择以及间接疑问句的结构。"
+  },
+  "structure": {
+    "formula": "主语 + 谓语动词 / 形容词 / 介词 + 连接词 + 主语 + 谓语 + 其他成分",
+    "explanation": "宾语从句在主句中充当宾语，通常放在动词之后，例如 believe, think, suggest, indicate, explain, demonstrate, assume, argue 等。在学术英语中，宾语从句常用于表达研究结论、作者观点或数据说明。宾语从句内部必须使用陈述语序，即“连接词 + 主语 + 谓语”，不能使用疑问语序。例如，应说 I do not know why this trend occurred，而不是 I do not know why did this trend occur。that 引导的宾语从句主要陈述事实或观点；whether 和 if 表示“是否”；wh- 连接词用于引导包含具体疑问信息的宾语从句。",
+    "examples": [
+      {
+        "en": "Researchers believe that early intervention can improve learning outcomes.",
+        "zh": "研究人员认为，早期干预可以改善学习结果。"
+      },
+      {
+        "en": "The survey shows that many students prefer flexible learning schedules.",
+        "zh": "调查显示，许多学生更喜欢灵活的学习时间安排。"
+      },
+      {
+        "en": "Many people wonder whether artificial intelligence will replace certain jobs.",
+        "zh": "许多人想知道人工智能是否会取代某些工作。"
+      },
+      {
+        "en": "The lecturer explained why renewable energy has become more affordable.",
+        "zh": "讲师解释了为什么可再生能源变得更加便宜。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达观点和判断",
+      "description": "宾语从句常用于 think, believe, argue, assume, claim, suggest 等动词之后，用来表达个人观点、学术判断或论证立场。在 IELTS Writing Task 2 和 PTE Essay 中，这类结构可以使观点表达更自然、更正式。",
+      "examples": [
+        {
+          "en": "I believe that governments should invest more in public transportation.",
+          "zh": "我认为政府应该在公共交通方面投入更多资金。"
+        },
+        {
+          "en": "Some experts argue that online education can reduce educational inequality.",
+          "zh": "一些专家认为，在线教育可以减少教育不平等。"
+        },
+        {
+          "en": "It is widely assumed that economic growth depends partly on technological innovation.",
+          "zh": "人们普遍认为，经济增长在一定程度上依赖技术创新。"
+        }
+      ]
+    },
+    {
+      "title": "转述信息和研究发现",
+      "description": "在学术写作和听力复述中，宾语从句可用于报告研究、讲座、图表或文章中的信息。常见动词包括 show, indicate, reveal, suggest, demonstrate, report, find 等。",
+      "examples": [
+        {
+          "en": "The data indicate that household energy consumption has declined over the past decade.",
+          "zh": "数据显示，过去十年家庭能源消耗已经下降。"
+        },
+        {
+          "en": "The study found that regular exercise may reduce stress levels among university students.",
+          "zh": "该研究发现，规律锻炼可能降低大学生的压力水平。"
+        },
+        {
+          "en": "The graph shows that the number of international students increased steadily.",
+          "zh": "图表显示，国际学生人数稳步增加。"
+        }
+      ]
+    },
+    {
+      "title": "构成间接疑问句",
+      "description": "当一个疑问句作为宾语放入另一个句子时，就形成间接疑问句。间接疑问句必须使用陈述语序，而不是疑问语序。这一点是中国考生在 PTE Speaking 和 IELTS Speaking 中的高频错误点。",
+      "examples": [
+        {
+          "en": "Could you explain how this policy affects low-income families?",
+          "zh": "你能解释这项政策如何影响低收入家庭吗？"
+        },
+        {
+          "en": "The professor asked whether the students had understood the main argument.",
+          "zh": "教授询问学生是否理解了主要论点。"
+        },
+        {
+          "en": "I am not sure why the experiment produced different results.",
+          "zh": "我不确定为什么这个实验产生了不同的结果。"
+        }
+      ]
+    },
+    {
+      "title": "表达不确定性和评价",
+      "description": "宾语从句可以放在 be certain, be aware, be concerned, be convinced, be interested 等形容词结构之后，用于表达确定性、意识、担忧或兴趣。在正式写作中，这类结构有助于增强语义层次。",
+      "examples": [
+        {
+          "en": "Many parents are concerned that excessive screen time may affect children's concentration.",
+          "zh": "许多家长担心，过度使用屏幕可能影响儿童的注意力。"
+        },
+        {
+          "en": "Policy makers are aware that climate change requires long-term cooperation.",
+          "zh": "政策制定者意识到，气候变化需要长期合作。"
+        },
+        {
+          "en": "Researchers are interested in how social media influences political participation.",
+          "zh": "研究人员对社交媒体如何影响政治参与感兴趣。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I don't know why did he choose this method.",
+      "correct": "I don't know why he chose this method.",
+      "explanation": "宾语从句中的间接疑问句必须使用陈述语序。“why he chose this method”才是正确结构，不能保留疑问句中的助动词倒装“did he choose”。"
+    },
+    {
+      "wrong": "The report shows the unemployment rate increased.",
+      "correct": "The report shows that the unemployment rate increased.",
+      "explanation": "在非正式英语中 that 有时可以省略，但在学术写作中，尤其是句子较长或信息较复杂时，保留 that 可以让结构更清晰。PTE 和 IELTS 写作中建议优先使用清楚完整的表达。"
+    },
+    {
+      "wrong": "I am agree that education is important.",
+      "correct": "I agree that education is important.",
+      "explanation": "agree 是动词，不能与 be 动词连用。中国学习者常受中文“我是同意的”影响而误写为 am agree。正确表达是“I agree that...”。"
+    },
+    {
+      "wrong": "She asked that whether the results were reliable.",
+      "correct": "She asked whether the results were reliable.",
+      "explanation": "that 和 whether 通常不能同时引导同一个宾语从句。whether 本身已经表示“是否”，不需要再加 that。"
+    },
+    {
+      "wrong": "Many people believe that technology will improves education.",
+      "correct": "Many people believe that technology will improve education.",
+      "explanation": "情态动词 will 后必须接动词原形。宾语从句中虽然有独立的主语和谓语，但仍然要遵守基本动词形式规则。"
+    },
+    {
+      "wrong": "He said that he is tired yesterday.",
+      "correct": "He said that he was tired yesterday.",
+      "explanation": "当主句谓语是过去时 said，且从句描述的是过去当时的状态时，从句通常也要使用过去时。这属于宾语从句中的时态一致问题。"
+    },
+    {
+      "wrong": "The lecturer mentioned about that the population was aging.",
+      "correct": "The lecturer mentioned that the population was aging.",
+      "explanation": "mention 是及物动词，后面可以直接接宾语或宾语从句，不需要加 about。可以说 talked about that issue，但不能说 mentioned about that。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "宾语从句在 PTE Academic 中非常常见，尤其出现在 Summarize Written Text, Write Essay, Retell Lecture, Summarize Spoken Text 和 Answer Short Question 的答案组织中。考生需要用宾语从句准确转述文本或讲座信息，例如 The speaker explains that..., The passage suggests that..., The research indicates that...。在口语部分，宾语从句可以帮助考生避免句子过短，提高语法复杂度；在写作部分，它可以帮助表达因果、观点、发现和不确定性。需要注意的是，PTE 评分重视 grammatical range and accuracy，因此宾语从句应保持语序正确、连接词准确、时态一致。",
+    "sections": [
+      "Speaking: Retell Lecture",
+      "Speaking: Describe Image",
+      "Writing: Summarize Written Text",
+      "Writing: Write Essay",
+      "Listening: Summarize Spoken Text",
+      "Reading & Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The evidence suggests that + clause.",
+      "translation": "证据表明……"
+    },
+    {
+      "pattern": "The data indicate that + clause.",
+      "translation": "数据显示……"
+    },
+    {
+      "pattern": "It can be argued that + clause.",
+      "translation": "可以认为……"
+    },
+    {
+      "pattern": "Researchers have found that + clause.",
+      "translation": "研究人员发现……"
+    },
+    {
+      "pattern": "The author claims that + clause.",
+      "translation": "作者声称……"
+    },
+    {
+      "pattern": "This implies that + clause.",
+      "translation": "这意味着……"
+    },
+    {
+      "pattern": "The findings demonstrate that + clause.",
+      "translation": "研究结果证明……"
+    },
+    {
+      "pattern": "It remains unclear whether + clause.",
+      "translation": "目前尚不清楚是否……"
+    },
+    {
+      "pattern": "The report explains how + clause.",
+      "translation": "报告解释了……如何……"
+    },
+    {
+      "pattern": "Policy makers should consider whether + clause.",
+      "translation": "政策制定者应该考虑是否……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "believe that",
+      "translation": "认为……"
+    },
+    {
+      "phrase": "argue that",
+      "translation": "主张……；认为……"
+    },
+    {
+      "phrase": "suggest that",
+      "translation": "表明……；建议……"
+    },
+    {
+      "phrase": "indicate that",
+      "translation": "显示……；表明……"
+    },
+    {
+      "phrase": "demonstrate that",
+      "translation": "证明……"
+    },
+    {
+      "phrase": "assume that",
+      "translation": "假设……；认为……"
+    },
+    {
+      "phrase": "be aware that",
+      "translation": "意识到……"
+    },
+    {
+      "phrase": "be concerned that",
+      "translation": "担心……"
+    },
+    {
+      "phrase": "wonder whether",
+      "translation": "想知道是否……"
+    },
+    {
+      "phrase": "explain why",
+      "translation": "解释为什么……"
+    },
+    {
+      "phrase": "show how",
+      "translation": "展示如何……"
+    },
+    {
+      "phrase": "find out whether",
+      "translation": "查明是否……"
+    }
+  ],
+  "ai_tips": [
+    "写作中如果需要表达观点，可以优先使用“I believe that...”“It can be argued that...”“The evidence suggests that...”等结构，比简单句更符合学术表达。",
+    "遇到 why, how, where, when 引导的宾语从句时，先检查语序是否为“连接词 + 主语 + 谓语”，不要使用疑问句倒装。",
+    "在 PTE Summarize Written Text 中，宾语从句适合用来整合原文核心信息，例如“The passage explains that...”或“The author suggests that...”。",
+    "如果主句是过去时，转述内容通常需要注意时态后移，但客观真理、科学事实或仍然成立的事实可以保持一般现在时。",
+    "that 引导的宾语从句在口语中可省略，但在正式写作中保留 that 往往能提升句子清晰度。"
+  ],
+  "practice_questions": [
+    {
+      "question": "改正句子：I don't know where does she live.",
+      "answer": "I don't know where she lives. 解释：宾语从句要使用陈述语序，即 where + 主语 + 谓语。"
+    },
+    {
+      "question": "用宾语从句翻译：许多专家认为，城市化会影响住房价格。",
+      "answer": "Many experts believe that urbanization can affect housing prices."
+    },
+    {
+      "question": "选择正确句子：A. The study indicates that sleep affects memory. B. The study indicates that does sleep affect memory.",
+      "answer": "A。解释：that 引导的宾语从句使用陈述语序，不能使用疑问语序。"
+    },
+    {
+      "question": "将直接疑问句改为宾语从句：Why did the company change its policy? → The journalist asked...",
+      "answer": "The journalist asked why the company changed its policy."
+    },
+    {
+      "question": "用 whether 完成句子：Policy makers should consider ______ public transport is affordable for low-income groups.",
+      "answer": "Policy makers should consider whether public transport is affordable for low-income groups."
+    },
+    {
+      "question": "改正句子：The lecturer mentioned about that climate change affects agriculture.",
+      "answer": "The lecturer mentioned that climate change affects agriculture. 解释：mention 是及物动词，后面不需要 about。"
+    },
+    {
+      "question": "用 academic pattern 造句，表达“数据表明网络购物越来越受欢迎”。",
+      "answer": "The data indicate that online shopping is becoming increasingly popular."
+    },
+    {
+      "question": "判断是否正确：I wonder whether will technology replace teachers.",
+      "answer": "不正确。正确句子是：I wonder whether technology will replace teachers. 解释：whether 引导的宾语从句中，will 应放在主语 technology 后面。"
+    }
+  ]
+}

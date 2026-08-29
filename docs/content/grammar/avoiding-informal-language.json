@@ -1,0 +1,333 @@
+{
+  "slug": "avoiding-informal-language",
+  "category": {
+    "zh": "学术写作",
+    "en": "Academic Writing"
+  },
+  "title": {
+    "zh": "避免口语化",
+    "en": "Avoiding Informal Language"
+  },
+  "difficulty": "中级到高级",
+  "summary": {
+    "zh": "在PTE Academic和IELTS学术写作中，避免口语化是提升语言分数、增强论证可信度和保持学术语域的重要能力。口语化表达通常包括缩写形式、日常词汇、情绪化判断、模糊指代、俚语、习语、过度使用第一或第二人称，以及不够精确的动词和名词。学术写作要求考生使用正式、客观、准确、逻辑清晰的表达方式，例如用“children”替代“kids”，用“significant”替代“big”，用“individuals”或“people”替代“guys”，用“therefore”替代“so”。对于中国学生而言，常见问题包括直接翻译中文口语、使用过于简单的万能词、把议论文写成聊天式表达，以及为了显得高级而使用不自然的复杂词。本课重点帮助学习者识别非正式语言，并将其改写为适合PTE和IELTS的学术表达。"
+  },
+  "structure": {
+    "formula": "Informal expression → Formal academic expression → Objective and precise sentence",
+    "explanation": "避免口语化的核心不是把每个词都换成复杂词，而是根据学术语境选择更准确、更客观、更正式的表达。正式学术句子通常具备三个特点：第一，词汇具体而准确，例如用“increase”或“rise”替代笼统的“go up”；第二，语气客观，避免“I think”“you can see”“of course”等主观或对话式表达；第三，句法完整，避免缩写、碎片句和过于随意的连接词。在PTE Write Essay和IELTS Writing Task 2中，考生应使用正式连接词、名词化结构、被动语态、抽象名词和学术搭配来提高语域。例如，“A lot of people think technology is good”可以改为“Many individuals argue that technology has brought substantial benefits to society.” 这种改写不仅更正式，也更符合评分标准中对lexical resource、grammatical range和coherence的要求。",
+    "examples": [
+      {
+        "en": "Informal: A lot of students think online classes are great.",
+        "zh": "非正式：很多学生觉得网课很棒。"
+      },
+      {
+        "en": "Formal: Many students consider online learning to be an effective educational approach.",
+        "zh": "正式：许多学生认为在线学习是一种有效的教育方式。"
+      },
+      {
+        "en": "Informal: The government should do something about pollution.",
+        "zh": "非正式：政府应该对污染做点什么。"
+      },
+      {
+        "en": "Formal: The government should implement effective measures to address environmental pollution.",
+        "zh": "正式：政府应采取有效措施来应对环境污染。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "议论文中表达观点",
+      "description": "在PTE Write Essay和IELTS Writing Task 2中，表达个人立场时应避免聊天式表达，如“I think”“I feel”“you know”。更合适的方式是使用客观句式，如“It can be argued that”“This essay will discuss”“There is strong evidence that”。",
+      "examples": [
+        {
+          "en": "Informal: I think working from home is pretty good for workers.",
+          "zh": "非正式：我觉得居家办公对员工挺好的。"
+        },
+        {
+          "en": "Formal: It can be argued that remote working provides employees with greater flexibility and improved work-life balance.",
+          "zh": "正式：可以认为，远程办公为员工提供了更大的灵活性，并改善了工作与生活的平衡。"
+        }
+      ]
+    },
+    {
+      "title": "描述原因和结果",
+      "description": "学术写作中应避免使用过于口语化的因果连接词，如“so”“because of this”“that is why”。更正式的表达包括“therefore”“as a result”“consequently”“This may lead to”。这些连接词在PTE Summarize Written Text和Write Essay中尤其重要。",
+      "examples": [
+        {
+          "en": "Informal: Many people use cars, so the air gets worse.",
+          "zh": "非正式：很多人使用汽车，所以空气变差了。"
+        },
+        {
+          "en": "Formal: The widespread use of private vehicles contributes to a decline in air quality.",
+          "zh": "正式：私家车的广泛使用导致空气质量下降。"
+        }
+      ]
+    },
+    {
+      "title": "描述数据、趋势和变化",
+      "description": "在IELTS Writing Task 1或PTE中涉及图表、摘要和概括时，应避免使用“go up”“go down”“a lot”“big change”等日常表达。应改用“increase”“decrease”“substantially”“a significant change”等更精确的学术表达。",
+      "examples": [
+        {
+          "en": "Informal: The number of tourists went up a lot in 2020.",
+          "zh": "非正式：游客数量在2020年上升了很多。"
+        },
+        {
+          "en": "Formal: The number of tourists increased substantially in 2020.",
+          "zh": "正式：游客数量在2020年显著增加。"
+        }
+      ]
+    },
+    {
+      "title": "提出解决方案",
+      "description": "提出建议时，应避免使用“fix the problem”“do something”“make things better”等模糊表达。学术写作要求解决方案具体、动词准确，例如“address the issue”“implement policies”“enhance public awareness”。",
+      "examples": [
+        {
+          "en": "Informal: Schools should do something to help students with stress.",
+          "zh": "非正式：学校应该做点事情来帮助学生应对压力。"
+        },
+        {
+          "en": "Formal: Schools should introduce mental health programs to support students experiencing academic pressure.",
+          "zh": "正式：学校应引入心理健康项目，以支持承受学业压力的学生。"
+        }
+      ]
+    },
+    {
+      "title": "概括他人观点或研究结论",
+      "description": "在学术语境中概括观点时，应避免“people say”“some guys believe”“everyone knows”等不严谨表达。可使用“research suggests”“some commentators argue”“it is widely acknowledged that”等更正式的表达。",
+      "examples": [
+        {
+          "en": "Informal: People say social media is bad for teenagers.",
+          "zh": "非正式：人们说社交媒体对青少年不好。"
+        },
+        {
+          "en": "Formal: Some researchers suggest that excessive social media use may have negative effects on adolescents.",
+          "zh": "正式：一些研究者认为，过度使用社交媒体可能会对青少年产生负面影响。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "A lot of people think that university is too expensive.",
+      "correct": "Many people argue that university education is excessively expensive.",
+      "explanation": "“A lot of”在学术写作中偏口语化，可根据语境改为“many”“a large number of”或“a significant proportion of”。“think”也较普通，议论文中可替换为“argue”“believe”“maintain”或“contend”。"
+    },
+    {
+      "wrong": "Kids should not spend too much time on phones.",
+      "correct": "Children should not spend excessive time using mobile phones.",
+      "explanation": "“Kids”是日常口语词，正式写作中应使用“children”。“too much time”可以根据语境改为“excessive time”，表达更正式、更准确。"
+    },
+    {
+      "wrong": "The government needs to fix this problem.",
+      "correct": "The government needs to address this issue through effective policy measures.",
+      "explanation": "“fix this problem”过于口语化且不具体。学术写作中常用“address this issue”“tackle this problem”“implement measures”等表达，并说明解决方式。"
+    },
+    {
+      "wrong": "This is a big problem for society.",
+      "correct": "This constitutes a significant social problem.",
+      "explanation": "“big”是高频基础词，在正式写作中常显得不够精确。根据语义可改为“significant”“serious”“major”“substantial”。“constitutes”可增强学术语气。"
+    },
+    {
+      "wrong": "You can see that technology changes our life.",
+      "correct": "It is evident that technology has transformed modern life.",
+      "explanation": "学术写作应避免直接称呼读者的“you”。“You can see that”属于对话式表达，可改为“It is evident that”“It is clear that”。同时，“changes our life”应改为更准确的“has transformed modern life”。"
+    },
+    {
+      "wrong": "I think the advantages are more than the disadvantages.",
+      "correct": "The advantages appear to outweigh the disadvantages.",
+      "explanation": "“I think”在考试议论文中过于主观，除非题目明确要求个人观点，也应尽量使用更客观的表达。“more than”可改为固定学术表达“outweigh”。"
+    },
+    {
+      "wrong": "The internet brings us lots of good things.",
+      "correct": "The internet provides numerous benefits for individuals and society.",
+      "explanation": "“lots of good things”非常口语化且含义模糊。正式表达应使用“numerous benefits”“considerable advantages”“positive outcomes”等具体名词。"
+    },
+    {
+      "wrong": "Students can get a lot of knowledge from online courses.",
+      "correct": "Students can acquire substantial knowledge through online courses.",
+      "explanation": "“get”是口语中常见万能动词，学术写作中应根据含义替换为“acquire”“obtain”“gain”“receive”等。“a lot of knowledge”可改为“substantial knowledge”。"
+    },
+    {
+      "wrong": "This policy is really bad and unfair.",
+      "correct": "This policy may be ineffective and inequitable.",
+      "explanation": "“really bad”情绪化且不精确。“bad”应根据具体含义改为“ineffective”“harmful”“problematic”等。“unfair”在学术语境中可使用“inequitable”。"
+    },
+    {
+      "wrong": "Nowadays, people are crazy about social media.",
+      "correct": "In recent years, social media has become increasingly popular among the general public.",
+      "explanation": "“crazy about”是口语化表达，不适合正式写作。可用“has become increasingly popular”表达趋势。“Nowadays”并非绝对错误，但在学术写作中常被滥用，建议根据时间范围使用“In recent years”。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "避免口语化在PTE Academic中非常重要，尤其影响Written Discourse、Grammar、Vocabulary和Form等评分维度。在Write Essay中，正式语域能够使文章更符合学术议论文要求；在Summarize Written Text中，考生需要把原文信息压缩成一个语法完整、表达正式的长句，不能使用聊天式或随意表达；在Summarize Spoken Text中，笔记内容转化为答案时也应避免“the speaker says it is super good”这类口语表达。PTE评分系统倾向于识别清晰、正式、准确的语言，因此考生应使用学术动词、抽象名词、正式连接词和客观句式，而不是依赖日常词汇和模糊判断。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Reading & Writing: Fill in the Blanks",
+      "Listening: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It can be argued that + clause",
+      "translation": "可以认为……"
+    },
+    {
+      "pattern": "There is considerable evidence that + clause",
+      "translation": "有相当多的证据表明……"
+    },
+    {
+      "pattern": "This issue should be addressed through + noun phrase",
+      "translation": "这一问题应通过……来解决。"
+    },
+    {
+      "pattern": "X has a significant impact on Y",
+      "translation": "X对Y有显著影响。"
+    },
+    {
+      "pattern": "X contributes to + noun phrase",
+      "translation": "X导致/促成……"
+    },
+    {
+      "pattern": "X is associated with + noun phrase",
+      "translation": "X与……有关。"
+    },
+    {
+      "pattern": "The advantages of X outweigh its disadvantages",
+      "translation": "X的优点大于其缺点。"
+    },
+    {
+      "pattern": "It is essential to distinguish between X and Y",
+      "translation": "区分X和Y是必要的。"
+    },
+    {
+      "pattern": "This may lead to + noun phrase",
+      "translation": "这可能导致……"
+    },
+    {
+      "pattern": "A more effective approach would be to + verb",
+      "translation": "一种更有效的方法是……"
+    },
+    {
+      "pattern": "X should not be overlooked",
+      "translation": "X不应被忽视。"
+    },
+    {
+      "pattern": "The extent to which + clause + remains debatable",
+      "translation": "……的程度仍有争议。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "address an issue",
+      "translation": "处理一个问题"
+    },
+    {
+      "phrase": "implement measures",
+      "translation": "采取措施"
+    },
+    {
+      "phrase": "pose a challenge",
+      "translation": "构成挑战"
+    },
+    {
+      "phrase": "have a significant effect",
+      "translation": "产生显著影响"
+    },
+    {
+      "phrase": "raise public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "acquire knowledge",
+      "translation": "获取知识"
+    },
+    {
+      "phrase": "enhance efficiency",
+      "translation": "提高效率"
+    },
+    {
+      "phrase": "reduce inequality",
+      "translation": "减少不平等"
+    },
+    {
+      "phrase": "promote sustainable development",
+      "translation": "促进可持续发展"
+    },
+    {
+      "phrase": "provide substantial benefits",
+      "translation": "提供显著益处"
+    },
+    {
+      "phrase": "exert pressure on",
+      "translation": "对……施加压力"
+    },
+    {
+      "phrase": "allocate resources",
+      "translation": "分配资源"
+    },
+    {
+      "phrase": "generate positive outcomes",
+      "translation": "产生积极结果"
+    },
+    {
+      "phrase": "mitigate negative effects",
+      "translation": "减轻负面影响"
+    },
+    {
+      "phrase": "maintain social stability",
+      "translation": "维持社会稳定"
+    }
+  ],
+  "ai_tips": [
+    "写作完成后，检查是否出现缩写形式，如“don't”“can't”“it's”。在正式学术写作中通常应写成“do not”“cannot”“it is”。",
+    "把高频口语词替换为更精确的学术词：用“increase”替代“go up”，用“children”替代“kids”，用“substantial”替代“big”，用“address”替代“deal with”。",
+    "避免使用直接对话式表达，如“you can see”“as we all know”“let me tell you”。这些表达会降低PTE和IELTS写作的正式度。",
+    "不要为了显得高级而使用不自然的生僻词。正式语言的重点是准确、自然和符合语境，而不是堆砌复杂词汇。",
+    "在PTE Summarize Written Text中，答案应像一条正式新闻摘要或学术概括，避免使用主观评价和日常评论式语言。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为正式学术表达：A lot of people think the internet is good for education.",
+      "answer": "Many people argue that the internet provides significant benefits for education."
+    },
+    {
+      "question": "将句子改写为正式学术表达：The government should do something about traffic.",
+      "answer": "The government should implement effective measures to address traffic congestion."
+    },
+    {
+      "question": "将句子改写为正式学术表达：Kids spend too much time watching TV.",
+      "answer": "Children spend excessive time watching television."
+    },
+    {
+      "question": "将句子改写为正式学术表达：I think online learning is better than traditional learning.",
+      "answer": "Online learning may be more effective than traditional classroom-based learning in certain contexts."
+    },
+    {
+      "question": "将句子改写为正式学术表达：The number of cars went up a lot last year.",
+      "answer": "The number of cars increased substantially last year."
+    },
+    {
+      "question": "将句子改写为正式学术表达：This problem is really bad for young people.",
+      "answer": "This issue may have serious negative effects on young people."
+    },
+    {
+      "question": "将句子改写为正式学术表达：People get a lot of information from social media.",
+      "answer": "People obtain a substantial amount of information from social media."
+    },
+    {
+      "question": "将句子改写为正式学术表达：The company wants to make things better for workers.",
+      "answer": "The company aims to improve working conditions for employees."
+    },
+    {
+      "question": "判断下列句子是否适合PTE Write Essay，并给出修改：You can see that pollution is a big problem.",
+      "answer": "不适合。正式改写：It is evident that pollution constitutes a significant environmental problem."
+    },
+    {
+      "question": "判断下列句子是否正式，并给出修改：Social media is kind of harmful to teenagers.",
+      "answer": "不正式。正式改写：Social media may be harmful to adolescents when used excessively."
+    }
+  ]
+}

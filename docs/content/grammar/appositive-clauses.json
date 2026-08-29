@@ -1,0 +1,272 @@
+{
+  "slug": "appositive-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "同位语从句",
+    "en": "Appositive Clauses"
+  },
+  "difficulty": "Upper-intermediate to Advanced",
+  "summary": {
+    "zh": "同位语从句是用来解释、说明或具体展开某个抽象名词内容的名词性从句，常跟在 fact, idea, belief, claim, evidence, possibility, assumption, conclusion, question, problem, news, decision 等名词之后。它的核心作用不是修饰名词的性质，而是说明“这个名词具体指什么内容”。在 PTE Academic 和 IELTS 写作、阅读、听力中，同位语从句常用于表达研究结论、观点、证据、争议和可能性，是提高学术表达准确性的重要语法结构。最常见的引导词是 that，此外还包括 whether, why, how, when, where 等。需要特别注意：同位语从句中的 that 一般不作成分，只起连接作用，且在正式学术写作中通常不省略。"
+  },
+  "structure": {
+    "formula": "抽象名词 + appositive clause：Noun + that / whether / why / how / when / where + 完整句子",
+    "explanation": "同位语从句通常位于一个抽象名词之后，对该名词的内容进行具体解释。例如在 the fact that climate change is accelerating 中，that climate change is accelerating 不是修饰 fact 的特征，而是直接说明“事实”的具体内容。与定语从句不同，同位语从句中的 that 不在从句中充当主语、宾语或状语；而定语从句中的 that / which / who 通常在从句中充当句子成分。学术英语中，同位语从句常与表示观点、证据、结论、问题、可能性、决定和假设的名词搭配，用于构建更加严谨的论证句。",
+    "examples": [
+      {
+        "en": "The fact that many students struggle with time management is widely recognised.",
+        "zh": "许多学生在时间管理方面存在困难这一事实已被广泛认可。"
+      },
+      {
+        "en": "There is growing evidence that regular exercise improves cognitive performance.",
+        "zh": "越来越多的证据表明，规律运动能提高认知表现。"
+      },
+      {
+        "en": "The question whether online education can replace traditional classrooms remains controversial.",
+        "zh": "在线教育是否能取代传统课堂这一问题仍然具有争议。"
+      },
+      {
+        "en": "Researchers have reached the conclusion that early intervention is essential.",
+        "zh": "研究人员得出了早期干预至关重要这一结论。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "解释抽象名词的具体内容",
+      "description": "当一个名词本身含义较抽象，需要后面用完整句子说明其具体内容时，可以使用同位语从句。这类结构在学术写作中非常常见，尤其适合说明 fact, idea, claim, belief, assumption, conclusion 等名词。",
+      "examples": [
+        {
+          "en": "The idea that technology can solve every social problem is overly simplistic.",
+          "zh": "技术能够解决所有社会问题这一想法过于简单化。"
+        },
+        {
+          "en": "The assumption that economic growth always leads to social equality is questionable.",
+          "zh": "经济增长总是会带来社会平等这一假设是值得质疑的。"
+        }
+      ]
+    },
+    {
+      "title": "表达研究发现、证据和结论",
+      "description": "在 PTE Summarize Written Text、Essay Writing 和 IELTS Task 2 中，同位语从句可以帮助考生更自然地呈现研究结果、数据推论或学术观点，使句子更加正式、清晰。",
+      "examples": [
+        {
+          "en": "Recent studies support the claim that bilingual education enhances mental flexibility.",
+          "zh": "近期研究支持双语教育能够增强思维灵活性这一观点。"
+        },
+        {
+          "en": "The evidence that air pollution affects children's health is difficult to ignore.",
+          "zh": "空气污染影响儿童健康这一证据是难以忽视的。"
+        }
+      ]
+    },
+    {
+      "title": "提出争议性问题或不确定性",
+      "description": "当表达“是否”“为什么”“如何”等问题时，同位语从句可以跟在 question, issue, problem, uncertainty, doubt 等名词之后。这类表达常用于讨论型作文和阅读文本中的观点转折。",
+      "examples": [
+        {
+          "en": "The issue whether governments should subsidise public transport deserves careful consideration.",
+          "zh": "政府是否应该补贴公共交通这一问题值得仔细考虑。"
+        },
+        {
+          "en": "The question why some students perform better under pressure remains unresolved.",
+          "zh": "为什么一些学生在压力下表现更好这一问题仍未得到解决。"
+        }
+      ]
+    },
+    {
+      "title": "用于正式写作中的观点展开",
+      "description": "同位语从句可以把简单观点扩展成更有逻辑的学术句式，适合用于 IELTS Writing Task 2 的主体段和 PTE Essay 的论证部分。",
+      "examples": [
+        {
+          "en": "The belief that higher salaries automatically improve job satisfaction fails to consider workplace culture.",
+          "zh": "高薪会自动提高工作满意度这一看法没有考虑到职场文化。"
+        },
+        {
+          "en": "The argument that stricter laws can reduce traffic accidents is supported by statistical data.",
+          "zh": "更严格的法律能够减少交通事故这一论点得到了统计数据的支持。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The fact which many people work from home has changed cities.",
+      "correct": "The fact that many people work from home has changed cities.",
+      "explanation": "这里从句是在说明 fact 的具体内容，而不是修饰 fact 的性质，因此应使用同位语从句连接词 that，不能用 which。which 通常用于定语从句，并且在从句中充当成分。"
+    },
+    {
+      "wrong": "There is no doubt the education is important.",
+      "correct": "There is no doubt that education is important.",
+      "explanation": "在正式学术写作中，no doubt 后的同位语从句通常保留 that。虽然口语中有时可省略 that，但在 IELTS 和 PTE 写作中保留 that 更清晰、更正式。"
+    },
+    {
+      "wrong": "The idea that should students study abroad is popular.",
+      "correct": "The idea that students should study abroad is popular.",
+      "explanation": "同位语从句使用陈述语序，即主语 + 谓语。不能因为从句中含有 should 就使用疑问倒装语序。中文学习者常受中文“是否应该”的语序影响而误用倒装。"
+    },
+    {
+      "wrong": "The question that whether online learning is effective remains open.",
+      "correct": "The question whether online learning is effective remains open.",
+      "explanation": "whether 已经可以引导同位语从句，前面不需要再加 that。that whether 连用在这里是错误结构。"
+    },
+    {
+      "wrong": "The evidence that supports the theory is convincing. 误认为这是同位语从句。",
+      "correct": "The evidence that the theory is valid is convincing.",
+      "explanation": "The evidence that supports the theory 中的 that 在从句中作主语，属于定语从句，意思是“支持该理论的证据”。The evidence that the theory is valid 才是同位语从句，意思是“该理论有效这一证据”。"
+    },
+    {
+      "wrong": "I agree the claim that university should free.",
+      "correct": "I agree with the claim that university education should be free.",
+      "explanation": "agree with the claim 是固定搭配；同位语从句内部也必须是完整、语法正确的句子。university education should be free 表达完整，而 university should free 缺少正确的形容词或被动结构。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "同位语从句在 PTE Academic 中出现频率较高，尤其常见于 Reading & Writing: Fill in the Blanks、Re-order Paragraphs、Summarize Written Text、Write Essay、Listening: Summarize Spoken Text 和 Highlight Incorrect Words。PTE 学术文本经常使用 the fact that, the idea that, evidence that, the possibility that, the assumption that 等结构来表达观点和研究发现。考生需要识别同位语从句的边界，判断 that 是否只是连接词，并在写作中用它来压缩信息、提升句子复杂度和学术性。",
+    "sections": [
+      "Reading & Writing: Fill in the Blanks",
+      "Re-order Paragraphs",
+      "Summarize Written Text",
+      "Write Essay",
+      "Listening: Summarize Spoken Text",
+      "Highlight Incorrect Words"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "There is evidence that + clause.",
+      "translation": "有证据表明……"
+    },
+    {
+      "pattern": "The fact that + clause + suggests that + clause.",
+      "translation": "……这一事实表明……"
+    },
+    {
+      "pattern": "The assumption that + clause + is problematic.",
+      "translation": "……这一假设是有问题的。"
+    },
+    {
+      "pattern": "The claim that + clause + is supported by evidence.",
+      "translation": "……这一说法得到了证据支持。"
+    },
+    {
+      "pattern": "The possibility that + clause + cannot be dismissed.",
+      "translation": "……这一可能性不能被排除。"
+    },
+    {
+      "pattern": "The conclusion that + clause + is based on recent findings.",
+      "translation": "……这一结论基于近期发现。"
+    },
+    {
+      "pattern": "The belief that + clause + has been challenged.",
+      "translation": "……这一看法受到了质疑。"
+    },
+    {
+      "pattern": "The question whether + clause + remains controversial.",
+      "translation": "是否……这一问题仍然存在争议。"
+    },
+    {
+      "pattern": "The issue of whether + clause + requires further discussion.",
+      "translation": "是否……这一问题需要进一步讨论。"
+    },
+    {
+      "pattern": "The argument that + clause + overlooks + noun phrase.",
+      "translation": "……这一论点忽视了……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "the fact that",
+      "translation": "……这一事实"
+    },
+    {
+      "phrase": "the idea that",
+      "translation": "……这一想法"
+    },
+    {
+      "phrase": "the belief that",
+      "translation": "……这一信念；……这一看法"
+    },
+    {
+      "phrase": "the claim that",
+      "translation": "……这一说法；……这一主张"
+    },
+    {
+      "phrase": "the evidence that",
+      "translation": "……这一证据"
+    },
+    {
+      "phrase": "the possibility that",
+      "translation": "……这一可能性"
+    },
+    {
+      "phrase": "the assumption that",
+      "translation": "……这一假设"
+    },
+    {
+      "phrase": "the conclusion that",
+      "translation": "……这一结论"
+    },
+    {
+      "phrase": "the argument that",
+      "translation": "……这一论点"
+    },
+    {
+      "phrase": "the question whether",
+      "translation": "是否……这一问题"
+    },
+    {
+      "phrase": "the issue whether",
+      "translation": "是否……这一议题"
+    },
+    {
+      "phrase": "the decision that",
+      "translation": "……这一决定"
+    }
+  ],
+  "ai_tips": [
+    "判断同位语从句时，先看前面的名词是否是抽象名词，再看后面的从句是否在解释这个名词的具体内容。",
+    "在 PTE 和 IELTS 写作中，优先使用 the fact that, evidence that, the claim that, the possibility that 这类高频学术结构。",
+    "不要把所有 noun + that 都判断为同位语从句；如果 that 在从句中作主语或宾语，它更可能是定语从句。",
+    "同位语从句内部必须使用陈述语序，不能使用疑问句语序。",
+    "正式写作中尽量不要省略引导同位语从句的 that，因为保留 that 可以增强句子结构的清晰度。"
+  ],
+  "practice_questions": [
+    {
+      "question": "判断下列句子中的 that 从句是否为同位语从句：The news that the government will increase education funding surprised many parents.",
+      "answer": "是同位语从句。that the government will increase education funding 解释 news 的具体内容，即“政府将增加教育经费”这一消息。"
+    },
+    {
+      "question": "改错：The belief which hard work always leads to success is common.",
+      "answer": "正确句子：The belief that hard work always leads to success is common. 这里从句解释 belief 的内容，应使用 that 引导同位语从句。"
+    },
+    {
+      "question": "用同位语从句翻译：越来越多的证据表明，睡眠不足会影响学习效率。",
+      "answer": "There is growing evidence that lack of sleep affects learning efficiency."
+    },
+    {
+      "question": "选择正确答案：The question ___ artificial intelligence will replace human workers remains debated. A. that B. whether C. which",
+      "answer": "B. whether。句意为“人工智能是否会取代人类工人这一问题仍有争议”。whether 用于引导表示“是否”的同位语从句。"
+    },
+    {
+      "question": "将简单句合并为含有同位语从句的学术句：Many people believe this. Public transport should be free.",
+      "answer": "Many people hold the belief that public transport should be free."
+    },
+    {
+      "question": "判断句子类型：The theory that explains this phenomenon is widely accepted.",
+      "answer": "这不是同位语从句，而是定语从句。that 在从句中作主语，修饰 the theory，意思是“解释这一现象的理论”。"
+    },
+    {
+      "question": "把句子补充完整：The possibility that remote work may reduce office costs __________.",
+      "answer": "示例答案：The possibility that remote work may reduce office costs has attracted considerable attention from employers."
+    },
+    {
+      "question": "用更学术的方式改写：It is true that social media influences young people.",
+      "answer": "The fact that social media influences young people is widely acknowledged."
+    }
+  ]
+}

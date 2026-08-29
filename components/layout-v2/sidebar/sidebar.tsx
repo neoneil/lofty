@@ -18,6 +18,7 @@ import {
   PenTool,
   Trophy,
   Video,
+  Volume2,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -329,6 +330,15 @@ export function Sidebar({ userId, examType, canAccessAdmin }: { userId: string |
             subtitle="Mock Test"
             icon={<BookOpen size={18} />}
             iconTone="warning"
+            collapsed={collapsed}
+          />
+
+          <SidebarItem
+            href="/pronunciation"
+            label="发音"
+            subtitle="Pronunciation"
+            icon={<Volume2 size={18} />}
+            iconTone="primary"
             collapsed={collapsed}
           />
 

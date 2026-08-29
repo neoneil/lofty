@@ -566,3 +566,39 @@ mark {
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
 }
+
+.ielts-reading-scalable {
+  font-size: var(--ielts-reading-font-size, 15px);
+}
+
+.ielts-reading-scalable :where(p, li, span, label, input, select, textarea, button, td, th) {
+  font-size: var(--ielts-reading-font-size, 15px) !important;
+}
+
+.ielts-reading-scalable :where(.reading-rich-text) {
+  font-size: var(--ielts-reading-font-size, 15px) !important;
+}
+
+.ielts-reading-scalable :where(.reading-rich-text p, .reading-rich-text li, .reading-rich-text td, .reading-rich-text th) {
+  line-height: calc(var(--ielts-reading-font-size, 15px) * 1.85) !important;
+}
+
+.ielts-reading-scalable-bold :where(p, li, span, label, input, select, textarea, button, td, th, .reading-rich-text) {
+  font-weight: 650 !important;
+}
+
+.ielts-reading-passage-label {
+  display: inline-flex;
+  width: 1.75em;
+  height: 1.75em;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.55em;
+  border: 1px solid color-mix(in srgb, var(--primary) 36%, var(--border));
+  border-radius: 999px;
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+  line-height: 1;
+  vertical-align: 0.08em;
+}

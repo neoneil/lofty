@@ -1,0 +1,335 @@
+{
+  "slug": "essay-structures",
+  "category": {
+    "zh": "PTE 高频语法",
+    "en": "PTE Grammar Patterns"
+  },
+  "title": {
+    "zh": "Essay 高频句型",
+    "en": "Essay Structures"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "本课聚焦 PTE Academic 与 IELTS 写作中最常用的 Essay Structures，帮助中国考生掌握开头段、主体段、让步段和结尾段的高分句型。重点包括 thesis statement、topic sentence、supporting evidence、counterargument、conclusion 等学术写作结构。通过这些句型，考生可以更清楚地表达观点、组织逻辑、提升语法多样性，并减少中式英语、句子松散和逻辑连接不足等常见问题。"
+  },
+  "structure": {
+    "formula": "Introduction: Background statement + paraphrased topic + thesis statement. Body paragraph: Topic sentence + explanation + example/evidence + mini-conclusion. Concession paragraph: Although/While + opposing view, main argument remains stronger. Conclusion: Restated thesis + summary of key reasons + final implication.",
+    "explanation": "Essay Structures 指的是议论文写作中的段落组织和句型框架。在 PTE Write Essay 和 IELTS Writing Task 2 中，考生不仅要有观点，还要用清晰的 academic structure 展示观点之间的逻辑关系。高分作文通常包括明确的 introduction、连贯的 body paragraphs、必要时加入 concession 或 counterargument，并以 concise conclusion 收尾。语法上应优先使用 complex sentences、noun phrases、passive voice、relative clauses 和 formal linking expressions，避免过度依赖简单句或口语化表达。",
+    "examples": [
+      {
+        "en": "In recent decades, the issue of environmental protection has attracted considerable public attention.",
+        "zh": "近几十年来，环境保护问题引起了公众的广泛关注。"
+      },
+      {
+        "en": "This essay will argue that stricter government regulations are essential for reducing industrial pollution.",
+        "zh": "本文将论证，更严格的政府监管对于减少工业污染是必要的。"
+      },
+      {
+        "en": "One of the primary reasons for this view is that education can significantly improve an individual's employment prospects.",
+        "zh": "支持这一观点的主要原因之一是，教育能够显著改善个人的就业前景。"
+      },
+      {
+        "en": "Although some people believe that technology may reduce face-to-face communication, its benefits in improving access to information cannot be ignored.",
+        "zh": "尽管一些人认为科技可能减少面对面交流，但它在改善信息获取方面的优势不容忽视。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "开头段表达背景与立场",
+      "description": "在 PTE 和 IELTS 作文开头，考生需要先引出话题，再明确自己的立场。背景句应客观、概括，thesis statement 应直接说明文章主张，避免模糊表达。",
+      "examples": [
+        {
+          "en": "With the rapid development of digital technology, online learning has become an increasingly common part of modern education.",
+          "zh": "随着数字技术的快速发展，在线学习已成为现代教育中越来越常见的一部分。"
+        },
+        {
+          "en": "I firmly believe that online education can complement, but not completely replace, traditional classroom learning.",
+          "zh": "我坚定认为，在线教育可以补充传统课堂教学，但不能完全取代它。"
+        }
+      ]
+    },
+    {
+      "title": "主体段提出核心论点",
+      "description": "主体段的第一句通常是 topic sentence，用来概括本段中心思想。PTE 写作评分重视 coherence，因此每段应只围绕一个主要观点展开。",
+      "examples": [
+        {
+          "en": "The most convincing argument in favour of public transport is that it can reduce traffic congestion in major cities.",
+          "zh": "支持公共交通最有说服力的论点是，它能够减少大城市的交通拥堵。"
+        },
+        {
+          "en": "A further benefit of investing in renewable energy is its potential to create long-term economic opportunities.",
+          "zh": "投资可再生能源的另一个好处是，它有可能创造长期经济机会。"
+        }
+      ]
+    },
+    {
+      "title": "解释原因与扩展论证",
+      "description": "提出观点后，需要用 explanation 解释为什么这个观点成立。中国考生常常只列观点而缺少展开，因此应使用 causal structures 和 result clauses 增强逻辑。",
+      "examples": [
+        {
+          "en": "This is because affordable housing allows low-income families to live closer to employment centres, thereby reducing both commuting time and financial pressure.",
+          "zh": "这是因为可负担住房使低收入家庭能够住得离就业中心更近，从而减少通勤时间和经济压力。"
+        },
+        {
+          "en": "As a result, students who receive practical training are more likely to adapt quickly to the demands of the workplace.",
+          "zh": "因此，接受实践培训的学生更有可能快速适应职场需求。"
+        }
+      ]
+    },
+    {
+      "title": "举例说明与提供证据",
+      "description": "在 PTE Essay 中，例子不需要像学术论文一样提供真实引用，但必须合理、具体，并服务于论点。可以使用 for example、for instance、a clear example of this is 等表达。",
+      "examples": [
+        {
+          "en": "For instance, many cities that have expanded their metro systems have reported a noticeable decline in private car usage.",
+          "zh": "例如，许多扩建地铁系统的城市都报告称私家车使用量明显下降。"
+        },
+        {
+          "en": "A clear example of this can be seen in vocational education, where students acquire industry-specific skills before entering the labour market.",
+          "zh": "这一点在职业教育中可以清楚看到，学生在进入劳动力市场之前获得了特定行业技能。"
+        }
+      ]
+    },
+    {
+      "title": "让步与反驳不同观点",
+      "description": "高分作文并不只是单方面表达观点，还可以承认 opposing view 的合理性，再说明自己的观点更有说服力。常用结构包括 although、while、admittedly、nevertheless。",
+      "examples": [
+        {
+          "en": "Admittedly, private cars offer greater convenience, especially for people living in remote areas.",
+          "zh": "诚然，私家车提供了更大的便利，尤其是对居住在偏远地区的人而言。"
+        },
+        {
+          "en": "Nevertheless, the environmental costs associated with excessive car use make public transport a more sustainable option.",
+          "zh": "然而，过度使用汽车所带来的环境成本使公共交通成为更可持续的选择。"
+        }
+      ]
+    },
+    {
+      "title": "结尾段总结观点",
+      "description": "结尾段应重申 thesis，而不是简单重复开头句。应总结核心理由，并给出简洁的 final implication。避免在 conclusion 中引入全新论点。",
+      "examples": [
+        {
+          "en": "In conclusion, while technological development may create certain social challenges, its overall contribution to education and communication is substantial.",
+          "zh": "总之，尽管技术发展可能带来某些社会挑战，但它对教育和交流的整体贡献是巨大的。"
+        },
+        {
+          "en": "Therefore, governments and individuals should work together to ensure that technological progress benefits society as a whole.",
+          "zh": "因此，政府和个人应共同努力，确保技术进步惠及整个社会。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Nowadays, more and more people discuss this topic. I will talk about my opinion.",
+      "correct": "In recent years, this issue has become a subject of considerable public debate, and this essay will argue that government intervention is necessary.",
+      "explanation": "错误句过于口语化，且“I will talk about”不符合 formal academic writing。PTE 和 IELTS 作文中应使用更正式的表达，如“this essay will argue that”或“it is necessary to consider”。"
+    },
+    {
+      "wrong": "Because technology is developing fast. People can study online.",
+      "correct": "Because technology is developing rapidly, people are now able to study online more conveniently than before.",
+      "explanation": "错误句中 because 引导的从句被错误地单独成句，属于 sentence fragment。because-clause 通常需要和主句结合，形成完整的 complex sentence。"
+    },
+    {
+      "wrong": "There are many reasons support my opinion.",
+      "correct": "There are many reasons that support my opinion.",
+      "explanation": "错误句缺少 relative pronoun。英语中“reasons support”不能直接连接，需使用 relative clause，如“reasons that support”或改为“The reasons for my opinion are as follows”。"
+    },
+    {
+      "wrong": "On the one hand, online learning is convenient. On the other hand, it saves time.",
+      "correct": "One major advantage of online learning is its convenience; another is that it can save students a significant amount of time.",
+      "explanation": "“On the one hand / on the other hand”通常用于对比相反观点，而不是列举两个同方向优点。中国考生常误用该结构，导致逻辑关系不准确。"
+    },
+    {
+      "wrong": "Every coin has two sides, and this topic is very important.",
+      "correct": "Although this issue has both advantages and disadvantages, its long-term social impact deserves careful consideration.",
+      "explanation": "“Every coin has two sides”属于模板化、口语化表达，在 PTE 和 IELTS 写作中显得低级且缺乏具体内容。应使用更学术的 concession structure。"
+    },
+    {
+      "wrong": "People should protect environment because it is good for our life.",
+      "correct": "People should protect the environment because it is essential for public health, biodiversity and long-term economic stability.",
+      "explanation": "错误句缺少冠词“the”，且“good for our life”表达笼统。学术写作需要使用更具体的 noun phrases 来提高内容质量。"
+    },
+    {
+      "wrong": "In conclusion, I think this problem has many reasons, and I have explained them.",
+      "correct": "In conclusion, the problem is largely caused by weak regulation and limited public awareness, both of which require coordinated action from governments and communities.",
+      "explanation": "错误句只描述写作过程，没有总结实质内容。结尾段应重申核心观点并概括主要论据，而不是说“我已经解释过了”。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "Essay Structures 在 PTE Write Essay 中非常重要，直接影响 Content、Form、Development, Structure and Coherence、Grammar 和 General Linguistic Range 等评分维度。考生需要在有限时间内快速组织四段式或五段式文章：开头段表明立场，两个主体段展开论点，必要时加入让步或反驳，最后总结观点。清晰的结构可以帮助机器评分系统识别文章逻辑，也有助于减少语法错误和跑题风险。",
+    "sections": [
+      "Writing: Write Essay",
+      "Writing: Summarize Written Text",
+      "Speaking: Retell Lecture",
+      "Speaking: Describe Image",
+      "Reading and Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It is widely argued that + clause.",
+      "translation": "人们普遍认为……"
+    },
+    {
+      "pattern": "This essay will argue that + clause.",
+      "translation": "本文将论证……"
+    },
+    {
+      "pattern": "One of the main reasons for this is that + clause.",
+      "translation": "其主要原因之一是……"
+    },
+    {
+      "pattern": "This can be attributed to + noun phrase.",
+      "translation": "这可以归因于……"
+    },
+    {
+      "pattern": "A further factor that should be considered is + noun phrase.",
+      "translation": "另一个应被考虑的因素是……"
+    },
+    {
+      "pattern": "There is strong evidence to suggest that + clause.",
+      "translation": "有充分证据表明……"
+    },
+    {
+      "pattern": "Although this view may seem reasonable, it overlooks + noun phrase.",
+      "translation": "尽管这一观点看似合理，但它忽视了……"
+    },
+    {
+      "pattern": "While + clause, it is important to recognise that + clause.",
+      "translation": "虽然……，但重要的是要认识到……"
+    },
+    {
+      "pattern": "The consequences of this trend are likely to be significant.",
+      "translation": "这一趋势的后果可能非常重大。"
+    },
+    {
+      "pattern": "In conclusion, it is clear that + clause.",
+      "translation": "总之，很明显……"
+    },
+    {
+      "pattern": "From a long-term perspective, + clause.",
+      "translation": "从长期角度来看，……"
+    },
+    {
+      "pattern": "This issue should be addressed through + noun phrase.",
+      "translation": "这一问题应通过……来解决。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "a controversial issue",
+      "translation": "一个有争议的问题"
+    },
+    {
+      "phrase": "a growing concern",
+      "translation": "一个日益受到关注的问题"
+    },
+    {
+      "phrase": "public awareness",
+      "translation": "公众意识"
+    },
+    {
+      "phrase": "government intervention",
+      "translation": "政府干预"
+    },
+    {
+      "phrase": "social responsibility",
+      "translation": "社会责任"
+    },
+    {
+      "phrase": "economic development",
+      "translation": "经济发展"
+    },
+    {
+      "phrase": "environmental sustainability",
+      "translation": "环境可持续性"
+    },
+    {
+      "phrase": "long-term consequences",
+      "translation": "长期后果"
+    },
+    {
+      "phrase": "a practical solution",
+      "translation": "一个切实可行的解决方案"
+    },
+    {
+      "phrase": "a significant impact on society",
+      "translation": "对社会产生重大影响"
+    },
+    {
+      "phrase": "access to education",
+      "translation": "接受教育的机会"
+    },
+    {
+      "phrase": "employment opportunities",
+      "translation": "就业机会"
+    },
+    {
+      "phrase": "technological advancement",
+      "translation": "技术进步"
+    },
+    {
+      "phrase": "quality of life",
+      "translation": "生活质量"
+    },
+    {
+      "phrase": "a balanced approach",
+      "translation": "一种平衡的方法"
+    }
+  ],
+  "ai_tips": [
+    "写 PTE Essay 时，先用 30 到 60 秒确定 thesis statement，再写正文。立场明确比观点复杂更重要。",
+    "每个主体段只讨论一个核心 idea，避免在同一段中同时讨论教育、经济、环境等多个方向。",
+    "优先使用 topic sentence 开头，让评分系统和考官快速识别段落中心。",
+    "不要机械套用模板句，应根据题目关键词替换 noun phrases 和 verbs，使句子与题目高度相关。",
+    "如果时间紧张，使用四段式结构更稳妥：introduction、body paragraph 1、body paragraph 2、conclusion。",
+    "结尾段不要加入新例子或新理由，只需概括前文并重申立场。",
+    "避免连续使用短句。可以通过 because、although、which、therefore 等连接词构造 complex sentences。",
+    "在 PTE 中，语法准确性优先于炫技。不要为了使用复杂句而写出不完整或逻辑混乱的句子。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写为更正式的 Essay 开头句：Many people talk about online learning these days.",
+      "answer": "In recent years, online learning has become a widely discussed issue in modern education."
+    },
+    {
+      "question": "用“This essay will argue that”写一个关于政府应保护环境的 thesis statement。",
+      "answer": "This essay will argue that governments should play a leading role in protecting the environment through stricter regulations and public education."
+    },
+    {
+      "question": "修改错误句：Because public transport is cheap. Many people use it.",
+      "answer": "Because public transport is affordable, many people choose to use it for daily commuting."
+    },
+    {
+      "question": "用“One of the main reasons for this is that”造一个关于大学教育重要性的句子。",
+      "answer": "One of the main reasons for this is that university education can provide students with specialised knowledge and professional skills."
+    },
+    {
+      "question": "将口语化表达改为学术表达：I think cars are bad for the environment.",
+      "answer": "It can be argued that excessive car use has a negative impact on the environment."
+    },
+    {
+      "question": "用 although 写一个让步句，主题是 technology and communication。",
+      "answer": "Although technology may reduce the frequency of face-to-face interaction, it has greatly improved communication across long distances."
+    },
+    {
+      "question": "为以下 topic sentence 添加解释：Public libraries remain important in modern society.",
+      "answer": "Public libraries remain important in modern society because they provide free access to information, learning resources and community services."
+    },
+    {
+      "question": "写一个 conclusion 句，总结 renewable energy 的好处。",
+      "answer": "In conclusion, renewable energy should be promoted because it reduces environmental damage and supports long-term economic sustainability."
+    },
+    {
+      "question": "判断并修改逻辑错误：On the one hand, exercise improves health. On the other hand, it reduces stress.",
+      "answer": "One benefit of exercise is that it improves physical health; another is that it helps reduce stress."
+    },
+    {
+      "question": "用“This can be attributed to”解释城市交通拥堵的原因。",
+      "answer": "This can be attributed to rapid urbanisation, population growth and the excessive use of private vehicles."
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "slug": "present-perfect",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "现在完成时",
+    "en": "Present Perfect Tense"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "现在完成时表示过去发生的动作或状态与现在有联系，重点通常不在具体过去时间，而在结果、经验、持续影响或到目前为止的变化。它的核心结构是 have/has + past participle。对于准备 PTE Academic 和 IELTS 的中国学习者来说，现在完成时常用于描述研究发现、个人经历、社会变化、数据趋势、学习或工作成果，以及从过去持续到现在的状态。需要特别注意：现在完成时不能与明确的过去时间点直接连用，如 yesterday、last year、in 2019；如果句子强调明确过去时间，应使用一般过去时。"
+  },
+  "structure": {
+    "formula": "Subject + have/has + past participle",
+    "explanation": "现在完成时由助动词 have 或 has 加动词过去分词构成。主语为 I、you、we、they 或复数名词时用 have；主语为 he、she、it 或单数名词时用 has。规则动词的过去分词通常为 -ed 形式，如 developed、improved；不规则动词需要单独记忆，如 gone、seen、written、taken。否定形式是在 have/has 后加 not；疑问形式将 have/has 提到主语前。现在完成时的关键不是动作发生在过去，而是该动作对现在仍有意义。学术写作和口语中，它常用于说明已有研究、目前趋势、个人积累的经验或尚未完成的情况。",
+    "examples": [
+      {
+        "en": "Researchers have found a strong link between sleep quality and academic performance.",
+        "zh": "研究人员已经发现睡眠质量与学业表现之间存在密切联系。"
+      },
+      {
+        "en": "The number of international students has increased significantly over the past decade.",
+        "zh": "在过去十年里，国际学生的数量显著增加了。"
+      },
+      {
+        "en": "I have completed several practice tests for the PTE exam.",
+        "zh": "我已经完成了几套 PTE 模拟测试。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示过去动作对现在造成的结果",
+      "description": "当说话者强调一个过去动作已经产生了当前可见或相关的结果时，使用现在完成时。此时常见标志词包括 already、just、yet、recently。重点不是动作发生的具体时间，而是现在的状态或结果。",
+      "examples": [
+        {
+          "en": "The university has introduced a new online learning platform.",
+          "zh": "这所大学已经推出了一个新的在线学习平台。"
+        },
+        {
+          "en": "She has just submitted her IELTS writing task.",
+          "zh": "她刚刚提交了 IELTS 写作任务。"
+        }
+      ]
+    },
+    {
+      "title": "表示人生经历或到目前为止的经验",
+      "description": "现在完成时可用来表达某人是否有过某种经历，通常不说明具体发生时间。常与 ever、never、before、once、twice、several times 连用。在 PTE Speaking 的 Personal Introduction 或 IELTS Speaking Part 1、Part 2 中，这种用法非常常见。",
+      "examples": [
+        {
+          "en": "I have visited several English-speaking countries.",
+          "zh": "我去过几个英语国家。"
+        },
+        {
+          "en": "Have you ever taken a computer-based English test?",
+          "zh": "你参加过机考英语测试吗？"
+        }
+      ]
+    },
+    {
+      "title": "表示从过去持续到现在的动作或状态",
+      "description": "当一个动作或状态从过去开始，并一直延续到现在，通常使用现在完成时，并常与 for 或 since 连用。for 后接一段时间，如 for three years；since 后接过去的起点，如 since 2020。此用法在描述学习经历、工作经历、居住时间和长期趋势时非常重要。",
+      "examples": [
+        {
+          "en": "She has studied English for more than five years.",
+          "zh": "她已经学习英语五年多了。"
+        },
+        {
+          "en": "They have lived in Melbourne since 2021.",
+          "zh": "他们自 2021 年以来一直住在墨尔本。"
+        }
+      ]
+    },
+    {
+      "title": "表示到目前为止发生的变化或趋势",
+      "description": "在学术写作中，现在完成时常用于描述从过去到现在的数据变化、社会趋势、科技发展或政策影响。常见时间表达包括 over the past few years、in recent decades、so far、to date、up to now。",
+      "examples": [
+        {
+          "en": "Technology has transformed the way people communicate in recent decades.",
+          "zh": "近几十年来，科技已经改变了人们交流的方式。"
+        },
+        {
+          "en": "So far, the government has implemented several measures to reduce traffic congestion.",
+          "zh": "到目前为止，政府已经实施了几项措施来减少交通拥堵。"
+        }
+      ]
+    },
+    {
+      "title": "用于学术研究背景与文献综述",
+      "description": "在 IELTS Writing Task 2 或 PTE Essay 中，现在完成时可用于介绍已有研究、现有观点或社会上已经出现的现象，使表达更具学术性。它常与 studies、researchers、scholars、evidence、debate 等词搭配。",
+      "examples": [
+        {
+          "en": "Previous studies have shown that regular exercise can improve mental health.",
+          "zh": "以往研究已经表明，规律运动能够改善心理健康。"
+        },
+        {
+          "en": "Scholars have debated the impact of social media on young people's concentration.",
+          "zh": "学者们一直在讨论社交媒体对年轻人注意力的影响。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I have finished my homework yesterday.",
+      "correct": "I finished my homework yesterday.",
+      "explanation": "现在完成时不能与明确的过去时间点 yesterday 直接连用。句子强调作业是在昨天完成的，应使用一般过去时。"
+    },
+    {
+      "wrong": "She has went to the library.",
+      "correct": "She has gone to the library.",
+      "explanation": "现在完成时必须使用过去分词。go 的过去式是 went，过去分词是 gone，因此应说 has gone。"
+    },
+    {
+      "wrong": "He have studied English for six years.",
+      "correct": "He has studied English for six years.",
+      "explanation": "主语 he 是第三人称单数，助动词应使用 has，而不是 have。"
+    },
+    {
+      "wrong": "I have known him since five years.",
+      "correct": "I have known him for five years.",
+      "explanation": "for 后接一段时间，since 后接时间起点。five years 是时间长度，因此应使用 for。"
+    },
+    {
+      "wrong": "I know him for five years.",
+      "correct": "I have known him for five years.",
+      "explanation": "如果某种状态从过去持续到现在，应使用现在完成时。know 是状态动词，表达“认识至今”时应说 have known。"
+    },
+    {
+      "wrong": "The population increased significantly over the past decade.",
+      "correct": "The population has increased significantly over the past decade.",
+      "explanation": "over the past decade 表示“在过去十年到现在为止”，强调从过去延续到现在的变化，学术表达中通常使用现在完成时。"
+    },
+    {
+      "wrong": "Have you ever been to London last year?",
+      "correct": "Did you go to London last year?",
+      "explanation": "ever 用于询问人生经历，不应与 last year 这类明确过去时间混用。如果询问去年是否去了伦敦，应使用一般过去时。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "现在完成时在 PTE Academic 中非常常见，尤其适用于描述已经完成的动作、研究结果、数据变化、学习经历和社会趋势。在 Speaking 的 Describe Image 中，考生可用现在完成时描述图表到目前为止的变化；在 Retell Lecture 中，可用它概括讲者提到的研究成果或发展过程；在 Writing Essay 中，它能帮助考生表达较成熟的学术观点，如“research has shown”“technology has changed”“the issue has become increasingly important”。正确使用现在完成时可以提升语法准确性和表达自然度，避免把所有过去相关内容都写成一般过去时。",
+    "sections": [
+      "Speaking: Describe Image",
+      "Speaking: Retell Lecture",
+      "Writing: Summarize Written Text",
+      "Writing: Essay",
+      "Reading: Fill in the Blanks",
+      "Listening: Summarize Spoken Text",
+      "Listening: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Research has shown that + clause.",
+      "translation": "研究已经表明……"
+    },
+    {
+      "pattern": "Studies have demonstrated that + clause.",
+      "translation": "研究已经证明……"
+    },
+    {
+      "pattern": "There has been a significant increase in + noun.",
+      "translation": "……已经出现显著增长。"
+    },
+    {
+      "pattern": "The issue has become increasingly important in recent years.",
+      "translation": "近年来，这一问题变得越来越重要。"
+    },
+    {
+      "pattern": "Technology has changed the way people + verb.",
+      "translation": "科技已经改变了人们……的方式。"
+    },
+    {
+      "pattern": "Several factors have contributed to + noun.",
+      "translation": "多个因素促成了……"
+    },
+    {
+      "pattern": "The evidence has suggested that + clause.",
+      "translation": "证据已经表明……"
+    },
+    {
+      "pattern": "This trend has raised concerns about + noun.",
+      "translation": "这一趋势已经引发了人们对……的担忧。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "have already completed",
+      "translation": "已经完成"
+    },
+    {
+      "phrase": "have recently observed",
+      "translation": "最近观察到"
+    },
+    {
+      "phrase": "has significantly increased",
+      "translation": "已经显著增加"
+    },
+    {
+      "phrase": "has gradually declined",
+      "translation": "已经逐渐下降"
+    },
+    {
+      "phrase": "have never experienced",
+      "translation": "从未经历过"
+    },
+    {
+      "phrase": "have been widely discussed",
+      "translation": "已经被广泛讨论"
+    },
+    {
+      "phrase": "has become a major concern",
+      "translation": "已经成为一个主要担忧"
+    },
+    {
+      "phrase": "have made considerable progress",
+      "translation": "已经取得相当大的进步"
+    },
+    {
+      "phrase": "has had a positive impact on",
+      "translation": "已经对……产生积极影响"
+    },
+    {
+      "phrase": "have played an important role in",
+      "translation": "已经在……中发挥重要作用"
+    }
+  ],
+  "ai_tips": [
+    "判断是否使用现在完成时，可以先问自己：这个过去动作是否与现在结果、经验或持续状态有关？如果答案是肯定的，通常可以考虑现在完成时。",
+    "看到 over the past few years、in recent years、so far、to date、up to now 时，优先检查是否需要使用 have/has + past participle。",
+    "在 PTE 和 IELTS 写作中，描述社会变化时不要只用一般过去时。句子如“People used smartphones more”不如“Smartphones have become increasingly common”更自然、更学术。",
+    "不要把中文“已经”机械翻译成 have done。若句子有明确过去时间，如“昨天已经完成”，英文通常仍用一般过去时。",
+    "准备考试时应重点记忆高频不规则过去分词，如 been、gone、done、seen、taken、written、spoken、known、grown、shown。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用现在完成时改写句子：Researchers found new evidence about climate change. 句子中不出现具体过去时间。",
+      "answer": "Researchers have found new evidence about climate change."
+    },
+    {
+      "question": "选择正确形式：She (has studied / studied) English since 2018.",
+      "answer": "has studied"
+    },
+    {
+      "question": "改正错误：The government has introduced the policy last year.",
+      "answer": "The government introduced the policy last year."
+    },
+    {
+      "question": "填空：The number of online learners ______ significantly over the past five years. 使用 increase 的正确形式。",
+      "answer": "has increased"
+    },
+    {
+      "question": "将中文翻译成英文：近年来，人工智能已经改变了许多行业。",
+      "answer": "Artificial intelligence has changed many industries in recent years."
+    },
+    {
+      "question": "选择正确介词：I have lived in this city (for / since) three years.",
+      "answer": "for"
+    },
+    {
+      "question": "选择正确介词：They have worked at this company (for / since) 2020.",
+      "answer": "since"
+    },
+    {
+      "question": "改正错误：He has wrote three essays this week.",
+      "answer": "He has written three essays this week."
+    },
+    {
+      "question": "用现在完成时完成句子：Previous studies ______ that sleep affects memory. 使用 show 的正确形式。",
+      "answer": "Previous studies have shown that sleep affects memory."
+    },
+    {
+      "question": "判断时态并改写：I went to Australia before. 表达“我以前去过澳大利亚”，不强调具体时间。",
+      "answer": "I have been to Australia before."
+    }
+  ]
+}

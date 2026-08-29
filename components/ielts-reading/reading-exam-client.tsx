@@ -36,6 +36,10 @@ type SelectionToolbarState = {
 
 type SelectionFormat = "bold" | "underline" | "yellow" | "red" | "blue";
 type TimeNotice = "five-minutes" | "time-up" | null;
+type ReadingPanelDisplay = {
+  fontSize: number;
+  bold: boolean;
+};
 type PassageTranslationItem = {
   id: string;
   en: string;
@@ -44,6 +48,9 @@ type PassageTranslationItem = {
 
 const READING_DURATION_SECONDS = 60 * 60;
 const FIVE_MINUTES_SECONDS = 5 * 60;
+const PANEL_FONT_SIZE_MIN = 13;
+const PANEL_FONT_SIZE_MAX = 20;
+const PANEL_FONT_SIZE_DEFAULT = 15;
 
 export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = false }: Props) {
   const examRef = useRef<HTMLDivElement | null>(null);
@@ -69,6 +76,8 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
   const [reviewOpen, setReviewOpen] = useState(false);
   const [submitDialogMode, setSubmitDialogMode] = useState<"confirm" | "result" | null>(null);
   const [submitNotice, setSubmitNotice] = useState("");
+  const [passageDisplay, setPassageDisplay] = useState<ReadingPanelDisplay>({ fontSize: PANEL_FONT_SIZE_DEFAULT, bold: false });
+  const [questionDisplay, setQuestionDisplay] = useState<ReadingPanelDisplay>({ fontSize: PANEL_FONT_SIZE_DEFAULT, bold: false });
 
   const readingModule = data.modules.find((module) => module.module_type === "reading");
   const sections = useMemo(() => readingModule ? data.sections.filter((section) => section.module_id === readingModule.id).sort((a, b) => a.sort_order - b.sort_order) : [], [data.sections, readingModule]);
@@ -278,6 +287,14 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
     setSubmitDialogMode(result.unanswered.length > 0 ? "confirm" : "result");
   }
 
+  function updatePassageDisplay(update: (current: ReadingPanelDisplay) => ReadingPanelDisplay) {
+    setPassageDisplay((current) => update(current));
+  }
+
+  function updateQuestionDisplay(update: (current: ReadingPanelDisplay) => ReadingPanelDisplay) {
+    setQuestionDisplay((current) => update(current));
+  }
+
   const splitStyle = { "--left-width": `${splitPercent}%`, "--right-width": `${100 - splitPercent}%` } as CSSProperties & Record<"--left-width" | "--right-width", string>;
 
   if (!data.book || !readingModule) {
@@ -347,7 +364,16 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
 
       <main ref={splitRef} style={splitStyle} className="relative flex min-h-[calc(100vh-150px)] flex-col overflow-hidden md:h-[calc(100vh-150px)] md:flex-row">
         <section ref={passagePanelRef} className="h-[50vh] overflow-y-auto bg-[linear-gradient(180deg,var(--bg-soft),var(--bg))] px-4 py-5 md:h-auto md:w-[var(--left-width)] md:px-7">
-          {activePart && <ReadingPassage key={activePart.section.id} section={activePart.section} partNumber={activePart.displayNumber} />}
+          <ReadingPanelControls
+            label="文章显示"
+            settings={passageDisplay}
+            onToggleBold={() => updatePassageDisplay((current) => ({ ...current, bold: !current.bold }))}
+            onDecrease={() => updatePassageDisplay((current) => ({ ...current, fontSize: Math.max(PANEL_FONT_SIZE_MIN, current.fontSize - 1) }))}
+            onIncrease={() => updatePassageDisplay((current) => ({ ...current, fontSize: Math.min(PANEL_FONT_SIZE_MAX, current.fontSize + 1) }))}
+          />
+          <div className={cn("ielts-reading-scalable", passageDisplay.bold && "ielts-reading-scalable-bold")} style={readingPanelDisplayStyle(passageDisplay)}>
+            {activePart && <ReadingPassage key={activePart.section.id} section={activePart.section} partNumber={activePart.displayNumber} />}
+          </div>
         </section>
 
         <button type="button" onPointerDown={startResize} onPointerMove={resizeMove} className="hidden w-3 cursor-col-resize items-center justify-center border-x border-[var(--border)] bg-[var(--bg-soft)] text-[var(--primary)] transition hover:bg-[var(--primary-soft)] md:flex" aria-label="拖拽调整文章和题目宽度">
@@ -355,7 +381,16 @@ export function IeltsReadingExamClient({ data, selectedTestNumber, isAdmin = fal
         </button>
 
         <section ref={questionPanelRef} className="h-[50vh] overflow-y-auto bg-[var(--card)] px-4 py-5 md:h-auto md:w-[var(--right-width)] md:px-7">
-          {activePart && <ReadingQuestionPart key={activePart.section.id} part={activePart} answers={answers} officialAnswers={data.answers} isAdmin={isAdmin} onAnswerChange={setAnswer} />}
+          <ReadingPanelControls
+            label="题目显示"
+            settings={questionDisplay}
+            onToggleBold={() => updateQuestionDisplay((current) => ({ ...current, bold: !current.bold }))}
+            onDecrease={() => updateQuestionDisplay((current) => ({ ...current, fontSize: Math.max(PANEL_FONT_SIZE_MIN, current.fontSize - 1) }))}
+            onIncrease={() => updateQuestionDisplay((current) => ({ ...current, fontSize: Math.min(PANEL_FONT_SIZE_MAX, current.fontSize + 1) }))}
+          />
+          <div className={cn("ielts-reading-scalable", questionDisplay.bold && "ielts-reading-scalable-bold")} style={readingPanelDisplayStyle(questionDisplay)}>
+            {activePart && <ReadingQuestionPart key={activePart.section.id} part={activePart} answers={answers} officialAnswers={data.answers} isAdmin={isAdmin} onAnswerChange={setAnswer} />}
+          </div>
         </section>
 
         <div className={cn("absolute bottom-5 right-5 z-20 hidden gap-3 transition-opacity duration-700 md:flex", navActive ? "opacity-100" : "opacity-25 hover:opacity-100")}>
@@ -388,6 +423,56 @@ function ExamIconButton({ label, onClick, active = false, children }: { label: s
 
 function MobileExamTool({ label, onClick, active = false, children }: { label: string; onClick: () => void; active?: boolean; children: React.ReactNode }) {
   return <button type="button" onClick={onClick} className={cn("flex h-14 w-full flex-col items-center justify-center gap-1 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] text-[11px] font-semibold text-[var(--text-soft)] transition hover:text-[var(--primary)]", active && "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]")}><span>{children}</span><span>{label}</span></button>;
+}
+
+function readingPanelDisplayStyle(settings: ReadingPanelDisplay) {
+  return { "--ielts-reading-font-size": `${settings.fontSize}px` } as CSSProperties & Record<"--ielts-reading-font-size", string>;
+}
+
+function ReadingPanelControls({ label, settings, onToggleBold, onDecrease, onIncrease }: { label: string; settings: ReadingPanelDisplay; onToggleBold: () => void; onDecrease: () => void; onIncrease: () => void }) {
+  function keepControlEvent(event: React.SyntheticEvent<HTMLDivElement>) {
+    event.stopPropagation();
+  }
+
+  return (
+    <div className="sticky top-0 z-20 mb-4 flex justify-end pt-0.5" onPointerDown={keepControlEvent} onMouseDown={keepControlEvent} onMouseUp={keepControlEvent} onTouchStart={keepControlEvent} onTouchEnd={keepControlEvent} onClick={keepControlEvent}>
+      <div className="inline-flex items-center gap-1 rounded-full border border-[var(--border)] bg-[var(--card)]/95 p-1 shadow-[var(--shadow-md)] backdrop-blur">
+        <span className="hidden px-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--text-faint)] sm:inline">{label}</span>
+        <button
+          type="button"
+          title={`${label}加粗`}
+          aria-label={`${label}加粗`}
+          aria-pressed={settings.bold}
+          onClick={onToggleBold}
+          className={cn("flex h-8 w-8 items-center justify-center rounded-full text-sm font-black transition", settings.bold ? "bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]" : "text-[var(--text)] hover:bg-[var(--bg-soft)] hover:text-[var(--primary)]")}
+        >
+          B
+        </button>
+        <span className="mx-0.5 h-5 w-px bg-[var(--border)]" />
+        <button
+          type="button"
+          title={`${label}字号减小`}
+          aria-label={`${label}字号减小`}
+          onClick={onDecrease}
+          disabled={settings.fontSize <= PANEL_FONT_SIZE_MIN}
+          className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-black leading-none text-[var(--text)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-35"
+        >
+          -
+        </button>
+        <span className="min-w-8 text-center text-xs font-bold tabular-nums text-[var(--text-soft)]">{settings.fontSize}</span>
+        <button
+          type="button"
+          title={`${label}字号增大`}
+          aria-label={`${label}字号增大`}
+          onClick={onIncrease}
+          disabled={settings.fontSize >= PANEL_FONT_SIZE_MAX}
+          className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-black leading-none text-[var(--text)] transition hover:bg-[var(--bg-soft)] hover:text-[var(--primary)] disabled:cursor-not-allowed disabled:opacity-35"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
 }
 
 function TimeNoticePopup({ type, seconds, onClose }: { type: "warning" | "time-up"; seconds: number; onClose: () => void }) {
@@ -501,20 +586,23 @@ function QuestionBlock({ question, answers, officialAnswers, isAdmin, onAnswerCh
   const sourceQuestionsWithOptions = sourceQuestionOptions.length > 0 ? sourceQuestions.map((sourceQuestion) => ({ ...sourceQuestion, option: sourceQuestionOptions })) : sourceQuestions;
   const shouldRenderOptionBank = hasSourceQuestions && studentOptions.length > 0 && judgementOptions.length === 0;
   const shouldShowOptionsBeforeQuestions = shouldRenderOptionBank && isMatchingOptionBank(question, sectionDesc, pageContent || "");
+  const shouldRenderMultiSelect = isMultiSelectLetterQuestion(question, sectionDesc, pageContent, studentOptions, numbers);
   const promptText = question.prompt ? stripHtml(question.prompt) : "";
   const shouldShowPrompt = Boolean(promptText && !isQuestionRangeHeading(promptText));
   const officialAnswer = officialAnswers.find((answer) => answer.question_id === question.id);
-  const blankSelectOptions = getBlankSelectOptions(pageContent, studentOptions, inferredOptions);
-  const shouldRenderSourceQuestions = hasSourceQuestions && !(pageContentHasBlanks && Object.keys(blankSelectOptions).length > 0);
+  const useTextInputsForBlanks = shouldUseTextInputsForBlanks(question, sectionDesc, pageContent);
+  const blankSelectOptions = useTextInputsForBlanks ? {} : getBlankSelectOptions(pageContent, studentOptions, inferredOptions);
+  const shouldRenderSourceQuestions = hasSourceQuestions && !pageContentHasBlanks && !shouldRenderMultiSelect;
 
   return (
     <article id={hasSourceQuestions ? `reading-question-group-${numbers[0]}` : `reading-question-${numbers[0]}`} data-reading-question={hasSourceQuestions ? undefined : true} className="scroll-mt-24 border-b border-[var(--border)] pb-7 last:border-b-0">
       {shouldShowPrompt && <p className="mb-3 text-base font-semibold text-[var(--text)]">{promptText}</p>}
       {sectionDesc && <ReadingRichText html={sectionDesc} compact />}
       {pageContent && <ReadingAnswerHtml html={pageContent} answers={answers} optionsByNumber={blankSelectOptions} onAnswerChange={onAnswerChange} />}
+      {shouldRenderMultiSelect && <MultiSelectLetterQuestion question={question} numbers={numbers} options={studentOptions} answers={answers} onAnswerChange={onAnswerChange} />}
       {shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={studentOptions} />}
       {shouldRenderSourceQuestions && <SourceQuestionList questions={sourceQuestionsWithOptions} fallbackNumbers={numbers} answers={answers} onAnswerChange={onAnswerChange} hideTextInputs={pageContentHasBlanks} />}
-      {shouldRenderOptionBank && !shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={studentOptions} />}
+      {shouldRenderOptionBank && !shouldShowOptionsBeforeQuestions && !shouldRenderMultiSelect && <QuestionOptionBank options={studentOptions} />}
       {!hasSourceQuestions && studentOptions.length > 0 && <OptionQuestion questionNumber={`${numbers[0]}`} options={studentOptions} value={answers[`${numbers[0]}`] ?? ""} onChange={onAnswerChange} />}
       {isAdmin && officialAnswer && <AdminAnswerPanel question={question} answer={officialAnswer} />}
     </article>
@@ -565,6 +653,30 @@ function QuestionOptionBank({ options }: { options: Record<string, unknown>[] })
   );
 }
 
+function MultiSelectLetterQuestion({ question, numbers, options, answers, onAnswerChange }: { question: IeltsQuestion; numbers: number[]; options: Record<string, unknown>[]; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void }) {
+  const sourceQuestions = arrayValue(question.content, "questions");
+  const title = stripMultiSelectQuestionTitle(stripHtml(stringValue(sourceQuestions[0], "title") || question.prompt || ""));
+  const optionValues = options.map((option) => optionLetter(optionText(option))).filter(Boolean);
+
+  return (
+    <div className="mt-4 space-y-5">
+      {title ? <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm leading-7 text-[var(--text)]">{title}</div> : null}
+      <div className="grid gap-3 sm:w-fit">
+        {numbers.map((number) => (
+          <label key={number} id={`reading-question-${number}`} data-reading-question className="grid gap-2 sm:grid-cols-[2.25rem_minmax(8rem,12rem)] sm:items-center">
+            <span className="font-semibold text-[var(--text)]">{number}</span>
+            <select value={answers[`${number}`] ?? ""} onChange={(event) => onAnswerChange(`${number}`, event.target.value)} className="h-9 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">
+              <option value="">Select</option>
+              {optionValues.map((option) => <option key={`${number}-${option}`} value={option}>{option}</option>)}
+            </select>
+          </label>
+        ))}
+      </div>
+      <QuestionOptionBank options={options} />
+    </div>
+  );
+}
+
 function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChange, hideTextInputs = false }: { questions: Record<string, unknown>[]; fallbackNumbers: number[]; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void; hideTextInputs?: boolean }) {
   const visibleQuestions = questions.filter((question) => !hideTextInputs || stringArrayValue(question, "option").length > 0);
   if (visibleQuestions.length === 0) return null;
@@ -579,19 +691,19 @@ function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChang
         return (
           <div key={`${label}-${index}`} id={`reading-question-${label}`} data-reading-question className="scroll-mt-24">
             {options.length > 0 ? (
-              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline">
+              <div className="grid gap-2 sm:grid-cols-[2rem_minmax(0,1fr)_auto] sm:items-baseline">
                 <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--success)] text-sm font-bold text-white">{label}</span>
-                {cleanTitle && <span className="text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
+                {cleanTitle && <span className="min-w-0 text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
                 <select value={answers[label] ?? ""} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 min-w-28 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">
                   <option value="">Select</option>
                   {options.map((option, optionIndex) => <option key={`${label}-${optionIndex}`} value={option}>{option}</option>)}
                 </select>
               </div>
             ) : (
-              <label className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline">
+              <label className="grid gap-2 sm:grid-cols-[2rem_minmax(0,1fr)_auto] sm:items-baseline">
                 <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--success)] text-sm font-bold text-white">{label}</span>
-                {cleanTitle && <span className="text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
-                <input value={answers[label] ?? ""} placeholder={label} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 min-w-40 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm text-[var(--text)] outline-none transition placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" />
+                {cleanTitle && <span className="min-w-0 text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
+                <input value={answers[label] ?? ""} placeholder={label} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 w-20 min-w-20 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm text-[var(--text)] outline-none transition placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" />
               </label>
             )}
           </div>
@@ -620,7 +732,8 @@ function OptionQuestion({ questionNumber, options, value, onChange }: { question
 const ReadingRichText = memo(function ReadingRichText({ html, compact = false, dictionary = false }: { html?: string | null; compact?: boolean; dictionary?: boolean }) {
   const { openDictionary } = useDictionary();
   if (!html) return null;
-  const markup = sanitizeRichHtml(dictionary ? decorateDictionaryWords(normalizeQuestionBlanks(html)) : normalizeQuestionBlanks(html));
+  const formattedHtml = formatReadingPassageLabels(normalizeQuestionBlanks(html));
+  const markup = sanitizeRichHtml(dictionary ? decorateDictionaryWords(formattedHtml) : formattedHtml);
   return <div className={cn("reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!border-[var(--border)] [&_*]:!bg-transparent [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_li]:my-1.5 [&_p]:my-3 [&_span[data-dictionary-word]]:cursor-pointer [&_span[data-dictionary-word]]:transition [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:p-2.5 [&_th]:border [&_th]:p-2.5", compact && "text-sm leading-7")} onClick={dictionary ? (event) => { const target = event.target as HTMLElement; const word = target.closest<HTMLElement>("[data-dictionary-word]")?.dataset.dictionaryWord; if (word) openDictionary(word, { showPteExamples: false }); } : undefined} dangerouslySetInnerHTML={{ __html: markup }} />;
 });
 
@@ -726,7 +839,7 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
     <>
       <div
         ref={containerRef}
-        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
+        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!w-16 [&_input[data-question-number]]:!min-w-16 [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
         onPointerDown={keepAnswerControlEventInside}
         onMouseDown={keepAnswerControlEventInside}
         onTouchStart={keepAnswerControlEventInside}
@@ -940,7 +1053,7 @@ function injectAnswerInputs(html: string, answers: Answers, optionsByNumber: Rec
       const label = value || number;
       return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-control="true" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="relative z-10 min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
     }
-    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" class="relative z-10 h-8 min-w-32 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
+    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" class="relative z-10 h-8 min-w-16 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
   });
 }
 
@@ -1115,6 +1228,12 @@ function normalizeQuestionBlanks(value: string) {
     .replace(/\[blank\]\s*\[\/blank\]/gi, "______");
 }
 
+function formatReadingPassageLabels(value: string) {
+  return value
+    .replace(/(<p\b[^>]*>\s*(?:<br\s*\/?>\s*)?)<strong>\s*([A-G])\s*(?:&nbsp;)?\s*<\/strong>\s*/gi, "$1<span class=\"ielts-reading-passage-label\">$2</span> ")
+    .replace(/(<br\s*\/?>\s*<br\s*\/?>\s*)<strong>\s*([A-G])\s*(?:&nbsp;)?\s*<\/strong>\s*/gi, "$1<span class=\"ielts-reading-passage-label\">$2</span> ");
+}
+
 function hasQuestionBlanks(value: string) {
   return /#{2,}\s*-\s*\d{1,3}\s*-\s*#{2,}/.test(value) || /\[blank\]\s*\[\/blank\]/i.test(value) || /_{3,}\s*\d{1,3}\s*_{3,}/.test(value);
 }
@@ -1222,6 +1341,20 @@ function getBlankSelectOptions(pageContent: string, options: Record<string, unkn
   return Object.fromEntries(blankNumbers.map((number) => [`${number}`, selectOptions]));
 }
 
+function shouldUseTextInputsForBlanks(question: IeltsQuestion, sectionDesc: string, pageContent: string) {
+  if (!hasQuestionBlanks(pageContent)) return false;
+  const text = stripHtml(`${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`).toLowerCase();
+  if ((text.includes("which paragraph contains") || text.includes("which section contains")) && text.includes("write the correct letter")) return true;
+  return text.includes("complete the summary") && text.includes("write the correct letter");
+}
+
+function isMultiSelectLetterQuestion(question: IeltsQuestion, sectionDesc: string, pageContent: string, options: Record<string, unknown>[], numbers: number[]) {
+  if (numbers.length < 2 || options.length < 2) return false;
+  if (stripHtml(pageContent).length > 8) return false;
+  const text = stripHtml(`${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc}`).toLowerCase();
+  return /choose\s+(two|three|four|five)\s+letters?/.test(text) && text.includes("write the correct letters");
+}
+
 function inferQuestionOptions(question: IeltsQuestion, sectionDesc: string, pageContent: string) {
   const text = stripHtml(`${question.prompt ?? ""} ${question.instruction ?? ""} ${sectionDesc} ${pageContent}`);
   const upperText = text.toUpperCase();
@@ -1275,6 +1408,13 @@ function stripQuestionNumberPrefix(value: string, label: string) {
     .trim();
 }
 
+function stripMultiSelectQuestionTitle(value: string) {
+  return value
+    .replace(/^\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*[.)：:]?\s*/i, "")
+    .replace(/^Write the correct letters? in boxes? \d{1,2}\s*(?:and|[–-])\s*\d{1,2} on your answer sheet\.?\s*/i, "")
+    .trim();
+}
+
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -1289,6 +1429,10 @@ function isJudgementOptions(options: Record<string, unknown>[]) {
 
 function stripOptionLabel(value: string) {
   return stripHtml(value).replace(/^[A-Z]\s*[.)]\s*/i, "").trim();
+}
+
+function optionLetter(value: string) {
+  return stripHtml(value).match(/^\s*([A-Z])(?:\s*[.)]\s*|\s*$)/i)?.[1]?.toUpperCase() ?? "";
 }
 
 function isMatchingOptionBank(question: IeltsQuestion, sectionDesc: string, pageContent: string) {

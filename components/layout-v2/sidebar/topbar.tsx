@@ -18,6 +18,7 @@ import {
   Settings,
   Trophy,
   Video,
+  Volume2,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -142,6 +143,13 @@ const utilityItems: NavItem[] = [
     subtitle: "Mock Test",
     icon: <BookOpen size={16} />,
     iconTone: "warning",
+  },
+  {
+    href: "/pronunciation",
+    label: "发音",
+    subtitle: "Pronunciation",
+    icon: <Volume2 size={16} />,
+    iconTone: "primary",
   },
   {
     href: "/vocabulary",

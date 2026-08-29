@@ -1,0 +1,290 @@
+{
+  "slug": "complex-sentences",
+  "category": {
+    "zh": "句子结构",
+    "en": "Sentence Structures"
+  },
+  "title": {
+    "zh": "复合句",
+    "en": "Complex Sentences"
+  },
+  "difficulty": "Intermediate to Advanced",
+  "summary": {
+    "zh": "复合句（Complex Sentence）是由一个主句（independent clause）和一个或多个从句（dependent clause）构成的句子。从句不能单独成句，必须依附主句表达完整意义。复合句常用于解释原因、表达让步、说明条件、限定名词、补充背景信息或呈现逻辑关系。在PTE Academic和IELTS写作、口语及阅读中，准确使用复合句能够提升句子多样性、逻辑连贯性和语法复杂度，是获得较高语法分数的重要能力。"
+  },
+  "structure": {
+    "formula": "Independent Clause + Dependent Clause / Dependent Clause + Independent Clause",
+    "explanation": "复合句的核心结构是“主句 + 从句”。主句本身意思完整，例如“Students can improve their writing skills”；从句由从属连词（subordinating conjunction）、关系代词（relative pronoun）或疑问词引导，例如“because they receive regular feedback”。当从句放在句首时，通常需要在从句后加逗号；当从句放在句尾时，一般不需要逗号。常见从句包括状语从句（adverbial clause）、定语从句（relative clause）和名词性从句（noun clause）。",
+    "examples": [
+      {
+        "en": "Students can improve their writing skills because they receive regular feedback.",
+        "zh": "学生能够提高写作能力，因为他们会得到定期反馈。"
+      },
+      {
+        "en": "Because online courses are flexible, many adults choose them over traditional classes.",
+        "zh": "由于在线课程很灵活，许多成年人选择在线课程而不是传统课堂。"
+      },
+      {
+        "en": "The policy that the government introduced last year has reduced traffic congestion.",
+        "zh": "政府去年推出的政策已经减少了交通拥堵。"
+      },
+      {
+        "en": "It is widely believed that technology has transformed the way people communicate.",
+        "zh": "人们普遍认为，科技已经改变了人们交流的方式。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达原因与结果",
+      "description": "使用because, since, as, so that等引导从句，可以清楚说明事件发生的原因、目的或结果。在学术写作中，这类复合句有助于建立逻辑链条，避免简单句堆砌。",
+      "examples": [
+        {
+          "en": "Many students prefer digital textbooks because they are cheaper and easier to update.",
+          "zh": "许多学生更喜欢电子教材，因为它们更便宜，也更容易更新。"
+        },
+        {
+          "en": "Since public transport has become more reliable, fewer people need to drive to work.",
+          "zh": "由于公共交通变得更加可靠，较少的人需要开车上班。"
+        }
+      ]
+    },
+    {
+      "title": "表达让步与对比",
+      "description": "使用although, even though, while, whereas等引导让步或对比从句，可以体现更成熟的论证能力。IELTS Task 2和PTE Write Essay中常用这类结构呈现平衡观点。",
+      "examples": [
+        {
+          "en": "Although social media helps people stay connected, it may also reduce face-to-face interaction.",
+          "zh": "尽管社交媒体帮助人们保持联系，但它也可能减少面对面交流。"
+        },
+        {
+          "en": "Whereas some people support strict environmental regulations, others worry about their economic impact.",
+          "zh": "有些人支持严格的环保法规，而另一些人则担心其经济影响。"
+        }
+      ]
+    },
+    {
+      "title": "限定或补充名词信息",
+      "description": "使用定语从句（relative clause）可以对名词进行限定或补充说明，使表达更加精确。常见关系词包括who, which, that, whose, where和when。",
+      "examples": [
+        {
+          "en": "People who have access to quality education are more likely to find stable employment.",
+          "zh": "能够接受优质教育的人更有可能找到稳定的工作。"
+        },
+        {
+          "en": "The city, which has invested heavily in public transport, has seen a decline in car use.",
+          "zh": "这座城市在公共交通上投入巨大，汽车使用量已经下降。"
+        }
+      ]
+    },
+    {
+      "title": "表达条件与假设",
+      "description": "使用if, unless, provided that, as long as等引导条件从句，可以表达某一结果发生的前提。PTE和IELTS议论文中经常需要用条件结构讨论政策、教育、科技或环境问题。",
+      "examples": [
+        {
+          "en": "If governments invest more in renewable energy, carbon emissions may decrease significantly.",
+          "zh": "如果政府在可再生能源方面投入更多，碳排放可能会显著下降。"
+        },
+        {
+          "en": "Students can achieve better results as long as they develop effective study habits.",
+          "zh": "只要学生养成有效的学习习惯，他们就能取得更好的成绩。"
+        }
+      ]
+    },
+    {
+      "title": "表达观点、事实或发现",
+      "description": "名词性从句常用于引出观点、研究发现、事实或判断，如that-clause, whether-clause和wh-clause。这类结构在学术英语中非常常见。",
+      "examples": [
+        {
+          "en": "Research suggests that regular exercise can improve cognitive performance.",
+          "zh": "研究表明，规律运动能够提升认知表现。"
+        },
+        {
+          "en": "It remains unclear whether remote work will become the dominant model in the future.",
+          "zh": "远程办公是否会在未来成为主导模式仍不清楚。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Because the cost of living is high. Many young people delay marriage.",
+      "correct": "Because the cost of living is high, many young people delay marriage.",
+      "explanation": "because引导的是从句，不能单独作为完整句子使用。中文学习者常把原因从句当作独立句。正确做法是把原因从句和主句连接起来；如果从句在句首，从句后通常加逗号。"
+    },
+    {
+      "wrong": "Although public transport is convenient, but many people still prefer driving.",
+      "correct": "Although public transport is convenient, many people still prefer driving.",
+      "explanation": "although已经表示“虽然”，英语中不能再用but连接同一个主句。中文“虽然……但是……”可以成对出现，但英文通常只保留although或but其中一个。"
+    },
+    {
+      "wrong": "The students which study abroad often become more independent.",
+      "correct": "The students who study abroad often become more independent.",
+      "explanation": "当先行词是人时，定语从句通常使用who或that，而不是which。which主要指物或概念。"
+    },
+    {
+      "wrong": "If governments will reduce pollution, they should invest in clean energy.",
+      "correct": "If governments want to reduce pollution, they should invest in clean energy.",
+      "explanation": "条件从句中通常不用will表示将来，常用一般现在时表达将来条件。原句还存在逻辑不清的问题，应表达“如果政府想减少污染”。"
+    },
+    {
+      "wrong": "The reason why people move to cities is because they can find better jobs.",
+      "correct": "The reason why people move to cities is that they can find better jobs.",
+      "explanation": "The reason is that是更规范的学术表达。because在此结构中容易造成重复表达，尤其在正式写作中应避免。"
+    },
+    {
+      "wrong": "I think that studying overseas which is beneficial for students.",
+      "correct": "I think that studying overseas is beneficial for students.",
+      "explanation": "that引导宾语从句后，需要一个完整的从句结构。which不能随意插入句中。中文学习者常误把“这件事”翻译成which，但英语中不需要该关系代词。"
+    },
+    {
+      "wrong": "People live in rural areas have fewer job opportunities.",
+      "correct": "People who live in rural areas have fewer job opportunities.",
+      "explanation": "当一个名词后面直接接一个带谓语的说明部分时，需要使用定语从句引导词。People live in rural areas不能直接修饰people。"
+    },
+    {
+      "wrong": "When students use AI tools, can improve their efficiency.",
+      "correct": "When students use AI tools, they can improve their efficiency.",
+      "explanation": "主句必须有明确主语。中文中可以省略主语，但英语主句通常不能省略。when从句不能充当主句主语。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "复合句在PTE Academic中使用频率很高，尤其影响Writing和Speaking的Grammar、Written Discourse以及Oral Fluency表现。在Write Essay中，考生需要使用原因从句、让步从句、条件从句和定语从句来展开论证；在Summarize Written Text中，必须用一个语法完整、信息密集的长句概括原文，复合句几乎是必需结构；在Retell Lecture和Describe Image中，适当使用复合句可以展示逻辑关系，但句子不宜过长，以免影响流利度和准确性。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Retell Lecture",
+      "Describe Image",
+      "Read Aloud",
+      "Reading: Fill in the Blanks",
+      "Reading & Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Although X may seem beneficial, it can also lead to Y.",
+      "translation": "尽管X看起来有益，但它也可能导致Y。"
+    },
+    {
+      "pattern": "Because X has become increasingly common, Y has attracted greater public attention.",
+      "translation": "由于X变得越来越普遍，Y已经引起了更多公众关注。"
+    },
+    {
+      "pattern": "It is widely believed that X plays a crucial role in Y.",
+      "translation": "人们普遍认为，X在Y中发挥着关键作用。"
+    },
+    {
+      "pattern": "Research indicates that X is closely associated with Y.",
+      "translation": "研究表明，X与Y密切相关。"
+    },
+    {
+      "pattern": "If X is implemented effectively, it may contribute to Y.",
+      "translation": "如果X得到有效实施，它可能有助于Y。"
+    },
+    {
+      "pattern": "The extent to which X affects Y remains a subject of debate.",
+      "translation": "X在多大程度上影响Y仍然是一个有争议的话题。"
+    },
+    {
+      "pattern": "People who lack access to X are more likely to experience Y.",
+      "translation": "缺乏X的人更有可能经历Y。"
+    },
+    {
+      "pattern": "This is particularly important because X can influence Y in the long term.",
+      "translation": "这一点尤其重要，因为X能够长期影响Y。"
+    },
+    {
+      "pattern": "While X offers several advantages, its limitations should not be ignored.",
+      "translation": "虽然X具有若干优势，但其局限性不应被忽视。"
+    },
+    {
+      "pattern": "What policymakers need to consider is whether X can be sustained over time.",
+      "translation": "政策制定者需要考虑的是，X是否能够长期持续。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "play a crucial role in",
+      "translation": "在……中发挥关键作用"
+    },
+    {
+      "phrase": "be closely associated with",
+      "translation": "与……密切相关"
+    },
+    {
+      "phrase": "contribute to economic growth",
+      "translation": "促进经济增长"
+    },
+    {
+      "phrase": "reduce environmental pressure",
+      "translation": "减轻环境压力"
+    },
+    {
+      "phrase": "improve academic performance",
+      "translation": "提升学业表现"
+    },
+    {
+      "phrase": "have access to quality education",
+      "translation": "能够获得优质教育"
+    },
+    {
+      "phrase": "raise public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "address social inequality",
+      "translation": "解决社会不平等问题"
+    },
+    {
+      "phrase": "achieve sustainable development",
+      "translation": "实现可持续发展"
+    },
+    {
+      "phrase": "pose a significant challenge",
+      "translation": "构成重大挑战"
+    }
+  ],
+  "ai_tips": [
+    "写PTE Write Essay时，每段至少使用一个清晰的复合句，但不要为了复杂而写过长的句子。准确性比长度更重要。",
+    "如果从句放在句首，例如Although, Because, If引导的部分，通常在从句结束后加逗号，再写主句。",
+    "中文中的“虽然……但是……”翻译成英文时，不要同时使用although和but；二者选择一个即可。",
+    "在Summarize Written Text中，可以用定语从句和that从句整合信息，但必须确保整句只有一个完整的句号结尾。",
+    "口语中使用复合句时，应优先选择because, although, if, which等高频连接方式，避免因结构过度复杂影响流利度。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将两个简单句合并为一个复合句：Many people work from home. Technology has made remote communication easier.",
+      "answer": "Many people work from home because technology has made remote communication easier. 许多人在家工作，因为科技使远程沟通变得更加容易。"
+    },
+    {
+      "question": "改正错误句子：Although online learning is convenient, but it requires strong self-discipline.",
+      "answer": "Although online learning is convenient, it requires strong self-discipline. 或 Online learning is convenient, but it requires strong self-discipline. 不能同时使用although和but连接同一个主句。"
+    },
+    {
+      "question": "用who改写句子：Students study regularly often perform better in exams.",
+      "answer": "Students who study regularly often perform better in exams. 经常学习的学生通常在考试中表现更好。"
+    },
+    {
+      "question": "用if写一个关于环境保护的条件复合句。",
+      "answer": "If individuals reduce their use of plastic, environmental pollution can be significantly reduced. 如果个人减少塑料使用，环境污染可以显著减少。"
+    },
+    {
+      "question": "将句子改为更学术的复合句：Technology is useful. It may create privacy problems.",
+      "answer": "Although technology is useful, it may create privacy problems. 尽管科技很有用，但它可能带来隐私问题。"
+    },
+    {
+      "question": "选择正确句子：A. Because the population is increasing. Cities need better infrastructure. B. Because the population is increasing, cities need better infrastructure.",
+      "answer": "B正确。because从句不能单独成句，必须与主句连接。"
+    },
+    {
+      "question": "用that从句翻译：研究表明，睡眠不足会影响学生的注意力。",
+      "answer": "Research shows that a lack of sleep can affect students' concentration."
+    },
+    {
+      "question": "改正错误句子：People which live in large cities often face high housing costs.",
+      "answer": "People who live in large cities often face high housing costs. 当先行词是people时，应使用who或that，而不是which。"
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "slug": "simple-present",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "一般现在时",
+    "en": "Simple Present Tense"
+  },
+  "difficulty": "基础至中级",
+  "summary": {
+    "zh": "一般现在时用于表达经常发生的动作、客观事实、普遍规律、稳定状态、学术观点以及正式安排。在 PTE Academic 和 IELTS 写作与口语中，一般现在时非常常见，尤其用于描述图表趋势中的固定事实、表达研究结论、陈述个人观点、介绍社会现象和概括文章主旨。中国学习者需要特别注意第三人称单数动词加 -s 或 -es、否定句和疑问句中助动词 do/does 的使用，以及不要把一般现在时误用为现在进行时。"
+  },
+  "structure": {
+    "formula": "肯定句：Subject + base verb / verb-s(es)；否定句：Subject + do/does not + base verb；疑问句：Do/Does + subject + base verb?",
+    "explanation": "一般现在时的核心是表示“稳定性”和“规律性”。当主语是 I, you, we, they 或复数名词时，动词使用原形；当主语是 he, she, it 或单数名词时，动词通常需要加 -s 或 -es。否定句和疑问句必须使用助动词 do 或 does，并且 does 后面的实义动词要恢复原形。在学术英语中，一般现在时常用于说明研究发现、定义概念、陈述理论和表达客观事实。",
+    "examples": [
+      {
+        "en": "Many students use online resources to improve their academic writing.",
+        "zh": "许多学生使用网络资源来提高他们的学术写作能力。"
+      },
+      {
+        "en": "The graph shows the percentage of people who commute by public transport.",
+        "zh": "该图表显示了乘坐公共交通通勤的人口比例。"
+      },
+      {
+        "en": "Education plays a crucial role in economic development.",
+        "zh": "教育在经济发展中起着关键作用。"
+      },
+      {
+        "en": "This theory explains how language learners acquire new vocabulary.",
+        "zh": "这一理论解释了语言学习者如何习得新词汇。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达习惯性动作或规律性行为",
+      "description": "当某个动作经常发生、反复发生或属于日常习惯时，使用一般现在时。常见时间状语包括 always, usually, often, sometimes, rarely, never, every day, once a week 等。在 PTE 口语和 IELTS Speaking Part 1 中，考生经常需要描述自己的日常学习、工作或生活习惯，因此一般现在时非常重要。",
+      "examples": [
+        {
+          "en": "I usually review new vocabulary before I go to bed.",
+          "zh": "我通常在睡觉前复习新词汇。"
+        },
+        {
+          "en": "She attends an English class twice a week.",
+          "zh": "她每周上两次英语课。"
+        }
+      ]
+    },
+    {
+      "title": "表达客观事实、自然规律和普遍真理",
+      "description": "当句子描述科学事实、自然规律、社会常识或普遍成立的观点时，应使用一般现在时。这类用法在 IELTS Writing Task 2 和 PTE Essay 中非常常见，因为学术写作需要清晰陈述事实和普遍现象。",
+      "examples": [
+        {
+          "en": "Water boils at 100 degrees Celsius under standard atmospheric pressure.",
+          "zh": "在标准大气压下，水在 100 摄氏度时沸腾。"
+        },
+        {
+          "en": "Access to education improves social mobility.",
+          "zh": "接受教育的机会提高社会流动性。"
+        }
+      ]
+    },
+    {
+      "title": "表达稳定状态、长期情况或个人特征",
+      "description": "一般现在时可用于描述相对稳定的状态，例如职业、身份、兴趣、能力、观点、地点或长期存在的情况。此类表达适用于 IELTS Speaking 的自我介绍和 PTE Personal Introduction。",
+      "examples": [
+        {
+          "en": "He works as a software engineer in Shanghai.",
+          "zh": "他在上海担任软件工程师。"
+        },
+        {
+          "en": "The university offers a wide range of postgraduate programmes.",
+          "zh": "这所大学提供多种研究生课程。"
+        }
+      ]
+    },
+    {
+      "title": "用于学术写作中的观点、定义和研究结论",
+      "description": "在正式学术英语中，一般现在时常用于定义概念、介绍理论、总结研究发现或表达作者观点。即使研究是在过去完成的，只要强调其当前意义或普遍适用性，仍可使用一般现在时。",
+      "examples": [
+        {
+          "en": "The study indicates that regular feedback enhances student performance.",
+          "zh": "该研究表明，定期反馈能提升学生表现。"
+        },
+        {
+          "en": "Globalisation creates both opportunities and challenges for developing countries.",
+          "zh": "全球化为发展中国家带来了机遇和挑战。"
+        }
+      ]
+    },
+    {
+      "title": "用于图表描述和题目转述",
+      "description": "在 IELTS Writing Task 1 和 PTE Describe Image 中，一般现在时常用于说明图表内容、标题、单位和数据呈现方式。例如 the chart shows, the table compares, the diagram illustrates 等。这些表达不是描述过去发生的动作，而是说明图表当前呈现的信息。",
+      "examples": [
+        {
+          "en": "The bar chart compares the average monthly expenditure of five households.",
+          "zh": "该柱状图比较了五个家庭的平均月支出。"
+        },
+        {
+          "en": "The diagram illustrates the process by which plastic bottles are recycled.",
+          "zh": "该流程图说明了塑料瓶被回收的过程。"
+        }
+      ]
+    },
+    {
+      "title": "用于时间表、节目安排和正式日程",
+      "description": "一般现在时可以表示按照固定时间表发生的未来事件，常用于交通、课程、会议、考试安排等正式日程。这种用法强调安排的确定性。",
+      "examples": [
+        {
+          "en": "The lecture starts at 9 a.m. tomorrow.",
+          "zh": "讲座明天上午九点开始。"
+        },
+        {
+          "en": "The train leaves at 6:30 in the morning.",
+          "zh": "火车早上六点半发车。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "He go to university every day.",
+      "correct": "He goes to university every day.",
+      "explanation": "主语 he 是第三人称单数，所以一般现在时中的实义动词 go 要变成 goes。中国学习者常因汉语动词没有人称变化而遗漏第三人称单数 -s 或 -es。"
+    },
+    {
+      "wrong": "She does not likes online learning.",
+      "correct": "She does not like online learning.",
+      "explanation": "否定句中已经使用 does，后面的实义动词必须用原形 like，不能再加 -s。助动词 does 已经体现了第三人称单数。"
+    },
+    {
+      "wrong": "Does the government provides enough support?",
+      "correct": "Does the government provide enough support?",
+      "explanation": "疑问句中 does 放在主语前，实义动词要恢复原形。不能同时使用 does 和 provides。"
+    },
+    {
+      "wrong": "People is becoming more dependent on technology.",
+      "correct": "People are becoming more dependent on technology.",
+      "explanation": "虽然 people 在中文里常被理解为“人们”这一整体概念，但在英语中通常是复数名词，应搭配 are。如果要表达普遍事实，也可写成 People depend more heavily on technology today。"
+    },
+    {
+      "wrong": "The chart is showing the population growth from 2000 to 2020.",
+      "correct": "The chart shows the population growth from 2000 to 2020.",
+      "explanation": "描述图表呈现的信息时，通常使用一般现在时 shows, illustrates, compares，而不是现在进行时 is showing。PTE Describe Image 和 IELTS Task 1 中应优先使用这种正式表达。"
+    },
+    {
+      "wrong": "There has many reasons for this problem.",
+      "correct": "There are many reasons for this problem.",
+      "explanation": "表示“有”不能直接用 there has many。many reasons 是复数，因此应使用 there are。若主语是单数，可用 there is，例如 There is one major reason。"
+    },
+    {
+      "wrong": "This essay discuss the advantages of public transport.",
+      "correct": "This essay discusses the advantages of public transport.",
+      "explanation": "主语 this essay 是第三人称单数，动词 discuss 需要加 -es，变为 discusses。写作中常见表达包括 This essay discusses..., This report examines..., The article argues...。"
+    },
+    {
+      "wrong": "The data shows that emissions has declined.",
+      "correct": "The data show that emissions have declined.",
+      "explanation": "在严格学术英语中，data 常作为复数处理，因此用 show；emissions 是复数，后面用 have declined。考试中若使用 data shows 也较常见，但正式写作中 data show 更规范。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "一般现在时在 PTE Academic 中出现频率很高，尤其适用于 Read Aloud 的准确朗读、Repeat Sentence 的语法复现、Describe Image 的图表介绍、Retell Lecture 的学术内容概括、Summarize Written Text 的主旨总结以及 Write Essay 的观点论证。考生需要熟练掌握第三人称单数、主谓一致、助动词 do/does、图表动词和学术陈述句型，以减少语法错误并提升表达的正式度。",
+    "sections": [
+      "Speaking: Read Aloud",
+      "Speaking: Repeat Sentence",
+      "Speaking: Describe Image",
+      "Speaking: Retell Lecture",
+      "Writing: Summarize Written Text",
+      "Writing: Write Essay",
+      "Reading: Fill in the Blanks",
+      "Listening: Summarize Spoken Text"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The evidence suggests that + clause.",
+      "translation": "证据表明……"
+    },
+    {
+      "pattern": "The data show that + clause.",
+      "translation": "数据显示……"
+    },
+    {
+      "pattern": "This essay argues that + clause.",
+      "translation": "本文认为……"
+    },
+    {
+      "pattern": "The chart illustrates how + clause.",
+      "translation": "该图表说明了……如何发生。"
+    },
+    {
+      "pattern": "The table compares + noun phrases.",
+      "translation": "该表格比较了……"
+    },
+    {
+      "pattern": "Research indicates that + clause.",
+      "translation": "研究表明……"
+    },
+    {
+      "pattern": "This phenomenon reflects + noun phrase.",
+      "translation": "这一现象反映了……"
+    },
+    {
+      "pattern": "A growing body of research supports the view that + clause.",
+      "translation": "越来越多的研究支持这样一种观点，即……"
+    },
+    {
+      "pattern": "The findings demonstrate that + clause.",
+      "translation": "研究结果证明……"
+    },
+    {
+      "pattern": "This approach enables learners to + verb.",
+      "translation": "这种方法使学习者能够……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "play a crucial role",
+      "translation": "发挥关键作用"
+    },
+    {
+      "phrase": "have a significant impact on",
+      "translation": "对……有重大影响"
+    },
+    {
+      "phrase": "show a clear trend",
+      "translation": "显示出明显趋势"
+    },
+    {
+      "phrase": "indicate a strong relationship",
+      "translation": "表明存在强相关关系"
+    },
+    {
+      "phrase": "reflect social changes",
+      "translation": "反映社会变化"
+    },
+    {
+      "phrase": "support the argument",
+      "translation": "支持该论点"
+    },
+    {
+      "phrase": "improve learning outcomes",
+      "translation": "改善学习成果"
+    },
+    {
+      "phrase": "increase public awareness",
+      "translation": "提高公众意识"
+    },
+    {
+      "phrase": "reduce environmental damage",
+      "translation": "减少环境破坏"
+    },
+    {
+      "phrase": "provide useful insights into",
+      "translation": "为……提供有用见解"
+    }
+  ],
+  "ai_tips": [
+    "写作中遇到图表开头句时，优先使用一般现在时，例如 The chart shows, The table compares, The diagram illustrates。",
+    "检查第三人称单数：如果主语可以被 he, she 或 it 替代，动词通常需要加 -s 或 -es。",
+    "使用 does not 或 does 提问时，后面的实义动词必须用原形，例如 does not provide, does it affect。",
+    "在 PTE 口语中，一般现在时适合快速构建稳定句型，例如 The image shows..., The speaker explains..., The lecture focuses on...。",
+    "学术写作中表达普遍观点时，不要过度使用现在进行时；一般现在时更正式、更稳定。"
+  ],
+  "practice_questions": [
+    {
+      "question": "用一般现在时改正句子：The graph compare the sales of three products.",
+      "answer": "The graph compares the sales of three products."
+    },
+    {
+      "question": "用正确形式填空：Education usually ______ a positive effect on employment opportunities. (have)",
+      "answer": "Education usually has a positive effect on employment opportunities."
+    },
+    {
+      "question": "将句子改为否定句：The policy affects low-income families.",
+      "answer": "The policy does not affect low-income families."
+    },
+    {
+      "question": "将句子改为一般疑问句：This method improves students' pronunciation.",
+      "answer": "Does this method improve students' pronunciation?"
+    },
+    {
+      "question": "选择正确句子：A. The diagram is showing the recycling process. B. The diagram shows the recycling process.",
+      "answer": "B. The diagram shows the recycling process."
+    },
+    {
+      "question": "用一般现在时翻译：研究表明，定期练习能提高口语流利度。",
+      "answer": "Research indicates that regular practice improves speaking fluency."
+    },
+    {
+      "question": "改正错误：She do not agree with this argument.",
+      "answer": "She does not agree with this argument."
+    },
+    {
+      "question": "用正确形式填空：The table ______ the population figures in five countries. (show)",
+      "answer": "The table shows the population figures in five countries."
+    },
+    {
+      "question": "用学术表达完成句子：The evidence ______ that early education reduces inequality.",
+      "answer": "The evidence suggests that early education reduces inequality."
+    },
+    {
+      "question": "判断并改正：Many people depends on smartphones for daily communication.",
+      "answer": "错误。正确句子是：Many people depend on smartphones for daily communication."
+    }
+  ]
+}

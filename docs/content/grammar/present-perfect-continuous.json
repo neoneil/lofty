@@ -1,0 +1,253 @@
+{
+  "slug": "present-perfect-continuous",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "现在完成进行时",
+    "en": "Present Perfect Continuous Tense"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "现在完成进行时用于强调某个动作从过去开始，一直持续到现在，或者刚刚结束但对现在仍有明显影响。它的核心不是单纯说明“完成了什么”，而是突出动作的持续性、过程性和当前相关性。在PTE Academic和IELTS中，该时态常用于描述长期趋势、持续研究、个人经历、社会变化以及图表中的连续发展。中国学习者需要特别注意：现在完成进行时通常与for、since、recently、lately、over the past few years等时间表达搭配，不能与明确的过去时间点如yesterday、in 2019单独连用。"
+  },
+  "structure": {
+    "formula": "Subject + have/has + been + V-ing",
+    "explanation": "现在完成进行时由助动词have或has、过去分词been以及动词-ing形式构成。主语为I、you、we、they或复数名词时使用have been；主语为he、she、it或单数名词时使用has been。该结构强调动作从过去延续到现在，或动作虽刚结束但结果仍影响现在。否定形式为Subject + have/has not been + V-ing；疑问形式为Have/Has + subject + been + V-ing?",
+    "examples": [
+      {
+        "en": "Researchers have been examining the relationship between sleep quality and academic performance.",
+        "zh": "研究人员一直在考察睡眠质量与学业表现之间的关系。"
+      },
+      {
+        "en": "She has been preparing for the PTE speaking section for three months.",
+        "zh": "她已经为PTE口语部分准备了三个月。"
+      },
+      {
+        "en": "Have you been using academic vocabulary in your essays?",
+        "zh": "你一直在作文中使用学术词汇吗？"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "强调从过去持续到现在的动作",
+      "description": "当一个动作在过去某个时间开始，并且到现在仍在进行时，使用现在完成进行时。该用法常与for和since搭配。for后接一段时间，since后接起点时间。",
+      "examples": [
+        {
+          "en": "Many students have been studying online for several years.",
+          "zh": "许多学生已经在线学习了好几年。"
+        },
+        {
+          "en": "The university has been expanding its research facilities since 2020.",
+          "zh": "这所大学自2020年以来一直在扩建其研究设施。"
+        }
+      ]
+    },
+    {
+      "title": "强调最近一段时间反复发生的行为",
+      "description": "当某个行为在最近一段时间内频繁或反复发生，并且与当前情况相关时，可以使用现在完成进行时。常见时间表达包括recently、lately、these days和over the past few weeks。",
+      "examples": [
+        {
+          "en": "I have been reading more academic articles recently.",
+          "zh": "我最近一直在阅读更多学术文章。"
+        },
+        {
+          "en": "Consumers have been spending more on digital services lately.",
+          "zh": "消费者最近一直在数字服务上花费更多。"
+        }
+      ]
+    },
+    {
+      "title": "解释现在可见结果的原因",
+      "description": "如果某个动作刚刚结束或仍在进行，并导致现在能看到的结果，可以使用现在完成进行时。该用法强调“为什么现在会这样”。",
+      "examples": [
+        {
+          "en": "The ground is wet because it has been raining all morning.",
+          "zh": "地面是湿的，因为整个上午一直在下雨。"
+        },
+        {
+          "en": "He looks exhausted because he has been working on his dissertation all night.",
+          "zh": "他看起来很疲惫，因为他整晚都在写论文。"
+        }
+      ]
+    },
+    {
+      "title": "描述长期趋势或持续变化",
+      "description": "在IELTS写作Task 1和PTE Summarize Written Text中，现在完成进行时可用于描述从过去延续到现在的趋势、变化或发展过程，尤其适合表达动态变化而非静态事实。",
+      "examples": [
+        {
+          "en": "The proportion of renewable energy use has been increasing steadily over the past decade.",
+          "zh": "在过去十年中，可再生能源使用比例一直在稳步上升。"
+        },
+        {
+          "en": "Urban populations have been growing rapidly in many developing countries.",
+          "zh": "许多发展中国家的城市人口一直在快速增长。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I am studying English for three years.",
+      "correct": "I have been studying English for three years.",
+      "explanation": "中文学习者常用现在进行时直接表达“已经持续多久”，但英语中如果动作从过去持续到现在，应使用现在完成进行时，而不是am/is/are doing。"
+    },
+    {
+      "wrong": "She has been learn English since 2021.",
+      "correct": "She has been learning English since 2021.",
+      "explanation": "现在完成进行时中的主要动词必须使用V-ing形式。been后不能接动词原形learn，应改为learning。"
+    },
+    {
+      "wrong": "They have been working here yesterday.",
+      "correct": "They worked here yesterday.",
+      "explanation": "现在完成进行时不能与明确的过去时间点yesterday单独搭配。如果强调昨天发生的事情，应使用一般过去时。"
+    },
+    {
+      "wrong": "The number of international students has been increased recently.",
+      "correct": "The number of international students has been increasing recently.",
+      "explanation": "has been increased是被动结构，意思是“被增加”，通常不适合描述数量自然上升。若强调趋势持续上升，应使用has been increasing。"
+    },
+    {
+      "wrong": "I have been knowing him for five years.",
+      "correct": "I have known him for five years.",
+      "explanation": "know、believe、own、understand等状态动词通常不用于进行时。表达“认识某人多久”应使用现在完成时，而不是现在完成进行时。"
+    },
+    {
+      "wrong": "Have you been finished your essay?",
+      "correct": "Have you finished your essay?",
+      "explanation": "finish强调完成结果，通常用现在完成时。现在完成进行时强调过程，如Have you been working on your essay?表示“你一直在写作文吗？”"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "中高频",
+    "description": "现在完成进行时在PTE中常出现在口语复述、写作总结、听力填空和阅读理解中。它适合表达持续研究、长期变化、近期趋势和个人备考经历。在PTE Speaking的Describe Image中，考生可用该时态描述图表中从过去延续到现在的增长或下降趋势；在Summarize Written Text中，可用它概括研究、政策或社会现象的持续发展；在Essay中，它能帮助考生写出更自然的因果分析和背景陈述。",
+    "sections": [
+      "Speaking: Describe Image",
+      "Speaking: Retell Lecture",
+      "Writing: Summarize Written Text",
+      "Writing: Essay",
+      "Reading: Fill in the Blanks",
+      "Listening: Fill in the Blanks",
+      "Listening: Summarize Spoken Text"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Researchers have been investigating whether + clause.",
+      "translation": "研究人员一直在调查是否……"
+    },
+    {
+      "pattern": "The government has been implementing policies to + verb.",
+      "translation": "政府一直在实施政策以……"
+    },
+    {
+      "pattern": "The data have been showing a gradual increase in + noun.",
+      "translation": "数据显示……一直呈现逐渐上升的趋势。"
+    },
+    {
+      "pattern": "Scholars have been debating the extent to which + clause.",
+      "translation": "学者们一直在讨论……在多大程度上……"
+    },
+    {
+      "pattern": "More attention has been being paid to + noun.",
+      "translation": "越来越多的关注一直被放在……上。"
+    },
+    {
+      "pattern": "Companies have been investing heavily in + noun.",
+      "translation": "企业一直在大力投资……"
+    },
+    {
+      "pattern": "The population has been shifting from + noun + to + noun.",
+      "translation": "人口一直在从……转向……"
+    },
+    {
+      "pattern": "Educators have been exploring new ways to + verb.",
+      "translation": "教育工作者一直在探索……的新方法。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "have been increasing steadily",
+      "translation": "一直在稳步增长"
+    },
+    {
+      "phrase": "has been declining gradually",
+      "translation": "一直在逐渐下降"
+    },
+    {
+      "phrase": "have been working on a project",
+      "translation": "一直在做一个项目"
+    },
+    {
+      "phrase": "has been studying for the exam",
+      "translation": "一直在为考试学习"
+    },
+    {
+      "phrase": "have been conducting research",
+      "translation": "一直在开展研究"
+    },
+    {
+      "phrase": "has been receiving considerable attention",
+      "translation": "一直受到相当多的关注"
+    },
+    {
+      "phrase": "have been facing serious challenges",
+      "translation": "一直面临严重挑战"
+    },
+    {
+      "phrase": "has been changing rapidly",
+      "translation": "一直在快速变化"
+    },
+    {
+      "phrase": "have been relying on technology",
+      "translation": "一直依赖技术"
+    },
+    {
+      "phrase": "has been contributing to economic growth",
+      "translation": "一直在促进经济增长"
+    }
+  ],
+  "ai_tips": [
+    "如果句子中出现for、since、over the past few years，并且动词强调“持续做某事”，优先考虑现在完成进行时。",
+    "写PTE或IELTS作文时，使用has/have been V-ing可以让背景描述更有动态感，例如强调社会现象一直在发展。",
+    "不要把所有“已经”都翻译成have been doing；如果强调结果或次数，应使用现在完成时，例如I have finished three essays.",
+    "图表题中描述持续趋势时，可以用has been rising、has been falling、has been fluctuating，但要避免与具体过去时间点直接连用。",
+    "状态动词通常不用现在完成进行时；表达长期状态时使用现在完成时，如The issue has existed for decades."
+  ],
+  "practice_questions": [
+    {
+      "question": "用现在完成进行时改写句子：I started preparing for IELTS two months ago, and I am still preparing now.",
+      "answer": "I have been preparing for IELTS for two months."
+    },
+    {
+      "question": "选择正确句子：A. She has been worked on her essay since Monday. B. She has been working on her essay since Monday.",
+      "answer": "B. She has been working on her essay since Monday."
+    },
+    {
+      "question": "判断并改错：The unemployment rate has been increased over the past year.",
+      "answer": "错误。应改为：The unemployment rate has been increasing over the past year. 这里描述失业率持续上升的趋势，应使用现在完成进行时主动结构。"
+    },
+    {
+      "question": "翻译：在过去十年中，越来越多的学生一直在选择在线课程。",
+      "answer": "Over the past decade, more students have been choosing online courses."
+    },
+    {
+      "question": "填空：Researchers ______ ______ ______ the impact of social media on teenagers. 使用have/has been + V-ing。",
+      "answer": "have been examining"
+    },
+    {
+      "question": "选择合适时态：I have known / have been knowing this professor for five years.",
+      "answer": "I have known this professor for five years. know是状态动词，通常不用进行时。"
+    },
+    {
+      "question": "用现在完成进行时造句，表达“这个城市最近一直在改善公共交通”。",
+      "answer": "The city has been improving its public transport system recently."
+    },
+    {
+      "question": "改写为疑问句：They have been conducting research on climate change.",
+      "answer": "Have they been conducting research on climate change?"
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "slug": "conditional-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "条件状语从句",
+    "en": "Conditional Clauses"
+  },
+  "difficulty": "Intermediate to Advanced",
+  "summary": {
+    "zh": "条件状语从句用于表达某一条件与其结果之间的逻辑关系，常由 if, unless, provided that, as long as, in case, on condition that 等引导。在 PTE Academic 和 IELTS 写作、口语及听力中，条件句常用于分析原因与结果、提出假设、讨论政策影响、说明研究限制以及表达让步性条件。中国学习者常见问题包括在 if 从句中误用 will、混淆真实条件与虚拟条件、主从句时态不一致，以及把 unless 与 if not 完全等同使用。掌握条件句不仅有助于提高语法准确性，也能增强学术表达中的逻辑性和论证深度。"
+  },
+  "structure": {
+    "formula": "Conditional clause + main clause / Main clause + conditional clause；常见结构包括：If + present simple, will/can/may + verb；If + past simple, would/could/might + verb；If + past perfect, would/could/might have + past participle；Unless/Provided that/As long as + clause, main clause.",
+    "explanation": "条件状语从句由条件从句和主句组成。条件从句说明某个条件，主句说明在该条件下可能发生、将会发生、已经可能发生但实际未发生的结果。条件句可分为零条件句、第一条件句、第二条件句、第三条件句和混合条件句。零条件句描述普遍事实或规律；第一条件句描述真实且可能发生的未来情况；第二条件句描述现在或未来不太真实、假设性的情况；第三条件句描述过去未发生的假设及其结果；混合条件句则连接过去条件与现在结果，或现在条件与过去结果。在正式学术写作中，provided that, assuming that, in the event that, should, were, had 等结构可使表达更精准、正式。",
+    "examples": [
+      {
+        "en": "If governments invest more in public transport, urban pollution will decline over time.",
+        "zh": "如果政府加大对公共交通的投资，城市污染将随着时间逐渐下降。"
+      },
+      {
+        "en": "If students had received clearer instructions, they would have completed the task more efficiently.",
+        "zh": "如果学生当时获得了更清晰的指示，他们本可以更高效地完成任务。"
+      },
+      {
+        "en": "Provided that the data are reliable, the conclusion can be considered valid.",
+        "zh": "只要数据可靠，该结论就可以被认为是有效的。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达真实条件和未来结果",
+      "description": "第一条件句用于说明某个条件在未来可能实现，并由此产生相应结果。在 IELTS Task 2 和 PTE Essay 中，这类结构常用于提出政策建议或预测社会影响。注意 if 从句通常使用一般现在时，而主句使用 will, can, may 或 be likely to。",
+      "examples": [
+        {
+          "en": "If schools introduce financial literacy courses, students will be better prepared for adulthood.",
+          "zh": "如果学校开设金融素养课程，学生将更好地为成年生活做准备。"
+        },
+        {
+          "en": "If companies adopt flexible working arrangements, employee satisfaction may increase.",
+          "zh": "如果公司采用灵活工作安排，员工满意度可能会提高。"
+        }
+      ]
+    },
+    {
+      "title": "表达假设、不现实或可能性较低的情况",
+      "description": "第二条件句用于讨论与现在事实相反或可能性较低的情况，常用于口语和议论文中表达假设性观点。结构为 If + past simple, would/could/might + verb。这里的过去时不表示过去时间，而表示假设距离感。",
+      "examples": [
+        {
+          "en": "If more people worked from home, traffic congestion would be less severe.",
+          "zh": "如果更多人在家办公，交通拥堵就不会那么严重。"
+        },
+        {
+          "en": "If I were responsible for urban planning, I would prioritize green spaces.",
+          "zh": "如果我负责城市规划，我会优先考虑绿地建设。"
+        }
+      ]
+    },
+    {
+      "title": "讨论过去未发生的条件及结果",
+      "description": "第三条件句用于分析过去没有发生的事情及其可能结果。在学术写作中，这一结构可用于反事实分析，例如讨论历史决策、实验结果或个人经历。结构为 If + past perfect, would/could/might have + past participle。",
+      "examples": [
+        {
+          "en": "If the researchers had included a larger sample, the findings might have been more representative.",
+          "zh": "如果研究人员当时纳入了更大的样本，研究结果可能会更具代表性。"
+        },
+        {
+          "en": "If the policy had been implemented earlier, its social benefits could have been greater.",
+          "zh": "如果该政策更早实施，其社会效益本可以更大。"
+        }
+      ]
+    },
+    {
+      "title": "使用正式条件连接词增强学术表达",
+      "description": "在 PTE Summarize Written Text、Essay 和 IELTS Writing 中，使用 provided that, as long as, assuming that, in the event that 等表达可以使条件关系更正式、更精确。这些连接词常用于描述限制条件、研究前提或政策执行条件。",
+      "examples": [
+        {
+          "en": "The proposed reform will be effective, provided that adequate funding is secured.",
+          "zh": "只要获得充足资金，所提出的改革就会有效。"
+        },
+        {
+          "en": "Assuming that current trends continue, demand for renewable energy will rise significantly.",
+          "zh": "假设当前趋势持续，对可再生能源的需求将显著上升。"
+        }
+      ]
+    },
+    {
+      "title": "省略 if 的倒装条件句",
+      "description": "在正式英语中，if 可被省略，并通过 should, were, had 提前形成倒装结构。这种结构常见于学术文章、正式演讲和高分作文中，但口语中使用频率较低。",
+      "examples": [
+        {
+          "en": "Should the evidence prove inconclusive, further research will be required.",
+          "zh": "如果证据不能得出明确结论，就需要进一步研究。"
+        },
+        {
+          "en": "Had the authorities responded more quickly, the damage could have been reduced.",
+          "zh": "如果当局当时反应更迅速，损失本可以减少。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "If the government will invest more money, public services will improve.",
+      "correct": "If the government invests more money, public services will improve.",
+      "explanation": "在第一条件句中，if 从句通常不用 will，而用一般现在时表示未来条件。中文可以说“如果将会投资”，但英文条件从句一般不直接使用 will，除非 will 表示意愿。"
+    },
+    {
+      "wrong": "If I will have time, I will attend the seminar.",
+      "correct": "If I have time, I will attend the seminar.",
+      "explanation": "if 从句表示将来可能发生的条件时，动词用一般现在时。中国学习者容易受中文“如果我将有时间”的影响，误把两个分句都写成 will。"
+    },
+    {
+      "wrong": "If I am you, I would choose a more reliable source.",
+      "correct": "If I were you, I would choose a more reliable source.",
+      "explanation": "表达与现实相反的假设时，应使用虚拟语气。固定表达是 If I were you，而不是 If I am you。"
+    },
+    {
+      "wrong": "If the data was accurate, the conclusion would be valid.",
+      "correct": "If the data were accurate, the conclusion would be valid.",
+      "explanation": "在正式虚拟条件句中，be 动词常用 were，尤其在学术写作中更显正式。data 在学术英语中也常被视为复数，因此 were 更自然。"
+    },
+    {
+      "wrong": "If the policy was implemented earlier, it would have helped more people.",
+      "correct": "If the policy had been implemented earlier, it would have helped more people.",
+      "explanation": "这里讨论的是过去没有发生的情况，应使用第三条件句：If + past perfect, would have + past participle。"
+    },
+    {
+      "wrong": "Unless the government does not act quickly, the problem will worsen.",
+      "correct": "Unless the government acts quickly, the problem will worsen.",
+      "explanation": "unless 本身表示 if not，因此通常不再与 not 连用。错误句出现了双重否定，使逻辑混乱。"
+    },
+    {
+      "wrong": "If technology develops fast, people would lose many jobs.",
+      "correct": "If technology develops fast, people may lose many jobs.",
+      "explanation": "如果条件是真实且可能发生的未来情况，主句应使用 will, may, can 等，而不是 would。would 通常用于假设性较强或不真实的条件。"
+    },
+    {
+      "wrong": "If people would recycle more, the environment would improve.",
+      "correct": "If people recycled more, the environment would improve.",
+      "explanation": "第二条件句中，if 从句应使用过去式 recycled，而不是 would recycle。would 通常出现在主句中表达假设结果。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "条件状语从句在 PTE Academic 中使用频率较高，尤其体现在 Essay、Summarize Written Text、Listening Fill in the Blanks、Reading & Writing Fill in the Blanks 和 Retell Lecture 中。考生需要识别条件连接词所引导的逻辑关系，并在写作中准确表达假设、前提、限制和结果。高分答案通常不仅使用 if，还会灵活使用 provided that, assuming that, as long as, in the event that, should 等正式结构，以体现语法多样性和逻辑清晰度。",
+    "sections": [
+      "Writing Essay",
+      "Summarize Written Text",
+      "Reading & Writing Fill in the Blanks",
+      "Reading Fill in the Blanks",
+      "Listening Fill in the Blanks",
+      "Highlight Incorrect Words",
+      "Retell Lecture",
+      "Summarize Spoken Text"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "If + subject + present simple, subject + will/may/can + base verb.",
+      "translation": "如果……，……将会/可能/能够……。用于表达真实且可能发生的未来条件。"
+    },
+    {
+      "pattern": "If + subject + past simple, subject + would/could/might + base verb.",
+      "translation": "如果……，……就会/可能会……。用于表达不真实、假设性或可能性较低的情况。"
+    },
+    {
+      "pattern": "If + subject + had + past participle, subject + would/could/might have + past participle.",
+      "translation": "如果过去已经……，……本来会/可能已经……。用于表达过去未发生的假设。"
+    },
+    {
+      "pattern": "Provided that + clause, main clause.",
+      "translation": "只要……，就……。用于说明某一结果成立的必要前提，语气正式。"
+    },
+    {
+      "pattern": "As long as + clause, main clause.",
+      "translation": "只要……，就……。语气比 provided that 略自然，可用于写作和口语。"
+    },
+    {
+      "pattern": "Assuming that + clause, main clause.",
+      "translation": "假设……，那么……。常用于预测、数据分析和学术讨论。"
+    },
+    {
+      "pattern": "In the event that + clause, main clause.",
+      "translation": "如果发生……，那么……。用于正式语境，强调应对某种可能情况。"
+    },
+    {
+      "pattern": "Should + subject + base verb, main clause.",
+      "translation": "如果……，……。这是省略 if 的正式倒装条件句，常用于书面语。"
+    },
+    {
+      "pattern": "Were + subject + to + base verb, main clause.",
+      "translation": "如果……将要/竟然……，……。用于正式假设，语气较书面。"
+    },
+    {
+      "pattern": "Had + subject + past participle, main clause.",
+      "translation": "如果过去已经……，……本来会……。用于正式表达过去反事实条件。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "meet the condition",
+      "translation": "满足条件"
+    },
+    {
+      "phrase": "under certain conditions",
+      "translation": "在某些条件下"
+    },
+    {
+      "phrase": "provided that sufficient evidence is available",
+      "translation": "只要有充分证据"
+    },
+    {
+      "phrase": "assuming that the trend continues",
+      "translation": "假设该趋势持续"
+    },
+    {
+      "phrase": "in the event of an emergency",
+      "translation": "在紧急情况下"
+    },
+    {
+      "phrase": "if necessary",
+      "translation": "如有必要"
+    },
+    {
+      "phrase": "if possible",
+      "translation": "如果可能"
+    },
+    {
+      "phrase": "only if the criteria are met",
+      "translation": "只有在标准被满足的情况下"
+    },
+    {
+      "phrase": "on condition that",
+      "translation": "条件是；只要"
+    },
+    {
+      "phrase": "subject to approval",
+      "translation": "须经批准；以批准为条件"
+    }
+  ],
+  "ai_tips": [
+    "写 PTE Essay 时，不要只反复使用 if。可以根据语境替换为 provided that, assuming that, as long as 或 in the event that，以提升语法多样性。",
+    "判断条件句类型时，先看时间：现在规律用零条件句，未来可能用第一条件句，现在假设用第二条件句，过去反事实用第三条件句。",
+    "在 Reading Fill in the Blanks 中，看到 unless, provided that, as long as 等词时，要优先判断前后是否存在“条件—结果”逻辑。",
+    "在口语中使用条件句时，保持结构简洁比追求复杂更重要。例如 If governments invest in education, society will benefit 是清晰且高效的表达。",
+    "正式写作中可以适当使用倒装条件句，如 Should this trend continue，但不要过度使用，否则会显得不自然。"
+  ],
+  "practice_questions": [
+    {
+      "question": "Choose the correct sentence: A. If the city will build more parks, residents will be healthier. B. If the city builds more parks, residents will be healthier.",
+      "answer": "B。第一条件句中 if 从句使用一般现在时 builds，主句使用 will be healthier。"
+    },
+    {
+      "question": "Complete the sentence: If more people ______ public transport, traffic congestion would decrease.",
+      "answer": "used。该句为第二条件句，表示假设情况，结构为 If + past simple, would + base verb。"
+    },
+    {
+      "question": "Rewrite using a formal conditional structure: If the results are reliable, the theory can be supported.",
+      "answer": "Provided that the results are reliable, the theory can be supported."
+    },
+    {
+      "question": "Correct the mistake: Unless students do not practice regularly, their speaking skills will not improve.",
+      "answer": "Unless students practice regularly, their speaking skills will not improve. unless 已经表示 if not，通常不再加 not。"
+    },
+    {
+      "question": "Complete the third conditional: If the company had invested in training, employee productivity ______.",
+      "answer": "would have improved。完整句为 If the company had invested in training, employee productivity would have improved."
+    },
+    {
+      "question": "Translate into English: 如果政府更早采取行动，空气质量本可以得到改善。",
+      "answer": "If the government had taken action earlier, air quality could have improved."
+    },
+    {
+      "question": "Rewrite with inversion: If the evidence proves insufficient, further investigation will be necessary.",
+      "answer": "Should the evidence prove insufficient, further investigation will be necessary."
+    },
+    {
+      "question": "Identify the type of conditional: If water reaches 100 degrees Celsius, it boils.",
+      "answer": "Zero conditional。该句描述科学事实或普遍规律。"
+    },
+    {
+      "question": "Choose the more academic option: A. If there is enough funding, the project will continue. B. Provided that adequate funding is secured, the project will continue.",
+      "answer": "B。Provided that adequate funding is secured 更正式，适合学术写作。"
+    },
+    {
+      "question": "Correct the sentence: If I were studied harder, I would get a higher score.",
+      "answer": "If I studied harder, I would get a higher score. 第二条件句中 if 从句使用过去式 studied，不需要 were studied，除非是被动语态。"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "slug": "non-finite-as-subject",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "非谓语作主语",
+    "en": "Non-finite as Subject"
+  },
+  "difficulty": "Intermediate to Advanced",
+  "summary": {
+    "zh": "非谓语动词作主语指用 gerund（动名词）或 to-infinitive（不定式）放在句首充当主语。该结构常用于学术写作、PTE Summarize Written Text、Write Essay、Read Aloud 和 IELTS Task 2 中，用来表达行为、观点、过程或抽象概念。一般来说，gerund 更强调一种活动、习惯或普遍事实；to-infinitive 更强调具体目标、选择、计划或评价。非谓语作主语通常被视为单数，因此谓语动词多用单数形式。为了避免句子头重脚轻，英语也常使用形式主语 it，把真正的非谓语主语放到句末。"
+  },
+  "structure": {
+    "formula": "Gerund phrase / To-infinitive phrase + singular verb + complement. 或 It + be + adjective/noun + to-infinitive phrase.",
+    "explanation": "当一个动作或行为本身成为句子的讨论对象时，可以使用非谓语结构作主语。Gerund phrase 通常由 V-ing 开头，可带宾语、状语或被动形式，如 reducing carbon emissions、being exposed to noise。To-infinitive phrase 由 to + base verb 构成，如 to address inequality、to improve public transport。二者作主语时，整个短语相当于一个名词性成分，谓语动词通常用单数。若主语部分较长，学术英语更倾向于使用 it 作形式主语，例如 It is essential to evaluate the evidence carefully.",
+    "examples": [
+      {
+        "en": "Reducing air pollution requires coordinated action from governments and individuals.",
+        "zh": "减少空气污染需要政府和个人的协调行动。"
+      },
+      {
+        "en": "To ignore the long-term effects of climate change is irresponsible.",
+        "zh": "忽视气候变化的长期影响是不负责任的。"
+      },
+      {
+        "en": "It is important to distinguish correlation from causation in academic research.",
+        "zh": "在学术研究中区分相关性和因果关系非常重要。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表达普遍行为或社会现象",
+      "description": "当句子讨论的是一种行为、趋势或社会现象本身时，常用 gerund 作主语。这种结构在 IELTS Writing Task 2 和 PTE Write Essay 中非常常见，适合引出观点或分析原因。",
+      "examples": [
+        {
+          "en": "Investing in early childhood education can reduce social inequality in the long run.",
+          "zh": "投资幼儿教育从长远来看可以减少社会不平等。"
+        },
+        {
+          "en": "Using public transport helps lower urban carbon emissions.",
+          "zh": "使用公共交通有助于降低城市碳排放。"
+        }
+      ]
+    },
+    {
+      "title": "强调目标、选择或未来行动",
+      "description": "To-infinitive 作主语常用于表达目标、决定、计划或一种需要评估的行为。它比 gerund 更有方向感，常见于正式议论文和学术表达。",
+      "examples": [
+        {
+          "en": "To achieve sustainable development, governments must balance economic growth with environmental protection.",
+          "zh": "为了实现可持续发展，政府必须在经济增长与环境保护之间取得平衡。"
+        },
+        {
+          "en": "To rely solely on technology may create new ethical problems.",
+          "zh": "完全依赖技术可能会产生新的伦理问题。"
+        }
+      ]
+    },
+    {
+      "title": "使用形式主语 it 避免句子过重",
+      "description": "如果非谓语短语很长，直接放在句首会显得笨重。此时可用 it 作形式主语，把真正的 to-infinitive 放在句末，使句子更自然、更符合学术英语风格。",
+      "examples": [
+        {
+          "en": "It is necessary to consider both economic and social factors before implementing the policy.",
+          "zh": "在实施该政策之前，有必要同时考虑经济和社会因素。"
+        },
+        {
+          "en": "It is difficult to measure the full impact of online learning on students' motivation.",
+          "zh": "衡量在线学习对学生学习动机的全部影响是困难的。"
+        }
+      ]
+    },
+    {
+      "title": "使用被动非谓语结构表达客观性",
+      "description": "在学术写作中，being + past participle 或 to be + past participle 可以作主语，用于强调某一行为被执行或某一群体受到影响。该结构常用于讨论研究对象、社会群体或政策影响。",
+      "examples": [
+        {
+          "en": "Being exposed to excessive screen time may affect children's cognitive development.",
+          "zh": "过度接触屏幕时间可能会影响儿童的认知发展。"
+        },
+        {
+          "en": "To be excluded from digital services can deepen social disadvantage.",
+          "zh": "被排除在数字服务之外可能会加深社会弱势。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Learn English is important for international students.",
+      "correct": "Learning English is important for international students.",
+      "explanation": "动词原形 learn 不能直接作主语。作主语时应使用 gerund，即 Learning English，表示“学习英语这件事”。"
+    },
+    {
+      "wrong": "To improving public health requires long-term investment.",
+      "correct": "Improving public health requires long-term investment.",
+      "explanation": "to 后面不能接 V-ing 作不定式结构。可以用 gerund 作主语：Improving public health；也可以说 To improve public health, governments need long-term investment，但这时 to improve 是目的状语，不是主语。"
+    },
+    {
+      "wrong": "Reducing waste are beneficial to the environment.",
+      "correct": "Reducing waste is beneficial to the environment.",
+      "explanation": "非谓语短语 Reducing waste 作主语时，整体被看作单数概念，因此谓语动词应使用 is，而不是 are。"
+    },
+    {
+      "wrong": "It is important improving students' critical thinking.",
+      "correct": "It is important to improve students' critical thinking.",
+      "explanation": "在 It is + adjective 结构中，后面通常接 to-infinitive，而不是直接接 V-ing。正确结构是 It is important to do something。"
+    },
+    {
+      "wrong": "To protect the environment is depend on public awareness.",
+      "correct": "Protecting the environment depends on public awareness.",
+      "explanation": "depend 是实义动词，不能与 is 同时作谓语。句子主语可用 gerund：Protecting the environment；谓语用 depends。"
+    },
+    {
+      "wrong": "Being improve education quality is a major priority.",
+      "correct": "Improving education quality is a major priority.",
+      "explanation": "being 后面不能接动词原形 improve。若表示主动行为，应使用 gerund：Improving education quality；若表示被动，应为 being improved，但此处语义不适合。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "High",
+    "description": "非谓语作主语在 PTE Academic 中出现频率较高，尤其体现在写作和阅读中的长句理解。PTE 评分关注语法准确性、句子结构多样性和表达的正式程度。使用 gerund 或 to-infinitive 作主语可以帮助考生构造更成熟的学术句式，例如 Reducing income inequality is essential for social stability. 在 Summarize Written Text 中，该结构有助于压缩信息；在 Write Essay 中，它能作为主题句或论证句；在 Reading & Writing: Fill in the Blanks 中，考生需要根据句法位置判断应选择 V-ing、to do 还是谓语动词形式。",
+    "sections": [
+      "Summarize Written Text",
+      "Write Essay",
+      "Reading & Writing: Fill in the Blanks",
+      "Reading: Fill in the Blanks",
+      "Read Aloud",
+      "Highlight Incorrect Words"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Doing something is essential for achieving something.",
+      "translation": "做某事对于实现某目标是必要的。"
+    },
+    {
+      "pattern": "Doing something plays a significant role in something.",
+      "translation": "做某事在某方面发挥重要作用。"
+    },
+    {
+      "pattern": "Doing something requires careful consideration of multiple factors.",
+      "translation": "做某事需要仔细考虑多个因素。"
+    },
+    {
+      "pattern": "To address this issue, it is necessary to do something.",
+      "translation": "为了解决这个问题，有必要做某事。"
+    },
+    {
+      "pattern": "To assume that something is always true would be misleading.",
+      "translation": "假设某事总是正确的会产生误导。"
+    },
+    {
+      "pattern": "It is crucial to evaluate the evidence before reaching a conclusion.",
+      "translation": "在得出结论之前，评估证据至关重要。"
+    },
+    {
+      "pattern": "It is difficult to determine whether this trend is beneficial in the long term.",
+      "translation": "很难判断这一趋势从长远来看是否有益。"
+    },
+    {
+      "pattern": "Being exposed to something may have long-term consequences.",
+      "translation": "接触某事物可能会产生长期后果。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "improving public health",
+      "translation": "改善公共健康"
+    },
+    {
+      "phrase": "reducing carbon emissions",
+      "translation": "减少碳排放"
+    },
+    {
+      "phrase": "addressing social inequality",
+      "translation": "解决社会不平等问题"
+    },
+    {
+      "phrase": "promoting economic growth",
+      "translation": "促进经济增长"
+    },
+    {
+      "phrase": "enhancing students' critical thinking",
+      "translation": "提升学生的批判性思维"
+    },
+    {
+      "phrase": "protecting personal privacy",
+      "translation": "保护个人隐私"
+    },
+    {
+      "phrase": "being exposed to harmful content",
+      "translation": "接触有害内容"
+    },
+    {
+      "phrase": "to evaluate the available evidence",
+      "translation": "评估现有证据"
+    },
+    {
+      "phrase": "to maintain social stability",
+      "translation": "维持社会稳定"
+    },
+    {
+      "phrase": "to achieve sustainable development",
+      "translation": "实现可持续发展"
+    }
+  ],
+  "ai_tips": [
+    "写作时如果句子开头是一个动作概念，优先考虑使用 V-ing 作主语，例如 Reducing waste is more practical than banning all plastic products.",
+    "如果想表达目的或评价某个行为，可使用 It is + adjective + to do，使句子更自然，例如 It is unreasonable to ignore the needs of low-income families.",
+    "检查非谓语作主语的句子时，先找到真正的谓语动词。不要把句首的 V-ing 或 to do 误判为谓语。",
+    "在 PTE 写作中，非谓语作主语适合用作主题句，但不要连续多句都用同一种开头，否则句式会显得单一。",
+    "遇到 Reading Fill in the Blanks 时，如果空格位于句首且后面已有谓语动词，答案很可能需要名词、gerund 或 to-infinitive，而不是过去式或第三人称单数谓语。"
+  ],
+  "practice_questions": [
+    {
+      "question": "选择正确形式填空：_____ renewable energy can reduce dependence on fossil fuels. (Use / Using / Used)",
+      "answer": "Using renewable energy can reduce dependence on fossil fuels. 解释：句首作主语，应使用 gerund：Using。"
+    },
+    {
+      "question": "改正错误：To learning a second language requires patience and consistent practice.",
+      "answer": "Learning a second language requires patience and consistent practice. 解释：to 后不能接 learning 构成不定式；此处应用 gerund 作主语。"
+    },
+    {
+      "question": "改写句子，使用形式主语 it：To assess the reliability of the data is essential.",
+      "answer": "It is essential to assess the reliability of the data. 解释：用 it 作形式主语可以让句子更自然，真正的主语 to assess the reliability of the data 放在句末。"
+    },
+    {
+      "question": "选择正确谓语：Protecting endangered species _____ a global responsibility. (is / are)",
+      "answer": "Protecting endangered species is a global responsibility. 解释：gerund phrase 作主语时整体视为单数，所以用 is。"
+    },
+    {
+      "question": "将中文翻译成英文：提高教育质量需要政府、学校和家庭的合作。",
+      "answer": "Improving the quality of education requires cooperation among governments, schools and families."
+    },
+    {
+      "question": "判断并改正：It is necessary reducing the cost of public transport.",
+      "answer": "It is necessary to reduce the cost of public transport. 解释：It is necessary 后通常接 to-infinitive。"
+    },
+    {
+      "question": "用非谓语作主语完成句子：_____ may widen the gap between urban and rural students. 提示：过度依赖在线教育",
+      "answer": "Relying excessively on online education may widen the gap between urban and rural students."
+    },
+    {
+      "question": "选择更适合学术写作的句子：A. People should improve public awareness is important. B. Improving public awareness is important.",
+      "answer": "B. Improving public awareness is important. 解释：A 句结构错误，People should improve public awareness 是完整分句，不能直接作主语；B 句使用 gerund phrase 作主语，结构正确。"
+    }
+  ]
+}

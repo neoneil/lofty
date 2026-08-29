@@ -1,0 +1,1951 @@
+{
+  "id": "ielts-writing-chart-task-expressions",
+  "slug": "chart-task-expressions",
+  "title": "雅思小作文数据表达库",
+  "subtitle": "按数据图小作文常见说法整理表达、AI 补充讲解，并保留原文 125 条经典例句。",
+  "exam": "IELTS",
+  "skill": "Writing",
+  "category": "Vocabulary",
+  "createdAt": "2026-08-05T00:00:00.000Z",
+  "updatedAt": "2026-08-05T00:00:00.000Z",
+  "sourceDocument": "写作/图表作文经典例句.doc",
+  "wordCount": 103,
+  "categoryCount": 8,
+  "exampleCount": 125,
+  "categories": [
+    {
+      "id": "ielts-writing-chart-1",
+      "categoryNumber": 1,
+      "slug": "rise-fall",
+      "title": "上升与下降",
+      "description": "用于描述数据增长、减少、回落、恢复、加速和放缓，是数据图小作文最核心的趋势语言。",
+      "aiFocus": "动词和名词结构要交替使用，例如 rise / an increase，避免整篇只写 increase 或 decrease。",
+      "itemCount": 17,
+      "exampleCount": 14,
+      "items": [
+        {
+          "number": 1,
+          "term": "go up / rise / increase",
+          "translation": "上升；增加",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "最基础的上升表达，可用于数量、比例、消费、产量等。正式写作中可以和 from...to... 或 by... 搭配。",
+          "variants": [
+            "climb",
+            "grow",
+            "edge up",
+            "see an increase"
+          ],
+          "raw": "go up / rise / increase 上升；增加"
+        },
+        {
+          "number": 2,
+          "term": "rise further to",
+          "translation": "进一步上升到",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调前面已经上升，随后继续升至某个数值，适合描述连续增长。",
+          "variants": [
+            "increase further to",
+            "climb further to"
+          ],
+          "raw": "rise further to 进一步上升到"
+        },
+        {
+          "number": 3,
+          "term": "be up on",
+          "translation": "比之前高",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "常用于比较两个年份或时期，句式简洁，适合写概述后的细节。",
+          "variants": [
+            "be higher than",
+            "show an increase on"
+          ],
+          "raw": "be up on 比之前高"
+        },
+        {
+          "number": 4,
+          "term": "plunge / plummet",
+          "translation": "暴跌；急剧下降",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示幅度很大、速度很快的下降，语气强于 fall 和 decline。",
+          "variants": [
+            "drop sharply",
+            "fall dramatically",
+            "collapse"
+          ],
+          "raw": "plunge / plummet 暴跌；急剧下降"
+        },
+        {
+          "number": 5,
+          "term": "fall / decline / drop",
+          "translation": "下降；减少",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "通用下降表达。fall 偏自然变化，decline 更正式，drop 更直接。",
+          "variants": [
+            "decrease",
+            "dip",
+            "go down"
+          ],
+          "raw": "fall / decline / drop 下降；减少"
+        },
+        {
+          "number": 6,
+          "term": "a steady decline",
+          "translation": "稳定下降",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调下降过程持续且平缓，可作名词短语放在 after / during 后面。",
+          "variants": [
+            "a gradual fall",
+            "a consistent decrease"
+          ],
+          "raw": "a steady decline 稳定下降"
+        },
+        {
+          "number": 7,
+          "term": "start to rise",
+          "translation": "开始上升",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于转折点，说明此前趋势结束，新的增长趋势开始。",
+          "variants": [
+            "begin to increase",
+            "start climbing"
+          ],
+          "raw": "start to rise 开始上升"
+        },
+        {
+          "number": 8,
+          "term": "grow steadily",
+          "translation": "稳定增长",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调增长速度平稳，没有剧烈波动。",
+          "variants": [
+            "increase consistently",
+            "rise at a steady pace"
+          ],
+          "raw": "grow steadily 稳定增长"
+        },
+        {
+          "number": 9,
+          "term": "a drop of",
+          "translation": "下降了多少",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "名词结构，适合和具体百分比或数值搭配。",
+          "variants": [
+            "a fall of",
+            "a decline of"
+          ],
+          "raw": "a drop of 下降了多少"
+        },
+        {
+          "number": 10,
+          "term": "roughly double",
+          "translation": "大约翻倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示数值接近两倍，不必精确等于两倍。",
+          "variants": [
+            "almost double",
+            "approximately double"
+          ],
+          "raw": "roughly double 大约翻倍"
+        },
+        {
+          "number": 11,
+          "term": "be lost at the rate of",
+          "translation": "以某速度流失",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "常用于土地、资源、人口等持续减少的语境。",
+          "variants": [
+            "decline at a rate of",
+            "be reduced by"
+          ],
+          "raw": "be lost at the rate of 以某速度流失"
+        },
+        {
+          "number": 12,
+          "term": "top",
+          "translation": "达到；突破",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "作为动词表示达到某个高数值，适合销售额、出口额、总量。",
+          "variants": [
+            "reach",
+            "exceed",
+            "surpass"
+          ],
+          "raw": "top 达到；突破"
+        },
+        {
+          "number": 13,
+          "term": "be on the rise",
+          "translation": "处于上升趋势",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "名词化趋势表达，适合放在概述或背景句中。",
+          "variants": [
+            "show an upward trend",
+            "be increasing"
+          ],
+          "raw": "be on the rise 处于上升趋势"
+        },
+        {
+          "number": 14,
+          "term": "be in decline",
+          "translation": "处于下降趋势",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "对应 be on the rise，强调整体处于减少状态。",
+          "variants": [
+            "show a downward trend",
+            "be decreasing"
+          ],
+          "raw": "be in decline 处于下降趋势"
+        },
+        {
+          "number": 15,
+          "term": "lead to fewer",
+          "translation": "导致更少",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于解释变化结果，适合结果类数据或预测数据。",
+          "variants": [
+            "result in fewer",
+            "bring about a reduction in"
+          ],
+          "raw": "lead to fewer 导致更少"
+        },
+        {
+          "number": 16,
+          "term": "moderate",
+          "translation": "放缓；趋缓",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "表示增长、通胀或变化速度下降，但不一定变成负增长。",
+          "variants": [
+            "slow",
+            "ease",
+            "level off"
+          ],
+          "raw": "moderate 放缓；趋缓"
+        },
+        {
+          "number": 17,
+          "term": "reflect a drop / increase",
+          "translation": "反映下降/上升",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于把图中差距、比例变化和背后数据连接起来。",
+          "variants": [
+            "indicate a decline",
+            "represent an increase"
+          ],
+          "raw": "reflect a drop / increase 反映下降/上升"
+        }
+      ],
+      "examples": [
+        {
+          "number": 1,
+          "text": "The proportion of the people who were divorced went up from 2.5% in 1981 to 7.5% in 1991, rising further to 8% in 2001."
+        },
+        {
+          "number": 2,
+          "text": "The crop yields worldwide in 1990 were 15% up on those of 1985."
+        },
+        {
+          "number": 3,
+          "text": "The number of shoppers during the Christmas period plunged by up to 23 per cent since then on."
+        },
+        {
+          "number": 4,
+          "text": "After five years of steady decline, the high-school drop-out rate started to rise."
+        },
+        {
+          "number": 5,
+          "text": "Oil consumption grew steadily from 1980 to 2000, apart from in 1990, when there was a drop of 5 per cent."
+        },
+        {
+          "number": 6,
+          "text": "House prices fell as much as 40% between 1980 and 1985, compared with the period 1986 to 1990, when prices roughly doubled."
+        },
+        {
+          "number": 7,
+          "text": "Arable land was being lost at the rate of over 38 thousand square miles per year throughout the 1980s."
+        },
+        {
+          "number": 8,
+          "text": "Exports topped $10 billion in 2006, with those to Asia Pacific in excess of $2 billion."
+        },
+        {
+          "number": 9,
+          "text": "The smoking rate in young girls was on the rise, similar to that among adult women."
+        },
+        {
+          "number": 10,
+          "text": "Motorcycle casualties were in decline, down from a total of 54,037 in 1995 to 38,090 in 2000."
+        },
+        {
+          "number": 11,
+          "text": "Gender equality would lead to 13.4 million fewer homeless children, a 13% reduction."
+        },
+        {
+          "number": 12,
+          "text": "Inflation is likely to moderate through the early months of 2007."
+        },
+        {
+          "number": 13,
+          "text": "The number of married couples showed a significant decline, accounting for 50.7% of the adult population, compared with 68% in 1971."
+        },
+        {
+          "number": 14,
+          "text": "The smaller gap between movie-goers and television viewers reflected a 5% drop in the number of people who go to the cinema and a 1.2% increase in those who enjoy watching TV at home."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-2",
+      "categoryNumber": 2,
+      "slug": "proportion-composition",
+      "title": "占比与构成",
+      "description": "用于饼图、堆叠柱图、人口结构、支出构成和类别比例。",
+      "aiFocus": "注意 constitute / comprise / account for 的主语不同：类别 account for 比例，整体 is composed of 类别。",
+      "itemCount": 8,
+      "exampleCount": 4,
+      "items": [
+        {
+          "number": 1,
+          "term": "constitute",
+          "translation": "构成；占据",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "正式表达，主语通常是某个群体或类别，后接整体中的比例。",
+          "variants": [
+            "represent",
+            "form",
+            "make up"
+          ],
+          "raw": "constitute 构成；占据"
+        },
+        {
+          "number": 2,
+          "term": "account for",
+          "translation": "占据；占比为",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "雅思小作文高频表达，主语是组成部分，宾语是比例或整体份额。",
+          "variants": [
+            "make up",
+            "represent",
+            "take up"
+          ],
+          "raw": "account for 占据；占比为"
+        },
+        {
+          "number": 3,
+          "term": "comprise",
+          "translation": "包括；由……组成",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "可表示某类别占整体，也可表示整体由若干部分组成；写作时注意主谓关系。",
+          "variants": [
+            "consist of",
+            "be made up of"
+          ],
+          "raw": "comprise 包括；由……组成"
+        },
+        {
+          "number": 4,
+          "term": "make up",
+          "translation": "构成；占",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "比 constitute 更自然，适合多数图表语境。",
+          "variants": [
+            "represent",
+            "account for"
+          ],
+          "raw": "make up 构成；占"
+        },
+        {
+          "number": 5,
+          "term": "be composed of",
+          "translation": "由……组成",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "主语通常是整体，后面列出多个组成部分及比例。",
+          "variants": [
+            "be made up of",
+            "consist of"
+          ],
+          "raw": "be composed of 由……组成"
+        },
+        {
+          "number": 6,
+          "term": "as a percentage of",
+          "translation": "作为……的百分比",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于描述某项在家庭支出、人口、预算中的占比。",
+          "variants": [
+            "as a proportion of",
+            "as a share of"
+          ],
+          "raw": "as a percentage of 作为……的百分比"
+        },
+        {
+          "number": 7,
+          "term": "nearly half of",
+          "translation": "将近一半",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "近似比例表达，避免所有数据都写精确百分比。",
+          "variants": [
+            "almost half",
+            "close to half"
+          ],
+          "raw": "nearly half of 将近一半"
+        },
+        {
+          "number": 8,
+          "term": "the rest",
+          "translation": "其余部分",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "当已列出主要部分后，用 the rest 简洁收尾。",
+          "variants": [
+            "the remaining share",
+            "the remainder"
+          ],
+          "raw": "the rest 其余部分"
+        }
+      ],
+      "examples": [
+        {
+          "number": 15,
+          "text": "Volunters constitute nearly half of the work force of the health care sector."
+        },
+        {
+          "number": 16,
+          "text": "While Asians account for 11 per cent of the American population, Hispanics comprise 8 per cent."
+        },
+        {
+          "number": 17,
+          "text": "Women make up 52 per cent of the population of Britain."
+        },
+        {
+          "number": 18,
+          "text": "Landfill is composed of 36% municipal waste, 24% commercial and industrial waste and 40% construction waste."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-3",
+      "categoryNumber": 3,
+      "slug": "multiples",
+      "title": "倍数与差距",
+      "description": "用于描述两组数据之间的倍数关系、更多/更少、差额和差距扩大。",
+      "aiFocus": "倍数表达要区分 twice as...as、three times as often as、four times more than 等结构。",
+      "itemCount": 8,
+      "exampleCount": 8,
+      "items": [
+        {
+          "number": 1,
+          "term": "more than double",
+          "translation": "超过两倍；翻了一倍多",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调增长后数值超过原来的两倍，适合明显增长的数据。",
+          "variants": [
+            "over double",
+            "more than twice as much as"
+          ],
+          "raw": "more than double 超过两倍；翻了一倍多"
+        },
+        {
+          "number": 2,
+          "term": "twice as likely to",
+          "translation": "可能性是……的两倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于概率、风险、倾向，不直接用于数量。",
+          "variants": [
+            "twice as prone to",
+            "twice as likely as"
+          ],
+          "raw": "twice as likely to 可能性是……的两倍"
+        },
+        {
+          "number": 3,
+          "term": "three times as often as",
+          "translation": "频率是……的三倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于频次比较，例如使用互联网、出行、参与活动。",
+          "variants": [
+            "three times more frequently than"
+          ],
+          "raw": "three times as often as 频率是……的三倍"
+        },
+        {
+          "number": 4,
+          "term": "almost twice as many as",
+          "translation": "数量几乎是……的两倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "主语通常是可数名词数量。",
+          "variants": [
+            "nearly double the number of"
+          ],
+          "raw": "almost twice as many as 数量几乎是……的两倍"
+        },
+        {
+          "number": 5,
+          "term": "50% more than",
+          "translation": "比……多 50%",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调相对差距，不等于占比为 50%。",
+          "variants": [
+            "half as much again as"
+          ],
+          "raw": "50% more than 比……多 50%"
+        },
+        {
+          "number": 6,
+          "term": "four times more than",
+          "translation": "比……多四倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "语气强，适合金额、损失、数量等差距。",
+          "variants": [
+            "fourfold higher than"
+          ],
+          "raw": "four times more than 比……多四倍"
+        },
+        {
+          "number": 7,
+          "term": "jump 1.5 times to",
+          "translation": "跃升 1.5 倍至",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "把倍数变化和最终数值放在同一句里。",
+          "variants": [
+            "increase by 1.5 times to"
+          ],
+          "raw": "jump 1.5 times to 跃升 1.5 倍至"
+        },
+        {
+          "number": 8,
+          "term": "three times more than",
+          "translation": "比……多三倍",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于总量差距，后面常接 the number / figure in another year。",
+          "variants": [
+            "triple the figure for"
+          ],
+          "raw": "three times more than 比……多三倍"
+        }
+      ],
+      "examples": [
+        {
+          "number": 19,
+          "text": "Rent as a percentage of the household expenditure more than doubled between 1974 and 1998, from 5% to 12%."
+        },
+        {
+          "number": 20,
+          "text": "Britons were twice as likely to die from heart attacks as Italians and three times as Chinese."
+        },
+        {
+          "number": 21,
+          "text": "Women work as child minders in the under-35 age group in 1995 were almost twice as many as in 1990."
+        },
+        {
+          "number": 22,
+          "text": "Television was twice as popular as washing machine in 1990,with close to 10 per cent of households owning one TV set at home."
+        },
+        {
+          "number": 23,
+          "text": "Young people used the Internet more than three times as often as the general population in 1999."
+        },
+        {
+          "number": 24,
+          "text": "The study found that people who earned more than $100,000 received nearly 50% more junk mails than lower earners."
+        },
+        {
+          "number": 25,
+          "text": "It also found that those on higher incomes lost on average four times more money than other victims in property-related crime."
+        },
+        {
+          "number": 26,
+          "text": "China's agricultural trade deficit against US jumped 1.5 times to $35 billion over the five-year period."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-4",
+      "categoryNumber": 4,
+      "slug": "data-reading",
+      "title": "读数与比例",
+      "description": "用于精确读图、近似读数、分数、总量、人均值和调查结果描述。",
+      "aiFocus": "数据题不必每个数字都机械照抄，可以用 some、approximately、the majority of、fewer than 等表达精确度差异。",
+      "itemCount": 16,
+      "exampleCount": 30,
+      "items": [
+        {
+          "number": 1,
+          "term": "a quarter of",
+          "translation": "四分之一",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "分数表达，比 25% 更自然，适合正文细节。",
+          "variants": [
+            "one quarter of",
+            "25% of"
+          ],
+          "raw": "a quarter of 四分之一"
+        },
+        {
+          "number": 2,
+          "term": "some",
+          "translation": "大约；约有",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "放在数字前表示近似值，语气比 approximately 更自然。",
+          "variants": [
+            "around",
+            "roughly",
+            "approximately"
+          ],
+          "raw": "some 大约；约有"
+        },
+        {
+          "number": 3,
+          "term": "of those who",
+          "translation": "在那些……的人中",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于从总体中提取子群体，例如海外旅行者中的目的地分布。",
+          "variants": [
+            "among those who",
+            "out of those who"
+          ],
+          "raw": "of those who 在那些……的人中"
+        },
+        {
+          "number": 4,
+          "term": "with an estimated",
+          "translation": "据估计有",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于估计数据，适合题目给出 approximate / estimated 的情况。",
+          "variants": [
+            "an estimated",
+            "approximately"
+          ],
+          "raw": "with an estimated 据估计有"
+        },
+        {
+          "number": 5,
+          "term": "a total of",
+          "translation": "总共",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于总量表达，可放在 spent / sold / produced 等动词后。",
+          "variants": [
+            "in total",
+            "altogether"
+          ],
+          "raw": "a total of 总共"
+        },
+        {
+          "number": 6,
+          "term": "an aggregate of",
+          "translation": "总计",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "比 a total of 更正式，适合总数较大的统计。",
+          "variants": [
+            "a combined total of"
+          ],
+          "raw": "an aggregate of 总计"
+        },
+        {
+          "number": 7,
+          "term": "per-capita",
+          "translation": "人均",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于人均支出、人均排放、人均收入等。",
+          "variants": [
+            "per person",
+            "on a per-person basis"
+          ],
+          "raw": "per-capita 人均"
+        },
+        {
+          "number": 8,
+          "term": "stand at",
+          "translation": "处于；为",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "稳定、正式地引出某一数值。",
+          "variants": [
+            "be recorded at",
+            "be measured at"
+          ],
+          "raw": "stand at 处于；为"
+        },
+        {
+          "number": 9,
+          "term": "below poverty line",
+          "translation": "低于贫困线",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "人口类和社会类图表常见表达。",
+          "variants": [
+            "living in poverty",
+            "below the poverty threshold"
+          ],
+          "raw": "below poverty line 低于贫困线"
+        },
+        {
+          "number": 10,
+          "term": "less than / fewer than",
+          "translation": "少于",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "less than 通常修饰不可数或比例，fewer than 修饰可数人数/数量。",
+          "variants": [
+            "under",
+            "below"
+          ],
+          "raw": "less than / fewer than 少于"
+        },
+        {
+          "number": 11,
+          "term": "the majority of",
+          "translation": "大多数",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于超过一半的比例，不必重复精确数字。",
+          "variants": [
+            "most of",
+            "a large majority of"
+          ],
+          "raw": "the majority of 大多数"
+        },
+        {
+          "number": 12,
+          "term": "one in ten",
+          "translation": "十分之一",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "自然比例表达，尤其适合人口、家庭、学生。",
+          "variants": [
+            "one out of ten",
+            "10% of"
+          ],
+          "raw": "one in ten 十分之一"
+        },
+        {
+          "number": 13,
+          "term": "four in ten",
+          "translation": "十个中有四个",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "口语自然但写作也可用，适合调查结果。",
+          "variants": [
+            "40% of",
+            "four out of ten"
+          ],
+          "raw": "four in ten 十个中有四个"
+        },
+        {
+          "number": 14,
+          "term": "as many as",
+          "translation": "多达",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调数值高或比例大。",
+          "variants": [
+            "up to",
+            "no fewer than"
+          ],
+          "raw": "as many as 多达"
+        },
+        {
+          "number": 15,
+          "term": "the remaining",
+          "translation": "剩余的",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于列举后收尾，避免重复具体分类名称。",
+          "variants": [
+            "the rest",
+            "the remainder"
+          ],
+          "raw": "the remaining 剩余的"
+        },
+        {
+          "number": 16,
+          "term": "be projected to",
+          "translation": "预计将",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于未来预测图。",
+          "variants": [
+            "be forecast to",
+            "be expected to"
+          ],
+          "raw": "be projected to 预计将"
+        }
+      ],
+      "examples": [
+        {
+          "number": 27,
+          "text": "A quarter of the customers were African origin."
+        },
+        {
+          "number": 28,
+          "text": "Some 700 migrants arrived to live in Australia every week in 2005."
+        },
+        {
+          "number": 29,
+          "text": "Of those UK residents who traveled overseas, some 210,000 went to America."
+        },
+        {
+          "number": 30,
+          "text": "The overall UK population was some 58 million in 2001, 17% higher than in 1995."
+        },
+        {
+          "number": 31,
+          "text": "With an estimated 100 million international migrants worldwide, the proportion of people living outside their country of birth approached 2 per cent of the world's population in 2002."
+        },
+        {
+          "number": 32,
+          "text": "Americans spent a total of $12.5 billion on gifts in 2005 alone, with $6.5 billion of that on toys."
+        },
+        {
+          "number": 33,
+          "text": "An aggregate of 40,000 households bought new vehicles, three times more than the number in 2004."
+        },
+        {
+          "number": 34,
+          "text": "The per-capita spending of visitors in China stood at 1,000 US dollars or so in 2000, a year-on-year rise of one per cent."
+        },
+        {
+          "number": 35,
+          "text": "Indonesia is still an impoverished country, with the population below poverty line exceeding half a billion."
+        },
+        {
+          "number": 36,
+          "text": "The number of people living on less than $1 a day in Asia dropped by nearly a quarter of a billion people between 1990 and 2002."
+        },
+        {
+          "number": 37,
+          "text": "Two-parent families now work an average of almost 400 more hours a year than they did 20 years ago."
+        },
+        {
+          "number": 38,
+          "text": "There were 100,000 more people working on full-time basis in 2004 than in 1994."
+        },
+        {
+          "number": 39,
+          "text": "It is shown in the chart that up to two million children were orphaned in 2002 in Africa, half a million higher than the 2001's record figure."
+        },
+        {
+          "number": 40,
+          "text": "It was discovered that less than a fifth of the public money went to education."
+        },
+        {
+          "number": 41,
+          "text": "Two-fifths of the population are suffering different levels of obesity."
+        },
+        {
+          "number": 42,
+          "text": "Between half and two-thirds of smokers die of something other than smoking."
+        },
+        {
+          "number": 43,
+          "text": "More than one-third of the British population has trouble sleeping from time to time."
+        },
+        {
+          "number": 44,
+          "text": "In total,1,400 magazines were sold within a week-200 a day-more than half of which were for female readers."
+        },
+        {
+          "number": 45,
+          "text": "Currently, approximately 6,000 languages still exist, the majority of which are under threat."
+        },
+        {
+          "number": 46,
+          "text": "Cohabiting couples made up one in ten of the population in 1999-double the number a decade earlier."
+        },
+        {
+          "number": 47,
+          "text": "A staggering four in ten students had the experience of using marijuana."
+        },
+        {
+          "number": 48,
+          "text": "Fewer than three in ten people were ethnic minorities."
+        },
+        {
+          "number": 49,
+          "text": "According to the survey, a billion and a half of the worlds's had no access to electricity in the year 2004, and almost as many lacked electricity in 2005."
+        },
+        {
+          "number": 50,
+          "text": "80% of drinks containers in Britain are recycled-far higher than the European average of 20% to 40%."
+        },
+        {
+          "number": 51,
+          "text": "The world population is projected to grow from 6 billion in 1999 to 9 billion by 2042.an increase of 50 per cent that will require 43 years."
+        },
+        {
+          "number": 52,
+          "text": "Just 18% of smokers were planning to give up smoking, while a further 42.4% said that they would \"possibly\" do so."
+        },
+        {
+          "number": 53,
+          "text": "As many as 78% of men were doing administrative work, whereas women who were working as sales and customer services staff rose to a record 75%."
+        },
+        {
+          "number": 54,
+          "text": "About 42 per cent of students chose science as their subject, 40 per cent engineering and the rest arts."
+        },
+        {
+          "number": 55,
+          "text": "40% of respondents said that students should be responsible for university fees, another 40% considered it the responsibility of the government, and the remaining 20% viewed it as a shared responsibility."
+        },
+        {
+          "number": 56,
+          "text": "The number of people enrolling for adult education courses increased by about 5% in 1999,lower than those for 1995 and 1996, when 1.5 million and 1.8 million people respectively were enrolled."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-5",
+      "categoryNumber": 5,
+      "slug": "time",
+      "title": "时间与阶段",
+      "description": "用于描述年份、阶段、起止时间、此前此后、某阶段内的变化。",
+      "aiFocus": "时间表达最好和趋势动词绑定，例如 by 2005 表示到某时为止，prior to 表示在某变化之前。",
+      "itemCount": 15,
+      "exampleCount": 23,
+      "items": [
+        {
+          "number": 1,
+          "term": "since then",
+          "translation": "自那以后",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于承接前文时间点，说明后续趋势。",
+          "variants": [
+            "from that point onwards"
+          ],
+          "raw": "since then 自那以后"
+        },
+        {
+          "number": 2,
+          "term": "between...and...",
+          "translation": "在……和……之间",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "最常用的时间范围表达。",
+          "variants": [
+            "from...to...",
+            "over the period from...to..."
+          ],
+          "raw": "between...and... 在……和……之间"
+        },
+        {
+          "number": 3,
+          "term": "a month earlier",
+          "translation": "一个月前",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于月度变化比较。",
+          "variants": [
+            "the previous month",
+            "one month before"
+          ],
+          "raw": "a month earlier 一个月前"
+        },
+        {
+          "number": 4,
+          "term": "by the end of",
+          "translation": "到……末为止",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调截至某时已经达到的结果。",
+          "variants": [
+            "by",
+            "as of the end of"
+          ],
+          "raw": "by the end of 到……末为止"
+        },
+        {
+          "number": 5,
+          "term": "from the 1970s onwards",
+          "translation": "从 20 世纪 70 年代起",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于从某阶段开始持续的变化。",
+          "variants": [
+            "from the 1970s forward"
+          ],
+          "raw": "from the 1970s onwards 从 20 世纪 70 年代起"
+        },
+        {
+          "number": 6,
+          "term": "for twenty years or so",
+          "translation": "大约二十年",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示持续时长，带近似语气。",
+          "variants": [
+            "for around twenty years"
+          ],
+          "raw": "for twenty years or so 大约二十年"
+        },
+        {
+          "number": 7,
+          "term": "over the period",
+          "translation": "在整个时期内",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "总括某一时间段的变化。",
+          "variants": [
+            "during the period",
+            "throughout the period"
+          ],
+          "raw": "over the period 在整个时期内"
+        },
+        {
+          "number": 8,
+          "term": "during the period from...to...",
+          "translation": "在从……到……期间",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "适合精确说明开始和结束时间。",
+          "variants": [
+            "between...and..."
+          ],
+          "raw": "during the period from...to... 在从……到……期间"
+        },
+        {
+          "number": 9,
+          "term": "in those given years",
+          "translation": "在给定年份中",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "避免重复题目年份范围。",
+          "variants": [
+            "during the years shown"
+          ],
+          "raw": "in those given years 在给定年份中"
+        },
+        {
+          "number": 10,
+          "term": "aged between...and...",
+          "translation": "年龄在……之间",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于年龄组比较。",
+          "variants": [
+            "in the ... age group"
+          ],
+          "raw": "aged between...and... 年龄在……之间"
+        },
+        {
+          "number": 11,
+          "term": "before a substantial increase",
+          "translation": "在大幅上升之前",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于先降后升、先平后升等转折。",
+          "variants": [
+            "prior to a sharp rise"
+          ],
+          "raw": "before a substantial increase 在大幅上升之前"
+        },
+        {
+          "number": 12,
+          "term": "prior to",
+          "translation": "在……之前",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "比 before 更正式。",
+          "variants": [
+            "before",
+            "ahead of"
+          ],
+          "raw": "prior to 在……之前"
+        },
+        {
+          "number": 13,
+          "term": "after experiencing",
+          "translation": "在经历……之后",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "适合描述先发生某趋势，再进入另一状态。",
+          "variants": [
+            "following",
+            "after undergoing"
+          ],
+          "raw": "after experiencing 在经历……之后"
+        },
+        {
+          "number": 14,
+          "term": "up to the year",
+          "translation": "直到某年",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于某趋势持续到某年为止。",
+          "variants": [
+            "until",
+            "through to"
+          ],
+          "raw": "up to the year 直到某年"
+        },
+        {
+          "number": 15,
+          "term": "over the course of",
+          "translation": "在……过程中",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "适合长时间跨度，比如一个世纪。",
+          "variants": [
+            "during",
+            "throughout"
+          ],
+          "raw": "over the course of 在……过程中"
+        }
+      ],
+      "examples": [
+        {
+          "number": 57,
+          "text": "Since then, growth had started to accelerate, up to 3 per cent on average annually between 1995 and 2000."
+        },
+        {
+          "number": 58,
+          "text": "Consumer spending rose 0.5% in November after an increase of 0.3% a month earlier."
+        },
+        {
+          "number": 59,
+          "text": "The industrial output growth had slowed to 2% by 2005."
+        },
+        {
+          "number": 60,
+          "text": "By the end of 2005, nearly 30% of commuters used public transport, a slight increase on the figures for 2003."
+        },
+        {
+          "number": 61,
+          "text": "Britain's GDP is expected to surpass that of France by the end of 2010."
+        },
+        {
+          "number": 62,
+          "text": "In 1993, 60% of Vietnam's population was classified as being under the internationally-accepted poverty line, but that figure had fallen to less than 20% by 2004."
+        },
+        {
+          "number": 63,
+          "text": "From the 1970s onwards, the volume of exports underwent a period of growth."
+        },
+        {
+          "number": 64,
+          "text": "For twenty years or so, there was an upward trend in the number of deaths caused by heart disease."
+        },
+        {
+          "number": 65,
+          "text": "There was a steady increase in the enlistment of the armed force in Vietnam over the period 1970 to 1980"
+        },
+        {
+          "number": 66,
+          "text": "The secondary school enrolment rate sank considerably after an increase of 10 per cent during the period from the mid-1980s to the early 1990s."
+        },
+        {
+          "number": 67,
+          "text": "Although 70 per cent of the smokers said they wanted to quit smoking, a mere 3 per cent of them were successful in those given years."
+        },
+        {
+          "number": 68,
+          "text": "By age 15, Americans are less likely to smoke than Europeans, although the 10-to-13-year-olds in America are as likely to smoke as European 10-to-13-year-olds."
+        },
+        {
+          "number": 69,
+          "text": "Someone who starts smoking aged 15 is three times more likely to die of cancer due to smoking than someone who starts in late 20s."
+        },
+        {
+          "number": 70,
+          "text": "Overall, 11% of people aged between 35 and 45 in the UK said that they were not in good health."
+        },
+        {
+          "number": 71,
+          "text": "The PCs sold dipped 30% to 12.3 million in 2001, before a substantial increase in the following three years."
+        },
+        {
+          "number": 72,
+          "text": "Prior to a surge to record high in 1983, food supplies stagnated for nearly ten years."
+        },
+        {
+          "number": 73,
+          "text": "After experiencing alarming increase during the second half of the 1990s, juvenile delinquency was at its lowest level for at least five years."
+        },
+        {
+          "number": 74,
+          "text": "The reported crime rate dropped more than 5%, compared to the same time in 2005."
+        },
+        {
+          "number": 75,
+          "text": "Carbon dioxide emissions were rising by less than 2% annually up to the year 1999, but now rising at 4% or so per year."
+        },
+        {
+          "number": 76,
+          "text": "The popularity of some activities, such as jigsaw puzzle, declined noticeably as the age increases."
+        },
+        {
+          "number": 77,
+          "text": "There was a downward trend in the years 1998 and 1999."
+        },
+        {
+          "number": 78,
+          "text": "Over the course of the last century, the global population rose from under two billion to just over six billion."
+        },
+        {
+          "number": 79,
+          "text": "Australia's share of Japanese tourist market shrank from 9% to 2% in just a 10-year period."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-6",
+      "categoryNumber": 6,
+      "slug": "stability-fluctuation",
+      "title": "平稳与波动",
+      "description": "用于描述 plateau、flat、steady、constant、stagnate、fluctuate 等非单向变化。",
+      "aiFocus": "reach a plateau 指上升后到达高位并保持不变；stagnate 更偏停滞，常带负面含义。",
+      "itemCount": 12,
+      "exampleCount": 12,
+      "items": [
+        {
+          "number": 1,
+          "term": "reach a plateau",
+          "translation": "达到平台期",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "通常表示上升后到达较高水平并保持不变，不再继续明显增长。",
+          "variants": [
+            "level off",
+            "plateau"
+          ],
+          "raw": "reach a plateau 达到平台期"
+        },
+        {
+          "number": 2,
+          "term": "fluctuate between...and...",
+          "translation": "在……和……之间波动",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "最标准的波动表达，需要给出上下限。",
+          "variants": [
+            "vary between...and..."
+          ],
+          "raw": "fluctuate between...and... 在……和……之间波动"
+        },
+        {
+          "number": 3,
+          "term": "strong fluctuations",
+          "translation": "剧烈波动",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "名词结构，适合描述 birth rates、prices、temperatures。",
+          "variants": [
+            "marked fluctuations",
+            "considerable volatility"
+          ],
+          "raw": "strong fluctuations 剧烈波动"
+        },
+        {
+          "number": 4,
+          "term": "remain flat at",
+          "translation": "保持在某水平",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调数值没有明显变化。",
+          "variants": [
+            "stay flat at",
+            "remain unchanged at"
+          ],
+          "raw": "remain flat at 保持在某水平"
+        },
+        {
+          "number": 5,
+          "term": "rise and fall within a narrow range",
+          "translation": "在小范围内上下波动",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于轻微波动，不应写成 dramatic fluctuation。",
+          "variants": [
+            "vary within a narrow band"
+          ],
+          "raw": "rise and fall within a narrow range 在小范围内上下波动"
+        },
+        {
+          "number": 6,
+          "term": "remain static",
+          "translation": "保持静止；无变化",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "比 remain stable 更强调几乎没有变化。",
+          "variants": [
+            "remain unchanged",
+            "stay the same"
+          ],
+          "raw": "remain static 保持静止；无变化"
+        },
+        {
+          "number": 7,
+          "term": "remain steady",
+          "translation": "保持稳定",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "中性表达，适合价格、比例、数量。",
+          "variants": [
+            "stay stable",
+            "hold steady"
+          ],
+          "raw": "remain steady 保持稳定"
+        },
+        {
+          "number": 8,
+          "term": "remain constant",
+          "translation": "保持恒定",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调变化率或水平固定。",
+          "variants": [
+            "stay constant",
+            "remain unchanged"
+          ],
+          "raw": "remain constant 保持恒定"
+        },
+        {
+          "number": 9,
+          "term": "remain around that figure",
+          "translation": "维持在该数值附近",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于先快速变化后稳定在某一水平附近。",
+          "variants": [
+            "hover around that level"
+          ],
+          "raw": "remain around that figure 维持在该数值附近"
+        },
+        {
+          "number": 10,
+          "term": "stabilize at",
+          "translation": "稳定在",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示经历变化后进入稳定状态。",
+          "variants": [
+            "settle at",
+            "level off at"
+          ],
+          "raw": "stabilize at 稳定在"
+        },
+        {
+          "number": 11,
+          "term": "stagnate",
+          "translation": "停滞",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "常用于产量、供应、经济数据，暗示缺乏增长。",
+          "variants": [
+            "show no growth",
+            "remain stagnant"
+          ],
+          "raw": "stagnate 停滞"
+        },
+        {
+          "number": 12,
+          "term": "slight oscillations",
+          "translation": "轻微震荡",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "比 fluctuations 更书面，适合温度、指数等。",
+          "variants": [
+            "minor fluctuations",
+            "small variations"
+          ],
+          "raw": "slight oscillations 轻微震荡"
+        }
+      ],
+      "examples": [
+        {
+          "number": 80,
+          "text": "The population reached a plateau in 1990, before declining suddenly in 2001."
+        },
+        {
+          "number": 81,
+          "text": "The annual population growth rate fluctuated between 1% and 2% during the ten-year period."
+        },
+        {
+          "number": 82,
+          "text": "There were strong fluctuations in birth rates throughout the five years from 1995 to 2000."
+        },
+        {
+          "number": 83,
+          "text": "In spite of a growth in the working population, the unemployment rate was flat at 7.8%."
+        },
+        {
+          "number": 84,
+          "text": "The output rose and fell within a narrow range between 41.2 million tons and 51.2 million tons."
+        },
+        {
+          "number": 85,
+          "text": "The number of the young people obtaining qualifications remained static (slightly above 30%)."
+        },
+        {
+          "number": 86,
+          "text": "LCD TV prices remained steady for three years in a row apart from (despite, except) a slump in 2003."
+        },
+        {
+          "number": 87,
+          "text": "The mobile phone owner growth remained constant and averaged,1 per cent per year in both the US and the UK up to 2003."
+        },
+        {
+          "number": 88,
+          "text": "Enrolments rose dramatically to more than half a million and remained around that figure in 1965."
+        },
+        {
+          "number": 89,
+          "text": "The unemployment rate stabilized at a higher level by around 1995."
+        },
+        {
+          "number": 90,
+          "text": "Industrial production continued to stagnate, after 12 years of tremendous growth."
+        },
+        {
+          "number": 91,
+          "text": "There had been slight oscillations in temperature throughout the 1970s and 1980s."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-7",
+      "categoryNumber": 7,
+      "slug": "records-extremes",
+      "title": "峰值与历史值",
+      "description": "用于最高点、最低点、历史纪录、新高新低、峰值和连续变化。",
+      "aiFocus": "peak 是达到峰值后可能回落；reach an all-time record 强调历史最高纪录；a new low 强调新低。",
+      "itemCount": 8,
+      "exampleCount": 8,
+      "items": [
+        {
+          "number": 1,
+          "term": "a ten-year high",
+          "translation": "十年来高点",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于说明某数值达到过去十年中的最高水平。",
+          "variants": [
+            "the highest level in ten years"
+          ],
+          "raw": "a ten-year high 十年来高点"
+        },
+        {
+          "number": 2,
+          "term": "reach an all-time record",
+          "translation": "达到历史纪录",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调所有记录中最高或最突出。",
+          "variants": [
+            "hit a record high",
+            "reach a historic high"
+          ],
+          "raw": "reach an all-time record 达到历史纪录"
+        },
+        {
+          "number": 3,
+          "term": "a new low",
+          "translation": "新低",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于雨量、价格、比例等低于此前记录。",
+          "variants": [
+            "a record low",
+            "the lowest level"
+          ],
+          "raw": "a new low 新低"
+        },
+        {
+          "number": 4,
+          "term": "an unprecedented rise",
+          "translation": "前所未有的上升",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "语气强，适合极端增长。",
+          "variants": [
+            "an unparalleled increase",
+            "a record rise"
+          ],
+          "raw": "an unprecedented rise 前所未有的上升"
+        },
+        {
+          "number": 5,
+          "term": "peak at",
+          "translation": "在……达到峰值",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "后接具体数值或比例。",
+          "variants": [
+            "reach a peak of",
+            "hit a peak of"
+          ],
+          "raw": "peak at 在……达到峰值"
+        },
+        {
+          "number": 6,
+          "term": "the greatest increase",
+          "translation": "最大增幅",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于比较多个类别或时期中的最大变化。",
+          "variants": [
+            "the largest rise",
+            "the most significant increase"
+          ],
+          "raw": "the greatest increase 最大增幅"
+        },
+        {
+          "number": 7,
+          "term": "remain high",
+          "translation": "保持高位",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调数据虽有波动但整体仍高。",
+          "variants": [
+            "stay elevated",
+            "remain at a high level"
+          ],
+          "raw": "remain high 保持高位"
+        },
+        {
+          "number": 8,
+          "term": "the fourth lowest on record",
+          "translation": "有记录以来第四低",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于精确历史排名。",
+          "variants": [
+            "the fourth-lowest recorded level"
+          ],
+          "raw": "the fourth lowest on record 有记录以来第四低"
+        }
+      ],
+      "examples": [
+        {
+          "number": 92,
+          "text": "UK trade deficit with China rose almost 10% to 3 billion, a ten-year high."
+        },
+        {
+          "number": 93,
+          "text": "The proportion of single-parent families reached an all-time record of 15%."
+        },
+        {
+          "number": 94,
+          "text": "Auckland received no more than 200 mm of rain per month on average in 1990, a new low in the twenty-year period."
+        },
+        {
+          "number": 95,
+          "text": "The total number of regular Internet users experienced an unprecedented rise in 2002, its sixth annual rise in a row."
+        },
+        {
+          "number": 96,
+          "text": "Britain's crime rate peaked at 9% or so in 1999."
+        },
+        {
+          "number": 97,
+          "text": "The greatest increase was in the proportion of the people who are overweight, 15% up from 8% in 1989."
+        },
+        {
+          "number": 98,
+          "text": "Unemployment figures remained high, ranging from 12.5% to 15%."
+        },
+        {
+          "number": 99,
+          "text": "Youngsters spent a mere 5% of their pocket money on cigarettes in 2003, the fourth lowest on record."
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing-chart-8",
+      "categoryNumber": 8,
+      "slug": "ranking-comparison",
+      "title": "排序与对比",
+      "description": "用于排名、领先、落后、超过、相反变化、对比和差距描述。",
+      "aiFocus": "排序类表达要注意 ranked、came second、followed behind、overtook、far ahead of 等动词和介词搭配。",
+      "itemCount": 19,
+      "exampleCount": 26,
+      "items": [
+        {
+          "number": 1,
+          "term": "rank in the top five",
+          "translation": "位列前五",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于国家、类别、行业排名。",
+          "variants": [
+            "be among the top five"
+          ],
+          "raw": "rank in the top five 位列前五"
+        },
+        {
+          "number": 2,
+          "term": "slip to seventh",
+          "translation": "滑落至第七",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "排名下降，语气比 fall to 更贴近排名场景。",
+          "variants": [
+            "fall to seventh",
+            "drop to seventh place"
+          ],
+          "raw": "slip to seventh 滑落至第七"
+        },
+        {
+          "number": 3,
+          "term": "lead other countries",
+          "translation": "领先其他国家",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调排名或数值第一。",
+          "variants": [
+            "take the lead",
+            "be ahead of other countries"
+          ],
+          "raw": "lead other countries 领先其他国家"
+        },
+        {
+          "number": 4,
+          "term": "follow behind",
+          "translation": "紧随其后",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于第二、第三名描述。",
+          "variants": [
+            "come next",
+            "trail behind"
+          ],
+          "raw": "follow behind 紧随其后"
+        },
+        {
+          "number": 5,
+          "term": "come second",
+          "translation": "位居第二",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "排名类高频表达。",
+          "variants": [
+            "rank second",
+            "take second place"
+          ],
+          "raw": "come second 位居第二"
+        },
+        {
+          "number": 6,
+          "term": "beat...into third place",
+          "translation": "超过……使其退居第三",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调竞争排名中的超越。",
+          "variants": [
+            "push...into third place"
+          ],
+          "raw": "beat...into third place 超过……使其退居第三"
+        },
+        {
+          "number": 7,
+          "term": "rise two places to",
+          "translation": "上升两位至",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于排名提升。",
+          "variants": [
+            "move up two places to"
+          ],
+          "raw": "rise two places to 上升两位至"
+        },
+        {
+          "number": 8,
+          "term": "come in at 14th",
+          "translation": "位列第 14",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "自然排名表达，适合榜单。",
+          "variants": [
+            "rank 14th"
+          ],
+          "raw": "come in at 14th 位列第 14"
+        },
+        {
+          "number": 9,
+          "term": "compare favorably with",
+          "translation": "优于；相比表现更好",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "正式表达，用于两组整体比较。",
+          "variants": [
+            "perform better than"
+          ],
+          "raw": "compare favorably with 优于；相比表现更好"
+        },
+        {
+          "number": 10,
+          "term": "closely followed by",
+          "translation": "紧随其后的是",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于第二大/第二高类别。",
+          "variants": [
+            "followed closely by"
+          ],
+          "raw": "closely followed by 紧随其后的是"
+        },
+        {
+          "number": 11,
+          "term": "far ahead of",
+          "translation": "远远领先于",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "强调差距大。",
+          "variants": [
+            "well ahead of",
+            "considerably ahead of"
+          ],
+          "raw": "far ahead of 远远领先于"
+        },
+        {
+          "number": 12,
+          "term": "overtake",
+          "translation": "超过；赶超",
+          "itemType": "Word",
+          "starred": true,
+          "explanation": "用于排名或总量后来居上。",
+          "variants": [
+            "surpass",
+            "move ahead of"
+          ],
+          "raw": "overtake 超过；赶超"
+        },
+        {
+          "number": 13,
+          "term": "lower than / far below",
+          "translation": "低于 / 远低于",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于对比平均值或另一国家数据。",
+          "variants": [
+            "below",
+            "considerably lower than"
+          ],
+          "raw": "lower than / far below 低于 / 远低于"
+        },
+        {
+          "number": 14,
+          "term": "while / whereas",
+          "translation": "而；然而",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于两个类别反向变化或差异对比。",
+          "variants": [
+            "by contrast",
+            "in contrast"
+          ],
+          "raw": "while / whereas 而；然而"
+        },
+        {
+          "number": 15,
+          "term": "marginally larger than",
+          "translation": "略大于",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示差距非常小。",
+          "variants": [
+            "slightly higher than",
+            "only a little larger than"
+          ],
+          "raw": "marginally larger than 略大于"
+        },
+        {
+          "number": 16,
+          "term": "at odds with",
+          "translation": "与……相反",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "用于一个趋势和另一个趋势不一致。",
+          "variants": [
+            "in contrast to",
+            "contrary to"
+          ],
+          "raw": "at odds with 与……相反"
+        },
+        {
+          "number": 17,
+          "term": "even out with age",
+          "translation": "随着年龄增长趋于一致",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "表示差异逐渐消失。",
+          "variants": [
+            "narrow with age",
+            "become more equal"
+          ],
+          "raw": "even out with age 随着年龄增长趋于一致"
+        },
+        {
+          "number": 18,
+          "term": "in marked contrast to",
+          "translation": "与……形成鲜明对比",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "正式对比表达，适合强烈差异。",
+          "variants": [
+            "in sharp contrast with"
+          ],
+          "raw": "in marked contrast to 与……形成鲜明对比"
+        },
+        {
+          "number": 19,
+          "term": "as against",
+          "translation": "相比之下；而",
+          "itemType": "Phrase",
+          "starred": true,
+          "explanation": "较正式，用于两个数据直接对照。",
+          "variants": [
+            "compared with",
+            "as opposed to"
+          ],
+          "raw": "as against 相比之下；而"
+        }
+      ],
+      "examples": [
+        {
+          "number": 100,
+          "text": "The US ranked in the world's top five as a car manufacturer in 1985,but slipped to seventh in 1990 and plummeted to tenth in 1995."
+        },
+        {
+          "number": 101,
+          "text": "Japan led other countries in life expectancy (81.2 years); Australia and Canada followed behind, 80.55 years and 80.2 years respectively."
+        },
+        {
+          "number": 102,
+          "text": "The latest figures show that China has come second in terms of GDP, following the lead of the United States and narrowly beating Japan into third place,"
+        },
+        {
+          "number": 103,
+          "text": "France has risen two places to number four in the OECD countries, behind America, Japan and Britain."
+        },
+        {
+          "number": 104,
+          "text": "Saturn is the second largest planet after Jupiter; with a diameter nearly ten times that of Earth."
+        },
+        {
+          "number": 105,
+          "text": "In the terms of GDP, Mexico, which did not appear in the top 20 in 2000, came in at 14th in 2005."
+        },
+        {
+          "number": 106,
+          "text": "While the Asian countries compare favorably with their European counterparts, several have dropped in ranking."
+        },
+        {
+          "number": 107,
+          "text": "Practical crafts was the most popular subject area, with an enrolment rate of 45%, closely followed by physical education and sport."
+        },
+        {
+          "number": 108,
+          "text": "The US was ahead with an increase of 10% and China came second with 8%."
+        },
+        {
+          "number": 109,
+          "text": "China is the world's most populous country, with a population of more than 1.4 billion, far ahead of India, with 1 billion people."
+        },
+        {
+          "number": 110,
+          "text": "China overtook America in 1999 and became the largest export country."
+        },
+        {
+          "number": 111,
+          "text": "In 1999, Australia ranked second, behind the USA, in terms of domestic waste generation."
+        },
+        {
+          "number": 112,
+          "text": "The population growth in the UK was lower than the European Union average of 23% and far below the growth in the United States (80%) over the same period."
+        },
+        {
+          "number": 113,
+          "text": "Students made up the biggest proportion of employees in low paid occupations (65%), while high school students were most likely to have a professional job (40%)."
+        },
+        {
+          "number": 114,
+          "text": "While the number of full-time female workers grew, that of full-time male workers declined."
+        },
+        {
+          "number": 115,
+          "text": "Whereas developing countries more than doubled car emissions, from 3 billion to 6.2 billion, industrialized countries cut theirs by half, from 4 billion down to 2 billion"
+        },
+        {
+          "number": 116,
+          "text": "The population of France is only marginally larger than that of Britain."
+        },
+        {
+          "number": 117,
+          "text": "The drop in 1995 was at odds with the sharp rise in 1999."
+        },
+        {
+          "number": 118,
+          "text": "With regards to government spending on education, there was a sharp reduction during the five-year-long period (223 million in 1989 versus 110 million in 1994)."
+        },
+        {
+          "number": 119,
+          "text": "The income differences between sexes even out with age."
+        },
+        {
+          "number": 120,
+          "text": "In Africa, there are around 14 women living with HIV for every 10 men."
+        },
+        {
+          "number": 121,
+          "text": "The proportion of homeowners was as high as 78% in 1989, in marked contrast to a mere 35% a decade earlier."
+        },
+        {
+          "number": 122,
+          "text": "Women were more likely to be part-time workers throughout the 1990s,with more than two out of five women working part-time, compared with one in ten men."
+        },
+        {
+          "number": 123,
+          "text": "The jobless rate in 1990 was 4%, the lowest level in more than ten years, as against 10% in 1980."
+        },
+        {
+          "number": 124,
+          "text": "Among the leading reasons why an adult considered education in 2004, 65% said that it was helpful, while 24% chose it simply because they loved studying."
+        },
+        {
+          "number": 125,
+          "text": "The average American produces 6 tonnes of carbon dioxide, a Chinese 0.7 tonnes and an Indian 0.25 tonnes."
+        }
+      ]
+    }
+  ]
+}

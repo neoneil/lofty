@@ -1,0 +1,291 @@
+{
+  "slug": "relative-clauses",
+  "category": {
+    "zh": "从句",
+    "en": "Clauses"
+  },
+  "title": {
+    "zh": "定语从句",
+    "en": "Relative Clauses"
+  },
+  "difficulty": "中级到高级",
+  "summary": {
+    "zh": "定语从句（Relative Clauses）用于修饰名词或代词，提供关于人、物、地点、时间、原因或整个句子的补充信息。它在学术英语、PTE Academic 和 IELTS 写作与口语中非常重要，因为它能帮助考生把简单句合并成更复杂、更自然的句子，从而提升语法多样性和表达精确度。常见关系词包括 who, whom, whose, which, that, where, when 和 why。学习重点包括限定性定语从句、非限定性定语从句、关系代词的省略、介词加关系代词结构，以及避免中文学习者常见的重复代词、逗号误用和关系词选择错误。"
+  },
+  "structure": {
+    "formula": "先行词 + relative pronoun / relative adverb + 从句",
+    "explanation": "定语从句通常放在被修饰的名词或代词之后，这个被修饰的词叫先行词（antecedent）。关系代词 who, whom, whose, which, that 可以在从句中充当主语、宾语或所有格；关系副词 where, when, why 通常表示地点、时间和原因。限定性定语从句（defining relative clause）提供必要信息，不用逗号；非限定性定语从句（non-defining relative clause）提供附加信息，通常用逗号隔开，且不能使用 that。在学术写作中，定语从句常用于精确界定研究对象、解释概念、补充数据背景或连接复杂观点。",
+    "examples": [
+      {
+        "en": "Students who manage their time effectively tend to perform better in exams.",
+        "zh": "能够有效管理时间的学生往往在考试中表现更好。"
+      },
+      {
+        "en": "The policy, which was introduced last year, has reduced traffic congestion.",
+        "zh": "这项去年推出的政策已经减少了交通拥堵。"
+      },
+      {
+        "en": "This is the reason why many candidates lose marks in grammar.",
+        "zh": "这就是许多考生在语法方面失分的原因。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "修饰人：使用 who, whom, whose",
+      "description": "当先行词是人时，who 通常作主语，whom 作宾语但在现代英语中较正式，whose 表示所属关系。在 IELTS 和 PTE 写作中，who 可用于描述群体、专家、学生、员工或研究对象，使表达更具体。",
+      "examples": [
+        {
+          "en": "People who live in urban areas often have better access to public services.",
+          "zh": "居住在城市地区的人通常能更容易获得公共服务。"
+        },
+        {
+          "en": "Researchers whose findings challenge traditional views often attract public attention.",
+          "zh": "其研究发现挑战传统观点的研究人员常常会引起公众关注。"
+        }
+      ]
+    },
+    {
+      "title": "修饰事物或观点：使用 which 和 that",
+      "description": "当先行词是物、概念、政策、趋势或现象时，which 和 that 都可以用于限定性定语从句；which 也可引导非限定性定语从句，用来补充说明整个名词或前面整个句子的内容。that 不能用于非限定性定语从句。",
+      "examples": [
+        {
+          "en": "The technology that enables remote learning has transformed modern education.",
+          "zh": "使远程学习成为可能的技术已经改变了现代教育。"
+        },
+        {
+          "en": "The government increased funding for public transport, which helped reduce air pollution.",
+          "zh": "政府增加了公共交通资金投入，这有助于减少空气污染。"
+        }
+      ]
+    },
+    {
+      "title": "表示地点、时间和原因：使用 where, when, why",
+      "description": "where 用于修饰地点，when 用于修饰时间，why 用于修饰 reason。需要注意的是，where 不等于中文里的“在……方面”，它必须和地点或抽象地点有关，如 situation, case, environment 等。",
+      "examples": [
+        {
+          "en": "Universities should create an environment where students can develop critical thinking skills.",
+          "zh": "大学应该创造一种学生能够培养批判性思维能力的环境。"
+        },
+        {
+          "en": "There was a period when online education was regarded as less effective.",
+          "zh": "曾有一段时期，在线教育被认为效果较差。"
+        }
+      ]
+    },
+    {
+      "title": "非限定性定语从句：补充背景信息",
+      "description": "非限定性定语从句用逗号隔开，提供额外信息，删除后主句意思仍然完整。它在学术写作中非常有用，因为可以自然加入背景、评价或结果。但不能用 that 引导。",
+      "examples": [
+        {
+          "en": "Renewable energy, which produces fewer greenhouse gases, is becoming increasingly important.",
+          "zh": "可再生能源产生的温室气体更少，因此正变得越来越重要。"
+        },
+        {
+          "en": "Dr. Smith, who conducted the survey, argued that sample size affected the results.",
+          "zh": "进行这项调查的 Smith 博士认为，样本量影响了结果。"
+        }
+      ]
+    },
+    {
+      "title": "关系代词省略：提高表达自然度",
+      "description": "当 who, whom, which, that 在限定性定语从句中作宾语时，通常可以省略；但作主语时不能省略。PTE 口语中适当使用省略结构可以使表达更自然，但写作中要确保句子结构清楚。",
+      "examples": [
+        {
+          "en": "The solution the committee proposed was both practical and cost-effective.",
+          "zh": "委员会提出的解决方案既实用又具有成本效益。"
+        },
+        {
+          "en": "The evidence the researchers collected supports the original hypothesis.",
+          "zh": "研究人员收集的证据支持最初的假设。"
+        }
+      ]
+    },
+    {
+      "title": "介词加关系代词：正式学术表达",
+      "description": "在正式写作中，可以使用 preposition + whom / which，例如 in which, to whom, from which。这类结构比把介词放在句末更正式，常见于 IELTS Writing Task 2 和 PTE Write Essay。",
+      "examples": [
+        {
+          "en": "The extent to which technology influences employment remains widely debated.",
+          "zh": "技术在多大程度上影响就业仍然存在广泛争议。"
+        },
+        {
+          "en": "The conditions under which children learn can significantly affect their academic performance.",
+          "zh": "儿童学习所处的条件会显著影响他们的学业表现。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "The people who they live in big cities face more pressure.",
+      "correct": "The people who live in big cities face more pressure.",
+      "explanation": "关系代词 who 已经在定语从句中作主语，不能再加入 they。中文学习者常受中文“住在大城市的人他们……”影响而重复主语。"
+    },
+    {
+      "wrong": "The policy which was introduced last year has improved public transport.",
+      "correct": "The policy that was introduced last year has improved public transport. / The policy which was introduced last year has improved public transport.",
+      "explanation": "限定性定语从句中 which 和 that 都可以修饰物。这个句子本身不一定错误，但如果是限定性信息，通常不加逗号。错误常出现在考生误以为 which 一定要加逗号，或 that 一定比 which 正式。"
+    },
+    {
+      "wrong": "The policy, that was introduced last year, has improved public transport.",
+      "correct": "The policy, which was introduced last year, has improved public transport.",
+      "explanation": "非限定性定语从句不能用 that，只能用 which 或 who 等关系词，并且需要逗号隔开。"
+    },
+    {
+      "wrong": "This is a problem where many students find difficult.",
+      "correct": "This is a problem that many students find difficult.",
+      "explanation": "where 表示地点或抽象地点，不能直接代替 that / which 作 find 的宾语。这里从句中缺少 find 的宾语，因此应使用 that 或 which，且可省略。"
+    },
+    {
+      "wrong": "The reason why he failed was because he did not prepare enough.",
+      "correct": "The reason why he failed was that he did not prepare enough.",
+      "explanation": "The reason why... was that... 是更规范的结构。because 已经表示原因，与 reason 搭配时容易造成结构重复，在正式写作中应避免。"
+    },
+    {
+      "wrong": "Students which study abroad may develop independence.",
+      "correct": "Students who study abroad may develop independence.",
+      "explanation": "先行词 students 指人，应使用 who 或 that，不能用 which。which 用于事物、动物或整个句子。"
+    },
+    {
+      "wrong": "The data shows that students who spends more time reading achieve higher scores.",
+      "correct": "The data show that students who spend more time reading achieve higher scores.",
+      "explanation": "定语从句中的动词要和从句主语一致。students 是复数，因此用 spend。学术英语中 data 常作复数处理，用 show。"
+    },
+    {
+      "wrong": "I visited the university where my friend recommended.",
+      "correct": "I visited the university that my friend recommended.",
+      "explanation": "recommend 是及物动词，需要宾语。the university 在从句中作 recommended 的宾语，所以应使用 that / which 或省略关系代词，而不是 where。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "定语从句在 PTE Academic 中出现频率很高，尤其体现在 Summarize Written Text, Write Essay, Re-tell Lecture, Repeat Sentence 和 Reading & Writing: Fill in the Blanks 中。考生需要识别复杂句中的主干信息，判断关系词在从句中的功能，并在写作中使用定语从句提升 grammatical range。PTE 的自动评分系统重视语法准确性、句子结构完整性和表达连贯性，因此定语从句使用错误可能影响 grammar 和 written discourse 分数。在口语任务中，适当使用简单且准确的定语从句可以增加表达层次，但不应为了复杂而牺牲流利度和发音清晰度。",
+    "sections": [
+      "Summarize Written Text",
+      "Write Essay",
+      "Re-tell Lecture",
+      "Repeat Sentence",
+      "Reading & Writing: Fill in the Blanks",
+      "Reading: Re-order Paragraphs",
+      "Listening: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "The extent to which + 主语 + 谓语 + remains controversial.",
+      "translation": "……在多大程度上……仍然存在争议。"
+    },
+    {
+      "pattern": "This is a factor that contributes to + 名词.",
+      "translation": "这是导致……的一个因素。"
+    },
+    {
+      "pattern": "Individuals who are exposed to + 名词 + are more likely to + 动词原形.",
+      "translation": "接触……的人更有可能……。"
+    },
+    {
+      "pattern": "The conditions under which + 主语 + 谓语 + can affect + 名词.",
+      "translation": "……所处的条件会影响……。"
+    },
+    {
+      "pattern": "A society where + 主语 + 谓语 + is likely to + 动词原形.",
+      "translation": "一个……的社会可能会……。"
+    },
+    {
+      "pattern": "The evidence that + 主语 + 谓语 + suggests that + 从句.",
+      "translation": "……的证据表明……。"
+    },
+    {
+      "pattern": "Policies that aim to + 动词原形 + should be carefully evaluated.",
+      "translation": "旨在……的政策应被仔细评估。"
+    },
+    {
+      "pattern": "The findings, which are consistent with previous research, indicate that + 从句.",
+      "translation": "这些发现与以往研究一致，表明……。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "people who live in urban areas",
+      "translation": "居住在城市地区的人"
+    },
+    {
+      "phrase": "students who lack academic support",
+      "translation": "缺乏学术支持的学生"
+    },
+    {
+      "phrase": "factors that influence decision-making",
+      "translation": "影响决策的因素"
+    },
+    {
+      "phrase": "policies that address social inequality",
+      "translation": "解决社会不平等问题的政策"
+    },
+    {
+      "phrase": "evidence that supports the argument",
+      "translation": "支持该论点的证据"
+    },
+    {
+      "phrase": "an environment where creativity can flourish",
+      "translation": "创造力能够蓬勃发展的环境"
+    },
+    {
+      "phrase": "a period when economic growth slowed",
+      "translation": "经济增长放缓的时期"
+    },
+    {
+      "phrase": "the reason why this issue matters",
+      "translation": "这个问题重要的原因"
+    },
+    {
+      "phrase": "the extent to which education affects income",
+      "translation": "教育影响收入的程度"
+    },
+    {
+      "phrase": "the way in which information is presented",
+      "translation": "信息呈现的方式"
+    }
+  ],
+  "ai_tips": [
+    "先判断先行词是人、物、地点、时间还是原因，再选择关系词；不要直接按中文“的”来机械翻译。",
+    "写作中如果定语从句信息是必要的，不加逗号；如果只是补充说明，要用逗号，并避免使用 that。",
+    "检查定语从句内部是否缺主语、宾语或所有格：缺主语可用 who / which / that，缺宾语可用 whom / which / that 或省略，表示所属用 whose。",
+    "PTE 写作中不必堆砌过长定语从句；一个准确的定语从句通常比多个错误复杂句更能提高语法分数。",
+    "听力和阅读中遇到定语从句时，先找主句主干，再把从句视为修饰信息，这有助于快速理解句意。"
+  ],
+  "practice_questions": [
+    {
+      "question": "选择正确关系词：Students ___ submit assignments on time are more likely to achieve high grades.",
+      "answer": "who / that。完整句：Students who submit assignments on time are more likely to achieve high grades. 解释：先行词 students 指人，关系词在从句中作主语。"
+    },
+    {
+      "question": "改正错误：The technology, that improves communication, is widely used in education.",
+      "answer": "The technology, which improves communication, is widely used in education. 解释：逗号引导的是非限定性定语从句，不能使用 that。"
+    },
+    {
+      "question": "合并句子：The report was published yesterday. It provides detailed information about climate change.",
+      "answer": "The report that was published yesterday provides detailed information about climate change. 或 The report, which was published yesterday, provides detailed information about climate change. 区别：第一句把发布时间作为必要限定信息；第二句把发布时间作为补充信息。"
+    },
+    {
+      "question": "选择正确形式：This is the university ___ I studied environmental science.",
+      "answer": "where。完整句：This is the university where I studied environmental science. 解释：先行词 university 表示地点，从句中不缺宾语，而是缺地点状语。"
+    },
+    {
+      "question": "改正错误：The reason why many people prefer online shopping is because it is convenient.",
+      "answer": "The reason why many people prefer online shopping is that it is convenient. 解释：The reason why... is that... 是正式且准确的结构。"
+    },
+    {
+      "question": "将句子改为更正式的学术表达：The method which researchers rely on is not always reliable.",
+      "answer": "The method on which researchers rely is not always reliable. 解释：preposition + which 是更正式的结构，适合学术写作。"
+    },
+    {
+      "question": "判断是否可以省略关系词：The book that I borrowed from the library is useful.",
+      "answer": "可以省略。The book I borrowed from the library is useful. 解释：that 在定语从句中作 borrowed 的宾语，因此可以省略。"
+    },
+    {
+      "question": "判断是否可以省略关系词：The book that explains academic writing is useful.",
+      "answer": "不可以省略。解释：that 在定语从句中作主语，如果省略，句子结构会不完整。"
+    }
+  ]
+}

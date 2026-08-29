@@ -1,0 +1,1253 @@
+{
+  "schema_version": "1.0.0",
+  "content_id": "ielts_listening_reading_question_types",
+  "title_cn": "雅思听力与阅读题型及解题技巧",
+  "title_en": "IELTS Listening and Reading Question Types & Strategies",
+  "language": "zh-CN",
+  "updated_at": "2026-07-12",
+  "intended_use": [
+    "前端题型总览页",
+    "题型详情卡片",
+    "学习路径与技巧展示",
+    "按技能、难度和题型筛选"
+  ],
+  "source_scope": {
+    "listening": "Academic 与 General Training 听力题型相同",
+    "reading": "题型机制基本相同，但 Academic 与 General Training 的文章来源、文本风格和难度结构不同",
+    "note": "本文件将官方复合题型适度拆分，方便前端单独渲染和教学。"
+  },
+  "sections": [
+    {
+      "id": "listening",
+      "name_cn": "雅思听力",
+      "name_en": "IELTS Listening",
+      "icon": "headphones",
+      "theme_key": "listening",
+      "overview": {
+        "duration_minutes": 30,
+        "question_count": 40,
+        "parts": 4,
+        "questions_per_part": 10,
+        "answer_order": "题目答案通常按照录音信息出现的顺序排列",
+        "audio_played_times": 1,
+        "academic_and_general_same": true
+      },
+      "part_structure": [
+        {
+          "part": 1,
+          "context_cn": "日常社会场景中的双人对话",
+          "examples": [
+            "租房",
+            "预订",
+            "报名",
+            "咨询服务"
+          ],
+          "typical_difficulty": "easy"
+        },
+        {
+          "part": 2,
+          "context_cn": "日常社会场景中的单人独白",
+          "examples": [
+            "场所介绍",
+            "活动说明",
+            "旅游导览",
+            "地图路线"
+          ],
+          "typical_difficulty": "easy_to_medium"
+        },
+        {
+          "part": 3,
+          "context_cn": "教育或培训场景中的多人讨论",
+          "examples": [
+            "学生讨论作业",
+            "导师反馈",
+            "研究项目安排"
+          ],
+          "typical_difficulty": "medium_to_hard"
+        },
+        {
+          "part": 4,
+          "context_cn": "学术主题的单人讲座",
+          "examples": [
+            "大学讲座",
+            "研究报告",
+            "学术说明"
+          ],
+          "typical_difficulty": "hard"
+        }
+      ],
+      "global_strategies": [
+        "播放前快速阅读题目，圈出关键词并预测答案词性。",
+        "注意题目中的字数限制，例如 NO MORE THAN TWO WORDS AND/OR A NUMBER。",
+        "答案通常按录音顺序出现；漏掉一题后应立即跟进下一题。",
+        "重点识别同义替换，而不是等待录音原词重复题干。",
+        "警惕说话人自我纠正、否定、转折和最终决定。",
+        "检查单复数、拼写、数字、日期、时间和单位。",
+        "选择题先比较选项差异，再带着差异听录音。",
+        "填空题根据空格前后语法预测名词、动词、形容词或数字。"
+      ],
+      "question_types": [
+        {
+          "id": "listening_multiple_choice_single",
+          "official_family": "multiple_choice",
+          "name_cn": "单选题",
+          "name_en": "Multiple Choice — Single Answer",
+          "short_name": "MCQ Single",
+          "answer_format": "选择一个字母",
+          "description_cn": "从通常三个选项中选择一个正确答案，或为句子选择一个正确结尾。",
+          "skills_tested": [
+            "理解主旨",
+            "识别具体信息",
+            "理解说话人态度",
+            "区分相似信息"
+          ],
+          "typical_parts": [
+            2,
+            3,
+            4
+          ],
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先读题干，再比较选项之间真正不同的词。",
+            "把每个选项压缩为一个核心意思，避免边听边读长句。",
+            "录音可能依次提到所有选项，但只有最终态度或结论正确。",
+            "重点听 but、however、actually、instead、eventually 等转折或修正信号。"
+          ],
+          "common_traps": [
+            "录音提到某选项但随后否定或修改。",
+            "选项使用录音原词，但意思不符合题目。",
+            "考生听到熟悉词后过早作答。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "选择题",
+            "search_keywords": [
+              "单选",
+              "multiple choice",
+              "MCQ"
+            ]
+          }
+        },
+        {
+          "id": "listening_multiple_choice_multiple",
+          "official_family": "multiple_choice",
+          "name_cn": "多选题",
+          "name_en": "Multiple Choice — Multiple Answers",
+          "short_name": "MCQ Multiple",
+          "answer_format": "从较长选项列表中选择指定数量的答案",
+          "description_cn": "按照题目要求选择两个或更多正确选项。",
+          "skills_tested": [
+            "筛选信息",
+            "归纳多个要点",
+            "识别态度与原因"
+          ],
+          "typical_parts": [
+            2,
+            3,
+            4
+          ],
+          "difficulty": "hard",
+          "strategies": [
+            "先确认必须选择几个答案。",
+            "预读全部选项并归类，例如优点、问题、原因或建议。",
+            "听到一个候选答案时先做标记，等上下文完整后再确认。",
+            "多选题答案出现顺序未必与选项字母顺序一致。"
+          ],
+          "common_traps": [
+            "选择数量错误。",
+            "把例子误认为最终答案。",
+            "漏听分散在录音不同位置的答案。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "多选题",
+            "search_keywords": [
+              "多选",
+              "multiple answers"
+            ]
+          }
+        },
+        {
+          "id": "listening_matching",
+          "official_family": "matching",
+          "name_cn": "匹配题",
+          "name_en": "Matching",
+          "short_name": "Matching",
+          "answer_format": "将题目项目与选项字母匹配",
+          "description_cn": "把录音中提到的人物、地点、观点、特征或方案与给定选项对应起来。",
+          "skills_tested": [
+            "理解细节",
+            "识别关系",
+            "跟踪不同说话人观点",
+            "同义替换"
+          ],
+          "typical_parts": [
+            2,
+            3
+          ],
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先明确匹配主体是什么：人、地点、特征、意见还是结果。",
+            "快速为选项写下简短关键词。",
+            "注意选项可能重复使用，也可能有多余选项，以题目说明为准。",
+            "多人对话中要区分是谁表达了某个观点。"
+          ],
+          "common_traps": [
+            "混淆不同说话人的意见。",
+            "录音先提出一个方案，后又改成另一个方案。",
+            "只根据单个词匹配，忽略整体含义。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "匹配题",
+            "search_keywords": [
+              "matching",
+              "人物观点匹配",
+              "特征匹配"
+            ]
+          }
+        },
+        {
+          "id": "listening_map_plan_labelling",
+          "official_family": "plan_map_diagram_labelling",
+          "name_cn": "地图／平面图标注题",
+          "name_en": "Map / Plan Labelling",
+          "short_name": "Map Labelling",
+          "answer_format": "选择字母或填写地点名称",
+          "description_cn": "根据路线、方位或场所说明，在地图或建筑平面图上标注正确位置。",
+          "skills_tested": [
+            "理解方位",
+            "跟随路线",
+            "空间关系",
+            "识别地点名称"
+          ],
+          "typical_parts": [
+            2
+          ],
+          "difficulty": "medium",
+          "strategies": [
+            "播放前找到起点、入口、道路、方向标和已知地标。",
+            "熟悉 opposite、next to、at the end of、on your left、beyond、in the corner 等方位词。",
+            "用手指或视线沿路线移动，不要只盯着答案空格。",
+            "听到转弯或经过地标时及时更新当前位置。"
+          ],
+          "common_traps": [
+            "左右方向以行进方向为准，而不是看图者方向。",
+            "把经过的地点误当成目标地点。",
+            "录音出现回头、穿过或绕过等复杂路线。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "地图题",
+            "search_keywords": [
+              "地图",
+              "平面图",
+              "map",
+              "plan"
+            ]
+          }
+        },
+        {
+          "id": "listening_diagram_labelling",
+          "official_family": "plan_map_diagram_labelling",
+          "name_cn": "示意图标注题",
+          "name_en": "Diagram Labelling",
+          "short_name": "Diagram",
+          "answer_format": "选择字母或填写部件名称",
+          "description_cn": "根据录音标注设备、结构、过程或物体示意图中的部件。",
+          "skills_tested": [
+            "理解结构关系",
+            "跟随描述顺序",
+            "识别专业或功能词汇"
+          ],
+          "typical_parts": [
+            2,
+            4
+          ],
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先观察图形整体以及箭头指向的位置。",
+            "预测空格需要的是部件、材料、位置还是功能。",
+            "听 top、base、inside、outer、attached to、consists of 等结构描述词。",
+            "利用已标注部件判断录音描述方向。"
+          ],
+          "common_traps": [
+            "相邻部件名称混淆。",
+            "忽略箭头准确指向。",
+            "把功能描述当成部件名称。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "图示题",
+            "search_keywords": [
+              "diagram",
+              "示意图",
+              "部件标注"
+            ]
+          }
+        },
+        {
+          "id": "listening_form_completion",
+          "official_family": "form_note_table_flow_chart_summary_completion",
+          "name_cn": "表格／表单填空题",
+          "name_en": "Form Completion",
+          "short_name": "Form",
+          "answer_format": "填写单词、数字或单词与数字组合",
+          "description_cn": "补全申请表、预订表、登记表等日常信息。",
+          "skills_tested": [
+            "听取姓名",
+            "地址",
+            "电话号码",
+            "日期",
+            "价格",
+            "拼写"
+          ],
+          "typical_parts": [
+            1
+          ],
+          "difficulty": "easy_to_medium",
+          "strategies": [
+            "根据字段名预测答案类型。",
+            "姓名、地址或代码常会被逐字母拼写，要熟悉英文字母读音。",
+            "数字要注意 teen 与 ty、double、triple、oh/zero。",
+            "听清货币、日期、时间和计量单位。"
+          ],
+          "common_traps": [
+            "拼写错误。",
+            "数字位数或单位错误。",
+            "说话人先给旧信息，随后进行更正。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "form completion",
+              "表单填空"
+            ]
+          }
+        },
+        {
+          "id": "listening_note_completion",
+          "official_family": "form_note_table_flow_chart_summary_completion",
+          "name_cn": "笔记填空题",
+          "name_en": "Note Completion",
+          "short_name": "Notes",
+          "answer_format": "按字数限制填写答案",
+          "description_cn": "补全反映录音主要观点及细节关系的笔记。",
+          "skills_tested": [
+            "识别主次信息",
+            "理解层级结构",
+            "抓取关键词"
+          ],
+          "typical_parts": [
+            2,
+            3,
+            4
+          ],
+          "difficulty": "medium",
+          "strategies": [
+            "根据标题、缩进和项目符号判断信息层级。",
+            "利用空格前后的语法预测词性。",
+            "留意 firstly、another reason、in contrast、as a result 等结构信号。",
+            "答案必须直接来自录音，不要自行改写。"
+          ],
+          "common_traps": [
+            "答案超过字数限制。",
+            "填入意思正确但录音未使用的词。",
+            "忽略单复数。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "note completion",
+              "笔记填空"
+            ]
+          }
+        },
+        {
+          "id": "listening_table_completion",
+          "official_family": "form_note_table_flow_chart_summary_completion",
+          "name_cn": "表格填空题",
+          "name_en": "Table Completion",
+          "short_name": "Table",
+          "answer_format": "填写分类信息",
+          "description_cn": "补全按照时间、地点、价格、特征或类别整理的信息表。",
+          "skills_tested": [
+            "分类信息",
+            "横纵向定位",
+            "听取具体事实"
+          ],
+          "typical_parts": [
+            1,
+            2,
+            4
+          ],
+          "difficulty": "medium",
+          "strategies": [
+            "同时查看行标题和列标题，明确每个空格代表什么。",
+            "提前预测答案是否为地点、数字、名词或形容词。",
+            "跟随录音顺序定位当前行，不要在整张表中盲目寻找。",
+            "注意同一类别下信息表达方式可能不同。"
+          ],
+          "common_traps": [
+            "看错行列。",
+            "把相邻项目的信息填错位置。",
+            "遗漏单位或单复数。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "table completion",
+              "表格填空"
+            ]
+          }
+        },
+        {
+          "id": "listening_flow_chart_completion",
+          "official_family": "form_note_table_flow_chart_summary_completion",
+          "name_cn": "流程图填空题",
+          "name_en": "Flow-chart Completion",
+          "short_name": "Flow Chart",
+          "answer_format": "填写步骤或从选项中选择",
+          "description_cn": "补全过程、实验、操作或决策的阶段。",
+          "skills_tested": [
+            "理解过程顺序",
+            "识别因果",
+            "抓取动作和结果"
+          ],
+          "typical_parts": [
+            3,
+            4
+          ],
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先看箭头，明确流程方向和分支结构。",
+            "重点预测动词、动作对象或阶段结果。",
+            "听 next、after that、once、before、finally 等顺序词。",
+            "当录音描述原因或条件时，留意流程可能发生分支。"
+          ],
+          "common_traps": [
+            "混淆步骤顺序。",
+            "把原因填到结果位置。",
+            "忽略被动语态导致词性判断错误。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "流程题",
+            "search_keywords": [
+              "flow chart",
+              "流程图"
+            ]
+          }
+        },
+        {
+          "id": "listening_summary_completion",
+          "official_family": "form_note_table_flow_chart_summary_completion",
+          "name_cn": "摘要填空题",
+          "name_en": "Summary Completion",
+          "short_name": "Summary",
+          "answer_format": "填写录音中的词或从词库选择",
+          "description_cn": "补全对录音部分或全部内容的概括。",
+          "skills_tested": [
+            "理解主旨",
+            "同义替换",
+            "语法预测",
+            "信息压缩"
+          ],
+          "typical_parts": [
+            3,
+            4
+          ],
+          "difficulty": "hard",
+          "strategies": [
+            "先通读摘要，了解主题和逻辑。",
+            "通过冠词、介词和句子结构预测答案词性。",
+            "摘要通常会改写录音原句，要重点识别同义替换。",
+            "完成后检查语法是否通顺。"
+          ],
+          "common_traps": [
+            "仅凭语法选择但意思不符。",
+            "同义词干扰。",
+            "超过字数限制。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "summary completion",
+              "摘要填空"
+            ]
+          }
+        },
+        {
+          "id": "listening_sentence_completion",
+          "official_family": "sentence_completion",
+          "name_cn": "句子填空题",
+          "name_en": "Sentence Completion",
+          "short_name": "Sentence",
+          "answer_format": "使用录音中的词补全句子",
+          "description_cn": "补全概括录音重要信息的独立句子。",
+          "skills_tested": [
+            "听取事实",
+            "理解改写",
+            "语法与词性判断"
+          ],
+          "typical_parts": [
+            2,
+            3,
+            4
+          ],
+          "difficulty": "medium",
+          "strategies": [
+            "预判空格所需词性和可能含义。",
+            "题干经常对录音内容进行改写。",
+            "注意空格后已有单位时，答案中不要重复单位。",
+            "确保答案放入句子后语法正确。"
+          ],
+          "common_traps": [
+            "重复题干已有单词或单位。",
+            "单复数不匹配。",
+            "答案含义正确但超过字数限制。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "sentence completion",
+              "句子填空"
+            ]
+          }
+        },
+        {
+          "id": "listening_short_answer",
+          "official_family": "short_answer_questions",
+          "name_cn": "简答题",
+          "name_en": "Short-answer Questions",
+          "short_name": "Short Answer",
+          "answer_format": "按字数限制回答问题",
+          "description_cn": "根据录音内容用简短词语回答事实性问题。",
+          "skills_tested": [
+            "定位具体信息",
+            "理解问题词",
+            "提取关键事实"
+          ],
+          "typical_parts": [
+            1,
+            2,
+            3
+          ],
+          "difficulty": "medium",
+          "strategies": [
+            "关注 who、where、when、why、how many 等问题词。",
+            "预测答案类型，例如人物、地点、原因或数量。",
+            "只写必要信息，不要写完整句子。",
+            "严格遵守字数限制。"
+          ],
+          "common_traps": [
+            "写了过多无关词。",
+            "遗漏数字单位。",
+            "把问题中的词重复进答案导致超字数。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "简答题",
+            "search_keywords": [
+              "short answer",
+              "简答"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "name_cn": "雅思阅读",
+      "name_en": "IELTS Reading",
+      "icon": "book-open",
+      "theme_key": "reading",
+      "overview": {
+        "duration_minutes": 60,
+        "question_count": 40,
+        "academic_passages": 3,
+        "general_training_sections": 3,
+        "answer_transfer_time_included": true,
+        "academic_and_general_same_question_mechanics": true
+      },
+      "test_variants": [
+        {
+          "id": "academic",
+          "name_cn": "学术类阅读",
+          "name_en": "Academic Reading",
+          "description_cn": "三篇较长文章，来源可能包括书籍、期刊、杂志、报纸及在线资源，面向非专业读者但具有学术风格。"
+        },
+        {
+          "id": "general_training",
+          "name_cn": "培训类阅读",
+          "name_en": "General Training Reading",
+          "description_cn": "包含日常生活、工作环境及较长一般性文章，文本由短到长、难度逐步增加。"
+        }
+      ],
+      "global_strategies": [
+        "先读题目再定位文章，但标题匹配题通常要先理解段落主旨。",
+        "区分略读 skimming、扫读 scanning 和精读 close reading。",
+        "圈出题干关键词，同时预测文章中的同义替换。",
+        "根据题型判断答案是否按文章顺序出现。",
+        "严格遵守字数限制，并从文章中准确抄写答案。",
+        "判断题只依据文章信息，不使用个人常识。",
+        "控制时间，避免在一道题上停留过久。",
+        "先完成容易定位的题，再处理需要全局理解的题。"
+      ],
+      "question_types": [
+        {
+          "id": "reading_multiple_choice_single",
+          "official_family": "multiple_choice",
+          "name_cn": "单选题",
+          "name_en": "Multiple Choice — Single Answer",
+          "short_name": "MCQ Single",
+          "answer_format": "选择一个字母",
+          "description_cn": "从四个选项中选择一个正确答案，或选择正确的句子结尾。",
+          "skills_tested": [
+            "理解细节",
+            "主旨判断",
+            "推断",
+            "识别观点"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先明确题目问的是事实、原因、观点还是主旨。",
+            "定位后阅读目标句前后文，不要只对照一个关键词。",
+            "逐项排除与原文矛盾、范围过大或偷换概念的选项。",
+            "正确选项通常是原文含义的同义改写。"
+          ],
+          "common_traps": [
+            "选项包含原文词汇但逻辑错误。",
+            "把文章局部信息扩大成整体结论。",
+            "选择部分正确但不能完整回答题目的选项。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "选择题",
+            "search_keywords": [
+              "阅读单选",
+              "multiple choice"
+            ]
+          }
+        },
+        {
+          "id": "reading_multiple_choice_multiple",
+          "official_family": "multiple_choice",
+          "name_cn": "多选题",
+          "name_en": "Multiple Choice — Multiple Answers",
+          "short_name": "MCQ Multiple",
+          "answer_format": "选择指定数量的字母",
+          "description_cn": "从多个选项中选择两个或更多符合文章内容的答案。",
+          "skills_tested": [
+            "整合多个细节",
+            "筛选信息",
+            "理解分类"
+          ],
+          "answer_order": "not_always_sequential",
+          "difficulty": "hard",
+          "strategies": [
+            "先确认选择数量。",
+            "将选项关键词分类，再去文章定位相关区域。",
+            "每个选项都必须有明确原文依据。",
+            "不要因为一个选项听起来合理就选择。"
+          ],
+          "common_traps": [
+            "凭常识作答。",
+            "只验证关键词，没有验证完整含义。",
+            "漏选或多选。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "多选题",
+            "search_keywords": [
+              "阅读多选",
+              "multiple answers"
+            ]
+          }
+        },
+        {
+          "id": "reading_true_false_not_given",
+          "official_family": "identifying_information",
+          "name_cn": "判断题：TRUE / FALSE / NOT GIVEN",
+          "name_en": "Identifying Information — True / False / Not Given",
+          "short_name": "TFNG",
+          "answer_format": "TRUE、FALSE 或 NOT GIVEN",
+          "description_cn": "判断题干陈述是否与文章事实一致、矛盾，或文章没有提供足够信息。",
+          "skills_tested": [
+            "事实核对",
+            "精确理解",
+            "识别缺失信息"
+          ],
+          "answer_order": "sequential",
+          "difficulty": "hard",
+          "decision_rules": {
+            "TRUE": "题干与原文含义一致。",
+            "FALSE": "原文明确表达了与题干相反或冲突的信息。",
+            "NOT GIVEN": "文章没有提供足够信息判断题干是否正确。"
+          },
+          "strategies": [
+            "先定位题干中的核心事实，包括主体、动作、程度和时间。",
+            "比较完整含义，不要只比较单词。",
+            "原文没有说不等于 FALSE；只有明确矛盾才是 FALSE。",
+            "特别注意 all、only、always、never、some、may 等限定词。"
+          ],
+          "common_traps": [
+            "用常识补充文章未提供的信息。",
+            "把没有提及误判为 FALSE。",
+            "忽略程度、数量或时间变化。"
+          ],
+          "frontend": {
+            "recommended_component": "DecisionRuleCard",
+            "badge": "判断题",
+            "search_keywords": [
+              "TFNG",
+              "TRUE FALSE NOT GIVEN",
+              "判断题"
+            ]
+          }
+        },
+        {
+          "id": "reading_yes_no_not_given",
+          "official_family": "identifying_writer_views_claims",
+          "name_cn": "观点判断题：YES / NO / NOT GIVEN",
+          "name_en": "Identifying Writer’s Views — Yes / No / Not Given",
+          "short_name": "YNNG",
+          "answer_format": "YES、NO 或 NOT GIVEN",
+          "description_cn": "判断题干是否符合作者的观点或主张，而不是单纯核对客观事实。",
+          "skills_tested": [
+            "识别作者立场",
+            "理解评价语言",
+            "区分事实与观点"
+          ],
+          "answer_order": "sequential",
+          "difficulty": "hard",
+          "decision_rules": {
+            "YES": "题干与作者观点一致。",
+            "NO": "题干与作者观点相反。",
+            "NOT GIVEN": "作者没有明确表达相关观点。"
+          },
+          "strategies": [
+            "确认题目问的是作者观点，而非文章中的客观事实。",
+            "关注 should、believe、argue、suggest、unlikely、surprisingly 等态度词。",
+            "区分作者观点与文章引用的他人观点。",
+            "没有明确立场时选择 NOT GIVEN。"
+          ],
+          "common_traps": [
+            "把研究者或被引用人物的观点当作作者观点。",
+            "根据语气自行推断作者未表达的立场。",
+            "混淆 NO 与 NOT GIVEN。"
+          ],
+          "frontend": {
+            "recommended_component": "DecisionRuleCard",
+            "badge": "观点判断",
+            "search_keywords": [
+              "YNNG",
+              "YES NO NOT GIVEN",
+              "作者观点"
+            ]
+          }
+        },
+        {
+          "id": "reading_matching_information",
+          "official_family": "matching_information",
+          "name_cn": "段落信息匹配题",
+          "name_en": "Matching Information",
+          "short_name": "Matching Information",
+          "answer_format": "将具体信息与段落字母匹配",
+          "description_cn": "找到包含某个细节、例子、原因、比较、描述或解释的段落。",
+          "skills_tested": [
+            "扫读",
+            "定位细节",
+            "识别同义替换"
+          ],
+          "answer_order": "not_sequential",
+          "difficulty": "hard",
+          "strategies": [
+            "提取题干中的独特信息，而不是宽泛主题词。",
+            "快速扫读每段寻找人名、数字、专有名词及同义表达。",
+            "一个段落可能对应多个题目，以说明为准。",
+            "定位后阅读完整句群确认信息功能。"
+          ],
+          "common_traps": [
+            "把主题相关段落误认为包含具体信息的段落。",
+            "只看到相同词就作答。",
+            "误以为每段只能用一次。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "匹配题",
+            "search_keywords": [
+              "段落信息匹配",
+              "matching information"
+            ]
+          }
+        },
+        {
+          "id": "reading_matching_headings",
+          "official_family": "matching_headings",
+          "name_cn": "段落标题匹配题",
+          "name_en": "Matching Headings",
+          "short_name": "Headings",
+          "answer_format": "为段落选择罗马数字标题",
+          "description_cn": "选择最能概括每个段落中心思想的标题。",
+          "skills_tested": [
+            "识别段落主旨",
+            "区分主旨与细节",
+            "理解段落功能"
+          ],
+          "answer_order": "paragraph_based",
+          "difficulty": "hard",
+          "strategies": [
+            "先读段落首句、末句和转折句，再概括中心意思。",
+            "自己先用几个词总结段落，再与标题比较。",
+            "标题必须覆盖整段，而不是只对应一个例子。",
+            "优先处理主题明显的段落，并划掉已使用标题。"
+          ],
+          "common_traps": [
+            "选择包含段落原词但只对应细节的标题。",
+            "两个标题相似时忽略范围和重点差异。",
+            "只读第一句，不看段落转折。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "标题匹配",
+            "search_keywords": [
+              "matching headings",
+              "段落标题"
+            ]
+          }
+        },
+        {
+          "id": "reading_matching_features",
+          "official_family": "matching_features",
+          "name_cn": "特征匹配题",
+          "name_en": "Matching Features",
+          "short_name": "Features",
+          "answer_format": "将陈述与人物、理论、地点或类别匹配",
+          "description_cn": "把文章中的观点、发现、特征或事实与给定对象对应起来。",
+          "skills_tested": [
+            "区分对象",
+            "定位分散信息",
+            "识别观点归属"
+          ],
+          "answer_order": "not_sequential",
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先在文章中标记所有人物、机构、理论或类别出现的位置。",
+            "为每个对象写简短特征标签。",
+            "确认选项能否重复使用。",
+            "注意代词和同义称呼可能指向同一对象。"
+          ],
+          "common_traps": [
+            "把相邻人物的观点混淆。",
+            "忽略姓氏、职位或代词指代。",
+            "假设每个选项只使用一次。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "匹配题",
+            "search_keywords": [
+              "matching features",
+              "人物匹配",
+              "特征匹配"
+            ]
+          }
+        },
+        {
+          "id": "reading_matching_sentence_endings",
+          "official_family": "matching_sentence_endings",
+          "name_cn": "句子结尾匹配题",
+          "name_en": "Matching Sentence Endings",
+          "short_name": "Sentence Endings",
+          "answer_format": "为句子前半部分选择正确结尾",
+          "description_cn": "根据文章内容，将不完整句子与正确的结尾匹配。",
+          "skills_tested": [
+            "理解句间逻辑",
+            "细节定位",
+            "语法匹配"
+          ],
+          "answer_order": "sequential",
+          "difficulty": "medium",
+          "strategies": [
+            "先读句子开头并预测含义和语法结构。",
+            "排除语法上不能连接的结尾。",
+            "定位原文后按意思选择，而不是只靠词汇重复。",
+            "通常结尾选项多于题目数量。"
+          ],
+          "common_traps": [
+            "语法可连接但含义错误。",
+            "选项使用原文词但逻辑关系被改变。",
+            "忽略因果、对比或条件关系。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "匹配题",
+            "search_keywords": [
+              "sentence endings",
+              "句尾匹配"
+            ]
+          }
+        },
+        {
+          "id": "reading_sentence_completion",
+          "official_family": "sentence_completion",
+          "name_cn": "句子填空题",
+          "name_en": "Sentence Completion",
+          "short_name": "Sentence Completion",
+          "answer_format": "从文章中抄写规定数量的词",
+          "description_cn": "使用文章中的单词补全句子。",
+          "skills_tested": [
+            "定位细节",
+            "语法预测",
+            "准确抄写"
+          ],
+          "answer_order": "sequential",
+          "difficulty": "medium",
+          "strategies": [
+            "先根据句子结构预测答案词性。",
+            "定位关键词的同义替换。",
+            "答案必须来自文章，不要自行改词。",
+            "填完后检查语法、单复数和字数限制。"
+          ],
+          "common_traps": [
+            "超过字数限制。",
+            "多抄冠词或修饰词。",
+            "词义正确但语法不匹配。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "sentence completion",
+              "句子填空"
+            ]
+          }
+        },
+        {
+          "id": "reading_summary_completion_words",
+          "official_family": "summary_note_table_flow_chart_completion",
+          "name_cn": "摘要填空题：原文选词",
+          "name_en": "Summary Completion — Words from the Passage",
+          "short_name": "Summary Words",
+          "answer_format": "从文章中抄写答案",
+          "description_cn": "使用文章中的词补全一段摘要。",
+          "skills_tested": [
+            "理解概括",
+            "同义替换",
+            "定位连续信息"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先通读摘要，确定主题及逻辑结构。",
+            "预测每个空格词性和语义类别。",
+            "定位摘要关键词在原文中的同义表达。",
+            "检查答案放入摘要后语法与意思是否完整。"
+          ],
+          "common_traps": [
+            "摘要与原文表达方式不同。",
+            "选择意思接近但词性错误的词。",
+            "超过字数限制。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "摘要填空",
+            "search_keywords": [
+              "summary completion",
+              "摘要填空"
+            ]
+          }
+        },
+        {
+          "id": "reading_summary_completion_options",
+          "official_family": "summary_note_table_flow_chart_completion",
+          "name_cn": "摘要填空题：词库选词",
+          "name_en": "Summary Completion — Choosing from a List",
+          "short_name": "Summary Options",
+          "answer_format": "从给定词库中选择字母",
+          "description_cn": "从备选词列表中选择最符合原文及语法的词补全摘要。",
+          "skills_tested": [
+            "概括理解",
+            "词性判断",
+            "语义辨析"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "hard",
+          "strategies": [
+            "先按名词、动词、形容词等给词库分类。",
+            "先用语法缩小选项，再用原文含义确认。",
+            "注意词库中可能有近义词干扰。",
+            "所有答案都需要原文依据。"
+          ],
+          "common_traps": [
+            "只根据语法作答。",
+            "选择近义但不符合原文逻辑的词。",
+            "忽略词形或搭配。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "选词填空",
+            "search_keywords": [
+              "summary options",
+              "词库选词"
+            ]
+          }
+        },
+        {
+          "id": "reading_note_completion",
+          "official_family": "summary_note_table_flow_chart_completion",
+          "name_cn": "笔记填空题",
+          "name_en": "Note Completion",
+          "short_name": "Notes",
+          "answer_format": "从文章中填写词语",
+          "description_cn": "补全以项目符号或层级形式整理的文章要点。",
+          "skills_tested": [
+            "识别要点",
+            "理解层级",
+            "定位细节"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "medium",
+          "strategies": [
+            "利用标题和缩进理解笔记结构。",
+            "预测答案的词性和类别。",
+            "关注文章中的列举、原因和结果。",
+            "严格遵守字数限制。"
+          ],
+          "common_traps": [
+            "信息层级判断错误。",
+            "把例子填成主观点。",
+            "多抄无必要单词。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "填空题",
+            "search_keywords": [
+              "note completion",
+              "阅读笔记填空"
+            ]
+          }
+        },
+        {
+          "id": "reading_table_completion",
+          "official_family": "summary_note_table_flow_chart_completion",
+          "name_cn": "表格填空题",
+          "name_en": "Table Completion",
+          "short_name": "Table",
+          "answer_format": "填写表格中的分类信息",
+          "description_cn": "根据文章补全按类别排列的数据、特征、时间或结果。",
+          "skills_tested": [
+            "扫描信息",
+            "分类比较",
+            "准确定位"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "medium",
+          "strategies": [
+            "结合行列标题判断每个空格的信息类型。",
+            "先找数字、日期、名称等明显定位词。",
+            "注意比较对象和对应列。",
+            "检查单位、单复数和字数限制。"
+          ],
+          "common_traps": [
+            "行列错位。",
+            "相邻对象信息混淆。",
+            "重复填写表格中已有单位。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "表格填空",
+            "search_keywords": [
+              "table completion",
+              "阅读表格"
+            ]
+          }
+        },
+        {
+          "id": "reading_flow_chart_completion",
+          "official_family": "summary_note_table_flow_chart_completion",
+          "name_cn": "流程图填空题",
+          "name_en": "Flow-chart Completion",
+          "short_name": "Flow Chart",
+          "answer_format": "填写过程步骤",
+          "description_cn": "补全文章描述的过程、发展阶段或操作顺序。",
+          "skills_tested": [
+            "理解顺序",
+            "识别过程",
+            "因果关系"
+          ],
+          "answer_order": "usually_sequential",
+          "difficulty": "medium_to_hard",
+          "strategies": [
+            "先根据箭头确认流程方向。",
+            "预测空格是动作、对象还是结果。",
+            "在文章中寻找顺序词和过程动词。",
+            "确认主动、被动形式及语法搭配。"
+          ],
+          "common_traps": [
+            "步骤顺序错误。",
+            "原因与结果混淆。",
+            "抄写词数超限。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "流程填空",
+            "search_keywords": [
+              "flow chart completion",
+              "阅读流程图"
+            ]
+          }
+        },
+        {
+          "id": "reading_diagram_label_completion",
+          "official_family": "diagram_label_completion",
+          "name_cn": "示意图标注题",
+          "name_en": "Diagram Label Completion",
+          "short_name": "Diagram",
+          "answer_format": "从文章中填写部件或阶段名称",
+          "description_cn": "根据文章描述补全设备、结构、自然现象或过程示意图。",
+          "skills_tested": [
+            "理解描述",
+            "空间关系",
+            "结构定位"
+          ],
+          "answer_order": "not_always_sequential",
+          "difficulty": "medium",
+          "strategies": [
+            "先看图标题和已有标签，理解整体对象。",
+            "观察箭头准确指向并预测答案类型。",
+            "在文章中寻找描述该结构或过程的集中段落。",
+            "利用位置词和部件关系确认答案。"
+          ],
+          "common_traps": [
+            "箭头指向误判。",
+            "部件名称与功能混淆。",
+            "答案顺序不一定完全按文章顺序。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "图示题",
+            "search_keywords": [
+              "diagram label",
+              "示意图标注"
+            ]
+          }
+        },
+        {
+          "id": "reading_short_answer",
+          "official_family": "short_answer_questions",
+          "name_cn": "简答题",
+          "name_en": "Short-answer Questions",
+          "short_name": "Short Answer",
+          "answer_format": "从文章中提取规定数量的词或数字",
+          "description_cn": "根据文章内容简短回答问题。",
+          "skills_tested": [
+            "定位事实",
+            "理解问题词",
+            "准确提取信息"
+          ],
+          "answer_order": "sequential",
+          "difficulty": "easy_to_medium",
+          "strategies": [
+            "根据问题词预测答案类型。",
+            "定位题干关键词及其同义替换。",
+            "只填写必要词语，不写完整句。",
+            "检查字数、数字和单位。"
+          ],
+          "common_traps": [
+            "写入多余词语导致超限。",
+            "答案未直接回应问题词。",
+            "漏写必要单位或修饰词。"
+          ],
+          "frontend": {
+            "recommended_component": "QuestionTypeDetailCard",
+            "badge": "简答题",
+            "search_keywords": [
+              "short answer",
+              "阅读简答"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "frontend_config": {
+    "default_view": "section_tabs",
+    "tabs": [
+      {
+        "id": "listening",
+        "label_cn": "听力题型",
+        "label_en": "Listening"
+      },
+      {
+        "id": "reading",
+        "label_cn": "阅读题型",
+        "label_en": "Reading"
+      }
+    ],
+    "filters": [
+      {
+        "key": "difficulty",
+        "label_cn": "难度",
+        "options": [
+          "easy",
+          "easy_to_medium",
+          "medium",
+          "medium_to_hard",
+          "hard"
+        ]
+      },
+      {
+        "key": "official_family",
+        "label_cn": "官方题型类别",
+        "dynamic": true
+      },
+      {
+        "key": "skills_tested",
+        "label_cn": "考查能力",
+        "dynamic": true
+      }
+    ],
+    "card_fields": [
+      "name_cn",
+      "name_en",
+      "description_cn",
+      "difficulty",
+      "answer_format",
+      "skills_tested",
+      "strategies",
+      "common_traps"
+    ],
+    "difficulty_labels": {
+      "easy": "简单",
+      "easy_to_medium": "简单至中等",
+      "medium": "中等",
+      "medium_to_hard": "中等至困难",
+      "hard": "困难"
+    }
+  },
+  "sources": [
+    {
+      "name": "IELTS Official — Academic Listening Test Format",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-listening"
+    },
+    {
+      "name": "IELTS Official — Academic Reading Test Format",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-reading"
+    },
+    {
+      "name": "IELTS Official — Academic Sample Test Questions",
+      "url": "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test"
+    },
+    {
+      "name": "IELTS Official — General Training Sample Test Questions",
+      "url": "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/general-training-test"
+    }
+  ]
+}

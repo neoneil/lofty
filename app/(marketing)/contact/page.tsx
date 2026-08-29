@@ -61,21 +61,6 @@ export default function ContactPage() {
 
               <ContactLanguageToggle />
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="#contact-form"
-                  className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
-                >
-                  添加微信咨询
-                </a>
-                <a
-                  href="#contact-form"
-                  className="inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-xs)] transition hover:bg-[var(--bg-soft)]"
-                >
-                  预约咨询
-                </a>
-              </div>
-
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {[
                   ["2008", "起教授雅思"],
@@ -99,6 +84,20 @@ export default function ContactPage() {
 
             <Card className="rounded-[var(--radius-lg)] bg-[var(--card-soft)]">
               <CardHeader className="flex-col items-start gap-1">
+                <div className="mb-5 flex w-full flex-col gap-3 sm:flex-row">
+                  <a
+                    href="#contact-form"
+                    className="inline-flex h-11 flex-1 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]"
+                  >
+                    添加微信咨询
+                  </a>
+                  <a
+                    href="#contact-form"
+                    className="inline-flex h-11 flex-1 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-semibold text-[var(--text)] shadow-[var(--shadow-xs)] transition hover:bg-[var(--bg-soft)]"
+                  >
+                    预约咨询
+                  </a>
+                </div>
                 <CardTitle>为什么选择{BRAND_NAME_CN}</CardTitle>
                 <CardDescription>
                   老师直接参与诊断、训练和反馈，帮助学生把练习变成可见进步。

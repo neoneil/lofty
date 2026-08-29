@@ -1,0 +1,275 @@
+{
+  "slug": "past-perfect",
+  "category": {
+    "zh": "时态",
+    "en": "Tenses"
+  },
+  "title": {
+    "zh": "过去完成时",
+    "en": "Past Perfect Tense"
+  },
+  "difficulty": "Intermediate",
+  "summary": {
+    "zh": "过去完成时 Past Perfect Tense 用来表示“过去的过去”，即某个动作或状态发生在另一个过去时间或过去动作之前。其核心结构是 had + past participle。它常用于叙事、解释原因、描述研究背景、对比事件先后顺序，以及在 PTE Academic 和 IELTS 写作、口语中提高时间逻辑的清晰度。中国学习者常见问题包括误用一般过去时、忘记使用 had、把过去完成时用于没有明确先后关系的句子中，以及将 had 与动词过去式混用。"
+  },
+  "structure": {
+    "formula": "Subject + had + past participle + object/complement",
+    "explanation": "过去完成时由助动词 had 加动词的 past participle 构成。had 不随主语变化，I, you, he, she, it, we, they 后都使用 had。它强调一个动作在另一个过去动作或过去时间点之前已经完成。句中经常出现 before, after, by the time, already, just, never, previously, until then 等时间标志，但过去完成时是否必要主要取决于语义上的先后关系，而不是单纯依赖时间副词。",
+    "examples": [
+      {
+        "en": "By the time the lecture started, many students had already taken their seats.",
+        "zh": "讲座开始时，许多学生已经就座了。"
+      },
+      {
+        "en": "The researcher had collected sufficient data before the final report was written.",
+        "zh": "在最终报告撰写之前，研究人员已经收集了足够的数据。"
+      },
+      {
+        "en": "She realized that she had misunderstood the question in the speaking test.",
+        "zh": "她意识到自己在口语考试中误解了题目。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "表示一个过去动作发生在另一个过去动作之前",
+      "description": "当句子中有两个过去事件时，较早发生的动作通常使用过去完成时，较晚发生的动作通常使用一般过去时。这种用法在叙事和学术写作中非常重要，因为它能清楚展示事件顺序。",
+      "examples": [
+        {
+          "en": "The company had expanded into overseas markets before it launched its new digital strategy.",
+          "zh": "在推出新的数字化战略之前，这家公司已经拓展到海外市场。"
+        },
+        {
+          "en": "I had reviewed my notes carefully before I entered the PTE test room.",
+          "zh": "在进入 PTE 考场之前，我已经认真复习了笔记。"
+        }
+      ]
+    },
+    {
+      "title": "解释过去某个结果或状态的原因",
+      "description": "过去完成时常用于说明某个过去结果产生的背景原因。结果通常用一般过去时，原因或背景动作使用过去完成时。",
+      "examples": [
+        {
+          "en": "The experiment failed because the team had ignored several key variables.",
+          "zh": "实验失败了，因为团队之前忽视了几个关键变量。"
+        },
+        {
+          "en": "He performed confidently in the interview because he had practised similar questions many times.",
+          "zh": "他在面试中表现得很自信，因为他之前已经多次练习过类似问题。"
+        }
+      ]
+    },
+    {
+      "title": "与 by the time, before, after 连用强调时间先后",
+      "description": "过去完成时常与时间状语从句搭配，用来突出某动作在某个过去时间点之前已经完成。by the time 尤其强调“到……的时候已经……”。",
+      "examples": [
+        {
+          "en": "By the time the survey was conducted, the policy had already affected thousands of residents.",
+          "zh": "到调查开展时，该政策已经影响了数千名居民。"
+        },
+        {
+          "en": "After the participants had completed the questionnaire, the researchers analysed the responses.",
+          "zh": "参与者完成问卷后，研究人员分析了回答。"
+        }
+      ]
+    },
+    {
+      "title": "用于 reported speech 表示时态后移",
+      "description": "在间接引语 reported speech 中，如果原句使用现在完成时或一般过去时，转述时常根据语境后移为过去完成时，尤其当转述动词是 said, reported, stated, claimed, explained 等过去式时。",
+      "examples": [
+        {
+          "en": "The student said that he had submitted the assignment before the deadline.",
+          "zh": "这名学生说他在截止日期之前已经提交了作业。"
+        },
+        {
+          "en": "The report stated that air quality had improved significantly over the previous decade.",
+          "zh": "报告指出，在此前十年里空气质量已有显著改善。"
+        }
+      ]
+    },
+    {
+      "title": "表达过去未实现的愿望、假设或遗憾",
+      "description": "过去完成时常出现在第三类条件句 Third Conditional、wish 句型以及 regret 相关表达中，用于描述过去没有发生的情况或对过去结果的遗憾。",
+      "examples": [
+        {
+          "en": "If the government had invested earlier in public transport, traffic congestion would have been reduced.",
+          "zh": "如果政府早些投资公共交通，交通拥堵本可以减少。"
+        },
+        {
+          "en": "I wish I had spent more time improving my pronunciation before the speaking test.",
+          "zh": "我真希望在口语考试前花更多时间提高发音。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "When I arrived at the station, the train left.",
+      "correct": "When I arrived at the station, the train had left.",
+      "explanation": "这里火车离开发生在“我到达车站”之前，因此较早发生的动作应使用过去完成时。一般过去时 left 只能表示过去发生，不能清楚体现“已经离开”的先后关系。"
+    },
+    {
+      "wrong": "She had went to the library before the class started.",
+      "correct": "She had gone to the library before the class started.",
+      "explanation": "过去完成时的结构是 had + past participle。go 的 past participle 是 gone，不是 went。went 是一般过去式，不能直接跟在 had 后面。"
+    },
+    {
+      "wrong": "I had finished my homework yesterday.",
+      "correct": "I finished my homework yesterday.",
+      "explanation": "如果句子只说明昨天完成作业，没有另一个过去时间或过去动作作为参照，一般使用一般过去时。过去完成时需要体现“过去的过去”。"
+    },
+    {
+      "wrong": "By the time I got home, my parents have already eaten dinner.",
+      "correct": "By the time I got home, my parents had already eaten dinner.",
+      "explanation": "主句描述的是在过去时间点“我到家时”之前已经发生的动作，应使用过去完成时。现在完成时 have eaten 与过去参照点不一致。"
+    },
+    {
+      "wrong": "The professor explained that the theory has been widely accepted before 2000.",
+      "correct": "The professor explained that the theory had been widely accepted before 2000.",
+      "explanation": "转述动词 explained 是过去式，且接受理论发生在过去时间点 before 2000 之前，因此在 academic reporting 中应使用过去完成时的被动形式 had been accepted。"
+    },
+    {
+      "wrong": "After I had finished the essay, I had submitted it online.",
+      "correct": "After I had finished the essay, I submitted it online.",
+      "explanation": "两个过去动作按顺序发生时，较早的动作可用过去完成时，较晚的动作通常用一般过去时。如果两个动作都使用过去完成时，事件顺序反而不够自然。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "Medium to High",
+    "description": "过去完成时在 PTE Academic 中不是单独考查的语法点，但在写作、口语复述、听力转写和阅读理解中经常影响句子逻辑。尤其在 Summarize Written Text、Write Essay、Retell Lecture、Summarize Spoken Text 和 Reading & Writing: Fill in the Blanks 中，考生需要识别事件先后关系、研究背景、原因结果和 reported speech。正确使用过去完成时可以增强时间连贯性，减少语法错误，并使学术表达更精确。",
+    "sections": [
+      "Summarize Written Text",
+      "Write Essay",
+      "Retell Lecture",
+      "Summarize Spoken Text",
+      "Reading & Writing: Fill in the Blanks",
+      "Listening: Fill in the Blanks",
+      "Write from Dictation"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "By the time + subject + past simple, subject + had + past participle",
+      "translation": "到……的时候，……已经……"
+    },
+    {
+      "pattern": "The findings showed that + subject + had + past participle",
+      "translation": "研究结果表明，……此前已经……"
+    },
+    {
+      "pattern": "It became clear that + subject + had + past participle",
+      "translation": "很明显，……之前已经……"
+    },
+    {
+      "pattern": "Before + subject + past simple, subject + had + past participle",
+      "translation": "在……之前，……已经……"
+    },
+    {
+      "pattern": "Subject + past simple + because + subject + had + past participle",
+      "translation": "……之所以……，是因为……之前已经……"
+    },
+    {
+      "pattern": "The report indicated that + subject + had been + past participle",
+      "translation": "报告显示，……此前已经被……"
+    },
+    {
+      "pattern": "If + subject + had + past participle, subject + would have + past participle",
+      "translation": "如果过去……，本来就会……"
+    },
+    {
+      "pattern": "Subject + wished that + subject + had + past participle",
+      "translation": "……希望自己过去曾经……"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "had already completed",
+      "translation": "已经完成了"
+    },
+    {
+      "phrase": "had previously shown",
+      "translation": "此前已经显示出"
+    },
+    {
+      "phrase": "had been widely accepted",
+      "translation": "此前已被广泛接受"
+    },
+    {
+      "phrase": "had reached a conclusion",
+      "translation": "已经得出结论"
+    },
+    {
+      "phrase": "had failed to consider",
+      "translation": "此前未能考虑"
+    },
+    {
+      "phrase": "had made significant progress",
+      "translation": "已经取得显著进展"
+    },
+    {
+      "phrase": "had undergone major changes",
+      "translation": "已经经历重大变化"
+    },
+    {
+      "phrase": "had never encountered",
+      "translation": "以前从未遇到过"
+    },
+    {
+      "phrase": "had been exposed to",
+      "translation": "此前接触过"
+    },
+    {
+      "phrase": "had taken into account",
+      "translation": "已经考虑到"
+    }
+  ],
+  "ai_tips": [
+    "判断是否需要过去完成时的关键不是看到 before 或 after 就机械使用 had，而是确认是否存在两个过去事件，并且其中一个明显更早发生。",
+    "在 PTE 写作中，如果需要解释某个过去结果的原因，可以使用“past simple + because + past perfect”结构，使因果关系更清楚。",
+    "在 Retell Lecture 和 Summarize Spoken Text 中，听到 the speaker mentioned, the study found, researchers discovered 等过去转述动词时，要特别注意后面是否需要用 had done 或 had been done 表示更早的背景信息。",
+    "避免在同一句中连续堆叠多个过去完成时。通常只需要把最早的关键动作标记为 past perfect，其他按时间推进的动作可使用 past simple。",
+    "写 IELTS Task 1 描述历史数据或流程变化时，若要说明某个变化在另一个过去时间点之前已经发生，可使用 had increased, had declined, had reached 等表达。"
+  ],
+  "practice_questions": [
+    {
+      "question": "Fill in the blank: By the time the meeting began, the manager ______ the main problems. (identify)",
+      "answer": "had identified"
+    },
+    {
+      "question": "Choose the correct sentence: A. She had submitted the form before the deadline. B. She had submit the form before the deadline.",
+      "answer": "A. She had submitted the form before the deadline."
+    },
+    {
+      "question": "Correct the mistake: The researchers had found the solution after they tested the final model.",
+      "answer": "The researchers found the solution after they had tested the final model."
+    },
+    {
+      "question": "Translate into English: 到调查结束时，超过一千名学生已经完成了问卷。",
+      "answer": "By the time the survey ended, more than one thousand students had completed the questionnaire."
+    },
+    {
+      "question": "Fill in the blank: The policy was criticised because it ______ the needs of low-income families. (ignore)",
+      "answer": "had ignored"
+    },
+    {
+      "question": "Rewrite using reported speech: The lecturer said, “The students have already read the article.”",
+      "answer": "The lecturer said that the students had already read the article."
+    },
+    {
+      "question": "Complete the third conditional: If the city ______ more green spaces, air pollution would have been less severe. (create)",
+      "answer": "had created"
+    },
+    {
+      "question": "Decide whether Past Perfect is necessary: I ______ breakfast at 7 a.m. yesterday. (eat)",
+      "answer": "ate"
+    },
+    {
+      "question": "Fill in the blank: Before the new law was introduced, many companies ______ strict environmental standards. (not follow)",
+      "answer": "had not followed"
+    },
+    {
+      "question": "Translate into English: 她后悔没有早点开始准备 PTE 考试。",
+      "answer": "She regretted that she had not started preparing for the PTE test earlier."
+    }
+  ]
+}

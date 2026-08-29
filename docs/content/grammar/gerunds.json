@@ -1,0 +1,299 @@
+{
+  "slug": "gerunds",
+  "category": {
+    "zh": "非谓语动词",
+    "en": "Non-finite Verbs"
+  },
+  "title": {
+    "zh": "动名词",
+    "en": "Gerunds"
+  },
+  "difficulty": "中级",
+  "summary": {
+    "zh": "动名词是由动词加 -ing 构成、在句中具有名词功能的非谓语动词形式。它可以作主语、宾语、表语、介词宾语，也常出现在学术写作和 PTE Academic 的听力、阅读、写作与口语任务中。中国学习者常把动名词与现在分词混淆，或在固定搭配后误用不定式。掌握动名词的核心是理解：它保留动词意义，但在语法位置上相当于名词。"
+  },
+  "structure": {
+    "formula": "Verb + -ing = Gerund；Gerund / Gerund phrase + 谓语；动词/介词 + Gerund",
+    "explanation": "动名词的形式与现在分词相同，都是 Verb + -ing，但功能不同。动名词在句中充当名词成分，例如作主语、宾语或介词宾语；现在分词通常表示进行、主动或修饰名词。动名词短语可以带宾语、状语或逻辑主语，例如：conducting research、students' improving their academic writing。正式英语中，动名词常用于概括行为、讨论抽象过程和表达学术观点。",
+    "examples": [
+      {
+        "en": "Reading academic articles improves students' vocabulary range.",
+        "zh": "阅读学术文章能提高学生的词汇范围。"
+      },
+      {
+        "en": "The lecturer emphasized avoiding plagiarism in research papers.",
+        "zh": "讲师强调在研究论文中避免抄袭。"
+      },
+      {
+        "en": "Many candidates struggle with managing time in the PTE Reading section.",
+        "zh": "许多考生在 PTE 阅读部分很难管理时间。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "作主语",
+      "description": "动名词可以放在句首作主语，用来表达一种活动、过程或普遍现象。在学术写作中，这种结构比使用具体人称更正式，适合描述研究行为、学习策略或社会现象。",
+      "examples": [
+        {
+          "en": "Developing critical thinking is essential for university students.",
+          "zh": "培养批判性思维对大学生来说至关重要。"
+        },
+        {
+          "en": "Reducing carbon emissions requires international cooperation.",
+          "zh": "减少碳排放需要国际合作。"
+        }
+      ]
+    },
+    {
+      "title": "作动词宾语",
+      "description": "某些动词后面必须或通常接动名词，而不能接 to-infinitive。这类动词包括 avoid, consider, enjoy, finish, mind, practise, suggest, deny, admit, risk 等。PTE 写作中经常需要使用这些动词来表达建议、态度或过程。",
+      "examples": [
+        {
+          "en": "Experts suggest investing more in renewable energy.",
+          "zh": "专家建议在可再生能源方面投入更多资金。"
+        },
+        {
+          "en": "The company denied using misleading advertising.",
+          "zh": "该公司否认使用误导性广告。"
+        }
+      ]
+    },
+    {
+      "title": "作介词宾语",
+      "description": "介词后必须使用名词性成分，因此当介词后出现动词意义时，应使用动名词。常见结构包括 be interested in doing, be responsible for doing, focus on doing, instead of doing, by doing, after doing 等。",
+      "examples": [
+        {
+          "en": "Students can improve pronunciation by listening to native speakers.",
+          "zh": "学生可以通过听母语者讲话来提高发音。"
+        },
+        {
+          "en": "Governments should focus on providing affordable housing.",
+          "zh": "政府应该专注于提供可负担住房。"
+        }
+      ]
+    },
+    {
+      "title": "作表语",
+      "description": "动名词可以位于系动词后作表语，用来说明主语的内容或本质。它常用于解释某个问题、目标、任务或策略的核心行为。",
+      "examples": [
+        {
+          "en": "One major challenge is maintaining accuracy under time pressure.",
+          "zh": "一个主要挑战是在时间压力下保持准确性。"
+        },
+        {
+          "en": "The main purpose of the project is improving access to education.",
+          "zh": "该项目的主要目的是改善教育机会。"
+        }
+      ]
+    },
+    {
+      "title": "用于固定表达",
+      "description": "许多固定表达后接动名词，例如 look forward to doing, be used to doing, have difficulty doing, spend time doing, there is no point in doing。这些表达在 IELTS 写作和 PTE 口语复述中都很常见。",
+      "examples": [
+        {
+          "en": "Many international students have difficulty adapting to a new academic culture.",
+          "zh": "许多国际学生很难适应新的学术文化。"
+        },
+        {
+          "en": "There is no point in memorising answers without understanding grammar.",
+          "zh": "不理解语法而死记答案是没有意义的。"
+        }
+      ]
+    },
+    {
+      "title": "带逻辑主语的动名词",
+      "description": "当需要明确说明动名词动作的执行者时，可以在动名词前加名词所有格、形容词性物主代词或宾格形式。正式写作中更推荐所有格形式，如 students' participating；口语中常见 students participating。",
+      "examples": [
+        {
+          "en": "The professor appreciated the students' submitting their assignments early.",
+          "zh": "教授很欣赏学生们提前提交作业。"
+        },
+        {
+          "en": "I do not mind them discussing the issue after class.",
+          "zh": "我不介意他们课后讨论这个问题。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Experts suggest to reduce plastic waste.",
+      "correct": "Experts suggest reducing plastic waste.",
+      "explanation": "suggest 后通常接动名词，不接 to do。中文“建议去做”容易让学习者误用 to-infinitive，但英语中应说 suggest doing something。"
+    },
+    {
+      "wrong": "I am interested to study environmental science.",
+      "correct": "I am interested in studying environmental science.",
+      "explanation": "be interested in 中的 in 是介词，介词后如果接动词，必须使用动名词 studying。"
+    },
+    {
+      "wrong": "Read books is good for language learning.",
+      "correct": "Reading books is good for language learning.",
+      "explanation": "句首作主语时，动词不能直接用原形。表达“读书这件事”应使用动名词 Reading books。"
+    },
+    {
+      "wrong": "The government should prevent people to smoke in public areas.",
+      "correct": "The government should prevent people from smoking in public areas.",
+      "explanation": "prevent somebody from doing something 是固定结构，from 是介词，后接动名词。"
+    },
+    {
+      "wrong": "She avoided to answer the difficult question.",
+      "correct": "She avoided answering the difficult question.",
+      "explanation": "avoid 后接动名词。该动词表示“避免做某事”，不能接 to answer。"
+    },
+    {
+      "wrong": "I look forward to meet you.",
+      "correct": "I look forward to meeting you.",
+      "explanation": "look forward to 中的 to 是介词，不是不定式标志，因此后面必须接动名词 meeting。"
+    },
+    {
+      "wrong": "The main problem is to finding reliable data.",
+      "correct": "The main problem is finding reliable data.",
+      "explanation": "is 后作表语时可以用动名词 finding，不能把 to 和 -ing 混合成 to finding，除非 to 是介词结构的一部分。"
+    },
+    {
+      "wrong": "He admitted steal the documents.",
+      "correct": "He admitted stealing the documents.",
+      "explanation": "admit 后接动名词，表示承认做过某事。直接接动词原形不符合英语句法。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "动名词在 PTE Academic 中出现频率较高，尤其是在 Reading & Writing: Fill in the Blanks、Listening: Fill in the Blanks、Summarize Written Text、Write Essay、Repeat Sentence 和 Retell Lecture 中。考生需要识别哪些动词、介词和固定搭配后接动名词，并在写作中用动名词短语提升句子紧凑度与学术性。动名词常用于概括观点，例如 improving public transport、reducing inequality、addressing climate change，这类表达适合用于议论文主题句和总结句。",
+    "sections": [
+      "Reading & Writing: Fill in the Blanks",
+      "Reading: Re-order Paragraphs",
+      "Listening: Fill in the Blanks",
+      "Summarize Written Text",
+      "Write Essay",
+      "Repeat Sentence",
+      "Retell Lecture"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "Doing something is essential for achieving long-term success.",
+      "translation": "做某事对于取得长期成功至关重要。"
+    },
+    {
+      "pattern": "One effective way of addressing this issue is doing something.",
+      "translation": "解决这一问题的一种有效方式是做某事。"
+    },
+    {
+      "pattern": "There is increasing evidence supporting the idea of doing something.",
+      "translation": "越来越多的证据支持做某事这一观点。"
+    },
+    {
+      "pattern": "Governments should place greater emphasis on doing something.",
+      "translation": "政府应该更加重视做某事。"
+    },
+    {
+      "pattern": "This approach contributes to improving overall efficiency.",
+      "translation": "这种方法有助于提高整体效率。"
+    },
+    {
+      "pattern": "Instead of relying on short-term solutions, policymakers should consider doing something.",
+      "translation": "政策制定者不应依赖短期方案，而应考虑做某事。"
+    },
+    {
+      "pattern": "The benefits of doing something outweigh the potential drawbacks.",
+      "translation": "做某事的好处超过其潜在缺点。"
+    },
+    {
+      "pattern": "By doing something, individuals can develop a deeper understanding of the issue.",
+      "translation": "通过做某事，个人可以对该问题形成更深入的理解。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "avoid making mistakes",
+      "translation": "避免犯错误"
+    },
+    {
+      "phrase": "consider taking action",
+      "translation": "考虑采取行动"
+    },
+    {
+      "phrase": "suggest improving the system",
+      "translation": "建议改进系统"
+    },
+    {
+      "phrase": "focus on developing skills",
+      "translation": "专注于培养技能"
+    },
+    {
+      "phrase": "succeed in achieving a goal",
+      "translation": "成功实现目标"
+    },
+    {
+      "phrase": "be responsible for managing resources",
+      "translation": "负责管理资源"
+    },
+    {
+      "phrase": "have difficulty understanding lectures",
+      "translation": "理解讲座有困难"
+    },
+    {
+      "phrase": "spend time preparing for exams",
+      "translation": "花时间备考"
+    },
+    {
+      "phrase": "look forward to receiving feedback",
+      "translation": "期待收到反馈"
+    },
+    {
+      "phrase": "prevent people from taking risks",
+      "translation": "阻止人们冒险"
+    }
+  ],
+  "ai_tips": [
+    "判断是否用动名词时，先看前面是否是介词；如果是介词，后面的动词通常要变成 -ing 形式。",
+    "在 PTE Fill in the Blanks 中，遇到 suggest、avoid、consider、deny、admit、finish 等动词时，要优先检查选项中是否有 -ing 形式。",
+    "写作中可以用动名词短语作主语来避免频繁使用 people、we、they，使句子更正式，例如用 Reducing waste is necessary 代替 We need to reduce waste。",
+    "不要把所有 -ing 都理解为进行时；如果 -ing 形式在句中作主语、宾语或介词宾语，它就是动名词。",
+    "遇到 look forward to、be used to、object to、contribute to 等结构时，要记住其中的 to 是介词，不是不定式符号。"
+  ],
+  "practice_questions": [
+    {
+      "question": "选择正确形式：Experts recommend ______ more resources in early childhood education. A. invest B. to invest C. investing",
+      "answer": "C. investing。recommend 后可接动名词，表示“建议做某事”。"
+    },
+    {
+      "question": "改错：Many students have difficulty to understand academic lectures.",
+      "answer": "Many students have difficulty understanding academic lectures. have difficulty doing something 是固定表达。"
+    },
+    {
+      "question": "翻译：减少空气污染需要政府和个人共同努力。",
+      "answer": "Reducing air pollution requires joint efforts from governments and individuals."
+    },
+    {
+      "question": "选择正确形式：The report focuses on ______ the causes of unemployment. A. analysing B. analyse C. to analyse",
+      "answer": "A. analysing。focus on 中的 on 是介词，后接动名词。"
+    },
+    {
+      "question": "改写句子，使其更学术：We should recycle more to protect the environment.",
+      "answer": "Recycling more is an effective way to protect the environment."
+    },
+    {
+      "question": "选择正确形式：She denied ______ confidential information to the media. A. reveal B. revealing C. to reveal",
+      "answer": "B. revealing。deny 后接动名词。"
+    },
+    {
+      "question": "翻译：通过练习复述讲座，考生可以提高口语流利度。",
+      "answer": "By practising retelling lectures, candidates can improve their oral fluency."
+    },
+    {
+      "question": "改错：I look forward to hear your response.",
+      "answer": "I look forward to hearing your response. look forward to 后接动名词，因为 to 是介词。"
+    },
+    {
+      "question": "填空：There is no point in ______ answers without understanding the logic. A. memorise B. memorising C. to memorise",
+      "answer": "B. memorising。There is no point in doing something 表示“做某事没有意义”。"
+    },
+    {
+      "question": "用动名词作主语造句，表达“学习语法能提高写作准确性”。",
+      "answer": "Learning grammar can improve writing accuracy."
+    }
+  ]
+}

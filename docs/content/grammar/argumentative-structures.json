@@ -1,0 +1,338 @@
+{
+  "slug": "argumentative-structures",
+  "category": {
+    "zh": "学术写作",
+    "en": "Academic Writing"
+  },
+  "title": {
+    "zh": "论证表达",
+    "en": "Argumentative Structures"
+  },
+  "difficulty": "中高级",
+  "summary": {
+    "zh": "本课讲解 Academic Writing 中常用的 argumentative structures，即用于表达观点、解释原因、提供证据、承认反方观点并进行反驳的论证结构。该语法与写作逻辑密切相关，尤其适用于 PTE Academic Essay、Summarize Written Text、IELTS Writing Task 2 以及学术口语中的观点陈述。中国考生常见问题包括观点直接但缺少论证链、只写原因不写结果、反驳表达过于口语化，以及连接词使用机械重复。掌握本课结构后，考生可以更清晰地组织段落，提高 coherence、cohesion、grammar range 和 academic tone。"
+  },
+  "structure": {
+    "formula": "Claim + Reason / Explanation + Evidence / Example + Result / Implication + Concession or Refutation",
+    "explanation": "Argumentative structures 的核心不是单一句型，而是一组用于构建逻辑论证的表达方式。一个完整的学术论证通常先提出 claim，即明确立场；然后用 reason 或 explanation 解释原因；接着用 evidence、example 或 data 支撑观点；最后说明 result、implication 或 broader significance。如果涉及对立观点，还需要使用 concession 承认其合理部分，再用 refutation 说明其局限。PTE 和 IELTS 写作中，高分答案通常不是堆砌复杂词汇，而是通过清晰的论证链展示逻辑严密性。",
+    "examples": [
+      {
+        "en": "Governments should invest more in public transport because it can reduce traffic congestion and lower carbon emissions.",
+        "zh": "政府应该在公共交通上投入更多资金，因为这可以减少交通拥堵并降低碳排放。"
+      },
+      {
+        "en": "Although online learning offers flexibility, it cannot fully replace face-to-face education because students often need direct interaction and immediate feedback.",
+        "zh": "虽然在线学习提供了灵活性，但它不能完全取代面对面教育，因为学生通常需要直接互动和即时反馈。"
+      },
+      {
+        "en": "This suggests that environmental policies are most effective when they combine regulation with public education.",
+        "zh": "这表明，当环境政策将监管与公众教育结合起来时，其效果最为明显。"
+      }
+    ]
+  },
+  "usage_scenarios": [
+    {
+      "title": "提出明确立场",
+      "description": "在 argumentative essay 的 introduction 或 body paragraph 开头，需要清楚表达自己的 claim。学术写作中应避免使用过于绝对或情绪化的表达，而应使用 measured language，如 largely, tend to, in many cases 等，使观点更客观。",
+      "examples": [
+        {
+          "en": "In many cases, stricter environmental regulations are necessary to ensure sustainable economic development.",
+          "zh": "在许多情况下，更严格的环境法规对于确保可持续经济发展是必要的。"
+        },
+        {
+          "en": "It is reasonable to argue that technology has transformed the way students access information.",
+          "zh": "可以合理地认为，科技已经改变了学生获取信息的方式。"
+        }
+      ]
+    },
+    {
+      "title": "解释原因",
+      "description": "提出观点后，需要说明 why。常用结构包括 because, since, as, due to the fact that, this is mainly because。PTE 写作中，原因解释要直接，不宜写过长从句导致语法错误。",
+      "examples": [
+        {
+          "en": "This is mainly because urban residents rely heavily on private vehicles when public transport is unreliable.",
+          "zh": "这主要是因为当公共交通不可靠时，城市居民会严重依赖私家车。"
+        },
+        {
+          "en": "The policy may fail because it does not address the underlying causes of unemployment.",
+          "zh": "该政策可能会失败，因为它没有解决失业的根本原因。"
+        }
+      ]
+    },
+    {
+      "title": "提供证据或例子",
+      "description": "证据可以是 research findings、statistics、real-world examples 或 general observations。考试写作中不一定需要真实数据，但例子必须与观点直接相关，不能泛泛而谈。",
+      "examples": [
+        {
+          "en": "For example, cities that have expanded metro systems often experience a gradual decline in car dependency.",
+          "zh": "例如，扩建地铁系统的城市通常会逐渐减少对汽车的依赖。"
+        },
+        {
+          "en": "Research in educational psychology has shown that timely feedback can significantly improve learning outcomes.",
+          "zh": "教育心理学研究表明，及时反馈可以显著改善学习效果。"
+        }
+      ]
+    },
+    {
+      "title": "表达结果和影响",
+      "description": "论证不能停留在原因层面，还要说明结果或影响。常用表达包括 as a result, consequently, therefore, this may lead to, this can contribute to。注意 therefore 和 because 不能在同一个简单句中重复连接。",
+      "examples": [
+        {
+          "en": "As a result, students may become more independent and better prepared for higher education.",
+          "zh": "因此，学生可能会变得更加独立，并为高等教育做好更充分的准备。"
+        },
+        {
+          "en": "This can contribute to a more equitable distribution of educational resources.",
+          "zh": "这有助于教育资源更加公平地分配。"
+        }
+      ]
+    },
+    {
+      "title": "承认反方观点",
+      "description": "高分 argumentative writing 通常会承认 opposing views。承认反方不是削弱立场，而是展示 critical thinking。常用结构包括 although, while, it is true that, admittedly, some people argue that。",
+      "examples": [
+        {
+          "en": "Admittedly, banning private cars in city centres may inconvenience some commuters.",
+          "zh": "不可否认，禁止私家车进入市中心可能会给一些通勤者带来不便。"
+        },
+        {
+          "en": "While social media can spread misinformation, it also enables people to access news rapidly.",
+          "zh": "虽然社交媒体可能传播错误信息，但它也使人们能够快速获取新闻。"
+        }
+      ]
+    },
+    {
+      "title": "反驳对立观点",
+      "description": "Refutation 用于说明反方观点的局限。常用结构包括 however, nevertheless, this argument overlooks, this view fails to consider, the problem with this argument is that。反驳时应保持学术语气，避免使用 completely wrong 或 nonsense 这类情绪化表达。",
+      "examples": [
+        {
+          "en": "However, this argument overlooks the long-term economic benefits of a healthier workforce.",
+          "zh": "然而，这一观点忽视了更健康的劳动力所带来的长期经济效益。"
+        },
+        {
+          "en": "This view fails to consider that disadvantaged students may not have equal access to digital devices.",
+          "zh": "这一观点没有考虑到弱势学生可能无法平等地获得数字设备。"
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "Because public transport is cheap, so people should use it more.",
+      "correct": "Because public transport is cheap, people should use it more. / Public transport is cheap, so people should use it more.",
+      "explanation": "中文中常说“因为……所以……”，但英文中 because 和 so 通常不能同时连接同一个主从关系。考试写作中应选择一个连接方式，避免 double conjunction。"
+    },
+    {
+      "wrong": "I think government must solve this problem because it is very bad.",
+      "correct": "Governments should address this problem because it has serious social and economic consequences.",
+      "explanation": "原句过于口语化，very bad 缺乏学术具体性。Academic Writing 中应使用更精确的名词短语，如 serious social and economic consequences。"
+    },
+    {
+      "wrong": "Some people think online education is good. But I disagree.",
+      "correct": "Although online education provides flexibility, it is unlikely to replace traditional classrooms entirely.",
+      "explanation": "原句逻辑过短，缺少 concession 和 reason。使用 although 可以先承认反方合理性，再表达更成熟的判断。"
+    },
+    {
+      "wrong": "This policy can make people have better life.",
+      "correct": "This policy can improve people’s quality of life.",
+      "explanation": "make people have better life 是中式英语。学术写作中常用 improve people’s quality of life，注意 life 在此结构中通常需要所有格 people’s 和固定搭配 quality of life。"
+    },
+    {
+      "wrong": "The reason is because many students lack motivation.",
+      "correct": "The reason is that many students lack motivation. / This is because many students lack motivation.",
+      "explanation": "The reason is because 属于常见冗余表达。标准学术英语中应使用 The reason is that，或直接使用 This is because。"
+    },
+    {
+      "wrong": "Everyone knows that technology is important.",
+      "correct": "It is widely acknowledged that technology plays an important role in modern education.",
+      "explanation": "Everyone knows that 过于口语化且绝对。学术写作应使用客观表达，如 It is widely acknowledged that，并用 plays an important role 替代简单的 is important。"
+    },
+    {
+      "wrong": "If children use phones, they will be bad at study.",
+      "correct": "Excessive smartphone use may have a negative impact on children’s academic performance.",
+      "explanation": "原句存在表达不自然和过度绝对的问题。学术表达中常用 excessive, may, have a negative impact on, academic performance 来提高准确性。"
+    },
+    {
+      "wrong": "This example can prove my opinion.",
+      "correct": "This example supports the argument that early intervention can reduce educational inequality.",
+      "explanation": "prove my opinion 过于主观，也不符合学术写作语气。更自然的表达是 supports the argument that，后接完整观点。"
+    }
+  ],
+  "pte_usage": {
+    "frequency": "高频",
+    "description": "Argumentative structures 在 PTE Academic 中非常重要，尤其影响 Written Discourse、Grammar、Vocabulary 和 Content 分数。PTE Essay 需要考生在短时间内形成清晰立场，并用原因、例子和结果支撑观点。Summarize Written Text 虽然不是完整议论文，但也需要识别原文中的 claim、cause、contrast 和 implication。口语项目如 Retell Lecture 和 Summarize Spoken Text 中，考生也常需要用 This suggests that, The speaker argues that, However, the issue is that 等结构概括论点关系。",
+    "sections": [
+      "Write Essay",
+      "Summarize Written Text",
+      "Summarize Spoken Text",
+      "Retell Lecture",
+      "Reading and Writing: Fill in the Blanks"
+    ]
+  },
+  "academic_patterns": [
+    {
+      "pattern": "It can be argued that + clause",
+      "translation": "可以认为……"
+    },
+    {
+      "pattern": "There is a strong case for + noun / gerund",
+      "translation": "有充分理由支持……"
+    },
+    {
+      "pattern": "This argument is based on the assumption that + clause",
+      "translation": "这一论点建立在……的假设之上"
+    },
+    {
+      "pattern": "The main reason for this is that + clause",
+      "translation": "其主要原因是……"
+    },
+    {
+      "pattern": "One possible explanation is that + clause",
+      "translation": "一个可能的解释是……"
+    },
+    {
+      "pattern": "This may lead to + noun phrase",
+      "translation": "这可能导致……"
+    },
+    {
+      "pattern": "This can have a significant impact on + noun phrase",
+      "translation": "这可能对……产生重大影响"
+    },
+    {
+      "pattern": "Although + clause, main clause",
+      "translation": "虽然……，但是……"
+    },
+    {
+      "pattern": "While it is true that + clause, it is also important to note that + clause",
+      "translation": "虽然……是事实，但同样重要的是要注意……"
+    },
+    {
+      "pattern": "This view fails to consider that + clause",
+      "translation": "这一观点没有考虑到……"
+    },
+    {
+      "pattern": "The evidence suggests that + clause",
+      "translation": "证据表明……"
+    },
+    {
+      "pattern": "From a broader perspective, + clause",
+      "translation": "从更广泛的角度来看，……"
+    },
+    {
+      "pattern": "A more balanced approach would be to + verb",
+      "translation": "一种更平衡的方法是……"
+    },
+    {
+      "pattern": "This does not necessarily mean that + clause",
+      "translation": "这并不一定意味着……"
+    },
+    {
+      "pattern": "The long-term implications of this are considerable.",
+      "translation": "这所带来的长期影响是相当显著的。"
+    }
+  ],
+  "collocations": [
+    {
+      "phrase": "raise a valid concern",
+      "translation": "提出一个合理的担忧"
+    },
+    {
+      "phrase": "support an argument",
+      "translation": "支持一个论点"
+    },
+    {
+      "phrase": "challenge an assumption",
+      "translation": "质疑一个假设"
+    },
+    {
+      "phrase": "address a problem",
+      "translation": "解决一个问题"
+    },
+    {
+      "phrase": "provide compelling evidence",
+      "translation": "提供有说服力的证据"
+    },
+    {
+      "phrase": "have far-reaching consequences",
+      "translation": "产生深远影响"
+    },
+    {
+      "phrase": "a persuasive argument",
+      "translation": "有说服力的论证"
+    },
+    {
+      "phrase": "a controversial issue",
+      "translation": "有争议的问题"
+    },
+    {
+      "phrase": "an underlying cause",
+      "translation": "根本原因"
+    },
+    {
+      "phrase": "a balanced view",
+      "translation": "平衡的观点"
+    },
+    {
+      "phrase": "social and economic benefits",
+      "translation": "社会和经济利益"
+    },
+    {
+      "phrase": "long-term impact",
+      "translation": "长期影响"
+    },
+    {
+      "phrase": "public awareness",
+      "translation": "公众意识"
+    },
+    {
+      "phrase": "policy implementation",
+      "translation": "政策实施"
+    },
+    {
+      "phrase": "educational inequality",
+      "translation": "教育不平等"
+    }
+  ],
+  "ai_tips": [
+    "写 PTE Essay 时，每个主体段可以使用“观点句 + 原因 + 例子 + 结果”的四步结构，避免只列观点而不展开。",
+    "如果题目要求 discuss both views，应至少使用一个 concession 结构，例如 While some people argue that..., this view fails to consider...。",
+    "不要频繁重复 I think。学术写作中可使用 It can be argued that, This suggests that, The evidence indicates that。",
+    "PTE 写作中复杂句应服务于逻辑，而不是单纯追求长度。若一个句子超过三层从句，错误风险会明显增加。",
+    "在反驳时避免情绪化词汇，如 stupid, wrong, terrible。应使用 overlooks, fails to consider, is limited by 等学术表达。",
+    "主体段结尾最好写一句 implication，说明该观点带来的结果或意义，这有助于提升论证完整度。"
+  ],
+  "practice_questions": [
+    {
+      "question": "将句子改写得更学术：I think online learning is good because students can study anywhere.",
+      "answer": "Online learning offers considerable flexibility because it allows students to access educational resources regardless of location. 中文：在线学习提供了相当大的灵活性，因为它使学生能够不受地点限制地获取教育资源。"
+    },
+    {
+      "question": "用 although 写一个让步论证句，主题是 social media。",
+      "answer": "Although social media can facilitate communication, it may also contribute to the spread of misinformation. 中文：虽然社交媒体可以促进交流，但它也可能导致错误信息的传播。"
+    },
+    {
+      "question": "纠正句子：Because public libraries are useful, so governments should fund them.",
+      "answer": "Because public libraries are useful, governments should fund them. / Public libraries are useful, so governments should fund them. 中文：因为公共图书馆很有用，政府应该为其提供资金。"
+    },
+    {
+      "question": "用 This view fails to consider that... 反驳观点：University education should be completely online.",
+      "answer": "This view fails to consider that many students benefit from face-to-face interaction, practical training and immediate feedback. 中文：这一观点没有考虑到许多学生会从面对面互动、实践训练和即时反馈中受益。"
+    },
+    {
+      "question": "完成句子：The main reason for this is that...",
+      "answer": "The main reason for this is that many low-income families cannot afford private educational resources. 中文：其主要原因是许多低收入家庭负担不起私人教育资源。"
+    },
+    {
+      "question": "用 result structure 改写：More people use private cars. Air pollution becomes worse.",
+      "answer": "As more people rely on private cars, air pollution is likely to become more severe. 中文：随着更多人依赖私家车，空气污染可能会变得更加严重。"
+    },
+    {
+      "question": "判断并修改不自然表达：This example can prove my opinion.",
+      "answer": "This example supports the argument that effective public transport can reduce traffic congestion. 中文：这个例子支持了有效公共交通可以减少交通拥堵这一论点。"
+    },
+    {
+      "question": "写一个完整论证句，包含 claim、reason 和 implication，主题是 environmental education。",
+      "answer": "Environmental education should be introduced at an early age because it can shape children’s habits and contribute to more sustainable behaviour in the long term. 中文：环境教育应该在儿童早期引入，因为它可以塑造孩子的习惯，并从长远来看促进更可持续的行为。"
+    }
+  ]
+}
