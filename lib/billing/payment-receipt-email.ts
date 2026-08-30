@@ -1,6 +1,9 @@
 import "server-only";
 
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import fontkit from "@pdf-lib/fontkit";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { PDFDocument, rgb, type PDFFont } from "pdf-lib";
 import { Resend } from "resend";
 
 import { BRAND_NAME_CN } from "@/lib/brand";
@@ -22,6 +25,21 @@ type SendPaymentReceiptEmailParams = {
   paidAt: Date;
   amountAudCents: number | null;
   lineItems: ReceiptLineItem[];
+};
+
+type ReceiptDisplayItem = {
+  itemCn: string;
+  itemEn: string;
+  descriptionCn: string;
+  descriptionEn: string;
+  quantity: string;
+  amountAudCents: number;
+};
+
+type DrawTextOptions = {
+  size: number;
+  font: PDFFont;
+  color: ReturnType<typeof rgb>;
 };
 
 function escapeHtml(value: string) {
@@ -53,91 +71,178 @@ function formatReceiptDate(date: Date) {
   }).format(date);
 }
 
-function sanitizePdfText(value: string) {
-  return value.replace(/[^\x20-\x7E]/g, "");
+function formatReceiptDateCode(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Australia/Sydney",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const year = parts.find((part) => part.type === "year")?.value ?? "0000";
+  const month = parts.find((part) => part.type === "month")?.value ?? "00";
+  const day = parts.find((part) => part.type === "day")?.value ?? "00";
+  return `${year}${month}${day}`;
 }
 
-function wrapText(value: string, maxChars: number) {
-  const words = sanitizePdfText(value).split(/\s+/).filter(Boolean);
-  const lines: string[] = [];
-  let current = "";
+function getStableReceiptNumber(date: Date, checkoutSessionId: string) {
+  let hash = 0;
+  for (const char of checkoutSessionId) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+  const sequence = 24 + (hash % 900);
+  return `LFY-${formatReceiptDateCode(date)}-${String(sequence).padStart(3, "0")}`;
+}
 
-  for (const word of words) {
-    const next = current ? `${current} ${word}` : word;
-    if (next.length > maxChars && current) {
-      lines.push(current);
-      current = word;
-    } else {
-      current = next;
-    }
+function extractFirstNumber(value: string, fallback: number) {
+  const match = value.match(/\d+/);
+  return match ? Number(match[0]) : fallback;
+}
+
+function normalizeDisplayItem(params: SendPaymentReceiptEmailParams): ReceiptDisplayItem {
+  const first = params.lineItems[0];
+  const amountAudCents = first?.amountAudCents ?? params.amountAudCents ?? 0;
+  const rawLabel = first?.label ?? params.receiptTitle;
+  const rawDescription = first?.description ?? "";
+
+  if (params.receiptType === "Tuition") {
+    const numbers = rawDescription.match(/\d+/g)?.map(Number).filter(Number.isFinite) ?? [];
+    const lessons = numbers[0] ?? extractFirstNumber(rawLabel, 1);
+    const hours = numbers[1] ?? lessons * 2;
+    return {
+      itemCn: "一对一课程学费",
+      itemEn: "1-on-1 tuition fee",
+      descriptionCn: lessons === 1 ? "单次课 / 2 小时" : `${lessons} 次课 / ${hours} 小时`,
+      descriptionEn: `${lessons} lesson${lessons > 1 ? "s" : ""} / ${hours} hours`,
+      quantity: lessons === 1 ? "1 次" : `${lessons} 次`,
+      amountAudCents,
+    };
   }
 
-  if (current) lines.push(current);
-  return lines.length > 0 ? lines : [""];
+  const scope = rawLabel.toUpperCase().includes("PTE") ? "PTE" : "IELTS";
+  const days = extractFirstNumber(rawDescription, extractFirstNumber(rawLabel, 30));
+  return {
+    itemCn: `${scope} AI 学习助手`,
+    itemEn: `${scope} AI study assistant`,
+    descriptionCn: `${days} 天一次性时间包`,
+    descriptionEn: `${days}-day one-time access package`,
+    quantity: `${days} 天`,
+    amountAudCents,
+  };
 }
 
-async function createReceiptPdf(params: SendPaymentReceiptEmailParams) {
+async function loadReceiptFont() {
+  return readFile(join(process.cwd(), "public", "fonts", "NotoSansSC-VF.ttf"));
+}
+
+function drawText(page: Parameters<PDFDocument["addPage"]>[0] extends never ? never : ReturnType<PDFDocument["addPage"]>, text: string, x: number, y: number, options: DrawTextOptions) {
+  page.drawText(text, {
+    x,
+    y,
+    size: options.size,
+    font: options.font,
+    color: options.color,
+  });
+}
+
+function drawLabel(page: ReturnType<PDFDocument["addPage"]>, cn: string, en: string, x: number, y: number, font: PDFFont, color: ReturnType<typeof rgb>, muted: ReturnType<typeof rgb>) {
+  drawText(page, cn, x, y, { size: 9.5, font, color });
+  drawText(page, en, x, y - 15, { size: 7.5, font, color: muted });
+}
+
+function drawWrappedLines(page: ReturnType<PDFDocument["addPage"]>, lines: string[], x: number, y: number, font: PDFFont, color: ReturnType<typeof rgb>) {
+  lines.forEach((line, index) => {
+    drawText(page, line, x, y - index * 16, { size: 9, font, color });
+  });
+}
+
+export async function createReceiptPdf(params: SendPaymentReceiptEmailParams) {
   const pdf = await PDFDocument.create();
+  pdf.registerFontkit(fontkit);
+
   const page = pdf.addPage([595, 842]);
   const { width } = page.getSize();
-  const font = await pdf.embedFont(StandardFonts.Helvetica);
-  const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
+  const fontBytes = await loadReceiptFont();
+  const font = await pdf.embedFont(fontBytes, { subset: true });
   const primary = rgb(0.07, 0.43, 0.32);
   const text = rgb(0.09, 0.13, 0.18);
   const muted = rgb(0.39, 0.45, 0.55);
+  const faint = rgb(0.58, 0.63, 0.70);
   const border = rgb(0.85, 0.88, 0.92);
-  const soft = rgb(0.96, 0.98, 0.97);
-  let y = 780;
+  const pageBg = rgb(0.985, 0.988, 0.992);
+  const cardBg = rgb(0.97, 0.98, 0.985);
+  const softGreen = rgb(0.94, 0.985, 0.955);
+  const item = normalizeDisplayItem(params);
+  const amount = formatAud(params.amountAudCents);
+  const receiptTitleCn = params.receiptType === "Tuition" ? "学费付款收据" : "AI 权限付款收据";
+  const receiptTitleEn = params.receiptType === "Tuition" ? "Tuition Payment Receipt" : "AI Access Payment Receipt";
+  const payerName = params.studentName?.trim() || "N/A";
+  const payerEmail = params.to?.trim() || "N/A";
+  const receiptNumber = getStableReceiptNumber(params.paidAt, params.checkoutSessionId);
 
-  page.drawRectangle({ x: 0, y: 0, width, height: 842, color: rgb(0.985, 0.988, 0.992) });
-  page.drawText("LOFTY EDUCATION", { x: 48, y, size: 12, font: bold, color: primary });
-  page.drawText("Payment Receipt", { x: 48, y: y - 36, size: 30, font: bold, color: text });
-  page.drawText(formatReceiptDate(params.paidAt), { x: 48, y: y - 60, size: 10, font, color: muted });
+  page.drawRectangle({ x: 0, y: 0, width, height: 842, color: pageBg });
 
-  page.drawRectangle({ x: 390, y: 725, width: 155, height: 70, color: primary, borderColor: primary, borderWidth: 1 });
-  page.drawText("PAID", { x: 414, y: 760, size: 22, font: bold, color: rgb(1, 1, 1) });
-  page.drawText(formatAud(params.amountAudCents), { x: 414, y: 742, size: 11, font, color: rgb(0.92, 1, 0.96) });
+  drawText(page, "小马哥教育", 48, 780, { size: 16, font, color: primary });
+  drawText(page, "Lofty Education", 48, 763, { size: 8, font, color: muted });
+  drawText(page, receiptTitleCn, 48, 708, { size: 23, font, color: text });
+  drawText(page, receiptTitleEn, 48, 686, { size: 8.5, font, color: muted });
+  drawText(page, formatReceiptDate(params.paidAt), 48, 660, { size: 8.5, font, color: muted });
 
-  y = 675;
-  page.drawRectangle({ x: 48, y: y - 96, width: 499, height: 96, color: rgb(1, 1, 1), borderColor: border, borderWidth: 1 });
-  page.drawText("Billed to", { x: 68, y: y - 26, size: 10, font: bold, color: muted });
-  page.drawText(sanitizePdfText(params.studentName || "Student"), { x: 68, y: y - 46, size: 13, font: bold, color: text });
-  page.drawText(sanitizePdfText(params.to ?? ""), { x: 68, y: y - 64, size: 10, font, color: muted });
-  page.drawText("Receipt type", { x: 350, y: y - 26, size: 10, font: bold, color: muted });
-  page.drawText(params.receiptType, { x: 350, y: y - 46, size: 13, font: bold, color: text });
+  page.drawRectangle({ x: 410, y: 706, width: 137, height: 72, color: primary, borderColor: primary, borderWidth: 1 });
+  drawText(page, "已付款", 430, 750, { size: 16, font, color: rgb(1, 1, 1) });
+  drawText(page, "Paid", 430, 734, { size: 8, font, color: rgb(0.92, 1, 0.96) });
+  drawText(page, amount, 430, 708, { size: 16, font, color: rgb(1, 1, 1) });
+  drawText(page, "Australian dollars", 430, 693, { size: 7.5, font, color: rgb(0.92, 1, 0.96) });
 
-  y = 530;
-  page.drawText("Summary", { x: 48, y, size: 15, font: bold, color: text });
-  y -= 24;
-  page.drawRectangle({ x: 48, y: y - 34, width: 499, height: 38, color: soft, borderColor: border, borderWidth: 1 });
-  page.drawText("Item", { x: 66, y: y - 12, size: 10, font: bold, color: muted });
-  page.drawText("Qty", { x: 365, y: y - 12, size: 10, font: bold, color: muted });
-  page.drawText("Amount", { x: 450, y: y - 12, size: 10, font: bold, color: muted });
-  y -= 38;
+  page.drawLine({ start: { x: 48, y: 635 }, end: { x: 547, y: 635 }, thickness: 1, color: border });
 
-  for (const item of params.lineItems) {
-    const lines = wrapText(`${item.label} - ${item.description}`, 58);
-    const rowHeight = Math.max(46, 22 + lines.length * 13);
-    page.drawRectangle({ x: 48, y: y - rowHeight + 6, width: 499, height: rowHeight, color: rgb(1, 1, 1), borderColor: border, borderWidth: 1 });
-    lines.forEach((line, index) => {
-      page.drawText(line, { x: 66, y: y - 16 - index * 13, size: 10.5, font: index === 0 ? bold : font, color: text });
-    });
-    page.drawText(sanitizePdfText(item.quantity), { x: 365, y: y - 16, size: 10.5, font, color: text });
-    page.drawText(formatAud(item.amountAudCents), { x: 450, y: y - 16, size: 10.5, font: bold, color: text });
-    y -= rowHeight;
-  }
+  page.drawRectangle({ x: 48, y: 535, width: 238, height: 78, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "交费方", "Paid by", 68, 584, font, muted, faint);
+  drawText(page, payerName, 68, 552, { size: 12.5, font, color: text });
+  drawText(page, payerEmail, 68, 535 + 15, { size: 9.5, font, color: muted });
 
-  y -= 16;
-  page.drawLine({ start: { x: 350, y }, end: { x: 547, y }, thickness: 1, color: border });
-  page.drawText("Total paid", { x: 350, y: y - 24, size: 11, font: bold, color: text });
-  page.drawText(formatAud(params.amountAudCents), { x: 450, y: y - 24, size: 13, font: bold, color: primary });
+  page.drawRectangle({ x: 309, y: 535, width: 238, height: 78, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "收款方", "Merchant", 329, 584, font, muted, faint);
+  drawText(page, "小马哥教育", 329, 552, { size: 12.5, font, color: text });
+  drawText(page, "Lofty Education, Australia", 329, 535 + 15, { size: 9, font, color: muted });
+  drawText(page, "Melbourne, Australia", 329, 535 + 2, { size: 8, font, color: faint });
 
-  y -= 78;
-  page.drawText("Payment details", { x: 48, y, size: 15, font: bold, color: text });
-  page.drawText(`Checkout Session: ${sanitizePdfText(params.checkoutSessionId)}`, { x: 48, y: y - 24, size: 9, font, color: muted });
-  page.drawText(`Payment Intent: ${sanitizePdfText(params.paymentIntentId ?? "-")}`, { x: 48, y: y - 40, size: 9, font, color: muted });
-  page.drawText("This receipt confirms payment received by Lofty Education. It is not a tax invoice.", { x: 48, y: 70, size: 9, font, color: muted });
-  page.drawText("Lofty Education - Australia", { x: 48, y: 52, size: 9, font: bold, color: muted });
+  drawText(page, "付款明细", 48, 492, { size: 17, font, color: text });
+  drawText(page, "Payment summary", 48, 475, { size: 8, font, color: muted });
+  drawText(page, "收据编号 / Receipt No.", 410, 492, { size: 8, font, color: muted });
+  drawText(page, receiptNumber, 410, 476, { size: 9, font, color: text });
+
+  page.drawRectangle({ x: 48, y: 425, width: 499, height: 36, color: softGreen, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "项目", "Item", 66, 446, font, muted, faint);
+  drawLabel(page, "数量", "Quantity", 365, 446, font, muted, faint);
+  drawLabel(page, "金额", "Amount", 465, 446, font, muted, faint);
+
+  page.drawRectangle({ x: 48, y: 352, width: 499, height: 74, color: rgb(1, 1, 1), borderColor: border, borderWidth: 1 });
+  drawText(page, item.itemCn, 66, 401, { size: 11, font, color: text });
+  drawText(page, item.itemEn, 66, 384, { size: 8.5, font, color: muted });
+  drawText(page, item.descriptionCn, 66, 365, { size: 8.8, font, color: muted });
+  drawText(page, item.descriptionEn, 66, 351 + 2, { size: 8, font, color: faint });
+  drawText(page, item.quantity, 365, 392, { size: 10, font, color: text });
+  drawText(page, formatAud(item.amountAudCents), 465, 392, { size: 11, font, color: text });
+
+  page.drawRectangle({ x: 350, y: 286, width: 197, height: 58, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawText(page, "合计", 370, 318, { size: 9, font, color: muted });
+  drawText(page, "Total paid", 370, 303, { size: 8, font, color: muted });
+  drawText(page, amount, 458, 304, { size: 18, font, color: primary });
+
+  page.drawRectangle({ x: 48, y: 160, width: 499, height: 92, color: softGreen, borderColor: rgb(0.82, 0.92, 0.86), borderWidth: 1 });
+  drawText(page, "付款说明", 68, 226, { size: 10.5, font, color: text });
+  drawText(page, "Payment notes", 68, 211, { size: 7.8, font, color: muted });
+  drawWrappedLines(page, [
+    "本收据用于确认 Lofty Education 已收到对应服务款项。",
+    "This receipt confirms payment received by Lofty Education for the selected service.",
+    "本文件不是 tax invoice。如需课程安排、付款核对或退款协助，请联系 Lofty Education 管理员。",
+    "This document is not a tax invoice. For scheduling, payment checks, or refund support, please contact Lofty Education.",
+  ], 68, 190, font, muted);
+
+  page.drawLine({ start: { x: 48, y: 110 }, end: { x: 547, y: 110 }, thickness: 1, color: border });
+  drawText(page, "小马哥教育", 48, 88, { size: 9, font, color: text });
+  drawText(page, "Lofty Education - Australia", 48, 73, { size: 8, font, color: muted });
+  drawText(page, "Generated securely after successful payment", 346, 80, { size: 8, font, color: muted });
 
   return Buffer.from(await pdf.save());
 }

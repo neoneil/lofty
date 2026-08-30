@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AudioLines, Bot, BookCopy, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, ClipboardList, CloudUpload, CreditCard, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, ScrollText, Users, Video, type LucideIcon } from "lucide-react";
+import { AudioLines, Bot, BookCopy, BookOpenCheck, BookOpenText, BrainCircuit, CalendarCheck2, ClipboardList, CloudUpload, CreditCard, Database, Download, FileText, Gauge, Grid2X2, Headphones, History, ImageIcon, Languages, List, MessageSquareText, NotebookPen, ReceiptText, ScrollText, Users, Video, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
 import { UiSkinCard } from "@/components/admin/ui-skin-card";
@@ -30,6 +30,7 @@ const adminModuleGroups: AdminModuleGroup[] = [
       { title: "学生计划管理", desc: "查看所有学生学习计划，支持编辑、更新与受保护的学生数据删除。", href: "/admin/student-plans", tag: "Student Plans", icon: CalendarCheck2 },
       { title: "学生作业管理", desc: "给学生布置 IELTS / PTE 作业，发送站内通知和邮件，并保留学生历史作业。", href: "/admin/homework", tag: "Homework", icon: NotebookPen },
       { title: "学生付款详情", desc: "查看学生 Profile、Auth 账号、AI 权限、Stripe 购买记录和付款排查信息。", href: "/admin/student-payments", tag: "Payments", icon: CreditCard },
+      { title: "Receipt Test", desc: "预览付款收据 PDF 的中英双语商务版式，确认后再同步到真实邮件附件。", href: "/admin/receipt-test", tag: "Receipt", icon: ReceiptText },
       { title: "模考成绩", desc: "查看学生 IELTS / PTE 模考成绩、题目、答案、录音和评分详情。", href: "/admin/mock-tests", tag: "Mock Tests", icon: ClipboardList },
       { title: "上课明细", desc: "各学生上课次数。", href: "/admin/start-classroom", tag: "Zoom 会议", icon: Video },
     ],
