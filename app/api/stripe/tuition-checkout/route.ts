@@ -103,6 +103,7 @@ async function buildTuitionCheckoutSession(req: Request, context: ServerUserCont
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+    payment_method_types: ["card", "alipay"],
     customer: stripeCustomerId,
     client_reference_id: context.user.id,
     line_items: [{

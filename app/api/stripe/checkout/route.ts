@@ -125,6 +125,7 @@ async function buildCheckoutSession(req: Request, context: ServerUserContext, pa
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+    payment_method_types: ["card", "alipay"],
     customer: stripeCustomerId,
     client_reference_id: context.user.id,
     line_items: [createLineItem(pkg, productScope)],
