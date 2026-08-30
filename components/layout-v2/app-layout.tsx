@@ -28,11 +28,11 @@ export function AppLayout({
   const isCourseEmbed = searchParams.get("embed") === "course";
 
   if (isCourseEmbed) {
-    return <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]"><main className="min-h-screen p-1 sm:p-2">{children}</main></div>;
+    return <div className="min-h-dvh bg-[var(--bg)] text-[var(--text)]"><main className="min-h-dvh p-1 sm:p-2">{children}</main></div>;
   }
 
   return (
-    <div className="flex h-screen min-h-0 flex-col bg-[var(--bg)] lg:flex-row">
+    <div className="flex h-dvh min-h-0 flex-col bg-[var(--bg)] lg:flex-row">
 
       <div className="lg:hidden">
         <SidebarTopbar examType={examType} canAccessAdmin={canAccessAdmin} />

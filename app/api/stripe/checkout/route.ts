@@ -8,6 +8,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeClient } from "@/lib/stripe/server";
 
 export const runtime = "nodejs";
+const GENERIC_CHECKOUT_ERROR = "支付页面打开失败，请刷新后重试。若仍然失败，请联系管理员处理。";
 
 type CheckoutBuildResult =
   | { ok: true; session: Stripe.Checkout.Session }
@@ -54,6 +55,10 @@ function buildCheckoutUrlErrorRedirect(origin: string, nextPath: string, reason:
   const safePath = nextPath.startsWith("/") && !nextPath.startsWith("//") ? nextPath : "/membership";
   const separator = safePath.includes("?") ? "&" : "?";
   return origin + safePath + separator + "payment=error&reason=" + encodeURIComponent(reason);
+}
+
+function getPublicCheckoutError(result: Exclude<CheckoutBuildResult, { ok: true }>) {
+  return result.status >= 500 ? GENERIC_CHECKOUT_ERROR : result.message;
 }
 
 async function buildCheckoutSession(req: Request, context: ServerUserContext, packageCode: string, rawProductScope: string | null | undefined): Promise<CheckoutBuildResult> {
@@ -202,7 +207,7 @@ export async function GET(req: Request) {
 
     if (!result.ok) {
       console.error("Stripe checkout redirect failed:", result.message);
-      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message));
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, getPublicCheckoutError(result)));
     }
 
     return NextResponse.redirect(result.session.url as string);
@@ -252,7 +257,7 @@ export async function POST(req: Request) {
     if (!result.ok) {
       if (isFormPost) {
         console.error("Stripe checkout form redirect failed:", result.message);
-        return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message), 303);
+        return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, getPublicCheckoutError(result)), 303);
       }
 
       return NextResponse.json({ ok: false, message: result.message }, { status: result.status });
@@ -271,7 +276,7 @@ export async function POST(req: Request) {
     console.error("Stripe checkout POST error:", error);
 
     if (isFormPost) {
-      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, error instanceof Error ? error.message : "checkout_failed"), 303);
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, GENERIC_CHECKOUT_ERROR), 303);
     }
 
     return NextResponse.json({ ok: false, message: "创建支付页面失败，请稍后再试。" }, { status: 500 });

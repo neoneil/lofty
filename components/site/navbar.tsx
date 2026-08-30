@@ -23,8 +23,10 @@ export default async function Navbar() {
   const supabase = await createClient();
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user = session?.user ?? null;
 
   let role: string | null = null;
   let selectiveAccess = false;

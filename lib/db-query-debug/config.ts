@@ -1,4 +1,4 @@
-export const DB_QUERY_DEBUG_ENABLED = process.env.NEXT_PUBLIC_DB_QUERY_DEBUG !== "false";
+export const DB_QUERY_DEBUG_ENABLED = process.env.NEXT_PUBLIC_DB_QUERY_DEBUG === "true";
 
 export const DB_QUERY_DEBUG_MAX_EVENTS = 300;
 export const DB_QUERY_DEBUG_RESPONSE_PREVIEW_BYTES = 180_000;

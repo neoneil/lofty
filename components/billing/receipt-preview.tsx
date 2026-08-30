@@ -102,7 +102,7 @@ export function ReceiptPreview({ variant = 'tuition' }: ReceiptPreviewProps) {
             </div>
 
             <div className='mt-5 overflow-hidden rounded-2xl border border-slate-200'>
-              <div className='grid grid-cols-[1fr_120px_140px] bg-emerald-50 px-5 py-3 text-[11px] font-black text-slate-600'>
+              <div className='hidden grid-cols-[1fr_120px_140px] bg-emerald-50 px-5 py-3 text-[11px] font-black text-slate-600 sm:grid'>
                 <div>
                   项目
                   <span className='mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400'>Item</span>
@@ -116,15 +116,22 @@ export function ReceiptPreview({ variant = 'tuition' }: ReceiptPreviewProps) {
                   <span className='mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400'>Amount</span>
                 </div>
               </div>
-              <div className='grid grid-cols-[1fr_120px_140px] items-center border-t border-slate-200 px-5 py-4 text-sm'>
+              <div className='grid gap-4 border-t border-slate-200 px-5 py-4 text-sm sm:grid-cols-[1fr_120px_140px] sm:items-center'>
                 <div>
+                  <p className='mb-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-400 sm:hidden'>项目 / Item</p>
                   <p className='text-sm font-black text-slate-950'>{receipt.itemCn}</p>
                   <p className='mt-1 text-xs font-semibold text-slate-500'>{receipt.itemEn}</p>
                   <p className='mt-2 text-xs text-slate-600'>{receipt.descriptionCn}</p>
                   <p className='mt-1 text-xs text-slate-400'>{receipt.descriptionEn}</p>
                 </div>
-                <div className='font-bold text-slate-800'>{receipt.quantity}</div>
-                <div className='text-right text-base font-black text-slate-950'>{receipt.amount}</div>
+                <div className='font-bold text-slate-800'>
+                  <p className='mb-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-400 sm:hidden'>数量 / Quantity</p>
+                  {receipt.quantity}
+                </div>
+                <div className='text-base font-black text-slate-950 sm:text-right'>
+                  <p className='mb-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-400 sm:hidden'>金额 / Amount</p>
+                  {receipt.amount}
+                </div>
               </div>
             </div>
 

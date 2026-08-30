@@ -4,6 +4,7 @@ import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usag
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { isTextTooLong } from "@/lib/api/request-limits";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -11,6 +12,8 @@ const client = new OpenAI({
 
 const AI_FEATURE = "selective_writing_review";
 const AI_MODEL = "gpt-5.4";
+const MAX_PROMPT_LENGTH = 4000;
+const MAX_ESSAY_LENGTH = 12000;
 
 type RequestBody = {
   writingQuestionId?: string;
@@ -74,6 +77,13 @@ export async function POST(req: Request) {
     if (!essay.trim()) {
       return NextResponse.json(
         { error: "Essay is empty." },
+        { status: 400 }
+      );
+    }
+
+    if (isTextTooLong(prompt, MAX_PROMPT_LENGTH) || isTextTooLong(essay, MAX_ESSAY_LENGTH)) {
+      return NextResponse.json(
+        { error: "Writing content is too long. Please shorten the prompt or essay and try again." },
         { status: 400 }
       );
     }

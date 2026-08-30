@@ -15,8 +15,18 @@ type ProfileRecord = AnyRecord & {
   full_name?: string | null;
   exam_type?: string | null;
   role?: string | null;
+  is_my_student?: boolean | null;
+  selective_access?: boolean | null;
   created_at?: string | null;
 };
+
+const PROFILE_SELECT = 'id, email, full_name, exam_type, role, is_my_student, selective_access, created_at, updated_at';
+const PRODUCT_LIMIT_SELECT = 'user_id, product_scope, daily_limit, monthly_limit, is_unlimited, unlimited_until, created_at, updated_at';
+const LEGACY_LIMIT_SELECT = 'user_id, daily_limit, monthly_limit, is_unlimited, unlimited_until, created_at, updated_at';
+const AI_PURCHASE_SELECT = 'id, user_id, product_scope, package_code, access_days, status, currency, amount_total, amount_subtotal, stripe_checkout_session_id, stripe_payment_status, access_started_at, access_until, created_at, updated_at';
+const TUITION_PAYMENT_SELECT = 'id, user_id, package_code, package_label, lesson_count, total_hours, status, currency, amount_total, amount_subtotal, stripe_checkout_session_id, stripe_payment_status, paid_at, cancelled_at, failed_at, created_at, updated_at';
+const AI_USAGE_LOG_SELECT = 'id, user_id, feature, product_scope, model, prompt_tokens, completion_tokens, total_tokens, estimated_cost, status, error_message, created_at';
+const WEBHOOK_EVENT_SELECT = 'id, stripe_event_id, event_type, processed_at, processing_error, created_at';
 
 function getParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -198,7 +208,7 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
 
   const profilesResult = await safeQuery<ProfileRecord[]>(
     'student payments profiles',
-    supabase.from('profiles').select('*').order('created_at', { ascending: false })
+    supabase.from('profiles').select(PROFILE_SELECT).order('created_at', { ascending: false })
   );
 
   const profiles = (profilesResult.data ?? [])
@@ -216,12 +226,12 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
   const [authResult, productLimitsResult, legacyLimitResult, purchasesResult, tuitionPaymentsResult, usageLogsResult, webhookEventsResult] = activeUserId
     ? await Promise.all([
         supabase.auth.admin.getUserById(activeUserId),
-        safeQuery<AnyRecord[]>('student payments product limits', supabase.from('ai_user_product_limits').select('*').eq('user_id', activeUserId).order('product_scope', { ascending: true })),
-        safeQuery<AnyRecord[]>('student payments legacy limits', supabase.from('ai_user_limits').select('*').eq('user_id', activeUserId)),
-        safeQuery<AnyRecord[]>('student payments purchases', supabase.from('ai_access_purchases').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false })),
-        safeQuery<AnyRecord[]>('student tuition payments', supabase.from('tuition_payments').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false })),
-        safeQuery<AnyRecord[]>('student payments usage logs', supabase.from('ai_usage_logs').select('*').eq('user_id', activeUserId).order('created_at', { ascending: false }).limit(80)),
-        safeQuery<AnyRecord[]>('student payments webhook events', supabase.from('stripe_webhook_events').select('*').order('created_at', { ascending: false }).limit(120)),
+        safeQuery<AnyRecord[]>('student payments product limits', supabase.from('ai_user_product_limits').select(PRODUCT_LIMIT_SELECT).eq('user_id', activeUserId).order('product_scope', { ascending: true })),
+        safeQuery<AnyRecord[]>('student payments legacy limits', supabase.from('ai_user_limits').select(LEGACY_LIMIT_SELECT).eq('user_id', activeUserId)),
+        safeQuery<AnyRecord[]>('student payments purchases', supabase.from('ai_access_purchases').select(AI_PURCHASE_SELECT).eq('user_id', activeUserId).order('created_at', { ascending: false })),
+        safeQuery<AnyRecord[]>('student tuition payments', supabase.from('tuition_payments').select(TUITION_PAYMENT_SELECT).eq('user_id', activeUserId).order('created_at', { ascending: false })),
+        safeQuery<AnyRecord[]>('student payments usage logs', supabase.from('ai_usage_logs').select(AI_USAGE_LOG_SELECT).eq('user_id', activeUserId).order('created_at', { ascending: false }).limit(80)),
+        safeQuery<AnyRecord[]>('student payments webhook events', supabase.from('stripe_webhook_events').select(WEBHOOK_EVENT_SELECT).order('created_at', { ascending: false }).limit(120)),
       ])
     : [null, empty, empty, empty, empty, empty, empty];
 
@@ -232,16 +242,7 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
   const purchases = purchasesResult.data ?? [];
   const tuitionPayments = tuitionPaymentsResult.data ?? [];
   const usageLogs = usageLogsResult.data ?? [];
-  const rawWebhookEvents = webhookEventsResult.data ?? [];
-  const purchaseSessionIds = new Set([...purchases, ...tuitionPayments].map((purchase) => purchase.stripe_checkout_session_id).filter((value): value is string => typeof value === 'string' && value.length > 0));
-  const webhookEvents = rawWebhookEvents.filter((event) => {
-    const serialized = formatValue('', event);
-    if (serialized.includes(activeUserId)) return true;
-    for (const sessionId of purchaseSessionIds) {
-      if (serialized.includes(sessionId)) return true;
-    }
-    return false;
-  }).slice(0, 30);
+  const webhookEvents = (webhookEventsResult.data ?? []).slice(0, 30);
   const totals = getPurchaseTotals(purchases);
   const tuitionTotals = getTuitionPaymentTotals(tuitionPayments);
 
@@ -322,8 +323,25 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
                   ]} />
                   {authError ? <p className='mt-3 rounded-[var(--radius-md)] border border-[var(--danger)]/20 bg-[var(--danger-soft)] p-3 text-sm font-semibold text-[var(--danger)]'>Auth 查询失败：{authError}</p> : null}
                   <div className='mt-4 grid gap-3 lg:grid-cols-2'>
-                    <JsonDetails title='Profile 全字段' value={activeProfile} />
-                    <JsonDetails title='Auth User metadata / identities' value={{ app_metadata: authUser?.app_metadata, user_metadata: authUser?.user_metadata, identities: authUser?.identities?.map((identity) => ({ id: identity.id, provider: identity.provider, created_at: identity.created_at, updated_at: identity.updated_at, identity_data: identity.identity_data })) }} />
+                    <JsonDetails title='Profile 安全摘要' value={{
+                      id: activeProfile.id,
+                      email: activeProfile.email,
+                      full_name: activeProfile.full_name,
+                      exam_type: activeProfile.exam_type,
+                      role: activeProfile.role,
+                      is_my_student: activeProfile.is_my_student,
+                      selective_access: activeProfile.selective_access,
+                      created_at: activeProfile.created_at,
+                    }} />
+                    <JsonDetails title='Auth User 安全摘要' value={{
+                      id: authUser?.id,
+                      email: authUser?.email,
+                      created_at: authUser?.created_at,
+                      last_sign_in_at: authUser?.last_sign_in_at,
+                      email_confirmed_at: authUser?.email_confirmed_at,
+                      phone: authUser?.phone,
+                      providers: authUser?.identities?.map((identity) => identity.provider),
+                    }} />
                   </div>
                 </section>
 
@@ -332,7 +350,7 @@ export default async function AdminStudentPaymentsPage({ searchParams }: { searc
                 <DataTable title='付款 / 购买记录 ai_access_purchases' rows={purchases} emptyText='该学生暂无购买记录。' error={purchasesResult.error} />
                 <DataTable title='学费付款 tuition_payments' rows={tuitionPayments} emptyText='该学生暂无学费付款记录。' error={tuitionPaymentsResult.error} />
                 <DataTable title='最近 AI 使用日志 ai_usage_logs' rows={usageLogs} emptyText='该学生暂无 AI 使用日志。' error={usageLogsResult.error} />
-                <DataTable title='Stripe Webhook 事件 stripe_webhook_events' rows={webhookEvents} emptyText='没有匹配到该学生的 webhook 事件。' error={webhookEventsResult.error} />
+                <DataTable title='最近 Stripe Webhook 事件摘要 stripe_webhook_events' rows={webhookEvents} emptyText='暂无 webhook 事件摘要。' error={webhookEventsResult.error} />
 
                 <section className='rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]'>
                   <h2 className='mb-4 flex items-center gap-2 text-lg font-bold text-[var(--text)]'><Database size={20} className='text-[var(--primary)]' />查询范围</h2>

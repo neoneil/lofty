@@ -8,6 +8,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeClient } from "@/lib/stripe/server";
 
 export const runtime = "nodejs";
+const GENERIC_TUITION_CHECKOUT_ERROR = "支付页面打开失败，请刷新后重试。若仍然失败，请联系管理员处理。";
 
 type TuitionCheckoutBuildResult =
   | { ok: true; session: Stripe.Checkout.Session }
@@ -17,6 +18,10 @@ function buildCheckoutUrlErrorRedirect(origin: string, nextPath: string, reason:
   const safePath = nextPath.startsWith("/") && !nextPath.startsWith("//") ? nextPath : "/membership";
   const separator = safePath.includes("?") ? "&" : "?";
   return origin + safePath + separator + "payment=error&reason=" + encodeURIComponent(reason);
+}
+
+function getPublicCheckoutError(result: Exclude<TuitionCheckoutBuildResult, { ok: true }>) {
+  return result.status >= 500 ? GENERIC_TUITION_CHECKOUT_ERROR : result.message;
 }
 
 async function getOrCreateStripeCustomer(context: ServerUserContext) {
@@ -89,7 +94,7 @@ async function buildTuitionCheckoutSession(req: Request, context: ServerUserCont
     stripeCustomerId = await getOrCreateStripeCustomer(context);
   } catch (error) {
     console.error("Stripe tuition billing profile error:", error);
-    return { ok: false, status: 500, message: error instanceof Error ? error.message : "读取支付资料失败，请稍后再试。" };
+    return { ok: false, status: 500, message: "读取支付资料失败，请稍后再试。" };
   }
 
   const metadata = {
@@ -175,7 +180,7 @@ export async function GET(req: Request) {
 
     if (!result.ok) {
       console.error("Stripe tuition checkout redirect failed:", result.message);
-      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message));
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, getPublicCheckoutError(result)));
     }
 
     return NextResponse.redirect(result.session.url as string);
@@ -222,7 +227,7 @@ export async function POST(req: Request) {
     if (!result.ok) {
       if (isFormPost) {
         console.error("Stripe tuition checkout form redirect failed:", result.message);
-        return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, result.message), 303);
+        return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, getPublicCheckoutError(result)), 303);
       }
 
       return NextResponse.json({ ok: false, message: result.message }, { status: result.status });
@@ -241,7 +246,7 @@ export async function POST(req: Request) {
     console.error("Stripe tuition checkout POST error:", error);
 
     if (isFormPost) {
-      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, error instanceof Error ? error.message : "tuition_checkout_failed"), 303);
+      return NextResponse.redirect(buildCheckoutUrlErrorRedirect(origin, nextPath, GENERIC_TUITION_CHECKOUT_ERROR), 303);
     }
 
     return NextResponse.json({ ok: false, message: "创建学费支付页面失败，请稍后再试。" }, { status: 500 });

@@ -20,12 +20,12 @@ export function Topbar({ user, canAccessAdmin }: Props) {
   };
 
   return (
-    <header className="sticky top-0 z-40 flex h-[var(--topbar-height)] items-center justify-between border-b border-[var(--border)] bg-[color:var(--card)]/80 px-6 backdrop-blur-xl">
-      <div className="flex items-center gap-6">
+    <header className="sticky top-0 z-40 flex h-[var(--topbar-height)] items-center justify-end border-b border-[var(--border)] bg-[color:var(--card)]/80 px-2 backdrop-blur-xl sm:px-4 md:justify-between lg:px-6">
+      <div className="hidden min-w-0 items-center gap-6 md:flex">
         <Breadcrumbs />
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-1.5 sm:gap-2 lg:gap-3">
         <SearchCommand />
 
         <button type="button" onClick={openAiCoach} className="hidden h-11 items-center gap-2 rounded-full bg-[var(--primary)] px-4 text-sm font-medium text-white shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--primary-hover)] xl:flex">

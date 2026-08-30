@@ -14,6 +14,45 @@ function getObjectId(value: string | { id?: string } | null | undefined) {
   return typeof value === "string" ? value : value.id ?? null;
 }
 
+function getRecord(value: unknown) {
+  return value && typeof value === "object" ? value as Record<string, unknown> : {};
+}
+
+function getRecordObjectId(value: unknown) {
+  if (!value) return null;
+  if (typeof value === "string") return value;
+  const record = getRecord(value);
+  return typeof record.id === "string" ? record.id : null;
+}
+
+function buildWebhookPayloadSummary(event: Stripe.Event) {
+  const object = getRecord(event.data.object);
+
+  return {
+    id: event.id,
+    type: event.type,
+    created: event.created,
+    livemode: event.livemode,
+    api_version: event.api_version,
+    data: {
+      object: {
+        id: typeof object.id === "string" ? object.id : null,
+        object: typeof object.object === "string" ? object.object : null,
+        mode: typeof object.mode === "string" ? object.mode : null,
+        status: typeof object.status === "string" ? object.status : null,
+        payment_status: typeof object.payment_status === "string" ? object.payment_status : null,
+        amount_total: typeof object.amount_total === "number" ? object.amount_total : null,
+        amount_subtotal: typeof object.amount_subtotal === "number" ? object.amount_subtotal : null,
+        currency: typeof object.currency === "string" ? object.currency : null,
+        client_reference_id: typeof object.client_reference_id === "string" ? object.client_reference_id : null,
+        customer: getRecordObjectId(object.customer),
+        payment_intent: getRecordObjectId(object.payment_intent),
+        metadata: getRecord(object.metadata),
+      },
+    },
+  };
+}
+
 function getSessionMetadata(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.user_id || session.client_reference_id || "";
   const packageCode = session.metadata?.package_code || "";
@@ -77,7 +116,7 @@ async function markWebhookEvent(stripeEventId: string, values: { processedAt?: s
     .eq("stripe_event_id", stripeEventId);
 }
 
-async function recordWebhookEvent(event: Stripe.Event, payload: string) {
+async function recordWebhookEvent(event: Stripe.Event) {
   const supabase = createAdminClient();
 
   const { error } = await supabase
@@ -85,7 +124,7 @@ async function recordWebhookEvent(event: Stripe.Event, payload: string) {
     .upsert({
       stripe_event_id: event.id,
       event_type: event.type,
-      payload: JSON.parse(payload),
+      payload: buildWebhookPayloadSummary(event),
       processing_error: null,
     }, { onConflict: "stripe_event_id" });
 
@@ -325,7 +364,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    await recordWebhookEvent(event, payload);
+    await recordWebhookEvent(event);
 
     switch (event.type) {
       case "checkout.session.completed":

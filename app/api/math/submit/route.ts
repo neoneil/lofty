@@ -4,6 +4,7 @@ import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usag
 import { renderAiPrompt } from "@/lib/ai-prompts/server";
 import { gradeNumericAnswer } from "@/lib/math/grade-math-answer";
 import { createClient } from "@/lib/supabase/server";
+import { isTextTooLong } from "@/lib/api/request-limits";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -11,6 +12,8 @@ const client = new OpenAI({
 
 const AI_FEATURE = "math_feedback";
 const AI_MODEL = "gpt-5.4-mini";
+const MAX_MATH_QUESTION_LENGTH = 4000;
+const MAX_MATH_ANSWER_LENGTH = 1000;
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,8 +29,24 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const { question, correctAnswer, studentAnswer } = body;
+    const questionText = String(question ?? "");
+    const correctAnswerText = String(correctAnswer ?? "");
+    const studentAnswerText = String(studentAnswer ?? "");
+    const correctAnswerNumber = Number(correctAnswerText);
 
-    const grade = gradeNumericAnswer(studentAnswer, correctAnswer);
+    if (
+      isTextTooLong(questionText, MAX_MATH_QUESTION_LENGTH) ||
+      isTextTooLong(correctAnswerText, MAX_MATH_ANSWER_LENGTH) ||
+      isTextTooLong(studentAnswerText, MAX_MATH_ANSWER_LENGTH)
+    ) {
+      return NextResponse.json({ error: "Submitted answer is too long." }, { status: 400 });
+    }
+
+    if (!Number.isFinite(correctAnswerNumber)) {
+      return NextResponse.json({ error: "Correct answer is invalid." }, { status: 400 });
+    }
+
+    const grade = gradeNumericAnswer(studentAnswerText, correctAnswerNumber);
 
     let aiFeedback = null;
 
@@ -38,7 +57,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });
       }
 
-      const prompt = await renderAiPrompt("math.feedback.user", { question, correctAnswer, studentAnswer });
+      const prompt = await renderAiPrompt("math.feedback.user", { question: questionText, correctAnswer: correctAnswerText, studentAnswer: studentAnswerText });
 
       let response;
 

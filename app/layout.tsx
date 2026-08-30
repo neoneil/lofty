@@ -83,7 +83,7 @@ function ThemeScript() {
     const storedUiSkin = window.localStorage.getItem("lofty-ui-skin") || "default";
     document.documentElement.dataset.uiSkin = storedUiSkin;
     document.documentElement.style.colorScheme = theme;
-    document.documentElement.style.setProperty("--hero-image", theme === "dark" ? "url('/hero_dark.png')" : "url('/hero4.png')");
+    document.documentElement.style.setProperty("--hero-image", theme === "dark" ? "url('/hero_dark.webp')" : "url('/hero4.webp')");
   } catch {}
 })();
 `;

@@ -4,6 +4,8 @@ import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usag
 import { buildPrompt } from "@/lib/math/prompt-templates";
 import { getRandomScenario } from "@/lib/math/scenario-pools";
 import { createClient } from "@/lib/supabase/server";
+import { clampInteger, isTextTooLong } from "@/lib/api/request-limits";
+import type { Difficulty, MathWordProblemType } from "@/types/math";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -11,6 +13,29 @@ const client = new OpenAI({
 
 const AI_FEATURE = "math_generate";
 const AI_MODEL = "gpt-5.4-mini";
+const MAX_GENERATED_PROBLEMS = 3;
+const MAX_MATH_FIELD_LENGTH = 120;
+const ALLOWED_TOPICS = new Set<MathWordProblemType>([
+  "speed_distance_time",
+  "ratio_sharing",
+  "percentage_change",
+  "money_cost",
+  "age_problem",
+  "work_rate",
+  "fraction_context",
+  "measurement_geometry",
+  "average_data",
+  "simple_probability",
+]);
+const ALLOWED_DIFFICULTIES = new Set<Difficulty>(["easy", "medium", "hard"]);
+
+function parseTopic(value: string): MathWordProblemType | null {
+  return ALLOWED_TOPICS.has(value as MathWordProblemType) ? value as MathWordProblemType : null;
+}
+
+function parseDifficulty(value: string): Difficulty | null {
+  return ALLOWED_DIFFICULTIES.has(value as Difficulty) ? value as Difficulty : null;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,7 +57,19 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { topic, difficulty, count = 1 } = body;
+    const topic = String(body.topic ?? "").trim();
+    const difficulty = String(body.difficulty ?? "").trim();
+    const count = clampInteger(body.count, { min: 1, max: MAX_GENERATED_PROBLEMS, fallback: 1 });
+
+    if (!topic || !difficulty || isTextTooLong(topic, MAX_MATH_FIELD_LENGTH) || isTextTooLong(difficulty, MAX_MATH_FIELD_LENGTH)) {
+      return NextResponse.json({ error: "Invalid topic or difficulty." }, { status: 400 });
+    }
+
+    const parsedTopic = parseTopic(topic);
+    const parsedDifficulty = parseDifficulty(difficulty);
+    if (!parsedTopic || !parsedDifficulty) {
+      return NextResponse.json({ error: "Invalid topic or difficulty." }, { status: 400 });
+    }
 
     const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
 
@@ -46,8 +83,8 @@ export async function POST(req: NextRequest) {
     let totalTokens = 0;
 
     for (let i = 0; i < count; i++) {
-      const scenario = getRandomScenario(topic);
-      const prompt = buildPrompt(topic, difficulty, scenario);
+      const scenario = getRandomScenario(parsedTopic);
+      const prompt = buildPrompt(parsedTopic, parsedDifficulty, scenario);
 
       let response;
 

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerUser } from "@/lib/auth/server-auth";
 import { savePteMockSection, type PteSectionResponsePayload } from "@/lib/mock-test/pte";
 import { uploadPrivateR2Object } from "@/lib/storage/r2-private";
+import { validateStudentRecordingFile } from "@/lib/storage/student-recordings";
 
 type JsonPayload = {
   attemptId?: string;
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
     for (const response of responses) {
       const file = form.get(`recording:${response.questionKey}`);
       if (!(file instanceof File) || file.size <= 0) continue;
+      validateStudentRecordingFile(file);
       const extension = getAudioExtension(file);
       const key = `mock-tests/${context.user.id}/${attemptId}/${response.question.type}-${response.questionKey}-${Date.now()}.${extension}`.replace(/[^a-zA-Z0-9/_.,:-]/g, "-");
       await uploadPrivateR2Object({ key, file, contentType: file.type || "audio/webm" });

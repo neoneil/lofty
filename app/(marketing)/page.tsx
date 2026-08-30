@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,8 +16,9 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import { unstable_cache } from "next/cache";
 
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { getRandomSlogan } from "@/lib/slogan/slogan";
 import { BRAND_EDUCATION_CN } from "@/lib/brand";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
@@ -47,6 +49,35 @@ const features = [
 function getPostCoverUrl(value: string | null) {
   return normalizePublicStorageUrl(value, "images");
 }
+
+type HomePost = {
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  published_at: string | null;
+  cover_image: string | null;
+};
+
+const getLatestHomePosts = unstable_cache(
+  async (): Promise<HomePost[]> => {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from("posts")
+      .select("title, slug, excerpt, published_at, cover_image")
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(3);
+
+    if (error) {
+      console.error("Home latest posts query failed:", error);
+      return [];
+    }
+
+    return data ?? [];
+  },
+  ["home-latest-posts-v1"],
+  { revalidate: 300 }
+);
 
 const heroHighlights = [
   {
@@ -245,35 +276,8 @@ function ExamCard({
 }
 
 export default async function HomePage() {
-  const supabase = await createClient();
   const heroSlogan = getRandomSlogan();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  let role: string | null = null;
-
-  if (user) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
-
-    role = profile?.role ?? null;
-  }
-
-  const canManagePosts = role === "admin" || role === "editor";
-
-  const { data: posts } = await supabase
-    .from("posts")
-    .select("title, slug, excerpt, published_at, cover_image")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(50);
-
-  const latestPosts = posts?.slice(0, 3) ?? [];
+  const latestPosts = await getLatestHomePosts();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -386,7 +390,7 @@ export default async function HomePage() {
             desc="全球认可的英语能力测试"
             points={["听说读写全面提升", "丰富的学习资源", "定制化学习计划"]}
             href="/ielts"
-            image="/ielts-bg.png"
+            image="/ielts-bg.webp"
             badge="IELTS"
             imageTitle="走向更广阔的世界"
             imageDesc="适合留学、移民与全球升学申请"
@@ -397,7 +401,7 @@ export default async function HomePage() {
             desc="AI 驱动的智能机考训练"
             points={["机考模拟训练", "快速出分", "AI评分分析"]}
             href="/pte"
-            image="/pte-bg.png"
+            image="/pte-bg.webp"
             badge="PTE"
             imageTitle="智能机考训练"
             imageDesc="快速出分，适合高效备考人群"
@@ -437,29 +441,32 @@ export default async function HomePage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
-            {latestPosts.map((post, index) => (
-              <Link key={post.slug} href={`/posts/${post.slug}`} className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
-                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-soft)] md:aspect-[16/11]">
-                  {getPostCoverUrl(post.cover_image) ? (
-                    <img src={getPostCoverUrl(post.cover_image)} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
-                  ) : (
-                    <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">Lofty Article</div>
-                  )}
-                  <span className="absolute left-4 top-4 rounded-[var(--radius-sm)] border border-white/25 bg-black/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">Article {String(index + 1).padStart(2, "0")}</span>
-                </div>
-                <div className="p-5 md:p-6">
-                  <h3 className="line-clamp-2 text-base font-bold leading-6 text-[var(--text)]">
-                    {post.title}
-                  </h3>
-                  {post.excerpt ? (
-                    <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
-                      {post.excerpt}
-                    </p>
-                  ) : null}
-                  <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-[var(--primary)]">阅读全文<ArrowRight size={14} className="transition-transform group-hover:translate-x-1" /></span>
-                </div>
-              </Link>
-            ))}
+            {latestPosts.map((post, index) => {
+              const coverUrl = getPostCoverUrl(post.cover_image);
+              return (
+                <Link key={post.slug} href={`/posts/${post.slug}`} className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/35 hover:shadow-[var(--shadow-md)]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-soft)] md:aspect-[16/11]">
+                    {coverUrl ? (
+                      <Image src={coverUrl} alt={post.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.04]" />
+                    ) : (
+                      <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-sm font-semibold text-[var(--primary)]">Lofty Article</div>
+                    )}
+                    <span className="absolute left-4 top-4 rounded-[var(--radius-sm)] border border-white/25 bg-black/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">Article {String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="p-5 md:p-6">
+                    <h3 className="line-clamp-2 text-base font-bold leading-6 text-[var(--text)]">
+                      {post.title}
+                    </h3>
+                    {post.excerpt ? (
+                      <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
+                        {post.excerpt}
+                      </p>
+                    ) : null}
+                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-[var(--primary)]">阅读全文<ArrowRight size={14} className="transition-transform group-hover:translate-x-1" /></span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
       ) : null}
@@ -501,10 +508,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      {canManagePosts ? (
-        <div className="sr-only">Admin content tools enabled</div>
-      ) : null}
     </main>
   );
 }

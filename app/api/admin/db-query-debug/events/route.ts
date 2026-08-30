@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { requireApiAdminOrEditor } from "@/lib/auth/require-api-auth";
+import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 import { withoutDbQueryDebug } from "@/lib/db-query-debug/context";
 import { addDbQueryDebugEvent } from "@/lib/db-query-debug/store";
 import type { DbQueryDebugEventInput } from "@/lib/db-query-debug/types";
@@ -22,7 +22,7 @@ function isDebugEventInput(value: unknown): value is DbQueryDebugEventInput {
 }
 
 export async function POST(request: NextRequest) {
-  const auth = await withoutDbQueryDebug(() => requireApiAdminOrEditor());
+  const auth = await withoutDbQueryDebug(() => requireApiAdmin());
   if (!auth.ok) return auth.response;
 
   const body = (await request.json().catch(() => ({}))) as { event?: unknown };

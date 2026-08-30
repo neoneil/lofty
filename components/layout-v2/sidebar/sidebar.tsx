@@ -91,7 +91,7 @@ export function Sidebar({ userId, examType, canAccessAdmin }: { userId: string |
     <aside
       onClickCapture={handleSidebarClickCapture}
       className={cn(
-        "sticky top-0 flex h-screen flex-col overflow-hidden border-r border-[var(--border)] bg-[var(--sidebar)] p-4 transition-all duration-300",
+        "sticky top-0 flex h-dvh flex-col overflow-hidden border-r border-[var(--border)] bg-[var(--sidebar)] p-4 transition-all duration-300",
         collapsed ? "w-[84px]" : "w-[230px]",
       )}
     >

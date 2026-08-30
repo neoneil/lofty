@@ -271,7 +271,7 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background-clip: content-box;
 }
 .site-hero {
-  background-image: var(--hero-image, url("/hero4.png"));
+  background-image: var(--hero-image, url("/hero4.webp"));
 }
 @layer components {
 
@@ -401,6 +401,7 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -410,6 +411,7 @@ body {
   caret-color: transparent;
   font-family: var(--font-latin), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
   font-feature-settings: "rlig" 1, "calt" 1;
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }

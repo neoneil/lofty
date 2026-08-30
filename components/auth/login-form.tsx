@@ -175,8 +175,8 @@ export default function CommercialLoginForm() {
             </Card>
 
             {/* 人物：继续贴着表单 */}
-            <div className="pointer-events-none absolute -left-43.75 -top-72.5 z-20">
-              <div className="relative h-205 w-277.5">
+            <div className="pointer-events-none absolute -left-[10.9375rem] -top-[18.125rem] z-20">
+              <div className="relative h-[51.25rem] w-[69.375rem]">
                 <Image
                   src="/images/login_boy.png"
                   alt="Learning boy illustration"

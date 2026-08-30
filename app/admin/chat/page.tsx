@@ -347,7 +347,7 @@ export default function AdminChatPage() {
                         </div>
 
                         {session.unread_count > 0 && (
-                          <div className="min-w-5.5 rounded-full bg-[var(--primary)] px-2 py-1 text-center text-xs font-semibold text-white">
+                          <div className="min-w-[1.375rem] rounded-full bg-[var(--primary)] px-2 py-1 text-center text-xs font-semibold text-white">
                             {session.unread_count}
                           </div>
                         )}

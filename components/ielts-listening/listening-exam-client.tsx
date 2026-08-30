@@ -32,6 +32,21 @@ type TranscriptCue = {
   text: string;
 };
 
+const ANSWER_INPUT_MIN_CH = 6;
+const ANSWER_INPUT_MAX_CH = 28;
+
+function getAnswerInputWidthCh(value: string, fallback = "") {
+  const length = Math.max(value.trim().length, fallback.length, 2);
+  return Math.min(Math.max(length + 2, ANSWER_INPUT_MIN_CH), ANSWER_INPUT_MAX_CH);
+}
+
+function getAnswerInputStyle(value: string, fallback = "") {
+  return {
+    width: `${getAnswerInputWidthCh(value, fallback)}ch`,
+    maxWidth: "min(18rem, 100%)",
+  };
+}
+
 export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = false }: { data: IeltsBookPracticeData; selectedTestNumber: number; isAdmin?: boolean }) {
   const examRef = useRef<HTMLDivElement | null>(null);
   const questionPanelRef = useRef<HTMLDivElement | null>(null);
@@ -202,16 +217,16 @@ export function IeltsListeningExamClient({ data, selectedTestNumber, isAdmin = f
         </div>
       </header>
 
-      <main className="relative flex min-h-[calc(100vh-150px)] flex-col overflow-hidden md:h-[calc(100vh-150px)] md:flex-row">
-        <section ref={questionPanelRef} className={cn("h-[58vh] min-w-0 flex-1 overflow-y-auto bg-[linear-gradient(180deg,var(--bg-soft),var(--bg))] px-4 py-5 transition-[width] duration-300 md:h-auto md:px-7", transcriptOpen ? "md:w-[68%]" : "md:w-full")}>
+      <main className="relative flex min-h-[calc(100vh-150px)] flex-col overflow-hidden lg:h-[calc(100vh-150px)] lg:flex-row">
+        <section ref={questionPanelRef} className={cn("h-[58vh] min-w-0 flex-1 overflow-y-auto bg-[linear-gradient(180deg,var(--bg-soft),var(--bg))] px-4 py-5 transition-[width] duration-300 lg:h-auto lg:px-7", transcriptOpen ? "lg:w-[68%]" : "lg:w-full")}>
           {activePart && <ListeningQuestionPart part={activePart} answers={answers} onAnswerChange={setAnswer} isAdmin={isAdmin} audioRef={audioRef} onAudioTimeChange={setAudioTime} />}
         </section>
 
-        <aside className={cn("border-l border-[var(--border)] bg-[var(--card)] transition-all duration-300 md:h-auto", transcriptOpen ? "h-72 overflow-y-auto p-4 md:w-[32%] md:p-5" : "h-0 overflow-hidden border-l-0 p-0 md:w-0")}>
+        <aside className={cn("border-l border-[var(--border)] bg-[var(--card)] transition-all duration-300 lg:h-auto", transcriptOpen ? "h-72 overflow-y-auto p-4 lg:w-[32%] lg:p-5" : "h-0 overflow-hidden border-l-0 p-0 lg:w-0")}>
           {activePart && data.book && <TranscriptPanel bookNumber={data.book.book_number} testNumber={selectedTestNumber} sectionNumber={activePart.displayNumber} currentTime={audioTime} onCueClick={seekTranscript} />}
         </aside>
 
-        <div className={cn("absolute bottom-5 right-5 z-20 hidden gap-3 transition-opacity duration-700 md:flex", navActive ? "opacity-100" : "opacity-25 hover:opacity-100")}>
+        <div className={cn("absolute bottom-5 right-5 z-20 hidden gap-3 transition-opacity duration-700 lg:flex", navActive ? "opacity-100" : "opacity-25 hover:opacity-100")}>
           <button type="button" onClick={() => scrollQuestionStep(-1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--success)]/45 bg-[var(--card)] text-[var(--success)] shadow-[var(--shadow-md)] transition hover:bg-[var(--success-soft)]"><ChevronLeft size={22} /></button>
           <button type="button" onClick={() => scrollQuestionStep(1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--success)] bg-[var(--card)] text-[var(--success)] shadow-[var(--shadow-md)] transition hover:bg-[var(--success-soft)]"><ChevronRight size={22} /></button>
         </div>
@@ -483,7 +498,7 @@ function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChang
               <label className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline">
                 <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--success)] text-sm font-bold text-white">{label}</span>
                 {cleanTitle && <span className="text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
-                <input value={answers[label] ?? ""} placeholder={label} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 w-20 min-w-20 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm text-[var(--text)] outline-none transition placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" />
+                <input value={answers[label] ?? ""} placeholder={label} onChange={(event) => onAnswerChange(label, event.target.value)} style={getAnswerInputStyle(answers[label] ?? "", label)} className="h-9 min-w-16 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm text-[var(--text)] outline-none transition-[width,border-color,box-shadow] duration-150 placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" />
               </label>
             )}
           </div>
@@ -562,11 +577,19 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
       }
     };
 
+    const resizeInput = (input: HTMLInputElement) => {
+      input.style.width = `${getAnswerInputWidthCh(input.value, input.placeholder)}ch`;
+      input.style.maxWidth = "min(18rem, 100%)";
+    };
+
+    container.querySelectorAll<HTMLInputElement>("input[data-question-number]").forEach(resizeInput);
+
     const scheduleInputAnswer = (event: Event) => {
       const target = event.target;
       if (!(target instanceof HTMLInputElement)) return;
       const number = target.dataset.questionNumber;
       if (!number) return;
+      resizeInput(target);
       if (commitTimersRef.current[number]) window.clearTimeout(commitTimersRef.current[number]);
       commitTimersRef.current[number] = window.setTimeout(() => {
         onAnswerChange(number, target.value);
@@ -579,6 +602,7 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
       if (!(target instanceof HTMLInputElement)) return;
       const number = target.dataset.questionNumber;
       if (!number) return;
+      resizeInput(target);
       if (commitTimersRef.current[number]) {
         window.clearTimeout(commitTimersRef.current[number]);
         delete commitTimersRef.current[number];
@@ -643,7 +667,7 @@ const ReadingAnswerHtml = memo(function ReadingAnswerHtml({ html, answers, optio
     <>
       <div
         ref={containerRef}
-        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!w-16 [&_input[data-question-number]]:!min-w-16 [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
+        className="reading-rich-text max-w-none text-[15px] leading-8 text-[var(--text)] antialiased [&_*]:!text-[var(--text)] [&_a]:!text-[var(--primary)] [&_button[data-answer-select='true']]:!text-[var(--text)] [&_figure.table]:!mx-auto [&_figure.table]:!my-5 [&_figure.table]:!w-4/5 [&_figure.table]:!max-w-[80%] [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-[var(--radius-md)] [&_input[data-question-number]]:!min-w-16 [&_input[data-question-number]]:!pointer-events-auto [&_input[data-question-number]]:!select-text [&_li]:my-1.5 [&_p]:my-3 [&_strong]:font-semibold [&_table]:!mx-auto [&_table]:!my-5 [&_table]:!w-full [&_table]:!table-fixed [&_table]:!border-collapse [&_table]:!border [&_table]:!border-[var(--border)] [&_td]:!border [&_td]:!border-[var(--border)] [&_td]:!p-3 [&_td]:!align-middle [&_th]:!border [&_th]:!border-[var(--border)] [&_th]:!bg-[var(--bg-soft)] [&_th]:!p-3 [&_th]:!text-left [&_th]:!font-semibold"
         onPointerDown={keepAnswerControlEventInside}
         onMouseDown={keepAnswerControlEventInside}
         onTouchStart={keepAnswerControlEventInside}
@@ -864,7 +888,7 @@ function injectAnswerInputs(html: string, answers: Answers, optionsByNumber: Rec
       const label = value || number;
       return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><button type="button" data-answer-control="true" data-answer-select="true" data-question-number="${number}" data-selected="${value ? "true" : "false"}" class="relative z-10 min-h-8 min-w-24 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-7 outline-none transition hover:border-[var(--primary)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">${escapeHtml(label)}</button></span>`;
     }
-    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" class="relative z-10 h-8 min-w-16 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
+    return `<span data-answer-control="true" class="relative z-10 mx-1 inline-flex items-baseline align-baseline"><input data-answer-control="true" data-question-number="${number}" value="${value}" placeholder="${number}" autocomplete="off" style="width:${getAnswerInputWidthCh(answers[number] ?? "", number)}ch;max-width:min(18rem, 100%);" class="relative z-10 h-8 min-w-16 align-baseline rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-center text-sm leading-8 text-[var(--text)] outline-none transition-[width,border-color,box-shadow] duration-150 placeholder:text-center placeholder:text-[var(--text-faint)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]" /></span>`;
   });
 }
 

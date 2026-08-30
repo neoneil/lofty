@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { recordQuestionOutcome } from "@/lib/pte/record-question-outcome";
 
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { isTextTooLong } from "@/lib/api/request-limits";
 
 import { scoreSWT } from "./scoring/score-swt";
 
@@ -14,6 +15,7 @@ const QUESTION_TABLE = "swt";
 const QUESTION_SCHEMA = "pte";
 const AI_FEATURE = "pte_swt";
 const AI_MODEL = "gpt-4o-mini";
+const MAX_USER_ANSWER_LENGTH = 2500;
 
 export async function POST(req: Request) {
 
@@ -48,6 +50,13 @@ export async function POST(req: Request) {
 
       return NextResponse.json(
         { ok: false, message: "参数不完整" },
+        { status: 400 }
+      );
+    }
+
+    if (isTextTooLong(userAnswer, MAX_USER_ANSWER_LENGTH)) {
+      return NextResponse.json(
+        { ok: false, message: "答案过长，请缩短后再提交。" },
         { status: 400 }
       );
     }

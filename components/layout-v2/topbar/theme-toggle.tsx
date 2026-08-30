@@ -38,7 +38,7 @@ function applyTheme(theme: Theme) {
   document.documentElement.style.colorScheme = theme;
   document.documentElement.style.setProperty(
     "--hero-image",
-    theme === "dark" ? "url('/hero_dark.png')" : "url('/hero4.png')"
+    theme === "dark" ? "url('/hero_dark.webp')" : "url('/hero4.webp')"
   );
   window.localStorage.setItem("lofty-theme", theme);
   window.dispatchEvent(new Event(THEME_CHANGE_EVENT));

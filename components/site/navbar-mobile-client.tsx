@@ -82,13 +82,13 @@ export default function NavbarMobileClient({
                   />
 
                   <div className="min-w-0 leading-tight">
-                    <span className="block max-w-23.75 truncate text-xs font-semibold text-[var(--text)]">
+                    <span className="block max-w-[5.75rem] truncate text-xs font-semibold text-[var(--text)]">
                       {user.name}
                     </span>
-                    <span className="block max-w-32.5 truncate text-[10px] text-[var(--text-soft)]">
+                    <span className="block max-w-[8rem] truncate text-[10px] text-[var(--text-soft)]">
                       {user.email}
                     </span>
-                    <span className="mt-0.5 block max-w-32.5 truncate text-[10px] font-semibold text-[var(--primary)]">
+                    <span className="mt-0.5 block max-w-[8rem] truncate text-[10px] font-semibold text-[var(--primary)]">
                       {user.accountLabel} · {user.aiAccessLabel}
                     </span>
                   </div>
@@ -103,7 +103,7 @@ export default function NavbarMobileClient({
                 <Link
                 href="/login-v2"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
+                  className="inline-flex h-10 min-w-[6.25rem] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--card)] px-4 text-sm font-semibold text-[var(--text)] transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
                 >
                   登录
                 </Link>
@@ -111,7 +111,7 @@ export default function NavbarMobileClient({
                 <Link
                 href="/sign-up-v2"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-10 min-w-25 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--primary-hover)]"
+                  className="inline-flex h-10 min-w-[6.25rem] items-center justify-center rounded-[var(--radius-sm)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--primary-hover)]"
                 >
                   注册
                 </Link>

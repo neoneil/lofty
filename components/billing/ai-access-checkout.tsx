@@ -47,7 +47,7 @@ const PACKAGE_FEATURES = ['考试 AI', '即时开通', '不自动续费'];
 
 function PaymentMethodIconRow({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={cn('flex flex-wrap items-center justify-end gap-1.5', compact ? 'gap-1' : '')}>
+    <div className={cn('flex max-w-full flex-wrap items-center justify-start gap-1.5 sm:justify-end', compact ? 'gap-1' : '')}>
       {PAYMENT_METHODS.map((method) => {
         const Icon = method.icon;
         return (
@@ -107,7 +107,7 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
 
                 return (
                   <div key={scopeConfig.scope + ':' + item.code} className={cn('group overflow-hidden rounded-[var(--radius-md)] border bg-[var(--card)] p-3 shadow-[var(--shadow-xs)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:shadow-[var(--shadow-md)]', item.recommended ? 'border-[var(--primary)]/55 ring-1 ring-[var(--primary)]/20' : 'border-[var(--border)]')}>
-                    <div className='flex items-start justify-between gap-2'>
+                    <div className='flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
                       <div className='min-w-0'>
                         <div className='truncate text-sm font-bold text-[var(--text)]'>{item.label}</div>
                         {item.recommended ? (
@@ -126,7 +126,7 @@ export function AiAccessCheckout({ packages, isAuthenticated = true, loginHref =
                         <span className='pb-1 text-xs font-medium text-[var(--text-soft)]'>约 {monthlyAmount} / 月</span>
                       </div>
                     </div>
-                    <div className='mt-3 grid grid-cols-3 gap-1.5 border-t border-[var(--border)] pt-3'>
+                    <div className='mt-3 grid gap-1.5 border-t border-[var(--border)] pt-3 sm:grid-cols-3'>
                       {PACKAGE_FEATURES.map((feature) => (
                         <div key={feature} className='flex min-h-7 items-center justify-center gap-1 rounded-[var(--radius-sm)] bg-[var(--bg-soft)] px-1.5 text-center text-[11px] font-semibold leading-4 text-[var(--text-soft)]'>
                           <CheckCircle2 size={12} className='shrink-0 text-[var(--success)]' />
