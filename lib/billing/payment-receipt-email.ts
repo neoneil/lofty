@@ -3,7 +3,7 @@ import "server-only";
 import fontkit from "@pdf-lib/fontkit";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { PDFDocument, rgb, type PDFFont } from "pdf-lib";
+import { PDFDocument, rgb, StandardFonts, type PDFFont } from "pdf-lib";
 import { Resend } from "resend";
 
 import { BRAND_NAME_CN } from "@/lib/brand";
@@ -131,7 +131,7 @@ function normalizeDisplayItem(params: SendPaymentReceiptEmailParams): ReceiptDis
 }
 
 async function loadReceiptFont() {
-  return readFile(join(process.cwd(), "public", "fonts", "NotoSansSC-VF.ttf"));
+  return readFile(join(process.cwd(), "public", "fonts", "NotoSansCJKsc-Regular.otf"));
 }
 
 function drawText(page: Parameters<PDFDocument["addPage"]>[0] extends never ? never : ReturnType<PDFDocument["addPage"]>, text: string, x: number, y: number, options: DrawTextOptions) {
@@ -144,15 +144,9 @@ function drawText(page: Parameters<PDFDocument["addPage"]>[0] extends never ? ne
   });
 }
 
-function drawLabel(page: ReturnType<PDFDocument["addPage"]>, cn: string, en: string, x: number, y: number, font: PDFFont, color: ReturnType<typeof rgb>, muted: ReturnType<typeof rgb>) {
-  drawText(page, cn, x, y, { size: 9.5, font, color });
-  drawText(page, en, x, y - 15, { size: 7.5, font, color: muted });
-}
-
-function drawWrappedLines(page: ReturnType<PDFDocument["addPage"]>, lines: string[], x: number, y: number, font: PDFFont, color: ReturnType<typeof rgb>) {
-  lines.forEach((line, index) => {
-    drawText(page, line, x, y - index * 16, { size: 9, font, color });
-  });
+function drawLabel(page: ReturnType<PDFDocument["addPage"]>, cn: string, en: string, x: number, y: number, cnFont: PDFFont, enFont: PDFFont, color: ReturnType<typeof rgb>, muted: ReturnType<typeof rgb>) {
+  drawText(page, cn, x, y, { size: 9.5, font: cnFont, color });
+  drawText(page, en, x, y - 15, { size: 7.5, font: enFont, color: muted });
 }
 
 export async function createReceiptPdf(params: SendPaymentReceiptEmailParams) {
@@ -162,7 +156,8 @@ export async function createReceiptPdf(params: SendPaymentReceiptEmailParams) {
   const page = pdf.addPage([595, 842]);
   const { width } = page.getSize();
   const fontBytes = await loadReceiptFont();
-  const font = await pdf.embedFont(fontBytes, { subset: true });
+  const font = await pdf.embedFont(fontBytes, { subset: false });
+  const latinFont = await pdf.embedFont(StandardFonts.Helvetica);
   const primary = rgb(0.07, 0.43, 0.32);
   const text = rgb(0.09, 0.13, 0.18);
   const muted = rgb(0.39, 0.45, 0.55);
@@ -182,67 +177,65 @@ export async function createReceiptPdf(params: SendPaymentReceiptEmailParams) {
   page.drawRectangle({ x: 0, y: 0, width, height: 842, color: pageBg });
 
   drawText(page, "小马哥教育", 48, 780, { size: 16, font, color: primary });
-  drawText(page, "Lofty Education", 48, 763, { size: 8, font, color: muted });
+  drawText(page, "Lofty Education", 48, 763, { size: 8, font: latinFont, color: muted });
   drawText(page, receiptTitleCn, 48, 708, { size: 23, font, color: text });
-  drawText(page, receiptTitleEn, 48, 686, { size: 8.5, font, color: muted });
-  drawText(page, formatReceiptDate(params.paidAt), 48, 660, { size: 8.5, font, color: muted });
+  drawText(page, receiptTitleEn, 48, 686, { size: 8.5, font: latinFont, color: muted });
+  drawText(page, formatReceiptDate(params.paidAt), 48, 660, { size: 8.5, font: latinFont, color: muted });
 
   page.drawRectangle({ x: 410, y: 706, width: 137, height: 72, color: primary, borderColor: primary, borderWidth: 1 });
   drawText(page, "已付款", 430, 750, { size: 16, font, color: rgb(1, 1, 1) });
-  drawText(page, "Paid", 430, 734, { size: 8, font, color: rgb(0.92, 1, 0.96) });
-  drawText(page, amount, 430, 708, { size: 16, font, color: rgb(1, 1, 1) });
-  drawText(page, "Australian dollars", 430, 693, { size: 7.5, font, color: rgb(0.92, 1, 0.96) });
+  drawText(page, "Paid", 430, 734, { size: 8, font: latinFont, color: rgb(0.92, 1, 0.96) });
+  drawText(page, amount, 430, 708, { size: 16, font: latinFont, color: rgb(1, 1, 1) });
+  drawText(page, "Australian dollars", 430, 693, { size: 7.5, font: latinFont, color: rgb(0.92, 1, 0.96) });
 
   page.drawLine({ start: { x: 48, y: 635 }, end: { x: 547, y: 635 }, thickness: 1, color: border });
 
-  page.drawRectangle({ x: 48, y: 535, width: 238, height: 78, color: cardBg, borderColor: border, borderWidth: 1 });
-  drawLabel(page, "交费方", "Paid by", 68, 584, font, muted, faint);
-  drawText(page, payerName, 68, 552, { size: 12.5, font, color: text });
-  drawText(page, payerEmail, 68, 535 + 15, { size: 9.5, font, color: muted });
+  page.drawRectangle({ x: 48, y: 510, width: 238, height: 104, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "交费方", "Paid by", 68, 584, font, latinFont, muted, faint);
+  drawText(page, payerName, 68, 548, { size: 11.5, font: /[\u3400-\u9FFF]/.test(payerName) ? font : latinFont, color: text });
+  drawText(page, payerEmail, 68, 530, { size: 8.8, font: latinFont, color: muted });
 
-  page.drawRectangle({ x: 309, y: 535, width: 238, height: 78, color: cardBg, borderColor: border, borderWidth: 1 });
-  drawLabel(page, "收款方", "Merchant", 329, 584, font, muted, faint);
-  drawText(page, "小马哥教育", 329, 552, { size: 12.5, font, color: text });
-  drawText(page, "Lofty Education, Australia", 329, 535 + 15, { size: 9, font, color: muted });
-  drawText(page, "Melbourne, Australia", 329, 535 + 2, { size: 8, font, color: faint });
+  page.drawRectangle({ x: 309, y: 510, width: 238, height: 104, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "收款方", "Merchant", 329, 584, font, latinFont, muted, faint);
+  drawText(page, "小马哥教育", 329, 548, { size: 11.5, font, color: text });
+  drawText(page, "Lofty Education, Australia", 329, 530, { size: 8.8, font: latinFont, color: muted });
+  drawText(page, "Melbourne, Australia", 329, 515, { size: 8, font: latinFont, color: faint });
 
-  drawText(page, "付款明细", 48, 492, { size: 17, font, color: text });
-  drawText(page, "Payment summary", 48, 475, { size: 8, font, color: muted });
-  drawText(page, "收据编号 / Receipt No.", 410, 492, { size: 8, font, color: muted });
-  drawText(page, receiptNumber, 410, 476, { size: 9, font, color: text });
+  drawText(page, "付款明细", 48, 482, { size: 17, font, color: text });
+  drawText(page, "Payment summary", 48, 465, { size: 8, font: latinFont, color: muted });
+  drawText(page, "收据编号 / Receipt No.", 410, 482, { size: 8, font, color: muted });
+  drawText(page, receiptNumber, 410, 466, { size: 9, font: latinFont, color: text });
 
-  page.drawRectangle({ x: 48, y: 425, width: 499, height: 36, color: softGreen, borderColor: border, borderWidth: 1 });
-  drawLabel(page, "项目", "Item", 66, 446, font, muted, faint);
-  drawLabel(page, "数量", "Quantity", 365, 446, font, muted, faint);
-  drawLabel(page, "金额", "Amount", 465, 446, font, muted, faint);
+  page.drawRectangle({ x: 48, y: 415, width: 499, height: 36, color: softGreen, borderColor: border, borderWidth: 1 });
+  drawLabel(page, "项目", "Item", 66, 436, font, latinFont, muted, faint);
+  drawLabel(page, "数量", "Quantity", 365, 436, font, latinFont, muted, faint);
+  drawLabel(page, "金额", "Amount", 465, 436, font, latinFont, muted, faint);
 
-  page.drawRectangle({ x: 48, y: 352, width: 499, height: 74, color: rgb(1, 1, 1), borderColor: border, borderWidth: 1 });
-  drawText(page, item.itemCn, 66, 401, { size: 11, font, color: text });
-  drawText(page, item.itemEn, 66, 384, { size: 8.5, font, color: muted });
-  drawText(page, item.descriptionCn, 66, 365, { size: 8.8, font, color: muted });
-  drawText(page, item.descriptionEn, 66, 351 + 2, { size: 8, font, color: faint });
-  drawText(page, item.quantity, 365, 392, { size: 10, font, color: text });
-  drawText(page, formatAud(item.amountAudCents), 465, 392, { size: 11, font, color: text });
+  page.drawRectangle({ x: 48, y: 326, width: 499, height: 90, color: rgb(1, 1, 1), borderColor: border, borderWidth: 1 });
+  drawText(page, item.itemCn, 66, 391, { size: 11, font, color: text });
+  drawText(page, item.itemEn, 66, 374, { size: 8.5, font: latinFont, color: muted });
+  drawText(page, item.descriptionCn, 66, 354, { size: 8.8, font, color: muted });
+  drawText(page, item.descriptionEn, 66, 338, { size: 8, font: latinFont, color: faint });
+  drawText(page, item.quantity, 365, 378, { size: 10, font, color: text });
+  drawText(page, formatAud(item.amountAudCents), 465, 378, { size: 11, font: latinFont, color: text });
 
-  page.drawRectangle({ x: 350, y: 286, width: 197, height: 58, color: cardBg, borderColor: border, borderWidth: 1 });
-  drawText(page, "合计", 370, 318, { size: 9, font, color: muted });
-  drawText(page, "Total paid", 370, 303, { size: 8, font, color: muted });
-  drawText(page, amount, 458, 304, { size: 18, font, color: primary });
+  page.drawRectangle({ x: 350, y: 258, width: 197, height: 58, color: cardBg, borderColor: border, borderWidth: 1 });
+  drawText(page, "合计", 370, 290, { size: 9, font, color: muted });
+  drawText(page, "Total paid", 370, 275, { size: 8, font: latinFont, color: muted });
+  drawText(page, amount, 458, 276, { size: 18, font: latinFont, color: primary });
 
-  page.drawRectangle({ x: 48, y: 160, width: 499, height: 92, color: softGreen, borderColor: rgb(0.82, 0.92, 0.86), borderWidth: 1 });
-  drawText(page, "付款说明", 68, 226, { size: 10.5, font, color: text });
-  drawText(page, "Payment notes", 68, 211, { size: 7.8, font, color: muted });
-  drawWrappedLines(page, [
-    "本收据用于确认 Lofty Education 已收到对应服务款项。",
-    "This receipt confirms payment received by Lofty Education for the selected service.",
-    "本文件不是 tax invoice。如需课程安排、付款核对或退款协助，请联系 Lofty Education 管理员。",
-    "This document is not a tax invoice. For scheduling, payment checks, or refund support, please contact Lofty Education.",
-  ], 68, 190, font, muted);
+  page.drawRectangle({ x: 48, y: 126, width: 499, height: 112, color: softGreen, borderColor: rgb(0.82, 0.92, 0.86), borderWidth: 1 });
+  drawText(page, "付款说明", 68, 212, { size: 10.5, font, color: text });
+  drawText(page, "Payment notes", 68, 197, { size: 7.8, font: latinFont, color: muted });
+  drawText(page, "本收据用于确认 Lofty Education 已收到对应服务款项。", 68, 176, { size: 9, font, color: muted });
+  drawText(page, "This receipt confirms payment received by Lofty Education for the selected service.", 68, 160, { size: 8.2, font: latinFont, color: muted });
+  drawText(page, "本文件不是 tax invoice。如需课程安排、付款核对或退款协助，请联系 Lofty Education 管理员。", 68, 144, { size: 9, font, color: muted });
+  drawText(page, "This document is not a tax invoice. For scheduling, payment checks, or refund support, please contact Lofty Education.", 68, 132, { size: 7.2, font: latinFont, color: muted });
 
-  page.drawLine({ start: { x: 48, y: 110 }, end: { x: 547, y: 110 }, thickness: 1, color: border });
-  drawText(page, "小马哥教育", 48, 88, { size: 9, font, color: text });
-  drawText(page, "Lofty Education - Australia", 48, 73, { size: 8, font, color: muted });
-  drawText(page, "Generated securely after successful payment", 346, 80, { size: 8, font, color: muted });
+  page.drawLine({ start: { x: 48, y: 100 }, end: { x: 547, y: 100 }, thickness: 1, color: border });
+  drawText(page, "小马哥教育", 48, 78, { size: 9, font, color: text });
+  drawText(page, "Lofty Education - Australia", 48, 63, { size: 8, font: latinFont, color: muted });
+  drawText(page, "Generated securely after successful payment", 346, 70, { size: 8, font: latinFont, color: muted });
 
   return Buffer.from(await pdf.save());
 }
