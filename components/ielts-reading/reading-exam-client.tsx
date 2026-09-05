@@ -1383,7 +1383,27 @@ function inferQuestionOptions(question: IeltsQuestion, sectionDesc: string, page
   const upperText = text.toUpperCase();
   if (upperText.includes("TRUE") && upperText.includes("FALSE") && upperText.includes("NOT GIVEN")) return ["TRUE", "FALSE", "NOT GIVEN"];
   if (upperText.includes("YES") && upperText.includes("NO") && upperText.includes("NOT GIVEN")) return ["YES", "NO", "NOT GIVEN"];
+  const romanOptions = inferRomanNumeralOptions(text);
+  if (romanOptions.length > 0) return romanOptions;
   return inferLetterOptions(text);
+}
+
+function inferRomanNumeralOptions(text: string) {
+  const normalized = text.toLowerCase();
+  if (!normalized.includes("correct number") && !normalized.includes("list of headings")) return [];
+
+  const romanMatch = normalized.match(/\b(i|ii|iii|iv|v|vi|vii|viii|ix|x|xi|xii)\s*[–—-]\s*(i|ii|iii|iv|v|vi|vii|viii|ix|x|xi|xii)\b/);
+  if (!romanMatch) return [];
+
+  return romanNumeralRange(romanMatch[1], romanMatch[2]);
+}
+
+function romanNumeralRange(start: string, end: string) {
+  const numerals = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"];
+  const startIndex = numerals.indexOf(start);
+  const endIndex = numerals.indexOf(end);
+  if (startIndex < 0 || endIndex < 0 || startIndex > endIndex) return [];
+  return numerals.slice(startIndex, endIndex + 1);
 }
 
 function inferLetterOptions(text: string) {
