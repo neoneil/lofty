@@ -17,6 +17,10 @@ export default function LazyGlobalWidgets() {
   const [canLoadWidgets, setCanLoadWidgets] = useState(false);
 
   useEffect(() => {
+    if (window.location.pathname === "/") {
+      return;
+    }
+
     const win = window as Window & {
       requestIdleCallback?: (
         callback: () => void,

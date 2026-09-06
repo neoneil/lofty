@@ -7,23 +7,18 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <div className="relative z-10 flex min-h-screen flex-col">
+      <div className="lofty-marketing-chrome">
+        <Navbar />
+      </div>
 
-      <Navbar />
+      <main className="lofty-marketing-main flex-1">{children}</main>
 
-      <main className="flex-1">
-
-        {children}
-
-      </main>
-
-      <Footer />
-
-      <MarketingFloatingActions />
-
+      <div className="lofty-marketing-chrome">
+        <Footer />
+        <MarketingFloatingActions />
+      </div>
     </div>
   );
-
 }
