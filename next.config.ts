@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {},
+
   webpack(config, { webpack }) {
     config.plugins.push(
       new webpack.NormalModuleReplacementPlugin(/^node:/, (resource: { request: string }) => {
