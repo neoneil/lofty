@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
+import { validateAiTextLimit } from "@/lib/api/request-limits";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 
 const openai = new OpenAI({
@@ -138,6 +139,16 @@ export async function POST(req: Request) {
     ) {
       return NextResponse.json(
         { error: "Missing required sentence analysis fields" },
+        { status: 400 }
+      );
+    }
+
+    const essayLimit = validateAiTextLimit(body.essay_text, "pte_essay");
+    const sentenceLimit = validateAiTextLimit(body.sentence_text, "pte_swt");
+
+    if (!essayLimit.ok || !sentenceLimit.ok) {
+      return NextResponse.json(
+        { error: !essayLimit.ok ? essayLimit.message : sentenceLimit.message },
         { status: 400 }
       );
     }

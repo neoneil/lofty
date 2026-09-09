@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
+import { validateAiTextLimit } from "@/lib/api/request-limits";
 import { openai } from "@/lib/pte-speaking/openai-client";
 
 const AI_FEATURE = "ielts_speaking_sample";
@@ -28,6 +29,11 @@ export async function POST(req: Request) {
     if (!auth.ok) return auth.response;
     const { user } = auth;
     const body = (await req.json()) as SampleRequest;
+    const textLimit = validateAiTextLimit(`${body.keywords ?? ""}\n${body.details ?? ""}`, "ielts_speaking_sample_notes");
+
+    if (!textLimit.ok) {
+      return NextResponse.json({ ok: false, message: textLimit.message }, { status: 400 });
+    }
 
     const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
     if (!usageLimit.allowed) return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

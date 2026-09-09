@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpenCheck, BookOpenText, Clock3, Headphones, Mic, PenLine } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpenCheck, BookOpenText, Clock3, FileText, Headphones, Mic, PenLine } from "lucide-react";
 
 import CourseModeSwitcher from "@/components/course-markdown/CourseModeSwitcher";
 import { Badge } from "@/components/ui-v2/badge";
@@ -24,6 +24,7 @@ const skills = [
   { key: "speaking", label: "口语", english: "Speaking", icon: Mic },
   { key: "reading", label: "阅读", english: "Reading", icon: BookOpenCheck },
   { key: "writing", label: "写作", english: "Writing", icon: PenLine },
+  { key: "knowledge", label: "雅思PTE知识点", english: "Knowledge Base", icon: FileText },
 ];
 
 function formatSegment(value: string) {
@@ -97,11 +98,14 @@ function LessonGrid({ lessons, selectedMode, emptyText = "暂无 Markdown 授课
 export default async function LessonNotesPage({ searchParams }: LessonNotesPageProps) {
   await requireAdminOrEditor("/admin/lesson-notes");
   const { module, mode } = await searchParams;
-  const selectedMode = mode === "article" ? "article" : "slides";
   const selectedSkill = getSelectedSkill(module);
+  const selectedMode = selectedSkill === "knowledge" ? "article" : mode === "article" ? "article" : "slides";
   const selectedSkillMeta = skills.find((item) => item.key === selectedSkill) ?? skills[3];
   const lessons = await getAdminLessonCatalog();
   const skillCounts = new Map(skills.map((skill) => [skill.key, lessons.filter((lesson) => lesson.lessonPath[0] === skill.key).length]));
+  const isKnowledgeSection = selectedSkill === "knowledge";
+  const sectionTitle = isKnowledgeSection ? "雅思PTE知识点资料库" : `${selectedSkillMeta.label}授课笔记`;
+  const sectionSubtitle = isKnowledgeSection ? "Full-screen article materials" : selectedSkillMeta.english;
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-6 text-[var(--text)] sm:px-6 sm:py-8 lg:px-8">
@@ -123,18 +127,24 @@ export default async function LessonNotesPage({ searchParams }: LessonNotesPageP
 
           <nav className="mt-5 flex flex-wrap gap-2" aria-label="课程类型">
             <Link href="/admin/markdown-memo" className="inline-flex h-10 items-center rounded-[var(--radius-md)] bg-[var(--primary)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--primary-hover)]">Markdown 语法备忘录</Link>
-            <CourseModeSwitcher activeMode={selectedMode} basePath={`/admin/lesson-notes?module=${selectedSkill}`} />
+            {selectedSkill === "knowledge" ? (
+              <span className="inline-flex h-10 items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 text-sm font-semibold text-[var(--text-soft)]">文字材料模式</span>
+            ) : (
+              <CourseModeSwitcher activeMode={selectedMode} basePath={`/admin/lesson-notes?module=${selectedSkill}`} />
+            )}
           </nav>
         </header>
 
-        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {skills.map((skill) => {
             const Icon = skill.icon;
             const active = selectedSkill === skill.key;
+            const isKnowledge = skill.key === "knowledge";
+            const hrefMode = isKnowledge ? "article" : selectedMode;
             return (
-              <Link key={skill.key} href={`/admin/lesson-notes?module=${skill.key}&mode=${selectedMode}`} className={`group rounded-[var(--radius-lg)] border p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:shadow-[var(--shadow-md)] ${active ? "border-[var(--primary)] bg-[var(--primary-soft)]" : "border-[var(--border)] bg-[var(--card)]"}`}>
+              <Link key={skill.key} href={`/admin/lesson-notes?module=${skill.key}&mode=${hrefMode}`} className={`group rounded-[var(--radius-lg)] border p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)] ${active ? "border-[var(--primary)] bg-[var(--primary-soft)]" : isKnowledge ? "border-amber-500/25 bg-[linear-gradient(135deg,var(--card),rgba(245,158,11,0.10))] hover:border-amber-500/45" : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)]/40"}`}>
                 <div className="flex items-start justify-between gap-3">
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] ${active ? "bg-[var(--primary)] text-white" : "bg-[var(--bg-soft)] text-[var(--primary)]"}`}><Icon size={18} /></span>
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] ${active ? "bg-[var(--primary)] text-white" : isKnowledge ? "bg-amber-500/12 text-amber-600 dark:text-amber-300" : "bg-[var(--bg-soft)] text-[var(--primary)]"}`}><Icon size={18} /></span>
                   <Badge variant={active ? "default" : "secondary"}>{skillCounts.get(skill.key) ?? 0}</Badge>
                 </div>
                 <h2 className="mt-4 text-lg font-bold text-[var(--text)]">{skill.label}</h2>
@@ -148,8 +158,8 @@ export default async function LessonNotesPage({ searchParams }: LessonNotesPageP
           <section className="scroll-mt-24 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
             <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase text-[var(--primary)]">{selectedSkillMeta.english}</p>
-                <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{selectedSkillMeta.label}授课笔记</h2>
+                <p className="text-xs font-semibold uppercase text-[var(--primary)]">{sectionSubtitle}</p>
+                <h2 className="mt-1 text-xl font-semibold text-[var(--text)] sm:text-2xl">{sectionTitle}</h2>
               </div>
               <Badge variant="outline">{skillCounts.get(selectedSkill) ?? 0} lessons</Badge>
             </div>
@@ -185,7 +195,7 @@ export default async function LessonNotesPage({ searchParams }: LessonNotesPageP
                         })}
                       </div>
                     ) : (
-                      <LessonGrid lessons={[]} selectedMode={selectedMode} emptyText={`${exam.label} ${selectedSkillMeta.label}课程待生成`} />
+                      <LessonGrid lessons={[]} selectedMode={selectedMode} emptyText={isKnowledgeSection ? `${exam.label} 知识点资料待补充` : `${exam.label} ${selectedSkillMeta.label}课程待生成`} />
                     )}
                   </section>
                 );

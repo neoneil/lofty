@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui-v2/textarea";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
+import { AI_TEXT_LIMITS, countEnglishWords } from "@/lib/api/request-limits";
 
 import Tag from "@/components/ui/tag";
 
@@ -81,6 +82,7 @@ export default function SstDetailClient({ question, attempts }: Props) {
   const referenceText = question.transcript?.trim() || question.transcript_text;
 
   const [answer, setAnswer] = useState("");
+  const answerWordCount = countEnglishWords(answer);
 
   const [loading, setLoading] = useState(false);
 
@@ -471,9 +473,13 @@ export default function SstDetailClient({ question, attempts }: Props) {
         <Textarea
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
+          maxLength={AI_TEXT_LIMITS.pte_sst.maxChars}
           placeholder="50 - 70 词总结听力大意..."
           className="min-h-[180px] px-5 py-4 text-[17px] leading-8 shadow-sm"
         />
+        <div className="mt-2 flex justify-end text-xs font-medium text-[var(--text-soft)]">
+          {answerWordCount}/{AI_TEXT_LIMITS.pte_sst.maxWords} words
+        </div>
       </div>
 
       {/* SUBMIT */}

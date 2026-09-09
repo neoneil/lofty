@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { validateAiAudioDuration } from "@/lib/api/request-limits";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreRA } from "@/lib/pte-speaking/score-ra";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
@@ -34,10 +35,18 @@ export async function POST(req: Request) {
     const durationSeconds = Number.isFinite(rawDurationSeconds)
       ? Math.max(1, Math.floor(rawDurationSeconds))
       : 1;
+    const durationLimit = validateAiAudioDuration(durationSeconds, AI_FEATURE);
 
     if (!file || !questionId) {
       return NextResponse.json(
         { ok: false, message: "参数不完整" },
+        { status: 400 },
+      );
+    }
+
+    if (!durationLimit.ok) {
+      return NextResponse.json(
+        { ok: false, message: durationLimit.message },
         { status: 400 },
       );
     }

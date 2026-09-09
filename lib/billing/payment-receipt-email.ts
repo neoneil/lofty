@@ -1,8 +1,8 @@
 import "server-only";
 
 import fontkit from "@pdf-lib/fontkit";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile } from "fs/promises";
+import { join } from "path";
 import { PDFDocument, rgb, StandardFonts, type PDFFont } from "pdf-lib";
 import { Resend } from "resend";
 

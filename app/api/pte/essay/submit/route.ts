@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { recordQuestionOutcome } from "@/lib/pte/record-question-outcome";
 
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
-import { isTextTooLong } from "@/lib/api/request-limits";
+import { validateAiTextLimit } from "@/lib/api/request-limits";
 
 import { scoreEssay } from "./scoring/score-essay";
 
@@ -15,7 +15,6 @@ const QUESTION_TABLE = "we";
 const QUESTION_SCHEMA = "pte";
 const AI_FEATURE = "pte_essay";
 const AI_MODEL = "gpt-4o-mini";
-const MAX_USER_ANSWER_LENGTH = 8000;
 
 export async function POST(req: Request) {
 
@@ -54,9 +53,11 @@ export async function POST(req: Request) {
       );
     }
 
-    if (isTextTooLong(userAnswer, MAX_USER_ANSWER_LENGTH)) {
+    const textLimit = validateAiTextLimit(userAnswer, "pte_essay");
+
+    if (!textLimit.ok) {
       return NextResponse.json(
-        { ok: false, message: "答案过长，请缩短后再提交。" },
+        { ok: false, message: textLimit.message },
         { status: 400 }
       );
     }

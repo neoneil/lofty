@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from '@/lib/ai/usage-limit';
 import { BRAND_EDUCATION_CN } from '@/lib/brand';
 import { renderAiPrompt } from '@/lib/ai-prompts/server';
-import { isTextTooLong } from '@/lib/api/request-limits';
+import { validateAiTextLimit } from '@/lib/api/request-limits';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -12,7 +12,6 @@ const openai = new OpenAI({
 
 const AI_FEATURE = 'chat';
 const AI_MODEL = 'gpt-4o-mini';
-const MAX_CHAT_MESSAGE_LENGTH = 2000;
 
 function buildUserPrompt(
   currentMessage: string,
@@ -60,9 +59,11 @@ export async function POST(req: NextRequest) {
 
     const trimmedMessage = message.trim();
 
-    if (isTextTooLong(trimmedMessage, MAX_CHAT_MESSAGE_LENGTH)) {
+    const textLimit = validateAiTextLimit(trimmedMessage, 'chat');
+
+    if (!textLimit.ok) {
       return NextResponse.json(
-        { error: `Message is too long. Please keep it under ${MAX_CHAT_MESSAGE_LENGTH} characters.` },
+        { error: textLimit.message },
         { status: 400 }
       );
     }

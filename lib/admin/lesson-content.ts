@@ -1,14 +1,14 @@
 import "server-only";
 
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { readdir, readFile } from "fs/promises";
+import path from "path";
 
 import { parseCourseMarkdown, type CourseMetadata } from "@/lib/course-markdown/parse-course-markdown";
 
 const ADMIN_CONTENT_ROOT = path.join(process.cwd(), "app", "admin");
 const SUPPORTED_EXAMS = ["pte", "ielts"] as const;
 const SUPPORTED_EXAM_SET = new Set<string>(SUPPORTED_EXAMS);
-const SUPPORTED_SKILLS = ["listening", "speaking", "reading", "writing"] as const;
+const SUPPORTED_SKILLS = ["listening", "speaking", "reading", "writing", "knowledge"] as const;
 const SUPPORTED_SKILL_SET = new Set<string>(SUPPORTED_SKILLS);
 const SAFE_SEGMENT_PATTERN = /^[a-z0-9-]+$/;
 

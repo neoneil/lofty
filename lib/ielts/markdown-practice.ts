@@ -1,7 +1,7 @@
 import "server-only";
 
-import { readdir, readFile, stat } from "node:fs/promises";
-import path from "node:path";
+import { readdir, readFile, stat } from "fs/promises";
+import path from "path";
 import matter from "gray-matter";
 
 import type { IeltsAnswer, IeltsAsset, IeltsBook, IeltsBookPracticeData, IeltsModule, IeltsQuestion, IeltsSection, IeltsTest } from "@/lib/ielts/practice";

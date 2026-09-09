@@ -1,6 +1,6 @@
 import "server-only";
 
-import { AsyncLocalStorage } from "node:async_hooks";
+import { AsyncLocalStorage } from "async_hooks";
 
 import { canAccessAdmin } from "@/lib/auth/admin-access";
 import { normalizeProfileExamType, type ProfileExamType } from "@/lib/profile/exam-type";

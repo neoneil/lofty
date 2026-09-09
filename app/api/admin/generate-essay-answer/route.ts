@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
+import { validateAiTextLimit } from "@/lib/api/request-limits";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
 
 const openai = new OpenAI({
@@ -27,6 +28,11 @@ export async function POST(req: Request) {
         { error: "Missing we_id or question_text" },
         { status: 400 }
       );
+    }
+
+    const textLimit = validateAiTextLimit(body.question_text, "pte_essay");
+    if (!textLimit.ok) {
+      return NextResponse.json({ error: textLimit.message }, { status: 400 });
     }
 
     const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);

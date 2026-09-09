@@ -1,6 +1,6 @@
 import "server-only";
 
-import { AsyncLocalStorage } from "node:async_hooks";
+import { AsyncLocalStorage } from "async_hooks";
 
 const dbQueryDebugSuppression = new AsyncLocalStorage<boolean>();
 

@@ -1,7 +1,7 @@
 import "server-only";
 
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { promises as fs } from "fs";
+import path from "path";
 
 import type { IeltsSpeakingVocabularyDocument, IeltsSpeakingVocabularyIndexItem } from "@/lib/vocabulary/ielts-speaking-types";
 

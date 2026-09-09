@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { validateAiAudioDuration } from "@/lib/api/request-limits";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreKeywordContent } from "@/lib/pte-speaking/score-keyword-content";
@@ -46,8 +47,10 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
     const questionId = String(formData.get("questionId") ?? "").trim();
     const rawDurationSeconds = Number(formData.get("durationSeconds"));
     const durationSeconds = Number.isFinite(rawDurationSeconds) ? Math.max(1, Math.floor(rawDurationSeconds)) : 1;
+    const durationLimit = validateAiAudioDuration(durationSeconds, config.aiFeature);
 
     if (!file || !questionId) return NextResponse.json({ ok: false, message: "参数不完整" }, { status: 400 });
+    if (!durationLimit.ok) return NextResponse.json({ ok: false, message: durationLimit.message }, { status: 400 });
 
     const { data: question, error: questionError } = await supabase.schema("pte").from(config.questionTable).select("id, ai_keywords").eq("id", questionId).single();
     if (questionError || !question) return NextResponse.json({ ok: false, message: "题目不存在" }, { status: 404 });

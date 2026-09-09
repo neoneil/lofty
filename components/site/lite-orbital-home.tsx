@@ -1,6 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {
+  ArrowRight,
+  Bot,
+  BookOpenCheck,
+  CreditCard,
+  FileText,
+  GraduationCap,
+  Headphones,
+  MessageCircle,
+  Mic,
+  PenLine,
+  Sparkles,
+  Target,
+} from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type SatelliteLink = {
@@ -60,18 +75,18 @@ const BACKGROUND_LINES = [
 
 const NAV_LINKS: SatelliteLink[] = [
   {
-    href: "/dashboard-v2",
-    label: "题库与AI",
-    subtitle: "Practice",
-    color: "#5c67ff",
-    icon: "practice",
-  },
-  {
     href: "/courses/ielts",
     label: "雅思课程",
     subtitle: "IELTS",
     color: "#ec5b5b",
     icon: "ielts",
+  },
+  {
+    href: "/dashboard-v2",
+    label: "题库与AI",
+    subtitle: "Practice",
+    color: "#5c67ff",
+    icon: "practice",
   },
   {
     href: "/courses/pte",
@@ -101,6 +116,103 @@ const NAV_LINKS: SatelliteLink[] = [
     color: "#2a99cf",
     icon: "contact",
   },
+];
+
+const MOBILE_HIGHLIGHTS = [
+  {
+    title: "AI 智能评测",
+    desc: "PTE / IELTS 口语写作即时反馈",
+    icon: Bot,
+    tone: "border-violet-500/25 bg-violet-500/10 text-violet-600 dark:text-violet-300",
+  },
+  {
+    title: "题库训练",
+    desc: "雅思剑桥题库与 PTE 分项练习",
+    icon: BookOpenCheck,
+    tone: "border-sky-500/25 bg-sky-500/10 text-sky-600 dark:text-sky-300",
+  },
+  {
+    title: "系统课程路径",
+    desc: "备考的专业级规划，少走弯路，因为时间是最宝贵的",
+    icon: Target,
+    tone: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
+  },
+  {
+    title: "专业导师跟踪",
+    desc: "20年经验老师全程跟踪，我们不是助教或留学生",
+    icon: MessageCircle,
+    tone: "border-amber-500/25 bg-amber-500/10 text-amber-600 dark:text-amber-300",
+  },
+];
+
+const MOBILE_EXAMS = [
+  {
+    title: "雅思 IELTS",
+    desc: "听说读写系统训练，适合留学、移民与学术英语提升。",
+    href: "/courses/ielts",
+    action: "查看雅思课程",
+    icon: GraduationCap,
+    tone: "border-rose-500/25 bg-rose-500/10 text-rose-600 dark:text-rose-300",
+  },
+  {
+    title: "PTE Academic",
+    desc: "机考题型训练、AI 评分反馈与高频题库练习。",
+    href: "/courses/pte",
+    action: "查看 PTE 课程",
+    icon: Mic,
+    tone: "border-teal-500/25 bg-teal-500/10 text-teal-600 dark:text-teal-300",
+  },
+];
+
+const MOBILE_RESOURCES = [
+  {
+    title: "雅思真题库",
+    desc: "Cambridge listening and reading practice",
+    href: "/ielts",
+    icon: Headphones,
+    tone: "border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-300",
+  },
+  {
+    title: "PTE 题库",
+    desc: "Speaking, writing, reading and listening",
+    href: "/pte",
+    icon: PenLine,
+    tone: "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
+  },
+  {
+    title: "备考文章",
+    desc: "方法、技巧与学习规划",
+    href: "/posts",
+    icon: FileText,
+    tone: "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-300",
+  },
+  {
+    title: "成为会员",
+    desc: "IELTS AI 与 PTE AI 分开计时",
+    href: "/membership",
+    icon: CreditCard,
+    tone: "border-violet-500/20 bg-violet-500/10 text-violet-600 dark:text-violet-300",
+  },
+  {
+    title: "发音训练",
+    desc: "音标与基础发音练习",
+    href: "/pronunciation",
+    icon: Sparkles,
+    tone: "border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-300",
+  },
+  {
+    title: "联系老师",
+    desc: "微信咨询与课程安排",
+    href: "/contact",
+    icon: MessageCircle,
+    tone: "border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-300",
+  },
+];
+
+const MOBILE_FAQS = [
+  ["PTE 和雅思怎么选？", "根据目标分数、签证或学校要求、基础能力和出分时间综合判断。"],
+  ["AI 批改适合什么场景？", "适合日常写作、口语练习后的即时复盘，也适合发现高频语法和逻辑问题。"],
+  ["初学者从哪里开始？", "先确定考试方向，再从课程大纲、题库和 AI 反馈建立稳定训练节奏。"],
 ];
 
 function clamp(value: number, min: number, max: number) {
@@ -636,6 +748,15 @@ export default function LiteOrbitalHome() {
     scale: 1,
     opacity: 1,
   });
+  const [enableOrbitalScene, setEnableOrbitalScene] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const update = () => setEnableOrbitalScene(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
 
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -851,6 +972,8 @@ export default function LiteOrbitalHome() {
   }, []);
 
   useEffect(() => {
+    if (!enableOrbitalScene) return;
+
     let disposed = false;
     let animationFrame = 0;
     let cleanup = () => {};
@@ -1330,7 +1453,130 @@ export default function LiteOrbitalHome() {
       disposed = true;
       cleanup();
     };
-  }, [prefersReducedMotion]);
+  }, [enableOrbitalScene, prefersReducedMotion]);
+
+  if (!enableOrbitalScene) {
+    return (
+      <main className="lite-orbital-home-page min-h-screen overflow-hidden bg-[var(--bg)] text-[var(--text)]">
+        <section className="relative overflow-hidden px-4 pb-8 pt-6 sm:px-6">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(92,103,255,0.16),transparent_30%),radial-gradient(circle_at_88%_16%,rgba(37,166,122,0.14),transparent_28%),radial-gradient(circle_at_48%_72%,rgba(230,155,46,0.12),transparent_30%)]" />
+          <div className="relative mx-auto max-w-4xl">
+            <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-violet-600 dark:text-violet-300">
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                Lofty Education
+              </div>
+              <h1 className="mt-4 text-3xl font-black leading-[1.08] tracking-normal text-[var(--text)] sm:text-5xl">
+                澳洲小马哥教育
+                <span className="mt-2 block bg-[linear-gradient(90deg,#5c67ff,#25a67a,#e69b2e)] bg-clip-text text-transparent">IELTS · PTE · AI</span>
+              </h1>
+              <p className="mt-4 text-sm font-semibold leading-7 text-[var(--text-soft)] sm:text-base">
+                20年经验导师带队，结合AI，面向留学、移民、职注与英语提升的一站式学习中心。
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <Link href="/dashboard-v2" className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--primary)] px-3 py-3 text-center text-sm font-bold text-white shadow-[var(--shadow-sm)]">
+                  进入题库与 AI
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link href="/membership" className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[var(--bg-soft)] px-3 py-3 text-center text-sm font-bold text-[var(--text)]">
+                  <CreditCard className="h-4 w-4 text-[var(--primary)]" aria-hidden="true" />
+                  成为会员
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {MOBILE_HIGHLIGHTS.map(({ title, desc, icon: Icon, tone }, index) => (
+                <article key={title} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className={`inline-flex h-9 w-9 items-center justify-center rounded-2xl border ${tone}`}>
+                      <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                    </span>
+                    <span className="text-sm font-black tabular-nums text-[var(--text-soft)]/55">0{index + 1}</span>
+                  </div>
+                  <h2 className="mt-3 text-[15px] font-extrabold leading-5 text-[var(--text)]">{title}</h2>
+                  <p className="mt-2 text-xs leading-5 text-[var(--text-soft)]">{desc}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {MOBILE_EXAMS.map((item) => (
+                <article key={item.title} className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+                  <div className="flex items-start gap-3">
+                    <span className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border ${item.tone}`}>
+                      <item.icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h2 className="text-xl font-black tracking-normal text-[var(--text)]">{item.title}</h2>
+                      <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{item.desc}</p>
+                    </div>
+                  </div>
+                  <Link href={item.href} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[var(--bg-soft)] px-4 py-3 text-sm font-bold text-[var(--text)]">
+                    {item.action}
+                    <ArrowRight className="h-4 w-4 text-[var(--primary)]" aria-hidden="true" />
+                  </Link>
+                </article>
+              ))}
+            </div>
+
+            <section className="mt-5 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-sky-600 dark:text-sky-300">
+                <BookOpenCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                Learning Resources
+              </div>
+              <h2 className="mt-3 text-xl font-black tracking-normal text-[var(--text)]">备考资源</h2>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {MOBILE_RESOURCES.map(({ title, desc, href, icon: Icon, tone }) => (
+                  <Link key={title} href={href} className="group flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 transition hover:-translate-y-0.5 hover:border-[var(--primary)]/35 hover:bg-[var(--card)]">
+                    <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border ${tone}`}>
+                      <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-extrabold text-[var(--text)]">{title}</span>
+                      <span className="mt-0.5 block text-xs leading-5 text-[var(--text-soft)]">{desc}</span>
+                    </span>
+                    <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--text-soft)] transition group-hover:translate-x-0.5 group-hover:text-[var(--primary)]" aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-5 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-300">
+                <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                FAQ
+              </div>
+              <h2 className="mt-3 text-xl font-black tracking-normal text-[var(--text)]">常见问题</h2>
+              <div className="mt-4 divide-y divide-[var(--border)]">
+                {MOBILE_FAQS.map(([question, answer]) => (
+                  <article key={question} className="flex gap-3 py-4 first:pt-0 last:pb-0">
+                    <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-2xl border border-violet-500/20 bg-violet-500/10 text-violet-600 dark:text-violet-300">
+                      <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-extrabold text-[var(--text)]">{question}</h3>
+                      <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{answer}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <style>{`
+          body:has(.lite-orbital-home-page) .lofty-marketing-chrome {
+            display: none;
+          }
+
+          body:has(.lite-orbital-home-page) .lofty-marketing-main {
+            min-height: 100vh;
+          }
+        `}</style>
+      </main>
+    );
+  }
 
   return (
     <main

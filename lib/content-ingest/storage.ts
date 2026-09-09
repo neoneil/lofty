@@ -1,7 +1,7 @@
 import "server-only";
 
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { promises as fs } from "fs";
+import path from "path";
 
 import type { GeneratedVocabularyDocument, GeneratedVocabularyIndexItem } from "@/lib/content-ingest/types";
 
@@ -73,4 +73,3 @@ export async function writeGeneratedVocabularyDocument(document: GeneratedVocabu
   await fs.writeFile(INDEX_FILE, `${JSON.stringify(nextIndex, null, 2)}\n`, "utf8");
   return nextItem;
 }
-

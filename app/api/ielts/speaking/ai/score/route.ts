@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
+import { getIeltsSpeakingAudioLimitKey, validateAiAudioDuration } from "@/lib/api/request-limits";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { openai } from "@/lib/pte-speaking/openai-client";
@@ -93,6 +94,9 @@ export async function POST(req: Request) {
     const durationSeconds = Number.isFinite(rawDurationSeconds) ? Math.max(1, Math.floor(rawDurationSeconds)) : 1;
 
     if (!file) return NextResponse.json({ ok: false, message: "请先完成现场录音" }, { status: 400 });
+
+    const durationLimit = validateAiAudioDuration(durationSeconds, getIeltsSpeakingAudioLimitKey(parsedContext.part));
+    if (!durationLimit.ok) return NextResponse.json({ ok: false, message: durationLimit.message }, { status: 400 });
 
     const usageLimit = await reserveAiUsage(user.id, AI_FEATURE);
     if (!usageLimit.allowed) return NextResponse.json(getAiLimitResponse(usageLimit), { status: 403 });

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireUser } from "@/lib/auth/require-user";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
+import { validateAiAudioDuration } from "@/lib/api/request-limits";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
 import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
@@ -72,9 +73,14 @@ export async function POST(req: Request) {
     const durationSeconds = Number.isFinite(rawDurationSeconds)
       ? Math.max(1, Math.floor(rawDurationSeconds))
       : 1;
+    const durationLimit = validateAiAudioDuration(durationSeconds, AI_FEATURE);
 
     if (!file || !questionId) {
       return NextResponse.json({ error: "no file" }, { status: 400 });
+    }
+
+    if (!durationLimit.ok) {
+      return NextResponse.json({ ok: false, message: durationLimit.message }, { status: 400 });
     }
 
     const { data: question, error: questionError } = await supabase

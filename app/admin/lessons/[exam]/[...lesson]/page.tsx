@@ -42,8 +42,9 @@ export default async function AdminLessonPage({ params, searchParams }: AdminLes
     notFound();
   }
 
-  const metadata = modeOverride ? { ...lessonContent.metadata, mode: modeOverride } : lessonContent.metadata;
-  const predictionQuestions = exam.toLowerCase() === "pte" ? await getCoursePredictionQuestions(metadata.module, metadata.questionType) : [];
+  const isKnowledgeLesson = lesson[0]?.toLowerCase() === "knowledge";
+  const metadata = isKnowledgeLesson ? { ...lessonContent.metadata, mode: "article" as const } : modeOverride ? { ...lessonContent.metadata, mode: modeOverride } : lessonContent.metadata;
+  const predictionQuestions = exam.toLowerCase() === "pte" && metadata.module && metadata.questionType ? await getCoursePredictionQuestions(metadata.module, metadata.questionType) : [];
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 py-6 text-[var(--text)] sm:px-6 sm:py-8 lg:px-8">

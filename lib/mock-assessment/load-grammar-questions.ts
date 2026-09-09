@@ -1,7 +1,7 @@
 import "server-only";
 
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { readdir, readFile } from "fs/promises";
+import path from "path";
 
 import type { ChoiceQuestion } from "@/lib/mock-assessment/types";
 

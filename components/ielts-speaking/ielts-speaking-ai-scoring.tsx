@@ -67,8 +67,7 @@ type HistoryItem = {
 
 function getSpeakingDuration(part: IeltsSpeakingAiContext["part"]) {
   if (part === "part2") return 120;
-  if (part === "part3") return 20;
-  return 15;
+  return 60;
 }
 
 function getPartLabel(part: IeltsSpeakingAiContext["part"]) {

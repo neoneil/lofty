@@ -229,7 +229,7 @@ export default function RsDetailClient({ question, aiAudioReady = false }: Props
             questionId={question.id}
             type="RS"
             preparationDuration={3}
-            maxDuration={40}
+            maxDuration={15}
             autoStart
             uploadUrl="/api/pte/rs/submit"
             uploadFormat="wav"

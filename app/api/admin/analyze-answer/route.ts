@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usage-limit";
 import { getAiPromptContent, renderAiPrompt } from "@/lib/ai-prompts/server";
 import { requireApiAdmin } from "@/lib/auth/require-api-auth";
+import { validateAiTextLimit } from "@/lib/api/request-limits";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 const openai = new OpenAI({
@@ -490,6 +491,16 @@ export async function POST(req: Request) {
     if (!question || !answer) {
       return NextResponse.json(
         { error: "Missing question or answer" },
+        { status: 400 }
+      );
+    }
+
+    const questionLimit = validateAiTextLimit(question, "ielts_writing_task2");
+    const answerLimit = validateAiTextLimit(answer, "ielts_writing_task2");
+
+    if (!questionLimit.ok || !answerLimit.ok) {
+      return NextResponse.json(
+        { error: !answerLimit.ok ? answerLimit.message : questionLimit.message },
         { status: 400 }
       );
     }

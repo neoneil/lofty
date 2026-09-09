@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Textarea } from "@/components/ui-v2/textarea";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
+import { AI_TEXT_LIMITS, countEnglishWords } from "@/lib/api/request-limits";
 
 import Tag from "@/components/ui/tag";
 
@@ -92,6 +93,7 @@ export default function SwtDetailClient({ question, attempts }: Props) {
   const [startedAt] = useState(() => Date.now());
 
   const [answer, setAnswer] = useState("");
+  const answerWordCount = countEnglishWords(answer);
 
   const [loading, setLoading] = useState(false);
 
@@ -495,9 +497,13 @@ export default function SwtDetailClient({ question, attempts }: Props) {
         <Textarea
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
+          maxLength={AI_TEXT_LIMITS.pte_swt.maxChars}
           placeholder="在 10 分钟内 用 5 - 75 个单词的一句话总结其上文章"
           className="min-h-[180px] px-5 py-4 text-[17px] leading-8 shadow-sm"
         />
+        <div className="mt-2 flex justify-end text-xs font-medium text-[var(--text-soft)]">
+          {answerWordCount}/{AI_TEXT_LIMITS.pte_swt.maxWords} words
+        </div>
       </div>
 
       {/* SUBMIT */}

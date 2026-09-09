@@ -26,6 +26,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, message: "请输入要新增的 RS 或 WFD 句子。" }, { status: 400 });
     }
 
+    if (body.questionText.length > 300) {
+      return NextResponse.json({ ok: false, message: "句子过长，请控制在 300 个字符以内。" }, { status: 400 });
+    }
+
     const result = await createPteAiAudioQuestionAndGenerate({ questionType: body.questionType, questionText: body.questionText });
     return NextResponse.json({ ok: true, result });
   } catch (error) {

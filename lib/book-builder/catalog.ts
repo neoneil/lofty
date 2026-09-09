@@ -1,7 +1,7 @@
 import "server-only";
 
-import { readdir } from "node:fs/promises";
-import path from "node:path";
+import { readdir } from "fs/promises";
+import path from "path";
 
 import { getAdminLessonCatalog } from "@/lib/admin/lesson-content";
 import { getIeltsWritingTask1BankIndex } from "@/lib/ielts/writing-task1-bank";
