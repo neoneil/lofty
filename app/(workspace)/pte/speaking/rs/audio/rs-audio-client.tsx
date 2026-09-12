@@ -278,11 +278,6 @@ export default function RsAudioClient({ questions, filterMode, pagination }: Pro
                   <Badge variant="secondary" className="px-2.5 py-1">
                     {getWordCount(currentQuestion.question_text)} Words
                   </Badge>
-                  {currentQuestion.source_question_id ? (
-                    <Badge variant="secondary" className="px-2.5 py-1">
-                      {currentQuestion.source_question_id}
-                    </Badge>
-                  ) : null}
                   {currentQuestion.is_prediction ? (
                     <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                       <Sparkles size={12} />

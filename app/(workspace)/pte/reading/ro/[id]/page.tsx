@@ -81,12 +81,6 @@ export default async function RoQuestionDetailPage({
                   RO
                 </Tag>
 
-                {question.source_question_id ? (
-                  <Tag tone="neutral">
-                    {question.source_question_id}
-                  </Tag>
-                ) : null}
-
                 <Tag tone="yellow">
                   {question.sentence_count} Sentences
                 </Tag>

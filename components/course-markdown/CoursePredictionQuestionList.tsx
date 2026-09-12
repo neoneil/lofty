@@ -39,7 +39,7 @@ export default function CoursePredictionQuestionList({ questions, selectedId, on
                   <span className="min-w-0 flex-1">
                     <span className="line-clamp-2 block text-sm font-semibold leading-5 text-[var(--text)]">{question.title}</span>
                     {question.preview && question.preview !== question.title ? <span className="mt-1 line-clamp-2 block text-xs leading-5 text-[var(--text-soft)]">{question.preview}</span> : null}
-                    {(question.sourceId || question.difficulty) && <span className="mt-2 flex flex-wrap gap-1.5 text-[10px] text-[var(--text-faint)]">{question.sourceId && <span>#{question.sourceId}</span>}{question.difficulty && <span>难度 {question.difficulty}</span>}</span>}
+                    {question.difficulty && <span className="mt-2 flex flex-wrap gap-1.5 text-[10px] text-[var(--text-faint)]"><span>难度 {question.difficulty}</span></span>}
                   </span>
                 </div>
               </button>

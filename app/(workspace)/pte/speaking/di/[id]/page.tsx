@@ -54,10 +54,6 @@ export default async function DiQuestionDetailPage({ params }: PageProps) {
             <div className="flex flex-wrap items-center justify-end gap-2">
               <Tag tone="theme">DI</Tag>
 
-              {question.source_platform ? (
-                <Tag tone="neutral">{question.source_platform}</Tag>
-              ) : null}
-
               {question.is_real_exam ? <Tag tone="yellow">考试原题</Tag> : null}
 
               {question.is_prediction ? <Tag tone="purple">活跃</Tag> : null}

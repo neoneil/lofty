@@ -8,7 +8,7 @@ import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { SecureAudioPlayer } from "@/components/ui-v2/secure-audio-player";
 
-export type AudioCollectionType = "sst" | "rl" | "wfd" | "rs" | `ielts-book-${number}`;
+export type AudioCollectionType = "sst" | "rl" | "wfd" | "rs" | "sst-prediction" | "rl-prediction" | "wfd-prediction" | "rs-prediction" | `ielts-book-${number}`;
 export type AudioCollectionKind = "pte" | "ielts";
 
 export type AudioCollectionItem = {
@@ -44,9 +44,8 @@ type Props = {
 };
 
 const PLAY_COUNTS = [1, 2, 3] as const;
-type QuestionFilter = "prediction" | "all";
 const COLLECTION_TABS: Array<{ id: AudioCollectionKind; label: string; subtitle: string }> = [
-  { id: "pte", label: "PTE", subtitle: "SST / RL / WFD / RS" },
+  { id: "pte", label: "PTE", subtitle: "全集与预测题音频" },
   { id: "ielts", label: "IELTS", subtitle: "剑桥 21-16 听力" },
 ];
 
@@ -57,6 +56,15 @@ function formatDuration(seconds: number | null) {
   return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 }
 
+function countUniqueItems(groups: AudioCollectionGroup[], collection?: AudioCollectionKind) {
+  const ids = new Set<string>();
+  groups.forEach((group) => {
+    if (collection && group.collection !== collection) return;
+    group.items.forEach((item) => ids.add(`${item.collection}:${item.id}`));
+  });
+  return ids.size;
+}
+
 export default function AudioCollectionClient({ groups }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -65,7 +73,6 @@ export default function AudioCollectionClient({ groups }: Props) {
   const playRoundRef = useRef(1);
   const [activeType, setActiveType] = useState<AudioCollectionType>(groups[0]?.id ?? "sst");
   const [activeCollection, setActiveCollection] = useState<AudioCollectionKind>(groups[0]?.collection ?? "pte");
-  const [questionFilter, setQuestionFilter] = useState<QuestionFilter>("prediction");
   const [repeatCount, setRepeatCount] = useState<(typeof PLAY_COUNTS)[number]>(1);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentRound, setCurrentRound] = useState(1);
@@ -75,18 +82,14 @@ export default function AudioCollectionClient({ groups }: Props) {
 
   const activeCollectionGroups = useMemo(() => groups.filter((group) => group.collection === activeCollection), [activeCollection, groups]);
   const activeGroup = useMemo(() => activeCollectionGroups.find((group) => group.id === activeType) ?? activeCollectionGroups[0] ?? groups[0], [activeCollectionGroups, activeType, groups]);
-  const questions = useMemo(() => {
-    const items = activeGroup?.items ?? [];
-    if (activeGroup?.collection === "pte" && questionFilter === "prediction") return items.filter((item) => item.isPrediction);
-    return items;
-  }, [activeGroup, questionFilter]);
+  const questions = useMemo(() => activeGroup?.items ?? [], [activeGroup]);
   const safeCurrentIndex = questions.length > 0 ? Math.min(currentIndex, questions.length - 1) : 0;
   const currentQuestion = questions[safeCurrentIndex] ?? null;
   const currentAudioUrls = currentQuestion?.audioUrls?.length ? currentQuestion.audioUrls : currentQuestion ? [currentQuestion.audioUrl] : [];
   const currentAudioUrl = currentAudioUrls[Math.min(audioUrlIndex, currentAudioUrls.length - 1)] ?? "";
-  const totalQuestions = groups.reduce((total, group) => total + group.items.length, 0);
-  const pteTotalQuestions = groups.filter((group) => group.collection === "pte").reduce((total, group) => total + group.items.length, 0);
-  const ieltsTotalQuestions = groups.filter((group) => group.collection === "ielts").reduce((total, group) => total + group.items.length, 0);
+  const totalQuestions = countUniqueItems(groups);
+  const pteTotalQuestions = countUniqueItems(groups, "pte");
+  const ieltsTotalQuestions = countUniqueItems(groups, "ielts");
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -249,26 +252,6 @@ export default function AudioCollectionClient({ groups }: Props) {
     playRoundRef.current = 1;
   };
 
-  const changeQuestionFilter = (filter: QuestionFilter) => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-    if (replayTimerRef.current) {
-      window.clearTimeout(replayTimerRef.current);
-      replayTimerRef.current = null;
-    }
-
-    setQuestionFilter(filter);
-    setCurrentIndex(0);
-    setAudioUrlIndex(0);
-    setCurrentRound(1);
-    setIsPlaying(false);
-    setShouldAutoPlay(false);
-    playRoundRef.current = 1;
-  };
-
   const changeRepeatCount = (count: (typeof PLAY_COUNTS)[number]) => {
     if (replayTimerRef.current) {
       window.clearTimeout(replayTimerRef.current);
@@ -357,14 +340,9 @@ export default function AudioCollectionClient({ groups }: Props) {
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              {activeGroup?.collection === "pte" ? (
-                <>
-                  <Button type="button" variant={questionFilter === "prediction" ? "primary" : "secondary"} size="sm" onClick={() => changeQuestionFilter("prediction")} className="gap-1.5"><Sparkles size={13} />Prediction</Button>
-                  <Button type="button" variant={questionFilter === "all" ? "primary" : "secondary"} size="sm" onClick={() => changeQuestionFilter("all")}>所有题目</Button>
-                </>
-              ) : (
+              {activeGroup?.collection === "ielts" ? (
                 <Badge variant="secondary">剑桥听力 · 按 Book / Test / Part 连播</Badge>
-              )}
+              ) : null}
               {PLAY_COUNTS.map((count) => (
                 <Button key={count} type="button" variant={repeatCount === count ? "primary" : "secondary"} size="sm" onClick={() => changeRepeatCount(count)}>{count} 次</Button>
               ))}
@@ -396,7 +374,6 @@ export default function AudioCollectionClient({ groups }: Props) {
                     {currentQuestion.collection === "ielts" && currentQuestion.bookNumber ? <Badge variant="success">剑桥 {String(currentQuestion.bookNumber).padStart(2, "0")}</Badge> : null}
                     {currentQuestion.collection === "ielts" && currentQuestion.testNumber ? <Badge variant="secondary">Test {currentQuestion.testNumber}</Badge> : null}
                     {currentQuestion.collection === "ielts" && currentQuestion.partNumber ? <Badge variant="secondary">Part {currentQuestion.partNumber}</Badge> : null}
-                    {currentQuestion.sourceQuestionId ? <Badge variant="secondary">{currentQuestion.sourceQuestionId}</Badge> : null}
                     {currentQuestion.isPrediction ? <Badge className="gap-1.5 bg-[var(--primary-soft)] text-[var(--primary)]"><Sparkles size={12} />Prediction</Badge> : null}
                     {currentQuestion.wordCount ? <Badge variant="secondary">{currentQuestion.wordCount} Words</Badge> : null}
                     <Badge variant="secondary">{formatDuration(currentQuestion.durationSeconds)}</Badge>
@@ -451,7 +428,6 @@ export default function AudioCollectionClient({ groups }: Props) {
                       {question.collection === "ielts" && question.testNumber ? <Badge variant="secondary">Test {question.testNumber}</Badge> : null}
                       {question.collection === "ielts" && question.partNumber ? <Badge variant="secondary">Part {question.partNumber}</Badge> : null}
                       {question.wordCount ? <Badge variant="secondary">{question.wordCount} words</Badge> : null}
-                      {question.sourceQuestionId ? <Badge variant="secondary">{question.sourceQuestionId}</Badge> : null}
                       {active ? <Badge className="gap-1 text-[var(--primary)]"><RotateCcw size={12} />active</Badge> : null}
                     </div>
                   </button>

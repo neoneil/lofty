@@ -58,7 +58,6 @@ export default async function HiwQuestionDetailPage({ params }: PageProps) {
             </Link>
             <div className="flex flex-wrap items-center gap-2 sm:justify-end">
               <Tag tone="theme">HIW</Tag>
-              {question.source_question_id ? <Tag tone="neutral">{question.source_question_id}</Tag> : null}
               {question.is_prediction ? <Tag tone="purple">Prediction</Tag> : null}
               {stat?.is_practiced ? <Tag tone="green">已练习</Tag> : <Tag tone="neutral">未练习</Tag>}
               {stat?.is_in_wrong_book ? <Tag tone="pink">错题</Tag> : null}

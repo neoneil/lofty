@@ -278,11 +278,6 @@ export default function WfdAudioClient({ questions, filterMode, pagination }: Pr
                   <Badge variant="secondary" className="px-2.5 py-1">
                     {getWordCount(currentQuestion.question_text)} Words
                   </Badge>
-                  {currentQuestion.source_question_id ? (
-                    <Badge variant="secondary" className="px-2.5 py-1">
-                      {currentQuestion.source_question_id}
-                    </Badge>
-                  ) : null}
                   {currentQuestion.is_prediction ? (
                     <Badge className="gap-1.5 bg-violet-50 px-2.5 py-1 text-violet-700">
                       <Sparkles size={12} />

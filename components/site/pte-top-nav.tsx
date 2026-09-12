@@ -588,7 +588,6 @@ export default function PTETopNav({
       scrollLeft: scroller.scrollLeft,
       startX: event.clientX,
     };
-    scroller.setPointerCapture(event.pointerId);
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -602,7 +601,15 @@ export default function PTETopNav({
     const deltaX =
       event.clientX - dragState.startX;
 
-    if (Math.abs(deltaX) > 4) dragState.moved = true;
+    if (Math.abs(deltaX) > 6) {
+      if (!dragState.moved && scroller.hasPointerCapture?.(event.pointerId) === false) {
+        scroller.setPointerCapture(event.pointerId);
+      }
+
+      dragState.moved = true;
+    }
+
+    if (!dragState.moved) return;
 
     scroller.scrollLeft =
       dragState.scrollLeft - deltaX;

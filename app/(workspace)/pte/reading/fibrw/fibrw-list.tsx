@@ -12,7 +12,6 @@ import {
   CheckCircle2,
   CircleDashed,
   FileText,
-  Fingerprint,
   Sparkles,
   ChartNoAxesColumn,
   ChevronDown,
@@ -235,18 +234,6 @@ export default function FibrwList({
                               }{" "}
                               Blanks
                             </Badge>
-
-                            {item.source_platform ? (
-                              <Badge
-                                variant="secondary"
-                                className="gap-1.5 px-2.5 py-1"
-                              >
-                                <Fingerprint size={12} />
-                                {
-                                  item.source_platform
-                                }
-                              </Badge>
-                            ) : null}
 
                             {item.is_prediction ? (
                               <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">

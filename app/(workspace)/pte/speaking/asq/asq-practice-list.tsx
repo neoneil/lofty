@@ -14,7 +14,6 @@ import {
   CheckCircle2,
   CircleDashed,
   FileQuestion,
-  Fingerprint,
   Mic,
   Sparkles,
   ChartNoAxesColumn,
@@ -127,16 +126,6 @@ export default function AsqPracticeList({
                           <Mic size={12} />
                           ASQ
                         </Badge>
-
-                        {item.source_question_id ? (
-                          <Badge
-                            variant="secondary"
-                            className="gap-1.5 px-2.5 py-1"
-                          >
-                            <Fingerprint size={12} />
-                            {item.source_question_id}
-                          </Badge>
-                        ) : null}
 
                         <Badge
                           variant="warning"

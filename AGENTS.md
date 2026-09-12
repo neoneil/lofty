@@ -179,6 +179,12 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - If a new PTE table has incomplete columns or no data yet, still scaffold it with the same current-page loading pattern instead of reintroducing `.limit(1500)` or full-table browser filtering.
 - Future PTE database optimization target: replace the current multi-query list flow with a single RPC per question-bank page that returns the current page of questions, current-user status for those questions, and `all_question_info` together. Do this later with explicit SQL planning; until then keep the current server-side pagination pattern.
 
+## PTE External Question Updates
+
+- When the user says "更新题目", read `AGENTS.xingji-pte.md` before acting. That shorthand means the recurring Firefly/萤火虫 and Xingji/星记 PTE prediction-question scrape, compare, database update, and OpenAI/R2 audio verification workflow.
+- Use the wording "题型", not "提醒", in summaries and admin UI related to this workflow.
+- Do not store external-site credentials in code, markdown, JSON, logs, or AGENTS files. Use the documented environment variable names only.
+
 ## AI Prompt Management
 
 - Any new runtime AI prompt must be registered in `lib/ai-prompts/defaults.ts` with a stable id, title, category, scope, variables, default content, and `usedBy` file references.

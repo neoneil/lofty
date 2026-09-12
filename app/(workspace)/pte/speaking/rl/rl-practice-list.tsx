@@ -15,7 +15,6 @@ import {
   ChartNoAxesColumn,
   CheckCircle2,
   CircleDashed,
-  Fingerprint,
   Headphones,
   Mic,
   Sparkles,
@@ -152,16 +151,6 @@ export default function RlPracticeList({
                             <Mic size={12} />
                             RL
                           </Badge>
-
-                          {item.source_question_id ? (
-                            <Badge
-                              variant="secondary"
-                              className="gap-1.5 px-2.5 py-1"
-                            >
-                              <Fingerprint size={12} />
-                              {item.source_question_id}
-                            </Badge>
-                          ) : null}
 
                           {item.audio_url || item.storage_path ? (
                             <Badge

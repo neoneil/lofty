@@ -55,10 +55,6 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
             <div className="flex flex-wrap items-center justify-end gap-2">
               <Tag tone="theme">RS</Tag>
 
-              {question.source_question_id ? (
-                <Tag tone="neutral">{question.source_question_id}</Tag>
-              ) : null}
-
               {question.is_real_exam ? <Tag tone="yellow">考试原题</Tag> : null}
 
               {question.is_prediction ? <Tag tone="purple">活跃</Tag> : null}

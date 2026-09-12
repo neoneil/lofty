@@ -67,10 +67,6 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
               <div className="flex flex-wrap items-center justify-end gap-2">
                 <Tag tone="theme">WFD</Tag>
 
-                {question.source_question_id ? (
-                  <Tag tone="neutral">{question.source_question_id}</Tag>
-                ) : null}
-
                 <Tag tone="yellow">考试原题</Tag>
 
                 {question.is_prediction ? <Tag tone="purple">活跃</Tag> : null}

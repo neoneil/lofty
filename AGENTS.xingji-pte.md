@@ -1,6 +1,27 @@
-# Xingji PTE Static Scraping Notes
+# Xingji And Firefly PTE Scraping Notes
 
-This file records the September 10, 2026 work notes for scraping Xingji Education / Xingji PTE into Lofty. Continue from here tonight.
+This file records the September 2026 work notes for scraping Xingji Education / Xingji PTE and Firefly into Lofty.
+
+## Shorthand: 更新题目
+
+When the user says "更新题目" without more detail, treat it as the recurring PTE external-question update workflow, not a UI copy change.
+
+- Work on branch `lofty-lite` unless the user explicitly asks for another branch.
+- Login to the external source sites with environment variables only. Xingji uses `PTEXJ_EMAIL` and `PTEXJ_PASSWORD`; Firefly uses `FIREFLY_PHONE` and `FIREFLY_PASSWORD` when available. Never print, hard-code, or commit credential values.
+- For prediction sync, the recurring priority is PTE RS, SST, and WFD prediction-labelled questions from Firefly/萤火虫 and Xingji/星记/猩际 PTE.
+- Scrape source text only for RS, SST, and WFD. Do not scrape, download, store, or reuse source-site audio.
+- Compare each source site's current `prediction` set against Lofty's entire corresponding question bank, not just Lofty's current `is_prediction=true` rows.
+- If the source prediction text already exists anywhere in Lofty's full table with `is_prediction=false`, promote that existing row to `is_prediction=true` and `is_active=true`; do not create a duplicate.
+- If the source prediction text does not exist in Lofty's full table, insert a new question row with `is_prediction=true`, `is_active=true`, and source metadata for the scraper that found it.
+- If a Lofty row is currently `is_prediction=true` but is no longer present in the source site's prediction set, demote it by setting `is_prediction=false`; never delete the question row during this workflow.
+- Any row that becomes or remains `is_prediction=true` and is displayed with Lofty audio must have Lofty-generated OpenAI/R2 audio before the run is considered complete.
+- RS/WFD/SST audio must be generated through Lofty's OpenAI audio flow and uploaded to R2 using Lofty's existing path and voice conventions. Use the voices currently configured in the app, such as `marin`, `cedar`, `alloy`, and `ash` where that question type supports them.
+- Run every database sync in dry-run mode first. Show the source counts, current Lofty prediction counts, promote/insert/demote counts, missing-audio counts, affected tables, risk, and rollback idea before executing remote writes.
+- After explicit user confirmation, execute the update, generate missing audio, then run a final dry-run/verification. The clean final state should have no remaining promote/insert/demote work and no missing generated audio for active prediction rows.
+- Summarize the result in Chinese with counts by question type and source site. Use the wording "题型", not "提醒".
+- If an admin feedback component/card is involved, the card name should be "更新重要题型".
+
+Keep the one-time Xingji static Reading/Listening scraping workflow below separate from the recurring prediction database sync unless the user explicitly asks to refresh those static banks too.
 
 ## Scope
 
@@ -129,3 +150,28 @@ When resuming implementation:
 - Do not scrape or save Xingji audio.
 - Do not store credentials in code, markdown, JSON, logs, or AGENTS files.
 - Stop immediately if Xingji rate-limits login again; do not keep retrying.
+
+## Firefly RS Prediction Sync
+
+- When the user asks to update Firefly/萤火虫 RS prediction questions, scrape text only. Do not download or save Firefly audio.
+- Use `scripts/scrape-firefly-rs-prediction-text.py` to scrape current RS prediction texts into `tmp/firefly/rs-prediction.json`.
+- The Firefly scraper reads credentials from `.env.local` (`FIREFLY_PHONE` / `FIREFLY_PASSWORD` preferred). Do not print or commit credentials.
+- Use `scripts/sync-firefly-rs-predictions.mjs` for database comparison and update.
+- Always run the sync script without `--execute` first and show the dry-run counts before writing remote data.
+- Matching rule: compare Firefly prediction texts against the entire Lofty `pte.rs` question bank by normalized `question_text`, not only against current `is_prediction=true` rows.
+- If a Firefly prediction text already exists in `pte.rs` with `is_prediction=false`, update that row to `is_prediction=true` and `is_active=true`; do not insert a duplicate.
+- If a Firefly prediction text does not exist anywhere in `pte.rs`, insert a new row with `question_type='RS'`, `source_platform='firefly'`, `is_prediction=true`, `is_real_exam=false`, `is_active=true`, and `audio_status='pending'`.
+- If a Lofty `pte.rs` row is currently `is_prediction=true` but no longer appears in Firefly RS predictions, set `is_prediction=false`; do not delete the row.
+- Every RS row that becomes or remains `is_prediction=true` must have Lofty-generated OpenAI/R2 audio, not Firefly audio.
+- RS audio uses `gpt-4o-mini-tts` and voices `marin`, `cedar`, `alloy`, and `ash`, uploaded under `PTE/speaking/RS/{questionId}/{voice}.mp3`.
+- After executing, rerun the sync script in dry-run mode. Expected clean result: Firefly prediction count equals Lofty current prediction count, with 0 promote, 0 insert, 0 demote, and 0 missing generated audio.
+
+## Firefly RS September 13, 2026 Run
+
+- Scrape result: Firefly RS prediction texts = 131.
+- Before update: Lofty RS prediction rows = 128.
+- Updated existing full-bank rows from `is_prediction=false` to true: 4.
+- Inserted new RS row: 1.
+- Demoted missing prediction rows to `is_prediction=false`: 2.
+- Generated OpenAI/R2 RS audio for 33 rows, 4 voices each.
+- After verification dry-run: Lofty RS prediction rows = 131; promote = 0; insert = 0; demote = 0; missing generated audio = 0.

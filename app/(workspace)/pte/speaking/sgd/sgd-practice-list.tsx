@@ -15,7 +15,6 @@ import {
   ChartNoAxesColumn,
   CheckCircle2,
   CircleDashed,
-  Fingerprint,
   Headphones,
   Mic,
   Sparkles,
@@ -102,12 +101,6 @@ export default function SgdPracticeList({
                           <Mic size={12} />
                           SGD
                         </Badge>
-                        {item.source_question_id ? (
-                          <Badge variant="secondary" className="gap-1.5 px-2.5 py-1">
-                            <Fingerprint size={12} />
-                            {item.source_question_id}
-                          </Badge>
-                        ) : null}
                         {item.audio_url || item.storage_path || item.source_audio_url ? (
                           <Badge variant="warning" className="gap-1.5 px-2.5 py-1">
                             <Headphones size={12} />

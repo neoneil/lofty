@@ -15,7 +15,6 @@ import {
   ChartNoAxesColumn,
   CheckCircle2,
   CircleDashed,
-  Fingerprint,
   Mic,
   Sparkles,
 } from "lucide-react";
@@ -99,12 +98,6 @@ export default function RtsPracticeList({
                           <Mic size={12} />
                           RTS
                         </Badge>
-                        {item.source_question_id ? (
-                          <Badge variant="secondary" className="gap-1.5 px-2.5 py-1">
-                            <Fingerprint size={12} />
-                            {item.source_question_id}
-                          </Badge>
-                        ) : null}
                         {item.is_prediction ? (
                           <Badge className="gap-1.5 bg-[var(--primary-soft)] px-2.5 py-1 text-[var(--primary)]">
                             <Sparkles size={12} />

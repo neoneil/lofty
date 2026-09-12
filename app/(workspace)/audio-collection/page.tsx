@@ -110,7 +110,7 @@ function buildIeltsAudioGroups(books: Awaited<ReturnType<typeof getCambridgeIelt
 export default async function AudioCollectionPage() {
   const { supabase } = await requireUser("/audio-collection");
 
-  const pteGroups = await Promise.all(
+  const loadedPteGroups = await Promise.all(
     AUDIO_TYPES.map(async (type) => {
       const { data, error } = await supabase
         .schema("views")
@@ -152,9 +152,23 @@ export default async function AudioCollectionPage() {
         href: type.href,
         items,
         error: error?.message ?? null,
-      };
+      } satisfies AudioCollectionGroup;
     }),
   );
+  const pteGroups: AudioCollectionGroup[] = [
+    ...loadedPteGroups,
+    ...loadedPteGroups.map((group) => {
+      const predictionId = `${group.id}-prediction` as AudioCollectionType;
+
+      return {
+        ...group,
+        id: predictionId,
+        label: `${group.label} 预测`,
+        title: `${group.title} Prediction`,
+        items: group.items.filter((item) => item.isPrediction).map((item) => ({ ...item, type: predictionId, label: `${item.label} 预测` })),
+      };
+    }),
+  ];
   const ieltsGroups = buildIeltsAudioGroups(await getCambridgeIeltsDownloadBooks(supabase));
   const groups = [...pteGroups, ...ieltsGroups];
 

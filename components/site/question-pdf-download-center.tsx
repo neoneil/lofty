@@ -26,7 +26,7 @@ const PTE_DOWNLOAD_ITEMS: DownloadItem[] = [
   {
     key: "pte-wfd",
     label: "PTE WFD",
-    description: "下载 WFD 全部题目",
+    description: "下载 WFD 预测题",
   },
   {
     key: "pte-ra",
@@ -36,7 +36,7 @@ const PTE_DOWNLOAD_ITEMS: DownloadItem[] = [
   {
     key: "pte-rs",
     label: "PTE RS",
-    description: "下载 RS 全部题目",
+    description: "下载 RS 预测题",
   },
   {
     key: "pte-di",

@@ -14,7 +14,6 @@ import {
   ChartNoAxesColumn,
   CheckCircle2,
   CircleDashed,
-  Fingerprint,
   ImageIcon,
   Mic,
   Sparkles,
@@ -173,16 +172,6 @@ export default function DiPracticeList({
                             <Mic size={12} />
                             DI
                           </Badge>
-
-                          {item.source_platform ? (
-                            <Badge
-                              variant="secondary"
-                              className="gap-1.5 px-2.5 py-1"
-                            >
-                              <Fingerprint size={12} />
-                              {item.source_platform}
-                            </Badge>
-                          ) : null}
 
                           {item.image_url ? (
                             <Badge

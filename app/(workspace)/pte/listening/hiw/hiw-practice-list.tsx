@@ -9,7 +9,7 @@ import Tag from "@/components/ui/tag";
 import { saveQuestionOrder } from "@/lib/question-order";
 import { Pagination } from "@/components/ui-v2/pagination";
 import { Badge } from "@/components/ui-v2/badge";
-import { AlertTriangle, ChartNoAxesColumn, CheckCircle2, CircleDashed, FileText, Fingerprint, Headphones, Sparkles } from "lucide-react";
+import { AlertTriangle, ChartNoAxesColumn, CheckCircle2, CircleDashed, FileText, Headphones, Sparkles } from "lucide-react";
 
 type HiwIncorrectWord = {
   index: number;
@@ -115,12 +115,6 @@ export default function HiwPracticeList({ initialQuestions }: { initialQuestions
                           <Headphones size={12} />
                           HIW
                         </Badge>
-                        {item.source_question_id ? (
-                          <Badge variant="secondary" className="gap-1.5 px-2.5 py-1">
-                            <Fingerprint size={12} />
-                            {item.source_question_id}
-                          </Badge>
-                        ) : null}
                         <Badge variant="warning" className="gap-1.5 px-2.5 py-1">
                           <FileText size={12} />
                           {getIncorrectWordCount(item)} Incorrect Words
