@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { ArrowRight, BookOpenCheck } from "lucide-react";
 
+import IELTSSubnav from "@/components/site/ielts-subnav";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
-import { buildSourceHref, IeltsReadingDataSourceSwitch, type IeltsReadingDataSource } from "@/components/ielts-reading/data-source-switch";
 import { cn } from "@/lib/utils";
 
 const BOOKS = [21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7] as const;
 
 type Props = {
   basePath?: string;
-  source?: IeltsReadingDataSource;
 };
 
-export function IeltsReadingBookCoverSelector({ basePath = "/ielts/reading", source = "markdown" }: Props) {
+export function IeltsReadingBookCoverSelector({ basePath = "/ielts/reading" }: Props) {
   return (
     <main className="container-main space-y-6 py-5 sm:py-7">
+      <IELTSSubnav current="reading" />
+
       <section className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-7">
         <Badge className="mb-3 w-fit">IELTS Reading Exam</Badge>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -28,20 +29,30 @@ export function IeltsReadingBookCoverSelector({ basePath = "/ielts/reading", sou
             <div>Cambridge IELTS 21-7 · Test 1-4</div>
           </div>
         </div>
-        <div className="mt-5 max-w-xl">
-          <IeltsReadingDataSourceSwitch source={source} basePath={basePath} />
-        </div>
       </section>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {BOOKS.map((bookNumber) => (
-          <Link key={bookNumber} href={buildSourceHref({ basePath, source, bookNumber })} className="group block focus:outline-none">
+          <Link key={bookNumber} href={buildReadingHref({ basePath, bookNumber })} className="group block focus:outline-none">
             <CambridgeBookCover bookNumber={bookNumber} />
           </Link>
         ))}
       </section>
     </main>
   );
+}
+
+function buildReadingHref({ basePath, bookNumber, testNumber }: { basePath: string; bookNumber?: number; testNumber?: number }) {
+  const params =
+    new URLSearchParams();
+
+  if (bookNumber) params.set("book", `${bookNumber}`);
+  if (testNumber) params.set("test", `${testNumber}`);
+
+  const query =
+    params.toString();
+
+  return query ? `${basePath}?${query}` : basePath;
 }
 
 function CambridgeBookCover({ bookNumber }: { bookNumber: number }) {

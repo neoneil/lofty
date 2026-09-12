@@ -155,7 +155,7 @@ export default function PteStaticSamplePage({ question }: Props) {
                 <h1 className="text-xl font-semibold tracking-tight text-[var(--text)]">{question.title}</h1>
                 <Badge>{question.code}</Badge>
               </div>
-              <p className="mt-1 text-sm text-[var(--text-soft)]">Question {question.index} of 30</p>
+              <p className="mt-1 text-sm text-[var(--text-soft)]">Question {question.index}</p>
             </div>
           </div>
           <Link href={question.route}>

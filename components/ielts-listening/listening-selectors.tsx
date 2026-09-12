@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Headphones, Timer } from "lucide-react";
 
 import { IeltsTestEntryCard } from "@/components/ielts-practice/ielts-test-entry-card";
+import IELTSSubnav from "@/components/site/ielts-subnav";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
 import type { IeltsBookPracticeData } from "@/lib/ielts/practice";
@@ -12,6 +13,8 @@ const LISTENING_BOOKS = [21, 20, 19, 18, 17, 16] as const;
 export function IeltsListeningBookSelector() {
   return (
     <main className="container-main space-y-6 py-5 sm:py-7">
+      <IELTSSubnav current="listening" />
+
       <section className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-7">
         <Badge className="mb-3 w-fit">IELTS Listening Exam</Badge>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -42,6 +45,8 @@ export function IeltsListeningTestSelector({ bookNumber, data }: { bookNumber: n
 
   return (
     <main className="container-main space-y-5 py-5 sm:py-7">
+      <IELTSSubnav current="listening" />
+
       <Link href="/ielts/listening" className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-soft)] transition hover:text-[var(--primary)]"><ArrowLeft size={16} />返回书本选择</Link>
 
       <section className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-7">

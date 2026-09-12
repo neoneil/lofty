@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BarChart3, ChevronRight, Images } from "lucide-react";
 
 import Container from "@/components/site/container";
+import IELTSSubnav from "@/components/site/ielts-subnav";
 import WritingBrowser from "@/components/site/writing-browser";
 import { Badge } from "@/components/ui-v2/badge";
 import { requireUser } from "@/lib/auth/require-user";
@@ -36,6 +37,8 @@ export default async function IeltsWritingPage() {
   return (
     <main className="py-12 text-[var(--text)] sm:py-16 lg:py-20">
       <Container>
+        <IELTSSubnav current="writing" />
+
         <section className="mb-10 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)] sm:text-sm">
             IELTS WRITING

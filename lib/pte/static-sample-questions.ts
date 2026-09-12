@@ -1,3 +1,5 @@
+import scrapedQuestionBanks from "@/data/pte/static-question-banks.json";
+
 export type PteStaticQuestionBankKey = "rmcsa" | "rmcma" | "mcsa" | "mcma" | "fib_l" | "smw" | "hcs";
 
 export type PteStaticQuestionCategory = "reading" | "listening";
@@ -684,14 +686,21 @@ function buildHcs(topic: Topic, index: number): PteStaticQuestion {
   };
 }
 
+const SCRAPED_QUESTION_BANKS = scrapedQuestionBanks as Partial<Record<PteStaticQuestionBankKey, PteStaticQuestion[]>>;
+
+function preferScrapedQuestions(bankKey: PteStaticQuestionBankKey, fallback: PteStaticQuestion[]) {
+  const questions = SCRAPED_QUESTION_BANKS[bankKey];
+  return Array.isArray(questions) && questions.length > 0 ? questions : fallback;
+}
+
 export const PTE_STATIC_QUESTION_BANKS = {
-  rmcsa: TOPICS.map(buildRmcsa),
-  rmcma: TOPICS.map(buildRmcma),
-  mcsa: TOPICS.map(buildMcsa),
-  mcma: TOPICS.map(buildMcma),
-  fib_l: TOPICS.map(buildFibL),
-  smw: TOPICS.map(buildSmw),
-  hcs: TOPICS.map(buildHcs),
+  rmcsa: preferScrapedQuestions("rmcsa", TOPICS.map(buildRmcsa)),
+  rmcma: preferScrapedQuestions("rmcma", TOPICS.map(buildRmcma)),
+  mcsa: preferScrapedQuestions("mcsa", TOPICS.map(buildMcsa)),
+  mcma: preferScrapedQuestions("mcma", TOPICS.map(buildMcma)),
+  fib_l: preferScrapedQuestions("fib_l", TOPICS.map(buildFibL)),
+  smw: preferScrapedQuestions("smw", TOPICS.map(buildSmw)),
+  hcs: preferScrapedQuestions("hcs", TOPICS.map(buildHcs)),
 } satisfies Record<PteStaticQuestionBankKey, PteStaticQuestion[]>;
 
 export function getPteStaticQuestionBank(bankKey: PteStaticQuestionBankKey) {
