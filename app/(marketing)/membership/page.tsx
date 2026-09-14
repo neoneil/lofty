@@ -138,7 +138,7 @@ function TuitionFeesPanel({ isAuthenticated, loginHref }: { isAuthenticated: boo
       <div className='mt-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3'>
         <div className='grid gap-2 text-xs leading-5 text-[var(--text-soft)] sm:grid-cols-2'>
           <p><span className='font-bold text-[var(--text)]'>免费试听：</span>1 小时试听课不收费，也不会计入后续报课费用。</p>
-          <p>确认课次、上课时间和学习目标后，由管理员线下处理；后续可接入 Stripe 不定额收费。</p>
+          <p>确认课次、上课时间和学习目标后，由管理员线下处理。</p>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowLeft, BookOpenCheck, CheckCircle2, Headphones, ListChecks, Radio } from "lucide-react";
 
+import DictionaryText from "@/components/dictionary/dictionary-text";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import type { PteStaticQuestion } from "@/lib/pte/static-sample-questions";
@@ -29,7 +30,9 @@ function AnswerPanel({ answerText }: { answerText: string }) {
         <CheckCircle2 size={16} />
         Correct Answer
       </div>
-      <p className="text-base font-semibold leading-7 text-[var(--text)]">{answerText}</p>
+      <p className="text-base font-semibold leading-7 text-[var(--text)]">
+        <DictionaryText text={answerText} />
+      </p>
     </aside>
   );
 }
@@ -74,7 +77,9 @@ function OptionList({ question }: { question: PteStaticQuestion }) {
             >
               {option.id}
             </span>
-            <span className="text-[15px] leading-7">{option.text}</span>
+            <span className="text-[15px] leading-7">
+              <DictionaryText text={option.text} />
+            </span>
           </button>
         );
       })}
@@ -105,7 +110,7 @@ function FillBlankPractice({ question }: { question: PteStaticQuestion }) {
     <p className="text-[16px] leading-10 text-[var(--text)]">
       {parts.map((part, index) => {
         const match = part.match(/\{\{(\d+)\}\}/);
-        if (!match) return <span key={`${part}-${index}`}>{part}</span>;
+        if (!match) return <DictionaryText key={`${part}-${index}`} text={part} />;
         const blankIndex = Number(match[1]) - 1;
         const value = answers[blankIndex] ?? "";
         const correct = correctAnswers[blankIndex] ?? "";
@@ -171,20 +176,26 @@ export default function PteStaticSamplePage({ question }: Props) {
         <div className="space-y-5">
           <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">Instruction</div>
-            <p className="text-[15px] leading-7 text-[var(--text)]">{question.instruction}</p>
+            <p className="text-[15px] leading-7 text-[var(--text)]">
+              <DictionaryText text={question.instruction} />
+            </p>
           </section>
 
           {isListening && question.listeningText ? (
             <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
               <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">Listening Text</div>
-              <p className="text-[16px] leading-8 text-[var(--text)]">{question.listeningText}</p>
+              <p className="text-[16px] leading-8 text-[var(--text)]">
+                <DictionaryText text={question.listeningText} />
+              </p>
             </section>
           ) : null}
 
           {question.passage ? (
             <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
               <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">Passage</div>
-              <p className="text-[16px] leading-8 text-[var(--text)]">{question.passage}</p>
+              <p className="text-[16px] leading-8 text-[var(--text)]">
+                <DictionaryText text={question.passage} />
+              </p>
             </section>
           ) : null}
 
@@ -196,7 +207,9 @@ export default function PteStaticSamplePage({ question }: Props) {
           ) : (
             <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-sm)]">
               <div className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">Question</div>
-              <h2 className="mb-5 text-lg font-semibold leading-8 text-[var(--text)]">{question.question}</h2>
+              <h2 className="mb-5 text-lg font-semibold leading-8 text-[var(--text)]">
+                <DictionaryText text={question.question ?? ""} />
+              </h2>
               <OptionList question={question} />
             </section>
           )}

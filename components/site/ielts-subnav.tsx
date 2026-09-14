@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 type IeltsSectionKey = "listening" | "speaking" | "reading" | "writing";
@@ -14,7 +15,7 @@ const tabs: Array<{
   description: string;
   href: string;
   image: string;
-  accent: string;
+  imageAlt: string;
 }> = [
   {
     key: "listening",
@@ -22,8 +23,8 @@ const tabs: Array<{
     english: "Listening",
     description: "剑桥雅思听力机考练习",
     href: "/ielts/listening",
-    image: "/SVG/listening_Peason.svg",
-    accent: "bg-[#e6f7ff]",
+    image: "/ielts-nav/listening.webp",
+    imageAlt: "IELTS Listening audio practice",
   },
   {
     key: "speaking",
@@ -31,8 +32,8 @@ const tabs: Array<{
     english: "Speaking",
     description: "Part 1-3 口语题库训练",
     href: "/ielts/speaking",
-    image: "/SVG/speaking_Peason.svg",
-    accent: "bg-[#eef8ed]",
+    image: "/ielts-nav/speaking.webp",
+    imageAlt: "IELTS Speaking interview practice",
   },
   {
     key: "reading",
@@ -40,8 +41,8 @@ const tabs: Array<{
     english: "Reading",
     description: "静态 Markdown 阅读题库",
     href: "/ielts/reading",
-    image: "/SVG/reading_Peason.svg",
-    accent: "bg-[#fff3df]",
+    image: "/ielts-nav/reading.webp",
+    imageAlt: "IELTS Reading academic passage practice",
   },
   {
     key: "writing",
@@ -49,8 +50,8 @@ const tabs: Array<{
     english: "Writing",
     description: "Task 1/2 写作题库训练",
     href: "/ielts/writing",
-    image: "/SVG/writing_Peason.svg",
-    accent: "bg-[#f1ecff]",
+    image: "/ielts-nav/writing.webp",
+    imageAlt: "IELTS Writing essay practice",
   },
 ];
 
@@ -66,18 +67,21 @@ export default function IELTSSubnav({ current }: Props) {
             key={tab.href}
             href={tab.href}
             aria-current={active ? "page" : undefined}
-            className={`group flex min-h-[132px] overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:shadow-[var(--shadow-md)] ${
+            className={`group block overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:shadow-[var(--shadow-md)] ${
               active ? "border-[var(--primary)] ring-2 ring-[var(--primary)]/10" : "border-[var(--border)]"
             }`}
           >
-            <span className={`flex w-28 shrink-0 items-center justify-center ${tab.accent} sm:w-32`}>
-              <span
-                aria-hidden="true"
-                className="h-16 w-16 bg-contain bg-center bg-no-repeat sm:h-20 sm:w-20"
-                style={{ backgroundImage: `url(${tab.image})` }}
+            <span className="relative block aspect-[16/9] overflow-hidden bg-[var(--bg-soft)]">
+              <Image
+                src={tab.image}
+                alt={tab.imageAlt}
+                fill
+                sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
+              <span className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-white/10" />
             </span>
-            <span className="flex min-w-0 flex-1 flex-col justify-between p-4">
+            <span className="flex min-h-[148px] flex-col justify-between p-4">
               <span>
                 <span className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--text-faint)]">
                   IELTS {tab.english}

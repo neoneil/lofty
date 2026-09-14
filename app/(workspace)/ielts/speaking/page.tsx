@@ -1,4 +1,4 @@
-import Container from "@/components/site/container";
+import IeltsModuleHero from "@/components/site/ielts-module-hero";
 import IELTSSubnav from "@/components/site/ielts-subnav";
 import SpeakingBrowser from "@/components/site/speaking-browser";
 import { requireUser } from "@/lib/auth/require-user";
@@ -64,43 +64,35 @@ export default async function IeltsSpeakingPage() {
   const part2Topics = (part2Data ?? []) as SpeakingPart2Topic[];
 
   return (
-    <main className="py-12 text-[var(--text)] sm:py-16 lg:py-20">
-      <Container>
-        <IELTSSubnav current="speaking" />
+    <main className="container-main space-y-6 py-5 text-[var(--text)] sm:py-7">
+      <IELTSSubnav current="speaking" />
 
-        <section className="mb-10 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-sm)] sm:p-8">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-faint)] sm:text-sm">
-            IELTS SPEAKING
-          </p>
+      <IeltsModuleHero
+        badge="IELTS Speaking"
+        title="雅思口语"
+        description="同步全球近 3 个月的口语真题，系统训练 Part 1、Part 2 与 Part 3 的表达能力。"
+        image="/ielts-nav/speaking.webp"
+        imageAlt="IELTS Speaking interview practice"
+      />
 
-          <h1 className="mb-5 text-3xl font-bold tracking-tight text-[var(--primary)] sm:text-4xl">
-            雅思口语
-          </h1>
+      {part1Error ? (
+        <p className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
+          Part 1 加载失败，请稍后再试。
+        </p>
+      ) : null}
 
-          <p className="max-w-3xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
-            同步全球近3个月的口语真题 - 题目稳定期间命中率 100%
-          </p>
-        </section>
+      {part2Error ? (
+        <p className="rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
+          Part 2 加载失败，请稍后再试。
+        </p>
+      ) : null}
 
-        {part1Error ? (
-          <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-            Part 1 加载失败，请稍后再试。
-          </p>
-        ) : null}
-
-        {part2Error ? (
-          <p className="mb-4 rounded-[var(--radius-md)] border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-            Part 2 加载失败，请稍后再试。
-          </p>
-        ) : null}
-
-        {!part1Error && !part2Error && (
-          <SpeakingBrowser
-            part1Questions={part1Questions}
-            part2Topics={part2Topics}
-          />
-        )}
-      </Container>
+      {!part1Error && !part2Error && (
+        <SpeakingBrowser
+          part1Questions={part1Questions}
+          part2Topics={part2Topics}
+        />
+      )}
     </main>
   );
 }

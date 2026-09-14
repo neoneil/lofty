@@ -23,11 +23,7 @@ export default function DictionaryWord({
           showPteExamples
         })
       }
-      className="
-        cursor-pointer
-        transition
-        hover:text-(--theme)
-      "
+      className="dictionary-word-inline"
     >
       {word}
     </span>

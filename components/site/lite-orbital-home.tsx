@@ -669,54 +669,35 @@ function makeSatellitePrintTexture({
   color: string;
   icon: SatelliteLink["icon"];
 }) {
+  const logicalWidth = 512;
+  const logicalHeight = 320;
+  const textureScale = 3;
   const canvas = document.createElement("canvas");
-  canvas.width = 512;
-  canvas.height = 320;
+  canvas.width = logicalWidth * textureScale;
+  canvas.height = logicalHeight * textureScale;
   const ctx = canvas.getContext("2d");
   if (!ctx) return canvas;
 
-  const centerX = canvas.width / 2;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.scale(textureScale, textureScale);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+
+  const centerX = logicalWidth / 2;
+  ctx.clearRect(0, 0, logicalWidth, logicalHeight);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-
-  const plate = ctx.createRadialGradient(centerX - 34, 112, 16, centerX, 158, 188);
-  plate.addColorStop(0, "rgba(255,255,255,.92)");
-  plate.addColorStop(0.52, "rgba(255,255,255,.62)");
-  plate.addColorStop(1, "rgba(255,255,255,0)");
-  ctx.fillStyle = plate;
-  ctx.beginPath();
-  ctx.ellipse(centerX, 158, 208, 122, 0, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.shadowColor = "rgba(255,255,255,.92)";
-  ctx.shadowBlur = 18;
-  ctx.fillStyle = "rgba(255,255,255,.9)";
-  ctx.beginPath();
-  ctx.arc(centerX, 73, 45, 0, Math.PI * 2);
-  ctx.fill();
 
   ctx.shadowBlur = 0;
   drawSatelliteIcon(ctx, icon, centerX, 74, color);
 
-  ctx.shadowColor = "rgba(255,255,255,.95)";
-  ctx.shadowBlur = 5;
+  ctx.shadowBlur = 0;
   ctx.fillStyle = "rgba(31,42,58,.98)";
   ctx.font = "900 59px system-ui, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif";
   ctx.fillText(title, centerX, 154);
 
-  ctx.shadowBlur = 0;
   ctx.fillStyle = "rgba(61,74,95,.86)";
   ctx.font = "900 30px system-ui, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif";
   ctx.fillText(subtitle.toUpperCase(), centerX, 205);
-
-  ctx.globalAlpha = 0.26;
-  ctx.strokeStyle = "rgba(255,255,255,.9)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.ellipse(centerX - 54, 118, 118, 42, -0.45, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.globalAlpha = 1;
 
   return canvas;
 }
@@ -1121,6 +1102,10 @@ export default function LiteOrbitalHome() {
           })
         );
         labelTexture.colorSpace = THREE.SRGBColorSpace;
+        labelTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        labelTexture.generateMipmaps = false;
+        labelTexture.minFilter = THREE.LinearFilter;
+        labelTexture.magFilter = THREE.LinearFilter;
 
         const shell = new THREE.Mesh(
           new THREE.SphereGeometry(nodesRef.current[index].size, 64, 64),
@@ -1161,10 +1146,11 @@ export default function LiteOrbitalHome() {
           new THREE.MeshBasicMaterial({
             map: labelTexture,
             transparent: true,
-            opacity: 0.94,
+            opacity: 0.99,
             depthTest: false,
             depthWrite: false,
             side: THREE.DoubleSide,
+            toneMapped: false,
           })
         );
         printedLabel.position.set(0, 0.002, nodesRef.current[index].size * 1.04);

@@ -140,7 +140,7 @@ export default async function VocabularyPage() {
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-6">
           <Badge className="mb-3 w-fit">Vocabulary Library</Badge>
           <h1 className="text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">Lofty 词汇中心</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">入口页只展示分类。点击任一模块后再加载对应词库，减少首屏编译和传输压力。</p>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">入口页只展示分类。点击任一模块后再加载对应词库。</p>
         </section>
 
         <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">

@@ -60,8 +60,8 @@ export default async function AchievementsPage() {
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <Badge variant="outline"><Sparkles size={13} className="mr-1.5" />成就中心</Badge>
-              <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">PTE 与 IELTS 成就分开计算</h1>
-              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">默认展开会跟随你的 Profile 考试类型；管理员会同时展开两套，方便检查。</p>
+              <h1 className="mt-4 text-2xl font-semibold text-[var(--text)] sm:text-3xl">PTE 与 IELTS 成就</h1>
+              <p className="mt-3 text-sm leading-7 text-[var(--text-soft)] sm:text-base">默认展开会跟随你的 Profile 考试类型</p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <div className="min-w-0 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-center"><div className="text-xl font-semibold text-[var(--text)]">{formatNumber(pteStats.overview.total_completed)}</div><div className="mt-1 text-xs text-[var(--text-faint)]">PTE 完成</div></div>

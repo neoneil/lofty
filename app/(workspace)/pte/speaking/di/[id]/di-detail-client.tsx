@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import DictionaryText from "@/components/dictionary/dictionary-text";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
@@ -205,7 +206,7 @@ export default function DiDetailClient({ question, isAdmin }: Props) {
 
         {question.question_text ? (
           <div className="text-[18px] leading-9 text-[var(--text)]">
-            {question.question_text}
+            <DictionaryText text={question.question_text} />
           </div>
         ) : null}
 

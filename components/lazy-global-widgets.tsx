@@ -3,13 +3,10 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
+import DictionaryPopup from "@/components/dictionary/dictionary-popup";
+
 const ChatWidget = dynamic(
   () => import("@/components/chat/ChatWidget"),
-  { ssr: false }
-);
-
-const DictionaryPopup = dynamic(
-  () => import("@/components/dictionary/dictionary-popup"),
   { ssr: false }
 );
 
@@ -17,10 +14,6 @@ export default function LazyGlobalWidgets() {
   const [canLoadWidgets, setCanLoadWidgets] = useState(false);
 
   useEffect(() => {
-    if (window.location.pathname === "/") {
-      return;
-    }
-
     const win = window as Window & {
       requestIdleCallback?: (
         callback: () => void,
@@ -40,12 +33,10 @@ export default function LazyGlobalWidgets() {
     return () => window.clearTimeout(timeoutId);
   }, []);
 
-  if (!canLoadWidgets) return null;
-
   return (
     <>
       <DictionaryPopup />
-      <ChatWidget />
+      {canLoadWidgets ? <ChatWidget /> : null}
     </>
   );
 }

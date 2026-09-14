@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   LibraryBig,
@@ -14,32 +15,32 @@ const sections = [
     description:
       "练习 IELTS Speaking Part 1、Part 2 与 Part 3 题库，按话题分类快速复习。",
     href: "/ielts/speaking",
-    image: "/SVG/speaking_Peason.svg",
-    accent: "bg-[#eef8ed]",
+    image: "/ielts-nav/speaking.webp",
+    imageAlt: "IELTS Speaking interview practice",
   },
   {
     title: "写作",
     description:
       "浏览 IELTS Writing Task 题库，按题型与话题分类训练写作思路。",
     href: "/ielts/writing",
-    image: "/SVG/writing_Peason.svg",
-    accent: "bg-[#f1ecff]",
+    image: "/ielts-nav/writing.webp",
+    imageAlt: "IELTS Writing essay practice",
   },
   {
     title: "阅读",
     description:
       "使用静态 Markdown 剑桥雅思阅读题库，对照题目与文章进行完整训练。",
     href: "/ielts/reading",
-    image: "/SVG/reading_Peason.svg",
-    accent: "bg-[#fff3df]",
+    image: "/ielts-nav/reading.webp",
+    imageAlt: "IELTS Reading academic passage practice",
   },
   {
     title: "听力",
     description:
       "进入剑桥雅思听力练习，按书本与 Test 完成机考流程。",
     href: "/ielts/listening",
-    image: "/SVG/listening_Peason.svg",
-    accent: "bg-[#e6f7ff]",
+    image: "/ielts-nav/listening.webp",
+    imageAlt: "IELTS Listening audio practice",
   },
 ];
 
@@ -78,12 +79,15 @@ export default function IELTSPage() {
             <Link key={section.title} href={section.href} className="block">
               <Card className="group h-full overflow-hidden hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[var(--shadow-md)]">
                 <CardContent className="flex h-full flex-col p-0">
-                  <div className={`flex h-32 items-center justify-center ${section.accent}`}>
-                    <span
-                      aria-hidden="true"
-                      className="h-20 w-20 bg-contain bg-center bg-no-repeat"
-                      style={{ backgroundImage: `url(${section.image})` }}
+                  <div className="relative aspect-[16/9] overflow-hidden bg-[var(--bg-soft)]">
+                    <Image
+                      src={section.image}
+                      alt={section.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-white/10" />
                   </div>
 
                   <div className="flex flex-1 flex-col p-5 sm:p-6">

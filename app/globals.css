@@ -589,6 +589,30 @@ mark {
   font-weight: 650 !important;
 }
 
+.dictionary-word-inline {
+  cursor: pointer;
+  border-radius: 0.22rem;
+  padding: 0 0.04em;
+  margin: 0 -0.04em;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.dictionary-word-inline:hover {
+  background-color: var(--primary-soft) !important;
+  color: var(--theme, var(--primary)) !important;
+  text-decoration-color: var(--theme, var(--primary));
+}
+
+.dictionary-word-inline:active {
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  color: var(--theme, var(--primary)) !important;
+}
+
 .ielts-reading-passage-label {
   display: inline-flex;
   width: 1.75em;

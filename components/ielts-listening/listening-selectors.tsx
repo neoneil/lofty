@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Headphones, Timer } from "lucide-react";
 
 import { IeltsTestEntryCard } from "@/components/ielts-practice/ielts-test-entry-card";
+import IeltsModuleHero from "@/components/site/ielts-module-hero";
 import IELTSSubnav from "@/components/site/ielts-subnav";
 import { Badge } from "@/components/ui-v2/badge";
 import { Card, CardContent } from "@/components/ui-v2/card";
@@ -15,19 +16,19 @@ export function IeltsListeningBookSelector() {
     <main className="container-main space-y-6 py-5 sm:py-7">
       <IELTSSubnav current="listening" />
 
-      <section className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-md)] sm:p-7">
-        <Badge className="mb-3 w-fit">IELTS Listening Exam</Badge>
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl">剑桥雅思听力练习</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">选择剑桥雅思 21-16，和对应的Test进行学习。</p>
+      <IeltsModuleHero
+        badge="IELTS Listening Exam"
+        title="剑桥雅思听力练习"
+        description="选择剑桥雅思 21-16，和对应的 Test 进行学习。"
+        image="/ielts-nav/listening.webp"
+        imageAlt="IELTS Listening audio practice"
+        detail={
+          <div className="inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-3 py-2 text-sm font-semibold text-[var(--text)]">
+            <Headphones size={17} className="text-[var(--primary)]" />
+            Cambridge IELTS 21-16 · Test 1-4
           </div>
-          <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-soft)] p-4 text-sm text-[var(--text-soft)]">
-            <div className="mb-1 flex items-center gap-2 font-semibold text-[var(--text)]"><Headphones size={17} className="text-[var(--primary)]" />Listening Library</div>
-            <div>Cambridge IELTS 21-16 · Test 1-4</div>
-          </div>
-        </div>
-      </section>
+        }
+      />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {LISTENING_BOOKS.map((bookNumber) => (

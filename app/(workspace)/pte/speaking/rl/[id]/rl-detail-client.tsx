@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import AudioPlayer from "@/components/site/AudioPlayer";
+import DictionaryText from "@/components/dictionary/dictionary-text";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { PteLectureAudioPlayer } from "@/components/pte-ai-audio/pte-lecture-audio-player";
 import RecordingPanel from "@/components/site/RecordingPanel";
@@ -172,7 +173,7 @@ export default function RlDetailClient({ question }: Props) {
 
         {question.question_text ? (
           <div className="text-[18px] leading-9 text-[var(--text)]">
-            {question.question_text}
+            <DictionaryText text={question.question_text} />
           </div>
         ) : null}
       </div>

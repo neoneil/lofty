@@ -1514,7 +1514,7 @@ function decorateDictionaryWords(html: string) {
     if (openSkipTags.length > 0) return part;
     return part.replace(/&[a-zA-Z0-9#]+;|[A-Za-z][A-Za-z'-]*|[^&A-Za-z]+|&/g, (token) => {
       if (!/^[A-Za-z]/.test(token)) return token;
-      return `<span data-dictionary-word="${escapeHtmlAttribute(token)}">${token}</span>`;
+      return `<span class="dictionary-word-inline" data-dictionary-word="${escapeHtmlAttribute(token)}">${token}</span>`;
     });
   }).join("");
 }
