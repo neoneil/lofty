@@ -4,7 +4,7 @@ import OpenAI from "openai";
 
 import { createR2PresignedPutUrl } from "@/lib/r2/presign";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { PTE_AI_AUDIO_MODEL, PTE_AI_AUDIO_VOICES, getPteAiAudioR2Key, getPteAiAudioRelativePath, type PteAiAudioQuestionType, type PteAiAudioVoice } from "@/lib/pte-ai-audio/voices";
+import { PTE_AI_AUDIO_DEFAULT_VOICE, PTE_AI_AUDIO_MODEL, PTE_AI_AUDIO_VOICES, getPteAiAudioR2Key, getPteAiAudioRelativePath, hasCompletePteAiAudioMetadata, type PteAiAudioQuestionType, type PteAiAudioVoice } from "@/lib/pte-ai-audio/voices";
 
 type GenerateOneParams = {
   questionType: PteAiAudioQuestionType;
@@ -21,6 +21,9 @@ type QuestionRow = {
   id: string;
   question_text: string | null;
   audio_status?: string | null;
+  audio_url?: string | null;
+  ai_voice?: string | null;
+  audio_variant_count?: number | null;
 };
 
 function getTable(questionType: PteAiAudioQuestionType) {
@@ -28,7 +31,7 @@ function getTable(questionType: PteAiAudioQuestionType) {
 }
 
 function getDefaultVoice() {
-  return PTE_AI_AUDIO_VOICES[0].id;
+  return PTE_AI_AUDIO_DEFAULT_VOICE;
 }
 
 function getQuestionTypeValue(questionType: PteAiAudioQuestionType) {
@@ -70,13 +73,23 @@ async function createSpeech(openai: OpenAI, voice: PteAiAudioVoice, text: string
 export async function generatePteAiAudioForQuestion({ questionType, questionId, force = false }: GenerateOneParams) {
   const supabase = createAdminClient();
   const table = getTable(questionType);
-  const { data: question, error } = await supabase.schema("pte").from(table).select("id, question_text, audio_status").eq("id", questionId).single<QuestionRow>();
+  const selectFields = questionType === "rs"
+    ? "id, question_text, audio_status, audio_url, ai_voice, audio_variant_count"
+    : "id, question_text, audio_status, audio_url, ai_voice";
+  const { data: question, error } = await supabase.schema("pte").from(table).select(selectFields).eq("id", questionId).single<QuestionRow>();
 
   if (error || !question) {
     throw new Error(error?.message || "Question not found.");
   }
 
-  if (!force && question.audio_status === "ready") {
+  if (!force && hasCompletePteAiAudioMetadata({
+    questionType,
+    questionId: question.id,
+    audioStatus: question.audio_status,
+    aiVoice: question.ai_voice,
+    audioUrl: question.audio_url,
+    audioVariantCount: question.audio_variant_count,
+  })) {
     return { questionId, skipped: true, message: "Already ready." };
   }
 

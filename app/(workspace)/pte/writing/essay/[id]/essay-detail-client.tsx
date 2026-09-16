@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useState } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import AiSubmitButton from "@/components/ai/ai-submit-button";
@@ -87,18 +88,6 @@ type SubmitResult = {
 
 type FeedbackWeakness = SubmitResult["aiFeedback"]["weaknesses"][number];
 
-function subscribeQuestionOrder(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getQuestionOrderSnapshot() {
-  return sessionStorage.getItem("we-question-order") ?? "[]";
-}
-
-function getServerQuestionOrderSnapshot() {
-  return "[]";
-}
 
 function splitEssayIntoParagraphs(text: string) {
   const normalizedText = text.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
@@ -440,38 +429,7 @@ export default function EssayDetailClient({
 
   const router = useRouter();
 
-  const questionOrderSnapshot = useSyncExternalStore(
-    subscribeQuestionOrder,
-    getQuestionOrderSnapshot,
-    getServerQuestionOrderSnapshot,
-  );
-
-  const questionNav = useMemo(() => {
-    let ids: string[] = [];
-
-    try {
-      ids = JSON.parse(questionOrderSnapshot);
-    } catch {
-      ids = [];
-    }
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        prevQuestionId: null,
-        nextQuestionId: null,
-        questionNumber: 0,
-      };
-    }
-
-    return {
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId:
-        currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-      questionNumber: currentIndex + 1,
-    };
-  }, [question.id, questionOrderSnapshot]);
+  const questionNav = usePteQuestionNavigation("we", question.id);
 
   const { prevQuestionId, nextQuestionId, questionNumber } = questionNav;
 

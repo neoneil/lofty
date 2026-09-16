@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 
 import {
   ChevronLeft,
@@ -16,7 +17,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import { getQuestionOrder } from "@/lib/question-order";
 
 import DictionaryText from "@/components/dictionary/dictionary-text";
 
@@ -166,52 +166,7 @@ function FibrwDetailClient({
   const [startedAt] =
     useState(() => Date.now());
 
-  const {
-    prevQuestionId,
-    nextQuestionId,
-    questionNumber,
-  } = useMemo(() => {
-
-    const ids =
-      getQuestionOrder(
-        "fibrw",
-      );
-
-    const currentIndex =
-      ids.findIndex(
-        (qId) =>
-          qId === question.id,
-      );
-
-    if (
-      currentIndex === -1
-    ) {
-      return {
-        prevQuestionId: null,
-        nextQuestionId: null,
-        questionNumber: 0,
-      };
-    }
-
-    return {
-      prevQuestionId:
-        currentIndex > 0
-          ? ids[
-              currentIndex - 1
-            ]
-          : null,
-      nextQuestionId:
-        currentIndex <
-          ids.length - 1
-          ? ids[
-              currentIndex + 1
-            ]
-          : null,
-      questionNumber:
-        currentIndex + 1,
-    };
-
-  }, [question.id]);
+  const { prevQuestionId, nextQuestionId, questionNumber } = usePteQuestionNavigation("fibrw", question.id);
 
   const parts =
     useMemo(() => {

@@ -6,8 +6,8 @@ import {
   useEffect,
   useMemo,
   useState,
-  useSyncExternalStore,
 } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
@@ -253,52 +253,10 @@ function formatDateTime(value: string | null) {
   });
 }
 
-function subscribeQuestionOrder(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getQuestionOrderSnapshot() {
-  return sessionStorage.getItem("ra-question-order") ?? "[]";
-}
-
-function getServerQuestionOrderSnapshot() {
-  return "[]";
-}
 
 export default function RaDetailClient({ question }: Props) {
   const router = useRouter();
-  const questionOrderSnapshot = useSyncExternalStore(
-    subscribeQuestionOrder,
-    getQuestionOrderSnapshot,
-    getServerQuestionOrderSnapshot,
-  );
-  const questionNav = useMemo(() => {
-    let ids: string[] = [];
-
-    try {
-      ids = JSON.parse(questionOrderSnapshot);
-    } catch {
-      ids = [];
-    }
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        questionNumber: 0,
-        prevQuestionId: null as string | null,
-        nextQuestionId: null as string | null,
-      };
-    }
-
-    return {
-      questionNumber: currentIndex + 1,
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId:
-        currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    };
-  }, [question.id, questionOrderSnapshot]);
+  const questionNav = usePteQuestionNavigation("ra", question.id);
   const [practices, setPractices] = useState<UserPractice[]>([]);
   const [practicesLoading, setPracticesLoading] = useState(true);
   const [historyOpen, setHistoryOpen] = useState(false);

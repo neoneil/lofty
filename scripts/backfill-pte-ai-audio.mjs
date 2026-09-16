@@ -97,7 +97,11 @@ function getExpectedAudioPrefix(questionType) {
 
 function needsGeneratedAudio(questionType, question) {
   const audioUrl = String(question.audio_url ?? "");
-  return question.audio_status !== "ready" || question.ai_voice !== "marin" || !audioUrl.startsWith(getExpectedAudioPrefix(questionType)) || !audioUrl.endsWith("/marin.mp3");
+  if (question.audio_status !== "ready") return true;
+  if (question.ai_voice !== "marin") return true;
+  if (!audioUrl.startsWith(getExpectedAudioPrefix(questionType)) || !audioUrl.endsWith("/marin.mp3")) return true;
+  if (questionType === "rs" && Number(question.audio_variant_count ?? 0) < PTE_AI_AUDIO_VOICES.length) return true;
+  return false;
 }
 
 async function uploadAudio(key, body) {
@@ -123,7 +127,10 @@ async function createSpeech(openai, voice, text) {
 
 async function findCandidates(supabase, questionType, limit, { predictionOnly }) {
   const table = getTable(questionType);
-  let query = supabase.schema("pte").from(table).select("id, question_text, audio_url, audio_status, ai_voice").not("question_text", "is", null).order("created_at", { ascending: false });
+  const selectFields = questionType === "rs"
+    ? "id, question_text, audio_url, audio_status, ai_voice, audio_variant_count"
+    : "id, question_text, audio_url, audio_status, ai_voice";
+  let query = supabase.schema("pte").from(table).select(selectFields).not("question_text", "is", null).order("created_at", { ascending: false });
 
   if (questionType === "rs") query = query.eq("is_active", true);
   if (predictionOnly) query = query.eq("is_prediction", true);
@@ -135,7 +142,10 @@ async function findCandidates(supabase, questionType, limit, { predictionOnly })
 
 async function countMissingCandidates(supabase, questionType, { predictionOnly }) {
   const table = getTable(questionType);
-  let query = supabase.schema("pte").from(table).select("id, audio_url, audio_status, ai_voice").not("question_text", "is", null);
+  const selectFields = questionType === "rs"
+    ? "id, audio_url, audio_status, ai_voice, audio_variant_count"
+    : "id, audio_url, audio_status, ai_voice";
+  let query = supabase.schema("pte").from(table).select(selectFields).not("question_text", "is", null);
 
   if (questionType === "rs") query = query.eq("is_active", true);
   if (predictionOnly) query = query.eq("is_prediction", true);

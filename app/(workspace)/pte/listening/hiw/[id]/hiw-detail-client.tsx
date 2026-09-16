@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 
@@ -32,18 +33,6 @@ type SubmitResult = {
   missed: number[];
 };
 
-function subscribeQuestionOrder(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getQuestionOrderSnapshot() {
-  return sessionStorage.getItem("hiw-question-order") ?? "[]";
-}
-
-function getServerQuestionOrderSnapshot() {
-  return "[]";
-}
 
 function tokenizeText(text: string) {
   return text.match(/\S+\s*/g) ?? [];
@@ -127,25 +116,7 @@ export default function HiwDetailClient({ question }: { question: Question }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
   const router = useRouter();
-  const questionOrderSnapshot = useSyncExternalStore(subscribeQuestionOrder, getQuestionOrderSnapshot, getServerQuestionOrderSnapshot);
-
-  const questionNav = useMemo(() => {
-    let ids: string[] = [];
-
-    try {
-      ids = JSON.parse(questionOrderSnapshot);
-    } catch {
-      ids = [];
-    }
-
-    const currentIndex = ids.findIndex((qId) => qId === String(question.id));
-
-    return {
-      questionNumber: currentIndex === -1 ? 0 : currentIndex + 1,
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId: currentIndex !== -1 && currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    };
-  }, [question.id, questionOrderSnapshot]);
+  const questionNav = usePteQuestionNavigation("hiw", question.id);
 
   const bodyText = question.question_body_text ?? "";
   const incorrectWords = useMemo(() => question.incorrect_words_json ?? [], [question.incorrect_words_json]);

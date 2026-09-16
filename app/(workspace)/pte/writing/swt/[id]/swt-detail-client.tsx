@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
-import { getQuestionOrder } from "@/lib/question-order";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Textarea } from "@/components/ui-v2/textarea";
@@ -103,25 +102,7 @@ export default function SwtDetailClient({ question, attempts }: Props) {
 
   const router = useRouter();
 
-  const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
-    const ids = getQuestionOrder("swt");
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        prevQuestionId: null,
-        nextQuestionId: null,
-        questionNumber: 0,
-      };
-    }
-
-    return {
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-      questionNumber: currentIndex + 1,
-    };
-  }, [question.id]);
+  const { prevQuestionId, nextQuestionId, questionNumber } = usePteQuestionNavigation("swt", question.id);
 
   const handleSubmit = async () => {
     setLoading(true);

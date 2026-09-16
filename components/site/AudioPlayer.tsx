@@ -12,6 +12,8 @@ export default function AudioPlayer({
   size = "default",
   onEnded,
   onTimeUpdate,
+  onError,
+  onPlayError,
   seekTo,
   title = "Audio",
   description,
@@ -23,6 +25,8 @@ export default function AudioPlayer({
   size?: "default" | "compact";
   onEnded?: () => void;
   onTimeUpdate?: (currentTime: number) => void;
+  onError?: () => void;
+  onPlayError?: (error: unknown) => void;
   seekTo?: number | null;
   title?: string;
   description?: string;
@@ -74,6 +78,8 @@ export default function AudioPlayer({
       showMeta={showMeta}
       seekTo={seekTo}
       onEnded={onEnded}
+      onError={onError}
+      onPlayError={onPlayError}
       onTimeUpdate={(event) => onTimeUpdate?.(event.currentTarget.currentTime)}
     />
   );

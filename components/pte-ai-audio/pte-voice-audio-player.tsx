@@ -34,11 +34,23 @@ function pickStableVoice(seed: string) {
 export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiAudioReady, countdown = 0, autoPlay = true, onEnded }: Props) {
   const [choice, setChoice] = useState<VoiceChoice>("random");
   const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(() => pickStableVoice(`${questionType}:${questionId}`));
+  const [failedAiAudioKeys, setFailedAiAudioKeys] = useState<Set<string>>(() => new Set());
 
   const activeVoice = choice === "random" ? randomVoice : choice;
-  const activeUrl = aiAudioReady ? getPteAiAudioPublicUrl(questionType, questionId, activeVoice) : fallbackUrl;
+  const activeAiAudioKey = `${questionType}:${questionId}:${activeVoice}`;
+  const shouldUseAiAudio = aiAudioReady && !failedAiAudioKeys.has(activeAiAudioKey);
+  const activeUrl = shouldUseAiAudio ? getPteAiAudioPublicUrl(questionType, questionId, activeVoice) : fallbackUrl;
 
   const activeLabel = useMemo(() => PTE_AI_AUDIO_VOICES.find((voice) => voice.id === activeVoice)?.label ?? activeVoice, [activeVoice]);
+
+  function handleAudioFailure() {
+    if (!shouldUseAiAudio) return;
+    setFailedAiAudioKeys((current) => {
+      const next = new Set(current);
+      next.add(activeAiAudioKey);
+      return next;
+    });
+  }
 
   return (
     <div className="space-y-3">
@@ -49,9 +61,9 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
         ))}
       </div>
       <div className="flex justify-center">
-        <Badge variant={aiAudioReady ? "success" : "secondary"}>{aiAudioReady ? `当前声音：${activeLabel}` : "当前使用旧音频"}</Badge>
+        <Badge variant={shouldUseAiAudio ? "success" : "secondary"}>{shouldUseAiAudio ? `当前声音：${activeLabel}` : "当前使用旧音频"}</Badge>
       </div>
-      {activeUrl ? <AudioPlayer key={`${questionType}-${questionId}-${activeVoice}-${aiAudioReady ? "ai" : "fallback"}`} url={activeUrl} autoPlay={autoPlay} countdown={countdown} size="compact" onEnded={onEnded} /> : <div className="round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">当前题目暂无音频</div>}
+      {activeUrl ? <AudioPlayer key={`${questionType}-${questionId}-${activeVoice}-${shouldUseAiAudio ? "ai" : "fallback"}`} url={activeUrl} autoPlay={autoPlay} countdown={countdown} size="compact" onEnded={onEnded} onError={handleAudioFailure} onPlayError={handleAudioFailure} /> : <div className="round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">当前题目暂无音频</div>}
     </div>
   );
 }

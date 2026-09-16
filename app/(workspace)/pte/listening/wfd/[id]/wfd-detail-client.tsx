@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text"; // dictionary 查词
 import Tag from "@/components/ui/tag";
@@ -27,18 +28,6 @@ type SubmitResult = {
   tokens: Token[];
 };
 
-function subscribeQuestionOrder(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getQuestionOrderSnapshot() {
-  return sessionStorage.getItem("wfd-question-order") ?? "[]";
-}
-
-function getServerQuestionOrderSnapshot() {
-  return "[]";
-}
 
 export default function WfdDetailClient({ question, aiImageUrl }: Props) {
   const startedAtRef = useRef<number | null>(null);
@@ -52,37 +41,7 @@ export default function WfdDetailClient({ question, aiImageUrl }: Props) {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const router = useRouter();
-  const questionOrderSnapshot = useSyncExternalStore(
-    subscribeQuestionOrder,
-    getQuestionOrderSnapshot,
-    getServerQuestionOrderSnapshot,
-  );
-
-  const questionNav = useMemo(() => {
-    let ids: string[] = [];
-
-    try {
-      ids = JSON.parse(questionOrderSnapshot);
-    } catch {
-      ids = [];
-    }
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        questionNumber: 0,
-        prevQuestionId: null as string | null,
-        nextQuestionId: null as string | null,
-      };
-    }
-
-    return {
-      questionNumber: currentIndex + 1,
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    };
-  }, [question.id, questionOrderSnapshot]);
+  const questionNav = usePteQuestionNavigation("wfd", question.id);
 
   useEffect(() => {
     startedAtRef.current = Date.now();

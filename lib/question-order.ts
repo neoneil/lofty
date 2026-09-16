@@ -31,6 +31,15 @@ export function saveQuestionOrder(
         `${questionType}-question-order`,
         JSON.stringify(ids)
     );
+
+    const params = new URLSearchParams(window.location.search);
+    params.delete("page");
+    const search = params.toString();
+
+    sessionStorage.setItem(
+        `${questionType}-question-order-search`,
+        search ? `?${search}` : ""
+    );
 }
 
 export function getQuestionOrder(
@@ -54,4 +63,14 @@ export function getQuestionOrder(
     } catch {
         return [];
     }
+}
+export function getQuestionOrderSearch(questionType: string): string {
+
+    if (typeof window === "undefined") {
+        return "";
+    }
+
+    return sessionStorage.getItem(
+        `${questionType}-question-order-search`
+    ) ?? "";
 }

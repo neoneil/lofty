@@ -1,5 +1,7 @@
 import {
   PTE_ASQ_BASE_SELECT,
+  PTE_HIW_QUESTION_SELECT,
+  PTE_RA_BASE_SELECT,
   PTE_DI_BASE_SELECT,
   PTE_FIBR_BASE_SELECT,
   PTE_FIBRW_BASE_SELECT,
@@ -10,11 +12,28 @@ import {
   PTE_SGD_BASE_SELECT,
   PTE_SST_BASE_SELECT,
   PTE_SWT_BASE_SELECT,
+  PTE_WFD_BASE_SELECT,
   PTE_WE_BASE_SELECT,
 } from "@/lib/pte/select-fields";
 import type { QuestionBankConfig, QuestionRow } from "@/lib/pte/question-bank-server";
 
 const row = <T extends QuestionRow>(value: QuestionRow) => value as T;
+
+export const PTE_RA_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
+  table: 'ra',
+  questionSource: 'ra',
+  questionType: 'RA',
+  select: PTE_RA_BASE_SELECT,
+  searchColumn: 'question_body_text',
+  normalizeQuestion: (question) => ({
+    ...question,
+    question_text: String(question.question_body_text ?? ''),
+    audio_url: null,
+    audio_duration_seconds: null,
+    ai_voice: null,
+    usage_count: null,
+  }),
+};
 
 export const PTE_RS_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
   table: "rs",
@@ -149,4 +168,23 @@ export const PTE_SST_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
     ai_voice: null,
     usage_count: null,
   }),
+};
+
+export const PTE_WFD_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
+  table: 'wfd',
+  questionSource: 'wfd',
+  questionType: 'WFD',
+  select: PTE_WFD_BASE_SELECT,
+  searchColumn: 'question_text',
+  supportsUsageCount: true,
+  normalizeQuestion: row,
+};
+
+export const PTE_HIW_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
+  table: 'hiw',
+  questionSource: 'hiw',
+  questionType: 'HIW',
+  select: PTE_HIW_QUESTION_SELECT,
+  searchColumn: 'question_body_text',
+  normalizeQuestion: row,
 };

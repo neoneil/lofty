@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
@@ -59,52 +60,10 @@ function getAudioUrl(path: string) {
   return normalizePublicStorageUrl(path, "pte-audio");
 }
 
-function subscribeQuestionOrder(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getQuestionOrderSnapshot() {
-  return sessionStorage.getItem("asq-question-order") ?? "[]";
-}
-
-function getServerQuestionOrderSnapshot() {
-  return "[]";
-}
 
 export default function AsqDetailClient({ question }: Props) {
   const router = useRouter();
-  const questionOrderSnapshot = useSyncExternalStore(
-    subscribeQuestionOrder,
-    getQuestionOrderSnapshot,
-    getServerQuestionOrderSnapshot,
-  );
-  const questionNav = useMemo(() => {
-    let ids: string[] = [];
-
-    try {
-      ids = JSON.parse(questionOrderSnapshot);
-    } catch {
-      ids = [];
-    }
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        questionNumber: 0,
-        prevQuestionId: null as string | null,
-        nextQuestionId: null as string | null,
-      };
-    }
-
-    return {
-      questionNumber: currentIndex + 1,
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId:
-        currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-    };
-  }, [question.id, questionOrderSnapshot]);
+  const questionNav = usePteQuestionNavigation("asq", question.id);
 
   const [recordings, setRecordings] = useState<UserRecording[]>([]);
   const [recordingsLoading, setRecordingsLoading] = useState(true);

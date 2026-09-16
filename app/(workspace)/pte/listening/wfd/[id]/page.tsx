@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui-v2/button";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { PteVoiceAudioPlayer } from "@/components/pte-ai-audio/pte-voice-audio-player";
+import { hasCompletePteAiAudioMetadata } from "@/lib/pte-ai-audio/voices";
 type PageProps = {
   params: Promise<{
     id: string;
@@ -40,7 +41,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
   const { data: wfdMeta } = await supabase
     .schema("pte")
     .from("wfd")
-    .select("audio_status, ai_image")
+    .select("audio_status, audio_url, ai_voice, ai_image")
     .eq("id", id)
     .maybeSingle();
 
@@ -105,7 +106,13 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
                   questionType="wfd"
                   questionId={question.id}
                   fallbackUrl={getPublicAudioUrl(question.audio_url)}
-                  aiAudioReady={wfdMeta?.audio_status === "ready"}
+                  aiAudioReady={hasCompletePteAiAudioMetadata({
+                    questionType: "wfd",
+                    questionId: question.id,
+                    audioStatus: wfdMeta?.audio_status,
+                    aiVoice: wfdMeta?.ai_voice,
+                    audioUrl: wfdMeta?.audio_url,
+                  })}
                   autoPlay
                   countdown={10}
                 />

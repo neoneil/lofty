@@ -13,6 +13,7 @@ export type PteAiAudioVoice = (typeof PTE_AI_AUDIO_VOICES)[number]["id"];
 export type PteAiAudioQuestionType = "rs" | "wfd";
 export type PteLectureAudioQuestionType = "rl" | "sst";
 
+export const PTE_AI_AUDIO_DEFAULT_VOICE = PTE_AI_AUDIO_VOICES[0].id;
 export const PTE_LECTURE_AUDIO_VOICES = PTE_AI_AUDIO_VOICES.filter((voice) => voice.id === "marin" || voice.id === "cedar");
 
 export function getPteAiAudioRelativePath(questionType: PteAiAudioQuestionType, questionId: string, voice: PteAiAudioVoice) {
@@ -26,6 +27,28 @@ export function getPteAiAudioR2Key(questionType: PteAiAudioQuestionType, questio
 
 export function getPteAiAudioPublicUrl(questionType: PteAiAudioQuestionType, questionId: string, voice: PteAiAudioVoice) {
   return getPublicR2Url("pte-audio", getPteAiAudioRelativePath(questionType, questionId, voice));
+}
+
+export function hasCompletePteAiAudioMetadata({
+  questionType,
+  questionId,
+  audioStatus,
+  aiVoice,
+  audioUrl,
+  audioVariantCount,
+}: {
+  questionType: PteAiAudioQuestionType;
+  questionId: string;
+  audioStatus?: string | null;
+  aiVoice?: string | null;
+  audioUrl?: string | null;
+  audioVariantCount?: number | null;
+}) {
+  if (audioStatus !== "ready") return false;
+  if (aiVoice !== PTE_AI_AUDIO_DEFAULT_VOICE) return false;
+  if (audioUrl !== getPteAiAudioRelativePath(questionType, questionId, PTE_AI_AUDIO_DEFAULT_VOICE)) return false;
+  if (questionType === "rs" && (audioVariantCount ?? 0) < PTE_AI_AUDIO_VOICES.length) return false;
+  return true;
 }
 
 export function getPteLectureAudioRelativePath(questionType: PteLectureAudioQuestionType, questionId: string, voice: PteAiAudioVoice) {

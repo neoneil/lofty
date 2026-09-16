@@ -5,6 +5,7 @@ import { PTE_RS_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import RsDetailClient from "./rs-detail-client";
+import { hasCompletePteAiAudioMetadata } from "@/lib/pte-ai-audio/voices";
 
 type PageProps = {
   params: Promise<{
@@ -36,7 +37,7 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
   const { data: audioMeta } = await supabase
     .schema("pte")
     .from("rs")
-    .select("audio_status")
+    .select("audio_status, audio_url, ai_voice, audio_variant_count")
     .eq("id", id)
     .maybeSingle();
 
@@ -83,7 +84,17 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
             ) : null}
           </div>
 
-          <RsDetailClient question={question} aiAudioReady={audioMeta?.audio_status === "ready"} />
+          <RsDetailClient
+            question={question}
+            aiAudioReady={hasCompletePteAiAudioMetadata({
+              questionType: "rs",
+              questionId: question.id,
+              audioStatus: audioMeta?.audio_status,
+              aiVoice: audioMeta?.ai_voice,
+              audioUrl: audioMeta?.audio_url,
+              audioVariantCount: audioMeta?.audio_variant_count,
+            })}
+          />
         </section>
       </section>
     </div>

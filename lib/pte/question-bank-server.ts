@@ -260,3 +260,51 @@ export async function loadPaginatedPteQuestionBank<T extends QuestionRow>({
 }
 
 export { PTE_QUESTION_BANK_PAGE_SIZE };
+
+
+export async function loadPteQuestionOrder({
+  supabase,
+  admin,
+  userId,
+  filters,
+  config,
+}: {
+  supabase: SupabaseClient;
+  admin: SupabaseClient;
+  userId: string;
+  filters: PteQuestionBankFilters;
+  config: QuestionBankConfig<QuestionRow>;
+}) {
+  let idQuery = supabase
+    .schema('pte')
+    .from(config.table)
+    .select('id, created_at')
+    .limit(5000);
+
+  idQuery = orderQuestionQuery(applyQuestionFilters(idQuery, filters, config), filters);
+
+  const { data: idRows, error } = await idQuery;
+
+  if (error) throw error;
+
+  const ids = ((idRows ?? []) as unknown as QuestionRow[]).map((row) => row.id);
+
+  if (!needsStatusDrivenPagination(filters)) {
+    return ids;
+  }
+
+  const statusMap = await loadPteQuestionStatusMap({
+    admin,
+    userId,
+    questionSource: config.questionSource,
+  });
+
+  const filteredIds = ids.filter((id) =>
+    matchesPracticeStatus(
+      applyPteQuestionStatus({ id }, statusMap.get(id)),
+      filters.practiceStatus,
+    ),
+  );
+
+  return sortIdsByActivity(filteredIds, statusMap, filters.activityStatus);
+}

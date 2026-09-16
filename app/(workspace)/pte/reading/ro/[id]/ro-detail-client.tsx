@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { usePteQuestionNavigation } from "@/lib/question-order-client";
 
 import {
   closestCenter,
@@ -25,7 +26,6 @@ import { CSS } from "@dnd-kit/utilities";
 
 import { ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
 
-import { getQuestionOrder } from "@/lib/question-order";
 
 import DictionaryText from "@/components/dictionary/dictionary-text";
 
@@ -215,25 +215,7 @@ export default function RoDetailClient({ question, attempts }: Props) {
 
   const [saving, setSaving] = useState(false);
 
-  const { prevQuestionId, nextQuestionId, questionNumber } = useMemo(() => {
-    const ids = getQuestionOrder("ro");
-
-    const currentIndex = ids.findIndex((qId) => qId === question.id);
-
-    if (currentIndex === -1) {
-      return {
-        prevQuestionId: null,
-        nextQuestionId: null,
-        questionNumber: 0,
-      };
-    }
-
-    return {
-      prevQuestionId: currentIndex > 0 ? ids[currentIndex - 1] : null,
-      nextQuestionId: currentIndex < ids.length - 1 ? ids[currentIndex + 1] : null,
-      questionNumber: currentIndex + 1,
-    };
-  }, [question.id]);
+  const { prevQuestionId, nextQuestionId, questionNumber } = usePteQuestionNavigation("ro", question.id);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
