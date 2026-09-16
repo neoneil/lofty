@@ -607,6 +607,8 @@ function QuestionBlock({ question, answers, officialAnswers, isAdmin, onAnswerCh
   const useTextInputsForBlanks = shouldUseTextInputsForBlanks(question, sectionDesc, pageContent);
   const blankSelectOptions = useTextInputsForBlanks ? {} : getBlankSelectOptions(pageContent, studentOptions, inferredOptions);
   const shouldRenderSourceQuestions = hasSourceQuestions && !pageContentHasBlanks && !shouldRenderMultiSelect;
+  const shouldRenderSourceOptionsBelow = numbers[0] === 27 && numbers.at(-1) === 31;
+  const sourceOptionsBelow = shouldRenderSourceOptionsBelow ? sourceQuestions.map((sourceQuestion) => stringArrayValue(sourceQuestion, "option")) : undefined;
 
   return (
     <article id={hasSourceQuestions ? `reading-question-group-${numbers[0]}` : `reading-question-${numbers[0]}`} data-reading-question={hasSourceQuestions ? undefined : true} className="scroll-mt-24 border-b border-[var(--border)] pb-7 last:border-b-0">
@@ -615,7 +617,7 @@ function QuestionBlock({ question, answers, officialAnswers, isAdmin, onAnswerCh
       {pageContent && <ReadingAnswerHtml html={pageContent} answers={answers} optionsByNumber={blankSelectOptions} onAnswerChange={onAnswerChange} />}
       {shouldRenderMultiSelect && <MultiSelectLetterQuestion question={question} numbers={numbers} options={studentOptions} answers={answers} onAnswerChange={onAnswerChange} />}
       {shouldShowOptionsBeforeQuestions && <QuestionOptionBank options={studentOptions} />}
-      {shouldRenderSourceQuestions && <SourceQuestionList questions={sourceQuestionsWithOptions} fallbackNumbers={numbers} answers={answers} onAnswerChange={onAnswerChange} hideTextInputs={pageContentHasBlanks} />}
+      {shouldRenderSourceQuestions && <SourceQuestionList questions={sourceQuestionsWithOptions} fallbackNumbers={numbers} answers={answers} onAnswerChange={onAnswerChange} hideTextInputs={pageContentHasBlanks} renderOptionsBelow={shouldRenderSourceOptionsBelow} optionsBelowByIndex={sourceOptionsBelow} />}
       {shouldRenderOptionBank && !shouldShowOptionsBeforeQuestions && !shouldRenderMultiSelect && <QuestionOptionBank options={studentOptions} />}
       {!hasSourceQuestions && studentOptions.length > 0 && <OptionQuestion questionNumber={`${numbers[0]}`} options={studentOptions} value={answers[`${numbers[0]}`] ?? ""} onChange={onAnswerChange} />}
       {isAdmin && officialAnswer && <AdminAnswerPanel question={question} answer={officialAnswer} />}
@@ -691,7 +693,7 @@ function MultiSelectLetterQuestion({ question, numbers, options, answers, onAnsw
   );
 }
 
-function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChange, hideTextInputs = false }: { questions: Record<string, unknown>[]; fallbackNumbers: number[]; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void; hideTextInputs?: boolean }) {
+function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChange, hideTextInputs = false, renderOptionsBelow = false, optionsBelowByIndex }: { questions: Record<string, unknown>[]; fallbackNumbers: number[]; answers: Answers; onAnswerChange: (questionNumber: string, value: string) => void; hideTextInputs?: boolean; renderOptionsBelow?: boolean; optionsBelowByIndex?: string[][] }) {
   const visibleQuestions = questions.filter((question) => !hideTextInputs || stringArrayValue(question, "option").length > 0);
   if (visibleQuestions.length === 0) return null;
 
@@ -705,13 +707,16 @@ function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChang
         return (
           <div key={`${label}-${index}`} id={`reading-question-${label}`} data-reading-question className="scroll-mt-24">
             {options.length > 0 ? (
-              <div className="grid gap-2 sm:grid-cols-[2rem_minmax(0,1fr)_auto] sm:items-baseline">
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--success)] text-sm font-bold text-white">{label}</span>
-                {cleanTitle && <span className="min-w-0 text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
-                <select value={answers[label] ?? ""} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 min-w-28 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">
-                  <option value="">Select</option>
-                  {options.map((option, optionIndex) => <option key={`${label}-${optionIndex}`} value={option}>{option}</option>)}
-                </select>
+              <div>
+                <div className="grid gap-2 sm:grid-cols-[2rem_minmax(0,1fr)_auto] sm:items-baseline">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--success)] text-sm font-bold text-white">{label}</span>
+                  {cleanTitle && <span className="min-w-0 text-sm leading-7 text-[var(--text)]">{cleanTitle}</span>}
+                  <select value={answers[label] ?? ""} onChange={(event) => onAnswerChange(label, event.target.value)} className="h-9 min-w-28 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 text-sm text-[var(--text)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]">
+                    <option value="">Select</option>
+                    {options.map((option, optionIndex) => <option key={`${label}-${optionIndex}`} value={option}>{option}</option>)}
+                  </select>
+                </div>
+                {renderOptionsBelow && <ReadingQuestionOptionList options={optionsBelowByIndex?.[index] ?? options} />}
               </div>
             ) : (
               <label className="grid gap-2 sm:grid-cols-[2rem_minmax(0,1fr)_auto] sm:items-baseline">
@@ -723,6 +728,27 @@ function SourceQuestionList({ questions, fallbackNumbers, answers, onAnswerChang
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function ReadingQuestionOptionList({ options }: { options: string[] }) {
+  return (
+    <div className="mt-3 flex justify-center pl-10">
+      <div className="grid w-full max-w-xl gap-1 text-sm leading-6 text-[var(--text)]">
+        {options.map((option, index) => {
+          const text = stripHtml(option);
+          const optionParts = text.match(/^\s*([A-Z])\s+(.+)$/);
+          const letter = optionParts?.[1] ?? optionLetter(text);
+          const body = optionParts?.[2]?.trim() ?? (letter ? text.replace(new RegExp(`^\\s*${letter}\\s*`), "").trim() : text);
+          return (
+            <div key={`${letter || index}-${body}`} className="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-2">
+              <span className="font-semibold text-[var(--text)]">{letter}</span>
+              <span>{body}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

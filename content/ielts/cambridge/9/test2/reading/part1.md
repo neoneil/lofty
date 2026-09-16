@@ -220,7 +220,7 @@ section_raw_data_json: |
         {
           "type": 2,
           "theme": "Questions 13",
-          "describe": "Choose the correct letter <b>A</b>, <b>B</b>. <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
+          "describe": "Choose the correct letter <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
           "trunkList": [
             {
               "id": 7991,
@@ -491,8 +491,8 @@ questions_json: |
     {
       "id": "596860d3-bd4c-4f5d-b60f-5f1f30eda34d",
       "section_id": "1df6f899-7a82-49af-99f9-7f7022a25acc",
-      "question_number_start": 3,
-      "question_number_end": null,
+      "question_number_start": 11,
+      "question_number_end": 12,
       "question_type": "多选题",
       "prompt": "Questions 11-12",
       "instruction": "Choose <b>TWO</b> letters, <b>A-E</b>.<br/>Write the correct letters in boxes 11 and 12 on your answer sheet. <br/>",
@@ -504,25 +504,28 @@ questions_json: |
             "id": 7990,
             "fid": 1704,
             "answer": [
-              "A",
+              "A"
+            ],
+            "option": [],
+            "serial": "11",
+            "content": "",
+            "answerExplain": "11. 定位词：factors, classroom noise, two <br/>对应原文：B段第二句Modern teaching practices, the organisation of desks in the classroom, poor classroom acoustics, and mechanical means of ventilation such as airconditioning units all contribute to the number of children unable to comprehend the teacher’s voice. <br/>选项A翻译：目前的教学方法<br/>选项B翻译：走廊回音<br/>选项C翻译：制冷系统<br/>选项D翻译：大型班级<br/>选项E翻译：大声说话的老师<br/>选项F翻译：玩乐游戏<br/>解析：A选项中的 current teaching methods 对应原文中的 modern teaching practices。11题答案为A。"
+          },
+          {
+            "id": 7992,
+            "fid": 1704,
+            "answer": [
               "C"
             ],
-            "option": [
-              "A current teaching methods<br/>",
-              "B echoing corridors<br/>",
-              "C cooling systems<br/>",
-              "D large class sizes<br/>",
-              "E loud-voiced teachers<br/>",
-              "F playground games<br/>"
-            ],
-            "serial": "11,12",
-            "content": "The list below includes factors contributing to classroom noise. Which TWO are mentioned by the writer of the passage?",
+            "option": [],
+            "serial": "12",
+            "content": "",
             "answerExplain": "11. 定位词：factors, classroom noise, two <br/>对应原文：B段第二句Modern teaching practices, the organisation of desks in the classroom, poor classroom acoustics, and mechanical means of ventilation such as airconditioning units all contribute to the number of children unable to comprehend the teacher’s voice. <br/>选项A翻译：目前的教学方法<br/>选项B翻译：走廊回音<br/>选项C翻译：制冷系统<br/>选项D翻译：大型班级<br/>选项E翻译：大声说话的老师<br/>选项F翻译：玩乐游戏<br/>解析：A选项中的 current teaching methods 对应原文中的 modern teaching practices；C选项中的 cooling systems 对应原文中的 airconditioning units。11题答案为A；12题答案为C。<br/>12. 定位词：factors, classroom noise, two <br/>对应原文：B段第二句Modern teaching practices, the organisation of desks in the classroom, poor classroom acoustics, and mechanical means of ventilation such as airconditioning units all contribute to the number of children unable to comprehend the teacher’s voice. <br/>选项A翻译：目前的教学方法<br/>选项B翻译：走廊回音<br/>选项C翻译：制冷系统<br/>选项D翻译：大型班级<br/>选项E翻译：大声说话的老师<br/>选项F翻译：玩乐游戏<br/>解析：A选项中的 current teaching methods 对应原文中的 modern teaching practices；C选项中的 cooling systems 对应原文中的 airconditioning units。11题答案为A；12题答案为C。"
           }
         ],
         "page_title": "Questions 11-12",
         "part_title": "C9-T2-S1",
-        "page_content": null,
+        "page_content": "The lists below include factors contributing to classroom noise.<br/>Which TWO are mentioned by the writer of the passage.",
         "section_title": "多选题",
         "source_category_section_id": 712
       },
@@ -567,10 +570,10 @@ questions_json: |
       "question_number_end": 13,
       "question_type": "单选题",
       "prompt": "Questions 13",
-      "instruction": "Choose the correct letter <b>A</b>, <b>B</b>. <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
+      "instruction": "Choose the correct letter <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
       "content": {
         "image_url": null,
-        "page_desc": "Choose the correct letter <b>A</b>, <b>B</b>. <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
+        "page_desc": "Choose the correct letter <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
         "questions": [
           {
             "id": 7991,
@@ -970,7 +973,7 @@ answers_json: |
       "raw_data": {
         "type": 2,
         "theme": "Questions 13",
-        "describe": "Choose the correct letter <b>A</b>, <b>B</b>. <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
+        "describe": "Choose the correct letter <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.<br/>Write the correct letter in box 13 on your answer sheet. ",
         "trunkList": [
           {
             "id": 7991,
