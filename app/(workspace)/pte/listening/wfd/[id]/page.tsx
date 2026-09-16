@@ -103,6 +103,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
             {question.audio_url ? (
               <div className="mx-auto mt-8 w-full max-w-[50%] max-lg:max-w-[72%] max-sm:max-w-full">
                 <PteVoiceAudioPlayer
+                  key={question.id}
                   questionType="wfd"
                   questionId={question.id}
                   fallbackUrl={getPublicAudioUrl(question.audio_url)}
@@ -114,7 +115,7 @@ export default async function WfdQuestionDetailPage({ params }: PageProps) {
                     audioUrl: wfdMeta?.audio_url,
                   })}
                   autoPlay
-                  countdown={10}
+                  countdown={3}
                 />
               </div>
             ) : (

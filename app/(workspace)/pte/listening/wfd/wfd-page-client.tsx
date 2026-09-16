@@ -38,6 +38,7 @@ type Question = {
 
 type Props = {
   questions: Question[];
+  questionOrder: string[];
   questionInfo: ComponentProps<typeof QuestionInfoCard>["questionInfo"];
   filters: PteQuestionBankFilters;
   pagination: {
@@ -57,6 +58,7 @@ const FILTER_DEFAULTS: Record<string, string> = {
 
 export default function WfdPageClient({
   questions,
+  questionOrder,
   questionInfo,
   filters,
   pagination,
@@ -126,6 +128,7 @@ export default function WfdPageClient({
       </div>
       <WfdList
         initialQuestions={questions}
+        questionOrder={questionOrder}
         pagination={pagination}
         onPageChange={goToPage}
       />

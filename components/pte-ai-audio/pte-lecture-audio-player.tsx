@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
-import { getPteLectureAudioPublicUrl, getPteLectureVttPublicUrl, PTE_LECTURE_AUDIO_VOICES, type PteAiAudioVoice, type PteLectureAudioQuestionType } from "@/lib/pte-ai-audio/voices";
+import { getOrCreatePteAudioVoice, getPteLectureAudioPublicUrl, getPteLectureVttPublicUrl, PTE_LECTURE_AUDIO_VOICES, savePteAudioVoice, type PteAiAudioVoice, type PteLectureAudioQuestionType } from "@/lib/pte-ai-audio/voices";
 import { formatTranscriptTime, parseVtt, type TranscriptCue } from "@/components/learning-video/vtt";
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 };
 
 export function PteLectureAudioPlayer({ questionType, questionId, fallbackUrl, lectureAudioReady, countdown = 0, autoPlay = true, onEnded }: Props) {
-  const [activeVoice, setActiveVoice] = useState<PteAiAudioVoice>("marin");
+  const [activeVoice, setActiveVoice] = useState<PteAiAudioVoice>(PTE_LECTURE_AUDIO_VOICES[0].id);
   const [currentTime, setCurrentTime] = useState(0);
   const [seekTo, setSeekTo] = useState<number | null>(null);
   const [transcriptOpen, setTranscriptOpen] = useState(false);
@@ -29,6 +29,13 @@ export function PteLectureAudioPlayer({ questionType, questionId, fallbackUrl, l
   const activeUrl = lectureAudioReady ? getPteLectureAudioPublicUrl(questionType, questionId, activeVoice) : fallbackUrl;
   const activeLabel = useMemo(() => PTE_LECTURE_AUDIO_VOICES.find((voice) => voice.id === activeVoice)?.label ?? activeVoice, [activeVoice]);
   const activeCue = useMemo(() => cues.find((cue) => currentTime >= cue.start && currentTime < cue.end) ?? null, [cues, currentTime]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setActiveVoice(getOrCreatePteAudioVoice(questionType, questionId, PTE_LECTURE_AUDIO_VOICES));
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [questionId, questionType]);
 
   useEffect(() => {
     let cancelled = false;
@@ -75,7 +82,7 @@ export function PteLectureAudioPlayer({ questionType, questionId, fallbackUrl, l
       <div className="flex min-h-80 min-w-0 flex-col items-center justify-center gap-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-sm)]">
         <div className="flex flex-wrap items-center justify-center gap-2">
           {PTE_LECTURE_AUDIO_VOICES.map((voice) => (
-            <Button key={voice.id} type="button" size="sm" variant={activeVoice === voice.id ? "primary" : "secondary"} onClick={() => { setActiveVoice(voice.id); setCurrentTime(0); }}>{voice.label}</Button>
+            <Button key={voice.id} type="button" size="sm" variant={activeVoice === voice.id ? "primary" : "secondary"} onClick={() => { setActiveVoice(voice.id); savePteAudioVoice(questionType, questionId, voice.id); setCurrentTime(0); }}>{voice.label}</Button>
           ))}
         </div>
         <div className="flex justify-center">

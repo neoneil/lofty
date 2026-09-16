@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
+import { PteQuestionNavigationControls } from "@/components/pte/pte-question-navigation-controls";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 
@@ -249,19 +249,13 @@ export default function HiwDetailClient({ question }: { question: Question }) {
         </section>
       ) : null}
 
-      <div className="mt-8 flex items-center justify-between">
-        {questionNav.prevQuestionId ? (
-          <Link href={`/pte/listening/hiw/${questionNav.prevQuestionId}`} className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)]/30 hover:text-[var(--primary)]">← 上一题</Link>
-        ) : (
-          <span />
-        )}
-        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-faint)]">Question {questionNav.questionNumber || "-"}</div>
-        {questionNav.nextQuestionId ? (
-          <Link href={`/pte/listening/hiw/${questionNav.nextQuestionId}`} className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--primary)]/30 hover:text-[var(--primary)]">下一题 →</Link>
-        ) : (
-          <span />
-        )}
-      </div>
+      <PteQuestionNavigationControls
+        key={question.id}
+        navigation={questionNav}
+        routeBase="/pte/listening/hiw"
+        audioProfile={{ kind: "source", questionType: "hiw" }}
+        centerLabel={`Question ${questionNav.questionNumber || "-"}`}
+      />
     </div>
   );
 }

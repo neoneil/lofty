@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";
-import { saveQuestionOrder } from "@/lib/question-order";
+import { saveCompleteQuestionOrder } from "@/lib/question-order";
 import { Pagination } from "@/components/ui-v2/pagination";
 import { Badge } from "@/components/ui-v2/badge";
 import {
@@ -51,10 +51,12 @@ function getWordCount(text: string) {
 
 export default function WfdList({
   initialQuestions,
+  questionOrder,
   pagination,
   onPageChange,
 }: {
   initialQuestions: Question[];
+  questionOrder: string[];
   pagination: {
     currentPage: number;
     pageSize: number;
@@ -63,7 +65,6 @@ export default function WfdList({
   };
   onPageChange: (page: number) => void;
 }) {
-  const questionIds = initialQuestions.map((q) => q.id);
   const [viewMode, setViewMode] = useState<PtePracticeViewMode>("grid");
   const safeCurrentPage = Math.min(pagination.currentPage, pagination.totalPages);
 
@@ -117,7 +118,7 @@ export default function WfdList({
               key={item.id}
               href={`/pte/listening/wfd/${item.id}`}
               onClick={() => {
-                saveQuestionOrder("wfd", questionIds);
+                saveCompleteQuestionOrder("wfd", questionOrder);
               }}
               className="block"
             >

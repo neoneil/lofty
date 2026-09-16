@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { Button } from "@/components/ui-v2/button";
 import { Badge } from "@/components/ui-v2/badge";
-import { getPteAiAudioPublicUrl, PTE_AI_AUDIO_VOICES, type PteAiAudioQuestionType, type PteAiAudioVoice } from "@/lib/pte-ai-audio/voices";
+import { getOrCreatePteAudioVoice, getPteAiAudioPublicUrl, PTE_AI_AUDIO_VOICES, savePteAudioVoice, type PteAiAudioQuestionType, type PteAiAudioVoice } from "@/lib/pte-ai-audio/voices";
 
 type VoiceChoice = "random" | PteAiAudioVoice;
 
@@ -23,17 +23,9 @@ function pickRandomVoice() {
   return PTE_AI_AUDIO_VOICES[Math.floor(Math.random() * PTE_AI_AUDIO_VOICES.length)].id;
 }
 
-function pickStableVoice(seed: string) {
-  let hash = 0;
-  for (let index = 0; index < seed.length; index += 1) {
-    hash = (hash * 31 + seed.charCodeAt(index)) >>> 0;
-  }
-  return PTE_AI_AUDIO_VOICES[hash % PTE_AI_AUDIO_VOICES.length].id;
-}
-
 export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiAudioReady, countdown = 0, autoPlay = true, onEnded }: Props) {
   const [choice, setChoice] = useState<VoiceChoice>("random");
-  const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(() => pickStableVoice(`${questionType}:${questionId}`));
+  const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(PTE_AI_AUDIO_VOICES[0].id);
   const [failedAiAudioKeys, setFailedAiAudioKeys] = useState<Set<string>>(() => new Set());
 
   const activeVoice = choice === "random" ? randomVoice : choice;
@@ -42,6 +34,13 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
   const activeUrl = shouldUseAiAudio ? getPteAiAudioPublicUrl(questionType, questionId, activeVoice) : fallbackUrl;
 
   const activeLabel = useMemo(() => PTE_AI_AUDIO_VOICES.find((voice) => voice.id === activeVoice)?.label ?? activeVoice, [activeVoice]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setRandomVoice(getOrCreatePteAudioVoice(questionType, questionId, PTE_AI_AUDIO_VOICES));
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [questionId, questionType]);
 
   function handleAudioFailure() {
     if (!shouldUseAiAudio) return;
@@ -55,7 +54,7 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button type="button" size="sm" variant={choice === "random" ? "primary" : "secondary"} onClick={() => { setChoice("random"); setRandomVoice(pickRandomVoice()); }}>随机</Button>
+        <Button type="button" size="sm" variant={choice === "random" ? "primary" : "secondary"} onClick={() => { const voice = pickRandomVoice(); setChoice("random"); setRandomVoice(voice); savePteAudioVoice(questionType, questionId, voice); }}>随机</Button>
         {PTE_AI_AUDIO_VOICES.map((voice) => (
           <Button key={voice.id} type="button" size="sm" variant={choice === voice.id ? "primary" : "secondary"} onClick={() => setChoice(voice.id)}>{voice.label}</Button>
         ))}

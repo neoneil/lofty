@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
 
-import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
+import { ChevronLeft, RotateCcw } from "lucide-react";
 
 import {
   DndContext,
@@ -27,6 +27,7 @@ import DictionaryText from "@/components/dictionary/dictionary-text";
 import Tag from "@/components/ui/tag";
 
 import { Button } from "@/components/ui-v2/button";
+import { PteNextQuestionButton } from "@/components/pte/pte-next-question-button";
 
 type Blank = {
   answer: string;
@@ -341,12 +342,7 @@ function FibrDetailClient({ question, attempts }: Props) {
           ) : null}
 
           {nextQuestionId ? (
-            <Link href={`/pte/reading/fibr/${nextQuestionId}`}>
-              <Button variant="primary" className="gap-1.5">
-                Next
-                <ChevronRight size={16} />
-              </Button>
-            </Link>
+            <PteNextQuestionButton key={question.id} href={`/pte/reading/fibr/${nextQuestionId}`} />
           ) : null}
         </div>
       </div>

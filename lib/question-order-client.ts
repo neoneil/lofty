@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { getQuestionOrder, getQuestionOrderSearch } from '@/lib/question-order';
+import { ensureCompleteQuestionOrder, getQuestionOrder, getQuestionOrderSearch } from '@/lib/question-order';
 
-type QuestionNavigation = {
+export type QuestionNavigation = {
   questionNumber: number;
   prevQuestionId: string | null;
   nextQuestionId: string | null;
@@ -22,13 +22,6 @@ function safeParseIds(value: string | null) {
 
 function getCacheKey(questionType: string, search: string) {
   return `${questionType}-full-question-order:${search || 'default'}`;
-}
-
-function buildRequestUrl(questionType: string, search: string) {
-  const params = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
-  params.delete('page');
-  params.set('type', questionType);
-  return `/api/pte/question-order?${params.toString()}`;
 }
 
 function readStoredOrder(questionType: string, id: string) {
@@ -56,16 +49,17 @@ export function usePteQuestionNavigation(questionType: string, questionId: strin
       if (!cancelled) setIds(initialOrder);
     }, 0);
 
-    fetch(buildRequestUrl(questionType, search))
-      .then((response) => response.ok ? response.json() : null)
-      .then((json) => {
-        if (cancelled || !json?.ok || !Array.isArray(json.ids)) return;
-        const nextIds = json.ids.map(String);
-        sessionStorage.setItem(cacheKey, JSON.stringify(nextIds));
+    const cachedOrder = safeParseIds(sessionStorage.getItem(cacheKey));
+    if (cachedOrder.includes(id)) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    ensureCompleteQuestionOrder(questionType, search)
+      .then((nextIds) => {
+        if (cancelled || nextIds.length === 0) return;
         setIds(nextIds.includes(id) ? nextIds : initialOrder);
-      })
-      .catch((error) => {
-        console.error('PTE question order load failed:', error);
       });
 
     return () => {

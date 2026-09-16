@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
+import { PteQuestionNavigationControls } from "@/components/pte/pte-question-navigation-controls";
 import { useRouter } from "next/navigation";
 import AudioPlayer from "@/components/site/AudioPlayer";
 import DictionaryText from "@/components/dictionary/dictionary-text";
@@ -293,27 +293,7 @@ export default function SgdDetailClient({ question }: Props) {
         </Card>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
-        {questionNav.prevQuestionId ? (
-          <Link
-            href={`/pte/speaking/sgd/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
-          >
-            <span>上一题</span>
-          </Link>
-        ) : (
-          <div />
-        )}
-
-        {questionNav.nextQuestionId ? (
-          <Link
-            href={`/pte/speaking/sgd/${questionNav.nextQuestionId}`}
-            className="inline-flex items-center gap-2 rounded bg-[var(--theme)] px-3 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            <span>下一题</span>
-          </Link>
-        ) : null}
-      </div>
+      <PteQuestionNavigationControls key={question.id} navigation={questionNav} routeBase="/pte/speaking/sgd" audioProfile={{ kind: "source", questionType: "sgd" }} />
 
       <style jsx global>{`
         .sgd-rich-text p {

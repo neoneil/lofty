@@ -18,15 +18,13 @@
  *
  * 再删除本工具。
  */
-export function saveQuestionOrder(
-    questionType: string,
-    ids: string[]
-) {
+const completeOrderRequests = new Map<string, Promise<string[]>>();
 
-    if (typeof window === "undefined") {
-        return;
-    }
+function fullOrderCacheKey(questionType: string, search: string) {
+    return `${questionType}-full-question-order:${search || "default"}`;
+}
 
+function saveQuestionOrderContext(questionType: string, ids: string[]) {
     sessionStorage.setItem(
         `${questionType}-question-order`,
         JSON.stringify(ids)
@@ -39,6 +37,80 @@ export function saveQuestionOrder(
     sessionStorage.setItem(
         `${questionType}-question-order-search`,
         search ? `?${search}` : ""
+    );
+
+    return search ? `?${search}` : "";
+}
+
+export function ensureCompleteQuestionOrder(questionType: string, search: string) {
+    if (typeof window === "undefined") {
+        return Promise.resolve([] as string[]);
+    }
+
+    const cacheKey = fullOrderCacheKey(questionType, search);
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+        try {
+            const ids = JSON.parse(cached);
+            if (Array.isArray(ids)) return Promise.resolve(ids.map(String));
+        } catch {
+            sessionStorage.removeItem(cacheKey);
+        }
+    }
+
+    const requestKey = `${questionType}:${search || "default"}`;
+    const existing = completeOrderRequests.get(requestKey);
+    if (existing) return existing;
+
+    const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
+    params.delete("page");
+    params.set("type", questionType);
+
+    const request = fetch(`/api/pte/question-order?${params.toString()}`)
+        .then((response) => response.ok ? response.json() : null)
+        .then((json) => {
+            if (!json?.ok || !Array.isArray(json.ids)) return [] as string[];
+            const ids = json.ids.map(String);
+            sessionStorage.setItem(cacheKey, JSON.stringify(ids));
+            return ids;
+        })
+        .catch((error) => {
+            console.error("PTE question order load failed:", error);
+            return [] as string[];
+        })
+        .finally(() => {
+            completeOrderRequests.delete(requestKey);
+        });
+
+    completeOrderRequests.set(requestKey, request);
+    return request;
+}
+
+export function saveQuestionOrder(
+    questionType: string,
+    ids: string[]
+) {
+
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const search = saveQuestionOrderContext(questionType, ids);
+    void ensureCompleteQuestionOrder(questionType, search);
+}
+
+export function saveCompleteQuestionOrder(
+    questionType: string,
+    ids: string[]
+) {
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const search = saveQuestionOrderContext(questionType, ids);
+    sessionStorage.setItem(
+        fullOrderCacheKey(questionType, search),
+        JSON.stringify(ids)
     );
 }
 

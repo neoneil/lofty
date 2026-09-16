@@ -4,8 +4,10 @@ import { PTE_QUESTION_INFO_SELECT, PTE_WFD_BASE_SELECT } from "@/lib/pte/select-
 import {
   PTE_QUESTION_BANK_PAGE_SIZE,
   loadPaginatedPteQuestionBank,
+  loadPteQuestionOrder,
 } from "@/lib/pte/question-bank-server";
 import { parsePteQuestionBankFilters } from "@/lib/pte/question-bank-pagination";
+import { PTE_WFD_BANK_CONFIG } from "@/lib/pte/question-bank-presets";
 import { createAdminClient } from "@/lib/supabase/admin";
 import WfdPageClient from "./wfd-page-client";
 type WfdQuestionWithStatus = {
@@ -45,21 +47,24 @@ export default async function PteListeningPage({ searchParams }: PageProps) {
   const admin = createAdminClient();
   const filters = parsePteQuestionBankFilters(await searchParams);
 
-  const [questionBank, { data: questionInfo }] = await Promise.all([
+  const [questionBank, questionOrder, { data: questionInfo }] = await Promise.all([
     loadPaginatedPteQuestionBank({
       supabase,
       admin,
       userId: user.id,
       filters,
       config: {
-        table: "wfd",
-        questionSource: "wfd",
-        questionType: "WFD",
+        ...PTE_WFD_BANK_CONFIG,
         select: PTE_WFD_BASE_SELECT,
-        searchColumn: "question_text",
-        supportsUsageCount: true,
         normalizeQuestion: (q) => q as WfdQuestionWithStatus,
       },
+    }),
+    loadPteQuestionOrder({
+      supabase,
+      admin,
+      userId: user.id,
+      filters,
+      config: PTE_WFD_BANK_CONFIG,
     }),
     supabase
       .from("all_question_info")
@@ -78,6 +83,7 @@ export default async function PteListeningPage({ searchParams }: PageProps) {
           <div className="mt-1">
             <WfdPageClient
               questions={questionBank.questions as WfdQuestionWithStatus[]}
+              questionOrder={questionOrder}
               questionInfo={questionInfo}
               filters={filters}
               pagination={{

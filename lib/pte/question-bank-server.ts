@@ -77,10 +77,14 @@ function applyQuestionFilters<T extends QuestionQuery<T>>(
 
 function orderQuestionQuery<T extends QuestionQuery<T>>(query: T, filters: PteQuestionBankFilters) {
   if (filters.questionStatus === "newest") {
-    return query.order("created_at", { ascending: false });
+    return query
+      .order("created_at", { ascending: false })
+      .order("id", { ascending: false });
   }
 
-  return query.order("created_at", { ascending: false });
+  return query
+    .order("created_at", { ascending: false })
+    .order("id", { ascending: false });
 }
 
 function needsStatusDrivenPagination(filters: PteQuestionBankFilters) {

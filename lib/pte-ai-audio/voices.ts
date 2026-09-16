@@ -16,6 +16,33 @@ export type PteLectureAudioQuestionType = "rl" | "sst";
 export const PTE_AI_AUDIO_DEFAULT_VOICE = PTE_AI_AUDIO_VOICES[0].id;
 export const PTE_LECTURE_AUDIO_VOICES = PTE_AI_AUDIO_VOICES.filter((voice) => voice.id === "marin" || voice.id === "cedar");
 
+export function getOrCreatePteAudioVoice(
+  questionType: PteAiAudioQuestionType | PteLectureAudioQuestionType,
+  questionId: string,
+  voices: readonly { id: PteAiAudioVoice }[],
+) {
+  const key = `pte-audio-voice:${questionType}:${questionId}`;
+  if (typeof window !== "undefined") {
+    const stored = sessionStorage.getItem(key);
+    const matched = voices.find((voice) => voice.id === stored);
+    if (matched) return matched.id;
+  }
+
+  const selected = voices[Math.floor(Math.random() * voices.length)]?.id ?? voices[0].id;
+  if (typeof window !== "undefined") sessionStorage.setItem(key, selected);
+  return selected;
+}
+
+export function savePteAudioVoice(
+  questionType: PteAiAudioQuestionType | PteLectureAudioQuestionType,
+  questionId: string,
+  voice: PteAiAudioVoice,
+) {
+  if (typeof window !== "undefined") {
+    sessionStorage.setItem(`pte-audio-voice:${questionType}:${questionId}`, voice);
+  }
+}
+
 export function getPteAiAudioRelativePath(questionType: PteAiAudioQuestionType, questionId: string, voice: PteAiAudioVoice) {
   const folder = questionType === "rs" ? "speaking/RS" : "listening/WFD";
   return `PTE/${folder}/${questionId}/${voice}.mp3`;

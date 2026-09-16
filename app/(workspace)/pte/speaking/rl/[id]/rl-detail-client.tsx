@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
@@ -9,6 +8,7 @@ import AudioPlayer from "@/components/site/AudioPlayer";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { PteLectureAudioPlayer } from "@/components/pte-ai-audio/pte-lecture-audio-player";
+import { PteQuestionNavigationControls } from "@/components/pte/pte-question-navigation-controls";
 import RecordingPanel from "@/components/site/RecordingPanel";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
@@ -139,7 +139,7 @@ export default function RlDetailClient({ question }: Props) {
 
       {audioUrl ? (
         <div className="mx-auto w-full max-w-5xl max-sm:max-w-full">
-          <PteLectureAudioPlayer questionType="rl" questionId={question.id} fallbackUrl={audioUrl} lectureAudioReady={lectureAudioReady} autoPlay countdown={10} onEnded={() => setAudioFinished(true)} />
+          <PteLectureAudioPlayer key={question.id} questionType="rl" questionId={question.id} fallbackUrl={audioUrl} lectureAudioReady={lectureAudioReady} autoPlay countdown={10} onEnded={() => setAudioFinished(true)} />
         </div>
       ) : (
         <div className="mx-auto w-full max-w-[50%] rounded border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)] max-lg:max-w-[72%] max-sm:max-w-full">
@@ -253,27 +253,12 @@ export default function RlDetailClient({ question }: Props) {
         </Card>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
-        {questionNav.prevQuestionId ? (
-          <Link
-            href={`/pte/speaking/rl/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
-          >
-            <span>上一题</span>
-          </Link>
-        ) : (
-          <div />
-        )}
-
-        {questionNav.nextQuestionId ? (
-          <Link
-            href={`/pte/speaking/rl/${questionNav.nextQuestionId}`}
-            className="inline-flex items-center gap-2 rounded bg-[var(--theme)] px-3 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            <span>下一题</span>
-          </Link>
-        ) : null}
-      </div>
+      <PteQuestionNavigationControls
+        key={question.id}
+        navigation={questionNav}
+        routeBase="/pte/speaking/rl"
+        audioProfile={{ kind: "lecture", questionType: "rl" }}
+      />
     </div>
   );
 }

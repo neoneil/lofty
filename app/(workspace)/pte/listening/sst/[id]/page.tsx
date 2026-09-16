@@ -104,7 +104,7 @@ export default async function SstQuestionDetailPage({ params }: PageProps) {
 
             {question.audio_url ? (
               <div className="mx-auto mt-8 w-full max-w-5xl max-sm:max-w-full">
-                <PteLectureAudioPlayer questionType="sst" questionId={question.id} fallbackUrl={normalizePublicStorageUrl(question.audio_url, "pte-audio")} lectureAudioReady={question.audio_url === `PTE/listening/SST/${question.id}/marin.mp3`} autoPlay countdown={10} />
+                <PteLectureAudioPlayer key={question.id} questionType="sst" questionId={question.id} fallbackUrl={normalizePublicStorageUrl(question.audio_url, "pte-audio")} lectureAudioReady={question.audio_url === `PTE/listening/SST/${question.id}/marin.mp3`} autoPlay countdown={10} />
               </div>
             ) : (
               <div className="mt-8 round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">

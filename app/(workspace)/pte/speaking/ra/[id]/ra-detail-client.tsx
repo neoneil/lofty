@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -8,6 +7,7 @@ import {
   useState,
 } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
+import { PteQuestionNavigationControls } from "@/components/pte/pte-question-navigation-controls";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
@@ -789,45 +789,7 @@ export default function RaDetailClient({ question }: Props) {
         </Card>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
-        {questionNav.prevQuestionId ? (
-          <Link
-            href={`/pte/speaking/ra/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
-          >
-            <div className="h-5 w-5 text-[var(--primary)]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H20a1 1 0 1 1 0 2h-9.59l4.3 4.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z" />
-              </svg>
-            </div>
-            <span>上一题</span>
-          </Link>
-        ) : (
-          <div />
-        )}
-
-        {questionNav.nextQuestionId ? (
-          <Link
-            href={`/pte/speaking/ra/${questionNav.nextQuestionId}`}
-            className="inline-flex items-center gap-2 rounded bg-[var(--theme)] px-3 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            <span>下一题</span>
-            <div className="h-5 w-5 text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M9.3 18.7a1 1 0 0 1 0-1.4L13.59 13H4a1 1 0 1 1 0-2h9.59L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0z" />
-              </svg>
-            </div>
-          </Link>
-        ) : null}
-      </div>
+      <PteQuestionNavigationControls key={question.id} navigation={questionNav} routeBase="/pte/speaking/ra" />
     </div>
   );
 }

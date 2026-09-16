@@ -12,7 +12,6 @@ import { usePteQuestionNavigation } from "@/lib/question-order-client";
 
 import {
   ChevronLeft,
-  ChevronRight,
   RotateCcw,
   ChevronDown,
 } from "lucide-react";
@@ -23,6 +22,7 @@ import DictionaryText from "@/components/dictionary/dictionary-text";
 import Tag from "@/components/ui/tag";
 
 import { Button } from "@/components/ui-v2/button";
+import { PteNextQuestionButton } from "@/components/pte/pte-next-question-button";
 
 type Blank = {
   answer: string;
@@ -325,17 +325,7 @@ function FibrwDetailClient({
           ) : null}
 
           {nextQuestionId ? (
-            <Link
-              href={`/pte/reading/fibrw/${nextQuestionId}`}
-            >
-              <Button
-                variant="primary"
-                className="gap-1.5"
-              >
-                Next
-                <ChevronRight size={16} />
-              </Button>
-            </Link>
+            <PteNextQuestionButton key={question.id} href={`/pte/reading/fibrw/${nextQuestionId}`} />
           ) : null}
 
         </div>

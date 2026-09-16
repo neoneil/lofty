@@ -24,7 +24,7 @@ import {
 
 import { CSS } from "@dnd-kit/utilities";
 
-import { ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
+import { ChevronLeft, GripVertical } from "lucide-react";
 
 
 import DictionaryText from "@/components/dictionary/dictionary-text";
@@ -32,6 +32,7 @@ import DictionaryText from "@/components/dictionary/dictionary-text";
 import Tag from "@/components/ui/tag";
 
 import { Button } from "@/components/ui-v2/button";
+import { PteNextQuestionButton } from "@/components/pte/pte-next-question-button";
 
 type Question = {
   id: string;
@@ -324,12 +325,7 @@ export default function RoDetailClient({ question, attempts }: Props) {
           ) : null}
 
           {nextQuestionId ? (
-            <Link href={`/pte/reading/ro/${nextQuestionId}`}>
-              <Button variant="primary" className="gap-1.5">
-                Next
-                <ChevronRight size={16} />
-              </Button>
-            </Link>
+            <PteNextQuestionButton key={question.id} href={`/pte/reading/ro/${nextQuestionId}`} />
           ) : null}
         </div>
       </div>

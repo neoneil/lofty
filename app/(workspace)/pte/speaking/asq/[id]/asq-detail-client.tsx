@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePteQuestionNavigation } from "@/lib/question-order-client";
+import { PteQuestionNavigationControls } from "@/components/pte/pte-question-navigation-controls";
 import { useRouter } from "next/navigation";
 import DictionaryText from "@/components/dictionary/dictionary-text";
 import AudioPlayer from "@/components/site/AudioPlayer";
@@ -271,27 +271,7 @@ export default function AsqDetailClient({ question }: Props) {
         </Card>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
-        {questionNav.prevQuestionId ? (
-          <Link
-            href={`/pte/speaking/asq/${questionNav.prevQuestionId}`}
-            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-sm font-semibold text-[var(--text-soft)] transition hover:border-[var(--theme)]/30 hover:text-[var(--theme)]"
-          >
-            <span>上一题</span>
-          </Link>
-        ) : (
-          <div />
-        )}
-
-        {questionNav.nextQuestionId ? (
-          <Link
-            href={`/pte/speaking/asq/${questionNav.nextQuestionId}`}
-            className="inline-flex items-center gap-2 rounded bg-[var(--theme)] px-3 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            <span>下一题</span>
-          </Link>
-        ) : null}
-      </div>
+      <PteQuestionNavigationControls key={question.id} navigation={questionNav} routeBase="/pte/speaking/asq" audioProfile={{ kind: "source", questionType: "asq" }} />
     </div>
   );
 }
