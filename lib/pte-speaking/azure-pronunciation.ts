@@ -3,6 +3,7 @@ import type {
   AzurePronunciationSummary,
   AzurePronunciationWord,
 } from "./types";
+import { calibrateAzureToPte } from "./speaking-score-calibration";
 
 type AzurePronunciationAssessment = {
   AccuracyScore?: number;
@@ -78,10 +79,6 @@ function toNullableNumber(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
-function toPteScore(score: number | null) {
-  return score === null ? null : Math.round(Math.max(0, Math.min(100, score)) * 0.9);
-}
-
 function getContentType(file: File) {
   if (file.type.includes("ogg")) return "audio/ogg; codecs=opus";
   if (file.type.includes("wav")) return "audio/wav; codecs=audio/pcm; samplerate=16000";
@@ -125,7 +122,7 @@ export function summarizeAzurePronunciation(
   return {
     recognizedText: best?.Display ?? result.DisplayText ?? "",
     pronunciationScore,
-    pronunciationScorePte: toPteScore(pronunciationScore),
+    pronunciationScorePte: pronunciationScore === null ? null : calibrateAzureToPte(pronunciationScore),
     accuracyScore: toNullableNumber(
       assessment?.AccuracyScore ?? best?.AccuracyScore,
     ),

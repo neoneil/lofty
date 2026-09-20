@@ -2,13 +2,16 @@ import { openai } from "./openai-client";
 import { parseSpeakingResponse } from "./parse-speaking-response";
 import { buildRAScoringPrompt } from "./prompts";
 import type { SpeakingScoreResult } from "./types";
+import type { ObjectiveSpeakingAssessment } from "./speaking-score-calibration";
 
 export async function scoreRA({
   questionText,
   transcript,
+  assessment,
 }: {
   questionText: string;
   transcript: string;
+  assessment: ObjectiveSpeakingAssessment;
 }): Promise<SpeakingScoreResult> {
   const response = await openai.chat.completions.create({
     model: "gpt-4.1",
@@ -18,6 +21,7 @@ export async function scoreRA({
         content: await buildRAScoringPrompt({
           questionText,
           transcript,
+          assessment,
         }),
       },
     ],

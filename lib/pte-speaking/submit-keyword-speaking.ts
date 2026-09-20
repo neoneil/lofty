@@ -5,6 +5,7 @@ import { validateAiAudioDuration } from "@/lib/api/request-limits";
 import { requireApiUser } from "@/lib/auth/require-api-auth";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreKeywordContent } from "@/lib/pte-speaking/score-keyword-content";
+import { calibrateAzureToPte } from "@/lib/pte-speaking/speaking-score-calibration";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
 import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
 
@@ -18,10 +19,6 @@ type KeywordSpeakingConfig = {
 };
 
 const AI_MODEL = "azure-speech-pronunciation";
-
-function toPteScore(value: number | null) {
-  return value === null ? 0 : Math.round(Math.max(0, Math.min(100, value)) * 0.9);
-}
 
 function buildFeedback({ contentScore, fluencyScore, pronunciationScore, matchedCount, targetMatches, contentFocus }: { contentScore: number; fluencyScore: number; pronunciationScore: number; matchedCount: number; targetMatches: number; contentFocus: string }) {
   const suggestions: string[] = [];
@@ -74,8 +71,10 @@ export async function submitKeywordSpeaking(req: Request, config: KeywordSpeakin
     const transcript = azurePronunciation.summary.recognizedText.trim();
     const content = scoreKeywordContent({ transcript, rawKeywords: question.ai_keywords });
     const pronunciationScore = azurePronunciation.summary.pronunciationScorePte ?? 0;
-    const fluencyScore = toPteScore(azurePronunciation.summary.fluencyScore);
-    const overallScore = Math.round((content.score + fluencyScore + pronunciationScore) / 3);
+    const fluencyScore = calibrateAzureToPte(azurePronunciation.summary.fluencyScore);
+    let overallScore = Math.round((content.score + fluencyScore + pronunciationScore) / 3);
+    if (content.score < 45) overallScore = Math.min(overallScore, content.score + 15);
+    else if (content.score < 65) overallScore = Math.min(overallScore, content.score + 12);
     const feedback = buildFeedback({ contentScore: content.score, fluencyScore, pronunciationScore, matchedCount: content.matchedKeywords.length, targetMatches: content.targetMatches, contentFocus: config.contentFocus });
     const aiResult = { overallScore, contentScore: content.score, fluencyScore, pronunciationScore, transcript, feedback: feedback.feedback, suggestions: feedback.suggestions, keywordAssessment: content, azure: azurePronunciation.summary };
     const feedbackJson = { feedback: aiResult.feedback, suggestions: aiResult.suggestions, raw: aiResult, azure: { summary: azurePronunciation.summary, raw: azurePronunciation.raw } };

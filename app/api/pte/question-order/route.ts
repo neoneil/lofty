@@ -20,6 +20,8 @@ import {
   PTE_WE_BANK_CONFIG,
   PTE_WFD_BANK_CONFIG,
 } from '@/lib/pte/question-bank-presets';
+import { RA_PRONUNCIATION_DRILL_IDS } from '@/content/pte/ra-pronunciation-drills';
+import { RS_CORE_DRILL_IDS } from '@/content/pte/rs-core-drills';
 
 const CONFIGS = {
   ra: PTE_RA_BANK_CONFIG,
@@ -74,7 +76,12 @@ export async function GET(req: NextRequest) {
       config: CONFIGS[type],
     });
 
-    return NextResponse.json({ ok: true, ids });
+    const pinnedIds = type === 'ra' ? RA_PRONUNCIATION_DRILL_IDS : type === 'rs' ? RS_CORE_DRILL_IDS : [];
+    const orderedIds = pinnedIds.length > 0
+      ? [...pinnedIds, ...ids.filter((id) => !pinnedIds.includes(id))]
+      : ids;
+
+    return NextResponse.json({ ok: true, ids: orderedIds });
   } catch (error) {
     console.error('PTE question order load failed:', error);
     return NextResponse.json({ ok: false, message: '题目顺序加载失败。' }, { status: 500 });

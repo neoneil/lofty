@@ -6,6 +6,10 @@ import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
 import RsDetailClient from "./rs-detail-client";
 import { hasCompletePteAiAudioMetadata } from "@/lib/pte-ai-audio/voices";
+import { getPteAiAudioRelativePath, PTE_AI_AUDIO_DEFAULT_VOICE } from "@/lib/pte-ai-audio/voices";
+import { getRsCoreDrill } from "@/content/pte/rs-core-drills";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { applyPteQuestionStatus, loadPteQuestionStatusMap } from "@/lib/pte/question-status";
 
 type PageProps = {
   params: Promise<{
@@ -15,14 +19,25 @@ type PageProps = {
 
 export default async function RsQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const { supabase } = await requireUser(`/pte/speaking/rs/${id}`);
+  const { supabase, user } = await requireUser(`/pte/speaking/rs/${id}`);
+  const staticQuestion = getRsCoreDrill(id);
 
-  const { data: question, error } = await supabase
-    .schema("views")
-    .from("v_pte_rs_with_user_status")
-    .select(PTE_RS_WITH_STATUS_SELECT)
-    .eq("id", id)
-    .single();
+  let question;
+  let error = null;
+  if (staticQuestion) {
+    const statusMap = await loadPteQuestionStatusMap({ admin: createAdminClient(), userId: user.id, questionSource: "rs", questionIds: [id] });
+    question = applyPteQuestionStatus({
+      id,
+      question_text: staticQuestion.question_text,
+      audio_url: getPteAiAudioRelativePath("rs", id, PTE_AI_AUDIO_DEFAULT_VOICE),
+      is_real_exam: false,
+      is_prediction: true,
+    }, statusMap.get(id));
+  } else {
+    const result = await supabase.schema("views").from("v_pte_rs_with_user_status").select(PTE_RS_WITH_STATUS_SELECT).eq("id", id).single();
+    question = result.data;
+    error = result.error;
+  }
 
   if (error || !question) {
     return (
@@ -34,12 +49,9 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
     );
   }
 
-  const { data: audioMeta } = await supabase
-    .schema("pte")
-    .from("rs")
-    .select("audio_status, audio_url, ai_voice, audio_variant_count")
-    .eq("id", id)
-    .maybeSingle();
+  const { data: audioMeta } = staticQuestion
+    ? { data: null }
+    : await supabase.schema("pte").from("rs").select("audio_status, audio_url, ai_voice, audio_variant_count").eq("id", id).maybeSingle();
 
   return (
     <div className="mt-1">
@@ -86,7 +98,7 @@ export default async function RsQuestionDetailPage({ params }: PageProps) {
 
           <RsDetailClient
             question={question}
-            aiAudioReady={hasCompletePteAiAudioMetadata({
+            aiAudioReady={Boolean(staticQuestion) || hasCompletePteAiAudioMetadata({
               questionType: "rs",
               questionId: question.id,
               audioStatus: audioMeta?.audio_status,

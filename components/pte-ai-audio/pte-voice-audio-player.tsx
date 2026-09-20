@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import AudioPlayer from "@/components/site/AudioPlayer";
 import { Button } from "@/components/ui-v2/button";
@@ -27,6 +27,7 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
   const [choice, setChoice] = useState<VoiceChoice>("random");
   const [randomVoice, setRandomVoice] = useState<PteAiAudioVoice>(PTE_AI_AUDIO_VOICES[0].id);
   const [failedAiAudioKeys, setFailedAiAudioKeys] = useState<Set<string>>(() => new Set());
+  const [voiceReady, setVoiceReady] = useState(false);
 
   const activeVoice = choice === "random" ? randomVoice : choice;
   const activeAiAudioKey = `${questionType}:${questionId}:${activeVoice}`;
@@ -38,18 +39,19 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setRandomVoice(getOrCreatePteAudioVoice(questionType, questionId, PTE_AI_AUDIO_VOICES));
+      setVoiceReady(true);
     }, 0);
     return () => window.clearTimeout(timer);
   }, [questionId, questionType]);
 
-  function handleAudioFailure() {
+  const handleAudioFailure = useCallback(() => {
     if (!shouldUseAiAudio) return;
     setFailedAiAudioKeys((current) => {
       const next = new Set(current);
       next.add(activeAiAudioKey);
       return next;
     });
-  }
+  }, [activeAiAudioKey, shouldUseAiAudio]);
 
   return (
     <div className="space-y-3">
@@ -62,7 +64,13 @@ export function PteVoiceAudioPlayer({ questionType, questionId, fallbackUrl, aiA
       <div className="flex justify-center">
         <Badge variant={shouldUseAiAudio ? "success" : "secondary"}>{shouldUseAiAudio ? `当前声音：${activeLabel}` : "当前使用旧音频"}</Badge>
       </div>
-      {activeUrl ? <AudioPlayer key={`${questionType}-${questionId}-${activeVoice}-${shouldUseAiAudio ? "ai" : "fallback"}`} url={activeUrl} autoPlay={autoPlay} countdown={countdown} size="compact" onEnded={onEnded} onError={handleAudioFailure} onPlayError={handleAudioFailure} /> : <div className="round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">当前题目暂无音频</div>}
+      {!voiceReady ? (
+        <div className="h-[58px] round border border-[var(--border)] bg-[var(--bg-soft)]" aria-hidden="true" />
+      ) : activeUrl ? (
+        <AudioPlayer key={`${questionType}-${questionId}-${activeVoice}-${shouldUseAiAudio ? "ai" : "fallback"}`} url={activeUrl} autoPlay={autoPlay} countdown={countdown} size="compact" onEnded={onEnded} onError={handleAudioFailure} onPlayError={handleAudioFailure} />
+      ) : (
+        <div className="round border border-dashed border-[var(--border-strong)] bg-[var(--bg-soft)] p-6 text-center text-sm text-[var(--text-soft)]">当前题目暂无音频</div>
+      )}
     </div>
   );
 }

@@ -4,14 +4,16 @@ import { reserveAiUsage, getAiLimitResponse, recordAiUsage } from "@/lib/ai/usag
 import { validateAiAudioDuration } from "@/lib/api/request-limits";
 import { assessAzurePronunciation } from "@/lib/pte-speaking/azure-pronunciation";
 import { scoreRS } from "@/lib/pte-speaking/score-rs";
+import { buildObjectiveScriptedAssessment } from "@/lib/pte-speaking/speaking-score-calibration";
 import { transcribeAudio } from "@/lib/pte-speaking/transcribe-audio";
 import { updateSpeakingRecordingStats } from "@/lib/pte/update-speaking-recording-stats";
 import { getStudentRecordingPlaybackUrl, isStudentRecordingUploadError, uploadStudentRecordingToPrivateR2 } from "@/lib/storage/student-recordings";
+import { getRsCoreDrill } from "@/content/pte/rs-core-drills";
 
 const MODULE_TYPE = "RS";
 const QUESTION_SOURCE = "rs";
 const AI_FEATURE = "pte_rs";
-const AI_MODEL = "gpt-4o-transcribe+gpt-4o-mini";
+const AI_MODEL = "gpt-4o-transcribe+gpt-4.1+azure-speech";
 
 export async function POST(req: Request) {
   try {
@@ -51,12 +53,12 @@ export async function POST(req: Request) {
       );
     }
 
-    const { data: question, error: questionError } = await supabase
-      .schema("views")
-      .from("v_pte_rs_with_user_status")
-      .select("id, question_text")
-      .eq("id", questionId)
-      .single();
+    const staticQuestion = getRsCoreDrill(questionId);
+    const questionResult = staticQuestion
+      ? { data: { id: staticQuestion.id, question_text: staticQuestion.question_text }, error: null }
+      : await supabase.schema("views").from("v_pte_rs_with_user_status").select("id, question_text").eq("id", questionId).single();
+    const question = questionResult.data;
+    const questionError = questionResult.error;
 
     if (questionError || !question) {
       return NextResponse.json(
@@ -106,9 +108,15 @@ export async function POST(req: Request) {
           durationSeconds,
         }),
       ]);
+      const assessment = buildObjectiveScriptedAssessment({
+        referenceText: questionText,
+        transcript,
+        azure: azurePronunciation.summary,
+      });
       aiResult = await scoreRS({
         questionText,
         transcript,
+        assessment,
       });
     } catch (error) {
       await recordAiUsage({
@@ -123,19 +131,14 @@ export async function POST(req: Request) {
     }
 
     await recordAiUsage({ userId: user.id, feature: AI_FEATURE, model: AI_MODEL, status: "success" });
-    const azurePronunciationScore =
-      azurePronunciation.summary.pronunciationScorePte ??
-      aiResult.pronunciationScore;
+    const assessment = buildObjectiveScriptedAssessment({
+      referenceText: questionText,
+      transcript,
+      azure: azurePronunciation.summary,
+    });
     const enhancedResult = {
       ...aiResult,
-      pronunciationScore: azurePronunciationScore,
-      overallScore: Math.round(
-        (
-          aiResult.contentScore +
-          aiResult.fluencyScore +
-          azurePronunciationScore
-        ) / 3,
-      ),
+      ...assessment,
       azure: azurePronunciation.summary,
     };
 

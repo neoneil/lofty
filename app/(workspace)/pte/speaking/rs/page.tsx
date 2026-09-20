@@ -1,5 +1,13 @@
-import { loadPteQuestionBankPage, type PteQuestionBankPageProps } from "@/lib/pte/question-bank-page";
+import type { PteQuestionBankPageProps } from "@/lib/pte/question-bank-page";
 import { PTE_RS_BANK_CONFIG } from "@/lib/pte/question-bank-presets";
+import { PTE_QUESTION_INFO_SELECT } from "@/lib/pte/select-fields";
+import { PTE_QUESTION_BANK_PAGE_SIZE, loadPaginatedPteQuestionBank } from "@/lib/pte/question-bank-server";
+import { parsePteQuestionBankFilters } from "@/lib/pte/question-bank-pagination";
+import { requireUser } from "@/lib/auth/require-user";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { applyPteQuestionStatus, loadPteQuestionStatusMap } from "@/lib/pte/question-status";
+import { getPteAiAudioRelativePath, PTE_AI_AUDIO_DEFAULT_VOICE } from "@/lib/pte-ai-audio/voices";
+import { RS_CORE_DRILLS } from "@/content/pte/rs-core-drills";
 import RsPageClient from "./rs-page-client";
 
 type RSQuestionWithStatus = {
@@ -25,12 +33,38 @@ type RSQuestionWithStatus = {
 };
 
 export default async function PteSpeakingPage({ searchParams }: PteQuestionBankPageProps) {
-  const { questionBank, questionInfo, filters, pagination } = await loadPteQuestionBankPage({
-    route: "/pte/speaking/rs",
-    questionInfoKey: "RS",
-    config: PTE_RS_BANK_CONFIG,
-    searchParams,
-  });
+  const { supabase, user } = await requireUser("/pte/speaking/rs");
+  const admin = createAdminClient();
+  const filters = parsePteQuestionBankFilters(await searchParams);
+  const databaseFilters = { ...filters, page: Math.max(1, filters.page - 8) };
+  const [questionBank, { data: questionInfo }, staticStatusMap] = await Promise.all([
+    loadPaginatedPteQuestionBank({ supabase, admin, userId: user.id, filters: databaseFilters, config: PTE_RS_BANK_CONFIG }),
+    supabase.from("all_question_info").select(PTE_QUESTION_INFO_SELECT).eq("questions", "RS").single(),
+    filters.page <= 8
+      ? loadPteQuestionStatusMap({ admin, userId: user.id, questionSource: "rs", questionIds: RS_CORE_DRILLS.map((question) => question.id) })
+      : Promise.resolve(new Map()),
+  ]);
+
+  const staticQuestions = RS_CORE_DRILLS.map((question) => applyPteQuestionStatus({
+    id: question.id,
+    question_text: question.question_text,
+    question_type: "RS",
+    source_question_id: `RS-CORE-${question.id.slice(-3)}`,
+    difficulty_level: null,
+    is_prediction: true,
+    audio_url: getPteAiAudioRelativePath("rs", question.id, PTE_AI_AUDIO_DEFAULT_VOICE),
+    audio_duration_seconds: null,
+    ai_voice: PTE_AI_AUDIO_DEFAULT_VOICE,
+    usage_count: null,
+    created_at: "2026-09-20T00:00:00.000Z",
+    updated_at: "2026-09-20T00:00:00.000Z",
+    is_real_exam: false,
+  }, staticStatusMap.get(question.id)));
+  const totalPages = 8 + questionBank.totalPages;
+  const currentPage = filters.page <= 8 ? filters.page : 8 + questionBank.currentPage;
+  const questions = currentPage <= 8
+    ? staticQuestions.slice((currentPage - 1) * PTE_QUESTION_BANK_PAGE_SIZE, currentPage * PTE_QUESTION_BANK_PAGE_SIZE)
+    : questionBank.questions;
 
   return questionBank.error ? (
     <section className="round border border-[color:var(--danger)]/30 bg-[var(--danger-soft)] p-5 text-[var(--danger)] shadow-sm">
@@ -38,7 +72,17 @@ export default async function PteSpeakingPage({ searchParams }: PteQuestionBankP
     </section>
   ) : (
     <div className="mt-1">
-      <RsPageClient questions={questionBank.questions as unknown as RSQuestionWithStatus[]} questionInfo={questionInfo} filters={filters} pagination={pagination} />
+      <RsPageClient
+        questions={questions as unknown as RSQuestionWithStatus[]}
+        questionInfo={questionInfo}
+        filters={filters}
+        pagination={{
+          currentPage,
+          pageSize: PTE_QUESTION_BANK_PAGE_SIZE,
+          totalCount: RS_CORE_DRILLS.length + questionBank.totalCount,
+          totalPages,
+        }}
+      />
     </div>
   );
 }

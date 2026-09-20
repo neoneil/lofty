@@ -54,8 +54,15 @@ export function scoreKeywordContent({ transcript, rawKeywords }: { transcript: s
 
   const matchedSet = new Set(matchedKeywords);
   const missedKeywords = keywords.filter((keyword) => !matchedSet.has(keyword));
-  const targetMatches = keywords.length === 0 ? 0 : Math.min(6, Math.max(3, Math.ceil(keywords.length * 0.2)));
-  const score = targetMatches === 0 ? 0 : Math.round(Math.min(1, matchedKeywords.length / targetMatches) * 90);
+  const targetMatches = keywords.length === 0 ? 0 : Math.min(8, Math.max(4, Math.ceil(keywords.length * 0.35)));
+  let score = 0;
+  if (targetMatches > 0) {
+    const coreCoverage = Math.min(1, matchedKeywords.length / targetMatches);
+    const coreScore = 78 * Math.pow(coreCoverage, 1.15);
+    const availableBonusMatches = Math.max(1, keywords.length - targetMatches);
+    const bonusCoverage = Math.max(0, matchedKeywords.length - targetMatches) / availableBonusMatches;
+    score = Math.round(Math.min(90, coreScore + Math.min(1, bonusCoverage) * 12));
+  }
 
   return { score, keywords, matchedKeywords, missedKeywords, targetMatches };
 }

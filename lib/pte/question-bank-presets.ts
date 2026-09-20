@@ -109,6 +109,7 @@ export const PTE_SWT_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
   questionType: "SWT",
   select: PTE_SWT_BASE_SELECT,
   searchColumn: "question_text",
+  applyExtraFilters: (query) => query.gt("question_title", ""),
   normalizeQuestion: (question) => ({
     ...question,
     usage_count: null,

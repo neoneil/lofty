@@ -36,7 +36,7 @@ function readStoredOrder(questionType: string, id: string) {
 
 export function usePteQuestionNavigation(questionType: string, questionId: string | number): QuestionNavigation {
   const id = String(questionId);
-  const [ids, setIds] = useState<string[]>(() => readStoredOrder(questionType, id));
+  const [ids, setIds] = useState<string[]>([]);
 
   useEffect(() => {
     const search = getQuestionOrderSearch(questionType);

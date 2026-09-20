@@ -4,6 +4,9 @@ import { requireUser } from "@/lib/auth/require-user";
 import { PTE_RA_WITH_STATUS_SELECT } from "@/lib/pte/select-fields";
 import Tag from "@/components/ui/tag";
 import { Button } from "@/components/ui-v2/button";
+import { getRaPronunciationDrill } from "@/content/pte/ra-pronunciation-drills";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { applyPteQuestionStatus, loadPteQuestionStatusMap } from "@/lib/pte/question-status";
 import RaDetailClient from "./ra-detail-client";
 
 type PageProps = {
@@ -14,14 +17,39 @@ type PageProps = {
 
 export default async function RaQuestionDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const { supabase } = await requireUser(`/pte/speaking/ra/${id}`);
+  const { supabase, user } = await requireUser(`/pte/speaking/ra/${id}`);
+  const staticQuestion = getRaPronunciationDrill(id);
 
-  const { data: question, error } = await supabase
-    .schema("views")
-    .from("v_pte_ra_with_user_status")
-    .select(PTE_RA_WITH_STATUS_SELECT)
-    .eq("id", id)
-    .single();
+  let question;
+  let error = null;
+
+  if (staticQuestion) {
+    const statusMap = await loadPteQuestionStatusMap({
+      admin: createAdminClient(),
+      userId: user.id,
+      questionSource: "ra",
+      questionIds: [id],
+    });
+    question = applyPteQuestionStatus(
+      {
+        id: staticQuestion.id,
+        question_text: staticQuestion.question_text,
+        tags: staticQuestion.tags,
+        is_real_exam: false,
+        is_prediction: true,
+      },
+      statusMap.get(id),
+    );
+  } else {
+    const result = await supabase
+      .schema("views")
+      .from("v_pte_ra_with_user_status")
+      .select(PTE_RA_WITH_STATUS_SELECT)
+      .eq("id", id)
+      .single();
+    question = result.data;
+    error = result.error;
+  }
 
   if (error || !question) {
     return (
