@@ -179,6 +179,20 @@ This file defines the standing collaboration rules for Codex work in the Lofty p
 - If a new PTE table has incomplete columns or no data yet, still scaffold it with the same current-page loading pattern instead of reintroducing `.limit(1500)` or full-table browser filtering.
 - Future PTE database optimization target: replace the current multi-query list flow with a single RPC per question-bank page that returns the current page of questions, current-user status for those questions, and `all_question_info` together. Do this later with explicit SQL planning; until then keep the current server-side pagination pattern.
 
+## Dynamic Loading And Disk I/O Follow-up
+
+- The first Disk I/O optimization pass on `lofty-lite` changed Audio Collection to load only the selected group in 20-row pages, lazy-load the secondary exam on analytics/dashboard/achievements pages, cache the shared PTE prediction-id scan for 10 minutes, poll student chat only while open every 10 seconds, and send the activity heartbeat every 10 minutes without route-change duplicate writes.
+- When the user says to continue dynamic-loading or Disk I/O optimization, resume from this list instead of re-auditing from scratch.
+- Replace Audio Collection offset pagination with keyset/cursor pagination using a stable `(created_at, id)` ordering so deep playback does not repeatedly skip earlier rows.
+- Remove `count: "exact"` from the hot Audio Collection request path, or cache group totals for 10-30 minutes. Preserve the per-group total labels through a cached/estimated count response.
+- Add `AbortController` handling so changing collection or question type cancels superseded page requests.
+- Add short-lived browser/session caching for already loaded groups so navigating away and back does not immediately repeat the same reads.
+- Virtualize the Audio Collection playlist, or retain only a bounded window of rendered rows, so listening through hundreds of items does not leave the entire loaded list in the DOM.
+- Consider a shared 5-10 minute server cache for common, non-user-specific question/audio pages. Keep authentication and access checks outside the shared cached data function.
+- A later database optimization can add a composite pagination index such as `(is_prediction, created_at desc, id)`, but database schema changes require a separate SQL proposal and explicit user confirmation.
+- Realtime chat/notification delivery can replace remaining polling later, but evaluate connection complexity and current low traffic before changing it.
+- Current activity heartbeat accounting still caps each write at 120 seconds in both the API and database RPC. A 10-minute heartbeat therefore undercounts continuous activity; changing that cap requires an explicitly approved database/RPC change.
+
 ## PTE External Question Updates
 
 - When the user says "更新题目", read `AGENTS.xingji-pte.md` before acting. That shorthand means the recurring Firefly/萤火虫 and Xingji/星记 PTE prediction-question scrape, compare, database update, and OpenAI/R2 audio verification workflow.

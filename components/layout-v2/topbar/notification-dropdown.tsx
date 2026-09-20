@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Bell, CheckCircle2, NotebookPen } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Badge } from "@/components/ui-v2/badge";
 import type { StudentNotification } from "@/lib/homework/types";
@@ -32,20 +32,31 @@ export function NotificationDropdown() {
   const [notifications, setNotifications] = useState<StudentNotification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const authFailedRef = useRef(false);
 
   const hasUnread = unreadCount > 0;
   const visibleNotifications = useMemo(() => notifications.slice(0, 8), [notifications]);
 
   async function loadNotificationSummary() {
+    if (authFailedRef.current) return;
     const response = await fetch("/api/notifications?summary=1", { cache: "no-store" });
+    if (response.status === 401) {
+      authFailedRef.current = true;
+      return;
+    }
     const data = (await response.json().catch(() => ({}))) as NotificationResponse;
     setUnreadCount(data.unreadCount ?? 0);
   }
 
   async function loadNotifications() {
+    if (authFailedRef.current) return 0;
     setLoading(true);
     try {
       const response = await fetch("/api/notifications", { cache: "no-store" });
+      if (response.status === 401) {
+        authFailedRef.current = true;
+        return 0;
+      }
       const data = (await response.json().catch(() => ({}))) as NotificationResponse;
       setNotifications(data.notifications ?? []);
       setUnreadCount(data.unreadCount ?? 0);

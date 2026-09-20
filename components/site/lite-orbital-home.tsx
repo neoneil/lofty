@@ -975,7 +975,7 @@ export default function LiteOrbitalHome() {
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.14;
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
@@ -1246,9 +1246,11 @@ export default function LiteOrbitalHome() {
         };
       };
 
-      const clock = new THREE.Clock();
+      const timer = new THREE.Timer();
       const render = () => {
-        const delta = Math.min(clock.getDelta(), 0.033);
+        timer.update();
+        const delta = Math.min(timer.getDelta(), 0.033);
+        const elapsed = timer.getElapsed();
         const nodes = nodesRef.current;
 
         center.rotation.y += delta * 0.032;
@@ -1370,9 +1372,9 @@ export default function LiteOrbitalHome() {
           mesh.position.set(node.pos.x, node.pos.y, node.pos.z);
           const impactScale = 1 + node.impact * 0.1;
           mesh.scale.setScalar(impactScale);
-          mesh.rotation.x = -node.pos.y * 0.04 + Math.sin(clock.elapsedTime * 1.6 + index) * 0.012;
-          mesh.rotation.y = node.pos.x * 0.035 + Math.cos(clock.elapsedTime * 1.4 + index) * 0.012;
-          mesh.rotation.z = Math.sin(clock.elapsedTime * 1.2 + index * 0.7) * 0.014;
+          mesh.rotation.x = -node.pos.y * 0.04 + Math.sin(elapsed * 1.6 + index) * 0.012;
+          mesh.rotation.y = node.pos.x * 0.035 + Math.cos(elapsed * 1.4 + index) * 0.012;
+          mesh.rotation.z = Math.sin(elapsed * 1.2 + index * 0.7) * 0.014;
           mesh.visible = visibility > 0.18;
           const meshMaterial = mesh.material;
           if (!Array.isArray(meshMaterial)) meshMaterial.opacity = visibility * 0.86;

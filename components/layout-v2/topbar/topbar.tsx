@@ -33,7 +33,7 @@ export function Topbar({ user, canAccessAdmin }: Props) {
           小马哥AI
         </button>
 
-        <NotificationDropdown />
+        {user ? <NotificationDropdown /> : null}
 
         <ThemeToggle />
 

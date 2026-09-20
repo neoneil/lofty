@@ -75,10 +75,6 @@ export function AchievementUnlockNotifier({ userId }: { userId: string | null })
   }, [userId]);
 
   useEffect(() => {
-    checkForNewAchievements();
-  }, [checkForNewAchievements]);
-
-  useEffect(() => {
     if (!userId) return;
 
     const handleRequestedCheck = () => checkForNewAchievements(true);

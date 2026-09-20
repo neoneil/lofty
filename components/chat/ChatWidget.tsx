@@ -173,6 +173,8 @@ export default function ChatWidget() {
   };
 
   useEffect(() => {
+    if (!open) return;
+
     let cancelled = false;
 
     const loadViewerProfile = async () => {
@@ -199,7 +201,7 @@ export default function ChatWidget() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -267,7 +269,7 @@ export default function ChatWidget() {
   }, [open]);
 
   useEffect(() => {
-    if (!session) return;
+    if (!session || !open) return;
 
     let cancelled = false;
     let timer: number | null = null;
@@ -300,13 +302,13 @@ export default function ChatWidget() {
 
     timer = window.setInterval(() => {
       void pollMessages();
-    }, 5000);
+    }, 10000);
 
     return () => {
       cancelled = true;
       if (timer) window.clearInterval(timer);
     };
-  }, [session]);
+  }, [open, session]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;

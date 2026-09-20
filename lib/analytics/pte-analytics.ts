@@ -1,8 +1,11 @@
 import "server-only";
 
+import { unstable_cache } from "next/cache";
+
 import { getAchievementStatsForUser } from "@/lib/achievements/stats";
 import type { QuestionTypeStat } from "@/lib/achievements/types";
 import type { ServerSupabaseClient } from "@/lib/auth/server-auth";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 const MODULES = [
   { id: "listening", label: "听力" },
@@ -119,25 +122,35 @@ function getRecentSevenDayKeys() {
   });
 }
 
-async function getPredictionQuestionSets(supabase: ServerSupabaseClient) {
-  const entries = await Promise.all(
-    PREDICTION_QUESTION_TYPES.map(async (item) => {
-      const { data, error } = await supabase.schema("pte").from(item.table).select("id").eq("is_prediction", true).limit(5000);
-      if (error) {
-        console.error(`Prediction count query failed for ${item.table}:`, error.message);
-        return [item.statType, { ...item, ids: new Set<string>() }] as const;
-      }
+const getCachedPredictionQuestionEntries = unstable_cache(
+  async () => {
+    const supabase = createAdminClient();
+    return Promise.all(
+      PREDICTION_QUESTION_TYPES.map(async (item) => {
+        const { data, error } = await supabase.schema("pte").from(item.table).select("id").eq("is_prediction", true).limit(5000);
+        if (error) {
+          console.error(`Prediction count query failed for ${item.table}:`, error.message);
+          return { ...item, ids: [] as string[] };
+        }
 
-      return [item.statType, { ...item, ids: new Set((data ?? []).map((row) => String(row.id))) }] as const;
-    }),
+        return { ...item, ids: (data ?? []).map((row) => String(row.id)) };
+      }),
+    );
+  },
+  ["pte-prediction-question-ids-v1"],
+  { revalidate: 600 },
+);
+
+async function getPredictionQuestionSets() {
+  const entries = await getCachedPredictionQuestionEntries();
+  return new Map<string, { statType: string; label: string; table: string; ids: Set<string> }>(
+    entries.map((entry) => [entry.statType, { ...entry, ids: new Set(entry.ids) }]),
   );
-
-  return new Map<string, (typeof entries)[number][1]>(entries);
 }
 
 async function getPteQuestionTypeCompletionData(supabase: ServerSupabaseClient, userId: string) {
   const [predictionSets, { data: rawStats, error }] = await Promise.all([
-    getPredictionQuestionSets(supabase),
+    getPredictionQuestionSets(),
     supabase
       .from("student_question_stats")
       .select("question_source, question_id, completed_count, is_practiced")
@@ -272,3 +285,5 @@ export async function getLearningAnalyticsForUser(supabase: ServerSupabaseClient
     hasStudyTime: moduleData.some((item) => item.studyMinutes > 0),
   };
 }
+
+export type LearningAnalytics = Awaited<ReturnType<typeof getLearningAnalyticsForUser>>;

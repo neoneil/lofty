@@ -229,7 +229,7 @@ export function ProfileMenu({
   }, [open, user]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !open) return;
 
     const controller = new AbortController();
 
@@ -245,7 +245,7 @@ export function ProfileMenu({
 
     loadAchievementTitle();
     return () => controller.abort();
-  }, [user]);
+  }, [open, user]);
 
   useEffect(() => {
     const handleAchievementSnapshot = (event: WindowEventMap["lofty:achievement-snapshot"]) => {

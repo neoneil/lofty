@@ -3,9 +3,9 @@ import { ArrowRight, Award, BookOpen, Brain, CalendarDays, CheckCircle2, Clock3,
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
 import { Badge } from "@/components/ui-v2/badge";
-import { getAchievementConfig, normalizeAchievementExamType, type AchievementExamType } from "@/lib/achievements/configs";
+import { LazyExamStats } from "@/components/dashboard-v2/lazy-exam-stats";
+import { getAchievementConfig, normalizeAchievementExamType } from "@/lib/achievements/configs";
 import { requireUser } from "@/lib/auth/require-user";
-import { getServerUserWithRole } from "@/lib/auth/server-auth";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { getAccountStatusLabel, getAiAccessSummaryLabel, type AiAccessStatusItem } from "@/lib/ai/access-status";
 import { collectUnlockedAchievements, createAchievementEngineContext, getHighestUnlockedCategoryLevel } from "@/lib/achievements/engine";
@@ -59,8 +59,6 @@ type ModuleSummary = {
   accuracy: number;
   studyMinutes: number;
 };
-
-type ExamType = AchievementExamType;
 
 const MODULE_META: Record<string, { label: string; english: string; icon: typeof Mic; tone: string }> = {
   speaking: { label: "口语", english: "Speaking", icon: Mic, tone: "text-[var(--danger)] bg-[var(--danger-soft)]" },
@@ -148,45 +146,18 @@ function ProgressBar({ value }: { value: number }) {
   return <div className="h-2 overflow-hidden rounded-full bg-[var(--border-soft)]"><div className="h-full rounded-full bg-[var(--primary)]" style={{ width: `${Math.min(Math.max(value, 0), 100)}%` }} /></div>;
 }
 
-function ExamStatsDetails({ examType, stats, defaultOpen }: { examType: ExamType; stats: Awaited<ReturnType<typeof getAchievementStatsForUser>>; defaultOpen: boolean }) {
-  const modules = getModuleSummaries(stats.questionTypeStats);
-  return (
-    <details open={defaultOpen} className="group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)]">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 sm:px-5">
-        <div>
-          <Badge className="mb-2">{examType}</Badge>
-          <h3 className="font-bold text-[var(--text)]">{examType === "IELTS" ? "IELTS 数据概览" : "PTE 数据概览"}</h3>
-          <p className="mt-1 text-xs text-[var(--text-soft)]">{stats.overview.total_completed} 次完成 · 正确率 {formatNumber(stats.overview.overall_accuracy, 1)}%</p>
-        </div>
-        <span className="rounded-full bg-[var(--primary-soft)] px-3 py-1 text-xs font-bold text-[var(--primary)] group-open:hidden">展开</span>
-        <span className="hidden rounded-full bg-[var(--primary-soft)] px-3 py-1 text-xs font-bold text-[var(--primary)] group-open:inline">收起</span>
-      </summary>
-      <div className="grid gap-3 border-t border-[var(--border)] p-4 sm:grid-cols-2">
-        {modules.map((module) => {
-          const Icon = module.icon;
-          return <div key={module.key} className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-4"><div className="flex items-center justify-between gap-3"><div className="flex items-center gap-3"><span className={cn("flex h-9 w-9 items-center justify-center rounded-[var(--radius-sm)]", module.tone)}><Icon size={17} /></span><div><p className="text-sm font-bold text-[var(--text)]">{module.label}</p><p className="text-xs font-semibold text-[var(--text-faint)]">{module.english}</p></div></div><Badge variant="secondary">{formatNumber(module.accuracy, 1)}%</Badge></div><div className="mt-3"><ProgressBar value={module.accuracy} /></div><div className="mt-3 flex items-center justify-between text-xs text-[var(--text-soft)]"><span>{formatNumber(module.completed)} 道完成</span><span>{formatNumber(module.studyMinutes)} 分钟</span></div></div>;
-        })}
-      </div>
-    </details>
-  );
-}
-
 export default async function DashboardPage() {
   const userContext = await requireUser("/dashboard-v2");
   const { supabase, user } = userContext;
-  const [{ data: profile }, { data: studyPlan }, pteAchievementStats, ieltsAchievementStats, adminContext, { data: aiProductAccess }, { data: recentAttempts }] = await Promise.all([
+  const [{ data: profile }, { data: studyPlan }, { data: aiProductAccess }, { data: recentAttempts }] = await Promise.all([
     supabase.from("profiles").select("full_name, email, avatar_url, exam_type, role, is_my_student").eq("id", user.id).maybeSingle<Profile>(),
     supabase.from("study_plans").select("overall_target, overall_current, listening_target, listening_current, reading_target, reading_current, writing_target, writing_current, speaking_target, speaking_current, exam_deadline, study_goal, daily_study_hours").eq("user_id", user.id).maybeSingle<StudyPlan>(),
-    getAchievementStatsForUser(supabase, user.id, { examType: "PTE" }),
-    getAchievementStatsForUser(supabase, user.id, { examType: "IELTS" }),
-    getServerUserWithRole(["admin"], userContext),
     supabase.from("ai_user_product_limits").select("product_scope, is_unlimited, unlimited_until").eq("user_id", user.id).in("product_scope", ["ielts", "pte"]),
     supabase.from("student_attempts").select("module_type, question_source, submitted_at, score, accuracy, is_correct, status").eq("user_id", user.id).order("submitted_at", { ascending: false, nullsFirst: false }).limit(5).returns<RecentAttempt[]>(),
   ]);
   const preferredExamType = normalizeAchievementExamType(profile?.exam_type);
   const displayExamType = profileExamTypeToDisplay(profile?.exam_type);
-  const isAdmin = Boolean(adminContext);
-  const achievementStats = preferredExamType === "IELTS" ? ieltsAchievementStats : pteAchievementStats;
+  const achievementStats = await getAchievementStatsForUser(supabase, user.id, { examType: preferredExamType });
 
   const displayName = getDisplayName(profile, user.email);
   const email = profile?.email || user.email || "未绑定邮箱";
@@ -265,10 +236,7 @@ export default async function DashboardPage() {
         <StatTile title="最高评分" value={`${formatNumber(Math.max(achievementStats.overview.highest_score, achievementStats.overview.highest_ai_score), 1)} 分`} helper={`平均分 ${formatNumber(achievementStats.overview.average_score, 1)}`} icon={Trophy} tone="danger" />
       </section>
 
-      <section className="grid gap-4 xl:grid-cols-2">
-        <ExamStatsDetails examType="IELTS" stats={ieltsAchievementStats} defaultOpen={isAdmin || preferredExamType === "IELTS"} />
-        <ExamStatsDetails examType="PTE" stats={pteAchievementStats} defaultOpen={isAdmin || preferredExamType === "PTE"} />
-      </section>
+      <LazyExamStats preferredExamType={preferredExamType} initialStats={achievementStats} />
 
       <section className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.65fr)]">
         <Card className="rounded-[var(--radius-lg)]">

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-const HEARTBEAT_INTERVAL_MS = 120_000;
+const HEARTBEAT_INTERVAL_MS = 600_000;
 const MAX_ACTIVE_SECONDS_PER_HEARTBEAT = 120;
 
 function buildCurrentPath(pathname: string, searchParams: URLSearchParams) {
@@ -16,24 +16,33 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
   const searchParams = useSearchParams();
   const lastSentAtRef = useRef<number | null>(null);
   const lastPathRef = useRef("");
+  const currentPathRef = useRef("/");
+  const authFailedRef = useRef(false);
+
+  useEffect(() => {
+    currentPathRef.current = buildCurrentPath(pathname, searchParams);
+  }, [pathname, searchParams]);
 
   useEffect(() => {
     if (!enabled) return;
+    authFailedRef.current = false;
 
     async function sendHeartbeat(force = false) {
+      if (authFailedRef.current) return;
       const now = Date.now();
       const lastSentAt = lastSentAtRef.current ?? now;
+      if (force && lastSentAtRef.current && now - lastSentAtRef.current < 1_000) return;
       const elapsedSeconds = Math.round((now - lastSentAt) / 1000);
       const isVisible = document.visibilityState === "visible";
       const activeSeconds = isVisible ? Math.min(Math.max(elapsedSeconds, 0), MAX_ACTIVE_SECONDS_PER_HEARTBEAT) : 0;
-      const path = buildCurrentPath(pathname, searchParams);
+      const path = currentPathRef.current;
 
       if (!force && activeSeconds <= 0 && path === lastPathRef.current) return;
 
       lastSentAtRef.current = now;
       lastPathRef.current = path;
 
-      await fetch("/api/activity/heartbeat", {
+      const response = await fetch("/api/activity/heartbeat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -42,7 +51,11 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
           activeSeconds,
         }),
         keepalive: true,
-      }).catch(() => undefined);
+      }).catch(() => null);
+
+      if (response?.status === 401) {
+        authFailedRef.current = true;
+      }
     }
 
     void sendHeartbeat(true);
@@ -51,7 +64,11 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
     }, HEARTBEAT_INTERVAL_MS);
 
     const handleVisibilityChange = () => {
-      void sendHeartbeat(true);
+      if (document.visibilityState === "hidden") {
+        void sendHeartbeat(true);
+      } else {
+        lastSentAtRef.current = Date.now();
+      }
     };
 
     window.addEventListener("visibilitychange", handleVisibilityChange);
@@ -63,7 +80,7 @@ export function AppActivityHeartbeat({ enabled }: { enabled: boolean }) {
       window.removeEventListener("pagehide", handleVisibilityChange);
       void sendHeartbeat(true);
     };
-  }, [enabled, pathname, searchParams]);
+  }, [enabled]);
 
   return null;
 }

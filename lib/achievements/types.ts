@@ -25,6 +25,11 @@ export type QuestionTypeStat = {
   total_study_minutes: number;
 };
 
+export type AchievementStats = {
+  overview: AchievementOverview;
+  questionTypeStats: QuestionTypeStat[];
+};
+
 export type AchievementCondition = {
   type?: string;
   scope?: "overall" | "question_type";

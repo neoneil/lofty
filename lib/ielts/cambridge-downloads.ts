@@ -145,10 +145,10 @@ function buildAudioTests(bookNumber: number, tests: CambridgeTestRow[], assets: 
     });
 }
 
-export async function getCambridgeIeltsDownloadBooks(client: unknown): Promise<CambridgeIeltsDownloadBook[]> {
+export async function getCambridgeIeltsDownloadBooks(client: unknown, bookNumbers = CAMBRIDGE_BOOK_NUMBERS): Promise<CambridgeIeltsDownloadBook[]> {
   const schema = (client as SupabaseLike).schema("ielts");
   const databaseBooks = await runQuery<CambridgeBookRow>(
-    schema.from("cambridge_books").select<CambridgeBookRow>("id, book_number, title").in("book_number", CAMBRIDGE_BOOK_NUMBERS).order("book_number", { ascending: false }),
+    schema.from("cambridge_books").select<CambridgeBookRow>("id, book_number, title").in("book_number", bookNumbers).order("book_number", { ascending: false }),
   );
   const tests = databaseBooks.length > 0 ? await runQuery<CambridgeTestRow>(
     schema.from("tests").select<CambridgeTestRow>("id, book_id, test_number, title").in("book_id", databaseBooks.map((book) => book.id)).order("test_number", { ascending: true }),
@@ -158,7 +158,7 @@ export async function getCambridgeIeltsDownloadBooks(client: unknown): Promise<C
   ) : [];
   const databaseBookByNumber = new Map(databaseBooks.map((book) => [book.book_number, book]));
 
-  return CAMBRIDGE_BOOK_NUMBERS.map((bookNumber) => {
+  return bookNumbers.map((bookNumber) => {
     const databaseBook = databaseBookByNumber.get(bookNumber);
     const bookTests = databaseBook ? tests.filter((test) => test.book_id === databaseBook.id) : [];
     const bookAssets = databaseBook ? assets.filter((asset) => asset.book_id === databaseBook.id || bookTests.some((test) => test.id === asset.test_id)) : [];

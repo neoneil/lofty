@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Headphones, Pause, Play, RotateCcw, SkipBack, SkipForward, Sparkles, Square, Volume2 } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, Headphones, LoaderCircle, Pause, Play, RotateCcw, SkipBack, SkipForward, Sparkles, Square, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui-v2/badge";
 import { Button } from "@/components/ui-v2/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-v2/card";
@@ -37,6 +37,20 @@ export type AudioCollectionGroup = {
   href: string;
   items: AudioCollectionItem[];
   error: string | null;
+  totalCount?: number | null;
+  nextOffset?: number;
+  hasMore?: boolean;
+  loaded?: boolean;
+  loadMode?: "static" | "paged";
+};
+
+type AudioCollectionPageResponse = {
+  ok: boolean;
+  items?: AudioCollectionItem[];
+  totalCount?: number | null;
+  nextOffset?: number;
+  hasMore?: boolean;
+  message?: string;
 };
 
 type Props = {
@@ -68,9 +82,14 @@ function countUniqueItems(groups: AudioCollectionGroup[], collection?: AudioColl
 export default function AudioCollectionClient({ groups }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const replayTimerRef = useRef<number | null>(null);
   const playRoundRef = useRef(1);
+  const loadingGroupIdsRef = useRef(new Set<AudioCollectionType>());
+  const [loadedGroups, setLoadedGroups] = useState(groups);
+  const loadedGroupsRef = useRef(groups);
+  const [loadingGroupIds, setLoadingGroupIds] = useState<Set<AudioCollectionType>>(new Set());
   const [activeType, setActiveType] = useState<AudioCollectionType>(groups[0]?.id ?? "sst");
   const [activeCollection, setActiveCollection] = useState<AudioCollectionKind>(groups[0]?.collection ?? "pte");
   const [repeatCount, setRepeatCount] = useState<(typeof PLAY_COUNTS)[number]>(1);
@@ -80,16 +99,88 @@ export default function AudioCollectionClient({ groups }: Props) {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [audioUrlIndex, setAudioUrlIndex] = useState(0);
 
-  const activeCollectionGroups = useMemo(() => groups.filter((group) => group.collection === activeCollection), [activeCollection, groups]);
-  const activeGroup = useMemo(() => activeCollectionGroups.find((group) => group.id === activeType) ?? activeCollectionGroups[0] ?? groups[0], [activeCollectionGroups, activeType, groups]);
+  const activeCollectionGroups = useMemo(() => loadedGroups.filter((group) => group.collection === activeCollection), [activeCollection, loadedGroups]);
+  const activeGroup = useMemo(() => activeCollectionGroups.find((group) => group.id === activeType) ?? activeCollectionGroups[0] ?? loadedGroups[0], [activeCollectionGroups, activeType, loadedGroups]);
   const questions = useMemo(() => activeGroup?.items ?? [], [activeGroup]);
   const safeCurrentIndex = questions.length > 0 ? Math.min(currentIndex, questions.length - 1) : 0;
   const currentQuestion = questions[safeCurrentIndex] ?? null;
   const currentAudioUrls = currentQuestion?.audioUrls?.length ? currentQuestion.audioUrls : currentQuestion ? [currentQuestion.audioUrl] : [];
   const currentAudioUrl = currentAudioUrls[Math.min(audioUrlIndex, currentAudioUrls.length - 1)] ?? "";
-  const totalQuestions = countUniqueItems(groups);
-  const pteTotalQuestions = countUniqueItems(groups, "pte");
-  const ieltsTotalQuestions = countUniqueItems(groups, "ielts");
+  const totalQuestions = countUniqueItems(loadedGroups);
+  const pteTotalQuestions = countUniqueItems(loadedGroups, "pte");
+  const ieltsTotalQuestions = countUniqueItems(loadedGroups, "ielts");
+  const activeGroupLoading = activeGroup ? loadingGroupIds.has(activeGroup.id) : false;
+
+  useEffect(() => {
+    loadedGroupsRef.current = loadedGroups;
+  }, [loadedGroups]);
+
+  const loadGroupPage = useCallback(async (groupId: AudioCollectionType) => {
+    const group = loadedGroupsRef.current.find((item) => item.id === groupId);
+    if (!group || group.loadMode !== "paged" || !group.hasMore || loadingGroupIdsRef.current.has(groupId)) return false;
+
+    loadingGroupIdsRef.current.add(groupId);
+    setLoadingGroupIds(new Set(loadingGroupIdsRef.current));
+
+    try {
+      const response = await fetch(`/api/audio-collection?group=${encodeURIComponent(groupId)}&offset=${group.nextOffset ?? group.items.length}`, { cache: "no-store" });
+      const payload = (await response.json().catch(() => ({}))) as AudioCollectionPageResponse;
+      if (!response.ok || !payload.ok) throw new Error(payload.message || "音频列表加载失败。");
+
+      setLoadedGroups((current) => {
+        const nextGroups = current.map((item) => {
+          if (item.id !== groupId) return item;
+          const byId = new Map(item.items.map((audio) => [audio.id, audio]));
+          for (const audio of payload.items ?? []) byId.set(audio.id, audio);
+          return {
+            ...item,
+            items: Array.from(byId.values()),
+            totalCount: payload.totalCount ?? item.totalCount ?? null,
+            nextOffset: payload.nextOffset ?? item.nextOffset ?? item.items.length,
+            hasMore: payload.hasMore ?? false,
+            loaded: true,
+            error: null,
+          };
+        });
+        loadedGroupsRef.current = nextGroups;
+        return nextGroups;
+      });
+      return true;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "音频列表加载失败。";
+      setLoadedGroups((current) => {
+        const nextGroups = current.map((item) => item.id === groupId ? { ...item, loaded: true, error: message } : item);
+        loadedGroupsRef.current = nextGroups;
+        return nextGroups;
+      });
+      return false;
+    } finally {
+      loadingGroupIdsRef.current.delete(groupId);
+      setLoadingGroupIds(new Set(loadingGroupIdsRef.current));
+    }
+  }, []);
+
+  useEffect(() => {
+    const group = loadedGroupsRef.current.find((item) => item.id === activeType);
+    if (group?.loadMode === "paged" && !group.loaded) void loadGroupPage(group.id);
+  }, [activeType, loadGroupPage]);
+
+  useEffect(() => {
+    if (!activeGroup || activeGroup.loadMode !== "paged" || !activeGroup.hasMore || questions.length === 0) return;
+    if (safeCurrentIndex >= Math.max(questions.length - 5, 0)) void loadGroupPage(activeGroup.id);
+  }, [activeGroup, loadGroupPage, questions.length, safeCurrentIndex]);
+
+  useEffect(() => {
+    const root = listRef.current;
+    const target = loadMoreRef.current;
+    if (!root || !target || !activeGroup?.hasMore) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) void loadGroupPage(activeGroup.id);
+    }, { root, rootMargin: "240px 0px" });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [activeGroup, loadGroupPage, questions.length]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -196,9 +287,22 @@ export default function AudioCollectionClient({ groups }: Props) {
     goToQuestion(Math.max(safeCurrentIndex - 1, 0), isPlaying || shouldAutoPlay);
   };
 
-  const goToNext = (autoPlay = isPlaying || shouldAutoPlay) => {
+  const goToNext = async (autoPlay = isPlaying || shouldAutoPlay) => {
     const nextIndex = safeCurrentIndex + 1;
     if (nextIndex >= questions.length) {
+      if (activeGroup?.hasMore) {
+        const loaded = await loadGroupPage(activeGroup.id);
+        const refreshedGroup = loadedGroupsRef.current.find((group) => group.id === activeGroup.id);
+        if (loaded && refreshedGroup?.items[nextIndex]) {
+          playRoundRef.current = 1;
+          setCurrentRound(1);
+          setCurrentIndex(nextIndex);
+          setAudioUrlIndex(0);
+          setShouldAutoPlay(autoPlay);
+          setIsPlaying(false);
+          return;
+        }
+      }
       stop();
       return;
     }
@@ -207,7 +311,7 @@ export default function AudioCollectionClient({ groups }: Props) {
   };
 
   const changeType = (type: AudioCollectionType) => {
-    const nextGroup = groups.find((group) => group.id === type);
+    const nextGroup = loadedGroupsRef.current.find((group) => group.id === type);
     const audio = audioRef.current;
     if (audio) {
       audio.pause();
@@ -229,7 +333,7 @@ export default function AudioCollectionClient({ groups }: Props) {
   };
 
   const changeCollection = (collection: AudioCollectionKind) => {
-    const nextGroup = groups.find((group) => group.collection === collection);
+    const nextGroup = loadedGroupsRef.current.find((group) => group.collection === collection);
     if (!nextGroup) return;
 
     const audio = audioRef.current;
@@ -281,7 +385,7 @@ export default function AudioCollectionClient({ groups }: Props) {
       return;
     }
 
-    goToNext(true);
+    void goToNext(true);
   };
 
   const handleAudioError = () => {
@@ -305,7 +409,7 @@ export default function AudioCollectionClient({ groups }: Props) {
             <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)] sm:text-base">集中播放 PTE SST、RL、WFD、RS 和 IELTS 剑桥听力音频。选择训练合集和每题播放次数后，可以连续自动训练，也可以点击列表里的任意音频直接跳转播放。</p>
           </div>
           <div className="relative grid grid-cols-3 gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] p-3 text-center sm:min-w-[360px]">
-            <div><div className="text-xl font-bold text-[var(--text)]">{totalQuestions}</div><div className="mt-1 text-xs text-[var(--text-faint)]">可播放音频</div></div>
+            <div><div className="text-xl font-bold text-[var(--text)]">{totalQuestions}</div><div className="mt-1 text-xs text-[var(--text-faint)]">已加载音频</div></div>
             <div><div className="text-xl font-bold text-[var(--primary)]">{pteTotalQuestions}</div><div className="mt-1 text-xs text-[var(--text-faint)]">PTE</div></div>
             <div><div className="text-xl font-bold text-[var(--text)]">{ieltsTotalQuestions}</div><div className="mt-1 text-xs text-[var(--text-faint)]">IELTS</div></div>
           </div>
@@ -317,7 +421,7 @@ export default function AudioCollectionClient({ groups }: Props) {
           <div className="grid gap-3 md:grid-cols-2">
             {COLLECTION_TABS.map((tab) => {
               const active = activeCollection === tab.id;
-              const count = groups.filter((group) => group.collection === tab.id).reduce((total, group) => total + group.items.length, 0);
+              const count = tab.id === "pte" ? pteTotalQuestions : ieltsTotalQuestions;
 
               return (
                 <button key={tab.id} type="button" onClick={() => changeCollection(tab.id)} className={`rounded-[var(--radius-md)] border px-4 py-3 text-left transition-all duration-200 ${active ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)] shadow-[var(--shadow-sm)]" : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text)] hover:border-[var(--primary)]/40 hover:bg-[var(--card)]"}`}>
@@ -335,7 +439,7 @@ export default function AudioCollectionClient({ groups }: Props) {
             <div className="flex flex-wrap gap-2">
               {activeCollectionGroups.map((group) => (
                 <Button key={group.id} type="button" variant={activeGroup?.id === group.id ? "primary" : "secondary"} size="sm" onClick={() => changeType(group.id)} className="gap-1.5">
-                  {group.label}<span className="rounded-full bg-current/10 px-2 py-0.5 text-xs">{group.items.length}</span>
+                  {group.label}<span className="rounded-full bg-current/10 px-2 py-0.5 text-xs">{group.totalCount ?? (group.loaded ? group.items.length : "...")}</span>
                 </Button>
               ))}
             </div>
@@ -356,7 +460,7 @@ export default function AudioCollectionClient({ groups }: Props) {
           <CardHeader className="items-start gap-4">
             <div>
               <CardTitle>{activeGroup?.label ?? "Audio"} 连续播放</CardTitle>
-              <CardDescription>{activeGroup?.title ?? "Audio practice"} · 当前第 {questions.length > 0 ? safeCurrentIndex + 1 : 0} / {questions.length} 题</CardDescription>
+              <CardDescription>{activeGroup?.title ?? "Audio practice"} · 当前第 {questions.length > 0 ? safeCurrentIndex + 1 : 0} / {activeGroup?.totalCount ?? questions.length} 题</CardDescription>
             </div>
             {activeGroup ? (
               <Link href={activeGroup.href}>
@@ -388,7 +492,7 @@ export default function AudioCollectionClient({ groups }: Props) {
                   <Button type="button" variant="secondary" size="sm" onClick={goToPrevious} disabled={safeCurrentIndex === 0} className="gap-1.5"><SkipBack size={15} />上一题</Button>
                   {isPlaying ? <Button type="button" size="sm" onClick={pause} className="gap-1.5"><Pause size={15} />暂停</Button> : <Button type="button" size="sm" onClick={play} className="gap-1.5"><Play size={15} />播放</Button>}
                   <Button type="button" variant="secondary" size="sm" onClick={stop} className="gap-1.5"><Square size={15} />停止</Button>
-                  <Button type="button" variant="secondary" size="sm" onClick={() => goToNext(false)} disabled={safeCurrentIndex >= questions.length - 1} className="gap-1.5">下一题<SkipForward size={15} /></Button>
+                  <Button type="button" variant="secondary" size="sm" onClick={() => void goToNext(false)} disabled={safeCurrentIndex >= questions.length - 1 && !activeGroup?.hasMore} className="gap-1.5">下一题<SkipForward size={15} /></Button>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3 text-sm text-[var(--text-soft)]">
@@ -398,7 +502,7 @@ export default function AudioCollectionClient({ groups }: Props) {
               </>
             ) : (
               <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] p-8 text-center text-sm text-[var(--text-soft)]">
-                {activeGroup?.error ? `${activeGroup.label} 音频加载失败：${activeGroup.error}` : "当前题型暂无可播放音频。"}
+                {activeGroupLoading ? <span className="inline-flex items-center gap-2"><LoaderCircle size={16} className="animate-spin" />正在加载前 20 条音频...</span> : activeGroup?.error ? `${activeGroup.label} 音频加载失败：${activeGroup.error}` : "当前题型暂无可播放音频。"}
               </div>
             )}
           </CardContent>
@@ -408,7 +512,7 @@ export default function AudioCollectionClient({ groups }: Props) {
           <CardHeader className="border-b border-[var(--border)] p-4">
             <div className="flex items-center justify-between gap-3">
               <div><CardTitle className="text-base">播放列表</CardTitle><CardDescription>点击音频即可跳转并播放</CardDescription></div>
-              <Badge variant="secondary">{questions.length}</Badge>
+              <Badge variant="secondary">{questions.length} / {activeGroup?.totalCount ?? questions.length}</Badge>
             </div>
           </CardHeader>
           <CardContent className="p-0">
@@ -433,6 +537,9 @@ export default function AudioCollectionClient({ groups }: Props) {
                   </button>
                 );
               })}
+              <div ref={loadMoreRef} className="flex min-h-12 items-center justify-center py-3 text-xs text-[var(--text-faint)]">
+                {activeGroupLoading && questions.length > 0 ? <span className="inline-flex items-center gap-2"><LoaderCircle size={14} className="animate-spin" />继续加载...</span> : activeGroup?.hasMore ? "向下滚动继续加载" : questions.length > 0 ? "已加载全部音频" : null}
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -445,9 +552,9 @@ export default function AudioCollectionClient({ groups }: Props) {
             <button type="button" onClick={isPlaying ? pause : play} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white shadow-[var(--shadow-sm)]">{isPlaying ? <Pause size={18} /> : <Play size={18} />}</button>
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm font-semibold text-[var(--text)]">{currentQuestion.text}</div>
-              <div className="mt-0.5 flex items-center gap-1.5 text-xs text-[var(--text-soft)]"><span>{safeCurrentIndex + 1}/{questions.length}</span><span>·</span><span>{currentQuestion.label}</span><span>·</span><span>{currentRound}/{repeatCount} 次</span></div>
+              <div className="mt-0.5 flex items-center gap-1.5 text-xs text-[var(--text-soft)]"><span>{safeCurrentIndex + 1}/{activeGroup?.totalCount ?? questions.length}</span><span>·</span><span>{currentQuestion.label}</span><span>·</span><span>{currentRound}/{repeatCount} 次</span></div>
             </div>
-            <button type="button" onClick={() => goToNext(false)} disabled={safeCurrentIndex >= questions.length - 1} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] disabled:opacity-40"><SkipForward size={16} /></button>
+            <button type="button" onClick={() => void goToNext(false)} disabled={safeCurrentIndex >= questions.length - 1 && !activeGroup?.hasMore} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] disabled:opacity-40"><SkipForward size={16} /></button>
           </div>
         </div>
       ) : null}
