@@ -56,7 +56,7 @@ export function usePteQuestionNavigation(questionType: string, questionId: strin
       };
     }
 
-    ensureCompleteQuestionOrder(questionType, search)
+    ensureCompleteQuestionOrder(questionType, search, [id])
       .then((nextIds) => {
         if (cancelled || nextIds.length === 0) return;
         setIds(nextIds.includes(id) ? nextIds : initialOrder);

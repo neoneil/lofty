@@ -19,7 +19,7 @@ type QuestionQuery<T> = {
   gt(column: string, value: unknown): T;
   gte(column: string, value: unknown): T;
   ilike(column: string, pattern: string): T;
-  order(column: string, options: { ascending: boolean }): T;
+  order(column: string, options: { ascending: boolean; nullsFirst?: boolean }): T;
 };
 
 export type QuestionBankConfig<T extends QuestionRow> = {
@@ -29,6 +29,7 @@ export type QuestionBankConfig<T extends QuestionRow> = {
   select: string;
   searchColumn: string;
   supportsUsageCount?: boolean;
+  priorityOrderColumn?: string;
   applyExtraFilters?: <TQuery extends QuestionQuery<TQuery>>(
     query: TQuery,
     filters: PteQuestionBankFilters,
@@ -75,14 +76,22 @@ function applyQuestionFilters<T extends QuestionQuery<T>>(
     : nextQuery;
 }
 
-function orderQuestionQuery<T extends QuestionQuery<T>>(query: T, filters: PteQuestionBankFilters) {
+function orderQuestionQuery<T extends QuestionQuery<T>>(
+  query: T,
+  filters: PteQuestionBankFilters,
+  config: QuestionBankConfig<QuestionRow>,
+) {
+  const prioritizedQuery = config.priorityOrderColumn
+    ? query.order(config.priorityOrderColumn, { ascending: false, nullsFirst: false })
+    : query;
+
   if (filters.questionStatus === "newest") {
-    return query
+    return prioritizedQuery
       .order("created_at", { ascending: false })
       .order("id", { ascending: false });
   }
 
-  return query
+  return prioritizedQuery
     .order("created_at", { ascending: false })
     .order("id", { ascending: false });
 }
@@ -159,7 +168,7 @@ export async function loadPaginatedPteQuestionBank<T extends QuestionRow>({
       .select("id, created_at")
       .limit(5000);
 
-    idQuery = orderQuestionQuery(applyQuestionFilters(idQuery, filters, config), filters);
+    idQuery = orderQuestionQuery(applyQuestionFilters(idQuery, filters, config), filters, config);
 
     const [{ data: idRows, error: idError }, statusMap] = await Promise.all([
       idQuery,
@@ -238,7 +247,7 @@ export async function loadPaginatedPteQuestionBank<T extends QuestionRow>({
     .from(config.table)
     .select(config.select, { count: "exact" });
 
-  questionQuery = orderQuestionQuery(applyQuestionFilters(questionQuery, filters, config), filters).range(start, end);
+  questionQuery = orderQuestionQuery(applyQuestionFilters(questionQuery, filters, config), filters, config).range(start, end);
 
   const { data, error, count } = await questionQuery;
   const rows = (data ?? []) as unknown as QuestionRow[];
@@ -285,7 +294,7 @@ export async function loadPteQuestionOrder({
     .select('id, created_at')
     .limit(5000);
 
-  idQuery = orderQuestionQuery(applyQuestionFilters(idQuery, filters, config), filters);
+  idQuery = orderQuestionQuery(applyQuestionFilters(idQuery, filters, config), filters, config);
 
   const { data: idRows, error } = await idQuery;
 

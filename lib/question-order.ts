@@ -42,7 +42,11 @@ function saveQuestionOrderContext(questionType: string, ids: string[]) {
     return search ? `?${search}` : "";
 }
 
-export function ensureCompleteQuestionOrder(questionType: string, search: string) {
+export function ensureCompleteQuestionOrder(
+    questionType: string,
+    search: string,
+    requiredIds: string[] = []
+) {
     if (typeof window === "undefined") {
         return Promise.resolve([] as string[]);
     }
@@ -52,7 +56,15 @@ export function ensureCompleteQuestionOrder(questionType: string, search: string
     if (cached) {
         try {
             const ids = JSON.parse(cached);
-            if (Array.isArray(ids)) return Promise.resolve(ids.map(String));
+            if (Array.isArray(ids)) {
+                const normalizedIds = ids.map(String);
+                const containsRequiredIds = requiredIds.every((id) =>
+                    normalizedIds.includes(String(id))
+                );
+
+                if (containsRequiredIds) return Promise.resolve(normalizedIds);
+                sessionStorage.removeItem(cacheKey);
+            }
         } catch {
             sessionStorage.removeItem(cacheKey);
         }
@@ -96,7 +108,7 @@ export function saveQuestionOrder(
     }
 
     const search = saveQuestionOrderContext(questionType, ids);
-    void ensureCompleteQuestionOrder(questionType, search);
+    void ensureCompleteQuestionOrder(questionType, search, ids);
 }
 
 export function saveCompleteQuestionOrder(

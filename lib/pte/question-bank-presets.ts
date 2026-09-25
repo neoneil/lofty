@@ -51,6 +51,7 @@ export const PTE_DI_BANK_CONFIG: QuestionBankConfig<QuestionRow> = {
   questionType: "DI",
   select: PTE_DI_BASE_SELECT,
   searchColumn: "search_text",
+  priorityOrderColumn: "tag4",
   applyExtraFilters: (query, filters) =>
     filters.visualType === "all" ? query : query.eq("tag1", filters.visualType),
   normalizeQuestion: row,

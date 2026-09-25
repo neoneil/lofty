@@ -1,0 +1,1057 @@
+{
+  "generatedAt": "2026-09-25T22:04:52.647Z",
+  "model": "gpt-4.1-mini",
+  "items": [
+    {
+      "slug": "renewable-energy-consumption-2015-2020",
+      "type": "line_chart",
+      "variant": "multi-line",
+      "title": "Renewable Energy Consumption",
+      "subtitle": "2015 to 2020 in Gigawatt Hours",
+      "unit": "GWh",
+      "labels": [
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020"
+      ],
+      "series": [
+        {
+          "name": "Australia",
+          "values": [
+            450,
+            470,
+            520,
+            580,
+            630,
+            700
+          ]
+        },
+        {
+          "name": "New Zealand",
+          "values": [
+            300,
+            320,
+            365,
+            410,
+            460,
+            500
+          ]
+        },
+        {
+          "name": "India",
+          "values": [
+            600,
+            650,
+            700,
+            720,
+            740,
+            780
+          ]
+        }
+      ],
+      "answerInfo": "This line chart illustrates renewable energy consumption in gigawatt hours for Australia, New Zealand, and India from 2015 to 2020. Australia shows a steady increase from 450 to 700 GWh, reflecting growing adoption. New Zealand follows a similar upward trend starting at 300 GWh and reaching 500 GWh in 2020. India consistently consumed the most renewable energy, rising from 600 to 780 GWh, though its growth is less steep compared to Australia. Overall, all three countries demonstrate positive growth in renewable energy consumption across the six years.",
+      "keywords": [
+        "renewable energy",
+        "consumption",
+        "gigawatt hours",
+        "Australia",
+        "New Zealand",
+        "India",
+        "increase",
+        "line chart",
+        "trend",
+        "2015-2020"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "internet-usage-growth-2016-2021",
+      "type": "line_chart",
+      "variant": "multi-line",
+      "title": "Internet Usage Growth",
+      "subtitle": "2016 to 2021 in Percentage of Population",
+      "unit": "%",
+      "labels": [
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021"
+      ],
+      "series": [
+        {
+          "name": "Urban Areas",
+          "values": [
+            78,
+            82,
+            85,
+            87,
+            90,
+            92
+          ]
+        },
+        {
+          "name": "Suburban Areas",
+          "values": [
+            65,
+            68,
+            72,
+            75,
+            78,
+            80
+          ]
+        },
+        {
+          "name": "Rural Areas",
+          "values": [
+            40,
+            45,
+            50,
+            55,
+            60,
+            65
+          ]
+        }
+      ],
+      "answerInfo": "This multi-line chart presents internet usage as a percentage of the population in urban, suburban, and rural areas from 2016 to 2021. Urban areas consistently show the highest usage, increasing from 78% to 92%. Suburban areas exhibit moderate growth from 65% to 80%. Meanwhile, rural areas start from a lower base of 40% but have the most rapid increase, reaching 65% by 2021. This highlights the narrowing digital divide between different residential areas over six years.",
+      "keywords": [
+        "internet usage",
+        "percentage",
+        "population",
+        "urban areas",
+        "suburban areas",
+        "rural areas",
+        "growth",
+        "digital divide",
+        "line chart",
+        "2016-2021"
+      ],
+      "difficulty": 1
+    },
+    {
+      "slug": "annual-rainfall-patterns-east-australia",
+      "type": "line_chart",
+      "variant": "multi-line",
+      "title": "Annual Rainfall Patterns",
+      "subtitle": "East Australia (2014-2019) in Millimeters",
+      "unit": "mm",
+      "labels": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019"
+      ],
+      "series": [
+        {
+          "name": "Coastal Region",
+          "values": [
+            1200,
+            1150,
+            1300,
+            1280,
+            1400,
+            1350
+          ]
+        },
+        {
+          "name": "Inland Region",
+          "values": [
+            600,
+            580,
+            700,
+            650,
+            700,
+            680
+          ]
+        },
+        {
+          "name": "Mountain Region",
+          "values": [
+            1600,
+            1700,
+            1650,
+            1750,
+            1800,
+            1780
+          ]
+        }
+      ],
+      "answerInfo": "This chart shows annual rainfall in millimeters across three regions of East Australia from 2014 to 2019. The Mountain Region consistently receives the most rainfall, increasing from 1600 mm in 2014 to 1780 mm in 2019. The Coastal Region follows with moderate rainfall fluctuating around 1200 to 1400 mm. Inland Region has the lowest rainfall, ranging between 580 and 700 mm with minor variations. Overall, rainfall is highest in mountainous areas and relatively stable with slight upward trends.",
+      "keywords": [
+        "rainfall",
+        "millimeters",
+        "East Australia",
+        "Coastal Region",
+        "Inland Region",
+        "Mountain Region",
+        "annual patterns",
+        "line chart",
+        "2014-2019",
+        "precipitation"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "student-performance-maths-science-arts",
+      "type": "bar_chart",
+      "variant": "grouped",
+      "title": "Student Performance by Subject",
+      "subtitle": "Average Scores Across Schools",
+      "unit": "Scores",
+      "labels": [
+        "School A",
+        "School B",
+        "School C",
+        "School D"
+      ],
+      "series": [
+        {
+          "name": "Mathematics",
+          "values": [
+            85,
+            78,
+            92,
+            74
+          ]
+        },
+        {
+          "name": "Science",
+          "values": [
+            88,
+            81,
+            90,
+            76
+          ]
+        },
+        {
+          "name": "Arts",
+          "values": [
+            70,
+            65,
+            75,
+            68
+          ]
+        }
+      ],
+      "answerInfo": "This grouped bar chart compares average student performance scores in Mathematics, Science, and Arts across four schools. School C leads in Mathematics and Science with scores of 92 and 90 respectively, followed by School A with 85 and 88. Arts scores are generally lower, with School C also highest scoring at 75. School D shows the lowest scores across all subjects. The chart clearly depicts stronger results in core STEM subjects compared to Arts.",
+      "keywords": [
+        "student performance",
+        "scores",
+        "Mathematics",
+        "Science",
+        "Arts",
+        "schools",
+        "comparison",
+        "bar chart",
+        "grouped",
+        "education"
+      ],
+      "difficulty": 1
+    },
+    {
+      "slug": "energy-source-consumption-by-sector",
+      "type": "bar_chart",
+      "variant": "stacked",
+      "title": "Energy Consumption by Source and Sector",
+      "subtitle": "Percentage Share",
+      "unit": "%",
+      "labels": [
+        "Residential",
+        "Commercial",
+        "Industrial",
+        "Transport"
+      ],
+      "series": [
+        {
+          "name": "Electricity",
+          "values": [
+            40,
+            35,
+            25,
+            10
+          ]
+        },
+        {
+          "name": "Gas",
+          "values": [
+            30,
+            25,
+            45,
+            20
+          ]
+        },
+        {
+          "name": "Renewables",
+          "values": [
+            30,
+            40,
+            30,
+            70
+          ]
+        }
+      ],
+      "answerInfo": "This stacked bar chart illustrates the percentage share of energy consumption by source across four sectors: Residential, Commercial, Industrial, and Transport. In the Residential sector, electricity accounts for 40%, gas 30%, and renewables 30%. The Commercial sector has a higher renewable share at 40%. Industrial energy consumption is gas-heavy at 45%, while in Transport, renewables dominate with 70%, reflecting shifts toward sustainable fuels. Overall, energy source usage varies distinctly by sector.",
+      "keywords": [
+        "energy consumption",
+        "percentage",
+        "source",
+        "Electricity",
+        "Gas",
+        "Renewables",
+        "sector",
+        "stacked bar chart",
+        "Residential",
+        "Transport"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "annual-sales-data-by-product-category",
+      "type": "bar_chart",
+      "variant": "grouped",
+      "title": "Annual Sales by Product Category",
+      "subtitle": "Units Sold in Thousands",
+      "unit": "Thousands",
+      "labels": [
+        "North",
+        "South",
+        "East",
+        "West",
+        "Central"
+      ],
+      "series": [
+        {
+          "name": "Electronics",
+          "values": [
+            50,
+            43,
+            55,
+            48,
+            52
+          ]
+        },
+        {
+          "name": "Furniture",
+          "values": [
+            30,
+            28,
+            32,
+            31,
+            27
+          ]
+        },
+        {
+          "name": "Clothing",
+          "values": [
+            70,
+            65,
+            80,
+            75,
+            68
+          ]
+        },
+        {
+          "name": "Toys",
+          "values": [
+            20,
+            18,
+            25,
+            22,
+            19
+          ]
+        }
+      ],
+      "answerInfo": "This grouped bar chart presents annual sales in thousands of units across five regions for four product categories: Electronics, Furniture, Clothing, and Toys. Clothing leads in all regions, peaking at 80,000 units in the East. Electronics follow, with strong sales especially in the East and Central regions. Furniture and Toys have lower sales, with similar values across regions. The chart highlights regional preferences with consistently strong Clothing sales.",
+      "keywords": [
+        "sales",
+        "units",
+        "product category",
+        "Electronics",
+        "Furniture",
+        "Clothing",
+        "Toys",
+        "regions",
+        "grouped bar chart",
+        "annual"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "market-share-smartphones-2024",
+      "type": "pie_chart",
+      "variant": "single",
+      "title": "Smartphone Market Share",
+      "subtitle": "Global Distribution in 2024",
+      "unit": "%",
+      "labels": [
+        "Brand A",
+        "Brand B",
+        "Brand C",
+        "Brand D",
+        "Others"
+      ],
+      "series": [
+        {
+          "name": "Market Share",
+          "values": [
+            35,
+            25,
+            15,
+            10,
+            15
+          ]
+        }
+      ],
+      "answerInfo": "This single-series pie chart shows global smartphone market share in 2024. Brand A leads with 35%, followed by Brand B at 25%. Brand C holds 15%, Brand D accounts for 10%, and Others collectively make up 15%. The chart illustrates a competitive market dominated by two leading brands that together hold 60% of global sales. The remaining brands share the rest relatively evenly.",
+      "keywords": [
+        "smartphone",
+        "market share",
+        "percentage",
+        "Brand A",
+        "Brand B",
+        "Brand C",
+        "Brand D",
+        "Others",
+        "pie chart",
+        "2024"
+      ],
+      "difficulty": 1
+    },
+    {
+      "slug": "distribution-of-energy-consumption-urban-rural",
+      "type": "pie_chart",
+      "variant": "double",
+      "title": "Energy Consumption Distribution",
+      "subtitle": "Urban and Rural Areas (%)",
+      "unit": "%",
+      "labels": [
+        "Electricity",
+        "Gas",
+        "Coal",
+        "Renewables",
+        "Other"
+      ],
+      "series": [
+        {
+          "name": "Urban",
+          "values": [
+            50,
+            20,
+            10,
+            18,
+            2
+          ]
+        },
+        {
+          "name": "Rural",
+          "values": [
+            30,
+            25,
+            20,
+            20,
+            5
+          ]
+        }
+      ],
+      "answerInfo": "This double pie chart compares energy consumption distribution between urban and rural areas by source. Urban areas consume mostly electricity at 50%, with lesser gas at 20% and coal at 10%. Renewables account for 18%. In rural areas, electricity use drops to 30%, while gas and coal increase to 25% and 20% respectively. Renewables slightly increase to 20%, highlighting differences in energy profiles between urban and rural populations.",
+      "keywords": [
+        "energy consumption",
+        "distribution",
+        "urban",
+        "rural",
+        "electricity",
+        "gas",
+        "coal",
+        "renewables",
+        "percentage",
+        "double pie chart"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "global-waste-management-comparison",
+      "type": "pie_chart",
+      "variant": "triple",
+      "title": "Global Waste Management Methods",
+      "subtitle": "Percentages by Region",
+      "unit": "%",
+      "labels": [
+        "Recycling",
+        "Landfill",
+        "Incineration",
+        "Composting",
+        "Other"
+      ],
+      "series": [
+        {
+          "name": "Europe",
+          "values": [
+            45,
+            20,
+            15,
+            15,
+            5
+          ]
+        },
+        {
+          "name": "Asia",
+          "values": [
+            30,
+            50,
+            10,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "America",
+          "values": [
+            35,
+            35,
+            20,
+            5,
+            5
+          ]
+        }
+      ],
+      "answerInfo": "This triple pie chart displays the waste management method percentages across Europe, Asia, and America. Europe leads with 45% recycling and only 20% landfill use, showing strong environmental measures. Asia relies heavily on landfills at 50%, with lower recycling at 30%. America shows a balanced approach with 35% recycling and landfill each, plus 20% incineration. Composting and other methods form minor shares. This comparison highlights regional differences in waste treatment strategies.",
+      "keywords": [
+        "waste management",
+        "recycling",
+        "landfill",
+        "incineration",
+        "composting",
+        "percentage",
+        "Europe",
+        "Asia",
+        "America",
+        "triple pie chart"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "university-course-completion-rates",
+      "type": "table",
+      "variant": "comparison-table",
+      "title": "Course Completion Rates",
+      "subtitle": "Percentages for Various Faculties",
+      "unit": "%",
+      "labels": [
+        "Engineering",
+        "Science",
+        "Business",
+        "Arts",
+        "Medicine"
+      ],
+      "series": [
+        {
+          "name": "2019 Cohort",
+          "values": [
+            85,
+            80,
+            75,
+            70,
+            90
+          ]
+        },
+        {
+          "name": "2020 Cohort",
+          "values": [
+            88,
+            82,
+            78,
+            72,
+            92
+          ]
+        },
+        {
+          "name": "2021 Cohort",
+          "values": [
+            90,
+            84,
+            80,
+            74,
+            93
+          ]
+        },
+        {
+          "name": "2022 Cohort",
+          "values": [
+            92,
+            85,
+            82,
+            75,
+            95
+          ]
+        }
+      ],
+      "answerInfo": "This table compares course completion rates in percent among five faculties for cohorts from 2019 to 2022. Medicine shows the highest completion rates, improving steadily from 90% in 2019 to 95% in 2022. Engineering and Science also increase consistently, with Engineering rising from 85% to 92%. Business and Arts have lower rates but show gradual improvements. Overall, completion rates generally increase across all faculties over four years.",
+      "keywords": [
+        "course completion",
+        "rates",
+        "percentages",
+        "faculties",
+        "Engineering",
+        "Science",
+        "Business",
+        "Arts",
+        "Medicine",
+        "table"
+      ],
+      "difficulty": 1
+    },
+    {
+      "slug": "city-library-usage-statistics",
+      "type": "table",
+      "variant": "comparison-table",
+      "title": "City Library Usage",
+      "subtitle": "Monthly Visits and Loans",
+      "unit": "Number",
+      "labels": [
+        "Visits",
+        "Book Loans",
+        "Digital Loans",
+        "Event Attendance"
+      ],
+      "series": [
+        {
+          "name": "January",
+          "values": [
+            1200,
+            800,
+            300,
+            150
+          ]
+        },
+        {
+          "name": "April",
+          "values": [
+            1400,
+            900,
+            500,
+            200
+          ]
+        },
+        {
+          "name": "July",
+          "values": [
+            1600,
+            1100,
+            650,
+            250
+          ]
+        },
+        {
+          "name": "October",
+          "values": [
+            1300,
+            850,
+            400,
+            180
+          ]
+        }
+      ],
+      "answerInfo": "The table details monthly city library usage statistics including visits, physical and digital book loans, and event attendance for January, April, July, and October. Visits peak in July at 1,600, correlating with increased book loans, especially digital ones rising from 300 in January to 650 in July. Event attendance also grows midyear, indicating higher community engagement during this period. October shows a slight decline, consistent across all categories.",
+      "keywords": [
+        "library",
+        "usage",
+        "visits",
+        "book loans",
+        "digital loans",
+        "event attendance",
+        "monthly",
+        "city",
+        "comparison table",
+        "statistics"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "hospital-patient-discharge-data",
+      "type": "table",
+      "variant": "comparison-table",
+      "title": "Hospital Patient Discharge",
+      "subtitle": "Numbers by Department",
+      "unit": "Patients",
+      "labels": [
+        "Emergency",
+        "Surgery",
+        "Maternity",
+        "Psychiatry",
+        "Outpatient"
+      ],
+      "series": [
+        {
+          "name": "Q1",
+          "values": [
+            500,
+            300,
+            250,
+            100,
+            700
+          ]
+        },
+        {
+          "name": "Q2",
+          "values": [
+            520,
+            320,
+            270,
+            110,
+            720
+          ]
+        },
+        {
+          "name": "Q3",
+          "values": [
+            510,
+            310,
+            260,
+            105,
+            710
+          ]
+        },
+        {
+          "name": "Q4",
+          "values": [
+            530,
+            330,
+            280,
+            115,
+            730
+          ]
+        },
+        {
+          "name": "Q5",
+          "values": [
+            540,
+            340,
+            290,
+            120,
+            740
+          ]
+        }
+      ],
+      "answerInfo": "This comparison table provides patient discharge numbers for various hospital departments across five quarters. The Emergency department leads discharges, increasing gradually from 500 in Q1 to 540 in Q5. Surgery and Maternity also show steady growth, while Psychiatry remains the lowest but slightly rises. Outpatient discharges are the highest overall, growing from 700 to 740. The data suggest consistent activity with modest increases across all departments.",
+      "keywords": [
+        "hospital",
+        "patient",
+        "discharge",
+        "department",
+        "Emergency",
+        "Surgery",
+        "Maternity",
+        "Psychiatry",
+        "Outpatient",
+        "comparison table"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "food-production-process-linear",
+      "type": "flowchart",
+      "variant": "linear-process",
+      "title": "Food Production Process",
+      "subtitle": "From Farming to Packaging",
+      "unit": "",
+      "labels": [
+        "Land Preparation",
+        "Planting Seeds",
+        "Crop Growth",
+        "Harvesting",
+        "Processing",
+        "Packaging",
+        "Distribution"
+      ],
+      "series": [],
+      "answerInfo": "This linear flowchart outlines the food production process starting with land preparation, followed by planting seeds. Next is the crop growth phase, which leads to harvesting. After harvesting, the crops move into processing, then packaging, and finally distribution. The sequence highlights each step's critical role in bringing food products from farm to consumer.",
+      "keywords": [
+        "food production",
+        "process",
+        "farming",
+        "packaging",
+        "distribution",
+        "linear flowchart",
+        "sequential stages",
+        "agriculture",
+        "step-by-step",
+        "flowchart"
+      ],
+      "difficulty": 1
+    },
+    {
+      "slug": "recycling-cycle-flowchart",
+      "type": "flowchart",
+      "variant": "cycle",
+      "title": "Recycling Cycle",
+      "subtitle": "Materials to Reuse",
+      "unit": "",
+      "labels": [
+        "Collection",
+        "Sorting",
+        "Processing",
+        "Manufacturing",
+        "Purchasing Recycled Products",
+        "Use",
+        "Disposal"
+      ],
+      "series": [],
+      "answerInfo": "This cyclical flowchart shows the recycling cycle starting with collection of recyclable materials. These are sorted and then processed into raw materials. Subsequently, manufacturing uses these to create new products. Consumers purchase recycled products, use them, and eventually dispose of them, which restarts the cycle with collection. This cycle promotes sustainability through continuous reuse.",
+      "keywords": [
+        "recycling",
+        "cycle",
+        "materials",
+        "reuse",
+        "collection",
+        "sorting",
+        "processing",
+        "manufacturing",
+        "usage",
+        "flowchart"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "decision-process-for-admission",
+      "type": "flowchart",
+      "variant": "branching-process",
+      "title": "Admission Decision Process",
+      "subtitle": "Hospital Emergency Department",
+      "unit": "",
+      "labels": [
+        "Patient Arrival",
+        "Initial Assessment",
+        "Critical Condition?",
+        "Immediate Treatment",
+        "Wait for Doctor",
+        "Doctor Evaluation",
+        "Admission or Discharge"
+      ],
+      "series": [],
+      "answerInfo": "This branching process flowchart begins with patient arrival followed by an initial assessment. If a critical condition is identified, the patient receives immediate treatment. Otherwise, they wait for the doctor, who then evaluates their case. Based on the evaluation, the patient is either admitted for further care or discharged. The flow highlights decision points and alternative paths in emergency admissions.",
+      "keywords": [
+        "admission",
+        "decision process",
+        "hospital",
+        "emergency",
+        "assessment",
+        "treatment",
+        "doctor evaluation",
+        "branching flowchart",
+        "patient",
+        "healthcare"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "australian-regions-population-density",
+      "type": "map",
+      "variant": "choropleth",
+      "title": "Population Density by Region",
+      "subtitle": "People per Square Kilometer",
+      "unit": "people/km²",
+      "labels": [
+        "Northern Territory",
+        "Queensland",
+        "New South Wales",
+        "Victoria",
+        "Tasmania",
+        "Western Australia"
+      ],
+      "series": [
+        {
+          "name": "Density",
+          "values": [
+            0.2,
+            3,
+            10,
+            20,
+            7,
+            1
+          ]
+        }
+      ],
+      "answerInfo": "This choropleth map displays population density across six Australian regions measured in people per square kilometer. Victoria has the highest density at 20, followed by New South Wales with 10. Queensland and Tasmania have moderate densities of 3 and 7 respectively. Western Australia and Northern Territory have very low densities, at 1 and 0.2, reflecting vast land with sparse populations.",
+      "keywords": [
+        "population density",
+        "Australia",
+        "regions",
+        "people per square kilometer",
+        "choropleth map",
+        "Northern Territory",
+        "Queensland",
+        "Victoria",
+        "New South Wales",
+        "Tasmania"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "major-city-rail-network-map",
+      "type": "map",
+      "variant": "transport-network",
+      "title": "Major City Rail Network",
+      "subtitle": "Stations and Lines",
+      "unit": "",
+      "labels": [
+        "Central Station",
+        "North End",
+        "East Park",
+        "West Side",
+        "South Terminal",
+        "University"
+      ],
+      "series": [
+        {
+          "name": "Passengers",
+          "values": [
+            50000,
+            15000,
+            12000,
+            10000,
+            20000,
+            18000
+          ]
+        }
+      ],
+      "answerInfo": "This transport network map illustrates a major city rail system with six stations: Central Station, North End, East Park, West Side, South Terminal, and University. Central Station is the busiest with 50,000 passengers, acting as a hub linking all lines. Passengers decrease at peripheral stations, with South Terminal next busiest. The map shows connectivity facilitating urban transit across the city’s core and outskirts.",
+      "keywords": [
+        "rail network",
+        "transport",
+        "city",
+        "stations",
+        "passengers",
+        "Central Station",
+        "lines",
+        "network map",
+        "urban transit",
+        "Australia"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "land-use-zones-in-metropolitan-area",
+      "type": "map",
+      "variant": "land-use",
+      "title": "Metropolitan Land Use Zones",
+      "subtitle": "Area Distribution by Zone",
+      "unit": "Square Kilometers",
+      "labels": [
+        "Residential",
+        "Commercial",
+        "Industrial",
+        "Green Space",
+        "Recreational",
+        "Agricultural",
+        "Transport"
+      ],
+      "series": [
+        {
+          "name": "Area",
+          "values": [
+            120,
+            45,
+            60,
+            30,
+            25,
+            40,
+            20
+          ]
+        }
+      ],
+      "answerInfo": "This land-use map categorises areas in a metropolitan region by use. Residential zones cover the largest area at 120 square kilometers, followed by Industrial at 60 and Commercial at 45. Green Space and Agricultural zones account for 30 and 40 respectively, providing environmental balance. Recreational and Transport zones are smaller, at 25 and 20. The map highlights spatial allocation essential for urban planning and development.",
+      "keywords": [
+        "land use",
+        "metropolitan",
+        "zones",
+        "residential",
+        "commercial",
+        "industrial",
+        "green space",
+        "recreational",
+        "agricultural",
+        "transport",
+        "map"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "sustainable-melbourne-transport-hub",
+      "type": "image",
+      "variant": "urban-transport",
+      "title": "Sustainable Transport Hub",
+      "subtitle": "Melbourne-style Integration",
+      "unit": "",
+      "labels": [],
+      "series": [],
+      "answerInfo": "This image depicts a sustainable transport hub featuring tram lines with modern trams, electric buses, and designated bicycle lanes in the foreground. Pedestrians use wide footpaths shaded by solar canopy panels. In the middle-ground, there are bike racks and charging stations for electric vehicles. The background shows green spaces and buildings designed with solar panels, illustrating integrated urban mobility and renewable energy in Melbourne's transport infrastructure.",
+      "keywords": [
+        "sustainable transport",
+        "Melbourne",
+        "tram",
+        "electric bus",
+        "bicycle lanes",
+        "solar canopy",
+        "pedestrians",
+        "urban transport",
+        "image",
+        "transport hub"
+      ],
+      "difficulty": 2
+    },
+    {
+      "slug": "university-renewable-energy-lab",
+      "type": "image",
+      "variant": "renewable-lab",
+      "title": "University Renewable Energy Lab",
+      "subtitle": "Research and Development",
+      "unit": "",
+      "labels": [],
+      "series": [],
+      "answerInfo": "The image shows a university renewable energy laboratory with a solar panel array and a wind turbine model prominently displayed in the foreground. The middle-ground contains battery storage units and robotic equipment, suggesting experimental setups. Researchers are engaged in activities near tables with plant samples, demonstrating the lab's multidisciplinary focus on sustainable technologies and bioenergy innovation.",
+      "keywords": [
+        "renewable energy",
+        "laboratory",
+        "solar panel",
+        "wind turbine",
+        "battery",
+        "robotics",
+        "researchers",
+        "university",
+        "image",
+        "renewable lab"
+      ],
+      "difficulty": 3
+    },
+    {
+      "slug": "aerial-view-smart-agriculture-region",
+      "type": "image",
+      "variant": "smart-agriculture",
+      "title": "Smart Australian Agriculture",
+      "subtitle": "Technology and Land Use",
+      "unit": "",
+      "labels": [],
+      "series": [],
+      "answerInfo": "This aerial image shows an Australian agricultural region with diverse land uses. In the foreground are irrigated crop fields and a reservoir for water storage. The middle-ground features a fruit orchard, greenhouses, and wind turbines alongside solar panel arrays. The background extends to open fields and rolling hills. The combination of technology and agriculture highlights sustainable, high-tech farming practices in the region.",
+      "keywords": [
+        "smart agriculture",
+        "Australian farming",
+        "crops",
+        "orchard",
+        "greenhouse",
+        "reservoir",
+        "wind turbines",
+        "solar panels",
+        "aerial image",
+        "technology"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

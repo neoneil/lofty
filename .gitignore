@@ -42,3 +42,5 @@ yarn-error.log*
 next-env.d.ts
 
 public/cambridge_ielts/
+# Generated DI image outputs are published to R2.
+/content/pte/di-generated/assets/
