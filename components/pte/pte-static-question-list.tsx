@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 import { useMemo, useState } from "react";
 import { BookOpenCheck, CheckCircle2, FileText, Headphones, ListChecks, PenLine } from "lucide-react";
 

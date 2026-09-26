@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 import { ArrowLeft, ArrowRight, Headphones, Timer } from "lucide-react";
 
 import { IeltsTestEntryCard } from "@/components/ielts-practice/ielts-test-entry-card";

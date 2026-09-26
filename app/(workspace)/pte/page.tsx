@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 
 import {
   Mic,

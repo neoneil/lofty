@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LoaderCircle } from "lucide-react";
 
 import AiUsageConfirmDialog from "@/components/ai/ai-usage-confirm-dialog";
 import { Card, CardContent } from "@/components/ui-v2/card";
@@ -30,9 +30,22 @@ const MODULE_LABEL_BY_MODULE: Record<IeltsTestModule, string> = {
 export function IeltsTestEntryCard({ moduleType, bookNumber, testNumber, title, href }: Props) {
   const router = useRouter();
   const [entering, setEntering] = useState(false);
+  const [progress, setProgress] = useState(0);
   const moduleLabel = MODULE_LABEL_BY_MODULE[moduleType];
 
+  useEffect(() => {
+    if (!entering) return;
+    const steps = [
+      window.setTimeout(() => setProgress(42), 250),
+      window.setTimeout(() => setProgress(68), 750),
+      window.setTimeout(() => setProgress(84), 1500),
+      window.setTimeout(() => setProgress(93), 3000),
+    ];
+    return () => steps.forEach(window.clearTimeout);
+  }, [entering]);
+
   async function confirmEntry() {
+    setProgress(16);
     setEntering(true);
 
     try {
@@ -45,11 +58,14 @@ export function IeltsTestEntryCard({ moduleType, bookNumber, testNumber, title, 
 
       if (!response.ok || !data.ok) {
         window.alert(data.message || "AI 券不足，暂时无法进入这套 test。");
+        setEntering(false);
         return;
       }
 
+      setProgress(76);
       router.push(href);
-    } finally {
+    } catch {
+      window.alert("进入 Test 失败，请检查网络后重试。");
       setEntering(false);
     }
   }
@@ -63,13 +79,14 @@ export function IeltsTestEntryCard({ moduleType, bookNumber, testNumber, title, 
     >
       {(openDialog) => (
         <button type="button" disabled={entering} onClick={openDialog} className="group block w-full text-left disabled:pointer-events-none disabled:opacity-70">
-          <Card className="rounded-[var(--radius-lg)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[var(--primary)]/45 group-hover:shadow-[var(--shadow-lg)]">
+          <Card className="relative overflow-hidden rounded-[var(--radius-lg)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[var(--primary)]/45 group-hover:shadow-[var(--shadow-lg)]">
             <CardContent className="p-5">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--primary-soft)] text-lg font-bold text-[var(--primary)]">{testNumber}</div>
               <h2 className="text-lg font-semibold text-[var(--text)]">Test {testNumber}</h2>
               <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{title}</p>
-              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">{entering ? "正在进入..." : "进入机考"} <ArrowRight size={16} className="transition group-hover:translate-x-1" /></div>
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">{entering ? <><LoaderCircle size={16} className="animate-spin" />正在准备题目</> : <>进入机考 <ArrowRight size={16} className="transition group-hover:translate-x-1" /></>}</div>
             </CardContent>
+            {entering ? <div className="absolute inset-x-0 bottom-0 h-1.5 bg-[var(--primary-soft)]"><div className="h-full bg-[var(--primary)] transition-[width] duration-500 ease-out" style={{ width: `${progress}%` }} /></div> : null}
           </Card>
         </button>
       )}

@@ -12,6 +12,8 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     excerpt?: string;
     content?: string;
     status?: "draft" | "published";
+    category?: string;
+    coverImage?: string | null;
   };
 
   const { error } = await context.supabase
@@ -21,6 +23,8 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       excerpt: body.excerpt || null,
       content: body.content,
       status: body.status === "published" ? "published" : "draft",
+      category: body.category,
+      cover_image: body.coverImage,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id);

@@ -176,7 +176,17 @@ export default async function MembershipPage({ searchParams }: Props) {
 
         <div className='grid gap-4 xl:grid-cols-2 xl:items-start'>
           <AiAccessCheckout packages={checkoutPackages} isAuthenticated={Boolean(context)} loginHref='/login-v2?next=%2Fmembership' compact />
-          <TuitionFeesPanel isAuthenticated={Boolean(context)} loginHref='/login-v2?next=%2Fmembership' />
+          <div className='relative isolate overflow-hidden rounded-[var(--radius-lg)]'>
+            <div className='pointer-events-none select-none blur-[6px]' aria-hidden='true'>
+              <TuitionFeesPanel isAuthenticated={Boolean(context)} loginHref='/login-v2?next=%2Fmembership' />
+            </div>
+            <div className='absolute inset-0 z-10 flex items-center justify-center bg-[var(--bg)]/20 p-6 backdrop-blur-[1px]'>
+              <div className='rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-[var(--card)]/95 px-6 py-4 text-center shadow-[var(--shadow-lg)]'>
+                <p className='text-base font-semibold text-[var(--text)]'>学费收费暂时关闭</p>
+                <p className='mt-1 text-sm text-[var(--text-soft)]'>课程咨询与收费功能将在确认后重新开放。</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

@@ -2,7 +2,7 @@
 
 import { getPtePracticeListLayoutClass, PtePracticeViewToggle, type PtePracticeViewMode } from "@/components/pte/pte-practice-view-toggle";
 
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 import { useMemo, useState } from "react";
 import MasteryProgress from "@/components/ui/mastery-progress";
 import Tag from "@/components/ui/tag";

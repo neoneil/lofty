@@ -15,6 +15,11 @@ import {
 import { Input } from "@/components/ui-v2/input";
 import { Textarea } from "@/components/ui-v2/textarea";
 import { apiPatch } from "@/lib/api/client";
+import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
+
+type Category = "PTE" | "雅思" | "词汇" | "语法";
+
+const categories: Category[] = ["PTE", "雅思", "词汇", "语法"];
 
 type Post = {
   id: string;
@@ -24,6 +29,7 @@ type Post = {
   content: string;
   status: "draft" | "published";
   category?: string | null;
+  cover_image?: string | null;
   updated_at?: string | null;
 };
 
@@ -34,6 +40,13 @@ export default function EditPostForm({ post }: { post: Post }) {
   const [excerpt, setExcerpt] = useState(post.excerpt || "");
   const [content, setContent] = useState(post.content);
   const [status, setStatus] = useState(post.status);
+  const [category, setCategory] = useState<Category>(
+    categories.includes(post.category as Category)
+      ? (post.category as Category)
+      : "PTE",
+  );
+  const [cover, setCover] = useState<File | null>(null);
+  const [coverUrl, setCoverUrl] = useState(post.cover_image ?? "");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -47,12 +60,39 @@ export default function EditPostForm({ post }: { post: Post }) {
     setLoading(true);
     setMessage("");
 
+    let nextCoverUrl = coverUrl || null;
+
+    if (cover) {
+      const uploadData = new FormData();
+      uploadData.append("file", cover);
+      uploadData.append("folder", "images/posts");
+
+      const uploadResponse = await fetch("/api/admin/storage/public-upload", {
+        method: "POST",
+        body: uploadData,
+      });
+      const uploadJson = (await uploadResponse.json()) as {
+        publicUrl?: string;
+        message?: string;
+      };
+
+      if (!uploadResponse.ok || !uploadJson.publicUrl) {
+        setMessage(uploadJson.message || "Cover image upload failed.");
+        setLoading(false);
+        return;
+      }
+
+      nextCoverUrl = uploadJson.publicUrl;
+    }
+
     try {
       await apiPatch(`/api/admin/posts/${post.id}`, {
         title,
         excerpt: excerpt || null,
         content,
         status,
+        category,
+        coverImage: nextCoverUrl,
       });
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Post update failed.");
@@ -61,6 +101,8 @@ export default function EditPostForm({ post }: { post: Post }) {
     }
 
     setMessage("Post updated successfully.");
+    setCoverUrl(nextCoverUrl ?? "");
+    setCover(null);
     setLoading(false);
     router.refresh();
   }
@@ -157,13 +199,53 @@ export default function EditPostForm({ post }: { post: Post }) {
               </div>
             </div>
 
-            <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-soft)] px-4 py-3">
-              <div className="text-xs font-semibold uppercase tracking-wide text-[var(--text-soft)]">
+            <div>
+              <div className="mb-2 text-sm font-semibold text-[var(--text)]">
                 Category
               </div>
-              <div className="mt-1 text-sm font-medium text-[var(--text)]">
-                {post.category || "No category"}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => setCategory(option)}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                      category === option
+                        ? "border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)]"
+                        : "border-[var(--border)] bg-[var(--bg-soft)] text-[var(--text-soft)] hover:text-[var(--text)]"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
               </div>
+            </div>
+
+            <div>
+              <div className="mb-2 text-sm font-semibold text-[var(--text)]">
+                Cover Image
+              </div>
+              {coverUrl ? (
+                <img
+                  src={normalizePublicStorageUrl(coverUrl, "images")}
+                  alt="Current article cover"
+                  className="mb-3 aspect-video w-full rounded-[var(--radius-md)] border border-[var(--border)] object-cover"
+                />
+              ) : null}
+              <label className="flex cursor-pointer flex-col items-center justify-center rounded-[var(--radius-md)] border border-dashed border-[var(--border)] bg-[var(--bg-soft)] px-4 py-6 text-center transition hover:border-[var(--primary)]/50">
+                <span className="text-sm font-semibold text-[var(--text)]">
+                  {cover ? cover.name : "Replace cover image"}
+                </span>
+                <span className="mt-1 text-xs text-[var(--text-soft)]">
+                  PNG, JPG, or WebP
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => setCover(event.target.files?.[0] ?? null)}
+                  className="sr-only"
+                />
+              </label>
             </div>
 
             {post.updated_at ? (
@@ -185,8 +267,8 @@ export default function EditPostForm({ post }: { post: Post }) {
               <Badge variant={status === "published" ? "success" : "secondary"}>
                 {status}
               </Badge>
-              <Badge variant={post.category ? "default" : "warning"}>
-                {post.category || "No category"}
+              <Badge variant="default">
+                {category}
               </Badge>
             </div>
 

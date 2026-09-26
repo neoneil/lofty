@@ -628,3 +628,51 @@ mark {
   line-height: 1;
   vertical-align: 0.08em;
 }
+@keyframes question-load-shimmer {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.question-load-shimmer {
+  animation: question-load-shimmer 1.35s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@container (max-width: 220px) {
+  .question-load-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1rem 0.65rem 1.15rem;
+    text-align: center;
+  }
+
+  .question-load-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .question-load-copy {
+    flex: none;
+    width: 100%;
+  }
+
+  .question-load-title {
+    font-size: 0.75rem;
+    line-height: 1.15rem;
+  }
+
+  .question-load-detail,
+  .question-load-skeleton {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .question-load-shimmer {
+    animation: none;
+  }
+}

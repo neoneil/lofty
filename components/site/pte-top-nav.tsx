@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 import {
@@ -376,6 +376,7 @@ function SubTabItem({
 
     <Link
       href={href}
+      compactPending
       aria-current={active ? "page" : undefined}
       className={`group relative flex h-[210px] w-[146px] flex-shrink-0 flex-col overflow-hidden rounded-[var(--radius-md)] border bg-[var(--card)] text-left shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)] sm:h-[218px] sm:w-[150px] ${
         active

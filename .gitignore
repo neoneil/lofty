@@ -44,3 +44,6 @@ next-env.d.ts
 public/cambridge_ielts/
 # Generated DI image outputs are published to R2.
 /content/pte/di-generated/assets/
+# Generated post covers are published to R2.
+/output/imagegen/2026-exam-posts/
+/output/imagegen/2026-question-type-posts/

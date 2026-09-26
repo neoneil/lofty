@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PendingNavigationLink as Link } from "@/components/navigation/pending-navigation-link";
 import { ArrowRight, BookOpenCheck } from "lucide-react";
 
 import IeltsModuleHero from "@/components/site/ielts-module-hero";

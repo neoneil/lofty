@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui-v2/card";
 import { Input } from "@/components/ui-v2/input";
+import PostCategoryList from "@/components/posts/post-category-list";
 import { normalizePublicStorageUrl } from "@/lib/storage/public-url";
 import { createClient } from "@/lib/supabase/server";
 
@@ -33,6 +34,24 @@ function getPostCoverUrl(value: string | null) {
   return normalizePublicStorageUrl(value, "images");
 }
 
+function shufflePosts<T>(items: T[]) {
+  const shuffled = [...items];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [
+      shuffled[randomIndex],
+      shuffled[index],
+    ];
+  }
+
+  return shuffled;
+}
+
+function isPermanentFeaturedPost(title: string) {
+  return title.includes("为什么选择小马哥教育");
+}
+
 export default async function PostsPage({ searchParams }: PostsPageProps) {
   const { q } = await searchParams;
   const keyword = q?.trim() ?? "";
@@ -53,8 +72,22 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
   }
 
   const { data: posts, error } = await query;
-  const featuredPost = posts?.[0] ?? null;
-  const otherPosts = posts?.slice(1) ?? [];
+  const featuredPost =
+    posts?.find((post) => isPermanentFeaturedPost(post.title)) ??
+    posts?.[0] ??
+    null;
+  const otherPosts = shufflePosts(
+    posts?.filter((post) => post.id !== featuredPost?.id) ?? [],
+  );
+  const categoryPosts = otherPosts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt,
+    coverUrl: getPostCoverUrl(post.cover_image),
+    category: post.category,
+    displayDate: formatDate(post.published_at || post.created_at),
+  }));
 
   return (
     <main className="min-h-screen bg-[var(--bg)] px-4 pb-10 pt-24 text-[var(--text)] sm:px-6 lg:px-8 lg:pt-[104px]">
@@ -170,58 +203,7 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
                 </Card>
               ) : null}
 
-              <div className="grid gap-4">
-                {otherPosts.map((post) => (
-                  <Card
-                    key={post.id}
-                    className="overflow-hidden rounded-[var(--radius-lg)] hover:shadow-[var(--shadow-md)]"
-                  >
-                    <Link
-                      href={`/posts/${post.slug}`}
-                      className="group grid gap-0 sm:grid-cols-[180px_1fr]"
-                    >
-                      <div className="h-44 bg-[var(--bg-soft)] sm:h-full">
-                        {getPostCoverUrl(post.cover_image) ? (
-                          <img
-                            src={getPostCoverUrl(post.cover_image)}
-                            alt={post.title}
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center bg-[var(--primary-soft)] text-xs font-semibold text-[var(--primary)]">
-                            文章
-                          </div>
-                        )}
-                      </div>
-
-                      <CardContent className="p-5">
-                        <div className="mb-3 flex flex-wrap items-center gap-2">
-                          <Badge variant="outline">
-                            {post.category || "文章"}
-                          </Badge>
-                          <span className="text-xs font-medium text-[var(--text-soft)]">
-                            {formatDate(post.published_at || post.created_at)}
-                          </span>
-                        </div>
-
-                        <h3 className="text-lg font-semibold leading-snug text-[var(--text)]">
-                          {post.title}
-                        </h3>
-
-                        {post.excerpt ? (
-                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-soft)]">
-                            {post.excerpt}
-                          </p>
-                        ) : null}
-
-                        <span className="mt-4 inline-flex text-sm font-semibold text-[var(--primary)]">
-                          阅读文章
-                        </span>
-                      </CardContent>
-                    </Link>
-                  </Card>
-                ))}
-              </div>
+              <PostCategoryList posts={categoryPosts} />
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">

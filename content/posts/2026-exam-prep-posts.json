@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-09-25T22:41:26.008Z",
+  "model": "gpt-5.4",
+  "posts": [
+    {
+      "exam": "pte",
+      "slug": "2026-pte-22-question-types",
+      "title": "2026 PTE 题型地图：22 种题型，别再拿旧地图赶新考场",
+      "excerpt": "PTE 自 2025 年 8 月 7 日之后更新为 22 种题型、约 65 道计分题、总时长约两小时。先把地图认全，再谈刷题效率。",
+      "content": "你还在背 20 种题型，那就像拿旧地铁图找新站口：方向没全错，但容易走冤枉路。**官方事实**是：适用于 **2025 年 8 月 7 日之后**参加的 PTE Academic 和 PTE Academic UKVI，考试新增两种 Speaking & Writing 题型——**Summarize Group Discussion** 和 **Respond to a Situation**；原来的 20 种题型仍保留。更新后全卷为 **22 种题型、约 65 道计分题、总时长约两小时**。\n\n## 先记住这 4 个官方变化\n- 新增 2 种口语写作题\n- 原 20 种题型没消失\n- 计分题总量约 65 道\n- 总时长仍约两小时\n\n这意味着备考重点不是“推翻重来”，而是**在旧框架上补新拼图**。\n\n## 小马哥建议：别按题库思维学，要按任务思维学\n很多同学一看到“22 种”就开始焦虑，像超市囤货一样把资料堆满。其实更有效的办法是按能力分组：\n- **复述与概括**：考你抓重点，不是逐字搬运\n- **短时输出**：考你在有限准备时间内组织语言\n- **输入定位**：听读中找关键信息\n- **语言控制**：语法、词汇、连贯都要在线\n\n尤其新增题型提醒我们：PTE 不只看“会不会模板”，还看你能不能在真实沟通任务里把意思说明白。\n\n## 复习顺序怎么排\n小马哥建议用“三层地图”：\n1. 先把 22 种题型认全，知道每题在干嘛；\n2. 再按高频能力做合并训练；\n3. 最后做整套节奏演练，适应两小时续航。\n\n别一上来就狂做零散题。地图都没展开，跑再快也可能只是原地打转。\n\n## 一句话带走\n先接受“22 种题型已成新地图”这个现实，再按能力模块备考，效率比死背旧题型名单高得多。\n\n## 官方信息来源\n- [Pearson PTE Updates 2025](https://www.pearsonpte.com/pte-updates-2025/)\n- [Pearson PTE Academic Test Format](https://www.pearsonpte.com/pte-academic/test-format/)",
+      "imagePrompt": "A clean 16:9 editorial cover showing a modern exam map interface on a desk tablet, with branching pathways and 22 nodes, study stationery neatly arranged, soft blue and white business education style, no text, no logos, no watermark"
+    },
+    {
+      "exam": "pte",
+      "slug": "2026-pte-respond-to-a-situation",
+      "title": "PTE Respond to a Situation：40 秒不是即兴演讲，是把话说对",
+      "excerpt": "这道新题不是让你临场表演，而是要求在 10 秒准备后，用 40 秒完成贴近日常情境的清晰回应。",
+      "content": "一听到“情境回应”，不少同学就自动切到即兴演讲模式，结果话很多，重点很少。**官方事实**是：在 **2025 年 8 月 7 日之后**适用的新 PTE 中，**Respond to a Situation** 会给出一个**音频和文字**呈现的日常情境，考生有 **10 秒准备**，然后 **40 秒作答**。它属于新增的 Speaking & Writing 题型之一。\n\n## 这题到底在考什么\n别把它当脱口秀，它更像“真实场景里的语音回复”。你需要做的通常不是炫词汇，而是：\n- 听懂或读懂情境\n- 明确自己的回应目的\n- 用自然、清楚、得体的方式说完\n\n换句话说，重点是**任务完成**，不是堆高级表达。\n\n## 小马哥建议：40 秒用“三步走”\n10 秒准备时间很短，别试图写脑内全文。小马哥建议只抓三件事：\n- **我是谁 / 我要回应谁**\n- **我的核心意思是什么**\n- **结尾要不要提出请求、确认或感谢**\n\n口头输出时也按三步走：\n1. 先表明回应对象和目的；\n2. 再给出 1—2 个关键信息；\n3. 最后收尾，别突然断电。\n\n## 常见失误\n- 一上来铺背景，40 秒过半还没说到主旨\n- 句子太满，像把作文塞进语音信箱\n- 只顾“说得像模板”，忽略情境是否匹配\n\n小马哥建议平时多练“短回复逻辑”：确认、说明、请求、结束。像发一条高质量语音，不是开一场发布会。\n\n## 一句话带走\n这题不是考你能说多满，而是考你能否在 40 秒内把该说的话说清楚、说得体。\n\n## 官方信息来源\n- [Pearson PTE Updates 2025](https://www.pearsonpte.com/pte-updates-2025/)\n- [Pearson PTE Academic Test Format](https://www.pearsonpte.com/pte-academic/test-format/)",
+      "imagePrompt": "A 16:9 business education editorial cover with a candidate wearing a headset speaking toward a minimal microphone, a subtle countdown timer and message bubble concept, warm neutral office lighting, no text, no logos, no watermark"
+    },
+    {
+      "exam": "pte",
+      "slug": "2026-pte-summarize-group-discussion",
+      "title": "PTE Summarize Group Discussion：别当复读机，要当会议记录员",
+      "excerpt": "新增题型不是让你复制多人发言，而是从讨论里提炼共识、分歧和结论，像个靠谱的会议记录员。",
+      "content": "多人一开口，很多同学的大脑就像同时打开十几个聊天窗口：每句都听见了，重点一个没留下。**官方事实**是：在 **2025 年 8 月 7 日之后**适用的 PTE 更新中，新增 Speaking & Writing 题型 **Summarize Group Discussion**。它和旧题型并存，属于更新后 22 种题型的一部分。\n\n## 这题不是“谁说了什么”流水账\n从题名就能看出，核心动作是 **summarize**。也就是说，任务重点更像会议纪要，而不是录音转写。你需要抓的通常是：\n- 讨论主题是什么\n- 参与者的主要观点有哪些\n- 是否出现共识、分歧或结论\n\n如果你按发言顺序逐句复述，往往会像把一锅汤原样倒回食材区：很完整，但没人想喝。\n\n## 小马哥建议：记“结构词”，不记“全台词”\n多人讨论最怕信息过载。小马哥建议训练时把注意力放在这些信号：\n- **立场词**：agree, disagree, suggest, prefer\n- **转折词**：however, but, on the other hand\n- **结果词**：finally, so, therefore\n\n做笔记时只留骨架：主题、A 观点、B 观点、结论。别追求逐字准确，那是给自己加不必要的重量。\n\n## 输出时怎么更像总结\n小马哥建议用“三段式”：\n1. 先点明讨论主题；\n2. 再概括主要观点与分歧；\n3. 最后交代结论或整体倾向。\n\n总结不是压缩复读，而是提炼重点。你要像会议记录员那样可靠，而不是像扩音器那样勤奋。\n\n## 一句话带走\n面对多人讨论，最值钱的能力不是全记住，而是把主线、分歧和结论拎出来。\n\n## 官方信息来源\n- [Pearson PTE Updates 2025](https://www.pearsonpte.com/pte-updates-2025/)\n- [Pearson PTE Academic Test Format](https://www.pearsonpte.com/pte-academic/test-format/)",
+      "imagePrompt": "A 16:9 editorial business education scene of a meeting room table with abstract speech waveforms from multiple participants converging into a neat summary notebook, modern professional style, no text, no logos, no watermark"
+    },
+    {
+      "exam": "pte",
+      "slug": "2026-pte-ai-human-scoring",
+      "title": "PTE 评分进入 AI + 人工时代：模板还能不能一招鲜？",
+      "excerpt": "PTE 部分作答已由 AI 与人工专家共同评分，但人工不评发音和口语流利度。模板还可用吗？先看规则，再谈策略。",
+      "content": "一听到“人工评分回来了”，有人立刻欢呼，有人立刻慌张，仿佛模板今天就要失业。先看**官方事实**：适用于 **2025 年 8 月 7 日之后**的 PTE 更新中，**部分作答**会由**人工专家与 AI 共同评分**；但**人工不会评 pronunciation 和 oral fluency**。也就是说，评分不是从机器切回人工，而是进入更混合的模式。\n\n## 这对备考意味着什么\n先别脑补“模板全面失效”。**官方没有说模板禁止使用**。但从教学上看，小马哥建议你把模板当“句架”，别当“替身演员”。因为一旦内容空、逻辑弱、任务完成度低，外壳再整齐，也像西装配拖鞋——远看像回事，近看不对劲。\n\n## 小马哥建议：模板从“填空”升级为“组织工具”\n更稳的做法是：\n- 用固定开头帮助快速起步\n- 用连接结构保证层次清楚\n- 把关键词、观点和结论换成真实内容\n\n特别是新增题型出现后，考试更像真实沟通任务。你需要的是**可迁移表达**，不是把所有题都塞进同一个模具。\n\n## 现在最该练什么\n- **任务理解**：先答对题，再答顺题\n- **内容选择**：会取舍，比会堆词更重要\n- **语言控制**：语法、用词、连贯别掉线\n- **口语基本功**：既然人工不评发音和流利度，这两项仍要按既有要求稳定发挥\n\n## 一句话带走\nAI + 人工并不等于模板判死刑，但只靠模板撑全场，风险比以前更大。\n\n## 官方信息来源\n- [Pearson PTE Updates 2025](https://www.pearsonpte.com/pte-updates-2025/)\n- [Pearson PTE Academic Test Format](https://www.pearsonpte.com/pte-academic/test-format/)",
+      "imagePrompt": "A 16:9 modern editorial cover showing a balanced visual of AI interface elements and a human evaluator reviewing responses at a desk, sleek corporate education aesthetic, no text, no logos, no watermark"
+    },
+    {
+      "exam": "pte",
+      "slug": "2026-pte-two-hour-pacing",
+      "title": "PTE 两小时考场节奏：65 道左右，如何不在前半场用光电量",
+      "excerpt": "题量约 65、总时长约两小时，拼的不只是英语，还有配速。别把自己考成前半场冲刺、后半场省电模式。",
+      "content": "很多同学不是不会做，而是太会“开局过猛”。前面像百米冲刺，后面像手机只剩 8% 电量。**官方事实**是：适用于 **2025 年 8 月 7 日之后**的 PTE 更新后，考试**约两小时**，包含**约 65 道计分题**，共 **22 种题型**。时间没变长，但任务密度依然不低。\n\n## 先明白：两小时考的是续航，不是爆发\nPTE 不是只靠某几道大题翻盘的考试。题型切换快，输入输出交替出现，注意力如果前 30 分钟就烧得太猛，后面很容易出现：\n- 看得进单词，拼不出逻辑\n- 听得到内容，抓不住重点\n- 口语还在发声，脑子已经下班\n\n## 小马哥建议：把体力分成三格电\n你可以把整场考试想成三段：\n- **前段**：求稳，不炫技，先进入状态\n- **中段**：保持节奏，别因个别题失常而追悔五分钟\n- **后段**：动作简洁，优先完成任务\n\n平时模考时也别只刷单题。小马哥建议至少做整段训练，练“从一种题切到另一种题”时的大脑转弯能力。\n\n## 配速的核心不是快，是不拖\n常见问题不是做太慢一题，而是**在失误后停留太久**。某题答砸了，别在脑中开复盘会。考试继续往前走，你也得继续往前走。\n\n小马哥建议准备一个“重启动作”：深呼吸、看屏、进下一题。像电脑卡了一下，别顺手把整场考试关机。\n\n## 一句话带走\nPTE 两小时最怕前半场太燃、后半场太蔫；会配速的人，往往比会硬扛的人更稳。\n\n## 官方信息来源\n- [Pearson PTE Updates 2025](https://www.pearsonpte.com/pte-updates-2025/)\n- [Pearson PTE Academic Test Format](https://www.pearsonpte.com/pte-academic/test-format/)",
+      "imagePrompt": "A 16:9 editorial cover with a sleek exam dashboard, battery segments and clock motifs beside a focused student at a computer, professional business education style, no text, no logos, no watermark"
+    },
+    {
+      "exam": "ielts",
+      "slug": "2026-ielts-computer-delivery",
+      "title": "2026 IELTS 机考转向：纸笔考试退场前，你该练什么",
+      "excerpt": "官方已宣布自 2026 年中起 IELTS 将不再提供纸笔考试，但时间因市场而异。现在该练的，不是怀旧，是电脑作答能力。",
+      "content": "如果你还在纠结“要不要再赶一次纸笔末班车”，先看**官方事实**：IELTS 于 **2026 年 3 月 5 日**发布公告，**从 2026 年中起**将不再提供 paper-based tests，**具体时间因市场而异**；所有考试将转向 **computer delivery**。同时，**部分市场**会提供 **Writing on Paper** 选项。官方也明确说明：**考查的技能和分数解释不变**。\n\n## 先别慌：变的是交付方式，不是评分宇宙\n这次变化更像“同一家餐厅换了点餐方式”，不是把菜系都换了。也就是说：\n- 还是考听说读写\n- 分数解释不变\n- 你需要适应的是屏幕上的阅读、输入和操作\n\n## 小马哥建议：现在优先练这 3 件事\n- **键盘输出**：尤其是写作，减少低级拼写和删改混乱\n- **屏幕阅读**：练定位、滚动、回看，不要看一段丢一段\n- **界面耐力**：长时间盯屏时保持节奏与专注\n\n如果你所在市场未来有 **Writing on Paper**，那也是“部分市场”的安排，不代表所有考生都能自由二选一。是否可选，以当地实际安排为准。\n\n## 纸笔思维哪里最容易拖后腿\n小马哥建议警惕这几个习惯：\n- 习惯在纸上圈满关键词，到了屏幕就不会找\n- 写作先打草稿再誊写，电脑上却还在重复这个慢动作\n- 阅读靠“整页感”，换成滚动界面后定位变慢\n\n现在该练的不是怀旧，而是让你的英语能力顺利穿过屏幕。\n\n## 一句话带走\nIELTS 转向机考是交付方式变化，不是评分标准换天；越早适应电脑作答，越少临场手忙脚乱。\n\n## 官方信息来源\n- [IELTS updates to test delivery](https://ielts.org/news-and-insights/updates-to-ielts-test-delivery)\n- [IELTS preparation resources](https://ielts.org/take-a-test/preparation-resources)",
+      "imagePrompt": "A 16:9 editorial cover showing a test desk transitioning from paper sheets to a sleek computer screen, subtle evolution concept, professional education magazine style, no text, no logos, no watermark"
+    },
+    {
+      "exam": "ielts",
+      "slug": "2026-ielts-one-skill-retake",
+      "title": "IELTS One Skill Retake：单科重考是后悔药，但不是无限续杯",
+      "excerpt": "单科重考有明确边界：原全科考试须为机考、在参与中心、60 天内、每次完整考试仅一次且只能重考一科。",
+      "content": "很多同学把 One Skill Retake 想成“哪里差补哪里”，但它更像限量版后悔药，不是自助续杯。**官方事实**是：IELTS **One Skill Retake** 仅在**符合资格要求**时可用；你原先参加的**完整考试必须是 IELTS on computer**，且在**参与该服务的考点**完成；重考必须在原完整考试后 **60 天内**进行；**每次完整考试只能重考一次，且只能重考一个技能**。另外，**是否被目标机构接受，需要自行确认**。\n\n## 先搞清楚它解决什么问题\n它适合那种“总分或多数单科都到位，只差一项”的情况。它不是让你无限试错，而是给一次更精准的补救机会。\n\n## 小马哥建议：别急着重考，先做复盘\n在报名之前，先问自己三件事：\n- 我是真的只差一个技能，还是整体状态都不稳？\n- 上次失分是能力问题，还是节奏、紧张、操作失误？\n- 我的目标机构是否接受 One Skill Retake 成绩？\n\n尤其最后一条，别自己脑补“应该都认”。官方已经说了，**接受情况要向目标机构确认**。\n\n## 怎么把这次机会用值\n小马哥建议把复习范围压缩到单科短板，而不是重回全科混战：\n- 阅读差，就练定位与时间分配\n- 写作差，就盯论证、结构和语言控制\n- 口语差，就修正背稿感和互动感\n- 听力差，就查漏同义替换和细节捕捉\n\n一次机会，最好像精准修表，不要像拿锤子修手机。\n\n## 一句话带走\nOne Skill Retake 能救急，但规则很清楚：有门槛、有时限、只一次，报名前先确认自己真的用得上。\n\n## 官方信息来源\n- [IELTS One Skill Retake](https://ielts.org/take-a-test/booking-your-test/one-skill-retake)\n- [IELTS preparation resources](https://ielts.org/take-a-test/preparation-resources)",
+      "imagePrompt": "A 16:9 business education editorial cover with a focused candidate reviewing one highlighted skill panel on a computer dashboard, precision and second-chance concept, no text, no logos, no watermark"
+    },
+    {
+      "exam": "ielts",
+      "slug": "2026-ielts-computer-reading",
+      "title": "IELTS 机考阅读：高亮很多不等于定位很准",
+      "excerpt": "机考阅读最常见的误区不是不会高亮，而是把高亮当努力痕迹。真正提分的，是定位、回查和屏幕阅读节奏。",
+      "content": "很多同学做机考阅读，屏幕一片荧光色，看起来很努力，分数却不太配合。问题往往不在“有没有标”，而在“标完能不能找回来”。**官方层面**，IELTS 已提供机考与备考资源；而随着考试交付方式转向电脑，阅读中的屏幕操作适应会更重要。至于怎么练高亮和定位，下面属于**小马哥建议**。\n\n## 高亮不是收藏夹，是路标\n高亮的作用应该是帮你**快速回查关键信息**，不是给整段做彩妆。真正值得标的通常是：\n- 人名、时间、数字\n- 强转折词和比较词\n- 题干关键词对应的同义替换处\n\n如果一句里你标了八成内容，那等于什么都没标。\n\n## 小马哥建议：先看题，再决定怎么读\n机考阅读尤其怕“从头认真看到尾”，因为屏幕阅读比纸面更容易丢位置。小马哥建议：\n1. 先抓题干关键词；\n2. 预判要找的是事实、观点还是细节；\n3. 回到文章做定向扫描；\n4. 找到后再精读局部。\n\n这像在商场找店，不需要把每层店铺都逛完再去结账。\n\n## 屏幕阅读的两大坑\n- **滚动过头**：看到了位置，却一滑找不回\n- **回查太慢**：知道答案大概在哪，但来回折返像走迷宫\n\n小马哥建议平时训练“少而准”的标记习惯，并熟悉界面切换。定位力强的人，屏幕不是障碍；定位力弱的人，荧光笔只是在制造热闹。\n\n## 一句话带走\n机考阅读里，高亮只是工具；真正决定速度和准确率的，是你能否快速定位并有效回查。\n\n## 官方信息来源\n- [IELTS preparation resources](https://ielts.org/take-a-test/preparation-resources)\n- [IELTS updates to test delivery](https://ielts.org/news-and-insights/updates-to-ielts-test-delivery)",
+      "imagePrompt": "A 16:9 editorial cover of a computer reading test interface with subtle highlighted lines and a precise cursor targeting key phrases, clean academic business style, no text, no logos, no watermark"
+    },
+    {
+      "exam": "ielts",
+      "slug": "2026-ielts-writing-task-2",
+      "title": "IELTS Writing Task 2：2026 没有神秘新标准，逻辑仍然要上班",
+      "excerpt": "别把写作失利怪给“新标准”。官方并未发布 Task 2 神秘改制；无论交付方式如何，清晰论证与语言控制仍是硬功夫。",
+      "content": "每年都有人问：2026 的 Writing Task 2 会不会冒出什么“神秘新标准”？先说结论：**就官方已发布信息看**，关于 IELTS 交付方式的更新并没有说写作评分标准被改写；官方明确提到的是，考试转向电脑交付时，**考查的技能和分数解释不变**。所以，如果文章写得像一盘没拌匀的沙拉，问题多半不在年份，而在逻辑。\n\n## 别把“会写英文”误当“会写 Task 2”\nTask 2 不是想到什么写什么。它更看重：\n- 是否直接回应题目\n- 观点是否展开并被支持\n- 段落之间是否连贯\n- 语言是否够清楚、稳定\n\n这不是神秘玄学，更像盖房子：砖很多不代表房型合理。\n\n## 小马哥建议：先把论证链补齐\n不少同学最大的问题不是词不高级，而是观点像蹦床，跳一下就没下文。小马哥建议每段至少回答三件事：\n1. **我的分论点是什么**；\n2. **为什么成立**；\n3. **例子或解释怎样支撑它**。\n\n如果一段只有观点，没有解释，读者只能礼貌地点头，但不会真正被说服。\n\n## 机考时代更要注意什么\n既然交付方式更偏电脑，小马哥建议额外练：\n- 键盘输入稳定度\n- 边写边改时的结构控制\n- 检查拼写与语法的小习惯\n\n但这些是“交付能力”，不是新的评分魔法。逻辑该上班，还是得准时打卡。\n\n## 一句话带走\n2026 没有官方宣布的 Task 2 神秘新标准；真正拉开分差的，仍是回应题目、展开论证和稳定表达。\n\n## 官方信息来源\n- [IELTS updates to test delivery](https://ielts.org/news-and-insights/updates-to-ielts-test-delivery)\n- [IELTS preparation resources](https://ielts.org/take-a-test/preparation-resources)",
+      "imagePrompt": "A 16:9 business education editorial cover with a laptop showing a structured essay outline, clean desk, logic flow diagrams and calm academic atmosphere, no text, no logos, no watermark"
+    },
+    {
+      "exam": "ielts",
+      "slug": "2026-ielts-speaking-natural-response",
+      "title": "IELTS Speaking：背稿像导航播报，自然表达才像真人",
+      "excerpt": "口语不是背得越满越安全。自然回应、真实互动和清晰表达，往往比一段段预制台词更像高分该有的样子。",
+      "content": "很多同学准备口语时最爱做的一件事，就是把答案背成“完整版”。结果一开口像导航播报：字字正确，路人感十足。先说清楚，以下主要是**小马哥建议**；官方提供的是 IELTS 备考资源，并没有鼓励大家把口语准备成整段背稿。\n\n## 为什么背稿感危险\n口语考试是交流，不是按下播放键。背稿一重，常见问题就来了：\n- 语调过平，像在读库存文本\n- 一旦考官换问法，就卡住\n- 内容听着完整，但和问题贴合度一般\n\n你以为自己在“稳定输出”，考官听到的可能是“互动失踪”。\n\n## 小马哥建议：准备“内容块”，不是整篇台词\n更实用的方式是提前准备：\n- 常见人物、地点、经历、观点的**素材块**\n- 能表达原因、对比、影响的**连接句**\n- 遇到陌生问题时的**转圜句**\n\n这样做的好处是，临场可以像搭积木，根据问题现拼；而不是抱着一整面墙，转身都费劲。\n\n## 自然不等于随便\n自然表达不是口水话泛滥，而是：\n- 先答题，再展开\n- 句子长短有变化\n- 愿意解释“为什么”\n- 偶尔自我修正，但不停摆\n\n小马哥建议录音回听：如果你自己都觉得像客服脚本，那就该减背稿味了。真人说话有组织，但不该像出厂设置。\n\n## 一句话带走\nIELTS Speaking 里，准备是必须的，但准备到像背说明书，反而会把真实交流感挤掉。\n\n## 官方信息来源\n- [IELTS preparation resources](https://ielts.org/take-a-test/preparation-resources)\n- [IELTS updates to test delivery](https://ielts.org/news-and-insights/updates-to-ielts-test-delivery)",
+      "imagePrompt": "A 16:9 editorial cover with a candidate in a natural interview conversation across a table, warm professional lighting, subtle human interaction focus, no text, no logos, no watermark"
+    }
+  ]
+}
