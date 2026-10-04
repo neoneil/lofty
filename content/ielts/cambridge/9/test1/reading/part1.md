@@ -509,7 +509,7 @@ answers_json: |
             "answer_mark_time": []
           },
           {
-            "title": "7 Perkin was inspired by the discoveries ol the famous scientist Louis Pasteur.",
+            "title": "7 Perkin was inspired by the discoveries of the famous scientist Louis Pasteur.",
             "question_no": "7",
             "answer_value": "NOT GIVEN",
             "answer_values": [
@@ -595,7 +595,7 @@ answers_json: |
               "NOT GIVEN"
             ],
             "serial": "7",
-            "content": "7 Perkin was inspired by the discoveries ol the famous scientist Louis Pasteur.",
+            "content": "7 Perkin was inspired by the discoveries of the famous scientist Louis Pasteur.",
             "answerExplain": "7. 参考译文：Perkin被著名科学家Louis Pasteur的发明所鼓舞。<br/>定位词： Louis Pasteur <br/>对应原文：第五段最后一句： And, proving the truth of the famous scientist Louis Pasteur’s words ‘chance favours only the prepared mind’, Perkin saw the potential of his unexpected find. <br/>解析：原文讲的是 Perkin 的成功验证了 Louis Pasteur 的名言，并未提及 Perkin是否被著名科学家Louis Pasteur的发明所鼓舞。 答案为 NOT GIVEN。"
           }
         ],

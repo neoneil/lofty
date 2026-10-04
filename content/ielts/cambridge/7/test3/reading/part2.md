@@ -229,7 +229,7 @@ section_raw_data_json: |
                 "A"
               ],
               "option": [
-                "A teeth from both prehistoric and modem Americans and Asians.<br/>",
+                "A teeth from both prehistoric and modern Americans and Asians.<br/>",
                 "B thousands of people who live in either the New or the Old World. <br/>",
                 "C dental specimens from the majority of prehistoric Americans.<br/>",
                 "D the eating habits of American and Asian populations.<br/>"
@@ -491,7 +491,7 @@ questions_json: |
               "A"
             ],
             "option": [
-              "A teeth from both prehistoric and modem Americans and Asians.<br/>",
+              "A teeth from both prehistoric and modern Americans and Asians.<br/>",
               "B thousands of people who live in either the New or the Old World. <br/>",
               "C dental specimens from the majority of prehistoric Americans.<br/>",
               "D the eating habits of American and Asian populations.<br/>"
@@ -509,7 +509,7 @@ questions_json: |
       },
       "options": [
         {
-          "title": "A teeth from both prehistoric and modem Americans and Asians.<br/>",
+          "title": "A teeth from both prehistoric and modern Americans and Asians.<br/>",
           "value": "A",
           "question_no": "26"
         },
@@ -897,7 +897,7 @@ answers_json: |
               "A"
             ],
             "option": [
-              "A teeth from both prehistoric and modem Americans and Asians.<br/>",
+              "A teeth from both prehistoric and modern Americans and Asians.<br/>",
               "B thousands of people who live in either the New or the Old World. <br/>",
               "C dental specimens from the majority of prehistoric Americans.<br/>",
               "D the eating habits of American and Asian populations.<br/>"
